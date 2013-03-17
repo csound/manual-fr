@@ -1,0 +1,84 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<chapter id="py">
+
+  <title>Opcodes Python</title>
+  <section id="PythonOpcodes">
+    <title>Introduction</title>
+    <para>En utilisant la famille d'opcodes Python, vous pouvez interagir avec un interpréteur Python
+      embarqué dans Csound de cinq manières :</para>
+    <orderedlist>
+      <listitem><simpara>Initialiser l'interpréteur Python (les opcodes
+      <link linkend="pyinit"><citetitle>pyinit</citetitle></link>),</simpara></listitem>
+      <listitem><simpara>Exécuter une instruction (les opcodes
+      <link linkend="pyrun"><citetitle>pyrun</citetitle></link>),</simpara></listitem>
+      <listitem><simpara>Exécuter un script (les opcodes
+      <link linkend="pyexec"><citetitle>pyexec</citetitle></link>),</simpara></listitem>
+      <listitem><simpara>Invoquer un objet appelable et lui passer des arguments (les opcodes
+      <link linkend="pycall"><citetitle>pycall</citetitle></link>),</simpara></listitem>
+      <listitem><simpara>Evaluer une expression (les opcodes
+      <link linkend="pyeval"><citetitle>pyeval</citetitle></link>), ou</simpara></listitem>
+      <listitem><simpara>Changer la valeur d'un objet Python, avec la possibilité de créer un nouvel
+      objet Python (les opcodes
+      <link linkend="pyassign"><citetitle>pyassign</citetitle></link>) ;</simpara></listitem>
+    </orderedlist>
+    <para>et vous pouvez faire toutes ces choses :</para>
+    <orderedlist>
+      <listitem><simpara>Au temps-i ou au temps-k,</simpara></listitem>
+      <listitem><simpara>Dans l'espace de nom global de Python, ou dans un espace de nom spécifique à
+      une instance individuelle d'un instrument Csound (contexte local ou "l"),</simpara></listitem>
+      <listitem><simpara>Et vous pouvez récupérer de 0 à 8 valeurs de retour d'objets appelables qui
+      acceptent N paramètres.</simpara></listitem>
+    </orderedlist>
+    <para>...cela signifie qu'il y a beaucoup d'opcodes concernant Python. Mais tous ces opcodes partagent
+      le même préfixe <emphasis>py</emphasis>, et ils ont une structure de nom régulière :</para>
+
+<programlisting>
+"py" + [préfixe contextuel facultatif] + [nom d'action] + [suffixe de temps-x facultatif]
+</programlisting>
+  
+  </section>
+  <section id="PythonOpcodesSyntax">
+    <title>Syntaxe de l'Orchestre</title>
+    <para>Des blocs de code Python, voire des scripts entiers, peuvent être embarqués dans un orchestre
+      Csound en utilisant les directives {{ et }} pour entourer le script, comme ci-dessous :</para>
+
+<programlisting>
+<emphasis role="ohdr">sr</emphasis><emphasis role="op">=</emphasis>44100
+<emphasis role="ohdr">kr</emphasis><emphasis role="op">=</emphasis>4410
+<emphasis role="ohdr">ksmps</emphasis><emphasis role="op">=</emphasis>10
+<emphasis role="ohdr">nchnls</emphasis><emphasis role="op">=</emphasis>1
+<emphasis role="opc">pyinit</emphasis>
+
+giSinusoid	<emphasis role="opc">ftgen</emphasis>	0,	0, 8192, 10,	1
+
+<emphasis role="opc">pyruni</emphasis> {{
+import random
+
+pool = [(1 + i/10.0) ** 1.2 for i in range(100)]
+
+def get_number_from_pool(n, p):
+    if random.random() &lt; p:
+        i = int(random.random() * len(pool))
+        pool[i] = n
+    return random.choice(pool)
+}}
+
+<emphasis role="oblock">instr</emphasis> 1
+	k1	<emphasis role="opc">oscil</emphasis>	1, 3, giSinusoid	
+	k2	<emphasis role="opc">pycall1</emphasis>	"get_number_from_pool", k1 <emphasis role="op">+</emphasis> 2, p4
+		<emphasis role="opc">printk</emphasis>	0.01, k2
+<emphasis role="oblock">endin</emphasis></programlisting>
+  <bridgehead>Crédits</bridgehead>
+  <para>Copyright &copy; 2002 par Maurizio Umberto Puxeddu. Tous droits réservés.</para>
+  <para>Copyright &copy; 2004 et 2005 par Michael Gogins, pour certaines parties.</para>
+
+  </section>
+</chapter>

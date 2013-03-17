@@ -1,0 +1,619 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.15
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+<chapter id="csound5extending">
+
+<title>Etendre Csound</title>
+
+<section id="csound5addingopcodes">
+
+<title>Ajouter des générateurs unitaires</title>
+
+<para>
+  Si les générateurs unitaires existants de Csound ne répondent pas à vos besoins, il est relativement
+  aisé d'étendre Csound en écrivant de nouveaux générateurs unitaires en C ou en C++. Le traducteur, le
+  chargeur et le moniteur d'exécution traiteront votre module comme n'importe quel autre module, pourvu que
+  vous suiviez certaines conventions.
+</para>
+
+<para>
+  Historiquement, on réalisait ceci avec des générateurs unitaires intégrés, c'est-à-dire dont le code
+  est lié statiquement avec le reste de l'exécutable de Csound.
+</para>
+
+<para>
+  Aujourd'hui, on préfère créer des générateurs unitaires sous forme de greffon. Ce sont des
+  bibliothèques à liaison dynamique (DLL) sous Windows, et des modules chargeables (bibliothèques partagées
+  chargées par <literal>dlopen</literal>) sous Linux. Csound recherche et charge ces greffons au
+  moment de l'exécution, depuis le chemin défini dans
+  <link linkend="CommandEnvironment"><citetitle>OPCODEDIR</citetitle></link>. On peut
+  aussi charger des opcodes de greffon depuis la ligne de commande avec l'option
+  <link linkend="FlagsMinusOpcodeLib"><citetitle>--opcode-lib</citetitle></link>.
+</para>
+
+<para>
+  L'avantage de cette méthode, naturellement, est que les greffons créés par
+  n'importe quel développeur, n'importe quand, peuvent être utilisés avec des versions de Csound déjà
+  existantes.
+</para>
+
+<section>
+
+<title>Créer un générateur unitaire intégré</title>
+
+<para>Vous avez besoin d'une structure définissant les entrées, les sorties et l'espace de travail, plus
+du code d'initialisation et du code d'exécution. Mettons un exemple de tout cela dans deux nouveaux
+fichiers, <filename>newgen.h</filename> et <filename>newgen.c</filename>. Les exemples donnés sont pour
+Csound 5. Pour les versions antérieures, il faut omettre le premier paramètre
+(<literal>CSOUND *csound</literal>) dans toutes les fonctions d'opcode.
+
+<informalexample>
+<programlisting>
+/* newgen.h  -  définit une structure */
+
+/* Déclare les structures et les fonctions de Csound. */
+#include &quot;csoundCore.h&quot;
+
+typedef struct
+{
+  OPDS h;                                         /* en-tête requis */
+  MYFLT *result, *istrt, *incr, *itime, *icontin; /* adr des arg de sortie et d'entrée */
+  MYFLT curval, vincr;                            /* espace de données privé */
+  long countdown;                                 /* ditto */
+} RMP;
+
+
+/* newgen.c -  code d'initialisation et d'exécution */
+/* Déclare les structures et les fonctions de Csound. */
+#include &quot;csoundCore.h&quot;
+/* Déclare la structure RMP. */
+#include &quot;newgen.h&quot;
+
+int rampset (CSOUND *csound, RMP * p)     /* à l'initialisation de la note : */
+{
+  if (*p-&gt;icontin == FL(0.0))
+    p-&gt;curval = *p-&gt;istrt;                /* reçoit si besoin la nouvelle valeur de début */
+  p-&gt;vincr = *p-&gt;incr / csound-&gt;esr;      /* fixe l'increment au taux-s par sec. */
+  p-&gt;countdown = *p-&gt;itime * csound-&gt;esr; /* compteur pour iduree en secondes */
+  return OK;
+}
+
+int ramp (CSOUND *csound, RMP * p)        /* pendant l'exécution de la note : */
+{
+  MYFLT *rsltp = p-&gt;result;               /* initialise un pointeur sur le tableau de sortie */
+  int nn = csound-&gt;ksmps;                 /* taille du tableau donnée par l'orchestre */
+  do
+    {
+      *rsltp++ = p-&gt;curval;               /* copie la valeur courante vers la sortie */
+      if (--p-&gt;countdown &gt; 0)             /* pour les premières iduree secondes, */
+        p-&gt;curval += p-&gt;vincr;            /* incrémenter la valeur */
+    }
+  while (--nn);
+  return OK;
+}</programlisting>
+</informalexample>
+</para>
+
+<para>Maintenant nous ajoutons ce module à la table du traducteur dans <filename>entry1.c</filename>,
+sous le nom d'opcode <literal>rampt</literal> :
+
+<informalexample>
+<programlisting>
+#include &quot;newgen.h&quot;
+
+int rampset(CSOUND *, RMP *), ramp(CSOUND *, RMP *);
+
+/*  opname  dsblksiz  thread    outypes   intypes      iopadr        kopadr      aopadr  */
+{  &quot;rampt&quot;,  S(RMP),    5,        &quot;a&quot;,    &quot;iiio&quot;,   (SUBR)rampset, (SUBR)NULL, (SUBR)ramp  },</programlisting>
+</informalexample>
+</para>
+
+<para>Finalement, il faut relier Csound avec le nouveau module. Ajoutez le nom du fichier C à la liste
+<literal>libCsoundSources</literal> dans le fichier <literal>SConstruct</literal> :
+
+<informalexample>
+<programlisting>
+libCsoundSources = Split('''
+Engine/auxfd.c
+...
+OOps/newgen.c
+...
+Top/utility.c
+''')</programlisting>
+</informalexample>
+</para>
+
+<para>Lancez <application>scons</application> comme vous le feriez pour toute autre construction de
+Csound, et le nouveau module sera intégré dans votre Csound.</para>
+
+  <para>
+    Les actions ci-dessus ont ajouté un nouveau générateur au langage Csound. C'est une fonction de
+    rampe linéaire au taux audio qui modifie une valeur d'entrée selon une pente définie par l'utilisateur
+    pour une durée donnée. Cette rampe peut éventuellement continuer depuis la dernière valeur de la
+    note précédente. L'entrée correspondante du manuel de Csound ressemblerait à ceci :
+    <informalexample>
+      <programlisting>
+ar rampt idebut, ipente, iduree [, icontin]</programlisting>
+    </informalexample>
+  </para>
+
+  <para>
+    <emphasis>idebut</emphasis> -- valeur du début d'une rampe linéaire au taux audio. Eventuellement
+    ignorée s'il y a un drapeau de continuité.
+  </para>
+
+  <para>
+    <emphasis>ipente</emphasis>  -- pente de la rampe, exprimée comme le taux de changement des y
+    par seconde.
+  </para>
+
+  <para><emphasis>iduree</emphasis> -- durée de la rampe en secondes, après laquelle la valeur est tenue
+  jusqu'à la fin de la note.
+  </para>
+
+  <para><emphasis>icontin</emphasis> (facultatif) -- drapeau de continuité. S'il est à zéro, la rampe
+  démarrera depuis l'entrée <emphasis>idebut</emphasis>. Sinon, la rampe démarrera depuis la dernière
+  valeur de la note précédente. La valeur par défaut est zéro.
+  </para>
+
+  <para>
+    Le fichier <filename>newgen.h</filename> comprend une liste de paramètres de sortie et d'entrée
+    définie sur une ligne. Ce sont les ports par lesquels le nouveau générateur communiquera avec les
+    autres générateurs dans un instrument. La communication se fait par <emphasis>adresse</emphasis>,
+    pas par <emphasis>valeur</emphasis>, et c'est une liste de pointeurs sur des valeurs de type
+    MYFLT (<emphasis>double</emphasis> si la macro USE_DOUBLE est définie, et
+    <emphasis>float</emphasis> autrement). Il n'y a aucune restriction sur les noms, mais les types
+    d'argument d'entrée-sortie sont définis plus loin par des chaînes de caractères dans
+    <filename>entry1.c</filename> (intypes, outypes). Les types intypes sont habituellement
+    <emphasis>x</emphasis>, <emphasis>a</emphasis>, <emphasis>k</emphasis>, et <emphasis>i</emphasis>,
+    suivant les conventions normales du manuel de Csound ; on trouve aussi <emphasis>o</emphasis>
+    (facultatif, par défaut 0), <emphasis>p</emphasis> (facultatif, par défaut 1). Les types outypes
+    comprennent <emphasis>a</emphasis>, <emphasis>k</emphasis>, <emphasis>i</emphasis> et
+    <emphasis>s</emphasis> (asig ou ksig). Il est important que tous les noms d'argument de la liste
+    se voient attribuer un type d'argument correspondant dans <filename>entry1.c</filename>. De plus,
+    les arguments de type-i ne sont valides qu'à l'initialisation, et les arguments des autres
+    types ne sont valables que pendant l'exécution. Les lignes suivantes de la structure RMP
+    déclarent l'espace de travail nécessaire pour que le code soit réentrant. Ceci permet d'utiliser
+    le module plusieurs fois dans plusieurs copies d'instrument tout en préservant toutes les
+    données.</para>
+
+  <para>
+    Le fichier <filename>newgen.c</filename> contient deux sous-programmes, appelés chacun avec un
+    pointeur sur l'instance de Csound et un pointeur sur la structure RMP allouée de façon unique et
+    ses données. Les sous-programmes peuvent être de trois sortes : initialisation de note, génération
+    de signal au taux-<literal>k</literal>, génération de signal au taux-<literal>a</literal>.
+    Normalement, un module requiert deux de ces sous-programmes : initialisation, et un sous-programme
+    soit de taux-<literal>k</literal>, soit de taux-<literal>a</literal> qui sera inséré dans
+    divers listes chaînées de tâches exécutables quand un instrument est activé. Les type de chaînage
+    apparaissent dans <filename>entry1.c</filename> sous deux formes : noms <emphasis>isub</emphasis>,
+    <emphasis>ksub</emphasis> et <emphasis>asub</emphasis> ; et un index de chaînage qui est la somme
+    de isub=1, ksub=2, asub=4. Le code lui-même peut référencer (mais ça ne devrait être qu'en lecture)
+    les membres publiques de la structure CSOUND définie dans <filename>csoundCore.h</filename>, dont
+    les plus utiles sont :
+
+    <informalexample>
+      <programlisting>
+        OPARMS  *oparms
+        MYFLT   esr                 taux d'échantillonage défini par l'utilisateur
+        MYFLT   ekr                 taux de contrôle défini par l'utilisateur
+        int     ksmps               ksmps défini par l'utilisateur
+        int     nchnls              nchnls défini par l'utilisateur
+        int     oparms-&gt;odebug      option -v de la ligne de commande
+        int     oparms-&gt;msglevel    option -m de la ligne de commande
+        MYFLT   tpidsr              2 * PI / esr</programlisting>
+    </informalexample>
+  </para>
+
+  <section id="CS5AddmodFtables">
+    <title>Tables de fonction</title>
+
+    <para>
+      pour accéder aux <indexterm id="CS5IndexStoredFuncTables"><primary>tables</primary><secondary>stored function</secondary></indexterm>
+      tables de fonction en mémoire, une aide spéciale est disponible. La nouvelle structure définie doit comprendre un pointeur
+      <informalexample>
+        <programlisting>FUNC       *ftp;</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      initialisé par l'instruction
+      <informalexample>
+        <programlisting>ftp = csound-&gt;FTFind(csound, p-&gt;ifuncno);</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      où MYFLT *ifuncno est un argument d'entrée de type-i contenant le numéro de la ftable. La table
+      stockée est alors en ftp-&gt;ftable, et d'autres données comme sa longueur, les masques de phase,
+      les convertisseurs cps-incrément, sont aussi accessibles depuis ce pointeur. Voir la
+      structure FUNC dans <filename>csoundCore.h</filename>, le code de csoundFTFind() dans
+      <filename>fgens.c</filename>, et le code de oscset() et de koscil() dans
+      <filename>OOps/ugens2.c</filename>.
+    </para>
+  </section>
+
+  <section id="AddmodAddSpace">
+    <title>Espace Supplémentaire</title>
+
+    <para>
+      Parfois les besoins en espace d'un module sont trop grands pour faire partie d'une structure
+      (limite supérieure de 65279 octets, due au paramètre en entier court non-signé
+      <emphasis>dsblksiz</emphasis> et aux codes réservés &gt;= 0xFF00), ou ils dépendent d'une
+      valeur d'argument-i qui n'est pas connue avant l'initialisation. De l'espace supplémentaire
+      peut être alloué dynamiquement et géré proprement en incluant la ligne
+      <informalexample>
+        <programlisting>AUXCH      auxch;</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      dans la structure définié (*p), puis en utilisant ce type de code dans le module d'initialisation :
+      <informalexample>
+        <programlisting>
+csound-&gt;AuxAlloc(csound, npoints * sizeof(MYFLT), &amp;p-&gt;auxch);</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      L'adresse de l'espace auxiliaire est gardée dans une chaîne d'espaces similaires appartenant à cet
+      intrument, et elle est gérée automatiquement lorsque l'instrument est dupliqué ou passé au
+      ramasse-miettes durant l'exécution. L'assignation
+      <informalexample>
+        <programlisting>void *auxp = p-&gt;auxch.auxp;</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      trouvera les espaces alloués pour une utilisation pendant l'initialisation et pendant l'exécution.
+      Voir la structure LINSEG dans <filename>ugens1.h</filename> et le code de lsgset() and klnseg()
+      dans <filename>OOps/ugens1.c</filename>.
+    </para>
+  </section>
+
+  <section id="AddmodFsharing">
+    <title>Partage de Fichier</title>
+      <para>
+        Lorsque l'on accède souvent à un fichier externe, ou si on le fait depuis plusieurs endroits,
+        il est souvent efficace de lire le fichier entier dans la mémoire. On accomplit ceci en incluant
+        la ligne
+      <informalexample>
+        <programlisting>MEMFIL     *mfp;</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      dans la structure définie (*p), puis en utilisant le style de code suivant dans le module
+      d'initialisation :
+      <informalexample>
+        <programlisting>p-&gt;mfp = csound-&gt;ldmemfile(csound, nomfic);</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      où char *nomfic est une chaîne contenant le nom du fichier requis. Les données lues se trouveront
+      entre
+      <informalexample>
+        <programlisting>
+(char *)p-&gt;mfp-&gt;beginp;  et  (char *)p-&gt;mfp-&gt;endp;</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      Les fichiers chargés n'appartiennent pas à un instrument particulier, mais sont automatiquement
+      partagés pour des accès multiples. Voir la structure ADSYN dans <filename>ugens3.h</filename>
+      et le code de adset() et de adsyn() dans <filename>OOps/ugens3.c</filename>.
+    </para>
+  </section>
+
+  <section id="AddmodStringargs">
+    <title>Arguments chaîne de caractères</title>
+
+    <para>
+      Pour permettre un argument d'entrée de type chaîne (disons MYFLT *inomfic) dans votre structure
+      définie (*p), assignez-lui le type d'argument <emphasis>S</emphasis> dans
+      <filename>entry1.c</filename>, et incluez le code suivant dans le module d'initialisation :
+      <informalexample>
+        <programlisting>strcpy(nomfic, (char*)p-&gt;inomfic);</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      Voir le code pour adset() dans <filename>OOps/ugens3.c</filename>, lprdset() dans
+      <filename>OOps/ugens5.c</filename>, et pvset() dans <filename>OOps/ugens8.c</filename>.
+    </para>
+
+</section>
+
+</section>
+
+<section>
+
+<title>Ajouter un générateur unitaire comme greffon</title>
+
+<para>La procédure pour créer un généteur unitaire comme greffon ressemble beaucoup à celle qui est
+utilisée pour créer un générateur intégré. Le code du générateur unitaire sera le même à part les
+différences suivantes.</para>
+
+<para>En supposant à nouveau que votre générateur s'appelle <literal>newgen</literal>, effectuez les
+étapes suivantes :</para>
+
+<orderedlist>
+
+<listitem><para>Ecrivez vos fichiers <literal>newgen.c</literal> et <literal>newgen.h</literal> comme
+vous le feriez pour un générateur unitaire intégré. Mettez ces fichiers dans le répertoire
+<literal>csound5/Opcodes</literal>.</para></listitem>
+
+<listitem><para>Mettez <literal>#include "csdl.h"</literal> dans les sources de votre générateur
+unitaire, au lieu de <literal>#include "csoundCore.h"</literal>.</para></listitem>
+
+<listitem><para>Ajoutez vos champs <literal>OENTRY</literal> et les fonctions d'enregistrement du
+générateur unitaire au bas de votre fichier C. Exemple (mais vous pouvez avoir autant de générateurs
+unitaires que vous le voulez dans un greffon) :</para>
+
+<programlisting>
+#define S sizeof
+
+static OENTRY localops[] = {
+    { "rampt", S(RMP), 5, "a", "iiio", (SUBR)rampset, (SUBR)NULL, (SUBR)ramp  },
+};
+
+/*
+ * La macro suivante de csdl.h définit
+ * la fonction d'enregistrement d'opcode "csound_opcode_init()"
+ * pour la table des opcodes locaux.
+ */
+LINKAGE</programlisting>
+</listitem>
+
+<listitem><para>Ajoutez votre greffon comme nouvelle cible dans la section des opcodes en greffon du
+fichier de construction <literal>SConstruct</literal> :</para>
+
+<programlisting>
+greffonEnvironment.SharedLibrary('newgen',
+    Split('''Opcodes/newgen.c
+    Opcodes/un_autre_fichier_utilise_par_newgen.c
+    Opcodes/encore_un_autre_fichier_utilise_par_newgen.c'''))</programlisting>
+</listitem>
+
+<listitem><para>Lancer la construction de Csound de la manière usuelle.</para></listitem>
+
+</orderedlist>
+
+</section>
+
+<section>
+
+<title>Référence de <literal>OENTRY</literal></title>
+
+<para>La structure <literal>OENTRY</literal> (voir <literal>H/csoundCore.h</literal>,
+<literal>Engine/entry1.c</literal>, et <literal>Engine/rdorch.c</literal>) contient les champs publiques
+suivants :</para>
+<programlisting>
+opname, dsblksiz, thread, outypes, intypes, iopadr, kopadr, aopadr
+</programlisting>
+
+<variablelist>
+
+<varlistentry><term><literal>dsblksiz</literal></term><listitem><para>Il y a deux types d'opcode, 
+polymorphe et non-polymorphe. Pour les opcodes non-polymorphes, le drapeau <literal>dsblksiz</literal>
+spécifie la taille de la structure de l'opcode en octets, et les arguments sont toujours passés à
+l'opcode au même taux. Les opcodes polymorphes peuvent accepter des arguments à des taux différents,
+et la façon dont ces arguments sont réellement distribués aux autres opcodes est déterminée par le
+drapeau <literal>dsblksiz</literal> et les conventions de nommage suivantes (note : la liste
+suivante est incomplète, voir <filename>Engine/entry1.c</filename> pour tous les codes spéciaux
+possibles pour dsblksiz) :
+
+<variablelist>
+
+<varlistentry><term><literal>0xffff</literal></term><listitem><para>Le type du premier argument en
+sortie détermine quelle fonction de générateur unitaire est réellement appelée :
+<literal>XXX</literal> -&gt; <literal>XXX.a</literal>, <literal>XXX.i</literal>, ou
+<literal>XXX.k</literal>.</para></listitem></varlistentry>
+
+<varlistentry><term><literal>0xfffe</literal></term><listitem><para>Les types des deux premiers arguments
+en entrée déterminent quelle fonction de générateur unitaire est réellement appelée :
+<literal>XXX</literal> -&gt; <literal>XXX.aa</literal>, <literal>XXX.ak</literal>,
+<literal>XXX.ka</literal>, ou <literal>XXX.kk</literal>, comme dans le générateur unitaire
+<literal>oscil</literal>.</para></listitem></varlistentry>
+
+<varlistentry><term><literal>0xfffd</literal></term><listitem><para>Fait référence à un argument en
+entrée de type a ou k, comme dans le générateur unitaire
+<literal>peak</literal>.</para></listitem></varlistentry>
+
+</variablelist>
+</para>
+</listitem>
+
+</varlistentry>
+
+<varlistentry><term><literal>thread</literal></term><listitem><para>Spécifie le(s) taux utilisé(s)
+pour appeler les fonctions de générateur unitaire, comme suit :
+
+<table>
+  <title>Taux d'appel des ugens selon le paramètre thread</title>
+<tgroup cols="2">
+<colspec colname="thread"/>
+<colspec colname="Description"/>
+<tbody>
+<row>
+<entry><literal>0</literal></entry><entry>taux-<literal>i</literal> <emphasis>ou</emphasis> taux-<literal>k</literal> (sortie B seulement)</entry>
+</row>
+<row>
+<entry><literal>1</literal></entry><entry>taux-<literal>i</literal></entry>
+</row>
+<row>
+<entry><literal>2</literal></entry><entry>taux-<literal>k</literal></entry>
+</row>
+<row>
+<entry><literal>3</literal></entry><entry>taux-<literal>i</literal> <emphasis>et</emphasis> taux-<literal>k</literal></entry>
+</row>
+<row>
+<entry><literal>4</literal></entry><entry>taux-<literal>a</literal></entry>
+</row>
+<row>
+<entry><literal>5</literal></entry><entry>taux-<literal>i</literal> <emphasis>et</emphasis> taux-<literal>a</literal></entry>
+</row>
+<row>
+<entry><literal>7</literal></entry><entry>taux-<literal>i</literal> <emphasis>et</emphasis> (taux-<literal>k</literal> <emphasis>ou</emphasis> taux-<literal>a</literal>)</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term><literal>outypes</literal></term><listitem><para>Liste les valeurs de retour des
+fonctions de générateur unitaire, s'il y en a. Les types permis sont (note : la liste suivante est
+incomplète, voir <filename>Engine/entry1.c</filename> pour tous les types possibles en sortie) :
+
+<table><title>Liste des types de sortie des ugens</title>
+<tgroup cols="2">
+<colspec colname="Type"/>
+<colspec colname="Description"/>
+<tbody>
+<row>
+<entry><literal>i</literal></entry><entry>scalaire de taux-<literal>i</literal></entry>
+</row>
+<row>
+<entry><literal>k</literal></entry><entry>scalaire de taux-<literal>k</literal></entry>
+</row>
+<row>
+<entry><literal>a</literal></entry><entry>vecteur de taux-<literal>a</literal></entry>
+</row>
+<row>
+<entry><literal>x</literal></entry><entry>scalaire de taux-<literal>k</literal> ou vecteur de taux-<literal>a</literal></entry>
+</row>
+<row>
+<entry><literal>f</literal></entry><entry>type fsig de flux pvoc de taux-<literal>f</literal></entry>
+</row>
+<row>
+<entry><literal>m</literal></entry><entry>arguments multiples en sortie de taux-<literal>a</literal></entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term><literal>intypes</literal></term><listitem><para>Liste les arguments, s'il y en a,
+que prennent les fonctions de générateur unitaire. Les types permis sont (note : la liste suivante est
+incomplète, voir <filename>Engine/entry1.c</filename> pour tous les types possibles en entrée) :
+
+<table><title>Liste des types d'entrée des ugens</title>
+<tgroup cols="2">
+<colspec colname="Type"/>
+<colspec colname="Description"/>
+<tbody>
+<row>
+<entry><literal>i</literal></entry><entry>scalaire de taux-<literal>i</literal></entry>
+</row>
+<row>
+<entry><literal>k</literal></entry><entry>scalaire de taux-<literal>k</literal></entry>
+</row>
+<row>
+<entry><literal>a</literal></entry><entry>vecteur de taux-<literal>a</literal></entry>
+</row>
+<row>
+<entry><literal>x</literal></entry><entry>scalaire de taux-<literal>a</literal> ou vecteur de taux-<literal>a</literal></entry>
+</row>
+<row>
+<entry><literal>f</literal></entry><entry>type fsig de flux pvoc de taux-<literal>f</literal></entry>
+</row>
+<row>
+<entry><literal>S</literal></entry><entry>Chaîne</entry>
+</row>
+<row>
+<entry><literal>B</literal></entry><entry></entry>
+</row>
+<row>
+<entry><literal>l</literal></entry><entry></entry>
+</row>
+<row>
+<entry><literal>m</literal></entry><entry>Commence une liste indéfinie d'arguments de taux-<literal>i</literal>
+(n'importe quel nombre)</entry>
+</row>
+<row>
+<entry><literal>M</literal></entry><entry>Commence une liste indéfinie d'arguments (n'importe quel taux,
+n'importe quel nombre)</entry>
+</row>
+<row>
+  <entry><literal>N</literal></entry><entry>Commence une liste indéfinie d'arguments facultatifs (aux
+  taux-<literal>a</literal>, -<literal>k</literal>, -<literal>i</literal>, ou -<literal>S</literal>)
+  (n'importe quel nombre impair)</entry>
+</row>
+<row>
+<entry><literal>n</literal></entry><entry>Commence une liste indéfinie d'arguments au taux-<literal>i</literal>
+(n'importe quel nombre impair)</entry>
+</row>
+<row>
+  <entry><literal>O</literal></entry><entry>facultatif au taux-<literal>k</literal>, 0 par défaut</entry>
+</row>
+<row>
+<entry><literal>o</literal></entry><entry>facultatif au taux-<literal>i</literal>, 0 par défaut</entry>
+</row>
+<row>
+<entry><literal>p</literal></entry><entry>facultatif au taux-<literal>i</literal>, 1 par défaut</entry>
+</row>
+<row>
+<entry><literal>q</literal></entry><entry>facultatif au taux-<literal>i</literal>, 10 par défaut</entry>
+</row>
+<row>
+  <entry><literal>V</literal></entry><entry>facultatif au taux-<literal>k</literal>, 0.5 par défaut</entry>
+</row>
+<row>
+<entry><literal>v</literal></entry><entry>facultatif au taux-<literal>i</literal>, 0.5 par défaut</entry>
+</row>
+<row>
+<entry><literal>j</literal></entry><entry>facultatif au taux-<literal>i</literal>,-1 par défaut</entry>
+</row>
+<row>
+<entry><literal>h</literal></entry><entry>facultatif au taux-<literal>i</literal>, 127 par défaut</entry>
+</row>
+<row>
+<entry><literal>y</literal></entry><entry>Commence une liste indéfinie d'arguments au taux-<literal>a</literal>
+(n'importe quel nombre)</entry>
+</row>
+<row>
+<entry><literal>z</literal></entry><entry>Commence une liste indéfinie d'arguments au taux-<literal>k</literal>
+(n'importe quel nombre)</entry>
+</row>
+<row>
+<entry><literal>Z</literal></entry><entry>Commence une liste indéfinie d'argumenents alternant les
+taux-<literal>k</literal> et -<literal>a</literal> (kaka...)
+(n'importe quel nombre)</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term><literal>iopadr</literal></term><listitem><para>L'adresse de la fonction du
+générateur unitaire (de type <literal>int (*SUBR)(CSOUND *, void *)</literal>) qui est appelée
+à l'initialisation, ou NULL s'il n'y a pas de fonction.</para></listitem></varlistentry>
+
+<varlistentry><term><literal>kopadr</literal></term><listitem><para>L'adresse de la fonction du
+générateur unitaire (de type <literal>int (*SUBR)(CSOUND *, void *)</literal>) qui est appelée
+au taux-<literal>k</literal>, ou NULL s'il n'y a pas de fonction.</para></listitem></varlistentry>
+
+<varlistentry><term><literal>aopadr</literal></term><listitem><para>L'adresse de la fonction du
+générateur unitaire (de type <literal>int (*SUBR)(CSOUND *, void *)</literal>) qui est appelée
+au taux-<literal>a</literal>, ou NULL s'il n'y a pas de fonction.</para></listitem></varlistentry>
+
+</variablelist>
+
+</section>
+
+</section>
+
+
+</chapter>
+

@@ -1,0 +1,126 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<chapter id="lua">
+  <title>
+    Opcodes Lua
+  </title>
+  <para>
+    Les opcode Lua ont pour but de :
+  </para>
+  <orderedlist>
+    <listitem><simpara>
+      Rendre possible l'écriture de code pour Csound dans un langage de haut
+      niveau facile d'accès, avec portée lexicale complète, structures et
+      classes, et support de la programmation fonctionnelle, en utilisant
+      LuaJIT (une implémentation du langage de programmation Lua avec un
+      compilateur à la volée et une interface pour fonctions externes).
+    </simpara></listitem>
+    <listitem><simpara>
+      Ne pas nécessiter l'installation de paquets logiciels tiers, ou au
+      moins que cette installation soit minimale ; de plus, ne pas nécessiter
+      une construction système ou une compilation externe.
+    </simpara></listitem>
+    <listitem><simpara>
+      Avoir une exécution <emphasis>vraiment rapide</emphasis> ; typiquement
+      presqu'aussi rapide que du code C, et plusieurs fois plus rapide que
+      les opcodes définis par l'utilisateur.
+    </simpara></listitem>
+  </orderedlist>
+  <para>
+    En utilisant la famille d'opcodes Lua, on peut interagir avec l'interpréteur
+    Lua et le compilateur à la volée (LuaJIT) embarqués dans Csound de la
+    manière suivante :
+  </para>
+  <orderedlist>
+    <listitem>
+      <simpara>
+        exécuter tout bloc arbitraire de code Lua (avec l'opcode
+        <link linkend="lua_exec"><citetitle>lua_exec</citetitle></link>),
+      </simpara>
+    </listitem>
+    <listitem>
+      <simpara>
+        Définir un opcode en Lua prenant n'importe quel nombre ou type de
+        paramètres et retournant n'importe quel nombre ou type de paramètres
+        (avec l'opcode
+        <link linkend="lua_opdef"><citetitle>lua_opdef</citetitle></link>),
+      </simpara>
+    </listitem>
+    <listitem>
+      <simpara>
+        appeler un opcode Lua au taux-i (avec l'opcode
+        <link linkend="lua_opcall"><citetitle>lua_iopcall</citetitle></link>),
+      </simpara>
+    </listitem>
+    <listitem>
+      <simpara>
+        appeler un opcode Lua au taux-i et au taux-k (avec l'opcode
+        <link linkend="lua_opcall"><citetitle>lua_ikopcall</citetitle></link>),
+        ou
+      </simpara>
+    </listitem>
+    <listitem>
+      <simpara>
+        appeler un opcode Lua au taux-i et au taux-a (avec l'opcode
+        <link linkend="lua_opcall"><citetitle>lua_iaopcall</citetitle></link>).
+      </simpara>
+    </listitem>
+  </orderedlist>
+  <para>
+    Lua signifie "lune" en portugais. Lua
+    (<ulink url="http://www.lua.org"><citetitle>http://www.lua.org</citetitle>
+    </ulink>) est un langage de programmation dynamique léger et efficace, conçu
+    pour être embarqué dans C/C++ et/ou pour être étendu avec C/C++. Lua a un
+    mécanisme d'appel basé sur une pile et il fournit des fonctionnalités
+    (tables, métatables, fonctions anonymes et fermetures) avec lesquelles
+    on peut implémenter différents styles de programmation orientée objet et
+    fonctionnelle. La syntaxe de Lua est à peine plus difficile que celle de
+    Python.
+  </para>
+  <para>
+    Lua est un des langages dynamiques les plus rapides ; de plus, LuaJIT
+    par Mike Pall (<ulink url="http://luajit.org">
+    <citetitle>http://luajit.org</citetitle></ulink>) va plus loin en fournissant
+    à Lua un compilateur à la volée optimisé pour les architectures Intel.
+    LuaJIT comprend une interface pour fonctions externes (FFI) efficace avec
+    la possibilité de définir des tableaux C, des structures et d'autres types
+    dans Lua. La vitesse de LuaJIT/FFI va de plusieurs fois celle de Lua à
+    supérieure (dans certains contextes) à celle du C optimisé.
+  </para>
+    
+  <refsect1>
+    <!--To add examples, create the csd file in the examples directory, then run:-->
+    <!--python csd2docbook.py -f newopcodename.csd-->
+    <!--to generate the xml highlighted version used below-->
+    <title>
+      Exemple
+    </title>
+    <para>
+      Voici un exemple d'opcode Lua, implémentant un filtre en échelle de Moog.
+      Afin de pouvoir les comparer, un opcode défini par l'utilisateur et l'opcode
+      natif de Csound produisant les mêmes sonorités avec le même algorithme
+      sont également montrés et chronométrés... L'exemple utilise le fichier
+      <ulink url="examples/luamoog.csd"><citetitle>luamoog.csd</citetitle></ulink>.
+      <example>
+        <title>
+          Exemple d'opcode Lua.
+        </title>
+        <xi:include href="examples-xml/luamoog.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <bridgehead>
+    Crédits
+  </bridgehead>
+  <para>
+    Copyright (c) 2011 par Michael Gogins. Tous droits réservés.
+  </para>
+</chapter>

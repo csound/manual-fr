@@ -1,0 +1,33 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.3
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<chapter id="MixerOpcodes">
+  <title>Opcodes Mixer</title>
+
+  <para>
+    La famille d'opcodes Mixer fournit un mélangeur global pour Csound. Les opcodes Mixer comprennent
+    
+    <link linkend="MixerSend"><citetitle>MixerSend</citetitle></link> pour envoyer (c'est-à-dire mélanger
+    en entrée) un signal de taux-a depuis n'importe quel instrument vers un canal d'un bus de mixage,
+    
+    <link linkend="MixerReceive"><citetitle>MixerReceive</citetitle></link> pour recevoir un signal de
+    taux-a depuis un canal de n'importe quel bus de mixage dans un instrument,
+    
+    <link linkend="MixerSetLevel"><citetitle>MixerSetLevel</citetitle></link> (taux-k) et
+    <link linkend="MixerSetLevel_i"><citetitle>MixerSetLevel_i</citetitle></link> (taux-i) pour
+    contrôler le niveau du signal envoyé d'une source particulière vers un bus particulier,
+    
+    <link linkend="MixerGetLevel"><citetitle>MixerGetLevel</citetitle></link> pour lire (au taux-k) le
+    niveau d'envoi d'une source particulière à un bus particulier, et
+    
+    <link linkend="MixerClear"><citetitle>MixerClear</citetitle></link> pour réinitialiser les bus à zéro
+    avant la k-période suivante d'une exécution.
+    </para>
+
+</chapter>

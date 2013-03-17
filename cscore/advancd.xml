@@ -1,0 +1,114 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.6
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="CscoreAdvancd">
+  <title>Exemples plus avancés</title>
+
+  <para>
+    Le programme suivant démontre la lecture à partir de deux fichiers d'entrée différents. L'idée est
+    d'alterner entre deux partitions de 2 sections, et d'écrire les sections entrelacées dans un seul
+    fichier de sortie.
+  </para>
+
+  <para>
+    <informalexample>
+      <programlisting>
+#include &quot;cscore.h&quot;              /*   CSCORE_SWITCH.C  */ 
+cscore(CSOUND* cs)               /* appelable depuis Csound ou comme cscore autonome */ 
+{ 
+  EVLIST *a, *b; 
+  FILE   *fp1, *fp2;                      /* deux pointeurs sur des flots de fichier de partition */ 
+  fp1 = cscoreFileGetCurrent(cs);         /* la partition de la ligne de commande */ 
+  fp2 = cscoreFileOpen(cs, &quot;score2.srt&quot;); /* une partition supplémentaire */ 
+  a = cscoreListGetSection(cs);           /* lit une section de la partition 1 */ 
+  cscoreListPut(cs, a);                   /* l'écrit en sortie telle quelle */ 
+  cscorePutString(cs, &quot;s&quot;); 
+  cscoreFileSetCurrent(cs, fp2); 
+  b = cscoreListGetSection(cs);           /* lit une section de la partition 2 */ 
+  cscoreListPut(cs, b);                   /* l'écrit en sortie telle quelle */ 
+  cscorePutString(cs, &quot;s&quot;); 
+  cscoreListFreeEvents(cs, a);            /* facultatif, pour libérer de l'espace */ 
+  cscoreListFreeEvents(cs, b); 
+  cscoreFileSetCurrent(cs, fp1); 
+  a = cscoreListGetSection(cs);           /* lit la section suivante de la partition 1 */ 
+  cscoreListPut(cs, a);                   /* l'écrit en sortie */ 
+  cscorePutString(cs, &quot;s&quot;); 
+  cscoreFileSetCurrent(cs, fp2); 
+  b = cscoreListGetSection(cs);           /* lit la section suivante de la partition 2 */ 
+  cscoreListPut(cs, b);                   /* l'écrit en sortie */ 
+  cscorePutString(cs, &quot;e&quot;);
+}</programlisting>
+    </informalexample>
+  </para>
+
+  <para>
+    Finalement, nous montrons comment prendre un fichier de partition littérale, non interprétée et lui
+    insuffler un peu d'expressivité rythmique. La théorie des pulsations métriques liées au compositeur
+    a été étudiée en profondeur par Manfred Clynes, et la suite est dans l'esprit de ce travail. Ici,
+    la stratégie consiste à créer d'abord un <emphasis>tableau</emphasis> de nouvelles dates de
+    <emphasis>début</emphasis> pour chaque début possible de double croche, puis par indexation dans ce
+    tableau, d'ajuster le début et la durée de chaque note de la partition d'entrée aux dates
+    interprétées. On montre aussi comment un orchestre de Csound peut être invoqué de façon répétitive
+    depuis un générateur de partition pendant l'exécution.
+  </para>
+
+  <para>
+    <informalexample>
+      <programlisting>
+#include &quot;cscore.h&quot;              /*   CSCORE_PULSE.C  */ 
+  
+/* programme pour appliquer une pulsation aux durées interprétées   */ 
+/* à une partition existante en 3/4, premiers temps sur 0, 3, 6 ... */
+  
+  
+static float four[4] = { 1.05, 0.97, 1.03, 0.95 };   /* largeur de pulsation des 4 */ 
+static float three[3] = { 1.03, 1.05, .92 };         /* largeur de pulsation des 3 */ 
+  
+   
+cscore(CSOUND* cs)            /* Cet exemple doit être appelé depuis Csound  */ 
+{ 
+  EVLIST  *a, *b; 
+  EVENT  *e, **ep; 
+  float pulse16[4*4*4*4*3*4];    /* tableau de doubles croches, 3/4, 256 mesures */ 
+  float acc16, acc1,inc1, acc3,inc3, acc12,inc12, acc48,inc48, acc192,inc192; 
+  float *p = pulse16; 
+  int  n16, n1, n3, n12, n48, n192; 
+
+  /* remplit le tableau avec les dates de début de l'interprétation  */ 
+  for (acc192=0.,n192=0; n192&lt;4; acc192+=192.*inc192,n192++) 
+    for (acc48=acc192,inc192=four[n192],n48=0; n48&lt;4; acc48+=48.*inc48,n48++) 
+      for (acc12=acc48,inc48=inc192*four[n48],n12=0;n12&lt;4; acc12+=12.*inc12,n12++) 
+        for (acc3=acc12,inc12=inc48*four[n12],n3=0; n3&lt;4; acc3+=3.*inc3,n3++) 
+          for (acc1=acc3,inc3=inc12*four[n3],n1=0; n1&lt;3; acc1+=inc1,n1++) 
+            for (acc16=acc1,inc1=inc3*three[n1],n16=0; n16&lt;4; acc16+=.25*inc1*four[n16],n16++) 
+              *p++ = acc16; 
+   
+  
+  /* for (p = pulse16, n1 = 48; n1--; p += 4)  /* montre les valeurs &amp; les différences */ 
+  /*   printf(&quot;%g %g %g %g %g %g %g %g\n&quot;, *p, *(p+1), *(p+2), *(p+3), 
+  /*  *(p+1)-*p, *(p+2)-*(p+1), *(p+3)-*(p+2), *(p+4)-*(p+3)); */ 
+  
+  a = cscoreListGetSection(cs);                /* lit une section de la partition résolue en temps */ 
+  b = cscoreListSeparateTWF(cs, a);            /* sépare les instructions de jeu et de fonction */ 
+  cscoreListPlay(cs, b);                       /* et les envoie à l'exécution */ 
+  a = cscoreListAppendStringEvent(cs, a, &quot;s&quot;); /* ajoute une instruction de section à la liste de notes */ 
+  cscoreListPlay(cs, a);                       /* joue la liste de notes sans interprétation */ 
+  for (ep = &amp;a-&gt;e[1], n1 = a-&gt;nevents; n1--; ) { /* maintenant modifie les pulsations */ 
+    e = *ep++; 
+    if (e-&gt;op == 'i') { 
+      e-&gt;p[2] = pulse16[(int)(4. * e-&gt;p2orig)]; 
+      e-&gt;p[3] = pulse16[(int)(4. * (e-&gt;p2orig + e-&gt;p3orig))] - e-&gt;p[2]; 
+    } 
+  } 
+  
+  cscoreListPlay(cs, a);                       /* maintenant joue la liste modifiée */
+}</programlisting>
+    </informalexample>
+  </para>
+</section>

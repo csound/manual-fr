@@ -1,0 +1,120 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.1
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<chapter id="SignalFlowGraphOpcodes">
+  <title>Opcodes de graphe de fluence</title>
+
+  <para>
+    Ces opcodes permettent d'utiliser des graphes de fluences (ou graphes de
+    flots de données asynchrones) dans des orchestres de Csound. Les signaux
+    s'écoulent depuis les prises de sortie (outlets) des instruments émetteurs et
+    sont additionnés dans les prises d'entrée (inlets) des instruments récepteurs.
+    Les signaux peuvent être de taux-k, de taux-a ou de taux-f. On peut connecter
+    n'importe quel nombre d'outlets à n'importe quel nombre d'inlets. Lorqu'une
+    nouvelle instance d'un intrument est créée pendant l'exécution, les connexions
+    déclarées sont automatiquement instanciées.
+  </para>
+  
+  <para>
+    Les graphes de fluence simplifient la construction de mélangeurs complexes, de
+    chaînes de traitement du signal, etc. Ils simplifient également la réutilisation
+    de définitions d'intrument "plug and play" et même de sous-orchestres entiers,
+    qui peuvent être simplement insérés (#include) et ainsi "branchés" dans des
+    orchestres existants.
+  </para>
+  
+  <para>
+    Noter que les inlets et les outlets sont définis dans les intruments sans
+    référence à la manière dont ils sont connectés. Les connexions sont définies
+    dans l'en-tête de l'orchestre. C'est cette séparation qui permet d'avoir des
+    instruments greffons.
+  </para>
+  
+  <para>
+    Les inlets doivent être nommés. Les intruments peuvent être nommés ou numérotés,
+    mais dans tous les cas chaque instrument émetteur doit être défini dans l'orchestre
+    avant chacun de ses récepteurs. Si les instruments sont nommés, il est plus
+    facile de connecter les outlets et les inlets d'un orchestre de niveau plus élevé
+    aux inlets et aux outlets d'un orchestre inclu (#include) de niveau moins élevé.
+  </para>
+
+  <para>
+    Les opcodes de graphe de fluence comprennent :
+    
+    <link linkend="outleta"><citetitle>outleta</citetitle></link>, pour envoyer un
+    signal de taux-a depuis n'importe quel instrument par un port nommé.
+    
+    <link linkend="outletk"><citetitle>outletk</citetitle></link>, pour envoyer un
+    signal de taux-k depuis n'importe quel instrument par un port nommé.
+    
+    <link linkend="outletkid"><citetitle>outletkid</citetitle></link>, semblable
+    à <emphasis>outletk</emphasis>, mais il ne reçoit un signal de taux-k que
+    depuis une instance identifiée d'un port.
+
+    <link linkend="outletf"><citetitle>outletf</citetitle></link>, pour envoyer un
+    signal de taux-f depuis n'importe quel instrument par un port nommé.
+    
+    <link linkend="inleta"><citetitle>inleta</citetitle></link>, pour recevoir un
+    signal de taux-a à travers un port nommé.
+    
+    <link linkend="inletk"><citetitle>inletk</citetitle></link>, pour recevoir un
+    signal de taux-k à travers un port nommé.
+    
+    <link linkend="inletkid"><citetitle>inletkid</citetitle></link>, semblable à
+    <emphasis>inletk</emphasis>, mais il ne transmet un signal qu'entre des
+    opcodes inlet et oulet.
+
+    <link linkend="inletf"><citetitle>inletf</citetitle></link>, pour recevoir un
+    signal de taux-f à travers un port nommé.
+    
+    <link linkend="connect"><citetitle>connect</citetitle></link>, pour acheminer
+    le signal depuis un outlet nommé dans un instrument émetteur vers un inlet
+    nommé dans un instrument récepteur.
+    
+    <link linkend="alwayson"><citetitle>alwayson</citetitle></link> pour activer
+    un instrument de façon permanente depuis l'en-tête de l'orchestre, sans
+    l'aide d'une instruction de partition, par exemple pour l'utiliser comme
+    processeur d'effet recevant ses entrées depuis un certain nombre d'émetteurs.
+
+    <link linkend="ftgenonce"><citetitle>ftgenonce</citetitle></link> pour instancier
+    des tables de fonction depuis des définitions d'instrument, sans l'aide
+    d'instructions-f dans la partition ou d'opcodes <emphasis>ftgen</emphasis>
+    dans l'en-tête de l'orchestre.
+  </para>
+  
+  <para>
+    Un scénario typique d'utilisation de ces opcodes ressemble à ceci ; un
+    ensemble d'instruments est défini, chacun dans son propre fichier d'orchestre,
+    et chaque instrument définit des ports d'entrée, des ports de sortie et des tables
+    de fonction en son sein. De tels instruments sont complètement autonomes.
+    Puis un ensemble de processeurs d'effets tels qu'égaliseurs, réverbérations,
+    compresseurs, etc, sont également définis, chacun dans son propre fichier. Enfin
+    un orchestre maître personnalisé inclut (#include) les instruments et les effets
+    à utiliser, dirige les sorties de certains instruments dans un égaliseur et les
+    sorties d'autres effets dans un autre égaliseur, puis achemine les sorties des
+    deux égaliseurs dans une réverbération, la sortie de la réverbération dans un
+    compresseur et la sortie du compresseur dans un fichier de sortie stéréo.
+  </para>
+
+  <refsect1>
+    <!--To add examples, create the csd file in the examples directory, then run:-->
+    <!--python csd2docbook.py -f newopcodename.csd-->
+    <!--to generate the xml highlighted version used below-->
+    <title>Exemples</title>
+    <para>
+      Voici un exemple des opcodes de graphe de fluence. Il utilise le fichier
+      <ulink url="examples/signalflowgraph.csd"><citetitle>signalflowgraph.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple des opcodes de graphe de fluence.</title>
+        <xi:include href="examples-xml/signalflowgraph.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+</chapter>

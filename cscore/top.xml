@@ -1,0 +1,87 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<chapter id="CscoreTop">
+  <title>Cscore</title>
+
+  <para>
+    <indexterm id="IndexCscore"><primary>Cscore</primary></indexterm>
+    <emphasis>Cscore</emphasis> est une API (interface de programmation d'application) pour générer
+    et manipuler des fichiers de partition numérique. Elle fait partie de l'API plus grande de Csound
+    et elle comprend un certain nombre de fonctions appelables depuis un programme écrit par l'utilisateur
+    en langage C. <emphasis>Cscore</emphasis> peut étre invoquée comme un préprocesseur de partition
+    autonome ou comme élément d'une exécution de Csound en incluant
+    l'<link linkend="FlagsMinusUpperC">option -C</link> dans ses arguments :
+  </para>
+
+  <para>
+    <cmdsynopsis>
+      <command>cscore</command>
+      <arg><replaceable>fichier_partition_entree</replaceable></arg>
+      <arg><replaceable>&gt; fichier_partition_sortie</replaceable></arg>
+    </cmdsynopsis>
+  </para>
+
+  <para>(où <emphasis>cscore</emphasis> est le nom du programme que vous avez écrit), ou</para>
+
+  <para>
+    <cmdsynopsis>
+      <command>csound</command>
+      <arg>-C</arg>
+      <arg><option>autresoptions</option></arg>
+      <arg><replaceable>nomorch</replaceable></arg>
+      <arg><replaceable>nompartition</replaceable></arg>
+    </cmdsynopsis>
+  </para>
+
+  <para>
+    Les fonctions de l'API disponibles augmentent la bibliothèque de fonctions du langage C ;
+    elles peuvent lire des fichiers de partition numérique standard ou pré-triée, modifier et étendre
+    les données de différentes manières, et ensuite les rendre disponibles pour une exécution par un
+    orchestre de Csound.
+  </para>
+
+  <para>
+    Le programme écrit par l'utilisateur dans le langage C est compilé et lié à la bibliothèque de
+    Csound (ou au programme de ligne de commande csound) par l'utilisateur. Il n'est pas indispensable
+    de bien connaître le langage C pour écrire ce programme, car les appels de fonction ont une syntaxe
+    simple, et sont suffisamment puissants pour faire la plus grande partie du travail compliqué. C
+    pourra apporter plus de puissance par la suite selon les besoins.
+  </para>
+
+  <para>
+    Les sections suivantes expliquent toutes les étapes de l'utilisation de <emphasis>Cscore</emphasis> :
+  </para>
+
+    <itemizedlist>
+      <listitem>
+        <simpara><link linkend="CscoreEvents"><citetitle>Evènements, Listes et Opérations</citetitle></link> -
+          Explique la syntaxe des fonctions de <emphasis>Cscore</emphasis> et les structures de données.</simpara>
+      </listitem>
+      <listitem>
+        <simpara><link linkend="CscoreMain"><citetitle>Ecrire un Programme de Contrôle Cscore</citetitle></link> -
+          Montre par l'exemple comment écrire votre propre programme de contrôle.</simpara>
+      </listitem>
+      <listitem>
+        <simpara><link linkend="CscoreCompile"><citetitle>Compiler un Programme Cscore</citetitle></link> -
+          Décrit les étapes de la compilation et de l'édition des liens avec la bibliothèque de Csound.</simpara>
+      </listitem>
+      <listitem>
+        <simpara><link linkend="CscoreAdvancd"><citetitle>Exemples Plus Avancés</citetitle></link> -
+          Traite de questions avancées comme plusieurs partitions en entrée et les détails de l'exécution de
+          <emphasis>Cscore</emphasis> au sein d'une exécution de Csound.</simpara>
+      </listitem>
+    </itemizedlist>
+
+&cscoreevents;
+&cscoremain;
+&cscorecompile;
+&cscoreadvancd;
+
+</chapter>

@@ -1,0 +1,413 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="CscoreMain">
+  <title>Ecrire un programme de contrôle Cscore</title>
+
+  <para>
+    Le format général d'un programme de contrôle <emphasis>Cscore</emphasis> est :
+
+    <informalexample>
+      <programlisting>
+#include &quot;cscore.h&quot; 
+void cscore(CSOUND *cs) 
+{ 
+ /*  DECLARATIONS DES VARIABLES  */ 
+ /*  CORPS DU PROGRAMME  */ 
+}</programlisting>
+    </informalexample>
+  </para>
+
+  <para>
+    L'instruction <emphasis>include</emphasis> définira les structures d'évènement et de liste et toutes
+    les fonctions de l'API <emphasis>Cscore</emphasis> pour le programme. Il faut que le nom de la
+    fonction de l'utilisateur soit <emphasis>cscore</emphasis> si elle doit être liée avec le programme
+    <emphasis>main</emphasis> standard dans <filename>cscormai.c</filename> ou liée comme routine
+    <emphasis>Cscore</emphasis> interne pour un exécutable de Csound personnalisé. Cette fonction
+    <emphasis>cscore()</emphasis> reçoit un argument de <filename>cscormai.c</filename> ou de Csound --
+    <emphasis>CSOUND *cs</emphasis> -- qui est un pointeur sur un objet Csound. Le pointeur
+    <emphasis>cs</emphasis> doit être passé en premier paramètre à toutes les fonctions de l'API
+    <emphasis>Cscore</emphasis> que le programme appelle.
+  </para>
+
+  <para>
+    Le programme C suivant lira depuis une <emphasis>partition numérique standard</emphasis>, jusqu'à
+    (mais sans l'inclure) la première <emphasis>instruction s</emphasis> ou <emphasis>e</emphasis>,
+    puis il écrira ces données (inchangées) en sortie.
+  </para>
+
+  <para>
+    <informalexample>
+      <programlisting>
+#include &quot;cscore.h&quot; 
+void cscore(CSOUND *cs) 
+{ 
+  EVLIST *a;                    /* a est autorisé à pointer sur une liste d'évènements */ 
+  a = cscoreListGetSection(cs); /* lit les évènements, retourne le pointeur de liste */ 
+  cscoreListPut(cs, a);         /* écrit ces évènements en sortie (inchangés) */ 
+  cscorePutString(cs, &quot;e&quot;);     /* écrit la chaîne e sur la sortie */ 
+}</programlisting>
+    </informalexample>
+  </para>
+
+  <para>
+    Aprés l'exécution de <emphasis>cscoreListGetSection()</emphasis>, la variable <emphasis>a</emphasis>
+    pointe sur une liste d'adresses d'évènements, qui pointent chacune sur un évènement stocké. Nous avons
+    utilisé ce même pointeur pour permettre à une autre fonction de liste --
+    <emphasis>cscoreListPut()</emphasis> -- d'accéder à tous les évènements qui ont été lus et de les
+    écrire en sortie. Si nous définissons maintenant un autre symbole <emphasis>e</emphasis> comme
+    pointeur d'évènement, alors l'instruction
+
+    <informalexample>
+      <programlisting>e = a-&gt;e[4];</programlisting>
+    </informalexample>
+
+    lui affectera le contenu du 4ème emplacement de la structure <emphasis>EVLIST</emphasis>, 
+    <emphasis>a</emphasis>. Ce contenu est un pointeur sur un évènement, qui comprend lui-même un tableau
+    de valeurs de champs de paramètre. Ainsi le terme <emphasis>e-&gt;p[5]</emphasis> signifiera la valeur
+    du champ de paramètre 5 du 4ème évènement dans la <emphasis>EVLIST</emphasis> dénotée par
+    <emphasis>a</emphasis>. Le programme ci-dessous multipliera la valeur de ce <emphasis>p-champ</emphasis>
+    par 2 avant de l'écrire en sortie.
+  </para>
+
+  <para>
+    <informalexample>
+      <programlisting>
+#include &quot;cscore.h&quot; 
+void cscore(CSOUND *cs) 
+{
+  EVENT  *e;                    /* un pointeur sur un évènement */ 
+  EVLIST *a; 
+  a = cscoreListGetSection(cs); /* lit une partition comme une liste d'évènements */ 
+  e = a-&gt;e[4];                  /* pointe sur l'évènement 4 dans la liste a */ 
+  e-&gt;p[5] *= 2;                 /* trouve le p-champ 5, multiplie sa valeur par 2 */ 
+  cscoreListPut(cs, a);         /* écrit en sortie la liste d'évènements */ 
+  cscorePutString(cs, &quot;e&quot;);     /* ajoute une instruction de &quot;fin de partition&quot; */ 
+}</programlisting>
+    </informalexample>
+  </para>
+
+  <para>
+    Considérez maintenant la partition suivante, dans laquelle <emphasis>p[5]</emphasis> contient la
+    fréquence en Hz.
+
+    <informalexample>
+      <programlisting>
+<emphasis role="stamnt">f</emphasis> 1 0 257 10 1 
+<emphasis role="stamnt">f</emphasis> 2 0 257 7 0 300 1 212 .8 
+<emphasis role="stamnt">i</emphasis> 1 1 3 0 440 10000
+<emphasis role="stamnt">i</emphasis> 1 4 3 0 256 10000
+<emphasis role="stamnt">i</emphasis> 1 7 3 0 880 10000
+<emphasis role="stamnt">e</emphasis></programlisting>
+    </informalexample>
+  </para>
+
+  <para>
+    Si cette partition est donnée au programme principal précédent, la sortie résultante ressemblera
+    à ceci :
+
+    <informalexample>
+      <programlisting>
+<emphasis role="stamnt">f</emphasis> 1 0 257 10 1 
+<emphasis role="stamnt">f</emphasis> 2 0 257 7 0 300 1 212 .8
+<emphasis role="stamnt">i</emphasis> 1 1 3 0 440 10000
+<emphasis role="stamnt">i</emphasis> 1 4 3 0 512 10000        <emphasis role="comment">; p[5] est devenu 512 au lieu de 256.</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 7 3 0 880 10000 
+<emphasis role="stamnt">e</emphasis></programlisting>
+    </informalexample>
+  </para>
+
+  <para>
+    Notez que le 4ème évènement est en fait la seconde note de la partition. Jusqu'ici nous n'avons pas
+    fait de distinction entre les notes et les tables de fonction mises en place dans une partition
+    numérique. Les deux peuvent être classées comme évènement. Notez aussi que notre 4ème évènement a
+    été stocké dans le champ <emphasis>e[4]</emphasis> de la structure. Pour être compatible avec la
+    notation des <emphasis>p-champs</emphasis> de Csound, nous ignorerons <emphasis>p[0]</emphasis> et
+    <emphasis>e[0]</emphasis> dans les structures d'évènement et de liste, en stockant
+    <emphasis>p1</emphasis> dans <emphasis>p[1]</emphasis>, l'évènement 1 dans
+    <emphasis>e[1]</emphasis>, etc. Les fonctions de <emphasis>Cscore</emphasis> adoptent toutes cette
+    convention.
+  </para>
+
+  <para>
+    Pour étendre l'exemple ci-dessus, nous pourrions décider d'utiliser les mêmes pointeurs
+    <emphasis>a</emphasis> et <emphasis>e</emphasis> pour examiner chacun des évènements dans la liste.
+    Noter que <emphasis>e</emphasis> n'a pas été fixé au nombre 4, mais au contenu du 4ème emplacement
+    de la liste. Pour inspecter le <emphasis>p5</emphasis> de l'évènement précédent dans la liste,
+    nous n'avons qu'à redéfinir <emphasis>e</emphasis> avec l'affectation
+
+    <informalexample>
+      <programlisting>e = a-&gt;e[3];</programlisting>
+    </informalexample>
+    
+    et référencer le 5ème emplacement du tableau de <emphasis>p-champs</emphasis> avec l'expression
+
+    <informalexample>
+      <programlisting>e-&gt;p[5]</programlisting>
+    </informalexample>
+  </para>
+
+  <para>
+    Plus généralement, nous pouvons utiliser une variable entière comme indice du tableau
+    <emphasis>e[]</emphasis>, et accéder séquentiellement à chaque évènement en utilisant une boucle et
+    en incrémentant l'indice. Le nombre d'évènements stockés dans une <emphasis>EVLIST</emphasis> est
+    contenu dans le membre <emphasis>nevents</emphasis> de la structure.
+  </para>
+
+  <para>
+    <informalexample>
+      <programlisting>
+int index;    /* démarre avec e[1] car e[0] n'est pas utilisé */
+for (index = 1; index &lt;= a-&gt;nevents; index++)
+{
+  e = a-&gt;e[index];
+  /* faire quelque chose avec e */
+}</programlisting>
+    </informalexample>
+  </para>
+
+  <para>
+    L'exemple ci-dessus démarre avec <emphasis>e[1]</emphasis> et augmente l'indice à chaque passage
+    dans la boucle (<emphasis>index++</emphasis>) jusqu'à ce qu'il soit plus grand que
+    <emphasis>a-&gt;nevents</emphasis>, l'indice du dernier évènement dans la liste. Les instructions
+    à l'intérieur de la boucle <emphasis>for</emphasis> sont exécutées une dernière fois quand
+    <emphasis>index</emphasis> égale <emphasis>a-&gt;nevents</emphasis>.
+  </para>
+
+  <para>
+    Dans le programme suivant nous utiliserons la même partition en entrée. Cette fois nous séparerons
+    les instructions de <emphasis>ftable</emphasis> des instructions de <emphasis>note</emphasis>.
+    Nous écrirons ensuite en sortie les trois évènements de note stockés dans la liste
+    <emphasis>a</emphasis>, puis nous créerons une seconde section de partition constituée de l'ensemble
+    de hauteurs original et d'une version transposée de celui-ci. Cela apportera un doublement à l'octave.
+  </para>
+
+  <para>
+    Ici, notre indice dans le tableau est <emphasis>n</emphasis> et il est incrémenté dans un bloc
+    <emphasis>for</emphasis> qui boucle <emphasis>nevents</emphasis> fois, ce qui permet d'appliquer
+    une instruction au même <emphasis>p-champ</emphasis> des évènements successifs.
+  </para>
+
+  <para>
+    <informalexample>
+      <programlisting>
+#include  &quot;cscore.h&quot;
+void cscore(CSOUND *cs)
+{
+  EVENT  *e, *f;
+  EVLIST *a, *b;
+  int n;
+
+  a = cscoreListGetSection(cs);            /* lit la partition dans la liste d'évènements &quot;a&quot; */ 
+  b = cscoreListSeparateF(cs, a);          /* sépare les instructions f */ 
+  cscoreListPut(cs, b);                    /* écrit les instructions f dans la partition en sortie */
+  e = cscoreDefineEvent(cs, &quot;t 0 120&quot;);    /* définit un évènement pour l'instruction de tempo */ 
+  cscorePutEvent(cs, e);                   /* écrit l'instruction de tempo dans la partition */ 
+  cscoreListPut(cs, a);                    /* écrit les notes */ 
+  cscorePutString(cs, &quot;s&quot;);                /* fin de section */ 
+  cscorePutEvent(cs, e);                   /* écrit l'instruction de tempo encore une fois */ 
+  b = cscoreListCopyEvents(cs, a);         /* fait une copie des notes dans &quot;a&quot; */ 
+  for (n = 1; n &lt;= b-&gt;nevents; n++)        /* répète les lignes suivantes nevents fois : */
+  { 
+    f = b-&gt;e[n]; 
+    f-&gt;p[5] *= 0.5;                        /* transpose la hauteur d'une octave vers le bas */
+  }
+  a = cscoreListAppendList(cs, a, b);      /* ajoute ces notes aux hauteurs originales */ 
+  cscoreListPut(cs, a); 
+  cscorePutString(cs, &quot;e&quot;);
+}</programlisting>
+    </informalexample>
+  </para>
+
+  <para>
+    La sortie de ce programme est :
+  </para>
+
+  <para>
+    <informalexample>
+      <programlisting>
+<emphasis role="stamnt">f</emphasis> 1 0 257 10 1
+<emphasis role="stamnt">f</emphasis> 2 0 257 7 0 300 1 212 .8
+<emphasis role="stamnt">t</emphasis> 0 120
+<emphasis role="stamnt">i</emphasis> 1 1 3 0 440 10000
+<emphasis role="stamnt">i</emphasis> 1 4 3 0 256 10000
+<emphasis role="stamnt">i</emphasis> 1 7 3 0 880 10000
+<emphasis role="stamnt">s</emphasis>
+<emphasis role="stamnt">t</emphasis> 0 120
+<emphasis role="stamnt">i</emphasis> 1 1 3 0 440 10000
+<emphasis role="stamnt">i</emphasis> 1 4 3 0 256 10000
+<emphasis role="stamnt">i</emphasis> 1 7 3 0 880 10000
+<emphasis role="stamnt">i</emphasis> 1 1 3 0 220 10000
+<emphasis role="stamnt">i</emphasis> 1 4 3 0 128 10000
+<emphasis role="stamnt">i</emphasis> 1 7 3 0 440 10000
+<emphasis role="stamnt">e</emphasis></programlisting>
+    </informalexample>
+  </para>
+
+  <para>
+    Si la sortie est écrite dans un fichier, le fait que les évènements ne soient pas ordonnés n'est pas
+    un problème. La sortie est écrite dans un fichier (ou sur la sortie standard) chaque fois que la
+    fonction <emphasis>cscoreListPut()</emphasis> est utilisée. Cependant, si ce programme était appelé
+    durant une exécution de Csound et que la fonction <emphasis>cscoreListPlay()</emphasis> était remplacée
+    par <emphasis>cscoreListPut()</emphasis>, alors les évènements seraient envoyés à l'orchestre au lieu
+    du fichier et il faudrait qu'ils soient préalablement triés en appelant la fonction
+    <emphasis>cscoreListSort()</emphasis>. Les détails de la sortie de la partition et de son exécution
+    quand on utilise <emphasis>Cscore</emphasis> depuis Csound sont décrits dans la section suivante.
+  </para>
+
+  <para>
+    Ensuite nous étendons le programme ci-dessus en utilisant la boucle <emphasis>for</emphasis> pour
+    lire <emphasis>p[5]</emphasis> et <emphasis>p[6]</emphasis>. Dans la partition originale
+    <emphasis>p[6]</emphasis> dénote l'amplitude. Pour créer un diminuendo sur l'octave inférieure ajoutée,
+    qui soit indépendant de l'ensemble de notes original, une variable appelée <emphasis>dim</emphasis>
+    sera utilisée.
+  </para>
+
+  <para>
+    <informalexample>
+      <programlisting>
+#include &quot;cscore.h&quot; 
+void cscore(CSOUND *cs)
+{
+  EVENT  *e, *f;
+  EVLIST *a, *b;
+  int n, dim;                              /* déclare deux variables entières */ 
+
+  a = cscoreListGetSection(cs);
+  b = cscoreListSeparateF(cs, a);
+  cscoreListPut(cs, b);
+  cscoreListFreeEvents(cs, b);
+  e = cscoreDefineEvent(cs, &quot;t 0 120&quot;);
+  cscorePutEvent(cs, e);
+  cscoreListPut(cs, a);
+  cscorePutString(cs, &quot;s&quot;);
+  cscorePutEvent(cs, e);                   /* écrit une autre instruction de tempo */
+  b = cscoreListCopyEvents(cs, a);
+  dim = 0;                                 /* initialise dim à 0 */ 
+  for (n = 1; n &lt;= b-&gt;nevents; n++)
+  {
+    f = b-&gt;e[n]; 
+    f-&gt;p[6] -= dim;                        /* soustrait la valeur courante de dim */ 
+    f-&gt;p[5] *= 0.5;                        /* transpose la hauteur une octave plus bas */
+    dim += 2000;                           /* augmente dim pour chaque note */ 
+  }
+  a = cscoreListAppendList(cs, a, b);      /* ajoute ces notes aux hauteurs originales */ 
+  cscoreListPut(cs, a); 
+  cscorePutString(cs, &quot;e&quot;);
+}</programlisting>
+    </informalexample>
+  </para>
+
+  <para>
+    En utilisant à nouveau la même partition en entrée, la sortie de ce programme est :
+
+    <informalexample>
+      <programlisting>
+<emphasis role="stamnt">f</emphasis> 1 0 257 10 1 
+<emphasis role="stamnt">f</emphasis> 2 0 257 7 0 300 1 212 .8
+<emphasis role="stamnt">t</emphasis> 0 120
+<emphasis role="stamnt">i</emphasis> 1 1 3 0 440 10000
+<emphasis role="stamnt">i</emphasis> 1 4 3 0 256 10000
+<emphasis role="stamnt">i</emphasis> 1 7 3 0 880 10000
+<emphasis role="stamnt">s</emphasis>
+<emphasis role="stamnt">t</emphasis> 0 120
+<emphasis role="stamnt">i</emphasis> 1 1 3 0 440 10000     <emphasis role="comment">; Trois notes originales aux pulsations</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 4 3 0 256 10000     <emphasis role="comment">; 1, 4 et 7 sans diminuendo.</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 7 3 0 880 10000
+<emphasis role="stamnt">i</emphasis> 1 1 3 0 220 10000     <emphasis role="comment">; Trois notes transposées une octave plus bas</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 4 3 0 128 8000      <emphasis role="comment">; également aux pulsations 1, 4 et 7</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 7 3 0 440 6000      <emphasis role="comment">; avec diminuendo.</emphasis>
+<emphasis role="stamnt">e</emphasis></programlisting>
+    </informalexample>
+  </para>
+
+  <para>
+    Dans le programme suivant la même séquence de trois notes sera répétée à divers intervalles de temps.
+    La date de début de chaque groupe est déterminée par les valeurs du tableau <emphasis>cue</emphasis>.
+    Cette fois le <emphasis>dim</emphasis> se produira sur chaque groupe de notes plutôt que sur chaque
+    note. Remarquez la position de l'instruction qui incrémente la variable <emphasis>dim</emphasis>
+    en dehors de la boucle <emphasis>for</emphasis> intérieure.
+  </para>
+
+  <para>
+    <informalexample>
+      <programlisting>
+#include &quot;cscore.h&quot; 
+int cue[3] = {0,10,17};                    /* déclare un tableau de 3 entiers */ 
+void cscore(CSOUND *cs) 
+{
+  EVENT  *e, *f;
+  EVLIST *a, *b;
+  int n, dim, cuecount;                    /* déclare la nouvelle variable cuecount */
+
+  a = cscoreListGetSection(cs);
+  b = cscoreListSeparateF(cs, a);
+  cscoreListPut(cs, b);
+  cscoreListFreeEvents(cs, b);
+  e = cscoreDefineEvent(cs, &quot;t 0 120&quot;);
+  cscorePutEvent(cs, e);
+  dim = 0; 
+  for (cuecount = 0; cuecount &lt;= 2; cuecount++) /* les éléments de cue sont numérotés 0, 1, 2 */
+  {
+    for (n = 1; n &lt;= a-&gt;nevents; n++)
+    { 
+      f = a-&gt;e[n]; 
+      f-&gt;p[6] -= dim; 
+      f-&gt;p[2] += cue[cuecount];             /* ajoute les valeurs de cue */ 
+    } 
+    printf(&quot;; diagnostic:  cue = %d\n&quot;, cue[cuecount]); 
+    dim += 2000; 
+    cscoreListPut(cs, a);
+  } 
+  cscorePutString(cs, &quot;e&quot;);
+}</programlisting>
+    </informalexample>
+  </para>
+
+  <para>
+    Ici la boucle <emphasis>for</emphasis> intérieure lit les évènements de la liste
+    <emphasis>a</emphasis> (les notes) et la boucle <emphasis>for</emphasis> extérieure lit chaque
+    <emphasis>répétition</emphasis> des évènements de la liste <emphasis>a</emphasis> (les
+    &quot;répliques&quot; du groupe de hauteurs). Ce programme démontre aussi un moyen utile de résolution
+    de problème au moyen de la fonction <emphasis>printf</emphasis>. Le <emphasis>point-virgule</emphasis>
+    commence la chaîne de caractères pour produire un commentaire dans le fichier de partition résultant.
+    Dans ce cas, la valeur de <emphasis>cue</emphasis> est imprimée en sortie pour s'assurer que le
+    programme prend le bon membre du <emphasis>tableau</emphasis> au bon moment. Losrque les données
+    de sortie sont fausses ou que des messages d'erreur sont rencontrés, la fonction
+    <emphasis>printf</emphasis> peut aider à identifier le problème.
+  </para>
+
+  <para>
+    A partir du même fichier d'entrée, le programme C ci-dessus générera la partition suivante.
+    Pouvez-vous expliquer pourquoi le dernier ensemble de notes ne démarre pas au bon moment et
+    comment corriger le problème ?
+  </para>
+
+  <para>
+    <informalexample>
+      <programlisting>
+<emphasis role="stamnt">f</emphasis> 1 0 257 10 1
+<emphasis role="stamnt">f</emphasis> 2 0 257 7 0 300 1 212 .8
+<emphasis role="stamnt">t</emphasis> 0 120
+<emphasis role="comment">; diagnostic:  cue = 0</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 1 3 0 440 10000
+<emphasis role="stamnt">i</emphasis> 1 4 3 0 256 10000
+<emphasis role="stamnt">i</emphasis> 1 7 3 0 880 10000
+<emphasis role="comment">; diagnostic:  cue = 10</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 11 3 0 440 8000
+<emphasis role="stamnt">i</emphasis> 1 14 3 0 256 8000
+<emphasis role="stamnt">i</emphasis> 1 17 3 0 880 8000
+<emphasis role="comment">; diagnostic:  cue = 17</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 28 3 0 440 4000
+<emphasis role="stamnt">i</emphasis> 1 31 3 0 256 4000
+<emphasis role="stamnt">i</emphasis> 1 34 3 0 880 4000
+<emphasis role="stamnt">e</emphasis></programlisting>
+    </informalexample>
+  </para>
+</section>

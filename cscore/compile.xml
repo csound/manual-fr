@@ -1,0 +1,273 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="CscoreCompile">
+  <title>Compiler un programme Cscore</title>
+
+  <para>
+    Un programme <emphasis>Cscore</emphasis> peut être invoqué comme un <emphasis>programme autonome</emphasis>
+    ou comme une partie de Csound placée entre le tri de la partition et son exécution par l'orchestre :
+  </para>
+
+  <para>
+    <cmdsynopsis>
+      <command>cscore</command>
+      <arg><replaceable>fichier_partition_entrée</replaceable></arg>
+      <arg><replaceable>&gt; fichier_partition_sortie</replaceable></arg>
+    </cmdsynopsis>
+  </para>
+
+  <para>
+    ou
+  </para>
+
+  <para>
+    <cmdsynopsis>
+      <command>csound</command>
+      <arg>-C</arg>
+      <arg><option>autresoptions</option></arg>
+      <arg><replaceable>nomorch</replaceable></arg>
+      <arg><replaceable>nompartition</replaceable></arg>
+    </cmdsynopsis>
+  </para>
+
+  <para>
+    Avant d'essayer de compiler votre propre programme <emphasis>Cscore</emphasis>, vous voudrez sans
+    doute obtenir une copie du code source de Csound. Téléchargez la distribution des sources la plus
+    récente pour votre plate-forme ou bien récupérez (check out) une copie du module csound5 depuis
+    le CVS de Sourceforge. Il y a plusieurs fichiers dans les sources qui vous aideront. Il y a dans le
+    répertoire <filename>examples/cscore/</filename> plusieurs exemples de programmes de contrôle <emphasis>Cscore</emphasis>,
+    y compris tous les exemples contenus dans ce manuel. Et il y a dans le répertoire <filename>frontends/cscore/</filename>
+    les deux fichiers <emphasis>cscoremain.c</emphasis> et <emphasis>cscore.c</emphasis>.
+    <emphasis>cscoremain.c</emphasis> contient une simple fonction <emphasis>main</emphasis> qui réalise
+    toute l'initialisation qu'un programme <emphasis>Cscore</emphasis> autonome doit faire avant d'appeler
+    votre fonction de contrôle. Cette <quote>souche</quote> main initialise Csound, lit les arguments de
+    la ligne de commande, ouvre les fichiers de partition en entrée et en sortie, et appelle ensuite une
+    fonction <emphasis>cscore()</emphasis>. Comme il est décrit ci-dessus, vous êtes chargé d'écrire la
+    fonction <emphasis>cscore()</emphasis> et de la fournir dans un autre fichier. Le fichier
+    <emphasis>frontends/cscore/cscore.c</emphasis> montre l'exemple le plus simple d'une fonction
+    <emphasis>cscore()</emphasis> qui lit une partition de n'importe quelle longueur et l'écrit inchangée
+    sur la sortie.
+  </para>
+
+  <para>
+    Ainsi, pour créer un programme autonome, écrivez un programme de contrôle en suivant les indications
+    de la section précédente. Supposons que vous ayez sauvegardé ce programme dans un fichier nommé
+    &quot;<emphasis>mycscore.c</emphasis>&quot;. Vous devez ensuite compiler ce programme et le lier avec
+    la bibliothèque de Csound et <emphasis>cscoremain.c</emphasis> pour créer un exécutable, en suivant
+    l'ensemble de directives ci-dessous qui s'applique à votre système d'exploitation. Il sera utile
+    d'avoir une certaine familiarité avec le compilateur C de votre ordinateur car l'information ci-dessous
+    ne peut pas être exhaustive pour tous les systèmes existants.
+  </para>
+
+<bridgehead>Linux et Unix</bridgehead>
+
+  <para>
+    Les commandes suivantes supposent que vous ayez copié votre fichier <emphasis>mycscore.c</emphasis>
+    dans le même répertoire que <emphasis>cscoremain.c</emphasis>, que vous ayez ouvert un terminal sur
+    ce même répertoire et que vous ayez installé au préalable une distribution binaire de Csound qui aura
+    placé une bibliothèque <emphasis>libcsound.a</emphasis> ou <emphasis>libcsound.so</emphasis> dans
+    <emphasis>/usr/local/lib</emphasis> et les fichiers d'en-tête pour l'API de Csound dans
+    <emphasis>/usr/local/include/csound</emphasis>.
+  </para>
+
+  <para>
+    Pour la compilation et l'édition de liens, tapez :
+  </para>
+  
+  <informalexample>
+    <screen>
+gcc mycscore.c cscoremain.c -o cscore -lcsound -L/usr/local/lib -I/usr/local/include/csound</screen>
+  </informalexample>
+
+  <para>
+    Pour l'exécution (avec envoi des résultats sur la sortie standard), tapez :
+  </para>
+
+  <informalexample>
+    <screen>./cscore test.sco</screen>
+  </informalexample>
+
+  <para>
+    Il est possible que sur certains systèmes Unix le compilateur C soit nommé <emphasis>cc</emphasis> ou
+    quelque chose d'autre que <emphasis>gcc</emphasis>.
+  </para>
+
+
+<bridgehead>Windows</bridgehead>
+
+  <para>
+    Csound est ordinairement compilé sur Windows au moyen de l'environnement MinGW qui fournit GCC -- le
+    même compilateur utilisé sur Linux -- au travers d'un shell de commande (MSYS) à la Unix. Comme les
+    bibliothèques pré-compilées pour Csound sur Windows sont construites de cette maniére, vous utiliserez
+    probablement MinGW pour la liaison avec celles-ci. Si vous avez construit Csound en utilisant un autre
+    compilateur, vous serez sans doute capable de construire également <emphasis>Cscore</emphasis> avec
+    ce compilateur.
+  </para>
+
+  <para>
+    La compilation de programmes <emphasis>Cscore</emphasis> autonomes en utilisant MinGW devrait être
+    similaire à la procédure ci-dessus pour Linux avec les chemins de la bibliothèque et des en-têtes
+    changés pour pointer là où Csound est installé sur le système Windows. <emphasis>(Les contributions
+    plus détaillées sur ces instructions seront les bienvenues car le rédacteur de cet article n'a pas
+    pu tester Cscore sur une machine Windows).</emphasis>
+  </para>
+
+
+<bridgehead>OS X</bridgehead>
+
+  <para>
+    Les commandes suivantes supposent que vous ayez copié votre fichier <emphasis>mycscore.c</emphasis>
+    dans le même répertoire que <emphasis>cscoremain.c</emphasis> et que vous ayez ouvert un terminal dans
+    ce répertoire. De plus, les outils de développement fournis par Apple (incluant le compilateur GCC)
+    doivent être installés sur votre système et vous devez avoir installé une distribution binaire de
+    Csound qui aura placé le framework Csoundlib dans <emphasis>/Library/Frameworks</emphasis>.
+  </para>
+
+  <para>
+    Utilisez cette commande pour la compilation et l'édition de liens. (Il peut y avoir un avertissement
+    sur de "multiples définitions du symbole _cscore").
+  </para>
+  
+  <informalexample>
+    <screen>
+gcc cscore.c cscoremain.c -o cscore -framework CsoundLib -I/Library/Frameworks/CsoundLib.framework/Headers</screen>
+  </informalexample>
+
+  <para>
+    Pour l'exécution (avec envoi des résultats sur la sortie standard) :
+  </para>
+
+  <informalexample>
+    <screen>./cscore test.sco</screen>
+  </informalexample>
+
+
+<bridgehead>MacOS 9</bridgehead>
+  <para>
+    Vous devrez avoir installé CodeWarrior ou un autre environnement de développement sur votre
+    ordinateur (MPW peut fonctionner). Téléchargez la distribution des sources pour OS 9 (elle aura un
+    nom comme <emphasis>Csound5.05_OS9_src.smi.bin</emphasis>).
+  </para>
+
+  <para>
+    Si vous utiliser CodeWarrior, trouvez et ouvrez le fichier de projet "Cscore5.cw8.mcp" dans le
+    répertoire "Csound5.04-OS9-source:macintosh:Csound5Library:". Ce fichier de projet est configuré pour
+    utiliser les fichiers source <emphasis>cscore.c</emphasis> et <emphasis>cscoremain_MacOS9.c</emphasis>
+    situés dans l'arborescence des sources csound5 et la librairie partagée Csound5Lib produite lors de
+    la compilation de Csound avec le fichier de projet "Csound5.cw8.mcp". Il vous faut substituer votre
+    propre fichier du programme <emphasis>Cscore</emphasis> à la place de <emphasis>cscore.c</emphasis> et
+    soit avoir compilé Csound5Lib avant, soit substituer une copie de la bibliothèque dans le projet à
+    partir de la distribution binaire de Csound pour OS 9. Le fichier <emphasis>cscoremain_MacOS9.c</emphasis>
+    contient du code spécialisé pour la configuration de la bibliothèque de console SIOUX de CodeWarrior et
+    permet l'entrée d'arguments de ligne de commande avant le lancement du programme.
+  </para>
+
+  <para>
+    Une fois que les fichiers nécessaires sont inclus dans la fénêtre du projet, cliquez sur le bouton
+    "Make" et CodeWarrior produira une application nommée <quote><emphasis>Cscore</emphasis></quote>.
+    Quand vous lancez cette application, elle affiche d'abord une fenêtre vous permettant de saisir les
+    arguments pour la fonction principale. Vous n'avez qu'à taper le nom de fichier ou le nom de chemin
+    complet de la partition en entrée -- ne tapez pas "cscore". Le fichier d'entrée doit se trouver dans
+    le même répertoire que l'application sinon vous devrez taper un chemin complet ou relatif pour le
+    fichier. La sortie sera affichée dans la fenêtre de console. Vous pouvez utiliser la commande
+    <emphasis>Save</emphasis> du menu <emphasis>File</emphasis> avant de quitter la console.
+    Alternativement, dans la fenêtre de dialogue de la ligne de commande, vous pouvez choisir de rediriger
+    la sortie dans un fichier en cliquant sur le bouton <emphasis>File</emphasis> sur le côté droit de la
+    fenêtre de dialogue. (Notez que la fenêtre de console ne peut afficher qu'environ 32000 caractères,
+    ce qui rend l'écriture dans un fichier nécessaire pour les grandes partitions).
+  </para>
+
+<bridgehead>Rendre Cscore utilisable depuis Csound</bridgehead>
+  <para>
+    Pour opérer depuis Csound, suivez d'abord les instructions pour compiler Csound (voir
+    <link linkend="BuildingCsound"><citetitle>Construire Csound</citetitle></link>) qui concernent le
+    système d'exploitation que vous utilisez. Une fois que vous avez réussi à construire un système Csound
+    non modifié, substituez alors votre propre fonction <emphasis>cscore()</emphasis> à celle qui se
+    trouve dans le fichier <emphasis>Top/cscore_internal.c</emphasis>, et reconstruisez Csound.
+  </para>
+
+  <para>
+    L'exécutable résultant est votre Csound spécial, utilisable comme ci-dessus.
+    L'<link linkend="FlagsMinusUpperC"><citetitle>option -C</citetitle></link> invoquera votre programme
+    <emphasis>Cscore</emphasis> après le tri de la partition d'entrée dans
+    <quote><emphasis>score.srt</emphasis></quote>. Les détails de ce qui se passe lorsque vous lancez
+    Csound avec l'option -C flag sont donnés dans la section suivante.
+  </para>
+
+  <para>
+    Csound 5 fournit aussi un moyen supplémentaire d'exécuter votre propre programme
+    <emphasis>Cscore</emphasis> depuis Csound. En utilisant l'API, une application hôte peut mettre en
+    place une <emphasis>fonction d'appel en retour (callback)</emphasis> de <emphasis>Cscore</emphasis>,
+    qui est une fonction que Csound appellera à la place de sa fonction interne
+    <emphasis>cscore()</emphasis>. L'avantage de cette approche est qu'il n'est pas nécessaire de recompiler
+    la totalité de Csound. Un autre bénéfice est que l'application hôte peut choisir pendant l'exécution la
+    fonction de callback parmi plusieurs fonctions <emphasis>Cscore</emphasis>. L'inconvénient est que vous
+    devez écrire une application hôte.
+  </para>
+
+  <para>
+    Une approche simple pour utiliser un callback <emphasis>Cscore</emphasis> via l'API serait de modifier
+    le programme main standard de Csound -- qui est un hôte simple de Csound -- contenu dans le fichier
+    <emphasis>frontends/csound/csound_main.c</emphasis>. L'ajout d'un appel à
+    <emphasis>csoundSetCscoreCallback()</emphasis> après l'appel à <emphasis>csoundCreate()</emphasis>
+    mais avant l'appel à <emphasis>csoundCompile()</emphasis> devrait faire l'affaire. En recompilant ce
+    fichier et en le liant à une bibliothèque de Csound existante, on obtiendra une version de Csound en
+    ligne de commande qui fonctionne comme celle qui est décrite ci-dessus. N'oubliez pas de taper
+    l'option -C.
+  </para>
+
+<bridgehead>Notes au sujet des formats de partition et du comportement de l'exécutable</bridgehead>
+  
+  <para>
+    Comme indiqué précedemment, les fichiers d'entrée de <emphasis>Cscore</emphasis> peuvent se trouver
+    dans leur forme originale ou résolue en temps et pré-triée ; cette modalité sera préservée
+    (section par section) lors de la lecture, du traitement et de l'écriture des partitions. Le
+    traitement autonome utilisera le plus souvent des sources non résolues en temps et créera de
+    nouveau fichiers de même forme. Lors du traitement depuis Csound, la partition en entrée arrivera
+    déjà résolue en temps et triée, et pourra ainsi être envoyée directement (normalement section par
+    section) à l'orchestre. Un des avantages de cette façon d'utiliser <emphasis>Cscore</emphasis> est
+    que toutes les commodités de syntaxe du langage de partition complet de Csound peuvent être utilisées
+    -- macros, expressions arithmétiques, carry, rampes, etc. -- car la partition passera par les phases 
+    "Carry, Tempo, Tri" du traitement avant d'être transmise au programme <emphasis>Cscore</emphasis>
+    fourni par l'utilisateur.
+  </para>
+
+  <para>
+    Lors du traitement dans Csound, une liste d'évènements peut être transmise à un orchestre de Csound en
+    utilisant <emphasis>cscoreListPlay()</emphasis>. Il peut y avoir n'importe quel nombre d'appels de
+    <emphasis>cscoreListPlay()</emphasis> dans un programme <emphasis>Cscore</emphasis>. Chaque liste ainsi
+    transmise peut-être résolue ou non en temps, mais chaque liste doit être en ordre chronologique strict
+    par rapport à <emphasis>p2</emphasis> (soit grâce au pré-traitement de tri soit en utilisant
+    <emphasis>cscoreListSort()</emphasis>). S'il n'y a pas de <emphasis>cscoreListPlay()</emphasis> dans un
+    module <emphasis>Cscore</emphasis> exécuté depuis Csound, tous les évènements écrits en sortie (via
+    <emphasis>cscorePutEvent()</emphasis>, <emphasis>cscorePutString()</emphasis>, ou
+    <emphasis>cscoreListPut()</emphasis>) sont envoyés dans une nouvelle partition dans le répertoire
+    courant nommée <quote><emphasis>cscore.out</emphasis></quote>. Csound invoque alors à nouveau le tri de
+    partition avant d'envoyer cette nouvelle partition à l'orchestre pour son exécution. La partition de
+    sortie triée finale est écrite dans un fichier nommé <quote><emphasis>cscore.srt</emphasis></quote>.
+  </para>
+
+  <para>
+    Un programme <emphasis>Cscore</emphasis> autonome utilisera normalement la commande
+    <quote>put</quote> pour écrire dans son fichier de sortie. Si un programme <emphasis>Cscore</emphasis>
+    autonome appelle <emphasis>cscoreListPlay()</emphasis>, les évènements ainsi destinés à l'exécution
+    seront envoyés sur la sortie comme s'ils provenaient de <emphasis>cscoreListPut()</emphasis>.
+  </para>
+
+  <para>
+    Une liste de notes envoyée par <emphasis>cscoreListPlay()</emphasis> pour exécution doit être
+    distincte dans le temps des listes de notes suivantes. Aucune fin de note ne doit dépasser la
+    date de début de la liste suivante, car <emphasis>cscoreListPlay()</emphasis> complètera chaque
+    liste avant d'attaquer la suivante (comme un marqueur de Section qui ne réinitialise pas le
+    temps local à zéro). C'est important lorsque l'on utilise <emphasis>cscoreListGetNext()</emphasis>
+    ou <emphasis>cscoreListGetUntil()</emphasis> pour charger et traiter des segments de partition avant
+    exécution, car ces fonctions pourraient ne lire qu'un partie d'une section non triée.
+  </para>
+</section>

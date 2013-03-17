@@ -1,0 +1,113 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.3
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<chapter id="JackoOpcodes">
+  <title>Opcodes Jacko</title>
+  
+  <para>
+    Ces opcodes permettent l'utilisation des ports de Jack depuis les orchestres
+    et les instruments de Csound. Les ports peuvent recevoir ou envoyer des
+    données audio ou MIDI, et envoyer des données de note.
+  </para>
+    
+  <para>
+    Les opcodes Jacko ne remplacent pas le pilote de Jack et les options de la
+    ligne de commande de Csound pour Jack, et les opcodes Jacko ne travaillent
+    pas avec ces derniers (d'où le nom "Jacko" au lieu de "Jack"). Les opcodes
+    Jacko sont une facilité indépendante qui offre une plus grande flexibilité
+    dans le routage du signal.
+  </para>
+
+  <para>
+    De plus, les opcodes Jacko peuvent travailler avec le système Jack en mode
+    "roue libre", ce qui permet l'utilisation de synthétiseurs externes supportant
+    Jack, comme Aeolus ou Pianoteq, pour restituer les pièces de Csound soit
+    plus rapides, soit, ce qui est plus important, moins rapides que le temps réel.
+    C'est très utile pour restituer des pièces complexes sans coupure au moyen
+    d'instruments comme Aeolus, qui peut n'être accessible qu'à travers Jack.
+  </para>
+
+  <para>
+    Les opcodes Jacko comprennent : 
+    
+    <link linkend="JackoInit"><citetitle>JackoInit</citetitle></link>, pour
+    initialiser l'instance courante de Csound en tant que client Jack.
+    
+    <link linkend="JackoInfo"><citetitle>JackoInfo</citetitle></link>, pour
+    imprimer l'information sur le démon Jack, ses clients, leurs ports et leurs
+    connexions.
+    
+    <link linkend="JackoFreewheel"><citetitle>JackoFreewheel</citetitle></link>, 
+    pour activer ou désactiver le mode "roue libre" de Jack.
+    
+    <link linkend="JackoAudioInConnect"><citetitle>JackoAudioInConnect</citetitle></link>,
+    pour créer une connexion entre le port Jack d'une sortie audio externe et un
+    port Jack d'entrée dans Csound.
+    
+    <link linkend="JackoAudioOutConnect"><citetitle>JackoAudioOutConnect</citetitle></link>,
+    pour créer une connexion entre un port Jack de Csound et le port Jack d'une
+    entrée audio externe.
+    
+    <link linkend="JackoMidiInConnect"><citetitle>JackoMidiInConnect</citetitle></link>,
+    pour créer une connexion depuis un port Jack MIDI externe. Les évènements
+    MIDI en provenance de Jack sont reçus par les opcodes MIDI réguliers de
+    Csound et le système MIDI interop.
+    
+    <link linkend="JackoMidiOutConnect"><citetitle>JackoMidiOutConnect</citetitle></link>,
+    pour créer une connexion entre un port Jack de Csound et le port Jack d'une
+    entrée MIDI externe.
+    
+    <link linkend="JackoOn"><citetitle>JackoOn</citetitle></link>, pour activer
+    ou désactiver les ports Jack de Csound.
+    
+    <link linkend="JackoAudioIn"><citetitle>JackoAudioIn</citetitle></link>,
+    pour recevoir les données audio d'un port Jack d'entrée dans Csound, qui les
+    a lui-même reçu du port externe auquel il est connecté.
+
+    <link linkend="JackoAudioOut"><citetitle>JackoAudioOut</citetitle></link>,
+    pour envoyer des données audio à un port Jack de sortie de Csound, qui les
+    enverra lui-même vers le port externe auquel il est connecté.
+
+    <link linkend="JackoMidiOut"><citetitle>JackoMidiOut</citetitle></link>, 
+    pour envoyer des message de canal MIDI à un port Jack de sortie de Csound,
+    qui les enverra lui-même vers le port externe auquel il est connecté.
+
+    <link linkend="JackoNoteOut"><citetitle>JackoNoteOut</citetitle></link>, 
+    pour envoyer une note (avec sa durée) à un port Jack de sortie de Csound,
+    qui l'enverra lui-même vers le port externe auquel il est connecté.
+
+    <link linkend="JackoTransport"><citetitle>JackoTransport</citetitle></link>, 
+    pour contrôler le routage de Jack.
+  </para>
+  
+  <para>
+    Un scénario d'utilisation typique des opcodes Jacko ressemblera à ceci.
+  </para>
+  
+  <refsect1>
+    <!--To add examples, create the csd file in the examples directory, then run:-->
+    <!--python csd2docbook.py -f newopcodename.csd-->
+    <!--to generate the xml highlighted version used below-->
+    <title>Exemples</title>
+    <para>
+      Voici un exemple des opcodes Jacko. Il utilise le fichier
+      <ulink url="examples/jacko.csd"><citetitle>jacko.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple des opcodes Jacko.</title>
+        <xi:include href="examples-xml/jacko.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par &namemichael;, 2010</para>
+  </refsect1>
+  
+</chapter>
