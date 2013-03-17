@@ -1,0 +1,102 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ifdef">
+<indexterm id="IndexIfdefOrch"><primary>&num;ifdef</primary><secondary>orchestra</secondary></indexterm>
+
+<indexterm id="IndexIfdef"><primary>&num;ifdef</primary></indexterm>
+  <refentryinfo><title>Orchestra Syntax:Macros</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>&num;ifdef</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>&num;ifdef</refname>
+
+    <refpurpose>
+      Lecture de code conditionnelle.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Si une macro est définie alors <emphasis>&num;ifdef</emphasis> peut incorporer du texte dans un
+      orchestre jusqu'au prochain <emphasis>&num;end</emphasis>. C'est similaire, tout en étant
+      indépendant, au <link linkend="ScoreMacros"><citetitle>système de macros du langage de
+      partition</citetitle></link>.
+    </para>
+
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>&num;ifdef</command> NOM</synopsis>
+    <synopsis>....</synopsis>
+    <synopsis><command>&num;else</command>&#160;</synopsis>
+    <synopsis>....</synopsis>
+    <synopsis><command>&num;end</command>&#160;</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Noter que l'on peut imbriquer les <emphasis>&num;ifdef</emphasis>, comme dans le langage du
+      préprocesseur C.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple simple de cette insertion conditionnelle.
+
+      <example>
+        <title>Exemple simple de la forme &num;ifdef.</title>
+
+        <programlisting>
+<emphasis role="omacro">#define</emphasis> debug
+     <emphasis role="oblock">instr</emphasis> 1
+<emphasis role="omacro">#ifdef</emphasis> debug
+     <emphasis role="opc">print</emphasis> "calling oscil"
+<emphasis role="omacro">#end</emphasis>
+     a1   <emphasis role="opc">oscil</emphasis> 32000,440,1
+     out  <emphasis role="opc">a1</emphasis>
+     <emphasis role="oblock">endin</emphasis></programlisting>
+      </example>
+
+    </para>
+
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="dollar"><citetitle>&dollar;NOM</citetitle></link>, 
+      <link linkend="define"><citetitle>&num;define</citetitle></link>, 
+      <link linkend="ifndef"><citetitle>&num;ifndef</citetitle></link>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>University of Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>Avril 2005</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans Csound5 (et 4.23f13)</para>
+  </refsect1>
+</refentry>

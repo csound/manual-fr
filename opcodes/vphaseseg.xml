@@ -1,0 +1,129 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vphaseseg">
+<indexterm id="IndexVphaseseg"><primary>vphaseseg</primary></indexterm>
+  <refentryinfo><title>FLTK:Other</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vphaseseg</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vphaseseg</refname>
+    <refpurpose>
+      SHV (Synthèse Hyper Vectorielle) à une dimension.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>vphaseseg</emphasis> permet une SHV (Synthèse Hyper Vectorielle)
+      à une dimension.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>vphaseseg</command> kphase, ioutab, ielems, itab1, idist1, itab2 \
+      [,idist2, itab3, ... ,idistN-1, itabN]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ioutab</emphasis> - numéro de la table de sortie.
+    </para>
+    <para>
+      <emphasis>ielem</emphasis> - nombre d'éléments à traiter.
+    </para>
+    <para>
+      <emphasis>itab1,...,itabN</emphasis> - numéros des tables de points pivots.
+    </para>
+    <para>
+      <emphasis>idist1,...,idistN-1</emphasis> - distances entre les points pivots
+      en valeurs de pourcentage.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title> 
+    <para>
+      <emphasis>kphase</emphasis> - pointeur de phase.
+    </para>
+    <para>
+      <emphasis>vphaseseg</emphasis> retourne les coordonnées de points de section
+      d'un chemin dans un espace à N dimensions. Les coordonnées des points de
+      section sont stockées dans une table en sortie. Le nombre de dimensions
+      de l'espace à N dimensions est déterminé par l'argument <emphasis>ielem</emphasis>
+      qui est égal à N et qui peut recevoir n'importe quel nombre. Pour définir
+      le chemin, l'utilisateur doit fournir un ensemble de points de l'espace
+      à N dimensions, appelés points pivots. Les coordonnées de chaque point pivot
+      doivent se trouver dans une table différente. Le nombre de coordonnées à
+      insérer dans chaque table de point pivot doit évidemment être égal à
+      l'argument <emphasis>ielem</emphasis>. Il peut y avoir n'importe quel
+      nombre de tables de points pivots remplies par l'utilisateur.
+    </para>
+
+    <para>
+      La Synthèse Hyper Vectorielle utilise deux sortes d'espaces. Le premier
+      espace est l'espace à N dimensions dans lequel le chemin est défini, cet
+      espace étant appelé l'espace des paramètres variants dans le temps (ou
+      ESPACE A). Le chemin appartenant à cet espace est parcouru en déplaçant un
+      point dans le second espace qui a normalement un nombre de dimensions
+      inférieur à celui du premier espace. Actuellement, le point en mouvement
+      est la projection du point correspondant de l'espace à N dimensions (on
+      pourrait aussi le considérer comme une section du chemin). Le second
+      espace est appelé espace de déplacement du pointeur de l'utilisateur (ou
+      ESPACE B) et, dans le cas de l'opcode <emphasis>vphaseseg</emphasis>, il
+      n'a qu'UNE DIMENSION. L'espace B est parcouru au moyen de l'argument
+      <emphasis>kphase</emphasis> (qui est une sorte de pointeur de chemin),
+      compris entre 0 et 1. La sortie correspondant à la valeur courante du
+      pointeur est stockée dans la table <emphasis>ioutab</emphasis>, dont les
+      données peuvent être utilisées ultérieurement pour contrôler des paramètres
+      de synthèse.
+    </para>
+
+    <para>
+      Dans <emphasis>vphaseseg</emphasis>, chaque point pivot est séparé du suivant
+      par une distance exprimée en pourcentage, la longueur totale du chemin étant
+      égale à la somme de toutes ces distances. Ainsi les distances entre les points
+      pivots peuvent être différentes, à l'inverse des SHV dans lesquelles l'espace
+      B a plus d'une dimension. Dans ce dernier cas, la distance entre les points
+      pivots DOIT être LA MEME pour tous les intervalles.
+    </para>
+  </refsect1>
+<!--
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Here is an example of the vphaseseg opcode. It uses the file <ulink url="examples/vphaseseg.csd"><citetitle>vphaseseg.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the vphaseseg opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/vphaseseg.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>-->
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="hvs1"><citetitle>hvs1</citetitle></link>,
+      <link linkend="hvs2"><citetitle>hvs2</citetitle></link>,
+      <link linkend="hvs3"><citetitle>hvs3</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 5.06</para>
+  </refsect1>
+</refentry>

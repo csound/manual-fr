@@ -1,0 +1,254 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.15
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLknob">
+<indexterm id="IndexFLknob"><primary>FLknob</primary></indexterm>
+  <refentryinfo><title>FLTK:Valuators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLknob</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLknob</refname>
+    <refpurpose>
+      Un opcode de widget FLTK qui crée un bouton rotatif.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Un opcode de widget FLTK qui crée un bouton rotatif.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kout, ihandle <command>FLknob</command> &quot;label&quot;, imin, imax, iexp, itype, idisp, iwidth, \
+      ix, iy [, icursorsize]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ihandle</emphasis> -- un identifiant (un nombre entier) qui
+      référence de manière univoque le widget correspondant. Il est utilisé par
+      d'autres opcodes qui modifient les propriété du widget (voir
+      <link linkend="ControlFltkAppearance"><citetitle>Modifier l'Apparence des
+      Widgets FLTK</citetitle></link>). Il est automatiquement retourné par
+      <emphasis>FLknob</emphasis> et ne doit pas être fixé par l'étiquette de
+      l'utilisateur. (L'étiquette de l'utilisateur est une chaîne entre
+      guillemets contenant un texte fourni par l'utilisateur placé à côté du
+      widget.)
+    </para>
+    <para>
+      <emphasis><quote>label</quote></emphasis> -- une chaîne entre guillemets
+      contenant un texte fourni par l'utilisateur placé à côté du widget.
+    </para>
+
+    <para>
+      <emphasis>imin</emphasis> -- valeur minimale de l'intervalle de sortie.
+    </para>
+
+    <para>
+      <emphasis>imax</emphasis> -- valeur maximale de l'intervalle de sortie.
+    </para>
+
+    <para>
+      <emphasis>iexp</emphasis> -- un nombre entier indiquant le comportement
+      du valuateur :
+      <itemizedlist>
+        <listitem><para>0 = la sortie est linéaire</para></listitem>
+        <listitem><para>-1 = la sortie est exponentielle</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      Tout autre nombre positif pour <emphasis>iexpx</emphasis> indique le
+      numéro d'une table existante lue par indexation avec interpolation
+      linéaire. Un numéro de table négatif supprime l'interpolation.
+    </para>
+
+    <warning>
+      <title>IMPORTANT !</title>
+      <para>
+        Noter que les tables utilisées par les valuateurs doivent être créées
+        avec l'opcode <link linkend="ftgen"><citetitle>ftgen</citetitle></link>
+        et placées dans l'orchestre avant le valuateur correspondant. On ne
+        peut pas les placer dans la partition. En fait, les tables placées
+        dans la partition sont créées après l'initialisation des opcodes
+        placés dans la section d'en-tête de l'orchestre.
+      </para>
+    </warning>
+
+    <para>
+      <emphasis>itype</emphasis> -- un nombre entier indiquant l'apparence du
+      valuateur.
+    </para>
+
+    <para>
+      L'argument <emphasis>itype</emphasis> accepte les valeurs suivantes :
+
+      <itemizedlist>
+        <listitem><para>1 - un bouton rotatif 3D</para></listitem>
+        <listitem><para>2 - un bouton à secteur circulaire</para></listitem>
+        <listitem><para>3 - un bouton comme une horloge</para></listitem>
+        <listitem><para>4 - un bouton rotatif plat</para></listitem>
+      </itemizedlist>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/flknob_3d.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>Un bouton rotatif 3D.</phrase>
+        </textobject>
+
+        <caption>
+          <para>Un bouton rotatif 3D.</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/flknob_pie.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>Un bouton à secteur circulaire.</phrase>
+        </textobject>
+
+        <caption>
+          <para>Un bouton à secteur circulaire.</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/flknob_clock.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>Un bouton comme une horloge.</phrase>
+        </textobject>
+
+        <caption>
+          <para>Un bouton comme une horloge.</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/flknob_flat.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>Un bouton rotatif plat.</phrase>
+        </textobject>
+
+        <caption>
+          <para>Un bouton rotatif plat.</para>
+        </caption>
+      </mediaobject>
+    </para>
+
+    <para>
+      <emphasis>idisp</emphasis> -- un identifiant retourné par une instance
+      précédente de l'opcode
+      <link linkend="FLvalue"><citetitle>FLvalue</citetitle></link> pour afficher
+      la valeur courante du valuateur dans le widget <emphasis>FLvalue</emphasis>.
+      Si l'on ne veut pas utiliser cette possibilité d'affichage des valeurs
+      courantes, il faut donner à cet identifiant un nombre négatif.
+    </para>
+
+    <para>
+      <emphasis>iwidth</emphasis> -- largeur du widget.
+    </para>
+
+    <para>
+      <emphasis>iheight</emphasis> -- hauteur du widget.
+    </para>
+
+    <para>
+      <emphasis>ix</emphasis> -- position horizontale du coin supérieur gauche
+      du valuateur, relative au coin supérieur gauche de la fenêtre correspondante
+      (exprimée en pixels).
+    </para>
+
+    <para>
+      <emphasis>iy</emphasis> -- position verticale du coin supérieur gauche
+      du valuateur, relative au coin supérieur gauche de la fenêtre correspondante
+      (exprimée en pixels).
+    </para>
+
+    <para>
+      <emphasis>icursorsize</emphasis> (facultatif) -- Si <emphasis>itype</emphasis>
+      de <emphasis>FLknob</emphasis> vaut 1 (bouton 3D), ce paramètre contrôle la
+      taille du curseur du bouton.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kout</emphasis> -- valeur en sortie.
+    </para>
+
+    <para>
+      <emphasis>FLknob</emphasis> met un bouton rotatif dans le conteneur
+      correspondant.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode FLknob. Il utilise le fichier
+      <ulink url="examples/FLknob.csd"><citetitle>FLknob.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode FLknob.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/FLknob.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Voici un autre exemple de l'opcode FLknob, montrant les différents styles
+      de boutons ainsi que l'usage de <emphasis>FLvalue</emphasis> pour afficher
+      la valeur d'un bouton. Il utilise le fichier
+      <ulink url="examples/FLknob-2.csd"><citetitle>FLknob-2.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple plus complexe de l'opcode FLknob.</title>
+          <xi:include href="examples-xml/FLknob-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="FLcount"><citetitle>FLcount</citetitle></link>,
+      <link linkend="FLjoy"><citetitle>FLjoy</citetitle></link>,
+      <link linkend="FLroller"><citetitle>FLroller</citetitle></link>,
+      <link linkend="FLslider"><citetitle>FLslider</citetitle></link>,
+      <link linkend="FLtext"><citetitle>FLtext</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.22</para>
+    <para>Exemple écrit par Iain McCurdy, édité par &namekevin;.</para>
+  </refsect1>
+</refentry>

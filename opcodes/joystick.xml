@@ -1,0 +1,86 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="joystick">
+<indexterm id="Indexjoystick"><primary>joystick</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>joystick</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>joystick</refname>
+    <refpurpose>
+      Lit les données provenant d'un joystick.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Lit les données provenant d'un joystick sous Linux.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kres <command>joystick</command> kdevice ktab</synopsis>
+  </refsect1>
+ 
+ <refsect1>
+   <title>Exécution</title>
+   <note>
+     <para>
+       Prière de noter que pour le moment cet opcode ne fonctionne que sous
+       Linux.
+     </para>
+   </note>
+   <para>
+     <emphasis>kdevice</emphasis> -- l'index de périphérique du joystick, soit
+     /dev/js<emphasis>N</emphasis>, soit /dev/input/js<emphasis>N</emphasis>.
+   </para>
+   <para>
+     <emphasis>ktab</emphasis> -- Une table pour recevoir les valeurs en entrée,
+     devant pouvoir stocker au moins une valeur par axe du joystick, une valeur
+     pour chaque bouton, plus deux valeurs. Les deux premiers éléments de la
+     table sont initialisés avec le nombre d'axes et le nombre de boutons,
+     respectivement, lorsqu'un joystick est ouvert. Si un joystick est débranché
+     durant l'exécution, l'opcode va tenter de réouvrir le périphérique de
+     manière répétitive, avec un délai entre chaque essai.
+   </para>
+  </refsect1>
+
+   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode joystick. Il utilise le fichier
+      <ulink url="examples/joystick.csd"><citetitle>joystick.csd</citetitle></ulink>.
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+    </para>
+    <xi:include href="examples-xml/joystick.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <para>
+      Voici un autre exemple de l'opcode joystick. Il utilise le fichier
+      <ulink url="examples/joystick-2.csd"><citetitle>joystick-2.csd</citetitle></ulink>.
+    </para>
+    <xi:include href="examples-xml/joystick-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Justin Glenn Smith</member>
+        <member>2010</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.17.12</para>
+  </refsect1>
+</refentry>

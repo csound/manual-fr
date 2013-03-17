@@ -1,0 +1,202 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLbutBank">
+<indexterm id="IndexFLbutBank"><primary>FLbutBank</primary></indexterm>
+  <refentryinfo><title>FLTK:Other</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLbutBank</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLbutBank</refname>
+    <refpurpose>
+      Un opcode de widget FLTK qui crée un banc de boutons.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Un opcode de widget FLTK qui crée un banc de boutons.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kout, ihandle <command>FLbutBank</command> itype, inumx, inumy, iwidth, iheight, ix, iy, \
+      iopcode [, kp1] [, kp2] [, kp3] [, kp4] [, kp5] [....] [, kpN]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ihandle</emphasis> -- un identifiant (un nombre entier) qui
+      référence de manière univoque le widget correspondant. Il est utilisé par
+      d'autres opcodes qui modifient les propriété du widget (voir
+      <link linkend="ControlFltkAppearance"><citetitle>Modifier l'Apparence des
+      Widgets FLTK</citetitle></link>). Il est automatiquement retourné par
+      <emphasis>FLbutBank</emphasis> et ne doit pas être fixé par l'étiquette de
+      l'utilisateur. (L'étiquette de l'utilisateur est une chaîne entre
+      guillemets contenant un texte fourni par l'utilisateur placé à côté du
+      widget.)
+    </para>
+
+    <para>
+      <emphasis>itype</emphasis> -- un nombre entier dénotant l'apparence du
+      widget. Les nombres acceptés sont :
+      <itemizedlist>
+        <listitem><para>1 - bouton normal</para></listitem>
+        <listitem><para>2 - bouton lumineux</para></listitem>
+        <listitem><para>3 - bouton à cocher</para></listitem>
+        <listitem><para>4 - bouton avec un cercle à cocher</para></listitem>
+      </itemizedlist>
+      On peut ajouter 20 à la valeur pour créer un bouton de type "plastique".
+      Noter qu'il n'y a pas de bouton arrondi plastique (si vous fixer le type
+      à 24, le bouton aura la même apparence qu'avec le type 23).
+    </para>
+
+    <para>
+      <emphasis>inumx</emphasis> -- nombre de boutons dans chaque rangée du banc.
+    </para>
+
+    <para>
+      <emphasis>inumy</emphasis> -- nombre de boutons dans chaque colonne du banc.
+    </para>
+
+    <para>
+      <emphasis>ix</emphasis> -- position horizontale du coin supérieur gauche
+      du widget, relative au coin supérieur gauche de la fenêtre correspondante,
+      exprimée en pixels.
+    </para>
+
+    <para>
+      <emphasis>iy</emphasis> -- position verticale du coin supérieur gauche
+      du widget, relative au coin supérieur gauche de la fenêtre correspondante,
+      exprimée en pixels.
+    </para>
+
+    <para>
+      <emphasis>iopcode</emphasis> -- type de l'instruction de partition. Il faut
+      fournir le code ASCII de la lettre correspondant à l'instruction de partition.
+      Actuellement seules les instructions de partition <quote>i</quote> (code
+      ASCII 105) sont supportées. Une valeur de zéro fait référence à une valeur
+      de <quote>i</quote> par défaut. Ainsi 0 et 105 activent l'instruction
+      <link linkend="i"><citetitle>i</citetitle></link>. Une valeur de -1
+      désactive cette possibilité.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kout</emphasis> -- valeur de sortie.
+    </para>
+
+    <para>
+      <emphasis>kp1</emphasis>, <emphasis>kp2</emphasis>, ...,
+      <emphasis>kpN</emphasis> -- arguments des instruments activés.
+    </para>
+
+    <para>
+      L'opcode <emphasis>FLbutBank</emphasis> crée un banc de boutons. Par
+      exemple, la ligne suivante :
+      <informalexample>
+        <programlisting>
+gkButton,ihb1  FLbutBank  22, 8, 8, 380, 180, 50, 350, 0, 7, 0, 0, 5000, 6000</programlisting>
+      </informalexample>
+
+      créera ce banc :
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/flbutbank.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>FLbutBank.</phrase>
+        </textobject>
+
+        <caption>
+          <para>FLbutBank.</para>
+        </caption>
+      </mediaobject>
+    </para>
+
+    <para>
+      Un clic sur un bouton coche celui-ci. Il peut aussi décocher un bouton
+      préalablement coché appartenant au même banc. Ces boutons se comportent
+      donc toujours comme des boutons radio. Noter que chaque bouton est
+      étiqueté avec un nombre croissant. L'argument <emphasis>kout</emphasis>
+      reçoit ce nombre lorsque le bouton correspondant est coché.
+    </para>
+
+    <para>
+      Non seulement <emphasis>FLbutBank</emphasis> retourne une valeur, mais il
+      peut aussi activer (ou programmer) un instrument fourni par l'utilisateur
+      chaque fois qu'un bouton est cliqué. Si l'argument <emphasis>iopcode</emphasis>
+      est fixé à un nombre négatif, aucun instrument n'est activé ; ainsi cette
+      possibilité est facultative. Pour activer un instrument,
+      <emphasis>iopcode</emphasis> doit valoir 0 ou 105 (le code ASCII du
+      caractère <quote>i</quote>, faisant référence à l'instruction de partition
+      <link linkend="i"><citetitle>i</citetitle></link>). Les p-champs de
+      l'instrument activé sont <emphasis>kp1</emphasis> (numéro de l'instrument),
+      <emphasis>kp2</emphasis> (date de l'action), <emphasis>kp3</emphasis>
+      (durée), suivis des autres p-champs.
+    </para>
+
+    <para>
+      L'argument <emphasis>itype</emphasis> fixe le type des boutons de la même
+      manière que pour l'opcode
+      <link linkend="FLbutton"><citetitle>FLbutton</citetitle></link>. En ajoutant
+      10 à l'argument <emphasis>itype</emphasis> (c'est à dire en lui attribuant
+      la valeur 11 pour le type 1, 12 pour le type 2, 13 pour le type 3 et 14
+      pour le type 4), il est possible d'ignorer la valeur courante de
+      <emphasis>FLbutBank</emphasis> lorsque l'on sauve ou que l'on récupère des
+      instantanés (voir
+      <link linkend="ControlFltkGeneral"><citetitle>Opcodes Généraux relatifs aux Widgets FLTK</citetitle></link>).
+      On peut aussi ajouter 10 aux type de boutons "plastiques" (31 pour le type
+      1, 32 pour le type 2, etc).
+    </para>
+    <para>
+      <emphasis>FLbutBank</emphasis> est très utile pour retrouver des instantanés.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode FLbutBank. Il utilise le fichier
+      <ulink url="examples/FLbutBank.csd"><citetitle>FLbutBank.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode FLbutBank.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/FLbutBank.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="FLbox"><citetitle>FLbox</citetitle></link>,
+      <link linkend="FLbutton"><citetitle>FLbutton</citetitle></link>,
+      <link linkend="FLprintk"><citetitle>FLprintk</citetitle></link>,
+      <link linkend="FLprintk2"><citetitle>FLprintk2</citetitle></link>,
+      <link linkend="FLvalue"><citetitle>FLvalue</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.22</para>
+  </refsect1>
+</refentry>

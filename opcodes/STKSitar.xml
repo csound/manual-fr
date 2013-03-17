@@ -1,0 +1,86 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="STKSitar">
+  <indexterm id="IndexStksitar"><primary>STKSitar</primary></indexterm>
+  <refentryinfo><title>Signal Generators:STK Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>STKSitar</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>STKSitar</refname>
+    <refpurpose>
+      STKSitar utilise un modèle physique de corde pincée.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>STKSitar</emphasis> utilise un modèle physique de corde pincée
+      basé sur l'algorithme de Karplus-Strong.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>asignal <command>STKSitar</command> ifrequency, iamplitude</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+        <para>
+      <emphasis>ifrequency</emphasis> -- Fréquence de la note jouée, en Hz.
+    </para>
+   
+    <para>
+      <emphasis>iamplitude</emphasis> -- Amplitude de la note jouée (entre 0 et 1).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <note>
+      <title>Note</title>
+      <para>
+        Le code pour cet opcode vient directement de la classe
+        <emphasis>Sitar</emphasis> du Synthesis Toolkit en C++ par Perry R.
+        Cook et Gary P. Scavone. On peut en savoir plus sur les classes STK ici :
+        <ulink url="https://ccrma.stanford.edu/software/stk/classes.html">
+        <citetitle>https://ccrma.stanford.edu/software/stk/classes.html</citetitle>
+        </ulink>
+      </para>
+    </note>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode STKSitar. Il utilise le fichier
+      <ulink url="examples/STKSitar.csd"><citetitle>STKSitar.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode STKSitar.</title>
+        <xi:include href="examples-xml/STKSitar.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namemichael; (d'après &nameperry;)</member>
+        <member>Irreducible Productions</member>
+        <member>New York, NY</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.11 de Csound.</para>
+  </refsect1>
+</refentry>
+

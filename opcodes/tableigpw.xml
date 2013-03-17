@@ -1,0 +1,79 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="tableigpw">
+<indexterm id="IndexTableigpw"><primary>tableigpw</primary></indexterm>
+  <refentryinfo><title>Table Control:Read/Write Opreations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tableigpw</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>tableigpw</refname>
+    <refpurpose>
+      Ecrit le point de garde d'une table.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ecrit le point de garde d'une table.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>tableigpw</command> ifn</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn</emphasis> -- Numéro de la table.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>tableigpw</emphasis> -- Pour écrire le point de garde d'une table,
+      avec la valeur de la position 0. Ne fait rien si la table n'existe pas.
+    </para>
+
+    <para>
+      Peut être utile après avoir manipulé une table avec
+      <link linkend="tablemix"><citetitle>tablemix</citetitle></link> ou
+      <link linkend="tablecopy"><citetitle>tablecopy.</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="tablecopy"><citetitle>tablecopy</citetitle></link>,
+      <link linkend="tablegpw"><citetitle>tablegpw</citetitle></link>,
+      <link linkend="tablemix"><citetitle>tablemix</citetitle></link>,
+      <link linkend="tableicopy"><citetitle>tableicopy</citetitle></link>,
+      <link linkend="tableimix"><citetitle>tableimix</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Robin Whittle</member>
+        <member>Australie</member>
+        <member>Mai 1997</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 3.47</para>
+  </refsect1>
+</refentry>

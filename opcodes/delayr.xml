@@ -1,0 +1,89 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="delayr">
+<indexterm id="IndexDelayr"><primary>delayr</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Delay</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>delayr</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>delayr</refname>
+    <refpurpose>
+      Lit depuis une ligne à retard numérique établie automatiquement.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Lit depuis une ligne à retard numérique établie automatiquement.
+   </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>delayr</command> idlt [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>idlt</emphasis> -- délai demandé en secondes. Il peut être aussi
+      grand que la mémoire disponible le permet. L'espace requis pour n secondes
+      de délai est de 4n * <emphasis>sr</emphasis> octets. Il est alloué lorsque
+      l'instrument est initialisé pour la première fois, et retourne dans le
+      pool à la fin d'une section de partition.
+    </para>
+
+    <para>
+      <emphasis>iskip</emphasis> (facultatif, 0 par défaut) -- disposition
+      initiale de l'espace des données de la boucle de retard (voir
+      <link linkend="reson"><citetitle>reson</citetitle></link>). La valeur
+      par défaut est 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>delayr</emphasis> lit depuis une ligne à retard numérique établie
+      automatiquement, dans laquelle le signal restitué est resté pendant
+      <emphasis>idlt</emphasis> secondes. Cette unité doit être appariée avec une
+      unité <link linkend="delayw"><citetitle>delayw</citetitle></link> qu'elle
+      précède. Il peut y avoir d'autres opcodes de Csound entre les deux.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode delayr. Il utilise le fichier
+      <ulink url="examples/delayr.csd"><citetitle>delayr.csd</citetitle></ulink>.
+      
+      <example>
+        <title>Exemple de l'opcode delayr.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/delayr.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="delay"><citetitle>delay</citetitle></link>,
+      <link linkend="delay1"><citetitle>delay1</citetitle></link>,
+      <link linkend="delayw"><citetitle>delayw</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

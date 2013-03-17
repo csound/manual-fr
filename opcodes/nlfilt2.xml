@@ -1,0 +1,142 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="nlfilt2">
+<indexterm id="IndexNlfilt2"><primary>nlfilt2</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Specialized Filters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>nlfilt2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>nlfilt2</refname>
+    <refpurpose>
+      Un filtre avec effet non-linéaire et protection contre l'explosion.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Implémente le filtre :
+      <literallayout>
+Y{n} =tanh(a Y{n-1} + b Y{n-2} + d Y^2{n-L} + X{n} - C)</literallayout>
+      décrit dans Dobson et Fitch (ICMC'96) et selon les modifications de
+      Risto Holopainen.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>nlfilt2</command> ain, ka, kb, kd, kC, kL</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <orderedlist>
+        <listitem>
+          <para>
+            Effet non-linéaire. L'ensemble de définition des paramètres est :
+            <literallayout>
+  a = b = 0
+  d = 0.8, 0.9, 0.7
+  C = 0.4, 0.5, 0.6
+  L = 20</literallayout>
+            Cela affecte surtout le registre grave mais il y a des effets audibles
+            sur tout le registre. Peut être utile pour colorer des sons de percussion
+            et pour renforcer arbitrairement des notes.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            Passe-bas non-linéaire.L'ensemble de définition des paramètres est :
+            <literallayout>
+  a = 0.4
+  b = 0.2
+  d = 0.7
+  C = 0.11
+  L = 20, ... 200</literallayout>
+            Cette variante présente des problèmes d'instabilité mais l'effet est
+            plus prononcé dans le registre grave, sinon elle ressemble beaucoup à
+            un filtre en peigne. De courtes valeurs de <emphasis>L</emphasis>
+            peuvent renforcer l'attaque du son.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            Passe-haut non-linéaire. L'ensemble de définition des paramètres est :
+            <literallayout>
+  a = 0.35
+  b = -0.3
+  d = 0.95
+  C = 0,2, ... 0.4
+  L = 200</literallayout>
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            Passe-haut non-linéaire. L'ensemble de définition des paramètres est :
+            <literallayout>
+  a = 0.7
+  b = -0.2, ... 0.5
+  d = 0.9
+  C = 0.12, ... 0.24
+  L = 500, 10</literallayout>
+            La version passe-haut est moins sujette aux oscillations. Elle ajoute
+            de la brillance dans le registre medium-aigu. Avec un long délai
+            <emphasis>L</emphasis> cela ressemble un peu à de la réverbération,
+            tandis qu'avec de petites valeurs apparaissent des régions comme des
+            formants. Il y a des changements de couleur arbitraires et des résonances
+            lorsque la hauteur change. Fonctionne bien avec des notes seules.
+          </para>
+        </listitem>
+      </orderedlist>
+    </para>
+
+    <warning>
+      <title>Avertissement</title>
+      <para>
+        Les ensembles des valeurs &quot;utiles&quot; des paramètres n'ont pas
+        encore été explorés.
+      </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode nlfilt2. Il utilise le fichier
+      <ulink url="examples/nlfilt2.csd"><citetitle>nlfilt2.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode nlfilt2.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/nlfilt2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+   
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Université de Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>2012</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.19</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,122 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="reverbsc">
+<indexterm id="IndexReverbsc"><primary>reverbsc</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Reverberation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>reverbsc</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>reverbsc</refname>
+    <refpurpose>
+      Réverbération FDN stéréo à 8 lignes à retard, basée sur un travail de Sean Costello.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Réverbération FDN (Feedback Delay Network) stéréo à 8 lignes à retard, avec
+      matrice de rétroaction, basée sur un modèle physique de jonctions dissipatives
+      de 8 guides d'onde sans perte d'impédance caractéristique égale. Basée sur
+      la version orchestre de Csound de Sean Costello.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aoutL, aoutR <command>reverbsc</command> ainL, ainR, kfblvl, kfco[, israte[, ipitchm[, iskip]]] </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+
+    <para>
+      <emphasis>israte</emphasis> (facultatif, taux d'échantillonnage de l'orchestre
+      par défaut) -- on suppose un taux d'échantillonnage de <emphasis>israte</emphasis>.
+      Il est habituellement fixé à <emphasis>sr</emphasis>, mais un réglage différent
+      peut être utile pour des effets spéciaux.
+
+     </para>
+
+    <para>
+      <emphasis>ipitchm</emphasis> (facultatif, 1 par défaut) -- amplitude des
+      variations aléatoires ajoutées aux retards, comprise entre 0 et 10. La
+      valeur par défaut est 1, mais elle peut être trop importante et nécessiter
+      une réduction pour les hauteurs tenues telles que les notes de piano.
+    </para>
+
+	<para>
+	  <emphasis>iskip</emphasis> (facultatif, 0 par défaut) -- s'il est différent
+    de zéro, l'initialisation de l'opcode est ignorée, si c'est possible.
+    </para>
+
+
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+
+    <para>
+      <emphasis>aoutL, aoutR</emphasis> -- signaux de sortie pour les canaux
+      gauche et droite.
+    </para>
+
+     <para>
+      <emphasis>ainL, ainR</emphasis> -- canaux d'entrée gauche et droite. Noter
+      que même si l'on n'a un signal d'entrée que sur un des deux canaux, on aura
+      quand même une sortie réverbérée sur deux canaux, ce qui rend cette unité
+      plus adaptée à la réverbération d'une entrée stéréo que l'opcode
+      <link linkend="freeverb">freeverb</link>.
+    </para>
+
+    <para>
+      <emphasis>kfblvl</emphasis> -- niveau de rétroaction, compris entre 0 et 1.
+      0.6 donne un bon son de petit lieu "vivant", 0.8 un petit hall et 0.9 un
+      grand hall. 1 signifie une longueur infinie, tandis que les valeurs
+      supérieures rendront l'opcode instable.
+    </para>
+
+    <para>
+      <emphasis>kfco</emphasis> -- fréquence de coupure des filtres passe-bas
+      du premier ordre dans la boucle de rétroaction des lignes à retard, en Hz.
+      Doit être comprise entre 0 et <emphasis>israte</emphasis>/2 (pas
+      <emphasis>sr</emphasis>/2). Moins la valeur est importante et plus la
+      décroissance des hautes fréquences est rapide.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode reverbsc. Il utilise le fichier
+      <ulink url="examples/reverbsc.csd"><citetitle>reverbsc.csd</citetitle></ulink>.
+      <example>
+        <title>Un exemple de l'opcode reverbsc.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/reverbsc.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Istvan Varga</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

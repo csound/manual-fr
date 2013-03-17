@@ -1,0 +1,95 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="tableng">
+<indexterm id="IndexTableng"><primary>tableng</primary></indexterm>
+  <refentryinfo><title>Table Control:Table Queries</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tableng</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>tableng</refname>
+    <refpurpose>
+      Interroge une table de fonction sur sa longueur.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Interroge une table de fonction sur sa longueur.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ires <command>tableng</command> ifn</synopsis>
+
+    <synopsis>kres <command>tableng</command> kfn</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn</emphasis> -- Numéro de la table à interroger.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kfn</emphasis> -- Numéro de la table à interroger.
+    </para>
+
+    <para>
+      <emphasis>tableng</emphasis> retourne la longueur de la table spécifiée.
+      Ce sera une puissance de deux dans la plupart des cas. N'indique pas si
+      une table a ou non un point de garde. Il semble que cette information
+      ne soit pas disponible dans la structure de données de la table. Si la
+      table spécifiée n'est pas trouvée, retourne 0.
+    </para>
+
+    <para>
+      Peut-être utile pour configurer le code d'opérations de manipulation de
+      table, comme
+      <link linkend="tablemix"><citetitle>tablemix</citetitle></link> et
+      <link linkend="tablecopy"><citetitle>tablecopy</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode tableng. Il utilise le fichier
+      <ulink url="examples/tableng.csd"><citetitle>tableng.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode tableng.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/tableng.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Sa sortie contiendra une ligne comme celle-ci :
+      <screen>
+instr 1:  isize = 115506.000</screen>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Robin Whittle</member>
+        <member>Australie</member>
+        <member>Mai 1997</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

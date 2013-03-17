@@ -1,0 +1,248 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.6
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<chapter id="RecentDevelopments">
+
+  <title>Développements récents</title>
+
+  <para>Depuis l'époque à laquelle Barry Vercoe écrivit la Préface originale de
+    ce manuel, imprimée ci-dessus, de nombreuses nouvelles contributions ont été
+    apportées à Csound. CsoundAC est une version étendue de Csound5.</para>
+
+  <section id="newFeaturesInCsound5">
+
+  <title>Caractéristiques de Csound 5</title>
+
+  <para>Csound 5 débute une nouvelle version majeure de Csound qui inclut les
+    nouvelles caractéristiques suivantes :</para>
+
+  <itemizedlist>
+
+    <listitem>
+      <simpara>Autorisé maintenant sous la GNU Lesser General Public License,
+        une licence de code source libre (open source).</simpara>
+    </listitem>
+
+    <listitem>
+      <simpara>Un nouveau système de construction, plus facile à mettre en &oelig;uvre,
+        utilisant <application>SCons</application>.</simpara>
+    </listitem>
+
+    <listitem>
+      <simpara>L'utilisation de bibliothèques de code source libre largement acceptées :</simpara>
+
+      <itemizedlist>
+
+        <listitem><simpara>libsndfile pour les entrées et les sorties dans
+        les fichiers son.</simpara></listitem>
+
+        <listitem><simpara>PortAudio avec les pilotes ASIO pour les entrées et les sorties
+        en  à faible latence.</simpara></listitem>
+
+        <listitem><simpara>FLTK pour les contrôles graphiques que l'on peut programmer
+        dans le code de l'orchestre.</simpara></listitem>
+
+        <listitem><simpara>PortMidi pour les entrées et les sorties MIDI
+        en .</simpara></listitem>
+
+      </itemizedlist>
+
+      <simpara>De plus, Istvan Varga a écrit des pilotes natifs MIDI et audio
+      pour Windows et Linux.</simpara>
+
+    </listitem>
+
+    <listitem><simpara>Un système simplifié de tampons audio.</simpara></listitem>
+
+    <listitem><simpara>Des valeurs d'état retournées par toutes les fonctions internes,
+    y compris les fonctions des opérateurs.</simpara></listitem>
+
+    <listitem><simpara>Des opérateurs MIDI interopérables, ce qui permet d'utiliser
+      les mêmes définitions d'instrument de façon interchangeable pour une exécution
+      MIDI live ou une exécution différée commandée par une partition.</simpara></listitem>
+
+    <listitem><simpara>Les opérateurs en greffon (module externe) sont opérationnels
+      et sont acceptés plus largement. De nombreux opérateurs ont été déplacés dans des
+      greffons. La plupart des nouveaux opérateurs sont des greffons, notamment :</simpara>
+
+      <itemizedlist>
+
+        <listitem><simpara>Les opérateurs SoundFont basés sur FluidSynth.</simpara></listitem>
+
+        <listitem><simpara>Les opérateurs Python qui permettent d'exécuter du code Python dans
+          l'en-tête d'un orchestre ou dans le code d'un instrument à cadence-<literal>i</literal>
+          ou à cadence-<literal>k</literal>.</simpara></listitem>
+
+        <listitem><simpara>Les opérateurs Loris pour l'analyse temps/fréquence et
+          la resynthèse.</simpara></listitem>
+
+        <listitem><simpara>Les opérateurs du bus de contrôle.</simpara></listitem>
+
+        <listitem><simpara>Les opérateur de mélangeur audio.</simpara></listitem>
+
+        <listitem><simpara>Les opérateurs de conversion de chaîne de caractères.</simpara></listitem>
+
+        <listitem><simpara>Les opérateurs Open Sound Control (OSC) améliorés.</simpara></listitem>
+
+        <listitem><simpara>Les opérateurs vectoriels.</simpara></listitem>
+
+        <listitem><simpara>Les opérateurs <application>pvs</application> pour le traitement
+          fréquentiel du signal en , un portage du code du vocodeur de phase
+          de Mark Dolson.</simpara></listitem>
+
+        <listitem><simpara>Les opérateurs <application>ATS</application> pour l'analyse spectrale,
+          la transformation, et la synthèse du son basée sur un modèle sinusoïdal avec bruit de bande
+          critique. Un son dans ATS est un objet symbolique représentant un modèle spectral
+          qu'on peut sculpter au moyen de diverses fonctions de transformation. Ces opérateurs
+          peuvent lire, transformer et resynthétiser des fichiers d'analyse ATS. Il faut noter
+          que l'application ATS est nécessaire pour produire les fichiers d'analyse.</simpara></listitem>
+
+        <listitem><simpara>Les opérateurs STK, constitués par les instruments du Synthesis Toolkit
+          original de Perry Cook en C++, adaptés en opérateurs.</simpara></listitem>
+
+        <listitem><simpara>Les opérateurs d'adaptation <application>DSSI</application> et
+          <application>LADSPA</application> pour accueillir des modules externes
+          <application>DSSI</application> et <application>LADSPA</application>
+          dans Csound.</simpara></listitem>
+
+        <listitem><simpara>Les opérateurs d'adaptation <application>vst4cs</application>VST
+          pour accueillir des modules externes VST dans Csound. (Distribués seulement sous la
+          forme de sources à cause des restrictions de la licence du SDK de VST.)</simpara></listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem><simpara>Le fichier d'en-tête <filename>OpcodeBase.hpp</filename> pour
+      écrire des modules externes en C++. C'est basé sur la technique du
+      polymorphisme statique via l'héritage de template.</simpara></listitem>
+
+    <listitem><simpara>le frontal csound5gui d'Istvan Varga  pour Csound, qui simplifie 
+      l'édition de Csound et son utilisation spécialement pour les exécutions en direct, 
+      et le suivi de contrôle des exécutions.</simpara></listitem>
+
+    <listitem><simpara>Les frontaux en Tcl/Tk de Victor Lazzarini pour Csound,
+      <application>cstclsh</application> et <application>cswish</application>.</simpara></listitem>
+
+    <listitem><simpara>L'API de Csound devient plus normalisée et est plus largement utilisée.
+      Il existe des interfaces encapsulant l'API dans les langages suivants :</simpara>
+
+      <itemizedlist>
+
+        <listitem><simpara>C (include <literal>csound.h</literal>).</simpara></listitem>
+
+        <listitem><simpara>C++ (include <literal>csound.hpp)</literal>). Cette API contient
+          les fonctions conteneur des fichiers de partition et d'orchestre
+          de Csound.</simpara></listitem>
+
+        <listitem><simpara>Python (<literal>import csnd</literal>).</simpara></listitem>
+
+        <listitem><simpara>Java (<literal>import csnd.*;</literal>).</simpara></listitem>
+
+        <listitem><simpara>Lua (<literal>require "csnd";</literal>).</simpara></listitem>
+
+        <listitem><simpara>Lisp (utiliser le fichier CFFI <literal>csound5.lisp</literal>).
+        </simpara></listitem>
+
+      </itemizedlist>
+    </listitem>
+
+    <listitem><simpara>Csound est maintenant totalement ré-entrant, ce qui veut dire que l'on peut
+      exécuter plusieurs instances de Csound en même temps, dans le même processus.
+      </simpara></listitem>
+
+  </itemizedlist>
+
+  <para>John ffitch projette de remplacer l'analyseur syntaxique écrit à la main par un
+    analyseur syntaxique produit à l'aide d'un générateur d'analyseur syntaxique, ce qui
+    le rendrait moins sensible aux bogues et sans doute plus efficace.</para>
+
+    </section>
+
+  <section id="featuresOfCsoundAC">
+
+  <title>Caractéristiques de CsoundAC</title>
+
+  <para>CsoundAC est un module d'extension Python pour écrire de la musique en
+    programmant en Python. CsoundAC est basé sur le concept de graphes de musique par
+    Michael Gogins, dans lequel une partition est représentée par un arbre hiérarchisé
+    de n&oelig;uds, qui peuvent contenir des notes, des générateurs de partition, des
+    transformations de partition, et d'autres n&oelig;uds.</para>
+    
+  <para>CsoundAC fournit aussi une interface Python vers l'API de Csound. Grâce à
+    celle-ci, il est très facile d'utiliser Csound pour exécuter les compositions en
+    CsoundAC. Avec les triples guillemets de Python, il est même possible d'inclure le
+    code de l'orchestre de Csound pour une pièce directement dans le code Python de
+    cette pièce, si bien que toute la programmation pour une pièce peut être maintenue
+    dans un seul fichier.</para>
+  
+  <para>Le système de coordonnées dans CsoundAC est basé sur un espace musical
+    euclidien ayant pour dimensions {temps, durée, type d'évènement, numéro d'instrument,
+    hauteur comme numéro de touche MIDI, intensité comme vélocité MIDI, phase, coordonnée
+    spatiale X, coordonnée spatiale Y, coordonnée spatiale Z, ensemble de classes de hauteur, 1}.
+    Un point dans cet espace musical peut être une note, une inflection de note, ou même
+    un grain sonore.</para>
+  
+  <para>Un graphe de musique est un graphe orienté acyclique, ou un arbre, de n&oelig;uds
+    dans l'espace musical. Ces n&oelig;uds sont associés avec des transformations locales
+    du système de coordonnées. Il y a des n&oelig;uds pour contenir des partitions ou des
+    fragments de partition, pour générer des partitions et pour transformer des
+    partitions. De plus, chaque n&oelig;ud peut contenir des n&oelig;uds enfants qui
+    héritent du système de coordonnées du n&oelig;ud parent.</para>
+  
+  <para>Il est ainsi possible de composer une partition musicale en incluant ou en
+    générant des notes dans les n&oelig;uds de niveau inférieur, puis en les assemblant
+    dans une partition en utilisant des n&oelig;uds de niveau supérieur, et
+    finalement en exécutant la partition avec Csound. Le procédé est strictement
+    analogue à la construction d'une scène en 3 dimensions en synthèse graphique
+    lorsque l'on génère des objets primitifs tels que sphères, cônes et cubes, puis
+    qu'on les déplace dans l'espace pour assembler la scène.</para>
+  
+  <para>Les classes de n&oelig;ud dans CsoundAC sont :</para>
+  
+  <itemizedlist>
+    
+    <listitem><simpara>ScoreNode : contient simplement une séquence de notes ou d'autres
+      points dans l'espace musical, peut-être importés d'un fichier MIDI.</simpara></listitem>
+    
+    <listitem><simpara>Rescale : met à l'échelle des points enfants pour les recadrer
+      dans un intervalle donné de temps, durée, hauteur, et/ou d'autres dimensions.</simpara></listitem>
+    
+    <listitem><simpara>Cell : répète des points enfants en séquence à intervalles réguliers ;
+      l'intervalle peut avoir une durée plus courte ou plus longue que celle des points
+      enfants.</simpara></listitem>
+    
+    <listitem><simpara>Hocket : hoquet produit par des n&oelig;uds enfants.</simpara></listitem>
+    
+    <listitem><simpara>Lindenmayer : génère des partitions au moyen de systèmes de
+      Lindenmayer O-L.</simpara></listitem>
+    
+    <listitem><simpara>StrangeAttractor : génère des partitions à partir de divers
+      systèmes dynamiques chaotiques ajustables.</simpara></listitem>
+    
+    <listitem><simpara>MCRM : génère des partitions au moyen de l'algorithme de
+    machine de copies multiples par réduction.</simpara></listitem>
+    
+    <listitem><simpara>ImageToScore : génère des partitions en transposant des fichiers
+      image en points dans l'espace musical.</simpara></listitem>
+    
+    <listitem><simpara>Random : disperse des points enfants au hasard sur une ou plusieurs
+      dimensions de l'espace musical, en utilisant diverses variables aléatoires.</simpara></listitem>
+    
+    <listitem><simpara>VoiceleadingNode : génère des progressions d'accords et des
+      voix conductrices pour des notes enfants, au moyen d'opérations basées sur la
+      théorie mathématique de la musique de Dmitri Tymoczko.</simpara></listitem>
+    
+  </itemizedlist>
+  
+  <para>Enfin, le processus de composition peut inclure la dérivation d'une nouvelle classe
+    Node en Python à partir d'un Node existant, afin de créer de nouveaux générateurs de
+    partition et des transformations.</para>
+  
+  </section>
+  
+</chapter>

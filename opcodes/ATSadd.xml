@@ -1,0 +1,170 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ATSadd">
+<indexterm id="IndexATSadd"><primary>ATSadd</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:ATS</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ATSadd</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ATSadd</refname>
+    <refpurpose>
+      utilise les données d'un fichier d'analyse ATS pour réaliser une synthèse
+      additive.
+    </refpurpose>
+  </refnamediv>
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>ATSadd</emphasis> lit depuis un fichier d'analyse ATS et utilise
+      les données pour réaliser une synthèse additive à partir d'une batterie
+      interne d'oscillateurs avec interpolation.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ar <command>ATSadd</command> ktimepnt, kfmod, iatsfile, ifn, ipartials[, ipartialoffset, \
+      ipartialincr, igatefn]</synopsis>
+  </refsect1>
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iatsfile</emphasis> – le numéro ATS (n dans ats.n) ou le nom
+      entre guillemets du fichier d'analyse créé avec
+      <ulink url="http://www-ccrma.stanford.edu/~juan/ATS.html"><citetitle>ATS</citetitle></ulink>.
+    </para>
+    <para>
+      <emphasis>ifn</emphasis> – numéro de table d'une fonction stockée
+      contenant une onde sinus pour <emphasis>ATSadd</emphasis> et une onde
+      cosinus pour
+      <link linkend="ATSaddnz"><citetitle>ATSaddnz</citetitle></link> (voir
+      les exemples ci-dessous pour plus d'information).
+    </para>
+    <para>
+      <emphasis>ipartials</emphasis> – nombre de partiels qui seront utilisés
+      dans la resynthèse (le bruit a un maximum de 25 bandes).
+    </para>
+    <para>
+      <emphasis>ipartialoffset</emphasis> (facultatif) – le premier
+      partiel utilisé (0 par défaut).
+    </para>
+    <para>
+      <emphasis>ipartialincr</emphasis> (facultatif) – fixe le pas
+      d'incrémentation que ces opcodes de synthèse utilisent pour compter les
+      composants bins à partir de <emphasis>ipartialoffset</emphasis> dans la
+      resynthèse (1 par défaut).
+    </para>
+    <para>
+      <emphasis>igatefn</emphasis> (facultatif) – numéro d'une fonction
+      stockée qui sera appliquée aux amplitudes des bins de l'analyse avant
+      la resynthèse. Si <emphasis>igatefn</emphasis> est supérieur à 0 les
+      amplitudes de chaque bin seront pondérées par <emphasis>igatefn</emphasis>
+      selon un simple procédé de mise en correspondance. D'abord les amplitudes
+      de tous les bins de toutes les trames du fichier d'analyse sont comparées
+      pour déterminer la valeur maximale de l'amplitude. Cette valeur est
+      ensuite utilisée pour créer des amplitudes normalisées comme indices
+      dans la fonction stockée <emphasis>igatefn</emphasis>. L'amplitude
+      maximale correspondra au dernier point de la fonction. Une amplitude de
+      0 correspondra au premier point de la fonction. Les valeurs comprises
+      entre 0 et 1 correspondront aux points à l'intérieur de la table de
+      fonction. Voir les exemples ci-dessous.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ktimepnt</emphasis> – Le pointeur de temps en secondes utilisé
+      comme indice sur le fichier ATS. Est utilisé pour
+      <emphasis>ATSadd</emphasis> exactement de la même manière que pour
+      <link linkend="pvoc"><citetitle>pvoc</citetitle></link>.
+    </para>
+    <para>
+      <emphasis>ATSadd</emphasis> et
+      <link linkend="ATSaddnz"><citetitle>ATSaddnz</citetitle></link> sont basés
+      sur <link linkend="pvadd"><citetitle>pvadd</citetitle></link> par
+      Richard Karpen et ils utilisent des fichier créés par ATS de Juan Pampin
+      (<ulink url="http://www-ccrma.stanford.edu/~juan/ATS.html"><citetitle>Analyse
+      - Transformation - Synthèse</citetitle></ulink>).
+    </para>
+    <para>
+      <emphasis>kfmod</emphasis> – Un facteur de transposition du taux de contrôle :
+      la valeur 1 implique pas de transposition, 1.5 transpose vers l'aigu d'une
+      quinte juste et 0.5 vers le grave d'une octave. Est utilisé pour
+      <emphasis>ATSadd</emphasis> exactement de la même manière que pour
+      <link linkend="pvoc"><citetitle>pvoc</citetitle></link>.
+    </para>
+    <para>
+      <emphasis>ATSadd</emphasis> lit depuis un fichier d'analyse ATS et utilise
+      les données pour réaliser une synthèse additive à partir d'une batterie
+      interne d'oscillateurs avec interpolation. L'utilisateur fournit la
+      table d'onde (habituellement une période d'onde sinusoïdale) et il peut
+      choisir quels partiels de l'analyse seront utilisés dans la resynthèse.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Exemples</title>
+    <programlisting>  ktime <emphasis role="opc">line</emphasis>   0, p3, 2.5
+  asig  <emphasis role="opc">ATSadd</emphasis> ktime, 1, "clarinet.ats", 1, 20, 2</programlisting>
+    <para>
+      Dans l'exemple ci-dessus, <emphasis>ipartials</emphasis> vaut 20 et
+      <emphasis>ipartialoffset</emphasis> vaut 2. Les partiels du fichier
+      d'analyse "clarinet.ats" allant du 3ème au 22ème seront synthétisés.
+      <emphasis>kfmod</emphasis> vaut 1 et il n'y aura ainsi pas de modification
+      de la hauteur. Comme l'enveloppe <emphasis>ktimepnt</emphasis> évolue de
+      0 à 2.5 pendant la durée de la note, le fichier d'analyse sera lu de 0
+      à 2.5 secondes de la durée originale de l'analyse pendant la durée de
+      la note csound, ce qui permet de changer la durée indépendamment de la
+      hauteur.
+    </para>
+    </refsect1>
+    
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un autre exemple de l'opcode ATSadd. Il utilise le fichier
+      <ulink url="examples/ATSadd.csd"><citetitle>ATSadd.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode ATSadd.</title>
+          <xi:include href="examples-xml/ATSadd.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Dans l'exemple ci-dessus nous synthétisons 20 partiels comme dans l'exemple
+      1 sauf que cette fois-ci nous fixons <emphasis>ipartialoffset</emphasis>
+      à 0 et <emphasis>ipartialincr</emphasis> à 2, ce qui veut dire que nous
+      commençons avec le premier partiel et que nous synthétisons au total 20
+      partiels, ignorant tous les partiels impairs (1, 3, 5, ...).
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Voir aussi</title>
+    <para><link linkend="ATSread"><citetitle>ATSread</citetitle></link>, 
+      <link linkend="ATSreadnz"><citetitle>ATSreadnz</citetitle></link>, 
+      <link linkend="ATSinfo"><citetitle>ATSinfo</citetitle></link>, 
+      <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>, 
+      <link linkend="ATScross"><citetitle>ATScross</citetitle></link>, 
+      <link linkend="ATSinterpread"><citetitle>ATSinterpread</citetitle></link>, 
+      <link linkend="ATSpartialtap"><citetitle>ATSpartialtap</citetitle></link>, 
+      <link linkend="ATSaddnz"><citetitle>ATSaddnz</citetitle></link>, 
+      <link linkend="ATSsinnoi"><citetitle>ATSsinnoi</citetitle></link></para>
+  </refsect1>
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Alex Norman</member>
+        <member>Seattle,Washington</member>
+        <member>2004</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

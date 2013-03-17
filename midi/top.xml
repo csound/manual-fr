@@ -1,0 +1,113 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<chapter id="MidiTop">
+  <title>Support MIDI en temps réel</title>
+  <para>
+    Csound supporte les entrées et les sorties MIDI en temps réel, ainsi que les entrées depuis les fichiers
+    MIDI. L'entrée MIDI en temps réel est activée au moyen de l'option de ligne de commande
+    <link linkend="FlagsCatMinusUpperM"><citetitle>-M</citetitle></link>
+    (ou <emphasis>--midi-device</emphasis>=PERIPHERIQUE). Vous devez spécifier le numéro ou le nom de
+    périphérique après le <emphasis>-M</emphasis>. Par exemple, pour utiliser le périphérique numéro 2,
+    vous utiliserez quelque chose comme :
+  </para>
+  <literallayout>csound -M2 monmiditr.csd</literallayout>
+  <para>
+    Vous pouvez trouver les périphériques disponibles en utilisant un numéro trop grand :
+  </para>
+  <literallayout>csound -M99 monmiditr.csd</literallayout>
+  <note>
+    <para>
+      Ceci ne fonctionnera que si le module MIDI peut être atteint par numéro de périphérique. Pour alsa,
+      il faut d'abord trouver le nom du périphérique en utilisant :
+    </para>
+    <literallayout>cat /proc/asound/cards</literallayout>
+    <para>
+      Il faut alors taper quelque chose comme :
+    </para>
+    <literallayout>csound -+rtmidi=alsa -M hw:3 monmiditr.csd</literallayout>
+  </note>
+  <para>
+    La sortie MIDI en temps réel est activée au moyen de
+    <link linkend="FlagsCatMinusUpperQ"><citetitle>-Q</citetitle></link>, avec un numéro ou un nom de
+    périphérique comme c'est montré ci-dessus.
+  </para>
+  <para>
+    Vous pouvez aussi charger un fichier MIDI en utilisant l'option de ligne de commande
+    <link linkend="FlagsCatMinusUpperF"><citetitle>-F</citetitle></link> ou
+    <emphasis>--midifile</emphasis>=FICHIER. Le fichier MIDI est lu en temps réel, et se comporte comme
+    s'il était joué ou reçu en temps réel. Ainsi le programme csound ne sait pas si l'entrée MIDI vient
+    d'un fichier MIDI ou directement d'une interface MIDI.
+  </para>
+  <para>
+    Une fois l'entrée et/ou la sortie MIDI activée(s), les opcodes comme
+    <link linkend="MidiInput"><citetitle>MIDI Input</citetitle></link> et
+    <link linkend="MidiOutput"><citetitle>MIDI Output</citetitle></link> seront effectifs.
+  </para>  <para>
+    Quand l'entrée MIDI est activée (avec -M ou -F), chaque message de <emphasis>noteon</emphasis> entrant
+    génèrera un évènement de note pour un instrument qui a le même numéro que le canal de l'évènement
+    (cela signifie que les instruments contrôlés par le MIDI sont polyphoniques
+    par défaut, car chaque note génèrera une nouvelle instance de l'instrument).
+    Si l'on a qu'un seul instrument, Csound travaille en mode omni, c'est-à-dire qu'il
+    répond à tous les canaux au sein de cet instrument unique. Si l'on a plusieurs
+    instruments numérotés de 1 à 16, alors par défaut instr 1 -> canal 1, instr 2
+    -> canal 2, à moins que l'on change la répartition (voir <link linkend="massign"><citetitle>massign</citetitle></link> et
+    <link linkend="pgmassign"><citetitle>pgmassign</citetitle></link> pour changer
+    ce comportement). Si l'on a plusieurs instruments, mais que instr N manque
+    entre 1 et 16, canal N sera dirigé par défaut sur l'instrument ayant le numéro
+    le plus bas.
+  </para>
+  <para>
+    Voir les opcodes pour
+    l'<link linkend="MidiInterop"><citetitle>Interopérabilité MIDI/Partition</citetitle></link> pour savoir
+    comment concevoir des instruments utilisables depuis une partition ou pilotés par le MIDI.
+  </para>
+  <para>
+    Plusieurs modules MIDI en temps réel sont disponibles, et il faut utiliser l'option
+    <emphasis>-+rtmidi</emphasis> (voir
+    <link linkend="FlagsCatMinusPlusRtmidi"><citetitle>-+rtmidi</citetitle></link>), pour spécifier le
+    module. Le module par défaut est portmidi qui fournit des E/S MIDI adéquates sur toutes les plates-formes,
+    cependant, pour des performances améliorées et plus fiables, des modules spécifiques à certaines
+    plates-formes sont également fournis.
+  </para>
+  <para>
+    Actuellement les modules midi disponibles sont :
+  </para>
+  <itemizedlist>
+    <listitem><para><emphasis>alsa</emphasis> - Pour utiliser le système midi ALSA (seulement sur
+      Linux)</para></listitem>
+    <listitem><para><emphasis>winmme</emphasis> - Pour utiliser le système windows MME (seulement sur
+      Windows)</para></listitem>
+    <listitem><para><emphasis>portmidi</emphasis> - Pour utiliser le système portmidi (sur toutes les
+      plates-formes). C'est le réglage par défaut.</para></listitem>
+    <listitem><para><emphasis>virtual</emphasis> - Pour utiliser un clavier virtuel graphique (voir ci-dessous)
+      comme entrée MIDI (sur toutes les plates-formes)</para></listitem>
+  </itemizedlist>
+
+  <tip>
+    <para>Lors de son exécution, Csound traite la partition puis se termine. S'il n'y a pas
+      d'évènements dans la partition, Csound se termine immédiatement. Si l'on désire n'utiliser
+      que des évèments MIDI au lieu des évènements de partition, il faut demander à Csound
+      de s'exécuter pendant un certain temps au moyen d'une
+      <link linkend="f"><citetitle>instruction f</citetitle></link> comme "f 0 3600".
+    </para>
+  </tip>
+
+  &midivirtual;
+  &midiinput;
+  &midioutput;
+  &midigeneric;
+  &midiconvert;
+  &midiextender;
+  &midionoff;
+  &midiinterop;
+  &midirealtime;
+  &midisliderbk;
+
+</chapter>

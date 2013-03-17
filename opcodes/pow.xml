@@ -1,0 +1,107 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pow">
+<indexterm id="IndexPow"><primary>pow</primary></indexterm>
+  <refentryinfo><title>Mathematical Operations:Opcode Equivalents of Functions</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pow</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pow</refname>
+    <refpurpose>
+      Calcule l'élévation à la puissance d'un argument par l'autre argument.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Calcule <emphasis>xarg</emphasis> élevé à la puissance <emphasis>kpow</emphasis> (ou
+      <emphasis>ipow</emphasis>) et pondère le résultat par <emphasis>inorm</emphasis>.
+    </para>
+
+    <para>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>pow</command> aarg, kpow [, inorm]</synopsis>
+
+    <synopsis>ires <command>pow</command> iarg, ipow [, inorm]</synopsis>
+
+    <synopsis>kres <command>pow</command> karg, kpow [, inorm]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>inorm</emphasis> (facultatif, par défault=1) -- Le nombre qui divisera le résultat
+      (1 par défaut). Particulèrement utile si l'on calcule des puissances de signaux de taux -a ou
+      de taux -k, ce qui produit très souvent des échantillons hors intervalle.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>aarg</emphasis>, <emphasis>iarg</emphasis>, <emphasis>karg</emphasis> -- la base.
+    </para>
+
+    <para>
+      <emphasis>ipow</emphasis>, <emphasis>kpow</emphasis> -- l'exposant.
+    </para>
+
+    <note>
+      <para>
+        Utiliser <emphasis>&circ;</emphasis> avec précaution dans les instructions arithmétiques,
+        car les régles de précédence peuvent ne pas être correctes. Nouveau dans la version 3.493
+        de Csound.
+      </para>
+    </note>
+  </refsect1>
+ 
+ <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode pow. Il utilise le fichier
+      <ulink url="examples/pow.csd"><citetitle>pow.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode pow.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pow.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
+ i1     0.50000
+ i1     0.50007
+ i1     0.50014
+.......
+ i1    14.45986
+ i1    14.46130\r</screen>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameparis;</member>
+        <member>MIT, Cambridge</member>
+        <member>1995</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

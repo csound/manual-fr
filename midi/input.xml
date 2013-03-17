@@ -1,0 +1,53 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="MidiInput">
+  <title>Entrée MIDI</title>
+
+  <para>
+    Les opcodes suivants peuvent recevoir des informations MIDI :
+    <itemizedlist>
+      <listitem><para>Information MIDI pour tous les instruments :
+        <link linkend="aftouch"><citetitle>aftouch</citetitle></link>,
+        <link linkend="chanctrl"><citetitle>chanctrl</citetitle></link> et
+        <link linkend="polyaft"><citetitle>polyaft</citetitle></link>,
+        <link linkend="pchbend"><citetitle>pchbend</citetitle></link>.</para>
+      </listitem>
+      <listitem><para>Information MIDI pour les instruments déclenchés par le MIDI :
+        <link linkend="veloc"><citetitle>veloc</citetitle></link>,
+        <link linkend="midictrl"><citetitle>midictrl</citetitle></link> et
+        <link linkend="notnum"><citetitle>notnum</citetitle></link>. Voir aussi
+        <link linkend="MidiConvert"><citetitle>Converters</citetitle></link>.</para>
+      </listitem>
+      <listitem><para>Entrée de Contrôleur MIDI pour tous les instruments :
+        <link linkend="ctrl7"><citetitle>ctrl7</citetitle></link>,
+        <link linkend="ctrl14"><citetitle>ctrl14</citetitle></link> et
+        <link linkend="ctrl21"><citetitle>ctrl21</citetitle></link>.</para>
+      </listitem>
+      <listitem><para>Entrée de Contrôleur MIDI seulement pour les instruments déclenchés par le MIDI :
+        <link linkend="midic7"><citetitle>midic7</citetitle></link>,
+        <link linkend="midic14"><citetitle>midic14</citetitle></link> et
+        <link linkend="midic21"><citetitle>midic21</citetitle></link>.</para>
+      </listitem>
+      <listitem><para>Valeur d'initialisation de contrôleur MIDI :
+      <link linkend="initc7"><citetitle>initc7</citetitle></link>,
+      <link linkend="initc14"><citetitle>initc14</citetitle></link>,
+      <link linkend="initc21"><citetitle>initc21</citetitle></link> et
+      <link linkend="ctrlinit"><citetitle>ctrlinit</citetitle></link>.</para>
+      </listitem>
+    </itemizedlist>
+  </para>
+  <para>
+    <link linkend="massign"><citetitle>massign</citetitle></link> peut être utilisé pour spécifier
+    l'instrument csound à déclencher par un canal MIDI particulier.
+    <link linkend="pgmassign"><citetitle>pgmassign</citetitle></link> peut être utilisé pour assigner un
+    instrument csound à un programme MIDI spécifique.
+  </para>
+
+</section>

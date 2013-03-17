@@ -1,0 +1,128 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="tablei">
+<indexterm id="IndexTablei"><primary>tablei</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Table Access</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tablei</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>tablei</refname>
+    <refpurpose>
+      Accède aux valeurs d'une table par indexation directe avec interpolation
+      linéaire.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Accède aux valeurs d'une table par indexation directe avec interpolation
+      linéaire.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>tablei</command> andx, ifn [, ixmode] [, ixoff] [, iwrap]</synopsis>
+
+    <synopsis>ires <command>tablei</command> indx, ifn [, ixmode] [, ixoff] [, iwrap]</synopsis>
+
+    <synopsis>kres <command>tablei</command> kndx, ifn [, ixmode] [, ixoff] [, iwrap]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn</emphasis> -- numéro de la table de fonction. <emphasis>tablei</emphasis>
+      nécessite un point de garde.
+    </para>
+
+    <para>
+      <emphasis>ixmode</emphasis> (facultatif) -- type de l'index. La valeur par
+      défaut est 0.
+      <itemizedlist>
+        <listitem><para>0 = index brut</para></listitem>
+        <listitem><para>1 = normalisé (de 0 à 1)</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>ixoff</emphasis> (facultatif) -- décalage de l'index. Pour une table
+      dont l'origine est au centre, utiliser <emphasis>taille_table/2</emphasis> (brut)
+      ou 0.5 (normalisé). La valeur par défaut est 0.
+    </para>
+
+    <para>
+      <emphasis>iwrap</emphasis> (facultatif) -- indicateur d'indexation cyclique. La
+      valeur par défaut est 0.
+      <itemizedlist>
+        <listitem>
+          <para>0 = indexation normale (index &lt; 0 traité comme index=0 ; index
+          &gt; <emphasis>taille_table</emphasis> ramené à
+          index=<emphasis>taille_table</emphasis>)</para>
+        </listitem>
+
+        <listitem>
+          <para>1 = indexation cyclique.</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>tablei</emphasis> est une unité avec interpolation dans laquelle la
+      partie fractionnaire de l'index est utilisée pour interpoler entre les entrées
+      adjacentes de la table. La régularité apportée par l'interpolation se paie par
+      une légère augmentation du temps d'exécution (voir aussi
+      <link linkend="oscili"><citetitle>oscili</citetitle></link>, etc.), mais sinon
+      les unités avec ou sans interpolation sont interchangeables. Noter que lorsque
+      <emphasis>tablei</emphasis> utilise un index périodique dont la valeur modulo
+      <emphasis>n</emphasis> est inférieure à la puissance de 2, longueur de la table,
+      l'interpolation nécessite qu'il existe une (<emphasis>n</emphasis> + 1)ème
+      valeur dans la table qui est une copie de la première valeur (voir
+      l'<link linkend="f"><citetitle>instruction f</citetitle></link> de la
+      partition).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode tablei. Il utilise le fichier
+      <ulink url="examples/tablei.csd"><citetitle>tablei.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode tablei.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/tablei.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="table"><citetitle>table</citetitle></link>,
+      <link linkend="table3"><citetitle>table3</citetitle></link>,
+      <link linkend="oscil1"><citetitle>oscil1</citetitle></link>,
+      <link linkend="oscil1i"><citetitle>oscil1i</citetitle></link>,
+      <link linkend="osciln"><citetitle>osciln</citetitle></link>
+    </para>
+    <para>Plus d'information sur cet opcode :
+    <ulink url="http://www.csounds.com/journal/issue12/genInstruments.html">
+    <citetitle>http://www.csounds.com/journal/issue12/genInstruments.html</citetitle>
+    </ulink>, écrit par Jacob Joaquin.</para>
+  </refsect1>
+</refentry>

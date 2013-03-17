@@ -1,0 +1,94 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="tabrec">
+<indexterm id="IndexTabRec"><primary>tabrec</primary></indexterm>
+  <refentryinfo><title>Table Control:Read/Write Opreations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tabrec</refentrytitle>
+  </refmeta>
+
+   <refnamediv>
+    <refname>tabrec</refname>
+    <refpurpose>
+      Enregistrement de signaux de contrôle.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Enregistre des signaux au taux de contrôle sur la base d'une temporisation
+      à déclenchement.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>tabrec</command>   ktrig_start, ktrig_stop, knumtics, kfn, kin1 [,kin2,...,kinN]</synopsis>
+  </refsect1>
+
+  <!--<refsect1>
+    <title>Initialisation</title>
+  </refsect1>-->
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ktrig_start</emphasis> -- commence à enregistrer s'il est différent
+      de zéro.
+    </para>
+    <para>
+      <emphasis>ktrig_stop</emphasis> -- stoppe l'enregistrement lorsque
+      <emphasis>knumtics</emphasis> impulsions de déclenchement ont été reçues
+      par cet argument d'entrée.
+    </para>
+    <para>
+      <emphasis>knumtics</emphasis> -- stoppe l'enregistrement ou réinitialise à
+      zéro le pointeur de lecture si le nombre de tics défini par cet arguement
+      est atteint.
+    </para>
+    <para>
+      <emphasis>kfn</emphasis> -- table dans laquelle les signaux de taux-k sont
+      enregistrés.
+    </para>
+    <para>
+      <emphasis>kin1,...,kinN</emphasis> -- signaux d'entrée à enregistrer.
+    </para>
+    <para>
+      Les opcodes <emphasis>tabrec</emphasis> et
+      <link linkend="tabplay"><citetitle>tabplay</citetitle></link> permettent
+      d'enregistrer/restituer des signaux de contrôle sur la base d'une
+      temporisation à déclenchement.
+    </para>
+    <para>
+      L'opcode <emphasis>tabrec</emphasis> enregistre un groupe de signaux de
+      taux-k en les mémorisant dans la table <emphasis>kfn</emphasis>. Chaque
+      fois que <emphasis>ktrig_start</emphasis> est activé, <emphasis>tabrec</emphasis>
+      remet à zéro le pointeur de la table et commence à enregistrer. La phase
+      d'enregistrement s'arrête après que <emphasis>knumtics</emphasis> impulsions
+      de déclenchement aient été reçues par l'argument <emphasis>ktrig_stop</emphasis>.
+    </para>
+    <para>
+     Ces opcodes peuvent être utilisés comme une sorte de mémoire à
+     &quot;moyen-terme&quot; qui se &quot;souvient&quot; des signaux générés.
+     Une telle mémoire peut être utilisée pour fournir à de la musique générative
+     une structure de composition itérative cohérente.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Voir aussi</title>
+    <para><link linkend="tabplay"><citetitle>tabplay</citetitle></link></para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par &namegabriel;.</para>
+  </refsect1>
+</refentry>

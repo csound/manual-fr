@@ -1,0 +1,156 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvspitch">
+<indexterm id="Indexpvspitch"><primary>pvspitch</primary></indexterm>
+
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvspitch</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvspitch</refname>
+    <refpurpose>
+      Suit la hauteur et l'amplitude d'un signal PVS.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Suit la hauteur et l'amplitude d'un signal PVS et les restitue dans des
+      variables de taux-k.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kfr, kamp <command>pvspitch</command> fsig, kthresh</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamp</emphasis> -- amplitude de la fréquence fondamentale
+    </para>
+	   <para>
+      <emphasis>kfr</emphasis> -- fréquence fondamentale
+    </para>
+    <para>
+      <emphasis>fsig</emphasis> -- flot pv en entrée
+    </para>
+   <para>
+      <emphasis>kthresh</emphasis> -- seuil d'analyse (compris entre 0 et 1).
+      Les valeurs élevées éliminent les composantes de faible amplitude de
+      l'analyse.
+    </para>
+
+    <para>
+      L'algorithme de détection de hauteur implémenté dans <emphasis>pvspitch</emphasis>
+      est basé sur l'hypothèse de J. F. Schouten du processus neuronal du cerveau
+      utilisé pour déterminer la hauteur d'un son d'après l'analyse de fréquence
+      de la membrane basilaire. Sauf pour certaines considérations plus loin,
+      <emphasis>pvspitch</emphasis> cherche essentiellement le plus grand facteur
+      commun des crêtes spectrales du son analysé pour trouver la hauteur qui peut
+      lui être attribuée.
+    </para>
+    <para>
+      En général, les sons analysés présentant une caractéristique de hauteur auront
+      des crêtes dans leur spectre suivant la position de leurs harmoniques. Il
+      y a cependant quelques exceptions. Certains sons dont la représentation
+      spectrale est continue peuvent provoquer une sensation de hauteur. De tels
+      sons sont expliqués par le centroïde ou centre de gravité du spectre et
+      dépassent le cadre de la méthode de détection de hauteur implémentée par
+      <emphasis>pvspitch</emphasis>. (L'utilisation d'opcodes tels que
+      <link linkend="pvscent"><citetitle>pvscent</citetitle></link> peut être
+      plus appropriée dans ce cas).
+    </para>
+    <para>
+      <emphasis>pvspitch</emphasis> est capable (en utilisant un fsig d'analyse
+      généré par <link linkend="pvsanal"><citetitle>pvsanal</citetitle></link>)
+      de localiser les crêtes spectrales d'un signal. Le paramètre de seuil
+      (<emphasis>kthresh</emphasis>) est de la plus grande importance, car son
+      ajustement peut introduire des harmoniques faibles mais significatifs pour
+      le calcul du fondamental. Cependant, si l'on donne une valeur trop faible
+      à <emphasis>kthresh</emphasis>, cela peut amener des partiels sans relation
+      dans l'algorithme d'analyse ce qui compromettra la précision de la méthode.
+      Ces étapes initiales simulent la réponse de la membrane basilaire en
+      identifiant les caractéristiques physiques du son analysé. Le choix de
+      <emphasis>kthresh</emphasis> dépend du niveau actuel du signal analysé, car
+      ses valeurs (comprises entre 0 et 1) couvrent tout l'intervalle dynamique
+      d'un bin d'analyse (de -inf à 0dBFS).
+    </para>
+    <para>
+      Il est important de se souvenir que l'entrée de l'opcode
+      <emphasis>pvspitch</emphasis> est supposée se caractériser par des partiels
+      importants dans le spectre. Si ce n'est pas le cas, le résultat retourné
+      par l'opcode peut n'avoir aucune relation avec la hauteur du signal entrant.
+      Si une trame contenant plusieurs partiels sans rapport a été analysée, le
+      plus grand facteur commun de ces valeurs de fréquence autorisant des
+      "harmoniques" adjacents sera choisi. Ainsi, des trames bruiteuses peuvent
+      être caractérisées par une sortie basse fréquence de <emphasis>pvspitch</emphasis>.
+      Ce fait permet un type primitif de détection de transitoire instrumental,
+      car la portion d'attaque de certains sons instrumentaux contient des
+      composants inharmoniques. Si l'on connaît la fréquence la plus basse de la
+      mélodie analysée, alors toutes les fréquences détectées sous ce seuil
+      représentent une lecture erronée due à la présence de partiels sans rapport.
+    </para>
+    <para>
+      Afin de faciliter un test efficace de l'algorithme de <emphasis>pvspitch</emphasis>,
+      une valeur d'amplitude proportionnelle à celle qui est observée dans la
+      trame de signal est également retournée (<emphasis>kamp</emphasis>). On peut
+      ainsi utiliser les résultats de <emphasis>pvspitch</emphasis> pour piloter
+      un oscillateur dont on peut comparer à l'écoute la hauteur avec celle du
+      signal original (dans l'exemple ci-dessous, un oscillateur génère un signal
+      qui se trouve une quinte au-dessus de la hauteur détectée).
+    </para>
+  </refsect1>
+
+   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode pvspitch. Il utilise le fichier
+      <ulink url="examples/pvspitch.csd"><citetitle>pvspitch.csd</citetitle></ulink>.
+      Cette exemple utilise l'entrée audio temps réel mais on peut tout aussi
+      bien utiliser un fichier son en entrée.
+      <example>
+        <title>Exemple de l'opcode pvspitch</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/pvspitch.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="pvsanal"><citetitle>pvsanal</citetitle></link>,
+      <link linkend="pvsynth"><citetitle>pvsynth</citetitle></link>,
+      <link linkend="pvsadsyn"><citetitle>pvsadsyn</citetitle></link>,
+      <link linkend="pvscent"><citetitle>pvscent</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Alan OCinneide</member>
+        <member>Août 2005, ajouté par &namevictor;, Août 2006</member>
+        <member>Une partie du texte a été adaptée de l'article de Alan Ocinneide
+        "Introducing PVSPITCH: A pitch tracking opcode for Csound" dans la parution
+        du Csound Journal de l'hiver 2006. L'article est disponible ici :
+        <ulink url="http://www.csounds.com/journal/2006winter/pvspitch.html"><citetitle>www.csounds.com/journal/2006winter/pvspitch.html</citetitle></ulink></member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

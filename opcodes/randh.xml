@@ -1,0 +1,137 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="randh">
+<indexterm id="IndexRandh"><primary>randh</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Random (Noise) Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>randh</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>randh</refname>
+    <refpurpose>
+      Génère des nombres aléatoires et les maintient pendant une certaine durée.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère des nombres aléatoires et les maintient pendant une certaine durée.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>randh</command> xamp, xcps [, iseed] [, isize] [, ioffset]</synopsis>
+
+    <synopsis>kres <command>randh</command> kamp, kcps [, iseed] [, isize] [, ioffset]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iseed</emphasis> (facultatif, par défaut=0,5) -- une graine pour la formule
+      du calcul récursif des nombres pseudo-aléatoires. Une valeur comprise entre 0 et +1
+      produira une sortie initiale de <emphasis>kamp</emphasis> * <emphasis>iseed</emphasis>.
+      Avec une valeur négative, la réinitialisation de la graine sera ignorée. Avec une
+      valeur supérieure à 1, la graine proviendra de l'horloge du système ; c'est la meilleure
+      option pour générer une séquence aléatoire différente à chaque utilisation.
+    </para>
+
+    <para>
+      <emphasis>isize</emphasis> (facultatif, par défaut=0) -- s'il est nul, un nombre sur 16 bit
+      est généré. S'il est non nul, un nombre sur 31 bit est généré. La valeur par défaut est 0.
+    </para>
+
+    <para>
+      <emphasis>ioffset</emphasis> (facultatif, par défaut=0) -- une valeur de base ajoutée au
+      résultat aléatoire. Nouveau dans la version 4.03 de Csound.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamp, xamp</emphasis> -- intervalle sur lequel les nombres aléatoires sont
+      distribués.
+    </para>
+
+    <para>
+      <emphasis>kcps, xcps</emphasis> -- fréquence à laquelle de nouveaux nombres aléatoires
+      sont générés.
+    </para>
+
+    <para>
+      La formule pseudo-aléatoire interne produit des valeurs uniformément distribuées sur
+      l'intervalle allant de -<emphasis>kamp</emphasis> à +<emphasis>kamp</emphasis>.
+      <emphasis>rand</emphasis> génère ainsi un bruit blanc uniforme avec une valeur
+      moyenne quadratique (RMS) de <emphasis>kamp / (racine de 2)</emphasis>.
+    </para>
+
+    <para>
+      Les autres unités produisent un bruit à bande limitée : les paramètres <emphasis>kcps</emphasis>
+      et <emphasis>xcps</emphasis> permettent de choisir un taux de génération des nouveaux
+      nombres aléatoires inférieur aux fréquences d'échantillonnage ou de contrôle.
+      <emphasis>randh</emphasis> maintient chaque nouveau nombre durant le cycle spécifié.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode randh. Il utilise le fichier
+      <ulink url="examples/randh.csd"><citetitle>randh.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode randh.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/randh.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+     </para>
+     <para>
+       L'exemple produit la sortie suivante :
+       <screen>
+ i1    50.00000
+ i1    50.00305
+ i1    97.68677
+ i1   -44.25354
+ i1   -61.56006
+ i1   -75.91248
+ i1    67.57202
+ i1    12.83875
+ i1     5.39551
+ i1   -95.18738
+
+WARNING: Seeding from current time 684387922
+
+ i2   -13.81226
+ i2   -16.49475
+ i2    69.51904
+ i2    35.04944
+ i2    47.47925
+ i2    63.25378
+ i2   -59.61914
+ i2    50.93079
+ i2    -6.46362
+ i2     5.89294</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="rand"><citetitle>rand</citetitle></link>,
+      <link linkend="randi"><citetitle>randi</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

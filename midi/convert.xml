@@ -1,0 +1,39 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.5
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="MidiConvert">
+  <title>Convertisseurs</title>
+
+  <para>
+    Les opcodes suivants peuvent convertir de l'information MIDI provenant d'une instance d'un instrument
+    déclenché par le MIDI :
+    <itemizedlist>
+      <listitem>
+        <para>
+          Convertisseurs de numéros de note MIDI en fréquence :
+          <link linkend="cpsmidi"><citetitle>cpsmidi</citetitle></link>,
+          <link linkend="cpsmidib"><citetitle>cpsmidib</citetitle></link>,
+          <link linkend="cpstmid"><citetitle>cpstmid</citetitle></link>,
+          <link linkend="octmidi"><citetitle>octmidi</citetitle></link>,
+          <link linkend="octmidib"><citetitle>octmidib</citetitle></link>,
+          <link linkend="pchmidi"><citetitle>pchmidi</citetitle></link> et
+          <link linkend="pchmidib"><citetitle>pchmidib</citetitle></link>.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+        Convertisseurs de vélocité MIDI en amplitude :
+        <link linkend="ampmidi"><citetitle>ampmidi</citetitle></link> et
+        <link linkend="ampmidid"><citetitle>ampmidid</citetitle></link>.
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+
+</section>

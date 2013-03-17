@@ -1,0 +1,73 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.2
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="stringmanipulate">
+  <title>Opcodes de Manipulation de Chaîne</title>
+  <para>Ces opcodes effectuent des opérations sur les variables chaîne (note : la plupart
+    des opcodes ne sont exécutés qu'au moment de l'initialisation, et ils ont une version
+    avec un suffixe "k" qui s'exécute au taux-i et au taux-k ;
+    les exceptions à cette règle comprennent <emphasis>puts</emphasis> et
+    <emphasis>strget</emphasis>) :</para>
+  <itemizedlist>
+    <listitem><para>
+        <link linkend="strcpy"><citetitle>strcpy</citetitle></link> et
+        <link linkend="strcpyk"><citetitle>strcpyk</citetitle></link> -
+        Assignation à une variable chaîne.</para>
+    </listitem>
+    <listitem><para>
+        <link linkend="strcat"><citetitle>strcat</citetitle></link> et
+        <link linkend="strcatk"><citetitle>strcatk</citetitle></link> -
+        Concaténation de chaînes, avec mémorisation du résultat dans une variable.</para>
+    </listitem>
+    <listitem><para>
+        <link linkend="strcmp"><citetitle>strcmp</citetitle></link> et
+        <link linkend="strcmpk"><citetitle>strcmpk</citetitle></link> -
+        Comparaison de chaînes.</para>
+    </listitem>
+    <listitem><para>
+        <link linkend="strget"><citetitle>strget</citetitle></link> -
+        Assignation à une variable chaîne de la valeur trouvée dans la table strset à
+        l'index spécifié, ou d'un p-champ chaîne de la partition.</para>
+    </listitem>
+    <listitem><para>
+        <link linkend="strlen"><citetitle>strlen</citetitle></link> et
+        <link linkend="strlenk"><citetitle>strlenk</citetitle></link> -
+        Retourne la longueur d'une chaîne.</para>
+    </listitem>
+    <listitem><para>
+      <link linkend="sprintf"><citetitle>sprintf</citetitle></link> -
+      conversion de sortie formatée à la manière de printf, avec mémorisation du résultat
+      dans une variable chaîne.</para>
+    </listitem>
+    <listitem><para>
+      <link linkend="sprintfk"><citetitle>sprintfk</citetitle></link> -
+      conversion de sortie formatée à la manière de printf, avec mémorisation du résultat
+      dans une variable chaîne au taux-k.</para>
+    </listitem>
+    <listitem><para>
+      <link linkend="puts"><citetitle>puts</citetitle></link> -
+      Impression d'une constante ou d'une variable chaîne.</para>
+    </listitem>
+    <listitem><para>
+        <link linkend="strindex"><citetitle>strindex</citetitle></link> et
+        <link linkend="strindexk"><citetitle>strindexk</citetitle></link> -
+        Retourne la première occurence d'une chaîne dans une autre chaîne.</para>
+    </listitem>
+    <listitem><para>
+        <link linkend="strrindex"><citetitle>strrindex</citetitle></link> et
+        <link linkend="strrindexk"><citetitle>strrindexk</citetitle></link> -
+        Retourne la dernière occurence d'une chaîne dans une autre chaîne.</para>
+    </listitem>
+    <listitem><para>
+        <link linkend="strsub"><citetitle>strsub</citetitle></link> et
+        <link linkend="strsubk"><citetitle>strsubk</citetitle></link> -
+        Retourne une sous-chaîne de la chaîne passée en paramètre.</para>
+    </listitem>
+  </itemizedlist>
+</section>

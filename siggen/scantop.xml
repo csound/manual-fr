@@ -1,0 +1,195 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="SiggenScanTop">
+  <title>Synthèse par Balayage</title>
+
+  <para>
+    La synthèse par balayage (scanned synthesis) est une variante des modèles physiques, dans laquelle
+    un réseau de masses connectées par des ressorts est utilisé pour générer une forme d'onde dynamique.
+    L'opcode <link linkend="scanu"><citetitle>scanu</citetitle></link> définit le réseau de masses/ressorts
+    et le met en mouvement. L'opcode <link linkend="scans"><citetitle>scans</citetitle></link> suit un
+    chemin prédéfini (une trajectoire) à travers le réseau et donne en sortie la forme d'onde détectée.
+    Plusieurs instances de <emphasis>scans</emphasis> peuvent suivre différents chemins à travers le même
+    réseau.
+  </para>
+
+  <para>
+    Ce sont des algorithmes de modélisation mécanique hautement efficaces à la fois pour la synthèse et
+    l'animation sonore via un traitement algorithmique. Il vaut mieux les utiliser en temps réel. Ainsi,
+    la sortie est utile soit directement pour l'audio, soit comme valeurs de contrôleur pour d'autres
+    paramètres.
+  </para>
+
+  <para>
+    L'implémentation dans Csound ajoute le support pour un chemin de balayage ou matrice. Essentiellement,
+    ceci offre la possibilité de reconnecter les masses dans d'autres configurations, provoquant une propagation
+    du signal assez différente. Elles ne doivent pas nécessairement être connectées à leurs voisines
+    directes. La matrice a essentiellement l'effet de <quote>modeler</quote> la surface en une forme
+    radicalement différente.
+  </para>
+
+  <para>
+    Pour produire les matrices, le format du tableau est direct. Par exemple, pour 4 masses nous avons la
+    grille suivante qui décrit les connexions possibles :
+  </para>
+
+  <informaltable frame="all" colsep="0">
+    <tgroup cols="5">
+      <tbody>
+        <row>
+          <entry>&nbsp;</entry>
+          <entry>1</entry>
+          <entry>2</entry>
+          <entry>3</entry>
+          <entry>4</entry>
+        </row>
+
+        <row>
+          <entry>1</entry>
+          <entry>&nbsp;</entry>
+          <entry>&nbsp;</entry>
+          <entry>&nbsp;</entry>
+          <entry>&nbsp;</entry>
+        </row>
+
+        <row>
+          <entry>2</entry>
+          <entry>&nbsp;</entry>
+          <entry>&nbsp;</entry>
+          <entry>&nbsp;</entry>
+          <entry>&nbsp;</entry>
+        </row>
+
+        <row>
+          <entry>3</entry>
+          <entry>&nbsp;</entry>
+          <entry>&nbsp;</entry>
+          <entry>&nbsp;</entry>
+          <entry>&nbsp;</entry>
+        </row>
+
+        <row>
+          <entry>4</entry>
+          <entry>&nbsp;</entry>
+          <entry>&nbsp;</entry>
+          <entry>&nbsp;</entry>
+          <entry>&nbsp;</entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </informaltable>
+
+  <para>
+    Chaque fois que deux masses sont connectées, le point qu'elles définissent vaut 1. Si deux masses ne
+    sont pas connectées, le point qu'elles définissent vaut alors 0. Par exemple, une corde unidirectionnelle
+    a les connexions suivantes : (1,2), (2,3), (3,4). Si elle est bidirectionnelle, elle a aussi (2,1), (3,2),
+    (4,3). Pour la corde unidirectionnelle, la matrice est :
+  </para>
+
+  <informaltable frame="all" colsep="0">
+    <tgroup cols="5">
+      <tbody>
+        <row>
+          <entry>&nbsp;</entry>
+          <entry>1</entry>
+          <entry>2</entry>
+          <entry>3</entry>
+          <entry>4</entry>
+        </row>
+
+        <row>
+          <entry>1</entry>
+          <entry>0</entry>
+          <entry>1</entry>
+          <entry>0</entry>
+          <entry>0</entry>
+        </row>
+
+        <row>
+          <entry>2</entry>
+          <entry>0</entry>
+          <entry>0</entry>
+          <entry>1</entry>
+          <entry>0</entry>
+        </row>
+
+        <row>
+          <entry>3</entry>
+          <entry>0</entry>
+          <entry>0</entry>
+          <entry>0</entry>
+          <entry>1</entry>
+        </row>
+
+        <row>
+          <entry>4</entry>
+          <entry>0</entry>
+          <entry>0</entry>
+          <entry>0</entry>
+          <entry>0</entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </informaltable>
+
+  <para>
+    Le format de tableau ci-dessus pour la matrice de connexion n'est donné que par commodité conceptuelle.
+    Les valeurs actuellement montrées dans le tableau sont obtenues par <emphasis>scans</emphasis> depuis
+    un fichier ASCII en utilisant <link linkend="GEN23"><citetitle>GEN23</citetitle></link>. Le fichier
+    ASCII lui-même est créé à partir du tableau modèle ligne par ligne. Ainsi, le fichier ASCII pour le
+    tableau de l'exemple montré ci-dessus devient : <literallayout>0100001000010000</literallayout>
+  </para>
+
+  <para>
+    Cet exemple de matrice est très simple et très petit. En pratique, la plupart des instruments de
+    synthèse par balayage utiliseront bien plus que quatre masses, et donc leurs matrices seront bien
+    plus grandes et plus complexes. Voir l'exemple dans la documentation de
+    <link linkend="scans"><citetitle>scans</citetitle></link>.
+  </para>
+
+  <para>
+    Prière de noter que les tables d'onde dynamiques générées sont très instables. Certaines valeurs de
+    masses, de centrage, et d'amortissement peuvent provoquer une <quote>explosion</quote> du système et
+    l'apparition des sons les plus intéressants sur vos haut-parleurs.
+  </para>
+
+  <para>
+    Le supplément de ce manuel contient un tutoriel sur la synthèse par balayage. Le tutoriel, des
+    exemples, et d'autres informations sur la synthèse par balayage sont disponibles sur la page
+    Scanned Synthesis à <ulink url="http://www.csounds.com/scanned/">csounds.com</ulink>.
+  </para>
+
+  <para>
+    La synthèse par balayage a été développée par Bill Verplank, Max Mathews et Rob Shaw à Interval Research
+    entre 1998 et 2000.
+  </para>
+
+  <para>
+    Les opcodes qui implémentent la synthèse par balayage sont :
+    <itemizedlist>
+      <listitem><para><link linkend="scanhammer"><citetitle>scanhammer</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="scans"><citetitle>scans</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="scantable"><citetitle>scantable</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="scanu"><citetitle>scanu</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="xscanmap"><citetitle>xscanmap</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="xscans"><citetitle>xscans</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="xscansmap"><citetitle>xscansmap</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="xscanu"><citetitle>xscanu</citetitle></link></para>
+      </listitem>
+    </itemizedlist>
+  </para>
+</section>

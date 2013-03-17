@@ -1,0 +1,112 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="shaker">
+<indexterm id="IndexShaker"><primary>shaker</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Models and Emulations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>shaker</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>shaker</refname>
+    <refpurpose>
+      Produit un son comme si l'on secouait des maracas ou un instrument
+      similaire de type calebasse.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      La sortie audio produit un son comme si l'on secouait des maracas ou un instrument
+      similaire de type calebasse. La méthode est inspirée d'un modèle physique développé
+      d'après &nameperry;, mais recodé pour Csound.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>shaker</command> kamp, kfreq, kbeans, kdamp, ktimes [, idecay]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>idecay</emphasis> -- S'il est présent, indique la durée d'amortissement du
+      shaker à la fin de la note. La valeur par défaut est zéro.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Une note jouée sur un instrument de type maracas, avec les arguments suivants.
+    </para>
+
+    <para>
+      <emphasis>kamp</emphasis> -- Amplitude de la note.
+    </para>
+
+    <para>
+      <emphasis>kfreq</emphasis> -- Fréquence de la note.
+    </para>
+
+    <para>
+      <emphasis>kbeans</emphasis> -- Le nombre de graines dans la calebasse. Une valeur de
+      8 est convenable.
+    </para>
+
+    <para>
+      <emphasis>kdamp</emphasis> -- La valeur d'amortissement du shaker. Des valeurs comprises
+      entre 0,98 et 1 conviennent, avec une valeur raisonnable par défaut de 0,99.
+    </para>
+
+    <para>
+      <emphasis>ktimes</emphasis> -- Nombre de secousses.
+    </para>
+ 
+    <note>
+      <title>Note</title>
+      <para>
+        L'argument <emphasis>knum</emphasis> était redondant et a donc été supprimé dans la version 3.49.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode shaker. Il utilise le fichier
+      <ulink url="examples/shaker.csd"><citetitle>shaker.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode shaker.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/shaker.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn; (d'après &nameperry;)</member>
+        <member>Université de Bath, Codemist Ltd.</member>
+        <member>Bath, UK</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.47 de Csound</para>
+    <para>Exemple corrigé grâce à un message de &nameistvan;.</para>
+  </refsect1>
+</refentry>

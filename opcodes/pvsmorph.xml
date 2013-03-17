@@ -1,0 +1,116 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvsmorph">
+  <indexterm id="Indexpvsmorph"><primary>pvsmorph</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsmorph</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvsmorph</refname>
+    <refpurpose>
+      Effectue un morphing (ou interpolation) entre deux fsigs sources.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Effectue un morphing (ou interpolation) entre deux fsigs sources.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>fsig <command>pvsmorph</command> fsig1, fsig2, kampint, kfrqint</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      L'opération de cet opcode est identique à celle de
+      <link linkend="pvcross"><citetitle>pvcross</citetitle></link> sauf que l'on
+      utilise des <emphasis>fsig</emphasis>s plutôt que des fichiers d'analyse,
+      et qu'il n'y a pas de préservation de l'enveloppe spectrale. Les amplitudes
+      et les fréquences de <emphasis>fsig1</emphasis> sont interpolées avec
+      celles de <emphasis>fsig2</emphasis> en fonction des valeurs de
+      <emphasis>kampint</emphasis> et de <emphasis>kfrqint</emphasis>
+      respectivement. Celles-ci sont comprises entre 0 et 1, où 0 signifie
+      <emphasis>fsig1</emphasis> et 1 <emphasis>fsig2</emphasis>. Toute valeur
+      entre les deux interpole les amplitudes et/ou les fréquences des deux fsigs.
+    </para>
+    
+    <para>
+      Avec cet opcode, on peut effectuer un morphing sur des entrées audio en
+      temps réel, en utilisant
+      <link linkend="pvsanal"><citetitle>pvsanal</citetitle></link> pour
+      générer <emphasis>fsig1</emphasis> et <emphasis>fsig2</emphasis>. Ceux-ci
+      doivent avoir le même format.
+    </para>
+    
+    <warning>
+      <para>
+        Il est dangereux d'utiliser la même variable-f à la fois comme entrée et
+        comme sortie des opcodes pvs. Ceci peut produire un comportement indéfini
+        de certains de ces opcodes. Utilisez une variable différente à gauche et
+        à droite de l'opcode.
+      </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode pvsmorph. Il utilise le fichier
+      <ulink url="examples/pvsmorph.csd"><citetitle>pvsmorph.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode pvsmorph.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pvsmorph.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Voici un autre exemple de l'opcode pvsmorph. Il utilise le fichier
+      <ulink url="examples/pvsmorph2.csd"><citetitle>pvsmorph2.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode pvsmorph.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pvsmorph2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="pvsanal"><citetitle>pvsanal</citetitle></link>,
+      <link linkend="pvsynth"><citetitle>pvsynth</citetitle></link>,
+      <link linkend="pvsadsyn"><citetitle>pvsadsyn</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Avril 2007 </member>
+      </simplelist>
+      Nouveau dans Csound 5.06
+    </para>
+  </refsect1>
+</refentry>

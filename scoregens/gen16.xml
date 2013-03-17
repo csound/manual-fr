@@ -1,0 +1,117 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.5
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="GEN16">
+      <indexterm id="IndexGEN16"><primary>GEN16</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN16</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>GEN16</refname>
+    <refpurpose>
+      Crée une table depuis une valeur initiale jusqu'à une valeur terminale.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Crée une table depuis la valeur <emphasis>deb</emphasis> jusqu'à la valeur <emphasis>fin</emphasis>
+      en <emphasis>dur</emphasis> pas.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>f</command> # date taille 16 val1 dur1 type1 val2 [dur2 type2 val3 ... typeX valN]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>taille</emphasis> -- nombre de points dans la table. Doit être une puissance de 2 ou une
+      puissance-de-2 plus 1 (voir l'<link linkend="f"><citetitle>instruction f</citetitle></link>). La valeur
+      normale est une puissance-de-2 plus 1.
+    </para>
+    <note>
+      La dernière valeur n'est atteinte que lorsque la longueur de la table est
+      une puissance-de-2 plus 1. (Cette longueur est cruciale dans l'utilisation
+      de l'opcode <emphasis>tab</emphasis>).
+    </note>
+
+    <para>
+      <emphasis>deb</emphasis> -- valeur de départ
+    </para>
+
+    <para>
+      <emphasis>dur</emphasis> -- nombre de segments
+    </para>
+
+    <para>
+      <emphasis>type</emphasis> -- si 0, une ligne droite est produite. Si différent de zéro, alors
+      <emphasis>GEN16</emphasis> crée la courbe suivante sur <emphasis>dur</emphasis> pas :
+      <literallayout>deb + (fin - deb) * (1 - exp( i*type/(dur-1) )) / (1 - exp(type))</literallayout>
+    </para>
+
+    <para>
+      <emphasis>fin</emphasis> -- valeur après <emphasis>dur</emphasis> segments
+    </para>
+
+    <para>
+      Voici quelques exemples de courbes générées pour différentes valeurs de <emphasis>type</emphasis> :
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen16_types.png" format="PNG"/>
+        </imageobject>
+        <textobject>
+          <phrase>Tables générées par GEN16 pour différentes valeurs de <emphasis>type</emphasis>.</phrase>
+        </textobject>
+  
+        <caption>
+          <para>Tables générées par GEN16 pour différentes valeurs de <emphasis>type</emphasis>.</para>
+        </caption>
+      </mediaobject>
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        Si <emphasis>type</emphasis> &gt; 0, on a une courbe montant lentement (concave)
+        ou décroissant lentement (convexe),
+        tandis que si <emphasis>type</emphasis> &lt; 0, la courbe monte rapidement
+        (convexe) ou décroit rapidement (concave). Voir aussi
+        <link linkend="transeg"><citetitle>transeg</citetitle></link>.
+      </para>
+    </note>
+  </refsect1>
+  
+  <refsect1>
+    <example>
+    <title>Un exemple simple de la routine GEN16.</title>
+
+    <xi:include href="examples-xml/gen16.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+
+    </example>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>University of Bath, Codemist. Ltd.</member>
+        <member>Bath, UK</member>
+        <member>Octobre 2000</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 4.09 de Csound</para>
+  </refsect1>
+</refentry>

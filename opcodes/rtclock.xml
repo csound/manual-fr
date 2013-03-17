@@ -1,0 +1,68 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="rtclock">
+<indexterm id="IndexRtclock"><primary>rtclock</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Time Reading</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>rtclock</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>rtclock</refname>
+    <refpurpose>
+      Lit l'horloge temps réel du système d'exploitation.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Lit l'horloge temps réel du système d'exploitation.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ires <command>rtclock</command></synopsis>
+
+    <synopsis>kres <command>rtclock</command></synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Lit l'horloge temps réel du système d'exploitation. Sous Windows, celle-ci ne
+      change qu'une fois par seconde. Sous GNU/Linux, elle change chaque microseconde.
+      Le comportement sous les autres systèmes varie.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode rtclock. Il utilise le fichier
+      <ulink url="examples/rtclock.csd"><citetitle>rtclock.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode rtclock.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/rtclock.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namejohn;</para>
+    <para>Nouveau dans la version 4.10</para>
+  </refsect1>
+</refentry>

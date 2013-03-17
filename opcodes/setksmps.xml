@@ -1,0 +1,152 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="setksmps">
+<indexterm id="IndexSetksmps"><primary>setksmps</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Software Bus</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>setksmps</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>setksmps</refname>
+    <refpurpose>
+      Fixe la valeur locale de ksmps dans un bloc d'opcode défini par l'utilisateur.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Fixe la valeur locale de <emphasis>ksmps</emphasis> dans un bloc d'opcode défini
+      par l'utilisateur.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>setksmps</command> iksmps</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iksmps</emphasis> -- fixe la valeur locale de <emphasis>ksmps</emphasis>.
+    </para>
+
+    <para>
+      Si <emphasis>iksmps</emphasis> vaut zéro, le <emphasis>ksmps</emphasis> de
+      l'instrument ou de l'opcode appelant est utilisé (c'est le comportement par
+      défaut).
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        Le <emphasis>ksmps</emphasis> local est implémenté en divisant une période de
+        contrôle en sous-périodes-k plus petites et en modifiant temporairement les
+        variables globales internes de Csound. Ceci nécessite également de convertir
+        le taux des entrées de taux-k et des arguments de sortie (les variables d'entrée
+        reçoivent la même valeur durant toutes les sous-périodes-k, tandis que les
+        sorties ne sont écrites que dans la dernière). Cela signifie aussi que l'on ne
+        peut pas utiliser un <emphasis>ksmps</emphasis> local supérieur au
+        <link linkend="ksmps"><citetitle>ksmps</citetitle></link> global.
+      </para>
+    </note>
+
+    <warning>
+      <title>Avertissement au sujet du <emphasis>ksmps</emphasis> local</title>
+      <para>
+        Lorsque le <emphasis>ksmps</emphasis> local est différent de celui de
+        l'orchestre (défini dans l'en-tête de l'orchestre), il ne faut pas utiliser
+        d'opérations globales de taux-a dans le bloc d'opcode défini par l'utilisateur.
+      </para>
+
+      <para>
+        &Ccedil;a comprend :
+
+        <itemizedlist>
+          <listitem><para>tout accès aux variables <quote>ga</quote></para></listitem>
+          <listitem><para>les opcodes zak de taux-a
+          (<link linkend="zar"><citetitle>zar</citetitle></link>,
+          <link linkend="zaw"><citetitle>zaw</citetitle></link>, etc.)</para></listitem>
+          <listitem><para><link linkend="tablera"><citetitle>tablera</citetitle></link> et
+          <link linkend="tablewa"><citetitle>tablewa</citetitle></link> (en fait, ces deux
+          opcodes peuvent fonctionner, mais il faut prendre des précautions)</para></listitem>
+          <listitem><para>La famille d'opcodes <emphasis>in</emphasis> et <emphasis>out</emphasis>
+          (ceux-ci lisent et écrivent dans des tampons globaux de taux-a)</para></listitem>
+        </itemizedlist>
+      </para>
+
+      <para>
+        En général, le <emphasis>ksmps</emphasis> local doit être utiliser avec
+        précaution car c'est un dispositif expérimental. Bien qu'il fonctionne dans
+        la plupart des cas.
+      </para>
+    </warning>
+
+    <para>
+      On peut utiliser l'instruction <emphasis>setksmps</emphasis> pour fixer la
+      valeur locale de <link linkend="ksmps"><citetitle>ksmps</citetitle></link> 
+      dans un bloc d'opcode défini par l'utilisateur. Il a un paramètre de taux-i
+      définissant la nouvelle valeur de <emphasis>ksmps</emphasis> (qui reste
+      inchangée si l'on utilise zéro). <emphasis>setksmps</emphasis> doit être
+      utilisé avant tout autre opcode (mais on peut le mettre après
+      <link linkend="xin"><citetitle>xin</citetitle></link>), sinon il y aura des
+      résultats imprévisibles.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      La syntaxe d'un bloc d'opcode défini par l'utilisateur est la suivante :
+
+      <programlisting>
+<emphasis role="oblock">opcode</emphasis>  name, outtypes, intypes
+xinarg1 [, xinarg2] [, xinarg3] ... [xinargN]  <emphasis role="opc">xin</emphasis>
+[<emphasis role="opc">setksmps</emphasis>  iksmps]
+... the rest of the instrument's code.
+<emphasis role="opc">xout</emphasis>  xoutarg1 [, xoutarg2] [, xoutarg3] ... [xoutargN]
+<emphasis role="oblock">endop</emphasis>
+      </programlisting>
+    </para>
+
+    <para>
+      On peut alors utiliser le nouvel opcode avec la syntaxe usuelle :
+
+      <literallayout>
+[xinarg1] [, xinarg2] ... [xinargN]  name  [xoutarg1] [, xoutarg2] ... [xoutargN] [, iksmps]
+      </literallayout>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voir l'exemple de l'opcode <link linkend="opcode"><citetitle>opcode</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="endop"><citetitle>endop</citetitle></link>, 
+      <link linkend="opcode"><citetitle>opcode</citetitle></link>, 
+      <link linkend="xin"><citetitle>xin</citetitle></link>, 
+      <link linkend="xout"><citetitle>xout</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : Istvan Varga, 2002 ; basé sur du code par Matt J. Ingalls</para>
+    <para>Nouveau dans la version 4.22</para>
+  </refsect1>
+</refentry>

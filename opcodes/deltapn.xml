@@ -1,0 +1,119 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.10
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="deltapn">
+<indexterm id="IndexDeltapn"><primary>deltapn</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Delay</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>deltapn</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>deltapn</refname>
+    <refpurpose>
+      Lit une ligne à retard avec des délais variables.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Lit une ligne à retard avec des délais variables.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>deltapn</command> xnumsamps</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>xnumsamps</emphasis> -- spécifie le délai de lecture en secondes.
+      Chaque valeur est comprise entre 1 période de contrôle et le délai
+      total de la paire lecture/écriture ; cependant, comme il n'y a pas
+      de vérification interne du respect de cet intervalle, l'utilisateur est
+      entièrement responsable. Chaque argument peut être une constante, une
+      variable ou un signal variant dans le temps.
+    </para>
+
+    <para>
+      <emphasis>deltapn</emphasis> est identique à
+      <link linkend="deltapi"><citetitle>deltapi</citetitle></link>, sauf que la
+      durée du retard est exprimée en échantillons plutôt qu'en secondes (&namehans;).
+    </para>
+
+    <para>
+      Cet opcode peut lire directement dans une paire
+      <link linkend="delayr"><citetitle>delayr</citetitle></link>/<link linkend="delayw"><citetitle>delayw</citetitle></link>
+      en extrayant les données audio retardées des <emphasis>idlt</emphasis> secondes
+      de son stocké. Il peut y avoir n'importe quel nombre d'unités
+      <emphasis>deltap</emphasis> et/ou
+      <link linkend="deltapi"><citetitle>deltapi</citetitle></link> entre une paire
+      lecture/écriture. Chacune reçoit un extrait audio sans changement de
+      l'amplitude originale.
+    </para>
+
+    <para>
+      Ces opcodes peuvent fournir de multiples lectures de délai pour des lignes à
+      retard arbitraires et des réseaux à rétroaction. Ils peuvent délivrer des
+      délais constants ou variables, et sont utiles pour construire des effets
+      de chorus, harmonizer et Doppler. Les délais constants (et
+      certains de ceux qui varient lentement) ne nécessitent pas d'interpolation ;
+      <emphasis>deltap</emphasis> leur convient très bien. Les délais variant à
+      moyenne vitesse ou rapidement nécessiteront cependant les services
+      supplémentaires de <emphasis>deltapi</emphasis>.
+    </para>
+
+    <para>
+      Les paires <emphasis>delayr</emphasis>/<emphasis>delayw</emphasis> peuvent
+      être entrelacées. Pour associer une unité de lecture de délai à une unité
+      <emphasis>delayr</emphasis>, elle doit non seulement être située entre ce
+      <emphasis>delayr</emphasis> et le <emphasis>delayw</emphasis> approprié,
+      mais aussi précéder tous les <emphasis>delayr</emphasis> suivants. Voir
+      l'exemple 2. (Cette possibilité fut ajoutée dans la version 3.57 de Csound
+      par Jens Groh et &namejohn;).
+    </para>
+
+    <para>
+      <emphasis>N.B.</emphasis> Les délais de taux-k ne sont pas interpolés en
+      interne, mais déroulent plutôt des décalages temporels d'échantillons
+      audios ; c'est adéquat pour des délais changeant lentement. Cependant,
+      pour les changements à vitesse moyenne ou rapides, il faut fournir en
+      entrée des valeurs de délai avec une plus grande résolution de taux
+      audio.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode deltapn. Il utilise le fichier
+      <ulink url="examples/deltapn.csd"><citetitle>deltapn.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode deltapn.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/deltapn.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="deltap"><citetitle>deltap</citetitle></link>,
+      <link linkend="deltap3"><citetitle>deltap3</citetitle></link>,
+      <link linkend="deltapi"><citetitle>deltapi</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

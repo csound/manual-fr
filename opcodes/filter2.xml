@@ -1,0 +1,122 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="filter2">
+<indexterm id="IndexFilter2"><primary>filter2</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Specialized Filters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>filter2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>filter2</refname>
+    <refpurpose>
+      Réalise un filtrage au moyen d'un bloc de filtre numérique de forme
+      transposée II sans contrôle variable.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Filtre configurable à usage général sans contrôle variable des pôles. Les
+      coefficients du filtre implémentent l'équation aux différences suivante :
+      <literallayout>
+(1)*y(n) = b0*x[n] + b1*x[n-1] +...+ bM*x[n-M] - a1*y[n-1] -...- aN*y[n-N]</literallayout>
+    </para>
+
+    <para>
+      dont la fonction de transfert est représentée par :
+      <literallayout>
+           B(Z)      b0 + b1*Z<superscript>-1</superscript>  + ... + bM*Z<superscript>-M</superscript>
+  H(Z)  =  ----  =  --------------------------
+           A(Z)       1 + a1*Z<superscript>-1</superscript>  + ... + aN*Z<superscript>-N</superscript></literallayout>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>filter2</command> asig, iM, iN, ib0, ib1, ..., ibM, ia1, ia2, ..., iaN</synopsis>
+
+    <synopsis>kres <command>filter2</command> ksig, iM, iN, ib0, ib1, ..., ibM, ia1, ia2, ..., iaN</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      A l'initialisation, les nombres de zéros et de pôles du filtres sont spécifiés
+      ainsi que leurs valeurs. Les coefficients doivent être obtenus par une
+      application externe de conception de filtre telle que Matlab et sont
+      spécifiés directement ou bien chargés dans une table via
+      <link linkend="GEN01"><citetitle>GEN01</citetitle></link>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      L'opcode <emphasis> filter2</emphasis> réalise un filtrage au moyen d'un
+      bloc de filtre numérique de forme transposée II sans contrôle variable.
+    </para>
+
+    <para>
+      Comme <emphasis>filter2</emphasis> implémente des filtres récursifs
+      généralisés, on peut l'utiliser pour définir une grande variété d'algorithmes
+      généraux de traitement numérique du signal. Par exemple, on peut implémenter
+      un guide d'onde numérique pour modéliser un instrument de musique au moyen
+      d'une paire d'opcodes <link linkend="delayr"><citetitle>delayr</citetitle></link>
+      et <link linkend="delayw"><citetitle>delayw</citetitle></link> conjointement
+      à l'opcode <emphasis>filter2</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Un filtre passe-bas RIF du premier ordre à phase linéaire opérant sur un
+      signal de taux-k :
+
+      <informalexample>
+        <programlisting>
+k1 <emphasis role="opc">filter2</emphasis> ksig, 2, 0, 0.5, 0.5   <emphasis role="comment">;; filtre RIF de taux-k</emphasis></programlisting>
+      </informalexample>
+    </para>
+    <para>
+      Voici un autre exemple de l'opcode filter2. Il utilise le fichier
+      <ulink url="examples/filter2.csd"><citetitle>filter2.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode filter2.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/filter2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="zfilter2"><citetitle>zfilter2</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Michael A. Casey</member>
+        <member>M.I.T.</member>
+        <member>Cambridge, Mass.</member>
+        <member>1997</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 3.47</para>
+  </refsect1>
+</refentry>

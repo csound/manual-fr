@@ -1,0 +1,100 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.14
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="birnd">
+<indexterm id="IndexBirnd"><primary>birnd</primary></indexterm>
+  <refentryinfo><title>Mathematical Operations:Random Functions</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>birnd</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>birnd</refname>
+    <refpurpose>
+      Retourne un nombre aléatoire dans un intervalle bipolaire.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne un nombre aléatoire dans un intervalle bipolaire.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>birnd</command>(x) (taux-i ou -k seulement)</synopsis>
+
+    <para>
+      Où l'argument entre parenthèses peut être une expression. Ces convertisseurs de valeur
+      échantillonnent une séquence aléatoire globale, mais sans référencer une
+      <emphasis>racine</emphasis>. Le résultat peut devenir un terme d'une expression ultérieure.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Retourne un nombre aléatoire dans l'intervalle bipolaire allant de
+      -<emphasis>x</emphasis> à <emphasis>x</emphasis>. <emphasis>rnd</emphasis> et
+      <emphasis>birnd</emphasis> obtiennent leurs valeurs d'un générateur de nombres
+      pseudo-aléatoires global, puis les mettent à l'échelle de l'intervalle demandé. Le
+      générateur global unique distribuera ainsi sa séquence à ces unités durant toute
+      l'exécution, quelque soit l'ordre d'arrivée de ces demandes.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode birnd. Il utilise le fichier
+      <ulink url="examples/birnd.csd"><citetitle>birnd.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode birnd.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/birnd.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
+instr 1:  i1 = 0.94700
+instr 1:  i1 = -0.72119
+instr 1:  i1 = 0.53898
+instr 1:  i1 = 0.05001
+instr 1:  i1 = 0.24533
+instr 1:  i1 = 0.93902
+instr 1:  i1 = 0.43364</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="rnd"><citetitle>rnd</citetitle></link>
+    </para>
+  </refsect1>
+
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur: &namebarry;</member>
+        <member>MIT</member>
+        <member>Cambridge, Massachussetts</member>
+        <member>1997</member>
+      </simplelist>
+    </para>
+    <para>Etendu dans la version 3.47 au taux-x par &namejohn;.</para>
+  </refsect1>
+</refentry>

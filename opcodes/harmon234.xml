@@ -1,0 +1,153 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.5
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="harmon2">
+<indexterm id="IndexHarmon2"><primary>harmon2</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Special Effects</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>harmon2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>harmon2</refname>
+    <refpurpose>
+      Analyse une entrée audio et génère des voix harmoniques synchrones avec
+      préservation des formants.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère des voix harmoniques avec préservation des formants.
+   </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>harmon2</command> asig, koct, kfrq1, kfrq2, icpsmode, ilowest[, ipolarity]</synopsis>
+    <synopsis>ares <command>harmon3</command> asig, koct, kfrq1, \
+    kfrq2, kfrq3, icpsmode, ilowest[, ipolarity]</synopsis>
+    <synopsis>ares <command>harmon4</command> asig, koct, kfrq1, \
+    kfrq2, kfrq3, kfrq4, icpsmode, ilowest[, ipolarity]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>icpsmode</emphasis> -- mode d'interprétation des entrées de
+      génération de fréquence <emphasis>kfrq1</emphasis>, <emphasis>kfrq2</emphasis>,
+      <emphasis>kfrq3</emphasis> et <emphasis>kfrq4</emphasis> :
+      0 : les valeurs entrées sont des rapports de l'équivalent en fréquence (Hz)
+      de <emphasis>koct</emphasis>. 1 : les valeurs entrées sont les fréquences
+      demandées en Hz.
+    </para>
+
+    <para>
+      <emphasis>ilowest</emphasis> -- valeur la plus basse de <emphasis>koct</emphasis>
+      pour laquelle des voix harmoniques seront générées.
+    </para>
+
+    <para>
+      <emphasis>ipolarity</emphasis> -- polarité de l'entrée <emphasis>asig</emphasis>,
+      1 = pulsations glottales positives, 0 = négatives. La valeur par défaut est 1.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <command>Harmon2</command>, <command>harmon3</command> et
+      <command>harmon4</command> sont des harmoniseurs très performants,
+      capables de générer jusqu'à quatre copies transposées de l'entrée
+      <emphasis>asig</emphasis> avec préservation des formants. L'algorithme
+      de transposition nécessite une estimation précise
+      (<emphasis>koct</emphasis>, en unités décimales d'oct) de la hauteur
+      de <emphasis>asig</emphasis>, normallement obtenue par un détecteur de
+      hauteur indépendant comme <emphasis>specptrk</emphasis>. L'algorithme
+      isole ensuite la pulsation pleine la plus récente dans
+      <emphasis>asig</emphasis> et l'utilise pour générer les autres voix avec
+      les taux de pulsation requis.
+    </para>
+    <para>
+      Si la fréquence (ou le rapport) présenté pour <emphasis>kfrq1</emphasis>,
+      <emphasis>kfrq2</emphasis>, <emphasis>kfrq3</emphasis> ou
+      <emphasis>kfrq4</emphasis> vaut zéro, aucun signal n'est généré pour cette
+      voix. S'il y en a qui sont différents de zéro, mais que l'entrée
+      <emphasis>koct</emphasis> est inférieure à la valeur
+      <emphasis>ilowest</emphasis>, alors cette voix sortira une copie directe
+      de l'entrée <emphasis>asig</emphasis>. En conséquence, les données arrivant
+      sur les entrées de taux-k peuvent au choix activer ou désactiver les voix
+      générées, passer une copie directe d'une source fricative non voisée ou
+      harmoniser la source en fonction d'un algorithme construit. La transition
+      d'un mode à l'autre est progressive, ce qui donne une alternance
+      continue entre les sons voisés (harmonisés) et les fricatives non-voisées
+      d'une entrée parlée ou chantée.
+    </para>
+    <para>
+      <emphasis>harmon2</emphasis>, <emphasis>harmon3</emphasis>, 
+      <emphasis>harmon4</emphasis> sont spécialement adaptés à la sortie de
+      <emphasis>specptrk</emphasis>. Ce dernier génère des données de hauteur
+      en format décimal d'octave ; il retourne également sa valeur de base si
+      aucune hauteur n'est identifiée (comme dans un bruit de fricative) et
+      émet zéro si l'énergie tombe en-dessous du seuil, si bien que
+      <emphasis>harmon2</emphasis>, <emphasis>harmon3</emphasis>, 
+      <emphasis>harmon4</emphasis> peuvent être réglés pour passer le signal
+      direct dans les deux cas. Naturellement, on pourrait utiliser n'importe
+      quelle autre forme d'estimation de la hauteur. Comme les détecteurs de
+      hauteur subissent habituellement un léger retard lors d'une estimation
+      précise (pour <emphasis>specptrk</emphasis> le retard est imposé par
+      l'unité <emphasis>spectrum</emphasis>), il est normal de retarder le signal
+      audio de la même durée pour que <emphasis>harmon2</emphasis>, 
+      <emphasis>harmon3</emphasis>, <emphasis>harmon4</emphasis> puissent
+      travailler à partir d'une estimation synchrone.
+     </para>
+ </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode harmon2. Il utilise le fichier
+      <ulink url="examples/harmon.csd"><citetitle>harmon.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode harmon2.</title>
+          <programlisting>
+a1,a2      <emphasis role="opc">ins</emphasis>                                     <emphasis role="comment">; récupère l'entrée mic</emphasis>
+w1         <emphasis role="opc">spectrum</emphasis>  a1, .02, 7, 24, 12, 1, 3      <emphasis role="comment">; et l'examine</emphasis>
+koct,kamp  <emphasis role="opc">specptrk</emphasis>  w1, 1, 6.5, 9.5, 7.5, 10, 7, .7, 0, 3, 1
+a3         <emphasis role="opc">delay</emphasis>     a1, .065                      <emphasis role="comment">; retarde ptrk</emphasis>
+a4         <emphasis role="opc">harmon2</emphasis>   a3, koct, 1.25, 0.75, 0, 6.9  <emphasis role="comment">; sort une harmonie fixe 6-4</emphasis>
+           <emphasis role="opc">outs</emphasis>      a3, a4                        <emphasis role="comment">; ainsi que l'original</emphasis></programlisting>
+      </example>
+    </para>
+    <para>
+      Voici un exemple complet de l'opcode harmon3. Il utilise le fichier
+      <ulink url="examples/harmon3.csd"><citetitle>harmon3.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode harmon3.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/harmon3.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namebarry;</member>
+        <member>M.I.T., Cambridge, Mass</member>
+        <member>2006</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.04</para>
+  </refsect1>
+</refentry>

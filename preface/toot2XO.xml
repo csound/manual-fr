@@ -1,0 +1,39 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.2
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="PrefaceToot2">
+  <title>Toot 2</title>
+  <para>
+    Le premier instrument n'était pas intéressant car il ne pouvait jouer qu'une
+    seule note avec un seul niveau d'amplitude. Nous pouvons rendre les choses
+    plus intéressantes en permettant la définition de la hauteur et de l'amplitude
+    par des paramètres dans la partition. Chaque colonne dans la partition
+    constitue un champ de paramètre, numéroté à partir de la gauche. Les trois
+    premiers champs de paramètre de
+    l'<link linkend="i"><citetitle>instruction i</citetitle></link> ont une 
+    fonction réservée :
+  </para>
+  <para><emphasis>p1</emphasis> = numéro de l'instrument</para>
+  <para><emphasis>p2</emphasis> = date du début de la note</para>
+  <para><emphasis>p3</emphasis> = durée de la note</para>
+  <para>
+    Tous les autres champs de paramètre sont déterminés par la façon dont le
+    créateur définit son instrument. Dans l'instrument ci-dessous, l'argument
+    pour l'amplitude de l'oscillateur est remplacé par <emphasis>p4</emphasis>
+    et l'argument pour la fréquence par <emphasis>p5</emphasis>. Maintenant,
+    nous pouvons changer ces valeurs lors de l'initialisation, c'est-à-dire
+    pour chaque note de la partition. Le fichier csd
+    <ulink url="examples/toot2.csd"><citetitle>toot2.csd</citetitle></ulink>
+    apparaît maintenant comme ceci :
+  </para>
+
+  <para>
+<xi:include href="examples-xml/toot2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </para>
+</section>

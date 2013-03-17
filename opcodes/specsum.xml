@@ -1,0 +1,89 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="specsum">
+<indexterm id="IndexSpecsum"><primary>specsum</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Non-Standard</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>specsum</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>specsum</refname>
+    <refpurpose>
+      Additionne les magnitudes sur tous les canaux du spectre.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Additionne les magnitudes sur tous les canaux du spectre.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ksum <command>specsum</command> wsig [, interp]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>interp</emphasis> (facultatif, 0 par défaut) -- s'il est
+      différent de zéro, le signal de sortie (<emphasis>koct</emphasis> ou
+      <emphasis>ksum</emphasis>) est interpolé. La valeur par défaut est 0
+      (répéter la valeur du signal entre les changements).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ksum</emphasis> -- le signal de sortie.
+    </para>
+
+    <para>
+      <emphasis>wsig</emphasis> -- le spectre d'entrée.
+    </para>
+
+    <para>
+      Additionne les magnitudes sur tous les canaux du spectre. A chaque
+      nouvelle trame de <emphasis>wsig</emphasis>, les magnitudes sont additionnées
+      et restituées sous la forme du signal scalaire <emphasis>ksum</emphasis>.
+      Entre les trames, la sortie est soit répétée soit interpolée au taux-k.
+      Cette unité produit un signal de taux-k, somme des magnitudes présentes
+      dans les données spectrales, et donne ainsi la mesure courante de sa
+      puissance globale instantanée.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      <informalexample>
+        <programlisting>
+  ksum     <emphasis role="opc">specsum</emphasis>   wsig, 1              <emphasis role="comment">; sum the spec bins, and ksmooth</emphasis>
+           <emphasis role="octrl">if</emphasis> ksum <emphasis role="op">&lt;</emphasis> 2000 <emphasis role="octrl">kgoto</emphasis> <emphasis role="olabel">zero</emphasis>      <emphasis role="comment">; if sufficient amplitude</emphasis>
+  koct     <emphasis role="opc">specptrk</emphasis>  wsig                 <emphasis role="comment">;    pitch-track the signal</emphasis>
+           <emphasis role="octrl">kgoto</emphasis>     <emphasis role="olabel">contin</emphasis>
+<emphasis role="olabel">zero:</emphasis> 
+  koct     <emphasis role="op">=</emphasis>         0                    <emphasis role="comment">; else output zero</emphasis>
+<emphasis role="olabel">contin:</emphasis></programlisting>
+      </informalexample>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="specdisp"><citetitle>specdisp</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

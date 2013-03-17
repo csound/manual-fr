@@ -1,0 +1,219 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.6
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="wiidata">
+<indexterm id="Indexwiidata"><primary>wiidata</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>wiidata</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>wiidata</refname>
+    <refpurpose>
+      Lit des données provenant de l'un des contôleurs externes Wiimote de Nintendo.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Lit des données provenant de un à quatre contrôleurs externes Wiimote de
+      Nintendo.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kres <command>wiidata</command> kcontrol[, knum]</synopsis>
+  </refsect1>
+ 
+   <refsect1>
+    <title>Initialisation</title>
+    <para>
+      Cet opcode doit être utilisé de pair avec un opcode <emphasis>wiiconnect</emphasis>
+      actif.
+    </para>
+
+  </refsect1>
+
+ <refsect1>
+   <title>Exécution</title>
+    <note>
+      <para>
+        Prière de noter que ces opcodes ne sont actuellement supportés que sous
+        Linux.
+      </para>
+    </note>
+   <para>
+     <emphasis>kcontrol</emphasis> -- le code du contrôle à lire
+   </para>
+   <para>
+     <emphasis>knum</emphasis> -- le numéro de la Wiimote à interroger, qui est par
+     défaut la première.
+   </para>
+   <para>
+     A chaque accès, un type de donnée particulier de la Wiimote est lu. Les
+     contrôles actuellement implémentés sont donnés ci-dessous, avec le nom de
+     macro défini dans le fichier <emphasis>wii_mac</emphasis> :
+   </para>
+   <para>
+0 (WII_BUTTONS) : retourne une combinaison de bits représentant tous les boutons enfoncés.
+   </para>
+   <para>
+1 (WII_TWO) : retourne 1 si le bouton vient d'être enfoncé, 0 sinon.
+   </para>
+   <para>
+2 (WII_ONE) : comme ci-dessus.
+   </para>
+   <para>
+3 (WII_B) : comme ci-dessus.
+   </para>
+   <para>
+4 (WII_A) : comme ci-dessus.
+   </para>
+   <para>
+5 (WII_MINUS) : comme ci-dessus.
+   </para>
+   <para>
+8 (WII_HOME) : comme ci-dessus.
+   </para>
+   <para>
+9 (WII_LEFT) : comme ci-dessus.
+   </para>
+   <para>
+10 (WII_RIGHT) : comme ci-dessus.
+   </para>
+   <para>
+11 (WII_DOWN) : comme ci-dessus.
+   </para>
+   <para>
+12 (WII_UP) : comme ci-dessus.
+   </para>
+   <para>
+13 (WII_PLUS) : comme ci-dessus.
+   </para>
+<para> 
+Si le numéro du contrôle vaut 100 plus un de ces codes de bouton, l'état
+courant du bouton est retourné. Les macros telles que WII_S_TWO, etc
+sont définies pour cela.
+</para>
+<para>
+Si le numéro du contrôle vaut 200 plus un de ces codes de bouton, la valeur
+retournée est 1 si le bouton est enfoncé, et 0 sinon. Les macros telles que
+WII_H_TWO, etc sont définies pour cela.
+</para>
+<para>
+Si le numéro du contrôle vaut 300 plus un de ces codes de bouton, la valeur
+retournée est 1 si le bouton vient d'être relâché, et 0 sinon. Les macros telles
+que WII_R_TWO, etc sont définies pour cela.
+</para>
+
+   <!-- <para> -->
+   <!--   17 (WII_AXIS_X): The  -->
+   <!-- </para> -->
+   <!-- <para> -->
+   <!--   18 (WII_AXIS_Y): -->
+   <!-- </para> -->
+   <!-- <para> -->
+   <!--   19 (WII_AXIS_Z): -->
+   <!-- </para> -->
+   <para>
+     20 (WII_PITCH) : L'inclinaison de la Wiimote. La valeur en degrés est comprise
+     entre -90 et +90, à moins d'une modification de l'intervalle par un appel à
+     <emphasis>wiirange</emphasis>.
+   </para>
+   <para>
+     21 (WII_ROLL) : La rotation de la Wiimote. La valeur en degrés est comprise
+     entre -90 et +90, à moins d'une modification de l'intervalle par un appel à
+     <emphasis>wiirange</emphasis>.
+   </para>
+   <!-- <para> -->
+   <!--   22 (WII_YAW): -->
+   <!-- </para> -->
+   <para>
+     23 (WII_FORCE_X) : La force appliquée à la Wiimote selon les trois axes.
+   </para>
+   <para>
+     24 (WII_FORCE_Y) :
+   </para>
+   <para>
+     25 (WII_FORCE_Z) :
+   </para>
+   <para>
+     26 (WII_FORCE_TOTAL) : L'intensité totale de la force appliquée à la Wiimote.
+   </para>
+   <para>
+     27 (WII_BATTERY) : Le pourcentage de la charge des piles restante.
+   </para>
+   <para>
+     28 (WII_NUNCHUK_ANG) : L'angle du joystick du nunchuk en degrés.
+   </para>
+   <para>
+     29 (WII_NUNCHUK_MAG) : Le déplacement du joystick du nunchuk par rapport à sa
+     position centrale.
+   </para>
+   <para>
+     30 (WII_NUNCHUK_PITCH) : L'inclinaison du nunchuk en degrés, comprise
+     entre -90 et +90, à moins d'une modification de l'intervalle par un appel à
+     <emphasis>wiirange</emphasis>.
+   </para>
+   <para>
+     31 (WII_NUNCHUK_ROLL) : La rotation du nunchuk en degrés, comprise
+     entre -90 et +90, à moins d'une modification de l'intervalle par un appel à
+     <emphasis>wiirange</emphasis>.
+   </para>
+   <!-- <para> -->
+   <!--   32 (WII_NUNCHUK_AXIS_Z): -->
+   <!-- </para> -->
+   <para>
+     33 (WII_NUNCHUK_Z): L'état du bouton Z du nunchuk.
+   </para>
+   <para>
+     34 (WII_NUNCHUK_C): L'état du bouton C du nunchuk.
+   </para>
+   <para>
+     35 (WII_IR1_X): Le pointage infrarouge de la Wiimote.
+   </para>
+   <para>
+     36 (WII_IR1_Y):
+   </para>
+   <para>
+     37 (WII_IR1_Z):
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voir l'exemple de <link linkend="wiiconnect"><citetitle>wiiconnect</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="wiiconnect"><citetitle>wiiconnect</citetitle></link>,
+      <link linkend="wiirange"><citetitle>wiirange</citetitle></link>,
+      <link linkend="wiisend"><citetitle>wiisend</citetitle></link>,
+     </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Codemist Ltd</member>
+        <member>2009</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.11</para>
+  </refsect1>
+</refentry>

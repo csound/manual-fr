@@ -1,0 +1,119 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="outkpb">
+<indexterm id="IndexOutkpb"><primary>outkpb</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Output</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>outkpb</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>outkpb</refname>
+    <refpurpose>
+      Envoie des messages MIDI de pitch-bend au taux-k.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Envoie des messages MIDI de pitch-bend au taux-k.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>outkpb</command> kchn, kvalue, kmin, kmax</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kchn</emphasis> -- numéro de canal MIDI (1-16)
+    </para>
+
+    <para>
+      <emphasis>kvalue</emphasis> -- valeur en virgule flottante
+    </para>
+
+    <para>
+      <emphasis>kmin</emphasis> -- valeur minimale en virgule flottante (convertie
+      en valeur entière MIDI 0)
+    </para>
+
+    <para>
+      <emphasis>kmax</emphasis> -- valeur maximale en virgule flottante (convertie
+      en valeur entière MIDI 127 (7 bit))
+    </para>
+
+    <para>
+      <emphasis>outkpb</emphasis> envoie des messages MIDI de pitch-bend
+      au taux-k. Il ne fonctionne qu'avec les instruments MIDI qui les reconnaissent.
+      Il peut piloter une valeur différente de paramètre pour chaque note active.
+    </para>
+
+    <para>
+      Il peut échelonner un argument de taux-k en virgule flottante selon les
+      valeurs <emphasis>kmin</emphasis> et <emphasis>kmax</emphasis>. Par exemple
+      avec <emphasis>kmin</emphasis> = 1.0 et <emphasis>kmax</emphasis> = 2.0,
+      lorque l'argument <emphasis>kvalue</emphasis> reçoit la valeur 2.0,
+      l'opcode envoie la valeur 127 sur le périphérique MIDI OUT. Lorsque
+      l'argument <emphasis>kvalue</emphasis> reçoit la valeur 1.0, il envoie la
+      valeur 0. Les opcodes de taux-k envoient un message chaque fois que la
+      valeur MIDI traduite de l'argument <emphasis>kvalue</emphasis> change.
+    </para>
+  </refsect1>
+
+   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode outkpb. Il utilise le fichier
+      <ulink url="examples/outkpb.csd"><citetitle>outkpb.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode outkpb.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/outkpb.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="outiat"><citetitle>outiat</citetitle></link>,
+      <link linkend="outic14"><citetitle>outic14</citetitle></link>,
+      <link linkend="outic"><citetitle>outic</citetitle></link>,
+      <link linkend="outipat"><citetitle>outipat</citetitle></link>,
+      <link linkend="outipb"><citetitle>outipb</citetitle></link>,
+      <link linkend="outipc"><citetitle>outipc</citetitle></link>,
+      <link linkend="outkat"><citetitle>outkat</citetitle></link>,
+      <link linkend="outkc14"><citetitle>outkc14</citetitle></link>,
+      <link linkend="outkc"><citetitle>outkc</citetitle></link>,
+      <link linkend="outkpat"><citetitle>outkpat</citetitle></link>,
+      <link linkend="outkpc"><citetitle>outkpc</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.47 de Csound.</para>
+    <para>Merci à &namerasmus; pour avoir indiqué les intervalles corrects pour
+    le canal MIDI et les numéros de contrôleur.</para>
+  </refsect1>
+</refentry>

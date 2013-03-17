@@ -1,0 +1,81 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="JackoAudioInConnect">
+  <indexterm id="IndexJackoAudioInConnect"><primary>JackoAudioInConnect</primary></indexterm>
+  <refentryinfo><title>Jacko Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>JackoAudioInConnect</refentrytitle>
+  </refmeta>
+  
+  <refnamediv>
+    <refname>JackoAudioInConnect</refname>
+    <refpurpose>
+      Crée une connexion audio depuis un port de Jack vers Csound.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Depuis l'en-tête de l'orchestre, crée une connexion audio depuis un port
+      de sortie externe de Jack vers un port d'entrée audio de Jack dans
+      l'instance de Csound.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>JackoAudioInConnect </command>SexternalPortName, ScsoundPortName</synopsis>
+  </refsect1>
+  
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>SexternalPortName</emphasis> -- Le nom complet ("clientname:portname") 
+      d'un port de sortie audio externe de Jack.
+    </para>
+
+    <para>
+      <emphasis>ScsoundPortName</emphasis> -- Le nom abrégé ("portname") du port
+      d'entrée audio interne de Jack.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Le signal audio doit être lu par l'opcode <emphasis>JackoAudioIn</emphasis>.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="JackoInit"><citetitle>JackoInfo</citetitle></link>, 
+      <link linkend="JackoInfo"><citetitle>JackoInfo</citetitle></link>, 
+      <link linkend="JackoFreewheel"><citetitle>JackoFreewheel</citetitle></link>, 
+      <link linkend="JackoAudioOutConnect"><citetitle>JackoAudioOutConnect</citetitle></link>, 
+      <link linkend="JackoMidiInConnect"><citetitle>JackoMidiInConnect</citetitle></link>, 
+      <link linkend="JackoMidiOutConnect"><citetitle>JackoMidiOutConnect</citetitle></link>, 
+      <link linkend="JackoOn"><citetitle>JackoOn</citetitle></link>, 
+      <link linkend="JackoAudioIn"><citetitle>JackoAudioIn</citetitle></link>, 
+      <link linkend="JackoAudioOut"><citetitle>JackoAudioOut</citetitle></link>, 
+      <link linkend="JackoMidiOut"><citetitle>JackoMidiOut</citetitle></link>, 
+      <link linkend="JackoNoteOut"><citetitle>JackoNoteOut</citetitle></link>, 
+      <link linkend="JackoTransport"><citetitle>JackoTransport</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par : &namemichael; 2010</para>
+  </refsect1>
+
+</refentry>

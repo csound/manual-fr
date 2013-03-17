@@ -1,0 +1,135 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.16
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="cauchy">
+<indexterm id="IndexCauchyXClass"><primary>x-class noise generators</primary></indexterm>
+
+<indexterm id="IndexCauchy"><primary>cauchy</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Random (Noise) Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>cauchy</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>cauchy</refname>
+    <refpurpose>
+      Générateur de nombres aléatoires de distribution de Cauchy.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Générateur de nombres aléatoires de distribution de Cauchy.
+      C'est un générateur de bruit de classe x.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>cauchy</command> kalpha</synopsis>
+
+    <synopsis>ires <command>cauchy</command> kalpha</synopsis>
+
+    <synopsis>kres <command>cauchy</command> kalpha</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kalpha</emphasis> -- contrôle la dispersion centrée sur zéro (un grand
+      <emphasis>kalpha</emphasis> = une grande dispersion). Donne en sortie des nombres
+      positifs et négatifs.
+    </para>
+
+    <para>
+      Pour des explications plus détaillées sur ces distributions, consulter :
+      <orderedlist>
+        <listitem>
+          <para>C. Dodge - T.A. Jerse 1985. Computer music. Schirmer books. pp.265 - 286</para>
+        </listitem>
+
+        <listitem>
+          <para>D. Lorrain. A panoply of stochastic cannons. In C. Roads, ed. 1989. Music machine . Cambridge, Massachusetts: MIT press, pp. 351 - 379.</para>
+        </listitem>
+      </orderedlist>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode cauchy. Il utilise le fichier
+      <ulink url="examples/cauchy.csd"><citetitle>cauchy.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode cauchy.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/cauchy.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
+ i   1 time     0.00267:    -0.20676
+ i   1 time     0.20267:    -0.28814
+ i   1 time     0.40267:     0.61651
+ i   1 time     0.60267:   -18.18552
+ i   1 time     0.80267:     1.18140
+ i   1 time     1.00000:    -0.75432
+ i   1 time     1.20267:    -0.02002
+ i   1 time     1.40267:     0.01785
+ i   1 time     1.60267:    -0.48834
+ i   1 time     1.80000:     9.69401
+ i   1 time     2.00000:    -0.41257
+Seeding from current time 3112109827
+ i   2 time     3.00267:    -0.46887
+ i   2 time     3.20267:     0.06189
+ i   2 time     3.40267:    -0.40303
+ i   2 time     3.60000:     0.89312
+ i   2 time     3.80267:    -0.40374
+ i   2 time     4.00000:     0.86557
+ i   2 time     4.20000:     0.09192
+ i   2 time     4.40267:    -0.16748
+ i   2 time     4.60267:     0.30133
+ i   2 time     4.80267:     0.31657
+ i   2 time     5.00000:     0.44681</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="seed"><citetitle>seed</citetitle></link>,
+      <link linkend="betarand"><citetitle>betarand</citetitle></link>,
+      <link linkend="bexprnd"><citetitle>bexprnd</citetitle></link>,
+      <link linkend="exprand"><citetitle>exprand</citetitle></link>,
+      <link linkend="gauss"><citetitle>gauss</citetitle></link>,
+      <link linkend="linrand"><citetitle>linrand</citetitle></link>,
+      <link linkend="pcauchy"><citetitle>pcauchy</citetitle></link>,
+      <link linkend="poisson"><citetitle>poisson</citetitle></link>,
+      <link linkend="trirand"><citetitle>trirand</citetitle></link>,
+      <link linkend="unirand"><citetitle>unirand</citetitle></link>,
+      <link linkend="weibull"><citetitle>weibull</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameparis;</member>
+        <member>MIT, Cambridge</member>
+        <member>1995</member>
+      </simplelist>
+    </para>
+    <para>Existait dans la 3.30</para>
+  </refsect1>
+</refentry>

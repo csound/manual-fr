@@ -1,0 +1,154 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="sndload">
+<indexterm id="IndexSndload"><primary>sndload</primary></indexterm>
+  <refentryinfo><title>Table Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>sndload</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>sndload</refname>
+    <refpurpose>
+      Charge un fichier son en mémoire pour être utilisé par
+      <link linkend="loscilx"><citetitle>loscilx</citetitle></link>
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>sndload</emphasis> charge un fichier son en mémoire pour être
+      utilisé par <link linkend="loscilx"><citetitle>loscilx</citetitle></link>.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>sndload</command> Sfname[, ifmt[, ichns[, isr[, ibas[, iamp[, istrt   \
+      [, ilpmod[, ilps[, ilpe]]]]]]]]]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para><emphasis>Sfname</emphasis> - nom du fichier sous la forme d'une
+      constante, d'une variable ou d'un p-champ chaîne de caractères, ou bien un
+      nombre utilisé comme index dans un ensemble de chaînes de caractères avec
+      <emphasis>strset</emphasis> ou, s'il n'y a pas de chaîne disponible, pour
+      générer un nom de fichier au format <emphasis>soundin.n</emphasis>. Si le
+      nom de fichier ne comprend pas un chemin complet, le fichier est d'abord
+      cherché dans le répertoire courant, puis dans celui qui est spécifié par
+      <link linkend="CommandEnvironment"><citetitle>SSDIR</citetitle></link>
+      (si défini), et finalement par
+      <link linkend="CommandEnvironment"><citetitle>SFDIR</citetitle></link>.
+      Si le même fichier
+      a déjà été chargé antérieurement, il n'est pas relu, mais les paramètres
+      <emphasis>ibas</emphasis>, <emphasis>iamp</emphasis>,
+      <emphasis>istrt</emphasis>, <emphasis>ilpmod</emphasis>,
+      <emphasis>ilps</emphasis> et <emphasis>ilpe</emphasis> sont quand même
+      mis à jour.
+    </para>
+    <para>
+      <emphasis>ifmt </emphasis>(facultatif, zéro par défaut) - format d'échantillon
+      par défaut pour les fichiers son bruts (sans en-tête) ; si le fichier a un
+      en-tête, cet argument est ignoré. Les valeurs possibles sont :
+      <simplelist type='vert' columns='1'>
+        <member>-1 : interdit les fichiers sans en-tête (échec avec une erreur
+        d'initialisation)</member>
+        <member>0 : utilise le format spécifié dans la ligne de commande</member>
+        <member>1 : entiers signés sur 8 bit</member>
+        <member>2 : a-law</member>
+        <member>3 : u-law</member>
+        <member>4 : entiers signés sur 16 bit</member>
+        <member>5 : entiers signés sur 32 bit</member>
+        <member>6 : flottants sur 32 bit</member>
+        <member>7 : entiers non signés sur 8 bit</member>
+        <member>8 : entiers signés sur 24 bit</member>
+        <member>9 : flottants sur 64 bit</member>
+      </simplelist>
+    </para>
+    <para>
+      <emphasis>ichns</emphasis> (facultatif, zéro par défaut) - nombre de canaux
+      par défaut pour les fichiers son bruts (sans en-tête) ; si le fichier a un
+      en-tête, cet argument est ignoré. Les valeurs nulle ou négatives sont
+      interprétées comme 1 canal.
+    </para>
+    <para>
+      <emphasis>isr</emphasis> (facultatif, zéro par défaut) - taux d'échantillonnage
+      par défaut pour les fichiers son bruts (sans en-tête) ; si le fichier a un
+      en-tête, cet argument est ignoré. Les valeurs nulle ou négatives sont
+      interprétées comme le taux d'échantillonnage de l'orchestre
+      (<emphasis>sr</emphasis>).
+    </para>
+    <para>
+      <emphasis>ibas</emphasis> (facultatif, zéro par défaut) - fréquence de base
+      en Hz. Si elle est positive, elle remplace la valeur spécifiée dans
+      l'en-tête du fichier son ; sinon, la valeur de l'en-tête est utilisée si
+      elle est présente, et 1.0 si le fichier ne contient pas cette information.
+    </para>
+    <para>
+      <emphasis>iamp</emphasis> (facultatif, zéro par défaut) - pondération de
+      l'amplitude. Si elle est différente de zéro, elle remplace la valeur
+      spécifiée dans l'en-tête du fichier son (note : les valeurs négatives sont
+      permises, elles inversent la phase de la sortie) ; sinon, la valeur de
+      l'en-tête est utilisée si elle est présente, et 1.0 si le fichier ne
+      contient pas cette information.
+    </para>
+    <para>
+      <emphasis>istrt</emphasis> (facultatif, -1 par défaut) - position du début
+      en trames d'échantillon, peut être fractionnaire. Si elle est non négative,
+      elle remplace la valeur spécifiée dans l'en-tête du fichier son ; sinon,
+      la valeur de l'en-tête est utilisée si elle est présente, et 0 si le
+      fichier ne contient pas cette information. Note : même si cet argument est
+      spécifié, le fichier entier est lu en mémoire.
+    </para>
+    <para>
+      <emphasis>ilpmod</emphasis> (facultatif, -1 par défaut) - mode de boucle,
+      l'un des suivants :
+      <simplelist type='vert' columns='1'>
+        <member>n'importe quelle valeur négative : utilise l'information de
+          boucle spécifiée dans l'en-tête du fichier son, ignorant
+          <emphasis>ilps</emphasis> et <emphasis>ilpe</emphasis></member>
+        <member>0 : pas de boucle (<emphasis>ilps</emphasis> et
+          <emphasis>ilpe</emphasis> sont ignorés)</member>
+        <member>1 : boucle à l'endroit (cycle autour de la fin de boucle si elle
+          est traversée en avançant, et cycle autour du début du boucle s'il est
+          traversé en reculant)</member>
+        <member>2 : boucle à l'envers (change de direction à la fin de boucle si
+          elle est traversée en avançant, et cycle autour du début de boucle s'il
+          est traversé en reculant)</member>
+        <member>3 : boucle à l'endroit et à l'envers (change de direction aux
+          deux points de boucle s'ils sont traversés comme décrit ci-dessus)</member>
+      </simplelist>
+    </para>
+    <para>
+      <emphasis>ilps</emphasis> (facultatif, zéro par défaut) - début de boucle
+        en trames d'échantillon (valeurs fractionnaires autorisées), ou fin de
+        boucle si <emphasis>ilps</emphasis> est supérieur à
+        <emphasis>ilpe</emphasis>. Ignoré sauf si <emphasis>ilpmod</emphasis>
+        vaut 1, 2 ou 3. Si les points de boucle sont égaux, la boucle se fait
+        sur l'échantillon complet.
+    </para>
+    <para>
+      <emphasis>ilpe</emphasis> (facultatif, zéro par défaut) - fin de boucle
+        en trames d'échantillon (valeurs fractionnaires autorisées), ou début de
+        boucle si <emphasis>ilps</emphasis> est supérieur à
+        <emphasis>ilpe</emphasis>. Ignoré sauf si <emphasis>ilpmod</emphasis>
+        vaut 1, 2 ou 3. Si les points de boucle sont égaux, la boucle se fait
+        sur l'échantillon complet.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par &nameistvan;.</para>
+    <para>2006</para>
+    <para>Nouveau dans Csound 5.03</para>
+  </refsect1>
+</refentry>

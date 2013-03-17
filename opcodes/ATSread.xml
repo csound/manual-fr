@@ -1,0 +1,107 @@
+<!--translated=yes
+authors=François Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ATSread">
+<indexterm id="IndexATSread"><primary>ATSread</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:ATS</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ATSread</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ATSread</refname>
+    <refpurpose> lit des données depuis un fichier ATS.</refpurpose>
+  </refnamediv>
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>ATSread</emphasis> retourne l'information d'amplitude
+      (<emphasis>kamp</emphasis>) et de fréquence (<emphasis>kfreq</emphasis>)
+      d'un partiel spécifié contenu dans le fichier d'analyse ATS au moment
+      indiqué par le pointeur de temps <emphasis>ktimepnt</emphasis>.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kfreq, kamp <command>ATSread</command> ktimepnt, iatsfile, ipartial</synopsis>
+  </refsect1>
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iatsfile</emphasis> – le numéro ATS (n dans ats.n) ou le nom
+      entre guillemets du fichier d'analyse créé avec
+      <ulink url="http://www-ccrma.stanford.edu/~juan/ATS.html"><citetitle>ATS</citetitle></ulink>.
+    </para>
+    <para>
+      <emphasis>ipartial</emphasis> – le numéro du partiel d'analyse duquel seront
+      retournés la fréquence en Hz et l'amplitude.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kfreq, kamp</emphasis> - sorties de l'unité <emphasis>ATSread</emphasis>.
+      Ces valeurs représentent la fréquence et l'amplitude d'un partiel spécifique
+      sélectionné par <emphasis>ipartial</emphasis>. Les informations du partiel
+      sont dérivées d'une analyse ATS. <emphasis>ATSread</emphasis> interpole la
+      fréquence et l'amplitude entre les trames dans le fichier d'analyse ATS au
+      taux-k. La sortie dépend des données dans le fichier d'analyse et du
+      pointeur <emphasis>ktimepnt</emphasis>.
+    </para>
+   <para>
+     <emphasis>ktimepnt</emphasis> – Le pointeur de temps en secondes utilisé
+      comme indice sur le fichier ATS. Est utilisé pour
+      <emphasis>ATSread</emphasis> exactement de la même manière que pour
+      <link linkend="pvoc"><citetitle>pvoc</citetitle></link> et
+      <link linkend="ATSadd"><citetitle>ATSadd</citetitle></link>.
+   </para>
+  </refsect1>
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode ATSread. Il utilise le fichier
+      <ulink url="examples/ATSread.csd"><citetitle>ATSread.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode ATSread.</title>
+          <xi:include href="examples-xml/ATSread.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Ici nous utilisons <emphasis>ATSread</emphasis> pour obtenir la fréquence
+      et l'amplitude du centième partiel du fichier d'analyse ATS 'beats.ats'.
+      Nous utilisons ces données pour piloter un oscillateur, mais nous pourrions
+      les utiliser pour toute autre opération qui accepte une entrée au taux-k,
+      comme la largeur de bande et la résonnance d'un filtre, etc.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ATSreadnz"><citetitle>ATSreadnz</citetitle></link>, 
+      <link linkend="ATSinfo"><citetitle>ATSinfo</citetitle></link>, 
+      <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>, 
+      <link linkend="ATScross"><citetitle>ATScross</citetitle></link>, 
+      <link linkend="ATSinterpread"><citetitle>ATSinterpread</citetitle></link>, 
+      <link linkend="ATSpartialtap"><citetitle>ATSpartialtap</citetitle></link>, 
+      <link linkend="ATSadd"><citetitle>ATSadd</citetitle></link>, 
+      <link linkend="ATSaddnz"><citetitle>ATSaddnz</citetitle></link>, 
+      <link linkend="ATSsinnoi"><citetitle>ATSsinnoi</citetitle></link></para>
+  </refsect1>
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Alex Norman</member>
+        <member>Seattle,Washington</member>
+        <member>2004</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

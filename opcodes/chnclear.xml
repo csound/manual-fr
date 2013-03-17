@@ -1,0 +1,67 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="chnclear">
+<indexterm id="Indexchnclear"><primary>chnclear</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Software Bus</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>chnclear</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>chnclear</refname>
+    <refpurpose>
+      Efface un canal de sortie audio du bus logiciel nommé.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Met à zéro un canal de sortie audio du bus logiciel nommé. Cela implique
+      une déclaration du canal avec <emphasis>imode</emphasis>=2 (voir aussi
+      <link linkend="chn"><citetitle>chn_a</citetitle></link>).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>chnclear</command> Sname</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>Sname</emphasis> -- une chaîne de caractères indiquant quel canal
+      du bus logiciel effacer.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode chnclear. Il utilise le fichier
+      <ulink url="examples/chnclear.csd"><citetitle>chnclear.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode chnclear.</title>
+        <xi:include href="examples-xml/chnclear.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameistvan;</member>
+        <member>2006</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

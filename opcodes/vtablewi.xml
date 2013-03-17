@@ -1,0 +1,81 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vtablewi">
+<indexterm id="IndexVtablewi"><primary>vtablewi</primary></indexterm>
+  <refentryinfo><title>Vectorial:Tables</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vtablewi</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vtablewi</refname>
+    <refpurpose>
+      Ecrit des vecteurs (dans des tables, ou tableaux de vecteurs).
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode écrit des vecteurs dans des tables à l'initialisation.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>vtablewi</command>  indx, ifn, ixmode, inarg1 [, inarg2, inarg3 , .... , inargN ]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>indx</emphasis> - Index dans la f-table, soit un nombre positif
+      inférieur à la longueur de la table (<emphasis>ixmode</emphasis> = 0) soit un nombre
+      compris entre 0 et 1 (<emphasis>ixmode</emphasis> != 0).
+    </para>
+    <para> 
+      <emphasis>ifn</emphasis> - numéro de la table.
+    </para>
+    <para>     <emphasis>ixmode</emphasis> - mode d'indexation. La valeur par défaut est 0.</para>
+    <para>            == 0, l'index est traité comme une position brute dans la table,</para>
+    <para>            == 1, l'index est normalisé (entre 0 et 1).</para>
+    <para>
+      <emphasis>inarg1...inargN</emphasis> - Composantes du vecteur d'entrée.
+    </para> 
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Cet opcode est utile dans tous les cas où il faut écrire des ensembles
+      de valeurs associés à des indices uniques (par exemple, des échantillons
+      multi-canaux, des trames de bin de TFCT, des formants spectraux, des
+      partitions basées sur des p-champs, etc). Le nombre de composantes de
+      chaque vecteur (longueur du vecteur) est déterminé par le nombre
+      d'arguments facultatifs à droite (<emphasis>inarg1</emphasis>,
+      <emphasis>inarg2</emphasis>, <emphasis>inarg3</emphasis>, ...,
+      <emphasis>inargN</emphasis>).
+    </para>
+    <para>
+      Noter qu'aucun mode de repliement ou de limitation d'indexation n'est
+      implémenté. Si l'index tente d'accéder à une zone non allouée par la
+      table, il est probable que Csound plante. Cependant on peut facilement
+      éviter cet écueil en utilisant des opcodes de repliement ou de limitation
+      appliqués à l'index avant l'utilisation de <emphasis>vtablewi</emphasis>,
+      afin de corriger d'éventuelles valeurs hors-limites.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par Gabriel Maldonado.</para>
+    <para>Nouveau dans Csound 5 (Auparavant seulement disponible dans CsoundAV)</para>
+  </refsect1>
+</refentry>

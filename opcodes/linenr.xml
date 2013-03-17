@@ -1,0 +1,125 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="linenr">
+<indexterm id="IndexLinenr"><primary>linenr</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Envelope Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>linenr</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>linenr</refname>
+    <refpurpose>
+      L'opcode <emphasis>linen</emphasis> rallongé avec un segment de relâchement.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>linenr</emphasis> -- comme <link linkend="linen"><citetitle>linen</citetitle></link>
+      sauf que le dernier segment n'est entamé qu'après la détection d'un relâchement de
+      note MIDI. La note est alors rallongée de la durée de la chute.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>linenr</command> xamp, irise, idec, iatdec</synopsis>
+
+    <synopsis>kres <command>linenr</command> kamp, irise, idec, iatdec</synopsis>
+ </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>irise</emphasis> -- durée de l'attaque en secondes. Un valeur nulle
+      ou négative signifie pas d'attaque.
+    </para>
+
+    <para>
+      <emphasis>idec</emphasis> -- durée de la chute en secondes. Si
+      <emphasis>idec</emphasis> &gt; <emphasis>idur</emphasis> la chute sera tronquée.
+    </para>
+
+    <para>
+      <emphasis>iatdec</emphasis> -- facteur d'atténuation par lequel la dernière valeur
+      de l'entretien diminue exponentiellement pendant la chute. Cette valeur doit
+      être positive et elle est normalement de l'ordre de 0,01. Une valeur trop longue
+      ou excessivement courte peut produire une coupure audible. Les valeurs nulle ou
+      négatives sont interdites.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamp, xamp</emphasis> -- signal d'amplitude en entrée.
+    </para>
+
+    <para>
+      Ce qui rend unique <emphasis>linenr</emphasis> dans Csound c'est qu'il contient
+      un <emphasis>détecteur de note-off</emphasis> et un <emphasis>allongement de
+      la durée de relâchement</emphasis>. Lorqu'il détecte la fin d'un évènement de
+      partition ou un note-off MIDI, il allonge immédiatement la durée d'exécution de
+      l'instrument courant de <emphasis>idec</emphasis> secondes, puis il exécute
+      une chute exponentielle vers le facteur <emphasis>iatdec</emphasis>. S'il y a
+      plusieurs unités dans un instrument, l'allongement est défini par le plus grand
+      <emphasis>idec</emphasis>.
+    </para>
+
+    <para>
+      On peut utiliser d'autres enveloppes préfabriquées pour lancer un segment de relâchement à
+      la réception d'un message note off, comme
+      <link linkend="linsegr"><citetitle>linsegr</citetitle></link> et
+      <link linkend="expsegr"><citetitle>expsegr</citetitle></link>, ou bien l'on peut construire des
+      enveloppes plus complexes au moyen de
+      <link linkend="xtratim"><citetitle>xtratim</citetitle></link> et de
+      <link linkend="release"><citetitle>release</citetitle></link>. Noter qu'il n'est pas
+      nécessaire d'utiliser <link linkend="xtratim"><citetitle>xtratim</citetitle></link> avec
+      <emphasis>linenr</emphasis>, car la durée est allongée automatiquement.
+    </para>
+
+    <para>
+      Ces unités <quote>r</quote> peuvent être modifiées également par des évènements MIDI note-off
+      provoqués par une vélocité nulle.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode linenr. Il utilise le fichier
+      <ulink url="examples/linenr.csd"><citetitle>linenr.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode linenr.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/linenr.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="linsegr"><citetitle>linsegr</citetitle></link>,
+      <link linkend="expsegr"><citetitle>expsegr</citetitle></link>,
+      <link linkend="envlpxr"><citetitle>envlpxr</citetitle></link>,
+      <link linkend="mxadsr"><citetitle>mxadsr</citetitle></link>,
+      <link linkend="madsr"><citetitle>madsr</citetitle></link>,
+      <link linkend="envlpx"><citetitle>envlpx</citetitle></link>,
+      <link linkend="linen"><citetitle>linen</citetitle></link>,
+      <link linkend="xtratim"><citetitle>xtratim</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

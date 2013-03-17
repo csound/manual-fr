@@ -1,0 +1,154 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pconvolve">
+<indexterm id="IndexPconvolve"><primary>pconvolve</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Convolution and Morphing</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pconvolve</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>convolve</refname>
+    <refpurpose>
+      Convolution basée sur un algorithme overlap-save à découpage uniforme.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Convolution basée sur un algorithme overlap-save à découpage uniforme.
+      Comparé à l'opcode <link linkend="convolve"><citetitle>convolve</citetitle></link>,
+      <emphasis>pconvolve</emphasis> a trois atouts :
+    </para>
+
+		<itemizedlist>
+
+		<listitem>
+		<para>petit délai</para>
+		</listitem>
+
+		<listitem>
+		<para>peut fonctionner en temps réel pour les fichier de réponse impulsionnelle
+    les plus courts</para>
+		</listitem>
+
+		<listitem>
+		<para>pas de passe d'analyse avant le traitement</para>
+		</listitem>
+
+		<listitem>
+		<para>restitution souvent plus rapide que <emphasis>convolve</emphasis></para>
+		</listitem>
+
+		</itemizedlist>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ar1 [, ar2] [, ar3] [, ar4] <command>pconvolve</command> ain, ifilcod [, ipartitionsize, ichannel]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifilcod</emphasis> -- entier ou chaîne de caractères définissant un
+      fichier de réponse impulsionnelle. Les fichiers multi-canaux sont supportés.
+      Le fichier doit avoir le même taux d'échantillonnage que l'orchestre. [Note :
+      on ne peut pas utiliser les fichiers de <emphasis>cvanal</emphasis> !] Il
+      faut garder à l'esprit que les fichiers plus longs nécessitent plus de temps
+      de calcul [et probablement une plus grande taille des fragments et plus de
+      latence]. Avec les processeurs actuels, les fichiers dépassant quelques
+      secondes pourront ne pas être restitués en temps réel.
+    </para>
+
+    <para>
+      <emphasis>ipartitionsize</emphasis> (facultatif, par défaut égal à la taille
+      du tampon de sortie [-b]) -- la taille en échantillons de chaque morceau de
+      la réponse impulsionnelle. C'est le paramètre qu'il faut ajuster pour avoir
+      les meilleures performances en fonction de la taille du fichier de réponse
+      impulsionnelle. En général, une petite taille signifie une latence moins
+      importante mais plus de temps de calcul. Si l'on spécifie une valeur qui
+      n'est pas une puissance de 2 l'opcode trouvera la plus petite puissance de 2
+      immédiatement supérieure et l'utilisera comme taille des fragments.
+    </para>
+
+    <para>
+      <emphasis>ichannel</emphasis> (facultatif) -- le canal de la réponse
+      impulsionnelle à utiliser.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ain</emphasis> -- signal audio en entrée.
+    </para>
+
+    <para>
+      La latence totale de l'opcode peut être calculée comme ceci
+      [<emphasis>ipartitionsize</emphasis> étant une puissance de 2]
+    </para>
+
+    <programlisting>
+    ilatency = (ksmps &lt; ipartitionsize ? ipartitionsize + ksmps : ipartitionsize)/sr</programlisting>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      L'instrument 1 montre un exemple de convolution en temps réel.
+    </para>
+
+    <para>
+      L'instrument 2 montre comment faire une convolution basée sur un fichier
+      avec une méthode de "prospection" pour supprimer tout délai.
+    </para>
+
+    <note>
+    <title>NOTE</title>
+    <para>
+      Vous pouvez télécharger les fichiers de réponse impulsionnelle depuis
+	    noisevault.com ou bien remplacer les noms de fichier avec vos propres
+      fichiers de réponse impulsionnelle.
+	  </para>
+	  </note>
+	  
+    <para>
+      Voici un exemple de l'opcode pconvolve. Il utilise le fichier
+      <ulink url="examples/pconvolve.csd"><citetitle>pconvolve.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode pconvolve.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pconvolve.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="convolve"><citetitle>convolve</citetitle></link>, <link linkend="dconv"><citetitle>dconv</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Matt Ingalls</member>
+        <member>2004</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,170 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="randomi">
+<indexterm id="IndexRandomi"><primary>randomi</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Random (Noise) Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>randomi</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>randomi</refname>
+    <refpurpose>
+      Génère une suite contrôlée de nombres aléatoires avec interpolation entre chaque
+      nouveau nombre.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère une suite contrôlée de nombres aléatoires avec interpolation entre chaque
+      nouveau nombre.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>randomi</command> kmin, kmax, xcps [,imode] [,ifirstval]</synopsis>
+
+    <synopsis>kres <command>randomi</command> kmin, kmax, kcps [,imode] [,ifirstval]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>imode</emphasis> (facultatif, 0 par défaut) -- mode du premier
+      cycle d'interpolation (voir ci-dessous)
+    </para>
+    
+    <para>
+      <emphasis>ifirstval</emphasis> (facultatif, 0 par défaut) -- première
+      valeur retournée
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kmin</emphasis> -- limite inférieure de l'intervalle
+    </para>
+
+    <para>
+      <emphasis>kmax</emphasis> -- limite supérieure de l'intervalle
+    </para>
+
+    <para>
+      <emphasis>kcps, acps</emphasis> -- taux de génération des points aléatoires
+    </para>
+
+    <para>
+      L'opcode <emphasis>randomi</emphasis> est semblable à
+      <link linkend="randi"><citetitle>randi</citetitle></link> mais il permet à
+      l'utilisateur de fixer arbitrairement les valeurs du minimum et du maximum.
+    </para>
+    
+    <para>
+      Si <emphasis>imode</emphasis> = 0 (par défaut), la valeur de l'argument
+      <emphasis>kmin</emphasis> est retournée pendant <emphasis>1/kcps</emphasis>
+      (resp. <emphasis>1/xcps</emphasis>) secondes au début de la note, avant que
+      le premier nombre aléatoire ne soit généré. Puis le processus d'interpolation
+      démarre, d'abord entre <emphasis>kmin</emphasis> et le premier nombre
+      aléatoire généré, et ensuite entre les nombres aléatoires générés
+      successivement, chaque cycle d'interpolation durant
+      <emphasis>1/kcps</emphasis> (resp. <emphasis>1/xcps</emphasis>) secondes.
+    </para>
+    
+    <para>
+      Si <emphasis>imode</emphasis> = 1, un nombre aléatoire est génére à
+      l'initialisation et l'interpolation commence immédiatement entre la valeur
+      de l'argument <emphasis>kmin</emphasis> et ce nombre aléatoire.
+    </para>
+    
+    <para>
+      Si <emphasis>imode</emphasis> = 2, un nombre aléatoire est génére à
+      l'initialisation et l'interpolation commence immédiatement entre la valeur
+      de l'argument <emphasis>ifirstval</emphasis> et ce nombre aléatoire.
+    </para>
+    
+    <para>
+      Si <emphasis>imode</emphasis> = 3, deux nombres aléatoires sont générés
+      à l'initialisation et servent de bornes pour le premier cycle d'interpolation.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode randomi. Il utilise le fichier
+      <ulink url="examples/randomi.csd"><citetitle>randomi.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode randomi.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/randomi.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
+Mode: 0
+k1 = 220.000000
+k1 = 220.000000
+k1 = 220.146093
+k1 = 246.827703
+k1 = 395.595775
+    ...
+
+Mode: 1
+k1 = 220.000000
+k1 = 224.325329
+k1 = 274.370074
+k1 = 343.216049
+k1 = 414.324347
+    ...
+
+Mode: 2
+k1 = 330.000000
+k1 = 292.628171
+k1 = 334.519777
+k1 = 290.610602
+k1 = 394.905366
+    ...
+
+Mode: 3
+k1 = 360.727674
+k1 = 431.680412
+k1 = 380.625254
+k1 = 289.267139
+k1 = 303.038109
+    ...</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="randi"><citetitle>randi</citetitle></link>,
+      <link linkend="random"><citetitle>random</citetitle></link>,
+      <link linkend="randomh"><citetitle>randomh</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Les arguments <emphasis>imode</emphasis> et <emphasis>ifirstval</emphasis>
+    ont été ajoutés par &namepinot;, en janvier 2011, après une discussion avec
+    Peiman Khosravi sur la liste csnd.</para>
+    <para>Exemple écrit par &namekevin; et adapté pour les nouveaux arguments par
+    &namepinot;.</para>
+  </refsect1>
+</refentry>

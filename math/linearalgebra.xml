@@ -1,0 +1,457 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.5
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="linearalgebraopcodes">
+  <indexterm id="Indexlinearalgebra">
+    <primary>Linear algebra opcodes</primary>
+  </indexterm>
+  <refentryinfo>
+    <title>Mathematical Operations</title>
+  </refentryinfo>
+  <refmeta>
+    <refentrytitle>Opcodes d'algèbre linéaire</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>Opcodes d'algèbre linéaire</refname>
+    <refpurpose>
+      Arithmétique scalaire, vectorielle et matricielle sur des valeurs réelles et complexes.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>Ces opcodes implémentent plusieurs opérations d'algèbre linéaire, depuis
+      l'arithmétique scalaire, vectorielle et matricielle jusqu'aux décompositions
+      en valeurs propres basées sur la décomposition QR. Les opcodes sont conçus
+      pour le traitement numérique du signal, et bien sûr pour d'autres opérations
+      mathématiques, dans le langage d'orchestre de Csound.
+    </para>
+
+    <para>L'implémentation numérique utilise la bibliothèque gmm++ de
+      <ulink url="http://home.gna.org/getfem/gmm_intro"><citetitle>home.gna.org/getfem/gmm_intro</citetitle></ulink>.</para>
+
+    <warning>
+      <para>
+        Pour les applications avec des variables f-sig, l'arithmétique sur les tableaux
+        ne peut être exécutée que si le f-sig est "actuel", car le taux-f est une fraction
+        du taux-k ; ce caractère actuel peut être déterminé avec l'opcode la_k_current_f.
+      </para>
+
+      <para>
+        Pour les applications que utilisent des affectations entre vecteurs réels et
+        variables de taux-a, l'arithmétique sur les tableaux ne peut être exécutée que
+        si les vecteurs sont "actuels", car la taille du vecteur peut être un multiple
+        entier de ksmps ; ce caractère actuel peut être déterminé au moyen de l'opcode
+        la_k_current_vr.
+      </para>
+    </warning>
+
+    <table id="LinearAlgebraDataTypes" frame="all" colsep="1">
+      <title>Types de données de l'algèbre linéaire</title>
+      <tgroup cols="3">
+        <thead>
+          <row>
+            <entry>Type mathématique</entry>
+            <entry>Code</entry>
+            <entry>Type(s) de Csound correspondant(s)</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>scalaire réel</entry>
+            <entry>r</entry>
+            <entry>variable de taux-i ou de taux-k</entry>
+          </row>
+          <row>
+            <entry>scalaire complexe</entry>
+            <entry>c</entry>
+            <entry>paire de variables de taux-i ou de taux-k, par exemple "kr, ki"</entry>
+          </row>
+          <row>
+            <entry>vecteur réel</entry>
+            <entry>vr</entry>
+            <entry>variable de taux-i contenant l'adresse d'un tableau</entry>
+          </row>
+          <row>
+            <entry>vecteur réel</entry>
+            <entry>a</entry>
+            <entry>variable de taux-a</entry>
+          </row>
+          <row>
+            <entry>vecteur réel</entry>
+            <entry>t</entry>
+            <entry>numéro d'une table de fonction</entry>
+          </row>
+          <row>
+            <entry>vecteur complexe</entry>
+            <entry>vc</entry>
+            <entry>variable de taux-i contenant l'adresse d'un tableau</entry>
+          </row>
+          <row>
+            <entry>vecteur complexe</entry>
+            <entry>f</entry>
+            <entry>variable fsig</entry>
+          </row>
+          <row>
+            <entry>matrice réelle</entry>
+            <entry>mr</entry>
+            <entry>variable de taux-i contenant l'adresse d'un tableau</entry>
+          </row>
+          <row>
+            <entry>matrice complexe</entry>
+            <entry>mc</entry>
+            <entry>variable de taux-i contenant l'adresse d'un tableau</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+    <para>Tous les tableaux sont indexés à partir de 0 ; le premier indice parcourt
+      les lignes pour donner les colonnes, le deuxième indice parcourt les colonnes
+      pour donner les éléments.</para>
+
+    <para>Tous les tableaux sont généraux et denses ; les routines pour les matrices
+      bande, hermitiennes, symétriques et creuses ne sont pas implémentées.</para>
+
+    <para>Un tableau peut avoir pour code de type vr, vc, mr ou mc et il est stocké dans
+      un objet de taux-i. Dans le code de l'orchestre, un tableau est passé comme
+      une variable MYFLT de taux-i qui contient l'adresse de l'objet tableau, celui-ci
+      étant stocké dans l'espace d'allocation de l'instance de l'opcode. Bien que
+      les variables tableau soient de taux-i, leurs valeurs et même leur forme
+      peuvent être modifées au taux-i ou au taux-k.
+    </para>
+
+    <para>Tous les opérandes doivent être pré-alloués ; à l'exception des opcodes
+      de création, aucun opcode n'alloue de tableau. Ceci reste vérifié même si
+      le tableau apparaît à gauche d'un opcode ! Cependant, certaines opérations
+      peuvent reformater les tableaux pour y faire entrer leurs résultats.
+    </para>
+
+    <para>
+      Les tableaux sont libérés automatiquement lorsque leur instrument est libéré.
+    </para>
+
+    <para>
+      Afin d'améliorer l'exécution et aussi de rendre plus aisée la mémorisation
+      des noms des opcodes, le taux d'exécution, les types de valeur en sortie,
+      les noms des opérations et les types de valeur en entrée sont encodés
+      explicitement dans le nom de l'opcode :
+    </para>
+
+    <orderedlist>
+      <listitem>"la" pour "famille d'opcode d'algèbre linéaire".</listitem>
+      <listitem>"i" ou "k" pour le taux d'exécution.</listitem>
+      <listitem>Code(s) de type (voir ci-dessus) pour la ou les valeurs de sortie,
+        seulement si le type n'est pas déduit implicitement des valeurs en entrée.</listitem>
+      <listitem>Nom d'opération : nom mathématique usuel (de préférence) ou abréviation.</listitem>
+      <listitem>Code(s) de type pour les valeurs en entrée, s'ils ne sont pas implicites.</listitem>
+    </orderedlist>
+
+    <para>Pour plus de détails, voir la documentation de gmm++ à
+      <ulink url="http://download.gna.org/getfem/doc/gmmuser.pdf"><citetitle>http://download.gna.org/getfem/doc/gmmuser.pdf</citetitle></ulink>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <bridgehead>
+      Création de tableau
+    </bridgehead>
+
+    <synopsis>ivr                         <command>la_i_vr_create</command>        irows</synopsis>
+    <para>
+      Crée un vecteur réel de <emphasis>irows</emphasis> lignes.
+    </para>
+    <synopsis>ivc                         <command>la_i_vc_create</command>        irows</synopsis>
+    <para>
+      Crée un vecteur complexe de <emphasis>irows</emphasis> lignes.
+    </para>
+    <synopsis>imr                         <command>la_i_mr_create</command>        irows, icolumns  [, odiagonal]</synopsis>
+    <para>
+      Crée une matrice réelle de <emphasis>irows</emphasis> lignes et <emphasis>icolumns</emphasis> colonnes,
+      avec une valeur facultative sur sa diagonale.
+    </para>
+    <synopsis>imc                         <command>la_i_mc_create</command>        irows, icolumns  [, odiagonal_r, odiagonal_i]</synopsis>
+    <para>
+      Crée une matrice complexe de <emphasis>irows</emphasis> lignes et <emphasis>icolumns</emphasis> colonnes,
+      avec une valeur facultative sur sa diagonale.
+    </para>
+
+    <bridgehead>
+      Examen de tableau
+    </bridgehead>
+
+    <synopsis>irows                       <command>la_i_size_vr</command>          ivr</synopsis>
+    <para>Retourne le nombre de lignes du vecteur réel <emphasis>ivr</emphasis>.</para>
+    <synopsis>irows                       <command>la_i_size_vc</command>          ivc</synopsis>
+    <para>Retourne le nombre de lignes du vecteur complexe <emphasis>ivc</emphasis>.</para>
+    <synopsis>irows, icolumns             <command>la_i_size_mr</command>          imr</synopsis>
+    <para>Retourne le nombre de lignes et de colonnes de la matrice réelle <emphasis>imr</emphasis>.</para>
+    <synopsis>irows, icolumns             <command>la_i_size_mc</command>          imc</synopsis>
+    <para>Retourne le nombre de lignes et de colonnes de la matrice complexe <emphasis>imc</emphasis>.</para>
+
+    <synopsis>kfiscurrent                 <command>la_k_current_f</command>        fsig</synopsis>
+    <para>Retourne 1 si le fsig est actuel, c'est-à-dire si la valeur du fsig changera lors de la prochaine période-k.</para>
+    <synopsis>kvriscurrent                <command>la_k_current_vr</command>       ivr</synopsis>
+    <para>Retourne 1 si le vecteur réel est actuel, c'est-à-dire, si la trame d'échantillon actuelle de Csound se trouve à
+      l'indice 0 du vecteur.</para>
+
+    <synopsis>                            <command>la_i_print_vr</command>         ivr</synopsis>
+    <para>Affiche la valeur du vecteur réel <emphasis>ivr</emphasis>.</para>
+    <synopsis>                            <command>la_i_print_vc</command>         ivc</synopsis>
+    <para>Affiche la valeur du vecteur complexe <emphasis>ivc</emphasis>.</para>
+    <synopsis>                            <command>la_i_print_mr</command>         imr</synopsis>
+    <para>Affiche la valeur de la matrice réelle <emphasis>imr</emphasis>.</para>
+    <synopsis>                            <command>la_i_print_mc</command>         imc</synopsis>
+    <para>Affiche la valeur de la matrice complexe <emphasis>imc</emphasis>.</para>
+
+    <bridgehead>
+      Affectation et conversion de tableau
+    </bridgehead>
+
+    <synopsis>ivr                         <command>la_i_assign_vr</command>        ivr</synopsis>
+    <para>Affecte la valeur du vecteur réel à droite au vecteur réel à gauche, au taux-i.</para>
+    <synopsis>ivr                         <command>la_k_assign_vr</command>        ivr</synopsis>
+    <para>Affecte la valeur du vecteur réel à droite au vecteur réel à gauche, au taux-k.</para>
+    <synopsis>ivc                         <command>la_i_assign_vc</command>        ivc</synopsis>
+    <synopsis>ivc                         <command>la_k_assign_vc</command>        ivr</synopsis>
+    <synopsis>imr                         <command>la_i_assign_mr</command>        imr</synopsis>
+    <synopsis>imr                         <command>la_k_assign_mr</command>        imr</synopsis>
+    <synopsis>imc                         <command>la_i_assign_mc</command>        imc</synopsis>
+    <synopsis>imc                         <command>la_k_assign_mc</command>        imr</synopsis>
+
+    <warning>
+      <para>
+        Les affectations vers des vecteurs à partir de tables ou de fsigs peuvent reformater les vecteurs.
+      </para>
+      <para>
+        Les affectations vers des vecteurs à partir de variables de taux-a, ou vers des variables de
+        taux-a à partir de vecteurs, seront exécutées de manière incrémentielle, un bloc de ksmps
+        éléments par période-k. C'est pourquoi l'arithmétique vectorielle sur ces vecteurs ne peut
+        être pratiquées que si ceux-ci sont actuels, selon la détermination par l'opcode
+        <emphasis>la_k_currrent_vr</emphasis>.
+      </para>
+    </warning>
+
+    <synopsis>ivr                         <command>la_k_assign_a</command>         asig</synopsis>
+    <synopsis>ivr                         <command>la_i_assign_t</command>         itablenumber</synopsis>
+    <synopsis>ivr                         <command>la_k_assign_t</command>         itablenumber</synopsis>
+    <synopsis>ivc                         <command>la_k_assign_f</command>         fsig</synopsis>
+
+    <synopsis>asig                        <command>la_k_a_assign</command>         ivr</synopsis>
+    <synopsis>itablenum                   <command>la_i_t_assign</command>         ivr</synopsis>
+    <synopsis>itablenum                   <command>la_k_t_assign</command>         ivr</synopsis>
+    <synopsis>fsig                        <command>la_k_f_assign</command>         ivc</synopsis>
+
+    <bridgehead>
+      Remplissage des Tableaux par des Eléments Aléatoires
+    </bridgehead>
+
+    <synopsis>ivr                         <command>la_i_random_vr</command>        [ifill_fraction]</synopsis>
+    <synopsis>ivr                         <command>la_k_random_vr</command>        [kfill_fraction]</synopsis>
+    <synopsis>ivc                         <command>la_i_random_vc</command>        [ifill_fraction]</synopsis>
+    <synopsis>ivc                         <command>la_k_random_vc</command>        [kfill_fraction]</synopsis>
+    <synopsis>imr                         <command>la_i_random_mr</command>        [ifill_fraction]</synopsis>
+    <synopsis>imr                         <command>la_k_random_mr</command>        [kfill_fraction]</synopsis>
+    <synopsis>imc                         <command>la_i_random_mc</command>        [ifill_fraction]</synopsis>
+    <synopsis>imc                         <command>la_k_random_mc</command>        [kfill_fraction]</synopsis>
+
+    <bridgehead>
+      Accès aux éléments d'un tableau
+    </bridgehead>
+
+    <synopsis>ivr                         <command>la_i_vr_set</command>           irow, ivalue</synopsis>
+    <synopsis>kvr                         <command>la_k_vr_set</command>           krow, kvalue</synopsis>
+    <synopsis>ivc                         <command>la_i_vc_set</command>           irow, ivalue_r, ivalue_i</synopsis>
+    <synopsis>kvc                         <command>la_k_vc_set</command>           krow, kvalue_r, kvalue_i</synopsis>
+    <synopsis>imr                         <command>la_i mr_set</command>           irow, icolumn, ivalue</synopsis>
+    <synopsis>kmr                         <command>la_k mr_set</command>           krow, kcolumn, ivalue</synopsis>
+    <synopsis>imc                         <command>la_i_mc_set</command>           irow, icolumn, ivalue_r, ivalue_i</synopsis>
+    <synopsis>kmc                         <command>la_k_mc_set</command>           krow, kcolumn, kvalue_r, kvalue_i</synopsis>
+
+    <synopsis>ivalue                      <command>la_i_get_vr</command>           ivr, irow</synopsis>      
+    <synopsis>kvalue                      <command>la_k_get_vr</command>           ivr, krow</synopsis>     
+    <synopsis>ivalue_r, ivalue_i          <command>la_i_get_vc</command>           ivc, irow</synopsis>
+    <synopsis>kvalue_r, kvalue_i          <command>la_k_get_vc</command>           ivc, krow</synopsis>
+    <synopsis>ivalue                      <command>la_i_get_mr</command>           imr, irow, icolumn</synopsis>
+    <synopsis>kvalue                      <command>la_k_get_mr</command>           imr, krow, kcolumn</synopsis>
+    <synopsis>ivalue_r, ivalue_i          <command>la_i_get_mc</command>           imc, irow, icolumn</synopsis>
+    <synopsis>kvalue_r, kvalue_i          <command>la_k_get_mc</command>           imc, krow, kcolumn</synopsis>
+
+    <bridgehead>
+      Opérations sur un tableau
+    </bridgehead>
+
+    <synopsis>imr                         <command>la_i_transpose_mr</command>     imr</synopsis>
+    <synopsis>imr                         <command>la_k_transpose_mr</command>     imr</synopsis>
+    <synopsis>imc                         <command>la_i_transpose_mc</command>     imc</synopsis>
+    <synopsis>imc                         <command>la_k_transpose_mc</command>     imc</synopsis>
+
+    <synopsis>ivr                         <command>la_i_conjugate_vr</command>     ivr</synopsis>
+    <synopsis>ivr                         <command>la_k_conjugate_vr</command>     ivr</synopsis>
+    <synopsis>ivc                         <command>la_i_conjugate_vc</command>     ivc</synopsis>
+    <synopsis>ivc                         <command>la_k_conjugate_vc</command>     ivc</synopsis>
+    <synopsis>imr                         <command>la_i_conjugate_mr</command>     imr</synopsis>
+    <synopsis>imr                         <command>la_k_conjugate_mr</command>     imr</synopsis>
+    <synopsis>imc                         <command>la_i_conjugate_mc</command>     imc</synopsis>
+    <synopsis>imc                         <command>la_k_conjugate_mc</command>     imc</synopsis>
+
+    <bridgehead>
+      Opérations scalaires
+    </bridgehead>
+    
+    <synopsis>ir                          <command>la_i_norm1_vr</command>         ivr</synopsis>
+    <synopsis>kr                          <command>la_k_norm1_vr</command>         ivc</synopsis>
+    <synopsis>ir                          <command>la_i_norm1_vc</command>         ivc</synopsis>
+    <synopsis>kr                          <command>la_k_norm1_vc</command>         ivc</synopsis>
+    <synopsis>ir                          <command>la_i_norm1_mr</command>         imr</synopsis>
+    <synopsis>kr                          <command>la_k_norm1_mr</command>         imr</synopsis>
+    <synopsis>ir                          <command>la_i_norm1_mc</command>         imc</synopsis>
+    <synopsis>kr                          <command>la_k_norm1_mc</command>         imc</synopsis>
+    
+    <synopsis>ir                          <command>la_i_norm_euclid_vr</command>   ivr</synopsis>
+    <synopsis>kr                          <command>la_k_norm_euclid_vr</command>   ivr</synopsis>
+    <synopsis>ir                          <command>la_i_norm_euclid_vc</command>   ivc</synopsis>
+    <synopsis>kr                          <command>la_k_norm_euclid_vc</command>   ivc</synopsis>
+    <synopsis>ir                          <command>la_i_norm_euclid_mr</command>   mvr</synopsis>
+    <synopsis>kr                          <command>la_k_norm_euclid_mr</command>   mvr</synopsis>
+    <synopsis>ir                          <command>la_i_norm_euclid_mc</command>   mvc</synopsis>
+    <synopsis>kr                          <command>la_k_norm_euclid_mc</command>   mvc</synopsis>
+    
+    <synopsis>ir                          <command>la_i_distance_vr</command>      ivr</synopsis>
+    <synopsis>kr                          <command>la_k_distance_vr</command>      ivr</synopsis>
+    <synopsis>ir                          <command>la_i_distance_vc</command>      ivc</synopsis>
+    <synopsis>kr                          <command>la_k_distance_vc</command>      ivc</synopsis>
+    
+    <synopsis>ir                          <command>la_i_norm_max</command>         imr</synopsis>
+    <synopsis>kr                          <command>la_k_norm_max</command>         imc</synopsis>
+    <synopsis>ir                          <command>la_i_norm_max</command>         imr</synopsis>
+    <synopsis>kr                          <command>la_k_norm_max</command>         imc</synopsis>
+    
+    <synopsis>ir                          <command>la_i_norm_inf_vr</command>      ivr</synopsis>
+    <synopsis>kr                          <command>la_k_norm_inf_vr</command>      ivr</synopsis>
+    <synopsis>ir                          <command>la_i_norm_inf_vc</command>      ivc</synopsis>
+    <synopsis>kr                          <command>la_k_norm_inf_vc</command>      ivc</synopsis>
+    <synopsis>ir                          <command>la_i_norm_inf_mr</command>      imr</synopsis>
+    <synopsis>kr                          <command>la_k_norm_inf_mr</command>      imr</synopsis>
+    <synopsis>ir                          <command>la_i_norm_inf_mc</command>      imc</synopsis>
+    <synopsis>kr                          <command>la_k_norm_inf_mc</command>      imc</synopsis>
+    
+    <synopsis>ir                          <command>la_i_trace_mr</command>         imr</synopsis>
+    <synopsis>kr                          <command>la_k_trace_mr</command>         imr</synopsis>
+    <synopsis>ir, ii                      <command>la_i_trace_mc</command>         imc</synopsis>
+    <synopsis>kr, ki                      <command>la_k_trace_mc</command>         imc</synopsis>
+    
+    <synopsis>ir                          <command>la_i_lu_det</command>           imr</synopsis>
+    <synopsis>kr                          <command>la_k_lu_det</command>           imr</synopsis>
+    <synopsis>ir                          <command>la_i_lu_det</command>           imc</synopsis>
+    <synopsis>kr                          <command>la_k_lu_det</command>           imc</synopsis>
+    
+    <bridgehead>
+      Opérations sur les éléments entre tableaux
+    </bridgehead>
+    
+    <synopsis>ivr                         <command>la_i_add_vr</command>           ivr_a, ivr_b</synopsis>
+    <synopsis>ivc                         <command>la_k_add_vc</command>           ivc_a, ivc_b</synopsis>
+    <synopsis>imr                         <command>la_i_add_mr</command>           imr_a, imr_b</synopsis>
+    <synopsis>imc                         <command>la_k_add_mc</command>           imc_a, imc_b</synopsis>
+    
+    <synopsis>ivr                         <command>la_i_subtract_vr</command>      ivr_a, ivr_b</synopsis>
+    <synopsis>ivc                         <command>la_k_subtract_vc</command>      ivc_a, ivc_b</synopsis>
+    <synopsis>imr                         <command>la_i_subtract_mr</command>      imr_a, imr_b</synopsis>
+    <synopsis>imc                         <command>la_k_subtract_mc</command>      imc_a, imc_b</synopsis>
+    
+    <synopsis>ivr                         <command>la_i_multiply_vr</command>      ivr_a, ivr_b</synopsis>
+    <synopsis>ivc                         <command>la_k_multiply_vc</command>      ivc_a, ivc_b</synopsis>
+    <synopsis>imr                         <command>la_i_multiply_mr</command>      imr_a, imr_b</synopsis>
+    <synopsis>imc                         <command>la_k_multiply_mc</command>      imc_a, imc_b</synopsis>
+    
+    <synopsis>ivr                         <command>la_i_divide_vr</command>        ivr_a, ivr_b</synopsis>
+    <synopsis>ivc                         <command>la_k_divide_vc</command>        ivc_a, ivc_b</synopsis>
+    <synopsis>imr                         <command>la_i_divide_mr</command>        imr_a, imr_b</synopsis>
+    <synopsis>imc                         <command>la_k_divide_mc</command>        imc_a, imc_b</synopsis>
+    
+    <bridgehead>
+      Produits scalaires
+    </bridgehead>
+    
+    <synopsis>ir                          <command>la_i_dot_vr</command>           ivr_a, ivr_b</synopsis>
+    <synopsis>kr                          <command>la_k_dot_vr</command>           ivr_a, ivr_b</synopsis>
+    <synopsis>ir, ii                      <command>la_i_dot_vc</command>           ivc_a, ivc_b</synopsis>
+    <synopsis>kr, ki                      <command>la_k_dot_vc</command>           ivc_a, ivc_b</synopsis>
+    
+    <synopsis>imr                         <command>la_i_dot_mr</command>           imr_a, imr_b</synopsis>
+    <synopsis>imr                         <command>la_k_dot_mr</command>           imr_a, imr_b</synopsis>
+    <synopsis>imc                         <command>la_i_dot_mc</command>           imc_a, imc_b</synopsis>
+    <synopsis>imc                         <command>la_k_dot_mc</command>           imc_a, imc_b</synopsis>
+    
+    <synopsis>ivr                         <command>la_i_dot_mr_vr</command>        imr_a, ivr_b</synopsis>
+    <synopsis>ivr                         <command>la_k_dot_mr_vr</command>        imr_a, ivr_b</synopsis>
+    <synopsis>ivc                         <command>la_i_dot_mc_vc</command>        imc_a, ivc_b</synopsis>
+    <synopsis>ivc                         <command>la_k_dot_mc_vc</command>        imc_a, ivc_b</synopsis>
+    
+    <bridgehead>
+      Inversion de matrice
+    </bridgehead>
+    
+    <synopsis>imr, icondition             <command>la_i_invert_mr</command>        imr</synopsis>
+    <synopsis>imr, kcondition             <command>la_k_invert_mr</command>        imr</synopsis>
+    <synopsis>imc, icondition             <command>la_i_invert_mc</command>        imc</synopsis>
+    <synopsis>imc, kcondition             <command>la_k_invert_mc</command>        imc</synopsis>
+    
+    <bridgehead>
+      Décompositions et résolutions de matrice
+    </bridgehead>
+    
+    <synopsis>ivr                         <command>la_i_upper_solve_mr</command>   imr [, j_1_diagonal]</synopsis>
+    <synopsis>ivr                         <command>la_k_upper_solve_mr</command>   imr [, j_1_diagonal]</synopsis>
+    <synopsis>ivc                         <command>la_i_upper_solve_mc</command>   imc [, j_1_diagonal]</synopsis>
+    <synopsis>ivc                         <command>la_k_upper_solve_mc</command>   imc [, j_1_diagonal]</synopsis>
+    
+    <synopsis>ivr                         <command>la_i_lower_solve_mr</command>   imr [, j_1_diagonal]</synopsis>
+    <synopsis>ivr                         <command>la_k_lower_solve_mr</command>   imr [, j_1_diagonal]</synopsis>
+    <synopsis>ivc                         <command>la_i_lower_solve_mc</command>   imc [, j_1_diagonal]</synopsis>
+    <synopsis>ivc                         <command>la_k_lower_solve_mc</command>   imc [, j_1_diagonal]</synopsis>
+    
+    <synopsis>imr, ivr_pivot, isize       <command>la_i_lu_factor_mr</command>     imr</synopsis>
+    <synopsis>imr, ivr_pivot, ksize       <command>la_k_lu_factor_mr</command>     imr</synopsis>
+    <synopsis>imc, ivr_pivot, isize       <command>la_i_lu_factor_mc</command>     imc</synopsis>
+    <synopsis>imc, ivr_pivot, ksize       <command>la_k_lu_factor_mc</command>     imc</synopsis>
+    
+    <synopsis>ivr_x                       <command>la_i_lu_solve_mr</command>      imr, ivr_b</synopsis>
+    <synopsis>ivr_x                       <command>la_k_lu_solve_mr</command>      imr, ivr_b</synopsis>
+    <synopsis>ivc_x                       <command>la_i_lu_solve_mc</command>      imc, ivc_b</synopsis>
+    <synopsis>ivc_x                       <command>la_k_lu_solve_mc</command>      imc, ivc_b</synopsis>
+    
+    <synopsis>imr_q, imr_r                <command>la_i_qr_factor_mr</command>     imr</synopsis>
+    <synopsis>imr_q, imr_r                <command>la_k_qr_factor_mr</command>     imr</synopsis>
+    <synopsis>imc_q, imc_r                <command>la_i_qr_factor_mc</command>     imc</synopsis>
+    <synopsis>imc_q, imc_r                <command>la_k_qr_factor_mc</command>     imc</synopsis>
+    
+    <synopsis>ivr_eig_vals                <command>la_i_qr_eigen_mr</command>      imr, i_tolerance</synopsis>
+    <synopsis>ivr_eig_vals                <command>la_k_qr_eigen_mr</command>      imr, k_tolerance</synopsis>
+    <synopsis>ivr_eig_vals                <command>la_i_qr_eigen_mc</command>      imc, i_tolerance</synopsis>
+    <synopsis>ivr_eig_vals                <command>la_k_qr_eigen_mc</command>      imc, k_tolerance</synopsis>
+  
+  <warning>
+    Une matrice doit être hermitienne si l'on veut calculer ses valeurs propres.
+  </warning>
+  
+    <synopsis>ivr_eig_vals, imr_eig_vecs  <command>la_i_qr_sym_eigen_mr</command>  imr, i_tolerance</synopsis>
+    <synopsis>ivr_eig_vals, imr_eig_vecs  <command>la_k_qr_sym_eigen_mr</command>  imr, k_tolerance</synopsis>
+    <synopsis>ivc_eig_vals, imc_eig_vecs  <command>la_i_qr_sym_eigen_mc</command>  imc, i_tolerance</synopsis>
+    <synopsis>ivc_eig_vals, imc_eig_vecs  <command>la_k_qr_sym_eigen_mc</command>  imc, k_tolerance</synopsis>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>Michael Gogins</para>
+    <para>Nouveau dans la version 5.09 de Csound</para>
+  </refsect1>
+</refentry>

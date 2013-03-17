@@ -1,0 +1,23 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.2
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="Network">
+  <title>Réseau</title>
+  <para>
+    Les opcodes suivants peuvent envoyer ou recevoir des données audio en UDP :
+  </para>
+  <itemizedlist>
+    <listitem>
+      <para><link linkend="sockrecv"><citetitle>sockrecv</citetitle></link></para>
+    </listitem>
+    <listitem>
+      <para><link linkend="socksend"><citetitle>socksend</citetitle></link></para>
+    </listitem>
+  </itemizedlist>
+</section>

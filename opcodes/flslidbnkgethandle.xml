@@ -1,0 +1,101 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.1
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLslidBnkGetHandle">
+<indexterm id="IndexFLslidBnkGetHandle"><primary>FLslidBnkGetHandle</primary></indexterm>
+  <refentryinfo><title>FLTK:Other</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLslidBnkGetHandle</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLslidBnkGetHandle</refname>
+    <refpurpose>
+      récupère l'identifiant du dernier banc de réglettes créé.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>FLslidBnkGetHandle</emphasis> récupère l'identifiant du dernier
+      banc de réglettes créé.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ihandle <command>FLslidBnkGetHandle</command></synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ihandle</emphasis> - identifiant du sliderBnk (à utiliser pour
+      fixer ses valeurs).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Il n'y a pas d'argument de taux-k, même si les cellules de la table en
+      sortie (ou l'espace zak) sont mis à jour au taux-k.
+    </para>
+
+    <para>
+      <emphasis>FLslidBnkGetHandle</emphasis> récupère l'identifiant du dernier
+      banc de réglettes créé. Cet opcode doit suivre immédiatement un opcode
+      <link linkend="FLslidBnk"><citetitle>FLslidBnk</citetitle></link> (ou
+      <link linkend="FLvslidBnk"><citetitle>FLvslidBnk</citetitle></link>,
+      <link linkend="FLslidBnk2"><citetitle>FLslidBnk2</citetitle></link> et
+      <link linkend="FLvslidBnk2"><citetitle>FLvslidBnk2</citetitle></link>),
+      afin de récuperer son identifiant.
+    </para>
+    <para>
+      Voir l'entrée
+      <link linkend="FLslidBnk2Setk"><citetitle>FLslidBnk2Setk</citetitle></link>
+      pour un exemple d'utilisation.
+    </para>
+ 
+  </refsect1>
+<!--  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opode FLslidBnkGetHandle. Il utilise le fichier
+      <ulink url="examples/FLslidBnkGetHandle.csd"><citetitle>FLslidBnkGetHandle.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opode FLslidBnkGetHandle.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/FLslidBnkGetHandle.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>-->
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="FLslider"><citetitle>FLslider</citetitle></link>,
+      <link linkend="FLslidBnk"><citetitle>FLslidBnk</citetitle></link>,
+      <link linkend="FLslidBnk2"><citetitle>FLslidBnk2</citetitle></link>,
+      <link linkend="FLvslidBnk"><citetitle>FLvslidBnk</citetitle></link>,
+      <link linkend="FLvslidBnk2"><citetitle>FLvslidBnk2</citetitle></link>,
+      <link linkend="FLslidBnk2Set"><citetitle>FLslidBnk2Set</citetitle></link>,
+      <link linkend="FLslidBnk2Setk"><citetitle>FLslidBnk2Setk</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 5.06</para>
+  </refsect1>
+</refentry>

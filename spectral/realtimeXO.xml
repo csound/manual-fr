@@ -1,0 +1,168 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.1
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="SpectralRealTime">
+  <title>Outils pour le Traitement Spectral en Temps Réel (opcodes pvs)</title>
+
+  <para>
+    Avec ces opcodes, deux nouvelles facilités fondamentales sont ajoutées à Csound. Ils offrent une
+    qualité audio améliorée, et une exécution rapide, permettant une analyse et une resynthèse de grande
+    qualité (avec les transformations) à appliquer en temps réel aux signaux instantanés. Le vocodeur de
+    phase original de Csound n'est pas changé ; les nouveaux opcodes utilisent un ensemble de fonctions
+    complètement séparé basé sur <quote>pvoc.c</quote> dans la distribution CARL, écrite par Mark Dolson. 
+  </para>
+
+<!--  <para>
+    The Csound <link linkend="dnoise"><citetitle>dnoise</citetitle></link> and <link linkend="srconv"><citetitle>srconv</citetitle></link> utilities (also by Dolson, from CARL) also use this pvoc engine. CARL pvoc is also the basis for the phase vocoder included in the Composer's Desktop Project. A few small but important modifications have been made to the original CARL code to support real-time streaming.
+  </para>-->
+
+  <para>
+    <orderedlist>
+      <listitem><para>Support du nouveau format de fichier d'analyse PVOC-EX. C'est un format totalement
+        portable et ouvert (multi plates-formes), supportant trois formats d'analyse, et les signaux
+        multi-canaux. Actuellement seul le format standard amplitude+fréquence a été implémenté dans les
+        opcodes, mais le format de fichier lui-même supporte les formats amplitude+phase et le format complexe
+        (réel-imaginaire). En plus des nouveaux opcodes, les opcodes pvoc originaux de Csound ont été
+        étendus (avec pour conséquence une qualité audio améliorée dans certains cas) pour lire les
+        fichiers PVOC-EX aussi bien que le format original (non portable).</para>
+
+        <para>Les détails complets de la structure d'un fichier PVOC-EX son disponibles sur le site web :
+          <ulink url="http://www.cs.bath.ac.uk/~jpff/NOS-DREAM/researchdev/pvocex/pvocex.html"><citetitle>http://www.cs.bath.ac.uk/~jpff/NOS-DREAM/researchdev/pvocex/pvocex.html</citetitle></ulink>.
+          Ce site donne aussi les détails des programmes de console disponibles librement
+          <emphasis>pvocex</emphasis> et <emphasis>pvocex2</emphasis> qui peuvent être utilisés pour créer
+          des fichiers PVOC-EX dans tous les formats supportés.</para></listitem>
+
+     <listitem><para>Un nouveau type de signal du domaine fréquentiel, totalement transportable par flot de données,
+       avec <emphasis>f</emphasis> comme premier caractère. Dans ce document on y fait
+       référence par <emphasis>fsig</emphasis>. Le support principal des fsigs est fourni par les opcodes
+       <emphasis>pvsanal</emphasis> et <emphasis>pvsynth</emphasis>, qui effectuent l'analyse et la
+       resynthèse traditionnelles par recouvrement-addition avec un vocodeur de phase, indépendamment du
+       taux de contrôle de l'orchestre. La seule obligation est que le taux de contrôle
+       <emphasis>kr</emphasis> soit supérieur ou égal au taux d'analyse, ce qui peut s'exprimer par
+       <emphasis>ksmps</emphasis> &lt;= <emphasis>overlap</emphasis>, où <emphasis>overlap</emphasis> est
+       la distance en échantillons entre deux trames d'analyse, comme spécifié pour
+       <emphasis>pvsanal</emphasis>. Comme <emphasis>overlap</emphasis> vaut typiquement au moins 128, et
+       plus souvent 256, ce n'est pas une restriction coûteuse en pratique. L'opcode
+       <emphasis>pvsinfo</emphasis> peut être utilisé au moment de l'initialisation pour acquérir les
+       propriétés d'un fsig.</para>
+
+       <para>Le fsig permet la séparation nominale entre les étapes d'analyse et de resynthèse du
+         vocodeur de phase pour une mise à disposition du programmeur Csound, ce qui permet non seulement
+         d'employer des alternatives pour l'une ou les deux de ces étapes (pas seulement la resynthèse par
+         banc d'oscillateur, mais aussi la génération synthétique de flots de données fsig), mais aussi les opcodes
+         opérant sur le flot fsig peuvent être eux-mêmes plus élémentaires. Ainsi le fsig permet la
+         création d'un véritable environnement de greffon de flots de données pour les signaux du domaine fréquentiel.
+         Avec les vieux opcodes pvoc, chaque opcode doit pouvoir agir comme un resynthétiseur, si bien que
+         des facilités comme la transposition de hauteur sont dupliquées dans chaque opcode ; et dans
+         la plupart des cas les opcodes ont beaucoup de paramètres. La séparation des étapes d'analyse et
+         de synthèse au moyen du fsig encourage le développement d'une grande variété d'opcodes qui sont
+         des briques élémentaires implémentant une ou deux fonctions, et avec lesquelles on peut construire
+         des processus plus élaborés.</para></listitem>
+    </orderedlist>
+  </para>
+
+  <para>
+    Cette réalisation en est encore à ses débuts et présente un caractère expérimental, et il est possible
+    que la définition précise des opcodes change en réponse aux avis des utilisateurs. De plus, de
+    nombreuses nouvelles possibilités d'opcode sont ouvertes ; ces facteurs peuvent aussi avoir une
+    influence rétrospective sur les opcodes présentés ici.
+  </para>
+
+  <para>
+    Noter que certains paramètres d'opcode ont actuellement une implémentation restreinte ou manquante.
+    Ceci, au moins en partie, afin de préserver la simplicité des opcodes à ce niveau, et aussi parce qu'ils
+    concernent d'importantes questions de conception pour lesquelles aucun décision n'a encore été prise,
+    et pour lesquelles l'opinion des utilisateurs est souhaitée.
+  </para>
+
+  <para>
+    Un point important au sujet de ce nouveau type de signal est que, parce que le taux d'analyse est
+    typiquement très inférieur à <emphasis>kr</emphasis>, les nouvelles trames d'analyse ne sont pas
+    disponibles à chaque k-cycle. En interne, les opcodes tracent <emphasis>ksmps</emphasis>, et
+    maintiennent également un compteur de trames, afin que les trames soient lues et écrites aux bons
+    moments ; ce processus est généralement transparent pour l'utilisateur. Cependant, cela signifie
+    que les signaux de taux-k n'agissent sur un fsig qu'au taux d'analyse, pas à chaque k-cycle. L'opcode
+    <emphasis>pvsftw</emphasis> retourne un drapeau au taux-k qui est positionné lorque de nouvelles
+    données fsig sont disponibles.
+  </para>
+
+  <para>
+    A cause de la nature du système de recouvrement-addition, l'utilisation des ces opcodes infère un
+    délai, ou latence, petit mais significatif déterminé par la taille de la fenêtre (max(ifftsize,iwinsize)).
+    Il vaut typiquement 23ms. Dans cette première réalisation, le délai dépasse légèrement le minimum
+    théorique, et l'on espère qu'il pourra être réduit, lorsque les opcodes seront optimisés pour le
+    transport par flot de données en .
+  </para>
+
+  <para>
+    Les opcodes pour le traitement spectral en temps réel sont
+    <link linkend="pvsadsyn"><citetitle>pvsadsyn</citetitle></link>,
+    <link linkend="pvsanal"><citetitle>pvsanal</citetitle></link>,
+    <link linkend="pvscross"><citetitle>pvscross</citetitle></link>,
+    <link linkend="pvsfread"><citetitle>pvsfread</citetitle></link>,
+    <link linkend="pvsftr"><citetitle>pvsftr</citetitle></link>,
+    <link linkend="pvsftw"><citetitle>pvsftw</citetitle></link>,
+    <link linkend="pvsinfo"><citetitle>pvsinfo</citetitle></link>,
+    <link linkend="pvsmaska"><citetitle>pvsmaska</citetitle></link> et
+    <link linkend="pvsynth"><citetitle>pvsynth</citetitle></link>.
+  </para>
+
+  <para>
+    De plus il y a un certain nombre d'opcodes disponibles sous forme de greffons dans Csound 5. Ce sont
+    <link linkend="pvsdiskin"><citetitle>pvsdiskin</citetitle></link>,
+    <link linkend="pvscent"><citetitle>pvscent</citetitle></link>,
+    <link linkend="pvsdemix"><citetitle>pvsdemix</citetitle></link>,
+    <link linkend="pvsfreeze"><citetitle>pvsfreeze</citetitle></link>,
+    <link linkend="pvsbuffer"><citetitle>pvsbuffer</citetitle></link>,
+    <link linkend="pvsbufread"><citetitle>pvsbufread</citetitle></link>,
+    <link linkend="pvscale"><citetitle>pvscale</citetitle></link>,
+    <link linkend="pvshift"><citetitle>pvshift</citetitle></link>,
+    <link linkend="pvsifd"><citetitle>pvsifd</citetitle></link>,
+    <link linkend="pvsinit"><citetitle>pvsinit</citetitle></link>,
+    <link linkend="pvsin"><citetitle>pvsin</citetitle></link>,
+    <link linkend="pvsout"><citetitle>pvsout</citetitle></link>,
+    <link linkend="pvsosc"><citetitle>pvsosc</citetitle></link>,
+    <link linkend="pvsbin"><citetitle>pvsbin</citetitle></link>,
+    <link linkend="pvsdisp"><citetitle>pvsdisp</citetitle></link>,
+    <link linkend="pvsfwrite"><citetitle>pvsfwrite</citetitle></link>,
+    <link linkend="pvsmix"><citetitle>pvsmix</citetitle></link>,
+    <link linkend="pvsmooth"><citetitle>pvsmooth</citetitle></link>,
+    <link linkend="pvsfilter"><citetitle>pvsfilter</citetitle></link>,
+    <link linkend="pvsblur"><citetitle>pvsblur</citetitle></link>,
+    <link linkend="pvstencil"><citetitle>pvstencil</citetitle></link>,
+    <link linkend="pvsarp"><citetitle>pvsarp</citetitle></link>,
+    <link linkend="pvsvoc"><citetitle>pvsvoc</citetitle></link>,
+    <link linkend="pvsmorph"><citetitle>pvsmorph</citetitle></link>
+    <link linkend="pvsbandp"><citetitle>pvsbandp</citetitle></link>
+    <link linkend="pvsbandr"><citetitle>pvsbandr</citetitle></link>
+  </para>
+  <para>
+   Un certain nombre d'opcodes sont conçus pour générer et traiter des flots de données de pistes de
+    partiels. Ce sont
+    <link linkend="partials"><citetitle>partials</citetitle></link>,
+    <link linkend="trcross"><citetitle>trcross</citetitle></link>,
+    <link linkend="trfilter"><citetitle>trfilter</citetitle></link>,
+    <link linkend="trsplit"><citetitle>trsplit</citetitle></link>,
+    <link linkend="trmix"><citetitle>trmix</citetitle></link>,
+    <link linkend="trscale"><citetitle>trscale</citetitle></link>,
+    <link linkend="trshift"><citetitle>trshift</citetitle></link>,
+    <link linkend="trlowest"><citetitle>trlowest</citetitle></link>,
+    <link linkend="trhighest"><citetitle>trhighest</citetitle></link>
+    <link linkend="tradsyn"><citetitle>tradsyn</citetitle></link>,
+    <link linkend="sinsyn"><citetitle>sinsyn</citetitle></link>,
+    <link linkend="resyn"><citetitle>resyn</citetitle></link>,
+    <link linkend="binit"><citetitle>binit</citetitle></link>
+
+  </para>
+  <para>
+    Voir la section <link linkend="ControlStacks"><citetitle>Piles</citetitle></link> pour une information
+    sur les opcodes qui peuvent empiler les signaux de type f.
+  </para>
+
+</section>

@@ -1,0 +1,106 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="delayk">
+<indexterm id="IndexDelayk"><primary>delayk</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Delay</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>delayk</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>delayk</refname>
+    <refpurpose>
+      Retarde un signal d'entrée d'une certaine durée.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Opcodes de retard de taux-k.
+   </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kr <command>delayk </command>  ksig, idel[, imode]</synopsis>
+    <synopsis>kr <command>vdel_k </command>  ksig, kdel, imdel[, imode]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>idel</emphasis> -- délai (en secondes) pour <emphasis>delayk</emphasis>.
+      Il est arrondi au multiple entier le plus proche d'un cycle-k (c-à-d
+      1/<emphasis>kr</emphasis>).
+    </para>
+
+    <para>
+      <emphasis>imode</emphasis> -- somme de 1 pour ignorer l'initialisation
+      (par exemple pour les notes liées) et de 2 pour maintenir la première
+      valeur d'entrée durant le délai initial au lieu de sortir des zéros.
+      Cela est utile principalement pour retarder des enveloppes qui ne
+      commencent pas à zéro.
+    </para>
+
+    <para>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/delayk.png" format="PNG"/>
+        </imageobject>
+      </mediaobject>
+    </para>
+
+    <para>
+      <emphasis>imdel</emphasis> -- délai maximum pour <emphasis>vdel_k</emphasis>,
+      en secondes.
+    </para>
+
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kr</emphasis> -- le signal de sortie. Note : ces opcodes
+      n'interpolent pas leur sortie.
+        </para>
+
+    <para>
+      <emphasis>ksig</emphasis> -- le signal d'entrée.
+        </para>
+
+    <para>
+      <emphasis>kdel</emphasis> -- délai (en secondes) pour
+      <emphasis>vdel_k</emphasis>. Il est arrondi au multiple entier le plus
+      proche d'un cycle-k (c-à-d 1/<emphasis>kr</emphasis>).
+    </para> 
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode delayk. Il utilise le fichier
+      <ulink url="examples/delayk.csd"><citetitle>delayk.csd</citetitle></ulink>.
+      
+      <example>
+        <title>Exemple de l'opcode delayk.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/delayk.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>&nameistvan;.</para>
+  </refsect1>
+</refentry>

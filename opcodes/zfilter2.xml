@@ -1,0 +1,133 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="zfilter2">
+<indexterm id="IndexZfilter2"><primary>zfilter2</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Specialized Filters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>zfilter2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>zfilter2</refname>
+    <refpurpose>
+      Réalise un filtrage au moyen d'un bloc de filtre numérique de forme
+      tranposée II avec déplacement radial et déformation angulaire des pôles.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Filtre configurable à usage général avec contrôle variable des pôles. Les
+      coefficients du filtre implémentent l'équation aux différences suivante :
+      <literallayout>
+(1)*y(n) = b0*x[n] + b1*x[n-1] +...+ bM*x[n-M] - a1*y[n-1] -...- aN*y[n-N]</literallayout>
+    </para>
+
+    <para>
+      the system function for which is represented by:
+      <literallayout>
+           B(Z)      b0 + b1*Z<superscript>-1</superscript>  + ... + bM*Z<superscript>-M</superscript>
+  H(Z)  =  ----  =  --------------------------
+           A(Z)       1 + a1*Z<superscript>-1</superscript>  + ... + aN*Z<superscript>-N</superscript></literallayout>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>zfilter2</command> asig, kdamp, kfreq, iM, iN, ib0, ib1, ..., ibM, \
+      ia1,ia2, ..., iaN</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      A l'initialisation, les nombres de zéros et de pôles du filtres sont spécifiés
+      ainsi que leurs valeurs. Les coefficients doivent être obtenus par une
+      application externe de conception de filtre telle que Matlab et sont
+      spécifiés directement ou bien chargés dans une table via
+      <link linkend="GEN01"><citetitle>GEN01</citetitle></link>. Avec
+      <emphasis>zfilter2</emphasis>, les racines du polynôme caractéristique sont
+      calculées à l'initialisation pour une implémentation efficace des opérations
+      de contrôle des pôles.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      L'opcode <link linkend="filter2"><citetitle>filter2</citetitle></link>
+      réalise un filtrage au moyen d'un bloc de filtre numérique de forme transposée
+      II sans contrôle variable. <emphasis>zfilter2</emphasis> utilise en plus
+      les opérations de déplacement radial et de déformation angulaire des pôles dans
+      le plan des Z.
+    </para>
+
+    <para>
+      Le déplacement radial des pôles augmente la magnitude des pôles le long
+      des lignes radiales dans le plan des Z. Cela modifie les durées de suroscillation
+      du filtre. La variable de taux-k <emphasis>kdamp</emphasis> est le
+      paramètre d'amortissement. Les valeurs positives (0.01 to 0.99) augmentent
+      la durée de suroscillation du filtre (Q élevé), les valeurs négatives
+      (-0.01 to -0.99) diminuent la durée de suroscillation du filtre (Q faible).
+    </para>
+
+    <para>
+      La déformation des pôles modifie leur fréquence en les déplaçant le long
+      de chemins angulaires dans le plan des Z. Cette opération ne change pas la
+      forme de l'amplitude de la réponse mais modifie les fréquences d'un facteur
+      constant (préservant 0 et p). La variable de taux-k <emphasis>kfreq</emphasis>
+      détermine le facteur de déformation fréquentielle. Les valeurs positives
+      (0.01 to 0.99) augmentent les fréquences vers p et les valeurs négatives
+      (-0.01 to -0.99) diminuent les fréquences vers 0.
+    </para>
+
+    <para>
+      Comme <emphasis>filter2</emphasis> implémente des filtres récursifs
+      généralisés, on peut l'utiliser pour définir une grande variété d'algorithmes
+      généraux de traitement numérique du signal. Par exemple, on peut implémenter
+      un guide d'onde numérique pour modéliser un instrument de musique au moyen
+      d'une paire d'opcodes <link linkend="delayr"><citetitle>delayr</citetitle></link>
+      et <link linkend="delayw"><citetitle>delayw</citetitle></link> conjointement
+      à l'opcode <emphasis>filter2</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Un filtre RII du second ordre contrôlable opérant sur un signal de taux-a :
+      <informalexample>
+        <programlisting>
+a1 <emphasis role="opc">zfilter2</emphasis> asig, kdamp, kfreq, 1, 2, 1, ia1, ia2 <emphasis role="comment">;; filtre RII contrôlable de taux-a</emphasis></programlisting>
+      </informalexample>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="filter2"><citetitle>filter2</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Michael A. Casey</member>
+        <member>M.I.T.</member>
+        <member>Cambridge, Mass.</member>
+        <member>1997</member>
+      </simplelist>
+    </para>
+     <para>Nouveau dans la version 3.47</para>
+  </refsect1>
+</refentry>

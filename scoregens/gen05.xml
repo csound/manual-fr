@@ -1,0 +1,147 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.6
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="GEN05">
+      <indexterm id="IndexGEN05"><primary>GEN05</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN05</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>GEN05</refname>
+    <refpurpose>
+      Construit des fonctions à partir de morceaux de courbes exponentielles.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Construit des fonctions à partir de morceaux de courbes exponentielles.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>f</command> # date taille 5 a n1 b n2 c ...</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>taille </emphasis> -- nombre de points dans la table. Doit être une puissance de 2 ou
+      une puissance-de-2 plus 1 (voir l'<link linkend="f"><citetitle>instruction f</citetitle></link>).
+    </para>
+
+    <para>
+      <emphasis>a, b, c,</emphasis> etc. -- valeurs d'ordonnée, dans les p-champs de numéros impairs
+      p5, p7, p9, . . . Elle doivent être non nulles et de même signe.
+    </para>
+
+    <para>
+      <emphasis>n1, n2</emphasis>, etc. -- longueurs des morceaux (nombre de positions mémorisées), dans
+      les p-champs de numéros pairs. Ne peuvent pas être négatives, mais un zéro est significatif pour
+      spécifier des formes d'onde discontinues. La somme
+      <emphasis>n1</emphasis> + <emphasis>n2</emphasis> + .... sera normalement égale à
+      <emphasis>taille</emphasis> pour les fonctions complètement spécifiées. Si la somme est inférieure,
+      les positions de la fonction non comprises seront mises à zéro ; si la somme est supérieure, seules
+      les premières <emphasis>taille</emphasis> positions seront stockées.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Si p4 est positif, les fonctions sont post-normalisées (reproportionnées avec une valeur
+              absolue maximale de 1 après génération). Une valeur de p4 négative empêche cette opération.
+            </para>
+          </listitem>
+
+          <listitem>
+            <para>
+              Une interpolation linéaire sur des points discrets implique une augmentation ou une diminution
+              le long d'un segment par des sauts égaux entre des positions adjacentes ; une interpolation
+              exponentielle implique une progression par rapports égaux. Dans les deux formes l'interpolation
+              de <emphasis>a</emphasis> à <emphasis>b</emphasis> suppose que la valeur <emphasis>b</emphasis>
+              sera atteinte à la (n + 1)ème position. Pour les fonctions discontinues, et pour les segments
+              dépassant la dernière position, cette valeur ne sera pas atteinte, bien qu'elle puisse
+              éventuellement apparaître comme résultat d'une mise à l'échelle finale.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple simple de la routine GEN05. Il utilise le fichier
+      <ulink url="examples/gen05.csd"><citetitle>gen05.csd</citetitle></ulink>.
+
+      <example>
+        <title>Un exemple de la routine GEN05.</title>
+        <xi:include href="examples-xml/gen05.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      
+      <textobject>
+        <phrase>Voici les diagrammes des formes d'onde des routines GEN05 utilisées
+        dans l'exemple :</phrase>
+      </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen05_1.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 2 0 129 5 1 100 0.0001 29 - forme d'onde allant de 1 à
+          0.0001 sur 100 points, puis restant sur cette valeur pendant
+          29 points</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 2 0 129 5 1 100 0.0001 29 - forme d'onde allant de 1 à
+          0.0001 sur 100 points, puis restant sur cette valeur pendant
+          29 points</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen05_2.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 3 0 129 5 0.00001 87 1 22 .5 20 0.0001 - forme d'onde allant
+          de 0.00001 à 1 sur 87 points, puis de 1 à 0.5 sur 22 points et enfin de
+          0.5 to 0.0001 sur 20 points</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 3 0 129 5 0.00001 87 1 22 .5 20 0.0001 - forme d'onde allant
+          de 0.00001 à 1 sur 87 points, puis de 1 à 0.5 sur 22 points et enfin de
+          0.5 to 0.0001 sur 20 points</para>
+        </caption>
+      </mediaobject>
+
+    </para>
+  </refsect1>
+
+  <refsect1>
+     <title>Voir aussi</title>
+     <para>
+       <link linkend="GEN06"><citetitle>GEN06</citetitle></link>,
+       <link linkend="GEN07"><citetitle>GEN07</citetitle></link> et
+       <link linkend="GEN08"><citetitle>GEN08</citetitle></link>
+     </para>
+  </refsect1>
+</refentry>

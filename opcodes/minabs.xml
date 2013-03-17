@@ -1,0 +1,97 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.6
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="minabs">
+<indexterm id="IndexMinabs"><primary>minabs</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Comparators and Accumulators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>minabs</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>minabs</refname>
+    <refpurpose>
+      Produit un signal qui est le minimum des valeurs absolues de n'importe
+      quel nombre de signaux d'entrée.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      L'opcode <emphasis>minabs</emphasis> prend en entrée n'importe quel nombre
+      de signaux de taux-a ou de taux-k (tous du même taux), et retourne un signal
+      au même taux qui est le minimum de toutes les entrées. Il est identique à
+      l'opcode <emphasis>min</emphasis> sauf qu'il prend la valeur absolue de
+      chaque entrée avant de les comparer. Ainsi, la sortie est toujours
+      non-négative. Pour les signaux de taux-a, les entrées sont comparées
+      échantillon par échantillon (c-à-d que <emphasis>minabs</emphasis>
+      n'examine pas une période <emphasis>ksmps</emphasis> entière du signal pour
+      trouver son minimum local comme l'opcode <emphasis>max_k</emphasis> le fait).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>amin <command>minabs</command> ain1, ain2 [, ain3] [, ain4] [...]</synopsis>
+    <synopsis>kmin <command>minabs</command> kin1, kin2 [, kin3] [, kin4] [...]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ain1, ain2, ...</emphasis> -- signaux de taux-a à comparer.
+    </para>
+
+    <para>
+      <emphasis>kin1, kin2, ...</emphasis> -- signaux de taux-k à comparer.
+    </para>
+  </refsect1>
+ 
+   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode minabs. Il utilise le fichier
+      <ulink url="examples/minabs.csd"><citetitle>minabs.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode minabs.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/minabs.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="maxabs"><citetitle>maxabs</citetitle></link>, 
+      <link linkend="max"><citetitle>max</citetitle></link>, 
+      <link linkend="min"><citetitle>min</citetitle></link>, 
+      <link linkend="maxaccum"><citetitle>maxaccum</citetitle></link>, 
+      <link linkend="minaccum"><citetitle>minaccum</citetitle></link>, 
+      <link linkend="maxabsaccum"><citetitle>maxabsaccum</citetitle></link>, 
+      <link linkend="minabsaccum"><citetitle>minabsaccum</citetitle></link>, 
+      <link linkend="max_k"><citetitle>max_k</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameanthony;</member>
+        <member>Mars 2006</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 5.01 de Csound.</para>
+  </refsect1>
+</refentry>

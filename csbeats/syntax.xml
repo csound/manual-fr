@@ -1,0 +1,126 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refsect1>
+  <para>
+    Le langage <emphasis>csbeats</emphasis> est très simple, n'ayant que cinq
+    sortes d'instructions dont une seule présente quelque complexité. Généralement,
+    le mot clé de chaque type d'instruction est insensible à la casse. Ainsi
+    "QUIT", "quit", "QuIt"... sont tous pareils. Les commentaires s'écrivent
+    dans le format ANSI C89, ou celui de C++ (c'est-à-dire /* ... */ ou bien
+    // jusqu'à la fin de la ligne), ou encore avec le point-virgule de Csound. 
+  </para>
+  <itemizedlist>
+    <listitem><emphasis>QUIT</emphasis>
+    <para>
+      Provoque la sortie de <emphasis>csbeats</emphasis>. Pour des raisons de
+      souplesse la commande <emphasis>END</emphasis> est aussi admise pour la
+      même action.
+    </para>
+    </listitem>
+    <listitem><emphasis>BEATS</emphasis>=entier
+    <para>
+      Fixe le nombre de pulsations par minute pour la suite de la partition,
+      jusqu'à la fin ou jusqu'à ce qu'il soit réinitialisé. La valeur par défaut
+      est de 60 pulsations par minutes. Le mot <emphasis>BPS</emphasis> est
+      aussi accepté à la place de <emphasis>BEATS</emphasis>.
+    </para>
+    </listitem>
+    <listitem><emphasis>PERMEASURE</emphasis>=entier
+    <para>
+      Fixe le nombre de pulsations dans une mesure. La valeur par défaut est 4.
+    </para>
+    </listitem>
+    <listitem><emphasis>BAR</emphasis>
+    <para>
+      Commence une nouvelle mesure.
+    </para>
+    </listitem>
+    <listitem><emphasis>BAR</emphasis> entier
+    <para>
+      Commence la mesure dont le numéro est donné.
+    </para>
+    </listitem>
+    <listitem>
+      <emphasis>i</emphasis> entier attributs
+      <para>
+        Spécifie un évènement de note pour l'instrument numéroté. Les attributs
+        peuvent indiquer une hauteur, une durée, une dynamique, ou la position
+        d'une note sur un temps ou dans une mesure, et ceci dans n'importe quel
+        ordre.
+      </para>
+      <para>
+        Les hauteurs sont données avec un nom de note conventionnel (notation
+        anglaise) en lettre majuscule éventuellement suivie par un caractère #,
+        x (pour double dièse), b (pour bémol) ou bb (pour double bémol). La note
+        Z est un silence (penser à zzz). Toutes les notes, sauf les silences,
+        doivent être suivies par un numéro d'octave, A4 étant le la du diapason
+        international (440 Hz). Les hauteurs sont transmises à Csound en Hz dans
+        le paramètre p4, et s'expriment en tempérament égal à douze demi-tons.
+      </para>
+      <para>
+        Les durées sont codées par la première lettre de leur nom anglais en
+        minuscule, <emphasis>w</emphasis>hole (ronde), <emphasis>h</emphasis>alf
+        (blanche), <emphasis>q</emphasis>uarter (noire), <emphasis>e</emphasis>igth
+        (croche), <emphasis>s</emphasis>ixteeth (double croche) et
+        <emphasis>th</emphasis> (triple croche). A l'exception de
+        <emphasis>w</emphasis>, on peut les modifier en leur ajoutant un suffixe :
+        <itemizedlist>
+          <listitem>
+            <emphasis>d</emphasis> ou <emphasis>.</emphasis> Note pointée (allongée
+            de la moitié de sa durée nominale)
+          </listitem>
+          <listitem>
+            <emphasis>dd</emphasis> ou <emphasis>..</emphasis> Note doublement
+            pointée (allongée des trois-quarts de sa durée nominale)
+          </listitem>
+          <listitem>
+            <emphasis>t</emphasis> Triolet (trois notes pour deux) 
+          </listitem>
+          <listitem>
+            <emphasis>t.</emphasis> Triolet de notes pointé
+          </listitem>
+          <listitem>
+            <emphasis>q</emphasis> Quintuplet (cinq notes pour quatre)
+          </listitem>
+          <listitem>
+            <emphasis>s</emphasis> Septuplet (Sept notes pour huit)
+          </listitem>
+        </itemizedlist>
+        On peut ajouter les données entre elles en donnant plus d'une durée. On
+        peut utiliser un signe + à la place d'un espace pour rendre ceci plus
+        intuitif.
+      </para>
+      <para>
+        Les dynamiques sont écrites en notation conventionnelle, fff, ff, f, mf,
+        mp, p, pp, ppp, pppp. Elles sont transmises à l'instrument dans p5 avec 0 pour
+        fff et un dB en moins pour chaque niveau inférieur. La dynamique par
+        défaut est fortissimo.
+      </para>
+      <para>
+        On peut spécifier des paramètres supplémentaires (p-champs) dans une
+        instruction d'instrument sous une forme semblable à
+        <emphasis>p6=42</emphasis>, qui donnerait la valeur 42 au champ p6
+        jusqu'à ce qu'il change. Le numéro du p-champ doit être supérieur ou
+        égal à 6 car les 5 premiers champs sont utilisés avec une information
+        définie. Chaque instrument numéroté possède ses propres paramètres
+        supplémentaires.
+      </para>
+      <para>
+        Si l'un de ces attributs est omis, il est reporté de la note précédente,
+        sa position étant incrémentée depuis la fin de la note précédente.
+      </para>
+      <para>
+        De plus, un évènement peut être placé dans une mesure particulière avec
+        un attribut m, ou sur un temps particulier avec un attribut b.
+        </para>
+    </listitem>
+  </itemizedlist>
+</refsect1>
+

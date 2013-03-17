@@ -1,0 +1,142 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvscale">
+<indexterm id="IndexPvscale"><primary>pvscale</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvscale</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvscale</refname>
+    <refpurpose>
+      Met à l'échelle les composantes de fréquence d'un flot pv.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Met à l'échelle les composantes de fréquence d'un flot pv, ce qui provoque
+      une transposition de hauteur. Les amplitudes peuvent être modifiées afin
+      de préserver les formants.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>fsig <command>pvscale</command> fsigin, kscal[, kkeepform, kgain, kcoefs]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>fsig</emphasis> -- flot pv de sortie
+    </para>
+
+    <para>
+      <emphasis>fsigin</emphasis> -- flot pv d'entrée
+    </para>
+
+    <para>
+      <emphasis>kscal</emphasis> -- facteur de mise à l'échelle.
+    </para>
+
+    <para>
+      <emphasis>kkeepform</emphasis> -- tente de préserver les formants du signal
+      d'entrée ; 0 : ne pas garder les formants ; 1 : conserve les formants en
+      utilisant une méthode de cepstre décalé ; 2 : conserve les formants en
+      utilisant une méthode avec une véritable enveloppe (vaut 0 par défaut).
+    </para>
+
+    <para>
+      <emphasis>kgain</emphasis> -- modification d'amplitude (1 par défaut).
+    </para>
+
+    <para>
+      <emphasis>kcoefs</emphasis> -- nombre de coefficients du cepstre utilisés
+      pour la préservation des formants (vaut 80 par défaut).
+    </para>
+
+    <para>
+      La qualité de la transposition de hauteur sera améliorée par l'utilisation
+      d'une fenêtre de Hanning dans l'analyse pvoc. La méthode 1 de préservation
+      de formants est moins intensive que la méthode 2, qui, elle, pourrait ne
+      pas convenir à une utilisation en temps réel.
+    </para>
+    <warning>
+      <para>
+        Il est dangereux d'utiliser la même variable-f à la fois comme entrée et
+        comme sortie des opcodes pvs. Ceci peut produire un comportement indéfini
+        de certains de ces opcodes. Utilisez une variable différente à gauche et
+        à droite de l'opcode.
+      </para>
+   </warning>
+
+  </refsect1>
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      <example>
+        <title>Exemples</title>
+        <programlisting>
+asig  <emphasis role="opc">in</emphasis>                                 <emphasis role="comment">; get the signal in</emphasis>
+
+fsig  <emphasis role="opc">pvsanal</emphasis>   asig, 1024, 256, 1024, 1 <emphasis role="comment">; analyse it</emphasis>
+ftps  <emphasis role="opc">pvscale</emphasis>   fsig, 1.5, 1, 1          <emphasis role="comment">; transpose it keeping formants</emphasis>
+atps  <emphasis role="opc">pvsynth</emphasis>   ftps                     <emphasis role="comment">; synthesise it</emphasis>
+
+adp   <emphasis role="opc">delayr</emphasis>    0.1                      <emphasis role="comment">; delay original signal</emphasis>
+adel  <emphasis role="opc">deltapn</emphasis>   1024                     <emphasis role="comment">; by 1024 samples</emphasis>
+      <emphasis role="opc">delayw</emphasis>    asig
+      <emphasis role="opc">out</emphasis>       atps <emphasis role="op">+</emphasis> adel              <emphasis role="comment">; add tranposed and original</emphasis></programlisting>
+      </example>
+    </para>
+    <para>
+      L'exemple ci-dessus montre un harmoniseur vocal. Le délai est nécessaire
+      pour aligner les signaux temporellement, car le traitement d'analyse-synthèse
+      implique un délai de 1024 échantillons entre l'entrée d'analyse et la sortie
+      de synthèse.
+    </para>
+    <para>
+      Voici un exemple de l'opcode pvscale. Il utilise le fichier
+      <ulink url="examples/pvscale.csd"><citetitle>pvscale.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode pvscale.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pvscale.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="pvsanal"><citetitle>pvsanal</citetitle></link>,
+      <link linkend="pvsynth"><citetitle>pvsynth</citetitle></link>,
+      <link linkend="pvsadsyn"><citetitle>pvsadsyn</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Novembre 2004 </member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau greffon dans la version 5</para>
+    <para>Novembre 2004.</para>
+  </refsect1>
+</refentry>

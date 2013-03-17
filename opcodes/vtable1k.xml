@@ -1,0 +1,93 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vtable1k">
+<indexterm id="IndexVtable1k"><primary>vtable1k</primary></indexterm>
+  <refentryinfo><title>Vectorial:Tables</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vtable1k</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vtable1k</refname>
+    <refpurpose>
+      Lit un vecteur (plusieurs scalaires simultanément) depuis une table.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode lit des vecteurs depuis des tables au taux-k.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>vtable1k</command>  kfn, kout1 [, kout2, kout3, .... , koutN ]</synopsis>
+  </refsect1>
+<!-- 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      </para>
+  </refsect1>-->
+ 
+  <refsect1>
+    <title>Exécution</title>
+     <para>
+      <emphasis>kfn</emphasis> - numéro de la table.
+     </para>
+     <para>
+      <emphasis>kout1...koutN</emphasis> - composantes du vecteur de sortie.
+    </para> 
+    <para>
+      <emphasis>vtable1k</emphasis> est une version réduite de
+      <link linkend="vtablek"><citetitle>vtablek</citetitle></link>. Il ne
+      permet d'accéder qu'au premier vecteur (c'est équivalent à
+      <emphasis>vtablek</emphasis> avec <emphasis>kndx</emphasis> = 0, mais un peu plus
+      rapide). Il est utile pour convertir facilement et rapidement un
+      ensemble de valeurs stockées dans une table en un ensemble de variables
+      de taux-k à utiliser dans des opcodes normaux, au lieu d'utiliser des
+      opcodes <link linkend="table"><citetitle>table</citetitle></link>
+      individuels pour chaque valeur.
+    </para>
+    <note>
+      <para>
+        <emphasis>vtable1k</emphasis> est un opcode inhabituel car il produit
+        sa sortie dans des arguments placés à droite de l'opcode.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode vtable1k. Il utilise le fichier
+      <ulink url="examples/vtable1k.csd"><citetitle>vtable1k.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode vtable1k.</title>
+        <xi:include href="examples-xml/vtable1k.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="vtablek"><citetitle>vtablek</citetitle></link>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par Gabriel Maldonado.</para>
+    <para>Nouveau dans Csound 5.06</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,85 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="log2">
+<indexterm id="IndexLog2"><primary>log2</primary></indexterm>
+  <refentryinfo><title>Mathematical Operations:Mathematical Functions</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>log2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>log2</refname>
+    <refpurpose>
+      Retourne un logarithme en base 2.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne le logarithme en base 2 de <emphasis>x</emphasis> (<emphasis>x</emphasis> strictement positif).
+    </para>
+
+    <para>
+      Les valeurs de l'argument sont restreintes pour <link linkend="log"><citetitle>log</citetitle></link>,
+      <emphasis>log2</emphasis> et <link linkend="sqrt"><citetitle>sqrt</citetitle></link>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>log2</command>(x) (pas de restriction de taux)</synopsis>
+
+    <para>
+      où l'argument entre parenthèses peut être une expression. Les convertisseurs de valeur
+      effectuent une transformation arithmétique d'unités d'une sorte en unités d'une autre sorte.
+      Le résultat peut devenir ensuite un terme dans une autre expression.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode log2. Il utilise le fichier
+      <ulink url="examples/log2.csd"><citetitle>log2.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode log2.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/log2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie contiendra une ligne comme celle-ci :
+      <screen>instr 1:  i1 = 3.000</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="abs"><citetitle>abs</citetitle></link>,
+      <link linkend="exp"><citetitle>exp</citetitle></link>,
+      <link linkend="frac"><citetitle>frac</citetitle></link>,
+      <link linkend="int"><citetitle>int</citetitle></link>,
+      <link linkend="log"><citetitle>log</citetitle></link>,
+      <link linkend="log10"><citetitle>log</citetitle></link>,
+      <link linkend="opi"><citetitle>i</citetitle></link>,
+      <link linkend="sqrt"><citetitle>sqrt</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit &namejohn;.</para>
+    <para>Nouveau dans la version 5.17.12</para>
+  </refsect1>
+</refentry>

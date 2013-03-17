@@ -1,0 +1,133 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.10
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="fiopen">
+<indexterm id="IndexFiopen"><primary>fiopen</primary></indexterm>
+  <refentryinfo><title>Signal I/O:File I/O</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>fiopen</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>fiopen</refname>
+    <refpurpose>
+      Ouvre un fichier dans un mode spécifique.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      On peut utiliser <emphasis>fiopen</emphasis> pour ouvrir un fichier dans
+      un des modes spécifiés.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ihandle <command>fiopen</command> ifilename, imode</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ihandle</emphasis> -- un nombre qui spécifie ce fichier.
+    </para>
+
+    <para>
+      <emphasis>ifilename</emphasis> -- le nom du fichier de sortie (entre guillemets).
+    </para>
+
+    <para>
+      <emphasis>imode</emphasis> -- choix du mode d'ouverture du fichier.
+      <emphasis>imode</emphasis> peut prendre une des valeurs suivantes :
+      <itemizedlist>
+        <listitem>
+          <para>0 - ouvre un fichier texte en écriture</para>
+        </listitem>
+
+        <listitem>
+          <para>1 - ouvre un fichier texte en lecture</para>
+        </listitem>
+
+        <listitem>
+          <para>2 - ouvre un binaire texte en écriture</para>
+        </listitem>
+
+        <listitem>
+          <para>3 - ouvre un fichier binaire en lecture</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>fiopen</emphasis> ouvre un fichier à utiliser par la famille
+      d'opcodes <link linkend="fout"><citetitle>fout</citetitle></link>. Il est
+      plus sûr de l'utiliser dans la section d'en-tête, en dehors de tout
+      instrument. Il retourne un nombre, <emphasis>ihandle</emphasis>, qui fait
+      référence de manière univoque au fichier ouvert.
+    </para>
+    <para>
+      Si <emphasis>fiopen</emphasis> est appelé sur un fichier déjà ouvert, il
+      retourne simplement le même identificateur, et ne ferme pas le fichier.
+    </para>
+
+    <para>
+      Noter que <link linkend="fout"><citetitle>fout</citetitle></link> et
+      <link linkend="foutk"><citetitle>foutk</citetitle></link> peuvent utiliser
+      soit un nom de chemin de fichier, soit un identificateur numérique
+      généré par <emphasis>fiopen</emphasis>. Alors qu'avec
+      <link linkend="fouti"><citetitle>fouti</citetitle></link> et
+      <link linkend="foutir"><citetitle>foutir</citetitle></link>, le fichier
+      cible ne peut être spécifié que par un identificateur numérique.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode fiopen. Il utilise le fichier
+      <ulink url="examples/fiopen.csd"><citetitle>fiopen.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode fiopen.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/fiopen.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ficlose"><citetitle>ficlose</citetitle></link>
+      <link linkend="fout"><citetitle>fout</citetitle></link>, 
+      <link linkend="fouti"><citetitle>fouti</citetitle></link>, 
+      <link linkend="foutir"><citetitle>foutir</citetitle></link>, 
+      <link linkend="foutk"><citetitle>foutk</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+        <member>1999</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.56 de Csound</para>
+  </refsect1>
+</refentry>

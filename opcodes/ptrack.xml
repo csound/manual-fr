@@ -1,0 +1,106 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.5
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ptrack">
+  <indexterm id="Indexptrack"><primary>ptrack</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ptrack</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ptrack</refname>
+    <refpurpose>
+      Détecte la hauteur d'un signal.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>ptrack</emphasis> prend un signal en entrée, le divise en blocs
+      de taille <emphasis>ihopsize</emphasis> et extrait, par une méthode de TFCT,
+      la hauteur, qui est une estimation de sa fréquence fondamentale, et une
+      estimation de l'amplitude totale du signal en dB par rapport à l'échelle
+      totale (0 dB). La méthode comporte une taille de fenêtre d'analyse de
+      2*<emphasis>ihopsize</emphasis> échantillons (avec un recouvrement d'1/2
+      fenêtre), qui doit être une puissance de deux, entre 128 et 8192 (taille
+      des sauts entre 64 et 4096). Plus les fenêtres sont courtes et meilleure
+      est la précision temporelle, mais avec une précision en fréquence moins
+      bonne (spécialement pour des fondamentales graves). Cet opcode est basé
+      sur un algorithme original de M. Puckette.
+      </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kcps, kamp <command>ptrack</command> asig, ihopsize[,ipeaks]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ihopsize</emphasis> -- taille des "sauts" d'analyse, en échantillons,
+      devant être une puissance de deux (min 64, max 4096). C'est la durée entre
+      deux mesures.
+    </para>
+
+    <para>
+      <emphasis>ipeaks</emphasis>, <emphasis>ihi</emphasis> -- nombre de pics
+      spectraux à utiliser dans l'analyse. 20 par défaut (facultatif).
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kcps</emphasis> -- hauteur estimée en Hz.
+    </para>
+
+    <para>
+      <emphasis>kamp</emphasis> -- amplitude estimée en dB par rapport à l'échelle
+      totale (0 dB) (c-à-d toujours &lt;= 0).
+    </para>
+
+    <para>
+      <emphasis>ptrack</emphasis> analyse le signal d'entrée, <emphasis>asig</emphasis>,
+      pour retourner une paire hauteur/amplitude, pour le fondamental d'un signal
+      monophonique. La sortie est mise à jour toutes les
+      <emphasis>sr</emphasis>/<emphasis>ihopsize</emphasis> secondes.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici en exemple de l'opcode ptrack. Il utilise le fichier
+      <ulink url="examples/ptrack.csd"><citetitle>ptrack.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode ptrack.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/ptrack.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>NUI, Maynooth.</member>
+        <member>Maynooth, Irlande</member>
+        <member>Mars 2007</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 5.05 de Csound.</para>
+  </refsect1>
+</refentry>

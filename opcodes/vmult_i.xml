@@ -1,0 +1,129 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vmult_i">
+<indexterm id="IndexVmult_i"><primary>vmult_i</primary></indexterm>
+  <refentryinfo><title>Vectorial:Scalar operations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vmult_i</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vmult_i</refname>
+    <refpurpose>
+      Multiplication d'un vecteur dans une table par une valeur scalaire.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Multiplication d'un vecteur dans une table par une valeur scalaire.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>vmult_i</command>  ifn, ival, ielements [, idstoffset]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn</emphasis> - numéro de la table hébergeant le signal
+      vectoriel à traiter.
+    </para>
+    <para>
+      <emphasis>ival</emphasis> - valeur scalaire à multiplier.
+    </para>
+    <para>
+      <emphasis>ielements</emphasis> - nombre de composantes du vecteur.
+    </para>
+    <para>
+      <emphasis>idstoffset</emphasis> - décalage d'indexation pour la table de
+      destination.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>vmult_i</emphasis> multiple chaque élément du vecteur contenu dans
+      la table <emphasis>ifn</emphasis> par <emphasis>ival</emphasis>, 
+      à partir de l'index de table <emphasis>idstoffset</emphasis>. Cela permet
+      de traiter une section particulière d'une table en spécifiant le décalage
+      et le nombre d'éléments à traiter. Le décalage est compté à partir de 0,
+      si bien que si aucun décalage n'est spécifié (ou s'il est fixé à 0), la
+      table est modifiée depuis le début.
+    </para>
+    <para>
+      Cet opcode n'est exécuté qu'à l'initialisation. Il y a une version de taux-k
+      de cet opcode appelée <link linkend="vmult"><citetitle>vmult</citetitle></link>.
+    </para>
+    <para>
+      Les valeurs négatives sont valides pour <emphasis>idstoffset</emphasis>.
+      Les composantes du vecteur se trouvant en dehors de la table sont alors
+      ignorées, et elles ne sont pas repliées autour de la table.
+    </para>
+    <para>
+      Dans tous ces opcodes, les vecteurs résultants sont stockés dans
+      <emphasis>ifn</emphasis>, écrasant les vecteurs initiaux. Si l'on veut
+      garder le vecteur initial, il faut utiliser
+      <link linkend="vcopy"><citetitle>vcopy</citetitle></link> ou
+      <link linkend="vcopy_i"><citetitle>vcopy_i</citetitle></link> pour le
+      copier dans une autre table. Tous ces opérateurs sont conçus pour être
+      utilisés avec d'autres opcodes qui opèrent sur des signaux vectoriels tels
+      que <emphasis>bmscan</emphasis>,
+      <link linkend="vcella"><citetitle>vcella</citetitle></link>,
+      <link linkend="adsynt"><citetitle>adsynt</citetitle></link>,
+      <link linkend="adsynt2"><citetitle>adsynt2</citetitle></link>, etc.
+      Ils peuvent aussi être utiles en conjonction avec les opcodes spectraux
+      <link linkend="pvsftw"><citetitle>pvsftw</citetitle></link> et
+      <link linkend="pvsftr"><citetitle>pvsftr</citetitle></link>.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode vmult_i. Il utilise le fichier
+      <ulink url="examples/vmult_i.csd"><citetitle>vmult_i.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode vmult_i.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/vmult_i.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="vadd_i"><citetitle>vadd</citetitle></link>,
+      <link linkend="vadd"><citetitle>vadd</citetitle></link>,
+      <link linkend="vmult"><citetitle>vmult</citetitle></link>,
+      <link linkend="vpow_i"><citetitle>vpow_i</citetitle></link>,
+      <link linkend="vpow"><citetitle>vpow</citetitle></link>,
+      <link linkend="vexp_i"><citetitle>vexp_i</citetitle></link> et
+      <link linkend="vexp"><citetitle>vexp</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      Ecrit par Gabriel Maldonado. Arguments facultatifs ajoutés par Andrés
+      Cabrera et Istvan Varga.
+    </para>
+    <para>Exemple par Andrés Cabrera.</para>
+    <para>Nouveau dans Csound 5 (Auparavant seulement disponible dans CsoundAV)</para>
+  </refsect1>
+</refentry>

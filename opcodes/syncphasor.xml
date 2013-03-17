@@ -1,0 +1,146 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.2
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="syncphasor">
+<indexterm id="IndexSyncPhasor"><primary>syncphasor</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Phasors</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>syncphasor</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>syncphasor</refname>
+    <refpurpose>
+      Produit une valeur de phase mobile normalisée avec entrée et sortie de
+      synchronisation.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Produit une valeur de phase mobile entre zéro et un et une impulsion supplémentaire
+      en sortie ("sync out") chaque fois que sa valeur de phase traverse le zéro ou est
+      remise à zéro. La phase peut être réinitialisée à tout instant par une
+      impulsion sur le paramètre "sync in".
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aphase, asyncout <command>syncphasor</command> xcps, asyncin, [, iphs]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iphs</emphasis> (facultatif) -- phase initiale, exprimée comme une
+      fraction d'une période (0 à 1). Avec une valeur négative, l'initialisation de
+      la phase sera ignorée. La valeur par défaut est zéro.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>aphase</emphasis> -- la valeur de phase en sortie ; toujours entre
+      0 et 1.
+    </para>
+
+    <para>
+      <emphasis>asyncout</emphasis> -- la sortie de synchronisation prend la valeur 1.0
+      durant un échantillon chaque fois que la valeur de phase traverse le zéro ou que
+      l'entrée de synchronisation a une valeur non nulle. Elle vaut zéro aux autres
+      moments.
+    </para>
+
+    <para>
+      <emphasis>asyncin</emphasis> -- l'entrée de synchronisation provoque la
+      remise à zéro de la phase chaque fois que <emphasis>asyncin</emphasis>
+      est non nul.
+    </para>
+
+    <para>
+      <emphasis>xcps</emphasis> -- fréquence du phaseur en Hertz. Si <emphasis>xcps</emphasis>
+      est négatif, la phase sera décrémentée de 1 à 0 au lieu d'être incrémentée.
+    </para>
+
+    <para>
+      Une phase interne est augmentée successivement selon la fréquence de
+      <emphasis>xcps</emphasis> pour produire une valeur de phase mobile, normalisée
+      pour se trouver dans l'intervalle 0 &lt;= phs &lt; 1. Lorsqu'elle est utilisée
+      comme indice dans une <link linkend="table"><citetitle>table</citetitle></link>,
+      cette phase (multipliée par la longueur de la table de fonction) permettra de
+      l'utiliser comme un oscillateur.
+    </para>
+
+    <para>
+      La phase de <emphasis>syncphasor</emphasis> peut être synchronisée à un autre
+      phaseur (ou à un autre signal) au moyen du paramètre <emphasis>asyncin</emphasis>.
+      Chaque fois que <emphasis>asyncin</emphasis> prend une valeur non nulle, la
+      valeur de <emphasis>aphase</emphasis> est remise à zéro. <emphasis>syncphasor</emphasis>
+      sort aussi son propre signal de "synchro" qui consiste en une impulsion d'un
+      échantillon chaque fois que sa phase traverse le zéro ou est réinitialisée.
+      On peut ainsi facilement mettre en série plusieurs opcodes
+      <emphasis>syncphasor</emphasis> pour créer un effet d'oscillateur "hard sync".    
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode syncphasor. Il utilise le fichier
+      <ulink url="examples/syncphasor.csd"><citetitle>syncphasor.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode syncphasor.</title>
+
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/syncphasor.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Voici un autre exemple de l'opcode syncphasor. Il utilise le fichier
+      <ulink url="examples/syncphasor-CZresonance.csd"><citetitle>syncphasor-CZresonance.csd</citetitle></ulink>.
+      <example>
+        <title>Un autre exemple de l'opcode syncphasor.</title>
+        <xi:include href="examples-xml/syncphasor-CZresonance.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="phasor"><citetitle>phasor</citetitle></link>.
+    </para>
+    <para>
+      Et les opcodes d'<link linkend="SiggenTableacc"><citetitle>Accès aux Table</citetitle></link>
+      comme : <link linkend="table"><citetitle>table</citetitle></link>,
+      <link linkend="tablei"><citetitle>tablei</citetitle></link>,
+      <link linkend="table3"><citetitle>table3</citetitle></link> et
+      <link linkend="tab"><citetitle>tab</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Adapté d'après l'opcode <emphasis>phasor</emphasis> par &nameanthony;</member>
+        <member>Janvier 2008</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 5.08 de Csound</para>
+  </refsect1>
+</refentry>

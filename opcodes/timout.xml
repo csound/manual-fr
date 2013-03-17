@@ -1,0 +1,78 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="timout">
+<indexterm id="IndexTimout"><primary>timout</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Program Flow Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>timout</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>timout</refname>
+    <refpurpose>
+      Branchement conditionnel durant l'exécution en fonction de la durée de la note
+      qui s'est déjà écoulée.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Branchement conditionnel durant l'exécution en fonction de la durée de la note
+      qui s'est déjà écoulée. <emphasis>istrt</emphasis> et <emphasis>idur</emphasis>
+      sont exprimés en secondes. Le branchement vers <emphasis>label</emphasis>
+      aura lieu à partir de l'instant <emphasis>istrt</emphasis>, et restera actif
+      pendant <emphasis>idur</emphasis> secondes. Noter que <emphasis>timout</emphasis>
+      peut être réinitialisé pour des activations multiples dans une seule note (voir
+      l'exemple de <link linkend="reinit"><citetitle>reinit</citetitle></link>).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>timout</command> istrt, idur, label</synopsis>
+
+    <para>
+      où <emphasis>label</emphasis> se trouve dans le même bloc d'instrument et n'est
+      pas une expression.
+    </para>
+  </refsect1>
+
+   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode timout. Il utilise le fichier
+      <ulink url="examples/timout.csd"><citetitle>timout.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode timout.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/timout.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="goto"><citetitle>goto</citetitle></link>,
+      <link linkend="if"><citetitle>if</citetitle></link>,
+      <link linkend="igoto"><citetitle>igoto</citetitle></link>,
+      <link linkend="kgoto"><citetitle>kgoto</citetitle></link>,
+      <link linkend="tigoto"><citetitle>tigoto</citetitle></link>
+    </para>
+  </refsect1>
+
+<!--  <refsect1>
+    <title>Crédits</title>
+    <para>Added a note by Jim Aikin.</para>
+  </refsect1>-->
+</refentry>

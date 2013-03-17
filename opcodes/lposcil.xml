@@ -1,0 +1,110 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="lposcil">
+<indexterm id="Indexlposcil"><primary>lposcil</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Sample Playback</title></refentryinfo>
+<refmeta>
+<refentrytitle>lposcil</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>lposcil</refname>
+    <refpurpose>
+      Lit un son échantillonné depuis une table avec boucle et haute précision.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Lit un son échantillonné (mono ou stéréo) depuis une table, avec boucle
+      et haute précision.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>lposcil</command> kamp, kfreqratio, kloop, kend, ifn [, iphs]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn</emphasis> -- numéro de la table de fonction
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamp</emphasis> -- amplitude
+    </para>
+
+    <para>
+      <emphasis>kfreqratio</emphasis> -- facteur de multiplication de la fréquence de
+      la table (par exemple : 1 = fréquence originale, 1.5 = une quinte ascendante,
+      0.5 = une octave descendante)
+    </para>
+
+    <para>
+      <emphasis>kloop</emphasis> -- début de la boucle (en échantillons)
+    </para>
+
+    <para>
+      <emphasis>kend</emphasis> -- fin de la boucle (en échantillons)
+    </para>
+
+    <para>
+      <emphasis>lposcil</emphasis> (looping precise oscillator) permet de faire
+      varier au taux-k le début et la fin d'un son échantillonné contenu dans une
+      table (<link linkend="GEN01"><citetitle>GEN01</citetitle></link>). Peut être
+      utile pour lire une boucle d'échantillons depuis une table d'onde, avec
+      une vitesse de répétition variant durant l'exécution.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode lposcil. Il utilise le fichier
+      <ulink url="examples/lposcil.csd"><citetitle>lposcil.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode lposcil.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/lposcil.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="lposcil3"><citetitle>lposcil3</citetitle></link>,
+      <link linkend="lposcila"><citetitle>lposcila</citetitle></link>,
+      <link linkend="lposcilsa"><citetitle>lposcilsa</citetitle></link>,
+      <link linkend="lposcilsa2"><citetitle>lposcilsa2</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.52 de Csound</para>
+  </refsect1>
+</refentry>

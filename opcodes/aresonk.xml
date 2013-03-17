@@ -1,0 +1,121 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.10
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="aresonk">
+<indexterm id="IndexAresonk"><primary>aresonk</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>aresonk</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>aresonk</refname>
+    <refpurpose>
+      Un filtre réjecteur de bande réglable (notch filter) dont les fonctions de transfert sont les
+      complémentaires de celles de l'opcode reson.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Un filtre réjecteur de bande réglable dont les fonctions de transfert sont les complémentaires de
+      celles de l'opcode reson.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kres <command>aresonk</command> ksig, kcf, kbw [, iscl] [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iscl</emphasis> (facultatif, par défaut 0) -- facteur de pondération codé pour les
+      résonateurs. Une valeur de 1 signifie que la crête du facteur de réponse est 1, c-à-d. toutes les
+      fréquences autres que <emphasis>kcf</emphasis> sont atténuées selon la courbe de réponse
+      (normalisée). Une valeur de 2 élève le facteur de réponse de façon à ce que sa valeur efficace
+      globale soit égale à 1. (Cette égalisation intentionnelle des puissances d'entrée et de sortie
+      suppose que toutes les fréquences sont présentes ; elle est ainsi plus appropriée au bruit blanc.)
+      Une valeur de 0 signifie aucune pondération du signal, laissant cette tâche à un ajustement
+      ultérieur (voir <link linkend="balance"><citetitle>balance</citetitle></link>). La valeur par
+      défaut est 0.
+    </para>
+
+    <para>
+      <emphasis>iskip</emphasis> (facultatif, par défaut 0) -- état initial de l'espace de données interne.
+      Comme le filtrage comprend une boucle de rétroaction sur la sortie précédente, l'état initial de
+      l'espace de stockage utilisé est significatif. Une valeur nulle provoquera l'effacement de cet
+      espace ; une valeur non nulle autorisera la persistance de l'information précédente. La valeur par
+      défaut est 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kres</emphasis> -- le signal de sortie au taux de contrôle.
+    </para>
+
+    <para>
+      <emphasis>ksig</emphasis> -- le signal d'entrée au taux de contrôle.
+    </para>
+
+    <para>
+      <emphasis>kcf</emphasis> -- la fréquence centrale du filtre, ou position fréquentielle de la
+      crête de la réponse.
+    </para>
+
+    <para>
+      <emphasis>kbw</emphasis> -- largeur de bande du filtre (la différence en Hz entre les points haut
+      et bas à mi-puissance).
+    </para>
+
+    <para>
+      <emphasis>aresonk</emphasis> est un filtre dont les fonctions de transfert sont complémentaires de
+      celles de <link linkend="resonk"><citetitle>resonk</citetitle></link>. Ainsi <emphasis>aresonk</emphasis>
+      est un filtre réjecteur de bande variable (notch filter) dont les fonctions de transfert représentent
+      les aspects <quote>filtrés</quote> de leurs compléments. Cependant, l'échelle de puissance n'est
+      pas normalisée dans <emphasis>aresonk</emphasis> mais reste le complément réel de l'unité correspondante. 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode aresonk. Il utilise le fichier
+      <ulink url="examples/aresonk.csd"><citetitle>aresonk.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode aresonk.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/aresonk.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="areson"><citetitle>areson</citetitle></link>,
+      <link linkend="atone"><citetitle>atone</citetitle></link>,
+      <link linkend="atonek"><citetitle>atonek</citetitle></link>,
+      <link linkend="port"><citetitle>port</citetitle></link>,
+      <link linkend="portk"><citetitle>portk</citetitle></link>,
+      <link linkend="reson"><citetitle>reson</citetitle></link>,
+      <link linkend="resonk"><citetitle>resonk</citetitle></link>,
+      <link linkend="tone"><citetitle>tone</citetitle></link>,
+      <link linkend="tonek"><citetitle>tonek</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

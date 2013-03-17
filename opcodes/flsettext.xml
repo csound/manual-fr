@@ -1,0 +1,99 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLsetText">
+<indexterm id="IndexFLsetText"><primary>FLsetText</primary></indexterm>
+  <refentryinfo><title>FLTK:Appearance</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLsetText</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLsetText</refname>
+    <refpurpose>
+      Fixe l'étiquette d'un widget FLTK.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>FLsetText</emphasis> met la chaîne de caractères entre guillemets
+      de l'argument <emphasis>itext</emphasis> dans l'étiquette du widget cible.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>FLsetText</command> &quot;itext&quot;, ihandle</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis><quote>itext</quote></emphasis> -- une chaîne de caractères entre
+      guillemets contenant le texte de l'étiquette du widget.
+    </para>
+
+    <para>
+      <emphasis>ihandle</emphasis> -- un nombre entier (utilisé comme
+      identifiant unique) pris de la sortie d'un opcode de widget déjà en
+      place (qui correspond au widget cible). Il est utilisé pour identifier
+      de manière univoque le widget lors de la modification de son apparence
+      par cette classe d'opcodes. Il ne faut pas fixer la valeur de
+      <emphasis>ihandle</emphasis> directement sous peine de provoquer un
+      plantage de Csound.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode FLsetText. Il utilise le fichier
+      <ulink url="examples/FLsetText.csd"><citetitle>FLsetText.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode FLsetText.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/FLsetText.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+        <link linkend="FLcolor2"><citetitle>FLcolor2</citetitle></link>, 
+        <link linkend="FLhide"><citetitle>FLhide</citetitle></link>, 
+        <link linkend="FLlabel"><citetitle>FLlabel</citetitle></link>, 
+        <link linkend="FLsetAlign"><citetitle>FLsetAlign</citetitle></link>, 
+        <link linkend="FLsetBox"><citetitle>FLsetBox</citetitle></link>, 
+        <link linkend="FLsetColor"><citetitle>FLsetColor</citetitle></link>, 
+        <link linkend="FLsetColor2"><citetitle>FLsetColor2</citetitle></link>, 
+        <link linkend="FLsetFont"><citetitle>FLsetFont</citetitle></link>, 
+        <link linkend="FLsetPosition"><citetitle>FLsetPosition</citetitle></link>, 
+        <link linkend="FLsetSize"><citetitle>FLsetSize</citetitle></link>, 
+        <link linkend="FLsetText"><citetitle>FLsetText</citetitle></link>, 
+        <link linkend="FLsetTextColor"><citetitle>FLsetTextColor</citetitle></link>, 
+        <link linkend="FLsetTextSize"><citetitle>FLsetTextSize</citetitle></link>, 
+        <link linkend="FLsetTextType"><citetitle>FLsetTextType</citetitle></link>, 
+        <link linkend="FLsetVal_i"><citetitle>FLsetVal_i</citetitle></link>, 
+        <link linkend="FLsetVal"><citetitle>FLsetVal</citetitle></link>, 
+        <link linkend="FLshow"><citetitle>FLshow</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.22</para>
+  </refsect1>
+</refentry>

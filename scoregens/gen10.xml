@@ -1,0 +1,164 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="GEN10">
+      <indexterm id="IndexGEN10"><primary>GEN10</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN10</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>GEN10</refname>
+    <refpurpose>
+      Génère des formes d'ondes complexes obtenues par une somme pondérée de sinus.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ce sous-programme génère des formes d'ondes complexes obtenues par une somme pondérée de sinus. La
+      spécification de chaque partiel nécessite 1 p-champ avec <emphasis>GEN10</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>f</command> # date taille 10 amp1 amp2 amp3 amp4 ...</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>taille</emphasis> -- nombre de points dans la table. Doit être une puissance de 2 ou une
+      puissance-de-2 plus 1 (voir l'<link linkend="f"><citetitle>instruction f</citetitle></link>).
+    </para>
+
+    <para>
+      <emphasis>amp1, amp2, amp3, etc.</emphasis> -- amplitudes relatives des partiels harmoniques fixes de
+      numéro 1, 2, 3, etc., commençant en p5. Les partiels non désirés recevront une amplitude nulle.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Ces sous-programmes génèrent des fonctions stockées qui sont la somme de sinus de différentes
+              fréquences. Les deux restrictions majeures de <emphasis>GEN10</emphasis> qui sont des
+              partiels harmoniques et en phase ne s'appliquent pas à <emphasis>GEN09</emphasis> ou à
+              <emphasis>GEN19</emphasis>.
+            </para>
+          </listitem>
+
+          <listitem>
+            <para>
+              Dans chaque cas, l'onde complexe, une fois calculée, est reproportionnée à l'unité si p4
+              est positif. Un p4 négatif empêchera cette opération.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de la routine GEN10. Il utilise le fichier
+      <ulink url="examples/gen10.csd"><citetitle>gen10.csd</citetitle></ulink>.
+
+      <example>
+        <title>Un exemple de la routine GEN10.</title>
+        <xi:include href="examples-xml/gen10.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      <textobject>
+        <phrase>Voici les diagrammes des formes d'onde des routines GEN10 utilisées
+        dans l'exemple :</phrase>
+      </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen10_1.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 1 0 16384 10 1 - onde sinus (seulement la fréquence fondamentale)</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 1 0 16384 10 1 - onde sinus (seulement la fréquence fondamentale)</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen10_2.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 2 0 16384 10 1 0.5 0.3 0.25 0.2 0.167 0.14 0.125 .111 - dent de scie, avec la fondamentale et 8 harmoniques</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 2 0 16384 10 1 0.5 0.3 0.25 0.2 0.167 0.14 0.125 .111 - dent de scie, avec la fondamentale et 8 harmoniques</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen10_3.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 3 0 16384 10 1 0 0.3 0 0.2 0 0.14 0 .111 - onde carrée, avec la fondamentale et 8 harmoniques mais les 4 de rang paire sont nulles</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 3 0 16384 10 1 0 0.3 0 0.2 0 0.14 0 .111 - onde carrée, avec la fondamentale et 8 harmoniques mais les 4 de rang paire sont nulles</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen10_4.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 4 0 16384 10 1 1 1 1 0.7 0.5 0.3 0.1 - pulsation, avec la fondamentale et 8 harmoniques</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 4 0 16384 10 1 1 1 1 0.7 0.5 0.3 0.1 - pulsation, avec la fondamentale et 8 harmoniques</para>
+        </caption>
+      </mediaobject>
+
+      <example>
+        <title>Un exemple de la routine GEN10.</title>
+        <para>
+          Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps-Réel</citetitle></link>
+          et <link linkend="CommandFlags"><citetitle>Options de Ligne de Commande</citetitle></link> pour
+          plus d'information sur l'utilisation des options de la ligne de commande.
+        </para>
+        <xi:include href="examples-xml/gen10.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+     <title>Voir aussi</title>
+     <para>
+       <link linkend="GEN09"><citetitle>GEN09</citetitle></link>,
+       <link linkend="GEN11"><citetitle>GEN11</citetitle></link> et
+       <link linkend="GEN19"><citetitle>GEN19</citetitle></link>.
+     </para>
+  </refsect1>
+</refentry>

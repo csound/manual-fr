@@ -1,0 +1,98 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.16
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="bformenc">
+<indexterm id="IndexBformenc"><primary>bformenc</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Panning and Spatialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>bformenc</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>bformenc</refname>
+    <refpurpose>
+      Obsolète. Encode un signal dans le format ambisonic B.
+     </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Encode un signal dans le format ambisonic B. Noter que cet opcode est obsolète
+      et imprécis et qu'il est remplacé par l'opcode
+      <link linkend="bformenc1"><citetitle>bformenc1</citetitle></link> bien
+      meilleur qui reprend toutes les caractéristiques importantes ; noter que les
+      arguments de gain ne sont pas disponibles dans <emphasis>bformenc1</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aw, ax, ay, az <command>bformenc</command> asig, kalpha, kbeta, kord0, kord1</synopsis>
+    <synopsis>aw, ax, ay, az, ar, as, at, au, av <command>bformenc</command> asig, kalpha, kbeta, \
+      kord0, kord1 , kord2</synopsis>
+    <synopsis>aw, ax, ay, az, ar, as, at, au, av, ak, al, am, an, ao, ap, aq <command>bformenc</command> \
+      asig, kalpha, kbeta, kord0, kord1, kord2, kord3</synopsis>
+  </refsect1>
+
+  <!-- <refsect1>
+    <title>Initialisation</title>
+
+	<para>
+
+  </refsect1> -->
+
+  <refsect1>
+    <title>Exécution</title>
+
+	<para><emphasis>aw, ax, ay, ... </emphasis> -- cellules de sortie au format B.</para>
+
+  <para><emphasis>asig</emphasis> -- signal d'entrée.</para>
+
+  <para><emphasis>kalpha</emphasis> –- angle d'azimut en degrés (dans le sens des
+    aiguilles d'une montre).</para>
+
+  <para><emphasis>kbeta</emphasis> -- angle d'altitude en degrés.</para>
+
+  <para><emphasis>kord0</emphasis> -- gain linéaire du format B d'ordre zéro.</para>
+
+  <para><emphasis>kord1</emphasis> -- gain linéaire du format B du premier ordre.</para>
+
+  <para><emphasis>kord2</emphasis> -- gain linéaire du format B du deuxième ordre.</para>
+
+  <para><emphasis>kord3</emphasis> -- gain linéaire du format B du troisième ordre.</para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode bformenc. Il utilise le fichier
+      <ulink url="examples/bformenc.csd"><citetitle>bformenc.csd</citetitle></ulink>.
+
+    <example>
+      <title>Exemple de l'opcode bformenc.</title>
+      <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+      et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+      d'information sur l'utilisation des options de la ligne de commande.</para>
+      <xi:include href="examples-xml/bformenc.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Samuel Groner</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.07. Obsolète dans la 5.09.</para>
+  </refsect1>
+</refentry>

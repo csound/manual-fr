@@ -1,0 +1,128 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="wguide2">
+<indexterm id="IndexWguide2"><primary>wguide2</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Waveguides</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>wguide2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>wguide2</refname>
+    <refpurpose>
+      Un modèle de plaque frappée constitué de deux lignes à retard en parallèle
+      et de deux filtres passe-bas du premier ordre.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Un modèle de plaque frappée constitué de deux lignes à retard en parallèle
+      et de deux filtres passe-bas du premier ordre.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>wguide2</command> asig, xfreq1, xfreq2, kcutoff1, kcutoff2, \
+      kfeedback1, kfeedback2</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- l'entrée du bruit d'excitation.
+    </para>
+
+    <para>
+      <emphasis>xfreq1, xfreq2</emphasis> -- la fréquence (c-à-d l'inverse de la durée du
+      retard). A été changé au taux-x dans la version 3.59 de Csound.
+    </para>
+
+    <para>
+      <emphasis>kcutoff1, kcutoff2</emphasis> -- la fréquence de coupure du filtre en Hz. 
+    </para>
+
+    <para>
+      <emphasis>kfeedback1, kfeedback2</emphasis> -- le facteur de rétroaction.
+    </para>
+
+    <para>
+      <emphasis>wguide2</emphasis> est un modèle de plaque frappée consistant en
+      deux lignes à retard en parallèle et deux filtres passe-bas du premier ordre.
+      Les deux lignes de rétroaction sont mélangées et réenvoyées au délai à
+      chaque cycle.
+    </para>
+
+    <para>
+      L'implémentation des algorithmes de guide d'onde comme opcodes au lieu
+      d'instruments d'un orchestre de Csound permet de fixer une valeur de
+      <emphasis>kr</emphasis> différente de celle de <emphasis>sr</emphasis>, ce
+      qui donne de meilleures performances particulièrement en .
+    </para>
+
+    <para>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/wguide2.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>wguide2.</phrase>
+        </textobject>
+
+        <caption>
+          <para>wguide2.</para>
+        </caption>
+      </mediaobject>
+    </para>
+    <note>
+      <para>
+        De manière empirique, la somme des deux valeurs de rétroaction ne devrait
+        pas dépasser 0.5 pour éviter de rendre <emphasis>wguide2</emphasis>
+        instable.
+      </para>
+    </note>
+  </refsect1>
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode wguide2. Il utilise le fichier
+      <ulink url="examples/wguide2.csd"><citetitle>wguide2.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode wguide2.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/wguide2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="wguide1"><citetitle>wguide1</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+        <member>Octobre 1998</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 3.49 de Csound.</para>
+  </refsect1>
+</refentry>

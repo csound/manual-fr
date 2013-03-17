@@ -1,0 +1,109 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLsetColor">
+<indexterm id="IndexFLsetColor"><primary>FLsetColor</primary></indexterm>
+  <refentryinfo><title>FLTK:Appearance</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLsetColor</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLsetColor</refname>
+    <refpurpose>
+      Fixe la couleur d'un widget FLTK.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>FLsetColor</emphasis> fixe la couleur du widget cible.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>FLsetColor</command> ired, igreen, iblue, ihandle</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ired</emphasis> -- La composante rouge de la couleur du widget
+      cible. Chaque composante RVB est comprise entre 0 et 255.
+    </para>
+
+    <para>
+      <emphasis>igreen</emphasis> -- La composante verte de la couleur du widget
+      cible. Chaque composante RVB est comprise entre 0 et 255.
+    </para>
+
+    <para>
+      <emphasis>iblue</emphasis> -- La composante bleue de la couleur du widget
+      cible. Chaque composante RVB est comprise entre 0 et 255.
+    </para>
+
+    <para>
+      <emphasis>ihandle</emphasis> -- un nombre entier (utilisé comme
+      identifiant unique) pris de la sortie d'un opcode de widget déjà en
+      place (qui correspond au widget cible). Il est utilisé pour identifier
+      de manière univoque le widget lors de la modification de son apparence
+      par cette classe d'opcodes. Il ne faut pas fixer la valeur de
+      <emphasis>ihandle</emphasis> directement sous peine de provoquer un
+      plantage de Csound.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode FLsetcolor. Il utilise le fichier
+      <ulink url="examples/FLsetcolor.csd"><citetitle>FLsetcolor.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode FLsetcolor.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/FLsetcolor.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+        <link linkend="FLcolor2"><citetitle>FLcolor2</citetitle></link>, 
+        <link linkend="FLhide"><citetitle>FLhide</citetitle></link>, 
+        <link linkend="FLlabel"><citetitle>FLlabel</citetitle></link>, 
+        <link linkend="FLsetAlign"><citetitle>FLsetAlign</citetitle></link>, 
+        <link linkend="FLsetBox"><citetitle>FLsetBox</citetitle></link>, 
+        <link linkend="FLsetColor"><citetitle>FLsetColor</citetitle></link>, 
+        <link linkend="FLsetColor2"><citetitle>FLsetColor2</citetitle></link>, 
+        <link linkend="FLsetFont"><citetitle>FLsetFont</citetitle></link>, 
+        <link linkend="FLsetPosition"><citetitle>FLsetPosition</citetitle></link>, 
+        <link linkend="FLsetSize"><citetitle>FLsetSize</citetitle></link>, 
+        <link linkend="FLsetText"><citetitle>FLsetText</citetitle></link>, 
+        <link linkend="FLsetTextColor"><citetitle>FLsetTextColor</citetitle></link>, 
+        <link linkend="FLsetTextSize"><citetitle>FLsetTextSize</citetitle></link>, 
+        <link linkend="FLsetTextType"><citetitle>FLsetTextType</citetitle></link>, 
+        <link linkend="FLsetVal_i"><citetitle>FLsetVal_i</citetitle></link>, 
+        <link linkend="FLsetVal"><citetitle>FLsetVal</citetitle></link>, 
+        <link linkend="FLshow"><citetitle>FLshow</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.22</para>
+    <para>Exemple écrit par Iain McCurdy, édité par &namekevin;.</para>
+  </refsect1>
+</refentry>

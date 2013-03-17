@@ -1,0 +1,83 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="tigoto">
+<indexterm id="IndexTigoto"><primary>tigoto</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Program Flow Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tigoto</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>tigoto</refname>
+    <refpurpose>
+      Tranfère le contrôle lors de la phase d'initialisation si la nouvelle note est
+      liée à la précédente note tenue.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Semblable à <link linkend="igoto"><citetitle>igoto</citetitle></link> mais ne
+      fonctionne que lors d'une phase d'initialisation concernant une nouvelle note
+      <quote>liée</quote> à une note précédente tenue.
+      (Voir l'<link linkend="i"><citetitle>instruction i</citetitle></link>). Ca ne
+      fonctionne pas s'il n'y a pas de liaison. Permet à un instrument d'ignorer
+      l'initialisation de ses unités si une liaison a été proposée avec succès.
+      (Voir aussi <link linkend="tival"><citetitle>tival</citetitle></link>).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>tigoto</command> label</synopsis>
+
+    <para>
+      où <emphasis>label</emphasis> se trouve dans le même bloc d'instrument et n'est
+      pas une expression.
+    </para>
+  </refsect1>
+
+   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode tigoto. Il utilise le fichier
+      <ulink url="examples/tigoto.csd"><citetitle>tigoto.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode tigoto.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/tigoto.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="cigoto"><citetitle>cigoto</citetitle></link>,
+      <link linkend="goto"><citetitle>goto</citetitle></link>,
+      <link linkend="if"><citetitle>if</citetitle></link>,
+      <link linkend="igoto"><citetitle>igoto</citetitle></link>,
+      <link linkend="kgoto"><citetitle>kgoto</citetitle></link>,
+      <link linkend="timout"><citetitle>timout</citetitle></link>
+    </para>
+    <para>Plus d'information sur cet opcode :
+    <ulink url="http://www.csounds.com/journal/2005fall/tiedNotes.html">
+    <citetitle>http://www.csounds.com/journal/2005fall/tiedNotes.html</citetitle>
+    </ulink>, écrit par Steven Yi.</para> 
+  </refsect1>
+
+<!--  <refsect1>
+    <title>Crédits</title>
+    <para>Added a note by Jim Aikin.</para>
+  </refsect1>-->
+</refentry>

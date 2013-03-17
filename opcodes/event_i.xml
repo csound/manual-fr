@@ -1,0 +1,117 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="event_i">
+<indexterm id="IndexEventi"><primary>event_i</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Invocation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>event_i</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>event_i</refname>
+    <refpurpose>
+      Génère un évènement de partition à partir d'un instrument.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère un évènement de partition à partir d'un instrument.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>event_i</command> &quot;scorechar&quot;, iinsnum, idelay, idur, [, ip4] [, ip5] [, ...]</synopsis>
+    <synopsis><command>event_i</command> &quot;scorechar&quot;, &quot;insname&quot;, idelay, idur, [, ip4] [, ip5] [, ...]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis><quote>scorechar</quote></emphasis> -- Une chaîne de caractères (entre
+      guillemets) représentant le p-champ initial d'une instruction de partition. C'est
+      habituellement <link linkend="e"><citetitle><quote>e</quote></citetitle></link>,
+      <link linkend="f"><citetitle><quote>f</quote></citetitle></link>,
+      ou <link linkend="i"><citetitle><quote>i</quote></citetitle></link>.
+    </para>
+
+    <para>
+      <emphasis><quote>insname</quote></emphasis> -- Une chaîne de caractères (entre
+      guillemets) représentant un instrument nommé.
+    </para>
+    <para>
+      <emphasis>iinsnum</emphasis> -- L'instrument à utiliser pour cet évènement. Cela
+      correspond au premier p-champ, p1, dans une instruction de partition.
+    </para>
+
+    <para>
+      <emphasis>idelay</emphasis> -- Quand (en secondes) l'évènement aura lieu à partir
+      de l'instant courant de l'exécution. Cela correspond au second p-champ, p2, dans
+      une instruction de partition.
+    </para>
+
+    <para>
+      <emphasis>idur</emphasis> -- Durée (en secondes) de l'évènement. Cela
+      correspond au troisième p-champ, p3, dans une instruction de partition.
+    </para>
+
+    <para>
+      <emphasis>ip4, ip5, ...</emphasis> (facultatif) -- Paramètres représentant des
+      p-champs supplémentaires dans une instruction de partition. Ils commencent par le
+      quatrième p-champ, p4.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>L'évènement est ajouté à la file d'attente pendant la phase d'initialisation.</para>
+    <note>
+      <para> Noter que l'opcode <emphasis>event_i</emphasis> ne peut pas accepter de
+      p-champs chaîne de caractère. Si vous devez passer des chaînes de caractère à
+      l'instanciation d'un instrument, utilisez l'opcode
+      <link linkend="scoreline"><citetitle>scoreline</citetitle></link> ou
+      <link linkend="scoreline_i"><citetitle>scoreline_i</citetitle></link>.</para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode event_i. Il utilise le fichier
+      <ulink url="examples/event_i.csd"><citetitle>event_i.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode event_i.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/event_i.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+      
+  <refsect1>
+    <title>Voir aussi</title>
+    <para><link linkend="event"><citetitle>event</citetitle></link>,
+    <link linkend="schedule"><citetitle>schedule</citetitle></link>,
+    <link linkend="schedwhen"><citetitle>schedwhen</citetitle></link>,
+    <link linkend="schedkwhen"><citetitle>schedkwhen</citetitle></link>,
+    <link linkend="schedkwhennamed"><citetitle>schedkwhennamed</citetitle></link>,
+    <link linkend="scoreline"><citetitle>scoreline</citetitle></link>,
+    <link linkend="scoreline_i"><citetitle>scoreline_i</citetitle></link></para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par &nameistvan;.</para>
+    <para>Nouveau dans Csound5</para>
+  </refsect1>
+</refentry>

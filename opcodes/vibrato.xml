@@ -1,0 +1,137 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vibrato">
+<indexterm id="IndexVibrato"><primary>vibrato</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Basic Oscillators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vibrato</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vibrato</refname>
+    <refpurpose>
+      Génère un vibrato naturel contrôlable par l'utilisateur.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère un vibrato naturel contrôlable par l'utilisateur.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kout <command>vibrato</command> kAverageAmp, kAverageFreq, kRandAmountAmp, \
+      kRandAmountFreq, kAmpMinRate, kAmpMaxRate, kcpsMinRate, \
+      kcpsMaxRate, ifn [, iphs</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn</emphasis> -- Numéro de la table de vibrato. Elle contient normalement une onde
+      sinus ou triangle.
+    </para>
+
+    <para>
+      <emphasis>iphs</emphasis> -- (facultatif) Phase initiale de la table, exprimée comme une fraction
+      d'une période (0 à 1). Avec une valeur négative, l'initialisation de la phase sera ignorée. La
+      valeur par défaut est 0.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kAverageAmp</emphasis> -- Valeur de l'amplitude moyenne du vibrato
+    </para>
+
+    <para>
+      <emphasis>kAverageFreq</emphasis> -- Valeur de la fréquence moyenne du vibrato (en cps)
+    </para>
+
+    <para>
+      <emphasis>kRandAmountAmp</emphasis> -- Importance de la déviation aléatoire de l'amplitude
+    </para>
+
+    <para>
+      <emphasis>kRandAmountFreq</emphasis> -- Importance de la déviation aléatoire de la fréquence
+    </para>
+
+    <para>
+      <emphasis>kAmpMinRate</emphasis> -- Fréquence minimale des segments de déviation aléatoire de
+      l'amplitude (en cps)
+    </para>
+
+    <para>
+      <emphasis>kAmpMaxRate</emphasis> -- Fréquence maximale des segments de déviation aléatoire de
+      l'amplitude (en cps)
+    </para>
+
+    <para>
+      <emphasis>kcpsMinRate</emphasis> -- Fréquence minimale des segments de déviation aléatoire de
+      la fréquence (en cps)
+    </para>
+
+    <para>
+      <emphasis>kcpsMaxRate</emphasis> -- Fréquence maximale des segments de déviation aléatoire de
+      la fréquence (en cps)
+    </para>
+
+    <para>
+      <emphasis>vibrato</emphasis> produit un vibrato naturel contrôlable par l'utilisateur. Le concept
+      consiste à varier aléatoirement la fréquence et l'amplitude de l'oscillateur générant le vibrato,
+      afin de simuler les irrégularités d'un vibrato réel.
+    </para>
+
+    <para>
+      Afin d'avoir un contrôle total de ces variations aléatoires, plusieurs arguments sont présents en
+      entrée. Les variations aléatoires sont obtenues à partir de deux suites séparées de segments, la
+      première contrôlant les déviations d'amplitude, la seconde les déviations de fréquence. La durée
+      moyenne de chaque segment dans chaque suite peut être raccourcie ou allongée par les arguments
+      <emphasis>kAmpMinRate</emphasis>, <emphasis>kAmpMaxRate</emphasis>, <emphasis>kcpsMinRate</emphasis>,
+      <emphasis>kcpsMaxRate</emphasis>, et les déviations par rapport aux valeurs d'amplitude et de
+      fréquence moyennes peuvent être ajustées indépendamment au moyen de
+      <emphasis>kRandAmountAmp</emphasis> et de <emphasis>kRandAmountFreq</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode vibrato. Il utilise le fichier
+      <ulink url="examples/vibrato.csd"><citetitle>vibrato.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode vibrato.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/vibrato.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="jitter"><citetitle>jitter</citetitle></link>, 
+      <link linkend="jitter2"><citetitle>jitter2</citetitle></link>, 
+      <link linkend="vibr"><citetitle>vibr</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.15</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,100 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="tableicopy">
+<indexterm id="IndexTableicopy"><primary>tableicopy</primary></indexterm>
+  <refentryinfo><title>Table Control:Read/Write Opreations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tableicopy</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>tableicopy</refname>
+    <refpurpose>
+      Opcode de copie de table simple et rapide.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Opcode de copie de table simple et rapide.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>tableicopy</command> idft, isft</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>idft</emphasis> -- Table de fonction destination.
+    </para>
+
+    <para>
+      <emphasis>isft</emphasis> -- Numéro de la table de fonction source.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>tableicopy</emphasis> -- Opcode de copie de table simple et rapide.
+      Il prend la longueur de la table destination et lit à partir du début de
+      la table source. Pour aller vite, il ne teste pas la longueur de la source
+      - il copie quoiqu'il arrive - en mode <quote>cyclique</quote>. Ainsi, la
+      table source peut-être lue plusieurs fois. Avec une table source de longueur
+      1, toutes les positions de la tables destination recevront son unique
+      valeur.
+    </para>
+
+    <para>
+      <emphasis>tableicopy</emphasis> ne peut pas lire ou écrire le point de
+      garde. Pour le lire, il faut utiliser
+      <link linkend="table"><citetitle>table</citetitle></link>, avec
+      <emphasis>ndx</emphasis> = la longueur de la table. De même, il faut
+      utiliser une écriture de table pour l'écrire.
+    </para>
+
+    <para>
+      Pour écrire le point de garde avec la valeur de la position 0, utiliser
+      <link linkend="tablegpw"><citetitle>tablegpw</citetitle></link>.
+    </para>
+
+    <para>
+      Cet opcode sert principalement à changer les tables de fonction rapidement
+      dans une situation de temps réel.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="tablecopy"><citetitle>tablecopy</citetitle></link>,
+      <link linkend="tablegpw"><citetitle>tablegpw</citetitle></link>,
+      <link linkend="tablemix"><citetitle>tablemix</citetitle></link>,
+      <link linkend="tableigpw"><citetitle>tableigpw</citetitle></link>,
+      <link linkend="tableimix"><citetitle>tableimix</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Robin Whittle</member>
+        <member>Australie</member>
+        <member>Mai 1997</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 3.47</para>
+  </refsect1>
+</refentry>

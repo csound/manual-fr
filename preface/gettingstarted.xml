@@ -1,0 +1,173 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="PrefaceGettingStarted">
+  <title>Débuter avec Csound</title>
+  <bridgehead>Téléchargement</bridgehead>
+  <para>
+    Si vous n'avez pas déjà installé Csound (ou si vous avez une ancienne version)
+    téléchargez la version de Csound adaptée à votre plate-forme depuis la
+    <ulink url="http://sourceforge.net/projects/csound/files/"><citetitle>page de
+    téléchargement de Csound sur Sourceforge</citetitle></ulink>. Les programmes
+    d'installation pour Windows ont
+    un suffixe '.exe' et ceux pour le Mac '.dmg'. Si le nom du programme d'installation se
+    termine en '-d' cela veut dire qu'il a été construit avec la
+    <emphasis>double</emphasis> précision (64-bit) qui produit une sortie de
+    meilleure qualité que la <emphasis>simple</emphasis> précision (32-bit). Les
+    versions en <emphasis>simple</emphasis> précision produisent une sortie plus rapide, ce qui
+    peut être important si l'on utilise Csound en temps réel. Vous pouvez aussi
+    télécharger les sources et les compiler, mais cela réclame plus d'expertise
+    (voir la section <link linkend="BuildingCsound"><citetitle>Construire
+    Csound</citetitle></link>).
+  </para>
+  <para>
+    Il est aussi utile de télécharger la version la plus récente de ce manuel,
+    que vous trouverez également sur ce site.
+  </para>
+  <bridgehead>Exécution</bridgehead>
+  <para>
+    Il y a différentes manières d'exécuter Csound. Comme Csound est un programme
+    en ligne de commande (DOS dans la terminologie Windows), double-cliquer sur
+    l'exécutable de Csound n'aura aucun effet. On doit appeler Csound soit depuis
+    un terminal (ou invite DOS), soit depuis un frontal. Pour utiliser Csound en
+    ligne de commande, vous devez ouvrir un <emphasis>terminal</emphasis>
+    (une invite de commande DOS sous Windows ou un terminal sous MacOS).
+    L'utilisation de Csound en ligne de commande pouvant sembler difficile si
+    vous n'avez jamais utilisé de terminal, vous voudrez peut-être essayer
+    un des frontaux, soit QuteCsound, qui est inclus dans les distributions
+    récentes, soit un autre frontal. Un
+    <link linkend="OviewFrontEnds"><citetitle>frontal</citetitle></link> est un
+    programme graphique qui facilite l'exécution de Csound. La plupart des
+    frontaux comprennent des éditeurs de texte permettant d'éditer les fichiers
+    csound, et plusieurs d'entre eux offrent d'autres possibilités intéressantes.
+  </para>
+  <para>
+    Que ce soit avec un frontal ou en ligne de commande, l'exécution de Csound
+    nécessite deux choses :
+    <itemizedlist>
+      <listitem>
+        <simpara>Un fichier Csound ('.csd' ou bien un fichier '.orc' et un fichier
+        '.sco')</simpara>
+      </listitem>
+      <listitem>
+        <simpara>Une liste d'options de ligne de commande qui configurent
+        l'exécution. Ils déterminent des éléments
+        comme le nom et le format du fichier de sortie, si l'audio en temps réel
+        et MIDI sont actifs, quelle carte son utiliser, la taille des tampons,
+        les types de messages imprimés, etc. On peut inclure ces options dans le
+        fichier '.csd' lui-même ; ainsi dans le cas des exemples inclus dans ce
+        manuel, <emphasis>vous ne devriez pas avoir à vous en soucier</emphasis>.
+        Les programmes frontaux ont souvent des boîtes de dialogue permettant
+        de fixer les options de ligne de commande. On peut trouver la liste
+        complète et très longue des options de ligne de commande
+        <link linkend="CommandFlags"><citetitle>ici</citetitle></link>,
+        mais vous voudrez peut-être la consulter plus tard...</simpara>
+      </listitem>
+    </itemizedlist>
+    Consultez la section <link linkend="Configuring"><citetitle>Configuration</citetitle></link>
+    si vous rencontrez des problèmes avec Csound.
+  </para>
+  <para>
+    Cette documentation comprend de nombreux fichiers '.csd' que vous pouvez
+    tester, et qui devraient fonctionner directement depuis la ligne de commande
+    ou depuis n'importe quel frontal.
+    <ulink url="examples/oscil.csd"><citetitle>oscil.csd</citetitle></ulink>
+    est un exemple simple que l'on peut trouver dans le répertoire des
+    <emphasis>exemples</emphasis> de cette documentation. Votre frontal devrait
+    vous permettre de choisir le fichier, et il devrait avoir un bouton "Jouer"
+    ou "Restituer" permettant d'entendre ce fichier. Si l'on veut manipuler ce
+    fichier pour expérimentation, il vaut mieux utiliser la commande
+    "Enregistrer sous..." du frontal pour copier le fichier dans un autre
+    répertoire du disque dur, tel qu'un répertoire "partition csound" créé à cet
+    effet.
+  </para>
+  <note>
+    <title>Note pour les utilisateurs de MacCsound</title>
+    <simpara>
+    Il peut être nécessaire d'effacer toutes les lignes de la balise des options
+    de commande afin de faire fonctionner les exemples du manuel.</simpara>
+  </note>
+  <para>
+    Vous pouvez aussi essayer les exemples à partir de la ligne de commande en vous déplaçant
+    dans le répertoire des exemples du manuel avec ce type de commande sous Windows
+    (en supposant que le manuel est situé en c:\Program Files\Csound\manual\) :
+    <screen>
+cd "c:\Program Files\Csound\manual\examples"</screen>
+    ou quelque chose comme :
+    <screen>
+cd /manualdirectory/manual/examples</screen>
+    pour les terminaux Mac ou linux et en tapant ensuite :
+    <screen>
+csound oscil.csd</screen>
+  </para>
+  <para>
+    Les fichiers exemples étant configurés pour fonctionner en temps réel par défaut,
+    vous devriez avoir entendu une onde sinusoïdale de 2 secondes.
+  </para>
+  <bridgehead>Ecrire vos propres fichiers .csd</bridgehead>
+  <para>Un fichier <emphasis>.csd</emphasis> ressemble à ceci (ce fichier est
+  <ulink url="examples/oscils.csd"><citetitle>oscils.csd</citetitle></ulink>) :</para>
+<xi:include href="examples-xml/oscils.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  <para>
+    Les fichiers <link linkend="CommandUnifile"><citetitle>.csd</citetitle></link> de Csound
+    comprennent 3 sections principales entre les balises
+    <emphasis>&lt;CsSynthesizer&gt;</emphasis> et <emphasis>&lt;/CsSynthesizer&gt;</emphasis> :
+    <itemizedlist>
+      <listitem>
+        <simpara><emphasis>CsOptions</emphasis> - Contient les
+        <link linkend="CommandFlagsCategory"><citetitle>options de ligne de commande</citetitle></link>
+        spécifiques à ce fichier particulier. Ces options peuvent aussi être définies dans le fichier
+        <link linkend="CommandUnifileParFile"><citetitle>.csoundrc</citetitle></link>
+        que l'on peut modifier avec un éditeur de texte, ou directement dans la
+        <link linkend="CommandDesc"><citetitle>ligne de commande</citetitle></link>.
+        Certains frontaux offrent également des moyens de spécifier les options globales ou locales.
+        </simpara>
+      </listitem>
+      <listitem>
+        <simpara>
+          <emphasis>CsInstruments</emphasis> - Contient les instruments ou processus disponibles dans
+          ce fichier. Les instruments sont définis en utilisant les opcodes
+          <link linkend="instr"><citetitle>instr</citetitle></link> et
+          <link linkend="endin"><citetitle>endin</citetitle></link>. La section
+          <emphasis>CsInstruments</emphasis> contient aussi
+          l'<link linkend="OrchHeader"><citetitle>en-tête de l'orchestre</citetitle></link>
+          qui définit des choses comme le
+          <link linkend="sr"><citetitle>taux d'échantillonnage</citetitle></link>,
+          le <link linkend="ksmps"><citetitle>nombre d'échantillons dans une période de contrôle</citetitle></link>
+          et le <link linkend="nchnls"><citetitle>nombre de canaux de sortie</citetitle></link>.
+        </simpara>
+      </listitem>
+      <listitem>
+        <simpara>
+          <emphasis>CsScore</emphasis> - Contient les "notes" à jouer et, en option, la définition
+          de f-tables. Les notes sont crées en utilisant
+          l'<link linkend="i"><citetitle>instruction i</citetitle></link>,
+          et les f-tables sont crées en utilisant
+          l'<link linkend="f"><citetitle>instruction f</citetitle></link>. Plusieurs autres
+          <link linkend="ScoreStatements"><citetitle>instructions de partition</citetitle></link>
+          sont disponibles.
+        </simpara>
+      </listitem>
+    </itemizedlist>
+    Notez que tout ce qui suit un point-virgule (;) jusqu'à la fin de la ligne
+    est un commentaire, et est ignoré par Csound.
+  </para>
+  <para>
+    Vous pouvez écrire les fichiers csd dans n'importe quel éditeur de texte pur
+    comme notepad ou textedit. Si vous utilisez un traitement de texte (non
+    recommandé), assurez vous de sauvegarder le fichier en texte pur (et non en
+    texte enrichi). De nombreux
+    <link linkend="OviewFrontEnds"><citetitle>frontaux</citetitle></link>
+    proposent des capacités d'édition avancées avec coloration syntaxique et
+    complétion automatique du code.
+  </para>
+  <para>Vous pouvez trouver <ulink url="http://michael-gogins.com/archives/tutorial.pdf">ici</ulink>
+  un tutoriel détaillé pour débuter avec Csound, écrit par Michael Gogins.</para>
+</section>
+

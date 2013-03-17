@@ -1,0 +1,22 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="SigmodSiglimit">
+  <title>Limiteurs de Signal</title>
+
+  <para>
+    Les opcodes que l'on peut utiliser pour limiter des signaux sont :
+    <itemizedlist>
+      <listitem><para><link linkend="limit"><citetitle>limit</citetitle></link></para></listitem>
+      <listitem><para><link linkend="mirror"><citetitle>mirror</citetitle></link></para></listitem>
+      <listitem><para><link linkend="wrap"><citetitle>wrap</citetitle></link></para></listitem>
+    </itemizedlist>
+  </para>
+
+</section>

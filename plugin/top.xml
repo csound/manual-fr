@@ -1,0 +1,21 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.1
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<chapter id="PluginTop">
+  <title>Accueil de greffon</title>
+  <para>
+    Csound accueille actuellement des greffons externes au moyen de <emphasis>dssi4cs</emphasis> (pour les
+    greffons LADSPA) sur Linux et <link linkend="vst4cs"><citetitle>vst4cs</citetitle></link> (pour les
+    greffons VST) sur Windows et Mac OS X.
+  </para>
+ 
+  &plugindssi4cs;
+  &pluginvst4cs;
+
+</chapter>

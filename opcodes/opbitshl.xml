@@ -1,0 +1,104 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.1
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="opbitshl">
+<indexterm id="IndexShiftL"><primary>¬</primary></indexterm>
+  <refentryinfo><title>Mathematical Operations:Arithmetic and Logic Operations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>&lt;&lt;</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>&lt;&lt;</refname>
+    <refpurpose>
+      Opérateur de décalage binaire à gauche.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Les opérateurs de décalage binaire décalent les bit vers la gauche ou vers
+      la droite du nombre de bit donné.
+    </para>
+
+    <para>
+      La précédence de ces opérateurs est moins élevée que celle des opérateurs
+      arithmétiques, mais plus élevées que celle des comparaisons.
+    </para>
+
+    <para>
+      On peut utiliser des paranthèses comme ci-dessus pour forcer des
+      groupements particuliers.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>a <command>&lt;&lt;</command> b  (décalage binaire à gauche)</synopsis>
+
+    <para>
+      où les arguments <emphasis>a</emphasis> et <emphasis>b</emphasis> peuvent
+      être des expressions.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode bitshift. Il utilise le fichier
+      <ulink url="examples/bitshift.csd"><citetitle>bitshift.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode bitshift à gauche.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/bitshift.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>L'exemple ci-dessus produira la sortie suivante :
+      <literallayout>2&gt;&gt;1 = 1
+B  0.000 ..  0.100 T  0.100 TT  0.100 M:      0.0      0.0
+3&gt;&gt;1 = 1
+B  0.100 ..  0.200 T  0.200 TT  0.200 M:      0.0      0.0
+7&gt;&gt;2 = 1
+B  0.200 ..  0.300 T  0.300 TT  0.300 M:      0.0      0.0
+16&gt;&gt;1 = 8
+B  0.300 ..  0.400 T  0.400 TT  0.400 M:      0.0      0.0
+16&gt;&gt;2 = 4
+B  0.400 ..  0.500 T  0.500 TT  0.500 M:      0.0      0.0
+16&gt;&gt;3 = 2
+B  0.500 ..  5.000 T  5.000 TT  5.000 M:      0.0      0.0
+new alloc for instr 2:
+1&lt;&lt;1 = 2
+B  5.000 ..  5.100 T  5.100 TT  5.100 M:      0.0      0.0
+1&lt;&lt;2 = 4
+B  5.100 ..  5.200 T  5.200 TT  5.200 M:      0.0      0.0
+1&lt;&lt;3 = 8
+B  5.200 ..  5.300 T  5.300 TT  5.300 M:      0.0      0.0
+1&lt;&lt;4 = 16
+B  5.300 ..  5.400 T  5.400 TT  5.400 M:      0.0      0.0
+2&lt;&lt;1 = 4
+B  5.400 ..  5.500 T  5.500 TT  5.500 M:      0.0      0.0
+2&lt;&lt;2 = 8
+B  5.500 ..  5.600 T  5.600 TT  5.600 M:      0.0      0.0
+2&lt;&lt;3 = 16
+B  5.600 ..  5.700 T  5.700 TT  5.700 M:      0.0      0.0
+3&lt;&lt;2 = 12</literallayout>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="opbitshr"><citetitle>&gt;&gt;</citetitle></link>,
+      <link linkend="opbitand"><citetitle>&amp;</citetitle></link>,
+      <link linkend="opbitor"><citetitle>&verbar;</citetitle></link>
+      <link linkend="opnonequiv"><citetitle>#</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,62 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLrun">
+<indexterm id="IndexFLrun"><primary>FLrun</primary></indexterm>
+  <refentryinfo><title>FLTK:Other</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLrun</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLrun</refname>
+    <refpurpose>
+      Démarre le processus léger des widgets FLTK.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Démarre le processus léger des widgets FLTK.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>FLrun</command></synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Cet opcode doit être placé à la fin des déclaration de tous les widgets.
+      Il n'a pas d'arguments et il sert à démarrer le processus léger relatif
+      aux widgets. Les widgets ne seront pas opérationnels si
+      <emphasis>FLrun</emphasis> est absent.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="FLgetsnap"><citetitle>FLgetsnap</citetitle></link>,
+      <link linkend="FLloadsnap"><citetitle>FLloadsnap</citetitle></link>,
+      <link linkend="FLsavesnap"><citetitle>FLsavesnap</citetitle></link>,
+      <link linkend="FLsetsnap"><citetitle>FLsetsnap</citetitle></link>,
+      <link linkend="FLupdate"><citetitle>FLupdate</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.22</para>
+  </refsect1>
+</refentry>

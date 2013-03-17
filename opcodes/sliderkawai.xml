@@ -1,0 +1,105 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.2
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="sliderKawai">
+<indexterm id="IndexsliderKawai"><primary>sliderKawai</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Slider Banks</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>sliderKawai</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>sliderKawai</refname>
+
+    <refpurpose>
+      Crée une banque de 16 numéros de messages de contrôle MIDI différents venant
+      d'un mélangeur MIDI KAWAI MM-16.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Crée une banque de 16 numéros de messages de contrôle MIDI différents venant
+      d'un mélangeur MIDI KAWAI MM-16.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>k1, k2, ...., k16 <command>sliderKawai</command> imin1, imax1, init1, ifn1, \
+      imin2, imax2, init2, ifn2, ..., imin16, imax16, init16, ifn16</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>imin1 ... imin16</emphasis> -- valeurs minimales pour chaque contrôleur
+    </para>
+
+    <para>
+      <emphasis>imax1 ... imax16</emphasis> -- valeurs maximales pour chaque contrôleur
+    </para>
+
+    <para>
+      <emphasis>init1 ... init16</emphasis> -- valeur initiale pour chaque contrôleur
+    </para>
+
+    <para>
+      <emphasis>ifn1 ... ifn16</emphasis> -- table de fonction de conversion pour
+      chaque contrôleur
+    </para>
+
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>k1 ... k16</emphasis> -- valeurs en sortie
+    </para>
+
+    <para>
+      L'opcode <emphasis>sliderKawai</emphasis> est équivalent à
+      <link linkend="slider16"><citetitle>slider16</citetitle></link>, mais ses
+      numéros de contrôleur et de canal (<emphasis>ichan</emphasis> et
+      <emphasis>ictlnum</emphasis>) sont fixés dans le code afin d'obtenir une
+      compatibilité  rapide avec la mélangeur MIDI KAWAI MM-16. C'est appareil
+      ne permet pas de changer le message MIDI associé à chaque réglette. Il ne
+      peut fournir que le contrôle 7 pour chaque réglette sur un canal MIDI
+      différent. Cet opcode permet d'assigner rapidement les 16 réglettes du
+      mélangeur à 16 variables de taux-k de Csound.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="slider16"><citetitle>slider16</citetitle></link>,
+      <link linkend="slider16f"><citetitle>slider16f</citetitle></link>,
+      <link linkend="slider32"><citetitle>slider32</citetitle></link>,
+      <link linkend="slider32f"><citetitle>slider32f</citetitle></link>,
+      <link linkend="slider64"><citetitle>slider64</citetitle></link>,
+      <link linkend="slider64f"><citetitle>slider64f</citetitle></link>, 
+      <link linkend="slider8"><citetitle>slider8</citetitle></link>,
+      <link linkend="slider8f"><citetitle>slider8f</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 5.06 de Csound.</para>
+  </refsect1>
+</refentry>

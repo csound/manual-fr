@@ -1,0 +1,140 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vbaplsinit">
+<indexterm id="IndexVbaplsinit"><primary>vbaplsinit</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Panning and Spatialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vbaplsinit</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vbaplsinit</refname>
+    <refpurpose>
+      Configure la sortie VBAP selon les paramètres de haut-parleur.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Configure la sortie VBAP selon les paramètres de haut-parleur.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>vbaplsinit</command> idim, ilsnum [, idir1] [, idir2] [...] [, idir32]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>idim</emphasis> -- dimension de l'espace de haut-parleurs. 2 ou 3.
+      Si la dimension a une partie fractionnaire, celle-ci représente l'indice
+      de la disposition créée (utilisé seulement dans <emphasis>vbap</emphasis>,
+      <emphasis>vbapz</emphasis> et <emphasis>vbapg</emphasis>). La partie
+      fractionnaire doit être comprise entre .00 et .99.
+    </para>
+
+    <para>
+      <emphasis>ilsnum</emphasis> -- nombre de haut-parleurs. En deux dimensions,
+      il peut varier entre 2 et 64. En trois dimensions, il peut varier entre 3
+      et 64.
+    </para>
+
+    <para>
+      <emphasis>idir1, idir2, ..., idir32</emphasis> -- directions des haut-paleurs.
+      Le nombre de directions doit être inférieur ou égal à 16. Dans une répartition
+      des haut-parleurs en deux dimensions, <emphasis>idir</emphasis>n représente
+      l'angle d'azimut du <emphasis>n</emphasis>ième canal. Dans une répartition
+      des haut-parleurs en trois dimensions, les champs représentent les angles
+      d'azimut et d'élévation de chaque haut-parleur (<emphasis>azi1</emphasis>,
+      <emphasis>ele1</emphasis>, <emphasis>azi2</emphasis>, <emphasis>ele2</emphasis>,
+      etc.).
+    </para>
+    <para>
+      <note>
+        A deux dimensions, l'angle entre deux haut-parleurs adjacents doit être
+        inférieur à 179 degrés (170 degrés dans les versions précédentes). C'est
+        une restriction de l'algorithme.
+      </note>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      VBAP distribue le signal en tenant compte des données de haut-parleurs
+      configurées avec <emphasis>vbaplsinit</emphasis>. Le signal est appliqué
+      au plus à deux haut-parleurs dans les configurations 2D et à trois
+      haut-parleurs dans les configurations 3D. Si la source sonore est distribuée
+      en dehors de la région couverte par les haut-parleurs, les
+      haut-parleurs les plus proches sont utilisés dans le panoramique.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode vbaplsinit. Il utilise le fichier
+      <ulink url="examples/vbaplsinit.csd"><citetitle>vbaplsinit.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode vbaplsinit.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/vbaplsinit.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Voir les différentes entrées des opcodes vbap pour d'autres exemples.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Référence</title>
+    <para>
+      Ville Pulkki : <quote>Virtual Sound Source Positioning Using Vector Base
+      Amplitude Panning</quote> <emphasis>Journal of the Audio Engineering Society</emphasis>,
+      juin 1997, Vol. 45/6, p. 456.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="vbap"><citetitle>vbap</citetitle></link>,
+      <link linkend="vbapg"><citetitle>vbapg</citetitle></link>,
+      <link linkend="vbap4"><citetitle>vbap4</citetitle></link>,
+      <link linkend="vbap4move"><citetitle>vbap4move</citetitle></link>,
+      <link linkend="vbap8"><citetitle>vbap8</citetitle></link>,
+      <link linkend="vbap8move"><citetitle>vbap8move</citetitle></link>,
+      <link linkend="vbap16"><citetitle>vbap16</citetitle></link>,
+      <link linkend="vbap16move"><citetitle>vbap16move</citetitle></link>,
+      <link linkend="vbapz"><citetitle>vbapz</citetitle></link>,
+      <link linkend="vbapzmove"><citetitle>vbapzmove</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Ville Pulkki</member>
+        <member>Sibelius Academy Computer Music Studio</member>
+        <member>Laboratoire d'Acoustique et de Traitement du Signal Audio</member>
+        <member>Helsinki, Université de Technologie</member>
+        <member>Helsinki, Finlande</member>
+        <member>Mai 2000</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la Version 4.07 de Csound.</para>
+    <para>Les dispositions multiples sont nouvelles dans la version 5.17.14</para>
+  </refsect1>
+</refentry>

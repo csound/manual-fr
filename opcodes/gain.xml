@@ -1,0 +1,91 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.10
+/ translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="gain">
+<indexterm id="IndexGain"><primary>gain</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Amplitude Modifiers</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>gain</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>gain</refname>
+    <refpurpose>
+      Ajuste l'amplitude d'un signal audio en fonction d'une valeur efficace.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ajuste l'amplitude d'un signal audio en fonction d'une valeur efficace.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>gain</command> asig, krms [, ihp] [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ihp</emphasis> (facultatif, 10 par défaut) -- point à mi-puissance (en Hz) d'un
+      d'un filtre passe-bas interne spécial. La valeur par défaut est 10.
+    </para>
+
+    <para>
+      <emphasis>iskip</emphasis> (facultatif, 0 par défaut) -- disposition
+      initiale de l'espace de données interne (voir
+      <link linkend="reson"><citetitle>reson</citetitle></link>). La valeur
+      par défaut est 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- signal audio en entrée
+    </para>
+
+    <para>
+      <emphasis>gain</emphasis> effectue une modification d'amplitude de
+      <emphasis>asig</emphasis> de sorte que la sortie <emphasis>ares</emphasis>
+      ait pour valeur effice <emphasis>krms</emphasis>.
+      <link linkend="rms"><citetitle>rms</citetitle></link> et <emphasis>gain</emphasis>
+      utilisés conjointement (et avec des valeurs de <emphasis>ihp</emphasis>
+      correspondantes) produiront le même effet que
+      <link linkend="balance"><citetitle>balance</citetitle></link>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode gain. Il utilise le fichier
+      <ulink url="examples/gain.csd"><citetitle>gain.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode gain.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/gain.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="balance"><citetitle>balance</citetitle></link>,
+      <link linkend="rms"><citetitle>rms</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

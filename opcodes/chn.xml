@@ -1,0 +1,165 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="chn">
+<indexterm id="Indexchn"><primary>chn</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Software Bus</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>chn</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>chn</refname>
+    <refpurpose>
+      Déclare un canal du bus logiciel nommé.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Déclare un canal du bus logiciel nommé, en donnant des paramètres facultatifs
+      dans le cas d'un canal de contrôle. Si le canal n'existe pas encore, il est
+      créé avec une valeur initiale de zéro ou une chaîne de caractères vide. Sinon
+      le type (contrôle, audio ou chaînes de caractères) du canal existant doit
+      correspondre à la déclaration ou bien il y aura une erreur d'initialisation.
+      Le mode entrée/sortie d'un canal existant est mis à jour de façon à représenter
+      le OU binaire entre la valeur précédente et la nouvelle.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+      <synopsis> <command>chn_k</command> Sname, imode[, itype, idflt, imin, imax]</synopsis>
+      <synopsis> <command>chn_a</command> Sname, imode</synopsis>
+      <synopsis> <command>chn_S</command> Sname, imode</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>imode</emphasis> -- somme d'au moins un des nombres suivants : 1 pour
+      entrée et 2 pour sortie.
+    </para>
+    <para>
+      <emphasis>itype</emphasis> (facultatif, 0 par défaut) -- sous-type du canal,
+      seulement pour les canaux de contrôle. Les valeurs possibles sont :
+      <itemizedlist>
+        <listitem>
+          <para>
+            0 : par défault / indéfini (<emphasis>idflt</emphasis>, <emphasis>imin</emphasis>
+            et <emphasis>imax</emphasis> sont ignorés)
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            1 : seulement des valeurs entières
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            2 : échelle linéaire
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            3 : échelle exponentielle
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+    <para>
+      <emphasis>idflt</emphasis> (facultatif, 0 par défaut) -- valeur par défaut,
+      seulement pour les canaux de contrôle avec <emphasis>itype</emphasis>
+      différent de zéro. Doit être supérieur ou égal à <emphasis>imin</emphasis>
+      et inférieur ou égal à <emphasis>imax</emphasis>.
+    </para>
+    <para>
+      <emphasis>imin</emphasis> (facultatif, 0 par défaut) -- valeur minimale,
+      seulement pour les canaux de contrôle avec <emphasis>itype</emphasis>
+      différent de zéro. Doit être différent de zéro pour l'échelle exponentielle
+      (<emphasis>itype</emphasis> = 3).
+    </para>
+    <para>
+      <emphasis>imax</emphasis> (facultatif, 0 par défaut) -- valeur maximale,
+      seulement pour les canaux de contrôle avec <emphasis>itype</emphasis>
+      différent de zéro. Doit être supérieur à <emphasis>imin</emphasis>. Dans le
+      cas d'une échelle exponentielle, il doit également avoir le même signe que
+      <emphasis>imin</emphasis>.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Notes</title>
+    <para>
+      Les paramètres du canal (<emphasis>imode</emphasis>, <emphasis>itype</emphasis>,
+      <emphasis>idflt</emphasis>, <emphasis>imin</emphasis> et <emphasis>imax</emphasis>)
+      ne sont que des indications pour l'application hôte ou un logiciel externe
+      accédant au bus par l'API, et ils ne restreignent en rien la lecture ou
+      l'écriture sur le canal. De plus, la valeur initiale d'un nouveau canal
+      de contrôle est zéro, quelque soit la valeur de <emphasis>idflt</emphasis>.
+    </para>
+    <para>
+      Il peut être préférable d'utiliser
+      <link linkend="chnexport"><citetitle>chnexport</citetitle></link> pour
+      communiquer avec un logiciel externe, car il permet un accès direct aux
+      variables de l'orchestre exportées comme des canaux du bus, ce qui évite
+      l'utilisation de <link linkend="chnset"><citetitle>chnset</citetitle></link>
+      et de <link linkend="chnget"><citetitle>chnget</citetitle></link> pour
+      envoyer ou recevoir des données.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <command>chn_k</command>, <command>chn_a</command>, et
+      <command>chn_S</command> déclarent respectivement un canal de contrôle, un
+      canal audio ou un canal de chaînes de caractères.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      L'exemple montre l'utilisation du bus logiciel comme signal de contrôle
+      asynchrone pour fixer la fréquence de coupure du filtre. On suppose qu'un
+      programme externe utilisant l'API fournit les valeurs.
+    </para>
+
+    <informalexample>
+      <programlisting>
+        <emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+        <emphasis role="ohdr">kr</emphasis> <emphasis role="op">=</emphasis> 100
+        <emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 1
+
+        <emphasis role="opc">chn_k</emphasis> "cutoff", 1, 3, 1000, 500, 2000
+
+        <emphasis role="oblock">instr</emphasis>   1
+           kc   <emphasis role="opc">chnget</emphasis>    "cutoff"
+           a1   <emphasis role="opc">oscil</emphasis>     p4, p5, 100
+           a2   <emphasis role="opc">lowpass2</emphasis>  a1, kc, 200
+                <emphasis role="opc">out</emphasis>       a2
+        <emphasis role="oblock">endin</emphasis>
+      </programlisting>
+    </informalexample>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameistvan;</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

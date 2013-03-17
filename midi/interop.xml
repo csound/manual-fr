@@ -1,0 +1,93 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="MidiInterop">
+  <title>Opcodes pour l'interopérabilité MIDI/partition</title>
+  
+  <para>
+    Les opcodes suivants peuvent être utilisés pour concevoir des instruments qui fonctionnent de manière
+    interchangeable avec du MIDI en temps réel et avec des évènements de partition :
+    <itemizedlist>
+      <listitem>
+        <para><link linkend="midichannelaftertouch"><citetitle>midichannelaftertouch</citetitle></link></para>
+      </listitem>
+      <listitem>
+        <para><link linkend="midichn"><citetitle>midichn</citetitle></link></para>
+      </listitem>
+      <listitem>
+        <para><link linkend="midicontrolchange"><citetitle>midicontrolchange</citetitle></link></para>
+      </listitem>
+      <listitem>
+        <para><link linkend="mididefault"><citetitle>mididefault</citetitle></link></para>
+      </listitem>
+      <listitem>
+        <para><link linkend="midinoteoff"><citetitle>midinoteoff</citetitle></link></para>
+      </listitem>
+      <listitem>
+        <para><link linkend="midinoteoncps"><citetitle>midinoteoncps</citetitle></link></para>
+      </listitem>
+      <listitem>
+        <para><link linkend="midinoteonkey"><citetitle>midinoteonkey</citetitle></link></para>
+      </listitem>
+      <listitem>
+        <para><link linkend="midinoteonoct"><citetitle>midinoteonoct</citetitle></link></para>
+      </listitem>
+      <listitem>
+        <para><link linkend="midinoteonpch"><citetitle>midinoteonpch</citetitle></link></para>
+      </listitem>
+      <listitem>
+        <para><link linkend="midipitchbend"><citetitle>midipitchbend</citetitle></link></para>
+      </listitem>
+      <listitem>
+        <para><link linkend="midipolyaftertouch"><citetitle>midipolyaftertouch</citetitle></link></para>
+      </listitem>
+      <listitem>
+        <para><link linkend="midiprogramchange"><citetitle>midiprogramchange</citetitle></link>.</para>
+      </listitem>
+    </itemizedlist>
+  </para>
+  <note>
+    <title>Adapter un instrument Csound déclenché par une partition.</title>
+    <para>
+      Pour adapter un instrument Csound ordinaire conçu pour être activé depuis une partition, à
+      l'interopérabilité partition/MIDI :
+      <itemizedlist>
+        <listitem><para>Changer tous les opcodes <link linkend="linen"><citetitle>linen</citetitle></link>,
+          <link linkend="linseg"><citetitle>linseg</citetitle></link>, et
+          <link linkend="expseg"><citetitle>expseg</citetitle></link> respectivement en
+          <link linkend="linenr"><citetitle>linenr</citetitle></link>,
+          <link linkend="linsegr"><citetitle>linsegr</citetitle></link>, et
+          <link linkend="expsegr"><citetitle>expsegr</citetitle></link>, sauf pour une enveloppe de
+          décliquage ou d'atténuation. Cela ne changera en rien les exécutions pilotées par une
+          partition.</para></listitem>
+        <listitem><para>Ajouter les lignes suivantes au début de la définition de l'instrument :
+            <informalexample>
+              <programlisting>
+  <emphasis role="comment">; Pour être sûr qu'un instrument activé par le MIDI</emphasis>
+  <emphasis role="comment">; aura un champ p3 positif.</emphasis>
+  <emphasis role="opc">mididefault</emphasis> 60, p3 
+  <emphasis role="comment">; Met le numéro de touche MIDI traduit en cycles par</emphasis>
+  <emphasis role="comment">; seconde dans p4, et la vélocité MIDI dans p5</emphasis>
+  <emphasis role="opc">midinoteoncps</emphasis> p4, p5</programlisting>
+            </informalexample>
+            Bien entendu, <emphasis>midinoteoncps</emphasis> pourrait être changé en
+            <emphasis>midinoteonoct</emphasis> ou tout autre option, et le choix des p-champs est
+            arbitraire.</para></listitem>
+      </itemizedlist>
+    </para>
+  </note>
+  <note>
+    <title>Options de ligne de commande d'Entrée/Sortie MIDI en Temps Réel</title>
+    <para>Les nouvelles <link linkend="FlagsCatMinusUpperM"><citetitle>options d'E/S MIDI</citetitle></link>
+    dans Csound 5.02, peuvent remplacer la plupart des utilisations de ces opcodes d'interopérabilité, et en
+    rendre l'usage plus facile.</para>
+  </note>
+  
+
+</section>

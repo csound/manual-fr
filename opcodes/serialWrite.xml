@@ -1,0 +1,111 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="serialWrite">
+<indexterm
+    id="IndexSerialWrite"><primary>serialrite</primary></indexterm>
+
+  <refentryinfo><title>Serial I/O:</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>serialWrite</refentrytitle>
+  </refmeta>
+
+   <refnamediv>
+    <refname>serialWrite</refname>
+    <refpurpose>
+      Ecrit des données sur un port série.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ecrit des données sur un port série pour arduino.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+      <synopsis> <command>serialWrite</command> iPort, iByte</synopsis>
+      <synopsis> <command>serialWrite</command> iPort, kByte</synopsis>
+      <synopsis> <command>serialWrite</command> iPort, SBytes</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>iPort</emphasis> -- numéro du port obtenu d'un opcode
+      <emphasis>serialBegin</emphasis>.
+    </para>
+    <para>
+      <emphasis>iByte</emphasis> -- octet à écrire.
+    </para>
+  </refsect1>
+
+   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode serialWrite. Il utilise le fichier
+      <ulink url="examples/serialWrite.csd"><citetitle>serialWrite.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode serialWrite.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/serialWrite.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Le code Arduino correspondant est :
+      <screen>
+void setup() {
+  // active la communication serie
+  Serial.begin(9600);
+
+  // declare la pin 9 comme sortie :
+  pinMode(9, OUTPUT);
+}
+
+void loop() {
+  // n'agir que si l'on recoit quelque chose (doit être au taux-k de csound)
+  if (Serial.available()) {
+    // fixe la brillance de la LED (connectée à la pin 9) a notre valeur d'entree
+    int brightness = Serial.read();
+    analogWrite(9, brightness);
+
+    // recupere la valeur du bouton rotatif et l'envoyer à csound
+    int sensorValue = analogRead(A0);
+    Serial.write(sensorValue/4); // ramene dans l'intervalle d'un octet (0-255)
+  }     
+}
+.....</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="serialBegin"><citetitle></citetitle>serialBegin</link>,
+      <link linkend="serialEnd"><citetitle></citetitle>serialEnd</link>,
+      <link linkend="serialWrite_i"><citetitle></citetitle>serialWrite_i</link>,
+      <link linkend="serialRead"><citetitle></citetitle>serialRead</link>,
+      <link linkend="serialPrint"><citetitle></citetitle>serialPrint</link>,
+      <link linkend="serialFlush"><citetitle></citetitle>serialFlush</link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namematt;</member>
+        <member>2011</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.14</para>
+  </refsect1>
+</refentry>

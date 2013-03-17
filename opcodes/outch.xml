@@ -1,0 +1,117 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="outch">
+<indexterm id="IndexOutch"><primary>outch</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Signal Output</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>outch</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>outch</refname>
+    <refpurpose>
+      Ecrit des données audio multi-canaux sous contrôle de l'utilisateur,
+      vers un périphérique externe ou un flot.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ecrit des données audio multi-canaux sous contrôle de l'utilisateur,
+      vers un périphérique externe ou un flot.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>outch</command> kchan1, asig1 [, kchan2] [, asig2] [...]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>outch</emphasis> envoie <emphasis>asig1</emphasis> sur le canal
+      déterminé par <emphasis>kchan1</emphasis>, <emphasis>asig2</emphasis> sur
+      le canal déterminé par <emphasis>kchan2</emphasis>, etc.
+    </para>
+    <note>
+      <para>
+        Le plus grand numéro de paramètre <emphasis>kchanX</emphasis> pour
+        <emphasis>outch</emphasis> dépend de 
+        <link linkend="nchnls"><citetitle>nchnls</citetitle></link>. Si
+        <emphasis>kchanX</emphasis> est supérieur à <emphasis>nchnls</emphasis>,
+        <emphasis>asigX</emphasis> sera silencieux. Noter que <emphasis>outch</emphasis>
+        donnera dans ce cas un avertissement mais pas d'erreur.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode outch. Il utilise le fichier
+      <ulink url="examples/outch.csd"><citetitle>outch.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode outch.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/outch.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      <screen>
+signal is sent to channel 5
+signal is sent to channel 4
+signal is sent to channel 3
+signal is sent to channel 2
+signal is sent to channel 1
+signal is sent to channel 5
+........</screen>
+    </para>
+    <para>
+      Voici un autre exemple de l'opcode outch. Il utilise le fichier
+      <ulink url="examples/outch.csd"><citetitle>outch-2.csd</citetitle></ulink>.
+      <example>
+        <title>Un autre exemple de l'opcode outch.</title>
+          <xi:include href="examples-xml/outch-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+   </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="out32"><citetitle>out32</citetitle></link>,
+      <link linkend="outc"><citetitle>outc</citetitle></link>,
+      <link linkend="outx"><citetitle>outx</citetitle></link>,
+      <link linkend="outz"><citetitle>outz</citetitle></link>
+    </para>
+    <para>
+      Plus d'information sur cet opcode :
+      <ulink url="http://www.csounds.com/journal/issue16/audiorouting.html">
+      <citetitle>http://www.csounds.com/journal/issue16/audiorouting.html</citetitle></ulink>,
+      érit par Andreas Russo.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Université de Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>Mai 2000</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 4.07 de Csound</para>
+  </refsect1>
+</refentry>

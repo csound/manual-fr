@@ -1,0 +1,110 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.5
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="scoreline">
+<indexterm id="Indexscoreline"><primary>scoreline</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Invocation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>scoreline</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>scoreline</refname>
+    <refpurpose>
+      Délivre un ou plusieurs évènements de ligne de partition depuis un instrument.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>scoreline</emphasis> délivre un ou plusieurs évènements de partition,
+      si <emphasis>ktrig</emphasis> vaut 1, à chaque période k. Il peut gérer les
+      chaînes de caractères dans les mêmes conditions que dans la partition standard.
+      Les chaînes de caractères sur plusieurs lignes sont acceptées, en utilisant
+      {{  }} pour encadrer la chaîne de caractères.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>scoreline</command> Sin, ktrig</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis><quote>Sin</quote></emphasis> -- une chaîne de caractères (entre
+      guillemets ou encadrée par {{ }}), contenant un ou plusieurs évènements de
+      partition.
+</para>    
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+  <para>
+      <emphasis><quote>ktrig</quote></emphasis> -- déclencheur d'évènement, 1
+      délivre l'évènement de partition, 0 l'ignore.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode scoreline. Il utilise le fichier
+      <ulink url="examples/scoreline.csd"><citetitle>scoreline.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode scoreline.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/scoreline.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <para>
+          On peut utiliser des opcodes de chaîne de caractères comme
+          <link linkend="sprintfk"><citetitle>sprintfk</citetitle></link> pour produire
+          les chaînes de caractères à passer à <emphasis>scoreline</emphasis> comme ceci :
+          <programlisting>
+Sfil <emphasis role="op">=</emphasis> "/Volumes/Bla/file.aif"
+String  <emphasis role="opc">sprintfk</emphasis> {{i 2 0 %f "%s" %f %f %f %f}}, idur, Sfil, p5, p6, knorm, iskip
+<emphasis role="opc">scoreline</emphasis> String, ktrig</programlisting>
+        </para>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="event"><citetitle>event</citetitle></link>,
+      <link linkend="event_i"><citetitle>event_i</citetitle></link>,
+      <link linkend="schedule"><citetitle>schedule</citetitle></link>,
+      <link linkend="schedwhen"><citetitle>schedwhen</citetitle></link>,
+      <link linkend="schedkwhen"><citetitle>schedkwhen</citetitle></link>,
+      <link linkend="schedkwhennamed"><citetitle>schedkwhennamed</citetitle></link>,
+      <link linkend="scoreline_i"><citetitle>scoreline_i</citetitle></link>
+      <para>
+        Pour plus d'information sur cet opcode :
+        <ulink url="http://www.csounds.com/journal/issue15/phrase_loops.html">
+        <citetitle>http://www.csounds.com/journal/issue15/phrase_loops.html</citetitle>
+        </ulink>, écrit par Jim Aikin.
+      </para>
+      <para>
+        Egalement dans les Floss Manuals :
+        <ulink url="http://en.flossmanuals.net/csound/ch020_e-triggering-instrument-events/">
+        <citetitle>http://en.flossmanuals.net/csound/ch020_e-triggering-instrument-events/</citetitle>
+        </ulink>.
+      </para>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namevictor;, 2007 </para>
+  </refsect1>
+</refentry>

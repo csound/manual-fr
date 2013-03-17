@@ -1,0 +1,113 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="rms">
+<indexterm id="IndexRms"><primary>rms</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>rms</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>rms</refname>
+    <refpurpose>
+      Détermine la valeur efficace d'un signal audio.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Détermine la valeur efficace d'un signal audio. La valeur instantanée
+      passe à travers un filtre passe-bas pour en sortir une valeur
+      moyenne comme dans un VU-mètre.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kres <command>rms</command> asig [, ihp] [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ihp</emphasis> (facultatif, 10 par défaut) -- point à mi-puissance (en Hz) d'un
+      d'un filtre passe-bas interne spécial. La valeur par défaut est 10.
+    </para>
+
+    <para>
+      <emphasis>iskip</emphasis> (facultatif, 0 par défaut) -- disposition
+      initiale de l'espace de données interne (voir
+      <link linkend="reson"><citetitle>reson</citetitle></link>). La valeur
+      par défaut est 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- signal audio en entrée
+    </para>
+    <para>
+      <emphasis>kres</emphasis> -- valeur efficace du signal d'entrée issue du
+      filtre passe-bas
+    </para>
+
+    <para>
+      Les valeurs de sortie <emphasis>kres</emphasis> de <emphasis>rms</emphasis>
+      suivent la valeur efficace de l'entrée audio <emphasis>asig</emphasis>.
+      Cette unité n'est pas un modificateur de signal, mais fonctionne plutôt
+      comme une mesure de la puissance du signal. Elle utilise un filtre
+      passe-bas interne pour rendre la réponse plus lisse. On peut utiliser
+      <emphasis>ihp</emphasis> pour contrôler ce lissage. Plus les valeurs sont
+      importantes, plus la mesure est "dynamique".
+    </para>
+    <para>
+      On peut aussi utiliser cet opcode comme suiveur d'enveloppe.
+    </para>
+    <para>
+      La sortie <emphasis>kres</emphasis> de cet opcode est donnée en amplitude
+      et dépend de
+      <link linkend="Zerodbfs"><citetitle>0dbfs</citetitle></link>. Pour une
+      sortie en décibels, il faut utiliser
+      <link linkend="dbamp"><citetitle>dbamp</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      <informalexample>
+        <programlisting>
+arms <emphasis role="opc">rms</emphasis>    asig <emphasis role="comment">; get rms value of signal asig</emphasis>
+        </programlisting>
+      </informalexample>
+    </para>
+    <para>
+      Voici un exemple de l'opcode rms. Il utilise le fichier
+      <ulink url="examples/rms.csd"><citetitle>rms.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode rms.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/rms.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="balance"><citetitle>balance</citetitle></link>,
+      <link linkend="gain"><citetitle>gain</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

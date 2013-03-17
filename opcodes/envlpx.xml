@@ -1,0 +1,149 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.14
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="envlpx">
+<indexterm id="IndexEnvlpx"><primary>envlpx</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Envelope Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>envlpx</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>envlpx</refname>
+    <refpurpose>
+      Applique une enveloppe constituée de 3 segments.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>envlpx</emphasis> -- applique une enveloppe constituée de 3 segments :
+      <orderedlist>
+        <listitem>
+          <para>une attaque dont la forme est donnée par une fonction</para>
+        </listitem>
+
+        <listitem>
+          <para>un pseudo entretien modifié exponentiellement</para>
+        </listitem>
+
+        <listitem>
+          <para>une chute exponentielle</para>
+        </listitem>
+      </orderedlist>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>envlpx</command> xamp, irise, idur, idec, ifn, iatss, iatdec [, ixmod]</synopsis>
+
+    <synopsis>kres <command>envlpx</command> kamp, irise, idur, idec, ifn, iatss, iatdec [, ixmod]</synopsis>
+ </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>irise</emphasis> -- durée de l'attaque en secondes. Une valeur nulle ou négative signifie pas
+      d'attaque.
+    </para>
+
+    <para>
+      <emphasis>idur</emphasis> -- durée globale en seconde. Avec une valeur nulle ou négative,
+      l'initialisation sera ignorée.
+    </para>
+
+    <para>
+      <emphasis>idec</emphasis> -- durée de la chute en secondes. Zéro signifie pas de chute.
+      Si <emphasis>idec</emphasis> &gt; <emphasis>idur</emphasis> la chute sera tronquée.
+    </para>
+
+    <para>
+      <emphasis>ifn</emphasis> -- numéro de la table de fonction avec point de garde 
+      dans laquelle la forme de l'attaque est stockée.
+    </para>
+
+    <para>
+      <emphasis>iatss</emphasis> -- facteur d'atténuation par lequel la dernière valeur de
+      l'attaque d'<emphasis>envlpx</emphasis> évolue pendant le pseudo entretien de la
+      note. Un facteur supérieur à 1 provoque une montée exponentielle tandis qu'un facteur
+      inférieur à 1 crée une descente exponentielle. Un facteur égal à 1 maintient un véritable
+      entretien de la note sur la dernière valeur de l'attaque. Il faut noter que cette
+      atténuation n'évolue pas à vitesse constante (comme dans le cas du piano), mais qu'elle
+      dépend de la durée de la note. Cependant, si <emphasis>iatss</emphasis> est négatif (ou
+      si l'entretien &lt; 4 périodes-k) une vitesse d'atténuation de
+      <emphasis>abs</emphasis>(<emphasis>iatss</emphasis>) par seconde sera utilisée. 0 est
+      interdit.
+    </para>
+
+    <para>
+      <emphasis>iatdec</emphasis> -- facteur d'atténuation par lequel la dernière valeur de
+      l'entretien diminue exponentiellement pendant la chute. Cette valeur doit être positive
+      et elle est normalement de l'ordre de 0,01. Une valeur trop longue ou excessivement courte
+      peut produire une coupure audible. Les valeurs nulles ou négatives sont interdites.
+    </para>
+
+    <para>
+      <emphasis>ixmod</emphasis> (facultatif, entre +- 0,9 environ) -- facteur de modification
+      de courbe exponentielle, qui influe sur la raideur de la trajectoire exponentielle pendant
+      l'entretien. Les valeurs négatives provoqueront une montée ou une descente accélérée
+      (par exemple <emphasis>subito piano</emphasis>). Les valeurs positives provoqueront une
+      montée ou une descente ralentie. La valeur par défaut est zéro (exponentielle non
+      modifiée).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamp, xamp</emphasis> -- amplitude du signal d'entrée.
+    </para>
+
+    <para>Les modifications de l'attaque sont appliquées pendant les premières
+      <emphasis>irise</emphasis> secondes, et celles de la chute à partir de
+      <emphasis>idur - idec</emphasis>. Si ces périodes sont séparées dans le temps il y aura
+      un entretien au cours duquel <emphasis>amp</emphasis> sera modifié selon le schéma
+      exponentiel décrit. Si l'attaque et la chute se chevauchent alors les deux
+      modifications agiront simultanément durant cette période commune. Si la durée globale
+      <emphasis>idur</emphasis> est dépassée pendant l'exécution, la chute
+      continuera dans la même direction, en tendant asymtotiquement vers zéro.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode envlpx. Il utilise le fichier
+      <ulink url="examples/envlpx.csd"><citetitle>envlpx.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode envlpx.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/envlpx.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="envlpxr"><citetitle>envlpxr</citetitle></link>, 
+      <link linkend="linen"><citetitle>linen</citetitle></link>, 
+      <link linkend="linenr"><citetitle>linenr</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Merci à &nameluis; pour avoir signalé une erreur avec <emphasis>iatss</emphasis>.</para>
+  </refsect1>
+</refentry>

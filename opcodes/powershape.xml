@@ -1,0 +1,136 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.1
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="powershape">
+<indexterm id="IndexPowershape"><primary>powershape</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Waveshaping</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>powershape</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>powershape</refname>
+    <refpurpose>
+      Distorsion non linéaire d'un signal par élévation à une puissance variable.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      L'opcode <emphasis>powershape</emphasis> élève un signal d'entrée à une
+      puissance avec pré- et post-ajustage du signal afin que la sortie soit
+      dans un intervalle prévisible. Il traite également les entrées négatives
+      de manière symétrique aux entrées positives, calculant une fonction de
+      transfert dynamique utile pour la distorsion non-linéaire.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aout <command>powershape</command> ain, kShapeAmount [, ifullscale]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifullscale</emphasis> -- paramètre facultatif spécifiant
+      l'intervalle des valeurs d'entrée entre -<emphasis>ifullscale</emphasis>
+      et <emphasis>ifullscale</emphasis>. Vaut 1.0 par défaut. Il faut donner à
+      ce paramètre la valeur maximale attendue en entrée.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ain</emphasis> -- le signal d'entrée à modeler.
+    </para>
+
+    <para>
+      <emphasis>aout</emphasis> -- le signal de sortie.
+    </para>
+
+    <para>
+      <emphasis>kShapeAmount</emphasis> -- l'importance de l'effet appliqué à
+      l'entrée ; égal à la puissance à laquelle le signal d'entrée est élevé.
+    </para>
+
+    <para>
+      L'opcode <emphasis>powershape</emphasis> ressemble beaucoup aux générateurs
+      unitaires <emphasis>pow</emphasis> lorsqu'il s'agit de calculer la "puissance"
+      mathématique. Cependant, il introduit quelques particularités qui le rendent
+      plus utile à la distorsion non-linéaire des signaux de taux-audio. Le
+      paramètre <emphasis>kShapeAmount</emphasis> est l'exposant de la puissance
+      à laquelle le signal d'entrée est élevé.
+    </para>
+
+    <para>
+      Pour éviter les discontinuités, l'opcode <emphasis>powershape</emphasis>
+      traite toutes les valeurs en entrée comme des nombres positifs (en prenant
+      leur valeur absolue), mais il conserve leur signe original dans le signal
+      de sortie. Ceci permet un modelage lisse de tout signal alors que l'exposant
+      varie sur n'importe quel intervalle. (<emphasis>powershape</emphasis> traite
+      également de manière intelligente les discontinuités qui peuvent se produire
+      lorsque l'exposant et l'entrée sont tous deux nuls (heureusement). Noter
+      cependant que les exposants négatifs causeront généralement un dépassement
+      par le signal de l'amplitude maximale fixée par le paramètre
+      <emphasis>ifullscale</emphasis> et qu'ils devraient ainsi être évités).
+    </para>
+
+    <para>
+      L'autre adaptation concerne le paramètre <emphasis>ifullscale</emphasis>. Le
+      signal d'entrée est divisé par <emphasis>ifullscale</emphasis> avant d'être
+      élévé à la puissance <emphasis>kShapeAmount</emphasis> et il est ensuite
+      multiplié par <emphasis>ifullscale</emphasis> avant d'être retourné. Cela
+      normalise le signal d'entrée dans l'intervalle [-1,1], ce qui garantit que
+      la sortie (avant la mise à l'échelle finale) sera aussi dans cet intervalle
+      pour les valeurs de modelage positives, fournissant une fonction de transfert
+      évoluant sans à coup tandis que la quantité de modelage varie. Les valeurs
+      de <emphasis>kShapeAmount</emphasis> entre 0 et 1 rendent le signal plus
+      "convexe" tandis que les valeurs supérieures à 1 le rendent plus "concave".
+      Une valeur exacte de 1.0 ne produit aucun changement dans le signal d'entrée.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="pow"><citetitle>pow</citetitle></link>, 
+      <link linkend="powoftwo"><citetitle>powoftwo</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode powershape. Il utilise le fichier
+      <ulink url="examples/powershape.csd"><citetitle>powershape.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode powershape.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/powershape.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameanthony;</member>
+        <member>Janvier 2008</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 5.08 de Csound.</para>
+  </refsect1>
+</refentry>

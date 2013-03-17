@@ -1,0 +1,126 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="svfilter">
+<indexterm id="IndexSvfilter"><primary>svfilter</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Resonant</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>svfilter</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>svfilter</refname>
+    <refpurpose>
+      Un filtre à résonance du second ordre, avec sortie passe-bas, passe-haut
+      et passe-bande simultanées.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Implémentation d'un filtre à résonance du second ordre, avec sortie
+      passe-bas, passe-haut et passe-bande simultanées.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>alow, ahigh, aband <command>svfilter</command>  asig, kcf, kq [, iscl]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iscl</emphasis> -- facteur de pondération codé semblable à celui
+      de <link linkend="reson"><citetitle>reson</citetitle></link>. Une valeur
+      différente de zéro signifie que la crête du facteur de réponse est 1, c-à-d.
+      toutes les fréquences autres que <emphasis>kcf</emphasis> sont atténuées
+      selon la courbe de réponse (normalisée). Une valeur de zéro signifie aucune
+      pondération du signal, laissant cette tâche à un ajustement ultérieur (voir
+      <link linkend="balance"><citetitle>balance</citetitle></link>). La valeur
+      par défaut est 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>svfilter</emphasis> est un filtre à variable d'état du second
+      ordre, avec contrôle au taux-k de la fréquence de coupure et de Q. Lorsque
+      Q augmente, un pic de résonance se forme autour de la fréquence de coupure.
+      <emphasis>svfilter</emphasis> a des sorties passe-bas, passe-haut et
+      passe-bande simultanées ; en mélangeant les sorties, on peut générer des
+      réponses en fréquence variées. Le filtre à variable d'état, ou filtre
+      &quot;multimodal&quot;, se rencontrait fréquemment dans les premiers
+      synthétiseurs analogiques, en raison de la grande variété de sonorités
+      produites par l'interaction entre la fréquence de coupure, la résonance
+      et les rapports de mélange en sortie. <emphasis>svfilter</emphasis> est
+      bien adapté à la simulation de sonorités &quot;analogiques&quot;, ainsi
+      que pour d'autres applications nécessitant des filtres à résonance.
+    </para>
+
+    <para>
+      <emphasis>asig</emphasis> -- signal d'entrée à filtrer.
+    </para>
+
+    <para>
+      <emphasis>kcf</emphasis> -- fréquence de coupure ou de résonance du filtre,
+      mesurée en Hz.
+    </para>
+
+    <para>
+      <emphasis>kq</emphasis> -- Q du filtre, défini (pour les filtres passe-bande)
+      comme le rapport (largeur de bande)/(fréquence de coupure). <emphasis>kq</emphasis>
+      doit être compris entre 1 et 500. Lorsque <emphasis>kq</emphasis> augmente,
+      la résonance du filtre augmente, ce qui correspond à une augmentation de la
+      magnitude et de la &quot;raideur&quot; du pic de résonance. Si l'on utilise
+      <emphasis>svfilter</emphasis> sans pondération du signal (<emphasis>iscl</emphasis>
+      absent ou nul), le volume du pic de résonance augmente en même temps
+      que Q. Pour de grandes valeurs de Q, il est recommandé de donner à
+      <emphasis>iscl</emphasis> une valeur différente de zéro, ou bien d'utiliser
+      une fonction de mise à l'échelle externe telle que
+      <link linkend="balance"><citetitle>balance</citetitle></link>.
+    </para>
+
+    <para>
+      <emphasis>svfilter</emphasis> est basé sur un algorithme du livre de Hal
+      Chamberlin, <emphasis>Musical Applications of Microprocessors</emphasis>
+      (Hayden Books, 1985).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode svfilter. Il utilise le fichier
+      <ulink url="examples/svfilter.csd"><citetitle>svfilter.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode svfilter.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/svfilter.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namesean;</member>
+        <member>Seattle, Washington</member>
+        <member>1999</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.55 de Csound.</para>
+  </refsect1>
+</refentry>

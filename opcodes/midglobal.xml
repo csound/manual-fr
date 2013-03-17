@@ -1,0 +1,101 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="midglobal">
+<indexterm id="Indexmidglobal"><primary>midglobal</primary></indexterm>
+  <refentryinfo><title>Remote Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>midglobal</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>midglobal</refname>
+    <refpurpose>
+      Un opcode que l'on peut utiliser pour implémenter un orchestre midi distant.
+      Cet opcode envoie les évènements midi à toutes les machines impliquées dans
+      le concert à distance.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Avec les opcodes <link linkend="midremot"><citetitle>midremot</citetitle></link>
+      et <emphasis>midglobal</emphasis>, il est possible d'exécuter des instruments
+      sur des machines distantes et de les contrôler depuis une machine maître.
+      Les opcodes distants sont implémentés suivant le modèle maître/client. Toutes
+      les machines concernées contiennent le même orchestre mais seule la machine
+      maître possède l'information de la partition midi. Durant l'exécution, la machine
+      maître envoie les évènements midi aux clients. L'opcode <emphasis>midglobal</emphasis>
+      envoie les évènements à toutes les machines impliquées dans le concert à
+      distance. Ces machines sont déterminées par les définitions
+      <link linkend="midremot"><citetitle>midremot</citetitle></link> placées
+      avant la commande <emphasis>midglobal</emphasis>. Pour envoyer des
+      évènements à une seule machine on utilise
+      <link linkend="midremot"><citetitle>midremot</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>midglobal</command> isource, instrnum [,instrnum...] </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>isource</emphasis> -- une chaîne représentant l'ordinateur hôte
+      (par exemple 192.168.0.100). C'est l'hôte source qui génère les évènements
+      pour le ou les instruments donnés et les envoie à toute les machines impliquées
+      dans le concert à distance.
+    </para>
+
+    <para>
+      <emphasis>instrnum</emphasis> -- liste des numéros des intruments qui
+      seront joués sur les machines destinataires.
+    </para>
+
+  </refsect1>
+
+<!--  <refsect1>
+    <title>Exécution</title>
+    
+  </refsect1>-->
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voir l'entrée <link linkend="midremot"><citetitle>midremot</citetitle></link>
+      pour un exemple d'utilisation.
+    </para>                                     
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="insglobal"><citetitle>insglobal</citetitle></link>,
+      <link linkend="insremot"><citetitle>insremot</citetitle></link>,
+      <link linkend="midremot"><citetitle>midremot</citetitle></link>,
+      <link linkend="remoteport"><citetitle>remoteport</citetitle></link>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Simon Schampijer</member>
+        <member>2006</member>
+      </simplelist>
+    </para>
+    <para>
+      Nouveau dans la version 5.03
+    </para>
+  </refsect1>
+</refentry>

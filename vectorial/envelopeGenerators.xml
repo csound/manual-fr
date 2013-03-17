@@ -1,0 +1,36 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.3
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="envelopeGenerators">
+  <title>Générateurs Vectoriels d'Enveloppe</title>
+  <para>
+    Les opcodes pour générer des vecteurs contenant des enveloppes sont
+    <link linkend="vlinseg"><citetitle>vlinseg</citetitle></link> et
+    <link linkend="vexpseg"><citetitle>vexpseg</citetitle></link>.
+  </para>
+  <para>
+    Ces opérateurs sont semblables à
+    <link linkend="linseg"><citetitle>linseg</citetitle></link> et
+    <link linkend="expseg"><citetitle>expseg</citetitle></link>, mais ils opèrent avec
+    des signaux vectoriels à la place des signaux scalaires.
+  </para>
+  <para>
+    La sortie est un vecteur dans une f-table (préalablement allouée), tandis que
+    chaque point charnière de l'enveloppe est en fait un vecteur de valeurs. Tous
+    les points charnière doivent contenir le même nombre d'éléments
+    (<emphasis>ielements</emphasis>).
+  </para>
+  <para>
+    Ces opérateurs sont conçus pour être utilisés de concert avec d'autres opcodes
+    qui opèrent sur des signaux vectoriels tels que
+    <link linkend="vcella"><citetitle>vcella</citetitle></link>,
+    <link linkend="adsynt"><citetitle>adsynt</citetitle></link>,
+    <link linkend="adsynt2"><citetitle>adsynt2</citetitle></link>, etc.
+  </para>
+</section>

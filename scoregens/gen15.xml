@@ -1,0 +1,187 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.3
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="GEN15">
+      <indexterm id="IndexGEN15"><primary>GEN15</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN15</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>GEN15</refname>
+    <refpurpose>
+      Crée deux tables de fonctions polynomiales mémorisées.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ce sous-programme crée deux tables de fonctions polynomiales mémorisées, appropriées pour une
+      utilisation en quadrature de phase.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>f</command> # date taille 15 xint xamp h0 phs0 h1 phs1 h2 phs2 ...</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>taille</emphasis> -- nombre de points dans la table. Doit être une puissance de 2 ou une
+      puissance-de-2 plus 1 (voir l'<link linkend="f"><citetitle>instruction f</citetitle></link>). La valeur
+      normale est une puissance-de-2 plus 1.
+    </para>
+
+    <para>
+      <emphasis>xint</emphasis> -- fournit les valeurs gauches et droites [<emphasis>-xint, +xint</emphasis>]
+      de l'intervalle des x sur lequel le polynôme doit être évalué. Ce sous-porgramme appellera éventuellement
+      <link linkend="GEN03"><citetitle>GEN03</citetitle></link> pour évaluer les deux fonctions ; la valeur en
+      p5 est alors étendue en une paire négative-positive p5, p6 avant l'appel de <emphasis>GEN03</emphasis>.
+      La valeur normale est 1.
+    </para>
+
+    <para>
+      <emphasis>xamp </emphasis> -- facteur de pondération de l'amplitude de l'entrée sinusoïdale qui est
+      attendue pour produire le spectre suivant.
+    </para>
+
+    <para>
+      <emphasis>h0, h1, h2, ..., hn</emphasis> -- importance relative des harmoniques 0 (CC), 1 (fondamental),
+      2 ... qui résulteront quand une sinus d'amplitude <literallayout>xamp * int(taille/2)/xint</literallayout>
+      est traitée en waveshaping avec cette table de fonction. Ces valeurs décrivent ainsi un spectre de
+      fréquences associé à un facteur particulier <emphasis>xamp</emphasis> du signal d'entrée.
+    </para>
+
+    <para>
+      <emphasis>phs0, phs1, ... </emphasis> -- phase en degrés des harmoniques désirés
+      <emphasis>h0, h1, ...</emphasis> lorsque les deux fonctions de <emphasis>GEN15</emphasis> sont utilisées
+      en quadrature de phase.
+    </para>
+
+    <note>
+      <title>Notes</title>
+      <para>
+        <emphasis>GEN15</emphasis> crée deux tables de même taille, étiquetées
+        <emphasis>f</emphasis> # et <emphasis>f</emphasis> # + 1. La table # contiendra une fonction de
+        Tchebychev de première espèce, évaluée par <link linkend="GEN13"><citetitle>GEN13</citetitle></link>
+        avec des harmoniques d'amplitude <emphasis>h0cos(phs0), h1cos(phs1), ...</emphasis>. Table # + 1
+        contiendra une fonction de Tchebychev de deuxième espèce, évaluée par
+        <link linkend="GEN14"><citetitle>GEN14</citetitle></link> avec les harmoniques
+        <emphasis>h1sin(phs1), h2sin(phs2),...</emphasis> (noter le déplacement harmonique). Les deux tables
+        peuvent être utilisées en conjonction dans un réseau de waveshaping qui exploite la quadrature de phase.
+      </para>
+      <para>
+        Avant la version 5.16 il y avait un bogue (signalé par Menno Knevel et
+        corrigé par &namepinot;) sur le nombre de p-champs transmis à GEN13 et
+        à GEN14 par GEN15. En conséquence, tous les fichiers csd, ou orc et sco
+        qui utilisaient GEN15 avant la correction du bogue, donneront probablement
+        un résultat différent maintenant.
+       </para>
+    </note>
+  </refsect1>
+
+   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de la routine GEN15. Il utilise le fichier
+      <ulink url="examples/gen15.csd"><citetitle>gen15.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de la routine GEN15.</title>
+        <xi:include href="examples-xml/gen15.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      <textobject>
+        <phrase>Voici les diagrammes des formes d'onde de la routine GEN15 utilisées
+        dans l'exemple (dans chaque diagramme, la courbe en bleu représente la
+        table 33 et la courbe en vert représente la table 34) :</phrase>
+      </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen15-1.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 33 0 8193 -15 1 1 1 0 1 180 .8 45 .6 270 .5 90 .4 225 .2 135 .1 315</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 33 0 8193 -15 1 1 1 0 1 180 .8 45 .6 270 .5 90 .4 225 .2 135 .1 315</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen15-2.png" format="PNG"/>
+        </imageobject>
+
+       <textobject>
+          <phrase>f 33 0 8193 -15 1 1 1 0 1 0 1 180 1 180 1 0 1 0 1 180 1 180 1 0 1 0 1 180 1 180</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 33 0 8193 -15 1 1 1 0 1 0 1 180 1 180 1 0 1 0 1 180 1 180 1 0 1 0 1 180 1 180</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen15-3.png" format="PNG"/>
+       </imageobject>
+
+        <textobject>
+          <phrase>f 33 0 8193 -15 1 1 1 0 1 0 .9 180 .5 270 .75 90 .4 45 .2 225 .1 0</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 33 0 8193 -15 1 1 1 0 1 0 .9 180 .5 270 .75 90 .4 45 .2 225 .1 0</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+       <imageobject>
+          <imagedata fileref="images/gen15-4.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 33 0 8193 -15 1  1  1 0 1 0 .5 0 .9 0 .3 0 .75 0 .2 180 .6 180 .15 180 .5 180 .1 180</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 33 0 8193 -15 1  1  1 0 1 0 .5 0 .9 0 .3 0 .75 0 .2 180 .6 180 .15 180 .5 180 .1 180</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen15-5.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 33 0 8193 -15 1 1 1 180 1 180 .5 180 .9 180 .3 180 .75 180 .2 0 .6 0 .15 0 .5 0 .1 0</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 33 0 8193 -15 1 1 1 180 1 180 .5 180 .9 180 .3 180 .75 180 .2 0 .6 0 .15 0 .5 0 .1 0</para>
+        </caption>
+      </mediaobject>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="GEN13"><citetitle>GEN13</citetitle></link> et
+      <link linkend="GEN14"><citetitle>GEN14</citetitle></link>.
+    </para>
+  </refsect1>
+</refentry>

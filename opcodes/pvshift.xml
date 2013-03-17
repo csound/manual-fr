@@ -1,0 +1,143 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvshift">
+<indexterm id="IndexPvshift"><primary>pvshift</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvshift</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvshift</refname>
+    <refpurpose>
+      Décale les composantes de fréquence d'un flot pv, étirant/compressant son
+      spectre.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Décale les composantes de fréquence d'un flot pv, étirant/compressant son
+      spectre.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>fsig <command>pvshift</command> fsigin, kshift, klowest[, kkeepform, igain, kcoefs]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>fsig</emphasis> -- flot pv de sortie
+    </para>
+
+    <para>
+      <emphasis>fsigin</emphasis> -- flot pv d'entrée
+    </para>
+
+    <para>
+      <emphasis>kshift</emphasis> -- quantité de décalage (en Hz, positive ou négative).
+    </para>
+
+    <para>
+      <emphasis>klowest</emphasis> -- fréquence la plus basse à décaler. 
+    </para>
+
+    <para>
+      <emphasis>kkeepform</emphasis> -- tente de préserver les formants du signal
+      d'entrée ; 0 : ne pas garder les formants ; 1 : conserve les formants en
+      utilisant une méthode de cepstre décalé ; 2 : conserve les formants en
+      utilisant une méthode avec une véritable enveloppe (vaut 0 par défaut).
+    </para>
+
+    <para>
+      <emphasis>kgain</emphasis> -- modification d'amplitude (1 par défaut).
+    </para>
+    
+    <para>
+      <emphasis>kcoefs</emphasis> -- nombre de coefficients du cepstre utilisés
+      pour la préservation des formants (vaut 80 par défaut).
+    </para>
+    
+    <para>
+      Cet opcode décale les composantes d'un flot pv à partir d'une certaine
+      fréquence, vers le haut ou vers le bas, d'une quantité fixe (en Hz). On peut
+      l'utiliser pour transformer un spectre harmonique en un spectre inharmonique.
+      L'indicateur <emphasis>kkeepform</emphasis> peut être utilisé pour essayer
+      de préserver les formants pour des modifications du spectre intéressantes et
+      inhabituelles.
+    </para>
+
+    <warning>
+      <para>
+        Il est dangereux d'utiliser la même variable-f à la fois comme entrée et
+        comme sortie des opcodes pvs. Ceci peut produire un comportement indéfini
+        de certains de ces opcodes. Utilisez une variable différente à gauche et
+        à droite de l'opcode.
+      </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      <example>
+        <title>Exemples</title>
+        <programlisting>
+asig  <emphasis role="opc">in</emphasis>                                 <emphasis role="comment">; get the signal in</emphasis>
+
+fsig  <emphasis role="opc">pvsanal</emphasis>   asig, 1024, 256, 1024, 1 <emphasis role="comment">; analyse it</emphasis>
+ftps  <emphasis role="opc">pvshift</emphasis>   fsig, 100, 0             <emphasis role="comment">; add 100 Hz to each component</emphasis>
+atps  <emphasis role="opc">pvsynth</emphasis>   ftps                     <emphasis role="comment">; synthesise it</emphasis></programlisting>
+      </example>
+    </para>
+
+    <para>
+      En fonction de l'entrée, ceci transformera un son à hauteur définie en un
+      son inharmonique comme celui d'une cloche.
+    </para>
+    <para>
+      Voici un exemple de l'opcode pvshift. Il utilise le fichier
+      <ulink url="examples/pvshift.csd"><citetitle>pvshift.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode pvshift.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pvshift.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="pvsanal"><citetitle>pvsanal</citetitle></link>,
+      <link linkend="pvsynth"><citetitle>pvsynth</citetitle></link>,
+      <link linkend="pvsadsyn"><citetitle>pvsadsyn</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Novembre 2004 </member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau greffon dans la version 5</para>
+    <para>Novembre 2004.</para>
+  </refsect1>
+</refentry>

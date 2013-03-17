@@ -1,0 +1,94 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.10
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="release">
+<indexterm id="IndexRelease"><primary>release</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Event Extenders</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>release</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>release</refname>
+
+    <refpurpose>
+      Indique si une note est dans sa phase de <quote>relâchement</quote>.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Fournit le moyen de savoir quand un message note off est reçu pour la note
+      courante. Seul un message note off ayant le même numéro de note MIDI que
+      celui qui a déclenché la note sera rapporté par <emphasis>release</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kflag <command>release</command></synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kflag</emphasis> -- indique si la note est dans sa phase de
+      <quote>relâchement</quote>. (1 si un note off est reçu, 0 sinon)
+    </para>
+
+    <para>
+      <emphasis>release</emphasis> retourne l'état de la note courante. Si la
+      note courante est dans sa phase de <quote>relâchement</quote> (c'est-à-dire
+      si sa durée a été étendue avec l'opcode
+      <link linkend="xtratim"><citetitle>xtratim</citetitle></link> et si elle
+      vient d'être désactivée), l'argument de sortie <emphasis>kflag</emphasis>
+      prend la valeur 1. Sinon (dans la phase d'entretien de la note courante),
+      <emphasis>kflag</emphasis> vaut 0.
+    </para>
+
+    <para>
+       Cet opcode est utile pour implémenter des enveloppes complexes avec
+       relâchement. Lorqu'il est utilisé avec
+       <link linkend="xtratim"><citetitle>xtratim</citetitle></link> il peut
+       fournir une alternative au comportement prédéterminé des opcodes "r" tels
+       que <link linkend="linsegr"><citetitle>linsegr</citetitle></link> et
+       <link linkend="expsegr"><citetitle>expsegr</citetitle></link>, dans
+       lesquels le temps de relâchement est fixé à la durée maximale spécifiée
+       dans l'instrument actif.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voir les exemples de 
+      <link linkend="xtratim"><citetitle>xtratim</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="xtratim"><citetitle>xtratim</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.47 de Csound.</para>
+  </refsect1>
+</refentry>

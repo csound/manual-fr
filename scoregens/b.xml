@@ -1,0 +1,74 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="b">
+      <indexterm id="IndexBStatement"><primary>b statement</primary></indexterm>
+  <refmeta>
+    <refentrytitle>Instruction b</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>b</refname>
+    <refpurpose>
+      Cette instruction réinitialise l'horloge.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cette instruction réinitialise l'horloge.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>b</command> p1</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>p1</emphasis> -- Spécifie comment l'horloge doit être réglée.
+    </para>
+
+    <refsect2>
+      <title>Considérations Spéciales</title>
+      <para>
+        p1 est le nombre de pulsations par lequel les valeurs p2 des <emphasis>instructions i</emphasis>
+        suivantes sont modifiées. Si p1 est positif, l'horloge est avancée, et les notes suivantes
+        apparaissent plus tard, le nombre de pulsations spécifié par p1 étant ajouté au p2 des notes.
+        Si p1 est négatif, l'horloge est retardée, et les notes suivantes apparaissent plus tôt, le nombre
+        de pulsations spécifié par p1 étant soustrait du p2 des notes. L'effet n'est pas cumulatif.
+        L'horloge est réinitialisée avec chaque <emphasis>instruction b</emphasis>. Si p1 = 0, l'horloge
+        revient à sa position initiale, et les notes suivantes apparaissent à leur position spécifiée en
+        p2.
+      </para>
+    </refsect2>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'instruction b. Il utilise le fichier
+      <ulink url="examples/b.csd"><citetitle>b.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'instruction b.</title>
+        <xi:include href="examples-xml/b.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      Explication suggérée et exemple fourni par Paul Winkler. (Version 4.07 de Csound)
+    </para>
+  </refsect1>
+</refentry>

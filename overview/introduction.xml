@@ -1,0 +1,74 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.5
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<chapter id="Introduction">
+  <title>
+    Introduction
+  </title>
+<!--
+  <para>
+    Par &namemichael;
+  </para>-->
+
+  <para> Csound est un système de musique par ordinateur basé sur des générateurs
+    unitaires et programmable par l'utilisateur. Il fut écrit à l'origine par
+    Barry Vercoe au Massachusetts Institute of Technology en 1984 comme la
+    première version en langage C de ce type de logiciel. Depuis, Csound a reçu
+    de nombreuses contributions de la part de chercheurs, de programmeurs et de
+    musiciens du monde entier. </para>
+
+  <para>Vers 1991, John ffitch porta Csound sur Microsoft DOS. De nos jours,
+    Csound tourne sur plusieurs variétés de UNIX et de Linux, sur Microsoft DOS
+    et Windows, sur toutes les versions du système d'exploitation du Macintosh
+    y compris Mac OS X, et sur d'autres systèmes. </para>
+
+  <para> Il y a des systèmes de musique par ordinateur plus récents qui ont des
+    éditeurs graphiques de patch (par exemple Max/MSP, PD, jMax, ou Open Sound World),
+    ou qui utilisent des techniques d'ingénieurie logicielle plus avancées
+    (par exemple Nyquist ou SuperCollider). Cependant Csound possède toujours
+    l'ensemble le plus important et le plus varié de générateurs unitaires, est
+    le mieux documenté, s'exécute sur le plus grand nombre de plates-formes, et
+    il est très facilement extensible. Il est possible de compiler Csound en utilisant
+    l'arithmétique double précision pour obtenir une qualité sonore supérieure.
+    Bref, on peut considérer Csound comme l'un des instruments de musique les plus
+    puissants jamais créé.
+  </para>
+
+<!-- Removed this as this information is elsewhere
+  <para>
+    Pour faire de la musique avec Csound :
+  </para>
+  <orderedlist>
+
+    <listitem>
+      <simpara>Ecrivez un orchestre (fichier <filename>.orc</filename>) qui crée des instruments et
+      des processeurs de signal en connectant des générateurs unitaires (aussi appelés opérateurs,
+      dans le jargon de Csound) à l'aide du langage de programmation simple de Csound.</simpara>
+    </listitem>
+
+    <listitem>
+     <simpara> Ecrivez une partition (fichier <computeroutput>.sco</computeroutput>) qui
+      spécifie une liste de notes et d'autres évènements que l'orchestre doit rendre.</simpara>
+    </listitem>
+
+    <listitem>
+      <simpara>Exécutez Csound qui compilera l'orchestre et la partition, fera rendre
+      par l'orchestre la partition classée et prétraitée, et écrira la sortie numérique
+      dans un fichier son ou vers une carte son.</simpara>
+    </listitem>
+
+  </orderedlist>-->
+
+  <para> En plus de cette version "canonique" de Csound et de CsoundAC,
+    il existe d'autres versions de Csound et d'autres frontaux pour Csound,
+    dont la plupart se trouvent sur <ulink
+      url="http://www.csounds.com">http://www.csounds.com</ulink>.</para>
+
+</chapter>
+

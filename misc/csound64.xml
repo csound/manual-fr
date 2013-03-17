@@ -1,0 +1,91 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<appendix id="MiscCsound64">
+  <title>Csound double (64 bit) ou float (32 bit)</title>
+
+  <para>
+    On peut construire Csound pour utiliser des nombres en virgule flottante DOUBLES sur 64 bit pour le
+    traitement en interne au lieu des habituels nombres en virgule flottante FLOATS sur 32 bit. Cette
+    plus grande précision pour le traitement interne produit un son bien plus &quot;propre&quot; mais
+    au prix d'un temps de traitement plus long. Parce que csound met bien plus de temps pour ses calculs
+    s'il a été compilé pour des doubles, il est utilisé typiquement en fin de travail pour
+    produire la version finale d'une oeuvre. Si vous utilisez csound pour une sortie en temps réel, il
+    vaut mieux utiliser une version 32 bit (float), qui fournit une sortie plus rapidement. Pour un
+    rendu différé, vous pouvez utiliser l'une ou l'autre version, mais pour le master final, la version
+    64 bit produira une sortie de meilleure qualité.
+  </para>
+<!--Paragraphs below by Michael Gogins, from the Csound Mailing List-->
+  <para>
+    La résolution choisie doit être la même que celle du type de variable des échantillons audio.
+    Dans Csound "float" il s'agit de nombres en virgule flottante simple précision sur 32 bit.
+    La mantisse occupe 24 bit. Dans Csound "double, il s'agit de nombres en virgule flottante
+    double précision sur 64 bit.La mantisse occupe 52 bit. Chaque chiffre décimal nécessite 3
+    ou 4 bit. Ainsi, il y a une précision de 7 chiffres en "float" et de 16 chiffres en "double".
+  </para>
+
+  <para>
+    Pour chaque multiplication ou division, selon que les opérandes sont entiers, rationnels, décimaux
+    périodiques ou irrationnels, le résultat peut présenter une erreur d'arrondi. S'il y a une
+    erreur d'arrondi, il y a au plus une perte de précision d'un bit par opération (en plus des
+    erreurs d'arrondi dues à la représentation binaire des nombres rationnels ou réels).
+  </para>
+
+  <para>
+    Pour les échantillons de type float, si le signal ne déborde pas la mantisse, le rapport
+    signal-bruit vaut 6,02 fois 24, soit 144 dB. Au pire, chaque opération ajoutera 6,02 dB
+    de bruit dû à l'erreur d'arrondi. Notre audition réagit à un ambitus dynamique
+    effectif de 120 à 130 dB, mais nous apprécions que notre musique soit compressée dans
+    un intervalle dynamique d'AU PLUS 60 dB (et habituellement beaucoup moins, disons 20 dB).
+    Ceci nous donne (144 - 60) / 6,02 = environ 10 opérations défavorables avant que nous
+    puissions entendre une dégradation. En pratique, nous pouvons enchaîner plusieurs fois
+    ce nombre d'opérations avant d'entendre une dégradation ou du bruit.
+  </para>
+
+  <para>
+    Pour les échantillons de type double, si le signal ne déborde pas la mantisse, le rapport
+    signal-bruit vaut 6,02 fois 52, soit 313 dB. Au pire, chaque opération ajoutera 6,02 dB
+    de bruit dû à l'erreur d'arrondi. Ceci nous donne (313 - 60) / 6,02 = environ 42, en pratique
+    plusieurs fois ce nombre d'opérations avant qu'il n'y ait une dégradation audible ou du
+    bruit.
+  </para>
+
+  <para>
+    Mais si l'on relève le nombre d'opérations arithmétiques dans des instruments typiques de
+    Csound ou d'autres synthétiseurs logiciels, les instruments très complexes entrent
+    définitivement dans la zone des dégradations audibles sur de bons haut-parleurs avec
+    float, et il n'est donc pas surprenant que dans certains cas, un test ABX à l'aveugle
+    confirme des différences audibles <emphasis>occasionnelles</emphasis> entre de la
+    musique synthétisée avec Csound "float" et la même musique synthétisée avec Csound
+    "double". De même, il est courant de constater des différences audibles entre les
+    implémentations numérique et analogique des mêmes algorithmes de synthèse.
+  </para>
+
+  <para>
+    Avec Csound double "l'espace de traitement numérique du signal" est nettement plus
+    large, ce qui le rend plus adéquat pour toute musique dont l'écoute est critique. La
+    version float ne devrait être utilisée que si son avantage en vitesse (environ
+    15 %) est critique pour l'exécution en temps réel.
+  </para>
+
+  <bridgehead>Notes sur l'utilisation de Csound construit pour la double précision</bridgehead>
+
+  <para>
+    <orderedlist>
+      <listitem><para>Les fichiers <link linkend="hetro"><citetitle>hetro</citetitle></link>, d'analyse
+      PVOC-EX et <link linkend="pvanal"><citetitle>pvanal</citetitle></link> générés pour Csound 32 bit
+      (float) fonctionneront avec Csound 64 bit (double précision).</para></listitem>
+      
+      <listitem><para>Les fichiers <link linkend="lpanal"><citetitle>lpanal</citetitle></link> et
+      <link linkend="cvanal"><citetitle>cvanal</citetitle></link> générés pour Csound ne fonctionneront
+      pas avec Csound64.</para></listitem>
+     </orderedlist>
+  </para>
+
+</appendix>

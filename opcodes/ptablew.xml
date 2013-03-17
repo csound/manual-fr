@@ -1,0 +1,273 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ptablew">
+<indexterm id="IndexPtablew"><primary>ptablew</primary></indexterm>
+  <refentryinfo><title>Table Control:Read/Write Opreations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ptablew</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ptablew</refname>
+    <refpurpose>
+      Change le contenu de tables de fonction existantes de n'importe quelle taille.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode opère sur des tables de fonction existantes, en changeant leur
+      contenu. <emphasis>ptablew</emphasis> permet d'écrire aux taux-k et -a,
+      avec le numéro de table spécifié à l'initialisation. On peut utiliser
+      <emphasis>ptablew</emphasis> avec un signal et des valeurs d'index de taux-i,
+      mais les données spécifiées seront toujours écrites dans la table de fonction
+      au taux-k, pas pendant la passe d'initialisation. Les combinaisons valides
+      de types de variables sont données par la première lettre des noms de
+      variable.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>ptablew</command> asig, andx, ifn [, ixmode] [, ixoff] [, iwgmode]</synopsis>
+
+    <synopsis><command>ptablew</command> isig, indx, ifn [, ixmode] [, ixoff] [, iwgmode]</synopsis>
+
+    <synopsis><command>ptablew</command> ksig, kndx, ifn [, ixmode] [, ixoff] [, iwgmode]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>asig</emphasis>, <emphasis>isig,</emphasis> <emphasis>ksig</emphasis> --
+      La valeur à écrire dans la table.
+    </para>
+
+    <para>
+      <emphasis>andx</emphasis>, <emphasis>indx</emphasis>, <emphasis>kndx</emphasis> --
+      Index dans la table, soit un nombre positif inférieur à la longueur de la
+      table (<emphasis>ixmode</emphasis> = 0) ou dans l'intervalle allant de 0 à 1
+      (<emphasis>ixmode</emphasis> != 0)
+    </para>
+
+    <para>
+      <emphasis>ifn</emphasis> -- Numéro de la table. Doit être &gt;= 1. Les
+      nombres flottants sont arrondis à une valeur entière. Si le numéro de table
+      n'est pas celui d'une table valide, ou si la table n'a pas encore été
+      chargée (<link linkend="GEN01"><citetitle>GEN01</citetitle></link>),
+      il y aura une erreur et l'instrument sera désactivé.
+    </para>
+
+    <para>
+      <emphasis>ixmode</emphasis> (facultatif, 0 par défaut) -- mode d'indexation.
+      <itemizedlist>
+        <listitem>
+          <para>
+            0 = <emphasis>xndx</emphasis> et <emphasis>ixoff</emphasis> varient dans
+            l'intervalle compris entre 0 et la longueur de la table.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            !=0 = <emphasis>xndx</emphasis> et <emphasis>ixoff</emphasis> varient
+            dans l'intervalle compris entre 0 et 1. 
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>ixoff</emphasis> (facultatif, 0 par défaut) -- décalage de l'index.
+
+      <itemizedlist>
+        <listitem>
+           <para>
+             0 = l'index est contrôlé directement par <emphasis>xndx</emphasis>,
+             l'indexation partant du début de la table. 
+           </para>
+        </listitem>
+
+        <listitem>
+           <para>
+             !=0 = l'indexation part d'un endroit dans la table. Les valeurs doivent
+             être positives et inférieures à la longueur de la table
+             (<emphasis>ixmode</emphasis> = 0) ou inférieures à 1
+             (<emphasis>ixmode</emphasis> != 0).
+           </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>iwgmode</emphasis> (facultatif, 0 par défaut) -- Mode cyclique
+      et point de garde.
+
+      <itemizedlist>
+        <listitem>
+           <para>
+             0 = mode limite.
+           </para>
+        </listitem>
+
+        <listitem>
+           <para>
+             1 = mode cyclique.
+           </para>
+        </listitem>
+
+        <listitem>
+           <para>
+             2 = mode avec point de garde.
+           </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+
+    <refsect2>
+      <title>Mode limite (0)</title>
+      <para>
+        Limite l'index total (<emphasis>ndx</emphasis> + <emphasis>ixoff</emphasis>) 
+        entre 0 et le point de garde. Pour une table de longueur 5, cela 
+        signifie que l'on peut écrire à la position 4 (le point de garde).
+        Un index total négatif écrit à la position 0.
+      </para>
+    </refsect2>
+
+    <refsect2>
+      <title>Mode cyclique (1)</title>
+      <para>
+        Replie l'index total entre les positions 0 et E, où E est inférieur à la
+        longueur de la table d'une unité. Par exemple, si le repliement se fait
+        dans l'intervalle compris entre 0 et 3, un index total de 6 écrira à la
+        position 2.
+      </para>
+    </refsect2>
+
+    <refsect2>
+      <title>Mode point de garde (2)</title>
+      <para>
+        Le point de garde est rempli en même temps que la postion 0, avec la même
+        valeur.
+      </para>
+
+      <para>
+        Ceci facilite l'écriture dans les tables que l'on doit lire avec
+        interpolation pour produire des formes d'ondes périodiques lisses. De
+        plus, avant son utilisation, l'index total est incrémenté de la moitié
+        de la distance entre deux positions adjacentes, avant d'être arrondi à
+        la valeur entière de la position dans la table.
+      </para>
+
+      <para>
+        Normallement (<emphasis>igwmode</emphasis> = 0 ou 1) pour une table de
+        longueur 5, dont les positions de 0 à 3 sont dans la table principale
+        et dont la position 4 est le point de garde, un index total compris entre
+        0 et 0.999 écrira à la position 0. (&quot;0.999&quot; signifiant juste
+        en dessous de 1.0). S'il est compris entre 1.0 et 1.999, il écrira à la
+        position 1, etc. Tous les index totaux entre 0 et 4.999 
+        (<emphasis>igwmode</emphasis> = 0) ou 3.999 (<emphasis>igwmode</emphasis> = 1)
+        suivent le même schéma. <emphasis>igwmode</emphasis> = 0 permet d'écrire
+        dans les positions 0 à 4, avec la possibilité d'avoir dans le point de
+        garde (4) une valeur différente de celle qui est à la position 0.
+      </para>
+
+      <para>
+        Avec une table de longueur 5 et <emphasis>iwgmode</emphasis> = 2, lorsque
+        l'index total est compris entre 0 et 0.499, on écrit dans les positions
+        0 à 4. L'intervalle compris entre 0.5 et 1.499 écrit dans la position 1,
+        etc. De 3.5 à 4 on écrit aussi dans les positions 0 et 4.
+      </para>
+
+      <para>
+        De cette manière, l'opération d'écriture est au plus proche des résultats
+        de la lecture avec interpolation. Le mode point de garde ne doit être
+        utilisé qu'avec des tables ayant un point de garde.
+      </para>
+
+      <para>
+        Guardpoint mode is accomplished by adding 0.5 to the total index, rounding to the next lowest integer, wrapping it modulo the factor of two which is one less than the table length, writing the table (locations 0 to 3 in our example) and then writing to the guard point if index = 0.
+      </para>
+
+      <para>
+        <emphasis>ptablew</emphasis> n'a pas de valeur de sortie. Les trois
+        derniers paramètres sont facultatifs et valent 0 par défaut.
+      </para>
+    </refsect2>
+
+    <refsect2>
+      <title>Précaution avec les numéros de tables de taux-k</title>
+      <para>
+        Au taux-k et au taux-a, si un numéro de table &lt; 1 est donné, ou si le
+        numéro de table pointe sur une table non-existante ou sur une table
+        ayant un longueur nulle (à charger ultérieurement depuis un fichier),
+        une erreur est générée et l'instrument est désactivé. Il faut initialiser
+        <emphasis>kfn</emphasis> et <emphasis>afn</emphasis> au taux approprié en
+        utilisant <emphasis>init</emphasis>. Si l'on tente de mettre une valeur
+        de taux-i dans <emphasis>kfn</emphasis> ou dans <emphasis>afn</emphasis>,
+        il y aura une erreur.
+      </para>
+    </refsect2>
+    <warning>
+      <para>
+        Noter que <emphasis>ptablew</emphasis> est toujours un opcode de taux-k.
+        Cela signigie que même sa version de taux-i est exécutée au taux-k et
+        elle écrit la valeur de la variable de taux-i. Pour cette raison, le code
+        suivant ne fonctionnera pas comme attendu :
+      </para>
+<programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+giFt <emphasis role="opc">ftgen</emphasis>  1, 0, 8, 2, 0
+<emphasis role="oblock">instr</emphasis> 1
+indx <emphasis role="op">=</emphasis> 0
+     <emphasis role="opc">ptablew</emphasis> 10, indx, giFt
+ival <emphasis role="opc">tab_i</emphasis>  indx, giFt
+     <emphasis role="opc">print</emphasis>  ival
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">i</emphasis> 1 0 1
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis></programlisting>
+      <para>
+        Bien que l'on s'attende à ce que ce programme affiche un 10 sur la console,
+        il affichera 0, car <link linkend="tab"><citetitle>tab_i</citetitle></link>
+        lira la valeur à l'initialisation de la note, avant la première passe
+        d'exécution, quand <emphasis>ptablew</emphasis> écrit sa valeur.
+      </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="tableiw"><citetitle>tableiw</citetitle></link>,
+      <link linkend="tablewkt"><citetitle>tablewkt</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn; d'après Robin Whittle</member>
+        <member>Février 2012</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,105 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="fluidControl">
+<indexterm id="IndexFluidControl"><primary>fluidControl</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Sample Playback</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>fluidControl</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>fluidControl</refname>
+    <refpurpose>
+      Envoie un note on, un note off, et d'autres messages MIDI à un preset SoundFont.
+    </refpurpose>
+</refnamediv>
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>fluidControl</command> ienginenum, kstatus, kchannel, kdata1, kdata2</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Description</title> 
+    <para>Les opcodes fluid fournissent une intégration simple dans des opcodes de Csound du synthétiseur
+      Fluidsynth SoundFont2 de Peter Hanappe. Cette implémentation accepte les messages MIDI de note on,
+      note off, de contrôleur, de pitch bend ou de changement de programme au taux-k. La polyphonie
+      maximale est de 4096 voix simultanées. N'importe quel nombre de SoundFonts peuvent être chargés et
+      joués simultanément.
+    </para>  
+    </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    
+<para><emphasis>ienginenum </emphasis> -- numéro du moteur affecté par fluidEngine</para>
+
+</refsect1>
+
+<refsect1>
+
+<title>Exécution</title>
+
+<para><emphasis>kstatus </emphasis> -- octet d'état du message de canal MIDI : 128 pour note off, 144 
+  pour note on, 176 pour control change, 192 for program change, ou 224 pour pitch bend.
+  <!-- Note off messages need not be specified, as one is
+  automatically generated when each Csound note expires or is released. --> </para>
+
+<para><emphasis>kchannel </emphasis> -- numéro du canal MIDI auquel le programme Fluidsynth est
+  affecté : de 0 à 255. Les canaux MIDI dont le numéro est supérieur ou égal à 16 sont des canaux
+  virtuels.</para>
+
+<para><emphasis>kdata1 </emphasis> -- Pour note on, numéro de touche MIDI : de 0 (le plus bas) à 127 (le
+  plus haut), où 60 est le do médian. Pour les messages de contrôleur continu, le numéro du contrôleur.</para>
+
+<para><emphasis>kdata2 </emphasis> -- Pour note on, la vélocité de touche MIDI : de 0 (pas de son) à 127
+  (le plus fort). Pour les messages de contrôleur continu, la valeur du contrôleur.</para>
+  
+<para>Appelez fluidControl dans les définitions d'instrument qui jouent réellement des notes et qui envoient
+  des messages de contrôle. Chaque définition d'instrument doit utiliser de manière cohérente un canal
+  MIDI qui a été affecté à un programme Fluidsynth au moyen de fluidLoad.</para>
+
+<para>Dans cette implémentation, les effets SoundFont tels que chorus ou réverbération sont utilisés
+  si et seulement s'ils sont présents par défaut pour le preset. Il n'y a aucun moyen d'activer ou
+  d'arrêter de tels effets, ou de changer leurs paramètres, depuis Csound.</para>
+
+</refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple plus complexe des opcodes fluidsynth. Il utilise le fichier
+      <ulink url="examples/fluidcomplex.csd"><citetitle>fluidcomplex.csd</citetitle></ulink>.
+    </para>
+    <xi:include href="examples-xml/fluidcomplex.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </refsect1>
+  
+  <refsect1>
+    <title>Voir aussi</title>
+    <para><link linkend="fluidEngine"><citetitle>fluidEngine</citetitle></link>,
+    <link linkend="fluidNote"><citetitle>fluidNote</citetitle></link>,
+    <link linkend="fluidLoad"><citetitle>fluidLoad</citetitle></link></para>
+    <para>Plus d'information sur soundfonts dans les Floss Manuals :
+      <ulink url="http://en.flossmanuals.net/csound/ch048_d-reading-midi-files">
+      <citetitle>http://en.flossmanuals.net/csound/ch048_d-reading-midi-files</citetitle>
+      </ulink></para>
+    <para>D'autres informations sur soundfonts dans Wikipedia :
+    <ulink url="http://en.wikipedia.org/wiki/Soundfont"><citetitle>http://en.wikipedia.org/wiki/Soundfont</citetitle></ulink></para>   
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>Opcodes par Michael Gogins (gogins@pipeline.com). Merci à Peter Hanappe pour Fluidsynth, et à
+    Steven Yi pour avoir réalisé qu'il était nécessaire de diviser Fluidsynth en plusieurs opcodes
+    Csound différents.</para>
+    <para>Nouveau dans Csound5.00</para>
+  </refsect1>
+</refentry>

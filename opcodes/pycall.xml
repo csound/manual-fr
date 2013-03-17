@@ -1,0 +1,226 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+<refentry id="pycall">
+<indexterm id="IndexPyCall"><primary>pycall</primary></indexterm>
+  <refentryinfo><title>Python Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pycall Opcodes</refentrytitle>
+  </refmeta>
+  
+  <refnamediv>
+    <refname>pycall</refname>
+    <refpurpose>
+      Invoque l'objet Python appelable spécifié au taux-k ou au taux-i (suffixe i),
+      en lui passant les arguments donnés. L'appel est exécuté dans l'environnement
+      global et le résultat (la valeur retournée) est copié dans les variables
+      de Csound spécifiées en sortie.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Syntaxe</title>
+<synopsis>                                        <command>pycall</command>   "callable", karg1, ...</synopsis>
+<synopsis>kresult                                 <command>pycall1</command>  "callable", karg1, ...</synopsis>
+<synopsis>kresult1, kresult2                      <command>pycall2</command>  "callable", karg1, ...</synopsis>
+<synopsis>kr1, kr2, kr3                           <command>pycall3</command>  "callable", karg1, ...</synopsis>
+<synopsis>kr1, kr2, kr3, kr4                      <command>pycall4</command>  "callable", karg1, ...</synopsis>
+<synopsis>kr1, kr2, kr3, kr4, kr5                 <command>pycall5</command>  "callable", karg1, ...</synopsis>
+<synopsis>kr1, kr2, kr3, kr4, kr5, kr6            <command>pycall6</command>  "callable", karg1, ...</synopsis>
+<synopsis>kr1, kr2, kr3, kr4, kr5, kr6, kr7       <command>pycall7</command>  "callable", karg1, ...</synopsis>
+<synopsis>kr1, kr2, kr3, kr4, kr5, kr6, kr7, kr8  <command>pycall8</command>  "callable", karg1, ...</synopsis>
+
+<synopsis>                                        <command>pycallt</command>   ktrigger, "callable", karg1, ...</synopsis>
+<synopsis>kresult                                 <command>pycall1t</command>  ktrigger, "callable", karg1, ...</synopsis>
+<synopsis>kresult1, kresult2                      <command>pycall2t</command>  ktrigger, "callable", karg1, ...</synopsis>
+<synopsis>kr1, kr2, kr3                           <command>pycall3t</command>  ktrigger, "callable", karg1, ...</synopsis>
+<synopsis>kr1, kr2, kr3, kr4                      <command>pycall4t</command>  ktrigger, "callable", karg1, ...</synopsis>
+<synopsis>kr1, kr2, kr3, kr4, kr5                 <command>pycall5t</command>  ktrigger, "callable", karg1, ...</synopsis>
+<synopsis>kr1, kr2, kr3, kr4, kr5, kr6            <command>pycall6t</command>  ktrigger, "callable", karg1, ...</synopsis>
+<synopsis>kr1, kr2, kr3, kr4, kr5, kr6, kr7       <command>pycall7t</command>  ktrigger, "callable", karg1, ...</synopsis>
+<synopsis>kr1, kr2, kr3, kr4, kr5, kr6, kr7, kr8  <command>pycall8t</command>  ktrigger, "callable", karg1, ...</synopsis>
+
+<synopsis>                                        <command>pycalli</command>   "callable", karg1, ...</synopsis>
+<synopsis>iresult                                 <command>pycall1i</command>  "callable", iarg1, ...</synopsis>
+<synopsis>iresult1, iresult2                      <command>pycall2i</command>  "callable", iarg1, ...</synopsis>
+<synopsis>ir1, ir2, ir3                           <command>pycall3i</command>  "callable", iarg1, ...</synopsis>
+<synopsis>ir1, ir2, ir3, ir4                      <command>pycall4i</command>  "callable", iarg1, ...</synopsis>
+<synopsis>ir1, ir2, ir3, ir4, ir5                 <command>pycall5i</command>  "callable", iarg1, ...</synopsis>
+<synopsis>ir1, ir2, ir3, ir4, ir5, ir6            <command>pycall6i</command>  "callable", iarg1, ...</synopsis>
+<synopsis>ir1, ir2, ir3, ir4, ir5, ir6, ir7       <command>pycall7i</command>  "callable", iarg1, ...</synopsis>
+<synopsis>ir1, ir2, ir3, ir4, ir5, ir6, ir7, ir8  <command>pycall8i</command>  "callable", iarg1, ...</synopsis>
+
+<synopsis><command>pycalln</command>   "callable", nresults, kresult1, ..., kresultn, karg1, ...</synopsis>
+<synopsis><command>pycallni</command>  "callable", nresults, iresult1, ..., iresultn, iarg1,  ...</synopsis>
+
+<synopsis>                                        <command>pylcall</command>   "callable", karg1, ...</synopsis>
+<synopsis>kresult                                 <command>pylcall1</command>  "callable", karg1, ...</synopsis>
+<synopsis>kresult1, kresult2                      <command>pylcall2</command>  "callable", karg1, ...</synopsis>
+<synopsis>kr1, kr2, kr3                           <command>pylcall3</command>  "callable", karg1, ...</synopsis>
+<synopsis>kr1, kr2, kr3, kr4                      <command>pylcall4</command>  "callable", karg1, ...</synopsis>
+<synopsis>kr1, kr2, kr3, kr4, kr5                 <command>pylcall5</command>  "callable", karg1, ...</synopsis>
+<synopsis>kr1, kr2, kr3, kr4, kr5, kr6            <command>pylcall6</command>  "callable", karg1, ...</synopsis>
+<synopsis>kr1, kr2, kr3, kr4, kr5, kr6, kr7       <command>pylcall7</command>  "callable", karg1, ...</synopsis>
+<synopsis>kr1, kr2, kr3, kr4, kr5, kr6, kr7, kr8  <command>pylcall8</command>   "callable", karg1, ...</synopsis>
+
+<synopsis>                                        <command>pylcallt</command>   ktrigger, "callable", karg1, ...</synopsis>
+<synopsis>kresult                                 <command>pylcall1t</command>  ktrigger, "callable", karg1, ...</synopsis>
+<synopsis>kresult1, kresult2                      <command>pylcall2t</command>  ktrigger, "callable", karg1, ...</synopsis>
+<synopsis>kr1, kr2, kr3                           <command>pylcall3t</command>  ktrigger, "callable", karg1, ...</synopsis>
+<synopsis>kr1, kr2, kr3, kr4                      <command>pylcall4t</command>  ktrigger, "callable", karg1, ...</synopsis>
+<synopsis>kr1, kr2, kr3, kr4, kr5                 <command>pylcall5t</command>  ktrigger, "callable", karg1, ...</synopsis>
+<synopsis>kr1, kr2, kr3, kr4, kr5, kr6            <command>pylcall6t</command>  ktrigger, "callable", karg1, ...</synopsis>
+<synopsis>kr1, kr2, kr3, kr4, kr5, kr6, kr7       <command>pylcall7t</command>  ktrigger, "callable", karg1, ...</synopsis>
+<synopsis>kr1, kr2, kr3, kr4, kr5, kr6, kr7, kr8  <command>pylcall8t</command>  ktrigger, "callable", karg1, ...</synopsis>
+
+<synopsis>                                        <command>pylcalli</command>   "callable", karg1, ...</synopsis>
+<synopsis>iresult                                 <command>pylcall1i</command>  "callable", iarg1, ...</synopsis>
+<synopsis>iresult1, iresult2                      <command>pylcall2i</command>  "callable", iarg1, ...</synopsis>
+<synopsis>ir1, ir2, ir3                           <command>pylcall3i</command>  "callable", iarg1, ...</synopsis>
+<synopsis>ir1, ir2, ir3, ir4                      <command>pylcall4i</command>  "callable", iarg1, ...</synopsis>
+<synopsis>ir1, ir2, ir3, ir4, ir5                 <command>pylcall5i</command>  "callable", iarg1, ...</synopsis>
+<synopsis>ir1, ir2, ir3, ir4, ir5, ir6            <command>pylcall6i</command>  "callable", iarg1, ...</synopsis>
+<synopsis>ir1, ir2, ir3, ir4, ir5, ir6, ir7       <command>pylcall7i</command>  "callable", iarg1, ...</synopsis>
+<synopsis>ir1, ir2, ir3, ir4, ir5, ir6, ir7, ir8  <command>pylcall8i</command>  "callable", iarg1, ...</synopsis>
+
+<synopsis><command>pylcalln</command>   "callable", nresults, kresult1, ..., kresultn, karg1, ...</synopsis>
+<synopsis><command>pylcallni</command>  "callable", nresults, iresult1, ..., iresultn, iarg1, ...</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cette famille d'opcodes appelle l'objet Python appelable spécifié au
+      taux-k ou au taux-i (suffixe i), en lui passant les arguments donnés.
+      L'appel est exécuté dans l'environnement global et le résultat (la valeur
+      retournée) est copié dans les variables de Csound spécifiées en sortie.
+    </para>
+    <para>
+      Ils passent n'importe quel nombre de paramètres qui sont transformés en
+      nombres en virgule flottante dans l'interpréteur Python.
+    </para>
+    <para>
+      Les opcodes <emphasis>pycall</emphasis>/<emphasis>pycalli</emphasis>,
+      <emphasis>pycall1</emphasis>/<emphasis>pycall1i</emphasis> ...
+      <emphasis>pycall8</emphasis>/<emphasis>pycall8i</emphasis> permettent
+      d'avoir de 0 à 8 résultats en fonction de leur préfixe numérique (0 est
+      omis).
+    </para>
+    <para>
+      Les opcodes <emphasis>pycalln</emphasis>/<emphasis>pycallni</emphasis>
+      peuvent avoir n'importe quel nombre de résultats : le nom de l'objet
+      appelable est suivi du nombre d'arguments en sortie, puis viennent la liste
+      des variables de sortie de Csound et la liste des paramètres à transmettre.
+    </para>
+    <para>
+      La valeur retournée par l'objet appelable doit être <literal>None</literal>
+      pour <emphasis>pycall</emphasis> ou <emphasis>pycalli</emphasis>, un nombre
+      en virgule flottante pour <emphasis>pycall1i</emphasis> ou
+      <emphasis>pycall1i</emphasis> et un tuple (de taille appropriée) de nombres
+      en virgule flottante pour les opcodes
+      <emphasis>pycall2</emphasis>/<emphasis>pycall2i</emphasis> ...
+      <emphasis>pycall8</emphasis>/<emphasis>pycall8i</emphasis> et
+      <emphasis>pycalln</emphasis>/<emphasis>pycallni</emphasis>.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <example>
+      <title>Appel d'une fonction C ou Python</title>
+      <para>
+        En supposant qu'au préalable nous avons défini ou importé une fonction
+        nommée <literal>get_number_from_pool</literal> comme ceci :
+      </para>
+
+<programlisting>
+from random import random, choice
+
+# un ensemble de 100 nombres
+pool = [i ** 1.3 for i in range(100)]
+
+def get_number_from_pool(n, p):
+    # substituer un nouveau nombre à un ancien nombre ?
+    if random() &lt; p:
+        i = choice(range(len(pool)))
+        pool[i] = n
+
+    # retourner un nombre pris aléatoirement dans l'ensemble
+    return choice(pool)</programlisting>
+
+<para>le code d'orchestre suivant</para>
+
+<programlisting>
+k2   <emphasis role="opc">pycall1</emphasis> "get_number_from_pool", k1, p6</programlisting>
+
+  <para>
+    donnera à <emphasis>k2</emphasis> une valeur extraite aléatoirement d'un
+    ensemble de nombres évoluant dans le temps. On peut passer de nouveaux
+    éléments à l'ensemble et contrôler le taux de changement depuis l'orchestre.
+  </para>
+
+</example>
+
+<example>
+<title>Appel d'un objet fonctionnel</title>
+
+  <para>
+    Une implémentation plus générique de l'exemple précédent utilise un objet
+    fonctionnel simple :
+  </para>
+
+<programlisting>
+from random import random, choice
+
+class GetNumberFromPool:
+    def __init__(self, e, begin=0, end=100, step=1):
+        self.pool = [i ** e for i in range(begin, end, step)]
+
+    def __call__(self, n, p):
+        # substituer un nouveau nombre à un ancien nombre ?
+        if random() &lt; p:
+            i = choice(range(len(pool)))
+            pool[i] = n
+
+        # retourner un nombre pris aléatoirement dans l'ensemble
+        return choice(pool)
+
+get_number_from_pool1 = GetNumberFromPool(1.3)
+get_number_from_pool2 = GetNumberFromPool(1.5, 50, 250, 2)</programlisting>
+
+  <para>Alors, le code d'orchestre suivant :</para>
+
+<programlisting>
+k2   <emphasis role="opc">pycall1</emphasis> "get_number_from_pool1", k1, p6
+k4   <emphasis role="opc">pycall1</emphasis> "get_number_from_pool2", k3, p7</programlisting>
+
+  <para>
+    donnera à <emphasis>k2</emphasis> et à <emphasis>k4</emphasis> des valeurs prises
+    aléatoirement dans l'ensemble de nombres évoluant dans le temps. On peut
+    passer de nouveaux éléments à l'ensemble (ici <emphasis>k1</emphasis> et
+    <emphasis>k3</emphasis> et contrôler le taux de changement (ici
+    <emphasis>p6</emphasis> et <emphasis>p7</emphasis>) depuis l'orchestre.
+  </para>
+
+  <para>
+    Comme on peut le voir, il est possible de particulariser l'initialisation
+    de l'ensemble ou de créer plusieurs ensembles.
+  </para>
+  </example>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      Copyright (c) 2002 Maurizio Umberto Puxeddu. Tous droits réservés.
+      Certaines parties, copyright (c) 2004 et 2005 Michael Gogins.
+      Ce document a été mis à jour le 25 juillet 2004 et le 1er février
+      2005 par &namemichael;.
+    </para>
+  </refsect1>
+</refentry>

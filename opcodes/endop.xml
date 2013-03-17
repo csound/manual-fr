@@ -1,0 +1,98 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="endop">
+<indexterm id="IndexEndop"><primary>endop</primary></indexterm>
+  <refentryinfo><title>Orchestra Syntax:Block Statements</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>endop</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>endop</refname>
+    <refpurpose>
+      Termine un bloc d'opcode défini par l'utilisateur.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Termine un bloc d'opcode défini par l'utilisateur.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>endop</command></synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      La syntaxe d'un bloc d'opcode défini par l'utilisateur est la suivante :
+
+      <programlisting>
+<emphasis role="oblock">opcode</emphasis>  <command>nom</command>, outtypes, intypes
+xinarg1 [, xinarg2] [, xinarg3] ... [xinargN]  <emphasis role="opc">xin</emphasis>
+[<emphasis role="opc">setksmps</emphasis>  iksmps]
+... the rest of the instrument's code.
+<emphasis role="opc">xout</emphasis>  xoutarg1 [, xoutarg2] [, xoutarg3] ... [xoutargN]
+<emphasis role="oblock">endop</emphasis></programlisting>
+    </para>
+
+    <para>
+      Le nouvel opcode peut ensuite être utilisé avec la syntaxe usuelle :
+
+      <programlisting>
+[xinarg1] [, xinarg2] ... [xinargN]  <command>nom</command>  [xoutarg1] [, xoutarg2] ... [xoutargN] [, iksmps]</programlisting>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode endop. Il utilise le fichier
+      <ulink url="examples/endop.csd"><citetitle>endop.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode endop.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/endop.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="opcode"><citetitle>opcode</citetitle></link>, 
+      <link linkend="setksmps"><citetitle>setksmps</citetitle></link>, 
+      <link linkend="xin"><citetitle>xin</citetitle></link>, 
+      <link linkend="xout"><citetitle>xout</citetitle></link>
+    </para>
+    <para>
+      Plus d'information sur cet opcode :
+      <ulink url="http://www.csounds.com/journal/2006summer/controlFlow_part2.html"><citetitle>http://www.csounds.com/journal/2006summer/controlFlow_part2.html</citetitle></ulink>,
+      écrit par Steven Yi.
+    </para>  
+    <para>
+      La page des opcodes définis par l'utilisateur :
+      <ulink url="http://www.csounds.com/udo/"><citetitle>http://www.csounds.com/udo/</citetitle></ulink>,
+      maintenue par Steven Yi.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : Istvan Varga, 2002 ; basé sur du code de Matt J. Ingalls</para>
+    <para>Nouveau dans la version 4.22</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,119 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.5
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="loop_le">
+<indexterm id="Indexloop_le"><primary>loop_le</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Program Flow Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>loop_le</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>loop_le</refname>
+    <refpurpose>
+      Constructions de boucle.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Construction d'opérations de boucle.
+   </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>loop_le </command>  indx, incr, imax, label</synopsis>
+    <synopsis><command>loop_le </command>  kndx, kncr, kmax, label</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>indx</emphasis> -- variable de taux-i, compteur de la boucle.
+    </para>
+
+    <para>
+      <emphasis>incr</emphasis> -- valeur d'incrément de la boucle.
+    </para>
+
+    <para>
+      <emphasis>imax</emphasis> -- valeur maximale de l'index de la boucle.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kndx</emphasis> -- variable de taux-k, compteur de la boucle.
+    </para>
+    <para>
+      <emphasis>kncr</emphasis> -- valeur d'incrément de la boucle.
+    </para>
+    <para>
+      <emphasis>kmax</emphasis> -- valeur maximale de l'index de la boucle.
+    </para>
+    <para>
+      L'action de <command>loop_le</command> est équivalente à
+       <programlisting>
+         indx  <emphasis role="op">=</emphasis>  indx <emphasis role="op">+</emphasis> incr
+         <emphasis role="opc">if</emphasis> (indx <emphasis role="op">&lt;=</emphasis> imax) <emphasis role="opc">igoto</emphasis> label</programlisting>
+ <!-- sauf que les valeurs des paramètres <emphasis>incr</emphasis> et
+      <emphasis>imax</emphasis> ne peuvent pas changer dans la boucle; --> ou à
+       <programlisting>
+         kndx  <emphasis role="op">=</emphasis>  kndx <emphasis role="op">+</emphasis> kncr
+         <emphasis role="opc">if</emphasis> (kndx <emphasis role="op">&lt;=</emphasis> kmax) <emphasis role="opc">kgoto</emphasis> label</programlisting>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode loop_le. Il utilise le fichier
+      <ulink url="examples/loop_le.csd"><citetitle>loop_le.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode loop_le.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/loop_le.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
+play instance 0
+play instance 1
+play instance 2
+play instance 3
+play instance 4
+play instance 5</screen>
+    </para>
+  </refsect1>
+      
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="loop_ge"><citetitle>loop_ge</citetitle></link>,
+      <link linkend="loop_gt"><citetitle>loop_gt</citetitle></link> et
+      <link linkend="loop_lt"><citetitle>loop_lt</citetitle></link>.
+    </para>
+    <para>Plus d'information sur cet opcode :
+    <ulink url="http://www.csounds.com/journal/2006summer/controlFlow_part2.html"><citetitle>http://www.csounds.com/journal/2006summer/controlFlow_part2.html</citetitle></ulink>,
+    écrit par Steven Yi. Et dans les Floss Manuals :
+    <ulink url="http://en.flossmanuals.net/csound/ch018_c-control-structures"><citetitle> http://en.flossmanuals.net/csound/ch018_c-control-structures</citetitle></ulink>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>&nameistvan;.</para>
+    <para>Nouveau dans la version 5.01 de Csound</para>
+  </refsect1>
+</refentry>

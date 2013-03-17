@@ -1,0 +1,135 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="soundout">
+<indexterm id="IndexSoundout"><primary>soundout</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Signal Output</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>soundout</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>soundout</refname>
+    <refpurpose>
+      Obsolète. Ecrit la sortie audio dans un fichier sur disque.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <note>
+      <para>L'utilisation de <emphasis>soundout</emphasis> est déconseillée. Il vaut
+      mieux utiliser <link linkend="fout"><citetitle>fout</citetitle></link>.</para>
+    </note>
+    <para>
+      Ecrit la sortie audio dans un fichier sur disque.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>soundout</command>  asig1, ifilcod [, iformat]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifilcod</emphasis> -- entier ou chaîne de caractères donnant le nom
+      du fichier son destination. Un entier indique le fichier soundin.filcod ; une chaîne
+      de caractères (entre guillemets, espaces autorisés) donne le nom de fichier
+      lui-même, éventuellement un nom de chemin complet. Si ce n'est pas un nom de
+      chemin complet, le fichier nommé est d'abord cherché dans le répertoire
+      courant, puis dans celui qui est donné par la variable d'environnement
+      <link linkend="CommandEnvironment"><citetitle>SSDIR</citetitle></link>
+      (si elle est définie) puis par
+      <link linkend="CommandEnvironment"><citetitle>SFDIR</citetitle></link>.
+      Voir aussi <link linkend="GEN01"><citetitle>GEN01</citetitle></link>.
+    </para>
+
+    <para>
+      <emphasis>iformat</emphasis> (facultatif, 0 par défaut) -- spécifie le format
+      des données audio du fichier :
+      <itemizedlist>
+        <listitem>
+          <para>1 = caractères signés sur 8 bit (les 8 bit de poids fort d'un entier
+          sur 16 bit)</para>
+        </listitem>
+
+        <listitem>
+          <para>2 = octets sur 8 bit A-law</para>
+        </listitem>
+
+        <listitem>
+          <para>3 = octets sur 8 bit U-law</para>
+        </listitem>
+
+        <listitem>
+          <para>4 = entiers courts sur 16 bit</para>
+        </listitem>
+
+        <listitem>
+          <para>5 = entiers longs sur 32 bit</para>
+        </listitem>
+
+        <listitem>
+          <para>6 = flottants sur 32 bit</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      Si <emphasis>iformat</emphasis> = 0, il est déduit de l'en-tête du fichier,
+      et s'il n'y a pas d'en-tête, de l'option de ligne de commande
+      <link linkend="FlagsMinusLowerO"><citetitle>-o</citetitle></link> de Csound.
+      La valeur par défaut est 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>soundout</emphasis> écrit la sortie audio dans un fichier sur disque.
+    </para>
+    <note>
+      <para>Il est recommandé d'utiliser
+      <link linkend="fout"><citetitle>fout</citetitle></link> plutôt que
+      <emphasis>soundout</emphasis></para>
+    </note>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="fout"><citetitle>fout</citetitle></link>,
+      <link linkend="out"><citetitle>out</citetitle></link>,
+      <link linkend="outh"><citetitle>outh</citetitle></link>,
+      <link linkend="outo"><citetitle>outo</citetitle></link>,
+      <link linkend="outq"><citetitle>outq</citetitle></link>,
+      <link linkend="outq1"><citetitle>outq1</citetitle></link>,
+      <link linkend="outq2"><citetitle>outq2</citetitle></link>,
+      <link linkend="outq3"><citetitle>outq3</citetitle></link>,
+      <link linkend="outq4"><citetitle>outq4</citetitle></link>,
+      <link linkend="outs"><citetitle>outs</citetitle></link>,
+      <link linkend="outs1"><citetitle>outs1</citetitle></link>,
+      <link linkend="outs2"><citetitle>outs2</citetitle></link>
+      <link linkend="soundouts"><citetitle>soundouts</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteurs : &namebarry;, &namematt;/&namemike;</member>
+        <member>MIT, Mills College</member>
+        <member>1993-1997</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

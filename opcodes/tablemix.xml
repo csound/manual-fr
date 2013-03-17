@@ -1,0 +1,162 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="tablemix">
+<indexterm id="IndexTablemix"><primary>tablemix</primary></indexterm>
+  <refentryinfo><title>Table Control:Read/Write Opreations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tablemix</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>tablemix</refname>
+    <refpurpose>
+      Mélange deux tables.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Mélange deux tables.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>tablemix</command> kdft, kdoff, klen, ks1ft, ks1off, ks1g, ks2ft, ks2off, ks2g</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kdft</emphasis> -- Table de fonction destination.
+    </para>
+
+    <para>
+      <emphasis>kdoff</emphasis> -- Décalage de l'origine de l'écriture. Peut être
+      négatif.
+    </para>
+
+    <para>
+      <emphasis>klen</emphasis> -- Nombre d'opérations d'écriture à réaliser.
+      Une valeur négative signifie écrire avec des indices descendants.
+    </para>
+
+    <para>
+      <emphasis>ks1ft</emphasis>, <emphasis>ks2ft</emphasis> -- Tables de fonction
+      sources. Peuvent être identique à la table destination, si l'on fait
+      attention au sens d'écriture lors de la copie des données.
+    </para>
+
+    <para>
+      <emphasis>ks1off</emphasis>, <emphasis>ks2off</emphasis> -- Décalages de
+      l'origine de la lecture dans les tables sources.
+    </para>
+
+    <para>
+      <emphasis>ks1g</emphasis>, <emphasis>ks2g</emphasis> -- Gains à appliquer
+      lors de la lecture dans les tables source. Les résultats sont additionnés
+      et la somme est écrite dans la table destination.
+    </para>
+
+    <para>
+      <emphasis>tablemix</emphasis> -- Cet opcode mélange deux tables, avec des
+      gains séparés dans une table destination. L'écriture se fait sur
+      <emphasis>klen</emphasis> positions, habituellement en avançant dans la
+      table si <emphasis>klen</emphasis> est positif. S'il est négatif,
+      l'écriture et la lecture se font avec des indices décroissants dans les
+      tables. Cet option bi-directionnelle permet de déplacer facilement le
+      contenu d'une table en lisant et en écrivant dans celle-ci avec un décalage
+      différent.
+    </para>
+
+    <para>
+      Si <emphasis>klen</emphasis> vaut 0, il n'y a pas d'écriture. Noter que la
+      valeur entière interne de <emphasis>klen</emphasis> est obtenue de la
+      fonction <emphasis>floor</emphasis>() du C ANSI qui retourne l'entier
+      négatif directement inférieur. Ainsi avec une valeur fractionnaire négative
+      de <emphasis>klen</emphasis> de -2.3 on aura une longueur interne de 3, et
+      la copie commencera à partir des positions décalées et se fera sur deux
+      positions vers la gauche.
+    </para>
+
+    <para>
+      L'indice résultant pour la lecture et l'écriture dans les tables est
+      calculé à partir du décalage de l'origine pour chaque table auquel est
+      additionnée la valeur de l'index, qui commence à 0 et augmente ou diminue
+      d'un pas unité tout au long du mixage.
+    </para>
+
+    <para>
+      Ces indices résultants peuvent devenir très grands, car il n'y a aucune
+      restriction pour le décalage ou <emphasis>klen</emphasis>. Cependant
+      l'indice résultant pour chaque table subit un ET logique avec un masque
+      de longueur (tel que 0000 0111 pour une table de longueur 8) pour former
+      l'indice final qui sera utilisé pour la lecture ou l'écriture. Ainsi il ne
+      peut y avoir aucune lecture ou écriture en dehors des tables. C'est la
+      même chose que le mode <quote>wrap</quote> (cyclique) dans la lecture et
+      l'écriture de table. Ces opcoces ne lisent pas ou n'écrivent pas le point
+      de garde. Si une table a été réécrite par l'un de ceux-ci et si elle a
+      un point de garde sensé contenir la même valeur que la position 0, il
+      faut ensuite appeler
+      <link linkend="tablegpw"><citetitle>tablegpw</citetitle></link> afterwards.
+    </para>
+
+    <para>
+      Les indices et les décalages sont exprimés en pas de table - ils ne sont
+      pas normalisés entre 0 et 1. Ainsi pour une table de longueur 256,
+      <emphasis>klen</emphasis> doit être fixé à 256 si toute la table doit être
+      lue ou écrite.
+    </para>
+
+    <para>
+      Il n'est pas nécessaire que les tables soient de même longueur - le parcours
+      cyclique se fait individuellement pour chaque table.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode tablemix. Il utilise le fichier
+      <ulink url="examples/tablemix.csd"><citetitle>tablemix.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode tablemix.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/tablemix.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="tablecopy"><citetitle>tablecopy</citetitle></link>,
+      <link linkend="tablegpw"><citetitle>tablegpw</citetitle></link>,
+      <link linkend="tableicopy"><citetitle>tableicopy</citetitle></link>,
+      <link linkend="tableigpw"><citetitle>tableigpw</citetitle></link>,
+      <link linkend="tableimix"><citetitle>tableimix</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Robin Whittle</member>
+        <member>Australie</member>
+        <member>Mai 1997</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 3.47</para>
+  </refsect1>
+</refentry>

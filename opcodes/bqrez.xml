@@ -1,0 +1,130 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="bqrez">
+<indexterm id="IndexBqrez"><primary>bqrez</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Resonant</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>bqrez</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>bqrez</refname>
+    <refpurpose>
+      Un filtre multi-modes du second ordre.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Un filtre multi-modes du second ordre.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>bqrez</command> asig, xfco, xres [, imode] [, iskip]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>imode</emphasis> (facultatif, 0 par défaut) -- Le mode du filtre.
+      Un des choix suivants :
+      <itemizedlist>
+        <listitem><para>0 = passe-bas (par défaut)</para></listitem>
+        <listitem><para>1 = passe-haut</para></listitem>
+        <listitem><para>2 = passe-bande</para></listitem>
+        <listitem><para>3 = réjecteur de bande</para></listitem>
+        <listitem><para>4 = passe-tout</para></listitem>
+      </itemizedlist>
+    </para>
+    <para>
+      <emphasis>iskip</emphasis> (facultatif, 0 par défaut) -- s'il est non nul,
+      l'initialisation du filtre est ignorée. (Nouveau dans les versions 4.23f13
+      et 5.0 de Csound).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ares</emphasis> -- signal audio en sortie.
+    </para>
+
+    <para>
+      <emphasis>asig</emphasis> -- signal audio n entrée.
+    </para>
+
+    <para>
+      <emphasis>xfco</emphasis> -- fréquence de coupure du filtre en Hz. Peut-être
+      de taux-i, de taux-k ou de taux-a.
+    </para>
+
+    <para>
+      <emphasis>xres</emphasis> -- importance de la résonance. Des valeurs entre
+      1 et 100 sont typiques. La résonance doit être supérieure ou égale à 1. Une
+      valeur de 100 donne un gain de 20 dB à la fréquence de coupure. Peut-être
+      de taux-i, de taux-k ou de taux-a.
+    </para>
+
+    <para>
+      Tous les modes du filtre peuvent être modulés sur la fréquence ainsi que
+      sur la résonance.
+    </para>
+
+    <para>
+      <emphasis>bqrez</emphasis> est un filtre passe-bas résonant créé au moyen
+      des équations du domaine s de Laplace pour les filtres passe-bas, passe-haut
+      et passe-bande normalisées à une fréquence. On a utilisé la transformation
+      bilinéaire contenant une constante de transformation de fréquence du domaine
+      s dans le domaine z pour faire concorder exactement les fréquences
+      ensemble. De nombreuses identités trigonométriques ont été utilisées pour
+      simplifier les calculs. Il est très stable sur tout l'intervalle de travail
+      des fréquences jusqu'à la fréquence de Nyquist.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode bqrez. Il utilise le fichier
+      <ulink url="examples/bqrez.csd"><citetitle>bqrez.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode bqrez emprunté de l'opcode <quote>rezzy</quote>
+        dans le manuel de Kevin Conder.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/bqrez.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="biquad"><citetitle>biquad</citetitle></link>, 
+      <link linkend="moogvcf"><citetitle>moogvcf</citetitle></link>, 
+      <link linkend="rezzy"><citetitle>rezzy</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Matt Gerassimoff</member>
+        <member>Nouveau dans la version 4.32</member>
+        <member>Ecrit en novembre 2002.</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

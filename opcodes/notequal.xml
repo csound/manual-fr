@@ -1,0 +1,105 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.14
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="notequal">
+<indexterm id="IndexNotEqualColon"><primary>:</primary></indexterm>
+
+<indexterm id="IndexNotEqualQuestion"><primary>?</primary></indexterm>
+
+<indexterm id="IndexNotEqualExpression"><primary>conditional expressions</primary></indexterm>
+
+<indexterm id="IndexNotEqual"><primary>!=</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Conditional Values</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>!=</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>!=</refname>
+    <refpurpose>
+      Détermine si une valeur n'est pas égale à l'autre.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Détermine si une valeur n'est pas égale à l'autre.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>(a <command>!=</command> b <command>?</command> v1 <command>:</command> v2)</synopsis>
+
+    <para>
+      où <emphasis>a</emphasis>, <emphasis>b</emphasis>, <emphasis>v1</emphasis> et <emphasis>v2</emphasis>
+      peuvent être des expressions, mais <emphasis>a</emphasis>, <emphasis>b</emphasis> pas de taux audio.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Dans l'expression conditionnelle ci-dessus, <emphasis>a</emphasis> et <emphasis>b</emphasis> sont
+      d'abord comparés. Si la relation indiquée est vraie (<emphasis>a</emphasis> n'est pas égal à
+      <emphasis>b</emphasis>), alors l'expression conditionnelle prend la valeur de <emphasis>v1</emphasis> ;
+      si la relation est fausse, l'expression prend la valeur de <emphasis>v2</emphasis>.
+    </para>
+
+    <para>
+      Nota Bene : Si <emphasis>v1</emphasis> ou <emphasis>v2</emphasis> sont des expressions, elles seront
+      évaluées avant que l'expression conditionnelle ne soit déterminée.
+    </para>
+
+    <para>
+      En termes de précédence, tous les opérateurs conditionnels (c-à-d. les opérateurs relationnels
+      (<emphasis>&lt;</emphasis>, etc.), et <emphasis>?</emphasis>, et <emphasis>:</emphasis> ) sont plus
+      faibles que les opérateurs arithmétiques et logiques (<emphasis>+</emphasis>, <emphasis>-</emphasis>,
+      <emphasis>*</emphasis>, <emphasis>/</emphasis>, <emphasis>&amp;&amp;</emphasis> et <emphasis>||</emphasis>).
+    </para>
+
+    <para>
+      Ce sont des <emphasis>opérateurs</emphasis> pas des <emphasis>opcodes</emphasis>. C'est pourquoi on
+      peut les utiliser dans les instructions de l'orchestre, mais ils ne forment pas des instructions
+      complètes par eux-mêmes.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opérateur !=. Il utilise le fichier
+      <ulink url="examples/notequal.csd"><citetitle>notequal.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opérateur !=.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/notequal.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie contiendra une ligne comme celle-ci :
+      <screen>
+instr 1:  ipch = 277.167</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="equals"><citetitle>==</citetitle></link>,
+      <link linkend="greaterequal"><citetitle>&gt;=</citetitle></link>,
+      <link linkend="greaterthan"><citetitle>&gt;</citetitle></link>,
+      <link linkend="lessequal"><citetitle>&lt;=</citetitle></link>,
+      <link linkend="lessthan"><citetitle>&lt;</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

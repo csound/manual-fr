@@ -1,0 +1,107 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.16
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="dconv">
+<indexterm id="IndexDconv"><primary>dconv</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Convolution and Morphing</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>dconv</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>dconv</refname>
+    <refpurpose>
+      Un opcode de convolution directe.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Un opcode de convolution directe.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>dconv</command> asig, isize, ifn</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>isize</emphasis> -- la taille du tampon de convolution à utiliser.
+      Si la taille du tampon est inférieure à celle de <emphasis>ifn</emphasis>,
+      alors seules les premières <emphasis>isize</emphasis> valeurs de la table
+      seront utilisées.
+    </para>
+
+    <para>
+      <emphasis>ifn</emphasis> -- numéro de la table d'une fonction stockée
+      contenant la réponse impulsionnelle pour la convolution.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Plutôt que d'utiliser la méthode d'analyse/resynthèse de l'opcode
+      <emphasis>convolve</emphasis>, <emphasis>dconv</emphasis> utilise la
+      convolution directe pour créer le résultat. Avec de petites tables, il
+      peut faire cela avec une certaine efficacité, alors que des tables plus
+      grandes nécessitent bien plus de temps de calcul. <emphasis>dconv</emphasis>
+      effectue (<emphasis>isize</emphasis> * <emphasis>ksmps</emphasis>)
+      multiplications à chaque cycle-k. C'est pourquoi les effets de réverbération
+      et de délai sont mieux réalisés par d'autre opcodes (à moins que les durées
+      soient courtes).
+    </para>
+
+    <para>
+      <emphasis>dconv</emphasis> a été conçu pour travailler avec des tables
+      variant dans le temps pour faciliter de nouvelles possibilités de
+      filtrage en temps réel.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode dconv. Il utilise le fichier
+      <ulink url="examples/dconv.csd"><citetitle>dconv.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode dconv.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/dconv.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="pconvolve"><citetitle>pconvolve</citetitle></link>,
+      <link linkend="convolve"><citetitle>convolve</citetitle></link>,
+      <link linkend="ftconv"><citetitle>ftconv</citetitle></link>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : William <quote>Pete</quote> Moss</member>
+        <member>2001</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 4.12</para>
+  </refsect1>
+</refentry>

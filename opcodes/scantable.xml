@@ -1,0 +1,111 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="scantable">
+<indexterm id="IndexScantable"><primary>scantable</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Scanned Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>scantable</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>scantable</refname>
+    <refpurpose>
+      Une implémentation simplifiée de la synthèse par balayage.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Une implémentation simplifiée de la synthèse par balayage. C'est l'implémentation
+      d'une corcde circulaire parcourue au moyen de tables externes. Cet opcode
+      permet la modification directe et la lecture des valeurs avec les opcodes
+      de table.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aout <command>scantable</command> kamp, kpch, ipos, imass, istiff, idamp, ivel</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ipos</emphasis> -- table contenant le tableau de position.
+    </para>
+
+    <para>
+      <emphasis>imass</emphasis> -- table contenant la masse de la corde.
+    </para>
+
+    <para>
+      <emphasis>istiff</emphasis> -- table contenant la raideur de la corde.
+    </para>
+
+    <para>
+      <emphasis>idamp</emphasis> -- table contenant les facteurs d'atténuation de
+      la corde.
+    </para>
+
+    <para>
+      <emphasis>ivel</emphasis> -- table contenant les vitesses.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamp</emphasis> -- amplitude (gain) de la corde.
+    </para>
+
+    <para>
+      <emphasis>kpch</emphasis> -- la fréquence de balayage de la corde.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode scantable. Il utilise le fichier
+      <ulink url="examples/scantable.csd"><citetitle>scantable.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode scantable.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/scantable.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="scanhammer"><citetitle>scanhammer</citetitle></link>
+    </para>
+    <para>Plus d'information sur cet opcode :
+    <ulink url="http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html">
+    <citetitle>http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html</citetitle>
+    </ulink>, écrit par Steven Yi.</para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Matt Gilliard</member>
+        <member>Avril 2002</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 4.20</para>
+  </refsect1>
+</refentry>

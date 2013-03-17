@@ -1,0 +1,149 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.14
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLscroll">
+<indexterm id="IndexFLscroll"><primary>FLscroll</primary></indexterm>
+  <refentryinfo><title>FLTK:Containers</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLscroll</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLscroll</refname>
+    <refpurpose>
+      Un opcode FLTK qui ajoute des barres d'ascenseur à une zone.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>FLscroll</emphasis> ajoute des barres d'ascenseur à une zone.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>FLscroll</command> iwidth, iheight [, ix] [, iy]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iwidth</emphasis> -- largeur widget.
+    </para>
+
+    <para>
+      <emphasis>iheight</emphasis> -- hauteur du widget.
+    </para>
+
+    <para>
+      <emphasis>ix</emphasis> (facultatif) -- position horizontale du coin supérieur gauche
+      du conteneur, relative au coin supérieur gauche de la fenêtre correspondante
+      (exprimée en pixels).
+    </para>
+
+    <para>
+      <emphasis>iy</emphasis> (facultatif) -- position verticale du coin supérieur gauche
+      du conteneur, relative au coin supérieur gauche de la fenêtre correspondante
+      (exprimée en pixels).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Les conteneurs sont utiles pour formater l'apparence graphiques des widgets.
+      Le conteneur le plus important est
+      <link linkend="FLpanel"><citetitle>FLpanel</citetitle></link>, qui crée une
+      fenêtre. Il peut être rempli avec d'autres conteneurs et/ou des valuateurs
+      ou d'autres sortes de widgets.
+    </para>
+
+    <para>
+      Il n'y a pas d'arguments de taux-k dans les conteneurs.
+    </para>
+
+    <para>
+      <emphasis>FLscroll</emphasis> ajoute des barres d'ascenseur à une zone.
+      Normalement il faut fixer les arguments <emphasis>iwidth</emphasis> et
+      <emphasis>iheight</emphasis> à la même valeur que ceux de la fenêtre
+      parente ou d'un autre conteneur parent. <emphasis>ix</emphasis> et
+      <emphasis>iy</emphasis> sont facultatifs car ils sont normalement fixés
+      à zéro. Par exemple le code suivant :
+
+      <informalexample>
+        <programlisting>
+         <emphasis role="opc">FLpanel</emphasis>    "PanelPluto",400,300,100,100
+         <emphasis role="opc">FLscroll</emphasis>   400,300
+gk1, ih1 <emphasis role="opc">FLslider</emphasis>   "FLslider 1", 500, 1000, 2 ,1, -1, 300,15, 20,50
+gk2, ih2 <emphasis role="opc">FLslider</emphasis>   "FLslider 2", 300, 5000, 2 ,3, -1, 300,15, 20,100
+gk3, ih3 <emphasis role="opc">FLslider</emphasis>   "FLslider 3", 350, 1000, 2 ,5, -1, 300,15, 20,150
+gk4, ih4 <emphasis role="opc">FLslider</emphasis>   "FLslider 4", 250, 5000, 1 ,11,-1, 300,30, 20,200
+         <emphasis role="opc">FLscrollEnd</emphasis>
+         <emphasis role="opc">FLpanelEnd</emphasis></programlisting>
+      </informalexample>
+
+      montrera des barres d'ascenseur quand la taille de la fenêtre principale
+      sera diminiuée.
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/flscroll.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>FLscroll.</phrase>
+        </textobject>
+
+        <caption>
+          <para>FLscroll.</para>
+        </caption>
+      </mediaobject>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode FLscroll. Il utilise le fichier
+      <ulink url="examples/FLscroll.csd"><citetitle>FLscroll.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode FLscroll.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/FLscroll.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="FLgroup"><citetitle>FLgroup</citetitle></link>, 
+      <link linkend="FLgroupEnd"><citetitle>FLgroupEnd</citetitle></link>, 
+      <link linkend="FLpack"><citetitle>FLpack</citetitle></link>, 
+      <link linkend="FLpackEnd"><citetitle>FLpackEnd</citetitle></link>, 
+      <link linkend="FLpanel"><citetitle>FLpanel</citetitle></link>, 
+      <link linkend="FLpanelEnd"><citetitle>FLpanelEnd</citetitle></link>, 
+      <link linkend="FLscrollEnd"><citetitle>FLscrollEnd</citetitle></link>, 
+      <link linkend="FLtabs"><citetitle>FLtabs</citetitle></link>, 
+      <link linkend="FLtabsEnd"><citetitle>FLtabsEnd</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.22</para>
+    <para>Exemple écrit par Iain McCurdy, édité par &namekevin;.</para>
+  </refsect1>
+</refentry>

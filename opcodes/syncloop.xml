@@ -1,0 +1,137 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="syncloop">
+<indexterm id="IndexSyncloop"><primary>syncloop</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Granular Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>syncloop</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>syncloop</refname>
+    <refpurpose>
+      Synthèse granulaire synchrone.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+<emphasis>syncloop</emphasis> est une variation sur <emphasis>syncgrain</emphasis>,
+qui implémente la synthèse granulaire synchrone. <emphasis>syncloop</emphasis>
+ajoute des points de début et de fin de boucle et une position de départ
+facultative. Le début et la fin de boucle contrôlent les positions de démarrage des
+grains, si bien que les grains réalisés peuvent s'étendre au-delà des points de
+la boucle (si les points de la boucle ne sont pas aux extrémités de la table), ce
+qui permet des transitions fluides. Pour plus d'information sur le procédé de
+synthèse granulaire, voir la page du manuel sur
+<link linkend="syncgrain"><citetitle>syncgrain</citetitle></link>.
+ 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>asig <command>syncloop</command> kamp, kfreq, kpitch, kgrsize, kprate, klstart, \
+      klend, ifun1, ifun2, iolaps[,istart, iskip]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+      <para>
+      <emphasis>ifun1</emphasis> -- table de fonction du signal source. Des tables
+      avec allocation différée sont acceptées (voir
+      <link linkend="GEN01"><citetitle>GEN01</citetitle></link>), mais l'opcode
+      attend une source mono.
+    </para>
+        <para>
+      <emphasis>ifun2</emphasis> -- table de fonction de l'enveloppe du grain.
+    </para>
+          <para>
+      <emphasis>iolaps</emphasis> -- nombre maximum de chevauchements,
+      max(<emphasis>kfreq</emphasis>)*max(<emphasis>kgrsize</emphasis>). Une grande
+      valeur d'estimation ne devrait pas affecter l'exécution, mais le dépassement
+      de cette valeur aura probablement des conséquences désastreuses.
+    </para>
+   <para>
+      <emphasis>istart</emphasis> -- point de départ de la synthèse en secs (0 par
+      défaut).
+    </para>
+
+ <para>
+      <emphasis>iskip </emphasis> -- s'il vaut 1, l'initialisation de l'opcode est
+      ignorée, pour les notes liées, l'exécution continuant depuis la position
+      à l'intérieur de la boucle où la note précédente s'est terminée. La valeur
+      par défaut de 0 signifie que l'initialisation n'est pas ignorée.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamp</emphasis> -- pondération de l'amplitude.
+    </para>
+    <para>
+      <emphasis>kfreq</emphasis> -- fréquence de génération des grains, ou densité,
+      en grains/sec.
+    </para>
+
+    <para>
+      <emphasis>kpitch</emphasis> -- transposition de hauteur des grains (1 =
+      hauteur normale, &lt; 1 plus bas, > 1 plus haut ; négatif, lecture à l'envers).
+    </para>
+
+    <para>
+      <emphasis>kgrsize</emphasis> -- taille du grain en secondes.
+    </para>
+    <para>
+      <emphasis>kprate</emphasis> -- vitesse du pointeur de lecture, en grains.
+      Une valeur de 1 avancera le pointeur de lecture d'un grain dans la table
+      source. Des valeurs supérieures provoqueront une compression temporelle et
+      des valeurs inférieures une expansion temporelle du signal source. Avec des
+      valeurs négatives, le pointeur progressera à l'envers et zéro
+      l'immobilisera.
+    </para>
+    <para>
+      <emphasis>klstart</emphasis> -- début de la boucle en secs.
+    </para>
+    <para>
+      <emphasis>klend</emphasis> -- fin de la boucle en secs.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode syncloop. Il utilise le fichier
+      <ulink url="examples/syncloop.csd"><citetitle>syncloop.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode syncloop.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/syncloop.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Janvier 2005</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau greffon dans la version 5</para>
+    <para>Janvier 2005.</para>
+  </refsect1>
+</refentry>

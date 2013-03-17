@@ -1,0 +1,163 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.5
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="crossfm">
+<indexterm id="Indexcrossfm"><primary>crossfm</primary></indexterm>
+  <refentryinfo><title>Signal Generators:FM Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>crossfm</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>crossfm</refname>
+    <refpurpose>
+      Deux oscillateurs se modulant mutuellement en fréquence et/ou en phase.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Deux oscillateurs se modulant mutuellement en fréquence et/ou en phase.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>a1, a2 <command>crossfm</command> xfrq1, xfrq2, xndx1, xndx2, kcps, ifn1, ifn2 [, iphs1] [, iphs2]</synopsis>
+    <synopsis>a1, a2 <command>crossfmi</command> xfrq1, xfrq2, xndx1, xndx2, kcps, ifn1, ifn2 [, iphs1] [, iphs2]</synopsis>
+    <synopsis>a1, a2 <command>crosspm</command> xfrq1, xfrq2, xndx1, xndx2, kcps, ifn1, ifn2 [, iphs1] [, iphs2]</synopsis>
+    <synopsis>a1, a2 <command>crosspmi</command> xfrq1, xfrq2, xndx1, xndx2, kcps, ifn1, ifn2 [, iphs1] [, iphs2]</synopsis>
+    <synopsis>a1, a2 <command>crossfmpm</command> xfrq1, xfrq2, xndx1, xndx2, kcps, ifn1, ifn2 [, iphs1] [, iphs2]</synopsis>
+    <synopsis>a1, a2 <command>crossfmpmi</command> xfrq1, xfrq2, xndx1, xndx2, kcps, ifn1, ifn2 [, iphs1] [, iphs2]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn1</emphasis> -- numéro de la table de fonction pour
+      l'oscillateur 1. Nécessite un point de garde.
+    </para>
+    <para>
+      <emphasis>ifn2</emphasis> -- numéro de la table de fonction pour
+      l'oscillateur 2. Nécessite un point de garde.
+    </para>
+    <para>
+      <emphasis>iphs1</emphasis> (facultatif, 0 par défaut=0) -- phase initiale
+      de la forme d'onde de la table <emphasis>ifn1</emphasis>, exprimée comme
+      une fraction d'une période (0 à 1). Avec une valeur négative, l'initialisation
+      sera ignorée.
+    </para>
+    <para>
+      <emphasis>iphs2</emphasis> (facultatif, 0 par défaut=0) -- phase initiale
+      de la forme d'onde de la table <emphasis>ifn2</emphasis>, exprimée comme
+      une fraction d'une période (0 à 1). Avec une valeur négative, l'initialisation
+      sera ignorée.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>xfrq1</emphasis> -- un facteur qui, lorsqu'il est multiplié par
+      le paramètre <emphasis>kcps</emphasis> done la fréquence de l'oscillateur 1.
+    </para>
+    <para>
+      <emphasis>xfrq2</emphasis> -- un facteur qui, lorsqu'il est multiplié par
+      le paramètre <emphasis>kcps</emphasis> done la fréquence de l'oscillateur 2.
+    </para>
+    <para>
+      <emphasis>xndx1</emphasis> -- l'indice de modulation de l'oscillateur 2
+      par l'oscillateur 1.
+    </para>
+    <para>
+      <emphasis>xndx2</emphasis> -- l'indice de modulation de l'oscillateur 1
+      par l'oscillateur 2.
+    </para>
+    <para>
+      <emphasis>kcps</emphasis> -- un dénominateur commun, en cycles par seconde,
+      pour les fréquences des deux oscillateurs.
+    </para>
+    <para>
+      <emphasis>crossfm</emphasis> implémente un algorithme de modulation de
+      fréquence croisée. La sortie de taux audio de l'oscillateur 1 module
+      l'entrée en fréquence de l'oscillateur 2 tandis que la sortie audio de
+      l'oscillateur 2 module l'entrée en fréquence de l'oscillateur 1. Cette
+      double structure de rétroaction produit des sonorités riches avec parfois
+      un comportement chaotique. <emphasis>crossfmi</emphasis> fonctionne
+      comme <emphasis>crossfm</emphasis> mais en utilisant l'interpolation
+      linéaire pour la lecture des tables.
+    </para>
+    <para>
+      <emphasis>crosspm</emphasis> et <emphasis>crosspmi</emphasis> implémentent
+      la modulation de phase croisée entre deux oscillateurs.
+    </para>
+    <para>
+      <emphasis>crossfmpm</emphasis> et <emphasis>crossfmpmi</emphasis>
+      implémentent une modulation de fréquence/phase croisée entre deux
+      oscillateurs. L'oscillateur 1 est modulé en fréquence par l'oscillateur 2
+      tandis que l'oscillateur 2 est modulé en phase par l'oscillateur 1.
+    </para>
+    <para>
+      On peut lire mon <ulink url="http://www.csounds.com/journal/issue12/crossfm.html"><citetitle>article</citetitle></ulink>
+      dans le Csound Journal pour plus d'information.
+    </para>
+    <warning>
+      <title>Avertissement</title>
+      <para>
+        Ces opcodes peuvent produire des spectres très riches, particulièrement
+        avec des indices de modulation importants et, dans certains cas des
+        fréquences de repliement peuvent apparaître si le taux d'échantillonnage
+        n'est pas suffisamment élevé. De plus, la sortie audio peut varier en
+        fonction du taux d'échantillonnage à cause de la non-linéarité de
+        l'algorithme. Dans Csound, deux autres opcodes présentent cette
+        caractéristique : <emphasis>planet</emphasis> et <emphasis>chuap</emphasis>. 
+      </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode crossfm. Il utilise le fichier
+      <ulink url="examples/crossfm.csd"><citetitle>crossfm.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode crossfm.</title>
+         <xi:include href="examples-xml/crossfm.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Dans cet exemple, on utilise une interface graphique FLTK pour contrôler
+      en temps réel la fréquence des oscillateurs au moyen de deux contrôles
+      <emphasis>Flcount</emphasis> et les indices de la modulation croisée avec
+      un contrôle <emphasis>FLjoy</emphasis>. Il utilise un taux d'échantillonnage
+      de 96000Hz.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      Plus d'information sur ces opcodes :
+      <ulink url="http://www.csounds.com/journal/issue12/crossfm.html"><citetitle>http://www.csounds.com/journal/issue12/crossfm.html</citetitle></ulink>,
+      écrit par &namepinot;.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namepinot;</member>
+        <member>2005-2009</member>
+      </simplelist>
+      <para>Nouveau dans la version 5.12</para>
+    </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,186 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="GEN14">
+      <indexterm id="IndexGEN14"><primary>GEN14</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN14</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>GEN14</refname>
+    <refpurpose>
+      Mémorise un polynôme dont les coefficients sont dérivés des polynômes de Tchebychev de seconde espèce.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Utilise les coefficients de Tchebychev pour générer des fonctions polynomiales stockées qui, dans le
+      waveshaping, peuvent être utilisées pour séparer une sinus en harmoniques selon un spectre prédéfini.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>f</command> # date taille 14 xint xamp h0 h1 h2 ...</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>taille</emphasis> -- nombre de points dans la table. Doit être une puissance de 2 ou une
+      puissance-de-2 plus 1 (voir l'<link linkend="f"><citetitle>instruction f</citetitle></link>). La valeur
+      normale est une puissance-de-2 plus 1.
+    </para>
+
+    <para>
+      <emphasis>xint</emphasis> -- fournit les valeurs gauches et droites [<emphasis>-xint, +xint</emphasis>]
+      de l'intervalle des x sur lequel le polynôme doit être évalué. <emphasis>GEN13</emphasis> et
+      <emphasis>GEN14</emphasis> appellent <link linkend="GEN03"><citetitle>GEN03</citetitle></link> pour
+      évaluer leurs fonctions ; la valeur en p5 est ainsi étendue en une paire négative-positive p5, p6
+      avant l'appel de <emphasis>GEN03</emphasis>. La valeur normale est 1.
+    </para>
+
+    <para>
+      <emphasis>xamp </emphasis> -- facteur de pondération de l'amplitude de l'entrée sinusoïdale qui est
+      attendue pour produire le spectre suivant.
+    </para>
+
+    <para>
+      <emphasis>h0, h1, h2,</emphasis> etc. -- importance relative des harmoniques 0 (CC), 1 (fondamental),
+      2 ... qui résulteront quand une sinus d'amplitude <literallayout>xamp * int(taille/2)/xint</literallayout>
+      est traitée en waveshaping avec cette table de fonction. Ces valeurs décrivent ainsi un spectre de
+      fréquences associé à un facteur particulier <emphasis>xamp</emphasis> du signal d'entrée.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              <link linkend="GEN13"><citetitle>GEN13</citetitle></link> est le générateur de fonction
+              normalement employé dans le waveshaping standard. Il stocke un polynôme dont les coefficients
+              dérivent des polynômes de Tchebychev de première espèce, de sorte qu'une sinus d'amplitude
+              <emphasis>xamp</emphasis> pilotant le dispositif produise le spectre spécifié en sortie. Noter
+              que l'évolution de ce spectre ne varie généralement pas linéairement en fonction de
+              <emphasis>xamp</emphasis>. Cependant, il est à bande limitée (les seuls harmoniques qui
+              apparaissent seront ceux qui auront été spécifiés au moment de la génération) ; et les
+              harmoniques auront tendance à apparaître et à se développer en ordre ascendant (les harmoniques
+              inférieurs dominant pour de faibles <emphasis>xamp</emphasis>, et la richesse spectrale augmentant
+              pour des valeurs plus grandes de <emphasis>xamp</emphasis>). Une valeur <emphasis>hn</emphasis>
+              négative implique une opposition de phase de cet harmonique ; le spectre d'amplitude complet
+              demandé ne sera pas affecté par ce déphasage, bien que l'évolution de plusieurs de ses harmoniques
+              puisse l'être. Le schéma +, +, -, -, +, +, ... pour <emphasis>h0, h1, h2, ...</emphasis> minimisera
+              le problème de la normalisation pour de faibles valeurs de <emphasis>xamp</emphasis> (voir ci-dessus),
+              mais ne fournira pas nécessairement le schéma d'évolution le plus lisse.
+            </para>
+          </listitem>
+
+          <listitem>
+            <para>
+              <emphasis>GEN14</emphasis> stocke un polynôme dont les coefficients dérivent de polynômes de
+              Tchebychev de seconde espèce.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </note>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de la routine GEN14. Il utilise le fichier
+      <ulink url="examples/gen14.csd"><citetitle>gen14.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de la routine GEN14.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/gen14.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      <textobject>
+        <phrase>Voici les diagrammes des formes d'onde des routines GEN14
+          utilisées dans l'exemple :</phrase>
+      </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen14_1.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f28 0 4097 13  1 1 1 0 .8 0 .5 0 .2 - fonction de distorsion non linéaire : GEN13, harmoniques impairs</phrase>
+        </textobject>
+
+        <caption>
+          <para>f28 0 4097 13  1 1 1 0 .8 0 .5 0 .2 - fonction de distorsion non linéaire : GEN13, harmoniques impairs</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen14_2.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f29 0 4097 14  1 1 1 0 .8 0 .5 0 .2 - fonction de distorsion non linéaire : GEN14, les mêmes harmoniques impairs</phrase>
+        </textobject>
+
+        <caption>
+          <para>f29 0 4097 14  1 1 1 0 .8 0 .5 0 .2 - fonction de distorsion non linéaire : GEN14, les mêmes harmoniques impairs</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen14_3.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f30 0 4097 13  1 1 0 1 0 .6 0 .4 0 .1 - fonction de distorsion non linéaire : GEN13, harmoniques pairs</phrase>
+        </textobject>
+
+        <caption>
+          <para>f30 0 4097 13  1 1 0 1 0 .6 0 .4 0 .1 - fonction de distorsion non linéaire : GEN13, harmoniques pairs</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen14_4.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f31 0 4097 14  1 1 0 1 0 .6 0 .4 0 .1 - fonction de distorsion non linéaire : GEN14, les mêmes harmoniques pairs</phrase>
+        </textobject>
+
+        <caption>
+          <para>f31 0 4097 14  1 1 0 1 0 .6 0 .4 0 .1 - fonction de distorsion non linéaire : GEN14, les mêmes harmoniques pairs</para>
+        </caption>
+      </mediaobject>
+
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="GEN03"><citetitle>GEN03</citetitle></link>,
+      <link linkend="GEN13"><citetitle>GEN13</citetitle></link> et
+      <link linkend="GEN15"><citetitle>GEN15</citetitle></link>.
+      <para>Information au sujet des polynômes de Tchebychev sur Wikipedia :
+      <ulink url="http://fr.wikipedia.org/wiki/Polyn%C3%B4me_de_Tchebychev"><citetitle>http://fr.wikipedia.org/wiki/Polynôme_de_Tchebychev</citetitle></ulink></para>
+    </para>
+  </refsect1>
+
+</refentry>

@@ -1,0 +1,111 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.14
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="oscili">
+<indexterm id="IndexOscili"><primary>oscili</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Basic Oscillators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>oscili</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>oscili</refname>
+    <refpurpose>
+      Un oscillateur simple avec interpolation linéaire.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>oscili</emphasis> lit la table <emphasis>ifn</emphasis> séquentiellement
+      et de manière répétive à la fréquence <emphasis>xcps</emphasis>. L'amplitude
+      est pondérée par <emphasis>xamp</emphasis>. La lecture des valeurs de phase
+      internes de la table se fait avec interpolation linéaire.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>oscili</command> xamp, xcps, ifn [, iphs]</synopsis>
+
+    <synopsis>kres <command>oscili</command> kamp, kcps, ifn [, iphs]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn</emphasis> -- numéro de la table de fonction. Nécessite un point de garde pour la lecture cyclique.
+    </para>
+
+    <para>
+      <emphasis>iphs</emphasis> (facultatif) -- phase initiale de la lecture, exprimée comme une fraction d'une
+      période (0 à 1). Avec une valeur négative l'initialisation de la phase sera ignorée. La valeur par défaut
+      est 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamp, xamp</emphasis> -- amplitude
+    </para>
+
+    <para>
+      <emphasis>kcps, xcps</emphasis> -- fréquence en cycles par seconde.
+    </para>
+
+    <para>
+      <emphasis>oscili</emphasis> diffère de <link linkend="oscil"><citetitle>oscil</citetitle></link>
+      en ce que la procédure standard d'utilisation d'une phase tronquée comme index de lecture est
+      remplacée ici par une interpolation entre deux lectures successives. Les générateurs avec
+      interpolation produiront un signal de sortie nettement plus propre, mais ils peuvent prendre
+      jusqu'à deux fois plus de temps de calcul. On peut obtenir également ce type de précision sans
+      le surcoût du calcul de l'interpolation en utilisant de grandes tables de fonction stockées de
+      2K, 4K ou 8K points, si l'on dispose de cet espace mémoire.
+    </para>
+    <para>
+      La table <emphasis>ifn</emphasis> est parcourue par incrément modulo la longueur
+      de la table et la valeur obtenue est multipliée par <emphasis>amp</emphasis>.
+    </para>
+    <para>
+      Si vous désirez changer la table de l'oscillateur avec un signal de taux-k, vous
+      pouvez utiliser <link linkend="oscilikt"><citetitle>oscilikt</citetitle></link>.
+    </para>
+ </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode oscili. Il utilise le fichier
+      <ulink url="examples/oscili.csd"><citetitle>oscili.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode oscili.</title>
+
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/oscili.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="oscil"><citetitle>oscil</citetitle></link>,
+      <link linkend="oscil3"><citetitle>oscil3</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+  </refsect1>
+</refentry>

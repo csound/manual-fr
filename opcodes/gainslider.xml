@@ -1,0 +1,87 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="gainslider">
+<indexterm id="IndexGainslider"><primary>gainslider</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Linear and Exponential Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>gainslider</refentrytitle>
+  </refmeta>
+  
+  
+  <refnamediv>
+    <refname>gainslider</refname>
+    <refpurpose>
+      Une implémentation de courbe de gain logarithmique qui est semblable à l'objet gainslider~ de
+      Cycling 74 Max / MSP.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode sert à être multiplié par un signal audio pour donner la même impression qu'avec
+      une console de mixage. Il n'y a pas de limites dans le code source si bien que l'on peut
+      par exemple donner des valeurs supérieures à 127 pour obtenir un signal audio plus fort
+      mais avec un risque d'écrêtage.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kout <command>gainslider</command> kindex</synopsis>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kindex</emphasis> -- Valeur d'indice. Intervalle nominal de 0 à 127. Par exemple un
+      intervalle de 0 à 152 donnera un intervalle de -&#8734; à +18,0 dB.
+    </para>
+    <para>
+      <emphasis>kout</emphasis> -- Sortie pondérée. 
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode gainslider. Il utilise le fichier
+      <ulink url="examples/gainslider.csd"><citetitle>gainslider.csd</citetitle></ulink>.
+      
+      <example>
+        <title>Exemple de l'opcode gainslider.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/gainslider.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="scale"><citetitle>scale</citetitle></link>,
+      <link linkend="logcurve"><citetitle>logcurve</citetitle></link>,
+      <link linkend="expcurve"><citetitle>expcurve</citetitle></link>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : David Akbari</member>
+        <member>Octobre</member>
+        <member>2006</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

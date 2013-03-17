@@ -1,0 +1,99 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="turnoff2">
+<indexterm id="IndexTurnoff2"><primary>turnoff2</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Duration Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>turnoff2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>turnoff2</refname>
+    <refpurpose>
+      Arrête une ou des instances d'autres instruments pendant la phase d'exécution.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Arrête une ou des instances d'autres instruments pendant la phase d'exécution.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>turnoff2</command> kinsno, kmode, krelease
+    </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kinsno</emphasis> -- instrument à arrêter (peut-être fractionnaire).
+      S'il vaut zéro ou est négatif, aucun instrument n'est arrêté.
+    </para>
+
+    <para>
+      <emphasis>kmode</emphasis> -- somme des valeurs suivantes :
+      <itemizedlist>
+        <listitem>
+         	<para>
+            0, 1, ou 2 : arrête toutes les instances (0), seulement les plus
+            anciennes (1), ou seulement les plus récentes (2)
+          </para>
+        </listitem>
+        <listitem>
+       	  <para>
+            4 : n'arrête que les notes dont la partie fractionnaire du numéro
+            d'instrument correspond à <emphasis>kinsno</emphasis>, plutôt que
+            d'ignorer la partie fractionnaire.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            8 : n'arrête que les notes dont la durée est indéfinie (p3 &lt; 0 ou MIDI).
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>krelease</emphasis> -- s'il est non nul, les instances arrêtées
+      peuvent avoir une période d'extinction (release), sinon elles sont désactivées
+      immédiatement (avec possible émission de clics).
+    </para>
+
+    <para>
+      Il faut respecter le principe d'arrêter des instruments ayant un numéro
+      plus élevé que celui de l'instrument duquel <emphasis>turnoff2</emphasis>
+      est appelé, sinon il peut y avoir des problèmes d'initialisation.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="turnoff"><citetitle>turnoff</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Istvan Varga</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans Csound 5.00</para>
+  </refsect1>
+
+</refentry>

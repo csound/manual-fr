@@ -1,0 +1,97 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="noteon">
+<indexterm id="IndexNoteon"><primary>noteon</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Note Output</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>noteon</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>noteon</refname>
+
+    <refpurpose>
+      Envoie un message note on sur le port MIDI OUT.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Envoie un message note on sur le port MIDI OUT.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>noteon</command> ichn, inum, ivel</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ichn</emphasis> -- numéro de canal MIDI (1-16)
+    </para>
+
+    <para>
+      <emphasis>inum</emphasis> -- numéro de note (0-127)
+    </para>
+
+    <para>
+      <emphasis>ivel</emphasis> -- vélocité (0-127)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>noteon</emphasis> (note on au taux-i) et <emphasis>noteoff</emphasis>
+      (note off au taux-i) sont les opcodes MIDI OUT les plus simples.
+      <emphasis>noteon</emphasis> envoie un message note on sur le port MIDI OUT
+      et <emphasis>noteoff</emphasis> envoie un message note off. Un opcode
+      <emphasis>noteon</emphasis> doit toujours être suivi par un
+      <emphasis>noteoff</emphasis> avec les mêmes numéros de canal et de note,
+      dans le même instrument, sinon la note sera jouée indéfiniment.
+    </para>
+
+    <para>
+       Ces opcodes <emphasis>noteon</emphasis> et <emphasis>noteoff</emphasis>
+       ne sont utiles que si l'on introduit une instruction
+       <link linkend="timout"><citetitle>timout</citetitle></link> pour jouer
+       une note MIDI avec une durée non nulle. Dans la plupart des cas, il vaut
+       mieux utiliser
+       <link linkend="noteondur"><citetitle>noteondur</citetitle></link>
+       et <link linkend="noteondur2"><citetitle>noteondur2</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="noteoff"><citetitle>noteoff</citetitle></link>,
+      <link linkend="noteondur"><citetitle>noteondur</citetitle></link>,
+      <link linkend="noteondur2"><citetitle>noteondur2</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.47 de Csound.</para>
+    <para>Merci à &namerasmus; pour avoir indiqué les intervalles corrects pour
+    le canal MIDI et les numéros de contrôleur.</para>
+  </refsect1>
+</refentry>

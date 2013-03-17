@@ -1,0 +1,84 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="RealTimeWindows">
+  <title>Windows</title>
+  <bridgehead>Audio en temps-r&eacute;el</bridgehead>
+  <para>
+    Les utilisateurs de Windows peuvent utiliser soit le module temps-r&eacute;el
+    par d&eacute;faut <emphasis>PortAudio</emphasis>, soit le module temps-r&eacute;el
+    <emphasis>winmm</emphasis>. Le module winmm est un module natif de
+    Windows qui fournit une grande stabilit&eacute;, mais une latence qui sera
+    en g&eacute;n&eacute;ral trop grande pour une interaction en temps r&eacute;el. Pour
+    activer un module temps-r&eacute;el on peut utiliser l'option
+    <link linkend="FlagsCatMinusPlusRtaudio"><citetitle>-+rtaudio</citetitle></link>
+    avec la valeur <emphasis>portaudio</emphasis> ou <emphasis>winmme</emphasis>.
+    La valeur par d&eacute;faut est <emphasis>portaudio</emphasis>, qui est 
+    active sans avoir &agrave; &ecirc;tre sp&eacute;cifi&eacute;e.
+  </para>
+  <para>
+    On doit aussi sp&eacute;cifier le p&eacute;riph&eacute;rique son que l'on veut utiliser,
+    et indiquer que l'on veut g&eacute;n&eacute;rer une sortie audio en temps-r&eacute;el
+    plut&ocirc;t qu'un fichier son vers une sortie disque. Pour cela,
+    on doit utiliser l'option
+    <link linkend="FlagsCatMinusLowerOdac"><citetitle>-odac</citetitle></link>
+    ou <link linkend="FlagsCatMinusLowerOdac"><citetitle>-o dac</citetitle></link>,
+    qui indique comme sortie de csound les convertisseurs Num&eacute;rique-Analogique
+    plut&ocirc;t qu'un fichier. En ajoutant un num&eacute;ro apr&egrave;s l'option (par exemple
+    -odac2), on peut choisir le num&eacute;ro du p&eacute;riph&eacute;rique d&eacute;sir&eacute;. Pour
+    trouver les p&eacute;riph&eacute;riques disponibles dans le syst&egrave;me, on peut
+    utiliser un num&eacute;ro trop grand (par exemple -odac99), et csound
+    rapportera une erreur ainsi que la liste des p&eacute;riph&eacute;riques disponibles.
+  </para>
+  <para>
+    Lorsque l'on choisit le num&eacute;ro de p&eacute;riph&eacute;rique sous Portaudio, on choisit
+    &eacute;galement l'interface du pilote, car Portaudio supporte WinMME, DirectX
+    et ASIO. Si vous avez une interface compatible ASIO ou un &eacute;mulateur de
+    pilote ASIO comme <ulink url="http://www.asio4all.com">ASIO4ALL</ulink>,
+    le p&eacute;riph&eacute;rique affichera plusieurs dur&eacute;es, une pour chaque interface
+    de pilote. Comme ASIO fournit la meilleure latence pour un syst&egrave;me,
+    il devrait &ecirc;tre choisi pour une sortie audio en temps-r&eacute;el s'il est
+    disponible.
+  </para>
+  <para>
+    On active l'entr&eacute;e audio en temps-r&eacute;el par
+    <link linkend="FlagsCatMinusLowerIadc"><citetitle>-iadc</citetitle></link>,
+    ce qui r&egrave;gle csound sur l'&eacute;coute de l'entr&eacute;e audio temps-r&eacute;el. On peut
+    &eacute;galement choisir le p&eacute;riph&eacute;rique par son num&eacute;ro, et tester les p&eacute;riph&eacute;riques
+    disponibles avec un num&eacute;ro trop grand. Notez que pour les entr&eacute;es on utilise
+    'adc' au lieu de 'dac'. Assurez-vous que la bonne entr&eacute;e soit s&eacute;lectionn&eacute;e dans le
+    panneau de contr&ocirc;le de votre carte son.
+  </para>
+  <bridgehead>MIDI en temps-r&eacute;el</bridgehead>
+  <para>
+    Pour activer le MIDI en temps-r&eacute;el dans Windows on peut utiliser l'option
+    <link linkend="FlagsCatMinusUpperM"><citetitle>-M</citetitle></link>
+    pour l'entr&eacute;e MIDI et l'option
+    <link linkend="FlagsCatMinusUpperM"><citetitle>-Q</citetitle></link>
+    pour la sortie MIDI. On peut sp&eacute;cifier le num&eacute;ro du p&eacute;riph&eacute;rique apr&egrave;s
+    le drapeau (par exemple -M2), et aussi trouver les p&eacute;riph&eacute;riques
+    disponibles en donnant un num&eacute;ro trop grand.
+  </para>
+  <para>
+    Csound utilise par d&eacute;faut le module MIDI PortMidi, mais il y a aussi
+    un module natif winmme, que l'on peut activer avec l'option :
+  </para>
+  <literallayout>
+    -+rtmidi=winmme
+  </literallayout>
+  <para>
+    Un ensemble d'options typique pour activer l'Audio et les E/S MIDI en
+    temps-r&eacute;el ressemblera &agrave; ceci:
+  </para>
+  <literallayout>
+    -+rtmidi=winmme -M1 -Q1 -+rtaudio=portaudio -odac3 -iadc3
+  </literallayout>
+  
+</section>
+

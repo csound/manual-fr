@@ -1,0 +1,108 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.2
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="chnsend">
+<indexterm id="IndexChnsend"><primary>chnsend</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Software Bus</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>chnsend</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>chnsend</refname>
+    <refpurpose>
+      Envoie des données via le bus logiciel nommé.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Envoie des données vers un canal du bus logiciel nommé. Cela implique une
+      déclaration du canal avec <emphasis>imod</emphasis>=2 (voir aussi
+      <emphasis>chn_k</emphasis>, <emphasis>chn_a</emphasis> et
+      <emphasis>chn_S</emphasis>).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>chnsend</command> ival, Sname</synopsis>
+    <synopsis><command>chnsend</command> kval, Sname</synopsis>
+    <synopsis><command>chnsend</command> aval, Sname</synopsis>
+    <synopsis><command>chnsend</command> Sval, Sname</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>Sname</emphasis> -- une chaîne de caractères indiquant sur quel
+      canal du bus logiciel nommé écrire.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ival</emphasis> -- la valeur de contrôle à écrire au temps-i.
+    </para>
+    <para>
+      <emphasis>kval</emphasis> -- la valeur de contrôle à écrire pendant
+      l'exécution.
+    </para>
+    <para>
+      <emphasis>aval</emphasis> -- le signal audio à écrire pendant l'exécution.
+      time.
+    </para>
+    <para>
+      <emphasis>Sval</emphasis> -- la valeur chaîne de caractères à écrire au
+      temps-i.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      L'exemple montre l'utilisation du bus logiciel pour écrire l'information
+      de hauteur vers un programme de contrôle.
+    </para>
+
+    <informalexample>
+      <programlisting>
+        <emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+        <emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 100
+        <emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 1
+
+        <emphasis role="oblock">instr</emphasis>   1
+           a1    <emphasis role="opc">in</emphasis>
+           kp,ka <emphasis role="opc">pitchamdf</emphasis> a1
+                 <emphasis role="opc">chnsend</emphasis>   kp, "pitch"
+        <emphasis role="oblock">endin</emphasis></programlisting>
+    </informalexample>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="chnrecv"><citetitle>chnrecv</citetitle></link>,
+      <link linkend="chnset"><citetitle>chnset</citetitle></link>,
+      <link linkend="chnget"><citetitle>chnget</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameistvan;</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

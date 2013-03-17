@@ -1,0 +1,88 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="delay1">
+<indexterm id="IndexDelay1"><primary>delay1</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Delay</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>delay1</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>delay1</refname>
+    <refpurpose>
+      Retarde un signal d'entrée d'un échantillon.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retarde un signal d'entrée d'un échantillon.
+   </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>delay1</command> asig [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iskip</emphasis> (facultatif, 0 par défaut) -- disposition
+      initiale de l'espace des données de la boucle de retard (voir
+      <link linkend="reson"><citetitle>reson</citetitle></link>). La valeur
+      par défaut est 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>delay1</emphasis> est une forme spéciale de délai qui sert à
+      retarder le signal audio <emphasis>asig</emphasis> d'un seul échantillon.
+      Il est ainsi fonctionnellement équivalent à l'opcode
+      <link linkend="delay"><citetitle>delay</citetitle></link> mais il est
+      plus efficace à la fois en temps et en espace. Cette unité est
+      particulièrement utile dans le fabrication de filtres non récursifs
+      généralisés.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple des opcodes delay et delay1. Il utilise le fichier
+      <ulink url="examples/delay1.csd"><citetitle>delay1.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode delay1.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/delay1.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="delay"><citetitle>delay</citetitle></link>,
+      <link linkend="delayr"><citetitle>delayr</citetitle></link>,
+      <link linkend="delayw"><citetitle>delayw</citetitle></link>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : Barry Vercoe</para>
+    <para>Exemple écrit par &namejohn;.</para>
+  </refsect1>
+</refentry>

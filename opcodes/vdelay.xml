@@ -1,0 +1,109 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vdelay">
+<indexterm id="IndexVdelay"><primary>vdelay</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Delay</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vdelay</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vdelay</refname>
+    <refpurpose>
+      Un délai variable avec interpolation.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      C'est un délai variable avec interpolation qui n'est pas très différent de
+      l'implémentation existante
+      (<link linkend="deltapi"><citetitle>deltapi</citetitle></link>), il est
+      simplement plus facile à utiliser.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>vdelay</command> asig, adel, imaxdel [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>imaxdel</emphasis> -- Valeur maximale du délai en millisecondes. Si
+      <emphasis>adel</emphasis> reçoit une valeur supérieure à
+      <emphasis>imaxdel</emphasis> celle-ci est repliée autour de
+      <emphasis>imaxdel</emphasis>. Cela est à éviter.
+    </para>
+
+    <para>
+      <emphasis>iskip</emphasis> -- L'initialisation est ignorée s'il est présent
+      et différent de zéro.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Avec ce générateur unitaire il est possible de faire des effets Doppler ou de
+      chorus et de flanger.
+    </para>
+
+    <para>
+      <emphasis>asig</emphasis> -- Signal en entrée.
+    </para>
+
+    <para>
+      <emphasis>adel</emphasis> -- Valeur courante du délai en millisecondes. Noter
+      que les fonctions linéaires n'ont pas d'effet de modification de la hauteur.
+      Des valeurs de <emphasis>adel</emphasis> changeant rapidement provoqueront
+      des discontinuités dans la forme d'onde ce qui donne du bruit.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode vdelay. Il utilise le fichier
+      <ulink url="examples/vdelay.csd"><citetitle>vdelay.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode vdelay.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/vdelay.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Deux points importants ici. D'abord, la valeur du retard doit toujours être
+      positive. Ensuite, même si la valeur du retard peut être contrôlée au taux-k,
+      il n'est pas prudent d'agir ainsi, car des changements de durée soudains
+      provoqueront des clics.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="vdelay3"><citetitle>vdelay3</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameparis;</member>
+        <member>MIT, Cambridge</member>
+        <member>1995</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

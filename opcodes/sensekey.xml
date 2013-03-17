@@ -1,0 +1,148 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.18
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="sensekey">
+<indexterm id="IndexSensekey"><primary>sensekey</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>sensekey</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>sensekey</refname>
+    <refpurpose>
+      Retourne le code ASCII d'une touche enfoncée.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne le code ASCII d'une touche enfoncée ou -1 si aucune touche n'a été
+      enfoncée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kres[, kkeydown] <command>sensekey</command></synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kres</emphasis> - retourne la valeur ASCII d'une touche qui a été
+      enfoncée ou relachée.
+    </para>
+    <para>
+      <emphasis>kkeydown</emphasis> - retourne 1 si la touche a été enfoncée, 0
+      si elle a été relachée ou s'il n'y a pas d'évènement de touche.
+    </para>
+    <para>
+      On peut utiliser <emphasis>kres</emphasis> pour lire les évènements clavier
+      de stdin. Il retourne la valeur ASCII de toute touche qui a été enfoncée
+      ou relachée, ou -1 s'il n'y a eu aucune activité clavier. La valeur de
+      <emphasis>kkeydown</emphasis> est 1 si une touche a été enfoncée, 0 sinon.
+      Ce comportement est suivi par défaut, si bien qu'un relachement de touche
+      est généré immédiatement après chaque pression de touche. Pour une
+      fonctionnalité complète, on peut utiliser FLTK pour capturer les évènements
+      clavier. <link linkend="FLpanel"><citetitle>FLpanel</citetitle></link>
+      peut être utilisé pour capturer les évènements clavier et les envoyer à
+      l'opcode <emphasis>sensekey</emphasis> en ajoutant un argument supplémentaire
+      facultatif. Voir <link linkend="FLpanel"><citetitle>FLpanel</citetitle></link>
+      pour plus d'information.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        Cet opcode peut également s'écrire
+        <link linkend="sense"><citetitle>sense</citetitle></link>.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode sensekey. Il utilise le fichier
+      <ulink url="examples/sensekey.csd"><citetitle>sensekey.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode sensekey.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/sensekey.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Voici à quoi devrait ressembler la sortie si la touche "q" est enfoncée...
+      <screen>
+q i1   113.00000</screen>
+    </para>
+    <para>
+      Voici un exemple de l'opcode sensekey en conjonction avec
+      <link linkend="FLpanel"><citetitle>FLpanel</citetitle></link>.
+      Il utilise le fichier
+      <ulink url="examples/FLpanel-sensekey.csd"><citetitle>FLpanel-sensekey.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode sensekey utilisant la capture clavier depuis
+        un FLpanel.</title>
+          <xi:include href="examples-xml/FLpanel-sensekey.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Le bouton allumé dans la fenêtre <emphasis>FLpanel</emphasis> montre la
+      dernière touche enfoncée.
+    </para>
+    <para>
+      Voici une exemple plus complexe de l'opcode sensekey en conjonction avec
+      <link linkend="FLpanel"><citetitle>FLpanel</citetitle></link>.
+      Il utilise le fichier
+      <ulink url="examples/FLpanel-sensekey.csd"><citetitle>FLpanel-sensekey2.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode sensekey utilisant la capture clavier depuis
+        un FLpanel.</title>
+          <xi:include href="examples-xml/FLpanel-sensekey2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      La sortie console ressemblera à ceci :
+<literallayout>
+new alloc for instr 1:
+Key code = 65, state = 1
+Character = 'e'
+Key code = 65, state = 0
+Key code = 72, state = 1
+Character = 'r'
+Key code = 72, state = 0
+Key code = 61, state = 1
+Character = 'a'
+Key code = 61, state = 0</literallayout>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="FLpanel"><citetitle>FLpanel</citetitle></link>,
+      <link linkend="FLkeyIn"><citetitle>FLkeyIn</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Université de Bath, Codemist. Ltd.</member>
+        <member>Bath, UK</member>
+        <member>Octobre 2000</member>
+      </simplelist>
+    </para>
+    <para>Exemples écrits par &namekevin;, Johnathan Murphy et Istvan Varga.</para>
+
+    <para>Nouveau dans la version 4.09 de Csound. Renommé dans la version 4.10 de Csound.</para>
+  </refsect1>
+</refentry>

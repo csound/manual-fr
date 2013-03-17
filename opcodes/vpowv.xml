@@ -1,0 +1,168 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vpowv">
+<indexterm id="IndexVpowv"><primary>vpowv</primary></indexterm>
+  <refentryinfo><title>Vectorial:Vectorial operations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vpowv</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vpowv</refname>
+    <refpurpose>
+      Elévation de puissance entre deux signaux vectoriels de contrôle.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Elévation de puissance entre deux signaux vectoriels de contrôle.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>vpowv</command> ifn1, ifn2, kelements [, kdstoffset] [, ksrcoffset] [,kverbose]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn1</emphasis> - numéro de la table hébergeant le premier
+      vecteur à traiter.
+    </para>
+    <para>
+      <emphasis>ifn2</emphasis> - numéro de la table hébergeant le second
+      vecteur à traiter.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kelements</emphasis> - nombre de composantes des deux vecteurs.
+    </para>
+    <para>
+      <emphasis>kdstoffset</emphasis> - décalage d'indexation pour la table de
+      destination <emphasis>ifn1</emphasis> (vaut 0 par défaut).
+    </para>
+    <para>
+      <emphasis>ksrcoffset</emphasis> - décalage d'indexation pour la table
+      source <emphasis>ifn2</emphasis> (vaut 0 par défaut).
+    </para>
+    <para>
+      <emphasis>kverbose</emphasis> - Indique si les avertissements sont
+      affichés (vaut 0 par défaut).
+    </para>
+    <para>
+      <emphasis>vpowv</emphasis> élève chaque élément de <emphasis>ifn1</emphasis>
+      à la puissance égale à la valeur de l'élément correspondant de
+      <emphasis>ifn2</emphasis>. Chaque signal vectoriel est hébergé
+      dans une table (<emphasis>ifn1</emphasis> et <emphasis>ifn2</emphasis>).
+      Le nombre de composantes de chaque vecteur doit être identique.
+    </para>
+    <para>
+      Le résultat est un nouveau signal vectoriel de contrôle qui écrase les
+      anciennes valeurs de <emphasis>ifn1</emphasis>. Si l'on veut garder l'ancien
+      vecteur <emphasis>ifn1</emphasis>, il faut utiliser l'opcode
+      <link linkend="vcopy_i"><citetitle>vcopy_i</citetitle></link> pour le copier
+      dans une autre table. On peut utiliser <emphasis>kdstoffset</emphasis> et
+      <emphasis>ksrcoffset</emphasis> pour spécifier des vecteurs à n'importe
+      quelle position dans les tables.
+    </para>
+    <para>
+      Des valeurs négatives pour <emphasis>kdstoffset</emphasis> et
+      <emphasis>ksrcoffset</emphasis> sont acceptables. Si
+      <emphasis>kdstoffset</emphasis> est négatif, la partie du vecteur hors-limites
+      est ignorée. Si <emphasis>ksrcoffset</emphasis> est négatif, les éléments
+      hors-limites seront supposés valoir 1 (c'est-à-dire que les éléments de
+      destination ne seront pas changés). Si des éléments pour le vecteur de
+      destination sont au-delà de la taille de la table (point de garde inclus),
+      ces éléments sont ignorés (les éléments ne sont pas repliés autour des
+      tables). Si des éléments pour le vecteur source sont au-delà de la longueur
+      de la table, ces éléments sont supposés valoir 1 (le vecteur de destination
+      ne sera pas changé pour ces éléments).
+    </para>
+    <para>
+      Si l'argument facultatif <emphasis>kverbose</emphasis> est différent de 0,
+      l'opcode affichera des messages d'avertissement à chaque passe-k si les
+      longueurs de table sont dépassées.
+    </para>
+    <warning>
+      <para>
+        L'utilisation de la même table comme source et comme destination dans
+        les versions antérieures à la 5.04 peut induire un comportement
+        imprévu. A utiliser avec précaution.
+      </para>
+    </warning>
+    <para>
+      Cet opcode travaille au taux-k (cela signifie qu'à chaque passe-k les
+      vecteurs sont traités). Il y a une version de taux-i de cet opcode
+      appelée <link linkend="vpowv_i"><citetitle>vpowv_i</citetitle></link>.
+    </para>
+    <note>
+      <para>
+        Prière de noter que l'argument <emphasis>elements</emphasis> a changé
+        dans la version 5.03 du taux-i au taux-k. Cela change le comportement
+        de l'opcode dans le cas inhabituel où la variable de taux-i
+        <emphasis>ielements</emphasis> est modifiée à l'intérieur de l'instrument,
+        par exemple dans :
+        <programlisting>
+    <emphasis role="oblock">instr</emphasis> 1
+ielements  <emphasis role="op">=</emphasis>        10
+           <emphasis role="opc">vadd</emphasis>     1, 1, ielements
+ielements  <emphasis role="op">=</emphasis>        20
+           <emphasis role="opc">vadd</emphasis>     2, 1, ielements
+           <emphasis role="opc">turnoff</emphasis>
+    <emphasis role="oblock">endin</emphasis></programlisting>
+      </para>
+    </note>
+    <para>
+      Tous ces opérateurs (<link linkend="vaddv"><citetitle>vaddv</citetitle></link>,
+      <link linkend="vsubv"><citetitle>vsubv</citetitle></link>,
+      <link linkend="vmultv"><citetitle>vmultv</citetitle></link>,
+      <link linkend="vdivv"><citetitle>vdivv</citetitle></link>,
+      <link linkend="vpowv"><citetitle>vpowv</citetitle></link>,
+      <link linkend="vexpv"><citetitle>vexpv</citetitle></link>,
+      <link linkend="vcopy"><citetitle>vcopy</citetitle></link> et
+      <link linkend="vmap"><citetitle>vmap</citetitle></link>) sont conçus pour
+      être utilisés avec d'autres opcodes qui opèrent sur des signaux vectoriels
+      tels que <emphasis>bmscan</emphasis>,
+      <link linkend="vcella"><citetitle>vcella</citetitle></link>,
+      <link linkend="adsynt"><citetitle>adsynt</citetitle></link>,
+      <link linkend="adsynt2"><citetitle>adsynt2</citetitle></link>, etc. 
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode vpowv. Il utilise le fichier
+      <ulink url="examples/vpowv.csd"><citetitle>vpowv.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode vpowv.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/vpowv.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      Ecrit par Gabriel Maldonado. Arguments facultatifs ajoutés par Andrés
+      Cabrera et Istvan Varga.
+    </para>
+    <para>Nouveau dans Csound 5 (Auparavant seulement disponible dans CsoundAV)</para>
+  </refsect1>
+</refentry>

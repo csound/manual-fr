@@ -1,0 +1,97 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="trigger">
+<indexterm id="IndexTrigger"><primary>trigger</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>trigger</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>trigger</refname>
+    <refpurpose>
+      Informe quand un signal de taux-k traverse un seuil.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Informe quand un signal de taux-k traverse un seuil.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kout <command>trigger</command> ksig, kthreshold, kmode</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ksig</emphasis> -- signal d'entrée
+    </para>
+
+    <para>
+      <emphasis>kthreshold</emphasis> -- seuil de déclenchement
+    </para>
+
+    <para>
+      <emphasis>kmode</emphasis> -- peut valoir 0, 1 ou 2
+    </para>
+
+    <para>
+      Normalement <emphasis>trigger</emphasis> retourne des zéros :
+      <emphasis>trigger</emphasis> retourne 1 chaque fois que <emphasis>ksig</emphasis>
+      traverse <emphasis>kthreshold</emphasis>. Il y a trois modes d'utilisation
+      de <emphasis>ktrig</emphasis> :
+      <itemizedlist>
+        <listitem><para><emphasis>kmode</emphasis> = 0 - (bas-haut)
+          <emphasis>ktrig</emphasis> retourne 1 lorsque la valeur courante de
+          <emphasis>ksig</emphasis> est supérieure à <emphasis>kthreshold</emphasis>,
+          alors que l'ancienne valeur de <emphasis>ksig</emphasis> était égale ou
+          inférieure à <emphasis>kthreshold</emphasis>.</para></listitem>
+        <listitem><para><emphasis>kmode</emphasis> = 1 - (haut-bas)
+          <emphasis>ktrig</emphasis> retourne 1 lorsque la valeur courante de
+          <emphasis>ksig</emphasis> est inférieure à <emphasis>kthreshold</emphasis>
+          alors que l'ancienne valeur de <emphasis>ksig</emphasis> était égale ou
+          supérieure à <emphasis>kthreshold</emphasis>.</para></listitem>
+        <listitem><para><emphasis>kmode</emphasis> = 2 - (les deux)
+          <emphasis>ktrig</emphasis> retourne 1 dans les deux cas précédents.</para></listitem>
+      </itemizedlist>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode trigger. Il utilise le fichier
+      <ulink url="examples/trigger.csd"><citetitle>trigger.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode trigger.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/trigger.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 3.49 de Csound.</para>
+  </refsect1>
+</refentry>

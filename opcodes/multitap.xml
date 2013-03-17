@@ -1,0 +1,72 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="multitap">
+<indexterm id="IndexMultitap"><primary>multitap</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Delay</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>multitap</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>multitap</refname>
+    <refpurpose>
+      Ligne à retard avec plusieurs points de lecture.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ligne à retard avec plusieurs points de lecture.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>multitap</command> asig [, itime1, igain1] [, itime2, igain2] [...]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      Les arguments <emphasis>itime</emphasis> et <emphasis>igain</emphasis> fixent
+      la position et le gain de chaque point de lecture.
+    </para>
+
+    <para>
+      La ligne à retard est remplie par <emphasis>asig</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode multitap. Il utilise le fichier
+      <ulink url="examples/multitap.csd"><citetitle>multitap.csd</citetitle></ulink>
+      <example>
+        <title>Exemple de l'opcode multitap.</title>
+        <xi:include href="examples-xml/multitap.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Cela produit deux délais, l'un de longueur 1.2 et de gain 0.5, et l'autre
+      de longueur 1.4 et de gain 0.2
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameparis;</member>
+        <member>MIT, Cambridge</member>
+        <member>1996</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

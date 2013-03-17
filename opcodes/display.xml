@@ -1,0 +1,104 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="display">
+<indexterm id="IndexDisplay"><primary>display</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Printing and Display</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>display</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>display</refname>
+    <refpurpose>
+      Affiche un signal audio ou de contrôle sur un graphique amplitude/temps.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ces unités affichent les valeurs d'initialisation de l'orchestre ou
+      produisent un affichage graphique de signaux de contrôle ou audio de
+      l'orchestre. Des fenêtres X11 sont utilisées s'il est activé, sinon (ou si
+      l'option <link linkend="FlagsMinusLowerG"><citetitle>-g</citetitle></link>
+      est positionnée) on a un affichage approximatif en caractères ASCII.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>display</command> xsig, iprd [, inprds] [, iwtflg]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iprd</emphasis> -- la période d'affichage en secondes.
+    </para>
+
+    <para>
+      <emphasis>inprds</emphasis> (facultatif, 1 par défaut) -- Nombre de périodes
+      d'affichage retenues dans chaque graphique. Les valeurs supérieures ou égales
+      à 2 donneront une perspective plus étendue du mouvement du signal. La valeur
+      par défaut est 1 (chaque graphique est entièrement renouvelé).
+      <emphasis>inprds</emphasis> est un facteur d'échelle pour la forme d'onde
+      affichée, qui contrôle combien de trames d'échantillon de longueur
+      <emphasis>iprd</emphasis> sont dessinées dans la fenêtre (la valeur par
+      défaut qui est aussi la valeur minimale est 1.0). Des valeurs supérieures de
+      <emphasis>inprds</emphasis> provoquent un dessin plus lent (plus de points
+      à dessiner) mais feront défiler la forme d'onde à travers la fenêtre, ce
+      qui est utile avec de faibles valeurs de <emphasis>iprd</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>iwtflg</emphasis> (facultatif, 0 par défaut) -- indicateur de
+      maintien. S'il est différent de zéro, chaque affichage est maintenu jusqu'à
+      ce que l'utilisateur le libère. La valeur par défaut est 0 (pas de maintien).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>display</emphasis> -- affiche le signal audio ou de contrôle
+      <emphasis>xsig</emphasis> chaque <emphasis>iprd</emphasis> secondes, sur un
+      graphique amplitude/temps.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode display. Il utilise le fichier
+      <ulink url="examples/display.csd"><citetitle>display.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode display.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/display.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="dispfft"><citetitle>dispfft</citetitle></link>,
+      <link linkend="print"><citetitle>print</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Commentaires sur le paramètre <emphasis>inprds</emphasis> par &namerasmus;.</para>
+  </refsect1>
+</refentry>

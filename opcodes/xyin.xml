@@ -1,0 +1,106 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="xyin">
+<indexterm id="IndexXyin"><primary>xyin</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>xyin</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>xyin</refname>
+    <refpurpose>
+      Détecte la position du curseur dans une fenêtre de sortie.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Détecte la position du curseur dans une fenêtre de sortie. Lorsque
+      <emphasis>xyin</emphasis> est appelé, la position de la souris dans la
+      fenêtre de sortie est utilisée pour répondre à la requête. En raison de
+      la simplicité de ce mécanisme, on ne peut utiliser de manière précise qu'un
+      seul <emphasis>xyin</emphasis> à la fois. La position de la souris est
+      rapportée dans la fenêtre de sortie.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kx, ky <command>xyin</command> iprd, ixmin, ixmax, iymin, iymax [, ixinit] [, iyinit]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iprd</emphasis> -- période de détection du cursesur(en secondes).
+      Typiquement 0.1 seconde.
+    </para>
+
+    <para>
+      <emphasis>xmin, xmax, ymin, ymax</emphasis> -- valeurs limites des coordonnées
+      x-y du curseur dans la fenêtre d'entrée.
+    </para>
+
+    <para>
+      <emphasis>ixinit, iyinit</emphasis> (facultatif) -- coordonnées x-y initiales
+      rapportées ; les valeurs par défaut sont 0, 0. Si ces valeurs ne sont pas
+      dans l'intervalle min-max donné, elles seront déplacées dans cet intervalle.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>xyin</emphasis> échantillonne la position x-y du curseur dans
+      une fénêtre d'entrée toutes les <emphasis>iprd</emphasis> secondes. Les
+      valeurs retournées sont répétées (pas interpolées) au taux-k, et restent
+      fixes jusqu'à ce qu'un nouveau changement intervienne dans la fenêtre.
+      Il peut y avoir n'importe quel nombre de fenêtres en entrée. Cette unité
+      est utile pour le contrôle en , mais il vaut mieux éviter un
+      mouvement continu si <emphasis>iprd</emphasis> est anormalement petit.
+    </para>
+    <note>
+      <para>
+        Vous pouvez être amenés à activer les affichages au moyen de l'option
+        de ligne de commande <emphasis>--displays</emphasis> en fonction de votre
+        plate-forme et de votre distribution.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode xyin. Il utilise le fichier
+      <ulink url="examples/xyin.csd"><citetitle>xyin.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode xyin.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/xyin.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Lorsque les valeurs de <emphasis>kx</emphasis> et de <emphasis>ky</emphasis>
+      changent, elles sont affichées comme ceci :
+      <screen>
+kx=8.612036, ky=22.677933
+kx=10.765685, ky=15.644135</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Exemple écrit par &namekevin;.</para>
+  </refsect1>
+</refentry>

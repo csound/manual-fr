@@ -1,0 +1,101 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="tlineto">
+<indexterm id="IndexTlineto"><primary>tlineto</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tlineto</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>tlineto</refname>
+    <refpurpose>
+      Génère des glissandi déclenchés par un signal de contrôle.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère des glissandi déclenchés par un signal de contrôle.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kres <command>tlineto</command> ksig, ktime, ktrig</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kres</emphasis> -- Signal de sortie.
+    </para>
+
+    <para>
+      <emphasis>ksig</emphasis> -- Signal d'entrée.
+    </para>
+
+    <para>
+      <emphasis>ktime</emphasis> -- Durée du glissando en secondes.
+    </para>
+
+    <para>
+      <emphasis>ktrig</emphasis> -- Signal de déclenchement.
+    </para>
+
+    <para>
+      <emphasis>tlineto</emphasis> est semblable à
+      <link linkend="lineto"><citetitle>lineto</citetitle></link> mais on peut
+      l'appliquer à n'importe quelle sorte de signal (pas seulement des signaux
+      en escalier) sans produire de discontinuités. La dernière valeur de chaque
+      segment est échantillonnée et bloquée à partir du signal d'entrée chaque
+      fois que la valeur de <emphasis>ktrig</emphasis> est différente de
+      zéro. Normalement le signal <emphasis>ktrig</emphasis> est constitué d'une
+      suite de zéros (voir l'opcode
+      <link linkend="trigger"><citetitle>trigger</citetitle></link>).
+    </para>
+
+    <para>
+      L'effet de glissando est assez différent de celui de
+      <link linkend="port"><citetitle>port</citetitle></link>. En effet, ici,
+      les lignes sont droites. De plus, le contexte d'utilisation est
+      différent.
+    </para>
+  </refsect1>
+
+   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode tlineto. Il utilise le fichier
+      <ulink url="examples/tlineto.csd"><citetitle>tlineto.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode tlineto.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/tlineto.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="lineto"><citetitle>lineto</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.13</para>
+  </refsect1>
+</refentry>

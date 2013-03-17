@@ -1,0 +1,50 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="rigoto">
+<indexterm id="IndexRigoto"><primary>rigoto</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Initialization and Reinitialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>rigoto</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>rigoto</refname>
+    <refpurpose>
+      Transfère le contrôle durant une phase de réinitialisation.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Semblable à <link linkend="igoto"><citetitle>igoto</citetitle></link>, mais 
+      n'agit que dans une phase de
+      <link linkend="reinit"><citetitle>réinitialisation (reinit)</citetitle></link>
+      (c'est-à-dire qu'il n'opère pas pendant l'initialisation standard). Cette
+      instruction est utile pour ignorer les unités qui ne doivent pas être
+      réinitialisées.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>rigoto</command> label</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="cigoto"><citetitle>cigoto</citetitle></link>,
+      <link linkend="igoto"><citetitle>igoto</citetitle></link>,
+      <link linkend="reinit"><citetitle>reinit</citetitle></link>,
+      <link linkend="rireturn"><citetitle>rireturn</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,103 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="expsegba">
+<indexterm id="IndexExpsegba"><primary>expsegba</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Linear and Exponential Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>expsegba</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>expsegba</refname>
+    <refpurpose>
+      Un générateur de segments d'exponentielle opérant au taux-a avec des
+      temps absolus.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Un générateur de segments d'exponentielle opérant au taux-a. Cette unité
+      est presque identique à
+      <link linkend="expsegb"><citetitle>expsegb</citetitle></link>, mais plus
+      précises lorsque sont définis des segments de très courte durée (par exemple
+      dans une phase d'attaque percussive) au taux audio.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>expsegba</command> ia, itim1, ib [, itim2] [, ic] [...]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ia</emphasis> -- valeur initiale. Zéro est interdit.
+    </para>
+
+    <para>
+      <emphasis>ib</emphasis>, <emphasis>ic</emphasis>, etc. -- valeurs après
+      <emphasis>itim1</emphasis> secondes, etc. Doivent être différentes de zéro
+      et de même signe que <emphasis>ia</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>itim1</emphasis> -- date en secondes de la fin du premier segment.
+    </para>
+
+    <para>
+      <emphasis>itim2</emphasis>, <emphasis>itim3</emphasis>, etc. --
+      date en secondes de la fin des segments suivants.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Cet unité génère des signaux audio dont les valeurs peuvent passer par deux ou plus points
+      spécifiés. La dernière valeur <emphasis>tim</emphasis> peut égaler ou non la durée
+      d'exécution de l'instrument : avec une exécution plus courte, la courbe sera tronquée alors
+      qu'avec une exécution plus longue, la dernière valeur sera répétée jusqu'à la fin de la note.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode expsegba. Il utilise le fichier
+      <ulink url="examples/expsegba.csd"><citetitle>expsegba.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode expsegba.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/expsegba.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="expsegb"><citetitle>expsegb</citetitle></link>, 
+      <link linkend="expsegr"><citetitle>expsegr</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namejohn;</para>
+    <para>Juin 2011</para>
+    <para>Nouveau dans Csound 5.14</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,168 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.10
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLpack">
+<indexterm id="IndexFLpack"><primary>FLpack</primary></indexterm>
+  <refentryinfo><title>FLTK:Containers</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLpack</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLpack</refname>
+    <refpurpose>
+      Permet de concentrer et d'aligner des widgets FLTK.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>FLpack</emphasis> permet de concentrer et d'aligner des widgets.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>FLpack</command> iwidth, iheight, ix, iy, itype, ispace, iborder</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iwidth</emphasis> -- largeur du widget.
+    </para>
+
+    <para>
+      <emphasis>iheight</emphasis> -- hauteur du widget.
+    </para>
+
+    <para>
+      <emphasis>ix</emphasis> -- position horizontale du coin supérieur gauche
+      du conteneur, relative au coin supérieur gauche de la fenêtre correspondante
+      (exprimée en pixels).
+    </para>
+
+    <para>
+      <emphasis>iy</emphasis> -- position verticale du coin supérieur gauche
+      du conteneur, relative au coin supérieur gauche de la fenêtre correspondante
+      (exprimée en pixels).
+    </para>
+
+    <para>
+      <emphasis>itype</emphasis> -- un nombre entier modifiant l'apparence du
+      widget cible.
+    </para>
+
+    <para>
+      L'argument <emphasis>itype</emphasis> exprime le type de concentration :
+      <itemizedlist>
+        <listitem><para>0 - verticale</para></listitem>
+        <listitem><para>1 - horizontale</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>ispace</emphasis> -- fixe l'espace entre les widgets.
+    </para>
+
+    <para>
+      <emphasis>iborder</emphasis> -- type de la bordure du conteneur. Il est
+      exprimé par un nombre entier choisi parmi les suivants :
+
+      <itemizedlist>
+        <listitem><para>0 - pas de bordure</para></listitem>
+        <listitem><para>1 - bordure de boîte en creux</para></listitem>
+        <listitem><para>2 - bordure de boîte saillante</para></listitem>
+        <listitem><para>3 - bordure gravée</para></listitem>
+        <listitem><para>4 - bordure en relief</para></listitem>
+        <listitem><para>5 - bordure ligne noire</para></listitem>
+        <listitem><para>6 - mince bordure en creux</para></listitem>
+        <listitem><para>7 - mince bordure saillante</para></listitem>
+      </itemizedlist>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>FLpack</emphasis> permet de concentrer et d'aligner des widgets.
+    </para>
+
+    <para>
+      Les conteneurs sont utiles pour formater l'apparence graphiques des widgets.
+      Le conteneur le plus important est
+      <link linkend="FLpanel"><citetitle>FLpanel</citetitle></link>, qui crée une
+      fenêtre. Il peut être rempli avec d'autres conteneurs et/ou des valuateurs
+      ou d'autres sortes de widgets.
+    </para>
+
+    <para>
+      Il n'y a pas d'arguments de taux-k dans les conteneurs.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      L'exemple suivant :
+      <informalexample>
+        <programlisting>
+        <emphasis role="opc">FLpanel</emphasis> "Panel1",450,300,100,100
+        <emphasis role="opc">FLpack</emphasis>  400,300, 10,40,0,15,3
+gk1, ihs1        <emphasis role="opc">FLslider</emphasis>        "FLslider 1", 500, 1000, 2 ,1, -1, 300,15, 20,50
+gk2, ihs2        <emphasis role="opc">FLslider</emphasis>        "FLslider 2", 300, 5000, 2 ,3, -1, 300,15, 20,100
+gk3, ihs3        <emphasis role="opc">FLslider</emphasis>        "FLslider 3", 350, 1000, 2 ,5, -1, 300,15, 20,150
+gk4, ihs4        <emphasis role="opc">FLslider</emphasis>        "FLslider 4", 250, 5000, 1 ,11, -1, 300,30, 20,200
+gk5, ihs5        <emphasis role="opc">FLslider</emphasis>        "FLslider 5", 220, 8000, 2 ,1, -1, 300,15, 20,250
+gk6, ihs6        <emphasis role="opc">FLslider</emphasis>        "FLslider 6", 1, 5000, 1 ,13, -1, 300,15, 20,300
+gk7, ihs7        <emphasis role="opc">FLslider</emphasis>        "FLslider 7", 870, 5000, 1 ,15, -1, 300,30, 20,350
+        <emphasis role="opc">FLpackEnd</emphasis>
+        <emphasis role="opc">FLpanelEnd</emphasis></programlisting>
+      </informalexample>
+
+      ...produira ce résultat, lorsque l'on changera la taille de la fenêtre :
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/flpack.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>FLpack.</phrase>
+        </textobject>
+
+        <caption>
+          <para>FLpack.</para>
+        </caption>
+      </mediaobject>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="FLgroup"><citetitle>FLgroup</citetitle></link>, 
+      <link linkend="FLgroupEnd"><citetitle>FLgroupEnd</citetitle></link>, 
+      <link linkend="FLpackEnd"><citetitle>FLpackEnd</citetitle></link>, 
+      <link linkend="FLpanel"><citetitle>FLpanel</citetitle></link>, 
+      <link linkend="FLpanelEnd"><citetitle>FLpanelEnd</citetitle></link>, 
+      <link linkend="FLscroll"><citetitle>FLscroll</citetitle></link>, 
+      <link linkend="FLscrollEnd"><citetitle>FLscrollEnd</citetitle></link>, 
+      <link linkend="FLtabs"><citetitle>FLtabs</citetitle></link>, 
+      <link linkend="FLtabsEnd"><citetitle>FLtabsEnd</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.22</para>
+  </refsect1>
+</refentry>

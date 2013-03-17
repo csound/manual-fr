@@ -1,0 +1,97 @@
+<!--translated=yes
+authors=Yannick St-Onge
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="zkmod">
+<indexterm id="IndexZkmod"><primary>zkmod</primary></indexterm>
+  <refentryinfo><title>Zak Patch System</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>zkmod</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>zkmod</refname>
+    <refpurpose>
+      Facilite la modulation d'un signal par un autre.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Facilite la modulation d'un signal par un autre.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kres <command>zkmod</command> ksig, kzkmod</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ksig</emphasis> -- Le signal d'entrée
+    </para>
+
+    <para>
+      <emphasis>kzkmod</emphasis> -- contrôle quelle variable zk est utilisée pour la modulation.
+      Une valeur positive signifie une modulation additive, une valeur négative une modulation
+      multiplicative. La valeur 0 ne fait aucun changement à <emphasis>ksig</emphasis>.
+      <emphasis>kzkmod</emphasis> peut être de taux-i ou de taux-k.
+    </para>
+
+    <para>
+      <emphasis>zkmod</emphasis> Facilite la modulation d'un signal par un autre, le signal de
+      modulation provenant d'une variable zk. La modulation spécifiée peut être additive ou
+      multiplicative.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode zkmod. Il utlise le fichier
+      <ulink url="examples/zkmod.csd"><citetitle>zkmod.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode zkmod.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/zkmod.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="zamod"><citetitle>zamod</citetitle></link>,
+      <link linkend="zkcl"><citetitle>zkcl</citetitle></link>,
+      <link linkend="zkr"><citetitle>zkr</citetitle></link>,
+      <link linkend="zkwm"><citetitle>zkwm</citetitle></link>,
+      <link linkend="zkw"><citetitle>zkw</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Robin Whittle</member>
+        <member>Australie</member>
+        <member>Mai 1997</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 3.45</para>
+    <para>Exemple écrit par &namekevin;.</para>
+  </refsect1>
+</refentry>

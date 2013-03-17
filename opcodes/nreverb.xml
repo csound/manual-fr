@@ -1,0 +1,138 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.14
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="nreverb">
+<indexterm id="IndexNreverb"><primary>nreverb</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Reverberation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>nreverb</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>nreverb</refname>
+    <refpurpose>
+      Une réverbération constituée de 6 filtres en peigne passe-bas parallèles.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Réverbération constituée de 6 filtres en peigne passe-bas parallèles suivis
+      de 5 filtres passe-tout en série. <emphasis>nreverb</emphasis> remplace
+      <link linkend="reverb2"><citetitle>reverb2</citetitle></link> (version 3.48)
+      et ainsi les deux opcodes sont identiques.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>nreverb</command> asig, ktime, khdif [, iskip] [,inumCombs] [, ifnCombs] \
+      [, inumAlpas] [, ifnAlpas]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iskip</emphasis> (facultatif, 0 par défaut) -- L'initialisation
+      est ignorée si ce paramètre est présent et différent de zéro.
+    </para>
+
+    <para>
+      <emphasis>inumCombs</emphasis> (facultatif) -- nombre de constantes de
+      filtre dans le filtre en peigne. S'il est omis, les valeurs par défaut sont
+      les constantes de <emphasis>nreverb</emphasis>. Nouveau dans la version
+      4.09 de Csound.
+    </para>
+
+    <para>
+      <emphasis>ifnCombs</emphasis> - table de fonction contenant <emphasis>inumCombs</emphasis>
+      valeurs temporelles du filtre en peigne, suivies du même nombre de valeurs
+      de gain. La table ne doit pas être normalisée (utiliser un numéro de fgen
+      négatif). Les valeurs temporelles positives sont en secondes. Les valeurs
+      temporelles sont converties en interne en nombre d'échantillons, puis fixées
+      au nombre premier supérieur le plus proche. Si le temps est négatif, il est
+      directement interprété en trames d'échantillons, et aucun traitement n'est
+      effectué (à part le changement de signe). Nouveau dans la version 4.09 de
+      Csound.
+    </para>
+
+    <para>
+    <emphasis>inumAlpas</emphasis>, <emphasis>ifnAlpas</emphasis> (facultatif) -- 
+    comme <emphasis>inumCombs/ifnCombs</emphasis>, pour le filtre passe-tout.
+    Nouveau dans Csound 4.09.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Le signal d'entrée <emphasis>asig</emphasis> est réverbéré pendant
+      <emphasis>ktime</emphasis> secondes. Le paramètre <emphasis>khdif</emphasis>
+      contrôle la diffusion des hautes fréquence. Les valeurs de
+      <emphasis>khdif</emphasis> doivent être comprises entre 0 et 1. Si
+      <emphasis>khdif</emphasis> vaut 0 toutes les fréquences décroissent à la
+      même vitesse. Si <emphasis>khdif</emphasis> vaut 1, les hautes fréquences
+      décroissent plus vite que les basses fréquences. Si <emphasis>ktime</emphasis>
+      reçoit par inadvertance un nombre non positif, il est automatiquement
+      réinitialisé à 0.01. (Nouveau dans la version 4.07 de Csound.)
+    </para>
+
+    <para>
+      A partir de la version 4.09 de Csound, <emphasis>nreverb</emphasis> peut
+      lire n'importe quel nombre de filtres en peigne et passe-tout depuis une
+      ftable.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple simple de l'opdoce nreverb. Il utilise le fichier
+      <ulink url="examples/nreverb.csd"><citetitle>nreverb.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple simple de l'opdoce nreverb.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+         <xi:include href="examples-xml/nreverb.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+    <para>
+      Voici un exemple de l'opcode nreverb utilisant une ftable pour les constantes
+      de filtre. Il utilise les fichiers
+      <ulink url="examples/nreverb_ftable.csd"><citetitle>nreverb_ftable.csd</citetitle></ulink>
+      et <ulink url="examples/beats.wav"><citetitle>beats.wav</citetitle></ulink>.
+      <example>
+        <title>Un exemple de l'opcode nreverb utilisant une ftable pour les constantes de filtre.</title>
+          <xi:include href="examples-xml/nreverb_ftable.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameparis; (<emphasis>reverb2</emphasis>)</member>
+        <member>MIT, Cambridge</member>
+        <member>1995</member>
+      </simplelist>
+    </para>
+
+    <para>
+      <simplelist>
+        <member>Auteur : Richard Karpen (<emphasis>nreverb</emphasis>)</member>
+        <member>Seattle, Wash</member>
+        <member>1998</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

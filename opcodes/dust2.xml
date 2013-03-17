@@ -1,0 +1,83 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="dust2">
+  <indexterm id="IndexDust2"><primary>dust2</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Random (Noise) Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>dust2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>dust2</refname>
+    <refpurpose>
+      Impulsions aléatoires.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère des impulsions aléatoires entre 0 et 1.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>dust2</command> kamp, kdensity</synopsis>
+    <synopsis>kres <command>dust2</command> kamp, kdensity</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamp</emphasis> -- amplitude.
+    </para>
+
+    <para>
+      <emphasis>kdensity</emphasis> -- nombre moyen d'impulsions par seconde.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode dust2. Il utilise le fichier
+      <ulink url="examples/dust2.csd"><citetitle>dust2.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode dust2.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/dust2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="dust"><citetitle>dust</citetitle></link>
+      <link linkend="gausstrig"><citetitle>gausstrig</citetitle></link>
+      <link linkend="mpulse"><citetitle>mpulse</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Basé sur le générateur unitaire Dust2 de James McCartney (SuperCollider)</member>
+        <member>Auteur : &nametito;</member>
+        <member>Janvier 2012</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.16 de Csound.</para>
+  </refsect1>
+</refentry>

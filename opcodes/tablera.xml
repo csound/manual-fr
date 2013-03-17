@@ -1,0 +1,326 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.10
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="tablera">
+<indexterm id="IndexTablera"><primary>tablera</primary></indexterm>
+  <refentryinfo><title>Table Control:Read/Write Opreations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tablera</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>tablera</refname>
+    <refpurpose>
+      Lecture séquentielle de tables.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode lit séquentiellement des tables vers une variable de taux-a.
+      Il faut bien réfléchir à la manière de l'utiliser. Il a au moins deux
+      applications principales, et assez différentes, qui sont discutées
+      ci-dessous.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>tablera</command> kfn, kstart, koff</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ares</emphasis> -- destination au taux-a de la lecture de
+      <emphasis>ksmps</emphasis> valeurs depuis une table.
+    </para>
+
+    <para>
+      <emphasis>kfn</emphasis> -- numéro au taux-i ou au taux-k de la table à
+      lire.
+    </para>
+
+    <para>
+      <emphasis>kstart</emphasis> -- où lire dans la table.
+    </para>
+
+    <para>
+      <emphasis>koff</emphasis> -- décalage au taux-i ou au taux-k dans la
+      table. Intervalle illimité - voir les explications à la fin de la section.
+    </para>
+ 
+    <para>
+      Dans une application, <emphasis>tablera</emphasis> est apparié avec un
+      <link linkend="tablewa"><citetitle>tablewa</citetitle></link>, ou plusieurs
+      opcodes <emphasis>tablera</emphasis> sont placés avant un
+      <link linkend="tablewa"><citetitle>tablewa</citetitle></link> -- tous
+      partageant la même variable <emphasis>kstart</emphasis>.
+    </para>
+
+    <para>
+      Ceux-ci lisent depuis ou écrivent dans des positions adjacentes d'une table
+      au taux audio, avec <emphasis>ksmps</emphasis> flottants écrits et lu à
+      chaque cycle.
+    </para>
+
+    <para>
+      <emphasis>tablera</emphasis> commence à lire à la position
+      <emphasis>kstart</emphasis>. <emphasis>tablewa</emphasis> commence à
+      écrire à la position <emphasis>kstart</emphasis>, et continue à écrire à
+      <emphasis>kstart</emphasis> le numéro de la position étant
+      incrémenté d'une unité. (Noter que pour
+      <link linkend="tablewa"><citetitle>tablewa</citetitle></link>,
+      <emphasis>kstart</emphasis> est à la fois une variable d'entrée et de
+      sortie). Si l'index d'écriture atteint la fin de la table, aucune écriture
+      ultérieure n'a lieu et zéro est écrit dans <emphasis>kstart</emphasis>.
+    </para>
+
+    <para>
+      Par exemple, si la longueur de la table est 16 (positions 0 à 15), et
+      que <emphasis>ksmps</emphasis> vaut 5, les étapes suivantes se produiront
+      lors d'appels répétés de l'opcode
+      <link linkend="tablewa"><citetitle>tablewa</citetitle></link>, en
+      supposant que <emphasis>kstart</emphasis> est parti de 0.
+    </para>
+
+    <informaltable frame="all">
+      <tgroup cols="4" colsep="1" rowsep="1">
+        <thead>
+          <row>
+            <entry>Numéro de l'appel</entry>
+            <entry>kstart initial</entry>
+            <entry>kstart final</entry>
+            <entry>Positions écrites</entry>
+          </row>
+        </thead>
+ 
+        <tbody>
+          <row>
+            <entry>1</entry>
+            <entry>0</entry>
+            <entry>5</entry>
+            <entry>0 1 2 3 4</entry>
+          </row>
+
+          <row>
+            <entry>2</entry>
+            <entry>5</entry>
+            <entry>10</entry>
+            <entry>5 6 7 8 9</entry>
+          </row>
+
+          <row>
+            <entry>3</entry>
+            <entry>10</entry>
+            <entry>15</entry>
+            <entry>10 11 12 13 14</entry>
+          </row>
+
+          <row>
+            <entry>4</entry>
+            <entry>15</entry>
+            <entry>0</entry>
+            <entry>15</entry>
+          </row>
+       </tbody>
+      </tgroup>
+    </informaltable>
+
+    <para>
+      Ceci facilite le traitement des données de table avec du code code
+      d'orchestre standard au taux-a entre les opcodes
+      <emphasis>tablera</emphasis> et
+      <link linkend="tablewa"><citetitle>tablewa</citetitle></link>. Il est
+      ainsi permis d'utiliser tous les opérateurs de taux-k de Csound (avec
+      précaution) sur des variables de taux-a, ce qui ne serait autrement
+      possible qu'avec <emphasis>ksmps</emphasis> = 1,
+      <emphasis>downsamp</emphasis> et <emphasis>upsamp</emphasis>.
+    </para>
+
+    <caution>
+      <title>Plusieurs précautions</title>
+      <para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Le code de taux-k dans la boucle de traitement est réellement
+              exécuté au taux-a, si bien que les fonctions dépendant du temps
+              comme <emphasis>port</emphasis> et <emphasis>oscil</emphasis>
+              travaillent plus vite que d'habitude - leur code s'attendant à
+              fonctionner au taux-k.
+            </para>
+          </listitem>
+
+          <listitem>
+            <para>
+              Le système produira des effets indésirables si <emphasis>ksmps</emphasis>
+              n'est pas compris dans la longueur de la table. Par exemple, une
+              table de longueur 16 supportera de 1 à 16 échantillons, et donc
+              le système fonctionnera avec <emphasis>ksmps</emphasis> compris
+              entre 1 et 16.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </caution>
+
+    <para>
+      Ces deux opcodes génèrent une erreur et désactivent l'instrument si une
+      table de longueur &lt; <emphasis>ksmps</emphasis> est choisie. Il y aura
+      également une erreur si <emphasis>kstart</emphasis> est inférieur à zéro
+      ou supérieur à la position la plus haute dans la table - si
+      <emphasis>kstart</emphasis> = longueur de la table.
+    </para>
+
+    <para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <emphasis>kstart</emphasis> est supposé contenir des valeurs entières
+            comprises entre 0 et (longueur de la table - 1). Des valeurs
+            fractionnaires entre celles-ci n'affecteront pas l'opération mais
+            ne produiront rien de spécial.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            Ces opcodes sont sans interpolation et les paramètres
+            <emphasis>kstart</emphasis> et <emphasis>koff</emphasis> sont
+            toujours dans l'intervalle 0 à (longueur de la table - 1) - pas
+            0 à 1 comme c'est possible dans d'autres opcodes de lecture/écriture
+            de table. <emphasis>koff</emphasis> peut se trouver en dehors de cet
+            intervalle mais il y est ramené par le ET final.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            Ces opcodes sont en permanence en mode cyclique. Quand
+            <emphasis>koff</emphasis> vaut 0, aucun repliement n'est nécessaire,
+            car l'indice <emphasis>kstart</emphasis>++ se trouve toujours dans
+            l'intervalle normal de la table. <emphasis>koff</emphasis> différent
+            de 0 peut conduire à un repliement.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            Le décalage n'affecte pas le nombre de cycles de lecture/écriture
+            exécutés, ou la valeur écrite dans <emphasis>kstart</emphasis> par
+            <link linkend="tablewa"><citetitle>tablewa</citetitle></link>.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            Ces opcodes ne peuvent pas lire ou écrire le point de garde. Utiliser
+            <link linkend="tablegpw"><citetitle>tablegpw</citetitle></link> pour
+            écrire le point de garde après les manipulations effectuées avec
+            <link linkend="tablewa"><citetitle>tablewa</citetitle></link>.
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+     <informalexample>
+        <programlisting>
+kstart   <emphasis role="op">=</emphasis>       0         
+                           
+<emphasis role="olabel">lab1:</emphasis>
+  atemp  <emphasis role="opc">tablera</emphasis> ktabsource, kstart, 0  <emphasis role="comment">; Lit 5 valeurs de la table dans une</emphasis>
+         <emphasis role="comment">; variable de taux-a.</emphasis> 
+                           
+  atemp  <emphasis role="op">=</emphasis>       <emphasis role="opc">log</emphasis>(atemp)  <emphasis role="comment">; Traite les valeurs en utilisant</emphasis>
+         <emphasis role="comment">; du code de taux-a.</emphasis>    
+
+  kstart <emphasis role="opc">tablewa</emphasis> ktabdest, atemp, 0   <emphasis role="comment">; Ecriture dans la table</emphasis>
+         
+<emphasis role="octrl">if</emphasis> ktemp  0 <emphasis role="octrl">goto</emphasis> <emphasis role="olabel">lab1</emphasis>      <emphasis role="comment">; Boucle jusqu'à ce que toute les positions</emphasis>
+         <emphasis role="comment">; de la table aient été traitées.</emphasis></programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      L'exemple ci-dessus montre une boucle de traitement qui s'exécute à chaque
+      cycle-k, lisant chaque position dans la table <emphasis>ktabsource</emphasis>,
+      et écrivant le logarithme de ces valeurs dans les mêmes positions de la
+      table <emphasis>ktabdest</emphasis>.
+    </para>
+
+    <para>
+      Cela permet de manipuler en une fois, avec du code de taux-a, des tables
+      entières, des parties de tables (avec décalages et différentes boucles de
+      contrôle) et des données provenant de plusieurs tables, et de les écrire
+      vers une autre (ou la même) table. C'est un peu compliqué mais c'est plus
+      rapide que de le faire avec du code de lecture et d'écriture de taux-k.
+    </para>
+
+    <para>
+      Une autre application :
+    </para>
+
+    <para>
+     <informalexample>
+        <programlisting>
+kzero <emphasis role="op">=</emphasis> 0                    
+kloop <emphasis role="op">=</emphasis> 0                    
+                                 
+kzero <emphasis role="opc">tablewa</emphasis> 23, asignal, 0  <emphasis role="comment">; écrit ksmps échantillons de taux-a</emphasis>
+       <emphasis role="comment">; dans les positions 0 à (ksmps -1) de la table 23.</emphasis>
+                                
+<emphasis role="olabel">lab1:</emphasis> ktemp <emphasis role="opc">table</emphasis> kloop, 23  <emphasis role="comment">; Commence une boucle de ksmps itérations,</emphasis>
+       <emphasis role="comment">; dans laquelle chaque passage traite une des</emphasis>
+ [ Du code pour manipuler ]  <emphasis role="comment">; valeurs de la table 23 avec du code de l'orchestre</emphasis>
+ [ la valeur de ktemp. ]  <emphasis role="comment">; de taux-k.</emphasis>
+                                 
+ <emphasis role="opc">tablew</emphasis> ktemp, kloop, 23  <emphasis role="comment">; Ecrit la valeur traitée dans la table.</emphasis>
+                                
+kloop <emphasis role="op">=</emphasis> kloop <emphasis role="op">+</emphasis> 1      <emphasis role="comment">; Incrémente kloop, qui est à la fois</emphasis>
+       <emphasis role="comment">; le pointeur dans la table et le compteur de</emphasis>
+<emphasis role="octrl">if</emphasis> kloop <emphasis role="op">&lt;</emphasis> ksmps <emphasis role="octrl">goto</emphasis> <emphasis role="olabel">lab1</emphasis>  <emphasis role="comment">; la boucle. Continue la boucle jusqu'à ce que</emphasis>
+       <emphasis role="comment">; toutes les valeurs dans la table aient été traitées.</emphasis>
+                                
+asignal   <emphasis role="opc">tablera</emphasis> 23, 0, 0  <emphasis role="comment">; Copie le contenu de la table</emphasis>
+       <emphasis role="comment">; dans une variable de taux-a.</emphasis></programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      <emphasis>koff</emphasis> -- C'est un décalage qui est ajouté à la somme
+      de <emphasis>kstart</emphasis> et de l'indice interne variable qui
+      parcourt la table. Le résultat subit ensuite un ET logique avec le masque
+      de longueur (000 0111 pour une table de longueur 8 - ou 9 avec un point de
+      garde) et l'indice résultant est utilisé pour lire ou écrire dans la table.
+      <emphasis>koff</emphasis> peut avoir n'importe quelle valeur. Il est
+      converti en entier long au moyen de la fonction ANSI <emphasis>floor</emphasis>() ;
+      ainsi -4.3 devient -5. C'est le comportement désiré pour des décalages
+      variant de part et d'autre de zéro.
+    </para>
+
+    <para>
+      Idéalement ce devrait être une variable facultative, valant 0 par défaut.
+      Cependant, avec le code de lecture de l'orchestre Csound existant, de tels
+      paramètres par défaut ne peuvent être que de taux-i. Nous voulons ici un
+      paramètre de taux-k et donc, nous ne pouvons pas avoir de valeur par défaut.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="tablewa"><citetitle>tablewa</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

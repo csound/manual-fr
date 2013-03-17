@@ -1,0 +1,153 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.17
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="instr">
+<indexterm id="IndexInstr"><primary>instr</primary></indexterm>
+  <refentryinfo><title>Orchestra Syntax:Block Statements</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>instr</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>instr</refname>
+    <refpurpose>
+      Commence un bloc d'instrument.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Commence un bloc d'instrument.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>instr</command> i, j, ...</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      Commence un bloc d'instrument, définissant les instruments <emphasis>i, j</emphasis>, ...
+    </para>
+
+    <para>
+      <emphasis>i, j</emphasis>, ... doivent être des nombres, pas des expressions. Tout entier positif
+      convient, dans n'importe quel ordre, mais on préfère éviter les nombres excessivement grands.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        Il peut y avoir n'importe quel nombre de blocs d'instrument dans un orchestre.
+      </para>
+    </note>
+
+     <para>
+       On peut définir les instruments dans n'importe quel ordre (mais ils seront toujours initialisés
+       et exécutés par ordre de numéro d'instrument ascendant, à l'exception des notes provoquées par des
+       évènements en temps réel, qui sont initialisées dans l'ordre où elles sont reçues mais toujours
+       exécutées par ordre de numéro d'instrument ascendant). Les blocs d'instruments ne peuvent pas être
+       imbriqués (un bloc ne peut pas en contenir un autre).
+     </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <refsect2 id="InstrSubinstrument">
+      <title>Appeler un Instrument depuis un Instrument</title>
+      <warning><para>
+        Ce comportement n'est pas complètement disponible dans Csound 5. Dans
+        Csound 5, il faut utiliser l'opcode
+        <link linkend="subinstr"><citetitle>subinstr</citetitle></link>.
+      </para></warning>
+      <para>
+        On peut appeler un instrument depuis un instrument comme si c'était un opcode soit au moyen de
+        l'opcode <link linkend="subinstr"><citetitle>subinstr</citetitle></link> soit en spécifiant un
+        instrument avec un nom textuel :
+
+        <informalexample>
+          <programlisting>
+<emphasis role="oblock">instr</emphasis> <command>MonOscil</command>
+...
+<emphasis role="oblock">endin</emphasis></programlisting>
+        </informalexample>
+      </para>
+
+      <para>
+        Par défaut, tous les paramètres de sortie correspondent aux sorties de l'instrument exprimées par
+        des opcodes de <link linkend="SigioOutput"><citetitle>sortie de signal</citetitle></link>.
+        Tous les paramètres d'entrée sont affectés aux p-champs de l'instrument appelé en commençant par
+        le quatrième, p4. Les valeurs des deuxième et troisième p-champs de l'instrument appelé, p2 et p3,
+        sont automatiquement fixés à la même valeur que ceux de l'instrument appelant.
+      </para>
+
+      <para>
+        Un instrument nommé doit être défini avant les instrument qui l'appellent.
+      </para>
+
+      <note>
+        <title>Conseils</title>
+        <para>
+          Si vous utiliser l'opcode <link linkend="outc"><citetitle>outc</citetitle></link>, vous pouvez
+          créer un instrument qui pourra être compilé et fontionner dans des orchestres avec n'importe quel
+          nombre de canaux plus grand au égal ou nombre de canaux de sortie de cet instrument.
+        </para>
+
+        <para>
+          Il est intéressant d'utiliser la fonctionnalité
+          <link linkend="include"><citetitle>&num;include</citetitle></link> avec les instruments nommés.
+          Vous pouvez définir vos instruments nommés dans des fichiers séparés, et utiliser &num;include lorsque
+          vous en avez besoin.
+        </para>
+      </note>
+    </refsect2>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode <emphasis>instr</emphasis>. Il utilise le fichier
+      <ulink url="examples/instr.csd"><citetitle>instr.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode <emphasis>instr</emphasis>.</title>
+
+        <para>Voir les sections
+          <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+          <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+          plus d'information sur l'utilisation des options de la ligne de commande.</para>
+<xi:include href="examples-xml/instr.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="endin"><citetitle>endin</citetitle></link>,
+      <link linkend="in"><citetitle>in</citetitle></link>,
+      <link linkend="out"><citetitle>out</citetitle></link>,
+      <link linkend="opcode"><citetitle>opcode</citetitle></link>,
+      <link linkend="endop"><citetitle>endop</citetitle></link>,
+      <link linkend="setksmps"><citetitle>setksmps</citetitle></link>,
+      <link linkend="xin"><citetitle>xin</citetitle></link>,
+      <link linkend="xout"><citetitle>xout</citetitle></link>,
+      <link linkend="subinstr"><citetitle>subinstr</citetitle></link>,
+      <link linkend="subinstrinit"><citetitle>subinstrinit</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Exemple écrit par &namekevin;.</para>
+  </refsect1>
+</refentry>

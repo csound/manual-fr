@@ -1,0 +1,71 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="delayw">
+<indexterm id="IndexDelayw"><primary>delayw</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Delay</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>delayw</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>delayw</refname>
+    <refpurpose>
+      Ecrit le signal audio dans une ligne à retard numérique.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ecrit le signal audio dans une ligne à retard numérique.
+   </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>delayw</command> asig</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>delayw</emphasis> écrit <emphasis>asig</emphasis> dans l'espace
+      du délai établi par l'unité <link linkend="delayr"><citetitle>delayr</citetitle></link>
+      précédente. Cette paire d'unités permet la formation de boucles de rétroaction
+      modifiées, etc. Cependant, il y a une limite inférieure à <emphasis>idlt</emphasis>,
+      qui doit valoir au moins une période de contrôle (ou 1/<emphasis>kr</emphasis>).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode delayw. Il utilise le fichier
+      <ulink url="examples/delayw.csd"><citetitle>delayw.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode delayw.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/delayw.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="delay"><citetitle>delay</citetitle></link>,
+      <link linkend="delay1"><citetitle>delay1</citetitle></link>,
+      <link linkend="delayr"><citetitle>delayr</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,77 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vstinfo">
+<indexterm id="IndexVstInfo"><primary>vstinfo</primary></indexterm>
+  <refentryinfo><title>Plugin Hosting:VST</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vstinfo</refentrytitle>
+  </refmeta>
+  
+  <refnamediv>
+    <refname>vstinfo</refname>
+    <refpurpose>
+      Affiche les paramètres et les programmes d'un greffon VST.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>vstinfo</command> instance</synopsis>
+  </refsect1>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>vstinfo</emphasis> affiche les paramètres et les programmes
+      d'un greffon VST.
+    </para>
+    <para>
+      Note : l'indicateur <emphasis>verbose</emphasis> dans
+      <emphasis>vstinit</emphasis> donne la même information que
+      <emphasis>vstinfo</emphasis>. <emphasis>vstinfo</emphasis> est utile
+      après le chargement de banques de paramètres ou lorsque le greffon
+      change de paramètres dynamiquement.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Initialisation</title>
+    <para><emphasis>instance</emphasis> - the number which identifies the
+      greffon, to be passed to other vst4cs opcodes.</para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode vstinfo. Il utilise le fichier
+      <ulink url="examples/vst4cs.csd"><citetitle>vst4cs.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode vstinfo.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/vst4cs.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par &nameandres; et &namemichael;</para>
+    <para>
+      Utilise du code de VSTHost par Hermann Seib et de l'objet vst~ par Thomas
+      Grill.
+    </para>
+    <para>
+      VST est une marque déposée de Steinberg Media Technologies GmbH. 
+      Technologie de greffon VST par Steinberg.
+    </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,108 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="fractalnoise">
+  <indexterm id="IndexFractalNoise"><primary>fractalnoise</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Random (Noise) Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>fractalnoise</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>fractalnoise</refname>
+    <refpurpose>
+      Un générateur de bruit fractal.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Un générateur de bruit fractal implémenté comme un bruit blanc filtré par
+      15 filtres du premier ordre en cascade.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>fractalnoise</command> kamp, kbeta</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamp</emphasis> -- amplitude.
+    </para>
+
+    <para>
+      <emphasis>kbeta</emphasis> -- paramètre spectral fonction de la dimension
+      fractale
+      <itemizedlist>
+        <listitem><para>0 - blanc</para></listitem>
+        <listitem><para>1 - rose</para></listitem>
+        <listitem><para>2 - brun</para></listitem>
+      </itemizedlist>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode fractalnoise. Il utilise le fichier
+      <ulink url="examples/fractalnoise.csd"><citetitle>fractalnoise.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode fractalnoise.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/fractalnoise.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Références</title>
+    <para>
+      <orderedlist>
+        <listitem>
+          <para>
+            R. Saletti. A comparison between two methods to generate
+            1/(f^gamma) noise. In Proc. IEEE, volume 74,
+            pp. 1595-1596, Novembre 1986.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            G. Corsini and R. Saletti. A 1/(f^gamma) power spectrum
+            noise sequence generator. IEEE Trans. on Instrumentation
+            and Measurement, 37(4):615-619, Décembre 1988.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            The Sounding Object, edited by Davide Rocchesso and
+            Federico Fontana, Edizioni di Mondo Estremo. Chapter 8 by
+            Federico Avanzini, pp. 154-157.
+          </para>
+        </listitem>
+      </orderedlist>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nametito;</member>
+        <member>Janvier 2012</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.16 de Csound.</para>
+  </refsect1>
+</refentry>

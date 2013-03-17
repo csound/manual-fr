@@ -1,0 +1,236 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="phaser2">
+<indexterm id="IndexPhaser2"><primary>phaser2</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Special Effects</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>phaser2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>phaser2</refname>
+    <refpurpose>
+      Filtres passe-tout du second ordre arrangés en série.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Une implémentation de <emphasis>iord</emphasis> filtres passe-tout du
+      second ordre en série.
+   </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>phaser2</command> asig, kfreq, kq, kord, kmode, ksep, kfeedback</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kfreq</emphasis> -- fréquence (en Hz) du(des) filtre(s). C'est
+      la fréquence centrale de l'encoche du premier filtre passe-tout de la
+      série. Cette fréquence est utilisée comme fréquence de base à partir de
+      laquelle les fréquences des autres encoches sont dérivées.
+    </para>
+
+    <para>
+      <emphasis>kq</emphasis> -- Q de chaque encoche. Des valeurs élevées de Q
+      donnent des encoches étroites. Un Q compris entre 0.5 et 1 donne l'effet
+      de &quot;phasing&quot; le plus fort, mais des valeurs de Q plus grandes
+      peuvent être utilisées pour des effets spéciaux.
+    </para>
+
+    <para>
+      <emphasis>kord</emphasis> -- le nombre d'étages passe-tout en série. Ce sont
+      des filtres du second ordre et il peut y en avoir de 1 à 2499. Avec des
+      ordres plus élevés, le temps de calcul augmente.
+    </para>
+
+    <para>
+      <emphasis>kfeedback</emphasis> -- quantité du signal de sortie qui est
+      réinjectée dans l'entrée de la chaîne passe-tout. Plus la rétroaction
+      est importante et plus il y aura d'encoches proéminentes dans le spectre de
+      la sortie. <emphasis>kfeedback</emphasis> doit être compris entre -1 et
+      +1 pour la stabilité.
+    </para>
+
+    <para>
+      <emphasis>kmode</emphasis> -- utilisé pour le calcul des fréquence des
+      encoches.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        Bien que <emphasis>kord</emphasis> et <emphasis>kmode</emphasis> soient
+        présentés au taux-k, ils ne sont en fait lus qu'à l'initialisation. Ainsi,
+        si l'on utilise des arguments de taux-k, il faut leur affecter une valeur
+        avec <link linkend="init"><citetitle>init</citetitle></link>.
+      </para>
+    </note>
+
+    <para>
+      <emphasis>ksep</emphasis> -- facteur de mise à l'échelle utilisé en conjonction
+      avec <emphasis>imode</emphasis> pour déterminer les fréquences des encoches
+      ajoutées dans le spectre de sortie.
+    </para>
+
+    <para>
+      <emphasis>phaser2</emphasis> implémente <emphasis>iord</emphasis> sections
+      passe-tout du second ordre, connectées en série. L'utilisation de sections
+      passe-tout du second ordre permet un placement précis de la fréquence, de
+      la largeur et de la profondeur des encoches dans le spectre de fréquence.
+      <emphasis>iord</emphasis> est utilisé pour déterminer directement le
+      nombre d'encoches dans le spectre ; par exemple pour
+      <emphasis>iord</emphasis> = 6, il y aura 6 encoches dans le spectre de
+      sortie.
+    </para>
+
+    <para>
+      Il y a deux modes possibles de détermination des fréquences d'encoche.
+      Lorsque <emphasis>imode</emphasis> = 1, les fréquences d'encoche sont
+      déterminées par la fonction suivante :
+      <literallayout>
+fréquence de l'encoche N = kbf + (ksep * kbf * N-1)</literallayout>
+    </para>
+
+    <para>
+      Par exemple, avec <emphasis>imode</emphasis> = 1 et <emphasis>ksep</emphasis> = 1,
+      les encoches seront en relation harmonique avec la fréquence d'encoche
+      déterminée par <emphasis>kfreq</emphasis> (ainsi, s'il y a 8 encoches, la
+      première étant à 100 Hz, les suivantes seront à 200, 300, 400, 500, 600,
+      700 et 800 Hz). C'est utile pour générer un effet de &quot;filtre en peigne&quot;,
+      dont le nombre d'encoches est déterminé par <emphasis>iord</emphasis>.
+      Différentes valeurs de <emphasis>ksep</emphasis> donnent des fréquences
+      d'encoche inharmoniques et d'autres effets spéciaux. <emphasis>ksep</emphasis>
+      peut être balayé pour créer un mouvement d'expension ou de contraction des
+      fréquences d'encoche. Les soufflets d'un accordéon en mouvement donnent
+      une bonne analogie visuelle de l'effet du balayage de <emphasis>ksep</emphasis> -
+      les encoches sont séparées, puis compressées ensemble, lorsque
+      <emphasis>ksep</emphasis> change.
+    </para>
+
+    <para>
+      Losrque <emphasis>imode</emphasis> = 2, les encoches successives sont des
+      puissances du paramètre d'entrée <emphasis>ksep</emphasis> multipliées par
+      la fréquence d'encoche initiale donnée par <emphasis>kfreq</emphasis>. On
+      peut ainsi régler les fréquences d'encoche en octaves ou sur d'autres
+      intervalles musicaux. Par exemple, les lignes suivantes généreront 8
+      encoches dans le spectre de sortie, les encoches étant réparties sur les
+      octaves supérieures de <emphasis>kfreq</emphasis>:
+      <literallayout>
+aphs    <emphasis>phaser2</emphasis>    ain, kfreq, 0.5, 8, 2, 2, 0
+aout    <emphasis>=</emphasis>          ain + aphs</literallayout>
+    </para>
+
+    <para>
+      Lorsque <emphasis>imode</emphasis> = 2, la valeur de <emphasis>ksep</emphasis>
+      doit être supérieure à 0. <emphasis>ksep</emphasis> peut être balayé pour
+      créer une compression et une expension des fréquences d'encoche (avec des
+      effets plus dramatiques que lorsque <emphasis>imode</emphasis> = 1).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode phaser2. Il utilise le fichier
+      <ulink url="examples/phaser2.csd"><citetitle>phaser2.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode phaser2.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/phaser2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Historique Technique</title>
+    <para>
+      On trouve dans Hartmann [1] une description générale des différences entre
+      flanging et phasing. On peut trouver une implémentation ancienne de filtres
+      passe-tout du premier ordre connectés en série dans Beigel [2], dans laquelle
+      la transormation en z bilinéaire est utilisée pour déterminer la fréquence
+      du déphasage de chaque étage. Cronin [3] présente une implémentation
+      similaire pour un réseau déphaseur à quatre étages. Chamberlin [4] et
+      Smith [5] discutent tous deux de l'utilisation de sections passe-tout du
+      deuxième ordre pour un meilleur contrôle de la profondeur, de la largeur
+      et de la fréquence des encoches.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Références</title>
+    <para>
+      <orderedlist>
+        <listitem>
+          <para>
+            Hartmann, W.M. &quot;Flanging and Phasers.&quot; Journal of the Audio Engineering Society, Vol. 26, No. 6, pp. 439-443, Juin 1978. 
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            Beigel, Michael I. &quot;A Digital 'Phase Shifter' for Musical Applications, Using the Bell Labs (Alles-Fischer) Digital Filter Module.&quot; Journal of the Audio Engineering Society, Vol. 27, No. 9, pp. 673-676,Septembre 1979. 
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            Cronin, Dennis. &quot;Examining Audio DSP Algorithms.&quot; Dr. Dobb's Journal, Juillet 1994, p. 78-83.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            Chamberlin, Hal. Musical Applications of Microprocessors. Second edition. Indianapolis, Indiana: Hayden Books, 1985.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            Smith, Julius O. &quot;An Allpass Approach to Digital Phasing and Flanging.&quot; Proceedings of the 1984 ICMC, p. 103-108.
+          </para>
+        </listitem>
+      </orderedlist>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="phaser1"><citetitle>phaser1</citetitle></link>
+      <para>D'autres informations au sujet des phaseurs sur Wikipedia :
+      <ulink url="http://en.wikipedia.org/wiki/Phaser_(effect)">
+      <citetitle>http://en.wikipedia.org/wiki/Phaser_(effect)</citetitle>
+      </ulink></para>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namesean;</member>
+        <member>Seattle, Washington</member>
+        <member>1999</member>
+      </simplelist>
+    </para>
+
+    <para>Novembre 2002. Ajout d'une note sur les paramètres <emphasis>kord</emphasis>
+    et <emphasis>kmode</emphasis> grâce à &namerasmus;.</para>
+    <para>Nouveau dans la version 4.0 de Csound.</para>
+  </refsect1>
+</refentry>

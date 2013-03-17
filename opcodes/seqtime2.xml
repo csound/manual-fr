@@ -1,0 +1,165 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="seqtime2">
+<indexterm id="IndexSeqtime2"><primary>seqtime2</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>seqtime2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>seqtime2</refname>
+    <refpurpose>
+      Génère un signal de déclenchement suivant les valeurs stockées dans une
+      table.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère un signal de déclenchement suivant les valeurs stockées dans une
+      table.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ktrig_out <command>seqtime2</command> ktrig_in, ktime_unit, kstart, kloop, kinitndx, kfn_times</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ktrig_out</emphasis> -- signal de déclenchement en sortie.
+    </para>
+
+    <para>
+      <emphasis>ktime_unit</emphasis> -- unité de mesure du temps, par rapport
+      aux secondes.
+    </para>
+
+    <para>
+      <emphasis>ktrig_in</emphasis> -- signal de déclenchement en entrée.
+    </para>
+
+    <para>
+      <emphasis>kstart</emphasis> -- indice du début de la section en boucle.
+    </para>
+
+    <para>
+      <emphasis>kloop</emphasis> -- indice de la fin de la section en boucle.
+    </para>
+
+    <para>
+      <emphasis>kinitndx</emphasis> -- indice initial.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        Bien que <emphasis>kinitndx</emphasis> soit renseigné au taux-k, l'accès
+        ne s'y fait qu'au taux d'initialisation. Ainsi, si l'on utilise un
+        argument de taux-k, son affectation doit se faire avec
+        <link linkend="init"><citetitle>init</citetitle></link>.
+      </para>
+    </note>
+
+    <para>
+      <emphasis>kfn_times</emphasis> -- numéro de la table contenant une suite de
+      dates.
+    </para>
+
+    <para>
+      Cet opcode traite des suites temporelles de groupes de valeurs stockées
+      dans une table.
+    </para>
+
+    <para>
+      <emphasis>seqtime2</emphasis> génère un signal déclencheur (une suite
+      d'impulsions, voir aussi l'opcode
+      <link linkend="trigger"><citetitle>trigger</citetitle></link>), en fonction
+      des valeurs stockées dans la table <emphasis>kfn_times</emphasis>. Cette
+      table doit contenir une suite d'intervalles de temps (c-à-d des durées
+      entre des évènements adjacents). Les unités temporelles stockées dans la
+      table sont exprimées en secondes, mais peuvent être changées d'échelle
+      grâce à l'argument <emphasis>ktime_unit</emphasis>. La table peut être remplie
+      avec <link linkend="GEN02"><citetitle>GEN02</citetitle></link> ou au moyen
+      d'un fichier texte externe contenant des nombres, avec
+      <link linkend="GEN23"><citetitle>GEN23</citetitle></link>. 
+    </para>
+
+    <para>
+      Il est possible de démarrer la séquence depuis une valeur différente de la
+      première, en affectant à <emphasis>kinitndx</emphasis> un indice différent
+      de zéro (qui correspond à la première valeur de la table). Normalement la
+      séquence est bouclée, et le début et la fin de la boucle peuvent être
+      ajustés en modifiant les arguments <emphasis>kstart</emphasis> et
+      <emphasis>kloop</emphasis>. L'utilisateur doit s'assurer que les valeurs
+      de ces arguments (ainsi que celle de <emphasis>kinitndx</emphasis>)
+      correspondent à des indices de table valides, sinon Csound plantera (car
+      il n'y a aucun test sur ces indices).
+    </para>
+
+    <para>
+      Il est possible de désactiver la boucle (mode à une passe) en affectant la
+      même valeur aux arguments <emphasis>kstart</emphasis> et
+      <emphasis>kloop</emphasis>. Dans ce cas, le dernier élément lu sera celui
+      correspondant à la valeur de ces arguments. La table peut être lue à l'envers
+      en affectant une valeur négative à <emphasis>kloop</emphasis>. Il est
+      possible de déclencher deux évènements presqu'en même temps (actuellement
+      séparés d'un k-cycle) en donnant la valeur zéro à l'intervalle de temps
+      correspondant. Si l'utiliseur désire envoyer une impulsion de déclenchement,
+      le premier élément de la table doit valoir zéro. L'évènement doit être
+      déclenché sur un instrument de l'orchestre venant immédiatement après
+      l'instrument contenant l'opcode <emphasis>seqtime2</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>seqtime2</emphasis> est semblable à
+      <link linkend="seqtime"><citetitle>seqtime</citetitle></link>, la différence
+      étant que lorsque <emphasis>ktrig_in</emphasis> contient une valeur
+      différente de zéro, l'indice courant est réinitialisé à la valeur de
+      <emphasis>kinitndx</emphasis>. <emphasis>kinitndx</emphasis> peut varier
+      pendant l'exécution.
+    </para>
+  </refsect1>
+
+    <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode seqtime2. Il utilise le fichier
+      <ulink url="examples/seqtime2.csd"><citetitle>seqtime2.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode seqtime2.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/seqtime2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="GEN02"><citetitle>GEN02</citetitle></link>,
+      <link linkend="GEN23"><citetitle>GEN23</citetitle></link>,
+      <link linkend="seqtime"><citetitle>seqtime</citetitle></link>,
+      <link linkend="trigseq"><citetitle>trigseq</citetitle></link>,
+      <link linkend="trigseq"><citetitle>timedseq</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+  </refsect1>
+</refentry>

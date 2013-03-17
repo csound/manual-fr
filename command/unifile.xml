@@ -1,0 +1,221 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.15
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="CommandUnifile">
+  <title>Format de fichier unifié pour les orchestres et les partitions</title>
+   
+  <section id="CommandUnifileDescription">
+    <title>Description</title>
+    <para>
+      Le Format de fichier unifié<indexterm id="IndexUnifiedFile"><primary>Unified File Format</primary></indexterm>,
+      introduit à partir de la version 3.50 de Csound, permet de combiner dans le même fichier l'orchestre et la
+      partition, ainsi que les options de ligne de commande. Le fichier a pour extension <emphasis>.csd</emphasis>.
+      Ce format fut introduit à l'origine par Michael Gogins dans AXCsound.
+
+      <indexterm id="IndexCSD"><primary>.csd</primary></indexterm>
+      <indexterm id="IndexCsoundrcUnifile"><primary>.csoundrc</primary></indexterm>
+      <indexterm id="IndexCsFileB"><primary>&lt;CsFileB&gt;</primary></indexterm>
+      <indexterm id="IndexCsInstruments"><primary>&lt;CsInstruments&gt;</primary></indexterm>
+      <indexterm id="IndexCsMidifileB"><primary>&lt;CsMidifileB&gt;</primary></indexterm>
+      <indexterm id="IndexCsOptions"><primary>&lt;CsOptions&gt;</primary></indexterm>
+      <indexterm id="IndexCsSampleB"><primary>&lt;CsSampleB&gt;</primary></indexterm>
+      <indexterm id="IndexCsScore"><primary>&lt;CsScore&gt;</primary></indexterm>
+      <indexterm id="IndexCsoundSynthesizer"><primary>&lt;CsoundSynthesizer&gt;</primary></indexterm>
+      <indexterm id="IndexCsVersion"><primary>&lt;CsVersion&gt;</primary></indexterm>
+      <indexterm id="IndexCsLicense"><primary>&lt;CsLicense&gt;</primary></indexterm>
+    </para>
+
+    <para>
+      Le fichier est un fichier de données structurées qui utilise un langage de balises, de la famille SGML comme
+      HTML. Une balise ouvrante (&lt;<emphasis>balise</emphasis>&gt;) et une balise fermante
+      (&lt;/<emphasis>balise</emphasis>&gt;) servent à délimiter les différents éléments. Ce fichier est
+      sauvegardé comme un fichier texte.
+    </para>
+
+    <bridgehead>Format du fichier de données structurées</bridgehead>
+    <bridgehead>Eléments obligatoires</bridgehead>
+    <para>
+      la première balise du fichier doit être la balise ouvrante <emphasis>&lt;CsoundSynthesizer&gt;</emphasis>.
+      La dernière balise du fichier doit être la balise fermante <emphasis>&lt;/CsoundSynthesizer&gt;</emphasis>.
+      Cet élément sert à avertir le compilateur csound du format <emphasis>.csd</emphasis>. Tout
+      texte situé avant la balise de début et après la balise de fin est ignoré par Csound. Cette
+      balise peut aussi s'écrire <emphasis>&lt;CsoundSynthesiser&gt;</emphasis>.
+    </para>
+
+    <bridgehead>Options (&lt;CsOptions&gt;)</bridgehead>
+    <para>
+      Les <link linkend="CommandFlagsCategory"><citetitle>options de ligne de commande</citetitle></link> de
+      Csound sont insérées dans l'Elément Options. La section est délimitée par la balise ouvrante
+      <emphasis>&lt;CsOptions&gt;</emphasis> et par la balise fermante <emphasis>&lt;/CsOptions&gt; </emphasis>.
+      Les lignes commençant par <emphasis>#</emphasis> ou par <emphasis>;</emphasis> sont traitées comme des
+      commentaires.
+    </para>
+
+    <bridgehead>Orchestre (&lt;CsInstruments&gt;)</bridgehead>
+    <para>
+      Les définitions d'instruments (orchestre) sont mises dans l'Elément Instruments. Les instructions et la
+      syntaxe de cette section sont identiques à celles du
+      <link linkend="OrchTop"><citetitle>fichier orchestre</citetitle></link> de Csound, et répondent aux mêmes
+      besoins, y compris les instructions d'en-tête (<emphasis>sr</emphasis>, <emphasis>kr</emphasis>, etc).
+      Cet Elément Instruments est délimité par la balise ouvrante <emphasis>&lt;CsInstruments&gt;</emphasis> et
+      par la balise fermante <emphasis>&lt;/CsInstruments&gt;</emphasis>.
+    </para>
+
+    <bridgehead>Partition (&lt;CsScore&gt;)</bridgehead>
+    <para>
+      Les instructions de la partition Csound sont mises dans l'Elément Score. Les instructions et la syntaxe
+      de cette section sont identiques à celles du
+      <link linkend="ScoreTop"><citetitle>fichier partition</citetitle></link> de Csound, et répondent aux
+      mêmes exigences. L'Elément Score est délimité par la balise ouvrante <emphasis>&lt;CsScore&gt; </emphasis>
+      et par la balise fermante <emphasis>&lt;/CsScore&gt;</emphasis>.
+    </para>
+    <para>
+      Les instructions de partition peuvent alternativement être générées par un programme externe
+      en utilisant la balise CsScore avec un exécutable en attribut . Les lignes allant jusqu'à la
+      balise fermante <emphasis>&lt;/CsScore&gt;</emphasis> sont copiées dans un fichier et le
+      programme externe nommé est appelé avec ce nom de fichier et le fichier de partition
+      destinataire. Le programme externe doit créer une partition Csound standard.
+    </para>
+    <bridgehead>Eléments optionnels</bridgehead>
+
+    <bridgehead>Inclusion de fichiers Base64 (&lt;CsFileB&gt;)</bridgehead>
+    <para>
+      On peut inclure des fichiers encodés en Base64 avec la balise <emphasis>&lt;CsFileB filename=</emphasis>
+      <emphasis>nomfichier</emphasis><emphasis>&gt;</emphasis>, où <emphasis>nomfichier</emphasis> est le nom
+      du fichier à inclure. Les données encodées en Base64 doivent se terminer par une balise
+      <emphasis>&lt;/CsFileB&gt;</emphasis>. Pour encoder les fichiers, on peut se servir des utilitaires
+      <link linkend="csb64enc"><citetitle>csb64enc</citetitle></link> et
+      <link linkend="makecsd"><citetitle>makecsd</citetitle></link> (inclus dans Csound à partir
+      de la version 5.00). Le fichier sera extrait dans le répertoire courant, et effacé à la fin de
+      l'exécution. S'il existe déjà un fichier du même nom, il n'est pas écrasé, mais au contraire,
+      une erreur est levée.
+    </para>
+    <para>
+      On peut inclure des fichiers MIDI encodés en Base64 avec la balise <emphasis>&lt;CsMidifileB filename=</emphasis>
+      <emphasis>nomfichier</emphasis><emphasis>&gt;</emphasis>, où <emphasis>nomfichier</emphasis> est le nom du
+      fichier qui contient l'information MIDI. Il n'y a pas de balise fermante associée. Ceci a été ajouté dans la version
+      4.07 de Csound. Note : il n'est pas recommandé d'utiliser cette balise ; il vaut mieux utiliser
+      <emphasis>&lt;CsFileB&gt;</emphasis>.
+    </para>
+
+    <para>
+      On peut inclure des fichiers d'échantillons encodés en Base64 avec la balise <emphasis>&lt;CsSampleB filename=</emphasis>
+      <emphasis>nomfichier</emphasis><emphasis>&gt;</emphasis>, où <emphasis>nomfichier</emphasis> est le nom
+      du fichier qui contient les échantillons. Il n'y a pas de balise fermante associée. Ceci a été ajouté dans la version
+      4.07 de Csound. Note : il n'est pas recommandé d'utiliser cette balise ; il vaut mieux utiliser
+      <emphasis>&lt;CsFileB&gt;</emphasis>.
+    </para>
+
+    <bridgehead>Limitation de version (&lt;CsVersion&gt;)</bridgehead>
+      <para>
+        On peut se limiter à certaines versions de Csound en plaçant l'une de ces instructions entre la balise
+        ouvrante &lt;CsVersion&gt; et la balise fermante &lt;/CsVersion&gt; :
+
+          <informalexample>
+            <programlisting>Before #.#</programlisting>
+          </informalexample>
+
+         ou
+
+          <informalexample>
+            <programlisting>After #.#</programlisting>
+          </informalexample>
+
+        où #.# est le numéro de version de Csound requis. La deuxième instruction peut s'écrire simplement
+        comme :
+
+          <informalexample>
+            <programlisting>#.#</programlisting>
+          </informalexample>
+
+        Ceci a été ajouté dans le version 4.09 de Csound.
+      </para>
+
+    <bridgehead>Information de licence (&lt;CsLicence&gt; or &lt;CsLicense&gt;)</bridgehead>
+      <para>
+        Des détails de licence peuvent être inclus entre la balise ouvrante
+        <emphasis>&lt;CsLicence&gt;</emphasis> et la balise fermante
+        <emphasis>&lt;/CsLicence&gt;</emphasis>. Il n'y a pas de format pour cette information,
+        n'importe quel texte est acceptable. Ce texte sera imprimé par Csound sur la console
+        lorsque le CSD sera exécuté.
+      </para>
+      </section>
+
+      <section id="CommandUnifileExample">
+        <title>Exemple</title>
+	<para>
+    Ci-dessous un fichier exemple, test.csd, qui produit un fichier .wav échantillonné à 44,1 kHz contenant
+    une seconde d'une onde sinus à 1 kHz. L'affichage est supprimé. test.csd a été créé à partir de deux
+    fichiers, tone.orc et tone.sco, avec l'addition des options de ligne de commande.
+
+          <informalexample>
+            <programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>;
+  <emphasis role="comment">; test.csd - un fichier Csound de données structurées</emphasis>
+  
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+  -W -d -o tone.wav 
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+  
+<emphasis role="csdtag">&lt;CsVersion&gt;</emphasis>    <emphasis role="comment">; section facultative</emphasis>
+  Before 4.10  <emphasis role="comment">; ces deux instructions testent si</emphasis>
+  After 4.08   <emphasis role="comment">; la version de Csound est la 4.09</emphasis>
+<emphasis role="csdtag">&lt;/CsVersion&gt;</emphasis>
+  
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+  <emphasis role="comment">; à l'origine, tone.orc</emphasis> 
+  <emphasis role="ohdr">sr</emphasis> = 44100
+  <emphasis role="ohdr">kr</emphasis> = 4410
+  <emphasis role="ohdr">ksmps</emphasis> = 10
+  <emphasis role="ohdr">nchnls</emphasis> = 1
+  <emphasis role="oblock">instr</emphasis>   1 
+      a1 <emphasis role="opc">oscil</emphasis> p4, p5, 1 <emphasis role="comment">; simple oscillateur</emphasis>
+         <emphasis role="opc">out</emphasis> a1
+  <emphasis role="oblock">endin</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+  <emphasis role="comment">; à l'origine, tone.sco</emphasis>
+  <emphasis role="stamnt">f</emphasis>1 0 8192 10 1
+  <emphasis role="stamnt">i</emphasis>1 0 1 20000 1000 <emphasis role="comment">; joue un son pur à un kHz pendant une seconde</emphasis>
+  <emphasis role="stamnt">e</emphasis>
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis></programlisting>
+          </informalexample>
+	</para>
+    </section>
+
+
+</section>
+<section id="CommandUnifileParFile">
+  <title>Fichier de paramètres de ligne de commande (.csoundrc)</title>
+  <para>
+    Si le fichier <emphasis>.csoundrc</emphasis> existe, il sera utilisé pour fixer les paramètres de la
+    ligne de commande. Ceux-ci peuvent être redéfinis. Csound 5.00 et les versions ultérieures lisent ce
+    fichier d'abord depuis le répertoire HOME (ou le chemin complet défini par la
+    <link linkend="CommandEnvironment"><citetitle>variable d'environnement</citetitle></link> CSOUNDRC),
+    et ensuite depuis le répertoire courant. Si les deux existent, les options de .csoundrc du répertoire
+    courant seront prioritaires. Ce fichier a la même forme qu'un fichier <emphasis>.csd</emphasis>, mais
+    sans les balises. Les lignes commençant par <emphasis>#</emphasis> ou <emphasis>;</emphasis> sont
+    traitées comme des commentaires.
+  </para>
+  <para>
+    Un fichier <emphasis>.csoundrc</emphasis> peut contenir des éléments comme ceux-ci :
+  </para>
+  <literallayout>-+rtaudio=portaudio -odac2 -iadc2 -+rtmidi=winmme -M1 -Q1 -m0  </literallayout>
+  <para>
+    Dans ce cas, csound générera sa sortie en temps réel et recevra son entrée en temps réel depuis le
+    périphérique 2, en utilisant l'interface du pilote portaudio. Il utilisera les entrées et les sorties
+    MIDI en temps réel sur l'interface 1. Il imprimera très peu de messages (-m0). Ces options seront
+    utilisées par défaut en l'absence d'autres options spécifiées dans la balise &lt;CsOptions&gt; du
+    fichier .csd ou dans la ligne de commande (voir
+    <link linkend="CommandOrder"><citetitle>Ordre de priorité</citetitle></link>).
+  </para>
+</section>

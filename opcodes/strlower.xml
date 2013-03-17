@@ -1,0 +1,68 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="strlower">
+<indexterm id="Indexstrlower"><primary>strlower</primary></indexterm>
+  <refentryinfo><title>Strings:Conversion</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>strlower</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>strlower</refname>
+    <refpurpose>
+      Convertit une chaîne de caractères en minuscules.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Convertit <emphasis>Ssrc</emphasis> en minuscules, et écrit le résultat
+      dans <emphasis>Sdst</emphasis>. <emphasis>strlower</emphasis> ne s'exécute
+      que pendant l'initialisation.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>Sdst <command>strlower</command> Ssrc</synopsis>
+  </refsect1>
+
+   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode strlower. Il utilise le fichier
+      <ulink url="examples/strlower.csd"><citetitle>strlower.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode strlower.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/strlower.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para><link linkend="strlowerk"><citetitle>strlowerk</citetitle></link></para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Istvan Varga</member>
+        <member>2006</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.02</para>
+  </refsect1>
+</refentry>

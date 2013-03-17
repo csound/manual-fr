@@ -1,0 +1,126 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.15
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="gauss">
+<indexterm id="IndexGaussXClass"><primary>x-class noise generators</primary></indexterm>
+
+<indexterm id="IndexGauss"><primary>gauss</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Random (Noise) Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>gauss</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>gauss</refname>
+    <refpurpose>
+      Générateur de nombres aléatoires de distribution gaussienne.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Générateur de nombres aléatoires de distribution gaussienne. C'est un générateur de bruit de classe x. 
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>gauss</command> krange</synopsis>
+
+    <synopsis>ires <command>gauss</command> krange</synopsis>
+
+    <synopsis>kres <command>gauss</command> krange</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>krange</emphasis> -- l'intervalle des nombres aléatoires (-<emphasis>krange</emphasis> à
+      +<emphasis>krange</emphasis>). Produit des nombres positifs et négatifs.
+    </para>
+    
+    <para>
+      <emphasis>gauss</emphasis>  retourne des nombres aléatoires suivant une
+      distribution normale centrée sur 0 (mu = 0.0) avec une variance (sigma) de
+      <emphasis>krange</emphasis> / 3.83. Ainsi plus de 99.99% des valeurs
+      aléatoires générées sont comprises entre -<emphasis>krange</emphasis> et
+      +<emphasis>krange</emphasis>. Si l'on veut une valeur moyenne différente
+      de 0.0, il faut ajouter cette valeur moyenne à chaque nombre généré (voir
+      l'exemple ci-dessous).
+    </para>
+
+    <para>
+      Pour des explications plus détaillées sur ces distributions, consulter :
+      <orderedlist>
+        <listitem>
+          <para>C. Dodge - T.A. Jerse 1985. Computer music. Schirmer books. pp.265 - 286</para>
+        </listitem>
+
+        <listitem>
+          <para>D. Lorrain. A panoply of stochastic cannons. In C. Roads, ed. 1989. Music machine . Cambridge, Massachusetts: MIT press, pp. 351 - 379.</para>
+        </listitem>
+      </orderedlist>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode gauss. Il utilise le fichier
+      <ulink url="examples/gauss.csd"><citetitle>gauss.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode gauss.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/gauss.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie contiendra des ligne comme celles-ci : 
+      <screen>
+mean = 0.000, std = 0.260, samples inside the given range: 99.993%
+mean = 0.005, std = 0.999, samples inside the given range: 99.998%
+mean = 2.700, std = 1.497, samples inside the given range: 100.000%</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="seed"><citetitle>seed</citetitle></link>,
+      <link linkend="betarand"><citetitle>betarand</citetitle></link>,
+      <link linkend="bexprnd"><citetitle>bexprnd</citetitle></link>,
+      <link linkend="cauchy"><citetitle>cauchy</citetitle></link>,
+      <link linkend="exprand"><citetitle>exprand</citetitle></link>,
+      <link linkend="linrand"><citetitle>linrand</citetitle></link>,
+      <link linkend="pcauchy"><citetitle>pcauchy</citetitle></link>,
+      <link linkend="poisson"><citetitle>poisson</citetitle></link>,
+      <link linkend="trirand"><citetitle>trirand</citetitle></link>,
+      <link linkend="unirand"><citetitle>unirand</citetitle></link>,
+      <link linkend="weibull"><citetitle>weibull</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameparis;</member>
+        <member>MIT, Cambridge</member>
+        <member>1995</member>
+      </simplelist>
+    </para>
+    <para>Précisions sur mu et sigma ajoutées par &namepinot; après une discussion
+    avec Joachim Heintz sur la liste de Csound, Décembre 2010.</para>
+    <para>Exemple écrit par &namepinot;, adapté d'un fichier csd de Joachim Heintz, Décembre 2010.</para>
+    <para>Existait dans la version 3.30</para>
+  </refsect1>
+</refentry>

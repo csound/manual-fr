@@ -1,0 +1,99 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vlinseg">
+<indexterm id="IndexVlinseg"><primary>vlinseg</primary></indexterm>
+  <refentryinfo><title>Vectorial:Envelopes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vlinseg</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vlinseg</refname>
+    <refpurpose>
+      Générateur d'enveloppe vectoriel.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère des segments linéaires vectoriels.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>vlinseg</command>  ifnout, ielements, ifn1, idur1, ifn2 [, idur2, ifn3 [...]]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifnout</emphasis> - numéro de la table hébergeant le signal
+      vectoriel de sortie.
+    </para>
+    <para>
+      <emphasis>ifn1</emphasis> - vecteur de départ.
+    </para>
+    <para>
+      <emphasis>ifn2, ifn3,etc.</emphasis> - vecteur après <emphasis>idurx</emphasis> secondes.
+    </para>
+    <para>
+      <emphasis>idur1</emphasis> - durée en secondes du premier segment.
+    </para>
+    <para>
+      <emphasis>idur2, idur3, etc. </emphasis> - durée en secondes des segments
+      suivants.
+    </para>
+    <para>
+      <emphasis>ielements</emphasis> - nombre de composantes des vecteurs.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Ces opcodes sont semblables à <emphasis>linseg</emphasis> et à
+      <emphasis>expseg</emphasis>, mais ils opèrent avec des signaux vectoriels
+      au lieu de signaux scalaires.
+   </para>
+    <para>
+      La sortie est un signal vectoriel de contrôle hébergé par <emphasis>ifnout</emphasis>
+      (qui doit avoir été allouée au préalable), tandis que chaque point charnière
+      de l'enveloppe est un vecteur de valeurs. Tous les points charnière doivent
+      avoir le même nombre de composantes (<emphasis>ielements</emphasis>).
+   </para>
+    <para>
+      Tous ces opérateurs sont conçus pour être utilisés avec d'autres opcodes
+      qui opèrent sur des signaux vectoriels tels que <emphasis>bmscan</emphasis>,
+      <emphasis>vcella</emphasis>, <emphasis>adsynt</emphasis>,
+      <emphasis>adsynt2</emphasis>, etc.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode vlinseg. Il utilise le fichier
+      <ulink url="examples/vlinseg.csd"><citetitle>vlinseg.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode vlinseg.</title>
+        <xi:include href="examples-xml/vlinseg.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par Gabriel Maldonado.</para>
+    <para>Exemple par Andres Cabrera.</para>
+    <para>Nouveau dans Csound 5 (Auparavant seulement disponible dans CsoundAV)</para>
+  </refsect1>
+</refentry>

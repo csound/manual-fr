@@ -1,0 +1,125 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.14
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="poscil">
+<indexterm id="Indexposcil"><primary>poscil</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Basic Oscillators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>poscil</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>poscil</refname>
+    <refpurpose>
+      Oscillateur haute précision.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Oscillateur haute précision.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>poscil</command> aamp, acps, ifn [, iphs]</synopsis>
+
+    <synopsis>ares <command>poscil</command> aamp, kcps, ifn [, iphs]</synopsis>
+
+    <synopsis>ares <command>poscil</command> kamp, acps, ifn [, iphs]</synopsis>
+
+    <synopsis>ares <command>poscil</command> kamp, kcps, ifn [, iphs]</synopsis>
+
+    <synopsis>ires <command>poscil</command> kamp, kcps, ifn [, iphs]</synopsis>
+
+    <synopsis>kres <command>poscil</command> kamp, kcps, ifn [, iphs]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn</emphasis> -- numéro de la table de fonction
+    </para>
+
+    <para>
+      <emphasis>iphs</emphasis> (facultatif, par défaut 0) -- phase initiale (table normalisée, index 0-1)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ares</emphasis> -- signal de sortie
+    </para>
+    <para>
+      <emphasis>kamp</emphasis>, <emphasis>aamp</emphasis> -- l'amplitude du signal de sortie.
+    </para>
+    <para>
+      <emphasis>kcps</emphasis>, <emphasis>acps</emphasis> -- la fréquence du signal de sortie en cycles
+      par seconde.
+    </para>
+    <para>
+      <emphasis>poscil</emphasis> (oscillateur de précision) est identique à
+      <link linkend="oscili"><citetitle>oscili</citetitle></link>, mais il permet un contrôle de la
+      fréquence plus précis, en particulier lorsque l'on utilise de grandes tables avec de faibles valeurs
+      de fréquence. Il utilise une indexation de la table en virgule flottante, au lieu de l'arithmétique
+      entière utilisée par <emphasis>oscil</emphasis> et <emphasis>oscili</emphasis>. Il est à peine plus
+      lent que <emphasis>oscili</emphasis>.
+    </para>
+    <para>
+      Depuis Csound 4.22, <emphasis>poscil</emphasis> accepte aussi des valeurs de fréquence négatives et
+      il peut utiliser des valeurs de taux-a aussi bien pour l'amplitude que pour la fréquece. Ainsi, cet
+      opcode permet la modulation d'amplitude (MA) et la modulation de fréquence (MF).
+    </para>
+    <para>
+      L'opcode <link linkend="poscil3"><citetitle>poscil3</citetitle></link> est le même que 
+      <emphasis>poscil</emphasis>, mais il utilise une interpolation cubique.</para>
+    <para>Noter que <emphasis>poscil</emphasis> peut utiliser des tables de longueur
+      différée (non puissance de deux).</para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode poscil. Il utilise le fichier
+      <ulink url="examples/poscil.csd"><citetitle>poscil.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode poscil.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/poscil.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="poscil3"><citetitle>poscil3</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+        <member>1998</member>
+      </simplelist>
+    </para>
+
+    <para>Novembre 2002. Ajout d'une note sur les changements dans la version 4.22 de Csound, merci à 
+    &namerasmus;.</para>
+    <para>Nouveau dans la version 3.52 de Csound</para>
+  </refsect1>
+</refentry>

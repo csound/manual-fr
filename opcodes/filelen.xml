@@ -1,0 +1,105 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.14
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="filelen">
+<indexterm id="IndexFilelen"><primary>filelen</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Soundfile Queries</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>filelen</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>filelen</refname>
+    <refpurpose>
+      Retourne la longueur d'un fichier son.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne la longueur d'un fichier son.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ir <command>filelen</command> ifilcod, [iallowraw]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifilcod</emphasis> -- fichier son à interroger
+    </para>
+    <para>
+      <emphasis>iallowraw</emphasis> -- (facultatif) permet des fichiers son bruts
+      (vaut 1 par défaut)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>filelen</emphasis> retourne la longueur du fichier son
+      <emphasis>ifilcod</emphasis> en secondes. <emphasis>filelen</emphasis> peut
+      retourner la longueur des fichiers de type convolve et PVOC si le paramètre
+      <emphasis>iallowraw</emphasis> est différent de zéro (il est non nul par
+      défaut).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode filelen. Il utilise les fichiers
+      <ulink url="examples/filelen.csd"><citetitle>filelen.csd</citetitle></ulink>,
+      <ulink url="examples/fox.wav"><citetitle>fox.wav</citetitle></ulink> et
+      <ulink url="examples/kickroll.wav"><citetitle>kickroll.wav</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode filelen.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/filelen.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Le fichier audio mono <quote>fox.wav</quote> dure 2.8 secondes et le fichier
+      stéréo <quote>kickroll.wav</quote> dure 0.9 secondes. Ainsi la sortie
+      de <emphasis>filelen</emphasis> contiendra une ligne pour le fichier mono
+      et pour le fichier stéréo comme ceci :
+      <screen>
+instr 1:  ilen = 2.757
+instr 1:  ilen = 0.857</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="filebit"><citetitle>filebit</citetitle></link>,
+      <link linkend="filenchnls"><citetitle>filenchnls</citetitle></link>,
+      <link linkend="filepeak"><citetitle>filepeak</citetitle></link>,
+      <link linkend="filesr"><citetitle>filesr</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namematt;</member>
+        <member>Juillet 1999</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.57 de Csound</para>
+  </refsect1>
+</refentry>

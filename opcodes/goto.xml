@@ -1,0 +1,88 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="goto">
+<indexterm id="IndexGoto"><primary>goto</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Program Flow Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>goto</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>goto</refname>
+    <refpurpose>
+      Transfère le contrôle à chaque passage.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Transfère le contrôle vers <emphasis>label</emphasis> à chaque passage. Combinaison
+      de <link linkend="igoto"><citetitle>igoto</citetitle></link> et de
+      <link linkend="kgoto"><citetitle>kgoto</citetitle></link>) 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>goto</command> label</synopsis>
+
+    <para>
+      où <emphasis>label</emphasis> se trouve dans le même bloc d'instrument et
+      n'est pas une expression.
+    </para>
+    <note>
+      Si l'on utilise <emphasis>goto</emphasis> en dehors d'une instruction
+      <link linkend="if"><citetitle>if</citetitle></link> (comme dans : goto end),
+      l'initialisation sera ignorée pour tout le code sauté par le
+      <emphasis>goto</emphasis>. Si dans une exécution quelques opcodes ne sont pas
+      initialisés, cela provoquera l'effacement de la note ou de l'évènement. Dans
+      ce cas, il peut être préférable d'utiliser
+      <link linkend="kgoto"><citetitle>kgoto</citetitle></link> (comme dans :
+      kgoto end).
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode goto. Il utilise le fichier
+      <ulink url="examples/goto.csd"><citetitle>goto.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode goto.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/goto.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="cggoto"><citetitle>cggoto</citetitle></link>, 
+      <link linkend="cigoto"><citetitle>cigoto</citetitle></link>, 
+      <link linkend="ckgoto"><citetitle>ckgoto</citetitle></link>, 
+      <link linkend="if"><citetitle>if</citetitle></link>, 
+      <link linkend="igoto"><citetitle>igoto</citetitle></link>, 
+      <link linkend="kgoto"><citetitle>kgoto</citetitle></link>, 
+      <link linkend="tigoto"><citetitle>tigoto</citetitle></link>, 
+      <link linkend="timout"><citetitle>timout</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Exemple écrit par &namekevin;.</para>
+    <para>Note ajoutée par Jim Aikin.</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,132 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vibes">
+<indexterm id="IndexVibes"><primary>vibes</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Models and Emulations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vibes</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vibes</refname>
+    <refpurpose>
+      Modèle physique de la frappe d'un bloc de métal.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      La sortie audio est un son de métal frappé comme sur un vibraphone. La méthode
+      est un modèle physique développé d'après &nameperry;, mais recodé pour Csound.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>vibes</command> kamp, kfreq, ihrd, ipos, imp, kvibf, kvamp, ivibfn, idec</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ihrd</emphasis> -- la dureté de la baguette utilisé pour frapper.
+      Compris entre 0 et 1. 0,5 est une valeur adaptée.
+    </para>
+
+    <para>
+      <emphasis>ipos</emphasis> -- l'endroit où le bloc est frappé, compris entre 0 et 1.
+    </para>
+
+    <para>
+      <emphasis>imp</emphasis> -- une table des impulsions de la frappe. Le fichier
+      <ulink url="examples/marmstk1.wav"><citetitle>marmstk1.wav</citetitle></ulink> contient une
+      fonction adéquate créée à partir de mesures et l'on peut le charger dans une table
+      <link linkend="GEN01"><citetitle>GEN01</citetitle></link>. Il est aussi disponible à
+      <ulink
+url="ftp://ftp.cs.bath.ac.uk/pub/dream/documentation/sounds/modelling/"><citetitle>ftp://ftp.cs.bath.ac.uk/pub/dream/documentation/sounds/modelling/</citetitle></ulink>.
+    </para>
+
+    <para>
+      <emphasis>ivfn</emphasis> -- forme du tremolo, habituellement une table sinus, créée par une fonction
+    </para>
+
+    <para>
+      <emphasis>idec</emphasis> --  durée avant la fin de la note lorqu'il y a une atténuation
+    </para>
+
+    <!-- These are simply not the case
+    <para>
+      <emphasis>idoubles</emphasis> (facultatif) - - pourcentage de frappes doubles. La valeur par
+      défaut est de 40%.
+    </para>
+
+    <para>
+      <emphasis>itriples</emphasis> (facultatif) - - pourcentage de frappes triples. La valeur par
+      défaut est de 20%.
+    </para>-->
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamp</emphasis> -- Amplitude de la note.
+    </para>
+
+    <para>
+      <emphasis>kfreq</emphasis> -- Fréquence de la note.
+    </para>
+
+    <para>
+      <emphasis>kvibf</emphasis> -- Fréquence du tremolo en Hertz. L'intervalle conseillé va de de 0 à 12.
+    </para>
+
+    <para>
+      <emphasis>kvamp</emphasis> -- Amplitude du tremolo.
+    </para>
+ </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode vibes. Il utilise les fichiers
+      <ulink url="examples/vibes.csd"><citetitle>vibes.csd</citetitle></ulink> et
+      <ulink url="examples/marmstk1.wav"><citetitle>marmstk1.wav</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode vibes.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/vibes.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="marimba"><citetitle>marimba</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn; (d'après &nameperry;)</member>
+        <member>Université de Bath, Codemist Ltd.</member>
+        <member>Bath, UK</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.47 de Csound</para>
+  </refsect1>
+</refentry>

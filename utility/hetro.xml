@@ -1,0 +1,190 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="hetro">
+  <refentryinfo><title>Utilities</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>hetro</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>hetro</refname>
+    <refpurpose>
+      Décompose un fichier son en entrée en composantes sinusoïdales.
+      <indexterm id="IndexHetro"><primary>hetro</primary></indexterm>
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Analyse par filtre hétérodyne pour le générateur de Csound
+      <link linkend="adsyn"><citetitle>adsyn</citetitle></link>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>csound -U hetro</command> [options] nomfichier_entree nomfichier_sortie</synopsis>
+
+    <synopsis><command>hetro</command> [options] nomfichier_entree nomfichier_sortie</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>hetro</emphasis> prend un fichier son en entrée, le décompose en composantes sinusoïdales,
+      et sort une description de ces composantes sous la forme de pistes de points charnière d'amplitude
+      et de fréquence. L'analyse est conditionnée par les options de contrôle ci-dessous. Un espace est
+      facultatif entre drapeau et argument.
+    </para>
+
+    <para>
+      <emphasis>-s srate</emphasis> -- taux d'échantillonnage du fichier audio en entrée. Il remplacera la
+      valeur srate de l'en-tête du fichier audio, qui s'applique autrement. Si aucun des deux n'est présent,
+      la valeur par défaut est 10000. Noter que pour la synthèse <emphasis>adsyn</emphasis> le taux
+      d'échantillonnage du fichier source et de l'orchestre générateur n'ont pas à être les-mêmes.
+    </para>
+
+    <para>
+      <emphasis>-c canal</emphasis> -- numéro du canal à traiter. La valeur par défaut est 1.
+    </para>
+
+    <para>
+      <emphasis>-b début</emphasis> -- date de début (en secondes) du segment audio à analyser. La valeur
+      par défaut est 0,0
+    </para>
+
+    <para>
+      <emphasis>-d durée</emphasis> -- durée (en secondes) du segment audio à analyser. La valeur par
+      défaut de 0,0 signifie jusqu'à la fin du fichier. La longueur maximale est de 32,766 secondes.
+    </para>
+
+    <para>
+      <emphasis>-f freqdeb</emphasis> -- fréquence de départ estimée du fondamental, nécessaire pour
+      initialiser l'analyse par le filtre. La valeur par défaut est 100 (cps).
+    </para>
+
+    <para>
+      <emphasis>-h partiels</emphasis> -- nombre d'harmoniques recherchés dans le fichier audio. La valeur
+      par défaut est 10, la valeur maximale dépend de la mémoire disponible.
+    </para>
+
+    <para>
+      <emphasis>-M ampmax</emphasis> -- amplitude maximale obtenue par addition sur toutes les pistes
+      simultanées. La valeur par défaut est 32767.
+    </para>
+
+    <para>
+      <emphasis>-m ampmin</emphasis> -- seuil d'amplitude en-dessous duquel une paire de pistes
+      amplitude/fréquence sera considérée comme inactive et ne contribuera pas à la somme en sortie.
+      Valeurs typiques : 128 (48 dB en-dessous de l'échelle complète, 64 (54 dB en-dessous), 32 (60 dB
+      en-dessous), 0 (pas de seuillage). Le seuil par défaut est 64 (54 dB en-dessous).
+    </para>
+
+    <para>
+      <emphasis>-n brkpts</emphasis> -- nombre initial de points charnière de l'analyse dans chaque piste
+      d'amplitude et de fréquence, avant le seuillage (<emphasis>-m</emphasis>) et la consolidation
+      linéaire des points charnière. Les points initiaux sont répartis uniformément sur toute la durée.
+      La valeur par défaut est 256.
+    </para>
+
+    <para>
+      <emphasis>-l cutfreq</emphasis> -- substitue un filtre passe-bas de Butterworth du 3ème ordre avec
+      une fréquence de coupure <emphasis>cutfreq</emphasis> (en Hz), à la place du filtre par défaut qui
+      est un filtre de moyenne en peigne. La valeur par défaut est 0 (ne pas utiliser).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      A partir de Csound 4.08, <emphasis>hetro</emphasis> peut écrire des fichiers de sortie SDIF si le
+      nom du fichier de sortie se termine par &quot;.sdif&quot; ou &quot;.SDIF&quot;. Voir l'utilitaire
+      <link linkend="sdif2ad"><citetitle>sdif2ad</citetitle></link> pour plus d'information sur le support
+      de SDIF dans Csound.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+<!--       <informalexample> -->
+        <programlisting>
+<emphasis>hetro</emphasis> -s44100 -b.5 -d2.5 -h16 -M24000 fichieraudio.test adsynfile7</programlisting>
+<!--       </informalexample> -->
+
+      Ceci analyse 2,5 secondes du canal 1 du fichier &quot;fichieraudio.test&quot;, enregistré à
+      44,1 kHz, commençant 0,5 secondes après le début, et place le résultat dans le fichier
+      &quot;adsynfile7&quot;. Nous ne voulons que les 16 premiers harmoniques du son, avec 256 points
+      charnière par piste d'amplitude ou de fréquence, et un pic de la somme des amplitudes de 24000. Le
+      fondamental est estimé au commencement  à 100 Hz. Le seuil d'amplitude est de 54 dB en-dessous
+      de l'échelle complète.
+    </para>
+
+    <para>
+      Le filtre passe-bas de Butterworth n'est pas activé.
+    </para>
+
+    <refsect2 id="HetroFileFormat">
+      <title>Format de Fichier</title>
+      <para>Le fichier de sortie contient des suites temporelles de valeurs d'amplitude et de fréquence
+        pour chaque harmonique d'une source audio additive complexe. L'information se présente sous la
+        forme de points charnière (date, valeur, date, valeur, ....) en utilisant des entiers sur 16 bit
+        dans l'intervalle 0 - 32767. Le temps est donné en millisecondes, et les fréquences en Hz (cps).
+        Les données des points charnières sont exclusivement non-négatives, et les valeurs -1 et -2
+        signifient uniquement le début de nouvelles pistes d'amplitude et de fréquence. Une piste se
+        termine par la valeur 32767. Avant d'être écrite en sortie, chaque piste subit une
+        réduction de données par seuillage d'amplitude et consolidation linéaire des points charnière.
+      </para>
+
+      <para>
+        Un composant harmonique est défini par deux ensembles de points charnière : un ensemble d'amplitudes,
+        et un ensemble de fréquences. Dans un fichier composé ces ensembles peuvent apparaître dans
+        n'importe quel ordre (amplitude, fréquence, amplitude ....; ou amplitude, amplitude, ..., puis
+        fréquence, fréquence, ...). Durant la resynthèse par
+        <link linkend="adsyn"><citetitle>adsyn</citetitle></link> les ensembles sont automatiquement
+        appariés (amplitude, fréquence) dans l'ordre dans lequel ils sont trouvés. Il doit y avoir un
+        nombre égal de chaque sorte.
+      </para>
+
+      <para>
+        Un fichier de contrôle <emphasis>adsyn</emphasis> légal pourrait avoir le format suivant :
+        <informalexample>
+          <programlisting>
+-1 temps1 valeur1 ... tempsK valeurK 32767 ; points charnière d'amplitude pour le partiel 1
+-2 temps1 valeur1 ... tempsL valeurL 32767 ; points charnière de fréquence pour le partiel 1
+-1 temps1 valeur1 ... tempsM valeurM 32767 ; points charnière d'amplitude pour le partiel 2
+-2 temps1 valeur1 ... tempsN valeurN 32767 ; points charnière de fréquence pour le partiel 2
+-2 temps1 valeur1 ..........
+-2 temps1 valeur1 ..........               ; pistes appariables pour les partiels 3 et 4
+-1 temps1 valeur1 ..........
+-1 temps1 valeur1 ..........</programlisting>
+        </informalexample>
+      </para>
+    </refsect2>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+        <simplelist>
+        <member>Auteur : Tom Sullivan</member>
+        <member>1992</member>
+        <member>Auteur : &namejohn;</member>
+        <member>1994</member>
+        <member>Auteur : Richard Dobson</member>
+        <member>2000</member>
+        </simplelist>
+        </para>
+        <para>
+      Octobre 2002. Merci à &namerasmus;, pour l'addition d'une note au sujet du format SDIF.
+    </para>
+  </refsect1>
+</refentry>

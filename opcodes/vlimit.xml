@@ -1,0 +1,91 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vlimit">
+<indexterm id="IndexVlimit"><primary>vlimit</primary></indexterm>
+  <refentryinfo><title>Vectorial:Limiting and Wrapping</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vlimit</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vlimit</refname>
+    <refpurpose>
+      Limitation et enroulement de signaux vectoriels.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Limite les éléments de signaux vectoriels de contrôle.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>vlimit</command>  ifn, kmin, kmax, ielements</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn</emphasis> - numéro de la table hébergeant le vecteur à
+      traiter.
+    </para>
+       <para>
+      <emphasis>ielements</emphasis> - nombre de composantes du vecteur.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kmin</emphasis> - valeur du seuil inférieur.
+    </para>
+    <para>
+      <emphasis>kmax</emphasis> - valeur du seuil supérieur.
+    </para>
+    <para>
+      <emphasis>vlimit</emphasis> fixe des limites inférieures et supérieures
+      sur chaque élément du vecteur traité.
+    </para>
+    <para>
+      Ces opcodes sont semblables à
+      <link linkend="limit"><citetitle>limit</citetitle></link>,
+      <link linkend="wrap"><citetitle>wrap</citetitle></link> et
+      <link linkend="mirror"><citetitle>mirror</citetitle></link>, mais ils
+      opèrent sur un signal vectoriel au lieu d'un signal scalaire.
+    </para>
+    <para>
+      Le résultat écrase les anciennes valeurs de <emphasis>ifn1</emphasis>, 
+      si celles-ci sont en dehors de l'intervalle min/max. Si l'on veut
+      conserver le vecteur d'entrée, il faut utiliser l'opcode
+      <link linkend="vcopy"><citetitle>vcopy</citetitle></link> pour le copier
+      dans une autre table.
+    </para>
+    <para>
+      Tous ces opcodes sont conçus pour être utilisés avec d'autres opcodes
+      qui opèrent sur des signaux vectoriels tels que <emphasis>bmscan</emphasis>,
+      <link linkend="vcella"><citetitle>vcella</citetitle></link>,
+      <link linkend="adsynt"><citetitle>adsynt</citetitle></link>,
+      <link linkend="adsynt2"><citetitle>adsynt2</citetitle></link>, etc. 
+    </para>
+    <para>
+      <emphasis>Note</emphasis> : <emphasis>bmscan</emphasis> n'est pas encore
+      disponible dans la version canonique de Csound.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par Gabriel Maldonado.</para>
+    <para>Nouveau dans Csound 5 (Auparavant seulement disponible dans CsoundAV)</para>
+  </refsect1>
+</refentry>

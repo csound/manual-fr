@@ -1,0 +1,98 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLsetVal">
+<indexterm id="IndexFLsetVal"><primary>FLsetVal</primary></indexterm>
+  <refentryinfo><title>FLTK:Other</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLsetVal</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLsetVal</refname>
+    <refpurpose>
+      Fixe la valeur d'un valuateur FLTK au taux de contrôle.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>FLsetVal</emphasis> est presqu'identique à
+      <link linkend="FLsetVal_i"><citetitle>FLsetVal_i</citetitle></link>. Sauf
+      qu'il opère au taux-k et qu'il n'affecte le valuateur cible que lorsque
+      <emphasis>ktrig</emphasis> est fixé à une valeur différente de zéro.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>FLsetVal</command> ktrig, kvalue, ihandle</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ihandle</emphasis> -- un nombre entier (utilisé comme
+      identifiant unique) pris de la sortie d'un opcode de widget déjà en
+      place (qui correspond au widget cible). Il est utilisé pour identifier
+      de manière univoque le widget lors de la modification de son apparence
+      par cette classe d'opcodes. Il ne faut pas fixer la valeur de
+      <emphasis>ihandle</emphasis> directement sous peine de provoquer un
+      plantage de Csound.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ktrig</emphasis> -- déclenche l'opcode lorsqu'il est différent
+      de 0.
+    </para>
+    <para>
+      <emphasis>kvalue</emphasis> -- Valeur à attribuer au widget.
+    </para>
+    <note>
+      <emphasis>FLsetVal</emphasis> n'est pas complètement implémenté, et il
+      peut planter dans certains cas (par exemple en fixant la valeur d'un
+      widget connecté au widget
+      <link linkend="FLvalue"><citetitle>FLvalue</citetitle></link> - dans ce
+      cas utiliser deux <emphasis>FLsetVal</emphasis> séparés).
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="FLcolor"><citetitle>FLcolor</citetitle></link>,
+      <link linkend="FLcolor2"><citetitle>FLcolor2</citetitle></link>,
+      <link linkend="FLhide"><citetitle>FLhide</citetitle></link>,
+      <link linkend="FLlabel"><citetitle>FLlabel</citetitle></link>,
+      <link linkend="FLsetAlign"><citetitle>FLsetAlign</citetitle></link>,
+      <link linkend="FLsetBox"><citetitle>FLsetBox</citetitle></link>,
+      <link linkend="FLsetColor"><citetitle>FLsetColor</citetitle></link>,
+      <link linkend="FLsetColor2"><citetitle>FLsetColor2</citetitle></link>,
+      <link linkend="FLsetFont"><citetitle>FLsetFont</citetitle></link>,
+      <link linkend="FLsetPosition"><citetitle>FLsetPosition</citetitle></link>,
+      <link linkend="FLsetSize"><citetitle>FLsetSize</citetitle></link>,
+      <link linkend="FLsetText"><citetitle>FLsetText</citetitle></link>,
+      <link linkend="FLsetTextColor"><citetitle>FLsetTextColor</citetitle></link>,
+      <link linkend="FLsetTextSize"><citetitle>FLsetTextSize</citetitle></link>,
+      <link linkend="FLsetTextType"><citetitle>FLsetTextType</citetitle></link>,
+      <link linkend="FLsetVal_i"><citetitle>FLsetVal_i</citetitle></link>,
+      <link linkend="FLshow"><citetitle>FLshow</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.22</para>
+  </refsect1>
+</refentry>

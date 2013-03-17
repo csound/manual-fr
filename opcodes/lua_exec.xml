@@ -1,0 +1,91 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="lua_exec">
+  <indexterm id="Indexlua_exec"><primary>lua_exec</primary></indexterm>
+  <refentryinfo><title>Lua Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lua_exec</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>lua_exec</refname>
+    <refpurpose>
+      Exécute un bloc arbitraire de code Lua depuis l'orchestre de Csound.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Exécute un bloc arbitraire de code Lua depuis l'orchestre de Csound. Le
+      code est exécuté pendant l'initialisation, typiquement depuis l'en-tête de
+      l'orchestre.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>lua_exec</command> Sluacode</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>Sluacode</emphasis> -- Un bloc de code Lua, de n'importe quelle
+      longueur. On peut entourer les blocs multi-lignes par des accolades
+      doubles (<literal>{{ }}</literal>). Le code est évalué une seule fois
+      durant l'initialisation, typiquement depuis l'en-tête de l'orchestre. On
+      peut déclarer et définir des variables globales et locales, des fonctions,
+      des tables et des classes. Les objets définis dans la portée globale de
+      Lua restent accessibles durant toute l'exécution, et ils sont visibles
+      depuis tout autre code Lua situé dans le même fil de Csound.
+    </para>
+    <para>
+      L'instance courante de Csound est stockée sous forme de donnée utilisateur
+      légère de Lua dans une variable globale <literal>csound</literal>. Celle-ci
+      peut être passée à n'importe quelle fonction de l'API de Csound. Une
+      utilisation possible de ce mécanisme est la génération d'une partition
+      par Lua dans l'en-tête de l'orchestre et la distribution des évènements
+      pour exécution au moyen de <literal>csoundInputMessage</literal>.
+    </para>
+    <note>
+      <para>
+        Par défaut, tous les objets définis dans Lua sont dans la portée globale.
+        Pour maintenir les objets confinés dans leur propre bloc de code,
+        c'est-à-dire pour que les objets ne soient visibles que dans leur portée
+        lexicale, il faut les déclarer avec l'attribut <emphasis>local</emphasis>.
+        Cette particularité de Lua a souvent tendance à troubler les débutants.
+      </para> 
+      <para>
+        Il faut aussi tenir compte du fait que les tableaux de Lua sont indexés
+        à partir de 1 à l'inverse de ceux de C et d'autres langages de programmation
+        qui sont indéxés à partir de 0.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="lua_opdef"><citetitle>lua_opdef</citetitle></link>, 
+      <link linkend="lua_opcall"><citetitle>lua_opcall</citetitle></link>. 
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      Par : &namemichael;, 2011
+    </para>
+    <para>
+      Nouveau dans la version 5.13.2 de Csound.
+    </para>
+  </refsect1>
+</refentry>

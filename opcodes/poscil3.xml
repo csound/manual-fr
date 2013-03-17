@@ -1,0 +1,119 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.17
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="poscil3">
+<indexterm id="Indexposcil3"><primary>poscil3</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Basic Oscillators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>poscil3</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>poscil3</refname>
+    <refpurpose>
+      Oscillateur haute précision avec interpolation cubique.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Oscillateur haute précision avec interpolation cubique.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>poscil3</command> aamp, acps, ifn [, iphs]</synopsis>
+
+    <synopsis>ares <command>poscil3</command> aamp, kcps, ifn [, iphs]</synopsis>
+
+    <synopsis>ares <command>poscil3</command> kamp, acps, ifn [, iphs]</synopsis>
+
+    <synopsis>ares <command>poscil3</command> kamp, kcps, ifn [, iphs]</synopsis>
+
+    <synopsis>ires <command>poscil3</command> kamp, kcps, ifn [, iphs]</synopsis>
+
+    <synopsis>kres <command>poscil3</command> kamp, kcps, ifn [, iphs]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn</emphasis> -- numéro de la table de fonction
+    </para>
+    <para>
+      <emphasis>iphs</emphasis> (facultatif, par défaut 0) -- phase initiale (table normalisée, index 0-1)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ares</emphasis> -- signal de sortie
+    </para>
+    <para>
+      <emphasis>kamp</emphasis>, <emphasis>aamp</emphasis> -- amplitude du signal de sortie.
+    </para>
+    <para>
+      <emphasis>kcps</emphasis>, <emphasis>acps</emphasis> -- fréquence du signal de sortie en Hertz.
+    </para>
+    <para>
+      <emphasis>poscil3</emphasis> fonctionne comme
+      <link linkend="poscil"><citetitle>poscil</citetitle></link>, mais il utilise
+      l'interpolation cubique.
+    </para>
+    <para>Noter que <emphasis>poscil3</emphasis> peut utiliser des tables de longueur
+      différée (non puissance de deux).</para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode poscil3. Il utilise le fichier
+      <ulink url="examples/poscil3.csd"><citetitle>poscil3.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode poscil3.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/poscil3.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Voici un autre exemple de l'opcode poscil3, qui utilise une table remplie à partir d'un fichier
+      son. Il utilise le fichier
+      <ulink url="examples/poscil3-file.csd"><citetitle>poscil3-file.csd</citetitle></ulink>.
+      <example>
+        <title>Un autre exemple de l'opcode poscil3.</title>
+        <xi:include href="examples-xml/poscil3-file.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="poscil"><citetitle>poscil</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteurs : &namejohn;, &namegabriel;</member>
+        <member>Italie</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 3.52 de Csound</para>
+    <para>Les variantes avec fréquence ou amplitude de taux-a sont nouvelles
+    dans la version 5.16</para>
+  </refsect1>
+</refentry>

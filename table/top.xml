@@ -1,0 +1,45 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<chapter id="TableTop">
+  <title>Contrôle des Tables de Fonction</title>
+  <para>
+    Se reporter aux sections <link linkend="f"><citetitle>Instruction de partition f</citetitle></link>,
+    <link linkend="ftgen"><citetitle>ftgen</citetitle></link>,
+    <link linkend="ftgentmp"><citetitle>ftgentmp</citetitle></link>,
+    <link linkend="ftgenonce"><citetitle>ftgenonce</citetitle></link> et
+    <link linkend="ScoreGenRef"><citetitle>Routines GEN</citetitle></link> pour savoir comment créer des
+    tables.</para>
+  <para>
+    On peut supprimer des tables de la mémoire au moyen de l'opcode
+    <link linkend="ftfree"><citetitle>ftfree</citetitle></link>.
+  </para>
+  <para>
+    Les tables requièrent par défaut une taille qui est une puissance de deux. On peut cependant
+    générer des tables de n'importe quelle taille en spécifiant celle-ci comme un nombre négatif
+    (voir l'<link linkend="f"><citetitle>instruction de partition f</citetitle></link>).
+  </para>
+  <note><para>
+    Certains opcodes n'acceptent pas des tables dont la taille n'est pas une puissance de deux,
+    car ceci peut être une nécessité pour le traitement interne.
+  </para></note>
+  <para>
+    Pour savoir comment accéder aux tables, consulter la section
+    <link linkend="SiggenTableacc"><citetitle>Accès aux Tables</citetitle></link>.
+  </para>
+  <para>
+    Les tables à utiliser avec l'opcode <link linkend="loscilx"><citetitle>loscilx</citetitle></link>
+    peuvent être chargées au moyen de <link linkend="sndload"><citetitle>sndload</citetitle></link>.
+  </para>
+
+  &tablequeries;
+  &tablereadwrit;
+  &tableselect;
+
+</chapter>

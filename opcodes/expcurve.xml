@@ -1,0 +1,97 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="expcurve">
+<indexterm id="IndexExpcurve"><primary>expcurve</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Linear and Exponential Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>expcurve</refentrytitle>
+  </refmeta>
+  
+
+  <refnamediv>
+    <refname>expcurve</refname>
+    <refpurpose>
+      Cet opcode implémente une formule qui génère une courbe exponentielle normalisée dans
+      l'intervalle 0 - 1. Il est basé sur le travail dans Max / MSP de Eric Singer (c) 1994.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère une courbe exponentielle dans l'intervalle de 0 à 1 avec une raideur de pente
+      arbitraire. Une raideur de pente inférieure ou égale à 1,0 lévera des erreurs NaN
+      (Not-a-Number) et provoquera un comportement instable.
+    </para>
+
+    <para>
+      La formule utilisée pour le calcul de la courbe est :
+<programlisting>(exp(x * log(y))-1) / (y-1)</programlisting>
+      où x est égal à <emphasis>kindex</emphasis> et y est égal à <emphasis>ksteepness</emphasis>.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kout <command>expcurve</command> kindex, ksteepness</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kindex</emphasis> -- Valeur d'indice. Attendue dans l'intervalle de 0 à 1.
+    </para>
+    <para>
+      <emphasis>ksteepness</emphasis> -- Raideur de la courbe générée. Avec des valeurs proches de
+      1,0 on obtient une courbe plus rectiligne alors qu'avec des valeurs plus grandes la courbe
+      est plus raide.
+    </para>
+    <para>
+      <emphasis>kout</emphasis> -- Sortie pondérée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode expcurve. Il utilise le fichier
+      <ulink url="examples/expcurve.csd"><citetitle>expcurve.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode expcurve.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/expcurve.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="scale"><citetitle>scale</citetitle></link>,
+      <link linkend="gainslider"><citetitle>gainslider</citetitle></link>,
+      <link linkend="logcurve"><citetitle>logcurve</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : David Akbari</member>
+        <member>Octobre</member>
+        <member>2006</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

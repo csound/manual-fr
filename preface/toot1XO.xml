@@ -1,0 +1,75 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.3
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="PrefaceToot1">
+  <title>Toot 1</title>
+  <para>
+    Dans le langage de Csound, les mots sont appelés des <emphasis>opcodes</emphasis>. Les
+    <emphasis>opcodes</emphasis> sont des instructions que Csound comprend et qu'il utilise
+    pour effectuer des actions. Ce manuel contient une longue liste d'<emphasis>opcodes</emphasis>
+    par ordre alphabétique dans la <link linkend="PartReference"><citetitle>Section de
+    Référence</citetitle></link>.
+  </para>
+  <para>
+    Les <emphasis>opcodes</emphasis> peuvent produire des résultats et recevoir des paramètres.
+    La sortie d'un <emphasis>opcode</emphasis> sera toujours écrite à gauche, alors que les
+    paramètres d'entrée apparaitront à droite.
+  </para>
+  <para>
+    Le premier fichier <emphasis>csd</emphasis>, appelé
+    <ulink url="examples/toot1.csd"><citetitle>toot1.csd</citetitle></ulink> contient un seul
+    intrument qui utilise l'opcode <link linkend="oscil"><citetitle>oscil</citetitle></link>
+    pour jouer une sinusoïde à 440Hz (définie par f1 dans la partition) avec une amplitude
+    de 10000.
+  </para>
+  <tip>
+    <para>
+      Si vous utilisez l'Activité Editeur de Csound, n'oubliez pas que vous pouvez ouvrir les
+      fichiers csd directement depuis le menu Fichier. Vous pouvez aussi copier et coller à
+      partir de cette page, mais il faut coller la section de l'orchestre et la section de la
+      partition séparément. Pour ce faire, sélectionnez le texte entre les balises
+      <emphasis>&lt;CsInstruments&gt;</emphasis> et <emphasis>&lt;/CsInstruments&gt;</emphasis>,
+      sans les inclure. Tapez ensuite CTRL-C, pour copier dans le presse-papier. Passez dans
+      l'Activité Editeur de Csound et cliquez dans le panneau Instrument, puis tapez CTRL-V.
+      Pour coller la section de la partition, faîtes de même avec le texte contenu entre les
+      balises <emphasis>&lt;CsScore&gt;</emphasis> et <emphasis>&lt;/CsScore&gt;</emphasis>, et
+      collez-le dans le panneau Score de l'Editeur.
+    </para>
+  </tip>
+  <para>
+    L'opcode <link linkend="oscil"><citetitle>oscil</citetitle></link> produit une oscillation
+    qui est stockée dans la variable <emphasis>a1</emphasis>. C'est la sortie ou résultat de
+    l'opcode car elle se trouve à sa gauche. A droite, nous avons les paramètres que l'opcode
+    utilise pour déterminer sa sortie. Dans le cas
+    d'<link linkend="oscil"><citetitle>oscil</citetitle></link>, nous devons spécifier
+    l'amplitude de l'oscillation, qui est le premier paramètre, la fréquence de l'oscillation,
+    qui est le second paramètre, et la forme d'onde de l'oscillation.
+  </para>
+  <para>
+    La forme de l'oscillation n'est pas créée dans l'orchestre, mais dans la section de
+    la partition. La forme est stockée dans la mémoire de l'ordinateur au moyen de ce que
+    Csound appelle une <link linkend="f"><citetitle>f-table</citetitle></link>, qui est
+    créée en utilisant une <link linkend="f"><citetitle>instruction f</citetitle></link>.
+    On peut créer de nombreuses formes différentes au moyen des
+    <link linkend="ScoreGenRef"><citetitle>routines GEN</citetitle></link> fournies par Csound.
+  </para>
+  <para>
+    L'oscillation produite par l'opcode <link linkend="oscil"><citetitle>oscil</citetitle></link>
+    est rendue audible par l'opcode <link linkend="out"><citetitle>out</citetitle></link>.
+    Notez que cet opcode n'a aucune variable en sortie. Sa sortie est en fait le son que vous entendez !
+  </para>
+  <para>
+    Nous définissons les instruments dans la section Orchestre d'un fichier <emphasis>csd</emphasis>,
+    mais aucun instrument ne résonnera s'il n'est pas joué. Pour jouer d'un instrument, on doit
+    utiliser l'<link linkend="i"><citetitle>instruction i</citetitle></link> dans la partition.
+  </para>
+  <para>
+<xi:include href="examples-xml/toot1.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </para>
+</section>

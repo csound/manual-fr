@@ -1,0 +1,26 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.6
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="ControlRealtime">
+  <title>Controle de l'exécution en temps réel</title>
+
+  <para>
+    Les opcodes qui surveillent et contrôlent l'exécution en temps réel sont :
+    <itemizedlist>
+      <listitem><para><link linkend="active"><citetitle>active</citetitle></link></para></listitem>
+      <listitem><para><link linkend="cpuprc"><citetitle>cpuprc</citetitle></link></para></listitem>
+      <listitem><para><link linkend="maxalloc"><citetitle>maxalloc</citetitle></link></para></listitem>
+      <listitem><para><link linkend="prealloc"><citetitle>prealloc</citetitle></link></para></listitem>
+      <listitem><para><link linkend="jacktransport"><citetitle>jacktransport</citetitle></link></para></listitem>
+    </itemizedlist>
+  </para>
+  <para>Le processus csound en cours peut être terminé au moyen de <link linkend="exitnow"><citetitle>exitnow</citetitle></link>.
+  </para>
+
+</section>

@@ -1,0 +1,71 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLscrollEnd">
+<indexterm id="IndexFLscrollEnd"><primary>FLscrollEnd</primary></indexterm>
+  <refentryinfo><title>FLTK:Containers</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLscrollEnd</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLscrollEnd</refname>
+    <refpurpose>
+      Un opcode FLTK qui marque la fin d'une zone avec barres d'ascenseur.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Un opcode FLTK qui marque la fin d'une zone avec barres d'ascenseur.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>FLscrollEnd</command></synopsis>
+  </refsect1>Exécution
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Les conteneurs sont utiles pour formater l'apparence graphiques des widgets.
+      Le conteneur le plus important est
+      <link linkend="FLpanel"><citetitle>FLpanel</citetitle></link>, qui crée une
+      fenêtre. Il peut être rempli avec d'autres conteneurs et/ou des valuateurs
+      ou d'autres sortes de widgets.
+    </para>
+
+    <para>
+      Il n'y a pas d'arguments de taux-k dans les conteneurs.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="FLgroup"><citetitle>FLgroup</citetitle></link>, 
+      <link linkend="FLgroupEnd"><citetitle>FLgroupEnd</citetitle></link>, 
+      <link linkend="FLpack"><citetitle>FLpack</citetitle></link>, 
+      <link linkend="FLpackEnd"><citetitle>FLpackEnd</citetitle></link>, 
+      <link linkend="FLpanel"><citetitle>FLpanel</citetitle></link>, 
+      <link linkend="FLpanelEnd"><citetitle>FLpanelEnd</citetitle></link>, 
+      <link linkend="FLscroll"><citetitle>FLscroll</citetitle></link>, 
+      <link linkend="FLtabs"><citetitle>FLtabs</citetitle></link>, 
+      <link linkend="FLtabsEnd"><citetitle>FLtabsEnd</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.22</para>
+  </refsect1>
+</refentry>

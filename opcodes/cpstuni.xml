@@ -1,0 +1,144 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="cpstuni">
+<indexterm id="IndexCpstuni"><primary>cpstuni</primary></indexterm>
+  <refentryinfo><title>Pitch Converters:Tuning Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>cpstuni</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>cpstuni</refname>
+    <refpurpose>
+      Retourne des valeurs d'échelle microtonale au taux-i.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne des valeurs d'échelle microtonale au taux-i.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>icps <command>cpstuni</command> index, ifn</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>icps</emphasis> -- Valeur de retour en cycles par seconde.
+    </para>
+
+    <para>
+      <emphasis>index</emphasis> -- Un nombre entier servant d'indice dans l'échelle.
+    </para>
+
+    <para>
+      <emphasis>ifn</emphasis> -- Table de fonction contenant les paramètres (numgrades, interval,
+      basefreq, basekeymidi) ainsi que les rapports de hauteur.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Cet opcode est similaire à <link linkend="cpstmid"><citetitle>cpstmid</citetitle></link>, mais
+      son fonctionnement ne nécessite pas le MIDI.
+    </para>
+
+    <para>
+      <emphasis>cpstuni</emphasis> travaille au taux-i. Il permet d'obtenir des échelles microtonales
+      personnalisées. Il nécessite le numéro d'une table de fonction qui contient les rapports de
+      hauteur, et quelques autres paramètres stockés dans la table elle-même.
+    </para>
+
+    <para>
+      L'argument <emphasis>index</emphasis> reçoit un nombre entier indiquant quel degré de
+      l'échelle donnée doit être converti en Hz. La table de fonction <emphasis>ifn</emphasis> sera générée par
+      <link linkend="GEN02"><citetitle>GEN02</citetitle></link>, les quatre premières valeurs
+      stockées dans la table étant des paramètres qui expriment :
+      <itemizedlist>
+        <listitem><para>numgrades -- Le nombre de degrés de l'échelle microtonale.</para></listitem>
+
+        <listitem><para>interval -- L'intervalle de fréquence couvert avant de répéter les rapports
+        des degrés, par exemple 2 pour une octave, 1,5 pour une quinte, etc.</para></listitem>
+
+        <listitem><para>basefreq -- La fréquence de base de l'échelle en cycles par seconde.</para></listitem>
+
+        <listitem><para>basekey -- L'indice entier dans l'échelle auquel la fréquence de base sera
+        affectée sans changement.</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      On peut insérer les rapports de hauteur après ces quatre valeurs. Par exemple, pour une
+      échelle standard de 12 degrés avec une fréquence de base de 261 Hz affectée au numéro de
+      touche 60, l'instruction f de la partition pour générer la table sera :
+
+      <informalexample>
+        <programlisting>
+<emphasis role="comment">;           numgrades    basefreq     tuning-ratios (eq.temp) .......</emphasis>
+<emphasis role="comment">;                  interval    basekey</emphasis>
+<emphasis role="stamnt">f</emphasis>1 0 64 -2  12     2     261   60     1   1.059463 1.12246 1.18920 ..etc...</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      Un autre exemple avec une échelle de 24 degrés et une fréquence de base de 440 affectée au
+      numéro de touche 48, et un intervalle de répétition de 1,5 :
+
+      <informalexample>
+        <programlisting>
+<emphasis role="comment">;                  numgrades       basefreq      tuning-ratios .......</emphasis>
+<emphasis role="comment">;                          interval       basekey</emphasis>
+<emphasis role="stamnt">f</emphasis>1 0 64 -2         24      1.5     440    48     1   1.01  1.02  1.03   ..etc...</programlisting>
+      </informalexample>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode cpstuni. Il utilise le fichier
+      <ulink url="examples/cpstuni.csd"><citetitle>cpstuni.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode cpstuni.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/cpstuni.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie contiendra cette ligne :
+      <screen>instr 1:  i1 = 440.110</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="cpstmid"><citetitle>cpstmid</citetitle></link>,
+      <link linkend="cpstun"><citetitle>cpstun</citetitle></link>,
+      <link linkend="GEN02"><citetitle>GEN02</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par &namegabriel;.</para>
+    <para>Exemple écrit par &namekevin;.</para>
+  </refsect1>
+</refentry>

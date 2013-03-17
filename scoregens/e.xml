@@ -1,0 +1,78 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.5
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="e">
+      <indexterm id="IndexEStatement"><primary>e statement</primary></indexterm>
+  <refmeta>
+    <refentrytitle>Instruction e</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>e</refname>
+    <refpurpose>
+      On peut utiliser cette instruction pour marquer la fin de la dernière section de la partition.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      On peut utiliser cette instruction pour marquer la fin de la dernière section de la partition.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>e</command> [temps]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Le premier p-champ <emphasis>temps</emphasis> est facultatif et s'il est présent, il
+      détermine la date de fin (en pulsations) de la dernière section de la partition. Cette date
+      doit être après le dernier évènement sinon elle n'aura pas d'effet. Les instruments "actifs
+      en permanence" se termineront à cette date. Cette manière d'allonger la section est utile
+      pour éviter les coupures prématurées de chute de réverbération ou d'autres effets.
+    </para>
+
+    <refsect2>
+      <title>Considérations Spéciales</title>
+      <para>
+        L'<emphasis>instruction e</emphasis> est contextuellement identique à une
+        <link linkend="s"><citetitle>instruction s</citetitle></link>. De plus,
+        l'<emphasis>instruction e</emphasis> termine toute génération de signal (y compris une exécution
+        indéfinie) et ferme tous les fichiers d'entrée et de sortie.
+      </para>
+
+      <para>
+        Si une <emphasis>instruction e</emphasis> intervient avant la fin de la partition, toutes les
+        lignes suivantes de la partition seront ignorées.
+      </para>
+
+      <para>
+        Dans un fichier de partition pas encore trié, l'<emphasis>instruction e</emphasis> est facultative.
+        Si un fichier de partition n'a pas d'<emphasis>instruction e</emphasis>, alors la fonction Sort
+        en fournira une.
+      </para>
+    </refsect2>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'instruction e. Il utilise le fichier
+      <ulink url="examples/e.csd"><citetitle>e.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'instruction e.</title>
+        <xi:include href="examples-xml/e.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+</refentry>

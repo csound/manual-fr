@@ -1,0 +1,86 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.5
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="dates">
+<indexterm id="IndexDates"><primary>dates</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Time Reading</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>dates</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>dates</refname>
+    <refpurpose>
+      Retourne sous forme de chaîne de caractères la date et l'heure spécifiées.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne sous forme de chaîne de caractères la date et l'heure spécifiées.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>Sir <command>dates</command> [ itime]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+
+    <para>
+      <emphasis>itime</emphasis> -- le temps écoulé en secondes depuis le début de
+      l'epoch. S'il est omis ou s'il est négatif, le temps courant est utilisé.
+    </para>
+    <para>
+      <emphasis>Sir</emphasis> -- la date et l'heure sous forme de chaîne de caractères.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode dates. Il utilise le fichier
+      <ulink url="examples/dates.csd"><citetitle>dates.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode dates.</title>
+          <xi:include href="examples-xml/dates.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
+File '2011_Jan_05_19_14_46.wav' written to the same directory as this CSD file is!
+Closing file '/home/user/csound/Output/2011_Jan_05_19_14_46.wav'...</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="date"><citetitle>date</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Université de Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>Décembre 2006</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 5.05 de Csound</para>
+  </refsect1>
+</refentry>

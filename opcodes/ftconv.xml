@@ -1,0 +1,129 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ftconv">
+<indexterm id="IndexFtconv"><primary>ftconv</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Convolution and Morphing</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ftconv</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ftconv</refname>
+    <refpurpose>
+      Convolution multi-canaux à faible latence, utilisant une table de fonction
+      pour la réponse impulsionnelle.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Convolution multi-canaux à faible latence, utilisant une table de fonction
+      pour la réponse impulsionnelle. L'algorithme divise la réponse impulsionnelle
+      en morceaux dont la longueur est déterminée par le paramètre
+      <emphasis>iplen</emphasis>, et retarde et mixe ces morceaux de façon à
+      ce que la réponse impulsionnelle originale soit reconstruite sans lacunes.
+      Le délai de la sortie (latence) est de <emphasis>iplen</emphasis> échantillons
+      et ne dépend pas du taux de contrôle, à la différence des autre opcodes de
+      convolution.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>a1[, a2[, a3[, ... a8]]] <command>ftconv</command> ain, ift, iplen[, iskipsamples \
+      [, iirlen[, iskipinit]]]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+
+	<para>
+	  <emphasis>ift</emphasis> -- numéro de la ftable source. La table doit contenir
+    les données audio des différents canaux, entrelacées, avec un nombre de
+    canaux égal au nombre de variables de sortie ((a1, a2, etc.). On peut créer
+    une table entrelacée à partir d'un ensemble de tables mono avec
+    <link linkend="GEN52"><citetitle>GEN52</citetitle></link>.
+   </para>
+
+	<para>
+	  <emphasis>iplen</emphasis> -- longueur des morceaux de réponse impulsionnelle
+    en trames d'échantillon ; doit être une puissance entière de deux. Avec de
+    faibles valeurs on aura un délai de sortie plus court, mais au prix d'une
+    utilisation accrue du CPU.
+   </para>
+
+	<para>
+	  <emphasis>iskipsamples</emphasis> (facultatif, 0 par défaut) -- nombre de
+    trames d'échantillon à ignorer au début de la table. Utile pour les réponses
+    de réverbération possédant un délai initial. Si ce délai n'est pas inférieur
+    à <emphasis>iplen</emphasis> échantillons, en affectant à
+    <emphasis>iskipsamples</emphasis> la même valeur que <emphasis>iplen</emphasis>,
+    on éliminera toute latence supplémentaire de <emphasis>ftconv</emphasis>.
+   </para>
+
+   	<para>
+   	  <emphasis>iirlen</emphasis> (facultatif) -- longueur totale de la réponse
+      impulsionnelle en trames d'échantillon. Par défaut, on utilise toutes les
+      données de la table (sans le point de garde).
+   	</para>
+
+	<para>
+	  <emphasis>iskipinit</emphasis> (facultatif, 0 par défaut) -- s'il a une valeur
+    non nulle, l'initialisation est ignorée lorsque cela est possible sans causer
+    d'erreur.
+	</para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+
+     <para>
+       <emphasis>ain</emphasis> -- signal d'entrée
+     </para>
+
+    <para>
+      <emphasis>a1 ... a8</emphasis> -- signaux de sortie.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode ftconv. Il utilise le fichier
+      <ulink url="examples/ftconv.csd"><citetitle>ftconv.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode ftconv.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+       <xi:include href="examples-xml/ftconv.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="pconvolve"><citetitle>pconvolve</citetitle></link>,
+      <link linkend="convolve"><citetitle>convolve</citetitle></link>,
+      <link linkend="dconv"><citetitle>dconv</citetitle></link>.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Istvan Varga</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

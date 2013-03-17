@@ -1,0 +1,299 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvadd">
+<indexterm id="IndexPvadd"><primary>pvadd</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:STFT</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvadd</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvadd</refname>
+    <refpurpose>
+      Lit un fichier <emphasis>pvoc</emphasis> et utilise ses données pour
+      réaliser une synthèse additive.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>pvadd</emphasis> lit un fichier
+      <link linkend="pvoc"><citetitle>pvoc</citetitle></link> et utilise ses
+      données pour réaliser une synthèse additive au moyen d'un ensemble interne
+      d'oscillateurs avec interpolation. L'utilisateur fournit la table d'onde
+      (habituellement une période d'une onde sinusoïdale), et il peut choisir
+      quels bins de l'analyse seront utilisés lors de la resynthèse.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>pvadd</command> ktimpnt, kfmod, ifilcod, ifn, ibins [, ibinoffset] \
+      [, ibinincr] [, iextractmode] [, ifreqlim] [, igatefn]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifilcod</emphasis> -- entier ou chaîne de caractères dénotant un
+      fichier de contrôle dérivé de l'analyse d'un signal audio par
+      <link linkend="pvanal"><citetitle>pvanal</citetitle></link>.
+      Un entier dénote le suffixe d'un fichier <emphasis>pvoc.m</emphasis> ; une
+      chaîne de caractères (entre guillemets) donne un nom de fichier,
+      optionnellement un nom de chemin complet. Si ce n'est pas un nom de chemin
+      complet, le fichier est d'abord cherché dans le répertoire courant, ensuite
+      dans celui donné par la variable d'environnement
+      <link linkend="OrchDirFiles"><citetitle>SADIR</citetitle></link> (si elle
+      est définie). Les fichiers de contrôle <emphasis>pvoc</emphasis> contiennent
+      des données organisées pour la resynthèse par TFR. L'utilisation de la mémoire
+      dépend de la taille des fichiers impliqués, qui sont lus et maintenus
+      entièrement dans la mémoire durant les calculs, mais sont partagés par les
+      appels multiples (voir aussi
+      <link linkend="lpread"><citetitle>lpread</citetitle></link>).
+    </para>
+
+    <para>
+      <emphasis>ifn</emphasis> -- numéro de la table d'une fonction mémorisée
+      contenant une onde sinusoïdale.
+    </para>
+
+    <para>
+      <emphasis>ibins</emphasis> -- nombre de bins utilisés dans la resynthèse
+      (chaque bin compte pour un oscillateur dans la resynthèse).
+    </para>
+
+    <para>
+      <emphasis>ibinoffset</emphasis> (facultatif) -- est le premier bin utilisé
+      (c'est une option et vaut 0 par défaut).
+    </para>
+
+    <para>
+      <emphasis>ibinincr</emphasis> (facultatif) -- fixe un incrément par lequel
+      <emphasis>pvadd</emphasis> compte <emphasis>ibins</emphasis> composants à
+      partir de <emphasis>ibinoffset</emphasis> pour la resynthèse (voir ci-dessous
+      pour une explication plus détaillée).
+    </para>
+
+    <para>
+      <emphasis>iextractmode</emphasis> (facultatif) -- détermine s'il faut
+      effectuer l'extraction spectrale et, dans ce cas, quels composants ayant
+      des variations de fréquence sous <emphasis>ifreqlim</emphasis> ou au-dessus
+      de <emphasis>ifreqlim</emphasis> seront écartés. Si <emphasis>iextractmode</emphasis>
+      vaut 1, <emphasis>pvadd</emphasis> ne synthétise que les composants pour
+      lesquels la différence de fréquence entre les trames d'analyse est plus
+      grande que <emphasis>ifreqlim</emphasis>. Si <emphasis>iextractmode</emphasis>
+      vaut 2, <emphasis>pvadd</emphasis> ne synthétise que les composants pour
+      lesquels la différence de fréquence entre trames est plus petite que
+      <emphasis>ifreqlim</emphasis>. <emphasis>iextractmode</emphasis> et
+      <emphasis>ifreqlim</emphasis> valent 0 par défaut, ce qui provoque une
+      simple resynthèse. Voir les exemples ci-dessous.
+    </para>
+
+    <para>
+      <emphasis>igatefn</emphasis> (facultatif) -- le numéro d'une fonction
+      stockée à appliquer aux amplitudes des bins de l'analyse avant la resynthèse.
+      Si <emphasis>igatefn</emphasis> est supérieur à 0, les amplitudes de chaque
+      bin seront modifiées par <emphasis>igatefn</emphasis> par un procédé simple
+      de correspondance. D'abord, les amplitudes de tous les bins dans toutes les
+      trames de l'ensemble du fichier d'analyse sont comparées pour déterminer la
+      valeur de l'amplitude maximale. Cette valeur est ensuite utilisée pour créer
+      des amplitudes normalisées comme indices dans la fonction stockée
+      <emphasis>igatefn</emphasis>. L'amplitude maximale correspond au dernier point
+      dans la fonction. Une amplitude nulle correspond au premier point dans la
+      fonction. Les valeurs entre 0 et 1 sont mises en correspondance avec les
+      points tout au long de la table de fonction. Ceci est illustré dans les
+      exemples ci-dessous.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ktimpnt</emphasis> et <emphasis>kfmod</emphasis> sont utilisés
+      de la même manière que dans <link linkend="pvoc"><citetitle>pvoc</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      <informalexample>
+        <programlisting>
+ktime <emphasis role="opc">line</emphasis>  0, p3, p3
+asig  <emphasis role="opc">pvadd</emphasis> ktime, 1, <quote>oboe.pvoc</quote>, 1, 100, 2</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      Ci-dessus, <emphasis>ibins</emphasis> vaut 100 et <emphasis>ibinoffset</emphasis>
+      vaut 2. Avec ces réglages, la resynthèse contiendra 100 composants commençant
+      avec le bin n°2 (les bins sont comptés à partir de 0). Donc, la resynthèse
+      sera réalisée avec les bins 2 à 101 inclus. Il est généralement avisé de
+      commencer avec le bin 1 ou 2, car le bin 0, et souvent le bin 1, contiennent
+      des données inutiles voire inefficaces pour la création d'une resynthèse
+      propre.
+    </para>
+
+    <para>
+      <informalexample>
+        <programlisting>
+ktime <emphasis role="opc">line</emphasis>  0, p3, p3
+asig  <emphasis role="opc">pvadd</emphasis> ktime, 1, <quote>oboe.pvoc</quote>, 1, 100, 2, 2</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      L'exemple ci-dessus est le même que le précédent avec l'addition de la valeur
+      2 utilisée pour l'argument facultatif <emphasis>ibinincr</emphasis>. Le
+      résultat comprend toujours 100 composants dans la resynthèse, mais
+      <emphasis>pvadd</emphasis> compte les bins par 2 au lieu de 1. Il utilise
+      ainsi les bins 2, 4, 6, 8, 10, et ainsi de suite. Avec <emphasis>ibins</emphasis>=10,
+      <emphasis>ibinoffset</emphasis>=10 et <emphasis>ibinincr</emphasis>=10,
+      <emphasis>pvadd</emphasis> utiliserait les bins 10, 20, 30, 40, jusqu'à 100
+      inclus.
+    </para>
+
+    <para>
+      Ci-dessous, un exemple utilisant l'extraction spectrale. Dans cet exemple,
+      <emphasis>iextractmode</emphasis> vaut 1 et <emphasis>ifreqlim</emphasis>
+      vaut 9. Ainsi, <emphasis>pvadd</emphasis> ne synthétise que les bins pour
+      lesquels la moyenne de la déviation en fréquence prise sur 6 trames est
+      supérieure à 9.
+    </para>
+
+    <para>
+      <informalexample>
+        <programlisting>
+ktime <emphasis role="opc">line</emphasis>  0, p3, p3
+asig  <emphasis role="opc">pvadd</emphasis> ktime, 1, <quote>oboe.pvoc</quote>, 1, 100, 2, 2, 1, 9</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      Si <emphasis>iextractmode</emphasis> avait eu pour valeur 2 dans l'exemple
+      ci-dessus, seuls les bins avec une déviation en fréquence moyenne inférieure
+      à 9 auraient été synthétisés. Avec de bons réglages, cette technique peut
+      être utilisée pour séparer les parties à hauteur définie du spectre des parties
+      bruiteuses. En pratique, cela dépend beaucoup du type de son, de la
+      qualité de l'enregistrement et de la numérisation, et aussi de la taille
+      de la fenêtre d'analyse et de l'incrément de trame.
+    </para>
+
+    <para>
+      L'exemple suivant utilise le mappage d'amplitude. Le dernier 2 dans la liste
+      d'arguments indique f2 dans la partition.
+    </para>
+
+    <para>
+      <informalexample>
+        <programlisting>
+asig  <emphasis role="opc">pvadd</emphasis> ktime, 1, <quote>oboe.pvoc</quote>, 1, 100, 2, 2, 0, 0, 2</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      En supposant que la partition contienne :
+    </para>
+
+    <para>
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">f</emphasis>2 0 512 7 0 256 1 256 1</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      Les bins dont l'amplitude est supérieure ou égale à 50% du maximum
+      resteront inchangés, tandis que ceux dont l'amplitude est inférieure à 50%
+      du maximum seront atténués. Dans ce cas, plus l'amplitude est faible et
+      plus l'atténuation sera forte. Mais supposons que la partition contienne :
+    </para>
+
+    <para>
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">f</emphasis>2 0 512 5 1 512 .001</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      Dans ce cas, les amplitudes les plus faibles resteront inchangées tandis
+      que les plus fortes seront atténuées, <quote>inversant</quote> le son en
+      termes de spectre d'amplitude ! Les fonctions peuvent être arbitrairement
+      compliquées. Il faut simplement se souvenir que les valeurs d'amplitude
+      de l'analyse normalisées sont elles-mêmes les indices dans la fonction.
+    </para>
+
+    <para>
+      Finalement, on peut utiliser de concert l'extraction spectrale et le
+      mappage d'amplitude. L'exemple ci-dessous ne synthétise que les composants
+      ayant une déviation en fréquence de moins de 5 Hz par trame et il pondère
+      les amplitudes selon la table f2.
+    </para>
+
+    <para>
+      <informalexample>
+        <programlisting>
+asig  <emphasis role="opc">pvadd</emphasis> ktime, 1, <quote>oboe.pvoc</quote>, 1, 100, 1, 1, 2, 5, 2</programlisting>
+      </informalexample>
+    </para>
+
+    <note>
+      <title>REMARQUES UTILES</title>
+      <para>
+        En utilisant plusieurs unités <emphasis>pvadd</emphasis> ensemble, il est
+        possible de faire un fondu entre différentes parties de la resynthèse, ce
+        qui crée des effets de <quote>filtrage</quote> variés. L'auteur utilise
+        <emphasis>pvadd</emphasis> pour synthétiser un bin à la fois afin de
+        contrôler séparément chaque composant de la resynthèse.
+      </para>
+
+      <para>
+        Si une combinaison de <emphasis>ibins</emphasis>, <emphasis>ibinoffset</emphasis>
+        et <emphasis>ibinincr</emphasis> crée une situation où <emphasis>pvadd</emphasis>
+        doit utiliser un numéro de bin supérieur au nombre de bins dans l'analyse,
+        il n'utilisera que l'ensemble des bins disponibles, sans protester. Ainsi,
+        pour utiliser tous les bins, il suffit de donner une grande valeur à
+        <emphasis>ibins</emphasis> (par exemple 2000).
+      </para>
+
+      <para>
+        Il faut s'attendre dans tous les cas à augmenter les amplitudes d'un
+        facteur  compris entre 10 et 100.
+      </para>
+    </note>
+    <para>
+      Voici un exemple complet de l'opcode pvadd. Il utilise le fichier
+      <ulink url="examples/pvadd.csd"><citetitle>pvadd.csd</citetitle></ulink>
+      <example>
+        <title>Exemple de l'opcode pvadd.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pvadd.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Richard Karpen</member>
+        <member>Seattle, WA USA</member>
+        <member>1998</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.48 de Csound, arguments supplémentaires dans
+    la version 3.56</para>
+  </refsect1>
+</refentry>

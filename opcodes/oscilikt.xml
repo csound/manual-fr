@@ -1,0 +1,104 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.14
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="oscilikt">
+<indexterm id="IndexOscilikt"><primary>oscilikt</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Basic Oscillators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>oscilikt</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>oscilikt</refname>
+    <refpurpose>
+      Un oscillateur avec interpolation linéaire qui permet de changer le numéro de table au taux-k.
+    </refpurpose>
+  </refnamediv>
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>oscilikt</emphasis> ressemble beaucoup à
+      <link linkend="oscili"><citetitle>oscili</citetitle></link>, mais il permet de changer le numéro
+      de table au taux-k. Il est légèrement plus lent que <emphasis>oscili</emphasis> (spécialement
+      avec des taux de contrôle élevés), mais en contrepartie il est plus précis car il utilise un
+      accumulateur de phase sur 31 bit au lieu de celui sur 24 bit utilisé par <emphasis>oscili</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>oscilikt</command> xamp, xcps, kfn [, iphs] [, istor]</synopsis>
+
+    <synopsis>kres <command>oscilikt</command> kamp, kcps, kfn [, iphs] [, istor]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iphs</emphasis> (facultatif, par défaut 0) -- phase initiale dans l'intervalle 0 à 1.
+      Les autres valeurs sont ramenées cycliquement dans l'intervalle autorisé.
+    </para>
+
+    <para>
+      <emphasis>istor</emphasis> (facultatif, par défaut 0) -- ignorer l'initialisation.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+
+    <para>
+      <emphasis>kamp</emphasis>, <emphasis>xamp</emphasis> -- amplitude.
+    </para>
+
+    <para>
+      <emphasis>kcps</emphasis>, <emphasis>xcps</emphasis> -- fréquence en Hz. Zéro et les valeurs
+      négatives sont permis. Cependant, la valeur absolue doit être inférieure à
+      <link linkend="sr"><citetitle>sr</citetitle></link> (et il est recommandé qu'elle soit inférieure
+      à <emphasis>sr/</emphasis>2).
+    </para>
+
+    <para>
+      <emphasis>kfn</emphasis> -- numéro de la table de fonction. Peut varier au taux de contrôle (utile
+      pour le <quote>morphing</quote> de formes d'onde, ou pour choisir parmi un ensemble de tables à
+      bande de fréquence limitée générées par <link linkend="GEN30"><citetitle>GEN30</citetitle></link>).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode oscilikt. Il utilise le fichier
+      <ulink url="examples/oscilikt.csd"><citetitle>oscilikt.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode oscilikt.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/oscilikt.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="osciliktp"><citetitle>osciliktp</citetitle></link> et
+      <link linkend="oscilikts"><citetitle>oscilikts</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &nameistvan;</para>
+    <para>Exemple écrit par &namekevin;.</para>
+    <para>Nouveau dans la version 4.22</para>
+  </refsect1>
+</refentry>

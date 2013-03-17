@@ -1,0 +1,53 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.6
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="strcmpk">
+<indexterm id="Indexstrcmpk"><primary>strcmpk</primary></indexterm>
+  <refentryinfo><title>Strings:Manipulation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>strcmpk</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>strcmp</refname>
+    <refpurpose>
+      Compare des chaînes de caractères.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Compare des chaînes et retourne -1, 0 ou 1 si la première chaîne est
+      inférieure, égale ou supérieure à la seconde, respectivement.
+      <emphasis>strcmpk</emphasis> effectue la comparaison à la fois pendant
+      l'initialisation et pendant l'exécution.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kres <command>strcmpk</command> S1, S2</synopsis>
+  </refsect1>
+  
+  <refsect1>
+	  <title>Voir aussi</title>
+	  <para><link linkend="strcmp"><citetitle>strcmp</citetitle></link></para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Istvan Varga</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

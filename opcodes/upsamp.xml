@@ -1,0 +1,68 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="upsamp">
+<indexterm id="IndexUpsamp"><primary>upsamp</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Sample Level Operators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>upsamp</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>upsamp</refname>
+    <refpurpose>
+      Modifie un signal par sur-échantillonnage.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Modifie un signal par sur-échantillonnage.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>upsamp</command> ksig</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>upsamp</emphasis> convertit un signal de contrôle en signal audio.
+      Cela est réalisé par simple répétition de la kval. <emphasis>upsamp</emphasis>
+      est une forme légèrement plus efficace de l'affectation
+      <emphasis>asig</emphasis> = <emphasis>ksig</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode upsamp. Il utilise le fichier
+      <ulink url="examples/upsamp.csd"><citetitle>upsamp.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode upsamp.</title>
+        <xi:include href="examples-xml/upsamp.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="diff"><citetitle>diff</citetitle></link>,
+      <link linkend="downsamp"><citetitle>downsamp</citetitle></link>,
+      <link linkend="integ"><citetitle>integ</citetitle></link>,
+      <link linkend="interp"><citetitle>interp</citetitle></link>,
+      <link linkend="samphold"><citetitle>samphold</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

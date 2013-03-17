@@ -1,0 +1,98 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="prealloc">
+<indexterm id="IndexPrealloc"><primary>prealloc</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Realtime Performance Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>prealloc</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>prealloc</refname>
+    <refpurpose>
+      Crée de l'espace pour des instruments mais ne les exécute pas.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Crée de l'espace pour des instruments mais ne les exécute pas.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>prealloc</command> insnum, icount</synopsis>
+    <synopsis><command>prealloc</command> &quot;insname&quot;, icount</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>insnum</emphasis> -- numéro de l'instrument
+    </para>
+
+    <para>
+      <emphasis>icount</emphasis> -- nombre d'allocations de l'instrument
+    </para>
+
+    <para>
+      <emphasis><quote>insname</quote></emphasis> -- une chaîne de caractères (entre
+      guillemets) représentant un instrument nommé.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Toutes les instances de <emphasis>prealloc</emphasis> doivent être définies dans
+      la section d'en-tête, pas dans le corps de l'instrument.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode prealloc. Il utilise le fichier
+      <ulink url="examples/prealloc.csd"><citetitle>prealloc.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode prealloc.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/prealloc.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="cpuprc"><citetitle>cpuprc</citetitle></link>,
+      <link linkend="maxalloc"><citetitle>maxalloc</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+        <member>Juillet 1999</member>
+      </simplelist>
+    </para>
+    <para>Exemple écrit par &namekevin;.</para>
+
+    <para>Nouveau dans la version 3.57 de Csound</para>
+  </refsect1>
+</refentry>

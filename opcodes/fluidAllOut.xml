@@ -1,0 +1,77 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="fluidAllOut">
+<indexterm id="IndexFluidAllOut"><primary>fluidAllOut</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Sample Playback</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>fluidAllOut</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>fluidAllOut</refname>
+    <refpurpose>
+      Rassemble toutes les données audio depuis tous les moteurs Fluidsynth dans une exécution.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aleft, aright <command>fluidAllOut</command></synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Description</title> 
+    <para>Rassemble toutes les données audio depuis tous les moteurs Fluidsynth dans une exécution.
+    </para>  
+    </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para><emphasis>aleft</emphasis> -- Canal de sortie audio gauche.</para>
+    <para><emphasis>aright</emphasis> -- Canal de sortie audio droite.</para>
+    <para>Appelez fluidAllOut dans une définition d'instrument dont le numéro est supérieur à ceux de
+      toutes les définitions d'instrument de contrôle de fluid. Tous les SoundFonts envoient leur sortie
+      audio à cet opcode. Envoyez une note de durée indéterminée à cet instrument afin d'activer les
+      SoundFonts pour une durée suffisante.</para>
+    <para>Dans cette implémentation, les effets SoundFont tels que chorus ou réverbération sont utilisés
+    si et seulement s'ils sont présents par défaut pour le preset. Il n'y a aucun moyen d'activer ou
+    d'arrêter de tels effets, ou de changer leurs paramètres, depuis Csound.</para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode fluidAllOut. Il utilise le fichier
+      <ulink url="examples/fluidAllOut.csd"><citetitle>fluidAllOut.csd</citetitle></ulink>.
+    </para>
+    <xi:include href="examples-xml/fluidAllOut.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </refsect1>
+  
+  <refsect1>
+    <title>Voir aussi</title>
+    <para><link linkend="fluidEngine"><citetitle>fluidEngine</citetitle></link>,
+    <link linkend="fluidNote"><citetitle>fluidNote</citetitle></link>,
+    <link linkend="fluidLoad"><citetitle>fluidLoad</citetitle></link></para>
+    <para>Plus d'information sur soundfonts dans les Floss Manuals :
+      <ulink url="http://en.flossmanuals.net/csound/ch048_d-reading-midi-files">
+      <citetitle>http://en.flossmanuals.net/csound/ch048_d-reading-midi-files</citetitle>
+      </ulink></para>
+    <para>D'autres informations sur soundfonts dans Wikipedia :
+    <ulink url="http://en.wikipedia.org/wiki/Soundfont">
+    <citetitle>http://en.wikipedia.org/wiki/Soundfont</citetitle></ulink></para>   
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>Opcode par Michael Gogins (gogins@pipeline.com). Merci à Peter Hanappe pour Fluidsynth, et à
+    Steven Yi pour avoir réalisé qu'il était nécessaire de diviser Fluidsynth en plusieurs opcodes
+    Csound différents.</para>
+  </refsect1>
+</refentry>

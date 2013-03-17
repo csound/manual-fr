@@ -1,0 +1,87 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvsinit">
+<indexterm id="IndexPvsinit"><primary>pvsinit</primary></indexterm>
+
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsinit</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvsinit</refname>
+    <refpurpose>
+      Initialise une variable spectrale (f) à zéro.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Réalise l'équivalent d'une opération d'initialisation sur une variable-f.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>fsig <command>pvsinit</command> isize[, iolap, iwinsize, iwintype, iformat]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>fsig</emphasis> -- flot pv de sortie mis à zéro.
+    </para>
+
+    <para>
+      <emphasis>isize</emphasis> -- taille de la trame de TFD.
+    </para>
+
+    <para>
+      <emphasis>iolap</emphasis> -- taille du recouvrement de l'analyse. Vaut par
+      défaut <emphasis>isize</emphasis>/4.
+    </para>
+    <para>
+      <emphasis>iwinsize</emphasis> -- taille de la fenêtre d'analyse. Vaut par
+      défaut <emphasis>isize</emphasis>.
+    </para>
+    <para>
+      <emphasis>iwintype</emphasis> -- type de la fenêtre d'analyse. Vaut par
+      défaut 1, Hanning.
+    </para>
+    <para>
+      <emphasis>iformat</emphasis> -- format pvsdata. Vaut par défaut 0 : PVS_AMP_FREQ.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      <example>
+        <title>Exemples</title>
+        <programlisting>
+fsig  <emphasis role="opc">pvsinit</emphasis>   1024</programlisting>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Novembre 2004 </member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau greffon dans la version 5</para>
+    <para>Novembre 2004.</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,80 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ftfree">
+<indexterm id="Indexftfree"><primary>ftfree</primary></indexterm>
+  <refentryinfo><title>Table Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ftfree</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ftfree</refname>
+    <refpurpose>
+      Efface une table de fonction.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Efface une table de fonction.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>ftfree</command> ifno, iwhen</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+    <emphasis>ifno</emphasis> -- le numéro de la table à effacer.
+    </para>
+    <para>
+    <emphasis>iwhen</emphasis> -- s'il vaut zéro, la table est effacée pendant
+    la période d'initialisation ; sinon le numéro de table est enregistré pour
+    que celle-ci soit effacée lors de la désactivation de la note.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode ftfree. Il utilise le fichier
+      <ulink url="examples/ftfree.csd"><citetitle>ftfree.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode ftfree.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/ftfree.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      <screen>
+instr 1:  gitempTable = 101.000
+B  0.000 ..  3.000 T  3.000 TT  3.000 M:  0.50000  0.50000
+INIT ERROR in instr 1: Invalid ftable no. 101.000000
+instr 1:  gitempTable = 101.000
+Error deleting ftable 101
+	  B  3.000 - note deleted.  i1 had 1 init errors
+B  3.000 ..  5.000 T  5.000 TT  5.000 M:  0.00000  0.00000</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteurs : &namesteven;, &nameistvan;</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

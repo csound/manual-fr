@@ -1,0 +1,148 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.10
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="syncgrain">
+<indexterm id="IndexSyncgrain"><primary>syncgrain</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Granular Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>syncgrain</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>syncgrain</refname>
+    <refpurpose>
+      Synthèse granulaire synchrone.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+<emphasis>syncgrain</emphasis> implémente la synthèse granulaire synchrone. La source de son pour
+les grains est obtenue par la lecture d'une table de fonction contenant les échantillons de la
+forme d'onde source. Pour les sources de son échantillonné, on utilise
+<link linkend="GEN01"><citetitle>GEN01</citetitle></link>. <emphasis>syncgrain</emphasis> acceptera
+des tables allouées en différé.
+  </para>
+  <para>
+Le générateur de grain exerce un contrôle total sur la fréquence (grains/sec), l'amplitude générale,
+la hauteur du grain (incrément d'échantillonnage) et la taille du grain (en sec), comme paramètres
+constants ou variant dans le temps (signaux). Le taux du pointeur de grain est un paramètre
+supplémentaire qui contrôle à quelle position le générateur commencera à lire les échantillons dans
+la table pour chaque grain successif. Il est mesuré en fraction de la taille du grain ; s'il vaut 1
+(la valeur par défaut) chaque grain successif est lu à partir de l'endroit où le grain précédent
+s'est terminé. S'il vaut 0,5 le grain suivant commencera à mi-chemin entre la position de début et
+la position de fin du grain précédent, etc. S'il vaut 0 le générateur lira toujours à partir de la
+même position dans la table (quelque soit l'endroit où le pointeur se trouvait juste avant). Avec
+une valeur négative le pointeur évoluera en décrémentant sa position. Ce contrôle apporte plus de
+flexibilité dans la création de modifications de l'échelle temporelle lors de la resynthèse.
+  </para>
+  <para>
+<emphasis>syncgrain</emphasis> générera n'importe quel nombre de flux parallèles de grains (en
+fonction de la densité/fréquence de grains), borné supérieurement par la valeur de
+<emphasis>iolaps</emphasis> (100 par défaut). Le nombre de flux (grains se chevauchant) est
+déterminé par taille_du_grain*fréquence_du_grain. Plus il y aura de chevauchements de grains, plus
+il y aura de calculs et il se peut que la synthèse ne s'effectue pas en temps réel (cela dépend de
+la puissance du processeur).
+  </para>
+  <para>
+<emphasis>syncgrain</emphasis> peut simuler une synthèse formantique à la FOF, si l'on utilise une
+forme d'enveloppe de grain adéquate et une sinusoïde comme forme d'onde du grain. Dans ce cas, on
+pourra utiliser des tailles de grain d'environ 0,04 sec. La fréquence centrale du formant est
+déterminée par la hauteur du grain. Comme l'incrément est en échantillons, si l'on veut
+utiliser une fréquence en Hz, cette valeur doit être multipliée par
+taille_de_la_table/<emphasis>sr</emphasis>. La fréquence du grain détermine le fondamental.
+  </para>
+  <para>
+<emphasis>syncgrain</emphasis> utilise des indices en virgule flottante, ce qui fait qu'il n'est pas
+affecté par des tables de grande taille. Cet opcode est basé sur la class SyncGrain de la
+bibliothèque SndObj.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>asig <command>syncgrain</command> kamp, kfreq, kpitch, kgrsize, kprate, ifun1, \
+      ifun2, iolaps</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+      <para>
+      <emphasis>ifun1</emphasis> -- table de fonction du signal source. Des tables avec allocation
+      différée sont acceptées (voir
+      <link linkend="GEN01"><citetitle>GEN01</citetitle></link>), mais l'opcode attend une source
+      mono.
+    </para>
+        <para>
+      <emphasis>ifun2</emphasis> -- table de fonction de l'enveloppe du grain.
+    </para>
+          <para>
+      <emphasis>iolaps</emphasis> -- nombre maximum de chevauchements,
+      max(<emphasis>kfreq</emphasis>)*max(<emphasis>kgrsize</emphasis>). Une grande valeur
+      d'estimation ne devrait pas affecter l'exécution, mais le dépassement de cette valeur aura
+      probablement des conséquences désastreuses.
+    </para>
+  
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamp</emphasis> -- pondération de l'amplitude.
+    </para>
+    <para>
+      <emphasis>kfreq</emphasis> -- fréquence de génération des grains, ou densité, en grains/sec.
+    </para>
+
+    <para>
+      <emphasis>kpitch</emphasis> -- transposition de hauteur des grains (1 = hauteur normale,
+      &lt; 1 plus bas, > 1 plus haut ; négatif, lecture à l'envers).
+    </para>
+
+    <para>
+      <emphasis>kgrsize</emphasis> -- taille du grain en secondes.
+    </para>
+    <para>
+      <emphasis>kprate</emphasis> -- vitesse du pointeur de lecture, en grains. Une valeur de 1
+      avancera le pointeur de lecture d'un grain dans la table source. Des valeurs supérieures
+      provoqueront une compression temporelle et des valeurs inférieures une expansion temporelle
+      du signal source. Avec des valeurs négatives, le pointeur progressera à l'envers et zéro
+      l'immobilisera.
+    </para>
+
+  </refsect1>
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode syncgrain. Il utilise le fichier
+      <ulink url="examples/syncgrain.csd"><citetitle>syncgrain.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode syncgrain.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/syncgrain.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur: &namevictor;</member>
+        <member>Janvier 2005</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau greffon dans la version 5</para>
+    <para>Janvier 2005.</para>
+  </refsect1>
+</refentry>

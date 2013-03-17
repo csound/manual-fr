@@ -1,0 +1,106 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.17
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="oscil">
+<indexterm id="IndexOscil"><primary>oscil</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Basic Oscillators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>oscil</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>oscil</refname>
+    <refpurpose>
+      Un oscillateur simple.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>oscil</emphasis> lit la table <emphasis>ifn</emphasis> séquentiellement
+      et de manière répétive à la fréquence <emphasis>xcps</emphasis>. L'amplitude
+      est pondérée par <emphasis>xamp</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>oscil</command> xamp, xcps, ifn [, iphs]</synopsis>
+    <synopsis>kres <command>oscil</command> kamp, kcps, ifn [, iphs]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn</emphasis> -- numéro de la table de fonction. Nécessite un point de garde pour la lecture cyclique.
+    </para>
+
+    <para>
+      <emphasis>iphs</emphasis> (facultatif, par défaut 0) -- phase initiale de la lecture, exprimée comme une fraction
+      d'une période (0 à 1). Avec une valeur négative l'initialisation de la phase sera ignorée. La valeur par défaut
+      est 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamp, xamp</emphasis> -- amplitude
+    </para>
+
+    <para>
+      <emphasis>kcps, xcps</emphasis> -- fréquence en cycles par seconde.
+    </para>
+
+    <para>
+      L'opcode <emphasis>oscil</emphasis> génère des signaux de contrôle (ou audio) constitués de la
+      valeur de <emphasis>kamp</emphasis> (<emphasis>xamp</emphasis>) fois la valeur de la lecture au
+      taux de contrôle (ou au taux audio) d'une table de fonction stockée. La phase interne est
+      simultanément incrémentée selon la valeur en entrée de <emphasis>kcps</emphasis> ou de
+      <emphasis>xcps</emphasis>.
+    </para>
+    <para>
+      La table <emphasis>ifn</emphasis> est parcourue par incrément modulo la longueur de la
+      table et la valeur obtenue est multipliée par <emphasis>amp</emphasis>.
+    </para>
+    <para>
+      Si vous désirez changer la table de l'oscillateur avec un signal de taux-k, vous
+      pouvez utiliser <link linkend="oscilikt"><citetitle>oscilikt</citetitle></link>.
+    </para>
+ </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode oscil. Il utilise le fichier
+      <ulink url="examples/oscil.csd"><citetitle>oscil.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode oscil.</title>
+
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/oscil.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="oscili"><citetitle>oscili</citetitle></link>,
+      <link linkend="oscilikt"><citetitle>oscilikt</citetitle></link>,
+      <link linkend="oscil3"><citetitle>oscil3</citetitle></link>,
+      <link linkend="poscil"><citetitle>poscil</citetitle></link>,
+      <link linkend="poscil3"><citetitle>poscil3</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

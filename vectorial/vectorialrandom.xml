@@ -1,0 +1,26 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.2
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="vectorialrandom">
+    <title>Générateurs de Signal Aléatoire Vectoriel</title>
+  <para>
+    Ces opcodes génèrent des vecteurs de nombres aléatoires à stocker dans des tables. Ils
+    génèrent une sorte de 'bruit vectoriel à bande limitée'. Tous ces opcodes fonctionnent
+    au taux-k.
+  </para>
+  <para>
+    Générateurs de signal aléatoire vectoriel :
+    <link linkend="vrandh"><citetitle>vrandh</citetitle></link> et
+    <link linkend="vrandi"><citetitle>vrandi</citetitle></link>.
+  </para>
+  <para>
+    Des vecteurs d'automates cellulaires peuvent être générés au moyen de :
+    <link linkend="vcella"><citetitle>vcella</citetitle></link>.
+  </para>
+</section>

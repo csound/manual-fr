@@ -1,0 +1,84 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLsetTextSize">
+<indexterm id="IndexFLsetTextSize"><primary>FLsetTextSize</primary></indexterm>
+  <refentryinfo><title>FLTK:Appearance</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLsetTextSize</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLsetTextSize</refname>
+    <refpurpose>
+      Fixe la taille du texte de l'étiquette d'un widget FLTK.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>FLsetTextSize</emphasis> fixe la taille du texte de l'étiquette
+      du widget cible.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>FLsetTextSize</command> isize, ihandle</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>isize</emphasis> -- taille de la police du widget cible.  Les
+      valeurs normales sont de l'ordre de 15. Des nombres plus grands augmentent
+      la taille de la police, tandis que des nombres plus petits la réduisent.
+    </para>
+
+    <para>
+      <emphasis>ihandle</emphasis> -- un nombre entier (utilisé comme
+      identifiant unique) pris de la sortie d'un opcode de widget déjà en
+      place (qui correspond au widget cible). Il est utilisé pour identifier
+      de manière univoque le widget lors de la modification de son apparence
+      par cette classe d'opcodes. Il ne faut pas fixer la valeur de
+      <emphasis>ihandle</emphasis> directement sous peine de provoquer un
+      plantage de Csound.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+        <link linkend="FLcolor2"><citetitle>FLcolor2</citetitle></link>, 
+        <link linkend="FLhide"><citetitle>FLhide</citetitle></link>, 
+        <link linkend="FLlabel"><citetitle>FLlabel</citetitle></link>, 
+        <link linkend="FLsetAlign"><citetitle>FLsetAlign</citetitle></link>, 
+        <link linkend="FLsetBox"><citetitle>FLsetBox</citetitle></link>, 
+        <link linkend="FLsetColor"><citetitle>FLsetColor</citetitle></link>, 
+        <link linkend="FLsetColor2"><citetitle>FLsetColor2</citetitle></link>, 
+        <link linkend="FLsetFont"><citetitle>FLsetFont</citetitle></link>, 
+        <link linkend="FLsetPosition"><citetitle>FLsetPosition</citetitle></link>, 
+        <link linkend="FLsetSize"><citetitle>FLsetSize</citetitle></link>, 
+        <link linkend="FLsetText"><citetitle>FLsetText</citetitle></link>, 
+        <link linkend="FLsetTextColor"><citetitle>FLsetTextColor</citetitle></link>, 
+        <link linkend="FLsetTextSize"><citetitle>FLsetTextSize</citetitle></link>, 
+        <link linkend="FLsetTextType"><citetitle>FLsetTextType</citetitle></link>, 
+        <link linkend="FLsetVal_i"><citetitle>FLsetVal_i</citetitle></link>, 
+        <link linkend="FLsetVal"><citetitle>FLsetVal</citetitle></link>, 
+        <link linkend="FLshow"><citetitle>FLshow</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.22</para>
+  </refsect1>
+</refentry>

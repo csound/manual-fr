@@ -1,0 +1,122 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.15
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="massign">
+<indexterm id="IndexMassign"><primary>massign</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Input</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>massign</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>massign</refname>
+
+    <refpurpose>
+      Affecte un numéro de canal MIDI à un instrument de Csound.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Affecte un numéro de canal MIDI à un instrument de Csound.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>massign</command> ichnl, insnum[, ireset]</synopsis>
+    <synopsis><command>massign</command> ichnl, "insname"[, ireset]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ichnl</emphasis> -- numéro de canal MIDI (1-16).
+    </para>
+
+    <para>
+      <emphasis>insnum</emphasis> -- numéro de l'instrument d'orchestre de Csound. S'il est
+      inférieur ou égal à zéro, le canal est désactivé (c-à-d. qu'il ne déclenche aucun
+      instrument de csound, bien que l'information soit toujours reçue par des opcodes tels
+      que <link linkend="midiin"><citetitle>midiin</citetitle></link>).
+    </para>
+
+    <para>
+      <emphasis><quote>insname</quote></emphasis> -- une chaîne de caractères entre guillemets
+      représentant un nom d'instrument.
+    </para>
+
+    <para>
+      <emphasis>ireset</emphasis> -- sil est non nul, les contrôleurs sont réinitialisés ; 
+      c'est le comportement par défaut.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Affecte un numéro de canal MIDI à un instrument de Csound. Egalement utile pour s'assurer
+      qu'un instrument particulier (si son numéro est compris entre 1 et 16) ne sera pas
+      déclenché par des messages MIDI noteon (si l'on utilise quelque chose comme
+      <link linkend="midiin"><citetitle>midiin</citetitle></link> pour interpréter l'information
+      MIDI). Dans ce cas, fixer <emphasis>insnum</emphasis> à un nombre inférieur ou égal à 0.
+    </para>
+    <para>
+      Si <emphasis>ichan</emphasis> est fixé à 0, la valeur de <emphasis>insnum</emphasis> est utilisée
+      pour tous les canaux. On peut envoyer de cette manière tous les canaux MIDI vers un seul instrument
+      de Csound. On peut aussi empêcher le déclenchement des instruments à partir d'évènements de note
+      MIDI en provenance de tous les canaux avec la ligne suivante :
+    </para>
+    <programlisting>massign 0, 0</programlisting>
+    <para>
+      Ceci peut être utile si l'on effectue toutes les évaluations MIDI dans Csound avec un instrument
+      actif en permanence (par exemple en utilisant <link linkend="midiin"><citetitle>midiin</citetitle></link>
+      et <link linkend="turnon"><citetitle>turnon</citetitle></link>) pour éviter une doublure de
+      l'instrument quand une note est jouée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode massign. Il utilise le fichier
+      <ulink url="examples/massign.csd"><citetitle>massign.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode massign.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/massign.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ctrlinit"><citetitle>ctrlinit</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>  
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namebarry; - &namemike;</member>
+        <member>MIT, Cambridge, Mass.</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.47 de Csound</para>
+    <para>Le paramètre <emphasis>ireset</emphasis> est nouveau dans Csound5</para>
+    <para>Merci à &namerasmus; pour avoir indiqué le bon intervalle pour le numéro de canal MIDI.</para>
+  </refsect1>
+</refentry>

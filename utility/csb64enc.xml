@@ -1,0 +1,83 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.3
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="csb64enc">
+  <refentryinfo><title>Utilities</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>csb64enc</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>csb64enc</refname>
+    <refpurpose>
+      Convertit un fichier binaire en un fichier texte encodé en Base64.
+      <indexterm id="IndexCsb64enc"><primary>csb64enc</primary></indexterm>
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      L'utilitaire <emphasis>csb64enc</emphasis> génère un fichier texte encodé en Base64 à partir d'un
+      fichier binaire, tel qu'un fichier MIDI standard (.mid) ou n'importe quel type de fichier audio.
+      Il est utile pour convertir un fichier dans le format accepté par la section
+      <link linkend="CommandUnifile"><citetitle>&lt;CsFileB&gt;</citetitle></link> d'un fichier csd, pour
+      y inclure le fichier converti.
+    </para>
+
+
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>csb64enc</command> [OPTIONS ... ] fichier1 [ fichier2 [ ... ]]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      Options :
+      <itemizedlist>
+        <listitem>
+          <para>
+            - <emphasis>w n</emphasis> = fixe la largeur de ligne du fichier de sortie à n (par défault : 72)
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            - <emphasis>o nomfic</emphasis> = nom du fichier de sortie (par défault : stdout)
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+<programlisting><emphasis>csb64enc</emphasis> -w 78 -o fichier.txt fichier.mid</programlisting>
+      La commande produit un fichier texte encodé en Base64 à partir d'un fichier MIDI standard,
+      <emphasis>fichier.mid</emphasis>. Ce fichier peut maintenant être collé dans la section
+      <link linkend="CommandUnifile"><citetitle>&lt;CsFileB&gt;</citetitle></link> d'un fichier csd.
+  </para>
+
+  </refsect1>
+  <refsect1>
+    <title>Voir aussi</title>
+    <para><link linkend="makecsd"><citetitle>makecsd</citetitle></link></para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : Istvan Varga</para>
+    <para>Janvier 2003</para>
+  </refsect1>
+
+</refentry>

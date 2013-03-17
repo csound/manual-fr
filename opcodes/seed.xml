@@ -1,0 +1,88 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="seed">
+<indexterm id="IndexSeed"><primary>seed</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Random (Noise) Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>seed</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>seed</refname>
+    <refpurpose>
+      Fixe la valeur globale de la graine.
+    </refpurpose> 
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Fixe la valeur globale de la graine pout tous les <emphasis>générateurs de
+      bruit de classe x</emphasis>, ainsi que pour d'autres opcodes qui utilisent
+      un appel de random, tels que <link linkend="grain"><citetitle>grain</citetitle></link>.
+    </para>
+    <note>
+      <title>Noter que</title>
+      <para><link linkend="rand"><citetitle>rand</citetitle></link>,
+      <link linkend="randh"><citetitle>randh</citetitle></link>,
+      <link linkend="randi"><citetitle>randi</citetitle></link>,
+      <link linkend="rnd"><citetitle>rnd(x)</citetitle></link> et
+      <link linkend="birnd"><citetitle>birnd(x)</citetitle></link> ne sont pas affectés
+      par <emphasis>seed</emphasis>.</para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>seed</command> ival</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Avec l'utilisation de <emphasis>seed</emphasis> on obtiendra des résultats
+      prévisibles d'un orchestre utilisant des générateurs de nombres aléatoires,
+      lors de plusieurs exécutions.
+    </para>
+
+    <para>
+      Lors de la spécification d'une valeur de graine, <emphasis>ival</emphasis>
+      doit être un entier compris entre 0 et 2<superscript>32</superscript>.
+      Si <emphasis>ival</emphasis> = 0, la valeur de <emphasis>ival</emphasis>
+      sera dérivée de l'horloge du système.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode seed. Il utilise le fichier
+      <ulink url="examples/seed.csd"><citetitle>seed.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode seed.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/seed.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
+ i   1 time     0.00067:   100.00000
+ i   1 time     0.50000:   175.78677
+ i   1 time     1.00000:   170.89579
+
+WARNING: Seeding from current time 834128659
+
+ i   2 time     2.00067:   100.00000
+ i   2 time     2.50000:   197.58517
+ i   2 time     3.00000:   188.69525</screen>
+    </para>
+  </refsect1>
+</refentry>

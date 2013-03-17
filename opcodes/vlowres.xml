@@ -1,0 +1,104 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.14
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vlowres">
+<indexterm id="IndexVlowres"><primary>vlowres</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Resonant</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vlowres</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vlowres</refname>
+    <refpurpose>
+      Une banque de filtres dans laquelle la fréquence de coupure peut être
+      séparée sous le contrôle de l'utilisateur.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Une banque de filtres dans laquelle la fréquence de coupure peut être
+      séparée sous le contrôle de l'utilisateur.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>vlowres</command> asig, kfco, kres, iord, ksep</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iord</emphasis> -- nombre total de filtres (1 à 10)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- signal d'entrée
+    </para>
+
+    <para>
+      <emphasis>kfco</emphasis> -- fréquence de coupure (pas en Hz)
+    </para>
+
+    <para>
+      <emphasis>kres</emphasis> -- quantité de résonance
+    </para>
+
+    <para>
+      <emphasis>ksep</emphasis> -- séparation de la fréquence de coupure pour
+      chaque filtre : le premier filtre a pour fréquence de coupure
+      <emphasis>kfreq</emphasis>, le second <emphasis>kfreq</emphasis> +
+      <emphasis>ksep</emphasis> et le troisième <emphasis>kfreq</emphasis> +
+      2*<emphasis>ksep</emphasis>, et ainsi de suite, en fonction du nombre de
+      filtres.
+    </para>
+
+    <para>
+      <emphasis>vlowres</emphasis> (variable resonant lowpass filter) permet d'avoir
+      une courbe de réponse variable dans les filtres à résonance. On peut l'imaginer
+      comme une banque de filtres passe-bas à résonance, chacun avec la même
+      résonance, connectés en série. La fréquence de coupure de chaque filtre
+      peut varier avec les paramètres <emphasis>kcfo</emphasis> et
+      <emphasis>ksep</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode vlowres. Il utilise le fichier
+      <ulink url="examples/vlowres.csd"><citetitle>vlowres.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode vlowres.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/vlowres.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.49 de Csound.</para>
+  </refsect1>
+</refentry>

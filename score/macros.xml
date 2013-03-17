@@ -1,0 +1,183 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.5
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="ScoreMacros">
+  <title>Macros de partition</title>
+ 
+  <simplesect>
+    <title>Description</title>
+    <para>
+      Les macros sont des substitutions de texte qui sont réalisées dans la partition lors de sa
+      présentation au système. Le système de macro de Csound est très simple, et il utilise les
+      caractères &num; et &dollar; pour définir et appeler des macros. C'est un moyen de simplifier
+      l'écriture d'une partition, et une alternative élémentaire aux systèmes de génération de partition
+      complète. Le système de macros de partition est similaire, mais de façon indépendante, au
+      système de macros du langage de l'orchestre.
+
+      <indexterm id="IndexScoreMacros"><primary>score</primary><secondary>macros</secondary></indexterm>
+      <indexterm id="IndexMacrosScore"><primary>macros</primary><secondary>score</secondary></indexterm>
+    </para>
+
+    <para>
+      <emphasis>&num;define</emphasis> NOM -- définit une macro simple. Le nom de la macro doit
+      commencer par une lettre et peut être une combinaison de lettres et de nombres. La casse est
+      significative. Cette forme est restrictive dans le sens que les noms de variable sont fixes. On
+      peut obtenir plus de souplesse au moyen d'une macro avec arguments, décrite ci-dessous.
+
+    <indexterm id="IndexDefineScore"><primary>&num;define</primary><secondary>score</secondary></indexterm>
+    <indexterm id="IndexNameScore"><primary>&dollar;name</primary><secondary>score</secondary></indexterm>
+    <indexterm id="IndexUndefScore"><primary>&num;undef</primary><secondary>score</secondary></indexterm>
+    </para>
+
+    <para>
+      <emphasis>&num;define</emphasis> NOM(<emphasis>a&apos; b&apos; c&apos;</emphasis>) -- définit une
+      macro avec arguments. On peut l'utiliser dans des situations plus complexes. Le nom de la macro
+      doit commencer par une lettre et peut être suivi par une combinaison de lettres et de chiffres.
+      Dans le texte de substitution, les arguments sont remplacés par la forme : &dollar;A. En fait,
+      les arguments sont implémentés comme des macros simples. Il peut y avoir jusqu'à 5 arguments, et
+      leur nom peut être n'importe quel choix de lettres. Rappelez-vous que la casse est significative
+      dans les noms de macro.
+    </para>
+
+    <para>
+      <emphasis>&dollar;NOM.</emphasis> --  appelle une macro définie. Pour appeler une macro, on
+      utilise son nom précédé d'un caractère &dollar;. Le nom se termine par le premier caractère qui
+      n'est ni une lettre ni un chiffre. Si on ne veut pas terminer le nom par un espace, on peut
+      utiliser un point qui sera ignoré. La chaîne, <emphasis>&dollar;NOM</emphasis>., est remplacée
+      par le texte de substitution de la définition. Le texte de substitution peut aussi contenir des
+      appels de macro.
+    </para>
+
+    <para>
+      <emphasis>&num;undef</emphasis> NOM -- rend un nom de macro indéfini. Si l'on a plus besoin d'une
+      macro, on peut la rendre indéfinie avec <emphasis>&num;undef</emphasis> NOM.
+    </para>
+  </simplesect>
+
+ 
+  <simplesect>
+    <title>Syntaxe</title>
+    <synopsis><command>&num;define</command> NOM &num; texte de substitution &num;</synopsis>
+
+    <synopsis><command>&num;define</command> NOM(a&apos; b&apos; c&apos;) &num; texte de substitution &num;</synopsis>
+
+    <synopsis><command>&dollar;NOM.</command></synopsis>
+
+    <synopsis><command>&num;undef</command>  NOM</synopsis>
+  </simplesect>  
+
+ 
+  <simplesect>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>&num; texte de substitution &num;</emphasis> -- Le texte de substitution est une chaîne
+      de caractères (ne contenant pas de &num;) et peut s'étendre sur plusieurs lignes. Le texte de
+      substitution est délimité par des caractères &num;, ce qui permet d'éviter l'insertion de
+      caractères supplémentaires par inadvertance.
+    </para>
+  </simplesect>
+ 
+  <simplesect>
+    <title>Exécution</title>
+    <para>
+      Il faut prendre quelques précautions avec les macros de substitution de texte, car elle peuvent
+      parfois produire d'étranges résultats. Elles ne tiennent compte d'aucune valeur sémantique, et ainsi
+      les espaces sont significatifs. C'est pourquoi, au contraire du langage C, la définition délimite
+      le texte de substitution par des caractères &num;. Utilisé avec discernement, ce système de macro
+      est un concept puissant, mais il peut aussi être mal employé.
+    </para>
+
+    <formalpara>
+      <title>Une autre utilisation des macros</title>
+      <para>
+        Lorsque l'on écrit une partition complexe, on oublie parfois trop facilement à quoi les 
+        différents numéros d'instruments font référence. On peut utiliser des macros pour nommer
+        ces nombres. Par exemple
+        <informalexample>
+          <programlisting>
+<emphasis>#define</emphasis> Flute  #i1#
+<emphasis>#define</emphasis> Whoop  #i2#
+
+<emphasis>$Flute.</emphasis>  0  10  4000  440
+<emphasis>$Whoop.</emphasis>  5  1</programlisting>
+        </informalexample>
+      </para>
+    </formalpara>
+  </simplesect>
+ 
+  <simplesect>
+    <title>Exemples</title>
+    <para>
+      <example>
+        <title>Macro simple</title>
+        <para>
+          Une note a un ensemble de p-champs qui sont répétés :
+          <programlisting>
+<emphasis>#define</emphasis> ARGS # 1.01 2.33 138#
+<emphasis role="stamnt">i</emphasis>1 0 1 8.00  1000 $ARGS
+<emphasis role="stamnt">i</emphasis>1 0 1 8.01  1500 $ARGS
+<emphasis role="stamnt">i</emphasis>1 0 1 8.02  1200 $ARGS
+<emphasis role="stamnt">i</emphasis>1 0 1 8.03  1000 $ARGS</programlisting>
+
+          Ce sera développé avant le tri en :
+          <programlisting>
+<emphasis role="stamnt">i</emphasis>1 0 1 8.00  1000 1.01 2.33 138
+<emphasis role="stamnt">i</emphasis>1 0 1 8.01  1500 1.01 2.33 138
+<emphasis role="stamnt">i</emphasis>1 0 1 8.02  1200 1.01 2.33 138
+<emphasis role="stamnt">i</emphasis>1 0 1 8.03  1000 1.01 2.33 138</programlisting>
+        </para>
+      </example>
+    </para>
+
+    <para>
+      On économise ainsi de la frappe au clavier, et les révisions sont plus faciles. Avec deux
+      ensembles de p-champs on pourrait avoir une seconde macro (il n'y pas de réelle limite au
+      nombre de macros que l'on peut définir).
+      <informalexample>
+        <programlisting>
+<emphasis>#define</emphasis> ARGS1 # 1.01 2.33 138#
+<emphasis>#define</emphasis> ARGS2 # 1.41 10.33 1.00#
+<emphasis role="stamnt">i</emphasis>1 0 1 8.00  1000 $ARGS1
+<emphasis role="stamnt">i</emphasis>1 0 1 8.01  1500 $ARGS2
+<emphasis role="stamnt">i</emphasis>1 0 1 8.02  1200 $ARGS1
+<emphasis role="stamnt">i</emphasis>1 0 1 8.03  1000 $ARGS2</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      <example>
+        <title>Macros avec arguments</title>
+        <para>
+          <informalexample>
+            <programlisting>
+<emphasis>#define</emphasis> ARG(A) # 2.345   1.03   $A   234.9#
+<emphasis role="stamnt">i</emphasis>1 0 1 8.00 1000 $ARG(2.0)
+<emphasis role="stamnt">i</emphasis>1 + 1 8.01 1200 $ARG(3.0)</programlisting>
+          </informalexample>
+
+          qui se développe en
+
+          <informalexample>
+            <programlisting>
+<emphasis role="stamnt">i</emphasis>1 0 1 8.00 1000 2.345   1.03   2.0   234.9
+<emphasis role="stamnt">i</emphasis>1 + 1 8.01 1200 2.345   1.03   3.0   234.9</programlisting>
+          </informalexample>
+        </para>
+      </example>
+    </para>
+  </simplesect>
+
+  <simplesect>
+    <title>Crédits</title>
+    <para>Auteur : &namejohn;</para>
+    <para>University of Bath/Codemist Ltd.</para>
+    <para>Bath, UK</para>
+    <para>Avril 1998 (Nouveau dans la version 3.48 de Csound)</para>
+  </simplesect>
+</section>

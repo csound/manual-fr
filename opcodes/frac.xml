@@ -1,0 +1,81 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="frac">
+<indexterm id="IndexFrac"><primary>frac</primary></indexterm>
+  <refentryinfo><title>Mathematical Operations:Mathematical Functions</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>frac</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>frac</refname>
+
+    <refpurpose>
+      Retourne la partie fractionnaire d'un nombre décimal.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne la partie fractionnaire de <emphasis>x</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>frac</command>(x) (arguments de taux-i ou de taux-k ; fonctionne aussi au taux-a dans Csound5)</synopsis>
+
+    <para>
+      où l'argument entre parenthèses peut être une expression. Les convertisseurs de valeur
+      effectuent une transformation arithmétique d'unités d'une sorte en unités d'une autre sorte.
+      Le résultat peut devenir ensuite un terme dans une autre expression.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode frac. Il utilise le fichier
+      <ulink url="examples/frac.csd"><citetitle>frac.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode frac.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/frac.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie contiendra une ligne comme :
+      <screen>instr 1:  i2 = 0.200</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="abs"><citetitle>abs</citetitle></link>,
+      <link linkend="exp"><citetitle>exp</citetitle></link>,
+      <link linkend="int"><citetitle>int</citetitle></link>,
+      <link linkend="log"><citetitle>log</citetitle></link>,
+      <link linkend="log10"><citetitle>log10</citetitle></link>,
+      <link linkend="opi"><citetitle>i</citetitle></link>,
+      <link linkend="sqrt"><citetitle>sqrt</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Exemple écrit par &namekevin;.</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,139 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ATSreadnz">
+<indexterm id="IndexATSreadnz"><primary>ATSreadnz</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:ATS</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ATSreadnz</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ATSreadnz</refname>
+    <refpurpose> lit des données depuis un fichier ATS.</refpurpose>
+  </refnamediv>
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>ATSreadnz</emphasis> retourne l'énergie (<emphasis>kenergy</emphasis>)
+      d'une bande de bruit spécifiée par l'utilisateur (1-25 bandes) à la date
+      indiquée par le pointeur de temps <emphasis>ktimepnt</emphasis>.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kenergy <command>ATSreadnz</command> ktimepnt, iatsfile, iband</synopsis>
+  </refsect1>
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iatsfile</emphasis> – le numéro ATS (n dans ats.n) ou le nom
+      entre guillemets du fichier d'analyse créé avec
+      <ulink url="http://www-ccrma.stanford.edu/~juan/ATS.html"><citetitle>ATS</citetitle></ulink>.
+    </para>
+    <para>
+      <emphasis>iband</emphasis> – le numéro de la bande de bruit dont il faut
+      retourner les données d'énergie.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kenergy</emphasis> est la sortie contenant l'énergie interpolée
+      linéairement de la bande de bruit indiquée par <emphasis>iband</emphasis>.
+      La sortie dépend des données dans le fichier d'analyse et de
+      <emphasis>ktimepnt</emphasis>.
+    </para>
+    <para>
+      <emphasis>ktimepnt</emphasis> – Le pointeur de temps en secondes utilisé
+      comme indice sur le fichier ATS. Est utilisé pour
+      <emphasis>ATSreadnz</emphasis> exactement de la même manière que pour
+      <link linkend="pvoc"><citetitle>pvoc</citetitle></link> et
+      <link linkend="ATSadd"><citetitle>ATSadd</citetitle></link>.
+    </para>
+    <para>
+      <emphasis>ATSaddnz</emphasis> lit depuis un fichier ATS et resynthétise le
+      bruit à partir des données d'énergie du bruit contenues dans le fichier ATS.
+      Il utilise une fonction randi modifiée pour créer du bruit à bande limitée
+      et le module avec une table d'onde fournie par l'utilisateur (une période
+      d'une onde cosinus), pour synthétiser une sélection spécifiée par l'utilisateur
+      de bandes de fréquence. Il est nécessaire de moduler le bruit pour placer
+      le bruit à bande limitée au bon endroit dans le spectre de fréquence.
+    </para>
+    <para>
+      Une analyse ATS diffère d'une analyse pvanal du fait qu'ATS trace les partiels
+      et calcule l'énergie du bruit dans le son étant analysé. Pour plus d'information
+      sur l'analyse ATS, lire la description de Juan Pampin sur la page web
+      <ulink url="http://www-ccrma.stanford.edu/~juan/ATS.html"><citetitle>ATS</citetitle></ulink>.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Exemples</title>
+    <programlisting>
+  ktime   <emphasis role="opc">line</emphasis>      2.5, p3, 0
+  kenergy <emphasis role="opc">ATSreadnz</emphasis> ktime, "clarinet.ats", 5</programlisting>
+    <para>
+      Ici nous extrayons la bande d'énergie 5 du bruit du fichier d'analyse ATS
+      'clarinet.ats' . Nous lisons à l'envers depuis 2.5 secondes vers le début
+      du fichier d'analyse. On peut l'utiliser pour synthétiser du bruit
+      comme cela :
+    </para>
+    <programlisting>
+  anoise  <emphasis role="opc">randi</emphasis>     <emphasis role="opc">sqrt</emphasis>(kenergy), 55
+  aout    <emphasis role="opc">oscili</emphasis>    4000000000000000000000000, 455, 2
+  aout    <emphasis role="op">=</emphasis>         aout <emphasis role="op">*</emphasis> anoise</programlisting>
+    <para>
+      La table de fonction 2 utilisée dans l'oscillateur est une onde cosinus, qui est
+      nécessaire pour déplacer le bruit à bande limitée au bon endroit dans le
+      spectre de fréquence. La fonction <emphasis>randi</emphasis> crée une bande de
+      fréquence centrée sur 0 Hz qui a une largeur de bande d'environ 110 Hz ; en la
+      multipliant par une onde cosinus on la déplace pour qu'elle soit centrée
+      à 455 Hz, qui est la fréquence centrale de la 5ème bande critique de bruit.
+      Ce n'est qu'un exemple pour synthétiser du bruit qui serait mieux réalisé
+      avec <link linkend="ATSaddnz"><citetitle>ATSaddnz</citetitle></link>, à
+      moins que l'on ne désire utiliser son propre algorithme de synthèse de
+      bruit. Peut-être peut-on utiliser l'énergie du bruit pour autre chose comme
+      appliquer une petite quantité de tremblement à des partiels spécifiques ou
+      contrôler quelque chose sans aucun rapport avec le son source ?
+    </para>
+    <para>
+      Voici un autre exemple de l'opcode ATSreadnz. Il utilise le fichier
+      <ulink url="examples/ATSreadnz.csd"><citetitle>ATSreadnz.csd</citetitle></ulink>.
+
+      <example>
+        <title>Un autre exemple de l'opcode ATSreadnz.</title>
+          <xi:include href="examples-xml/ATSreadnz.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ATSread"><citetitle>ATSread</citetitle></link>, 
+      <link linkend="ATSinfo"><citetitle>ATSinfo</citetitle></link>, 
+      <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>, 
+      <link linkend="ATScross"><citetitle>ATScross</citetitle></link>, 
+      <link linkend="ATSinterpread"><citetitle>ATSinterpread</citetitle></link>, 
+      <link linkend="ATSpartialtap"><citetitle>ATSpartialtap</citetitle></link>, 
+      <link linkend="ATSadd"><citetitle>ATSadd</citetitle></link>, 
+      <link linkend="ATSaddnz"><citetitle>ATSaddnz</citetitle></link>, 
+      <link linkend="ATSsinnoi"><citetitle>ATSsinnoi</citetitle></link>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Alex Norman</member>
+        <member>Seattle,Washington</member>
+        <member>2004</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

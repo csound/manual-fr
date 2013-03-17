@@ -1,0 +1,82 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="downsamp">
+<indexterm id="IndexDownsamp"><primary>downsamp</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Sample Level Operators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>downsamp</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>downsamp</refname>
+    <refpurpose>
+      Modifie un signal par sous-échantillonnage.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Modifie un signal par sous-échantillonnage.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kres <command>downsamp</command> asig [, iwlen]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iwlen</emphasis> (facultatif) -- longueur en échantillons de la
+      fenêtre sur laquelle est prise la valeur moyenne du signal audio pour
+      déterminer une valeur sous-échantillonnée. La longueur maximale est
+      <emphasis>ksmps</emphasis> ; 0 et 1 impliquent pas de fenêtre de moyenne.
+      La valeur par défaut est 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>downsamp</emphasis> convertit un signal audio en signal de
+      contrôle par sous-échantillonnage. Il produit une kval pour chaque période
+      audio de contrôle. La fenêtre optionnelle invoque un simple procédé de
+      moyenne pour supprimer le repliement.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode downsamp. Il utilise le fichier
+      <ulink url="examples/downsamp.csd"><citetitle>downsamp.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode downsamp.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/downsamp.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="diff"><citetitle>diff</citetitle></link>,
+      <link linkend="integ"><citetitle>integ</citetitle></link>,
+      <link linkend="interp"><citetitle>interp</citetitle></link>,
+      <link linkend="samphold"><citetitle>samphold</citetitle></link>,
+      <link linkend="upsamp"><citetitle>upsamp</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

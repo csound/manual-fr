@@ -1,0 +1,126 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="outic14">
+<indexterm id="IndexOutic14"><primary>outic14</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Output</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>outic14</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>outic14</refname>
+
+    <refpurpose>
+      Envoie une sortie de contrôleur MIDI sur 14 bit au taux-i.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Envoie une sortie de contrôleur MIDI sur 14 bit au taux-i.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>outic14</command> ichn, imsb, ilsb, ivalue, imin, imax</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ichn</emphasis> -- numéro de canal MIDI (1-16)
+    </para>
+
+    <para>
+      <emphasis>imsb</emphasis> -- octet de poids fort du numéro de contrôleur
+      lorsque l'on utilise des paramètres sur 14 bit ((0-127)
+    </para>
+
+    <para>
+      <emphasis>ilsb</emphasis> -- octet de poids faible du numéro de contrôleur
+      lorsque l'on utilise des paramètres sur 14 bit ((0-127)
+    </para>
+
+    <para>
+      <emphasis>ivalue</emphasis> -- valeur en virgule flottante
+    </para>
+
+    <para>
+      <emphasis>imin</emphasis> -- valeur minimale en virgule flottante (convertie
+      en valeur entière MIDI 0)
+    </para>
+
+    <para>
+      <emphasis>imax</emphasis> -- valeur maximale en virgule flottante (convertie
+      en valeur entière MIDI 16383 (14-bit))
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>outic14</emphasis> envoie au taux-i une paire de messages de
+      contrôleur. Cet opcode peut envoyer des paramètres sur 14 bit vers les
+      instruments MIDI qui les reconnaissent. Le premier message de contrôle
+      contient l'octet de poids fort de l'argument <emphasis>ivalue</emphasis>
+      tandis que le second message contient l'octet de poids faible.
+      <emphasis>imsb</emphasis> et <emphasis>ilsb</emphasis> sont respectivement
+      les octets de poids fort et de poids faible du numéro de contrôleur.
+   </para>
+
+    <para>
+      Cet opcode peut piloter une valeur différente de paramètre pour chaque note active.
+    </para>
+
+    <para>
+      Il peut échelonner un argument de taux-i en virgule flottante selon les
+      valeurs <emphasis>imin</emphasis> et <emphasis>imax</emphasis>. Par exemple
+      avec <emphasis>imin</emphasis> = 1.0 et <emphasis>imax</emphasis> = 2.0,
+      lorque l'argument <emphasis>ivalue</emphasis> reçoit la valeur 2.0,
+      l'opcode envoie la valeur 16383 sur le périphérique MIDI OUT. Lorsque
+      l'argument <emphasis>ivalue</emphasis> reçoit la valeur 1.0, il envoie la
+      valeur 0. Les opcodes de taux-i n'envoient leur message que pendant
+      l'initialisation de l'instrument.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="outiat"><citetitle>outiat</citetitle></link>,
+      <link linkend="outic"><citetitle>outic</citetitle></link>,
+      <link linkend="outipat"><citetitle>outipat</citetitle></link>,
+      <link linkend="outipb"><citetitle>outipb</citetitle></link>,
+      <link linkend="outipc"><citetitle>outipc</citetitle></link>,
+      <link linkend="outkat"><citetitle>outkat</citetitle></link>,
+      <link linkend="outkc14"><citetitle>outkc14</citetitle></link>,
+      <link linkend="outkc"><citetitle>outkc</citetitle></link>,
+      <link linkend="outkpat"><citetitle>outkpat</citetitle></link>,
+      <link linkend="outkpb"><citetitle>outkpb</citetitle></link>,
+      <link linkend="outkpc"><citetitle>outkpc</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.47 de Csound.</para>
+    <para>Merci à &namerasmus; pour avoir indiqué les intervalles corrects pour
+    le canal MIDI et les numéros de contrôleur.</para>
+  </refsect1>
+</refentry>

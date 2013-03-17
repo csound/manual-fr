@@ -1,0 +1,266 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.1
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="modmatrix">
+<indexterm id="IndexModmatrix"><primary>modmatrix</primary></indexterm>
+  <refentryinfo><title>Miscellaneous</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>modmatrix</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>modmatrix</refname>
+    <refpurpose>
+      Opcode matrice de modulation avec optimisation pour les matrices creuses.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      On peut utiliser cet opcode pour faire moduler un grand nombre de
+      paramètres variables de taux-k par un grand nombre de variables modulantes
+      de taux-k, avec une pondération arbitraire de chaque connexion
+      paramètre-modulateur. Des ftables de Csound sont utilisées pour contenir
+      les variables en entrée (les paramètres), les variables modulantes et les
+      coefficients de pondération. Les variables de sorties sont écrites dans
+      une autre ftable de Csound.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>modmatrix</command> iresfn, isrcmodfn, isrcparmfn, imodscale, inum_mod, \\
+inum_parm, kupdate</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iresfn</emphasis> -- numéro de la ftable pour les variables de
+      sortie.
+    </para>
+    <para>
+      <emphasis>isrcmodfn</emphasis> -- numéro de la ftable pour les variables
+      sources de modulation.
+    </para>
+    <para>
+      <emphasis>isrcparmfn</emphasis> -- numéro de la ftable pour les paramètres
+      variables en entrée.
+    </para>
+    <para>
+      <emphasis>imodscale</emphasis> -- matrice des coefficients de
+      pondération/routage. C'est aussi une ftable de Csound, utilisée comme une
+      matrice de <emphasis>inum_mod</emphasis> lignes et
+      <emphasis>inum_parm</emphasis> colonnes.
+    </para>
+    <para>
+      <emphasis>inum_mod</emphasis> -- nombre de variables de modulation.
+    </para>
+    <para>
+      <emphasis>inum_parm</emphasis> -- nombre de paramètres variables (en entrée
+      et en sortie).
+    </para>
+    <para>
+      Les arguments <emphasis>inum_mod</emphasis> et <emphasis>inum_parm</emphasis>
+      ne doivent pas nécessairement être des puissances de deux.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kupdate</emphasis> -- indicateur pour la mise à jour des
+      coefficients de pondération. Quand l'indicateur a une valeur non nulle,
+      les coefficients de pondération sont lus directement de la table
+      <emphasis>imodscale</emphasis>. Quand l'indicateur vaut zéro, les
+      coefficients de pondérations sont parcourus et une matrice de pondération
+      optimisée est stockée en interne dans l'opcode.
+    </para>
+    <para>
+      Chaque modulateur dans <emphasis>isrcmodfn</emphasis>, est pondéré par un
+      coefficient (dans <emphasis>imodscale</emphasis>) déterminant son degré
+      d'influence sur chaque paramètre. Puis tous les modulateurs pour un
+      paramètre sont additionnés et la valeur de modulation résultante est
+      ajoutée à la valeur du paramètre d'entrée lu dans
+      <emphasis>iscparmfn</emphasis>. Enfin, les valeurs du paramètre de sortie
+      sont écrites dans la table <emphasis>iresfn</emphasis>.
+    </para>
+    <para>
+      Les tables suivantes donnent un aperçu du processus exécuté par l'opcode
+      <emphasis>modmatrix</emphasis>, dans un exemple simplifié utilisant 3
+      paramètres et 2 modulateurs. Appelons les paramètres &quot;cps1&quot;,
+      &quot;cps2&quot; et &quot;cutoff&quot;, et les modulateurs
+      &quot;lfo1&quot; et &quot;lfo2&quot;.
+    </para>
+    <para>
+      Les variables d'entrée peuvent avoir ces valeurs à un certain moment :
+  <table id="modmatrix-table1" frame="all" colsep="1">
+    <tgroup cols="4">
+      <thead>
+        <row>
+          <entry></entry>
+          <entry>cps1</entry>
+          <entry>cps2</entry>
+          <entry>cutoff</entry>        </row>
+      </thead>
+
+      <tbody>
+        <row>
+          <entry><emphasis>isrcparmfn</emphasis></entry>
+          <entry>400</entry>
+          <entry>800</entry>
+          <entry>3</entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+    </para> 
+    <para>
+    </para> 
+    <para>
+      ... tandis que les variables de modulation ont ces valeurs :
+  <table id="modmatrix-table2" frame="all" colsep="1">
+    <tgroup cols="3">
+      <thead>
+        <row>
+          <entry></entry>
+          <entry>lfo1</entry>
+          <entry>lfo2</entry>
+        </row>
+      </thead>
+
+      <tbody>
+        <row>
+          <entry><emphasis>isrcmodfn</emphasis></entry>
+          <entry>0.5</entry>
+          <entry>-0.2</entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+    </para> 
+    <para>
+      Les coefficients de pondération/routage sont :
+  <table id="modmatrix-table3" frame="all" colsep="1">
+    <tgroup cols="4">
+      <thead>
+        <row>
+          <entry><emphasis>imodscale</emphasis></entry>
+          <entry>cps1</entry>
+          <entry>cps2</entry>
+          <entry>cutoff</entry>
+        </row>
+      </thead>
+
+      <tbody>
+        <row>
+          <entry><emphasis>lfo1</emphasis></entry>
+          <entry>40</entry>
+          <entry>0</entry>
+          <entry>-2</entry>
+        </row>
+        <row>
+          <entry><emphasis>lfo2</emphasis></entry>
+          <entry>-50</entry>
+          <entry>100</entry>
+          <entry>3</entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+    </para> 
+    <para>
+      ... et les valeurs de sortie résultantes sont :
+  <table id="modmatrix-table4" frame="all" colsep="1">
+    <tgroup cols="4">
+      <thead>
+        <row>
+          <entry></entry>
+          <entry>cps1</entry>
+          <entry>cps2</entry>
+          <entry>cutoff</entry>
+        </row>
+      </thead>
+
+      <tbody>
+        <row>
+          <entry><emphasis>iresfn</emphasis></entry>
+          <entry>430</entry>
+          <entry>780</entry>
+          <entry>1.4</entry>
+        </row>
+        <row>
+          <entry><emphasis>lfo2</emphasis></entry>
+          <entry>-50</entry>
+          <entry>100</entry>
+          <entry>3</entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+    </para>
+    <para> 
+      La valeur de sortie pour &quot;cps1&quot; est calculée comme
+      400+(0.5*40)+(-0.2*-50), de même pour &quot;cps2&quot;
+      800+(0.5*0)+(-0.2*100), et pour &quot;cutoff&quot; : 3+(0.5*-2)+(-0.2*3) 
+    </para> 
+    <para>
+      La ftable <emphasis>imodscale</emphasis> peut être spécifiée dans la
+      partition comme ceci :
+      <programlisting>f1  0  8  -2  200 0 2 50 300 -1.5</programlisting> 
+    </para> 
+    <para>
+       Ou mieux en utilisant
+       <link linkend="ftgen"><citetitle>ftgen</citetitle></link> dans
+       l'orchestre :
+      <programlisting>gimodscale ftgen 0, 0, 8, -2, 200, 0, 2, 50, 300, -1.5</programlisting> 
+    </para>
+
+    <para>
+      Evidemment, les paramètres variables et les modulateurs n'ont pas
+      nécessairement des valeurs statiques, de même que la table des coefficients
+      de pondération/routage peut être continuellement renouvelée au moyen
+      d'opcodes comme
+      <link linkend="tablew"><citetitle>tablew</citetitle></link>. 
+    </para> 
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode modmatrix. Il utilise le fichier
+      <ulink url="examples/modmatrix.csd"><citetitle>modmatrix.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode modmatrix.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/modmatrix.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="linearalgebraopcodes"><citetitle>Opcodes d'Algèbre
+      Linéaire</citetitle></link>, 
+      <link linkend="vectorial"><citetitle>Opcodes
+      Vectoriels</citetitle></link>, 
+      <link linkend="tablew"><citetitle>tablew</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteurs : Oeyvind Brandtsegg et Thom Johansen</para>
+    <para>Nouveau dans la version 5.12</para>
+  </refsect1>
+</refentry>

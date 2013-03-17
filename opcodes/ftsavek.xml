@@ -1,0 +1,91 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ftsavek">
+<indexterm id="IndexFtsavek"><primary>ftsavek</primary></indexterm>
+  <refentryinfo><title>Table Control:Read/Write Opreations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ftsavek</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ftsavek</refname>
+    <refpurpose>
+      Sauvegarde dans un fichier un ensemble de tables préalablement allouées.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Sauvegarde dans un fichier un ensemble de tables préalablement allouées.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>ftsavek</command> &quot;filename&quot;, ktrig, iflag, ifn1 [, ifn2] [...]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>&quot;filename&quot;</emphasis> -- Une chaîne de caractères entre
+      guillemets contenant le nom du fichier à sauvegarder.
+    </para>
+
+    <para>
+      <emphasis>iflag</emphasis> -- Type du fichier à sauvegarder (0 = binaire,
+      différent de 0 = fichier texte).
+    </para>
+
+    <para>
+      <emphasis>ifn1, ifn2, ...</emphasis> -- Numéros des tables à sauvegarder.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ktrig</emphasis> -- Le signal de déclenchement. Le fichier est
+      sauvegardé chaque fois que ce signal est différent de zéro.
+    </para>
+
+    <para>
+      <emphasis>ftsavek</emphasis> sauvegarde une liste de tables dans un fichier.
+      Le format du fichier peut être binaire ou texte. A la différence de
+      <link linkend="ftsave"><citetitle>ftsave</citetitle></link>, l'opération
+      de sauvegarde peut-être répétée de nombreuses fois pendant la même note en
+      utilisant un signal de déclenchement.
+    </para>
+
+    <warning>
+      <title>Avertissement</title>
+      <para>
+        Le format du fichier n'est pas compatible avec un fichier WAV et l'ordre
+        des octets (endianness) n'est pas sûr.
+      </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ftloadk"><citetitle>ftloadk</citetitle></link>,
+      <link linkend="ftload"><citetitle>ftload</citetitle></link>,
+      <link linkend="ftsave"><citetitle>ftsave</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.21</para>
+  </refsect1>
+</refentry>

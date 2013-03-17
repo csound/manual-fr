@@ -1,0 +1,95 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="nrpn">
+<indexterm id="IndexNrpn"><primary>nrpn</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Output</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>nrpn</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>nrpn</refname>
+    <refpurpose>
+      Envoie un numéro de paramètre non référencés sur le port MIDI OUT.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Envoie un message NRPN (Numéro de Paramètre Non Référencé) sur le port
+      MIDI OUT chaque fois qu'un des arguments d'entrée change.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>nrpn</command> kchan, kparmnum, kparmvalue</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kchan</emphasis> -- canal MIDI (1-16)
+    </para>
+
+    <para>
+      <emphasis>kparmnum</emphasis> -- numéro du paramètre NRPN
+    </para>
+
+    <para>
+      <emphasis>kparmvalue</emphasis> -- valeur du paramètre NRPN
+    </para>
+
+    <para>
+      Cet opcode envoie un nouveau message lorsque la valeur MIDI traduite de
+      l'un de ses arguments d'entrée change. Il opère au taux-k. Il est utile
+      avec les instruments MIDI qui reconnaissent les NRPN (par exemple avec
+      les cartes son récentes ayant un synthétiseur MIDI interne telles que
+      SB AWE32, AWE64, GUS, etc, dans lesquelles chaque paramètre de patch peut
+      être modifié durant l'exécution via NRPN).
+    </para>
+  </refsect1>
+ 
+   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode nrpn. Il utilise le fichier
+      <ulink url="examples/nrpn.csd"><citetitle>nrpn.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode nrpn.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <para>
+          Cet exemple génère des notes chaque fois qu'une note est reçue sur
+          l'entrée MIDI. Comme il génère ces notes MIDI sur la sortie MIDI de
+          Csound, il faut s'assurer d'y connecter quelque chose.
+        </para>
+        <xi:include href="examples-xml/nrpn.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+        <member>1998</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.492 de Csound.</para>
+    <para>Merci à &namerasmus; pour avoir indiqué les intervalles corrects pour
+    le canal MIDI et les numéros de contrôleur.</para>
+  </refsect1>
+</refentry>

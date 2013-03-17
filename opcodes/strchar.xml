@@ -1,0 +1,68 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.6
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="strchar">
+<indexterm id="Indexstrchar"><primary>strchar</primary></indexterm>
+  <refentryinfo><title>Strings:Conversion</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>strchar</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>strchar</refname>
+    <refpurpose>
+      Retourne le code ASCII d'un charactère dans une chaîne.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne le code ASCII du caractère de <emphasis>Sstr</emphasis> à la
+      position <emphasis>ipos</emphasis> (qui vaut zéro par défaut, position du
+      premier caractère), ou zéro si <emphasis>ipos</emphasis> est hors limites.
+      <emphasis>strchar</emphasis> ne s'exécute que pendant l'initialisation.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ichr <command>strchar</command> Sstr[, ipos]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode strchar. Il utilise le fichier
+      <ulink url="examples/strchar.csd"><citetitle>strchar.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode strchar.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/strchar.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+	  <title>Voir aussi</title>
+	  <para><link linkend="strchark"><citetitle>strchark</citetitle></link></para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Istvan Varga</member>
+        <member>2006</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

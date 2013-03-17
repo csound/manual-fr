@@ -1,0 +1,162 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.10
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="xscans">
+<indexterm id="IndexXscans"><primary>xscans</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Scanned Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>xscans</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>xscans</refname>
+    <refpurpose>
+      Générateur rapide de forme d'onde et de la table d'onde de la synthèse par balayage.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Version expérimentale de <link linkend="scans"><citetitle>scans</citetitle></link>.
+      Autorise des matrices bien plus grandes, est plus rapide et plus compact, mais
+      supprime une certaine flexibilité (non utilisée ?). S'il est apprécié, il remplacera
+      l'ancien opcode car sa syntaxe est compatible bien qu'étendue.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>xscans</command> kamp, kfreq, ifntraj, id [, iorder]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifntraj</emphasis> -- table contenant la trajectoire du balayage.
+      C'est une série de nombres qui contiennent les adresses des masses. L'ordre
+      de ces adresses est utilisé comme chemin de balayage. Ne doit pas contenir
+      de valeurs supérieures au nombre de masses, ou des nombres négatifs. Voir
+      l'<link linkend="SiggenScanTop"><citetitle>introduction à la section sur la
+      synthèse par balayage</citetitle></link>.
+    </para>
+
+    <para>
+      <emphasis>id</emphasis> -- s'il est positif, c'est l'ID de l'opcode. Il est
+      utilisé pour relier l'opcode de balayage au bon générateur de forme d'onde.
+      S'il est négatif, sa valeur absolue indique la table d'onde dans laquelle
+      sera écrite la forme d'onde. Cette forme d'onde peut être utilisée par la
+      suite par un autre opcode pour générer du son. Le contenu initial de cette
+      table sera écrasé.
+    </para>
+
+    <para>
+      <emphasis>iorder</emphasis> (facultatif, 0 par défaut) -- ordre de
+      l'interpolation utilisée en interne. Peut prendre n'importe quelle valeur
+      comprise entre 1 et 4, et vaut 4 par défaut, qui est l'interpolation
+      quartique. 2 est l'interpolation quadratique et 1 l'interpolation linéaire.
+      Les nombres les plus élevés donnent un traitement plus lent, mais pas
+      nécessairement meilleur.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamp</emphasis> -- amplitude de la sortie. Noter que l'amplitude
+      résultante dépend aussi des valeurs instantanées de la table d'onde. Ce nombre
+      est en fait la facteur de pondération de la table d'onde.
+    </para>
+
+    <para>
+      <emphasis>kfreq</emphasis> -- fréquence de balayage
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Format de Matrice</title>
+
+    <para>
+      Le nouveau format de matrice est une liste de connexions, une par ligne reliant
+      le point x au point y. Aucun poids n'est affecté au lien ; il est supposé valoir
+      l'unité. La liste est précédée par la ligne &lt;MATRIX&gt; et se termine par une
+      ligne &lt;/MATRIX&gt;
+    </para>
+
+    <para>
+      Par exemple, une corde circulaire de 8 sera codée par
+
+      <informalexample>
+        <programlisting>
+&lt;MATRIX&gt;
+0 1
+1 0
+1 2
+2 1
+2 3
+3 2
+3 4
+4 3
+4 5
+5 4
+5 6
+6 5
+6 7
+7 6
+0 7
+&lt;/MATRIX&gt;
+        </programlisting>
+      </informalexample>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode xscans. Il utilise le fichier
+      <ulink url="examples/xscans.csd"><citetitle>xscans.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode xscans.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/xscans.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      <para>
+        Pour des exemples similaires, voir la documentation sur
+        <link linkend="scans"><citetitle>scans</citetitle></link>.
+      </para>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+       On peut trouver plus d'information sur la synthèse par balayage (de même
+       que d'autres matrices) sur la page
+       <ulink url="http://www.csounds.com/scanned/"><citetitle>Scanned Synthesis</citetitle></ulink>
+       du site Csounds.com.
+    </para>
+    <para>
+      Il y a aussi un article sur ces opcodes :
+      <ulink url="http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html"><citetitle>http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html</citetitle></ulink>,
+      écrit par Steven Yi.
+    </para>
+    <para>
+      <link linkend="scans"><citetitle>scans</citetitle></link>, 
+      <link linkend="xscanu"><citetitle>xscanu</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par &namejohn;.</para>
+    <para>Nouveau dans la version 4.20</para>
+  </refsect1>
+</refentry>

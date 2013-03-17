@@ -1,0 +1,95 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="floor">
+<indexterm id="IndexFloor"><primary>floor</primary></indexterm>
+  <refentryinfo><title>Mathematical Operations:Mathematical Functions</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>floor</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>floor</refname>
+    <refpurpose>
+      Retourne le plus grand entier inférieur ou égal à <emphasis>x</emphasis>.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne le plus grand entier inférieur ou égal à <emphasis>x</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>floor</command>(x) (argument au taux d'initialisation, de contrôle ou audio)</synopsis>
+
+    <para>
+      où l'argument entre parenthèses peut être une expression. Les convertisseurs de valeur
+      effectuent une transformation arithmétique d'unités d'une sorte en unités d'une autre sorte.
+      Le résultat peut devenir ensuite un terme dans une autre expression.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode floor. Il utilise le fichier
+      <ulink url="examples/floor.csd"><citetitle>floor.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode floor.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/floor.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+    <para>
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
+instr 1:  inumber = 9.000  idiv = 1.000  ifl = 9.000
+instr 1:  inumber = 9.000  idiv = 2.000  ifl = 4.000
+instr 1:  inumber = 9.000  idiv = 3.000  ifl = 3.000
+instr 1:  inumber = 9.000  idiv = 4.000  ifl = 2.000
+instr 1:  inumber = 9.000  idiv = 5.000  ifl = 1.000
+instr 1:  inumber = 9.000  idiv = 6.000  ifl = 1.000
+instr 1:  inumber = 9.000  idiv = 7.000  ifl = 1.000
+instr 1:  inumber = 9.000  idiv = 8.000  ifl = 1.000
+instr 1:  inumber = 9.000  idiv = 9.000  ifl = 1.000
+instr 1:  inumber = 9.000  idiv = 10.000  ifl = 0.000</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="abs"><citetitle>abs</citetitle></link>,
+      <link linkend="exp"><citetitle>exp</citetitle></link>,
+      <link linkend="int"><citetitle>int</citetitle></link>,
+      <link linkend="log"><citetitle>log</citetitle></link>,
+      <link linkend="log10"><citetitle>log10</citetitle></link>,
+      <link linkend="opi"><citetitle>i</citetitle></link>,
+      <link linkend="sqrt"><citetitle>sqrt</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+      	<member>Auteur : Istvan Varga</member>
+      	<member>Nouveau dans Csound 5</member>
+      	<member>2005</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,128 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="adsyn">
+<indexterm id="IndexAdsyn"><primary>adsyn</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Additive Synthesis/Resynthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>adsyn</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>adsyn</refname>
+    <refpurpose>
+      La sortie est la somme d'un ensemble de sinusoïdes contrôlées individuellement, jouées par un
+      banc d'oscillateurs.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      La sortie est la somme d'un ensemble de sinusoïdes contrôlées individuellement, jouées par un
+      banc d'oscillateurs.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>adsyn</command> kamod, kfmod, ksmod, ifilcod</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifilcod</emphasis> -- entier ou chaîne de caractères dénotant un fichier de contrôle
+      issu de l'analyse d'un signal audio. Un entier dénote le suffixe d'un fichier
+      <emphasis>adsyn.m</emphasis> ou <emphasis>pvoc.m</emphasis> ; une chaîne de caractères (entre
+      doubles apostrophes) donne un nom de fichier, optionnellement un nom de chemin complet. S'il ne
+      s'agit pas d'un chemin complet, le fichier est d'abord recherché dans le répertoire courant, puis
+      dans celui qui est indiqué par la variable d'environnement
+      <link linkend="OrchDirFiles"><citetitle>SADIR</citetitle></link> (si elle est définie). Le fichier de
+      contrôle <emphasis>adsyn</emphasis> contient les valeurs des points charnière des enveloppes
+      d'amplitude et de fréquence, tandis que le fichier de contrôle <emphasis>pvoc</emphasis> contient des
+      données similaires organisées pour une resynthèse par tfr. L'utilisation de la mémoire dépend de la
+      taille des fichiers impliqués, qui sont lus et maintenus entièrement en mémoire durant le calcul tout
+      en étant partagés par les appels multiples (voir aussi <link linkend="lpread"><citetitle>lpread</citetitle></link>).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamod</emphasis> -- facteur d'amplitude des partiels additionnés.
+    </para>
+
+    <para>
+      <emphasis>kfmod</emphasis> -- facteur de fréquence des partiels additionnés. C'est un facteur de
+      transposition au taux de contrôle : une valeur de 1 signifie pas de transposition, 1,5 transpose
+      d'un quinte juste ascendante, et 0,5 d'une octave descendante.
+    </para>
+
+    <para>
+      <emphasis>ksmod</emphasis> -- facteur de vitesse des partiels additionnés.
+    </para>
+
+    <para>
+      <emphasis>adsyn</emphasis> synthétise des timbres dynamiques complexes par la méthode de synthèse
+      additive. N'importe quel nombre de sinusoïdes, contrôlées individuellement en fréquence et en
+      amplitude, peuvent être additionnées par une unité arithmétique très rapide pour produire un
+      résultat de grande qualité.
+    </para>
+
+    <para>
+      Les composantes sinusoïdales sont décrites dans un fichier de contrôle qui contient des pistes
+      d'amplitude et de fréquence définies par des points charnière. Les pistes sont des séquences de
+      nombres entiers sur 16 bit :
+      <literallayout>
+-1, date, amp, date, amp,... 
+-2, date, fréq, date, fréq,...</literallayout>
+      telles que celles qui sont produites par l'analyse d'un fichier audio au moyen d'un filtre hétérodyne.
+      (Pour des détails, voir <link linkend="hetro"><citetitle>hetro</citetitle></link>.) Les valeurs
+      instantanées d'amplitude et de fréquence sont utilisées par un oscillateur interne en virgule fixe
+      qui additionne chaque partiel actif dans un signal de sortie accumulé. Bien qu'il y ait une limite
+      pratique (limite supprimée dans la version 3.47) du nombre de partiels mis à contribution, il n'y a
+      aucune restriction quant à leur comportement dans le temps. Un son quelconque que l'on peut décrire
+      en termes d'évolution de sinusoïdes sera synthétisable par <emphasis>adsyn</emphasis> seul.
+    </para>
+
+    <para>
+      On peut aussi modifier un son décrit par un fichier de contrôle <emphasis>adsyn</emphasis> pendant la
+      resynthèse. Les signaux <emphasis>kamod</emphasis>, <emphasis>kfmod</emphasis> et
+      <emphasis>ksmod</emphasis> modifieront l'amplitude, la fréquence et la vitesse des partiels. Ce sont
+      des facteurs multiplicatifs, avec <emphasis>kfmod</emphasis> modifiant la fréquence et
+      <emphasis>ksmod</emphasis> modifiant la <emphasis>vitesse</emphasis> avec laquelle les segments en
+      millisecondes définis par les points charnière sont parcourus. Ainsi, 0,7, 1,5 et 2 produiront un
+      son plus doux, plus haut d'une quinte juste, mais deux fois moins long. Les valeurs 1, 1, 1
+      laisseront le son inchangé. Chacune de ces entrées peut être un signal de contrôle.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode adsyn. Il utilise les fichiers
+      <ulink url="examples/adsyn.csd"><citetitle>adsyn.csd</citetitle></ulink> et
+      <ulink url="examples/kickroll.het"><citetitle>kickroll.het</citetitle></ulink>. Le fichier
+      <quote>kickroll.het</quote> a été créé en utilisant l'utilitaire
+      <link linkend="hetro"><citetitle>hetro</citetitle></link> avec le fichier audio
+      <ulink url="examples/kickroll.wav"><citetitle>kickroll.wav</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode adsyn.</title>
+        
+
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/adsyn.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+</refentry>

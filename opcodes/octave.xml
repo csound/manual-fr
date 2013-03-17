@@ -1,0 +1,98 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="octave">
+<indexterm id="IndexOctave"><primary>octave</primary></indexterm>
+  <refentryinfo><title>Pitch Converters:Functions</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>octave</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>octave</refname>
+    <refpurpose>
+      Calcule un facteur pour élever/abaisser une fréquence d'un certain nombre d'octaves.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Calcule un facteur pour élever/abaisser une fréquence d'un certain nombre d'octaves.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>octave</command>(x)</synopsis>
+
+    <para>
+      Cette fonction travaille aux taux-i, -k et -a.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>x</emphasis> -- une valeur exprimée en octaves.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      La valeur retournée par la fonction <emphasis>octave</emphasis> est un facteur. On peut
+      multiplier une fréquence par ce facteur pour l'élever/l'abaisser du nombre d'octaves spécifié.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode octave. Il utilise le fichier
+      <ulink url="examples/octave.csd"><citetitle>octave.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode octave.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/octave.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie contiendra ces lignes :
+      <screen>
+i1  3520.00000
+i1  1760.00000
+i1   880.00000
+i1   440.00000
+i1  7040.00000
+i1  3520.00000
+i1  1760.00000
+i1   880.00000
+i1   440.00000
+.......</screen>
+
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="cent"><citetitle>cent</citetitle></link>,
+      <link linkend="db"><citetitle>db</citetitle></link>,
+      <link linkend="semitone"><citetitle>semitone</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Nouveau dans la version 4.16</para>
+  </refsect1>
+</refentry>

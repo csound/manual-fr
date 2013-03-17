@@ -1,0 +1,138 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.14
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="cpuprc">
+<indexterm id="IndexCpuprc"><primary>cpuprc</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Realtime Performance Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>cpuprc</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>cpuprc</refname>
+    <refpurpose>
+      Contrôle l'allocation des ressources cpu par instrument, pour optimiser la sortie
+      en temps réel.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Contrôle l'allocation des ressources cpu par instrument, pour optimiser la sortie
+      en temps réel.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>cpuprc</command> insnum, ipercent</synopsis>
+    <synopsis><command>cpuprc</command> Sinsname, ipercent</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>insnum</emphasis> -- numéro de l'instrument
+    </para>
+    <para>
+      <emphasis>Sinsname</emphasis> -- nom de l'instrument
+    </para>
+
+    <para>
+      <emphasis>ipercent</emphasis> -- pourcentage du temps de traitement cpu à allouer.
+      On peut aussi l'exprimer sous forme fractionnaire.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>cpuprc</emphasis> fixe le pourcentage du temps de traitement cpu
+      utilisé par un instrument, afin d'éviter un sous-remplissage du tampon dans
+      les exécutions en temps réel. L'utilisateur doit fixer la valeur de
+      <emphasis>ipercent</emphasis> pour chaque instrument qui sera activé en temps
+      réel. En supposant que le temps de traitement cpu total soit 1OO% en théorie,
+      cette valeur de pourcentage ne peut être définie qu'empiriquement, car il y
+      a trop de facteurs qui contribuent à limiter la polyphonie en temps réel sur
+      différents ordinateurs.
+    </para> 
+
+    <para>
+      Par exemple si <emphasis>ipercent</emphasis> est fixé à 5% pour l'instrument 1,
+      le nombre maximum de voix que l'on pourra allouer en temps réel est 20
+      (5% * 20 = 100%). Si l'on essaye de jouer une note supplémentaire alors que les
+      20 notes précédentes sont toujours jouées, Csound empêche l'allocation de cette
+      note et affiche le message d'avertissement suivant :
+      <literallayout>
+impossible d'allouer la dernière note car il n'y a plus de temps cpu disponible
+      </literallayout>
+    </para> 
+
+    <para>
+      Afin d'éviter les sous-remplissages de tampon audio, il est suggéré de fixer
+      le nombre maximum de voix à une valeur légèrement inférieure à la puissance
+      de traitement réelle de l'ordinateur. Parfois, un instrument peut avoir besoin
+      de plus de temps de traitement que la normale. Si, par exemple, l'instrument
+      contient un oscillateur qui lit une table trop grande pour la mémoire cache,
+      il sera plus lent qu'en temps normal. De plus, chaque programme s'exécutant
+      concuramment dans l'environnement multitâche, peut consommer de la puissance
+      processeur à divers degrés.
+    </para> 
+
+    <para>
+      Au début, tous les instruments reçoivent une valeur par défaut de
+      <emphasis>ipercent</emphasis> égale à 0.0% (c'est-à-dire un temps de traitement
+      nul équivalent à une vitesse de processeur infinie). Ce réglage convient très
+      bien pour les sessions en temps différé.
+    </para>
+
+    <para>
+      Toutes les instances de <emphasis>cpuprc</emphasis> doivent être définies dans
+      la section d'en-tête et non dans le corps de l'instrument.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode cpuprc. Il utilise le fichier
+      <ulink url="examples/cpuprc.csd"><citetitle>cpuprc.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode cpuprc.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/cpuprc.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="maxalloc"><citetitle>maxalloc</citetitle></link>,
+      <link linkend="prealloc"><citetitle>prealloc</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+        <member>Juillet 1999</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 3.57 de Csound ; ajout des instruments nommés
+    dans la version 5.13</para>
+  </refsect1>
+</refentry>

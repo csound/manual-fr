@@ -1,0 +1,193 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.2
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="slider32tablef">
+<indexterm id="IndexSlider32tablef"><primary>slider32tablef</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Slider Banks</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>slider32tablef</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>slider32tablef</refname>
+
+    <refpurpose>
+      Enregistre une banque de 32 messages de contrôle MIDI différents dans une
+      table, filtrés avant la sortie.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Enregistre une banque de 32 messages de contrôle MIDI différents dans une
+      table, filtrés avant la sortie.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kflag <command>slider32tablef</command> ichan, ioutTable, ioffset, ictlnum1, imin1, imax1, \
+      init1, ifn1, icutoff1, .... , ictlnum32, imin32, imax32, init32, ifn32, icutoff32</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ichan</emphasis> -- canal MIDI (1-16)
+    </para>
+
+    <para>
+      <emphasis>ioutTable</emphasis> -- numéro de la table qui contiendra la sortie
+    </para>
+
+    <para>
+      <emphasis>ioffset</emphasis> -- décalage dans la table de sortie. Zéro
+      signifie que la sortie du premier contrôleur affectera le premier élément
+      de la table. 10 signifie que la sortie du premier contrôleur affectera le
+      onzième élément de la table.
+    </para>
+
+    <para>
+      <emphasis>ictlnum1 ... ictlnum32</emphasis> -- numéro de contrôle MIDI (0-127)
+    </para>
+
+    <para>
+      <emphasis>imin1 ... imin32</emphasis> -- valeurs minimales pour chaque contrôleur
+    </para>
+
+    <para>
+      <emphasis>imax1 ... imax32</emphasis> -- valeurs maximales pour chaque contrôleur
+    </para>
+
+    <para>
+      <emphasis>init1 ... init32</emphasis> -- valeur initiale pour chaque contrôleur
+    </para>
+
+    <para>
+      <emphasis>ifn1 ... ifn32</emphasis> -- table de fonction de conversion pour
+      chaque contrôleur
+    </para>
+
+    <para>
+      <emphasis>icutoff1 ... icutoff32</emphasis> -- fréquence de coupure du
+      filtre passe-bas pour chaque contrôleur
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kflag</emphasis> -- un indicateur qui informe si un message de
+      changement de contrôle dans la banque a été reçu. Dans ce cas,
+      <emphasis>kflag</emphasis> est fixé à 1. Sinon il est fixé à 0.
+    </para>
+
+    <para>
+      <emphasis>slider32tablef</emphasis> est une banque de contrôleurs MIDI, utile
+      lorsque l'on utilise un mélangeur MIDI comme le Kawai MM-16 ou autres pour
+      changer n'importe quel paramètre du son en . Les messages de
+      contrôle MIDI arrivant sur le port d'entrée sont convertis pour entrer
+      dans l'intervalle <emphasis>iminN</emphasis>, <emphasis>imaxN</emphasis>,
+      et une valeur initiale peut être fixée. On peut aussi utiliser de manière
+      facultative une table de fonction non interpolée avec une courbe de
+      traduction personnalisée pour obtenir, par exemple, des courbes de
+      réponse exponentielles.
+    </para>
+
+    <para>
+      Si l'on n'a pas besoin d'une table de traduction, on fixe la valeur de 
+      <emphasis>ifnN</emphasis> à 0, sinon, on donne à <emphasis>ifnN</emphasis>
+      un numéro de table de fonction valide. Lorsque l'on utilise une table de
+      traduction (si <emphasis>ifnN</emphasis> reçoit une valeur non nulle
+      faisant référence à une table de fonction déjà allouée), la valeur de
+      <emphasis>initN</emphasis> doit être égale à celle de <emphasis>iminN</emphasis>
+      ou à celle de <emphasis>imaxN</emphasis>, sinon la valeur de sortie initiale
+      sera différente de celle spécifiée dans l'argument <emphasis>initN</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>slider32tablef</emphasis> fournit une banque de 32 numéros différents
+      de messages de contrôle MIDI. Il filtre le signal avant la sortie. Cela
+      élimine les discontinuités dues à la basse résolution du MIDI (7 bit).
+      La fréquence de coupure peut être réglée séparément pour chaque contrôleur
+      (intervalle recommandé : 0.1 à 5 Hz).
+    </para>
+
+    <para>
+      Comme les arguments d'entrée et de sortie sont nombreux, on peut scinder la
+      ligne en utilisant le caractère '\' (slash inversé) (nouveau dans la version
+      3.47) pour améliorer la lisibilité. L'utilisation de ces opcodes est
+      considérablement plus efficace que celle de
+      (<link linkend="ctrl7"><citetitle>ctrl7</citetitle></link> et
+      <link linkend="tonek"><citetitle>tonek</citetitle></link>) séparés, lorsque
+      l'on a besoin de plus de contrôleurs.
+    </para>
+
+    <para>
+      <emphasis>slider32tablef</emphasis> ressemble beaucoup à la famille des opcodes
+      <link linkend="slider32f"><citetitle>slider32f</citetitle></link> et
+      <emphasis>sliderNf</emphasis> (voir leur notice pour plus d'information), à
+      la différence que la sortie n'est pas stockée dans des variables de taux-k,
+      mais dans une table dénotée par l'argument <emphasis>ioutTable</emphasis>.
+      Il est possible de définir un indice de base afin d'utiliser la même table
+      pour plus d'un banc de contrôleurs (ou pour un autre usage).
+    </para>
+    <para>
+      Il est possible d'utiliser cet opcode conjointement avec
+      <link linkend="FLslidBnk2Setk"><citetitle>FLslidBnk2Setk</citetitle></link>
+      et avec <link linkend="FLslidBnk2"><citetitle>FLslidBnk2</citetitle></link>,
+      ce qui permet de synchroniser la position des valeurs MIDI à la position
+      des widgets valueurs FLTK de
+      <link linkend="FLslidBnk2"><citetitle>FLslidBnk2</citetitle></link>. Noter
+      qu'il faut spécifier les mêmes valeurs de min/max et de réponse
+      linéaire/exponentielle dans <emphasis>sliderNtablef</emphasis> et dans
+      <link linkend="FLslidBnk2"><citetitle>FLslidBnk2</citetitle></link>.
+      Il y a une exception si l'on utilise une réponse dans une table indexée au
+      lieu d'une réponse lin/exp. Dans ce cas, afin d'obtenir un résultat utilisable,
+      la réponse par table indéxée et les valeurs min/max ne doivent être fixées
+      que dans <link linkend="FLslidBnk2"><citetitle>FLslidBnk2</citetitle></link>,
+      alors que dans <emphasis>sliderNtablef</emphasis>, il faut fixer une
+      réponse linéaire, un minimum de zéro et un maximum de un dans tous les
+      contrôleurs.
+    </para>
+
+    <warning>
+      <para>
+        Les opcodes <emphasis>slider32tablef</emphasis> ne sortent pas la valeur
+        initiale immédiatement, mais seulement après quelques cycles-k parce que
+        le filtre introduit un léger retard dans la sortie.
+      </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="slider16table"><citetitle>slider16</citetitle></link>,
+      <link linkend="slider16tablef"><citetitle>slider16f</citetitle></link>,
+      <link linkend="slider32table"><citetitle>slider32</citetitle></link>,
+      <link linkend="slider64table"><citetitle>slider64</citetitle></link>,
+      <link linkend="slider64tablef"><citetitle>slider64f</citetitle></link>, 
+      <link linkend="slider8table"><citetitle>slider8</citetitle></link>,
+      <link linkend="slider8tablef"><citetitle>slider8f</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 5.06 de Csound.</para>
+  </refsect1>
+</refentry>

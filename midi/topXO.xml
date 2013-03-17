@@ -1,0 +1,84 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.1
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<chapter id="MidiTop">
+  <title>Support MIDI en temps réel</title>
+  <para>
+    Csound supporte les entrées et les sorties MIDI en temps réel, ainsi que les entrées depuis les fichiers
+    MIDI. L'entrée MIDI en temps réel est activée au moyen de l'option de ligne de commande
+    <link linkend="FlagsCatMinusUpperM"><citetitle>-M</citetitle></link>
+    (ou <emphasis>--midi-device</emphasis>=PERIPHERIQUE). Vous devez spécifier le numéro ou le nom de
+    périphérique après le <emphasis>-M</emphasis>. Par exemple, pour utiliser le périphérique numéro 2,
+    vous utiliserez quelque chose comme :
+  </para>
+  <literallayout>csound -M2 monmiditr.csd</literallayout>
+  <para>
+    Vous pouvez trouver les périphériques alsa disponibles en utilisant :
+  </para>
+  <literallayout>cat /proc/asound/cards</literallayout>
+  <para>
+    Il faut utiliser ensuite quelque chose comme :
+  </para>
+  <literallayout>csound -+rtmidi=alsa -M hw:3 monmiditr.csd</literallayout>
+  <para>
+    La sortie MIDI en temps réel est activée au moyen de
+    <link linkend="FlagsCatMinusUpperQ"><citetitle>-Q</citetitle></link>, avec un numéro ou un nom de
+    périphérique comme c'est montré ci-dessus.
+  </para>
+  <para>
+    Vous pouvez aussi charger un fichier MIDI en utilisant l'option de ligne de commande
+    <link linkend="FlagsCatMinusUpperF"><citetitle>-F</citetitle></link> ou
+    <emphasis>--midifile</emphasis>=FICHIER. Le fichier MIDI est lu en temps réel, et se comporte comme
+    s'il était joué ou reçu en temps réel. Ainsi le programme csound ne sait pas si l'entrée MIDI vient
+    d'un fichier MIDI ou directement d'une interface MIDI.
+  </para>
+  <para>
+    Une fois l'entrée et/ou la sortie MIDI activée(s), les opcodes comme
+    <link linkend="MidiInput"><citetitle>MIDI Input</citetitle></link> et
+    <link linkend="MidiOutput"><citetitle>MIDI Output</citetitle></link> seront effectifs.
+  </para>
+  <para>
+    Quand l'entrée MIDI est activée (avec -M ou -F), chaque message de <emphasis>noteon</emphasis> entrant
+    génèrera un évènement de note pour un instrument qui a le même numéro que le canal de l'évènement
+    (voir <link linkend="massign"><citetitle>massign</citetitle></link> et
+    <link linkend="pgmassign"><citetitle>pgmassign</citetitle></link> pour changer ce comportement). Cela
+    signifie que les instruments contrôlés par le MIDI sont polyphoniques par défaut, car chaque note
+    génèrera une nouvelle instance de l'instrument.
+  </para>
+  <para>
+    Voir les opcodes pour
+    l'<link linkend="MidiInterop"><citetitle>Interopérabilité MIDI/Partition</citetitle></link> pour savoir
+    comment concevoir des instruments utilisables depuis une partition ou pilotés par le MIDI.
+  </para>
+<!--  <para>
+    There are several realtime MIDI modules available, you must use the <emphasis>-+rtmidi</emphasis> flag (See <link linkend="FlagsCatMinusPlusRtmidi"><citetitle>-+rtmidi</citetitle></link>), to specify the module. The default module is portmidi which provides adecuate MIDI I/O on all platforms, however for improved performance and reliablity some platform specific modules are also provided.
+  </para>-->
+<!--  <para>
+    Currently the midi modules available are:
+  </para>
+  <itemizedlist>
+    <listitem><para><emphasis>alsa</emphasis> - To use the ALSA midi system (Linux only)</para></listitem>
+    <listitem><para><emphasis>winmme</emphasis> - To use the windows MME system (Windows only)</para></listitem>
+    <listitem><para><emphasis>portmidi</emphasis> - To use the portmidi system (all platforms). This is the default setting.</para></listitem>
+    <listitem><para><emphasis>virtual</emphasis> - To use a virtual graphical keyboard (See below) as MIDI input (all platforms)</para></listitem>
+  </itemizedlist>-->
+
+
+<!--   &midivirtual; -->
+  &midiinput;
+  &midioutput;
+  &midigeneric;
+  &midiconvert;
+  &midiextender;
+  &midionoff;
+  &midiinterop;
+  &midirealtime;
+  &midisliderbk;
+
+</chapter>

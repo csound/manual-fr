@@ -1,0 +1,86 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="tempoval">
+<indexterm id="IndexTempoval"><primary>tempoval</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tempoval</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>tempoval</refname>
+    <refpurpose>
+      Lit la valeur courante du tempo.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Lit la valeur courante du tempo.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kres <command>tempoval</command></synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kres</emphasis> -- la valeur du tempo. Si l'on utilise une valeur
+      positive avec
+      <link linkend="FlagsMinusLowerT"><citetitle>l'option -t</citetitle></link>
+      de la ligne de commande, <emphasis>tempoval</emphasis> retourne le pourcentage
+      d'accroissement/diminution par rapport au tempo original de 60 pulsations
+      par minute. Sinon, sa valeur sera 60 (pour 60 pulsations par minute).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode tempoval. Se rappeler qu'il ne fonctionne que
+      si l'on utilise
+      <link linkend="FlagsMinusLowerT"><citetitle>l'option -t</citetitle></link> avec Csound.
+      Il utilise le fichier
+      <ulink url="examples/tempoval.csd"><citetitle>tempoval.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode tempoval.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/tempoval.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Comme 120 pulsations par minute représente un accroissement de 50&percnt;
+      de l'original à 60 pulsations par minute, sa sortie contiendra cette ligne :
+      <screen>
+kval = 0.500000</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="tempo"><citetitle>tempo</citetitle></link> and <link linkend="miditempo"><citetitle>miditempo</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Exemple écrit par &namekevin;.</para>
+    <para>Nouveau dans la version 4.15</para>
+    <para>Décembre 2002. Merci à Drake Wilson pour avoir fait remarquer que la
+    documentation n'était pas claire.</para>
+  </refsect1>
+</refentry>

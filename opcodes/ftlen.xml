@@ -1,0 +1,110 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ftlen">
+<indexterm id="IndexFtlen"><primary>ftlen</primary></indexterm>
+  <refentryinfo><title>Table Control:Table Queries</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ftlen</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ftlen</refname>
+    <refpurpose>
+      Retourne la taille d'une table de fonction en mémoire.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne la taille d'une table de fonction en mémoire.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>ftlen</command>(x) (arg de taux-i seulement)</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Retourne la taille (nombre de points, en excluant le point de garde) de la
+      table de fonction numéro <emphasis>x</emphasis>. Bien que la plupart des
+      unités faisant référence à une table en mémoire prennent automatiquement
+      en compte sa taille (ce qui permet d'avoir des tables de longueur
+      arbitraire), cette fonction retourne la taille actuelle en cas de besoin.
+      Noter que <emphasis>ftlen</emphasis> retourne toujours une puissance de
+      deux, ce qui veut dire que le point de garde de la table de fonction (voir
+      <link linkend="f"><citetitle>Instruction f</citetitle></link>) n'est pas
+      compris. A partir de Csound 3.53, <emphasis>ftlen</emphasis> travaille
+      avec les tables de fonction différées (voir
+      <link linkend="GEN01"><citetitle>GEN01</citetitle></link>).
+    </para>
+    <para>
+      <emphasis>ftlen</emphasis> diffère de <emphasis>nsamp</emphasis> en ce sens
+      que <emphasis>nsamp</emphasis> donne le nombre de trames d'échantillon
+      chargées, tandis que <emphasis>ftlen</emphasis> donne le nombre total
+      d'échantillons sans le point de garde. Par exemple, avec un fichier son
+      stéréo de 10000 échantillons, <emphasis>ftlen()</emphasis> retournera
+      19999 (c'est-à-dire un total de 20000 échantillons mono, en excluant le
+      point de garde), mais <emphasis>nsamp()</emphasis> retournera 10000.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode ftlen. Il utilise les fichiers
+      <ulink url="examples/ftlen.csd"><citetitle>ftlen.csd</citetitle></ulink>,
+      <ulink url="examples/fox.wav"><citetitle>fox.wav</citetitle></ulink> et
+      <ulink url="examples/beats.wav"><citetitle>beats.wav</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode ftlen.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/ftlen.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Le fichier audio <quote>fox.wav</quote> contient 121569 échantillons,
+      <quote>beats.wav</quote> contient 88200 échantillons.
+      L'opcode <emphasis>ftlen</emphasis> retourne des tailles de 121568 et 88199
+      échantillons car il réserve un point pour le point de garde. Sa sortie
+      comprendra des lignes comme celles-ci :
+      <screen>
+instr 1:  ift = 121568.000
+instr 1:  ift = 88199.000</screen>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ftchnls"><citetitle>ftchnls</citetitle></link>, 
+      <link linkend="ftlptim"><citetitle>ftlptim</citetitle></link>, 
+      <link linkend="ftsr"><citetitle>ftsr</citetitle></link>, 
+      <link linkend="nsamp"><citetitle>nsamp</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namebarry;</member>
+        <member>MIT</member>
+        <member>Cambridge, Massachussetts</member>
+        <member>1997</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

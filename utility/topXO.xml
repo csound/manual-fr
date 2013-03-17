@@ -1,0 +1,125 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.2
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<chapter id="UtilityTop">
+  <chapterinfo>
+    <author>
+      <firstname>Dan</firstname>
+      <surname>Ellis</surname>
+
+      <affiliation>
+        <orgname>MIT Media Lab</orgname>
+
+        <address>
+          <city>Cambridge</city>
+          <state>Massachussetts</state>
+        </address>
+      </affiliation>
+    </author>
+  </chapterinfo>
+
+  <title>Les programmes utilitaires</title>
+
+  <para>
+    Les utilitaires de Csound sont des programmes de <emphasis>prétraitement de fichier son</emphasis>
+    qui retournent de l'information sur un fichier son ou qui créent une version d'analyse de celui-ci
+    à utiliser par certains générateurs de Csound. Bien que destinés à différents usages, ils ont en
+    commun le mécanisme d'accès au fichier son et sont descriptibles comme un ensemble. Les programmes
+    Utilitaires de Fichiers Son peuvent être appelés de deux manières équivalentes :
+    <cmdsynopsis>
+        <command>csound</command>
+        <arg><replaceable>-U nomutilitaire</replaceable></arg>
+        <arg><option>options</option></arg>
+        <arg><replaceable>noms_fichier</replaceable></arg>
+    </cmdsynopsis>
+
+    <cmdsynopsis>
+        <command>nomutilitaire</command>
+        <arg><option>options</option></arg>
+        <arg><replaceable>noms_fichier</replaceable></arg>
+    </cmdsynopsis>
+  </para>
+
+  <para>
+    Dans le premier cas, l'utilitaire est appelé comme une partie de l'exécutable de Csound, tandis
+    que dans le second il est appelé comme un programme autonome. Le second est plus petit d'environ
+    200 K, mais les deux formes fonctionnent de manière identique. La première est pratique pour
+    éviter la maintenance et l'utilisation de plusieurs programmes indépendants - un programme fait
+    tout. Quand on utilise cette forme, un
+    <link linkend="FlagsMinusUpperU"><citetitle>drapeau -U</citetitle></link> detecté dans la ligne
+    de commande provoquera l'interprétation des options et des noms suivants comme ceux de l'utilitaire
+    nommé ; cela signifie que le mécanisme de génération de Csound ne sera pas invoqué et que le
+    programme se terminera à la fin du traitement par l'utilitaire.
+  </para>
+
+  <section id="UtilityDir">
+    <title>Répertoires.</title>
+
+    <para>
+      Les noms de fichier sont de deux sortes, fichiers son sources et fichiers d'analyse résultants.
+      Chacun a une convention de nommage hiérarchique, influencée par le répertoire depuis lequel
+      l'utilitaire est appelé. Les fichiers son sources avec un nom de chemin complet (commençant
+      par un point (.), une barre oblique (/), ou pour ThinkC incluant un deux-points (:)), ne seront
+      cherchés que dans le répertoire nommé. Les fichiers son sans chemin seront recherchés d'abord
+      dans le répertoire courant, ensuite dans le répertoire nommé par la variable d'environnement
+      SSDIR (si elle est définie), ensuite dans le répertoire nommé par SFDIR. Une recherche
+      infructueuse retournera une erreur &quot;cannot open&quot;.
+    </para>
+
+    <para>
+      Les fichiers d'analyse résultants sont écrits dans le répertoire courant, ou le répertoire
+      nommé si un chemin est inclus. Pour être ordonné, il est bon de séparer les fichiers d'analyse des fichiers
+      son, habituellement dans un répertoire différent référencé par la variable d'environnement SADIR.
+      Il est commode de lancer l'analyse depuis le répertoire SADIR. Quand un fichier d'analyse est
+      invoqué ultérieurement par un générateur de Csound il est cherché en premier dans le répertoire
+      courant, puis dans le répertoire défini par SADIR.
+    </para>
+  </section>
+
+  <section id="UtilitySoundfile">
+    <title>Formats des Fichiers Son.</title>
+
+    <para>
+      Csound peut lire et écrire des fichiers audio dans différents formats. Les formats d'écriture
+      sont décrits par des options de la commande Csound. En lecture, le format est déterminé par
+      l'en-tête du fichier, et les données sont automatiquement converties en virgule flottante
+      pendant le traitement interne. Quand Csound est installé sur un hôte qui a des conventions
+      de fichier son locales (SUN, NeXT, Macintosh) il peut comprendre de manière conditionnelle
+      du code local qui crée des fichiers son non portables vers d'autres hôtes. Cependant, sur
+      tous les hôtes, Csound peut toujours générer et lire des fichiers du type AIFF, qui est ainsi un
+      format portable. Les bibliothèques de sons échantillonnés sont typiquement en AIFF, et la
+      variable d'environnement SSDIR pointe habituellement vers un répertoire contenant de tels
+      sons. S'il est défini, le répertoire SSDIR fait partie des chemins de recherche pour l'accès
+      aux fichiers son. Noter que certains sons échantillonnés AIFF ont un mécanisme de boucle audio
+      pour les notes tenues ; les programmes d'analyse ne parcourent les segments de boucle qu'une
+      fois.
+    </para>
+
+    <para>
+      Pour les fichiers son sans en-tête, une valeur <emphasis>SR</emphasis> peut être fournie par
+      l'<link linkend="FlagsMinusLowerR"><citetitle>option -r</citetitle></link> (ou sa valeur par
+      défaut). Si l'<link linkend="sr"><citetitle>en-tête SR</citetitle></link> et l'option de ligne
+      de commande sont tous deux présents, la valeur de l'option remplacera l'en-tête.
+    </para>
+
+    <para>
+      Quand les programmes d'Analyse accèdent à un son, un seul canal est lu. Pour les fichiers
+      stéréo ou quadro, le canal par défaut est le canal un ; d'autres canaux peuvent être obtenus
+      à la demande.
+    </para>
+  &utilityanalysis;
+  &utilityqueries;
+  &utilityconvert;
+  &utilityother;
+    <bridgehead>Crédits</bridgehead>
+    <para>Dan Ellis</para>
+    <para>MIT Media Lab</para>
+    <para>Cambridge, Massachussetts</para>
+  </section>
+</chapter>

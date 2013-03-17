@@ -1,0 +1,80 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ihold">
+<indexterm id="IndexIhold"><primary>ihold</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Duration Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ihold</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ihold</refname>
+    <refpurpose>
+      Crée une note tenue.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Transforme une note de durée finie en une note <quote>tenue</quote>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>ihold</command></synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ihold</emphasis> -- cette instruction de la phase d'initialisation
+      transforme une note de durée finie en une note <quote>tenue</quote>. Elle a
+      ainsi le même effet qu'une valeur de p3 négative (voir
+      l'<link linkend="i"><citetitle>instruction i</citetitle></link> de la partition),
+      sauf qu'ici p3 reste positif et que l'instrument se redéfinit lui-même pour
+      durer indéfiniment. La note peut être arrêtée explicitement par un
+      <emphasis>turnoff</emphasis>, ou son espace peut être utilisé par une autre
+      note ayant le même numéro d'instrument (c-à-d qu'elle est liée à cette note).
+      N'agit que pendant la phase d'initialisation ; inopérant pendant une phase de
+      réinitialisation (<emphasis>reinit</emphasis>).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode ihold. Il utilise le fichier
+      <ulink url="examples/ihold.csd"><citetitle>ihold.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode ihold.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/ihold.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="i"><citetitle>i Statement</citetitle></link>,
+      <link linkend="turnoff"><citetitle>turnoff</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Exemple écrit par &namekevin;.</para>
+  </refsect1>
+</refentry>

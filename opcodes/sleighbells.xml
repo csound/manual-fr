@@ -1,0 +1,137 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="sleighbells">
+<indexterm id="IndexSleighbells"><primary>sleighbells</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Models and Emulations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>sleighbells</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>sleighbells</refname>
+    <refpurpose>
+      Modèle semi-physique d'un son de cloche de traineau.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>sleighbells</emphasis> est un modèle semi-physique d'un son de cloche
+      de traineau. Il fait partie des opcodes de percussion de PhISEM. PhISEM (Physically
+      Informed Stochastic Event Modeling) est une approche algorithmique pour simuler
+      les collisions de multiples objets indépendants produisant des sons.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>sleighbells</command> kamp, idettack [, inum] [, idamp] [, imaxshake] [, ifreq] \
+      [, ifreq1] [, ifreq2]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>idettack</emphasis> -- période de temps durant laquelle tous les sons sont stoppés.
+    </para>
+ 
+    <para>
+      <emphasis>inum</emphasis> (facultatif) -- le nombre de perles, de dents, de cloches, de
+      tambourins, etc. S'il vaut zéro, il prend la valeur par défaut de 32.
+    </para>
+
+    <para>
+      <emphasis>idamp</emphasis> (facultatif) -- le facteur d'amortissement, intervenant dans
+      l'équation :
+      <literallayout>damping_amount = 0,9994 + (idamp * 0,002)</literallayout>
+    </para>
+
+    <para>
+      La valeur par défaut de <emphasis>damping_amount</emphasis> est 0,9994 ce qui signifie que
+      la valeur par défaut de <emphasis>idamp</emphasis> est 0. Le maximum de
+      <emphasis>damping_amount</emphasis> est 1,0 (pas d'amortissement). La valeur maximale de
+      <emphasis>idamp</emphasis> est donc 0,03.
+    </para>
+
+    <para>
+      L'intervalle recommandé pour <emphasis>idamp</emphasis> se situe d'habitude sous les 75% de
+      la valeur maximale.
+    </para>
+
+    <para>
+      <emphasis>imaxshake</emphasis> (facultatif, 0 par défaut) -- quantité d'énergie à réinjecter
+      dans le système. La valeur doit être comprise entre 0 et 1.
+    </para>
+
+    <para>
+      <emphasis>ifreq</emphasis> (facultatif) -- la fréquence de résonance principale.
+      La valeur par défaut est 2500.
+    </para>
+
+    <para>
+      <emphasis>ifreq1</emphasis> (facultatif) -- la première fréquence de résonance.
+      La valeur par défaut est 5300.
+    </para>
+
+    <para>
+      <emphasis>ifreq2</emphasis> (facultatif) -- la deuxième fréquence de résonance.
+      La valeur par défaut est 6500.
+    </para>
+ </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamp</emphasis> -- Amplitude de la sortie. Note : comme ces instruments sont
+      stochastiques, ce n'est qu'une approximation.
+    </para>
+ </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode sleighbells. Il utilise le fichier
+      <ulink url="examples/sleighbells.csd"><citetitle>sleighbells.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode sleighbells.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/sleighbells.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="bamboo"><citetitle>bamboo</citetitle></link>,
+      <link linkend="dripwater"><citetitle>dripwater</citetitle></link>,
+      <link linkend="guiro"><citetitle>guiro</citetitle></link>,
+      <link linkend="tambourine"><citetitle>tambourine</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameperry;, fait partie de PhISEM (Physically Informed Stochastic Event Modeling)</member>
+        <member>Adapté par &namejohn;</member>
+        <member>Université de Bath, Codemist Ltd.</member>
+        <member>Bath, UK</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 4.07 de Csound</para>
+    <para>Notes ajoutées par &namerasmus; en mai 2002.</para>
+  </refsect1>
+</refentry>

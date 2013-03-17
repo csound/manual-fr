@@ -1,0 +1,215 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.3
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLslidBnk2">
+<indexterm id="IndexFLslidBnk2"><primary>FLslidBnk2</primary></indexterm>
+  <refentryinfo><title>FLTK:Other</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLslidBnk2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLslidBnk2</refname>
+    <refpurpose>
+      Un widget FLTK contenant un banc de réglettes horizontales.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>FLslidBnk2</emphasis> est un widget FLTK contenant un banc de
+      réglettes horizontales.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>FLslidBnk2</command> &quot;names&quot;, inumsliders, ioutable, iconfigtable [,iwidth, iheight, ix, iy, istart_index] </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis><quote>names</quote></emphasis> -- une chaîne de caractères
+      entre guillemets contenant le nom de chaque réglette. Chaque réglette
+      peut avoir un nom différent. Chaque nom est séparé par un caractère
+      <quote>@</quote>, par exemple : <quote>fréquence@amplitude@coupure</quote>.
+      Il est possible de ne fournir aucun nom en donnant un seul espace
+      <quote> </quote>. Dans ce cas, l'opcode affectera automatiquement un
+      numéro en progression ascendante comme étiquette pour chaque réglette.
+    </para>
+
+    <para>
+      <emphasis>inumsliders</emphasis> -- le nombre de réglettes.
+    </para>
+
+    <para>
+      <emphasis>ioutable</emphasis> (facultatif, 0 par défaut) -- numéro d'une
+      table allouée préalablement dans laquelle seront stockée les valeurs de
+      sortie de chaque réglette. Il faut s'assurer que la taille de la table
+      est suffisante pour contenir toutes les cellules de sortie, sinon Csound
+      plantera avec une erreur de segmentation. En affectant zéro à cet
+      argument, la sortie sera dirigée vers l'espace zak dans la zone de taux-k.
+      Dans ce cas, l'espace zak doit avoir été alloué au préalable avec
+      l'opcode <link linkend="zakinit"><citetitle>zakinit</citetitle></link>
+      et il faut s'assurer que la taille d'allocation est suffisante pour
+      couvrir toutes les réglettes. La valeur par défaut est zéro (c'est-à-dire
+      stockage de la sortie dans l'espace zak).
+    </para>
+
+    <para>
+      <emphasis>iconfigtable</emphasis> -- dans les opcodes
+      <emphasis>FLslidBnk2</emphasis> et <emphasis>FLvslidBnk2</emphasis>, cette
+      table remplace <emphasis>iminmaxtable</emphasis>, <emphasis>iexptable</emphasis>
+      et <emphasis>istyletable</emphasis>, tous ces paramètres étant placés dans
+      une seule table. Cette table doit être remplie avec un groupe de quatre
+      paramètres pour chaque réglette de la façon suivante :
+    </para>
+
+    <literallayout>min1, max1, exp1, style1, min2, max2, exp2, style2, min3, max3, exp3, style3 etc.</literallayout>
+
+    <para>par exemple en utilisant GEN02 on peut taper :</para>
+
+    <literallayout>inum <emphasis>ftgen</emphasis> 1,0,256, -2,     0,1,0,1,    100, 5000, -1, 3,      50, 200, -1, 5,….. [etc]</literallayout>
+
+    <para>
+      Dans cet exemple la première réglette reçoit les paramètres [0, 1, 0, 1]
+      (valeurs comprises entre 0 et 1, réponse linéaire, aspect réglette pleine),
+      la seconde réglette reçoit les paramètres [100, 5000, -1, 3] (valeurs
+      comprises entre 100 et 5000, réponse exponentielle, aspect réglette normale),
+      la troisième réglette reçoit les paramètres [50, 200, -1, 5] (valeurs
+      comprises entre 50 et 200, réponse exponentielle, aspect réglette stylée),
+      et ainsi de suite.
+    </para>
+
+    <para>
+      <emphasis>iwidth</emphasis> (facultatif) -- largeur de la zone
+      rectangulaire contenant toutes les réglettes du banc, à l'exclusion des
+      étiquettes qui sont placées à la gauche de cette zone.
+    </para>
+
+    <para>
+      <emphasis>iheight</emphasis> (facultatif) -- hauteur de la zone
+      rectangulaire contenant toutes les réglettes du banc, à l'exclusion des
+      étiquettes qui sont placées à la gauche de cette zone.
+    </para>
+
+    <para>
+      <emphasis>ix</emphasis> (facultatif) -- position horizontale du coin
+      supérieur gauche de la zone rectangulaire contenant toutes les réglettes
+      appartenant au banc. Il faut laisser suffisamment d'espace à la gauche de
+      ce rectangle afin que les étiquettes des réglettes soient visibles.
+      En effet, les étiquettes elles-mêmes sont situées à l'extérieur de la
+      zone rectangulaire.
+    </para>
+
+    <para>
+      <emphasis>iy</emphasis> (facultatif) -- position verticale du coin
+      supérieur gauche de la zone rectangulaire contenant toutes les réglettes
+      appartenant au banc. Il faut laisser suffisamment d'espace à la gauche de
+      ce rectangle afin que les étiquettes des réglettes soient visibles.
+      En effet, les étiquettes elles-mêmes sont situées à l'extérieur de la
+      zone rectangulaire.
+    </para>
+
+    <para>
+      <emphasis>istart_index</emphasis> (facultatif, 0 par défaut) -- un
+      nombre entier indiquant un décalage des positions des cellules de sortie.
+      Il peut être positif pour permettre l'allocation en sortie de plusieurs
+      bancs de réglettes dans la même table ou dans l'espace zak. La valeur par
+      défaut est zéro (pas de décalage).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Il n'y a pas d'argument de taux-k, même si les cellules de la table en
+      sortie (ou l'espace zak) sont mis à jour au taux-k.
+    </para>
+
+    <para>
+      <emphasis>FLslidBnk2</emphasis> est un widget contenant un banc de
+      réglettes horizontales. On peut y mettre n'importe quel nombre de
+      réglettes (argument <emphasis>inumsliders</emphasis>). La sortie de
+      toutes les réglettes est stockée dans une table allouée au préalable ou
+      dans l'espace zak (argument <emphasis>ioutable</emphasis>). Il est
+      possible de déterminer la première position de la table (ou de l'espace
+      zak) dans laquelle stocker la sortie de la première réglette au moyen de
+      l'argument <emphasis>istart_index</emphasis>.
+    </para>
+
+    <para>
+      Chaque réglette peut avoir une étiquette individuelle placée à sa gauche.
+      Les étiquette sont définies par l'argument
+      <emphasis><quote>names</quote></emphasis>. L'intervalle de sortie de
+      chaque réglette peut être fixé individuellement au moyen des valeurs
+      <emphasis>min</emphasis> et <emphasis>max</emphasis> dans la table
+      <emphasis>iconfigtable</emphasis>. La courbe de réponse de chaque réglette
+      peut être fixée individuellement, au moyen d'une liste d'identifiants
+      placés dans la table <emphasis>iconfigtable</emphasis> (argument
+      <emphasis>exp</emphasis>). Il est possible de définir l'aspect de chaque
+      réglette indépendamment ou de donner le même aspect à toutes les
+      réglettes (argument <emphasis>style</emphasis> dans la table
+      <emphasis>iconfigtable</emphasis>).
+    </para>
+
+    <para>
+      Les arguments <emphasis>iwidth</emphasis>, <emphasis>iheight</emphasis>,
+      <emphasis>ix</emphasis> et <emphasis>iy</emphasis> déterminent la largeur,
+      la hauteur, les positions horizontale et verticale de la zone rectangulaire
+      contenant les réglettes. Noter que l'étiquette de chaque réglette est
+      placée à sa gauche et n'est pas inclue dans la zone rectangulaire contenant
+      les réglettes. Ainsi l'utilisateur doit laisser assez d'espace à la gauche
+      du banc en affectant une valeur suffisante à <emphasis>ix</emphasis> afin
+      que les étiquettes soient visibles.
+    </para>
+    <warning>
+      <title>IMPORTANT !</title>
+      <para>
+        Noter que les tables utilisée par <emphasis>FLslidBnk2</emphasis> doivent
+        être crées avec l'opcode <link linkend="ftgen"><citetitle>ftgen</citetitle></link>
+        et placées dans l'orchestre avant le valuateur correspondant. On ne peut
+        pas les placer dans la partition. En effet, les tables placées dans la
+        partition sont créées après l'initialisation des opcodes placés dans la
+        section d'en-tête de l'orchestre. 
+      </para>
+    </warning>
+  </refsect1>
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opode FLslidBnk2. Il utilise le fichier
+      <ulink url="examples/FLslidBnk2.csd"><citetitle>FLslidBnk2.csd</citetitle></ulink>.
+      <example>
+        <title>Exxemple de l'opode FLslidBnk2.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/FLslidBnk2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="FLslider"><citetitle>FLslider</citetitle></link>,
+      <link linkend="FLslidBnk"><citetitle>FLslidBnk</citetitle></link>,
+      <link linkend="FLvslidBnk"><citetitle>FLvslidBnk</citetitle></link>,
+      <link linkend="FLvslidBnk2"><citetitle>FLvslidBnk2</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 5.06</para>
+  </refsect1>
+</refentry>

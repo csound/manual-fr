@@ -1,0 +1,95 @@
+<!--translated=yes
+authors=Yannick St-Onge
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="zamod">
+<indexterm id="IndexZamod"><primary>zamod</primary></indexterm>
+  <refentryinfo><title>Zak Patch System</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>zamod</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>zamod</refname>
+    <refpurpose>
+      Module un signal de taux-a par un autre.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Module un signal de taux-a par un autre.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>zamod</command> asig, kzamod</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- Le signal d'entrée
+    </para>
+
+    <para>
+      <emphasis>kzamod</emphasis> -- Contrôle quelle variable za sera utilisée pour la modulation.
+      Une valeur positive indique une modulation additive, une valeur négative indique une modulation
+      multiplicative. Une valeur de 0 ne fait aucun changement à <emphasis>asig</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>zamod</emphasis> Module un signal de taux-a par un autre, qui provient d'une variable
+      za. La position de la variable modulante est contrôlée par la variable de taux-i ou de
+      taux-k <emphasis>kzamod</emphasis>. Ceci est la version de taux-a de
+      <link linkend="zkmod"><citetitle>zkmod</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode zamod. Il utilise le fichier
+      <ulink url="examples/zamod.csd"><citetitle>zamod.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode zamod.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/zamod.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="zacl"><citetitle>zacl</citetitle></link>,
+      <link linkend="zkcl"><citetitle>ziw</citetitle></link>,
+      <link linkend="zkmod"><citetitle>ziwm</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Robin Whittle</member>
+        <member>Australie</member>
+        <member>Mai 1997</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 3.45</para>
+    <para>Exemple écrit par &namekevin;.</para>
+  </refsect1>
+</refentry>

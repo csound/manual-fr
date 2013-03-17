@@ -1,0 +1,137 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="distort">
+<indexterm id="IndexDistort"><primary>distort</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Special Effects</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>distort</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>distort</refname>
+    <refpurpose>
+      Distorsion non-linéaire d'un signal audio avec écrêtage optionnel.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Distorsion non-linéaire d'un signal audio avec écrêtage optionnel.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ar <command>distort</command> asig, kdist, ifn[, ihp, istor]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn</emphasis> -- numéro de table d'une fonction de distortion
+      non-linéaire avec point de garde. La fonction peut avoir n'importe quelle
+      forme, mais elle doit traverser 0, milieu de la table, avec une pente positive. 
+      Il n'est pas nécessaire d'avoir une table de grande taille car la lecture
+      se fait avec interpolation.
+    </para>
+    <para>
+      <emphasis>ihp</emphasis> -- (facultatif) point à mi-puissancez (en Hz) du
+      filtre passe-bas interne. La valeur par défaut est 10. 
+    </para>
+    <para>
+      <emphasis>istor</emphasis> -- (facultatif) état initial de la mémoire
+      interne (voir <emphasis>reson</emphasis>. La valeur par défaut est 0. 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- Signal audio à traiter
+    </para>
+    <para>
+      <emphasis>kdist</emphasis> -- Taux de distortion (habituellement entre 0
+      et 1)
+    </para>
+    <para>
+      Cette unité déforme un signal entrant au moyen d'une fonction de distortion
+      non-linéaire <emphasis>ifn</emphasis> et un indice de distortion
+      <emphasis>kdist</emphasis>. Le signal d'entrée est d'abord compressé en
+      prenant sa valeur efficace puis passé par une fonction de distorsion
+      non-linéaire qui peut modifier sa forme et son spectre. Finalement il est
+      remis à l'échelle la plus proche de sa puissance originale.
+    </para>
+    <para>
+      Le taux de distorsion dépend de la nature de la fonction déformante et de
+      la valeur de <emphasis>kdist</emphasis>, qui est généralement compris entre
+      0 et 1. On souhaite que pour les faibles valeurs de <emphasis>kdist</emphasis>
+      la fonction déformante laisse le signal quasi inchangé. Ceci sera le cas
+      si, au point médian de la table, la fonction déformante est presque linéaire
+      et traverse 0 avec une pente positive. Une fonction segment de droite entre
+      -1 et +1 satisfait à ces exigences ; une sigmoïde (sinusoïde entre 270 et
+      90 degrés) également. Lorsque <emphasis>kdist</emphasis> augmente, le signal
+      compressé est dilaté pour rencontrer plus de parties de la fonction déformante,
+      et si celle-ci devient non-linéaire, le signal est de plus en plus
+      <emphasis>tordu</emphasis> lors de son parcours pour obtenir une distorsion.
+     </para>
+    <para>
+      Lorsque <emphasis>kdist</emphasis> devient suffisamment grand, le parcours
+      va éventuellement atteindre les limites de la table. La table n'est pas
+      lue de manière cyclique, mais se <quote>bloque</quote> sur les points
+      extrêmes lorsque le signal entrant les dépasse ; cela introduit de
+      l'écrêtage, une forme supplémentaire de distorsion du signal. Le point où
+      l'écrêtage commence dépend de la complexité (différence entre la valeur
+      efficace et le pic) du signal entrant. Pour une sinusoïde pure, l'écrêtage
+      ne commence que si <emphasis>kdist</emphasis> dépasse 0.7 ; pour une entrée
+      plus complexe, l'écrêtage peut commencer avec <emphasis>kdist</emphasis> à 0.5
+      ou beaucoup moins. <emphasis>kdist</emphasis> peut dépasser le point
+      d'écrêtage de n'importe quelle quantité et peut être supérieur à 1.
+    </para>
+    <para>
+      La fonction déformante peut être rendue arbitrairement complexe pour plus
+      d'effets. Elle doit généralement être continue bien que ce ne soit pas
+      nécessaire. Elle doit aussi être régulière près du point médiant et répartie
+      à peu près également entre les valeurs positives et les valeurs négatives
+      sur l'ensemble, sinon un décalage dû à une composante continue excessive
+      peut apparaitre. On peut expérimenter avec des fonctions plus agressives
+      selon les besoins. Une pente généralement positive permet de mélanger le
+      signal transformé à la source sans annulation de phase.
+    </para>
+    <para>
+      <emphasis>distort</emphasis> est utile comme processeur d'effets et est
+      habituellement combiné avec de la réverbération et du chorus sur les bus
+      d'effets. Cependant, on peut également l'utiliser comme effet dans un
+      instrument unique.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode distort. Il utilise le fichier
+      <ulink url="examples/distort.csd"><citetitle>distort.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode distort.</title>      
+
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/distort.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par &namebarry; pour Extended Csound et incorporé dans Csound5.</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,91 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="clockon">
+<indexterm id="IndexClockon"><primary>clockon</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Clock Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>clockon</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>clockon</refname>
+    <refpurpose>
+      Démarre l'une des horloges internes.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Démarre l'une des horloges internes.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>clockon</command> inum</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>inum</emphasis> -- le numéro d'une horloge. Il y a 32 horloges
+      numérotées de 0 à 31. Toutes les autres valeurs correspondent à l'horloge
+      numéro 32.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Entre deux opcodes <emphasis>clockon</emphasis> et
+      <link linkend="clockoff"><citetitle>clockoff</citetitle></link>, le temps CPU
+      utilisé est accumulé dans l'horloge. La précision dépend de la machine et elle
+      est de l'ordre de la milliseconde sur les systèmes UNIX et Windows. L'opcode
+      <link linkend="readclock"><citetitle>readclock</citetitle></link> lit la valeur
+      courante d'une horloge pendant une phase d'initialisation.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode clockon. Il utilise le fichier
+      <ulink url="examples/clockon.csd"><citetitle>clockon.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode clockon.</title>
+          <xi:include href="examples-xml/clockon.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="clockoff"><citetitle>clockoff</citetitle></link>,
+      <link linkend="readclock"><citetitle>readclock</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Université de Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>Juillet 1999</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.56 de Csound</para>
+  </refsect1>
+</refentry>

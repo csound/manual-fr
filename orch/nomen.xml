@@ -1,0 +1,65 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.2
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="OrchNomen">
+  <title>Nomenclature</title>
+
+  <para>
+    Tout au long de ce document, les opcodes sont indiqués en <emphasis role="strong">caractères gras</emphasis>
+    et les mnémoniques de leurs arguments et de leur résultat, lorsqu'ils sont mentionnés dans le texte,
+    sont écrits en <emphasis>italique</emphasis>. Les noms d'arguments sont généralement des mnémoniques
+    (<emphasis>amp</emphasis>, <emphasis>phs</emphasis>), et le résultat est souvent dénoté par la lettre
+    <emphasis>r</emphasis>.
+    Tous commencent par une qualification de type <emphasis>i, k, a,</emphasis> ou <emphasis>x</emphasis>
+    (par exemple <emphasis>kamp, iphs, ar</emphasis>). Le préfixe <emphasis>i</emphasis> dénote des
+    valeurs scalaires au temps de l'initialisation de note ; les préfixes <emphasis>k</emphasis> ou
+    <emphasis>a</emphasis> dénotent des valeurs de contrôle (scalaires) et audio (vectorielles),
+    modifiées et référencées en continu tout au long de l'exécution (c'est-à-dire à chaque période de
+    contrôle tant que l'instrument est actif). Les arguments sont utilisés aux temps indiqués par leur
+    préfixe ; les résultats sont créés aux temps de leur préfixe, et restent disponibles ensuite pour
+    être utilisés comme entrées ailleurs. A part quelques exceptions, les taux des arguments ne peuvent
+    pas dépasser le taux du résultat. La validité des entrées est définie comme suit :
+
+    <itemizedlist>
+      <listitem>
+        <para>arguments avec préfixe <emphasis>i</emphasis> doivent être valides à l'initialisation ;</para>
+      </listitem>
+
+      <listitem>
+        <para>arguments avec préfixe <emphasis>k</emphasis> peuvent être des valeurs de contrôle ou
+          d'initialisation (qui restent valides) ;</para>
+      </listitem>
+
+      <listitem>
+        <para>arguments avec préfixe <emphasis>a</emphasis> doivent être des entrées vectorielles ;</para>
+      </listitem>
+
+      <listitem>
+        <para>arguments avec préfixe <emphasis>x</emphasis> peuvent être soit des vecteurs soit des
+          scalaires (le compilateur distinguera).</para>
+      </listitem>
+    </itemizedlist>
+  </para>
+
+  <para>
+    Tous les arguments, sauf précision contraire, peuvent être des expressions dont les résultats sont
+    conformes à la liste ci-dessus. La plupart des opcodes (tels que
+    <emphasis role="strong">linen</emphasis> et <emphasis role="strong">oscil</emphasis>) peuvent être
+    utilisés dans plusieurs modes, le choix étant déterminé par le préfixe ou le symbole du résultat.
+  </para>
+
+  <para>
+    Tout au long de ce manuel, le terme &quot;opcode&quot; est utilisé pour indiquer une commande qui
+    produit habituellement une sortie au taux-a, -k ou -i, et qui forme toujours la base d'une instruction
+    complète d'un orchestre Csound. Des éléments comme &quot;<emphasis>+</emphasis>&quot; ou
+    &quot;<emphasis>sin</emphasis>(x)&quot; ou,
+    &quot;( a <emphasis role="strong">>=</emphasis>  b <emphasis role="strong">?</emphasis> c <emphasis role="strong">:</emphasis> d)&quot;
+    sont appelés &quot;opérateurs.&quot;
+  </para>
+</section>

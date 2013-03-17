@@ -1,0 +1,104 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="times">
+<indexterm id="IndexTimes"><primary>times</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Time Reading</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>times</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>times</refname>
+    <refpurpose>
+      Lit le temps absolu en secondes.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Lit le temps absolu en secondes, depuis le début de l'exécution.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ires <command>times</command></synopsis>
+
+    <synopsis>kres <command>times</command></synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Le temps en secondes est donné par <emphasis>times</emphasis>. Il retournera
+      0.5 après une demi-seconde.
+    </para>
+
+    <para>
+      <emphasis>times</emphasis> produit une variable de taux-k en sortie. Il n'y
+      a pas de paramètres d'entrée.
+    </para>
+
+    <para>
+      <emphasis>times</emphasis> peut aussi opérer au démarrage de l'instance
+      de l'instrument. Il produit alors une variable de taux-i (préfixée par
+      <emphasis>i</emphasis> ou <emphasis>gi</emphasis>) en sortie.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode times. Il utilise le fichier
+      <ulink url="examples/times_complex.csd"><citetitle>times_complex.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode times.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/times_complex.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
+new alloc for instr again:
+instance = 1, start = 0.000000, duration = 0.650439
+new alloc for instr fx_processor:
+instance = 2, start = 0.650884, duration = 0.411043
+new alloc for instr fx_processor:
+instance = 3, start = 1.061587, duration = 0.231085
+new alloc for instr fx_processor:
+instance = 4, start = 1.292336, duration = 0.543473
+new alloc for instr fx_processor:
+instance = 5, start = 1.835828, duration = 1.777097</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="timeinstk"><citetitle>timeinstk</citetitle></link>,
+      <link linkend="timeinsts"><citetitle>timeinsts</citetitle></link>,
+      <link linkend="timek"><citetitle>timek</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Robin Whittle</member>
+        <member>Australie</member>
+        <member>Mai 1997</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

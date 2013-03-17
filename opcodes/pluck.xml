@@ -1,0 +1,170 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.14
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pluck">
+<indexterm id="IndexPluck"><primary>pluck</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Waveguide Physical Modeling</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pluck</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pluck</refname>
+    <refpurpose>
+      Produit un son de corde pincée à décroissance naturelle ou un son de tambour.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      La sortie audio est un son de corde pincée à décroissance naturelle ou un
+      son de tambour basés sur l'algorithme de Karplus-Strong.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>pluck</command> kamp, kcps, icps, ifn, imeth [, iparm1] [, iparm2]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>icps</emphasis> -- valeur de hauteur attendue en Hz, utilisée pour
+      fixer un tampon contenant une période d'échantillons audio qui sera lissée
+      progressivement par une méthode de décroissance choisie. <emphasis>icps</emphasis>
+      anticipe normalement la valeur de <emphasis>kcps</emphasis>, mais il peut
+      recevoir artificiellement une grande ou une petite valeur pour influencer la
+      taille du tampon d'échantillons.
+    </para>
+
+    <para>
+      <emphasis>ifn</emphasis> -- numéro de la table d'une fonction utilisée pour
+      initialiser le tampon de décroissance cyclique. Si <emphasis>ifn</emphasis> = 0,
+      une séquence aléatoire sera utilisée à la place.
+    </para>
+
+    <para>
+      <emphasis>imeth</emphasis> -- méthode de décroissance naturelle. Il y en a six,
+      dont certaines utilisent les paramètres qui suivent.
+      <orderedlist>
+        <listitem>
+          <para>
+            moyenne simple. Un procédé de lissage simple, sans paramètres.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            moyenne variable. Comme ci-dessus, avec une durée de lissage étirée d'un
+            facteur de <emphasis>iparm1</emphasis> (>=1).
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            simple tambour. L'intervalle allant de la hauteur au bruit est contrôlé
+            par un "facteur de rugosité" dans <emphasis>iparm1</emphasis> (0 à 1).
+            Zéro donne l'effet de corde pincée, tandis que 1 inverse la polarité de
+            chaque échantillon (baisse d'une octave, harmoniques impairs). La valeur
+            0.5 donne un son de caisse claire optimal.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            tambour variable. Combine les facteurs de rugosité et d'étirement.
+            <emphasis>iparm1</emphasis> est la rugosité (0 à 1), et
+            <emphasis>iparm2</emphasis> est le facteur d'étirement (>=1).
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            moyenne pondérée. Comme la méthode 1, avec <emphasis>iparm1</emphasis>
+            pondérant l'échantillon courant (le status quo) et <emphasis>iparm2</emphasis>
+            pondérant l'échantillon précédant. <emphasis>iparm1</emphasis> +
+            <emphasis>iparm2</emphasis> doit être &lt;= 1.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            filtre récursif du premier ordre, avec des coefficients de 0.5. N'est pas
+            affecté par les paramètres.
+          </para>
+        </listitem>
+      </orderedlist>
+    </para>
+
+    <para>
+      <emphasis>iparm1, iparm2</emphasis> (facultatif) -- valeurs des paramètres à
+      utiliser avec les algorithmes de lissage (ci-dessus). Les valeurs par défaut
+      sont 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamp</emphasis> -- l'amplitude de sortie.
+    </para>
+
+    <para>
+      <emphasis>kcps</emphasis> -- la fréquence de re-échantillonnage en Hz.
+    </para>
+
+    <para>
+      Un tampon audio interne, rempli lors de l'initialisation selon
+      <emphasis>ifn</emphasis>, est continuellement re-échantillonné avec une
+      fréquence de <emphasis>kcps</emphasis> et sa sortie est multipliée par
+      <emphasis>kamp</emphasis>. Le re-échantillonnage du tampon est complété par
+      un lissage pour simuler l'effet de décroissance naturelle du son.
+    </para>
+
+    <para>
+      Les cordes pincées (1, 2, 5, 6) sont plus réalistes si l'on commence avec une
+      source de bruit, qui est riche en harmoniques initiaux. Les sons de tambour
+      (méthodes 3 et 4) fonctionnent mieux avec une source plate (impulsion large),
+      qui produit une attaque très bruiteuse et une extinction rapide.
+    </para>
+
+    <para>
+      L'algorithme original de Karplus-Strong utilisait un nombre fixe d'échantillons
+      par cycle, ce qui provoquait une sérieuse quantification des hauteurs disponibles
+      et de leur intonation. Cette implémentation re-échantillonne un tampon à la
+      hauteur exacte donnée par <emphasis>kcps</emphasis>, qui peut être variée pour
+      des effets de vibrato ou de glissando. Avec de faibles valeurs du taux
+      d'échantillonnage de l'orchestre (par exemple <emphasis>sr</emphasis> = 10000),
+      les fréquences élevées ne stockeront que très peu d'échantillons
+      (<emphasis>sr / icps</emphasis>). Comme ceci peut causer un bruit notable lors
+      du re-échantillonnage, le tampon interne a une taille minimale de 64 échantillons.
+      Celui-ci peut être agrandi en fixant <emphasis>icps</emphasis> à une hauteur
+      artificiellement basse.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode pluck. Il utilise le fichier
+      <ulink url="examples/pluck.csd"><citetitle>pluck.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode pluck.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pluck.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+</refentry>

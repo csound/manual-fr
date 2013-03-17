@@ -1,0 +1,93 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.1
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLhvsBoxSetValue">
+<indexterm id="IndexFLhvsBoxSetValue"><primary>FLhvsBoxSetValue</primary></indexterm>
+  <refentryinfo><title>FLTK:Other</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLhvsBoxSetValue</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLhvsBoxSetValue</refname>
+    <refpurpose>
+      Fixe la position du curseur d'un widget <emphasis>FLhvsBox</emphasis>
+      préalablement déclaré.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>FLhvsBoxSetValue</emphasis> fixe la position du curseur d'un
+      widget <link linkend="FLhvsBox"><citetitle>FLhvsBox</citetitle></link>
+      préalablement déclaré.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>FLhvsBox</command> kx, ky, ihandle</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ihandle</emphasis> – un identifiant (un nombre entier) défini
+      univoquement pour identifier une boîte HVS spécifique (voir ci-dessous).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kx, ky</emphasis> – les coordonnées de la position du curseur
+      HVS à fixer.
+    </para>
+    <para>
+      <emphasis>FLhvsBoxSetValue</emphasis> fixe la position du curseur d'un
+      widget <link linkend="FLhvsBox"><citetitle>FLhvsBox</citetitle></link>
+      préalablement déclaré. Les arguments <emphasis>kx</emphasis> et
+      <emphasis>ky</emphasis> dénotant la position du curseur doivent être
+      exprimées en valeurs normalisées (comprises entre 0 et 1).
+    </para>
+    <para>
+      Voir l'entrée <link linkend="hvs2"><citetitle>hvs2</citetitle></link>
+      pour un exemple d'utilisation de <emphasis>FLhvsBoxSetValue</emphasis>.</para>
+  </refsect1>
+<!--
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode FLhvsBoxSetValue. Il utilise le fichier
+      <ulink url="examples/FLhvsBoxSetValue.csd"><citetitle>FLhvsBoxSetValue.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode FLhvsBoxSetValue.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/FLhvsBoxSetValue.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>-->
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="hvs2"><citetitle>hvs2</citetitle></link>,
+      <link linkend="FLhvsBox"><citetitle>FLhvsBox</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 5.06</para>
+  </refsect1>
+</refentry>

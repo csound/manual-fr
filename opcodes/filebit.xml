@@ -1,0 +1,103 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.3
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="filebit">
+<indexterm id="IndexFileBit"><primary>filebit</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Soundfile Queries</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>filebit</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>filebit</refname>
+    <refpurpose>
+      Retourne le nombre de bit de chaque échantillon d'un fichier son.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne le nombre de bit de chaque échantillon d'un fichier son.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ir <command>filebit</command> ifilcod [, iallowraw]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifilcod</emphasis> -- fichier son à interroger.
+    </para>
+    <para>
+      <emphasis>iallowraw</emphasis> -- (Facultatif) autorise les fichiers son
+      bruts (vaut 1 par défaut)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>filebit</emphasis> retourne le nombre de bit de chaque échantillon
+      du fichier son <emphasis>ifilcod</emphasis>. Dans le cas d'échantillons
+      en virgule flottante la valeur -1 est retournée pour des flottants et -2
+      pour des doubles. Pour les formats non-PCM, la valeur est négative et
+      basée sur le format d'encodage de libsndfile.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode filebit. Il utilise les fichiers
+      <ulink url="examples/filebit.csd"><citetitle>filebit.csd</citetitle></ulink>,
+      et <ulink url="examples/mary.wav"><citetitle>mary.wav</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode filebit.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/filebit.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Le fichier audio <quote>mary.wav</quote> est au format CD mono, ce qui fait
+      que la sortie de <emphasis>filebit</emphasis> comprendra une ligne comme
+      celle-ci :
+      <screen>
+instr 1:  ibits = 16.000</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="filelen"><citetitle>filelen</citetitle></link>,
+      <link linkend="filenchnls"><citetitle>filenchnls</citetitle></link>,
+      <link linkend="filepeak"><citetitle>filepeak</citetitle></link>,
+      <link linkend="filesr"><citetitle>filesr</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Juillet 1999</member>
+      </simplelist>
+    </para>
+    <para>Exemple écrit par &namejohn;.</para>
+
+    <para>Nouveau dans la version 5.11 de Csound</para>
+  </refsect1>
+</refentry>

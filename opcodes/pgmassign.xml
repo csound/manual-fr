@@ -1,0 +1,139 @@
+<!--translated=yes
+authors=Yannick St-Onge
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pgmassign">
+<indexterm id="IndexPgmassign"><primary>pgmassign</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Input</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pgmassign</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>pgmassign</refname>
+    <refpurpose>
+      Affecte un numéro d'instrument à un numéro de programme MIDI spécifié.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Affecte un numéro d'instrument à un (ou à tous) le(s) programme(s) MIDI spécifié(s).
+    </para>
+
+    <para>
+      Par défaut, le numéro de l'instrument est le même que celui du programme. Si l'intrument
+      choisi est inférieur ou égal à zéro, ou n'existe pas, le changement de programme est ignoré.
+      Cet opcode est normalement utilisé dans l'en-tête de l'orchestre. Cependant, comme
+      <link linkend="massign"><citetitle>massign</citetitle></link>, il fonctionne aussi dans les
+      instruments.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>pgmassign</command> ipgm, inst[, ichn]</synopsis>
+    <synopsis><command>pgmassign</command> ipgm, "insname"[, ichn]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ipgm</emphasis> -- numéro de programme MIDI (1 à 128). Une valeur de zéro
+      sélectionne tous les programmes.
+    </para>
+
+    <para>
+      <emphasis>inst</emphasis> -- numéro d'instrument. S'il est inférieur ou égal à zéro,
+      les changements de programme MIDI à <emphasis>ipgm</emphasis> sont ignorés. Actuellement,
+      l'affectation à un instrument qui n'existe pas a le même effet. Ceci pourra changer
+      dans une version future afin d'imprimer un message d'erreur.
+    </para>
+
+    <para>
+      <emphasis><quote>insname</quote></emphasis> -- une chaîne de caractères (entre guillemets)
+      représentant un nom d'instrument.
+    </para>
+
+    <para>
+      <emphasis><quote>ichn</quote></emphasis> (facultatif, par défaut zéro) -- numéro de canal.
+      S'il vaut zéro, les changments de programme sont effectués sur tout les canaux.
+    </para>
+    <para>
+      Vous pouvez empêcher l'activation de n'importe quel instrument en utilisant l'en-tête ci-dessous :
+      <programlisting>
+        massign 0, 0
+        pgmassign 0, 0</programlisting>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode pgmassign. Il utilise le fichier
+      <ulink url="examples/pgmassign.csd"><citetitle>pgmassign.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode pgmassign.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pgmassign.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+    <para>
+      Voici un exemple de l'opcode pgmassign qui ignorera les évènements de changement de programme.
+      Il utilise le fichier <ulink url="examples/pgmassign_ignore.csd"><citetitle>pgmassign_ignore.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode pgmassign qui ignorera les évènements de changement de programme.</title>
+          <xi:include href="examples-xml/pgmassign_ignore.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+    <para>
+      Voici un exemple avancé de l'opcode pgmassign. Il utilise le fichier
+      <ulink url="examples/pgmassign_advanced.csd"><citetitle>pgmassign_advanced.csd</citetitle></ulink>.
+    </para>
+
+    <para>
+      Ne pas oublier qu'il faut inclure l'<link linkend="FlagsMinusUpperF"><citetitle>option -F</citetitle></link>
+      lorsque l'on utilise un fichier MIDI externe comme <quote>pgmassign_advanced.mid</quote>.
+    </para>
+
+    <para>
+      <example>
+        <title>Un exemple avancé de l'opcode pgmassign.</title>
+          <xi:include href="examples-xml/pgmassign_advanced.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="midichn"><citetitle>midichn</citetitle></link> et <link linkend="massign"><citetitle>massign</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameistvan;</member>
+        <member>Mai 2002</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 4.20</para>
+  </refsect1>
+</refentry>

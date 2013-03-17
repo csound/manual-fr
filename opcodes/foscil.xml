@@ -1,0 +1,127 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.16
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="foscil">
+<indexterm id="Indexfoscil"><primary>foscil</primary></indexterm>
+  <refentryinfo><title>Signal Generators:FM Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>foscil</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>foscil</refname>
+    <refpurpose>
+      Un oscillateur élémentaire modulé en fréquence.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Un oscillateur élémentaire modulé en fréquence.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>foscil</command> xamp, kcps, xcar, xmod, kndx, ifn [, iphs]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn</emphasis> -- numéro de la table de fonction. Nécessite un point de garde de lecture
+      cyclique.
+    </para>
+
+    <para>
+      <emphasis>iphs</emphasis> (faculatif, par défaut 0) -- phase initiale de la forme d'onde dans la
+      table <emphasis>ifn</emphasis>, exprimée comme une fraction d'une période (0 à 1). Avec une valeur
+      négative, l'initialisation de la phase sera ignorée. La valeur par défaut est 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>xamp</emphasis> -- l'amplitude du signal de sortie.
+    </para>
+
+    <para>
+      <emphasis>kcps</emphasis> -- un dénominateur commun, en cycles par seconde, pour les fréquences
+      porteuse et modulante.
+    </para>
+
+    <para>
+      <emphasis>xcar</emphasis> -- un facteur qui, lorsqu'il est multiplié par le paramètre
+      <emphasis>kcps</emphasis>, donne la fréquence de la porteuse.
+    </para>
+
+    <para>
+      <emphasis>xmod</emphasis> -- un facteur qui, lorsqu'il est multiplié par le paramètre
+      <emphasis>kcps</emphasis>, donne la fréquence de la modulante.
+    </para>
+
+    <para>
+      <emphasis>kndx</emphasis> -- l'indice de modulation.
+    </para>
+
+    <para>
+      <emphasis>foscil</emphasis> est une unité composée qui assemble deux opcodes
+      <emphasis>oscil</emphasis> dans la configuration familière de synthèse FM de Chowning, où la
+      sortie au taux audio de l'un des générateurs est utilisée pour moduler l'entrée en fréquence de
+      l'autre (la <quote>porteuse</quote>). Fréquence de la porteuse =
+      <emphasis>kcps</emphasis> * <emphasis>xcar</emphasis> et fréquence modulante =
+      <emphasis>kcps</emphasis> * <emphasis>xmod</emphasis>. Pour des valeurs entières de
+      <emphasis>xcar</emphasis> et de <emphasis>xmod</emphasis>, la fondamentale perçue sera la valeur
+      positive minimale de <emphasis>kcps</emphasis> * (<emphasis>xcar</emphasis> - <emphasis>n</emphasis> *
+      <emphasis>xmod</emphasis>), <emphasis>n</emphasis> = 0,1,2,... L'entrée <emphasis>kndx</emphasis>
+      est l'indice de modulation (habituellement variant dans le temps approximativement dans
+      l'intervalle de 0 à 4) qui détermine la distribution de l'energie acoustique parmi les positions
+      des partiels données par <emphasis>n</emphasis> = 0,1,2,.., etc. <emphasis>ifn</emphasis> doit
+      pointer sur une onde sinus stockée. Avant la version 3.50, <emphasis>xcar</emphasis> et
+      <emphasis>xmod</emphasis> ne pouvaient être que de taux-k.
+    </para>
+    <para>
+      La formule utilisée pour cette implémentation de la synthèse FM est
+      <emphasis>xamp</emphasis> * cos(2&#960; * <emphasis>t</emphasis> * <emphasis>kcps</emphasis> *
+      <emphasis>xcar</emphasis> +
+      <emphasis>kndx</emphasis> * sin(2&#960; * <emphasis>t </emphasis>* <emphasis>kcps</emphasis> *
+      <emphasis>xmod</emphasis>) - &#960;), en supposant que la table est une onde sinus.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode foscil. Il utilise le fichier
+      <ulink url="examples/foscil.csd"><citetitle>foscil.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode foscil.</title>
+
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/foscil.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>Plus d'information au sujet de la modulation de fréquence sur Wikipedia :
+    <ulink url="http://en.wikipedia.org/wiki/Frequency_modulation_synthesis"><citetitle>http://en.wikipedia.org/wiki/Frequency_modulation_synthesis</citetitle></ulink></para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>Exemple écrit par &namekevin;.</para>
+  </refsect1>
+</refentry>

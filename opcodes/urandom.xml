@@ -1,0 +1,126 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.1
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="urandom">
+<indexterm id="IndexUrandom"><primary>urandom</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Random (Noise) Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>urandom</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>urandom</refname>
+    <refpurpose>Opcodes de nombres vraiment aléatoires dans un intervalle
+    contrôlable.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Opcodes de nombres vraiment aléatoires dans un intervalle contrôlable. Ces
+      unités ne fonctionnent que sous linux et utilisent /dev/urandom pour
+      construire les valeurs aléatoires de Csound.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ax <command>urandom</command> [imin, imax]</synopsis>
+
+    <synopsis>ix <command>urandom</command> [imin, imax]</synopsis>
+
+    <synopsis>kx <command>urandom</command> [imin, imax]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ix</emphasis> -- valeur de sortie au taux-i.
+    </para>
+
+    <para>
+      <emphasis>imin</emphasis> -- valeur minimale de l'intervalle ; -1 par
+      défaut.
+    </para>
+
+    <para>
+      <emphasis>imax</emphasis> -- valeur maximale de l'intervalle ; +1 par
+      défaut.
+    </para>
+
+    <note>
+      <title>Notes</title>
+      <para>
+        L'algorithme produit 2<superscript>64</superscript> valeurs possibles
+        différentes qui sont mises à l'échelle pour s'inscrire dans l'intervalle
+        demandé. Le hasard vient de la méthode usuelle /dev/urandom de Linux. Il
+        n'y a aucune garantie que ce soit vraiment aléatoire, mais il y a de
+        grandes chances. Il ne produit pas de valeurs cycliques.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ax</emphasis> -- valeur de sortie au taux-a.
+    </para>
+
+    <para>
+      <emphasis>kx</emphasis> -- valeur de sortie au taux-k.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode urandom au taux-a. Il utilise le fichier
+      <ulink url="examples/urandom.csd"><citetitle>urandom.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode urandom au taux-a.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/urandom.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Voici un exemple de l'opcode urandom au taux-k. Il utilise le fichier
+      <ulink url="examples/urandom_krate.csd"><citetitle>urandom_krate.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode urandom au taux-k.</title>
+          <xi:include href="examples-xml/urandom_krate.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
+k1=0.229850
+k1=-0.077047
+k1=-0.199339
+k1=-0.620577
+k1=-0.119447
+k1=-0.596258
+k1=0.525800
+k1=-0.171583
+k1=-0.017196
+k1=-0.974613
+k1=-0.036276</screen>
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namejohn;</para>
+    <para>Nouveau dans la version 5.13</para>
+  </refsect1>
+</refentry>

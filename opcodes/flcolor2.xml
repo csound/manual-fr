@@ -1,0 +1,105 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.10
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLcolor2">
+<indexterm id="IndexFLcolor2"><primary>FLcolor2</primary></indexterm>
+  <refentryinfo><title>FLTK:Appearance</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLcolor2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLcolor2</refname>
+    <refpurpose>
+      Un opcode FLTK qui fixe la couleur secondaire (de sélection).
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>FLcolor2</emphasis> est semblable à 
+      <link linkend="FLcolor"><citetitle>FLcolor</citetitle></link> sauf qu'il
+      affecte la couleur secondaire (de sélection).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>FLcolor2</command> ired, igreen, iblue</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ired</emphasis> -- La composante rouge du widget cible. Chaque
+      composante RVB est comprise entre 0 et 255.
+    </para>
+
+    <para>
+      <emphasis>igreen</emphasis> -- La composante verte du widget cible. Chaque
+      composante RVB est comprise entre 0 et 255.
+    </para>
+
+    <para>
+      <emphasis>iblue</emphasis> -- La composante bleue du widget cible. Chaque
+      composante RVB est comprise entre 0 et 255.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Ces opcodes modifient l'apparence d'autres widgets. Ils sont de deux
+      types : ceux ne contenant pas d'argument <emphasis>ihandle</emphasis>
+      qui affectent tous les widgets déclarés après eux, et ceux ayant un
+      argument <emphasis>ihandle</emphasis> qui n'affectent qu'un widget cible
+      déclaré avant eux.
+    </para>
+
+    <para>
+      <emphasis>FLcolor2</emphasis> est semblable à <emphasis>FLcolor</emphasis>
+      sauf qu'il affecte la couleur secondaire (de sélection). L'influence de
+      <emphasis>FLcolor2</emphasis> sur les widgets suivants peut-être désactivée
+      en le fixant à -1. Avec un valeur de -2 (ou -3), tous les widgets suivants
+      auront une couleur secondaire choisie aléatoirement. -2 sélectionne une
+      couleur aléatoire claire, tandis que -3 sélectionne une couleur aléatoire
+      foncée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="FLcolor"><citetitle>FLcolor</citetitle></link>, 
+      <link linkend="FLhide"><citetitle>FLhide</citetitle></link>, 
+      <link linkend="FLlabel"><citetitle>FLlabel</citetitle></link>, 
+      <link linkend="FLsetAlign"><citetitle>FLsetAlign</citetitle></link>, 
+      <link linkend="FLsetBox"><citetitle>FLsetBox</citetitle></link>, 
+      <link linkend="FLsetColor"><citetitle>FLsetColor</citetitle></link>, 
+      <link linkend="FLsetColor2"><citetitle>FLsetColor2</citetitle></link>, 
+      <link linkend="FLsetFont"><citetitle>FLsetFont</citetitle></link>, 
+      <link linkend="FLsetPosition"><citetitle>FLsetPosition</citetitle></link>, 
+      <link linkend="FLsetSize"><citetitle>FLsetSize</citetitle></link>, 
+      <link linkend="FLsetText"><citetitle>FLsetText</citetitle></link>, 
+      <link linkend="FLsetTextColor"><citetitle>FLsetTextColor</citetitle></link>, 
+      <link linkend="FLsetTextSize"><citetitle>FLsetTextSize</citetitle></link>, 
+      <link linkend="FLsetTextType"><citetitle>FLsetTextType</citetitle></link>, 
+      <link linkend="FLsetVal_i"><citetitle>FLsetVal_i</citetitle></link>, 
+      <link linkend="FLsetVal"><citetitle>FLsetVal</citetitle></link>, 
+      <link linkend="FLshow"><citetitle>FLshow</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.22</para>
+  </refsect1>
+</refentry>

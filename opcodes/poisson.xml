@@ -1,0 +1,180 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.16
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="poisson">
+<indexterm id="IndexPoissonXClass"><primary>x-class noise generators</primary></indexterm>
+
+<indexterm id="IndexPoisson"><primary>poisson</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Random (Noise) Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>poisson</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>poisson</refname>
+    <refpurpose>
+      Générateur de nombres aléatoires de distribution de Poisson (valeurs positives seulement).
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Générateur de nombres aléatoires de distribution de Poisson (valeurs positives seulement).
+      C'est un générateur de bruit de classe x.
+    </para>
+
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>poisson</command> klambda</synopsis>
+
+    <synopsis>ires <command>poisson</command> klambda</synopsis>
+
+    <synopsis>kres <command>poisson</command> klambda</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ares, kres, ires</emphasis> - nombre d'évènements se produisant (toujours un entier).
+    </para>
+    <para>
+      <emphasis>klambda</emphasis> - le nombre attendu d'évènements par intervalle d'échantillonnage.
+    </para>
+    <bridgehead>Adapté de Wikipédia :</bridgehead>
+    <para>
+      En théorie des probabilités et en statistiques, la distribution de Poisson est une distribution de
+      probabilité discrète. Elle exprime la probabilité d'apparition d'un certain nombre d'évènements
+      pendant une période de temps fixée si ces évènements se produisent avec un taux moyen connu et
+      indépendamment du temps écoulé depuis le dernier évènement.
+    </para>
+    <para>
+      La distribution de Poisson décrivant la probabilité qu'il y ait exactement <emphasis>k</emphasis>
+      évènements (<emphasis>k</emphasis> étant un nombre non négatif, k = 0, 1, 2, ...) est :
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/poisson_equation.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>[L'équation de la distribution de Poisson.]</phrase>
+        </textobject>
+
+      </mediaobject>
+      où :
+      <itemizedlist>
+        <listitem><simpara>&lambda; est un nombre réel positif, égal au nombre attendu d'évènements
+        se produisant durant l'intervalle donné. Par exemple, si les évènements se produisent en
+        moyenne toutes les 4 minutes, et que l'on est intéressé par le nombre d'évènements se
+        produisant dans un intervalle de 10 minutes, on utilisera comme modèle une distribution de
+        Poisson avec &lambda; = 10/4 = 2,5. Ce paramètre se nomme <emphasis>klambda</emphasis>
+        dans les opcodes <emphasis>poisson</emphasis>.</simpara></listitem>
+        <listitem><simpara><emphasis>k</emphasis> fait référence au nombre de i-, k- ou a- périodes
+        écoulées.</simpara></listitem>
+      </itemizedlist>
+    </para>
+    
+    <para>
+      La distribution de Poisson apparaît aussi avec les processus de Poisson. Elle s'applique à
+      différents phénomènes de nature discrète (c-à-d, ceux qui peuvent se produire 0, 1, 2, 3, ...
+      fois durant une période de temps donnée ou dans un espace donné) chaque fois que la
+      probabilité du phénomène se produisant est constante dans le temps ou dans l'espace.
+      Parmi les exemples qui peuvent être modélisés par une distribution de Poisson, on trouve :
+      <itemizedlist>
+        <listitem><simpara>Le nombre d'automobiles passant devant un repère sur une route (suffisamment
+        éloigné des feux de circulation) pendant un intervalle de temps donné.</simpara></listitem>
+        <listitem><simpara>Le nombre de fautes de frappe que l'on fait lorsque l'on tape une page.</simpara></listitem>
+        <listitem><simpara>Le nombre d'appels par minute dans un centre d'appel téléphonique.</simpara></listitem>
+        <listitem><simpara>Le nombre d'accès par minute à un serveur web.</simpara></listitem>
+        <listitem><simpara>Le nombre d'animaux écrasés par unité de longueur sur une route.</simpara></listitem>
+        <listitem><simpara>Le nombre de mutations dans un brin d'ADN après une certaine quantité de radiations.</simpara></listitem>
+        <listitem><simpara>Le nombre de noyaux instables qui a diminué pendant une période de temps
+        donnée dans un morceau de substance radioactive. Comme la radioactivité de la substance diminue
+        avec le temps, l'intervalle de temps total utilisé dans le modèle doit être significativement
+        inférieur à la durée de vie moyenne de la substance.</simpara></listitem>
+        <listitem><simpara>Le nombre de pins par unité de surface dans une forêt hétérogène.</simpara></listitem>
+        <listitem><simpara>Le nombre d'étoiles dans une région donnée de l'espace.</simpara></listitem>
+        <listitem><simpara>La distribution des cellules réceptrices de la vision dans la rétine de l'oeil humain.</simpara></listitem>
+        <listitem><simpara>Le nombre de virus qui peuvent infecter une cellule dans une culture de cellules.</simpara></listitem>
+      </itemizedlist>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/Poisson_distribution_PMF.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>[Un diagramme montrant la distribution de Poisson.]</phrase>
+        </textobject>
+
+        <caption>
+          <para>Un diagramme montrant la distribution de Poisson.</para>
+        </caption>
+      </mediaobject>
+    </para>
+    <para>
+      Pour des explications plus détaillées sur ces distributions, consulter :
+      <orderedlist>
+        <listitem>
+          <para>C. Dodge - T.A. Jerse 1985. Computer music. Schirmer books. pp.265 - 286</para>
+        </listitem>
+
+        <listitem>
+          <para>D. Lorrain. A panoply of stochastic cannons. In C. Roads, ed. 1989. Music machine . Cambridge, Massachusetts: MIT press, pp. 351 - 379.</para>
+        </listitem>
+      </orderedlist>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode poisson. Il utilise le fichier
+      <ulink url="examples/poisson.csd"><citetitle>poisson.csd</citetitle></ulink>.
+      Il est écrit pour des systèmes *NIX et génèrera des erreurs sur Windows.
+
+      <example>
+        <title>Exemple de l'opcode poisson.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/poisson.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="seed"><citetitle>seed</citetitle></link>,
+      <link linkend="betarand"><citetitle>betarand</citetitle></link>,
+      <link linkend="bexprnd"><citetitle>bexprnd</citetitle></link>,
+      <link linkend="cauchy"><citetitle>cauchy</citetitle></link>,
+      <link linkend="exprand"><citetitle>exprand</citetitle></link>,
+      <link linkend="gauss"><citetitle>gauss</citetitle></link>,
+      <link linkend="linrand"><citetitle>linrand</citetitle></link>,
+      <link linkend="pcauchy"><citetitle>pcauchy</citetitle></link>,
+      <link linkend="trirand"><citetitle>trirand</citetitle></link>,
+      <link linkend="unirand"><citetitle>unirand</citetitle></link>,
+      <link linkend="weibull"><citetitle>weibull</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameparis;</member>
+        <member>MIT, Cambridge</member>
+        <member>1995</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

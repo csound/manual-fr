@@ -1,0 +1,166 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.1
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pdclip">
+<indexterm id="IndexPdclip"><primary>pdclip</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Waveshaping</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pdclip</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pdclip</refname>
+    <refpurpose>
+      Réalise un écrêtage linéaire sur un signal audio ou un phaseur.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      L'opcode <emphasis>pdclip</emphasis> permet d'écrêter un pourcentage de
+      l'intervalle d'entrée et de l'amplifier à pleine échelle. C'est la même
+      chose que de multiplier le signal et de limiter l'ambitus du résultat,
+      mais <emphasis>pdclip</emphasis> permet de décider quelle partie de
+      l'ambitus du signal doit être distordue plutot que de donner le facteur
+      d'échelle, et il a un paramètre de décalage pour un écrêtage assymétrique
+      de l'intervalle d'amplitude du signal. <emphasis>pdclip</emphasis> est
+      aussi utile pour redistribuer les valeurs de phaseurs pour la synthèse
+      par distorsion de phase.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aout <command>pdclip</command> ain, kWidth, kCenter [, ibipolar [, ifullscale]]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ibipolar</emphasis> -- un paramètre facultatif spécifiant le
+      mode unipolaire (0) ou bipolaire (1). Par défaut, mode unipolaire.
+    </para>
+
+    <para>
+      <emphasis>ifullscale</emphasis> -- paramètre facultatif spécifiant
+      l'intervalle des valeurs d'entrée et de sortie. Le maximum sera
+      <emphasis>ifullscale</emphasis>. Le minimum dépend du mode d'opération :
+      zéro pour le mode unipolaire ou -<emphasis>ifullscale</emphasis> pour le
+      mode bipolaire. Vaut 1.0 par défaut. Il faut donner à ce paramètre la
+      valeur maximale attendue en entrée.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ain</emphasis> -- le signal d'entrée à écrêter.
+    </para>
+
+    <para>
+      <emphasis>aout</emphasis> -- le signal de sortie.
+    </para>
+
+    <para>
+      <emphasis>kWidth</emphasis> -- le pourcentage de l'ambitus du signal qui
+      est écrêté (compris entre 0 et 1).
+    </para>
+
+    <para>
+      <emphasis>kCenter</emphasis> -- un décalage pour déplacer la fenêtre du
+      signal non écrêté vers le haut ou vers le bas dans l'intervalle (essentiellement
+      une composante continue). Les valeurs doivent être dans l'intervalle [-1, 1],
+      la valeur zéro représentant l'absence de décalage (que le mode utilisé soit
+      unipolaire ou bipolaire).
+    </para>
+
+    <para>
+      L'opcode <emphasis>pdclip</emphasis> effectue un écrêtage linéaire sur le
+      signal <emphasis>ain</emphasis>. <emphasis>kWidth</emphasis> spécifie le
+      pourcentage de l'amplitude du signal qui est écrêtée. Le reste de l'intervalle
+      d'entrée est appliqué linéairement de zéro à <emphasis>ifullscale</emphasis>
+      dans le mode unipolaire et de -<emphasis>ifullscale</emphasis> à
+      <emphasis>ifullscale</emphasis> dans le mode bipolaire. Lorsque
+      <emphasis>kCenter</emphasis> vaut zéro, les mêmes quantités des parties
+      haute et basse du signal sont écrêtées. Une valeur négative décale la
+      région non écrêtée vers le bas de l'intervalle d'entrée et une valeur
+      positive la décale vers le haut. <emphasis>ibipolar</emphasis> doit valoir
+      1 pour le mode bipolaire et 0 pour le mode unipolaire. Le mode par défaut
+      est unipolaire (<emphasis>ibipolar</emphasis> = 0).
+      <emphasis>ifullscale</emphasis> fixe l'amplitude maximale des signaux
+      d'entrée et de sortie (1.0 par défaut).
+    </para>
+
+    <para>
+      Cela revient à effectuer une distorsion non-linéaire de l'entrée avec la
+      fonction de transfert suivante (normalisée à <emphasis>ifullscale</emphasis>=1.0
+      en mode bipolaire) :
+    </para>
+
+    <para>
+      <literallayout>
+        1|   _______      axe des x en entrée, axe des y en sortie
+         |  /       
+         | /              la largeur de la région écrêtée est 2*kWidth
+-1       |/        1      la largeur de la région non écrêtée est 2*(1 - kWidth)
+--------------------      kCenter décale le région non écrêtée vers
+        /|                la gauche ou la droite (jusqu'à kWidth)
+       / |
+      /  |
+------   |-1</literallayout>
+    </para>
+
+    <para>
+      On peut utiliser le mode bipolaire pour une distorsion linéaire directe
+      d'un signal audio. Alternativement, le mode unipolaire est utile pour
+      modifier la sortie d'un phaseur avant de l'utiliser pour indexer une table
+      de fonction, ce qui en fait effectivement une technique de distorsion de
+      phase.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="pdhalf"><citetitle>pdhalf</citetitle></link>, 
+      <link linkend="pdhalfy"><citetitle>pdhalfy</citetitle></link>,
+      <link linkend="limit"><citetitle>limit</citetitle></link>,
+      <link linkend="clip"><citetitle>clip</citetitle></link>,
+      <link linkend="distort1"><citetitle>distort1</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode pdclip. Il utilise le fichier
+      <ulink url="examples/pdclip.csd"><citetitle>pdclip.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode pdclip.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pdclip.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameanthony;</member>
+        <member>Janvier 2008</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 5.08 de Csound.</para>
+  </refsect1>
+</refentry>

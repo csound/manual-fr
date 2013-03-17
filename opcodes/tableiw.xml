@@ -1,0 +1,249 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="tableiw">
+<indexterm id="IndexTableiw"><primary>tableiw</primary></indexterm>
+  <refentryinfo><title>Table Control:Read/Write Opreations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tableiw</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>tableiw</refname>
+    <refpurpose>
+      Change le contenu de tables de fonction existantes.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode opère sur des tables de fonction existantes en changeant leur
+      contenu. <emphasis>tableiw</emphasis> est utilisé quand toutes les entrées
+      sont des variables de taux-i ou des constantes et que l'on veut seulement
+      l'exécuter à l'initialisation de l'instrument. Les combinaisons valides
+      des types de variable sont indiquées par la première lettre des noms de
+      variable.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>tableiw</command> isig, indx, ifn [, ixmode] [, ixoff] [, iwgmode]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>isig</emphasis> -- Valeur d'entrée à écrire dans la table.
+    </para>
+
+    <para>
+      <emphasis>indx</emphasis> -- Indice dans la table, un nombre positif
+      compris entre 0 et la longueur de la table (<emphasis>ixmode</emphasis> = 0)
+      ou entre 0 et 1 (<emphasis>ixmode</emphasis> différent de 0).
+    </para>
+
+    <para>
+      <emphasis>ifn</emphasis> -- Numéro de la table. Doit être &gt;= 1. Les
+      nombres flottants sont arrondis à l'entier inférieur. Si un numéro de
+      table ne pointe pas vers une table valide, ou si la table n'a pas encore
+      été chargée (<link linkend="GEN01"><citetitle>GEN01</citetitle></link>)
+      une erreur est générée et l'instrument est désactivé.
+    </para>
+
+    <para>
+      <emphasis>ixmode</emphasis> (facultatif, 0 par défaut) -- mode d'indexation.
+      <itemizedlist>
+        <listitem>
+          <para>
+            0 = <emphasis>indx</emphasis> et <emphasis>ixoff</emphasis> sont
+            compris entre 0 et la longueur de la table.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            différent de 0 = <emphasis>indx</emphasis> et <emphasis>ixoff</emphasis>
+            sont compris entre 0 et 1.
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>ixoff</emphasis> (facultatif, 0 par défaut) -- décalage de
+      l'index.
+
+      <itemizedlist>
+        <listitem>
+           <para>
+             0 = l'indice résultant est contrôlé directement par
+             <emphasis>indx</emphasis>, l'indexation commençant depuis le début
+             de la table. 
+           </para>
+        </listitem>
+
+        <listitem>
+           <para>
+             Différent de 0 = l'indexation démarre dans la table. La valeur doit
+             être positive et inférieure à la longueur de la table
+             (<emphasis>ixmode</emphasis> = 0) ou inférieure à 1
+             (<emphasis>ixmode</emphasis> différent de 0).
+           </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>iwgmode</emphasis> (facultatif, 0 par défaut) -- mode cyclique et
+      point de garde.
+
+      <itemizedlist>
+        <listitem>
+           <para>
+             0 = mode limite.
+           </para>
+        </listitem>
+
+        <listitem>
+           <para>
+             1 = mode cyclique.
+           </para>
+        </listitem>
+
+        <listitem>
+           <para>
+             2 = mode point de garde.
+           </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+
+    <refsect2>
+      <title>Mode limite (0)</title>
+      <para>
+        Limite l'indice résultant (<emphasis>indx</emphasis> + <emphasis>ixoff</emphasis>)
+        entre 0 et le point de garde. Pour une table de longueur 5, cela signigie
+        que les positions allant de 0 à 3 et la position 4 (le point de garde)
+        peuvent être écrites. Un indice résultant négatif provoque l'écriture
+        en position 0.
+      </para>
+    </refsect2>
+
+    <refsect2>
+      <title>Mode cyclique (1)</title>
+      <para>
+        Parcours cyclique de l'indice résultant dans les positions 0 à E, où E
+        vaut soit la longueur de la table moins un, soit le facteur de 2 qui est
+        égal à la longueur de la table moins un. Par exemple, un parcours cyclique
+        entre 0 et 3, si bien que l'indice 6 signifie une écriture dans la
+        position 2.
+      </para>
+    </refsect2>
+
+    <refsect2>
+      <title>Mode point de garde (2)</title>
+      <para>
+        Le point de garde est écrit en même temps que la position 0 avec la même
+        valeur.
+      </para>
+
+      <para>
+        Facilite l'écriture dans des tables prévues pour être lues avec
+        interpolation pour produire des formes d'onde cycliques sans discontinuité.
+        De plus, avant son utilisation, l'indice résultant est augmenté de la
+        moitié de la distance entre une position et la suivante, avant d'être
+        arrondi à l'adresse entière inférieure d'une position dans la table.
+      </para>
+
+      <para>
+        Normalement (<emphasis>iwgmode</emphasis> = 0 ou 1), pour une table de
+        longueur 5, qui comprend les positions 0 à 3 en partie principale et la
+        position 4 comme point de garde, un indice résultant compris entre 0 et
+        0.999 provoquera une écriture dans la position 0. (&quot;0.999&quot;
+        signifie juste inférieur à 1.0), entre 1.0 et 1.999, l'écriture se fera
+        dans la position 1, etc. La même interprétation a lieu pour les indices
+        résultants compris entre 0 et 4.999 (<emphasis>igwmode</emphasis> = 0)
+        ou 3.999 (<emphasis>igwmode</emphasis> = 1). <emphasis>igwmode</emphasis> = 0
+        permet l'écriture dans les positions 0 à 4, avec la possibilité d'avoir
+        dans le point de garde (4) une valeur différente de celle de la
+        position 0.
+      </para>
+
+      <para>
+        Avec une table de longueur 5 et <emphasis>iwgmode</emphasis> = 2, quand
+        l'indice résultant est compris entre 0 et 0.499, l'écriture se fera dans
+        les positions 0 et 4. S'il est compris entre 0.5 et 1.499, l'écriture se
+        fera dans la position 1, etc. S'il est compris entre 3.5 et 4.0, l'écriture
+        se fera également dans les positions 0 et 4.
+      </para>
+
+      <para>
+        Ainsi, l'écriture s'approche le plus possible des résultats de la lecture
+        avec interpolation. Le mode point de garde ne doit être utilisé qu'avec
+        des tables qui ont un point de garde.
+      </para>
+
+      <para>
+        Le mode point de garde se fait en ajoutant 0.5 à l'indice résultant,
+        en l'arrondissant à l'entier inférieur le plus proche, puis en le
+        réduisant modulo le facteur de deux égal à la longueur de la table
+        moins un, enfin en écrivant dans la table (positions 0 à 3 dans notre
+        exemple) et dans le point de garde si l'indice vaut 0.
+      </para>
+    </refsect2>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode tableiw. Il utilise le fichier
+      <ulink url="examples/tableiw.csd"><citetitle>tableiw.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode tableiw.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/tableiw.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="tablew"><citetitle>tablew</citetitle></link>, 
+      <link linkend="tablewkt"><citetitle>tablewkt</citetitle></link>
+    </para>
+    <para>Plus d'information sur cet opcode :
+    <ulink url="http://www.csounds.com/journal/issue12/genInstruments.html">
+    <citetitle>http://www.csounds.com/journal/issue12/genInstruments.html</citetitle>
+    </ulink>, écrit par Jacob Joaquin.</para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Robin Whittle</member>
+        <member>Australie</member>
+        <member>Mai 1997</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 3.47</para>
+
+    <para>Mise à jour en août 2002, grâce à Abram Hindle qui a indiqué le
+    syntaxe correcte.</para>
+  </refsect1>
+</refentry>

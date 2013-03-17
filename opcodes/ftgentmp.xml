@@ -1,0 +1,133 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ftgentmp">
+<indexterm id="Indexftgentmp"><primary>ftgentmp</primary></indexterm>
+  <refentryinfo><title>Table Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ftgentmp</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ftgentmp</refname>
+    <refpurpose>
+      Génère une table de fonction de partition depuis l'orchestre, qui est
+      effacée à la fin de la note.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère une table de fonction de partition depuis l'orchestre, qui est
+      facultativement effacée à la fin de la note.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ifno <command>ftgentmp</command> ip1, ip2dummy, isize, igen, iarga, iargb, ...</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+    <emphasis>ifno</emphasis> -- un numéro de table soit demandé soir assigné
+      automatiquement supérieur à 100.
+    </para>
+    <para>
+    <emphasis>ip1</emphasis> -- le numéro de la table à générer ou 0 si le
+    numéro doit être assigné, auquel cas la table est effacée à la fin de la
+    période d'activation de la note.
+    </para>
+    <para>
+
+    <emphasis>ip2dummy</emphasis> -- ignoré.
+    </para>
+    <para>
+      <emphasis>isize</emphasis> -- taille de la table. Correspond au p3 de
+      l'<emphasis>instruction f</emphasis> de partition.
+    </para>
+
+    <para>
+      <emphasis>igen</emphasis> -- routine <emphasis>GEN</emphasis> de la table
+      de fonction. Correspond au p4 de l'<emphasis>instruction f</emphasis> de
+      partition.
+    </para>
+
+    <para>
+      <emphasis>iarga, iargb, ...</emphasis> -- arguments de la table de fonction.
+      Correspondent de p5 à p<emphasis>n</emphasis> de
+      l'<emphasis>instruction f</emphasis> de partition.
+    </para>
+    <note>
+      <para>A l'origine, Csound était conçu pour ne supporter que les tables dont
+      la taille était une puissance de deux. Bien que ceci ait changé dans les
+      versions récentes (on peut utiliser n'importe quelle taille en donnant un
+      nombre négatif), de nombreux opcodes ne les accepteront pas.</para>
+    </note>
+  </refsect1>
+<!--
+  <refsect1>
+    <title>Exécution</title>
+  </refsect1>-->
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode ftgentmp. Il utilise le fichier
+      <ulink url="examples/ftgentmp.csd"><citetitle>ftgentmp.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode ftgentmp.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/ftgentmp.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      La sortie de ce csd montre que les tables sont détruites après la fin des
+      instances d'instrument qui les ont créées, provoquant une erreur d'initialisation
+      si les tables sont demandées.
+<screen>
+SECTION 1:
+new alloc for instr 1:
+ftable 101:
+instr 1:  ifno = 101.000
+B  0.000 ..  2.000 T  2.000 TT  2.000 M:  0.00000  0.00000
+new alloc for instr 2:
+instr 2:  #i0 = 512.000
+B  2.000 ..  5.000 T  5.001 TT  5.001 M:  0.00000  0.00000
+new alloc for instr 1:
+ftable 102:
+instr 1:  ifno = 102.000
+B  5.000 ..  7.000 T  7.001 TT  7.001 M:  0.00000  0.00000
+instr 2:  #i0 = 512.000
+B  7.000 .. 12.000 T 11.999 TT 11.999 M:  0.00000  0.00000
+INIT ERROR in instr 2: Invalid ftable no. 101.000000
+#i0     ftlen.i p4
+instr 2:  #i0 = -1.000
+         B 12.000 - note deleted.  i2 had 1 init errors
+B 12.000 .. 17.000 T 17.000 TT 17.000 M:  0.00000  0.00000
+INIT ERROR in instr 2: Invalid ftable no. 102.000000
+#i0     ftlen.i p4
+instr 2:  #i0 = -1.000
+         B 17.000 - note deleted.  i2 had 1 init errors
+</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameistvan;</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

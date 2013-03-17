@@ -1,0 +1,166 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.14
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="nestedap">
+<indexterm id="IndexNestedap"><primary>nestedap</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Reverberation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>nestedap</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>nestedap</refname>
+    <refpurpose>
+      Trois différents filtres passe-tout imbriqués.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Trois différents filtres passe-tout imbriqués, utiles pour implémenter
+      des réverbérations.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>nestedap</command> asig, imode, imaxdel, idel1, igain1 [, idel2] [, igain2] \
+      [, idel3] [, igain3] [, istor]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>imode</emphasis> -- mode opératoire du filtre :
+      <itemizedlist>
+        <listitem>
+          <para>1 = simple filtre passe-tout</para>
+        </listitem>
+
+        <listitem>
+          <para>2 = filtre passe-tout imbriqué</para>
+        </listitem>
+
+        <listitem>
+          <para>3 = double filtre passe-tout imbriqué</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>idel1</emphasis>, <emphasis>idel2</emphasis>, <emphasis>idel3</emphasis> --
+      retards des étages du filtre. Les retards sont en secondes et doivent être
+      supérieurs à zéro. <emphasis>idel1</emphasis> doit être supérieur à la
+      somme de <emphasis>idel2</emphasis> et de <emphasis>idel3</emphasis>. 
+    </para>
+
+    <para>
+      <emphasis>igain1</emphasis>, <emphasis>igain2</emphasis>, <emphasis>igain3</emphasis> --
+      gain des étages du filtre.
+    </para>
+
+    <para>
+      <emphasis>imaxdel</emphasis> -- deviendra nécessaire lorsque les retards
+      de taux-k auront été implémentés. N'est pas utilisé actuellement.
+    </para>
+
+    <para>
+      <emphasis>istor</emphasis> -- L'initialisation est ignorée s'il est
+      différent de zéro (0 par défaut).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- signal d'entrée
+    </para>
+
+    <para>
+      Si <emphasis>imode</emphasis> = 1, le filtre prend la forme :
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/imode1.png" format="PNG"/>
+        </imageobject>
+ 
+        <textobject>
+          <phrase>Représentation du filtre d'imode 1.</phrase>
+        </textobject>
+ 
+        <caption>
+          <para>Représentation du filtre d'imode 1.</para>
+        </caption>
+      </mediaobject>
+    </para>
+
+    <para>
+      Si <emphasis>imode</emphasis> = 2, le filtre prend la forme :
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/imode2.png" format="PNG"/>
+        </imageobject>
+ 
+        <textobject>
+          <phrase>Représentation du filtre d'imode 2.</phrase>
+        </textobject>
+ 
+        <caption>
+          <para>Représentation du filtre d'imode 2.</para>
+        </caption>
+      </mediaobject>
+    </para>
+
+    <para>
+      Si <emphasis>imode</emphasis> = 3, le filtre prend la forme :
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/imode3.png" format="PNG"/>
+        </imageobject>
+ 
+        <textobject>
+          <phrase>Représentation du filtre d'imode 3.</phrase>
+        </textobject>
+ 
+        <caption>
+          <para>Représentation du filtre d'imode 3.</para>
+        </caption>
+      </mediaobject>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode nestedap. Il utilise les fichiers
+      <ulink url="examples/nestedap.csd"><citetitle>nestedap.csd</citetitle></ulink>
+      et <ulink url="examples/beats.wav"><citetitle>beats.wav</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode nestedap.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/nestedap.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namehans;</member>
+        <member>Février 1999</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.53 de Csound</para>
+    <para>L'exemple a été mis à jour en mai 2002, grâce à &namehans;</para>
+  </refsect1>
+</refentry>

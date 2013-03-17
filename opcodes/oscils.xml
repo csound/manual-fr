@@ -1,0 +1,107 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="oscils">
+<indexterm id="IndexOscils"><primary>oscils</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Basic Oscillators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>oscils</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>oscils</refname>
+    <refpurpose>
+      Un oscillateur sinus simple et rapide.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Oscillateur sinus simple et rapide, qui utilise seulement une multiplication et deux additions pour
+      générer un échantillon en sortie, et qui ne nécessite pas de table de fonction.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>oscils</command> iamp, icps, iphs [, iflg]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iamp</emphasis> -- amplitude en sortie.
+    </para>
+
+    <para>
+      <emphasis>icps</emphasis> -- fréquence en Hz (peut être nulle ou négative, cependant la valeur
+      absolue doit être inférieure à <emphasis>sr/</emphasis>2).
+    </para>
+
+    <para>
+      <emphasis>iphs</emphasis> -- phase initiale entre 0 et 1.
+    </para>
+
+    <para>
+      <emphasis>iflg</emphasis> -- sommme des valeurs suivantes :
+      <itemizedlist>
+        <listitem>
+          <para>
+            <emphasis>2</emphasis> : utiliser la double précision même si Csound a été compilé pour utiliser
+            des floats. Ceci améliore la qualité (spécialement dans le cas d'une longue exécution), mais
+            le temps de calcul peut varier du simple au double.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            <emphasis>1</emphasis> : ignorer l'initialisation.
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ares</emphasis> -- sortie audio
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode oscils. Il utilise le fichier
+      <ulink url="examples/oscils.csd"><citetitle>oscils.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode oscils.</title>
+
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/oscils.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameistvan;</member>
+        <member>Janvier 2002</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 4.18</para>
+  </refsect1>
+</refentry>

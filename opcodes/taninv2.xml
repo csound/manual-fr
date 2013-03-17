@@ -1,0 +1,112 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="taninv2">
+<indexterm id="IndexTaninv2"><primary>taninv2</primary></indexterm>
+  <refentryinfo><title>Mathematical Operations:Opcode Equivalents of Functions</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>taninv2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>taninv2</refname>
+    <refpurpose>
+      Retourne une tangente inverse (arctangente).
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne arctangente de <emphasis>iy/ix</emphasis>, <emphasis>ky/kx</emphasis>, ou
+      <emphasis>ay/ax</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>taninv2</command> ay, ax</synopsis>
+
+    <synopsis>ires <command>taninv2</command> iy, ix</synopsis>
+
+    <synopsis>kres <command>taninv2</command> ky, kx</synopsis>
+
+    <para>
+      Retourne arctangente de <emphasis>iy/ix</emphasis>, <emphasis>ky/kx</emphasis>, ou
+      <emphasis>ay/ax</emphasis>. Si <emphasis>y</emphasis> vaut zéro, <emphasis>taninv2</emphasis>
+      retourne zéro quelque soit la valeur de <emphasis>x</emphasis>. Si <emphasis>x</emphasis>
+      vaut zéro, la valeur de retour est :
+      <itemizedlist>
+        <listitem><para><emphasis>&#960;/2</emphasis>, si <emphasis>y</emphasis> est positif.</para></listitem>
+        <listitem><para><emphasis>-&#960;/2</emphasis>, si <emphasis>y</emphasis> est négatif.</para></listitem>
+        <listitem><para><emphasis>0</emphasis>, si <emphasis>y</emphasis> vaut 0.</para></listitem>
+      </itemizedlist>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iy, ix</emphasis> -- valeurs à transformer
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ky, kx</emphasis> -- signaux de taux de contrôle à transformer
+    </para>
+
+    <para>
+      <emphasis>ay, ax</emphasis> -- signaux de taux audio à transformer
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode taninv2. Il utilise le fichier
+      <ulink url="examples/taninv2.csd"><citetitle>taninv2.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode taninv2.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/taninv2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie contiendra cette ligne :
+      <screen>instr 1:  i1 = 0.464</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="taninv"><citetitle>taninv</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Université de Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>Avril 1998</member>
+      </simplelist>
+    </para>
+    <para>Exemple écrit par &namekevin;.</para>
+
+    <para>Nouveau dans la version 3.48 de Csound</para>
+    <para>Corrigé en mai 2002, grâce à &nameistvan;.</para>
+  </refsect1>
+</refentry>

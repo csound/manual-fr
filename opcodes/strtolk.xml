@@ -1,0 +1,101 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.10
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="strtolk">
+<indexterm id="Indexstrtolk"><primary>strtolk</primary></indexterm>
+  <refentryinfo><title>Strings:Conversion</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>strtolk</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>strtolk</refname>
+    <refpurpose>
+      Convertit une chaîne de caractères en un nombre entier (taux-k).
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1> 
+    <title>Description</title> 
+    
+    <para>
+      Convertit une chaîne de caractères en un nombre entier au taux-i ou au
+      taux-k. Il est également possible de passer un indice de <emphasis>strset</emphasis>
+      ou un p-champ chaîne depuis la partition au lieu de l'argument chaîne. Si
+      la chaîne ne peut pas être traduite en nombre entier, il y a une
+      erreur d'initialisation ou d'exécution et l'instrument est désactivé.
+    
+    <note>
+    <title>Note</title>
+        <para>
+          Si une variable indice de taux-k est utilisée, elle doit être valide
+          dès l'initialisation.
+        </para>
+    </note>
+    
+    </para>
+      
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>        
+    <synopsis>kr <command>strtolk</command> Sstr</synopsis>
+
+    <synopsis>kr <command>strtolk</command> kndx</synopsis>
+    
+    <para>
+      <emphasis>strtolk</emphasis> peut traduire des nombres en format décimal,
+      octal (préfixés par 0) et hexadécimal (avec le préfixe 0x).
+    </para>    
+    
+  </refsect1>
+ 
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kr</emphasis> -- Valeur traduite de la chaîne en nombre entier.
+    </para>
+    
+    <para>
+      <emphasis>Sstr</emphasis> -- Chaîne à convertir.
+    </para>
+
+    <para>
+      <emphasis>indx</emphasis> -- indice d'une chaîne fixé par <emphasis>strset</emphasis>.
+    </para>    
+    
+  </refsect1>
+  
+  <!--<refsect1>
+    <title>Exemples</title>
+    <para>
+      Here is an example of the strtolk opcode. It uses the file <ulink url="examples/strtolk.csd"><citetitle>strtolk.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the strtolk opcode.</title>
+
+        
+
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/strtolk.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>-->
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Istvan Varga</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

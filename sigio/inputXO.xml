@@ -1,0 +1,42 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.2
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="SigioInput">
+  <title>Entrée de Signal</title>
+
+  <para>
+    Les opcodes qui reçoivent des signaux audio sont :
+    <itemizedlist>
+      <listitem><para>Entrée synchrone :
+        <link linkend="in"><citetitle>in</citetitle></link>,
+        <!-- <link linkend="in32"><citetitle>in32</citetitle></link>,-->
+        <link linkend="inch"><citetitle>inch</citetitle></link>,
+        <!-- <link linkend="inh"><citetitle>inh</citetitle></link>,
+        <link linkend="ino"><citetitle>ino</citetitle></link>,
+        <link linkend="inq"><citetitle>inq</citetitle></link>,-->
+        <link linkend="inrg"><citetitle>inrg</citetitle></link>,
+        <link linkend="ins"><citetitle>ins</citetitle></link>
+        <!--and <link linkend="inx"><citetitle>inx</citetitle></link>--></para></listitem>
+      <listitem><para>Flux de fichier :
+        <link linkend="diskin"><citetitle>diskin</citetitle></link>,
+        <link linkend="diskin2"><citetitle>diskin2</citetitle></link> et
+        <link linkend="soundin"><citetitle>soundin</citetitle></link></para></listitem>
+      <listitem><para>Canal d'entrée défini par l'utilisateur :
+        <link linkend="invalue"><citetitle>invalue</citetitle></link></para></listitem>
+      <listitem><para>Flux d'entrée :
+        <link linkend="soundin"><citetitle>soundin</citetitle></link></para></listitem>
+<!--       <listitem><para>Direct to zak input: <link linkend="inz"><citetitle>inz</citetitle></link></para></listitem> -->
+    </itemizedlist>
+  </para>
+  <para>
+    Voir la section <link linkend="SoftwareBus"><citetitle>Bus Logiciel</citetitle></link> pour les entrées
+    et les sorties au moyen de l'API.
+  </para>
+
+</section>

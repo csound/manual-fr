@@ -1,0 +1,75 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="outo">
+<indexterm id="IndexOuto"><primary>outo</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Signal Output</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>outo</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>outo</refname>
+    <refpurpose>
+      Ecrit des données audio sur 8 canaux vers un périphérique externe ou un flot.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ecrit des données audio sur 8 canaux vers un périphérique externe ou un flot.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>outo</command> asig1, asig2, asig3, asig4, asig5, asig6, asig7, asig8</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Envoie des échantillons sur 8 canaux dans un tampon accumulateur de sortie
+      (créé au début de l'exécution) qui sert à collecter la sortie de tous les
+      instruments actifs avant que le son ne soit écrit sur disque. Il peut y
+      avoir n'importe quel nombre de ces unités de sortie dans un instrument.
+    </para>
+
+    <para>
+      Le type (mono, stéréo, quadra, hexa ou octo) doit concorder avec
+      <link linkend="nchnls"><citetitle>nchnls</citetitle></link>. Mais à
+      partir de la version 3.50, Csound essaiera de changer un opcode incorrect
+      pour satisfaire l'instruction <emphasis>nchnls</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="out"><citetitle>out</citetitle></link>,
+      <link linkend="outh"><citetitle>outh</citetitle></link>,
+      <link linkend="outq"><citetitle>outq</citetitle></link>,
+      <link linkend="outq1"><citetitle>outq1</citetitle></link>,
+      <link linkend="outq2"><citetitle>outq2</citetitle></link>,
+      <link linkend="outq3"><citetitle>outq3</citetitle></link>,
+      <link linkend="outq4"><citetitle>outq4</citetitle></link>,
+      <link linkend="outs"><citetitle>outs</citetitle></link>,
+      <link linkend="outs1"><citetitle>outs1</citetitle></link>,
+      <link linkend="outs2"><citetitle>outs2</citetitle></link>,
+      <link linkend="soundout"><citetitle>soundout</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namejohn;</para>
+  </refsect1>
+  <para>Nouveau après la 3.30</para>
+</refentry>

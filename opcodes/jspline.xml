@@ -1,0 +1,108 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.10
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="jspline">
+<indexterm id="IndexJspline"><primary>jspline</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Linear and Exponential Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>jspline</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>jspline</refname>
+    <refpurpose>
+      Un générateur de spline avec gigue.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Un générateur de spline avec gigue.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>jspline</command> xamp, kcpsMin, kcpsMax</synopsis>
+
+    <synopsis>kres <command>jspline</command> kamp, kcpsMin, kcpsMax</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kres, ares</emphasis> -- Signal de sortie.
+    </para>
+
+    <para>
+      <emphasis>xamp</emphasis> -- Facteur d'amplitude.
+    </para>
+
+    <para>
+      <emphasis>kcpsMin, kcpsMax</emphasis> -- Intervalle de définition du taux de génération des
+      points. Les limites minimale et maximale sont exprimées en Hz.
+    </para>
+
+    <para>
+      <emphasis>jspline</emphasis> (générateur de spline avec gigue) génère une courbe lisse basée
+      sur des points aléatoires engendrés au taux [<emphasis>cpsMin</emphasis>,
+      <emphasis>cpsMax</emphasis>]. Cet opcode est semblable à
+      <link linkend="randomi"><citetitle>randomi</citetitle></link> ou à
+      <link linkend="randi"><citetitle>randi</citetitle></link> ou à
+      <link linkend="jitter"><citetitle>jitter</citetitle></link>, toutefois les segments ne sont
+      pas des lignes droites, mais des courbes splines cubiques. Les valeurs de sortie sont
+      approximativement comprises entre -<emphasis>xamp</emphasis> et <emphasis>xamp</emphasis>.
+      Dans la réalité, l'intervalle peut être un peu plus grand, à cause des courbes d'interpolation
+      entre chaque paire de points aléatoires.
+    </para>
+
+    <para>
+      Actuellement les courbes générées sont assez lisses quand <emphasis>cspMin</emphasis> n'est
+      pas trop différent de <emphasis>cpsMax</emphasis>. Quand l'intervalle
+      <emphasis>cpsMin</emphasis>-<emphasis>cpsMax</emphasis> est grand, quelques petites
+      discontinuités peuvent se produire, mais, dans la plupart des cas, cela ne devrait pas poser
+      de problème. L'algorithme sera peut-être amélioré dans les prochaines versions.
+    </para>
+
+    <para>
+      Ces opcodes sont souvent meilleurs que <link linkend="jitter"><citetitle>jitter</citetitle></link>
+      lorsque l'on veut un rendu <quote>naturel</quote> ou <quote>analogique</quote> de sons
+      numériques. On peut aussi les utiliser dans la composition algorithmique, pour générer des
+      lignes mélodiques aléatoires lisses lors d'une utilisation conjointe avec l'opcode
+      <link linkend="samphold"><citetitle>samphold</citetitle></link>.
+    </para>
+
+    <para>
+      Noter que le résultat est assez différent de celui que l'on obtiendrait en filtrant un bruit
+      blanc, et que l'on peut ainsi obtenir un contrôle bien plus précis.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode jspline. Il utilise le fichier
+      <ulink url="examples/jspline.csd"><citetitle>jspline.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode jspline.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/jspline.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la Version 4.15</para>
+  </refsect1>
+</refentry>

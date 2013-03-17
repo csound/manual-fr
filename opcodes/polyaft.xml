@@ -1,0 +1,92 @@
+<!--translated=yes
+authors=Yannick St-Onge
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="polyaft">
+<indexterm id="IndexPolyaft"><primary>polyaft</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Input</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>polyaft</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>polyaft</refname>
+    <refpurpose> 
+      Retourne la pression d'after-touch polyphonique du numéro de note sélectionné.
+    </refpurpose> 
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>polyaft</emphasis> retourne la pression polyphonique du numéro de note choisi,
+      optionnellement mappé dans un intervalle défini par l'utilisateur.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ires <command>polyaft</command> inote [, ilow] [, ihigh]</synopsis>
+
+    <synopsis>kres <command>polyaft</command> inote [, ilow] [, ihigh]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>inote</emphasis> -- numéro de note. Normalement ajusté à la valeur retournée par
+      <link linkend="notnum"><citetitle>notnum</citetitle></link>
+    </para>
+
+    <para>
+      <emphasis>ilow</emphasis> (facultatif, par défaut : 0) -- la valeur de sortie la plus basse
+    </para>
+
+    <para>
+      <emphasis>ihigh</emphasis> (facultatif, par défaut : 127) -- la valeur de sortie la plus haute
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kres</emphasis> -- Pression polyphonique (aftertouch).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode polyaft. Il utilise le fichier
+      <ulink url="examples/polyaft.csd"><citetitle>polyaft.csd</citetitle></ulink>.
+    </para>
+
+    <para>
+      Ne pas oublier d'inclure l'<link linkend="FlagsMinusUpperF"><citetitle>option -F</citetitle></link>
+      lorque l'on utilise un fichier MIDI externe comme <quote>polyaft.mid</quote>.
+    </para>
+
+    <para>
+      <example>
+        <title>Exemple de l'opcode polyaft.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/polyaft.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ajouté grâce à un courriel de &nameistvan;</para>
+    <para>Nouveau dans la version 4.12</para>
+  </refsect1>
+</refentry>

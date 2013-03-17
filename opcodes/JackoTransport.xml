@@ -1,0 +1,84 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="JackoTransport">
+  <indexterm id="IndexJackoTransport"><primary>JackoTransport</primary></indexterm>
+  <refentryinfo><title>Jacko Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>JackoTransport</refentrytitle>
+  </refmeta>
+  
+  <refnamediv>
+    <refname>JackoTransport</refname>
+    <refpurpose>
+      Contrôle le transport de Jack.
+    </refpurpose>
+  </refnamediv>  
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Démarre, stoppe ou repositionne le transport de Jack. C'est utile, par
+      exemple, pour démarrer un séquenceur externe qui enverra des messages
+      MIDI à Csound.
+    </para>
+    
+  </refsect1>
+  
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>JackoTransport </command> kcommand, [kposition]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para> 
+      <emphasis>kcommand</emphasis> -- 0 signifie "aucune action", 1 démarre le
+      transport, 2 stoppe le transport et 3 positionne le transport à 
+      <emphasis>kposition</emphasis> secondes du début de l'exécution
+      (c'est-à-dire la date 0 dans la partition).
+    </para>
+
+    <para> 
+      <emphasis>kposition</emphasis> -- Temps auquel on veut positionner le
+      transport en secondes depuis le début de l'exécution (c'est-à-dire la
+      date 0 dans la partition).
+    </para>
+
+    <para>
+      On peut utiliser cet opcode à l'initialisation ou durant l'exécution.
+    </para>
+    
+    <para> 
+      La granularité temporelle est celle de la période-k de Csound.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="JackoInit"><citetitle>JackoInfo</citetitle></link>,
+      <link linkend="JackoInfo"><citetitle>JackoInfo</citetitle></link>, 
+      <link linkend="JackoFreewheel"><citetitle>JackoFreewheel</citetitle></link>,
+      <link linkend="JackoAudioInConnect"><citetitle>JackoAudioOutConnect</citetitle></link>,
+      <link linkend="JackoMidiInConnect"><citetitle>JackoMidiInConnect</citetitle></link>,
+      <link linkend="JackoMidiOutConnect"><citetitle>JackoMidiOutConnect</citetitle></link>,
+      <link linkend="JackoOn"><citetitle>JackoOn</citetitle></link>,
+      <link linkend="JackoAudioIn"><citetitle>JackoAudioIn</citetitle></link>,
+      <link linkend="JackoMidiOut"><citetitle>JackoMidiOut</citetitle></link>,
+      <link linkend="JackoNoteOut"><citetitle>JackoNoteOut</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par : &namemichael; 2010</para>
+  </refsect1>
+
+</refentry>

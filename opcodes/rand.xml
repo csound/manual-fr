@@ -1,0 +1,125 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.16
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="rand">
+<indexterm id="IndexRand"><primary>rand</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Random (Noise) Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>rand</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>rand</refname>
+    <refpurpose>
+      Génère une suite contrôlée de nombres aléatoires.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      La sortie est une suite contrôlée de nombres aléatoires entre -<emphasis>amp</emphasis>
+      et +<emphasis>amp</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>rand</command> xamp [, iseed] [, isel] [, ioffset]</synopsis>
+
+    <synopsis>kres <command>rand</command> xamp [, iseed] [, isel] [, ioffset]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iseed</emphasis> (facultatif, par défaut=0,5) -- une graine pour la formule
+      du calcul récursif des nombres pseudo-aléatoires. Une valeur comprise entre 0 et 1
+      produira une sortie initiale de <emphasis>kamp</emphasis> * <emphasis>iseed</emphasis>.
+      Avec une valeur supérieure à 1, la graine proviendra de l'horloge du système. Avec une
+      valeur négative, la réinitialisation de la graine sera ignorée. La valeur par défaut
+      est 0,5.
+    </para>
+
+    <para>
+      <emphasis>isel</emphasis> (facultatif, par défaut=0) -- s'il est nul, un nombre sur 16 bit
+      est généré. S'il est non nul, un nombre sur 31 bit est généré. La valeur par défaut est 0.
+    </para>
+
+    <para>
+      <emphasis>ioffset</emphasis> (facultatif, par défaut=0) -- une valeur de base ajoutée au
+      résultat aléatoire. Nouveau dans la version 4.03 de Csound.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamp, xamp</emphasis> -- intervalle sur lequel les nombres aléatoires sont
+      distribués.
+    </para>
+    <para>
+      <emphasis>ares, kres</emphasis> -- nombre aléatoire produit.
+    </para>
+    
+    <para>
+      La formule pseudo-aléatoire interne produit des valeurs uniformément distribuées sur
+      l'intervalle allant de -<emphasis>kamp</emphasis> à +<emphasis>kamp</emphasis>.
+      <emphasis>rand</emphasis> génère ainsi un bruit blanc uniforme avec une valeur
+      moyenne quadratique (RMS) de <emphasis>kamp / (racine de 2)</emphasis>.
+    </para>
+    <para>
+      La valeur de <emphasis>ares</emphasis> ou de <emphasis>kres</emphasis> se
+      trouve dans un intervalle semi-ouvert qui contient <emphasis>-xamp</emphasis>, but
+      mais pas <emphasis>+xamp</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode rand. Il utilise le fichier
+      <ulink url="examples/rand.csd"><citetitle>rand.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode rand.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/rand.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+     </para>
+     <para>
+       L'exemple produit la sortie suivante :
+       <screen>
+ i   1 time     0.00067:    50.00305
+ i   1 time     0.50000:    62.71362
+ i   1 time     1.00000:   -89.31885
+
+WARNING: Seeding from current time 472230558
+
+ i   2 time     2.00067:   -70.65735
+ i   2 time     2.50000:    69.15283
+ i   2 time     3.00000:   -48.79761</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="randh"><citetitle>randh</citetitle></link>,
+      <link linkend="randi"><citetitle>randi</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Grâce à une note de &namejohn;, j'ai changé les noms des paramètres.</para>
+  </refsect1>
+</refentry>

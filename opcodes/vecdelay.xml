@@ -1,0 +1,84 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vecdelay">
+<indexterm id="IndexVecdelay"><primary>vecdelay</primary></indexterm>
+  <refentryinfo><title>Vectorial:Delay Paths</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vecdelay</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vecdelay</refname>
+    <refpurpose>
+      Ligne à retard vectorielle au taux-k.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère une sorte de retard "vectoriel".
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>vecdelay</command>  ifn, ifnIn, ifnDel, ielements, imaxdel [, iskip]
+    </synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn</emphasis> - numéro de la table contenant le vecteur de sortie.
+    </para>
+    <para>
+      <emphasis>ifnIn</emphasis> - numéro de la table contenant le vecteur d'entrée.
+    </para>
+       <para>
+      <emphasis>ifnDel</emphasis> - numéro de la table contenant un vecteur dont
+      les composantes contiennent des valeurs de retard en secondes.
+    </para>
+       <para>
+      <emphasis>ielements</emphasis> - nombre de composantes des deux vecteurs.
+    </para>
+        <para>
+      <emphasis>imaxdel</emphasis> - Valeur maximale du retard en secondes.
+    </para>
+    <para>
+      <emphasis>iskip</emphasis> (facultatif) - disposition initiale de l'espace
+      des données de la boucle de retard (voir <emphasis>reson</emphasis>). La
+      valeur par défaut est 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>vecdelay</emphasis> est semblable à
+      <link linkend="vdelay"><citetitle>vdelay</citetitle></link>, mais il
+      fonctionne au taux-k et, au lieu de retarder un signal unique, il retarde
+      un vecteur. <emphasis>ifnIn</emphasis> est le vecteur d'entrée des signaux,
+      <emphasis>ifn</emphasis> est le vecteur de sortie des signaux, et
+      <emphasis>ifnDel</emphasis> est un vecteur contenant les valeurs de retard
+      pour chaque composante, exprimées en secondes. Les composantes de
+      <emphasis>ifnDel</emphasis> peuvent être modifiées au taux-k. Chaque retard
+      unique peut être différent de celui des autres composantes, et il peut
+      varier au taux-k. <emphasis>imaxdel</emphasis> fixe le retard maximum
+      autorisé pour toutes les composantes de <emphasis>ifnDel</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par Gabriel Maldonado.</para>
+    <para>Nouveau dans Csound 5 (Auparavant seulement disponible dans CsoundAV)</para>
+  </refsect1>
+</refentry>

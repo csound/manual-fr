@@ -1,0 +1,176 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.10
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vpvoc">
+<indexterm id="IndexVpvoc"><primary>vpvoc</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:STFT</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vpvoc</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vpvoc</refname>
+    <refpurpose>
+      Implémente une reconstruction de signal au moyen d'un vocoder de phase
+      basé sur la TFR et une enveloppe supplémentaire.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Implémente une reconstruction de signal au moyen d'un vocoder de phase
+      basé sur la TFR et une enveloppe supplémentaire.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>vpvoc</command> ktimpnt, kfmod, ifile [, ispecwp] [, ifn]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifile</emphasis> -- le numéro pvoc (n dans pvoc.n) ou le nom
+      entre guillements du fichier d'analyse obtenu au moyen de
+      <link linkend="pvanal"><citetitle>pvanal</citetitle></link>.
+      (Voir <link linkend="pvoc"><citetitle>pvoc</citetitle></link>.)
+    </para>
+
+    <para>
+      <emphasis>ispecwp</emphasis> (facultatif, 0 par défaut) -- s'il est différent
+      de zéro, l'opcode tente de préserver l'enveloppe spectrale tandis que le
+      contenu fréquentiel est varié par <emphasis>kfmod</emphasis>. Vaut zéro par
+      défaut.
+    </para>
+
+    <para>
+      <emphasis>ifn</emphasis> (facultatif, 0 par défaut) -- table de fonction
+      facultative contenant l'information de contrôle pour <emphasis>vpvoc</emphasis>.
+      Si <emphasis>ifn</emphasis> = 0, le contrôle est dérivé en interne d'une
+      unité <emphasis>tableseg</emphasis> ou <emphasis>tablexseg</emphasis> 
+      précédente. Vaut 0 par défaut. (Nouveau dans la version 3.59 de Csound.)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ktimpnt</emphasis> -- l'écoulement du temps en secondes dans le
+      fichier d'analyse. <emphasis>ktimpnt</emphasis> doit toujours être positif,
+      mais il peut avancer ou reculer, rester stationnaire ou être discontinu,
+      comme pointeur dans le fichier d'analyse.
+    </para>
+
+    <para>
+      <emphasis>kfmod</emphasis> -- un facteur de transposition au taux-k : une
+      valeur de 1 signifie pas de transposition, 1.5 transpose vers le haut d'une
+      quinte parfaite et 0.5 transpose vers le bas d'une octave.
+    </para>
+
+    <para>
+      Cette implémentation de <emphasis>pvoc</emphasis> a été écrite à l'origine
+      par Dan Ellis. Elle est basée en partie sur le système de Mark Dolson, mais
+      le concept de pré-analyse est nouveau. L'extraction spectrale et le mappage
+      d'amplitude (nouveau dans la version 3.56 de Csound) ont été ajoutés par
+      Richard Karpen en se basant sur les fonctions dans SoundHack par Tom Erbe.
+    </para>
+
+    <para>
+      <emphasis>vpvoc</emphasis> est identique à
+      <link linkend="pvoc"><citetitle>pvoc</citetitle></link> mais il utilise
+      la table de fonction d'un
+      <link linkend="tableseg"><citetitle>tableseg</citetitle></link> ou d'un
+      <link linkend="tablexseg"><citetitle>tablexseg</citetitle></link> précédent
+      (passée en interne à <emphasis>vpvoc</emphasis>) comme enveloppe pour
+      les amplitudes des canaux de données analysées. Une table spécifiée par
+      <emphasis>ifn</emphasis> peut être utilisée de manière optionnelle. 
+    </para>
+
+    <para>
+      Il en résulte une enveloppe spectrale. La taille de la fonction utilisée
+      dans <emphasis>tableseg</emphasis> doit être <emphasis>tailletrame/2,</emphasis>
+      où <emphasis>tailletrame</emphasis> est le nombre de bins dans le fichier
+      d'analyse du vocoder de phase utilisé par <emphasis>vpvoc</emphasis>. Chaque
+      position dans la table est utilisée pour échelonner un seul bin d'analyse.
+      En utilisant différentes fonctions pour <emphasis>ifn1</emphasis>,
+      <emphasis>ifn2</emphasis>, etc.. dans le <emphasis>tableseg</emphasis>,
+      l'enveloppe spectrale devient dynamique. Voir aussi
+      <link linkend="tableseg"><citetitle>tableseg</citetitle></link> et
+      <link linkend="tablexseg"><citetitle>tablexseg</citetitle></link>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      L'exemple suivant avec <emphasis>vpvoc</emphasis>, montre l'utilisation
+      de fonctions telles que
+
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">f</emphasis> 1 0 256 5 .001 128 1 128 .001
+<emphasis role="stamnt">f</emphasis> 2 0 256 5 1 128 .001 128 1
+<emphasis role="stamnt">f</emphasis> 3 0 256 7 1 256 1</programlisting>
+      </informalexample>
+
+      pour pondérer les amplitudes des bins d'analyse séparés.
+    </para>
+
+    <para>
+      <informalexample>
+        <programlisting>
+ktime   <emphasis role="opc">line</emphasis>         0, p3, 3 <emphasis role="comment">; pointeur de temps, en secondes, dans le fichier</emphasis>
+        <emphasis role="opc">tablexseg</emphasis>    1, p3<emphasis role="op">*</emphasis>0.5, 2, p3<emphasis role="op">*</emphasis>0.5, 3
+apv     <emphasis role="opc">vpvoc</emphasis>        ktime, 1, &quot;pvoc.file&quot;</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      Le résultat sera une <quote>enveloppe spectrale</quote> variant dans le
+      temps, appliquée aux données d'analyse du vocoder de phase. Comme les
+      fréquences appariées avec les amplitudes qui sont pondérées par ces fonctions
+      sont amplifiées ou atténuées, cela a pour effet d'appliquer des filtres
+      très précis au signal. Dans cet exemple, la première table aura l'effet
+      d'un filtre passe-bande, se transformant graduellement en réjecteur de
+      bande sur la première moitié de la note, puis allant vers aucune modification
+      des amplitudes dans la seconde moitié.
+    </para>
+    <para>
+      Voici un exemple complet de l'opcode vpvoc. Il utilise le fichier
+      <ulink url="examples/vpvoc.csd"><citetitle>vpvoc.csd</citetitle></ulink>.
+      <example>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/vpvoc.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="pvoc"><citetitle>pvoc</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteurs : Dan Ellis et Richard Karpen</member>
+        <member>Seattle, WA USA</member>
+        <member>1997</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 3.44</para>
+  </refsect1>
+</refentry>

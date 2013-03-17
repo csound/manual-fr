@@ -1,0 +1,110 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.6
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="wiiconnect">
+<indexterm id="Indexwiiconnect"><primary>wiiconnect</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>wiiconnect</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>wiiconnect</refname>
+    <refpurpose>
+      Lit des données provenant de l'un des contrôleurs Wiimote de Nintendo.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ouvre et interroge au taux de contrôle de un à quatre contrôleurs externes
+      Wiimote de Nintendo.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ires <command>wiiconnect</command> [itimeout, imaxnum]</synopsis>
+  </refsect1>
+ 
+   <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>itimeout</emphasis> -- nombre entier de secondes pendant lesquelles
+      le système doit attendre que toutes les Wiimotes soient connectées. S'il n'est
+      pas spécifié, il vaut 10 secondes par défaut.
+    </para>
+    <para>
+      <emphasis>imaxnum</emphasis> -- nombre maximum de Wiimotes à repérer. S'il n'est
+      pas spécifié, il vaut 4 par défaut.
+    </para>
+    <para>
+      Initialement, chaque Wiimote montre sont allocation numérique en allumant une
+      des quatre LEDs.
+    </para>
+    <para>
+      <emphasis>ires</emphasis> -- valeur de retour qui vaut 1 en cas de succès ou
+      0 en cas d'erreur.
+    </para>
+  </refsect1>
+
+ <refsect1>
+    <title>Exécution</title>
+    <note>
+      <para>
+        Prière de noter que ces opcodes ne sont actuellement supportés que sous
+        Linux.
+      </para>
+    </note>
+    <para>
+      A chaque cycle de contrôle, chaque Wiimote est interrogée sur son état et
+      sur sa position. Ces valeurs sont lues par l'opcodes <emphasis>wiidata</emphasis>.
+      Le résultat retourné vaut 1 la plupart du temps, mais sera nul si une
+      Wiimote se déconnecte.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple des opcodes wii. Il utilise le fichier
+      <ulink url="examples/wii.csd"><citetitle>wii.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple des opcodes wii.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/wii.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="wiidata"><citetitle>wiidata</citetitle></link>,
+      <link linkend="wiirange"><citetitle>wiirange</citetitle></link>,
+      <link linkend="wiisend"><citetitle>wiisend</citetitle></link>
+     </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Codemist Ltd</member>
+        <member>2009</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.11</para>
+  </refsect1>
+</refentry>

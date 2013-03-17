@@ -1,0 +1,26 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.2
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="SpectralLpcresyn">
+  <title>Resynthèse par Codage Prédictif Linéaire (LPC)</title>
+
+  <para>
+    Les opcodes de resynthèse par prédiction linéaire sont :
+    <itemizedlist>
+      <listitem><para><link linkend="lpfreson"><citetitle>lpfreson</citetitle></link></para></listitem>
+      <listitem><para><link linkend="lpinterp"><citetitle>lpinterp</citetitle></link></para></listitem>
+      <listitem><para><link linkend="lpread"><citetitle>lpread</citetitle></link></para></listitem>
+      <listitem><para><link linkend="lpreson"><citetitle>lpreson</citetitle></link></para></listitem>
+      <listitem><para><link linkend="lpslot"><citetitle>lpslot</citetitle></link></para></listitem>
+    </itemizedlist>
+  </para>
+  <para>On peut créer des fichiers d'analyse LPC au moyen de l'utilitaire
+  <link linkend="lpanal"><citetitle>LPANAL</citetitle></link>.</para>
+
+</section>

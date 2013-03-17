@@ -1,0 +1,112 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="lessequal">
+<indexterm id="IndexLtEqualColon"><primary>:</primary></indexterm>
+
+<indexterm id="IndexLtEqualQuestion"><primary>?</primary></indexterm>
+
+<indexterm id="IndexLtEqualExpression"><primary>conditional expressions</primary></indexterm>
+
+<indexterm id="IndexLtEqual"><primary>&lt;=</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Conditional Values</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>&lt;=</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>&lt;=</refname>
+    <refpurpose>
+      Détermine si une valeur est inférieure ou égale à l'autre.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Détermine si une valeur est inférieure ou égale à l'autre.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>(a <command>&lt;=</command> b <command>?</command> v1 <command>:</command> v2)</synopsis>
+
+    <para>
+      où <emphasis>a</emphasis>, <emphasis>b</emphasis>, <emphasis>v1</emphasis> et <emphasis>v2</emphasis>
+      peuvent être des expressions, mais <emphasis>a</emphasis>, <emphasis>b</emphasis> pas de taux audio.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Dans l'expression conditionnelle ci-dessus, <emphasis>a</emphasis> et <emphasis>b</emphasis> sont
+      d'abord comparés. Si la relation indiquée est vraie (<emphasis>a</emphasis> inférieur ou égal à
+      <emphasis>b</emphasis>), alors l'expression conditionnelle prend la valeur de <emphasis>v1</emphasis> ;
+      si la relation est fausse, l'expression prend la valeur de <emphasis>v2</emphasis>.
+    </para>
+
+    <para>
+      Nota Bene : Si <emphasis>v1</emphasis> ou <emphasis>v2</emphasis> sont des expressions, elles seront
+      évaluées avant que l'expression conditionnelle ne soit déterminée.
+    </para>
+
+    <para>
+      En termes de précédence, tous les opérateurs conditionnels (c-à-d. les opérateurs relationnels
+      (<emphasis>&lt;</emphasis>, etc.), et <emphasis>?</emphasis>, et <emphasis>:</emphasis> ) sont plus
+      faibles que les opérateurs arithmétiques et logiques (<emphasis>+</emphasis>, <emphasis>-</emphasis>,
+      <emphasis>*</emphasis>, <emphasis>/</emphasis>, <emphasis>&amp;&amp;</emphasis> et <emphasis>||</emphasis>).
+    </para>
+
+    <para>
+      Ce sont des <emphasis>opérateurs</emphasis> pas des <emphasis>opcodes</emphasis>. C'est pourquoi on
+      peut les utiliser dans les instructions de l'orchestre, mais ils ne forment pas des instructions
+      complètes par eux-mêmes.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opérateur &lt;=. Il utilise le fichier
+      <ulink url="examples/lessequal.csd"><citetitle>lessequal.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opérateur &lt;=.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/lessequal.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
+random number = 1.035781, result = 3.000000
+random number = 0.134037, result = 1.000000
+random number = 0.130742, result = 1.000000
+random number = 1.002550, result = 3.000000
+random number = 0.370565, result = 1.000000
+random number = 0.655759, result = 2.000000
+random number = 0.676154, result = 2.000000
+......</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="equals"><citetitle>==</citetitle></link>,
+      <link linkend="greaterequal"><citetitle>&gt;=</citetitle></link>,
+      <link linkend="greaterthan"><citetitle>&gt;</citetitle></link>,
+      <link linkend="lessthan"><citetitle>&lt;</citetitle></link>,
+      <link linkend="notequal"><citetitle>!=</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

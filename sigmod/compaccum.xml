@@ -1,0 +1,44 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.3
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="SigmodCompaccum">
+  <title>Comparateurs et Accumulateurs</title>
+  
+  <para>
+    Les opcodes suivants effectuent la comparaison entre des signaux de taux-a ou de taux-k,
+    trouvent les maxima ou les minima, ou accumulent les résultats de plusieurs calculs ou 
+    comparaisons :
+    <itemizedlist>
+      <listitem><para><link linkend="max"><citetitle>max</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="max_k"><citetitle>max_k</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="maxabs"><citetitle>maxabs</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="maxabsaccum"><citetitle>maxabsaccum</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="maxaccum"><citetitle>maxaccum</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="min"><citetitle>min</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="minabs"><citetitle>minabs</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="minabsaccum"><citetitle>minabsaccum</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="minaccum"><citetitle>minaccum</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="vincr"><citetitle>vincr</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="clear"><citetitle>clear</citetitle></link></para>
+      </listitem>
+    </itemizedlist>
+  </para>
+  
+  
+</section>

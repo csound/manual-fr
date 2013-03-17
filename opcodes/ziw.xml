@@ -1,0 +1,101 @@
+<!--translated=yes
+authors=Yannick St-Onge
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ziw">
+<indexterm id="IndexZiw"><primary>ziw</primary></indexterm>
+  <refentryinfo><title>Zak Patch System</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ziw</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>ziw</refname>
+    <refpurpose>
+      Ecrit dans une variable zk au taux-i sans mixage.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ecrit dans une variable zk au taux-i sans mixage.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>ziw</command> isig, indx</synopsis>
+ </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>isig</emphasis> -- Initialise la valeur de la position zk.
+    </para>
+
+    <para>
+      <emphasis>indx</emphasis> -- Pointe sur la position zk ou za vers laquelle écrire.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ziw</emphasis> écrit <emphasis>isig</emphasis> dans la variable zk spécifié par
+      <emphasis>indx</emphasis>.
+    </para>
+
+    <para>
+      Ces opcodes sont rapides, et vérifient toujours que l'indexation est à l'intérieur des
+      limites des espaces zk ou za. Sinon, une erreur est rapportée, la valeur 0 est retournée,
+      et il n'y a aucune écriture.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode ziw. Il utilise le fichier <ulink url="examples/ziw.csd"><citetitle>ziw.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode ziw.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/ziw.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="zaw"><citetitle>zaw</citetitle></link>,
+      <link linkend="zawm"><citetitle>zawm</citetitle></link>,
+      <link linkend="ziwm"><citetitle>ziwm</citetitle></link>,
+      <link linkend="zkw"><citetitle>zkw</citetitle></link>,
+      <link linkend="zkwm"><citetitle>zkwm</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Robin Whittle</member>
+        <member>Australie</member>
+        <member>Mai 1997</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 3.45</para>
+    <para>Exemple écrit par &namekevin;.</para>
+  </refsect1>
+</refentry>

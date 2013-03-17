@@ -1,0 +1,132 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.15
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="bexprnd">
+<indexterm id="IndexBexprndXClass"><primary>x-class noise generators</primary></indexterm>
+
+<indexterm id="IndexBexprnd"><primary>bexprnd</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Random (Noise) Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>bexprnd</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>bexprnd</refname>
+    <refpurpose>
+      Générateur de nombres aléatoires de distribution exponentielle.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Générateur de nombres aléatoires de distribution exponentielle.
+      C'est un générateur de bruit de classe x.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>bexprnd</command> krange</synopsis>
+
+    <synopsis>ires <command>bexprnd</command> krange</synopsis>
+
+    <synopsis>kres <command>bexprnd</command> krange</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>krange</emphasis> -- l'intervalle des nombres aléatoires
+      (-<emphasis>krange</emphasis> à +<emphasis>krange</emphasis>)
+    </para>
+
+    <para>
+      Pour des explications plus détaillées sur ces distributions, consulter :
+      <orderedlist>
+        <listitem>
+          <para>C. Dodge - T.A. Jerse 1985. Computer music. Schirmer books. pp.265 - 286</para>
+        </listitem>
+
+        <listitem>
+          <para>D. Lorrain. A panoply of stochastic cannons. In C. Roads, ed. 1989. Music machine . Cambridge, Massachusetts: MIT press, pp. 351 - 379.</para>
+        </listitem>
+      </orderedlist>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode bexprnd. Il utilise le fichier
+      <ulink url="examples/bexprnd.csd"><citetitle>bexprnd.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode bexprnd.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/bexprnd.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie contiendra une ligne comme celle-ci :
+      <screen>
+ i   1 time     0.00267:    99.27598
+ i   1 time     0.20267:    74.97176
+ i   1 time     0.40267:   -35.67213
+ i   1 time     0.60267:     1.10579
+ i   1 time     0.80267:   -18.08816
+ i   1 time     1.00000:    28.93329
+ i   1 time     1.20267:   320.63733
+ i   1 time     1.40267:  -332.05614
+ i   1 time     1.60267:  -212.66361
+ i   1 time     1.80000:   -92.57433
+ i   1 time     2.00000:   140.70939
+Seeding from current time 4055201702
+ i   2 time     3.00267:   190.30495
+ i   2 time     3.20267:   -58.30677
+ i   2 time     3.40267:   192.39784
+ i   2 time     3.60000:    12.72448
+ i   2 time     3.80267:    79.91503
+ i   2 time     4.00000:    34.44258
+ i   2 time     4.20000:   167.92680
+ i   2 time     4.40267:  -117.10278
+ i   2 time     4.60267:   -70.99155
+ i   2 time     4.80267:   -23.24037
+ i   2 time     5.00000:  -226.35500</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="seed"><citetitle>seed</citetitle></link>,
+      <link linkend="betarand"><citetitle>betarand</citetitle></link>,
+      <link linkend="cauchy"><citetitle>cauchy</citetitle></link>,
+      <link linkend="exprand"><citetitle>exprand</citetitle></link>,
+      <link linkend="gauss"><citetitle>gauss</citetitle></link>,
+      <link linkend="linrand"><citetitle>linrand</citetitle></link>,
+      <link linkend="pcauchy"><citetitle>pcauchy</citetitle></link>,
+      <link linkend="poisson"><citetitle>poisson</citetitle></link>,
+      <link linkend="trirand"><citetitle>trirand</citetitle></link>,
+      <link linkend="unirand"><citetitle>unirand</citetitle></link>,
+      <link linkend="weibull"><citetitle>weibull</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameparis;</member>
+        <member>MIT, Cambridge</member>
+        <member>1995</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

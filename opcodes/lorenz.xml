@@ -1,0 +1,136 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="lorenz">
+<indexterm id="IndexLorenz"><primary>lorenz</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Models and Emulations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lorenz</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>lorenz</refname>
+    <refpurpose>
+      Implémente le système d'équations de Lorenz.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+       Implémente le système d'équations de Lorenz. Le système de Lorenz est un système
+       dynamique chaotique qui fut utilisé à l'origine pour simuler le mouvement d'une
+       particule dans des courants de convection et des systèmes météorologiques simplifiés.
+       De petites différences dans les conditions initiales conduisent rapidement à des
+       valeurs divergentes. C'est ce qu'on appelle parfois l'effet papillon. Si un
+       papillon bat des ailes en Australie, cela aura des conséquences sur le temps
+       en Alaska. Ce système est l'un des éléments fondateurs du développement de la
+       théorie du chaos. Il est utile comme source audio chaotique ou comme source de
+       modulation basse fréquence.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ax, ay, az <command>lorenz</command> ksv, krv, kbv, kh, ix, iy, iz, iskip [, iskipinit]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ix</emphasis>, <emphasis>iy</emphasis>, <emphasis>iz</emphasis> -- les coordonnées initiales de la particule.
+    </para>
+
+    <para>
+      <emphasis>iskip</emphasis> -- utilisé pour sauter des valeurs générées. Si
+      <emphasis>iskip</emphasis> vaut 5, seulement une valeur sur cinq sera
+      retournée. Utile pour générer des sons de hauteur plus élévée.
+    </para>
+    <para>
+      <emphasis>iskipinit</emphasis> (facultatif, 0 par défaut) -- s'il est non nul,
+      l'initialisation du filtre sera ignorée. (Nouveau dans les versions 4.23f13 
+      et 5.0 de Csound)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ksv</emphasis> -- le nombre de Prandtl ou sigma
+    </para>
+
+    <para>
+      <emphasis>krv</emphasis> -- le nombre de Rayleigh
+    </para>
+
+    <para>
+      <emphasis>kbv</emphasis> -- le rapport entre la longueur et la largeur de la boîte
+      dans laquelle les courants de convection sont générés
+    </para>
+
+    <para>
+      <emphasis>kh</emphasis> -- le pas de progression utilisé pour le calcul approché de
+      l'équation différentielle. On peut l'utiliser pour contrôler la hauteur du système.
+      Des valeurs comprises entre 0,1 et 0,001 sont typiques.
+    </para>
+
+    <para>
+      Le calcul approché des équations se fait comme suit :
+      <literallayout>
+x = x + h*(s*(y - x))
+y = y + h*(-x*z + r*x - y)
+z = z + h*(x*y - b*z)</literallayout>
+    </para>
+
+    <para>
+      Les valeurs historiques des paramètres sont :
+      <literallayout>
+ks = 10
+kr = 28
+kb = 8/3</literallayout>
+    </para>
+    <note>
+      <para>Cet algorithme utilise des boucles de rétroaction internes non linéaires ce qui
+      fait dépendre le résultat audio du taux d'échantillonnage de l'orchestre. Par exemple,
+      si l'on développe un projet avec <emphasis>sr</emphasis>=48000Hz et si l'on veut
+      produire un CD audio de ce projet, il faut enregistrer un fichier avec
+      <emphasis>sr</emphasis>=48000Hz, puis sous-échantillonner ce fichier à 44100Hz avec
+      l'utilitaire <link linkend="srconv"><citetitle>srconv</citetitle></link>.</para> 
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode lorenz. Il utilise le fichier
+      <ulink url="examples/lorenz.csd"><citetitle>lorenz.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode lorenz.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/lorenz.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namehans;</member>
+        <member>Février 1999</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.53 de Csound</para>
+    <para>Note ajoutée par &namepinot;, août 2009</para>
+  </refsect1>
+</refentry>

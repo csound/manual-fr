@@ -1,0 +1,108 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="midion2">
+<indexterm id="IndexMidion2"><primary>midion2</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Note Output</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>midion2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>midion2</refname>
+
+    <refpurpose>
+      Envoie des messages note on et note off sur le port MIDI OUT.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Envoie des messages note on et note off sur le port MIDI OUT lorsqu'il
+      est déclenché par une valeur différente de zéro.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>midion2</command> kchn, knum, kvel, ktrig</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kchn</emphasis> -- canal MIDI (1-16)
+    </para>
+
+    <para>
+      <emphasis>knum</emphasis> -- numéro de note MIDI (0-127)
+    </para>
+
+    <para>
+      <emphasis>kvel</emphasis> -- vélocité de la note (0-127)
+    </para>
+
+    <para>
+      <emphasis>ktrig</emphasis> -- signal déclencheur en entrée (normallement 0)
+    </para>
+
+    <para>
+      Identique à <link linkend="midion"><citetitle>midion</citetitle></link>,
+      cet opcode envoie des messages note on et note off sur le port MIDI OUT,
+      mais seulement lorsque <emphasis>ktrig</emphasis> est différent de zéro.
+      Cet opcode peut travailler de concert avec la sortie de l'opcode
+      <link linkend="trigger"><citetitle>trigger</citetitle></link>.
+    </para>
+  </refsect1>
+ 
+   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode midion2. Il utilise le fichier
+      <ulink url="examples/midion2.csd"><citetitle>midion2.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode midion2.</title>
+
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/midion2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="moscil"><citetitle>moscil</citetitle></link>,
+      <link linkend="midion"><citetitle>midion</citetitle></link>,
+      <link linkend="noteon"><citetitle>noteon</citetitle></link>,
+      <link linkend="noteoff"><citetitle>noteoff</citetitle></link>,
+      <link linkend="noteondur"><citetitle>noteondur</citetitle></link>,
+      <link linkend="noteondur2"><citetitle>noteondur2</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+        <member>1998</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.492 de Csound.</para>
+    <para>Merci à &namerasmus; pour avoir indiqué les intervalles corrects pour
+    le canal MIDI et les numéros de contrôleur.</para>
+  </refsect1>
+</refentry>

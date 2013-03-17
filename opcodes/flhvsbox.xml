@@ -1,0 +1,116 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.1
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLhvsBox">
+<indexterm id="IndexFLhvsBox"><primary>FLhvsBox</primary></indexterm>
+  <refentryinfo><title>FLTK:Other</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLhvsBox</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLhvsBox</refname>
+    <refpurpose>
+      Affiche une boîte avec une grille utile pour visualiser la Synthèse
+      Hyper Vectorielle à deux dimensions.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>FLhvsBox</emphasis> affiche une boîte avec une grille utile
+      pour visualiser la Synthèse Hyper Vectorielle à deux dimensions.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ihandle <command>FLhvsBox</command> inumlinesX, inumlinesY, iwidth, iheight, ix, iy [, image]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ihandle</emphasis> – un identifiant (un nombre entier) défini
+      univoquement pour identifier une boîte HVS spécifique (voir ci-dessous).
+    </para>
+    <para>
+      <emphasis>inumlinesX, inumlinesY</emphasis> - nombre de lignes verticales
+      et horizontales délimitant les zones carrées HVS.
+    </para>
+    <para>
+      <emphasis>iwidth, iheight</emphasis> - largeur et hauteur de la boîte HVS.
+    </para>
+    <para>
+      <emphasis>ix, iy</emphasis> - position de la boîte HVS.
+    </para>
+    <para>
+      <emphasis>image</emphasis> – (facultatif, 0 par défaut) un nombre entier
+      dénotant un image RVB ouverte avec l'opcode <emphasis>bmopen</emphasis>.
+      Un zéro indique pas d'image.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title> 
+    <para>
+      <emphasis>FLhvsBox</emphasis> est un widget capable de montrer la position
+      courante du curseur HVS dans une boîte HVS (c'est-à-dire une zone carrée
+      contenant un grille). Le nombre de lignes horizontales et verticales de la
+      grille peut être défini avec les arguments <emphasis>inumlinesX,
+      inumlinesY</emphasis>. Cet opcode doit être déclaré dans un bloc
+      <link linkend="FLpanel"><citetitle>FLpanel</citetitle></link> -
+      <link linkend="FLpanelEnd"><citetitle>FLpanelEnd</citetitle></link>. Voir
+      l'entrée de l'opcode <link linkend="hvs2"><citetitle>hvs2</citetitle></link>
+      pour un exemple d'utilisation de <emphasis>FLhvsBox</emphasis>.
+    </para>
+    <para>
+      <link linkend="FLhvsBoxSetValue"><citetitle>FLhvsBoxSetValue</citetitle></link>
+      est utilisé pour fixer la position du curseur d'un widget
+      <emphasis>FLhvsBox</emphasis>.
+    </para>
+    <note>
+      <para>
+        L'opcode <emphasis>bmscan</emphasis> n'a pas encore été implémenté, si
+        bien que le paramètre <emphasis>image</emphasis> n'a actuellement pas
+        d'effet.
+      </para>
+    </note>
+  </refsect1>
+<!--
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode FLhvsBox. Il utilise le fichier
+      <ulink url="examples/FLhvsBox.csd"><citetitle>FLhvsBox.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode FLhvsBox.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/FLhvsBox.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>-->
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="hvs2"><citetitle>hvs2</citetitle></link>,
+      <link linkend="FLhvsBoxSetValue"><citetitle>FLhvsBoxSetValue</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 5.06</para>
+  </refsect1>
+</refentry>

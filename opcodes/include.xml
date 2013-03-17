@@ -1,0 +1,123 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.15
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="include">
+<indexterm id="IndexMultiFileOrch"><primary>multiple file orchestras</primary></indexterm>
+
+<indexterm id="IndexIncludeOrch"><primary>&num;include</primary><secondary>orchestra</secondary></indexterm>
+  <refentryinfo><title>Orchestra Syntax:Macros</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>&num;include</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>&num;include</refname>
+
+    <refpurpose>
+      Inclut un fichier externe pour traitement.
+                </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Inclut un fichier externe pour traitement.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>&num;include</command> &quot;nomfichier&quot;</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Il est parfois commode d'organiser un orchestre sur plusieurs fichiers, par exemple avec chaque
+      instrument dans un fichier séparé. Ce style est supporté par la fonctionnalité
+      <emphasis>&num;include</emphasis> qui fait partie du système de macros. Une ligne contenant le texte
+
+      <informalexample>
+        <programlisting>
+<emphasis role="omacro">#include</emphasis> "nomfichier"</programlisting>
+      </informalexample>
+
+      où le caractère &quot; peut être remplacé par n'importe quel caractère approprié. Pour la plupart
+      des utilisations le symbole de l'apostrophe double sera probablement le plus commode. Le nom de fichier
+      peut inclure un chemin complet.
+    </para>
+
+    <para>
+      L'entrée est prise à partir du fichier nommé jusqu'à son terme, puis revient à la source précédente.
+      <emphasis>Note : </emphasis>les versions de Csound antérieures à la 4.19 limitaient à 20 la
+      profondeur des fichiers inclus et des macros.
+    </para>
+
+    <para>
+      Il est également suggéré d'utiliser <emphasis>&num;include</emphasis> pour définir un ensemble de
+      macros qui font partie du style du compositeur.
+    </para>
+
+    <para>
+      A la limite, on pourrait définir chaque instrument comme une macro, avec un numéro d'instrument en
+      paramètre. On pourrait alors construire un orchestre entier à partir d'un certain nombre
+      d'instructions <emphasis>&num;include</emphasis> suivies par des appels de macro.
+
+      <informalexample>
+        <programlisting>
+<emphasis role="omacro">#include</emphasis> "clarinet"
+<emphasis role="omacro">#include</emphasis> "flute"
+<emphasis role="omacro">#include</emphasis> "bassoon"
+$CLARINET(1)
+$FLUTE(2)
+$BASSOON(3)</programlisting>
+      </informalexample>
+
+      Il faut insister sur le fait que ces changements ont lieu au niveau littéral et n'ont donc aucune
+      incidence sémantique.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode include. Il utilise les fichiers
+      <ulink url="examples/include.csd"><citetitle>include.csd</citetitle></ulink>, et
+      <ulink url="examples/table1.inc"><citetitle>table1.inc</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode include.</title>
+
+<xi:include href="examples-xml/table1.inc.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/include.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>University of Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>Avril 1998</member>
+      </simplelist>
+    </para>
+    <para>Exemple écrit par &namekevin;.</para>
+
+    <para>Nouveau dans la version 3.48 de Csound</para>
+  </refsect1>
+</refentry>

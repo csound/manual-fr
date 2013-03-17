@@ -1,0 +1,150 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.19
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="Zerodbfs">
+<indexterm id="Index0dbfs"><primary>0dbfs</primary></indexterm>
+  <refentryinfo><title>Orchestra Syntax:Header</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>0dbfs</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>0dbfs</refname>
+    <refpurpose>
+      Fixe la valeur des 0 décibels à amplitude maximale.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Fixe la valeur des 0 décibels à amplitude maximale.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>0dbfs</command> = iarg</synopsis>
+    <synopsis><command>0dbfs</command> </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iarg</emphasis> -- la valeur des 0 décibels à amplitude maximale.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      La valeur par défaut est 32767, si bien que tous les orchestres existants
+      <emphasis>devraient</emphasis> fonctionner.
+    </para>
+
+    <para>
+      Les valeurs d'amplitude dans Csound sont toujours relatives à une valeur
+      "<link linkend="Zerodbfs"><citetitle>0dbfs</citetitle></link>" représentant
+      l'amplitude maximale possible sans écrêtage. A l'origine cette valeur valait
+      toujours 32767 dans Csound, correspondant à l'étendue bipolaire d'un fichier son
+      sur 16 bit ou d'un codec AN/NA sur 16 bit. Cela reste l'amplitude maximale
+      <emphasis>par défaut</emphasis> dans Csound, pour des raisons de compatibilité
+      descendante. La valeur <link linkend="Zerodbfs"><citetitle>0dbfs</citetitle></link>
+      permet à Csound de produire des valeurs mises à l'échelle de n'importe quel
+      format de sortie, que ce soit en entiers sur 16 bit ou 24 bit, en flottants sur
+      32 bit, et même en entiers sur 32 bit.
+    </para>
+    <para>
+      On peut définir 0dBFS dans l'en-tête, pour fixer l'amplitude de référence utilisée
+      par Csound, mais on peut aussi l'utiliser comme variable dans un instrument
+      comme ceci :
+
+      <informalexample>
+        <programlisting>ipeak <emphasis role="op">=</emphasis> <emphasis role="ohdr">0dbfs</emphasis></programlisting>
+      </informalexample>
+
+      <informalexample>
+        <programlisting>
+asig <emphasis role="opc">oscil</emphasis> <emphasis role="ohdr">0dbfs</emphasis>, freq, 1
+     <emphasis role="opc">out</emphasis>   asig * 0.3 * <emphasis role="ohdr">0dbfs</emphasis></programlisting>
+      </informalexample>
+
+    </para>
+
+    <para>
+      L'opcode <emphasis>0dbfs</emphasis> a pour but le codage relatif à une valeur
+      0dbfs (et l'usage beaucoup plus fréquent des opcodes
+      <link linkend="ampdbfs"><citetitle>ampdbfs()</citetitle></link> !), plutôt que
+      l'utilisation de valeurs d'échantillon explicites. L'utilisation de 0dbfs=1 est
+      conforme aux pratiques de l'industrie, car l'intervalle allant de -1 à 1 est
+      utilisé dans la plupart des formats de greffon commerciaux et dans la plupart des
+      autres systèmes de synthèse comme Pure Data.
+    </para>
+
+    <para>
+      Les nombres en virgule flottante écrits dans un fichier, lorsque <emphasis>0dbfs = 1</emphasis>,
+      ne seront effectivement pas transposés du tout en amplitude. Ainsi les nombres dans le fichier
+      sont exactement ce que l'orchestre dit qu'ils sont.
+    </para>
+    <para>
+      Pour plus de détails sur les valeurs d'amplitude dans Csound, voir la section
+      <link linkend="AmplitudeCsound"><citetitle>Valeurs d'amplitude dans Csound</citetitle></link>.
+    </para>
+
+<!--    <note>
+      <title>NOTA BENE IMPORTANT</title>
+      <para>
+        Tous les principaux formats d'échantillon sont supportés, mais je n'ai pas eu le temps de
+        m'occuper des formats char. C'est probablement assez simple.
+      </para>
+
+      <para>
+        J'ai essayé de couvrir les principaux utilitaires - adsyn, lpanal, etc. Mais il y a sûrement
+        des oublis, désolé.
+      </para>
+
+      <para>
+        Une partie du code de l'analyseur est un peu brouillonne parce que j'ai introduit un nom de
+        variable commençant par un chiffre !
+      </para>
+    </note>-->
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode 0dbfs. Il utilise le fichier
+      <ulink url="examples/0dbfs.csd"><citetitle>0dbfs.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode 0dbfs.</title>
+
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/0dbfs.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Voir aussi</title>
+    <para><link linkend="ampdbfs"><citetitle>ampdbfs()</citetitle></link></para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Richard Dobson</member>
+        <member>Mai 2002</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 4.10</para>
+  </refsect1>
+</refentry>

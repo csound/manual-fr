@@ -1,0 +1,157 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pareq">
+<indexterm id="IndexPareq"><primary>pareq</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Specialized Filters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pareq</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pareq</refname>
+    <refpurpose>
+      Implémentation des filtres égaliseurs paramétrique de Zoelzer.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Implémentation des filtres égaliseurs paramétrique de Zoelzer, avec quelques
+      modifications par l'auteur.
+    </para>
+
+    <para>
+      La formule du filtre low shelf est :
+      <literallayout>
+omega = 2*pi*f/sr
+K     = tan(omega/2)
+	
+b0    = 1 + sqrt(2*V)*K + V*K^2
+b1    = 2*(V*K^2 - 1)
+b2    = 1 - sqrt(2*V)*K + V*K^2
+	
+a0    = 1 + K/Q + K^2
+a1    = 2*(K^2 - 1)
+a2    = 1 - K/Q + K^2</literallayout>
+    </para>
+
+    <para>
+      La formule du filtre high shelf est :
+      <literallayout>
+omega = 2*pi*f/sr
+K     = tan((pi-omega)/2)
+	
+b0    = 1 + sqrt(2*V)*K + V*K^2
+b1    = -2*(V*K^2 - 1)
+b1    = 1 - sqrt(2*V)*K + V*K^2
+	
+a0    = 1 + K/Q + K^2
+a1    = -2*(K^2 - 1)
+a2    = 1 - K/Q + K^2</literallayout>
+    </para>
+
+    <para>
+      La formule du filtre peak est :
+      <literallayout>
+omega = 2*pi*f/sr
+K     = tan(omega/2)
+	
+b0 =  1 + V*K/2 + K^2
+b1 =  2*(K^2 - 1)
+b2 =  1 - V*K/2 + K^2
+	
+a0 =  1 + K/Q + K^2
+a1 =  2*(K^2 - 1)
+a2 =  1 - K/Q + K^2</literallayout>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>pareq</command> asig, kc, kv, kq [, imode] [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>imode</emphasis> (facultatif, 0 par défaut) -- mode opératoire
+      <itemizedlist>
+        <listitem>
+          <para>0 = Peak</para>
+        </listitem>
+
+        <listitem>
+          <para>1 = Low Shelf</para>
+        </listitem>
+
+        <listitem>
+          <para>2 = High Shelf</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+    <para>
+      <emphasis>iskip</emphasis> (facultatif, 0 par défaut) -- s'il est différent
+      de zéro, l'initialisation du filtre est ignorée. (Nouveau dans les versions
+      4.23f13 et 5.0 de Csound)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kc</emphasis> -- fréquence centrale dans le mode peak, fréquence
+      de coupure dans le mode shelf.
+    </para>
+
+    <para>
+      <emphasis>kv</emphasis> -- importance du renforcement ou de l'atténuation.
+      Une valeur inférieure à 1 produit une atténuation. Une valeur supérieure à
+      1 produit un renforcement. La valeur 1 donne une réponse plate.
+    </para>
+
+    <para>
+      <emphasis>kq</emphasis> -- Q du filter (racine carrée de 0.5 ne produit pas
+      de résonance)
+    </para>
+
+    <para>
+      <emphasis>asig</emphasis> -- le signal entrant
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode pareq. Il utilise le fichier
+      <ulink url="examples/pareq.csd"><citetitle>pareq.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode pareq.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pareq.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>&namehans;</member>
+        <member>Décembre 1998</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.50 de Csound.</para>
+  </refsect1>
+</refentry>

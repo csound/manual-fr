@@ -1,0 +1,130 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvswarp">
+<indexterm id="Indexpvswarp"><primary>pvswarp</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvswarp</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvswarp</refname>
+    <refpurpose>
+      Déforme l'enveloppe spectrale d'un signal PVS.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Déforme l'enveloppe spectrale d'un signal PVS par translation et
+      pondération.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>fsig <command>pvswarp</command> fsigin, kscal, kshift[, klowest, kmeth, kgain, kcoefs]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>fsig</emphasis> -- flot pv de sortie
+    </para>
+
+    <para>
+      <emphasis>fsigin</emphasis> -- flot pv d'entrée
+    </para>
+
+    <para>
+      <emphasis>kscal</emphasis> -- rapport de pondération de l'enveloppe
+      spectrale. Les valeurs &gt; 1 étirent l'enveloppe et les valeurs &lt; 1
+      la compresse.
+    </para>
+
+    <para>
+      <emphasis>kshift</emphasis> -- translation de l'enveloppe spectrale. Les
+      valeurs &gt; 0 décalent l'enveloppe linéairement vers le haut et les
+      valeurs &lt; 1 la décalent vers le bas.
+    </para>
+ 
+   <para>
+      <emphasis>klowest</emphasis> -- fréquence décalée la plus basse (n'affecte
+      que <emphasis>kshift</emphasis>, vaut 0 par défaut).
+    </para>
+
+    <para>
+      <emphasis>kmethod</emphasis> -- méthode d'extraction de l'enveloppe
+      spectrale. 1 : méthode du cepstre décalé ; 2 : méthode d'enveloppe
+      véritable (vaut 1 par défaut).
+    </para>
+
+    <para>
+      <emphasis>kgain</emphasis> -- pondération de l'amplitude (1 par défaut).
+    </para>
+
+    <para>
+      <emphasis>kcoefs</emphasis> -- nombre de coefficients du cepstre utilisés
+      dans la préservation des formants (vaut 80 par défaut).
+    </para>
+
+    <warning>
+      <para>
+        Il est dangereux d'utiliser la même variable-f à la fois comme entrée et
+        comme sortie des opcodes pvs. Ceci peut produire un comportement indéfini
+        de certains de ces opcodes. Utilisez une variable différente à gauche et
+        à droite de l'opcode.
+      </para>
+   </warning>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode pvswarp. Il utilise le fichier
+      <ulink url="examples/pvswarp.csd"><citetitle>pvswarp.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode pvswarp.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pvswarp.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Utilisé avec des sons vocaux, il décale les formants ce qui donne un
+      changement du timbre des voyelles, semblable à l'effet de l'inhalation
+      d'hélium sur la voix d'un chanteur (l'effet "donald duck").
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="pvsanal"><citetitle>pvsanal</citetitle></link>,
+      <link linkend="pvsynth"><citetitle>pvsynth</citetitle></link>,
+      <link linkend="pvsadsyn"><citetitle>pvsadsyn</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Novembre 2004 </member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau greffon dans la version 5</para>
+    <para>Novembre 2004.</para>
+  </refsect1>
+</refentry>

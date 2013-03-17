@@ -1,0 +1,114 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="outipat">
+<indexterm id="IndexOutipat"><primary>outipat</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Output</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>outipat</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>outipat</refname>
+
+    <refpurpose>
+      Envoie des messages MIDI d'aftertouch polyphonique au taux-i.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Envoie des messages MIDI d'aftertouch polyphonique au taux-i.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>outipat</command> ichn, inotenum, ivalue, imin, imax</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ichn</emphasis> -- numéro de canal MIDI (1-16)
+    </para>
+
+    <para>
+      <emphasis>inotenum</emphasis> -- numéro de note MIDI (utilisé dans les
+      messages d'aftertouch polyphonique)
+    </para>
+
+    <para>
+      <emphasis>ivalue</emphasis> -- valeur en virgule flottante
+    </para>
+
+    <para>
+      <emphasis>imin</emphasis> -- valeur minimale en virgule flottante (convertie
+      en valeur entière MIDI 0)
+    </para>
+
+    <para>
+      <emphasis>imax</emphasis> -- valeur maximale en virgule flottante (convertie
+      en valeur entière MIDI 127 (7 bit))
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+
+    <para>
+     <emphasis>outipat</emphasis> envoie des messages MIDI d'aftertouch polyphonique
+     au taux-i. Il ne fonctionne qu'avec les instruments MIDI qui les reconnaissent.
+     Il peut piloter une valeur différente de paramètre pour chaque note active.
+    </para>
+
+    <para>
+      Il peut échelonner un argument de taux-i en virgule flottante selon les
+      valeurs <emphasis>imin</emphasis> et <emphasis>imax</emphasis>. Par exemple
+      avec <emphasis>imin</emphasis> = 1.0 et <emphasis>imax</emphasis> = 2.0,
+      lorque l'argument <emphasis>ivalue</emphasis> reçoit la valeur 2.0,
+      l'opcode envoie la valeur 127 sur le périphérique MIDI OUT. Lorsque
+      l'argument <emphasis>ivalue</emphasis> reçoit la valeur 1.0, il envoie la
+      valeur 0. Les opcodes de taux-i n'envoient leur message que pendant
+      l'initialisation de l'instrument.
+   </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="outiat"><citetitle>outiat</citetitle></link>,
+      <link linkend="outic14"><citetitle>outic14</citetitle></link>,
+      <link linkend="outic"><citetitle>outic</citetitle></link>,
+      <link linkend="outipb"><citetitle>outipb</citetitle></link>,
+      <link linkend="outipc"><citetitle>outipc</citetitle></link>,
+      <link linkend="outkat"><citetitle>outkat</citetitle></link>,
+      <link linkend="outkc14"><citetitle>outkc14</citetitle></link>,
+      <link linkend="outkc"><citetitle>outkc</citetitle></link>,
+      <link linkend="outkpat"><citetitle>outkpat</citetitle></link>,
+      <link linkend="outkpb"><citetitle>outkpb</citetitle></link>,
+      <link linkend="outkpc"><citetitle>outkpc</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.47 de Csound.</para>
+    <para>Merci à &namerasmus; pour avoir indiqué les intervalles corrects pour
+    le canal MIDI et les numéros de contrôleur.</para>
+  </refsect1>
+</refentry>

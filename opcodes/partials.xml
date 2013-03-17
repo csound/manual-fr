@@ -1,0 +1,120 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="partials">
+<indexterm id="Indexpartials"><primary>partials</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>partials</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>partials</refname>
+    <refpurpose>
+      Analyse spectrale par suivi des partiels.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      L'opcode <emphasis>partials</emphasis> prend en entrée deux flots de signal
+      PV contenant les signaux AMP_FREQ et AMP_PHASE (comme ils sont générés par
+      exemple par <emphasis>pvsifd</emphasis> ou dans le premier cas
+      par <emphasis>pvsanal</emphasis>) et réalise une estimation et un suivi de
+      partiels selon la méthode décrite dans Lazzarini et al, "Time-stretching
+      using the Instantaneous Frequency Distribution and Partial Tracking",
+      Proc. of ICMC05, Barcelone. Il génère un flot de signal PV TRACKS, contenant
+      l'amplitude, la fréquence, la phase et un ID de piste pour chaque piste en
+      sortie. Ce type de signal contient un nombre variable de pistes de sortie, limité
+      par le nombre total de bins d'analyse contenus dans les entrées
+      (tailleTFR/2 + 1 bin). La seconde entrée (AMP_PHASE) est facultative, car
+      elle peut prendre le même signal que la première entrée. Cependant, dans
+      ce cas, toute l'information de phase vaut NULL et l'on ne peut pas réaliser
+      de resynthèse en utilisant l'information de phase.
+	  </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ftrks <command>partials</command> ffr, fphs, kthresh, kminpts, kmaxgap, imaxtracks</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+	    <para>
+      <emphasis>ftrks</emphasis> -- flot pv de sortie au format TRACKS
+    </para>
+	
+    <para>
+      <emphasis>ffr</emphasis> -- flot pv d'entrée au format AMP_FREQ
+    </para>
+
+    <para>
+      <emphasis>fphs</emphasis> -- flot pv d'entrée au format AMP_PHASE
+    </para>
+
+    <para>
+      <emphasis>kthresh</emphasis> -- seuil d'analyse. Les pistes de niveau
+      inférieur à <emphasis>ktresh*max_magnitude</emphasis> seront ignorées
+      (1 &gt; <emphasis>ktresh</emphasis> &gt;= 0).
+    </para>
+
+    <para>
+      <emphasis>kminpoints</emphasis> -- nombre minimal de points temporels pour
+      qu'une crête détectée engendre une piste (1 est le minimum). Comme cet
+      opcode travaille avec des flots de signal, les nombres plus importants
+      augmentent le délai entre l'entrée et la sortie car il faut attendre que
+      le nombre minimum de points nécessaires soient acquis.
+    </para>
+
+    <para>
+      <emphasis>kmaxgap</emphasis> -- écart maximum entre les points temporels
+      pour la poursuite de la piste (&gt; 0). Les pistes sans suite après
+      <emphasis>kmaxgap</emphasis> sont ignorées.
+    </para>
+
+    <para>
+      <emphasis>imaxtracks</emphasis> -- nombre maximal de pistes d'analyse
+      (nombre de bins &gt;= <emphasis>imaxtracks</emphasis>)
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode partials. Il utilise le fichier
+      <ulink url="examples/partials.csd"><citetitle>partials.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode partials.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/partials.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para> 
+    <para>
+      L'exemple ci-dessus montre le suivi de partiel d'un signal d'analyse ifd
+      et sa resynthèse additive par phase cubique avec transposition de hauteur.
+    </para>   
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Juin 2005 </member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau greffon dans la version 5.</para>
+    <para>Novembre 2004.</para>
+  </refsect1>
+</refentry>

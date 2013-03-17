@@ -1,0 +1,105 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="fprints">
+<indexterm id="IndexFprints"><primary>fprints</primary></indexterm>
+  <refentryinfo><title>Signal I/O:File I/O</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>fprints</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>fprints</refname>
+    <refpurpose>
+      Semblable à prints mais imprime dans un fichier.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Semblable à <link linkend="prints"><citetitle>prints</citetitle></link> mais
+      imprime dans un fichier.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>fprints</command> &quot;filename&quot;, &quot;string&quot; [, ival1] [, ival2] [...]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>&quot;filename&quot;</emphasis> -- nom du fichier de sortie.
+    </para>
+
+    <para>
+      <emphasis>&quot;string&quot;</emphasis> -- la chaîne de texte à imprimer.
+      Peut contenir jusqu'à 8192 caractères et doit être entre guillements.
+    </para>
+    <para>
+      <emphasis>ival1, ival2, ...</emphasis> (facultatif) -- Les valeurs de
+      taux-i à imprimer. Elle sont spécifiées dans <emphasis><quote>string</quote></emphasis>
+      avec les spécificateurs de format du C standard (%f, %d, etc.) dans l'ordre
+      donné.
+    </para>
+    
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+
+    <para>
+      <emphasis>fprints</emphasis> est semblable à l'opcode
+      <link linkend="prints"><citetitle>prints</citetitle></link> sauf qu'il
+      imprime dans un fichier. Pour plus d'information sur le formatage de la
+      sortie, prière de consulter la documentation de
+      <link linkend="printks"><citetitle>printks</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode fprints. Il utilise le fichier
+      <ulink url="examples/fprints.csd"><citetitle>fprints.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode fprints.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/fprints.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Cet exemple générera un fichier nommé <quote>my.sco</quote>. Il contiendra
+      cette ligne :
+      <screen>
+;Generated score by ma++</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="prints"><citetitle>prints</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namematt;</member>
+        <member>Janvier 2003</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

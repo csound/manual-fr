@@ -1,0 +1,79 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.6
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="alwayson">
+<indexterm id="Indexalwayson"><primary>alwayson</primary></indexterm>
+  <refentryinfo><title>Signal Flow Graph Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>alwayson</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>alwayson</refname>
+    <refpurpose>
+      Active les instruments indiqués dans l'en-tête de l'orchestre sans le
+      recours à une instruction i.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Active les instruments indiqués dans l'en-tête de l'orchestre sans le
+      recours à une instruction i. Les instruments doivent être activés dans le
+      même ordre que celui de leur définition.
+    </para>
+      
+    <para>
+      L'opcode <emphasis>alwayson</emphasis> est conçu pour simplifier la
+      définition d'orchestres réutilisables avec traitement du signal ou
+      enchainement d'effets et réseaux.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis> <command>alwayson</command> Tinstrument [p4, ..., pn]</synopsis>
+  </refsect1>
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>Tinstrument</emphasis> -- Nom sous forme de chaîne de caractères
+      de la définition d'instrument à activer.
+    </para>
+    <para>
+      <emphasis>[p4, ..., pn]</emphasis> -- p-champs optionnels à passer à
+      l'instrument, dans le même ordre et avec les mêmes types que si c'était
+      une instruction i.
+    </para>
+    <para>
+      Lors de l'activation de l'instrument, p1 est son numéro, p2 vaut 0 et p3
+      vaut -1. Les p-champs à partir de p4 peuvent être envoyés à l'instrument
+      de manière optionnelle.
+    </para>
+  </refsect1>
+ 
+ <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode alwayson. Il utilise le fichier
+      <ulink url="examples/alwayson.csd"><citetitle>alwayson.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode alwayson.</title>
+          <xi:include href="examples-xml/alwayson.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par &namemichael;, 2009</para>
+  </refsect1>
+</refentry>

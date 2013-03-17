@@ -1,0 +1,141 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.16
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="dam">
+<indexterm id="IndexDam"><primary>dam</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Amplitude Modifiers</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>dam</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>dam</refname>
+    <refpurpose>
+      Un compresseur/expander dynamique.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode modifie dynamiquement une valeur de gain appliquée à l'entrée
+      <emphasis>ain</emphasis> en comparant son niveau de puissance à un seuil de
+      niveau donné. Le signal est compressé ou élargi de différents facteurs
+      selon qu'il est au-dessus ou en-dessous du seuil.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>dam</command> asig, kthreshold, icomp1, icomp2, irtime, iftime</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>icomp1</emphasis> -- rapport de compression pour la zone supérieure.
+    </para>
+
+    <para>
+      <emphasis>icomp2</emphasis> -- rapport de compression pour la zone inférieure
+    </para>
+
+    <para>
+      <emphasis>irtime</emphasis> -- montée du gain en secondes. Durée au-delà de
+      laquelle le facteur de gain peut augmenter d'une unité.
+    </para>
+
+    <para>
+      <emphasis>iftime</emphasis> -- chute du gain en secondes. Durée au-delà de
+      laquelle le facteur de gain peut diminuer d'une unité. of one unit.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- signal d'entrée à modifier
+    </para>
+
+    <para>
+      <emphasis>kthreshold</emphasis> -- niveau du signal d'entrée qui agit comme
+      seuil. Il peut changer au taux-k (par exemple pour le ducking)
+    </para>
+
+    <para>
+      Note sur les taux de compression : un taux de compression de un laisse le
+      son inchangé. Avec un rapport inférieur à un, le signal sera compressé
+      (réduction de son volume) tandis qu'avec un rapport supérieur à un, le
+      signal sera élargi (augmentation de son volume).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Les résultats de l'opcode <emphasis>dam</emphasis> pouvant être subtils,
+      je recommande de les regarder dans un éditeur de sons graphique comme
+      <emphasis>audacity</emphasis>. <emphasis>audacity</emphasis> existe pour
+      Linux, Windows, et MacOS et on peut le télécharger à
+      <ulink url="http://audacity.sourceforge.net/"><citetitle>http://audacity.sourceforge.net</citetitle></ulink>.
+    </para>
+
+    <para>
+      Voici un exemple de l'opcode dam. Il utilise les fichiers
+      <ulink url="examples/dam.csd"><citetitle>dam.csd</citetitle></ulink>
+      et <ulink url="examples/beats.wav"><citetitle>beats.wav</citetitle></ulink>.
+      <example>
+        <title>Un exemple de l'opcode dam compressant un signal audio.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/dam.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Cet exemple compresse le fichier audio <quote>beats.wav</quote>. On y entend
+      un schéma de batterie répété deux fois. La deuxième fois, le son est moins
+      fort (compressé) que la première fois.
+    </para>
+
+    <para>
+      Voici un autre exemple de l'opcode dam. Il utilise les fichiers
+      <ulink url="examples/dam_expanded.csd"><citetitle>dam_expanded.csd</citetitle></ulink>
+      et <ulink url="examples/beats.wav"><citetitle>beats.wav</citetitle></ulink>.
+
+      <example>
+        <title>Un exemple de l'opcode dam élargissant un signal audio.</title>
+          <xi:include href="examples-xml/dam_expanded.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Cet exemple élargit le fichier audio <quote>beats.wav</quote>. On y entend
+      un motif de batterie répété deux fois. La deuxième fois, le son est plus fort
+      (élargi) que la première fois. Pour éviter une distorsion le volume du signal
+      a été diminué.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="compress"><citetitle>compress</citetitle></link>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Marc Resibois</member>
+        <member>Belgique</member>
+        <member>1997</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 3.47</para>
+  </refsect1>
+</refentry>

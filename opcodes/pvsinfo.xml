@@ -1,0 +1,100 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvsinfo">
+<indexterm id="IndexPvsinfo"><primary>pvsinfo</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsinfo</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvsinfo</refname>
+    <refpurpose>
+      Retourne de l'information sur une source au format PVOC-EX.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne de l'information sur le format de <emphasis>fsrc</emphasis>, que
+      celui-ci soit créé par un opcode comme <emphasis>pvsanal</emphasis> ou qu'il
+      soit obtenu à partir d'un fichier PVOC-EX par <emphasis>pvsfread</emphasis>.
+      Cette information est disponible à l'initialisation et peut être utilisée
+      pour fixer les paramètres d'autres opcodes pvs, en particulier pour
+      créer des tables de fonction (par exemple pour <emphasis>pvsftw</emphasis>),
+      ou pour fixer le nombre d'oscillateurs pour <emphasis>pvsadsyn</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ioverlap, inumbins, iwinsize, iformat <command>pvsinfo</command> fsrc</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ioverlap</emphasis> -- La taille de recouvrement du flot.
+    </para>
+
+    <para>
+      <emphasis>inumbins</emphasis> -- Le nombre de bins d'analyse (amplitude +
+      fréquence) dans <emphasis>fsrc</emphasis>. La taille de TFR sous-jacente
+      est calculée comme (<emphasis>inumbins</emphasis> - 1) * 2.
+    </para>
+
+    <para>
+      <emphasis>iwinsize</emphasis> -- La taille de la fenêtre d'analyse. Peut
+      être supérieure à la taille de TFR.
+    </para>
+
+    <para>
+      <emphasis>iformat</emphasis> -- Le format de trame d'analyse. Si
+      <emphasis>fsrc</emphasis> est créé par un opcode, <emphasis>iformat</emphasis>
+      vaut toujours 0, ce qui signifie (amplitude + fréquence). Si
+      <emphasis>fsrc</emphasis> est défini à partir d'un fichier PVOC-EX,
+      <emphasis>iformat</emphasis> peut également valoir 1 ou 2 (amplitude + phase,
+      complexe).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode pvsinfo. Il utilise le fichier
+      <ulink url="examples/pvsinfo.csd"><citetitle>pvsinfo.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode pvsinfo.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pvsinfo.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      L'exemple produira la sortie suivante :
+      <screen>
+instr 1:  iovl = 256.000  inb = 513.000  iws = 2048.000  ifmt = 0.000</screen>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namerichard;</member>
+        <member>Août 2001 </member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 4.13</para>
+  </refsect1>
+</refentry>

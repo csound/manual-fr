@@ -1,0 +1,389 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="RealTimeLinux">
+  <title>Entrées/sorties en temps réel sous Linux</title>
+<!--  Most of this file was contributed by Jonathan Murphy on July 2006-->
+  <para>
+    Sous linux, les réglages PortAudio/PortMidi par défaut provoquent une
+    latence plus longue que celle que l'on obtiendrait avec ALSA et/ou JACK.
+    Les greffons PortMusic sont des serveurs audio et MIDI, qui fournissent
+    une interface aux pilotes ALSA, tout comme le fait JACK, mais d'une
+    manière fondamentalement différente. Pour une comparaison plus détaillée
+    prière de se référer à :
+  </para>
+  <para><ulink url="http://jackaudio.org/faq">http://jackaudio.org/faq</ulink>
+  </para>
+  <bridgehead>Utilisation d'ALSA</bridgehead>
+  <para>
+    Le plus haut niveau de contrôle et la plus faible latence possible sont
+    atteints en utilisant les greffons ALSA en combinaison avec l'option
+    <link linkend="IndexCatMinusSched"><citetitle>--sched</citetitle></link>.
+    L'utilisation de <link linkend="IndexCatMinusSched"><citetitle>--sched</citetitle></link>
+    nécessite que Csound soit lancé par l'utilisateur root,
+    ce qui peut être impossible ou indésirable dans certaines circonstances.
+  </para>
+  <para>
+    Les greffons ALSA nécessitent le nom ("name") d'une carte ("card") et d'un périphérique ("device").
+    A moins d'avoir nommé vos cartes dans ~/.asoundrc (ou /etc/asound.conf), les noms
+    seront en fait des nombres. Pour obtenir une liste des configurations possibles,
+    utilisez les utilitaires en ligne de commande "aplay", "arecord" et "amidi". Ces
+    utilitaires sont inclus dans la plupart des distributions Linux, ou peuvent
+    être téléchargés et construits à partir de ces sources :
+  </para>
+  <para>
+    <ulink url="ftp://ftp.alsa-project.org/pub/utils/">ftp://ftp.alsa-project.org/pub/utils/</ulink>
+  </para>
+  <bridgehead>Sortie audio</bridgehead>
+  <para>En tapant la commande suivante :</para>
+  <screen>
+          aplay -l</screen>
+  <para>vous obtiendrez une liste des périphériques de reproduction audio disponibles
+    sur votre système. Cette liste ressemble à ceci :
+  </para>
+  <literallayout>[....]
+**** List of PLAYBACK Hardware Devices ****
+card 0: A5451 [ALI 5451], device 0: ALI 5451 [ALI 5451]
+[....]
+</literallayout>
+    <para>Si vous avez plus d'une carte sur votre système, ou s'il y a
+        plus d'un périphérique sur votre carte, la liste sera naturellement
+        plus compliquée, cependant, dans tous les cas, l'information pertinente
+        est le numéro/nom de la carte/périphérique. Afin d'utiliser
+        la carte son ci-dessus pour la sortie audio, il faut ajouter l'option suivante
+        à la ligne de commande Csound, dans ~/.csoundrc, ou dans la section
+        &lt;CsOptions&gt; d'un CSD :
+    </para>
+    <screen>
+          -+rtaudio=alsa -o dac</screen>
+
+  <bridgehead>Sortie avec dmix</bridgehead>
+  <para>
+    Si vous désirez utiliser Csound avec dmix et que votre carte son ne supporte pas le mixage matériel des
+    flux audio, il faut régler les tampons logiciel (-b) et matériel (-B) avec un soin particulier. Si
+    vous recevez un message du pilote ALSA de Csound qui ressemble à ceci :
+  </para>
+  <screen>ALSA: -B 8192 not allowed on this device; use 7526 instead</screen>
+  <para>
+    il y a de bonnes chances que vous puissiez utiliser dmix. Si vous utilisez dmix, les réglages de -b
+    et de -B dans Csound doivent être synchronisés avec le taille de période (period_size) et la taille
+    de tampon (buffer_size) de dmix respectivenemt, en utilisant le rapport du taux d'échantillonnage du
+    projet Csound sur le taux d'échantillonnage sur lequel dmix est réglé. Les formules suivantes 
+    déterminent les réglages à utiliser pour Csound en fonction des réglages de dmix :
+  </para>
+  <screen>
+-b = (csound_sr/dmix_sample_rate) * dmix_period_size
+-B = (csound_sr/dmix_sample_rate) * dmix_buffer_size</screen>
+  <para>
+    Par exemple, si dmix est fixé à 48000 échantillons par seconde, un period_size de 1024, et un
+    buffer_size de 8192, si l'on exécute un projet Csound avec sr=48000, les réglages des tampons
+    seront "-b 1024 -B8192". Si sr=24000, les réglages des tampons seront "-b 512 -B4096".
+  </para>
+  <para>
+    A cause de cette relation, si le taux d'échantillonnage du projet Csound ne divise pas exactement le
+    taux d'échantillonnage utilisé par dmix, il pourra être difficile, voire impossible, de régler
+    correctement -b et -B à cause des erreurs d'arrondi. En conséquence, si vous utilisez des taux
+    d'échantillonnage différents que ceux que vous fixez pour dmix, nous vous suggérons de configurer dmix
+    avec un period_size et un buffer_size divisibles par le rapport entre le taux d'échantillonnage
+    de csound et celui de dmix. Par exemple, pour exécuter un projet avec sr=16000, les réglages suivants
+    de dmix :
+  </para>
+  <screen>
+pcm.amix {
+   type dmix
+   ipc_key 50557
+   slave {
+       pcm "hw:0,0"
+       period_time 0
+       #period_size 1024
+       #buffer_size 8192
+       period_size 1536
+       buffer_size 12288
+   }
+   bindings {
+       0 0
+       1 1
+   }
+}
+
+# route ALSA software through pcm.amix
+pcm.!default {
+   type plug
+   slave.pcm "amix"
+}</screen>
+  <para>
+    avec period_size=1536 et buffer_size=12288 seront divisibles par 3 (le rapport du taux
+    d'échantillonnage de csound par celui de dmix) pour obtenir "-b 512 -B4096"
+    ((16000/48000) * 1536 = 512, (16000/48000) * 12288 = 4096).
+  </para>
+  <note>
+    <title>Note</title>
+    <para>
+      Pour la plupart des cartes son qui sont affectées par ceci, le taux d'échantillonnage par défaut de
+      la carte sera 48000 et ceux de dmix seront 1024 et 8192.
+    </para>
+  </note>
+
+  <bridgehead>Entrée audio</bridgehead>
+    <para>
+      Normalement, la même carte étant utilisée pour les entrées et les sorties,
+      en continuant l'exemple précédant, l'option :
+    </para>
+    <screen>
+          -i adc:hw:0,0</screen>
+    <para>sera ajouté pour l'entrée audio à partie du périphérique 0 de
+    la carte 0. Pour utiliser la carte par défaut, on emploie l'option suivante,
+    mais attention, ça peut ne pas fonctionner :
+    </para>
+    <screen>
+          -i adc</screen>
+    <para>Si l'on désire utiliser une autre carte ou un autre périphérique pour
+    l'entrée, la commande suivante fournira une liste de périphériques en entrée :
+    </para>
+    <screen>
+          arecord -l</screen>
+    <para>Si, par exemple, vous désirez utiliser en sortie une interface audio USB,
+      qui est la deuxième "carte" dans votre système, alors que vous désirez
+      utiliser en entrée votre
+      carte son interne, la première carte de votre installation,
+      positionnez les options suivantes à l'endroit adéquat :
+    </para>
+    <screen>
+          -+rtaudio=alsa -i adc:hw:0,0 -o dac:hw:1,0</screen>
+    <para>Si vous désirez utiliser le second périphérique sur votre interface USB,
+      pour envoyer un flux audio à un canal particulier, vous utiliserez les
+      options suivantes :
+    </para>
+    <screen>
+          -+rtaudio=alsa -i adc:hw:0,0 -o dac:hw:1,1</screen>
+  <bridgehead>Entrée MIDI</bridgehead>
+    <para>Csound ne crée pas automatiquement son propre port de séquenceur ALSA. Il
+      crée un port midi direct ALSA à chaque lancement. Afin de permettre à votre
+      orchestre de recevoir une entrée MIDI vous pouvez utiliser VirMIDI ou MIDIThru,
+      selon vos préférences. La configuration de ces ports MIDI virtuels a été
+      largement couverte ailleurs, voir le
+      <ulink url="http://www.midi-howto.com/">Linux MIDI how-to</ulink> ou parcourez
+      la documentation de votre distribution ou la documentation
+      ALSA à la recherche d'instructions pour intaller et configurer VirMidi
+      ou MIDIThru. Une fois ceci réalisé, la commande :
+    </para>
+    <screen>
+          amidi -l</screen>
+    <para>retourne une liste des périphériques disponibles. Cette liste
+      ressemble à ceci :
+    </para>
+    <literallayout>    [....]
+Device    Name
+hw:1,0    Virtual Raw MIDI (16 subdevices)
+hw:1,1    Virtual Raw MIDI (16 subdevices)
+hw:1,2    Virtual Raw MIDI (16 subdevices)
+hw:1,3    Virtual Raw MIDI (16 subdevices)
+hw:2,0,0  PCR MIDI
+hw:2,0,1  PCR 1
+</literallayout>
+    <para>Dans cet exemple, Csound peut se connecter à n'importe lequel
+      des quatre ports virtuels MIDI directs, pour y écouter l'entrée MIDI.
+      L'option suivante indique à Csound d'écouter sur le premier de ces ports :
+    </para>
+    <screen>
+          -+rtmidi=alsa -Mhw:1,0</screen>
+    <para>Il faudra ensuite connecter votre matériel ou votre contrôleur logiciel au
+      port qui accueille votre synthétiseur Csound. La manière la plus simple de le
+      faire est d'employer l'utilitaire "aconnect". Tapez :
+    </para>
+    <screen>
+          aconnect -li</screen>
+    <para>pour une liste des périphériques d'entrée disponibles, et :</para>
+    <screen>
+          aconnect -lo</screen>
+    <para>pour une liste des périphériques de sortie disponibles (y compris le
+    port auquel Csound a été connecté). Cette liste ressemble à ceci :
+    </para>
+    <literallayout>
+#aconnect -li
+client 0: 'System' [type=kernel]
+    0 'Timer           '
+    1 'Announce        '
+        Connecting To: 15:0
+client 20: 'Virtual Raw MIDI 1-0' [type=kernel]
+    0 'VirMIDI 1-0     '
+client 21: 'Virtual Raw MIDI 1-1' [type=kernel]
+    0 'VirMIDI 1-1     '
+client 22: 'Virtual Raw MIDI 1-2' [type=kernel]
+    0 'VirMIDI 1-2     '
+client 23: 'Virtual Raw MIDI 1-3' [type=kernel]
+    0 'VirMIDI 1-3     '
+client 24: 'PCR' [type=kernel]
+    0 'PCR MIDI        '
+    1 'PCR 1           '
+    2 'PCR 2           '
+</literallayout>
+        <literallayout>
+#aconnect -lo
+client 20: 'Virtual Raw MIDI 1-0' [type=kernel]
+    0 'VirMIDI 1-0     '
+client 21: 'Virtual Raw MIDI 1-1' [type=kernel]
+    0 'VirMIDI 1-1     '
+client 22: 'Virtual Raw MIDI 1-2' [type=kernel]
+    0 'VirMIDI 1-2     '
+client 23: 'Virtual Raw MIDI 1-3' [type=kernel]
+    0 'VirMIDI 1-3     '
+client 24: 'PCR' [type=kernel]
+    0 'PCR MIDI        '
+    1 'PCR 1           '
+</literallayout>
+    <para>
+      Dans l'exemple suivant, le clavier USB qui est listé ci-dessus comme
+      le client 24 sera connecté au synthétiseur Csound qui est à l'écoute
+      sur le premier port VirMIDI. Le clavier a trois ports de sortie. Le
+      premier (24:0) transmet les messages reçus sur le port d'entrée MIDI,
+      le second (24:1) transmet les messages de touches et de contrôleurs,
+      et le troisième (24:2) transmet les messages système exclusif. La
+      commande suivante connecte le second port du clavier au synthétiseur
+      Csound :</para>
+    <screen>
+          aconnect 24:1 20:0</screen>
+    <para>Il faut garder à l'esprit que Csound agit comme un périphérique MIDI
+    direct et non comme un client du séquenceur ALSA. Cela signifie que
+    Csound n'apparaitra pas dans la liste des périphériques MIDI et ne
+    sera pas disponible pour un usage direct avec <emphasis>aconnect</emphasis>,
+    ainsi, il faut se connecter à un périphérique virtuel (comme 'virtual raw MIDI' ou
+    'MIDI through') pour des connexions persistantes, ou se connecter directement
+    à la destination en utilisant les options de ligne de commande.</para>
+  <bridgehead>Sortie MIDI</bridgehead>
+    <para>On peut connecter Csound à n'importe quel périphérique qui apparaît
+      dans la liste des ports de sortie du séquenceur ALSA, que l'on obtient
+      par "amidi -l" comme ci-dessus. Afin de connecter un synthétiseur
+      Csound au port MIDI out du clavier listé ci-dessus, on utilise l'option
+      suivante :</para>
+    <screen>
+          -Qhw:2,0,0</screen>
+  <bridgehead>Temps-partagé</bridgehead>
+    <para>Si vous avez la possibilité d'exécuter Csound en tant qu'utilisateur root,
+      l'option "--sched" permet d'améliorer spectaculairement les performances
+       avec ALSA, cependant vous pouvez bloquer le système si vous faites
+      quelque chose de stupide. N'UTILISEZ PAS "--sched" si vous choisissez JACK
+      pour la sortie audio. JACK contrôle le temps-partagé pour les applications audio
+      qui l'utilisent, et il essaie également de fonctionner avec la priorité
+      maximale. Si l'option "--sched" est utilisée, Csound et JACK vont entrer
+      en compétition au lieu de coopérer, ce qui aura pour résultat de piètres
+      performances. </para>
+
+  <bridgehead>Utiliser JACK</bridgehead>
+        <para>La manière la plus simple d'activer les entrées-sorties avec le greffon JACK est :
+        <screen>
+          -+rtaudio=jack -i adc -o dac</screen>
+        En outre, il y a quelques options de ligne de commande spécifiques à JACK :
+        <variablelist>
+          <title>Options de ligne de commande de JACK</title>
+          <varlistentry>
+            <term>-+jack_client=[nom_de_client]</term>
+            <listitem>
+              <para>Le nom de client par défaut de Csound est 'csound5'.
+                Si plusieurs instances de Csound se connectent au serveur
+                JACK, il faut utiliser des noms de client différents pour
+                éviter les conflits de noms.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>-+jack_inportname=[préfixe du nom de port d'entrée], -+jack_outportname=[préfixe du nom de port de sortie]
+            </term>
+            <listitem>
+              <para>
+                Le préfixe du nom des ports d'entrée/sortie JACK de Csound ;
+                la valeur par défaut est 'input' et 'ouput'. Le nom complet
+                d'un port est obtenu en ajoutant le numéro du canal au préfixe.
+                Exemple : avec les réglages par défaut, un orchestre stéréo créera
+                les ports suivants en mode d'opération full duplex :
+                <screen>
+csound5:input1              (enregistrement gauche)
+csound5:input2              (enregistrement droite)
+csound5:output1             (reproduction gauche)
+csound5:output2             (reproduction droite)</screen>
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>-+jack_sleep_time=[temps de repos en microsecondes]</term>
+            <listitem>
+              <para>
+                Depuis Csound version 5.01, cette option est dépréciée et
+                ignorée.
+              </para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </para>
+      <bridgehead>Connecter Csound à d'autres clients JACK</bridgehead>
+      <para>
+        Il n'y a par défaut aucune connection (on doit utiliser jack_connect,
+        qjackctl, ou un utilitaire semblable) ; cependant, on peut connecter
+        le greffon à des ports spécifiés par '-iadx:portname_prefix' ou
+        '-odac:portname_prefix', où portname_prefix est le nom d'un port
+        sans le numéro de canal, tel que 'alsa_pcm:capture_' (pour
+        -i adc), ou 'alsa_pcm:playback_' (pour -o dac).
+      </para>
+      <bridgehead>Notes sur les tailles de tampon</bridgehead>
+      <para>
+        Les données audio sont reçues de et envoyées vers le serveur JACK
+        par Csound au moyen d'un tampon circulaire qui est contrôlé par
+        les options -b et -B. -B est la taille totale du tampon, tandis
+        que -b est la taille d'une période. Ces valeurs sont arrondies de
+        façon à ce que la taille totale soit un multiple entier de la
+        taille de la période et supérieure à cette dernière.
+        La différence de taille entre le tampon de Csound et la période
+        doit être supérieure ou égale à la taille de la période de JACK.
+      </para>
+      <para>
+        Si l'on utilise en même temps -iadc et -odac, l'option -b
+        doit être fixée à une valeur multiple de ksmps.
+      </para>
+      <para>
+  Exemple de réglage de tampon pour obtenir une faible latence sur un système rapide :
+	<screen>
+	  jackd -d alsa -P -r 48000 -p 64 -n 4 -zt &amp;
+	  csound -+rtaudio=jack -b 64 -B 256 [...]</screen>
+  avec temps-partagé pour le  (en tant que root) :
+	<screen>
+	  jackd -R -P 90 -d alsa -P -r 48000 -p 64 -n 2 -zt &amp;
+	  csound --sched=80,90,10 -d -+rtaudio=jack -b 64 -B 192 [...]</screen>
+  Pour améliorer les performances, utiliser des valeurs de ksmps comme 32 ou 64.
+      </para>
+      <para>
+  Le taux d'échantillonnage de l'orchestre doit être le même que celui
+  du serveur JACK.
+  </para>
+  <bridgehead>Utilisation de pulseaudio</bridgehead>
+  <para>Le support de <ulink url="http://www.pulseaudio.org/">Pulseaudio</ulink> a été
+    ajouté dans Csound 5.09. Vous pouvez spécifier les réglages suivants :</para>
+  <orderedlist>
+    <listitem><simpara>Noms de sortie : il est possible d'utiliser un nombre à la place
+    du nom complet, ainsi -odac:1  sélectionne votre second périphérique (le compte
+    commence à 0).</simpara>
+    </listitem>
+    <listitem><simpara>Nom du serveur : il est possible de se connecter à un serveur
+    spécifique en utilisant -+server=&lt;server_string&gt; où server_string est le
+    nom d'un serveur ou une chaîne plus complexe de sélection de serveur (voir
+    <ulink url="http://www.pulseaudio.org/">pulseaudio.org</ulink> sur les chaînes de
+    serveur). Ceci est transparent sur un réseau et permet les connexions à des
+    machines distantes.</simpara>
+  </listitem>
+    <listitem><simpara>Noms de flot : il est possible d'étiqueter les flots générés par
+    csound, en utilisant
+        -+output_stream=&lt;stream-name&gt;
+          et
+        -+input_stream=&lt;stream-name&gt;</simpara>
+    </listitem>
+  </orderedlist>
+  <para>Voici un exemple de ligne de commande :</para>
+  <literallayout>csound -odac:1 examples/trapped.csd -+rtaudio=pulse -+server=unix:/tmp/pulse-victor/native -+output_stream=trapped</literallayout>
+
+</section>
+

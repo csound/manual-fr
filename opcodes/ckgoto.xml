@@ -1,0 +1,87 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ckgoto">
+<indexterm id="IndexCkgoto"><primary>ckgoto</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Program Flow Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ckgoto</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>ckgoto</refname>
+    <refpurpose>
+      Transfert conditionnel du contrôle lors des phases d'exécution.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Tranfert conditionnel du contrôle vers l'instruction étiquetée par
+      <emphasis>label</emphasis>, lors des phases d'exécution seulement.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>ckgoto</command> condition, label</synopsis>
+
+    <para>
+      où <emphasis>label</emphasis> se trouve dans le même bloc d'instrument et n'est
+      pas une expression, et où <emphasis>condition</emphasis> utilise un des opérateurs
+      relationnels (<emphasis>&lt;</emphasis>, <emphasis>=</emphasis>,
+      <emphasis>&lt;=</emphasis>, <emphasis>==</emphasis>, <emphasis>!=</emphasis>)
+      (et <emphasis>=</emphasis> par commodité, voir aussi
+      <link linkend="ControlConditional"><citetitle>Valeurs Conditionnelles</citetitle></link>).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode ckgoto. Il utilise le fichier
+      <ulink url="examples/ckgoto.csd"><citetitle>ckgoto.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode ckgoto.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/ckgoto.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
+kval = 0.000000, kfreq = 440.000000
+kval = 0.999732, kfreq = 440.000000
+kval = 1.999639, kfreq = 880.000000</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="cggoto"><citetitle>cggoto</citetitle></link>,
+      <link linkend="cigoto"><citetitle>cigoto</citetitle></link>,
+      <link linkend="cngoto"><citetitle>cngoto</citetitle></link>,
+      <link linkend="goto"><citetitle>goto</citetitle></link>,
+      <link linkend="if"><citetitle>if</citetitle></link>,
+      <link linkend="igoto"><citetitle>igoto</citetitle></link>,
+      <link linkend="tigoto"><citetitle>tigoto</citetitle></link>,
+      <link linkend="timout"><citetitle>timout</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+<!--    <para>Note ajoutée par Jim Aikin.</para>-->
+    <para>Exemple écrit par &namekevin;.</para>
+  </refsect1>
+</refentry>

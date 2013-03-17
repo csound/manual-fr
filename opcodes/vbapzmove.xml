@@ -1,0 +1,144 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vbapzmove">
+<indexterm id="IndexVbapzmove"><primary>vbapzmove</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Panning and Spatialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vbapzmove</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vbapzmove</refname>
+    <refpurpose>
+      Ecrit un signal audio multi-canaux dans un tableau ZAK avec des sources
+      virtuelles en mouvement.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ecrit un signal audio multi-canaux dans un tableau ZAK avec des sources
+      virtuelles en mouvement.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>vbapzmove</command> inumchnls, istartndx, asig, idur, ispread, ifldnum, ifld1, \
+      ifld2, [...]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>inumchnls</emphasis> -- nombre de canaux à écrire dans le tableau
+      ZA. Doit être compris entre 2 et 256.
+    </para>
+
+    <para>
+      <emphasis>istartndx</emphasis> -- premier indice ou position à utiliser dans
+      le tableau ZA.
+    </para>
+
+    <para>
+      <emphasis>idur</emphasis> -- durée pendant laquelle le mouvement a lieu.
+    </para>
+
+    <para>
+      <emphasis>ispread</emphasis> -- diffusion de la source virtuelle
+      (de 0 à 100). S'il vaut 0, on a un panoramique d'amplitude conventionnel.
+      Plus <emphasis>ispread</emphasis> augmente et plus le nombre de haut-parleurs
+      utilisés dans le panoramique augmente. S'il vaut 100, le son est appliqué à
+      tous les haut-parleurs.
+    </para>
+
+    <para>
+      <emphasis>ifldnum</emphasis> -- nombre de champs (sa valeur absolue doit
+      être supérieure ou égale à 2). Si <emphasis>ifldnum</emphasis> est positif,
+      le mouvement de la source virtuelle est une ligne brisée spécifiée par les
+      directions données. Chaque transition est exécutée durant un intervalle
+      de même durée. Si <emphasis>ifldnum</emphasis> est négatif, les vélocités
+      angulaires spécifiées sont appliquées à la source virtuelle durant les
+      intervalles de temps spécifiés correspondants (voir ci-dessous).
+    </para>
+
+    <para>
+      <emphasis>ifld1, ifld2, ...</emphasis> -- angles d'azimut ou vélocités
+      angulaires et durées correspondantes des phases du mouvement (voir
+      ci-dessous).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- signal audio à traiter.
+    </para>
+
+    <para>
+      L'opcode <emphasis>vbapzmove</emphasis>  est l'équivalent multi-canaux d'opcodes
+      comme <link linkend="vbap4move"><citetitle>vbap4move</citetitle></link>, travaillant
+      sur <emphasis>inumchnls</emphasis> et utilisant un tableau ZAK en sortie.
+    </para>
+    <warning>
+      <para>
+        Prière de noter que tous les opcodes de panoramique <emphasis>vbap</emphasis>
+        nécessitent une initialisation du système <emphasis>vbap</emphasis> avec
+        <link linkend="vbaplsinit"><citetitle>vbaplsinit</citetitle></link>.
+      </para>
+    </warning>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voir l'entrée sur <link linkend="vbap8move"><citetitle>vbap8move</citetitle></link>
+      pour un exemple d'utilisation des opcodes <emphasis>vbapXmove</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Référence</title>
+    <para>
+      Ville Pulkki: <quote>Virtual Sound Source Positioning Using Vector Base
+      Amplitude Panning</quote> <emphasis>Journal of the Audio Engineering Society</emphasis>,
+      juin 1997, Vol. 45/6, p. 456.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="vbap16"><citetitle>vbap16</citetitle></link>,
+      <link linkend="vbap16move"><citetitle>vbap16move</citetitle></link>,
+      <link linkend="vbap4"><citetitle>vbap4</citetitle></link>,
+      <link linkend="vbap4move"><citetitle>vbap4move</citetitle></link>,
+      <link linkend="vbap8"><citetitle>vbap8</citetitle></link>,
+      <link linkend="vbap8move"><citetitle>vbap8move</citetitle></link>,
+      <link linkend="vbaplsinit"><citetitle>vbaplsinit</citetitle></link>,
+      <link linkend="vbapz"><citetitle>vbapz</citetitle></link>,
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>&namejohn;</member>
+        <member>Université de Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>Mai 2000</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la Version 4.07 de Csound.</para>
+  </refsect1>
+</refentry>

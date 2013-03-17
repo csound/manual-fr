@@ -1,0 +1,137 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.14
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="expsegr">
+<indexterm id="IndexExpsegr"><primary>expsegr</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Linear and Exponential Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>expsegr</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>expsegr</refname>
+    <refpurpose>
+      Trace une suite de segments d'exponentielle entre les points spécifiés avec un segment de
+      relâchement.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Trace une suite de segments d'exponentielle entre les points spécifiés avec un segment de
+      relâchement (fin de l'entretien de la note).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>expsegr</command> ia, idur1, ib [, idur2] [, ic] [...], irel, iz</synopsis>
+
+    <synopsis>kres <command>expsegr</command> ia, idur1, ib [, idur2] [, ic] [...], irel, iz</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ia</emphasis> -- valeur initiale. Zéro est interdit pour les exponentielles.
+    </para>
+
+    <para>
+      <emphasis>ib, ic</emphasis>, etc. -- valeur après <emphasis>dur1</emphasis> secondes, etc.
+      Pour les exponentielles, doivent être différentes de zéro et du même signe que
+      <emphasis>ia</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>idur1</emphasis> -- durée en secondes du premier segment. Avec une valeur nulle ou 
+      négative l'initialisation sera ignorée.
+    </para>
+
+    <para>
+      <emphasis>idur2, idur3</emphasis>, etc. -- durée en secondes des segments suivants. Une valeur
+      nulle ou négative terminera la phase d'initialisation avec le point précédent, permettant
+      au dernier segment défini de continuer durant toute l'exécution. La valeur par défaut est zéro.
+    </para>
+
+    <para>
+      <emphasis>irel, iz</emphasis> -- durée en secondes et valeur finale du segment de relâchement
+      de la note.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Ces unités génèrent des signaux de contrôle ou audio dont les valeurs passent par 2 ou plus
+      points spécifiés. La somme des valeurs <emphasis>dur</emphasis> peut égaler ou non la durée
+      d'exécution de l'instrument : avec une exécution plus courte, la courbe sera tronquée alors
+      qu'avec une exécution plus longue, le dernier segment défini continuera dans la même direction.
+    </para>
+
+    <para>
+      <emphasis>expsegr</emphasis> fait partie des unités <quote>r</quote> de Csound qui contiennent
+      un détecteur de fin de note et une extension de durée pour le relâchement. Quand la fin d'un
+      évènement ou MIDI noteoff est détectée, la durée d'exécution de l'instrument courant est
+      immédiatement allongée de <emphasis>irel</emphasis> secondes, de façon à ce que la valeur
+      <emphasis>iz</emphasis> soit atteinte à la fin de cette période (quelque soit le segment dans
+      lequel se trouvait l'unité). Les unités <quote>r</quote> peuvent aussi être modifiées par les
+      vélocités nulles provoquant un message MIDI noteoff. S'il y a plusieurs extensions de durée
+      dans un instrument, c'est la plus longue qui sera choisie.
+    </para>
+    <para>
+      On peut utiliser d'autres enveloppes préfabriquées pour lancer un segment de relâchement à
+      la réception d'un message note off, comme
+      <link linkend="linsegr"><citetitle>linsegr</citetitle></link> et
+      <link linkend="madsr"><citetitle>madsr</citetitle></link>, ou bien l'on peut construire des
+      enveloppes plus complexes au moyen de
+      <link linkend="xtratim"><citetitle>xtratim</citetitle></link> et de
+      <link linkend="release"><citetitle>release</citetitle></link>. Noter que qu'il n'est pas
+      nécessaire d'utiliser <link linkend="xtratim"><citetitle>xtratim</citetitle></link> avec
+      <emphasis>expsegr</emphasis>, car la durée est allongée automatiquement.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode expsegr. Il utilise le fichier
+      <ulink url="examples/expsegr.csd"><citetitle>expsegr.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode expsegr.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/expsegr.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="linsegr"><citetitle>linsegr</citetitle></link>,
+      <link linkend="linenr"><citetitle>expsegr</citetitle></link>,
+      <link linkend="envlpxr"><citetitle>envlpxr</citetitle></link>,
+      <link linkend="mxadsr"><citetitle>mxadsr</citetitle></link>,
+      <link linkend="madsr"><citetitle>madsr</citetitle></link>
+      <link linkend="expon"><citetitle>expon</citetitle></link>,
+      <link linkend="expseg"><citetitle>expseg</citetitle></link>,
+      <link linkend="expsega"><citetitle>expsega</citetitle></link>,
+      <link linkend="xtratim"><citetitle>xtratim</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namebarry;</para>
+    <para>Nouveau dans Csound 3.47</para>
+  </refsect1>
+</refentry>

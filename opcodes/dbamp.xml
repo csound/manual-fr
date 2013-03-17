@@ -1,0 +1,67 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="dbamp">
+<indexterm id="IndexDbamp"><primary>dbamp</primary></indexterm>
+  <refentryinfo><title>Mathematical Operations:Amplitude Functions</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>dbamp</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>dbamp</refname>
+
+    <refpurpose>
+      Retourne l'équivalent en décibel de l'amplitude <emphasis>x</emphasis>.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne l'équivalent en décibel de l'amplitude <emphasis>x</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>dbamp</command>(x)  (arguments de taux-i ou -k seulement)</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode dbamp. Il utilise le fichier
+      <ulink url="examples/dbamp.csd"><citetitle>dbamp.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode dbamp.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/dbamp.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie contiendra ces lignes :
+      <screen>instr 1:  idb = 40.000
+      instr 1:  idb = 60
+      instr 1:  idb = 80
+      instr 1:  idb = 86.021</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ampdb"><citetitle>ampdb</citetitle></link>, 
+      <link linkend="ampdbfs"><citetitle>ampdbfs</citetitle></link>, 
+      <link linkend="dbfsamp"><citetitle>dbfsamp</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

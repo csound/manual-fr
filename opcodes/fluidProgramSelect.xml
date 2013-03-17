@@ -1,0 +1,78 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="fluidProgramSelect">
+<indexterm id="IndexFluidProgramSelect"><primary>fluidProgramSelect</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Sample Playback</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>fluidProgramSelect</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>fluidProgramSelect</refname>
+    <refpurpose>
+      Affecte un preset d'un SoundFont à un canal d'un fluidEngine.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>fluidProgramSelect</command> ienginenum, ichannelnum, isfnum, ibanknum, ipresetnum</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Description</title> 
+    <para>Affecte un preset d'un SoundFont à un canal d'un fluidEngine.
+    </para>  
+    </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para><emphasis>ienginenum</emphasis> -- numéro du moteur affecté par fluidEngine</para>
+    <para><emphasis>ichannelnum</emphasis> -- numéro du canal auquel affecter le preset dans le fluidEngine
+      donné</para>
+    <para><emphasis>isfnum</emphasis> -- numéro du SoundFont duquel le preset est issu</para>
+    <para><emphasis>ibanknum</emphasis> -- numéro de la banque dans le SoundFont de laquelle le preset est
+      issu</para>
+    <para><emphasis>ipresetnum</emphasis> -- numéro du preset à affecter</para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode fluidProgramSelect. Il utilise le fichier
+      <ulink url="examples/fluidProgramSelect.csd"><citetitle>fluidProgramSelect.csd</citetitle></ulink>.
+    </para>
+    <xi:include href="examples-xml/fluidProgramSelect.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <para>
+      Voici un autre exemple de l'opcode fluidProgramSelect écrit par Istvan Varga.
+      Il utilise le fichier
+      <ulink url="examples/fluidcomplex.csd"><citetitle>fluidcomplex.csd</citetitle></ulink>.
+    </para>
+    <xi:include href="examples-xml/fluidcomplex.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </refsect1>
+  
+  <refsect1>
+    <title>Voir aussi</title>
+    <para><link linkend="fluidEngine"><citetitle>fluidEngine</citetitle></link>,
+    <link linkend="fluidNote"><citetitle>fluidNote</citetitle></link>,
+    <link linkend="fluidLoad"><citetitle>fluidLoad</citetitle></link></para>
+    <para>Plus d'information sur soundfonts dans les Floss Manuals :
+      <ulink url="http://en.flossmanuals.net/csound/ch048_d-reading-midi-files">
+      <citetitle>http://en.flossmanuals.net/csound/ch048_d-reading-midi-files</citetitle>
+      </ulink></para>
+    <para>D'autres informations sur soundfonts dans Wikipedia :
+    <ulink url="http://en.wikipedia.org/wiki/Soundfont"><citetitle>http://en.wikipedia.org/wiki/Soundfont</citetitle></ulink></para>   
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>Michael Gogins (gogins@pipeline.com), Steven Yi. 
+    Merci à Peter Hanappe pour Fluidsynth.</para>
+  </refsect1>
+</refentry>

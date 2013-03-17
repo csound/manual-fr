@@ -1,0 +1,120 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="setctrl">
+<indexterm id="IndexSetctrl"><primary>setctrl</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>setctrl</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>setctrl</refname>
+    <refpurpose>
+      Contrôleurs réglettes configurables pour une utilisation en .
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Contrôleurs réglettes configurables pour une utilisation en .
+      Nécessite Winsound ou TCL/TK. <emphasis>setctrl</emphasis> donne à une
+      réglette une valeur spécifique ou bien fixe sa valeur minimale ou
+      maximale.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>setctrl</command> inum, ival, itype</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      Noter que cet opcode n'est pas disponible sous Windows à cause de
+      l'implémentation des tuyaux sur ce système.
+    </para>
+     <para>
+      <emphasis>inum</emphasis> -- numéro de la réglette à changer
+    </para>
+
+    <para>
+      <emphasis>ival</emphasis> -- valeur à envoyer à la réglette
+    </para>
+
+    <para>
+      <emphasis>itype</emphasis> -- type de la valeur envoyée à la réglette, comme suit :
+      <itemizedlist>
+        <listitem><para>1 -- fixe la valeur courante. La valeur initiale est 0.</para></listitem>
+        <listitem><para>2 -- fixe la valeur minimale. 0 par défaut.</para></listitem>
+        <listitem><para>3 -- fixe la valeur maximale. 127 par défaut.</para></listitem>
+        <listitem><para>4 -- fixe l'étiquette. (Nouveau dans la version 4.09 de Csound)</para></listitem>
+      </itemizedlist>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      L'appel de <emphasis>setctrl</emphasis> va créer une nouvelle réglette à
+      l'écran. Il n'y a pas de limite théorique au nombre de réglettes. Winsound
+      et TCL/TK n'utilisent que des entiers pour les valeurs de réglette, si bien
+      qu'il peut être nécessaire de re-échelonner les valeurs. Parce que les interfaces
+      graphiques passent habituellement leurs valeurs à une fréquence assez lente,
+      il peut être sage de traiter la sortie du contrôleur avec
+      <emphasis>port</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode setctrl. Il utilise le fichier
+      <ulink url="examples/setctrl.csd"><citetitle>setctrl.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode setctrl.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/setctrl.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
+ i1    38.00000
+ i1    40.00000
+ i1    43.00000</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="control"><citetitle>control</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Université de Bath, Codemist. Ltd.</member>
+        <member>Bath, UK</member>
+        <member>Mai 2000</member>
+      </simplelist>
+    </para>
+    <para>Exemple écrit par &namekevin;.</para>
+
+    <para>Nouveau dans la version 4.06 de Csound.</para>
+  </refsect1>
+</refentry>

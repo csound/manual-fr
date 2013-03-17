@@ -1,0 +1,68 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="JackoOn">
+  <indexterm id="IndexJackoOn"><primary>JackoOn</primary></indexterm>
+  <refentryinfo><title>Jacko Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>JackoOn</refentrytitle>
+  </refmeta>
+  
+  <refnamediv>
+    <refname>JackoOn</refname>
+    <refpurpose>
+      Active ou désactive tous les ports de Jack.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Dans l'en-tête de l'orchestre, une fois que toutes les connexions Jack ont
+      été créées, active ou désactive tous les opcodes d'entrée et de sortie Jack
+      dans cette instance de Csound pour lire ou écrire des données.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>JackoOn </command>[iactive] </synopsis>
+  </refsect1>
+  
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iactive</emphasis> -- Un indicateur qui active les ports (par
+      défaut) ou les déscative.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="JackoInit"><citetitle>JackoInit</citetitle></link>, 
+      <link linkend="JackoFreewheel"><citetitle>JackoFreewheel</citetitle></link>, 
+      <link linkend="JackoAudioInConnect"><citetitle>JackoAudioInConnect</citetitle></link>, 
+      <link linkend="JackoAudioOutConnect"><citetitle>JackoAudioOutConnect</citetitle></link>, 
+      <link linkend="JackoMidiInConnect"><citetitle>JackoMidiInConnect</citetitle></link>, 
+      <link linkend="JackoMidiOutConnect"><citetitle>JackoMidiOutConnect</citetitle></link>, 
+      <link linkend="JackoAudioIn"><citetitle>JackoAudioIn</citetitle></link>, 
+      <link linkend="JackoAudioOut"><citetitle>JackoAudioOut</citetitle></link>, 
+      <link linkend="JackoMidiOut"><citetitle>JackoMidiOut</citetitle></link>, 
+      <link linkend="JackoNoteOut"><citetitle>JackoNoteOut</citetitle></link>, 
+      <link linkend="JackoTransport"><citetitle>JackoTransport</citetitle></link>.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par : &namemichael; 2010</para>
+  </refsect1>
+  
+</refentry>

@@ -1,0 +1,76 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.3
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="GEN31">
+      <indexterm id="IndexGEN31"><primary>GEN31</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN31</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>GEN31</refname>
+    <refpurpose>
+      Mélange n'importe quelle forme d'onde définie dans une table existante.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cette routine est semblabe à <link linkend="GEN09">GEN09</link>, mais permet le mélange de
+      n'importe quelle forme d'onde définie dans une table existante.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>f</command> # date taille  31  src  pna ampa phsa  pnb ampb phsb  ...</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>src</emphasis> -- numéro de la table source
+    </para>
+
+    <para>
+      <emphasis>pna, pnb, ...</emphasis> -- numéro de partiel, doit être un entier positif
+    </para>
+
+    <para>
+      <emphasis>ampa, ampb, ...</emphasis> -- échelle d'amplitude
+    </para>
+
+    <para>
+      <emphasis>phsa, phsb, ...</emphasis> -- phase initiale (0 à 1)
+    </para>
+
+    <para>
+      <emphasis>GEN31</emphasis> ne supporte pas les tables avec un point de garde (c'est-à-dire une taille
+      de table = puissance-de-deux + 1). Bien que de telles tables fonctionnent aussi bien en entrée
+      qu'en sortie, lors de la lecture d'une table source, le point de garde est ignoré, et lors de
+      l'écriture de la table en sortie, le point de garde est simplement copié du premier échantillon
+      (index de table = 0).
+    </para>
+
+    <para>
+      La raison de cette limitation est que <emphasis>GEN31</emphasis> utilise la TFR, qui nécessite que la
+      taille de table soit une puissance de deux. <link linkend="GEN32"><citetitle>GEN32</citetitle></link>
+      permet l'utilisation de l'interpolation linéaire pour le rééchantillonage et le déphasage, ce qui rend
+      possible l'utilisation de n'importe quelle taille de table (cependant, pour les partiels calculés par
+      TFR, la limitation de la puissance de deux existe toujours).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &nameistvan;</para>
+    <para>Nouveau dans la version 4.15</para>
+  </refsect1>
+</refentry>

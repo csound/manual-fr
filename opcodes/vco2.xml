@@ -1,0 +1,202 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.14
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vco2">
+<indexterm id="IndexVco2"><primary>vco2</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Dynamic Spectrum Oscillators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vco2</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>vco2</refname>
+    <refpurpose>
+      Implémentation d'un oscillateur à bande de fréquence limitée qui utilise des tables pré-calculées.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>vco2</emphasis> est semblable à <link linkend="vco"><citetitle>vco</citetitle></link>.
+      Mais l'implémentation utilise des tables pré-calculées de formes d'onde à bande de fréquence
+      limitée (voir aussi <link linkend="GEN30"><citetitle>GEN30</citetitle></link>) plutôt que d'intégrer
+      des impulsions. Cet opcode peut être plus rapide que <emphasis>vco</emphasis> (particulièrement
+      lors de l'utilisation d'un faible taux de contrôle) et il permet également une meilleure qualité
+      sonore. De plus, il y a plus de formes d'onde et la phase de l'oscillateur peut être modulée au
+      taux-k. Il a pour inconvénient une utilisation plus importante de la mémoire. Pour plus de détails
+      sur les tables de <emphasis>vco2</emphasis>, voir aussi <link linkend="vco2init"><citetitle>vco2init</citetitle></link>
+      et <link linkend="vco2ft"><citetitle>vco2ft</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>vco2</command> kamp, kcps [, imode] [, kpw] [, kphs] [, inyx]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>imode</emphasis> (facultatif, par défaut 0) -- somme des valeurs représentant la forme d'onde
+      et ses valeurs de contrôle.
+    </para>
+
+    <para>
+      On peut utiliser ces valeurs pour <emphasis>imode</emphasis> :
+      <itemizedlist>
+        <listitem><para>16 : active le contrôle de la phase au taux-k (s'il est positionné,
+          <emphasis>kphs</emphasis> est un paramètre de taux-k nécessaire pour permettre la modulation
+          de la phase)</para></listitem>
+        <listitem><para>1 : ignorer l'initialisation</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      On peut utiliser exactement une seule de ces valeurs de <emphasis>imode</emphasis> pour choisir la
+      forme d'onde à générer :
+      <itemizedlist>
+        <listitem><para>14 : forme d'onde -1 définie par l'utilisateur (nécessite l'utilisation de 
+          l'opcode <link linkend="vco2init"><citetitle>vco2init</citetitle></link>)</para></listitem>
+        <listitem><para>12 : triangle (pas de rampe, plus rapide)</para></listitem>
+        <listitem><para>10 : onde carrée (pas de PWM, plus rapide)</para></listitem>
+        <listitem><para>8 : 4 * x * (1 - x) (c'est-à-dire l'intégration d'une dent de scie)</para></listitem>
+        <listitem><para>6 : pulsation (non normalisée)</para></listitem>
+        <listitem><para>4 : dent de scie / triangle / rampe</para></listitem>
+        <listitem><para>2 : carrée / PWM</para></listitem>
+        <listitem><para>0 : dent de scie</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+        La valeur par défaut de <emphasis>imode</emphasis> est zéro, ce qui signifie une onde en dent de
+        scie sans contrôle de la phase au taux-k.
+    </para>
+
+    <para>
+      <emphasis>inyx</emphasis> (facultatif, par défaut 0,5) -- largeur de bande de l'onde générée
+      exprimée en pourcentage (0 à 1) du taux d'échantillonnage. L'intervalle attendu va de 0 à 0,5
+      (c'est-à-dire jusqu'à <link linkend="sr"><citetitle>sr</citetitle></link>/2), les autres valeurs
+      étant limitées à cet intervalle.
+    </para>
+
+    <para>
+      En fixant <emphasis>inyx</emphasis> à 0,25 (<emphasis>sr</emphasis>/4), ou à 0,3333
+      (<emphasis>sr</emphasis>/3), on peut produire un son plus <quote>gras</quote> dans certains cas,
+      bien que la qualité sera probablement réduite.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ares </emphasis> -- le signal audio en sortie.
+    </para>
+
+    <para>
+      <emphasis>kamp</emphasis> -- amplitude. Si <emphasis>imode</emphasis> vaut 6 (pulsation), le
+      niveau de sortie réel peut être bien plus élevé que cette valeur.
+    </para>
+
+    <para>
+      <emphasis>kcps</emphasis> -- fréquence en Hz (doit être dans l'intervalle -<emphasis>sr</emphasis>/2
+      à <emphasis>sr</emphasis>/2).
+    </para>
+
+    <para>
+      <emphasis>kpw</emphasis> (facultatif) -- largeur de pulsation de l'onde carrée
+      (<emphasis>imode</emphasis> = 2) ou caractéristiques de l'onde triangle ou rampe
+      (<emphasis>imode</emphasis> = 4). Il n'est requis que pour ces formes d'onde et il est ignoré dans
+      les autres cas. L'intervalle attendu va de 0 à 1, toutes les autres valeurs y étant ramenées
+      cycliquement.
+    </para>
+
+    <warning>
+      <title>Avertissement</title>
+      <para>
+        <emphasis>kpw</emphasis> ne doit pas être une valeur entière exacte (0 ou 1) lors de la génération
+        d'une onde en dent de scie / triangle / rampe (<emphasis>imode</emphasis> = 4). Dans ce cas,
+        l'intervalle recommandé est d'environ 0,01 à 0,99. Cette limitation n'existe pas pour une forme
+        d'onde carrée/PWM.
+      </para>
+    </warning>
+
+    <para>
+      <emphasis>kphs</emphasis> (facultatif) -- phase de l'oscillateur (en fonction de
+      <emphasis>imode</emphasis>, ce sera un paramètre facultatif de taux-i qui vaut zéro par défaut ou un paramètre
+      obligatoire de taux-k). Comme pour <emphasis>kpw</emphasis>, l'intervalle attendu va de 0 à 1.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        Si l'on utilise un faible taux de contrôle, la largeur de pulsation (<emphasis>kpw</emphasis>)
+        et la modulation de phase (<emphasis>kphs</emphasis>) sont converties en interne en modulation
+        de fréquence. Cela permet un traitement plus rapide et réduit le nombre d'artefacts. Mais dans
+        le cas de notes très longues avec des changements rapides et continus de
+        <emphasis>kpw</emphasis> ou de <emphasis>kphs</emphasis>, la phase peut se décaler par rapport
+        à la valeur voulue. Dans la plupart des cas, l'erreur de phase sera au maximum de 0,037 par heure
+        (en supposant un taux d'échantillonnage de 44100 Hz).
+      </para>
+
+      <para>
+        Ceci pose problème principalement avec la largeur d'impulsion (<emphasis>kpw</emphasis>) par
+        la possible apparition de divers artefacts. En attendant la résolution de ces problèmes dans de
+        futures versions de <emphasis>vco2</emphasis>, les recommandations suivantes peuvent être utiles :
+
+        <itemizedlist>
+          <listitem><para>N'utiliser que des valeurs de <emphasis>kpw</emphasis> dans l'intervalle 0,05
+            à 0,95. (Il y a plus d'artefacts au voisinage des valeurs entières)</para></listitem>
+          <listitem><para>Essayer d'éviter de moduler <emphasis>kpw</emphasis> par des formes d'onde
+            asymétriques telles que l'onde en dent de scie. Il est très peu probable qu'une modulation
+            symétrique relativement lente (&lt;= 20 Hz) (par exemple une onde sinus ou triangle), que
+            des fonctions splines aléatoires (également lentes) ou qu'une pulsation de largeur fixe
+            causent des problèmes de synchronisation.</para></listitem>
+          <listitem><para>Dans certains cas, l'ajout d'un tremblement aléatoire (par exemple, des
+            fonctions spline avec une amplitude d'environ 0,01) à <emphasis>kpw</emphasis> peut aussi
+            résoudre le problème.</para></listitem>
+        </itemizedlist>
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode vco2. Il utilise le fichier
+      <ulink url="examples/vco2.csd"><citetitle>vco2.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode vco2.</title>
+
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/vco2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="vco"><citetitle>vco</citetitle></link>,
+      <link linkend="vco2ft"><citetitle>vco2ft</citetitle></link>,
+      <link linkend="vco2ift"><citetitle>vco2ift</citetitle></link> et
+      <link linkend="vco2init"><citetitle>vco2init</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &nameistvan;</para>
+    <para>Nouveau dans la version 4.22</para>
+  </refsect1>
+</refentry>

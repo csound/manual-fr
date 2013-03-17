@@ -1,0 +1,154 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="randomh">
+<indexterm id="IndexRandomh"><primary>randomh</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Random (Noise) Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>randomh</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>randomh</refname>
+    <refpurpose>
+      Génère des nombres aléatoires dans des limites définies par l'utilisateur et
+      les maintient pendant une certaine durée.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère des nombres aléatoires dans des limites définies par l'utilisateur et
+      les maintient pendant une certaine durée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>randomh</command> kmin, kmax, xcps [,imode] [,ifirstval]</synopsis>
+
+    <synopsis>kres <command>randomh</command> kmin, kmax, kcps [,imode] [,ifirstval]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>imode</emphasis> (facultatif, 0 par défaut) -- mode de génération
+      de la première valeur retournée (voir ci-dessous)
+    </para>
+    
+    <para>
+      <emphasis>ifirstval</emphasis> (facultatif, 0 par défaut) -- première
+      valeur retournée
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kmin</emphasis> -- limite inférieure de l'intervalle
+    </para>
+
+    <para>
+      <emphasis>kmax</emphasis> -- limite supérieure de l'intervalle
+    </para>
+
+    <para>
+      <emphasis>kcps, xcps</emphasis> -- taux de génération des points aléatoires
+    </para>
+
+    <para>
+      L'opcode <emphasis>randomh</emphasis> est semblable à
+      <link linkend="randh"><citetitle>randh</citetitle></link> mais il permet à
+      l'utilisateur de fixer arbitrairement les valeurs du minimum et du maximum.
+    </para>
+    
+    <para>
+      Si <emphasis>imode</emphasis> = 0 (par défaut), la valeur de l'argument
+      <emphasis>kmin</emphasis> est retournée pendant <emphasis>1/kcps</emphasis>
+      (resp. <emphasis>1/xcps</emphasis>) secondes au début de la note. Puis, le
+      processus normal continue avec la génération et le maintien d'un nouveau
+      nombre aléatoire toutes les <emphasis>1/kcps</emphasis> (resp.
+      <emphasis>1/xcps</emphasis>) secondes.
+    </para>
+    
+    <para>
+      Si <emphasis>imode</emphasis> = 2, la valeur de l'argument
+      <emphasis>ifirstval</emphasis> est retournée pendant <emphasis>1/kcps</emphasis>
+      (resp. <emphasis>1/xcps</emphasis>) secondes au début de la note. Puis, le
+      processus normal continue avec la génération et le maintien d'un nouveau
+      nombre aléatoire toutes les <emphasis>1/kcps</emphasis> (resp.
+      <emphasis>1/xcps</emphasis>) secondes.
+    </para>
+    
+    <para>
+      Si <emphasis>imode</emphasis> = 3, le processus de génération commence avec
+      un nombre aléatoire dès l'initialisation de la note.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode randomh. Il utilise le fichier
+      <ulink url="examples/randomh.csd"><citetitle>randomh.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode randomh.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/randomh.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie incluera des lignes comme celles-ci :
+      <screen>
+Mode: 0
+ i1   220.00000
+ i1   396.26079
+ i1   240.75446
+ i1   364.24577
+    ...
+
+Mode: 2
+ i1   330.00000
+ i1   416.50935
+ i1   356.11619
+ i1   433.59324
+    ...
+
+Mode: 3
+ i1   261.17741
+ i1   402.00891
+ i1   393.86592
+ i1   307.19839
+    ...</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="randh"><citetitle>randh</citetitle></link>,
+      <link linkend="random"><citetitle>random</citetitle></link>,
+      <link linkend="randomi"><citetitle>randomi</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Les arguments <emphasis>imode</emphasis> et <emphasis>ifirstval</emphasis>
+    ont été ajoutés par &namepinot;, en janvier 2011, après une discussion avec
+    Peiman Khosravi sur la liste csnd.</para>
+    <para>Exemple écrit par &namekevin; et adapté pour les nouveaux arguments par
+    &namepinot;.</para>
+  </refsect1>
+</refentry>

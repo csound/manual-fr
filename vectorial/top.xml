@@ -1,0 +1,27 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<chapter id="vectorial">
+  <title>Opcodes Vectoriels</title>
+  <para>
+    La famille des opcodes vectoriels est conçue pour pouvoir traiter des sections de f-table
+    comme des vecteurs pour diverses opérations sur celles-ci.
+  </para>
+<!--  <bridgehead>Auteur</bridgehead>
+  <para>Gabriel Maldonado (A l'origine pour CsoundAV, porté dans Csound5)</para>-->
+
+  &vectorialtables;
+  &vectorialscalar;
+  &vectorialvectorial;
+  &vectorialenvelopeGenerators;
+  &vectoriallimiting;
+  &vectorialdelay;
+  &vectorialrandom;
+
+</chapter>

@@ -1,0 +1,107 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="tablefilteri">
+<indexterm id="IndexTablefilteri"><primary>tablefilteri</primary></indexterm>
+  <refentryinfo><title>Table Control:Models and Emulations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tablefilteri</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>tablefilteri</refname>
+    <refpurpose>
+      Filtre une table source et écrit le résultat dans une table de destination.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      On peut utiliser cet opcode pour filtrer les valeurs de tables de fonction
+      selon certains algorithmes. La sortie filtrée est écrite dans une table de
+      destination et le nombre d'éléments qui ont passé le filtre est retourné.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>inumpassed <command>tablefilteri</command> iouttable, iintatble, imode, iparam</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>inumpassed</emphasis> -- le nombre d'éléments qui ont passé le
+      filtre.
+    </para>
+
+    <para>
+      <emphasis>iouttable</emphasis> -- le numéro de la table contenant les
+      valeurs qui sont passées.
+    </para>
+
+    <para>
+      <emphasis>iintatble</emphasis> -- le numéro de la table à filtrer.
+    </para>
+
+    <para>
+      <emphasis>imode</emphasis> -- mode du filtre :
+      <itemizedlist>
+        <listitem>
+          1 -- teste le poids des dénominateurs des fractions dans la table
+          source. Ne passent que les valeurs de la source qui ont un poids
+          moins lourd que celui du seuil.
+        </listitem>
+        <listitem>
+          2 -- teste le poids des dénominateurs des fractions dans la table
+          source. Ne passent que les valeurs de la source qui ont un poids
+          supérieur ou égal à celui du seuil.
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>iparam</emphasis> -- entier, paramètre de seuil pour le filtre.
+      Cela signifie que les dénominateurs dont le poids est plus lourd que
+      celui de ce seuil ne passent pas à travers le filtre. Le poids d'un
+      entier est calculé au moyen de la fonction de Clarence Barlow
+      d'indigestibilité d'un nombre. Selon cette fonction, les grands nombres
+      premiers contribuent à un accroissement du poids de tout nombre entier
+      naturel qu'ils divisent. L'ordre des 16 premiers entiers selon leur
+      indigestibilité est : 1, 2, 4, 3, 8, 6, 16, 12, 9, 5, 10, 15, 7, 14.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode tablefilteri. Il utilise le fichier
+      <ulink url="examples/tablefilter.csd"><citetitle>tablefilter.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode tablefilteri.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/tablefilter.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Georg Boenn </member>
+        <member>Université de Glamorgan, UK</member>
+      </simplelist>
+    </para>
+    <para>New dans la version 5.13 de Csound.</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,27 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.5
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="ControlClockctl">
+  <title>Contrôle d'horloge</title>
+
+  <para>
+    Les opcodes pour démarrer et arrêter les horloges internes sont :
+    <itemizedlist>
+      <listitem><para><link linkend="clockoff"><citetitle>clockoff</citetitle></link></para></listitem>
+      <listitem><para><link linkend="clockon"><citetitle>clockon</citetitle></link></para></listitem>
+    </itemizedlist>
+  </para>
+  <para>
+    Ces horloges comptent le temps CPU. On dispose de 32 horloges indépendantes. On peut utiliser l'opcode
+    <link linkend="readclock"><citetitle>readclock</citetitle></link> pour lire les valeurs courantes d'une
+    horloge. Voir <link linkend="ControlTimeread"><citetitle>Lecture du Temps</citetitle></link> pour d'autres
+    opcodes de chronométrage.
+  </para>
+
+</section>

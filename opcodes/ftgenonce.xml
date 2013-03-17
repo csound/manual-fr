@@ -1,0 +1,117 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ftgenonce">
+  <indexterm id="IndexFtgenonce"><primary>ftgenonce</primary></indexterm>
+  <refentryinfo><title>Signal Flow Graph Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ftgenonce</refentrytitle>
+  </refmeta>
+  
+  <refnamediv>
+    <refname>ftgenonce</refname>
+    <refpurpose>
+      Génère une table de fonction depuis la définition d'un instrument, sans
+      duplication de données.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Permet la création de tables de fonction entièrement à l'intérieur des
+      définitions d'instrument, sans duplication de données.
+    </para>
+    
+    <para>
+      L'opcode <emphasis>ftgenonce</emphasis> est conçu pour simplifier l'écriture
+      des définitions d'instrument qui peuvent être réutilisées dans différents
+      orchestres par un simple <emphasis>#include</emphasis> qui les insère dans
+      un instrument. Il n'est pas nécessaire de définir les tables de fonction dans
+      la partition ou dans l'en-tête de l'orchestre.
+    </para>
+    
+    <para>
+      L'opcode <emphasis>ftgenonce</emphasis> est semblable à <emphasis>ftgentmp</emphasis>
+      et possède les mêmes arguments. Cependant, les tables de fonctions ne sont
+      ni dupliquées ni effacées. Au lieu de cela, tous les arguments de l'opcode
+      sont assemblés pour former une clé d'accès à une table qui
+      pointe vers le numéro de la table de fonction. Ainsi, chaque invocation de
+      <emphasis>ftgenonce</emphasis> avec les mêmes arguments reçoit la même
+      instance des données de la table de fonction. Chaque changement de valeur
+      d'un des arguments de <emphasis>ftgenonce</emphasis> provoque la création
+      d'une nouvelle table de fonction.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ifno <command>ftgenonce</command> ip1dummy, ip2dummy, isize, igen, iarga, iargb, ...</synopsis>
+  </refsect1>
+  
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifno</emphasis> -- un numéro de table automatiquement assigné.
+    </para>
+    <para>
+      <emphasis>ip1</emphasis> -- le numéro de la table à générer ou 0 si le
+      numéro doit être assigné.
+    </para>
+    <para>  
+      <emphasis>ip2dummy</emphasis> -- ignoré.
+    </para>
+    <para>
+      <emphasis>isize</emphasis> -- taille de la table. Correspond au p3 de
+      l'<emphasis>instruction f</emphasis> de partition.
+    </para>
+    <para>
+      <emphasis>igen</emphasis> -- routine <emphasis>GEN</emphasis> de la table
+      de fonction. Correspond au p4 de l'<emphasis>instruction f</emphasis> de
+      partition.
+    </para>
+    <para>
+      <emphasis>iarga, iargb, ...</emphasis> -- arguments de la table de fonction.
+      Correspondent de p5 à p<emphasis>n</emphasis> de
+      l'<emphasis>instruction f</emphasis> de partition.
+    </para>
+    <note>
+      <para>A l'origine, Csound était conçu pour ne supporter que les tables dont
+      la taille était une puissance de deux. Bien que ceci ait changé dans les
+      versions récentes (on peut utiliser n'importe quelle taille en donnant un
+      nombre négatif), de nombreux opcodes ne les accepteront pas.</para>
+    </note>
+  </refsect1>
+  
+<!--  <refsect1>
+    <title>Exécution</title>
+  </refsect1>-->
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode ftgenonce. Il utilise le fichier
+      <ulink url="examples/ftgenonce.csd"><citetitle>ftgenonce.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode ftgenonce.</title>
+          <xi:include href="examples-xml/ftgenonce.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namemichael;</member>
+        <member>2009</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

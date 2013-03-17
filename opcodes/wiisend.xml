@@ -1,0 +1,105 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="wiisend">
+<indexterm id="Indexwiisend"><primary>wiisend</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>wiisend</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>wiisend</refname>
+    <refpurpose>
+      Envoie des données à l'un des contrôleurs externes Wiimote de Nintendo.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Envoie des données à l'un des contrôleurs externes Wiimote de Nintendo.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kres <command>wiisend</command> kcontrol, kvalue[, knum]</synopsis>
+  </refsect1>
+ 
+   <refsect1>
+    <title>Initialisation</title>
+    <para>
+      Cet opcode doit être utilisé de pair avec un opcode <emphasis>wiiconnect</emphasis>
+      actif.
+    </para>
+
+  </refsect1>
+
+ <refsect1>
+    <title>Exécution</title>
+    <note>
+      <para>
+        Prière de noter que ces opcodes ne sont actuellement supportés que sous
+        Linux.
+      </para>
+    </note>
+   <para>
+     <emphasis>kcontrol</emphasis> -- le code du contrôle à écrire.
+   </para>
+   <para>
+     <emphasis>kvalue</emphasis> -- la valeur à  écrire dans le contrôle.
+   </para>
+   <para>
+     <emphasis>knum</emphasis> -- le numéro de la Wiimote de destination, qui est par
+     défaut la première (zéro).
+   </para>
+   <para>
+     A chaque accès, un élément de donnée particulier de la Wiimote est écrit. Les
+     contrôles actuellement implémentés sont donnés ci-dessous, avec le nom de macro
+     définit dans le fichier <emphasis>wii_mac</emphasis> :
+   </para>
+   <para>
+     3 (WII_RUMBLE) : démarre ou arrête le vibreur de la Wiimote, selon la valeur
+     de <emphasis>kvalue</emphasis> (0 pour arrêter, 1 pour démarrer).
+   </para>
+   <para>
+     4 (WII_SET_LEDS) : positionne les quatre LEDs de la Wiimote selon la représentation
+     binaire de <emphasis>kvalue</emphasis>.
+   </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voir l'exemple de <link linkend="wiiconnect"><citetitle>wiiconnect</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="wiiconnect"><citetitle>wiiconnect</citetitle></link>,
+      <link linkend="wiidata"><citetitle>wiidata</citetitle></link>,
+      <link linkend="wiirange"><citetitle>wiirange</citetitle></link>,
+     </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Codemist Ltd</member>
+        <member>2009</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.11</para>
+  </refsect1>
+</refentry>

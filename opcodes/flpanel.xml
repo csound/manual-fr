@@ -1,0 +1,185 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.17
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLpanel">
+  <indexterm id="IndexFLpanel"><primary>FLpanel</primary></indexterm>
+  <refentryinfo><title>FLTK:Containers</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLpanel</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLpanel</refname>
+    <refpurpose>
+      Crée une fenêtre contenant des widgets FLTK.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Crée une fenêtre contenant des widgets FLTK.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>FLpanel</command> &quot;label&quot;, iwidth, iheight [, ix] [, iy] [, iborder] [, ikbdcapture] [, iclose]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis><quote>label</quote></emphasis> -- une chaîne entre guillemets
+      contenant un texte fourni par l'utilisateur placé à côté du widget.
+    </para>
+
+    <para>
+      <emphasis>iwidth</emphasis> -- largeur du widget.
+    </para>
+
+    <para>
+      <emphasis>iheight</emphasis> -- hauteur du widget.
+    </para>
+
+    <para>
+      <emphasis>ix</emphasis> (facultatif) -- position horizontale du coin supérieur gauche
+      du conteneur, relative au coin supérieur gauche de la fenêtre correspondante
+      (exprimée en pixels).
+    </para>
+
+    <para>
+      <emphasis>iy</emphasis> (facultatif) -- position verticale du coin supérieur gauche
+      du conteneur, relative au coin supérieur gauche de la fenêtre correspondante
+      (exprimée en pixels).
+    </para>
+
+    <para>
+      <emphasis>iborder</emphasis> (facultatif) -- type de la bordure du conteneur.
+      Il est exprimé par un nombre entier choisi parmi les suivants :
+
+      <itemizedlist>
+        <listitem><para>0 - pas de bordure</para></listitem>
+        <listitem><para>1 - bordure de boîte en creux</para></listitem>
+        <listitem><para>2 - bordure de boîte saillante</para></listitem>
+        <listitem><para>3 - bordure gravée</para></listitem>
+        <listitem><para>4 - bordure en relief</para></listitem>
+        <listitem><para>5 - bordure ligne noire</para></listitem>
+        <listitem><para>6 - mince bordure en creux</para></listitem>
+        <listitem><para>7 - mince bordure saillante</para></listitem>
+      </itemizedlist>
+    </para>
+    <para>
+      <emphasis>ikbdcapture</emphasis> (0 par défaut) -- Si cet indicateur est
+      positionné à 1, les évènements du clavier sont capturés par la fenêtre
+      (pour une utilisation par
+      <link linkend="sensekey"><citetitle>sensekey</citetitle></link> et par
+      <link linkend="FLkeyIn"><citetitle>FLkeyIn</citetitle></link>)
+    </para>
+    <para>
+      <emphasis>iclose</emphasis> (0 par défaut) -- Si cet indicateur contient
+      une valeur différente de 0, le bouton de fermeture de la fenêtre est
+      désactivé, et la fenêtre ne peut pas être fermée directement par
+      l'utilisateur. Elle se fermera à la sortie de Csound.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Les conteneurs sont utiles pour formater l'apparence graphiques des widgets.
+      Le conteneur le plus important est <emphasis>FLpanel</emphasis>, qui crée une
+      fenêtre. Il peut être rempli avec d'autres conteneurs et/ou des valuateurs
+      ou d'autres sortes de widgets.
+    </para>
+
+    <para>
+      Il n'y a pas d'arguments de taux-k dans les conteneurs.
+    </para>
+
+    <para>
+      <emphasis>FLpanel</emphasis> crée une fenêtre. Il doit être suivi d'un
+      opcode <link linkend="FLpanelEnd"><citetitle>FLpanelEnd</citetitle></link>
+      après que tous les widgets qu'il contient aient été déclarés. Par
+      exemple :
+      <informalexample>
+        <programlisting>
+         <emphasis role="opc">FLpanel</emphasis>    "PanelPluto",450,550,100,100 <emphasis role="comment">;***** start of container</emphasis>
+gk1, ih1 <emphasis role="opc">FLslider</emphasis>   "FLslider 1", 500, 1000, 2 ,1, -1, 300,15, 20,50
+gk2, ih2 <emphasis role="opc">FLslider</emphasis>   "FLslider 2", 300, 5000, 2 ,3, -1, 300,15, 20,100
+gk3, ih3 <emphasis role="opc">FLslider</emphasis>   "FLslider 3", 350, 1000, 2 ,5, -1, 300,15, 20,150
+gk4, ih4 <emphasis role="opc">FLslider</emphasis>   "FLslider 4", 250, 5000, 1 ,11,-1, 300,30, 20,200
+         <emphasis role="opc">FLpanelEnd</emphasis> <emphasis role="comment">;***** end of container</emphasis></programlisting>
+      </informalexample>
+
+      produira le résultat suivant :
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/flpanel.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>FLpanel.</phrase>
+        </textobject>
+
+        <caption>
+          <para>FLpanel.</para>
+        </caption>
+      </mediaobject>
+    </para>
+    <para>
+      Si l'indicateur <emphasis>ikbdcapture</emphasis> est positionné, la fenêtre
+      capture les évènements du clavier et les envoie à
+      <link linkend="sensekey"><citetitle>sensekey</citetitle></link>. Cet
+      indicateur modifie le comportement de
+      <link linkend="sensekey"><citetitle>sensekey</citetitle></link>, et lui
+      fait recevoir les évènements depuis la fenêtre FLTK au lieu de stdin.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode FLpanel. Il utilise le fichier
+      <ulink url="examples/FLpanel.csd"><citetitle>FLpanel.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode FLpanel.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/FLpanel.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="FLgroup"><citetitle>FLgroup</citetitle></link>, 
+      <link linkend="FLgroupEnd"><citetitle>FLgroupEnd</citetitle></link>, 
+      <link linkend="FLpack"><citetitle>FLpack</citetitle></link>, 
+      <link linkend="FLpackEnd"><citetitle>FLpackEnd</citetitle></link>, 
+      <link linkend="FLpanelEnd"><citetitle>FLpanelEnd</citetitle></link>, 
+      <link linkend="FLscroll"><citetitle>FLscroll</citetitle></link>, 
+      <link linkend="FLscrollEnd"><citetitle>FLscrollEnd</citetitle></link>, 
+      <link linkend="FLtabs"><citetitle>FLtabs</citetitle></link>, 
+      <link linkend="FLtabsEnd"><citetitle>FLtabsEnd</citetitle></link>, 
+      <link linkend="sensekey"><citetitle>sensekey</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.22</para>
+    <para>Exemple écrit par Iain McCurdy, édité par &namekevin;.</para>
+  </refsect1>
+</refentry>

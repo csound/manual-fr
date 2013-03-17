@@ -1,0 +1,133 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vdelayxq">
+<indexterm id="IndexVdelayxq"><primary>vdelayxq</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Delay</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vdelayxq</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vdelayxq</refname>
+    <refpurpose>
+      Un opcode de délai variable sur 4 canaux avec interpolation de grande qualité.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Un opcode de délai variable sur 4 canaux avec interpolation de grande qualité.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aout1, aout2, aout3, aout4 <command>vdelayxq</command> ain1, ain2, ain3, ain4, adl, imd, iws [, ist]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>imd</emphasis> -- durée maximale du délai (en secondes).
+    </para>
+
+    <para>
+      <emphasis>iws</emphasis> -- taille de la fenêtre d'interpolation (voir ci-dessous).
+    </para>
+
+    <para>
+      <emphasis>ist</emphasis> (facultatif) -- l'initialisation est ignorée s'il est
+      différent de zéro.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>aout1, aout2, aout3, aout4</emphasis> -- signaux audio en sortie.
+    </para>
+
+    <para>
+      <emphasis>ain1, ain2, ain3, ain4</emphasis> -- signaux audio en entrée.
+    </para>
+
+    <para>
+      <emphasis>adl</emphasis> -- durée du délai en secondes.
+    </para>
+
+    <para>
+      Cet opcode utilise une interpolation de grande qualité (et peu rapide), qui est
+      bien plus précise que les interpolations linéaire et cubique couramment
+      disponibles. Le paramètre <emphasis>iws</emphasis> fixe le nombre d'échantillons
+      en entrée utilisés pour le calcul d'un échantillon en sortie (les valeurs
+      permises sont des multiples entiers de 4 compris entre 4 et 1024) ; plus les
+      valeurs sont élevées, meilleure est la qualité et plus lent le processus.
+    </para>
+
+    <para>
+      Les opcodes multicanaux (par exemple <emphasis>vdelayxq</emphasis>) permettent
+      de retarder 2 ou 4 variables à la fois (signaux stéréo ou quadro) ; c'est bien
+      plus efficace que d'utiliser un opcode séparé pour chaque canal.
+    </para>
+
+    <note>
+      <title>Notes</title>
+      <para>
+        <itemizedlist>
+          <listitem><para>La durée du délai est mesurée en secondes (à la différence
+          de <link linkend="vdelay"><citetitle>vdelay</citetitle></link> et de
+          <link linkend="vdelay3"><citetitle>vdelay3</citetitle></link>), et doit
+          être de taux-a.</para></listitem>
+          <listitem><para>Le délai minimum autorisé est de <emphasis>iws</emphasis>/2
+          échantillons.</para></listitem>
+          <listitem><para>Il est permis d'utiliser les mêmes variables en entrée et
+          en sortie dans ces opcodes.</para></listitem>
+          <listitem><para>Dans <emphasis>vdelayxw*</emphasis>, le changement de la
+          durée du délai à des effets sur le volume de sortie :
+          <literallayout>a = 1 / (1 + dt)</literallayout> où a est le gain en sortie
+          et dt est la valeur du changement du délai par seconde.</para></listitem>
+          <listitem><para>Ces opcodes sont plus adaptés à la version de Csound
+          en double précision.</para></listitem>
+        </itemizedlist>
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode vdelayxq. Il utilise le fichier
+      <ulink url="examples/vdelayxq.csd"><citetitle>vdelayxq.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode vdelayxq.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/vdelayxq.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Deux points importants ici. D'abord, la valeur du retard doit toujours être
+      positive. Ensuite, même si la valeur du retard peut être contrôlée au taux-k,
+      il n'est pas prudent d'agir ainsi, car des changements de durée soudains
+      provoqueront des clics.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="vdelayx"><citetitle>vdelayx</citetitle></link>,
+      <link linkend="vdelayxs"><citetitle>vdelayxs</citetitle></link>,
+      <link linkend="vdelayxw"><citetitle>vdelayxw</citetitle></link>,
+      <link linkend="vdelayxwq"><citetitle>vdelayxwq</citetitle></link>,
+      <link linkend="vdelayxws"><citetitle>vdelayxws</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

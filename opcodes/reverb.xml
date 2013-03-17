@@ -1,0 +1,120 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="reverb">
+<indexterm id="IndexReverb"><primary>reverb</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Reverberation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>reverb</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>reverb</refname>
+    <refpurpose>
+      Réverbère un signal d'entrée avec une réponse en fréquence <quote>de lieu naturel</quote>.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Réverbère un signal d'entrée avec une réponse en fréquence <quote>de lieu naturel</quote>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>reverb</command> asig, krvt [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iskip</emphasis> (facultatif, 0 par défaut) -- état initial de
+      l'espace de données de la boucle de retard (cf.
+      <link linkend="reson"><citetitle>reson</citetitle></link>). La valeur par
+      défaut est 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>krvt</emphasis> -- la durée de réverbération (définie comme le
+      temps en secondes pris par un signal pour décroitre à 1/1000 ou 60 dB de
+      son amplitude originale).
+    </para>
+
+    <para>
+      Une unité <emphasis>reverb</emphasis> standard est composée de quatre filtres
+      en peigne <link linkend="comb"><citetitle>comb</citetitle></link> en parallèle
+      suivis de deux unités <link linkend="alpass"><citetitle>alpass</citetitle></link>
+      en série. Les durées de boucle sont réglées pour une <quote>réponse de lieu
+      naturel</quote> optimale. Les besoins en mémoire pour cette unité ne sont
+      proportionnels qu'au taux d'échantillonnage, chaque unité ayant besoin
+      d'approximativement 3K mots pour chaque 10 KC. Les unités
+      <link linkend="comb"><citetitle>comb</citetitle></link>,
+      <link linkend="alpass"><citetitle>alpass</citetitle></link>,
+      <link linkend="delay"><citetitle>delay</citetitle></link>,
+      <link linkend="tone"><citetitle>tone</citetitle></link>
+      et d'autres unités de Csound permettent d'expérimenter sur des
+      conceptions alternatives de réverbération.
+    </para>
+
+    <para>
+      Comme la sortie de la <emphasis>reverb</emphasis> standard n'apparait qu'avec
+      un retard d'environ 1/20 seconde, et souvent avec moins de trois-quarts de
+      la puissance originale, il est normal d'envoyer en sortie à la fois la
+      source et le signal réverbéré. Si <emphasis>krvt</emphasis> est fixé par
+      inadvertance à un nombre non positif, il sera automatiquement réinitialisé
+      à 0.01. (Nouveau dans la version 4.07 de Csound.) De plus, comme le son
+      réverbéré persiste longtemps après l'arrêt de la source, il est normal de
+      mettre <emphasis>reverb</emphasis> dans un instrument séparé auquel le
+      son est transmis via une <emphasis>variable globale</emphasis>, et de laisser
+      cet instrument actif durant toute l'exécution.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode reverb. Il utilise le fichier
+      <ulink url="examples/reverb.csd"><citetitle>reverb.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode reverb.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/reverb.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="alpass"><citetitle>alpass</citetitle></link>,
+      <link linkend="comb"><citetitle>comb</citetitle></link>,
+      <link linkend="valpass"><citetitle>valpass</citetitle></link>,
+      <link linkend="vcomb"><citetitle>vcomb</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : William <quote>Pete</quote> Moss</member>
+        <member>Université du Texas à Austin</member>
+        <member>Austin, Texas USA</member>
+        <member>Janvier 2002</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

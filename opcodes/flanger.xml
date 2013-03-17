@@ -1,0 +1,109 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.14
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="flanger">
+<indexterm id="IndexFlanger"><primary>flanger</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Special Effects</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>flanger</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>flanger</refname>
+    <refpurpose>
+      Un flanger contrôlé par l'utilisateur.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Un flanger contrôlé par l'utilisateur.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>flanger</command> asig, adel, kfeedback [, imaxd]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>imaxd</emphasis>(facultatif) -- délai maximum en secondes
+      (nécessaire pour l'allocation initiale de mémoire)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- signal d"entrée
+    </para>
+
+    <para>
+      <emphasis>adel</emphasis> -- délai en secondes
+    </para>
+
+    <para>
+      <emphasis>kfeedback</emphasis> -- taux de rétroaction (en utilisation
+      normale, ne doit pas dépasser 1, même si des valeurs supérieures sont
+      permises)
+    </para>
+
+    <para>
+      Cette unité est utile pour générer des chorus et des flangers. Le délai
+      doit être varié au taux-a en connectant <emphasis>adel</emphasis> à la
+      sortie d'un oscillateur. De plus, la rétroaction peut varier au taux-k.
+      Cet opcode est implémenté de façon à ce que <emphasis>kr</emphasis> puisse
+      être différent de <emphasis>sr</emphasis> (sinon le délai ne pourrait pas
+      être inférieur à <emphasis>ksmps</emphasis>) ce qui facilite l'exécution en
+      temps réel. Cette unité ressemble beaucoup à
+      <link linkend="wguide1"><citetitle>wguide1</citetitle></link>, la seule
+      différence étant que <emphasis>flanger</emphasis> n'a pas de filtre
+      passe-bas.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode flanger. Il utilise le fichier
+      <ulink url="examples/flanger.csd"><citetitle>flanger.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode flanger.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/flanger.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      Plus d'informatioin sur le flanger sur Wikipedia :
+      <ulink url="http://en.wikipedia.org/wiki/Flanger"><citetitle>http://en.wikipedia.org/wiki/Flanger</citetitle></ulink>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+      </simplelist>
+    </para>
+    <para>Exemple écrit par &namekevin;.</para>
+
+    <para>Nouveau dans la version 3.49 de Csound</para>
+  </refsect1>
+</refentry>

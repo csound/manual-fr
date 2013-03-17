@@ -1,0 +1,130 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="STKShakers">
+  <indexterm id="IndexStkshakers"><primary>STKShakers</primary></indexterm>
+  <refentryinfo><title>Signal Generators:STK Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>STKShakers</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>STKShakers</refname>
+    <refpurpose>
+      STKShakers simule des sons environnementaux de collisions entre de multiples
+      objets indépendants produisant des sons.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>STKShakers</emphasis> constitue un ensemble d'instruments PhISEM
+      et PhOLIES : 
+      PhISEM (Physically Inspired Stochastic Event Modeling = modélisation
+      physique inspirée d'évènements aléatoires) est une approche algorithmique
+      de simulation de collisions entre de multiples objets indépendants
+      produisant des sons. On peut simuler des maracas, un chekeré, une cabasa,
+      un carillon en bambou, des gouttes d'eau, un tambourin, des grelots et un
+      güiro. Voir
+      <ulink url="http://soundlab.cs.princeton.edu/research/controllers/shakers/">
+      <citetitle>Shaker Controllers to control PhISEM</citetitle></ulink>.
+      PhOLIES (Physically-Oriented Library of Imitated Environmental Sounds =
+      bibliothèque physiquement orientée d'imitation de sons environnementaux)
+      est une approche similaire pour la synthèse de sons environnementaux. Elle
+      simule des petites branches qui se brisent, de la neige qui crisse (ou pas),
+      une déchirure, du papier de verre, etc...
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>asignal <command>STKShakers</command> ifrequency, iamplitude, [kenerg, kv1[, kdecay, kv2[, kshake, kv3[, knum, kv4[, kres, kv5[, kinstr, kv6]]]]]]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifrequency</emphasis> -- Fréquence de la note jouée, en Hz.
+    </para>
+   
+    <para>
+      <emphasis>iamplitude</emphasis> -- Amplitude de la note jouée (entre 0 et 1).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+<para><emphasis>kenerg</emphasis> -- contrôleur 2, énergie des secousses. kv1 compris entre 0 et 127.</para>
+<para><emphasis>kdecay</emphasis> -- contrôleur 4, décroissance du système. kv2 compris entre 0 et 127.</para>
+<para><emphasis>kshake</emphasis> -- contrôleur 128, énergie des secousses. kv3 compris entre 0 et 127.</para>
+<para><emphasis>knum</emphasis> -- contrôleur 11, nombre d'objets. kv4 compris entre 0 et 127.</para>
+<para><emphasis>kres</emphasis> -- contrôleur 1, fréquence de résonance. kv5 compris entre 0 et 127.</para>
+<para><emphasis>kinstr</emphasis> -- contrôleur 1071, sélection de l'instrument
+        (Maracas = 0, Cabasa = 1, Chekeré = 2, Güiro = 3, Gouttes d'eau = 4, 
+        Carillon de bambou= 5, Tambourin = 6, Grelots = 7, Branches = 8, 
+        Crissement = 9, Déchirure = 10, Papier de verre = 11, Canette de Coca = 12, 
+        Mug = 13, Penny + Mug = 14, Pièce de cinq cents + Mug = 15, Pièce de dix
+        cents + Mug = 16, Pièce de vingt-cinq cents + Mug = 17, Franc + Mug = 18,
+        Peso + Mug = 19, Gros galets = 20, Petits galets = 21, Carillon de bambou
+        accordé = 22). kv6 compris entre 0 et 22.</para>
+  </refsect1>
+ 
+    <refsect1>
+    <note>
+      <title>Notes</title>
+      <para>
+        Le code pour cet opcode vient directement de la classe
+        <emphasis>Shakers</emphasis> du Synthesis Toolkit en C++ par Perry R.
+        Cook et Gary P. Scavone. On peut en savoir plus sur les classes STK ici :
+        <ulink url="https://ccrma.stanford.edu/software/stk/classes.html">
+        <citetitle>https://ccrma.stanford.edu/software/stk/classes.html</citetitle>
+        </ulink>
+      </para>
+      <para>
+        <emphasis>kc1, kv1, kc2, kv2, kc3, kv3, kc4, kv4, kc5, kv5, kc6, kv6, kc7, kv7, kc8, kv8</emphasis> -- 
+        Jusqu'à 8 paires de contrôle facultatives au taux-k pour les opcodes STK.
+        Chaque paire de contrôle est constituée d'un numéro de contrôleur
+        (<emphasis>kc</emphasis>) suivi d'une valeur de contrôleur
+        (<emphasis>kv</emphasis>). Le numéro de contrôleur ainsi que la valeur
+        associée sont des variables de taux-k. Cependant, durant l'exécution,
+        les numéros de contrôleur sont habituellement constants tandis que les valeurs
+        correspondantes peuvent changer à tout moment. L'ordre des paires de
+        contrôle est arbitraire mais elles doivent apparaître après
+        <emphasis>iamplitude</emphasis>. Il n'est pas non plus nécessaire d'utiliser
+        toutes les paires.
+      </para>
+    </note>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode STKShakers. Il utilise le fichier
+      <ulink url="examples/STKShakers.csd"><citetitle>STKShakerscsd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode STKShakers.</title>
+        <xi:include href="examples-xml/STKShakers.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namemichael; (d'après Georg Essl)</member>
+        <member>Irreducible Productions</member>
+        <member>New York, NY</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.11 de Csound.</para>
+  </refsect1>
+</refentry>
+

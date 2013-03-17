@@ -1,0 +1,120 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="sfplist">
+<indexterm id="IndexSfplist"><primary>sfplist</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Sample Playback</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>sfplist</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>sfplist</refname>
+    <refpurpose>
+      Imprime une liste de tous les presets d'un fichier d'échantillons SoundFont2 (SF2).
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Imprime une liste de tous les presets d'un fichier d'échantillons SoundFont2
+      (SF2) préalablement chargé en mémoire.
+      Ces opcodes permettent la gestion de la structure d'échantillon des fichiers
+      SF2. Afin de comprendre l'utilisation de ces opcodes, il faut connaître le
+      format SF2 dont on peut trouver une brève description dans l'annexe
+      <link linkend="MiscSf2"><citetitle>Format de Fichier SoundFont2</citetitle></link>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>sfplist</command> ifilhandle</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifilhandle</emphasis> -- nombre unique généré par l'opcode
+      <emphasis>sfload</emphasis> à utiliser comme identificateur pour un fichier
+      SF2. On peut charger et activer plusieurs fichiers SF2 en même temps.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>sfplist</emphasis> imprime sur la console une liste de tous les
+      presets d'un fichier (SF2) préalablement chargé en mémoire.
+    </para>
+
+    <para>
+      Ces opcodes ne supportent que la structure d'échantillon des fichiers SF2. La
+      structure de modulateur du format SoundFormat2 n'est pas supportée dans Csound.
+      Tout traitement ou modulation des données échantillonnées est à la charge de
+      l'utilisateur de Csound, ce qui permet de s'affranchir de toutes les
+      restrictions imposées par le standard SF2.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode sfplist. Il utilise le fichier
+      <ulink url="examples/sfplist.csd"><citetitle>sfplist.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode sfplist.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/sfplist.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Sa sortie comprendra des lignes comme celles-ci :
+      <screen>
+Preset list of "sf_GMbank.sf2"
+  0) Piano 1                   prog:0   bank:0
+  1) Piano 2                   prog:1   bank:0
+  2) Piano 3                   prog:2   bank:0
+  3) Honky Tonk                prog:3   bank:0
+  4) E.Piano 1                 prog:4   bank:0
+  5) E.Piano 2                 prog:5   bank:0
+  6) Harpsichord               prog:6   bank:0
+  ........
+  146) Car-Pass                prog:125 bank:3
+  ........</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="sfilist"><citetitle>sfilist</citetitle></link>,
+      <link linkend="sfinstr"><citetitle>sfinstr</citetitle></link>,
+      <link linkend="sfinstrm"><citetitle>sfinstrm</citetitle></link>,
+      <link linkend="sfload"><citetitle>sfload</citetitle></link>,
+      <link linkend="sfpassign"><citetitle>sfpassign</citetitle></link>,
+      <link linkend="sfplay"><citetitle>sfplay</citetitle></link>,
+      <link linkend="sfplaym"><citetitle>sfplaym</citetitle></link>,
+      <link linkend="sfpreset"><citetitle>sfpreset</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+        <member>Mai 2000</member>
+      </simplelist>
+    </para>
+    
+    <para>Nouveau dans la version 4.07 de Csound</para>
+  </refsect1>
+</refentry>

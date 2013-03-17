@@ -1,0 +1,67 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.1
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<chapter id="CommandTop">
+  <title>La commande Csound</title>
+
+  <para>
+    <emphasis>Csound</emphasis> est une commande pour générer une sortie son à partir d'un fichier
+    <link linkend="OrchTop"><citetitle>orchestre</citetitle></link> et d'un fichier
+    <link linkend="ScoreTop"><citetitle>partition</citetitle></link> (ou d'un
+    <link linkend="CommandUnifile"><citetitle>fichier csd</citetitle></link> unifié).
+    Il a été conçu pour être appelé depuis un terminal ou une fenêtre DOS, mais on peut l'appeler
+    depuis un <link linkend="OviewFrontEnds"><citetitle>frontal</citetitle></link> plus facile à
+    utiliser. Le fichier partition peut être codé dans un des différents formats, au choix de
+    l'utilisateur. La traduction, le tri et le formatage de la partition dans un texte numérique
+    lisible par l'orchestre sont effectués par différents préprocesseurs ; tout ou partie de la
+    partition est ensuite envoyé à l'orchestre. L'exécution de l'orchestre est influencée par des
+    <link linkend="CommandFlagsCategory"><citetitle>options de commande</citetitle></link>, qui
+    fixent le niveau des comptes-rendus graphiques et de console, spécifient les noms des fichiers
+    d'E/S et les formats d'échantillonnage, et déclarent la nature de la détection et du contrôle
+    en temps réel.
+  </para>
+
+  <section id="CommandOrder">
+    <title>Ordre de priorité</title>
+
+    <para>
+      On peut fixer les options d'exécution de Csound en cinq endroits. Elles sont traitées dans
+      l'ordre suivant :
+
+      <orderedlist>
+        <listitem><para>Les valeurs par défaut de Csound</para></listitem>
+        <listitem><para>Le fichier défini par la
+        <link linkend="CommandEnvironment"><citetitle>variable d'environnement</citetitle></link> CSOUNDRC,
+        ou le fichier .csoundrc dans le répertoire HOME</para></listitem>
+        <listitem><para>Le fichier <link linkend="CommandUnifileParFile"><citetitle>.csoundrc</citetitle></link>
+        dans le répertoire courant</para></listitem>
+        <listitem><para>La balise &lt;CsOptions&gt; dans un fichier
+        <link linkend="CommandUnifile"><citetitle>.csd</citetitle></link></para></listitem>
+        <listitem><para>La ligne de <link linkend="CommandDesc"><citetitle>commande</citetitle></link>
+        de Csound</para></listitem>
+      </orderedlist>
+    </para>
+
+    <para>
+      Les options les plus basses dans la liste vont écraser les éventuelles précédentes.
+      A partir de la version 5.01, les taux d'échantillonnage et de contrôle (options
+      <link linkend="FlagsMinusLowerR"><citetitle>-r</citetitle></link> et
+      <link linkend="FlagsMinusLowerK"><citetitle>-k</citetitle></link>) spécifiés n'importe où
+      prévalent sur les valeurs sr, kr et ksmps de l'en-tête de l'orchestre.
+    </para>
+  </section>
+
+  &commanddesc;
+  &commandflags;
+  &commandflagscategory;
+  &commandenvironment;
+  &commandunifile;
+<!--   &commandpreproc; -->
+
+</chapter>

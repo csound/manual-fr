@@ -1,0 +1,130 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="scans">
+<indexterm id="IndexScans"><primary>scans</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Scanned Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>scans</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>scans</refname>
+    <refpurpose>
+      Génère une sortie audio au moyen de la synthèse par balayage.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère une sortie audio au moyen de la synthèse par balayage.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>scans</command> kamp, kfreq, ifn, id [, iorder]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn</emphasis> -- ftable contenant la trajectoire du balayage.
+      C'est une série de nombres qui contiennent les adresses des masses. L'ordre
+      de ces adresses est utilisé comme chemin de balayage. Ne doit pas contenir
+      de valeurs supérieures au nombre de masses, ou des nombres négatifs. Voir
+      l'<link linkend="SiggenScanTop"><citetitle>introduction à la section sur la
+      synthèse par balayage</citetitle></link>.
+    </para>
+
+    <para>
+      <emphasis>id</emphasis> -- numéro d'ID de la forme d'onde de l'opcode
+      <link linkend="scanu"><citetitle>scanu</citetitle></link> à utiliser.
+    </para>
+
+    <para>
+      <emphasis>iorder</emphasis> (facultatif, 0 par défaut) -- ordre de
+      l'interpolation utilisée en interne. Peut prendre n'importe quelle valeur
+      comprise entre 1 et 4, et vaut 4 par défaut, qui est l'interpolation
+      quartique. 2 est l'interpolation quadratique et 1 l'interpolation linéaire.
+      Les nombres les plus élevés donnent un traitement plus lent, mais pas
+      nécessairement meilleur.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamp</emphasis> -- amplitude de la sortie. Noter que l'amplitude
+      résultante dépend aussi des valeurs instantanées de la table d'onde. Ce nombre
+      est en fait la facteur de pondération de la table d'onde.
+    </para>
+
+    <para>
+      <emphasis>kfreq</emphasis> -- fréquence de balayage
+    </para>
+  </refsect1>
+ 
+  <refsect1 id="scanexamp">
+    <title>Exemples</title> 
+    <para>
+      Voici un exemple de synthèse par balayage. Il utilise les fichiers
+      <ulink url="examples/scans.csd"><citetitle>scans.csd</citetitle></ulink>, et
+      <ulink url="examples/string-128.matrix"><citetitle>string-128.matrix</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode scans.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/scans.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+    <para>
+      Voici un autre exemple de synthèse par balayage qui utilise des échantillons
+      comme signal d'excitation. Il utilise le fichier
+      <ulink url="examples/scans-2.csd"><citetitle>scans-2.csd</citetitle></ulink>.
+      <example>
+        <title>Second exemple de l'opcode scans.</title>
+        <xi:include href="examples-xml/scans-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+     </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      Le fichier de la matrice <quote>string-128.matrix</quote>, ainsi que d'autres
+      matrices, sont aussi disponibles dans un
+      <ulink url="http://www.csounds.com/scanned/zip/scanmatrices.zip"><citetitle>fichier zippé</citetitle></ulink>
+      depuis la
+      <ulink url="http://www.csounds.com/scanned/"><citetitle>page Scanned Synthesis</citetitle></ulink>
+      à cSounds.com.
+    </para>
+    <para>Plus d'information sur cet opcode :
+    <ulink url="http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html">
+    <citetitle>http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html</citetitle>
+    </ulink>, écrit par Steven Yi.</para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameparis;</member>
+        <member>MIT Media Lab</member>
+        <member>Boston, Massachussetts USA</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 4.05 de Csound</para>
+  </refsect1>
+</refentry>

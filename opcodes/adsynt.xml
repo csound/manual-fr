@@ -1,0 +1,121 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="adsynt">
+<indexterm id="IndexAdsynt"><primary>adsynt</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Additive Synthesis/Resynthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>adsynt</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>adsynt</refname>
+    <refpurpose>
+      Réalise une synthèse additive avec un nombre arbitraire de partiels, pas nécessairement harmoniques.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Réalise une synthèse additive avec un nombre arbitraire de partiels, pas nécessairement harmoniques.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>adsynt</command> kamp, kcps, iwfn, ifreqfn, iampfn, icnt [, iphs]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iwfn</emphasis> -- table contenant une forme d'onde, normalement une sinus. Les valeurs de
+      la table ne sont pas interpolées pour des raisons de performance, si bien que des tables plus grandes
+      apportent une meilleure qualité.
+    </para>
+
+    <para>
+      <emphasis>ifreqfn</emphasis> -- table contenant les valeurs de fréquence de chaque partiel.
+      <emphasis>ifreqfn</emphasis> peut contenir les valeurs de fréquence initiales de chaque partiel,
+      mais elle est habituellement utilisée pour générer des paramètres pendant l'exécution avec
+      <emphasis>tablew</emphasis>. Les fréquences doivent être relatives à <emphasis>kcps</emphasis>.
+      La taille doit être au moins égale à <emphasis>icnt</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>iampfn</emphasis> -- table contenant les valeurs d'amplitude de chaque partiel.
+      <emphasis>iampfn</emphasis> peut contenir les valeurs d'amplitude initiales de chaque partiel,
+      mais elle est habituellement utilisée pour générer des paramètres pendant l'exécution avec
+      <emphasis>tablew</emphasis>. Les amplitudes doivent être relatives à <emphasis>kamp</emphasis>.
+      La taille doit être au moins égale à <emphasis>icnt</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>icnt</emphasis> -- nombre de partiels à générer.
+    </para>
+
+    <para>
+      <emphasis>iphs</emphasis> -- phase initiale de chaque oscillateur, si <emphasis>iphs</emphasis> = -1,
+      l'initialisation est ignorée. Si <emphasis>iphs</emphasis> &gt; 1, toutes les phases seront
+      initialisées avec une valeur aléatoire.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamp</emphasis> -- amplitude de la note.
+    </para>
+
+    <para>
+      <emphasis>kcps</emphasis> -- fréquence de base de la note. Les fréquences des partiels seront
+      relatives à <emphasis>kcps</emphasis>.
+    </para>
+
+    <para>
+      La fréquence et l'amplitude de chaque partiel sont données dans les deux tables fournies. Le but de
+      cet opcode est de faire générer par un instrument les paramètres de synthèse au taux-k et de les
+      écrire dans des tables globales avec l'opcode <emphasis>tablew</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode adsynt. Il utilise le fichier
+      <ulink url="examples/adsynt.csd"><citetitle>adsynt.csd</citetitle></ulink>. Ces deux instruments
+      réalisent une synthèse additive. La sortie de chacun d'entre eux sonne comme un bol tibétain. Le
+      premier est statique, car ses paramètres ne sont générés que pendant l'initialisation. Dans le
+      second, les paramètres changent de façon continue.
+
+      <example>
+        <title>Exemple de l'opcode adsynt.</title>
+
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link>
+        pour plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/adsynt.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Peter Neub&auml;cker</member>
+        <member>Munich, Allemagne</member>
+        <member>Août 1999</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.58 de Csound</para>
+  </refsect1>
+</refentry>

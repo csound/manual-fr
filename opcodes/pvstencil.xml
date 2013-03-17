@@ -1,0 +1,125 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvstencil">
+<indexterm id="IndexPvstencil"><primary>pvstencil</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvstencil</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvstencil</refname>
+    <refpurpose>
+      Transforme un flot pvoc selon une table de fonction de masquage.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Transforme un flot pvoc selon une table de fonction de masquage ;
+      si l'amplitude du flot pvoc tombe sous la valeur de la fonction pour un
+      canal pvoc spécifique, un gain est appliqué à ce canal.
+    </para>
+    <para>
+      Les amplitudes du flot pvoc sont comparées à une table de masquage ; si
+      elles tombent sous les valeurs de la table, elles sont pondérées
+      par <emphasis>kgain</emphasis>. Avant l'opération, les valeurs de la table
+      sont pondérées par <emphasis>klevel</emphasis>, qui peut être
+      utilisé comme contrôle de l'importance du masquage.
+    </para>
+    <para>
+      Les tables doivent avoir une taille d'au moins <emphasis>fftsize</emphasis>/2 ;
+      pour la plupart des <emphasis>GENS</emphasis> il est important d'utiliser
+      un point de garde (taille en puissance-de-deux plus un), cependant ceci
+      n'est pas nécessaire avec <emphasis>GEN43</emphasis>.
+    </para>
+    <para>
+      Un des usages typiques de <emphasis>pvstencil</emphasis> est la réduction
+      de bruit. Une empreinte de bruit peut être analysée avec
+      <emphasis>pvanal</emphasis> en un fichier PVOC-EX et chargée dans une
+      table avec <emphasis>GEN43</emphasis>. On peut ensuite utiliser celle-ci
+      comme table de masquage pour <emphasis>pvstencil</emphasis> et l'importance
+      de la réduction est contrôlée par <emphasis>kgain</emphasis>. Si l'on
+      ignore la post-normalisation, les amplitudes moyennes de l'empreinte de
+      bruit originale sont conservées. Cela fournit un bon point de départ pour
+      une réduction de bruit réussie (si bien que <emphasis>klevel</emphasis>
+      peut généralement être proche de 1).
+    </para>
+    <para>
+      D'autres effets de transformation sont possibles, tels que le filtrage et
+      le "masquage inverse".
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>fsig <command>pvstencil</command> fsigin, kgain, klevel, iftable</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>fsig</emphasis> -- flot pv de sortie
+    </para>
+
+    <para>
+      <emphasis>fsigin</emphasis> -- flot pv d'entrée
+    </para>
+
+    <para>
+      <emphasis>kgain</emphasis> -- gain du "pochoir"
+    </para>
+
+    <para>
+      <emphasis>klevel</emphasis> -- niveau de la fonction de masquage (pondère
+      la ftable avant le "pochoir").
+    </para>
+
+    <para>
+      <emphasis>iftable</emphasis> -- table de la fonction de masquage
+    </para>
+
+    <warning>
+      <para>
+        Il est dangereux d'utiliser la même variable-f à la fois comme entrée et
+        comme sortie des opcodes pvs. Ceci peut produire un comportement indéfini
+        de certains de ces opcodes. Utilisez une variable différente à gauche et
+        à droite de l'opcode.
+      </para>
+    </warning>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      <example>
+        <title>Exemples</title>
+        <programlisting>
+fsig    <emphasis role="opc">pvsanal</emphasis>   asig, 1024, 256, 1024, 1
+fclean  <emphasis role="opc">pvstencil</emphasis> fsig, 0, 1, 1
+aclean  <emphasis role="opc">pvsynth</emphasis>   fclean</programlisting>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Novembre 2004 </member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau greffon dans la version 5</para>
+    <para>Novembre 2004.</para>
+  </refsect1>
+</refentry>

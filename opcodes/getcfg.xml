@@ -1,0 +1,121 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="getcfg">
+<indexterm id="Indexgetcfg"><primary>getcfg</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>getcfg</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>getcfg</refname>
+    <refpurpose>
+      Retourne les réglages de Csound.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne différents réglages de configuration dans <emphasis>Svalue</emphasis>
+      sous forme de chaîne de caractères, pendant l'initialisation.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>Svalue <command>getcfg</command> iopt</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+
+    <para>
+      <emphasis>iopt</emphasis> -- le paramètre à retourner ; peut être un de
+      ceux-ci :
+      <itemizedlist>
+        <listitem>
+          <para>1 : la longueur maximale des variables chaîne, en caractères ;
+          vaut au moins la valeur de l'option -+max_str_len de la ligne de
+          commande - 1</para>
+        </listitem>
+
+        <listitem>
+          <para>2 : le nom du fichier son en entrée (-i), ou une chaîne vide s'il
+          n'y a pas de fichier en entrée</para>
+        </listitem>
+
+        <listitem>
+          <para>3 : le nom du fichier son en sortie (-o), ou une chaîne vide s'il
+          n'y a pas de fichier en sortie</para>
+        </listitem>
+
+        <listitem>
+          <para>4 : retourne "1" si une entrée ou une sortie audio en temps réel
+          est utilisée, "0" sinon</para>
+        </listitem>
+
+        <listitem>
+          <para>5 : retourne "1" si l'exécution est en mode pulsation (option -t
+          de la ligne de commande), "0" sinon</para>
+        </listitem>
+
+        <listitem>
+          <para>6 : le nom du système d'exploitation hôte</para>
+        </listitem>
+
+        <listitem>
+          <para>7 : retourne "1" si une fonction de rappel a été installée pour
+          les opcodes <emphasis>chnrecv</emphasis> et <emphasis>chnsend</emphasis>,
+          "0" sinon (ce qui veut dire que ces opcodes ne font rien)</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcoce getcfg. Il utilise le fichier
+      <ulink url="examples/getcfg.csd"><citetitle>getcfg.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcoce getcfg.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/getcfg.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie comprendra des lignes comme celles-ci :
+      <screen>
+------------------------------
+Max string len : 255
+Input file name (-i) : adc
+Output file name (-o) : dac
+RTaudio (-odac) : 1
+Beat mode (-t)? : 0
+Host Op. Sys. : Linux
+Callback ? : 0
+------------------------------</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Istvan Varga</member>
+        <member>2006</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.02</para>
+  </refsect1>
+</refentry>

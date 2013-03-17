@@ -1,0 +1,148 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.10
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vbapz">
+<indexterm id="IndexVbapz"><primary>vbapz</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Panning and Spatialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vbapz</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vbapz</refname>
+    <refpurpose>
+      Ecrit un signal audio multi-canaux dans un tableau ZAK.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ecrit un signal audio multi-canaux dans un tableau ZAK.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>vbapz</command> inumchnls, istartndx, asig, kazim [, kelev] [, kspread]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>inumchnls</emphasis> -- nombre de canaux à écrire dans le tableau
+      ZA. Doit être compris entre 2 et 256.
+    </para>
+
+    <para>
+      <emphasis>istartndx</emphasis> -- premier indice ou position à utiliser dans
+      le tableau ZA.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- signal audio à traiter.
+    </para>
+    <para>
+      <emphasis>kazim</emphasis> -- angle d'azimut de la source virtuelle.
+    </para>
+    <para>
+      <emphasis>kelev</emphasis> angle d'azimut de la source virtuelle.
+    </para>
+    <para>
+      <emphasis>kspread</emphasis> (facultatif) -- diffusion de la source virtuelle
+      (de 0 à 100). S'il vaut 0, on a un panoramique d'amplitude conventionnel.
+      Plus <emphasis>kspread</emphasis> augmente et plus le nombre de haut-parleurs
+      utilisés dans le panoramique augmente. S'il vaut 100, le son est appliqué à
+      tous les haut-parleurs.
+    </para>
+
+    <para>
+      L'opcode <emphasis>vbapz</emphasis> est l'équivalent multi-canaux d'opcodes
+      comme <link linkend="vbap4"><citetitle>vbap4</citetitle></link>, travaillant
+      sur <emphasis>inumchnls</emphasis> et utilisant un tableau ZAK en sortie.
+    </para>
+    <warning>
+      <para>
+        Prière de noter que tous les opcodes de panoramique <emphasis>vbap</emphasis>
+        nécessitent une initialisation du système <emphasis>vbap</emphasis> avec
+        <link linkend="vbaplsinit"><citetitle>vbaplsinit</citetitle></link>.
+      </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voir l'entrée sur <link linkend="vbap8"><citetitle>vbap8</citetitle></link>
+      pour un exemple d'utilisation des opcodes <emphasis>vbap</emphasis>.
+<!--      <example>
+        <title>2-D panning example with stationary virtual sources</title>
+        <programlisting>
+  <emphasis>sr</emphasis>      =          4100
+  <emphasis>kr</emphasis>      =           441
+  <emphasis>ksmps</emphasis>   =           100
+  <emphasis>nchnls</emphasis>  =             4
+  <emphasis>vbaplsinit</emphasis>         2, 6,  0, 45, 90, 135, 200, 245, 290, 315 
+
+          <emphasis>instr</emphasis> 1	           
+  asig    <emphasis>oscil</emphasis>      20000, 440, 1                    
+  a1,a2,a3,a4,a5,a6,a7,a8   <emphasis>vbap8</emphasis>  asig, p4, 0, 20 ;p4 = azimuth
+	
+  ;render twice with alternate <emphasis>outq</emphasis> statements
+  ;  to obtain two 4 channel .wav files:
+
+          <emphasis>outq</emphasis>       a1,a2,a3,a4
+  ;       <emphasis>outq</emphasis>       a5,a6,a7,a8
+          <emphasis>endin</emphasis>
+        </programlisting>
+      </example>-->
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Référence</title>
+    <para>
+      Ville Pulkki : <quote>Virtual Sound Source Positioning Using Vector Base
+      Amplitude Panning</quote> <emphasis>Journal of the Audio Engineering Society</emphasis>,
+      juin 1997, Vol. 45/6, p. 456.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="vbap16"><citetitle>vbap16</citetitle></link>,
+      <link linkend="vbap16move"><citetitle>vbap16move</citetitle></link>,
+      <link linkend="vbap4"><citetitle>vbap4</citetitle></link>,
+      <link linkend="vbap4move"><citetitle>vbap4move</citetitle></link>,
+      <link linkend="vbap8"><citetitle>vbap8</citetitle></link>,
+      <link linkend="vbap8move"><citetitle>vbap8move</citetitle></link>,
+      <link linkend="vbaplsinit"><citetitle>vbaplsinit</citetitle></link>,
+      <link linkend="vbapzmove"><citetitle>vbapzmove</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>&namejohn;</member>
+        <member>Université de Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>Mai 2000</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la Version 4.07 de Csound. Les paramètres d'entrée
+      acceptent le taux-k depuis Csound 5.09.</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,158 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="slider8f">
+<indexterm id="IndexSlider8f"><primary>slider8f</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Slider Banks</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>slider8f</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>slider8f</refname>
+
+    <refpurpose>
+      Crée une banque de 8 numéros différents de messages de contrôle MIDI, filtrés
+      avant la sortie.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Crée une banque de 8 numéros différents de messages de contrôle MIDI, filtrés
+      avant la sortie.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>k1,...,k8 <command>slider8f</command> ichan, ictlnum1, imin1, imax1, init1, ifn1, icutoff1, \
+      ..., ictlnum8, imin8, imax8, init8, ifn8, icutoff8</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ichan</emphasis> -- canal MIDI (1-16)
+    </para>
+
+    <para>
+      <emphasis>ictlnum1 ... ictlnum8</emphasis> -- numéro de contrôle MIDI (0-127)
+    </para>
+
+    <para>
+      <emphasis>imin1 ... imin8</emphasis> -- valeurs minimales pour chaque contrôleur
+    </para>
+
+    <para>
+      <emphasis>imax1 ... imax8</emphasis> -- valeurs maximales pour chaque contrôleur
+    </para>
+
+    <para>
+      <emphasis>init1 ... init8</emphasis> -- valeur initiale pour chaque contrôleur
+    </para>
+
+    <para>
+      <emphasis>ifn1 ... ifn8</emphasis> -- table de fonction de conversion pour
+      chaque contrôleur
+    </para>
+
+    <para>
+      <emphasis>icutoff1 ... icutoff8</emphasis> -- fréquence de coupure du
+      filtre passe-bas pour chaque contrôleur
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>k1 ... k8</emphasis> -- valeurs de sortie
+    </para>
+
+    <para>
+      <emphasis>slider8f</emphasis> est une banque de contrôleurs MIDI, utile
+      lorsque l'on utilise un mélangeur MIDI comme le Kawai MM-16 ou autres pour
+      changer n'importe quel paramètre du son en . Les messages de
+      contrôle MIDI arrivant sur le port d'entrée sont convertis pour entrer
+      dans l'intervalle <emphasis>iminN</emphasis>, <emphasis>imaxN</emphasis>,
+      et une valeur initiale peut être fixée. On peut aussi utiliser de manière
+      facultative une table de fonction non interpolée avec une courbe de
+      traduction personnalisée pour obtenir, par exemple, des courbes de
+      réponse exponentielles.
+    </para>
+
+    <para>
+      Si l'on n'a pas besoin d'une table de traduction, on fixe la valeur de 
+      <emphasis>ifnN</emphasis> à 0, sinon, on donne à <emphasis>ifnN</emphasis>
+      un numéro de table de fonction valide. Lorsque l'on utilise une table de
+      traduction (si <emphasis>ifnN</emphasis> reçoit une valeur non nulle
+      faisant référence à une table de fonction déjà allouée), la valeur de
+      <emphasis>initN</emphasis> doit être égale à celle de <emphasis>iminN</emphasis>
+      ou à celle de <emphasis>imaxN</emphasis>, sinon la valeur de sortie initiale
+      sera différente de celle spécifiée dans l'argument <emphasis>initN</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>slider8f</emphasis> fournit une banque de 8 numéros différents de
+      messages de contrôle MIDI. Il filtre le signal avant la sortie. Cela
+      élimine les discontinuités dues à la basse résolution du MIDI (7 bit).
+      La fréquence de coupure peut être réglée séparément pour chaque contrôleur
+      (intervalle recommandé : 0.1 à 5 Hz).
+    </para>
+
+    <para>
+      Comme les arguments d'entrée et de sortie sont nombreux, on peut scinder la
+      ligne en utilisant le caractère '\' (slash inversé) (nouveau dans la version
+      3.47) pour améliorer la lisibilité. L'utilisation de ces opcodes est
+      considérablement plus efficace que celle de
+      (<link linkend="ctrl7"><citetitle>ctrl7</citetitle></link> et
+      <link linkend="tonek"><citetitle>tonek</citetitle></link>) séparés, lorsque
+      l'on a besoin de plus de contrôleurs.
+    </para>
+
+    <warning>
+      <para>
+        Les opcodes <emphasis>slider8f</emphasis> ne sortent pas la valeur
+        initiale immédiatement, mais seulement après quelques cycles-k parce que
+        le filtre introduit un léger retard dans la sortie.
+      </para>
+    </warning>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="s16b14"><citetitle>s16b14</citetitle></link>, 
+      <link linkend="s32b14"><citetitle>s32b14</citetitle></link>, 
+      <link linkend="slider16"><citetitle>slider16</citetitle></link>, 
+      <link linkend="slider16f"><citetitle>slider16f</citetitle></link>, 
+      <link linkend="slider32"><citetitle>slider32</citetitle></link>, 
+      <link linkend="slider32f"><citetitle>slider32f</citetitle></link>, 
+      <link linkend="slider64"><citetitle>slider64</citetitle></link>, 
+      <link linkend="slider64f"><citetitle>slider64f</citetitle></link>, 
+      <link linkend="slider8"><citetitle>slider8</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur: &namegabriel;</member>
+        <member>Italie</member>
+        <member>Décember 1998</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.50 de Csound.</para>
+    <para>Merci à &namerasmus; pour avoir indiqué les intervalles corrects pour
+    le canal MIDI et les numéros de contrôleur.</para>
+  </refsect1>
+</refentry>

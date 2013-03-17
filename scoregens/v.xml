@@ -1,0 +1,108 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.5
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="v">
+  <indexterm id="IndexVStatement"><primary>v statement</primary></indexterm>
+  <refmeta>
+    <refentrytitle>Instruction v</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>v</refname>
+    <refpurpose>
+      Permet une modification temporelle variable localement des évènements de la partition.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      L'<emphasis>instruction v</emphasis> permet une modification temporelle variable localement des
+      évènements de la partition.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>v</command> p1</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <command>p1</command> -- facteur de modification temporelle (doit être positif).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      L'<emphasis>instruction v</emphasis> prend effet avec
+      l'<link linkend="i"><citetitle>instruction i</citetitle></link> qui la suit, et reste effective
+      jusqu'à la prochaine <link linkend="v"><citetitle>instruction v</citetitle></link>,
+      <link linkend="s"><citetitle>instruction s</citetitle></link>, ou
+      <link linkend="e"><citetitle>instruction e</citetitle></link>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      La valeur de p1 est utilisée comme un coefficient multiplicatif de la date de début (p2) des
+      <link linkend="i"><citetitle>instructions i</citetitle></link> suivantes.
+    </para>
+
+    <para>
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">i</emphasis>1   0 1  <emphasis role="comment">; note1</emphasis>
+<emphasis role="stamnt">v</emphasis>2
+<emphasis role="stamnt">i</emphasis>1   1 1  <emphasis role="comment">; note2</emphasis></programlisting>
+      </informalexample>
+
+      Dans cet exemple, la deuxième note apparaît deux pulsations après la première note, et elle est deux
+      fois plus longue.
+    </para>
+
+    <para>
+      Bien que l'<emphasis>instruction v</emphasis> soit semblable à
+      l'<link linkend="t"><citetitle>instruction t</citetitle></link>, l'<emphasis>instruction v</emphasis>
+      agit localement. Cela veut dire que <emphasis>v</emphasis> n'affecte que les notes suivantes, et que
+      son effet peut être annulé ou changé par une autre <emphasis>instruction v</emphasis>.
+    </para>
+
+    <para>
+      Les valeurs reportées ne sont pas affectées par l'<emphasis>instruction v</emphasis> (voir
+      <link linkend="ScoreCarry"><citetitle>Carry</citetitle></link>).
+    </para>
+
+    <para>
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">i</emphasis>1   0 1
+<emphasis role="stamnt">v</emphasis>2
+<emphasis role="stamnt">i</emphasis>.   + .
+<emphasis role="stamnt">i</emphasis>.   . .</programlisting>
+      </informalexample>
+
+      Dans cet exemple, l'<emphasis>instruction v</emphasis> n'a aucun effet.
+    </para>
+    <para>
+      Voici un exemple de l'instruction v. Il utilise le fichier
+      <ulink url="examples/v.csd"><citetitle>v.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'instruction v.</title>
+        <xi:include href="examples-xml/v.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Dans cet exemple, note3 et note5 sont jouées simulanément, tandis que note4
+      est jouée avant note3, c'est-à-dire à sa place initiale. Les durées sont
+      inchangées. 
+    </para>
+  </refsect1>
+</refentry>

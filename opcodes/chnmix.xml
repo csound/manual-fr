@@ -1,0 +1,75 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="chnmix">
+<indexterm id="Indexchnmix"><primary>chnmix</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Software Bus</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>chnmix</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>chnmix</refname>
+    <refpurpose>
+      Ecrit des données audio vers le bus logiciel nommé, en les mélangeant à la
+      sortie précédente.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ajoute un signal audio à un canal du bus logiciel nommé. Cela implique la
+      déclaration du canal avec <emphasis>imode</emphasis>=2 (voir aussi
+      <link linkend="chn"><citetitle>chn_a</citetitle></link>).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>chnmix</command> aval, Sname</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>Sname</emphasis> -- une chaîne de caractères indiquant le canal
+      nommé du bus logiciel sur lequel écrire.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>aval</emphasis> -- le signal audio à écrire pendant l'exécution.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode chnmix. Il utilise le fichier
+      <ulink url="examples/chnmix.csd"><citetitle>chnmix.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode chnmix.</title>
+        <xi:include href="examples-xml/chnmix.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameistvan;</member>
+        <member>2006</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,86 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="outvalue">
+<indexterm id="IndexOutvalue"><primary>outvalue</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Signal Output</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>outvalue</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>outvalue</refname>
+    <refpurpose>
+      Envoie un signal de taux-k ou une chaîne de caractères vers un canal défini
+      par l'utilisateur.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Envoie un signal de taux-k ou une chaîne de caractères vers un canal défini
+      par l'utilisateur.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>outvalue</command> &quot;channel name&quot;, kvalue</synopsis>
+    <synopsis><command>outvalue</command> &quot;channel name&quot;, &quot;string&quot;</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>&quot;channel name&quot;</emphasis> -- Un entier ou une chaîne de
+      caractères (entre guillemets) représentant le canal.
+    </para>
+
+    <para>
+      <emphasis>kvalue</emphasis> -- La valeur de taux-k envoyée vers le canal.
+    </para>
+
+    <para>
+      <emphasis>string</emphasis> -- La constante ou la variable chaîne de caractères
+      envoyée vers le canal.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode outvalue. Il utilise le fichier
+      <ulink url="examples/outvalue.csd"><citetitle>outvalue.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode outvalue.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/outvalue.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="invalue"><citetitle>invalue</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Matt Ingalls</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

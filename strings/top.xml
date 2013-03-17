@@ -1,0 +1,108 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<chapter id="StringsTop">
+  <title>Chaînes de Caractères</title>
+  <para>
+    Les variables chaîne de caractères sont des variables dont le nom commence par S ou par
+    gS (pour les variables chaîne locales ou globales, respectivement), et elle peuvent
+    mémoriser n'importe quelle chaîne avec une longueur maximale définie par l'option de
+    ligne de commande <emphasis>-+max_str_len</emphasis> (255 caractères par défaut). On
+    peut utiliser ces variables comme argument d'entrée de n'importe quel opcode qui
+    attend une chaîne constante entre apostrophes, et on peut les manipuler durant les
+    périodes d'initilasation ou d'exécution avec les opcodes dont la liste suit.
+  </para>
+  <para>
+    Il est également possible d'utiliser des chaînes dans les p-champs. Un p-champ chaîne
+    peut être utilisé directement par plusieurs opcodes de l'orchestre, ou il peut être
+    d'abord copié dans une variable chaîne :
+
+    <programlisting>
+a1    <emphasis role="opc">diskin2</emphasis> p5, 1</programlisting>
+
+    <programlisting>
+Snom  <emphasis role="opc">strget</emphasis>  p5
+a1    <emphasis role="opc">diskin2</emphasis> Snom, 1</programlisting>
+
+  </para>
+  <para>
+    Les chaînes dans Csound peuvent être exprimées par les doubles apostrophes traditionnelles ("  "),
+    mais aussi par {{ }}. La seconde méthode est utile si l'on veut utiliser les caractères ';' et '$'
+    dans la chaîne sans avoir recours aux codes ASCII.
+  </para>
+  <note>
+     <title>Note</title>
+     <para>Les variables chaînes et les opcodes correspondants ne sont pas disponibles dans
+       les versions de Csound antérieures à la 5.00.</para>
+  </note>
+  <para>
+    On peut également lier une chaîne à un numéro au moyen de
+    <link linkend="strset"><citetitle>strset</citetitle></link> et
+    <link linkend="strget"><citetitle>strget</citetitle></link>.
+  </para>
+  <para>
+    Csound 5 a aussi amélioré l'analyse des constantes chaîne. Il est possible de spécifier
+    une chaîne multi-lignes en l'entourant avec {{ et }} à la place des habituelles doubles
+    apostrophes (noter que la longueur des constantes chaîne n'est pas limitée, et n'est pas
+    affectée par l'option <emphasis>-+max_str_len</emphasis>), et les séquences d'échappement
+    suivantes sont automatiquement converties :
+    <itemizedlist>
+      <listitem>
+        <para>\a : cloche d'alerte</para>
+      </listitem>
+      <listitem>
+        <para>\b : retour arrière</para>
+      </listitem>
+      <listitem>
+        <para>\n : nouvelle ligne</para>
+      </listitem>
+      <listitem>
+        <para>\r : retour chariot</para>
+      </listitem>
+      <listitem>
+        <para>\t : tabulation</para>
+      </listitem>
+      <listitem>
+        <para>\\ : le caractère '\'</para>
+      </listitem>
+      <listitem>
+        <para>\nnn : le caractère ayant le code ASCII (en octal) nnn</para>
+      </listitem>
+    </itemizedlist>
+    Les chaînes peuvent être utilement employées avec l'opcode
+    <link linkend="system"><citetitle>system</citetitle></link> :
+    <programlisting>
+<emphasis role="oblock">instr</emphasis> 1
+ <emphasis role="comment">; csound5 permet de placer une chaîne sur plusieurs lignes dans des accolades doubles</emphasis>
+    <emphasis role="opc">system</emphasis> {{     ps
+            date
+            cd ~/Desktop
+            pwd
+            ls -l
+            whois csounds.com
+        }}
+<emphasis role="oblock">endin</emphasis></programlisting>
+    Et avec les <link linkend="py"><citetitle>opcodes python</citetitle></link>, entre autres :
+    <programlisting>
+<emphasis role="opc">pyruni</emphasis> {{
+import random
+
+pool = [(1 + i/10.0) ** 1.2 for i in range(100)]
+
+def get_number_from_pool(n, p):
+    if random.random() &lt; p:
+        i = int(random.random() * len(pool))
+        pool[i] = n
+    return random.choice(pool)
+}}</programlisting>
+
+  </para>
+  &stringsmanipulate;
+  &stringsconvert;
+</chapter>

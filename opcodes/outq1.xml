@@ -1,0 +1,100 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="outq1">
+<indexterm id="IndexOutq1"><primary>outq1</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Signal Output</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>outq1</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>outq1</refname>
+    <refpurpose>
+      Ecrit des échantillons sur le canal quadro n°1 d'un périphérique externe
+      ou d'un flot.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ecrit des échantillons sur le canal quadro n°1 d'un périphérique externe
+      ou d'un flot.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>outq1</command> asig</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Envoie des échantillons dans un tampon accumulateur de sortie
+      (créé au début de l'exécution) qui sert à collecter la sortie de tous les
+      instruments actifs avant que le son ne soit écrit sur disque. Il peut y
+      avoir n'importe quel nombre de ces unités de sortie dans un instrument.
+    </para>
+
+    <para>
+      Le type (mono, stéréo, quadra, hexa ou octo) doit concorder avec
+      <link linkend="nchnls"><citetitle>nchnls</citetitle></link>. Mais à
+      partir de la version 3.50, Csound essaiera de changer un opcode incorrect
+      pour satisfaire l'instruction <emphasis>nchnls</emphasis>. On peut choisir
+      des opcodes pour envoyer le son sur un canal particulier :
+      <emphasis>outs1</emphasis> envoie vers le canal stéréo n°1,
+      <emphasis>outq3</emphasis> vers le canal quadro n°3, etc.
+    </para>
+  </refsect1>
+
+   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode outq1. Il utilise le fichier
+      <ulink url="examples/outq1.csd"><citetitle>outq1.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode outq1.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/outq1.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="out"><citetitle>out</citetitle></link>,
+      <link linkend="outh"><citetitle>outh</citetitle></link>,
+      <link linkend="outo"><citetitle>outo</citetitle></link>,
+      <link linkend="outq"><citetitle>outq</citetitle></link>,
+      <link linkend="outq2"><citetitle>outq2</citetitle></link>,
+      <link linkend="outq3"><citetitle>outq3</citetitle></link>,
+      <link linkend="outq4"><citetitle>outq4</citetitle></link>,
+      <link linkend="outs"><citetitle>outs</citetitle></link>,
+      <link linkend="outs1"><citetitle>outs1</citetitle></link>,
+      <link linkend="outs2"><citetitle>outs2</citetitle></link>,
+      <link linkend="soundout"><citetitle>soundout</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteurs : &namebarry;, &namematt;/&namemike;</member>
+        <member>MIT, Mills College</member>
+        <member>1993-1997</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

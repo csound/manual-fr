@@ -1,0 +1,126 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.15
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLvalue">
+<indexterm id="IndexFLvalue"><primary>FLvalue</primary></indexterm>
+  <refentryinfo><title>FLTK:Other</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLvalue</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLvalue</refname>
+    <refpurpose>
+      Montre la valeur courante d'un valuateur FLTK.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>FLvalue</emphasis> montre la valeur courante d'un valuateur
+      dans un champ texte.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ihandle <command>FLvalue</command> &quot;label&quot;, iwidth, iheight, ix, iy</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ihandle</emphasis> -- un identifiant (un nombre entier) qui
+      référence de manière univoque le valuateur correspondant. Il peut être
+      utilisé comme argument <emphasis>idisp</emphasis> d'un valuateur.
+    </para>
+
+    <para>
+      <emphasis><quote>label</quote></emphasis> -- une chaîne entre guillemets
+      contenant un texte fourni par l'utilisateur placé à côté du widget.
+    </para>
+
+    <para>
+      <emphasis>iwidth</emphasis> -- largeur du widget. 
+    </para>
+
+    <para>
+      <emphasis>iheight</emphasis> -- hauteur du widget. 
+    </para>
+
+    <para>
+      <emphasis>ix</emphasis> -- position horizontale du coin supérieur gauche
+      du valuateur, relative au coin supérieur gauche de la fenêtre correspondante
+      (exprimée en pixels).
+    </para>
+
+    <para>
+      <emphasis>iy</emphasis> -- position verticale du coin supérieur gauche
+      du valuateur, relative au coin supérieur gauche de la fenêtre correspondante
+      (exprimée en pixels).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+
+    <para>
+      <emphasis>FLvalue</emphasis> montre la valeur courante d'un valuateur dans
+      un champ texte. Il retourne <emphasis>ihandle</emphasis> qui peut être
+      utilisé comme argument <emphasis>idisp</emphasis> d'un valuateur (voir la
+      section <link linkend="ControlFltkValuators"><citetitle>Valuateurs FLTK</citetitle></link>).
+      De cette manière, les valeurs de ce valuateur seront montrées dynamiquement
+      dans un champ texte.
+    </para>
+    <note>
+      <para>Noter que <emphasis>FLvalue</emphasis> n'est pas un valuateur et
+      que sa valeur ne peut pas être modifiée. La valeur d'un widget
+      <emphasis>FLvalue</emphasis> ne doit être fixée que par d'autres widgets,
+      et PAS depuis
+      <link linkend="FLsetVal"><citetitle>FLsetVal</citetitle></link> ou
+      <link linkend="FLsetVal_i"><citetitle>FLsetVal_i</citetitle></link>
+      car cela pourrait planter Csound.</para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode FLvalue. Il utilise le fichier
+      <ulink url="examples/FLvalue.csd"><citetitle>FLvalue.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode FLvalue.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/FLvalue.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="FLbox"><citetitle>FLbox</citetitle></link>,
+      <link linkend="FLbutBank"><citetitle>FLbutBank</citetitle></link>,
+      <link linkend="FLbutton"><citetitle>FLbutton</citetitle></link>,
+      <link linkend="FLprintk"><citetitle>FLprintk</citetitle></link>,
+      <link linkend="FLprintk2"><citetitle>FLprintk2</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.22</para>
+    <para>Exemple écrit par Iain McCurdy, édité par &namekevin;.</para>
+  </refsect1>
+</refentry>

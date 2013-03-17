@@ -1,0 +1,162 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.17
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vco">
+<indexterm id="IndexVco"><primary>vco</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Dynamic Spectrum Oscillators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vco</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>vco</refname>
+    <refpurpose>
+      Implémentation de la modélisation d'un oscillateur analogique à bande de fréquence limitée.
+          </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Implémentation de la modélisation d'un oscillateur analogique à bande de fréquence limitée, basée
+      sur l'intégration d'impulsions à bande de fréquence limitée. <emphasis>vco</emphasis> peut être
+      utilisé pour simuler différentes formes d'onde analogiques.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>vco</command> xamp, xcps, iwave, kpw [, ifn] [, imaxd] [, ileak] [, inyx] \
+      [, iphs] [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iwave</emphasis> -- détermine la forme d'onde :
+      <itemizedlist>
+        <listitem>
+          <para><emphasis>iwave</emphasis> = 1 - dent de scie</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis>iwave</emphasis> = 2 - carrée/PWM</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis>iwave</emphasis> = 3 - triangle/dent de scie/rampe</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>ifn</emphasis> (facultatif, par défaut 1) -- numéro de table d'une fonction sinus stockée.
+      Doit pointer sur une table valide qui contient une onde sinus. Csound rapportera une erreur si ce
+      paramètre n'est pas fixé et que la table n°1 n'existe pas.
+    </para>
+
+    <para>
+      <emphasis>imaxd</emphasis> (facultatif, par défaut 1) -- temps de retard maximum. Une durée de
+      1/<emphasis>ifqc</emphasis> peut être nécessaire pour les formes d'onde PWM et triangle. Le temps
+      d'ajustement de la hauteur à cette valeur peut aller jusqu'à 1/(fréquence minimale).
+    </para>
+
+    <para>
+      <emphasis>ileak</emphasis> (facultatif, par défaut 0) -- si <emphasis>ileak</emphasis> se situe
+      entre zéro et un (0 &lt; <emphasis>ileak</emphasis> &lt; 1), <emphasis>ileak</emphasis> est utilisé
+      comme facteur de fuite de l'intégrateur. Sinon un facteur de fuite de 0,999 est utilisé pour les
+      ondes en dent de scie et carrée et de 0,995 pour l'onde triangle. On peut l'utiliser pour
+      <quote>aplatir</quote> l'onde carrée ou <quote>renforcer</quote> l'onde en dent de scie dans les
+      fréquences basses en fixant <emphasis>ileak</emphasis> à 0,99999 ou à une valeur semblable. Le
+      résultat devrait être une onde carrée sonnant plus faux.
+    </para>
+
+    <para>
+      <emphasis>inyx</emphasis> (facultatif, par défaut 0,5) -- est utilisé pour déterminer le nombre
+      d'harmoniques dans l'impulsion à bande de fréquence limitée. Tous les harmoniques jusqu'à
+      <emphasis>sr</emphasis> * <emphasis>inyx</emphasis> seront utilisés. La valeur par défaut donne
+      <emphasis>sr</emphasis> * 0,5 (<emphasis>sr</emphasis>/2). Pour <emphasis>sr</emphasis>/4
+      utiliser <emphasis>inyx</emphasis> = 0,25. Cela peut générer un son plus <quote>gras</quote>
+      dans certains cas.
+    </para>
+
+    <para>
+      <emphasis>iphs</emphasis> (facultatif, par défaut 0) -- c'est une valeur de phase. Il y a un
+      artefact (comme un bogue) dans <emphasis>vco</emphasis> qui se produit pendant la première
+      demi-période de l'onde carrée et qui rend la forme d'onde plus grande en amplitude que les
+      autres. La valeur de <emphasis>iphs</emphasis> a un effet sur cet artefact. En particulier, si
+      l'on fixe <emphasis>iphs</emphasis> à 0,5 la première demi-période de l'onde carrée ressemblera
+      à une petite onde triangulaire. Ceci peut être préférable à la grande forme d'onde de l'artefact
+      qui est le comportement par défaut.
+    </para>
+    <para>
+      <emphasis>iskip</emphasis> (facultatif, par défaut 0) -- s'il est non nul, l'initialisation du
+      filtre est ignorée. (Nouveau dans les versions 4.23f13 et 5.0 de Csound)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kpw</emphasis> -- détermine soit la largeur de la pulsation (si <emphasis>iwave</emphasis>
+      vaut 2) soit le caractère de la dent de scie / rampe (si <emphasis>iwave</emphasis> vaut 3). La valeur de
+      <emphasis>kpw</emphasis> doit être supérieure à 0 et inférieure à 1. Une valeur de 0,5 générera une
+      onde carrée (si <emphasis>iwave</emphasis> vaut 2) ou une onde triangle (si
+      <emphasis>iwave</emphasis> vaut 3).
+
+    </para>
+    <para>
+      <emphasis>xamp</emphasis> -- détermine l'amplitude
+    </para>
+
+    <para>
+      <emphasis>xcps</emphasis> -- fréquence de l'onde en cycles par seconde.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode vco. Il utilise le fichier
+      <ulink url="examples/vco.csd"><citetitle>vco.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode vco.</title>
+
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/vco.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="vco2"><citetitle>vco2</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namehans;</member>
+        <member>Décembre 1998</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.50 de Csound</para>
+    <para>Novembre 2002. Correction de la documentation pour le paramètre <emphasis>kpw</emphasis>.
+    Merci à &nameluis; et à &namehans;.</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,126 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="temposcal">
+<indexterm id="IndexTemposcal"><primary>temposcal</primary></indexterm>
+  <refentryinfo><title>Spectral processing: temposcal</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>temposcal</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>temposcal</refname>
+    <refpurpose>
+      Traitement par vocodeur à verrouillage de phase avec détection/traitement
+      d'attaque et "pondération du tempo".
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>temposcal</emphasis> implémente un traitement par vocodeur à
+      verrouillage de phase utilisant des tables de fonction qui contiennent
+      des sources sonores échantillonnées avec
+      <link linkend="GEN01"><citetitle>GEN01</citetitle></link>. Il acceptera
+      ainsi des tables à allocation différée.
+    </para>
+    <para>
+      Cet opcode permet une pondération indépendante du temps et de la fréquence.
+      Le temps progresse en interne mais il est contrôlé par un
+      paramètre de pondération du tempo ; lorsqu'une attaque est détectée,
+      l'échelonnement du temps est momentanément interrompue pour éviter le brouillage
+      des attaques. La qualité de l'effet est généralement améliorée avec le
+      verrouillage de phase activé.
+    </para>
+    <para>
+      <emphasis>temposcal</emphasis> pondère aussi la hauteur, indépendamment
+      de la fréquence, en utilisant un facteur de transposition (taux-k).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>asig <command>temposcal</command> ktimescal, kamp, kpitch, ktab, klock [,ifftsize, idecim, ithresh]
+      </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+      <para>
+      <emphasis>ifftsize</emphasis> -- taille de la TFR (puissance de deux), vaut
+      par défaut 2048.
+    </para>
+    <para>
+      <emphasis>idecim</emphasis> -- décimation, 4 par défaut (ce qui signifie que
+      <emphasis>hopsize</emphasis> = <emphasis>fftsize</emphasis>/4).
+    </para>
+    <para>
+      <emphasis>idbthresh</emphasis> -- seuil basé sur le rapport du spectre de
+      puissance en dB entre deux fenêtres successives. Un rapport détecté au-dessus
+      du seuil annule momentanément l'échelonnement du temps, pour éviter le
+      brouillage des attaques (vaut 1 par défaut).
+    </para>
+  
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+  <para>
+      <emphasis>ktimescal</emphasis> -- rapport d'échelonnement du temps, &lt; 1
+      étirement, &gt; 1 contraction.
+    </para>
+    <para>
+      <emphasis>kamp</emphasis> -- pondération de l'amplitude.
+    </para>
+    <para>
+      <emphasis>kpitch</emphasis> -- pondération de la hauteur de grain
+      (1=hauteur normale, &lt; 1 plus grave, &gt; 1 plus aigu ; négatif, à l'envers).
+    </para>
+
+    <para>
+      <emphasis>klock</emphasis> -- 0 ou 1, pour désactiver/activer le verrouillage
+      de phase.
+    </para>
+    <para>
+      <emphasis>ktab</emphasis> -- table de fonction du signal source. Les
+      tables à allocation différée (voir
+      <link linkend="GEN01"><citetitle>GEN01</citetitle></link>) sont acceptées,
+      mais l'opcode attend une source mono. On peut changer de table au taux-k.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode temposcal. Il utilise le fichier
+      <ulink url="examples/temposcal.csd"><citetitle>temposcal.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode temposcal.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/temposcal.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Février 2010</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau greffon dans la version 5.13</para>
+    <para>Février 2005.</para>
+  </refsect1>
+</refentry>

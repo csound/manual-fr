@@ -1,0 +1,290 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.3
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="MidiVirtual">
+  <title>Clavier virtuel MIDI</title>
+
+  <para>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/virtualkeyboard.png" format="PNG"/>
+      </imageobject>
+
+      <textobject>
+        <phrase>[Clavier virtuel MIDI]</phrase>
+      </textobject>
+
+      <caption>
+        <para>Clavier virtuel MIDI.</para>
+      </caption>
+    </mediaobject>
+  </para>
+
+  <para>
+    Le module du clavier virtuel MIDI (activé par l'option -+rtmidi=virtual sur la ligne de commande)
+    fournit un moyen d'envoyer des informations MIDI en temps réel à Csound sans avoir besoin d'un
+    périphérique MIDI. Il peut envoyer des informations de note, des changements de contrôle, des
+    changements de banque et de programme sur un canal spécifié. L'information MIDI en provenance du
+    clavier virtuel est traitée par Csound exactement de la même manière que si elle venait d'autres
+    pilotes MIDI, si bien que si votre orchestre Csound est conçu pour travailler avec des périphériques
+    matériels MIDI, cela marchera aussi.
+  </para>
+
+  <para>
+    Le clavier virtuel utilise l'option de périphérique (-M) pour récupérer le nom d'un fichier de
+    mappage du clavier. Comme tous les pilotes MIDI, celui-ci  nécessite un périphérique pour être activé.
+    Si l'on désire seulement utiliser les réglages par défaut du clavier, il suffit de passer 0
+    (c'est-à-dire -M0). Si au lieu de 0 un nom de fichier est donné, le clavier essaiera de charger le
+    fichier pour le mappage du clavier. Si le fichier n'a pas pu être ouvert ou lu correctement, les
+    réglages par défaut seront utilisés.
+  </para>
+
+  <para>
+    Les fichiers de Mappage du Clavier permettent à l'utilisateur de personnaliser le nom et le numéro des
+    banques ainsi que le nom et le numéro des programmes d'une banque. L'exemple suivant de mappage de
+    clavier (nommé keyboard.map) a des commentaires intégrés sur le format de fichier. Ce fichier est
+    aussi disponible dans la distribution des sources de Csound dans le répertoire InOut/virtual_keyboard.
+  </para>
+
+<programlisting>
+# Carte de Personnalisation du clavier pour le clavier virtuel
+# Steven Yi
+#
+# USAGE
+#
+# Lors de l'utilisation du clavier virtuel, vous pouvez fournir un nom de fichier
+# pour un mappage des banques et des programmes via l'option -M, par exemple :
+#
+# csound -+rtmidi=virtual -Mkeyboard.map mon_projet.csd
+#
+# INFORMATION SUR LE FORMAT
+#
+# -les lignes commençant par '#' sont des commentaires
+# -les lignes avec [] commencent les définitions d'une nouvelle banque,
+#  les contenus sont numBanque=nomBanque, avec numBanque=[1,16384]
+# -les lignes suivant les instructions de banque sont des définitions de programme
+#  dans le format numProgramme=nomProgramme, avec numProgramme=[1,128]
+# -les numéros de banque et de programme sont définis dans ce fichier
+#  en commençant à 1, mais ils sont convertis en valeurs midi (commençant
+#  à 0) lorsqu'ils sont lus
+#
+# NOTES
+#
+# -si une définition de banque invalide est trouvée, toutes les
+#  définitions de programme qui suivent seront ignorées jusqu'à ce
+#  qu'une nouvelle définition de banque valide soit trouvée
+# -si une définition valide de banque sans programmes valides est
+#  trouvée, elle prendra par défaut les définitions de programme
+#  General MIDI
+# -si une définition de programme invalide est trouvée, elle sera
+#  ignorée
+
+[1=Ma Banque]
+1=Mon Patch de Test 1
+2=Mon Patch de Test 2
+30=Mon Patch de Test 30
+
+[2=Ma Banque2]
+1=Mon Patch de Test 1(banque2)
+2=Mon Patch de Test 2(banque2)
+30=Mon Patch de Test 30(banque2)
+</programlisting>
+
+  <para>
+    Les dix réglettes du haut sont affectées par défaut aux contrôleurs MIDI numéro 1-10, mais on peut
+    les changer à volonté. Les numéros de contrôleur et les valeurs de chaque réglette sont fixés par
+    canal, si bien que l'on peut utiliser différents réglages et valeurs pour chaque canal.
+  </para>
+
+  <para>
+    Par défaut il y a 128 banques et pour chaque banque 128 patches réglés par défaut sur les noms
+    General Midi. Le standard de banque MIDI utilise une résolution sur 14 bit pour supporter 16384
+    banques possibles, mais les numéros de banque par défaut sont 0-127. Pour utiliser des valeurs
+    supérieures à 127, il faut utiliser un mappage de clavier personnalisé et fixer la valeur du
+    numéro de banque désiré pour le nom de la banque. Le clavier virtuel transmettra correctement
+    le numéro de banque comme MSB et LSB avec les contrôleurs 0 et 32.
+  </para>
+
+  <para>
+    Outre l'entrée disponible par l'interaction avec la GUI via la souris, on peut aussi déclencher les
+    notes MIDI à partir du clavier ASCII quand la fenêtre du clavier virtuel a le focus. L'arrangement
+    est organisé à la manière d'un traceur et offre deux octaves et une tierce majeure, en partant du
+    do médiant (note MIDI 60). La correspondance entre le clavier ASCII et les valeurs de note MIDI
+    est donnée dans la table suivante.
+  </para>
+
+    <table>
+      <title>Valeurs des notes MIDI du clavier ASCII</title>
+      <tgroup cols="2">
+        <thead>
+          <row>
+            <entry>Touche</entry>
+            <entry>Valeur MIDI</entry>
+          </row>
+        </thead>
+        <tbody>
+
+        <row>
+            <entry>z</entry>
+            <entry>60</entry>
+          </row>
+
+          <row>
+            <entry>s</entry>
+            <entry>61</entry>
+          </row>
+
+          <row>
+            <entry>x</entry>
+            <entry>62</entry>
+          </row>
+
+          <row>
+            <entry>d</entry>
+            <entry>63</entry>
+          </row>
+
+          <row>
+            <entry>c</entry>
+            <entry>64</entry>
+          </row>
+
+          <row>
+            <entry>v</entry>
+            <entry>65</entry>
+          </row>
+
+          <row>
+            <entry>g</entry>
+            <entry>66</entry>
+          </row>
+
+          <row>
+            <entry>b</entry>
+            <entry>67</entry>
+          </row>
+
+          <row>
+            <entry>h</entry>
+            <entry>68</entry>
+          </row>
+
+          <row>
+            <entry>n</entry>
+            <entry>69</entry>
+          </row>
+
+          <row>
+            <entry>j</entry>
+            <entry>70</entry>
+          </row>
+
+          <row>
+            <entry>m</entry>
+            <entry>71</entry>
+          </row>
+
+          <row>
+            <entry>q</entry>
+            <entry>72</entry>
+          </row>
+
+          <row>
+            <entry>2</entry>
+            <entry>73</entry>
+          </row>
+
+          <row>
+            <entry>w</entry>
+            <entry>74</entry>
+          </row>
+
+          <row>
+            <entry>3</entry>
+            <entry>75</entry>
+          </row>
+
+          <row>
+            <entry>e</entry>
+            <entry>76</entry>
+          </row>
+
+          <row>
+            <entry>r</entry>
+            <entry>77</entry>
+          </row>
+
+          <row>
+            <entry>5</entry>
+            <entry>78</entry>
+          </row>
+
+          <row>
+            <entry>t</entry>
+            <entry>79</entry>
+          </row>
+
+          <row>
+            <entry>6</entry>
+            <entry>80</entry>
+          </row>
+
+          <row>
+            <entry>y</entry>
+            <entry>81</entry>
+          </row>
+
+          <row>
+            <entry>7</entry>
+            <entry>82</entry>
+          </row>
+
+          <row>
+            <entry>u</entry>
+            <entry>83</entry>
+          </row>
+
+          <row>
+            <entry>i</entry>
+            <entry>84</entry>
+          </row>
+
+          <row>
+            <entry>9</entry>
+            <entry>85</entry>
+          </row>
+
+          <row>
+            <entry>o</entry>
+            <entry>86</entry>
+          </row>
+
+          <row>
+            <entry>0</entry>
+            <entry>87</entry>
+          </row>
+
+          <row>
+            <entry>p</entry>
+            <entry>88</entry>
+          </row>
+
+
+
+        </tbody>
+      </tgroup>
+    </table>
+
+    <para>
+      Voici un exemple de l'utilisation du clavier virtuel MIDI. Il utilise le fichier
+      <ulink url="examples/virtual.csd"><citetitle>virtual.csd</citetitle></ulink>.
+ <xi:include href="examples-xml/virtual.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </para>
+
+</section>

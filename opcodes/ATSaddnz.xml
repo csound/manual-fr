@@ -1,0 +1,133 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ATSaddnz">
+<indexterm id="IndexATSaddnz"><primary>ATSaddnz</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:ATS</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ATSaddnz</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ATSaddnz</refname>
+    <refpurpose>
+        utilise les données d'un fichier d'analyse ATS pour réaliser une synthèse
+        de bruit.
+    </refpurpose>
+  </refnamediv>
+  <refsect1>
+    <title>Description</title>
+      <para>
+        <emphasis>ATSaddnz</emphasis> lit depuis un fichier d'analyse ATS et utilise
+        les données pour réaliser une synthèse additive en utilisant une fonction
+        randi modifiée.
+      </para>
+  </refsect1>
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ar <command>ATSaddnz</command> ktimepnt, iatsfile, ibands[, ibandoffset, ibandincr]</synopsis>
+  </refsect1>
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iatsfile</emphasis> – le numéro ATS (n dans ats.n) ou le nom
+      entre guillemets du fichier d'analyse créé avec
+      <ulink url="http://www-ccrma.stanford.edu/~juan/ATS.html"><citetitle>ATS</citetitle></ulink>.
+    </para>
+    <para>
+      <emphasis>ibands</emphasis> – nombre de bandes de bruit qui seront utilisées
+      dans la resynthèse (le bruit comprend 25 bandes au maximum).
+    </para>
+    <para>
+      <emphasis>ibandoffset</emphasis> (facultatif) – la première bande de bruit
+      utilisée (0 par défaut).
+    </para>
+    <para>
+      <emphasis>ibandincr</emphasis> (facultatif) – fixe le pas
+        d'incrémentation que ces opcodes de synthèse utilisent pour compter les
+        composants bins à partir de <emphasis>ipartialoffset</emphasis> dans la
+        resynthèse (1 par défaut).
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ktimepnt</emphasis> – Le pointeur de temps en secondes utilisé
+      comme indice sur le fichier ATS. Est utilisé pour
+      <emphasis>ATSaddnz</emphasis> exactement de la même manière que pour
+      <link linkend="pvoc"><citetitle>pvoc</citetitle></link> et
+      <link linkend="ATSadd"><citetitle>ATSadd</citetitle></link>.
+    </para>
+    <para>
+      <emphasis>ATSaddnz</emphasis> et
+      <link linkend="ATSadd"><citetitle>ATSadd</citetitle></link> sont basés sur
+      <link linkend="pvadd"><citetitle>pvadd</citetitle></link> par
+      Richard Karpen et ils utilisent des fichier créés par ATS de Juan Pampin
+      (<ulink url="http://www-ccrma.stanford.edu/~juan/ATS.html"><citetitle>Analyse
+      - Transformation - Synthèse</citetitle></ulink>).
+    </para>
+    <para>
+      <emphasis>ATSaddnz</emphasis> lit aussi depuis un fichier d'analyse ATS
+      mais il resynthétise le bruit depuis les données d'énergie du bruit contenues
+      dans le fichier ATS. Il utilise une fonction randi modifiée pour créer du
+      bruit à bande limitée et le module avec une onde cosinus, pour synthétiser
+      une sélection de bandes de fréquence spécifiée par l'utilisateur. La modulation
+      du bruit est nécessaire pour placer le bruit à bande limitée au bon endroit
+      dans le spectre de fréquence.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Exemples</title>
+    <programlisting>  ktime <emphasis role="opc">line</emphasis>     0, p3, 2.5
+  asig  <emphasis role="opc">ATSaddnz</emphasis> ktime, "clarinet.ats", 25</programlisting>
+    <para>
+      Dans l'exemple ci-dessus nous resynthétisons les 25 bandes de bruit depuis
+      les données contenues dans le fichier d'analyse nommé "clarinet.ats".
+    </para>
+  </refsect1>
+        
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un autre exemple de l'opcode ATSaddnz. Il utilise le fichier
+      <ulink url="examples/ATSaddnz.csd"><citetitle>ATSaddnz.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode ATSaddnz.</title>
+          <xi:include href="examples-xml/ATSaddnz.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Ici nous ne resynthétisons que la 25ème bande de bruit (<emphasis>ibandoffset</emphasis>
+      à 24 et <emphasis>ibands</emphasis> à 1).
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Voir aussi</title>
+    <para><link linkend="ATSread"><citetitle>ATSread</citetitle></link>, 
+      <link linkend="ATSreadnz"><citetitle>ATSreadnz</citetitle></link>, 
+      <link linkend="ATSinfo"><citetitle>ATSinfo</citetitle></link>, 
+      <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>, 
+      <link linkend="ATScross"><citetitle>ATScross</citetitle></link>, 
+      <link linkend="ATSinterpread"><citetitle>ATSinterpread</citetitle></link>, 
+      <link linkend="ATSpartialtap"><citetitle>ATSpartialtap</citetitle></link>, 
+      <link linkend="ATSaddnz"><citetitle>ATSaddnz</citetitle></link>, 
+      <link linkend="ATSsinnoi"><citetitle>ATSsinnoi</citetitle></link></para>
+  </refsect1>
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Alex Norman</member>
+        <member>Seattle,Washington</member>
+        <member>2004</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

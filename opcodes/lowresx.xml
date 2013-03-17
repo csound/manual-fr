@@ -1,0 +1,112 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="lowresx">
+<indexterm id="IndexLowresx"><primary>lowresx</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Resonant</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lowresx</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>lowresx</refname>
+    <refpurpose>
+      Simule des couches de filtres passe-bas à résonance connectés en série.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>lowresx</emphasis> est équivalent à plusieurs étages de
+      <link linkend="lowres"><citetitle>lowres</citetitle></link> connectés en
+      série, avec les mêmes arguments.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>lowresx</command> asig, kcutoff, kresonance [, inumlayer] [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>inumlayer</emphasis> -- nombre d'éléments dans une aggrégation
+      <emphasis>lowresx</emphasis>. La valeur par défaut est 4. Il n'y a pas de
+      maximum.
+    </para>
+
+    <para>
+      <emphasis>iskip</emphasis> -- disposition initiale de la mémoire interne.
+      Une valeur de zéro efface la mémoire ; une valeur différente de zéro permet
+      de maintenir l'information précédente. La valeur par défaut est 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- signal d'entrée
+    </para>
+
+    <para>
+      <emphasis>kcutoff</emphasis> -- fréquence de coupure du filtre
+    </para>
+
+    <para>
+      <emphasis>kresonance</emphasis> -- quantité de résonance
+    </para>
+
+    <para>
+      <emphasis>lowresx</emphasis> est équivalent à plusieurs étages de
+      <link linkend="lowres"><citetitle>lowres</citetitle></link> connectés en
+      série, avec les mêmes arguments. Plus il y a de filtres dans l'aggrégation
+      et plus la coupure est raide. C'est plus rapide que d'utiliser un plus
+      grand nombre d'instances de <emphasis>lowres</emphasis> dans un orchestre
+      de Csound parce que ne sont nécessaires qu'une seule initialisation et qu'un
+      cycle k à la fois, et que la boucle audio est entièrement contenue dans la
+      mémoire cache du processeur. Basé sur un orchestre par &namehans;.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode lowresx. Il utilise le fichier
+      <ulink url="examples/lowresx.csd"><citetitle>lowresx.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode lowresx.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/lowresx.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="lowres"><citetitle>lowres</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel; (adapté par &namejohn;)</member>
+        <member>Italie</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.49 de Csound.</para>
+  </refsect1>
+</refentry>

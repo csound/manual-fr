@@ -1,0 +1,44 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.2
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="SigmodWavshape">
+  <title>Distorsion Non-Linéaire et Distorsion de Phase</title>
+
+  <para>
+    Ces opcodes peuvent exécuter de façon dynamique une distorsion non-linéaire ou une distorsion
+    de phase. Il diffèrent des méthodes traditionnelles de distorsion non-linéaire basées sur une
+    table, en calculant directement la fonction de transfert avec un ou plusieurs paramètres
+    variables pour modifier l'importance ou les résultats de la distorsion. La plupart de ces
+    opcodes peuvent être utilisés sur un signal audio (pour la distorsion non-linéaire) ou
+    sur un phaseur (pour la distorsion de phase) mais ils ont tendance à fonctionner au mieux
+    pour une de ces applications.
+  </para>
+
+  <para>
+    Ces opcodes sont adaptés à la distorsion non-linéaire :
+    <itemizedlist>
+      <listitem><para><link linkend="chebyshevpoly"><citetitle>chebyshevpoly</citetitle></link></para></listitem>
+      <listitem><para><link linkend="clip"><citetitle>clip</citetitle></link></para></listitem>
+      <listitem><para><link linkend="distort"><citetitle>distort</citetitle></link></para></listitem>
+      <listitem><para><link linkend="distort1"><citetitle>distort1</citetitle></link></para></listitem>
+      <listitem><para><link linkend="polynomial"><citetitle>polynomial</citetitle></link></para></listitem>
+      <listitem><para><link linkend="powershape"><citetitle>powershape</citetitle></link></para></listitem>
+    </itemizedlist>
+  </para>
+  
+  <para>
+    Ces opcodes sont adaptés à la distorsion de phase :
+    <itemizedlist>
+      <listitem><para><link linkend="pdclip"><citetitle>pdclip</citetitle></link></para></listitem>
+      <listitem><para><link linkend="pdhalf"><citetitle>pdhalf</citetitle></link></para></listitem>
+      <listitem><para><link linkend="pdhalfy"><citetitle>pdhalfy</citetitle></link></para></listitem>
+    </itemizedlist>
+  </para>
+  
+</section>

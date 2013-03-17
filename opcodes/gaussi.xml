@@ -1,0 +1,122 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="gaussi">
+<indexterm id="IndexGaussiXClass"><primary>x-class noise generators</primary></indexterm>
+
+<indexterm id="IndexGaussi"><primary>gaussi</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Random (Noise) Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>gaussi</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>gaussi</refname>
+    <refpurpose>
+      Générateur de nombres aléatoires à distribution gaussienne avec
+      interpolation.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Générateur de nombres aléatoires à distribution gaussienne avec
+      interpolation contrôlée entre les valeurs. C'est un générateur de bruit
+      de classe x.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>gaussi</command> krange, xamp, xcps</synopsis>
+    <synopsis>ires <command>gaussi</command> krange, xamp, xcps</synopsis>
+    <synopsis>kres <command>gaussi</command> krange, xamp, xcps</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>krange</emphasis> -- l'intervalle des nombres aléatoires
+      (-<emphasis>krange</emphasis> à +<emphasis>krange</emphasis>). Produit
+      des nombres positifs et négatifs.
+    </para>
+
+    <para>
+      <emphasis>gaussi</emphasis>  retourne des nombres aléatoires suivant une
+      distribution normale centrée sur 0 (mu = 0.0) avec une variance (sigma) de
+      <emphasis>krange</emphasis> / 3.83. Ainsi plus de 99.99% des valeurs
+      aléatoires générées sont comprises entre -<emphasis>krange</emphasis> et
+      +<emphasis>krange</emphasis>. Si l'on veut une valeur moyenne différente
+      de 0.0, il faut ajouter cette valeur moyenne à chaque nombre généré (voir
+      l'exemple ci-dessous).
+    </para>
+
+    <para>
+      Pour des explications plus détaillées, voir :
+      <orderedlist>
+        <listitem>
+          <para>C. Dodge - T.A. Jerse 1985. Computer music. Schirmer books. pp.265 - 286</para>
+        </listitem>
+
+        <listitem>
+          <para>D. Lorrain. A panoply of stochastic cannons. In
+          C. Roads, ed. 1989. Music machine . Cambridge,
+          Massachusetts: MIT press, pp. 351 - 379.</para> 
+        </listitem>
+      </orderedlist>
+    </para>
+
+    <para>
+      <emphasis>xamp</emphasis> -- intervalle de distribution des nombres aléatoires.
+    </para>
+
+    <para>
+      <emphasis>xcps</emphasis> -- fréquence à laquelle de nouveau nombres sont
+      générés.
+    </para>
+
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode gaussi. Il utilise le fichier
+      <ulink url="examples/gaussi.csd"><citetitle>gaussi.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode gaussi.</title>
+
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+           <xi:include href="examples-xml/gaussi.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="gauss"><citetitle>gauss</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Bath</member>
+        <member>Mai 2011</member>
+        <member>Nouveau dans la version 5.14</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

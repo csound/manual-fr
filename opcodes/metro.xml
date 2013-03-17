@@ -1,0 +1,102 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="metro">
+<indexterm id="IndexMetro"><primary>metro</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>metro</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>metro</refname>
+    <refpurpose>
+      Métronome déclencheur.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère un signal métronomique à utiliser dans toutes les circonstances pour
+      lesquelles un déclencheur isochrone est nécessaire.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ktrig  <command>metro</command>  kfreq [, initphase]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>initphase</emphasis> -- valeur de phase initiale (entre 0 et 1)
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ktrig</emphasis> -- signal déclencheur en sortie
+    </para>
+    <para>
+      <emphasis>kfreq</emphasis> - fréquence des impulsions de délenchement en Hz
+    </para>
+
+     <para>
+     <emphasis>metro</emphasis> est un opcode simple qui retourne une séquence
+     d'impulsions isochrones (valeurs 1) chaque 1/<emphasis>kfreq</emphasis>
+     secondes. On peut utiliser les signaux déclencheurs en toute occasion,
+     principalement pour temporiser des structures de composition algorithmique
+     en temps réel.
+     </para>
+
+     <note>
+        <para>
+        <emphasis>metro</emphasis> produit un signal déclencheur (égal à 1) lorsque sa
+        phase vaut exactement 0 ou 1. Si l'on veut ignorer le déclencheur initial,
+        il faut utiliser une très petite valeur de phase initiale comme 0.00000001.
+     </para>
+     </note>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode metro. Il utilise le fichier
+      <ulink url="examples/metro.csd"><citetitle>metro.csd</citetitle></ulink>
+      <example>
+        <title>Exemple de l'opcode metro.</title>
+        <xi:include href="examples-xml/metro.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Voici un autre exemple de l'opcode metro. Il utilise le fichier
+      <ulink url="examples/metro-2.csd"><citetitle>metro-2.csd</citetitle></ulink>
+      <example>
+        <title>Un autre exemple de l'opcode metro</title>
+        <xi:include href="examples-xml/metro-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>Plus d'information sur cet opcode dans les Floss Manuals :
+    <ulink url="http://en.flossmanuals.net/csound/ch018_c-control-structures/"><citetitle>http://en.flossmanuals.net/csound/ch018_c-control-structures/</citetitle></ulink>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par &namegabriel;.</para>
+    <para>Premier exemple écrit par &nameandres;.</para>
+    <para>Nouveau dans Csound 5. (N'était auparavant disponible que dans CsoundAV).</para>
+  </refsect1>
+</refentry>
+

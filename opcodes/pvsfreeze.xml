@@ -1,0 +1,125 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvsfreeze">
+<indexterm id="Indexpvsfreeze"><primary>pvsfreeze</primary></indexterm>
+
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsfreeze</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvsfreeze</refname>
+    <refpurpose>
+      Gèle les fonctions temporelles d'amplitude et de fréquence d'un flot pv
+      selon un déclencheur au taux de contrôle.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      cet opcode "gèle" l'évolution d'un flot pvs en figeant les valeurs
+      d'amplitude et/ou de fréquence de chaque bin. Le gel des valeurs est contrôlé
+      indépendamment pour les amplitudes et pour les fréquences par un déclencheur
+      au taux de contrôle qui active le gel s'il est supérieur ou égal à 1 et le
+      désactive s'il est inférieur à 1.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>fsig <command>pvsfreeze</command> fsigin, kfreeza, kfreezf</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>fsig</emphasis> -- flot pv de sortie.
+    </para>
+
+    <para>
+      <emphasis>fsigin</emphasis> -- flot pv d'entrée.
+    </para>
+
+    <para>
+      <emphasis>kfreeza</emphasis> -- contrôle du gel des amplitudes. Le gel est
+      actif pour les valeurs supérieures ou égales à 1 et inactif pour les valeurs
+      inférieures à 1.
+    </para>
+
+    <para>
+      <emphasis>kfcf</emphasis> -- contrôle du gel des fréquences. Le gel est
+      actif pour les valeurs supérieures ou égales à 1 et inactif pour les valeurs
+      inférieures à 1.
+    </para>
+
+    <warning>
+      <para>
+        Il est dangereux d'utiliser la même variable-f à la fois comme entrée et
+        comme sortie des opcodes pvs. Ceci peut produire un comportement indéfini
+        de certains de ces opcodes. Utilisez une variable différente à gauche et
+        à droite de l'opcode.
+      </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      <example>
+        <title>Exemples</title>
+        <programlisting>
+asig  <emphasis role="opc">in</emphasis>                                       <emphasis role="comment">; input</emphasis>
+ktrig <emphasis role="opc">oscil</emphasis>     1.5, 0.25, 1                   <emphasis role="comment">; trigger</emphasis>
+fim   <emphasis role="opc">pvsanal</emphasis>   asig1, 1024, 256, 1024, 0      <emphasis role="comment">; pvoc analysis </emphasis>
+fou   <emphasis role="opc">pvsfreeze</emphasis> fim, <emphasis role="opc">abs</emphasis>(ktrig), <emphasis role="opc">abs</emphasis>(ktrig)    <emphasis role="comment">; regular 'freeze' of spectra</emphasis>
+aout  <emphasis role="opc">pvsynth</emphasis>   fou                            <emphasis role="comment">; pvoc synthesis</emphasis></programlisting>
+      </example>
+    </para>
+    <para>
+      Dans l'exemple ci-dessus, le signal d'entrée sera régulièrement "gelé" un
+      court instant lorsque le déclencheur dépasse 1, environ toutes les deux
+      secondes.
+    </para>
+    <para>
+      Voici in exemple de l'opcoce pvsfreeze. Il utilise le fichier
+      <ulink url="examples/pvsfreeze.csd"><citetitle>pvsfreeze.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcoce pvsfreeze.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pvsfreeze.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="pvsanal"><citetitle>pvsanal</citetitle></link>,
+      <link linkend="pvsynth"><citetitle>pvsynth</citetitle></link>,
+      <link linkend="pvsadsyn"><citetitle>pvsadsyn</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Mai 2006 </member>
+      </simplelist>
+    </para>
+    <para>Nouveau greffon dans la version 5</para>
+    <para>Mai 2006.</para>
+  </refsect1>
+</refentry>

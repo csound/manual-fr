@@ -1,0 +1,81 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.6
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="ScoreMult">
+  <title>Partition dans plusieurs fichiers</title>
+
+  <simplesect>
+    <title>Description</title>
+    <para>
+      Disposer la partition dans plusieurs fichiers.
+    </para>
+  </simplesect>
+
+  <simplesect>
+    <title>Syntaxe</title>
+    <synopsis><command>&num;include</command> &quot;nomfichier&quot;</synopsis>
+  </simplesect>
+
+  <simplesect>
+    <title>Exécution</title>
+    <para>
+      Il est parfois commode de disposer la partition dans plusieurs fichiers. On peut le faire
+      en utilisant <emphasis>&num;include</emphasis> qui fait partie du système de macro.
+      Par une ligne contenant le texte
+
+      <indexterm id="IndexIncludeScore"><primary>&num;include</primary><secondary>score</secondary></indexterm>
+      <indexterm id="IndexMultiFileScore"><primary>multiple file scores</primary></indexterm>
+
+      <informalexample>
+        <programlisting>
+<emphasis>&num;include</emphasis> &quot;nomfichier&quot;</programlisting>
+      </informalexample>
+
+      où le caractère <emphasis>&quot;</emphasis> peut être remplacé par n'importe quel caractère
+      adéquat. Pour la plupart des usages, le symbole des guillemets sera probablement le plus adapté.
+      Le nom de fichier peut comprendre un nom de chemin complet.
+    </para>
+
+    <para>
+      On prend en entrée le contenu du fichier nommé, puis on revient à l'entrée précédente. La profondeur
+      des fichiers inclus et des macros est actuellement limitée à 20.
+    </para>
+
+    <para>
+      On peut utiliser <emphasis>&num;include</emphasis> pour définir un ensemble de macros qui font
+      partie du style du compositeur. On peut aussi l'utiliser pour répéter des sections.
+
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">s</emphasis>
+#include :section1:
+<emphasis role="comment">;; Répéter ceci</emphasis>
+<emphasis role="stamnt">s</emphasis>
+#include :section1:</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      Pour d'autres méthodes de répétition, utiliser
+      l'<link linkend="r"><citetitle>instruction r</citetitle></link>,
+      l'<link linkend="m"><citetitle>instruction m</citetitle></link>, et
+      l'<link linkend="n"><citetitle>instruction n</citetitle></link>.
+    </para>
+  </simplesect>
+
+  <simplesect>
+    <title>Crédits</title>
+    <para>Auteur : &namejohn;</para>
+    <para>University of Bath/Codemist Ltd.</para>
+    <para>Bath, UK</para>
+    <para>Avril 1998 (Nouveau dans la version 3.48 de Csound)</para>
+    <para>Merci à &nameluis; d'avoir relevé la syntaxe incorrecte dans l'instruction d'inclusion de
+      fichiers.</para>
+  </simplesect>
+</section>

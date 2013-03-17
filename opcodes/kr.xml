@@ -1,0 +1,91 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.10
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="kr">
+<indexterm id="IndexKr"><primary>kr</primary></indexterm>
+  <refentryinfo><title>Orchestra Syntax:Header</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>kr</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>kr</refname>
+    <refpurpose>
+      Fixe le taux de contrôle.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ces instructions sont des <link linkend="assign"><citetitle>affectations</citetitle></link> de
+      valeurs globales réalisées au début d'un orchestre, avant que tout bloc d'instrument ne soit
+      défini. Leur fonction est de fixer certaines
+      <link linkend="VariableTypes"><citetitle>variables</citetitle></link> dont le nom est un mot réservé
+      et qui sont nécessaires à l'exécution. Une fois fixés, ces mots réservés peuvent être utilisés dans
+      des expressions n'importe où dans l'orchestre.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>kr</command> = iarg</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>kr</emphasis> = (facultatif) -- fixe le taux de contrôle à <emphasis>iarg</emphasis>
+      échantillons par seconde. La valeur par défaut est 4410.
+    </para>
+
+    <para>
+      De plus, toute <link linkend="GlobalVariables"><citetitle>variable globale</citetitle></link> peut
+      être initialisée par une <emphasis>instruction de la période d'initialisation</emphasis> n'importe
+      où avant la première <link linkend="instr"><citetitle>instruction instr</citetitle></link>. Toutes
+      les affectations ci-dessus sont exécutées dans l'instrument 0 (passe-i seulement) au début de
+      l'exécution réelle.
+    </para>
+
+    <para>
+      Depuis la version 3.46 de Csound, on peut omettre <emphasis>kr</emphasis>. Csound utilisera les
+      valeurs par défaut, ou calculera <emphasis>kr</emphasis> à partir des valeurs définies de
+      <link linkend="ksmps"><citetitle>ksmps</citetitle></link> et
+      <link linkend="sr"><citetitle>sr</citetitle></link>. Habituellement, il est mieux de ne spécifier que
+      <link linkend="ksmps"><citetitle>ksmps</citetitle></link> et
+      <link linkend="sr"><citetitle>sr</citetitle></link> et de laisser csound calculer
+      <emphasis>kr</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      <informalexample>
+        <programlisting>
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 10000
+<emphasis role="ohdr">kr</emphasis> <emphasis role="op">=</emphasis> 500
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 20
+gi1 <emphasis role="op">=</emphasis> <emphasis role="ohdr">sr</emphasis><emphasis role="op">/</emphasis>2.
+ga <emphasis role="opc">init</emphasis> 0
+itranspose <emphasis role="op">=</emphasis> <emphasis role="opc">octpch</emphasis>(.0l)</programlisting>
+      </informalexample>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ksmps"><citetitle>ksmps</citetitle></link>,
+      <link linkend="nchnls"><citetitle>nchnls</citetitle></link>,
+      <link linkend="nchnls_i"><citetitle>nchnls_i</citetitle></link>,
+      <link linkend="sr"><citetitle>sr</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

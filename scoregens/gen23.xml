@@ -1,0 +1,108 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="GEN23">
+      <indexterm id="IndexGEN23"><primary>GEN23</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN23</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>GEN23</refname>
+    <refpurpose>
+      Lit des valeurs numériques à partir d'un fichier texte.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ce sous-programme lit des valeurs numériques à partir d'un fichier ASCII.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>f</command> # date taille -23 &quot;nomfichier.txt&quot;</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>&quot;nomfichier.txt&quot;</emphasis> -- les valeurs numériques contenues dans
+      &quot;nomfichier.txt&quot; (qui indique le nom de chemin complet du fichier de caractères à lire)
+      peuvent être séparées par des espaces, des tabulations, des caractères de passage à la ligne ou des
+      virgules. De plus, on peut utiliser comme commentaires des mots qui contiennent des caractères non
+      numériques car ils sont ignorés.
+    </para>
+
+    <para>
+      <emphasis>taille</emphasis> -- nombre de points dans la table. Doit être une puissance de 2, une
+      puissance de 2 + 1, ou zéro. Si <emphasis>taille</emphasis> = 0, la taille de la table est
+      déterminée par le nombre de valeurs numériques dans <emphasis>nomfichier.txt</emphasis>. (Nouveau
+      dans la version 3.57 de Csound)
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        Tous les caractères suivant un ';' ou un '#' (commentaire) sont ignorés jusqu'à
+        la ligne suivante (les nombres aussi).
+      </para>
+    </note>
+  </refsect1>
+ 
+    <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de la routine GEN23. Il utilise les fichiers
+      <ulink url="examples/gen23.csd"><citetitle>gen23.csd</citetitle></ulink>
+      et <ulink url="examples/spectrum.txt"> <citetitle>spectrum.txt</citetitle></ulink>.
+      <example>
+        <title>Exemple de la routine GEN23.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/gen23.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>  
+      <textobject>
+        <phrase>Voici le diagramme de la forme d'onde de la routine GEN23 utilisée
+        dans l'exemple :</phrase>
+      </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen23.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 2 0 128 -23 "spectrum.txt" - non normalisé</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 2 0 128 -23 "spectrum.txt" - non normalisé</para>
+       </caption>
+      </mediaobject>
+    </para>
+  </refsect1>  
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+        <member>Février 1998</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.47 de Csound. Les commentaires commençant par un
+    '#' sont ignorés depuis la version 5.12 de csound.</para>
+  </refsect1>
+</refentry>

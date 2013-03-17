@@ -1,0 +1,109 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="phasorbnk">
+<indexterm id="IndexPhasorbnk"><primary>phasorbnk</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Phasors</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>phasorbnk</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>phasorbnk</refname>
+    <refpurpose>
+      Produit un nombre arbitraire de valeurs de phase mobiles normalisées.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Produit un nombre arbitraire de valeurs de phase mobiles normalisées, accessibles
+      par un indice.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>phasorbnk</command> xcps, kndx, icnt [, iphs]</synopsis>
+
+    <synopsis>kres <command>phasorbnk</command> kcps, kndx, icnt [, iphs]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>icnt</emphasis> -- nombre maximum de phaseurs à utiliser.
+    </para>
+
+    <para>
+      <emphasis>iphs</emphasis> -- phase initiale, exprimée comme une fraction
+      d'une période (0 à 1). Si elle vaut -1, l'initialisation sera ignorée. Si
+      <emphasis>iphas</emphasis>&gt;1 chaque phaseur sera initialisé avec une
+      valeur aléatoire.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kndx</emphasis> -- valeur d'indice pour accéder aux phaseurs
+      individuellement
+    </para>
+
+    <para>
+      Pour chaque phaseur indépendant, une phase interne est augmentée successivement
+      selon la fréquence de <emphasis>kcps</emphasis> ou de <emphasis>xcps</emphasis>
+      pour produire une valeur de phase mobile, normalisée pour se trouver dans
+      l'intervalle 0 &lt;= phs &lt; 1. On accède à chaque phaseur individuel par
+      l'indice <emphasis>kndx</emphasis>.
+    </para>
+
+    <para>
+      On peut utiliser cette banque de phaseurs dans une boucle de taux-k pour
+      générer plusieurs voix indépendantes, ou en conjonction avec l'opcode
+      <link linkend="adsynt"><citetitle>adsynt</citetitle></link> pour changer les
+      paramètres dans les tables utilisées par <emphasis>adsynt</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode phasorbnk. Il utilise le fichier
+      <ulink url="examples/phasorbnk.csd"><citetitle>phasorbnk.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode phasorbnk.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/phasorbnk.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Génère plusieurs voix avec des partiels indépendants. Cet exemple est meilleur
+      avec <emphasis>adsynt</emphasis>. Voir aussi l'exemple de la notice
+      <link linkend="adsynt"><citetitle>adsynt</citetitle></link> pour une utilisation
+      de <emphasis>phasorbnk</emphasis> au taux-k.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Peter Neub&auml;cker</member>
+        <member>Munich, Allemagne</member>
+        <member>Août 1999</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.58 de Csound</para>
+  </refsect1>
+</refentry>

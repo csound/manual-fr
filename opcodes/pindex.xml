@@ -1,0 +1,135 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.2
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pindex">
+<indexterm id="IndexPindex"><primary>pindex</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pindex</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pindex</refname>
+    <refpurpose>
+      Retourne la valeur d'un p-champ spécifié.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>pindex</emphasis> retourne la valeur d'un p-champ spécifié.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ivalue <command>pindex</command> ipfieldIndex</synopsis>
+ </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ipfieldIndex</emphasis> -- numéro du p-champ à interroger.
+    </para>
+    <para>
+      <emphasis>ivalue</emphasis> - valeur du p-champ.
+    </para>
+  </refsect1>
+ 
+<!--  <refsect1>
+    <title>Exécution</title>
+
+  </refsect1>-->
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode pindex. Il utilise le fichier
+      <ulink url="examples/pindex.csd"><citetitle>pindex.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode pindex.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pindex.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      L'exemple produira la sortie suivante :
+      <screen>
+new alloc for instr 1:
+WARNING: instr 1 uses 3 p-fields but is given 5
+p1 = 1.000000
+p2 = 0.000000
+p3 = 3.000000
+p4 = 40.000000
+p5 = 50.000000
+instr 1:  inum = 5.000
+B  0.000 ..  1.000 T  1.000 TT  1.000 M:      0.0
+new alloc for instr 1:
+WARNING: instr 1 uses 3 p-fields but is given 5
+p1 = 1.000000
+p2 = 1.000000
+p3 = 2.000000
+p4 = 80.000000
+p5 = 50.000000
+instr 1:  inum = 5.000
+B  1.000 ..  2.000 T  2.000 TT  2.000 M:      0.0
+new alloc for instr 1:
+WARNING: instr 1 uses 3 p-fields but is given 7
+p1 = 1.000000
+p2 = 2.000000
+p3 = 1.000000
+p4 = 40.000000
+p5 = 50.000000
+p6 = 60.000000
+p7 = 70.000000
+instr 1:  inum = 7.000</screen>
+      On peut ignorer les avertissements, car les p-champs sont utilisés
+      indirectement par <emphasis>pindex</emphasis> plutôt que de manière
+      explicite par p4, p5, etc.
+    </para>
+    <para>
+      Voici un autre exemple de l'opcode pindex. Il utilise le fichier
+      <ulink url="examples/pindex-2.csd"><citetitle>pindex-2.csd</citetitle></ulink>.
+      <example>
+        <title>Second exemple de l'opcode pindex.</title>
+          <xi:include href="examples-xml/pindex-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      L'exemple produit la sortie suivante :
+      <screen>
+WARNING: instr 1 uses 3 p-fields but is given 8
+B  0.000 ..  2.000 T  2.000 TT  2.000 M:  0.49966  0.49966
+WARNING: instr 1 uses 3 p-fields but is given 10
+B  2.000 ..  4.000 T  4.000 TT  4.000 M:  0.50000  0.50000
+WARNING: instr 1 uses 3 p-fields but is given 10
+B  4.000 ..  6.000 T  6.000 TT  6.000 M:  0.49943  0.49943
+WARNING: instr 1 uses 3 p-fields but is given 6
+B  6.000 ..  8.000 T  8.000 TT  8.000 M:  0.00000  0.00000
+WARNING: instr 1 uses 3 p-fields but is given 20
+B  8.000 .. 18.000 T 18.000 TT 18.000 M:  0.49994  0.49994
+      </screen>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="pcount"><citetitle>pcount</citetitle></link>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Crédits</title>
+    <para>Exemple par : Anthony Kozar</para>
+    <para>Décembre 2006</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,89 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="readf">
+<indexterm id="IndexReadf"><primary>readf</primary></indexterm>
+  <refentryinfo><title>File I/O</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>readf</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>readf</refname>
+    <refpurpose>
+      Lit une ligne de texte depuis un fichier externe.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Lit une ligne de texte depuis un fichier externe à chaque k-cycle.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>Sres <command>readf</command> ifilname</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifilname</emphasis> -- un entier N indiquant un fichier nommé
+      "input.N" ou une chaîne de caractères (entre guillemets, espaces autorisés)
+      contenant le nom du fichier externe. Si c'est une chaîne de caractères, elle
+      peut être un nom de chemin complet avec un répertoire spécifié ou bien un
+      simple nom de fichier. Dans ce dernier cas, le fichier est d'abord cherché
+      dans le répertoire courant, puis dans SSDIR et finalement dans SFDIR.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>Sres</emphasis> -- variable contenant la ligne lue depuis
+      <emphasis>ifilname</emphasis>. 
+    </para>
+
+    <para>
+      Cet opcode permet de lire une ligne de texte depuis un fichier externe
+      nommé. Il peut y avoir n'importe quel nombre d'opcodes
+      <emphasis>readf</emphasis> dans un instrument ou dans un orchestre, mais
+      ils lisent séparément depuis le même fichier ou depuis différents fichiers.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode readf. Il utilise le fichier
+      <ulink url="examples/readf.csd"><citetitle>readf.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode readf.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/readf.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="readfi"><citetitle>readfi</citetitle></link>.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>John ffitch et Joachim Heintz</para>
+    <para>2012 ; nouveau dans la version 5.17.12</para>
+  </refsect1>
+</refentry>

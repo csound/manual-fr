@@ -1,0 +1,143 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.16
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ftgen">
+<indexterm id="IndexFtgen"><primary>ftgen</primary></indexterm>
+  <refentryinfo><title>Table Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ftgen</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ftgen</refname>
+    <refpurpose>
+      Génère une table de fonction de partition depuis l'orchestre.
+    </refpurpose>
+  </refnamediv> 
+
+  <refsect1>
+    <title>Description</title>
+    <para>Génère une table de fonction de partition depuis l'orchestre.</para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>gir <command>ftgen</command> ifn, itime, isize, igen, iarga [, iargb ] [...]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>gir</emphasis> -- un numéro de table soit demandé soir assigné
+      automatiquement supérieur à 100.
+    </para>
+
+    <para> 
+      <emphasis>ifn</emphasis> -- numéro de table demandé. Si <emphasis>ifn</emphasis>
+      vaut zéro, le numéro est assigné automatiquement et sa valeur est placée dans
+      <emphasis>gir</emphasis>. Toute autre valeur est utilisée comme le numéro
+      de la table.
+    </para>
+
+    <para>
+      <emphasis>itime</emphasis> -- est ignoré, mais il correspond cependant au p2
+      de l'<emphasis>instruction f</emphasis> de partition.
+    </para>
+
+    <para>
+      <emphasis>isize</emphasis> -- taille de la table. Correspond au p3 de
+      l'<emphasis>instruction f</emphasis> de partition.
+    </para>
+
+    <para>
+      <emphasis>igen</emphasis> -- routine <emphasis>GEN</emphasis> de la table
+      de fonction. Correspond au p4 de l'<emphasis>instruction f</emphasis> de
+      partition.
+    </para>
+
+    <para>
+      <emphasis>iarga, iargb, ...</emphasis> -- arguments de la table de fonction.
+      Correspondent de p5 à p<emphasis>n</emphasis> de
+      l'<emphasis>instruction f</emphasis> de partition.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Equivalent à la génération de table dans la partition au moyen de
+      l'<emphasis>instruction f</emphasis>.
+    </para>
+    <note>
+      <para>A l'origine, Csound était conçu pour ne supporter que les tables dont
+      la taille était une puissance de deux. Bien que ceci ait changé dans les
+      versions récentes (on peut utiliser n'importe quelle taille en donnant un
+      nombre négatif), de nombreux opcodes ne les accepteront pas.</para>
+    </note>
+
+    <warning>
+      <title>Avertissement</title>
+      <para>
+        Bien que Csound ne proteste pas si <emphasis>ftgen</emphasis> est utilisé
+        à l'intérieur d'une paire d'instructions <emphasis>instr</emphasis>-<emphasis>endin</emphasis>,
+        ce n'est pas une utilisation attendue ni supportée, et celle-ci doit être
+        traitée avec prudence car elle a des effets globaux. En particulier, une
+        taille différente conduit habituellement à une réallocation de la table,
+        ce qui peut causer un plantage ou un comportement erratique.
+      </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Exmples</title>
+    <para>
+      Voici un exemple de l'opcode ftgen. Il utilise le fichier
+      <ulink url="examples/ftgen.csd"><citetitle>ftgen.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode ftgen.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/ftgen.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Voici un autre exemple de l'opcode ftgen. Il utilise le fichier
+      <ulink url="examples/ftgen-2.csd"><citetitle>ftgen-2.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode ftgen.</title>
+        <para>
+          Cet exemple interroge un fichier sur sa longueur afin de créer une
+          f-table de la taille appropriée.
+        </para>
+          <xi:include href="examples-xml/ftgen-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ScoreGenRef"><citetitle>Routines GEN</citetitle></link>,
+      <link linkend="ftgentmp"><citetitle>ftgentmp</citetitle></link>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Crédits</title> 
+    <para>
+      <simplelist>
+        <member>Auteur : &namebarry;</member>
+        <member>M.I.T., Cambridge, Mass</member>
+        <member>1997</member>
+      </simplelist>
+    </para>
+
+    <para>Avertissement ajouté en Avril 2002 par &namerasmus;</para>
+  </refsect1>
+</refentry> 

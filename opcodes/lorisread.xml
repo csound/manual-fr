@@ -1,0 +1,165 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="lorisread">
+<indexterm id="IndexLorisRead"><primary>lorisread</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Loris</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lorisread</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>lorisread</refname>
+    <refpurpose>Importe un ensemble de partiels à largeur de bande améliorée
+    depuis un fichier de données au format SDIF, leur applique des enveloppes
+    de mise en forme de fréquence, d'amplitude et de largeur de bande au taux-k
+    et stocke les partiels modifiés en mémoire.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>lorisread</command> ktimpnt, ifilcod, istoreidx, kfreqenv, kampenv, kbwenv[, ifadetime]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Description</title> 
+    <para>
+      <emphasis>lorisread</emphasis> importe un ensemble de partiels à largeur
+      de bande améliorée depuis un fichier de données au format SDIF, leur
+      applique des enveloppes de mise en forme de fréquence, d'amplitude et de
+      largeur de bande au taux-k et stocke les partiels modifiés en mémoire.
+    </para>  
+    </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifilcod </emphasis> - nombre entier ou chaîne de caractères
+      dénotant un fichier de contrôle dérivé de l'analyse d'un signal audio
+      par réassignation de largeur de bande améliorée. Un nombre entier
+      indique le suffixe d'un fichier loris.sdif (par exemple loris.sdif.1) ;
+      une chaîne de caractères (entre guillemets) donne un nom de fichier,
+      qui peut être un nom de chemin complet. Si ce n'est pas un nom de chemin
+      complet, le fichier est d'abord cherché dans le répertoire courant, puis
+      dans celui qui est donné par la variable d'environnement SADIR (si elle
+      est définie). Le fichier de données de réassignation de largeur de bande
+      améliorée contient des valeurs de points charnières de fréquence,
+      d'amplitude, de caractère bruiteux et d'enveloppe de phase organisés
+      pour une synthèse  additive à largeur de bande améliorée. Les données de
+      contrôle doivent être conformes à l'un des formats SDIF existant.
+    </para>
+
+    <para>
+      Loris stocke les partiels dans des trames SDIF RBEP. Chaque trame RBEP
+      contient une matrice RBEP et chaque ligne d'une matrice RBEP décrit un
+      point charnière d'un partiel de Loris. Une trame RBEL contenant une
+      matrice RBEL qui décrit l'étiquetage des partiels peut précéder la
+      première trame RBEP dans le fichier SDIF. Les définitions des trames et
+      des matrices RBEP et RBEL sont inclues dans l'en-tête du fichier SDIF.
+      En plus des trames RBEP, Loris peut également lire et écrire des trames
+      SDIF 1TRC. Comme les trames 1TRC ne représentent pas une amélioration
+      de largeur de bande ou les coordonnées temporelles exactes de points
+      charnière de Loris, leur utilisation est déconseillée. Les possibilités
+      1TRC sont fournies pour pouvoir échanger des données avec des programmes
+      qui ne peuvent pas traiter les trames RBEP.
+    </para>
+
+    <para>
+      <emphasis>istoreidx, ireadidx, isrcidx, itgtidx</emphasis> sont des étiquettes
+      qui identifient un ensemble stocké de partiels à largeur de bande améliorée.
+      <emphasis>lorisread</emphasis> importe les partiels depuis un fichier
+      SDIF et les stocke avec l'étiquette entière <emphasis>istoreidx</emphasis>.
+      <emphasis>lorismorph</emphasis> réalise un morphing des ensembles de partiels
+      étiquetés <emphasis>isrcidx</emphasis> et <emphasis>itgtidx</emphasis>, et
+      stocke les partiels résultants avec l'étiquette entière
+      <emphasis>istoreidx</emphasis>. <emphasis>lorisplay</emphasis> restitue
+      les partiels stockés avec l'étiquette <emphasis>ireadidx</emphasis>. Les
+      étiquettes ne sont utilisées qu'à l'initialisation de la note, et l'on
+      peut les réutiliser sans coût supplémentaire ou bénéfice en efficacité,
+      et sans introduire d'interaction entre les instruments ou leurs instances.
+    </para>
+
+    <para>
+      <emphasis>ifadetime (facultatif)</emphasis> - En général, les partiels
+      exportés depuis Loris commencent et se terminent avec une amplitude non
+      nulle. Afin d'éviter les artefacts, il est très souvent nécessaire de
+      d'introduire et de terminer progressivement les partiels au lieu de les
+      commencer et de les terminer de façon abrupte. Si <emphasis>ifadetime</emphasis>
+      est différent de zéro, les partiels ont une attaque progressive et une
+      chute dégressive. Ceci est réalisé en ajoutant deux points charnière à
+      chaque partiel : un <emphasis>ifadetime</emphasis> secondes avant le
+      début et un autre <emphasis>ifadetime</emphasis> secondes après la fin.
+      (Cependant, aucun point charnière n'est ajouté à une date inférieure à
+      zéro. Si nécessaire, la durée de l'introduction progressive est
+      raccourcie.) Les points charnière supplémentaires au début et à la fin
+      du partiel auront respectivement la même fréquence et la même largeur de
+      bande que celle du premier et du dernier point charnière du partiel mais
+      leurs amplitudes seront nulles. La phase des nouveaux points charnière
+      sera extrapolée pour préserver la cohérence de phase. Si aucune valeur
+      n'est spécifiée, <emphasis>ifadetime</emphasis> vaut par défaut zéro.
+      Notez que la valeur de <emphasis>ifadetime</emphasis> peut être approchée,
+      car les enveloppes des paramètres des partiels sont échantillonnées au
+      taux de contrôle (taux-k) et indexées par <emphasis>ktimpnt</emphasis>
+      (voir ci-dessous), et non pas en temps réel.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>lorisread</emphasis> lit des données pré-calculées d'analyse
+      par réassignation de largeur de bande améliorée depuis un fichier stocké
+      au format SDIF, comme décrit ci-dessus. L'écoulement du temps dans ce
+      fichier est spécifié par <emphasis>ktimpnt</emphasis> qui réprésente le
+      temps en secondes. <emphasis>ktimpnt</emphasis> doit toujours être positif
+      mais peut avancer ou reculer dans le temps, être stationnaire ou discontinu,
+      comme un pointeur dans le fichier d'analyse. <emphasis>kfreqenv</emphasis>
+      est un facteur de transposition au taux de contrôle, 1.5 transposant vers
+      l'aigu d'une quinte juste, et 0.5 transposant vers le grave d'une octave.
+      <emphasis>kampenv</emphasis> est un facteur de mise à l'échelle au taux de
+      contrôle qui est appliqué à toutes les enveloppes d'amplitude des partiels.
+      <emphasis>kbwenv</emphasis> est un facteur de mise à l'échelle au taux de
+      contrôle qui est appliqué à toutes les enveloppes de largeur de bande ou
+      de caractère bruiteux des partiels. Les données de partiel à largeur de
+      bande améliorée sont stockées en mémoire avec une étiquette spécifiée pour
+      un accès ultérieur par un autre générateur.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode lorisread. Il utilise le fichier
+      <ulink url="examples/lorisread.csd"><citetitle>lorisread.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode lorisread.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/lorisread.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      Cette implémentation des générateurs unitaires Loris a été écrite par
+      Kelly Fitz (<ulink
+      url="mailto:loris@cerlsoundgroup.org">loris@cerlsoundgroup.org</ulink>).
+      Elle est modèlisée sur un prototype d'implémentation du générateur
+      unitaire <emphasis>lorisplay</emphasis> écrit par Corbin Champion, et
+      basé sur la méthode de synthèse additive à largeur de bande améliorée et
+      sur les algorithmes de métamorphose sonore implémentés dans la bibliothèque
+      Loris pour la modélisation et la manipulation du son. Les opcodes ont été
+      ensuite adaptés sous la forme d'un greffon de Csound 5 par Michael Gogins.
+    </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,66 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.6
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="miditempo">
+<indexterm id="IndexMiditempo"><primary>miditempo</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>miditempo</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>miditempo</refname>
+    <refpurpose>
+      Retourne le tempo courant au taux-k du fichier MIDI (s'il y en a un) ou de
+      la partition.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne le tempo courant au taux-k du fichier MIDI (s'il y en a un) ou de
+      la partition.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ksig  <command>miditempo</command></synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode miditempo. Il utilise le fichier
+      <ulink url="examples/miditempo.csd"><citetitle>miditempo.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode miditempo.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/miditempo.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+        Sa sortie contiendra des lignes comme celle-ci :
+        <screen>
+	      miditempo = 96</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameistvan;</member>
+        <member>Mars 2005</member>
+	      <member>Nouveau dans Csound5</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

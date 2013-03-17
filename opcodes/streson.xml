@@ -1,0 +1,108 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.14
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="streson">
+<indexterm id="IndexStreson"><primary>streson</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Waveguide Physical Modeling</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>streson</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>streson</refname>
+    <refpurpose>
+      Résonance d'une corde de fréquence fondamentale variable.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Un signal audio est modifié par un résonateur de type corde avec une fréquence
+      fondamentale variable.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>streson</command> asig, kfrq, ifdbgain</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifdbgain</emphasis> -- gain de rétroaction, entre 0 et 1, de la ligne
+      à retard interne. Une valeur proche de 1 crée une décroissance plus lente et une
+      résonance plus prononcée. Avec de petites valeurs, le signal d'entrée peut ne
+      pas être affecté. Dépend de la fréquence du filtre, les valeurs typiques étant
+      &gt; 0.9.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- le signal d'entrée audio.
+    </para>
+
+    <para>
+      <emphasis>kfrq</emphasis> -- la fréquence fondamentale de la corde.
+    </para>
+
+    <para>
+      <emphasis>streson</emphasis> fait passer l'entrée <emphasis>asig</emphasis>
+      à travers un réseau composé de filtres en peigne, passe-bas et passe-tout,
+      comme celui qui est utilisé dans certaines versions de l'algorithme de
+      Karplus-Strong, créant un effet de résonance d'une corde. La fréquence
+      fondamentale de la <quote>corde</quote> est contrôlée par la variable de
+      taux-k <emphasis>kfr</emphasis>. On peut utiliser cet opcode pour simuler
+      des résonances sympathiques sur un signal d'entrée.
+    </para>
+    <para>
+      Voir <link linkend="MiscModalFreq"><citetitle>Rapports de Fréquence Modale</citetitle></link>
+      pour les rapports de fréquence d'instruments réels pouvant être utilisés pour
+      déterminer les valeurs de <emphasis>kfrq</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>streson</emphasis> est une adaptation de l'objet StringFlt de la
+      bibliothèque d'objets sonores SndObj développée par l'auteur.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici en exemple de l'opcode streson. Il utilise le fichier
+      <ulink url="examples/streson.csd"><citetitle>streson.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode streson.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/streson.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Music Department</member>
+        <member>National University of Ireland, Maynooth</member>
+        <member>Maynooth, Co. Kildare</member>
+        <member>1998</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.494 de Csound</para>
+  </refsect1>
+</refentry>

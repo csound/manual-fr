@@ -1,0 +1,133 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ptable">
+<indexterm id="IndexPtable"><primary>ptable</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Table Access</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ptable</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ptable</refname>
+    <refpurpose>
+      Accède aux valeurs d'une table par indexation directe.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Accède aux valeurs d'une table par indexation directe.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>ptable</command> andx, ifn [, ixmode] [, ixoff] [, iwrap]</synopsis>
+
+    <synopsis>ires <command>ptable</command> indx, ifn [, ixmode] [, ixoff] [, iwrap]</synopsis>
+
+    <synopsis>kres <command>ptable</command> kndx, ifn [, ixmode] [, ixoff] [, iwrap]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn</emphasis> -- numéro de la table de fonction.
+    </para>
+
+    <para>
+      <emphasis>ixmode</emphasis> (facultatif) -- mode d'indexation. La valeur par
+      défaut est 0.
+      <itemizedlist>
+        <listitem><para>0 = indexation brute</para></listitem>
+        <listitem><para>1 = indexation normalisée (0 à 1)</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>ixoff</emphasis> (facultatif) -- décalage de l'index. Pour une
+      table dont l'origine est centrée, on utilise taille-de-la-table/2 (indexation
+      brute) ou 0.5 (indexation normalisée). La valeur par défaut est 0.
+    </para>
+
+    <para>
+      <emphasis>iwrap</emphasis> (facultatif) -- indicateur d'indexation cyclique.
+      La valeur par défaut est 0.
+      <itemizedlist>
+        <listitem>
+          <para>0 = pas d'enroulement (les index &lt; 0 sont considérés comme nuls ;
+          les index &gt; taille-de-la-table sont bloqués à index=taille-de-la-table)</para>
+        </listitem>
+
+        <listitem>
+          <para>1 = indexation cyclique.</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ptable</emphasis> invoque une lecture de table avec des indices au
+      taux d'initialisation, au taux de contrôle ou au taux audio. Ces indices peuvent
+      être des entrées brutes (0, 1, 2, ..., taille-1) ou des valeurs normalisées
+      (0 à 1). Les indices sont d'abord modifiés par la valeur de décalage puis
+      leur appartenance à l'intervalle valide est testée avant la lecture dans
+      la table (voir <emphasis>iwrap</emphasis>). Si l'indice varie sur toute
+      l'échelle, ou si on utilise l'interpolation, la table doit avoir un point
+      de garde. <emphasis>ptable</emphasis> indexé par un phaseur périodique
+      (voir <link linkend="phasor"><citetitle>phasor</citetitle></link>) simulera
+      un oscillateur.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode ptable. Il utilise le fichier
+      <ulink url="examples/ptable.csd"><citetitle>ptable.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode ptable.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/ptable.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="table"><citetitle>table</citetitle></link>, 
+      <link linkend="tablei"><citetitle>tablei</citetitle></link>, 
+      <link linkend="table3"><citetitle>table3</citetitle></link>, 
+      <link linkend="ptable3"><citetitle>ptable3</citetitle></link>,
+      <link linkend="ptablei"><citetitle>ptablei</citetitle></link>,
+      <link linkend="oscil1"><citetitle>oscil1</citetitle></link>, 
+      <link linkend="oscil1i"><citetitle>oscil1i</citetitle></link>, 
+      <link linkend="osciln"><citetitle>osciln</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Janvier 2012</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.16 de Csound.</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,127 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="urd">
+<indexterm id="IndexUrd"><primary>urd</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Random (Noise) Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>urd</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>urd</refname>
+    <refpurpose>
+      Un générateur de nombres aléatoires de distribution discrète définie par
+      l'utilisateur que l'on peut utiliser comme une fonction.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Un générateur de nombres aléatoires de distribution discrète définie par
+      l'utilisateur que l'on peut utiliser comme une fonction.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aout = <command>urd</command>(ktableNum)</synopsis>
+
+    <synopsis>iout = <command>urd</command>(itableNum)</synopsis>
+
+    <synopsis>kout = <command>urd</command>(ktableNum)</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>itableNum</emphasis> -- numéro d'une table contenant la fonction
+      de la distribution aléatoire. Cette table est générée par l'utilisateur.
+      Voir <link linkend="GEN40">GEN40</link>, <link linkend="GEN41">GEN41</link>
+      et <link linkend="GEN42">GEN42</link>. La longueur de la table peut être
+      différente d'une puissance de 2.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ktableNum</emphasis> -- numéro d'une table contenant la fonction
+      de la distribution aléatoire. Cette table est générée par l'utilisateur.
+      Voir <link linkend="GEN40">GEN40</link>, <link linkend="GEN41">GEN41</link>
+      et <link linkend="GEN42">GEN42</link>. La longueur de la table peut être
+      différente d'une puissance de 2.
+    </para>
+
+    <para>
+      <emphasis>urd</emphasis> est le même opcode que
+      <link linkend="duserrnd"><citetitle>duserrnd</citetitle></link>, mais on peut
+      l'utiliser à la manière d'une fonction. 
+    </para>
+
+    <para>
+      Pour un tutoriel sur les histogrammes et les fonctions de distribution aléatoires
+      consulter :
+      <itemizedlist>
+        <listitem>
+          <para>
+            D. Lorrain. "A panoply of stochastic cannons". In C. Roads, ed. 1989. Music machine. Cambridge, Massachusetts: MIT press, pp. 351 - 379.
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </refsect1>
+
+    <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode urd. Il utilise le fichier
+      <ulink url="examples/urd.csd"><citetitle>urd.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode urd.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/urd.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>     
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
+ i1   184.61538
+ i1   130.76923
+ i1   169.23077
+ i1    12.00000
+.......
+
+WARNING: Seeding from current time 3751086165
+
+ i2   138.46154
+ i2    12.00000
+ i2   123.07692
+ i2   161.53846
+ i2   123.07692
+ i2   153.84615
+......</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="cuserrnd"><citetitle>cuserrnd</citetitle></link>,
+      <link linkend="duserrnd"><citetitle>duserrnd</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.16</para>
+  </refsect1>
+</refentry>

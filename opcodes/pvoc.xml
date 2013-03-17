@@ -1,0 +1,163 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvoc">
+<indexterm id="IndexPvoc"><primary>pvoc</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:STFT</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvoc</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvoc</refname>
+    <refpurpose>
+      Implémente une reconstruction de signal au moyen d'un vocoder de phase
+      basé sur la TFR.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Implémente une reconstruction de signal au moyen d'un vocoder de phase
+      basé sur la TFR.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>pvoc</command> ktimpnt, kfmod, ifilcod [, ispecwp] [, iextractmode] \
+      [, ifreqlim] [, igatefn]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifilcod</emphasis> -- entier ou chaîne de caractères dénotant un
+      fichier de contrôle dérivé de l'analyse d'un signal audio. Un entier dénote
+      le suffixe d'un fichier <emphasis>pvoc.m</emphasis> ; une chaîne de caractères
+      (entre guillemets) donne un nom de fichier, optionnellement un nom de
+      chemin complet. Si ce n'est pas un nom de chemin complet, le fichier est
+      d'abord cherché dans le répertoire courant, ensuite dans celui donné par la
+      variable d'environnement
+      <link linkend="OrchDirFiles"><citetitle>SADIR</citetitle></link> (si elle
+      est définie). Le contrôle <emphasis>pvoc</emphasis> contient des valeurs
+      d'enveloppes d'amplitude et de fréquence définies par points, organisées pour
+      une resynthèse par TFR. L'utilisation de la mémoire dépend de la taille des
+      fichiers impliqués, qui sont lus et maintenus entièrement dans la mémoire
+      durant les calculs, mais sont partagés par les appels multiples (voir aussi
+      <link linkend="lpread"><citetitle>lpread</citetitle></link>).
+    </para>
+
+    <para>
+      <emphasis>ispecwp</emphasis> (facultatif) -- s'il est différent
+      de zéro, l'opcode tente de préserver l'enveloppe spectrale tandis que le
+      contenu fréquentiel est varié par <emphasis>kfmod</emphasis>. Vaut zéro par
+      défaut.
+    </para>
+
+    <para>
+      <emphasis>iextractmode</emphasis> (facultatif) -- détermine s'il faut
+      effectuer l'extraction spectrale et, dans ce cas, quels composants ayant
+      des variations de fréquence sous <emphasis>ifreqlim</emphasis> ou au-dessus
+      de <emphasis>ifreqlim</emphasis> seront écartés. Si <emphasis>iextractmode</emphasis>
+      vaut 1, <emphasis>pvoc</emphasis> ne synthétise que les composants pour
+      lesquels la différence de fréquence entre les trames d'analyse est plus
+      grande que <emphasis>ifreqlim</emphasis>. Si <emphasis>iextractmode</emphasis>
+      vaut 2, <emphasis>pvoc</emphasis> ne synthétise que les composants pour
+      lesquels la différence de fréquence entre trames est plus petite que
+      <emphasis>ifreqlim</emphasis>. <emphasis>iextractmode</emphasis> et
+      <emphasis>ifreqlim</emphasis> valent 0 par défaut, ce qui provoque une
+      simple resynthèse. Les exemples de la notice de
+      <link linkend="pvadd"><citetitle>pvadd</citetitle></link> montrent comment
+      utiliser l'extraction spectrale. 
+    </para>
+
+    <para>
+      <emphasis>igatefn</emphasis> (facultatif) -- le numéro d'une fonction
+      stockée à appliquer aux amplitudes des bins de l'analyse avant la resynthèse.
+      Si <emphasis>igatefn</emphasis> est supérieur à 0, les amplitudes de chaque
+      bin seront modifiées par <emphasis>igatefn</emphasis> par un procédé simple
+      de correspondance. D'abord, les amplitudes de tous les bins dans toutes les
+      trames de l'ensemble du fichier d'analyse sont comparées pour déterminer la
+      valeur de l'amplitude maximale. Cette valeur est ensuite utilisée pour créer
+      des amplitudes normalisées comme indices dans la fonction stockée
+      <emphasis>igatefn</emphasis>. L'amplitude maximale correspond au dernier point
+      dans la fonction. Une amplitude nulle correspond au premier point dans la
+      fonction. Les valeurs entre 0 et 1 sont mises en correspondance avec les
+      points tout au long de la table de fonction. Les exemples de la notice de
+      <link linkend="pvadd"><citetitle>pvadd</citetitle></link> montrent comment
+      utiliser le mappage d'amplitude.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ktimpnt</emphasis> -- l'écoulement du temps en secondes dans le
+      fichier d'analyse. <emphasis>ktimpnt</emphasis> doit toujours être positif,
+      mais il peut avancer ou reculer, rester stationnaire ou être discontinu,
+      comme pointeur dans le fichier d'analyse.
+    </para>
+
+    <para>
+      <emphasis>kfmod</emphasis> -- un facteur de transposition au taux-k : une
+      valeur de 1 signifie pas de transposition, 1.5 transpose vers le haut d'une
+      quinte parfaite et 0.5 transpose vers le bas d'une octave.
+    </para>
+
+    <para>
+      <emphasis>pvoc</emphasis> implémente une reconstruction de signal au moyen
+      d'un vocoder de phase basé sur la TFR. Les données de contrôle proviennent
+      d'un fichier d'analyse précompilé avec un taux de trame connu.
+    </para>
+
+    <para>
+      Cette implémentation de <emphasis>pvoc</emphasis> a été écrite à l'origine
+      par Dan Ellis. Elle est basée en partie sur le système de Mark Dolson, mais
+      le concept de pré-analyse est nouveau. L'extraction spectrale et le mappage
+      d'amplitude (nouveau dans la version 3.56 de Csound) ont été ajoutés par
+      Richard Karpen en se basant sur les fonctions dans SoundHack par Tom Erbe.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode pvoc. Il utilise le fichier
+      <ulink url="examples/pvoc.csd"><citetitle>pvoc.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode pvoc.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pvoc.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="vpvoc"><citetitle>vpvoc</citetitle></link>,
+      <link linkend="pvanal"><citetitle>PVANAL</citetitle></link>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteurs : Dan Ellis et Richard Karpen</member>
+        <member>Seattle, Wash</member>
+        <member>1997</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

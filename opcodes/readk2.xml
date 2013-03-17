@@ -1,0 +1,176 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.16
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="readk2">
+<indexterm id="IndexReadk2"><primary>readk2</primary></indexterm>
+  <refentryinfo><title>Signal I/O:File I/O</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>readk2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>readk2</refname>
+    <refpurpose>
+      Lit périodiquement les valeurs de deux signaux de contrôle de l'orchestre
+      depuis un fichier externe.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Lit périodiquement les valeurs de deux signaux de contrôle de l'orchestre
+      depuis un fichier externe.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kr1, kr2 <command>readk2</command> ifilname, iformat, iprd</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifilname</emphasis> -- un entier N indiquant un fichier nommé
+      "readk.N" ou une chaîne de caractères (entre guillemets, espaces autorisés)
+      contenant le nom du fichier externe. Si c'est une chaîne de caractères, elle
+      peut être un nom de chemin complet avec un répertoire spécifié ou bien un
+      simple nom de fichier. Dans ce dernier cas, le fichier est d'abord cherché
+      dans le répertoire courant, puis dans
+      <link linkend="CommandEnvironment"><citetitle>SSDIR</citetitle></link> et
+      finalement dans
+      <link linkend="CommandEnvironment"><citetitle>SFDIR</citetitle></link>.
+    </para>
+
+    <para>
+      <emphasis>iformat</emphasis> -- spécifie le format des données d'entrée :
+      <itemizedlist>
+        <listitem>
+          <para>1 = entiers signés sur 8 bit (char)</para>
+        </listitem>
+
+        <listitem>
+          <para>4 = entiers courts sur 16 bit</para>
+        </listitem>
+
+        <listitem>
+          <para>5 = entiers longs sur 32 bit</para>
+        </listitem>
+
+        <listitem>
+          <para>6 = flottants sur 32 bit</para>
+        </listitem>
+
+        <listitem>
+          <para>7 = entiers longs en ASCII (plein texte)</para>
+        </listitem>
+
+        <listitem>
+          <para>8 = flottants en ASCII (plein texte)</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      Noter que les formats A-law et U-law ne sont pas disponibles, et que tous
+      les formats sauf les deux derniers sont binaires. Le fichier d'entrée doit
+      être un fichier de données brutes sans en-tête.
+    </para>
+
+    <para>
+      <emphasis>iprd</emphasis> -- le taux (période) en secondes, arrondi à la
+      période de contrôle de l'orchestre la plus proche, auquel les signaux sont lus
+      depuis le fichier. Une valeur de 0 implique une période de contrôle (le
+      minimum imposé), qui lira les nouvelles valeurs au taux de contrôle de
+      l'orchestre. Avec des périodes plus longues, les mêmes valeurs seront
+      répétées pendant plus d'une période de contrôle.
+      <!-- sauf si l'interpolation est utilisée.-->
+    </para>
+
+
+<!--    <para>
+      <emphasis>interp</emphasis> - (optional) interpolate between values.
+    </para>-->
+<!--
+    <para>
+      <emphasis>ipol</emphasis> - if non-zero, and <emphasis>iprd</emphasis> implies more than one control period, interpolate the k- signals between the periodic reads from the external file. If the value is 0, repeat each signal between frames. Currently not supported.
+    </para>-->
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kr1, kr2</emphasis> -- les signaux lus depuis <emphasis>ifilname</emphasis>.
+    </para>
+
+    <para>
+      Cette opcode permet de lire les valeurs de deux signaux générés au taux de contrôle
+      depuis un fichier externe nommé. Le fichier ne doit pas contenir d'en-tête
+      d'information mais il doit contenir une suite temporelle de valeurs de
+      contrôle échantillonnées régulièrement. Pour les formats binaires, les
+      échantillons individuels de chaque signal sont alternés. Pour les formats
+      de texte ASCII, les valeurs doivent être séparées par au moins un espace. 
+      Les deux "canaux" d'une trame peuvent se trouver sur la même ligne ou être
+      séparés par un caractère de retour à la ligne. Il peut y avoir n'importe quel
+      nombre d'opcodes <emphasis>readk2</emphasis> dans un instrument ou dans un
+      orchestre et il peuvent lire à partir du même ou depuis différents fichiers.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode readk2. Il utilise le fichier
+      <ulink url="examples/readk2.csd"><citetitle>readk2.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode readk2.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/readk2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie comprendra des lignes comme celles-ci :
+      <screen>
+kfreq = 429.202551, kdb = -20.495694
+kfreq = 429.202551, kdb = -20.495694
+kfreq = 407.275258, kdb = -23.123776
+kfreq = 475.264472, kdb = -9.300846
+kfreq = 569.979181, kdb = -7.315527
+kfreq = 440.103457, kdb = -0.058331
+
+kfreq = 429.202600, kdb = -20.495700
+kfreq = 429.202600, kdb = -20.495700
+kfreq = 407.275300, kdb = -23.123800
+kfreq = 475.264500, kdb = -9.300800
+kfreq = 569.979200, kdb = -7.315500
+kfreq = 440.103500, kdb = -0.058300</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="dumpk"><citetitle>dumpk</citetitle></link>,
+      <link linkend="dumpk2"><citetitle>dumpk2</citetitle></link>,
+      <link linkend="dumpk3"><citetitle>dumpk3</citetitle></link>,
+      <link linkend="dumpk4"><citetitle>dumpk4</citetitle></link>,
+      <link linkend="readk"><citetitle>readk</citetitle></link>,
+      <link linkend="readk3"><citetitle>readk3</citetitle></link>,
+      <link linkend="readk4"><citetitle>readk4</citetitle></link>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par : John ffitch et Barry Vercoe</para>
+    <para>1999 ou avant</para>
+  </refsect1>
+</refentry>

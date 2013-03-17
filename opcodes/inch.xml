@@ -1,0 +1,102 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="inch">
+<indexterm id="IndexInch"><primary>inch</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Signal Input</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>inch</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>inch</refname>
+    <refpurpose>
+      Lit depuis des canaux numérotés d'un signal audio externe ou d'un flot.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Lit depuis des canaux numérotés d'un signal audio externe ou d'un flot.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ain1[, ...] <command>inch</command> kchan1[,...]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ain, ...</emphasis> - signaux audio en entrée
+    </para>
+    <para>
+      <emphasis>kchan1, ...</emphasis> - numéro des canaux
+    </para>
+    <para>
+      <emphasis>inch</emphasis> lit depuis des canaux numérotés déterminés par les
+      <emphasis>kchan</emphasis> correspondants vers les <emphasis>ain</emphasis>
+      associés. Si l'option de ligne
+      de commande 
+      <link linkend="FlagsMinusLowerI"><citetitle>-i</citetitle></link> est
+      positionnée, le son est lu en continu depuis le flot audio en entrée
+      (par exemple <emphasis>stdin</emphasis> ou un fichier son). On peut aussi
+      utiliser <emphasis>inch</emphasis> pour recevoir des données audio en
+      temps réel depuis l'interface audio au moyen de <emphasis>-iadc</emphasis>.
+    </para>
+    <note>
+      <para>
+        La plus grande valeur de <emphasis>kchan</emphasis> utilisable avec
+        <emphasis>inch</emphasis> dépend de 
+        <link linkend="nchnls_i"><citetitle>nchnls_i</citetitle></link>. Si
+        <emphasis>kchan</emphasis> est supérieur à <emphasis>nchnls_i</emphasis>,
+        <emphasis>ain</emphasis> restera silencieux. Noter que dans ce cas
+        <emphasis>inch</emphasis> donnera un avertissement et non une erreur.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode inch. Il utilise le fichier
+      <ulink url="examples/inch.csd"><citetitle>inch.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode inch.</title>
+        <xi:include href="examples-xml/inch.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>      
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="in32"><citetitle>in32</citetitle></link>,
+      <link linkend="inx"><citetitle>inx</citetitle></link>,
+      <link linkend="inz"><citetitle>inz</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Université de Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>Mai 2000</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 4.07 de Csound</para>
+    <para>Arguments multiples depuis la version 5.13</para>
+  </refsect1>
+</refentry>

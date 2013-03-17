@@ -1,0 +1,118 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="distort1">
+<indexterm id="IndexDistort1"><primary>distort1</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Special Effects</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>distort1</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>distort1</refname>
+    <refpurpose>
+      Distorsion par tangente hyperbolique modifiée.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Implémentation de la distorsion par tangente hyperbolique modifiée.
+      <emphasis>distort1</emphasis> peut être utilisé pour générer une distorsion
+      non-linéaire basée sur une modification de la fonction
+      <link linkend="tanh"><citetitle>tanh</citetitle></link>.
+    </para>
+
+    <para>
+      <literallayout>
+         exp(asig * (shape1 + pregain)) - exp(asig * (shape2 - pregain))
+  aout = ---------------------------------------------------------------
+         exp(asig * pregain)            + exp(-asig * pregain)</literallayout>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>distort1</command> asig, kpregain, kpostgain, kshape1, kshape2[, imode]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>imode</emphasis> (Csound version 5.00 et suivantes seulement ;
+      facultatif, 0 par défaut) -- met à l'échelle <emphasis>kpregain</emphasis>,
+      <emphasis>kpostgain</emphasis>, <emphasis>kshape1</emphasis> et
+      <emphasis>kshape2</emphasis> pour une utilisation avec des signaux audio
+      entre -32768 et 32768 (<emphasis>imode</emphasis>=0), entre
+      -<emphasis>0dbfs</emphasis> et <emphasis>0dbfs</emphasis>
+      (<emphasis>imode</emphasis>=1), ou désactive la mise à l'échelle de
+      <emphasis>kpregain</emphasis> et de <emphasis>kpostgain</emphasis> et
+      pondère <emphasis>kshape1</emphasis> par <emphasis>kpregain</emphasis>
+      et <emphasis>kshape2</emphasis> par -<emphasis>kpregain</emphasis>
+      (<emphasis>imode</emphasis>=2).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- est le signal d'entrée.
+    </para>
+
+    <para>
+      <emphasis>kpregain</emphasis> -- détermine le gain appliqué au signal avant
+      la distorsion. Une valeur de 1 donne une légère distorsion.
+    </para>
+
+    <para>
+      <emphasis>kpostgain</emphasis> -- détermine le gain appliqué au signal
+      après la distorsion.
+    </para>
+
+    <para>
+      <emphasis>kshape1</emphasis> -- détermine la forme de la partie positive
+      de la courbe. Une valeur de 0 donne un palier, de petites valeurs
+      positives donnent une forme pentue.
+    </para>
+
+    <para>
+      <emphasis>kshape2</emphasis> -- détermine la forme de la partie négative
+      de la courbe.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode distort1. Il utilise le fichier
+      <ulink url="examples/distort1.csd"><citetitle>distort1.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode distort1.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/distort1.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namehans;</member>
+        <member>Décembre 1998</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.50 de Csound</para>
+  </refsect1>
+</refentry>

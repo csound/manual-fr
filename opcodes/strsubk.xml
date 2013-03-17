@@ -1,0 +1,68 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.6
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="strsubk">
+<indexterm id="Indexstrsubk"><primary>strsubk</primary></indexterm>
+  <refentryinfo><title>Strings:Manipulation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>strsubk</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>strsubk</refname>
+    <refpurpose>
+      Extrait une sous-chaîne de caractères.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne une sous-chaîne d'une chaîne source. <emphasis>strsubk</emphasis>
+      s'exécute à la fois pendant l'initialisation et pendant l'exécution.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>Sdst <command>strsubk</command> Ssrc, kstart, kend</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+
+    <para>
+      <emphasis>kstart</emphasis> -- position du début dans <emphasis>Ssrc</emphasis>,
+      comptée à partir de 0. Une valeur négative signifie à partir de la fin de
+      la chaîne.
+    </para>
+
+    <para>
+      <emphasis>kend</emphasis> position de la fin dans <emphasis>Ssrc</emphasis>,
+      comptée à partir de 0. Une valeur négative signifie à partir de la fin de
+      la chaîne. Si <emphasis>kend</emphasis> est inférieure à <emphasis>kstart</emphasis>,
+      la sortie est inversée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+	  <title>Voir aussi</title>
+	  <para><link linkend="strsub"><citetitle>strsub</citetitle></link></para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Istvan Varga</member>
+        <member>2006</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

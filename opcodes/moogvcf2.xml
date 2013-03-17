@@ -1,0 +1,120 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="moogvcf2">
+<indexterm id="IndexMoogvcf2"><primary>moogvcf2</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Resonant</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>moogvcf2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>moogvcf2</refname>
+    <refpurpose>
+      Une simulation numérique de la configuration du filtre en échelle à diode de Moog.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Une simulation numérique de la configuration du filtre en échelle à diode de Moog.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>moogvcf2</command> asig, xfco, xres [,iscale, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iscale</emphasis> (facultatif, 0dBfs par défaut) -- facteur de
+      pondération interne, car les opérations du code nécessitent que le signal
+      soit dans l'intervalle +/-1. L'entrée est d'abord divisée par
+      <emphasis>iscale</emphasis>, puis la sortie est multipliée par
+      <emphasis>iscale</emphasis>.
+    </para>
+    <para>
+      <emphasis>iskip</emphasis> (facultatif, 0 par défaut) -- s'il est non nul,
+      l'initialisation du filtre est ignorée.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- signal d'entrée
+    </para>
+
+    <para>
+      <emphasis>xfco</emphasis> -- fréquence de coupure du filtre en Hz.
+      Peut-être de taux-i, de taux-k ou de taux-a.
+    </para>
+
+    <para>
+      <emphasis>xres</emphasis> -- quantité de résonance. Il y a des
+      auto-oscillations lorsque <emphasis>xres</emphasis> est proche de 1.
+      Peut-être de taux-i, de taux-k ou de taux-a.
+    </para>
+
+    <para>
+      <emphasis>moogvcf2</emphasis> est une simulation numérique de la configuration
+      du filtre en échelle à diode de Moog. Cette émulation est librement basée
+      sur le papier <quote>Analyzing the Moog VCF with Considerations for Digital
+      Implementation</quote> par Stilson et Smith (CCRMA). Cette version fut codée
+      dans Csound à l'origine par Josep Comajuncosas. Quelques modifications et
+      conversions en C ont été apportées par &namehans; et ensuite ajustées.
+    </para>
+    <para>
+      <emphasis>moogvcf2</emphasis> est identique à
+      <link linkend="moogvcf"><citetitle>moogvcf</citetitle></link>, sauf que le
+      paramètre <emphasis>iscale</emphasis> vaut par défaut
+      <link linkend="Zerodbfs"><citetitle>0dbfs</citetitle></link> au lieu de 0,
+      ce qui garantit que l'amplitude sera normalement correcte.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode moogvcf2. Il utilise le fichier
+      <ulink url="examples/moogvcf2.csd"><citetitle>moogvcf2.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode moogvcf2.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/moogvcf2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="moogvcf"><citetitle>moogvcf</citetitle></link>,
+      <link linkend="biquad"><citetitle>biquad</citetitle></link>,
+      <link linkend="rezzy"><citetitle>rezzy</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namehans; et &namejohn;</member>
+        <member>Octobre 1998 / Juillet 2006</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 5.03 de Csound.</para>
+  </refsect1>
+</refentry>

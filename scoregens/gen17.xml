@@ -1,0 +1,119 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="GEN17">
+      <indexterm id="IndexGEN17"><primary>GEN17</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN17</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>GEN17</refname>
+    <refpurpose>
+      Crée une fonction en escalier à partir des paires x-y données.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ce sous-programme crée une fonction en escalier à partir des paires x-y données.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>f</command> # date taille 17 x1 a x2 b x3 c  ...</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>taille</emphasis> -- nombre de points dans la table. Doit être une puissance de 2 ou une
+      puissance-de-2 plus 1 (voir l'<link linkend="f"><citetitle>instruction f</citetitle></link>). La valeur
+      normale est une puissance-de-2 plus 1.
+    </para>
+
+    <para>
+      <emphasis>x1, x2, x3,</emphasis> etc. -- valeurs d'abscisse x, en ordre ascendant, commençant par 0.
+    </para>
+
+    <para>
+      <emphasis>a, b, c,</emphasis> etc. -- valeurs y à ces valeurs d'abscisse x, maintenues jusqu'à la
+      valeur d'abscisse x suivante.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        Ce sous-programme crée une fonction en escalier de paires x-y dont les valeurs y sont maintenues
+        vers la droite. La valeur de y la plus à droite est ensuite maintenue jusqu'à la fin de la table.
+        Cette fonction est utile pour mettre en correspondance un ensemble de données avec un autre, tel
+        que des numéros de notes MIDI avec des numéros de ftables de sons échantillonés. (voir
+        <link linkend="loscil"><citetitle>loscil</citetitle></link>).
+      </para>
+    </note>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">f</emphasis>  1  0  128  -17   0  1   12  2   24  3   36  4   48  5  60  6   72  7   84  8</programlisting>
+      </informalexample>
+
+      Ceci décrit une fonction en escalier avec huit niveaux croissants successifs, chacun occupant 12
+      positions sauf pour le dernier qui étend sa valeur jusqu'à la fin de la table. La normalisation
+      est empêchée. En indexant cette table avec un numéro de note MIDI, on retrouvera une valeur
+      différente pour chaque octave jusqu'à la huitième, au-delà de laquelle la valeur retournée restera
+      la même.
+    </para>
+    
+    <para>
+      Voici un exemple complet de la routine GEN17. Il utilise le fichier
+      <ulink url="examples/gen17.csd"><citetitle>gen17.csd</citetitle></ulink>.
+      <example>
+        <title>Un exemple de la routine GEN17.</title>
+        <xi:include href="examples-xml/gen17.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      <textobject>
+        <phrase>Voici le diagramme de la forme d'onde de la routine GEN17 utilisée
+        dans l'exemple :</phrase>
+      </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen17.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 2 0 128 -17 0 10 32 20 64 30 96 40 - une fonction en escalier
+          avec quatre niveaux égaux, chacun ayant une largeur de 32 positions,
+          sauf le dernier qui va jusqu'à la fin de la table</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 2 0 128 -17 0 10 32 20 64 30 96 40 - une fonction en escalier
+          avec quatre niveaux égaux, chacun ayant une largeur de 32 positions,
+          sauf le dernier qui va jusqu'à la fin de la table</para>
+        </caption>
+      </mediaobject>
+
+    </para>
+  </refsect1>
+
+  <refsect1>
+     <title>Voir aussi</title>
+     <para>
+       <link linkend="GEN02"><citetitle>GEN02</citetitle></link>
+     </para>
+  </refsect1>
+</refentry>

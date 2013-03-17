@@ -1,0 +1,125 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.10
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="tone">
+<indexterm id="IndexTone"><primary>tone</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tone</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>tone</refname>
+    <refpurpose>
+      Un filtre passe-bas récursif du premier ordre avec une réponse en fréquence variable.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Un filtre passe-bas récursif du premier ordre avec une réponse en fréquence variable.
+    </para>
+
+    <para>
+      <emphasis>tone</emphasis> est filtre RII à un terme. Sa formule est :
+        <informalexample>
+          <para>
+            y<subscript>n</subscript> = c1 * x<subscript>n</subscript> + c2 * y<subscript>n-1</subscript>
+          </para>
+        </informalexample>
+
+      où
+
+        <informalexample>
+          <para>
+            <itemizedlist>
+              <listitem>
+                <para>b  = 2 - cos(2 &pi; hp/sr);</para>
+              </listitem>
+              <listitem>
+                <para>c2 = b - sqrt(b<superscript>2</superscript> - 1.0)</para>
+              </listitem>
+              <listitem>
+                <para>c1 = 1 - c2</para>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </informalexample>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>tone</command> asig, khp [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iskip</emphasis> (facultatif, par défaut 0) -- état initial de l'espace de données interne.
+      Comme le filtrage comprend une boucle de rétroaction sur la sortie précédente, l'état initial de
+      l'espace de stockage utilisé est significatif. Une valeur nulle provoquera l'effacement de cet
+      espace ; une valeur non nulle autorisera la persistance de l'information précédente. La valeur par
+      défaut est 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ares</emphasis> -- le signal audio de sortie.
+    </para>
+
+    <para>
+      <emphasis>asig</emphasis> -- le signal audio en entrée.
+    </para>
+
+    <para>
+      <emphasis>khp</emphasis> --  le point à mi-puissance de la courbe de réponse, en Hertz. La
+      mi-puissance est définie par puissance maximale / racine de 2.
+    </para>
+
+    <para>
+      <emphasis>tone</emphasis> implémente un filtre passe-bas récursif du premier ordre dans lequel la
+      variable <emphasis>khp</emphasis> (en Hz) détermine le point à mi-puissance de la courbe de
+      réponse. La mi-puissance est définie par puissance maximale / racine de 2.
+    </para>
+  </refsect1>
+
+   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode tone. Il utilise le fichier
+      <ulink url="examples/tone.csd"><citetitle>tone.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode tone.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/tone.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="areson"><citetitle>areson</citetitle></link>,
+      <link linkend="aresonk"><citetitle>aresonk</citetitle></link>,
+      <link linkend="atone"><citetitle>atone</citetitle></link>,
+      <link linkend="atonek"><citetitle>atonek</citetitle></link>,
+      <link linkend="port"><citetitle>port</citetitle></link>,
+      <link linkend="portk"><citetitle>portk</citetitle></link>,
+      <link linkend="reson"><citetitle>reson</citetitle></link>,
+      <link linkend="resonk"><citetitle>resonk</citetitle></link>,
+      <link linkend="tonek"><citetitle>tonek</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

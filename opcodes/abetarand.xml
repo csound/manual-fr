@@ -1,0 +1,30 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="abetarand">
+<indexterm id="IndexAbetarand"><primary>abetarand</primary></indexterm>
+  <refmeta>
+    <refentrytitle>abetarand</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>abetarand</refname>
+    <refpurpose>
+      Obsolète.
+      
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Obsolète depuis la version 3.49. Utiliser plutôt l'opcode <link linkend="betarand"><citetitle>betarand</citetitle></link>. 
+    </para>
+  </refsect1>
+</refentry>

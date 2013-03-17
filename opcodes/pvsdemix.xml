@@ -1,0 +1,131 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvsdemix">
+<indexterm id="IndexPvsdemix"><primary>pvsdemix</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsdemix</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvsdemix</refname>
+    <refpurpose>
+      Séparation spectrale de sources stéréo basée sur l'azimut.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Séparation spectrale de sources stéréo basée sur l'azimut, avec pour
+      résultat l'annulation d'une spatialisation. Cet opcode implémente
+      l'algorithme de Discrimination Azimutale et Resynthèse (ADRess) développé
+      par Dan Barry (Barry et Al. "Sound Source Separation Azimuth Discrimination
+      and Resynthesis". DAFx'04, Univ. de Naples). La séparation de sources, ou
+      démixage, est contrôlée par deux paramètres : une position d'azimut
+      (<emphasis>kpos</emphasis>) et une largeur de sous-espace (<emphasis>kwidth</emphasis>).
+      Le premier est utilisé pour localiser les crêtes spectrales des sources
+      individuelles dans un mélange stéréo, tandis que le second élargit l'espace
+      de recherche en incluant/excluant les crêtes autour de <emphasis>kpos</emphasis>.
+      Ces deux paramètres peuvent être utilisés interactivement pour extraire
+      les sources sonores d'un mélange stéréo. L'algorithme est particulièrement
+      efficace avec les enregistrements de studio dans lesquels des
+      instruments différents occupent des positions spatiales différentes ; c'est en
+      fait un algorithme de d'annulation de spatialisation.
+    </para>
+    <warning>
+      <para>
+        Il est dangereux d'utiliser la même variable-f à la fois comme entrée et
+        comme sortie des opcodes pvs. Ceci peut produire un comportement indéfini
+        de certains de ces opcodes. Utilisez une variable différente à gauche et
+        à droite de l'opcode.
+      </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>fsig <command>pvsdemix</command> fleft, fright, kpos, kwidth, ipoints</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>fsig</emphasis> -- flot pv de sortie
+    </para>
+
+    <para>
+      <emphasis>fleft</emphasis> -- flot pv d'entrée du canal de gauche.
+    </para>
+
+    <para>
+      <emphasis>fright</emphasis> -- flot pv d'entrée du canal de droite.
+    </para>
+
+    <para>
+      <emphasis>kpos</emphasis> -- la position centrale de la cible d'azimut qui
+      sera démixée, de gauche à droite (-1 &lt;= <emphasis>kpos</emphasis> &lt;= 1).
+      C'est l'inverse d'un contrôleur de pan-pot.
+    </para>
+    <para>
+      <emphasis>kwidth</emphasis> -- la largeur du sous-espace d'azimut qui
+      détermine le nombre de points autour de <emphasis>kpos</emphasis> qui
+      seront utilisés dans le traitement de démixage.
+      (1 &lt;= <emphasis>kwidth</emphasis> &lt;= <emphasis>ipoints</emphasis>)
+    </para>
+
+    <para>
+      <emphasis>ipoints</emphasis> -- nombre total de points discrets qui vont
+      diviser chaque côté de l'image stéréo. Ceci affecte au final la résolution
+      du traitement.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      L'exemple ci-dessous prend une entrée stéréo et la passe dans un
+      traitement de démixage qui révèle une source située à <emphasis>ipos</emphasis>
+      +/- <emphasis>iwidth</emphasis> points. On peut contrôler ces paramètres
+      en temps réel (par exemple en utilisant des widgets FLTK ou le MIDI) pour
+      une recherche interactive de sources sonores.
+      <example>
+        <title>Exemples</title>
+        <programlisting>
+ifftsize <emphasis role="op">=</emphasis> 1024  
+iwtype   <emphasis role="op">=</emphasis> 1     <emphasis role="comment">/* cleaner with hanning window      */</emphasis>
+ipos     <emphasis role="op">=</emphasis> -0.8  <emphasis role="comment">/* to the left of the stereo image  */</emphasis>
+iwidth   <emphasis role="op">=</emphasis> 20    <emphasis role="comment">/* use peaks of 20 points around it */</emphasis>
+
+al,ar  <emphasis role="opc">soundin</emphasis>   "sinput.wav"
+
+flc    <emphasis role="opc">pvsanal</emphasis>   al, ifftsize, ifftsize/4, ifftsize, iwtype
+frc    <emphasis role="opc">pvsanal</emphasis>   ar, ifftsize, ifftsize/4, ifftsize, iwtype
+fdm    <emphasis role="opc">pvsdemix</emphasis>  flc, frc, kpos, kwidth, 100
+adm    <emphasis role="opc">pvsynth</emphasis>   fdm
+   
+       <emphasis role="opc">outs</emphasis>      adm, adm</programlisting>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Janvier 2005</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau greffon dans la version 5</para>
+    <para>Janvier 2005.</para>
+  </refsect1>
+</refentry>

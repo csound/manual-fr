@@ -1,0 +1,95 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.2
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<part id="PrefaceHistory">
+  <title>Histoire du manuel de référence canonique de Csound</title>
+  <para>
+    La version initiale de ce manuel pour les premières versions de Csound fut démarrée au MIT
+    par &namebarry; et y fut maintenue durant les années 1980 et le début des années 1990.
+    Une partie du manuel provient de documents pour des programmes des années 1970 comme
+    <emphasis>Music11</emphasis>. Ce manuel original fut amélioré et développé par
+    Richard Boulanger, &namejohn;, Jean Piché et &namerasmus;.
+  </para>
+  <para>
+    Ce manuel évolua vers le Manuel de Référence Officiel de Csound que l'on trouve toujours à
+    <ulink url="http://www.lakewoodsound.com/csound/hypertext/manual.htm">
+    <citetitle>http://www.lakewoodsound.com/csound</citetitle></ulink>, pour la version 4.16 de
+    Csound, de novembre 1999, qui était maintenu par &namedavid;.
+  </para>
+  <para>
+    Une version parallèle du manuel appelée le Manuel de Référence Alternatif de Csound, fut
+    développée par &namekevin; en utilisant
+    <ulink url="http://www.docbook.org/"><citetitle>DocBook/SGML</citetitle></ulink>. Cette
+    version devint plus tard la version Canonique.
+  </para>
+  <para>
+    Quand le MIT plaça Csound sous license LGPL en 2003, le manuel passa sous license GFDL et
+    fut placé sur Sourceforge avec les sources de Csound.
+  </para>
+  <para>
+    Durant l'hiver 2004, le Manuel Canonique fut converti en DocBook/XML par &namesteven;
+    afin de permettre à plus de gens d'assurer sa compilation et sa maintenance.
+  </para>
+  <para>
+    Le manuel est actuellement maintenu par &nameandres; avec des contributions continues de la
+    communauté de Csound.
+  </para>
+  <para>
+    Le manuel est toujours un projet communautaire qui dépend des contributions des
+    développeurs et des utilisateurs afin d'aider à affiner l'étendue et la précision
+    de son contenu. Toutes les contributions sont les bienvenues et sont appréciées.
+  </para>
+  <table frame="none" colsep="0">
+    <title>Autres collaborateurs</title>
+    <tgroup cols="1">
+      <tbody>
+        <row><entry>Mike Berry </entry></row>
+        <row><entry>Eli Breder </entry></row>
+        <row><entry>Michael Casey </entry></row>
+        <row><entry>Michael Clark </entry></row>
+        <row><entry>Perry Cook </entry></row>
+        <row><entry>Sean Costello </entry></row>
+        <row><entry>Richard Dobson </entry></row>
+        <row><entry>Mark Dolson </entry></row>
+        <row><entry>Dan Ellis </entry></row>
+        <row><entry>Tom Erbe </entry></row>
+        <row><entry>Bill Gardner </entry></row>
+        <row><entry>&namemichael;</entry></row>
+        <row><entry>Matt Ingalls </entry></row>
+        <row><entry>Richard Karpen </entry></row>
+        <row><entry>&nameanthony;</entry></row>
+        <row><entry>&namevictor;</entry></row>
+        <row><entry>Allan Lee</entry></row>
+        <row><entry>David Macintyre </entry></row>
+        <row><entry>&namegabriel;</entry></row>
+        <row><entry>Max Mathews </entry></row>
+        <row><entry>Hans Mikelson </entry></row>
+        <row><entry>Peter Neub&auml;cker </entry></row>
+        <row><entry>Peter Nix </entry></row>
+        <row><entry>Ville Pulkki </entry></row>
+        <row><entry>Maurizio Umberto Puxeddu </entry></row>
+        <row><entry>John Ramsdell </entry></row>
+        <row><entry>Marc Resibois </entry></row>
+        <row><entry>Rob Shaw </entry></row>
+        <row><entry>Paris Smaragdis </entry></row>
+        <row><entry>Greg Sullivan </entry></row>
+        <row><entry>&nameistvan;</entry></row>
+        <row><entry>Bill Verplank </entry></row>
+        <row><entry>Robin Whittle </entry></row>
+        <row><entry>&namesteven;</entry></row>
+        <row><entry>&namepinot;</entry></row>
+      </tbody>
+    </tgroup>
+  </table>
+  <para>
+    Cette liste n'est en aucune façon exhaustive. On peut obtenir plus d'information par le
+    fichier Changelog dans l'entrepôt des sources du manuel.
+  </para>
+
+</part>

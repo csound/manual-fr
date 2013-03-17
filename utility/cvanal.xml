@@ -1,0 +1,112 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="cvanal">
+  <refentryinfo><title>Utilities</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>cvanal</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>cvanal</refname>
+    <refpurpose>
+      Convertit un fichier son en une trame de transformée de Fourier.
+      <indexterm id="IndexCvanal"><primary>cvanal</primary></indexterm>
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Analyse de Fourier d'une réponse impulsionnelle pour l'opérateur
+      <link linkend="convolve"><citetitle>convolve</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>csound -U cvanal</command> [options] nomfichier_entree nomfichier_sortie</synopsis>
+    <synopsis><command>cvanal</command> [options] nomfichier_entree nomfichier_sortie</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>cvanal</emphasis> -- convertit un fichier son en une trame de transformée de Fourier. Le
+      fichier de sortie peut être utilisé par l'opérateur <emphasis>convolve</emphasis> pour réaliser une
+      Convolution Rapide entre un signal d'entrée et la réponse impulsionnelle originale. L'analyse est
+      conditionnée par les options ci-dessous. Un espace est facultatif entre le drapeau et son argument.
+    </para>
+
+    <para>
+      <emphasis>-s srate</emphasis> -- taux d'échantillonnage du fichier audio d'entrée. Il remplacera la
+      valeur srate de l'en-tête du fichier audio, qui s'applique autrement. Si aucun des deux n'est présent,
+      la valeur par défaut est 10000.
+    </para>
+
+    <para>
+      <emphasis>-c canal</emphasis> -- numéro du canal à traiter. S'il est omis, tous les canaux sont
+      traités par défaut. Si une valeur est donnée, seul le canal choisi sera traité.
+    </para>
+
+    <para>
+      <emphasis>-b début</emphasis> -- date du début (en secondes) du segment audio à analyser. La valeur
+      par défaut est 0,0
+    </para>
+
+    <para>
+      <emphasis>-d durée</emphasis> -- durée (en secondes) du segment audio à analyser. La valeur par défaut
+      de 0,0 signifie jusqu'à la fin du fichier.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+<!--       <informalexample> -->
+        <programlisting>
+<emphasis>cvanal</emphasis> unson fichiercv</programlisting>
+<!--       </informalexample> -->
+
+      analysera le fichier son &quot;unson&quot; pour produire le fichier &quot;fichiercv&quot; à utiliser
+      avec <link linkend="convolve"><citetitle>convolve</citetitle></link>.
+    </para>
+
+    <para>
+      Pour utiliser des données qui ne sont pas déjà contenues dans un fichier son, un convertisseur de
+      fichier son qui accepte des fichiers texte peut être utilisé pour créer un fichier audio standard,
+      par exemple le format .DAT pour SOX. Ceci est utile pour implémenter des filtres RIF.
+    </para>
+
+    <refsect2>
+      <title>Fichiers</title>
+      <para>
+        Le fichier de sortie a un en-tête spécial <emphasis>convolve</emphasis>, contenant les détails du
+        fichier source audio. Les données d'analyse sont stockées comme des nombres <quote>virgule flottante</quote>,
+        en forme rectangulaire (réel/imaginaire).
+      </para>
+
+      <note>
+        <title>Note</title>
+        <para>
+          Le fichier d'analyse n'est <emphasis>pas</emphasis> indépendant du système ! Assurez-vous que les
+          données originales de la réponse impulsionnelle sont conservées. Si nécessaire, le fichier
+          d'analyse pourra être recréé.
+        </para>
+      </note>
+    </refsect2>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : Greg Sullivan</para>
+    <para>Basé sur l'algorithme donné dans <emphasis>Elements Of Computer Music</emphasis>, par
+      F. Richard Moore.</para>
+  </refsect1>
+</refentry>

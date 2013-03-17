@@ -1,0 +1,98 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="OrchDirFiles">
+  <title>Répertoires et fichiers</title>
+
+  <para>
+    Plusieurs générateurs et la commande Csound elle-même spécifient des noms de fichier pour
+    l'écriture ou la lecture. Ceux-ci peuvent parfois être des chemins complets, dont le répertoire
+    cible est complètement spécifié. Lorsque le chemin n'est pas complet, les noms de fichiers sont
+    recherchés dans plusieurs répertoires dans un ordre dépendant de leur type et de la valeur de
+    certaines variables d'environnement. Ces dernières sont facultatives, mais elles peuvent servir
+    à partitionner et à organiser les répertoires de façon à partager les fichiers plutôt que de les
+    dupliquer dans plusieurs répertoires de l'utilisateur. Les variables d'environnement peuvent
+    définir des répertoires pour les fichiers son 
+    (<link linkend="CommandEnvironment"><citetitle>SFDIR</citetitle></link>),
+    les sons échantillonés
+    (<link linkend="CommandEnvironment"><citetitle>SSDIR</citetitle></link>), les
+    analyses de son (SADIR), et les fichiers à inclure pour l'orchestre et la
+    partition (INCDIR).
+
+    <indexterm id="IndexSFDIR"><primary>SFDIR</primary></indexterm>
+    <indexterm id="IndexSSDIR"><primary>SSDIR</primary></indexterm>
+    <indexterm id="IndexSADIR"><primary>SADIR</primary></indexterm>
+    <indexterm id="IndexINCDIR"><primary>INCDIR</primary></indexterm>
+    <indexterm id="IndexMFDIR"><primary>MFDIR</primary></indexterm>
+  </para>
+
+  <para>
+    A partir de la version 5.00 de Csound, ces variables d'environnement peuvent spécifier plusieurs
+    répertoires dans une liste dont le séparateur est le point-virgule (;). Si un fichier est trouvé
+    à plusieurs endroits, c'est le premier de ceux-ci qui à la priorité.
+  </para>
+
+  <para>
+    L'ordre de recherche est :
+    <orderedlist>
+      <listitem>
+        <para>Les fichiers son en écriture sont placés dans
+        <link linkend="CommandEnvironment"><citetitle>SFDIR</citetitle></link>
+        (s'il existe), sinon dans le répertoire courant.</para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Les fichiers son en lecture sont recherchés dans le répertoire courant. Si les chemins
+          par défaut ne sont pas désactivés, les fichiers sont ensuite recherchés relativement
+          au fichier CSD/ORC/SCO. Enfin, ils sont recherchés dans
+          <link linkend="CommandEnvironment"><citetitle>SSDIR</citetitle></link>
+          puis dans
+          <link linkend="CommandEnvironment"><citetitle>SFDIR</citetitle></link>.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Les fichiers de contrôle d'analyse en lecture sont recherchés dans le répertoire courant.
+          Si les chemins par défaut ne sont pas désactivés, les fichiers sont ensuite recherchés
+          relativement au fichier CSD/ORC/SCO. Enfin, ils sont recherchés dans SADIR.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Les fichiers MIDI en lecture sont recherchés dans le répertoire courant. Si les chemins
+          par défaut ne sont pas désactivés, les fichiers sont ensuite recherchés relativement
+          au fichier CSD/ORC/SCO. Enfin, ils sont recherchés dans MFDIR,
+          <link linkend="CommandEnvironment"><citetitle>SSDIR</citetitle></link> et
+          <link linkend="CommandEnvironment"><citetitle>SFDIR</citetitle></link>.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Les fichiers de code à inclure dans les fichiers d'orchestre et de partition (avec
+          <link linkend="include"><citetitle>#include</citetitle></link>) sont recherchés d'abord
+          dans le répertoire courant, ensuite dans le même répertoire que le fichier d'orchestre ou
+          de partition (respectivement), enfin dans INCDIR.
+        </para>
+      </listitem>
+    </orderedlist>
+  </para>
+
+<!-- FIXME: this is out of date and needs to be updated for version 5.xx
+
+  <para>
+    Beginning with Csound version 3.54, the file <quote>csound.txt</quote> contains the messages (in binary format) that Csound uses to provide information to the user during performance. This allows for the messages to be in any language, although the default is English. This file must be placed in the same directory as the Csound executable. Alternatively, this file may be stored in SFDIR, SSDIR, or SADIR. Unix users may also keep this file in <quote>/usr/local/lib/</quote>. The environment variable CSSTRNGS may be used to define the directory in which the database resides. This can be overridden with the <emphasis>-j</emphasis> command line option. (New in  version 3.55)
+    <indexterm id="IndexCSSTRNGS"><primary>CSSTRNGS</primary></indexterm>
+  </para>
+-->
+
+</section>

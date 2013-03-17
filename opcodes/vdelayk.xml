@@ -1,0 +1,78 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vdelayk">
+<indexterm id="IndexVdelayk"><primary>vdelayk</primary></indexterm>
+  <refentryinfo><title>Vectorial:Delay Paths</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vdelayk</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vdelayk</refname>
+    <refpurpose>
+      Délai variable au taux-k.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Délai variable appliqué à un signal de taux-k.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kout <command>vdelayk</command>  ksig, kdel, imaxdel [, iskip, imode]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>imaxdel</emphasis> -Valeur maximale du délai en secondes.
+    </para>
+    <para>
+      <emphasis>iskip</emphasis> (facultatif) - L'initialisation est ignorée s'il
+      est présent et différent de zéro.
+    </para>
+       <para>
+      <emphasis>imode</emphasis> (facultatif) - S'il est différent de zéro,
+      l'interpolation linéaire est supprimée. Bien que, normalement, l'interpolation
+      améliore la qualité du signal, il faut la supprimer si l'on utilise
+      <emphasis>vdelayk</emphasis> avec des signaux de contrôle discrets comme,
+      par exemple, des signaux de déclenchement.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+     <para>
+      <emphasis>kout</emphasis> - signal retardé en sortie.
+    </para>
+    <para>
+      <emphasis>ksig</emphasis> - signal d'entrée.
+    </para>
+    <para>
+      <emphasis>kdel</emphasis> - valeur du retard en secondes. Peut être changé
+      au taux-k.
+    </para>
+    <para>
+      <emphasis>vdelayk</emphasis> est semblable à
+      <link linkend="vdelay"><citetitle>vdelay</citetitle></link>, mais il
+      fonctionne au taux-k. Il est conçu pour retarder des signaux de contrôle.
+      A utiliser, par exemple, dans la composition algorithmique.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par Gabriel Maldonado.</para>
+    <para>Nouveau dans Csound 5 (Auparavant seulement disponible dans CsoundAV)</para>
+  </refsect1>
+</refentry>

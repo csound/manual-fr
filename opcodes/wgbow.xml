@@ -1,0 +1,116 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="wgbow">
+<indexterm id="IndexWgbow"><primary>wgbow</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Waveguide Physical Modeling</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>wgbow</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>wgbow</refname>
+    <refpurpose>
+      Simule un son de corde frottée.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      La sortie audio simule un son de corde frottée, réalisé au moyen d'un
+      modèle physique développé par &nameperry;, mais recodé pour Csound.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>wgbow</command> kamp, kfreq, kpres, krat, kvibf, kvamp, ifn [, iminfreq]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn</emphasis> -- table contenant la forme du vibrato, habituellement
+      une table de sinusoïde, créée par une fonction.
+    </para>
+
+    <para>
+      <emphasis>iminfreq</emphasis> (facultatif) -- fréquence la plus grave à laquelle
+      l'instrument sera joué. Si elle est omise, elle prend la valeur initiale de
+      <emphasis>kfreq</emphasis>. Si <emphasis>iminfreq</emphasis> est négative,
+      l'initialisation est ignorée.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Une note est jouée sur un instrument de type corde, avec les arguments ci-dessous.
+    </para>
+
+    <para>
+      <emphasis>kamp</emphasis> -- amplitude de la note.
+    </para>
+
+    <para>
+      <emphasis>kfreq</emphasis> -- fréquence de la note jouée.
+    </para>
+
+    <para>
+      <emphasis>kpres</emphasis> -- un paramètre contrôlant la pression de l'archet
+      sur la corde. Les valeurs doivent se situer autour de 3. L'intervalle utile
+      va approximativement de 1 à 5.
+    </para>
+
+    <para>
+      <emphasis>krat</emphasis> -- la position de l'archet le long de la corde. Le
+      jeu habituel se fait environ à 0.127236. L'intervalle recommandé va de 0.025
+      à 0.23.
+    </para>
+
+    <para>
+      <emphasis>kvibf</emphasis> -- fréquence du vibrato en Hz. L'intervalle
+      recommandé va de 0 à 12.
+    </para>
+
+    <para>
+      <emphasis>kvamp</emphasis> -- l'amplitude du vibrato.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode wgbow. Il utilise le fichier
+      <ulink url="examples/wgbow.csd"><citetitle>wgbow.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode wgbow.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/wgbow.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn; (d'après &nameperry;)</member>
+        <member>Université de Bath, Codemist Ltd.</member>
+        <member>Bath, UK</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.47 de Csound</para>
+  </refsect1>
+</refentry>

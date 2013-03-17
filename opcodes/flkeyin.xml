@@ -1,0 +1,114 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.1
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLkeyIn">
+<indexterm id="IndexFLkeyIn"><primary>FLkeyIn</primary></indexterm>
+  <refentryinfo><title>FLTK:Other</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLkeyIn</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLkeyIn</refname>
+    <refpurpose>
+      Retourne les touches enfoncées (sur le clavier alphanumérique) quand un
+      panneau FLTK est actif.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>FLkeyIn</emphasis> nous informe sur l'état d'une touche enfoncée
+      par l'utilisateur sur le clavier alphanumérique quand un panneau FLTK
+      est actif.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kascii <command>FLkeyIn</command> [ifn]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>ifn – (facultatif, zéro par défaut) fixe le comportement de
+      <emphasis>FLkeyIn</emphasis> (voir ci-dessous).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para><emphasis>kascii</emphasis> - la valeur ASCII de la dernière touche
+      enfoncée. Si la touche est enfoncée, la valeur est positive alors que
+      si la touche est relachée la valeur est négative.
+    </para>
+    <para>
+      <emphasis>FLkeyIn</emphasis> est utile pour savoir si une touche a été
+      enfoncée sur le clavier de l'ordinateur. Le comportement de cet opcode
+      dépend de l'argument facultatif <emphasis>ifn</emphasis>.
+    </para>
+    <para>
+      Si <emphasis>ifn</emphasis> = 0 (par défaut), <emphasis>FLkeyIn</emphasis>
+      retourne le code ASCII de la dernière touche enfoncée. Si c'est une touche
+      spéciale (ctrl, maj, alt, f1-f12, etc.), une valeur de 256 est ajoutée à
+      la valeur retournée afin de la distinguer des touches normales. La
+      sortie continuera à retourner la valeur de la dernière touche jusqu'à ce
+      qu'une nouvelle touche soit enfoncée ou relachée. Noter que la sortie sera
+      négative lorsqu'un touche est relachée.
+    </para>
+    <para>
+      Si <emphasis>ifn</emphasis> contient le numéro d'une table déjà allouée
+      ayant au moins 512 éléments, l'élément de la table d'indice égal au code
+      ASCII de la touche enfoncée est fixé à 1, tous les autres éléments de
+      la table étant fixés à 0. Cela permet de tester l'état d'une touche
+      particulière ou d'un ensemble de touches.
+    </para>
+    <para>
+      Noter qu'il faut que le paramètre <emphasis>ikbdcapture</emphasis> du
+      <link linkend="FLpanel"><citetitle>FLpanel</citetitle></link> concerné
+      doit être différent de 0 pour que <emphasis>FLkeyIn</emphasis> capture
+      les évènements de clavier provenant de ce panneau.
+    </para>
+    <note>
+      <para>
+        Comme <emphasis>FLkeyIn</emphasis> travaille en interne au taux-k, on
+        ne peut pas l'utiliser dans l'en-tête comme les autres opcodes FLTK.
+        On doit l'utiliser dans un instrument.
+      </para>
+    </note>
+  </refsect1>
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode FLkeyIn. Il utilise le fichier
+      <ulink url="examples/FLkeyIn.csd"><citetitle>FLkeyIn.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode FLkeyIn.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/FLkeyIn.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+<!--  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="FLgetsnap"><citetitle>FLgetsnap</citetitle></link>
+    </para>
+  </refsect1>-->
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 5.06</para>
+  </refsect1>
+</refentry>

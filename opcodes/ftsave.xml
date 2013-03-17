@@ -1,0 +1,100 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ftsave">
+<indexterm id="IndexFtsave"><primary>ftsave</primary></indexterm>
+  <refentryinfo><title>Table Control:Read/Write Opreations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ftsave</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ftsave</refname>
+    <refpurpose>
+      Sauvegarde dans un fichier un ensemble de tables préalablement allouées.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Sauvegarde dans un fichier un ensemble de tables préalablement allouées.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>ftsave</command> &quot;filename&quot;, iflag, ifn1 [, ifn2] [...]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>&quot;filename&quot;</emphasis> -- Une chaîne de caractères entre
+      guillemets contenant le nom du fichier à sauvegarder.
+    </para>
+
+    <para>
+      <emphasis>iflag</emphasis> -- Type du fichier à sauvegarder (0 = binaire,
+      différent de 0 = fichier texte).
+    </para>
+
+    <para>
+      <emphasis>ifn1, ifn2, ...</emphasis> -- Numéros des tables à sauvegarder.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ftsave</emphasis> sauvegarde une liste de tables dans un fichier.
+      Le format du fichier peut être binaire ou texte.
+    </para>
+
+    <warning>
+      <title>Avertissement</title>
+      <para>
+        Le format du fichier n'est pas compatible avec un fichier WAV et l'ordre
+        des octets (endianness) n'est pas sûr.
+      </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode ftsave. Il utilise le fichier
+      <ulink url="examples/ftsave.csd"><citetitle>ftsave.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode ftsave.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/ftsave.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ftloadk"><citetitle>ftloadk</citetitle></link>,
+      <link linkend="ftload"><citetitle>ftload</citetitle></link>,
+      <link linkend="ftsavek"><citetitle>ftsavek</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Exemple écrit par &namekevin;.</para>
+    <para>Nouveau dans la version 4.21</para>
+  </refsect1>
+</refentry>

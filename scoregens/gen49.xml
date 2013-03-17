@@ -1,0 +1,138 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.3
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="GEN49">
+      <indexterm id="IndexGEN49"><primary>GEN49</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN49</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>GEN49</refname>
+    <refpurpose>
+      Transfère les données d'un fichier son MP3 dans une table de fonction.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ce sous-programme transfère les données d'un fichier son MP3 dans une table
+      de fonction.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>f</command>#  time  size  49  filcod  skiptime  format</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>size</emphasis> -- nombre de points dans la table. Ordinairement une puissance de 2 ou
+      une puissance-de-2 plus 1 (voir l'<link linkend="f"><citetitle>instruction f</citetitle></link>) ;
+      la taille de table maximale est de 16777216 (2<superscript>24</superscript>) points. L'allocation de
+      mémoire pour la table peut être <emphasis>différée</emphasis> en mettant ce paramètre à 0 ; la taille
+      allouée est alors le nombre de points dans le fichier (probablement pas une puissance de 2), et la
+      table n'est pas utilisable par les oscillateurs normaux, mais par l'unité
+      <link linkend="loscil"><citetitle>loscil</citetitle></link>. Le fichier son peut être mono ou
+      stéréo.
+    </para>
+
+    <para>
+      <emphasis>filcod</emphasis> -- entier ou chaîne de caractères dénotant le nom du fichier son source.
+      Un entier dénote le fichier <emphasis>soundin</emphasis>.<emphasis>filcod</emphasis> ; une chaîne de
+      caractères (entre apostrophes doubles, espaces autorisés) donne le nom du fichier lui-même,
+      optionnellement un nom de chemin complet. Si le chemin n'est pas complet, le fichier est d'abord
+      cherché dans le répertoire courant, ensuite dans celui qui est donné par la variable d'environnement
+      <link linkend="CommandEnvironment"><citetitle>SSDIR</citetitle></link> (si elle est définie) enfin par
+      <link linkend="CommandEnvironment"><citetitle>SFDIR</citetitle></link>. Voir aussi
+      <link linkend="soundin"><citetitle>soundin</citetitle></link>.
+    </para>
+
+    <para>
+      <emphasis>skiptime</emphasis> -- commence à lire à <emphasis>skiptime</emphasis> secondes
+      dans le fichier.
+    </para>
+
+    <para>
+      <emphasis>format</emphasis> -- spécife le format de fichier audio requis :
+        <literallayout>
+1 - Fichier mono                 3 - Premier canal (gauche)
+2 - Fichier stéréo               4 - Second canal (droite)
+        </literallayout>
+    </para>
+
+    <para>
+      Si <emphasis>format</emphasis> = 0 le format d'échantillon est pris dans l'en-tête du
+      fichier son.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              La lecture s'arrête à la fin du fichier ou lorsque la table est pleine.
+              Les cellules de la table non remplies contiendront des zéros.
+            </para>
+          </listitem>
+
+          <listitem>
+            <para>
+              Si p4 est positif, la table sera post-normalisée (reproportionnée avec une
+              valeur absolue maximale de 1 après génération). Une valeur de p4 négative
+              empêche cette opération.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de la routine GEN49. Il utilise le fichier
+      <ulink url="examples/gen49.csd"><citetitle>gen49.csd</citetitle></ulink>.
+      <example>
+        <title>Un exemple de la routine GEN49.</title>
+        <xi:include href="examples-xml/gen49.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      
+      <textobject>
+        <phrase>Voici le diagramme de la forme d'onde de la routine GEN49 utilisée
+        dans l'exemple :</phrase>
+      </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen49.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 1 0 131072 49 "beats.mp3" 0 1</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 1 0 131072 49 "beats.mp3" 0 1</para>
+        </caption>
+      </mediaobject>
+
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par &namejohn;</para>
+    <para>Février 2009.</para>
+  </refsect1>
+</refentry>

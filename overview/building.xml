@@ -1,0 +1,486 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.26
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<chapter id="BuildingCsound">
+  <title>Construire Csound</title>
+
+  <para>
+    Csound est devenu un projet complexe et peut impliquer plusieurs dépendances. A moins d'être un
+    développeur de Csound ou d'avoir besoin d'écrire des greffons pour Csound, il vaut mieux utiliser
+    une des distibutions pré-compilées de <ulink
+      url="http://www.sourceforge.net/projects/csound">http://www.sourceforge.net/projects/csound</ulink>.
+    Cependant, la construction à partir des sources est sans doute la meilleure option sous GNU/Linux.
+  </para>
+  <para>
+    Cette section met l'accent sur le système principal de construction de Csound 5, qui utilise
+    <ulink url="http://www.scons.org">SCons</ulink>, un programme Python qui remplace
+    <emphasis>make</emphasis> pour la configuration et la construction multi plates-formes.
+  </para>
+  <para>
+    Lorsque l'on construit Csound à partir des sources plutôt que d'utiliser un paquetage précompilé,
+    il faut d'abord télécharger les sources d'une publication de Csound à partir de
+    <ulink url="http://www.sourceforge.net/projects/csound">http://www.sourceforge.net/projects/csound</ulink>.
+    Les paquetages source ont une extension zip ou tar.gz.
+  </para>
+  <para>
+    Le code source de Csound le plus récent (potentiellement instable) est également disponible par
+    GIT. La page d'acceuil GIT de Csound se trouve ici :
+    <ulink url="http://csound.git.sourceforge.net/git/gitweb-index.cgi">http://csound.git.sourceforge.net/git/gitweb-index.cgi</ulink>.
+    L'utilisation de git pour télécharger et compiler Csound est assez facile. Installer GIT pour
+    votre plate-forme et utiliser la commande suivante pour cloner l'entrepôt git de Csound :
+  </para>
+  <programlisting>git clone git://git.code.sf.net/p/csound/csound5-git</programlisting>
+  <para>
+    Cela téléchargera une version à lecture seule de l'entrepôt de Csound5 (cela signifie que
+    l'on ne peut pas mettre à jour l'entrepôt central à partir de celui-ci). Pour une mise à
+    jour de l'entrepôt téléchargé à partir de l'entrepôt central, utiliser :
+  </para>
+  <programlisting>git pull</programlisting>
+  <para>
+    On utilise le même procédé pour le manuel de Csound. Pour le cloner, utiliser cette
+    commande :
+  </para>
+  <programlisting>git clone git://git.code.sf.net/p/csound/manual-git</programlisting>
+
+  <bridgehead>Conditions nécessaires pour construire Csound 5 sur toutes les plates-formes</bridgehead>
+  <itemizedlist>
+    <listitem>
+      <simpara>
+        Installer libdsndfile version 1.0.13 ou ultérieure depuis
+        <ulink url="http://www.mega-nerd.com/libsndfile">www.mega-nerd.com/libsndfile</ulink>.
+      </simpara>
+    </listitem>
+    <listitem>
+      <simpara>
+        Installer Python depuis <ulink url="http://www.python.org">www.python.org</ulink>.
+        Dans la plupart des cas il vaut mieux installer la version stable la plus récente.
+        Scons a besoin de Python pour fonctionner.
+      </simpara>
+    </listitem>
+    <listitem>
+      <simpara>
+        Installer le système de construction SCons depuis <ulink url="http://www.scons.org">www.scons.org</ulink>.
+      </simpara>
+    </listitem>
+  </itemizedlist>
+  <para>
+    Ce sont les conditions minimales pour une construction, mais csound a beaucoup de
+    composants optionnels qui améliorent ses fonctionnalités et qui ajoutent des opcodes
+    pouvant avoir besoin de bibliothèques supplémentaires.
+  </para>
+  <bridgehead>Configurations optionnelles (TOUTES les plates-formes)</bridgehead>
+
+  <para>Dans la plupart des cas, il vaut mieux installer les versions stables les
+    plus récentes des bibliothèques optionnelles.
+  </para>
+  <itemizedlist>
+    <listitem>
+      <simpara>
+        L'audio en temps réel peut utiliser la bibliothèque multi plates-formes PortAudio (version principale ou branche
+        devel-19) depuis <ulink url="http://www.portaudio.com/usingcvs.html">www.portaudio.com/usingcvs.html</ulink>.
+        A de noter que la version stable 18 ne fonctionnera pas. Csound peut aussi utiliser
+        plusieurs APIS spécifiques aux plates-formes telles que ALSA, JACK, CoreAudio et la bibliothèque
+        multimedia de Windows. Voir les notes de chaque plate-forme pour les détails.
+      </simpara>
+    </listitem>
+    <listitem>
+      <simpara>
+        Le MIDI en temps réel peut utiliser la bibliothèque multi plates-formes PortMidi depuis
+        <ulink url="http://www.cs.cmu.edu/~music/portmusic">www.cs.cmu.edu/~music/portmusic</ulink>
+      </simpara>
+    </listitem>
+    <listitem>
+      <simpara>
+        Pour les widgets d'interface graphique, installer FLTK 1.1 ou 1.3 depuis
+        <ulink url="http://www.fltk.org">www.fltk.org</ulink>. Il faut configurer et
+        construire FLTK avec <literal>--enable-shared --enable-threads</literal>.
+      </simpara>
+    </listitem>
+    <listitem>
+      <simpara>
+        Pour générer les interfaces Python et Java, installer le Software Interface and Wrapper
+        Generator (SWIG) depuis <ulink url="http://www.swig.org">http://www.swig.org</ulink>.
+      </simpara>
+    </listitem>
+    <listitem>
+      <simpara>
+        <emphasis>CsoundAC</emphasis> nécessite FLTK et les bibliothèques de template C++ boost
+        pour les nombres aléatoires et l'algèbre linéaire, depuis
+        <ulink url="http://www.boost.org">http://www.boost.org</ulink>. <emphasis>CsoundAC</emphasis>
+        nécessite au moins la version 1.32.1.
+      </simpara>
+    </listitem>
+    <listitem>
+      <simpara>Les opcodes fluid nécessitent la bibliothèque Fluidsynth depuis
+      <ulink url="http://savannah.nongnu.org/download/fluid">http://savannah.nongnu.org/download/fluid</ulink>.
+      </simpara>
+    </listitem>
+    <listitem>
+      <simpara>
+        Les opcodes OSC nécessitent la dernière version de la bibliothèque liblo depuis 
+        <ulink url="http://greffon.org.uk/liblo">http://greffon.org.uk/liblo</ulink>. 
+        Sous Windows, liblo nécessite une version Windows de la bibliothèque de processus
+        légers POSIX (pthreads) qui est disponible à 
+        <ulink url="http://sourceware.org/pthreads-win32">http://sourceware.org/pthreads-win32</ulink> ; 
+        copier libpthreadGC2.a vers libpthread.a. On peut aussi avoir besoin de la dernière
+        version d'autoconf de MinGW.
+      </simpara>
+    </listitem>
+    <listitem>
+      <simpara>
+        Les opcodes STK nécessitent le code source de STK depuis
+        <ulink url="http://ccrma.stanford.edu/software/stk">http://ccrma.stanford.edu/software/stk</ulink>,
+        à copier dans <filename>csound5/Opcodes/stk</filename>.
+      </simpara>
+    </listitem>
+    <listitem>
+      <simpara>
+        Les opcodes Loris nécessitent l'installation de Loris 1.8 :
+        <ulink url="http://sourceforge.net/projects/loris/files">http://sourceforge.net/projects/loris/files</ulink>.
+        Cela crée les opcode Loris de Csound (en même temps que Loris lui-même). Lorsque l'on
+        exécute Csound, il faut utiliser une option de ligne de commande supplémentaire :
+        --opcode-lib. Par exemple, sous linux : --opcode-lib=/usr/local/lib/libloris.so
+      </simpara>
+    </listitem>
+  </itemizedlist>
+
+  <bridgehead>Windows</bridgehead>
+  <para>On a besoin des éléments suivants pour la construction sous Windows (on peut
+    trouver des instructions plus complètes pour la construction sous Windows dans le
+    document csound-build.tex (csound-build.pdf)) :</para>
+  <itemizedlist>
+    <listitem>
+      <simpara>
+        Installer un compilateur comme gcc ou Microsoft Visual Studio (le compilateur C++ d'Intel est
+        également supporté). Si l'on utilise MinGW (gcc), installer l'ensemble de la distribution
+        actuelle de MinGW au moyen de l'installeur automatisé de MinGW depuis
+        <ulink url="http://www.mingw.org">www.mingw.org</ulink>, par exemple dans
+        <literal>c:/mingw</literal>. Ceci installera gcc, g++, GNU binutils, les runtime de MinGW et
+        l'API win32. Installer ensuite la version actuelle de MSys.
+      </simpara>
+      <simpara>
+        Sous Windows on peut utiliser Microsoft Visual C++ (sauf pour CsoundAC). L'Express Edition libre, depuis
+        <ulink url="http://www.microsoft.com/express/vc/">http://www.microsoft.com/express/vc/</ulink>
+        fonctionne très bien. Il vous faudra une copie du fichier d'en-tête de Windows
+        <filename>dirent.h</filename>, par exemple depuis
+        <ulink url="http://www.softagalleria.net/dirent.php">http://www.softagalleria.net/dirent.php</ulink>.
+        On peut aussi avoir besoin de la bibliothèque <literal>bufferoverflowu.lib</literal> de
+        Microsoft à déposer dans le répertoire <filename>lib</filename> de Visual C++. Ouvrir ensuite
+        un shell pour compiler Csound (habituellement appelé Visual Studio Command Prompt command,
+        depuis le menu du programme Visual C++).
+      </simpara>
+    </listitem>
+  </itemizedlist>
+  <para>Les configurations optionnelles pour Windows comprennent :</para>
+  <itemizedlist>
+    <listitem>
+      <simpara>
+        La bibliothèque multimedia de Windows pour l'audio en temps réel et le MIDI.
+        Ce module sera construit automatiquement si les en-têtes sont trouvés.
+      </simpara>
+    </listitem>
+    <listitem>
+      <simpara>
+        Les en-têtes VST de Steinberg pour les opcodes de l'hôte VST.
+      </simpara>
+    </listitem>
+  </itemizedlist>
+  <bridgehead>Linux</bridgehead>
+  <para>Les configurations optionnelles pour Linux comprennent :</para>
+  <itemizedlist>
+    <listitem>
+      <simpara>
+        ALSA (<ulink url="http://www.alsa-project.org">www.alsa-project.org</ulink>) et
+        JACK (<ulink url="http://www.jackaudio.org/">www.jackaudio.org/</ulink>) en plus de PortAudio,
+        pour l'audio en . Les distributions de linux fournissent habituellement
+        les paquetages de développement pour ces systèmes dans leurs entrepôts.
+      </simpara>
+    </listitem>
+    <listitem>
+      <simpara>
+        Les en-têtes LADSPA et DSSI pour les opcodes de l'hôte DSSI.
+      </simpara>
+    </listitem>
+  </itemizedlist>
+  <bridgehead>Mac OS X</bridgehead>
+  <para>Les configurations optionnelles pour Mac OS X comprennent :</para>
+  <itemizedlist>
+    <listitem>
+      <simpara>
+        CoreAudio (système audio natif d'OSX) et JACK, en plus de PortAudio, pour l'audio
+        en .
+      </simpara>
+    </listitem>
+    <listitem>
+      <simpara>
+        Les en-têtes LADSPA et DSSI pour les opcodes de l'hôte DSSI.
+      </simpara>
+    </listitem>
+  </itemizedlist>
+
+  <bridgehead>Construire Csound 5 avec SCons</bridgehead>
+  <para>
+    Lorsque vous avez tous les paquetages requis et leur sources (ou les paquetages -dev)
+    pour besoins particuliers sur votre plate-forme, exécutez "scons -h" pour découvrir les
+    options de configuration.
+  </para>
+  <para>
+    La construction est considérablement facilitée si les bibliothèques et les en-têtes
+    téléchargés sont installés dans leurs répertoires par défaut. Si l'on veut modifier
+    la construction par défaut, en particulier pour prendre en compte les options
+    non-standard des dépendances de tierces parties pour lesquelles il faut
+    trouver les en-têtes et les bibliothèques :
+  </para>
+  <itemizedlist>
+    <listitem>
+      <simpara>
+        Sous Windows, si l'on utilise Microsoft Visual C++, modifier custom-msvc.py
+      </simpara>
+    </listitem>
+    <listitem>
+      <simpara>
+        Sous Windows, si l'on utilise MinGW/MSys, modifier custom-mingw.py
+      </simpara>
+    </listitem>
+    <listitem>
+      <simpara>
+        Sous Mac OSX éditer custom-osx.py et le renommer custom.py.
+      </simpara>
+    </listitem>
+        <listitem>
+      <simpara>
+        Sous Linux éditer custom-linux-jpff.py ou custom-linux-mkg.py et le
+        renommer custom.py.
+     </simpara>
+    </listitem>
+  </itemizedlist>
+  <para>
+    Evitez de modifier le fichier SConstruct.
+  </para>
+  <para>Exécutez scons avec les variables pour les options que vous désirez. Par exemple :</para>
+  <programlisting>scons buildOSC=1 buildCsound5GUI=1 buildPythonOpcodes=1 useOSC=1 buildBeats=1</programlisting>
+
+  <note>
+    <para>
+      Il est important de positionner la variable d'environnement <literal>OPCODEDIR</literal> sur le
+      répertoire dans lequel les bibliothèques de greffon se trouvent ; dans le cas d'une construction
+      en double précision, il faut plutôt positionner <literal>OPCODEDIR64</literal>. Les
+      installeurs s'occupent habituellement de ceci, mais Csound doit pouvoir trouver ses
+      bilbliothèques de greffon lorsqu'on le construit à partir des sources.
+    </para>
+  </note>
+  <bridgehead>Options de construction</bridgehead>
+  <table frame="all" colsep="1">
+    <title>Options de construction de SCons</title>
+    <tgroup cols="2">
+      <thead>
+        <row>
+          <entry>Variable d'ajustement</entry>
+          <entry>Effet si positionnée à 1</entry>
+        </row>
+      </thead>
+
+      <tbody>
+        <row>
+          <entry>buildCsoundVST</entry>
+          <entry>Construire CsoundVST. Nécessite CsoundAC, FLTK, boost, Python, SWIG.</entry>
+        </row>
+        <row>
+          <entry>buildCsoundAC</entry>
+          <entry>Construire CsoundAC. Nécessite FLTK, boost, Python, SWIG.</entry>
+        </row>
+        <row>
+          <entry>buildCsound5GUI</entry>
+          <entry>Construire le frontal graphique FLTK. Nécessite FLTK 1.1.7 ou ultérieur.</entry>
+        </row>
+        <row>
+          <entry>buildCSEditor</entry>
+          <entry>Construire l'éditeur de texte avec coloration syntaxique de Csound. Nécessite les en-têtes et les bibliothèques de FLTK.</entry>
+        </row>
+        <row>
+          <entry>buildDSSI</entry>
+          <entry>Construire les opcodes de l'hôte DSSI/LADSPA.</entry>
+        </row>
+        <row>
+          <entry>buildImageOpcodes</entry>
+          <entry>Construire les opcodes d'image. 1 par défaut. Mettre à 0 pour désactiver.</entry>
+        </row>
+        <row>
+          <entry>buildInterfaces</entry>
+          <entry>Construire la bibliothèque d'interface pour Python, JAVA, Lua, C++ et d'autres langages.</entry>
+        </row>
+        <row>
+          <entry>buildJavaWrapper</entry>
+          <entry>Construire la sur-couche Java pour la bibliothèque d'interface.</entry>
+        </row>
+        <row>
+          <entry>buildNewParser</entry>
+          <entry>Activer le nouveau parser. Nécessite Flex/Bison.</entry>
+        </row>
+        <row>
+          <entry>buildOSXGUI</entry>
+          <entry>Construire le frontal graphique de base. Seulement sous OSX.</entry>
+        </row>
+        <row>
+          <entry>buildPDClass</entry>
+          <entry>Construire la classe PD csoundapi~. Nécessite m_pd.h à l'endroit standard.</entry>
+        </row>
+        <row>
+          <entry>buildPythonOpcodes</entry>
+          <entry>Construire les opcodes Python</entry>
+        </row>
+        <row>
+          <entry>buildRelease</entry>
+          <entry>Construire en mode release. Positionne noDebug.</entry>
+        </row>
+        <row>
+          <entry>buildSDFT</entry>
+          <entry>Construire le code SDFT. 1 par défaut. Mettre à 0 pour désactiver.</entry>
+        </row>
+        <row>
+          <entry>buildStkOpcodes</entry>
+          <entry>build Stk Opcodes. Requires STK source code.</entry>
+        </row>
+        <row>
+          <entry>buildTclcsound</entry>
+          <entry>Construire le frontal Tclcsound (cstclsh, cswish et le module dynamique tclcsound). Nécessite les en-têtes et les bibliothèques Tcl/Tk.</entry>
+        </row>
+        <row>
+          <entry>buildUtilities</entry>
+          <entry>Construire des exécutables autonomes pour les utilitaires que l'on peut aussi appeler avec -U.</entry>
+        </row>
+        <row>
+          <entry>buildVirtual</entry>
+          <entry>Construire le clavier virtuel MIDI. Nécessite les en-têtes et les bibliothèques de FLTK 1.1.7 ou ultérieur.</entry>
+        </row>
+        <row>
+          <entry>buildvst4cs</entry>
+          <entry>Construire les greffons vst4cs. Nécessite les en-têtes VST de Steinberg.</entry>
+        </row>
+        <row>
+          <entry>buildWinsound</entry>
+          <entry>Construire le frontal Winsound. Nécessite les en-têtes et les bibliothèques FLTK.</entry>
+        </row>
+        <row>
+          <entry>buildBeats</entry>
+          <entry>Construire le processeur de partition csbeats.</entry>
+        </row>
+        <row>
+          <entry>dynamicCsoundLibrary</entry>
+          <entry>Construire une bibliothèque Csound dynamique au lieu de libcsound.a.</entry>
+        </row>
+        <row>
+          <entry>gcc3opt</entry>
+          <entry>Autoriser les optimisations de gcc 3.3.x ou ultérieur pour l'architecture CPU spécifiée (par exemple pentium3) ; positionne noDebug.</entry>
+        </row>
+        <row>
+          <entry>gcc4opt</entry>
+          <entry>Autoriser les optimisations de gcc 4.0 ou ultérieur pour l'architecture CPU spécifiée (par exemple pentium3) ; positionne noDebug.</entry>
+        </row>
+        <row>
+          <entry>generateTags</entry>
+          <entry>Générer des TAGS.</entry>
+        </row>
+        <row>
+          <entry>generatePdf</entry>
+          <entry>Générer la documentation PDF.</entry>
+        </row>
+        <row>
+          <entry>install</entry>
+          <entry>Autoriser les cibles d'installation.</entry>
+        </row>
+        <row>
+          <entry>Lib64</entry>
+          <entry>Construire pour lib64 plutôt que pour lib.</entry>
+        </row>
+        <row>
+          <entry>noDebug</entry>
+          <entry>Construire sans information de débogage.</entry>
+        </row>
+        <row>
+          <entry>noFLTKThreads</entry>
+          <entry>Ne pas utiliser de thread séparé pour les contrôles graphiques de FLTK.</entry>
+        </row>
+        <row>
+          <entry>useAltivec</entry>
+          <entry>Sous OSX, utiliser les options d'optimisation du gcc AltiVec.</entry>
+        </row>
+        <row>
+          <entry>useALSA</entry>
+          <entry>ALSA pour les entrées et les sorties audio en temps réel et MIDI.</entry>
+        </row>
+        <row>
+          <entry>useCoreAudio</entry>
+          <entry>Utiliser CoreAudio pour les entrées et les sorties audio en temps réel.</entry>
+        </row>
+        <row>
+          <entry>useDouble</entry>
+          <entry>Utiliser des nombres réels en double précision pour les échantillons audio.</entry>
+        </row>
+        <row>
+          <entry>useFLTK</entry>
+          <entry>Utiliser FLTK pour les graphiques et les opcodes de contrôle graphique.</entry>
+        </row>
+        <row>
+          <entry>useGettext</entry>
+          <entry>Utiliser le schéma de localisation de GNU</entry>
+        </row>
+         <row>
+          <entry>useIpMIDI</entry>
+          <entry>Construire pour une utilisation comme synthétiseur en réseau.</entry>
+        </row>
+        <row>
+          <entry>useGprof</entry>
+          <entry>Construire avec des informations de profilage (-pg).</entry>
+        </row>
+        <row>
+          <entry>usePortAudio</entry>
+          <entry>utiliser PortAudio pour les entrées et les sorties audio en temps réel.</entry>
+        </row>
+        <row>
+          <entry>usePortMIDI</entry>
+          <entry>Construire le greffon PortMidi pour les entrées et les sorties MIDI en temps réel.</entry>
+        </row>
+        <row>
+          <entry>useJack</entry>
+          <entry>A utiliser si vous avez compilé PortAudio pour utiliser Jack ; construit également le greffon Jack.</entry>
+        </row>
+        <row>
+          <entry>useLrint</entry>
+          <entry>Utiliser lrint() and lrintf() pour la conversion des nombres réels en entiers.</entry>
+        </row>
+        <row>
+          <entry>useOSC</entry>
+          <entry>Pour le support d'OSC.</entry>
+        </row>
+        <row>
+          <entry>useUDP</entry>
+          <entry>Pour le support d'UDP. 1 par défaut. Mettre à 0 pour désactiver.</entry>
+        </row>
+        <row>
+          <entry>withICL</entry>
+          <entry>Construire avec le compilateur C++ d'Intel (nécessite également Microsoft Visual C++). Fixer à 0 pour MinGW. Seulement sous Windows.</entry>
+        </row>
+        <row>
+          <entry>withMSVC</entry>
+          <entry>Construire avec Microsoft Visual C++, ou fixer à 0 pour construire avec MinGW. Seulement sous Windows.</entry>
+        </row>
+        <row>
+          <entry>Word64</entry>
+          <entry>Construire pour des machines 64 bit.</entry>
+        </row>
+        <row>
+          <entry>pythonVersion</entry>
+          <entry>Fixer à la version de Python que l'on veut utiliser.</entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+</chapter>
+

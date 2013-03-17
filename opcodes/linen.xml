@@ -1,0 +1,124 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="linen">
+<indexterm id="IndexLinen"><primary>linen</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Envelope Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>linen</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>linen</refname>
+    <refpurpose>
+      Applique un motif constitué d'une attaque et d'une chute en segments de droite
+      à un signal d'amplitude.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>linen</emphasis> -- applique un motif constitué d'une attaque et d'une
+      chute en segments de droite à un signal d'amplitude.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>linen</command> xamp, irise, idur, idec</synopsis>
+
+    <synopsis>kres <command>linen</command> kamp, irise, idur, idec</synopsis>
+ </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>irise</emphasis> -- durée de l'attaque en secondes. Un valeur nulle
+      ou négative signifie pas d'attaque.
+    </para>
+
+    <para>
+      <emphasis>idur</emphasis> -- durée totale en secondes. Avec une valeur nulle ou
+      négative, l'initialisation sera ignorée.
+    </para>
+
+    <para>
+      <emphasis>idec</emphasis> -- durée de la chute en secondes. Si
+      <emphasis>idec</emphasis> &gt; <emphasis>idur</emphasis> la chute sera tronquée.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamp, xamp</emphasis> -- signal d'amplitude en entrée.
+    </para>
+
+    <para>
+      L'attaque est appliquée pendant les <emphasis>irise</emphasis> premières secondes, et la
+      chute à partir de <emphasis>idur - idec</emphasis>. Si ces périodes sont séparées dans le
+      temps il y aura un entretien durant lequel <emphasis>amp</emphasis> ne sera pas modifié.
+      Si l'attaque et la chute de <emphasis>linen</emphasis> se chevauchent, les deux
+      modifications agiront en même temps pendant cette période. Si la durée totale
+      <emphasis>idur</emphasis> est dépassée pendant l'exécution, la chute continuera dans
+      la même direction, devenant négative.
+    </para>
+    <para>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/linen.jpg" format="JPG"/>
+        </imageobject>
+        <textobject>
+          <phrase>[Enveloppe générée par l'opcode linen]</phrase>
+        </textobject>
+        <caption>
+          <para>Enveloppe générée par l'opcode <emphasis>linen</emphasis></para>
+        </caption>
+      </mediaobject>
+    </para>
+    <para>
+      <note>
+        <para>
+          Il est faux de croire que la valeur 0 sera tenue après la fin de l'enveloppe à
+          <emphasis>idur</emphasis> secondes. <emphasis>linen</emphasis> ne se termine pas automatiquement
+          à la fin de la durée donnée. Si la longueur de la note est supérieure à
+          <emphasis>idur</emphasis> secondes, <emphasis>kres</emphasis>
+          (ou <emphasis>ares</emphasis>) ne s'arrêtera pas à 0, mais continuera au contraire
+          à chuter à la même vitesse. Si l'on a besoin d'une chute suivie d'une valeur stable il
+          vaut mieux utiliser l'opcode <link linkend="linseg"><citetitle>linseg</citetitle></link>.
+        </para>
+      </note>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode linen. Il utilise le fichier
+      <ulink url="examples/linen.csd"><citetitle>linen.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode linen.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/linen.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="envlpx"><citetitle>envlpx</citetitle></link>,
+      <link linkend="envlpxr"><citetitle>envlpxr</citetitle></link>,
+      <link linkend="linenr"><citetitle>linenr</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,210 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.3
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="cpsmidinn">
+<indexterm id="IndexCpsmidinn"><primary>cpsmidinn</primary></indexterm>
+  <refentryinfo><title>Pitch Converters:Functions</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>cpsmidinn</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>cpsmidinn</refname>
+
+    <refpurpose>
+      Convertit un numéro de note Midi en cycles par seconde.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Convertit un numéro de note Midi en cycles par seconde.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>cpsmidinn</command> (MidiNoteNumber)  (arguments de taux-i ou -k seulement)</synopsis>
+
+    <para>
+      où l'argument entre parenthèses peut être une expression.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>cpsmidinn</emphasis> est une fonction qui prend une valeur de taux-i ou de taux-k
+      représentant un numéro de note Midi et qui retourne la valeur de fréquence équivalente en
+      cycles par seconde (Hertz). Cette conversion suppose que le do médian est la note Midi numéro
+      60 et que le la du diapason est accordé à 440 Hz. Les numéros de note Midi sont par définition
+      des nombres entiers compris entre 0 et 127 mais des valeurs fractionnaires ou des valeurs en
+      dehors de cet intervalle seront correctement interprétées.
+    </para>
+
+    <note>
+      <title>cpsmidinn vs. cpsmidi</title>
+      <para>
+        L'opcode <emphasis>cpsmidinn</emphasis> peut être utilisé dans n'importe quelle instance
+        d'instrument de Csound, que celle-ci soit activée depuis un évènement Midi, un évènement de
+        partition, un évènement en ligne, ou depuis un autre instrument. La valeur
+        d'entrée de <emphasis>cpsmidinn</emphasis> peut provenir par exemple d'un p-champ dans une
+        partition textuelle ou bien avoir été retrouvée au moyen de l'opcode
+        <link linkend="notnum"><citetitle>notnum</citetitle></link> à partir de l'évènement Midi en
+        temps réel qui a activé la note courante. Le numéro de note Midi à
+        convertir doit être spécifié comme une expression de taux-i ou de taux-k. D'un autre côté,
+        l'opcode <link linkend="cpsmidi"><citetitle>cpsmidi</citetitle></link> ne fournit des
+        résultats significatifs qu'avec une note activée par le Midi (soit en temps réel soit à
+        partir d'une partition Midi avec l'option -F). Avec
+        <link linkend="cpsmidi"><citetitle>cpsmidi</citetitle></link>, la valeur du numéro de note
+        Midi provient de l'évènement Midi associé à l'instance d'instrument, et aucune source
+        ni aucune expression ne peuvent être spécifiées pour cette valeur.
+      </para>
+    </note>
+
+    <para>
+      <emphasis>cpsmidinn</emphasis> et ses opcodes associés sont réellement des
+      <emphasis> convertisseurs de valeur</emphasis> spécialisés dans la manipulation des données
+      de hauteur.
+    </para>
+
+    <para>
+      Les données concernant la hauteur et la fréquence peuvent exister dans un des formats
+      suivants :
+    </para>
+
+    <table frame="none" colsep="0">
+      <title>Valeurs de Hauteur et de Fréquence</title>
+
+      <tgroup cols="2">
+        <thead>
+          <row>
+            <entry>Nom</entry>
+            <entry>Abréviation</entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry>octave point classe de hauteur (8ve.pc)</entry>
+            <entry>pch</entry>
+          </row>
+
+          <row>
+            <entry>octave point partie décimale</entry>
+            <entry>oct</entry>
+          </row>
+
+          <row>
+            <entry>cycles par seconde</entry>
+            <entry>cps</entry>
+          </row>
+
+          <row>
+            <entry>Numéro de note Midi (0-127)</entry>
+            <entry>midinn</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+
+    <para>
+      Les deux premières formes sont constituées d'un nombre entier, représentant le registre
+      d'octave, suivi d'une partie décimale dont la signification est particulière. Pour
+      <emphasis>pch</emphasis>, la partie fractionnaire est lue comme deux chiffres décimaux
+      représentant les douze classes de hauteur du tempérament égal de .00 pour do jusqu'à .11 pour
+      si. Pour <emphasis>oct</emphasis>, la partie fractionnaire est interprétée comme une véritable
+      partie fractionnaire décimale d'une octave. Les deux formes fractionnaires sont ainsi dans
+      un rapport de 100/12. Dans les deux formes, la fraction est précédée par un nombre entier
+      indice de l'octave, tel que 8.00 représente le do médian, 9.00 le do au-dessus, etc. Les
+      numéros de note Midi sont compris entre 0 et 127 (inclus), avec 60 représentant le do médian,
+      et sont habituellement des nombres entiers. Ainsi, on peut représenter le la 440
+      alternativement par 440 (<emphasis>cps</emphasis>), 69 (<emphasis>midinn</emphasis>), 8.09
+      (<emphasis>pch</emphasis>), ou 8.75 (<emphasis>oct</emphasis>). On peut encoder des divisions
+      microtonales du demi-ton <emphasis>pch</emphasis> en utilisant plus de deux positions
+      décimales.
+    </para>
+
+    <para>
+      Les noms mnémotechniques des unités de conversion de hauteur sont dérivés des morphèmes des
+      formes concernées, le second morphème décrivant la source et le premier morphème l'objet (le
+      résultat). Ainsi <emphasis>cpspch</emphasis>(8.09) convertira l'argument de hauteur 8.09 en son
+      équivalent en <emphasis>cps</emphasis> (ou Hertz), ce qui donne la valeur 440. Comme l'argument
+      est constant pendant toute la durée de la note, cette conversion aura lieu pendant
+      l'initialisation, avant qu'aucun échantillon de la note actuelle ne soit produit.
+    </para>
+
+    <para>
+      Par constraste, la conversion <emphasis>cpsoct</emphasis>(8.75 + k1) donne la valeur du
+      la 440 transposée par l'intervalle octaviant <emphasis>k1</emphasis>. Le calcul sera répété
+      à chaque k-période car c'est le taux de variation de <emphasis>k1</emphasis>.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        La conversion de <emphasis>pch</emphasis>, <emphasis>oct</emphasis>, ou
+        <emphasis>midinn</emphasis> vers <emphasis>cps</emphasis> n'est pas une opération linéaire
+        mais elle implique un calcul d'exponentielle qui peut coûter cher en temps de traitement
+        s'il est exécuté de manière répétitive. Csound utilise dorénavant une consultation de table
+        interne pour faire cela efficacement, même aux taux audio. Comme l'indice dans la table est
+        tronqué sans interpolation, la résolution en hauteur avec un de ces opcodes est limitée à
+        8192 divisions discrètes et égales de l'octave, et quelques degrés de l'échelle tempérée
+        égale de 12 demi-tons sont très légèrement désaccordés (d'au plus 0,15 cent).
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode cpsmidinn. Il utilise le fichier
+      <ulink url="examples/cpsmidinn.csd"><citetitle>cpsmidinn.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode cpsmidinn.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/cpsmidinn.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Voici un autre exemple de l'opcode cpsmidinn. Il utilise le fichier
+      <ulink url="examples/cpsmidinn2.csd"><citetitle>cpsmidinn2.csd</citetitle></ulink>.
+
+      <example>
+        <title>Second exemple de l'opcode cpsmidinn.</title>
+          <xi:include href="examples-xml/cpsmidinn2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="octmidinn"><citetitle>octmidinn</citetitle></link>,
+      <link linkend="pchmidinn"><citetitle>pchmidinn</citetitle></link>,
+      <link linkend="cpsmidi"><citetitle>cpsmidi</citetitle></link>,
+      <link linkend="notnum"><citetitle>notnum</citetitle></link>,
+      <link linkend="cpspch"><citetitle>cpspch</citetitle></link>,
+      <link linkend="cpsoct"><citetitle>cpsoct</citetitle></link>,
+      <link linkend="octcps"><citetitle>octcps</citetitle></link>,
+      <link linkend="octpch"><citetitle>octpch</citetitle></link>,
+      <link linkend="pchoct"><citetitle>pchoct</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Dérivé à partir des convertisseurs de valeur originaux de Barry Vercoe.</para>
+    <para>Nouveau dans la version 5.07</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,81 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.10
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="inx">
+<indexterm id="IndexInx"><primary>inx</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Signal Input</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>inx</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>inx</refname>
+    <refpurpose>
+      Lit des données audio sur 16 canaux depuis un périphérique externe ou un flot.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Lit des données audio sur 16 canaux depuis un périphérique externe ou un flot.
+    </para>
+    <warning>
+      <title>Avertissement</title>
+      <para>
+        Cet opcode est prévu pour ne fonctionner qu'avec des orchestres qui
+        ont <emphasis>nchnls</emphasis>=16. Avec des orchestres dont
+        <emphasis>nchnls</emphasis> &gt; 16, la sortie audio ne sera pas
+        correcte.
+      </para>
+    </warning>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ar1, ar2, ar3, ar4, ar5, ar6, ar7, ar8, ar9, ar10, ar11, ar12, \
+      ar13, ar14, ar15, ar16 <command>inx</command></synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>inx</emphasis> lit un signal audio sur 16 canaux depuis un
+      périphérique externe ou un flot. Si l'option de ligne de commande
+      <link linkend="FlagsMinusLowerI"><citetitle>-i</citetitle></link> est
+      positionnée, le son est lu en continu depuis le flot audio en entrée
+      (par exemple <emphasis>stdin</emphasis> ou un fichier son) dans un tampon
+      interne.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="in32"><citetitle>in32</citetitle></link>, 
+      <link linkend="inch"><citetitle>inch</citetitle></link>, 
+      <link linkend="inz"><citetitle>inz</citetitle></link>
+    </para>
+  </refsect1>
+
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Université de Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>Mai 2000</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 4.07 de Csound</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,219 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvsanal">
+<indexterm id="IndexPvsanal"><primary>pvsanal</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsanal</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvsanal</refname>
+    <refpurpose>
+      Génère un fsig à partir d'une source audio mono, en utilisant l'analyse par
+      recouvrement-addition d'un vocodeur de phase.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère un fsig à partir d'une source audio mono, en utilisant l'analyse par
+      recouvrement-addition d'un vocodeur de phase.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>fsig <command>pvsanal</command> ain, ifftsize, ioverlap, iwinsize, iwintype [, iformat] [, iinit]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifftsize</emphasis> -- La taille de la TFR en échantillons. Ne
+      doit pas forcément être une puissance de deux (bien que celles-ci sont
+      particulièrement efficaces), mais doit être paire. Les nombres impairs sont
+      arrondis en interne. <emphasis>ifftsize</emphasis> détermine le nombre de
+      bins d'analyse dans <emphasis>fsig</emphasis>, soit <emphasis>ifftsize/2 + 1</emphasis>.
+      Par exemple, si <emphasis>ifftsize</emphasis> = 1024, <emphasis>fsig</emphasis>
+      contiendra 513 bins d'analyse, ordonnés linéairement de la fréquence fondamentale
+      à la fréquence de Nyquist. La fréquence fondamentale de l'analyse (qui donne
+      en principe la fréquence résoluble la plus basse) est déterminée par
+      <emphasis>sr/ifftsize</emphasis>. Ainsi, pour l'exemple précédent en supposant
+      que <emphasis>sr</emphasis> = 44100, la fréquence fondamentale de l'analyse
+      vaut 43.07Hz. En pratique, comme le vocodeur de phase préserve la phase, la
+      fréquence de chaque bin peut dévier de façon bilatérale, si bien que des
+      composantes continues sont enregistrées. Avec un signal fortement tonal, les
+      fréquences des bins adjacents peuvent s'aggréger très étroitement autour des
+      partiels de la source, et les bins inférieurs peuvent même avoir des
+      fréquences négatives.
+    </para>
+
+    <para>
+      En principe, la seule raison d'utiliser pour <emphasis>ifftsize</emphasis>
+      une valeur qui n'est pas une puissance de deux est de s'adapter à la fréquence
+      fondamentale connue d'une source fortement tonale. Les valeurs décomposables
+      en plusieurs petits facteurs peuvent être presqu'aussi efficaces que les
+      tailles en puissance de deux ; par exemple : 384, pour une source dont la
+      hauteur est proche du la grave à 110 Hz.
+    </para>
+
+    <para>
+      <emphasis>ioverlap</emphasis> -- La distance en échantillons (<quote>taille
+      du saut</quote>) entre les trames d'analyse se recouvrant. En principe, doit
+      valoir au moins <emphasis>ifftsize/4</emphasis>, par exemple 256 dans l'exemple
+      ci-dessus. <emphasis>ioverlap</emphasis> determine le taux d'analyse sous-jacent,
+      soit <emphasis>sr/ioverlap</emphasis>. Il n'est pas nécessaire que
+      <emphasis>ioverlap</emphasis> soit un facteur simple de <emphasis>ifftsize</emphasis> ;
+      par exemple, une valeur de 160 sera légale. Le choix de <emphasis>ioverlap</emphasis>
+      peut être dicté par l'importance de la modification de hauteur appliquée au
+      <emphasis>fsig</emphasis>, s'il y en a une. En règle générale, plus la
+      transposition est importante et plus le taux d'analyse doit être élevé, ce
+      qui implique une plus petite valeur de <emphasis>ioverlap</emphasis>. Un
+      taux d'analyse plus élevé peut aussi être plus avantageux avec des sons à
+      transitoires à large bande tels que des tambours (pour lesquels une petite
+      fenêtre d'analyse diminue l'étalement mais augmente le nombre d'erreurs
+      relatives à la fréquence).
+    </para>
+
+    <para>
+      Noter qu'il est possible, et raisonnable, d'avoir différents fsigs dans un
+      orchestre (même dans le même instrument), évoluant à différents taux d'analyse.
+      Les interactions entre de tels fsigs ne sont pas couramment supportées et
+      l'opcode d'affectation de fsig ne permet pas la copie entre fsigs ayant des
+      propriétés différentes, même si la seule différence est la valeur de
+      <emphasis>ioverlap</emphasis>. Cependant, ceci ne conduit pas à une impasse,
+      car il est théoriquement possible d'effectuer une conversion grossière du taux
+      (en particulier par rapport aux fichiers d'analyse en mémoire) comme on le
+      fait dans les techniques du domaine temporel.
+    </para>
+
+    <para>
+      <emphasis>iwinsize</emphasis> -- la taille en échantillons du filtre de la
+      fenêtre d'analyse (fixé par <emphasis>iwintype</emphasis>). Doit valoir au
+      moins <emphasis>ifftsize</emphasis>, et peut être utilement plus grande.
+      Bien que d'autres proportions soit permises, il est recommandé que
+      <emphasis>iwinsize</emphasis> soit toujours un multiple entier de
+      <emphasis>ifftsize</emphasis>, par exemple 2048 dans l'exemple ci-dessus.
+      En interne, la fenêtre d'analyse (Hamming, von Hann) est multipliée par
+      une fonction sinc afin que les amplitudes soient nulles aux frontières de
+      trame. La plus grande taille de fenêtre d'analyse s'est révélée particulièrement
+      importante pour la resynthèse par banc d'oscillateurs (par exemple en utilisant
+      <emphasis>pvsadsyn</emphasis>), car elle a pour effet d'augmenter la résolution
+      en fréquence de l'analyse et ainsi, la précision de la resynthèse. Comme
+      noté ci-dessus, <emphasis>iwinsize</emphasis> détermine la latence globale
+      du système d'analyse/resynthèse. Dans bien des cas, et particulièrement en
+      absence de transposition, on constate que l'égalité <emphasis>iwinsize=ifftsize</emphasis>
+      fonctionne très bien et offre la latence la plus faible.
+    </para>
+
+    <para>
+      <emphasis>iwintype</emphasis> -- La forme de la fenêtre d'analyse. Actuellement,
+      seulement deux choix sont implémentés :
+      <itemizedlist>
+        <listitem><para>0 = fenêtre de Hamming</para></listitem>
+        <listitem><para>1 = fenêtre de von Hann</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      Les deux sont aussi supportées par le format de fichier PVOC-EX. Le type de
+      fenêtre est stocké comme attribut interne du fsig, avec les autres paramètres
+      (voir <link linkend="pvsinfo"><citetitle>pvsinfo</citetitle></link>). D'autres
+      types pourront être implémentés dans le futur (par exemple la fenêtre de
+      Kaiser, aussi supportée par PVOC-EX), bien qu'une alternative évidente soit
+      de permettre la définition des fenêtres via une table de fonction. Le problème
+      ici est la contrainte de taille en puissance de deux des tables de fonction, ce
+      qui en fait une solution incomplète. La plupart des utilisateurs jugeront que
+      la fenêtre de Hamming est suffisante pour les besoins courants et peut être
+      le choix par défaut.
+    </para>
+
+    <para>
+      <emphasis>iformat</emphasis> -- (facultatif) Le format d'analyse. Pour le
+      moment un seul format est implémenté par cet opcode :
+
+      <itemizedlist>
+        <listitem><para>0 = amplitude + fréquence</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      C'est le format classique du vocodeur de phase ; facile à traiter, et
+      naturel pour la resynthèse par banque d'oscillateurs. Il serait très facile
+      (on pourrait dire tentant) de ne pas traiter une trame de fsig purement
+      comme une trame de vocodeur de phase mais comme une trame de
+      synthèse additive générique. Il est en fait possible d'utiliser un fsig de
+      cette manière, mais il est important de garder à l'esprit que les deux ne
+      sont pas, à strictement parler, directement équivalents.
+    </para>
+
+    <para>
+      D'autres formats importants (supportés par PVOC-EX) sont :  
+      <itemizedlist>
+        <listitem><para>1 =  amplitude + phase</para></listitem>
+        <listitem><para>2 =  complexe (réel + imaginaire)</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>iformat</emphasis> est là au cas où il pourrait être utile par la
+      suite de supporter ces autres formats. Les formats 0 et 1 sont en relation
+      étroite (car la phase est <quote>cyclique</quote> dans les deux cas - il est
+      trivial de convertir de l'un à l'autre), alors que le format complexe pourrait
+      garantir un second type explicite de signal (un <quote>csig</quote>)
+      spécialement pour les traitements à base de convolution, et d'autres
+      traitements dans lesquels le complément des opérateurs arithmétiques peut
+      être utile.
+    </para>
+
+    <para>
+      <emphasis>iinit</emphasis> -- (facultatif) Ignore la réinitialisation. N'est
+      actuellement implémenté dans aucun de ces opcodes, et il reste à décider
+      s'il serait de quelque utilité.
+    </para>
+    <warning>
+      <para>
+        Il est dangereux d'utiliser la même variable-f à la fois comme entrée et
+        comme sortie des opcodes pvs. Ceci peut produire un comportement indéfini
+        de certains de ces opcodes. Utilisez une variable différente à gauche et
+        à droite de l'opcode.
+      </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode pvsanal. Il utilise le fichier
+      <ulink url="examples/pvsanal.csd"><citetitle>pvsanal.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode pvsanal.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pvsanal.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namerichard;</member>
+        <member>Août 2001 </member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 4.13</para>
+  </refsect1>
+</refentry>

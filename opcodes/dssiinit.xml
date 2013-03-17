@@ -1,0 +1,102 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.5
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="dssiinit">
+<indexterm id="IndexDssiinit"><primary>dssiinit</primary></indexterm>
+  <refentryinfo><title>Plugin Hosting:DSSI and LADSPA</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>dssiinit</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>dssiinit</refname>
+    <refpurpose>Charge un greffon DSSI ou LADSPA.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ihandle <command>dssiinit</command> ilibraryname, igreffondex [, iverbose] </synopsis>
+  </refsect1>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>dssiinit</emphasis> est utilisé pour charger en mémoire un
+      greffon DSSI ou LADSPA pour une utilisation avec les autres opcodes
+      dssi4cs. On peut utiliser des effets LADSPA ainsi que des instruments
+      DSSI.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ihandle</emphasis> - le numéro qui identifie le greffon, à passer
+      au autres opcodes dssi4cs.
+    </para>
+    <para>
+      <emphasis>ilibraryname</emphasis> - le nom du fichier .so (objet partagé)
+      à charger.
+    </para>
+    <para>
+      <emphasis>igreffondex</emphasis> - l'index du greffon à utiliser.
+    </para>
+    <para>
+      <emphasis>iverbose</emphasis> (facultatif) - montre l'information et les
+      paramètres du greffon lors du chargement. (1 par défaut)
+    </para>
+    <para>
+      <emphasis>dssiinit</emphasis> recherche <emphasis>ilibraryname</emphasis>
+      dans les chemins définis par LADSPA_PATH et DSSI_PATH. Une de ces variables
+      doit être définie sinon <emphasis>dssiinit</emphasis> retourne une erreur.
+      Les bibliothèques LADSPA et DSSI peuvent contenir plus d'un greffon, ceux-ci
+      étant référencés par un index. <emphasis>dssiinit</emphasis> tente alors de
+      trouver le greffon d'index <emphasis>igreffondex</emphasis> dans la bibliothèque
+      et le charge en mémoire s'il le trouve. Pour savoir quels greffons sont
+      disponibles et quels sont leurs numéros d'index, on peut utiliser
+      <link linkend="dssilist"><citetitle>dssilist</citetitle></link>.
+    </para>
+    <para>
+      Si <emphasis>iverbose</emphasis> est différent de 0 (par défaut), une
+      information sur les caractéristiques détaillées du greffon et sur ses
+      ports est affichée. Cette information est importante pour les opcodes
+      comme <link linkend="dssictls"><citetitle>dssictls</citetitle></link>.
+    </para>
+    <para>
+      Les greffons sont inactifs par défaut. Il <emphasis>*faut*</emphasis> donc
+      utiliser <link linkend="dssiactivate"><citetitle>dssiactivate</citetitle></link>
+      pour que le greffon produise du son. Ceci est obligatoire, même si le greffon
+      ne possède pas de fonction activate().
+    </para>
+    <para>
+      <emphasis>dssiinit</emphasis> pouvant provoquer des interruptions du
+      flux audio en temps réel, il est recommandé de charger tous les greffons
+      que l'on veut utiliser avant l'exécution.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode dssinit. Il utilise le fichier
+      <ulink url="examples/dssiinit.csd"><citetitle>dssiinit.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode dssinit. (Penser à changer le nom de la bibliothèque)</title>
+        <xi:include href="examples-xml/dssiinit.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>2005</para>  
+    <para>Par &nameandres;</para>
+    <para>Utilise du code provenant du sdk de LADSPA par Richard Furse.</para>
+  </refsect1>
+</refentry>

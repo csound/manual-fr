@@ -1,0 +1,146 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvsosc">
+<indexterm id="Indexpvsosc"><primary>pvsosc</primary></indexterm>
+
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsosc</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvsosc</refname>
+    <refpurpose>
+      Simulateur d'oscillateur basé sur PVS.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère des spectres de signal périodique au format AMP-FREQ, avec le choix
+      parmi quatre type de forme d'onde :
+      <orderedlist>
+        <listitem>
+          <simpara>pseudo dent de scie (harmoniques en 1/n, où n est le numéro
+          de l'harmonique)</simpara>
+        </listitem>
+        <listitem>
+          <simpara>pseudo carrée (comme la précédente mais seulement avec les
+          harmoniques de rang impair)</simpara>
+        </listitem>
+        <listitem>
+          <simpara>impulsion (tous les harmoniques avec le même poids)</simpara>
+        </listitem>
+        <listitem><simpara>cosinus</simpara></listitem>
+      </orderedlist>
+      Les formes d'onde complexes (c'est-à-dire tous les types sauf le cosinus)
+      contiennent tous les harmoniques jusqu'à la fréquence de Nyquist. Cela fait
+      de <emphasis>pvsosc</emphasis> une option pour la génération de formes
+      d'onde périodiques à bande limitée. De plus, on peut changer de type en
+      utilisant une variable de taux-k.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>fsig <command>pvsosc</command> kamp, kfreq, ktype, isize [,ioverlap] [, iwinsize] [, iwintype] [, iformat]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>fsig</emphasis> -- flot pv de sortie mis à zéro.
+    </para>
+
+    <para>  
+      <emphasis>isize</emphasis> -- taille de la trame d'analyse.
+    </para>
+    <para>
+      <emphasis>ioverlap</emphasis> -- (Facultatif) taille du saut, vaut
+      <emphasis>isize</emphasis>/4 par défaut.
+    </para>
+    <para>
+      <emphasis>iwinsize</emphasis> -- (Facultatif) taille de fenêtre, vaut
+      <emphasis>isize</emphasis> par défaut.
+    </para>
+    <para>
+      <emphasis>iwintype</emphasis> -- (Facultatif) type de fenêtre, Hanning
+      par défaut. On a actuellement le choix entre :
+      <itemizedlist>
+        <listitem><para>0 = fenêtre de Hamming</para></listitem>
+        <listitem><para>1 = fenêtre de von Hann</para></listitem>
+      </itemizedlist>
+    </para>
+    <para>
+      <emphasis>iformat</emphasis> -- (Facultatif) format des données, 0 par
+      défaut ce qui produit des données AMP:FREQ. C'est actuellement la seule
+      option.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamp</emphasis> -- amplitude du signal. Noter que l'amplitude
+      effective du signal peut varier légèrement autour de cette valeur en
+      fonction du type de forme d'onde et de la fréquence. Généralement,
+      l'amplitude a tendance à dépasser <emphasis>kamp</emphasis> pour les
+      hautes fréquences (&gt; 1000 Hz) et à être inférieure pour les basses
+      fréquences. De plus, à cause du traitement par recouvrement-addition, lorsque
+      l'on fait la resynthèse avec <emphasis>pvsynth</emphasis>, les glissements
+      de fréquence causeront une fluctuation de l'amplitude autour de
+      <emphasis>kamp</emphasis>.
+    </para>
+
+    <para>  
+	    <emphasis>kfreq</emphasis> -- fréquence fondamentale en Hz.
+    </para>
+	  <para>
+      <emphasis>ktype</emphasis> -- type d'onde : 1. pseudo dent de scie, 2.
+      pseudo carrée, 3. impulsion, et tout autre valeur pour cosine.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode pvsosc. Il utilise le fichier
+      <ulink url="examples/pvsosc.csd"><citetitle>pvsosc.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode pvsosc</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/pvsosc.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="pvsanal"><citetitle>pvsanal</citetitle></link>,
+      <link linkend="pvsynth"><citetitle>pvsynth</citetitle></link>,
+      <link linkend="pvsadsyn"><citetitle>pvsadsyn</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Août 2006 </member>
+      </simplelist>
+    </para>
+
+  </refsect1>
+</refentry>

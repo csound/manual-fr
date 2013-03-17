@@ -1,0 +1,116 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="xin">
+<indexterm id="IndexXin"><primary>xin</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Software Bus</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>xin</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>xin</refname>
+    <refpurpose>
+      Passse des variables à un bloc d'opcode défini par l'utilisateur.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Les opcodes <emphasis>xin</emphasis> et <emphasis>xout</emphasis> copient des
+      variables vers et depuis la définition de l'opcode, permettant la communication
+      avec l'instrument appelant.
+    </para>
+
+    <para>
+      Les types des variables d'entrée et de sortie sont définis par les paramètres
+      <emphasis>intypes</emphasis> et <emphasis>outtypes</emphasis>.
+    </para>
+
+    <note>
+      <title>Notes</title>
+      <para>
+        <itemizedlist>
+          <listitem><para><emphasis>xin</emphasis> et <emphasis>xout</emphasis> ne
+          doivent être appelés qu'une fois, et <emphasis>xin</emphasis> doit précéder
+          <emphasis>xout</emphasis>, sinon il pourra y avoir une erreur d'initialisation
+          et une désactivation de l'instrument courant.</para></listitem>
+          <listitem><para>Ces opcodes ne sont exécutés que pendant l'initialisation. La
+          copie pendant l'exécution se fait par l'appel de l'opcode défini par
+          l'utilisateur. Cela veut dire que si l'on veut ignorer <emphasis>xin</emphasis>
+          ou <emphasis>xout</emphasis> avec 
+          <link linkend="kgoto"><citetitle>kgoto</citetitle></link>, cela ne marche pas
+          alors que <link linkend="igoto"><citetitle>igoto</citetitle></link> affecte
+          à la fois les opérations de l'initialisation et de l'exécution.</para></listitem>
+        </itemizedlist>
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>xinarg1 [, xinarg2] ... [xinargN] <command>xin</command></synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>xinarg1</emphasis>, <emphasis>xinarg2</emphasis>, ... - arguments d'entrée.
+      Le nombre et le type des variables doit concorder avec la déclaration
+      <emphasis>intypes</emphasis> de l'opcode défini par l'utilisateur. Cependant
+      <emphasis>xin</emphasis> ne vérifie pas si l'utilisation des variables
+      d'initialisation et du taux de contrôle est correcte.
+    </para>
+
+    <para>
+      La syntaxe d'un bloc d'opcode défini par l'utilisateur est la suivante :
+
+      <programlisting>
+<emphasis role="oblock">opcode</emphasis>  name, outtypes, intypes
+xinarg1 [, xinarg2] [, xinarg3] ... [xinargN]  <emphasis role="opc">xin</emphasis>
+[<emphasis role="opc">setksmps</emphasis>  iksmps]
+... the rest of the instrument's code.
+<emphasis role="opc">xout</emphasis>  xoutarg1 [, xoutarg2] [, xoutarg3] ... [xoutargN]
+<emphasis role="oblock">endop</emphasis>
+      </programlisting>
+    </para>
+
+    <para>
+      On peut alors utiliser le nouvel opcode avec la syntaxe usuelle :
+
+      <literallayout>
+[xinarg1] [, xinarg2] ... [xinargN]  name  [xoutarg1] [, xoutarg2] ... [xoutargN] [, iksmps]
+      </literallayout>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voir l'exemple de l'opcode <link linkend="opcode"><citetitle>opcode</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="endop"><citetitle>endop</citetitle></link>, 
+      <link linkend="opcode"><citetitle>opcode</citetitle></link>, 
+      <link linkend="setksmps"><citetitle>setksmps</citetitle></link>, 
+      <link linkend="xout"><citetitle>xout</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : Istvan Varga, 2002 ; basé sur du code par Matt J. Ingalls</para>
+    <para>Nouveau dans la version 4.22</para>
+  </refsect1>
+</refentry>

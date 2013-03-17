@@ -1,0 +1,102 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="lowres">
+<indexterm id="IndexLowres"><primary>lowres</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Resonant</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lowres</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>lowres</refname>
+    <refpurpose>
+      Un autre filtre passe-bas à résonance.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>lowres</emphasis> est un filtre passe-bas à résonance.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>lowres</command> asig, kcutoff, kresonance [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iskip</emphasis> -- disposition initiale de la mémoire interne.
+      Une valeur de zéro efface la mémoire ; une valeur différente de zéro permet
+      de maintenir l'information précédente. La valeur par défaut est 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- signal d'entrée
+    </para>
+
+    <para>
+      <emphasis>kcutoff</emphasis> -- fréquence de coupure du filtre
+    </para>
+
+    <para>
+      <emphasis>kresonance</emphasis> -- quantité de résonance
+    </para>
+
+    <para>
+      <emphasis>lowres</emphasis> est un filtre passe-bas à résonance dérivé d'un
+      orchestre écrit par &namehans;. Cette implémentation est bien plus rapide
+      que celle écrite dans le langage de Csound, et elle permet d'avoir un
+      <emphasis>kr</emphasis> inférieur à <emphasis>sr</emphasis>.
+      <emphasis>kcutoff</emphasis> n'étant pas en Hz et <emphasis>kresonance</emphasis>
+      pas en dB, il faut expérimenter pour obtenir les meilleurs résultats.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode lowres. Il utilise le fichier
+      <ulink url="examples/lowres.csd"><citetitle>lowres.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode lowres.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/lowres.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="lowresx"><citetitle>lowresx</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel; (adapté par &namejohn;)</member>
+        <member>Italie</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.49 de Csound.</para>
+  </refsect1>
+</refentry>

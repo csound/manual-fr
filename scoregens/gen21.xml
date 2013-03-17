@@ -1,0 +1,231 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.5
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="GEN21">
+      <indexterm id="IndexGEN21"><primary>GEN21</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN21</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>GEN21</refname>
+    <refpurpose>
+      Génère les tables de différentes distributions aléatoires.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère les tables de différentes distributions aléatoires. (Voir aussi
+      <link linkend="betarand"><citetitle>betarand</citetitle></link>,
+      <link linkend="bexprnd"><citetitle>bexprnd</citetitle></link>,
+      <link linkend="cauchy"><citetitle>cauchy</citetitle></link>,
+      <link linkend="exprand"><citetitle>exprand</citetitle></link>,
+      <link linkend="gauss"><citetitle>gauss</citetitle></link>,
+      <link linkend="linrand"><citetitle>linrand</citetitle></link>,
+      <link linkend="pcauchy"><citetitle>pcauchy</citetitle></link>,
+      <link linkend="poisson"><citetitle>poisson</citetitle></link>,
+      <link linkend="trirand"><citetitle>trirand</citetitle></link>,
+      <link linkend="unirand"><citetitle>unirand</citetitle></link> et
+      <link linkend="weibull"><citetitle>weibull</citetitle></link>)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>f</command> # date taille 21 type niveau [arg1  [arg2]]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>date</emphasis> et <emphasis>taille</emphasis> sont les arguments habituels des fonctions
+      GEN. <emphasis>niveau</emphasis> définit l'amplitude. Noter que GEN21 n'effectue pas d'auto-normalisation
+      comme le font la plupart des autres fonctions GEN. <emphasis>type</emphasis> définit la distribution
+      à utiliser :
+
+      <itemizedlist>
+        <listitem>
+          <para>1 = Uniforme (seulement des nombres positifs)</para>
+        </listitem>
+        <listitem>
+          <para>2 = Linéaire (seulement des nombres positifs)</para>
+        </listitem>
+        <listitem>
+          <para>3 = Triangulaire (nombres positifs et négatifs)</para>
+        </listitem>
+        <listitem>
+          <para>4 = Exponentielle (seulement des nombres positifs)</para>
+        </listitem>
+        <listitem>
+          <para>5 = Biexponentielle (nombres positifs et négatifs)</para>
+        </listitem>
+        <listitem>
+          <para>6 = Gaussienne (nombres positifs et négatifs)</para>
+        </listitem>
+        <listitem>
+          <para>7 = Cauchy (nombres positifs et négatifs)</para>
+        </listitem>
+        <listitem>
+          <para>8 = Cauchy Positive (seulement des nombres positifs)</para>
+        </listitem>
+        <listitem>
+          <para>9 = Beta (seulement des nombres positifs)</para>
+        </listitem>
+        <listitem>
+          <para>10 = Weibull (seulement des nombres positifs)</para>
+        </listitem>
+        <listitem>
+          <para>11 = Poisson (seulement des nombres positifs)</para>
+        </listitem>
+      </itemizedlist>
+
+      De tous ces cas seulement le 9 (Beta) et le 10 (Weibull) ont besoin d'arguments supplémentaires.
+      Beta nécessite deux arguments et Weibull un.
+    </para>
+    <para>
+      Si <emphasis>type</emphasis> = 6, les nombres aléatoires dans la ftable
+      suivent une distribution normale centrée sur 0 (mu = 0.0) avec une variance
+      (sigma) de <emphasis>level</emphasis> / 3.83. Ainsi plus de 99.99% des
+      valeurs aléatoires générées sont comprises entre -<emphasis>level</emphasis>
+      et +<emphasis>level</emphasis>. La valeur par défaut de <emphasis>level</emphasis>
+      est 1 (sigma = 0.261). Si l'on veut une valeur moyenne différente
+      de 0.0, il faut ajouter cette valeur moyenne aux nombres générés.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">f</emphasis>1 0 1024 21 1       <emphasis role="comment">; Uniforme (bruit blanc)</emphasis>
+<emphasis role="stamnt">f</emphasis>1 0 1024 21 6       <emphasis role="comment">; Gaussienne (mu=0.0, sigma=1/3.83=0.261)</emphasis>
+<emphasis role="stamnt">f</emphasis>1 0 1024 21 6 5.745 <emphasis role="comment">; Gaussienne (mu=0.0, sigma=5.745/3.83=1.5)</emphasis>
+<emphasis role="stamnt">f</emphasis>1 0 1024 21 9 1 1 2 <emphasis role="comment">; Beta (noter que le niveau précède les arguments)</emphasis>
+<emphasis role="stamnt">f</emphasis>1 0 1024 21 10 1 2  <emphasis role="comment">; Weibull</emphasis></programlisting>
+      </informalexample>
+
+      Toutes les additions ci-dessus furent conçus par l'auteur entre mai et décembre 1994, sous la
+      supervision du Dr Richard Boulanger.
+    </para>
+
+    <para>
+      Voici un exemple complet de la routine GEN21. Il utilise le fichier
+      <ulink url="examples/gen21.csd"><citetitle>gen21.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de la routine GEN21.</title>
+        <para>
+          Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+          et <link linkend="CommandFlags"><citetitle>Options de Ligne de Commande</citetitle></link> pour
+          plus d'information sur l'utilisation des options de la ligne de commande.
+        </para>
+        <xi:include href="examples-xml/gen21.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      
+      <textobject>
+        <phrase>Voici les diagrammes des formes d'onde des routines GEN21 utilisées
+        dans l'exemple :</phrase>
+      </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen21_1.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 1 0 32 21 1 - seulement des nombres positifs</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 1 0 32 21 1 - seulement des nombres positifs</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen21_2.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 2 0 32 21 6</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 2 0 32 21 6</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen21_3.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 3 0 32 21 6 5.745</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 3 0 32 21 6 5.745</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen21_4.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 4 0 32 21 9 1 1 2 - seulement des nombres positifs</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 4 0 32 21 9 1 1 2 - seulement des nombres positifs</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen21_5.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 5 0 32 21 10 1 2 - seulement des nombres positifs</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 5 0 32 21 10 1 2 - seulement des nombres positifs</para>
+        </caption>
+      </mediaobject>
+    </para>
+</refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameparis;</member>
+        <member>MIT, Cambridge</member>
+        <member>1995</member>
+      </simplelist>
+    </para>
+
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>University of Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+      </simplelist>
+    </para>
+    <para>Précisions sur mu et sigma ajoutées par &namepinot; après une discussion
+    avec Joachim Heintz sur la liste de Csound, Décembre 2010.</para>
+    <para>Nouveau dans la version 3.2 de Csound</para>
+  </refsect1>
+</refentry>

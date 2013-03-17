@@ -1,0 +1,127 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="freeverb">
+<indexterm id="IndexFreeverb"><primary>freeverb</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Reverberation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>freeverb</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>freeverb</refname>
+    <refpurpose>
+      Version opcode de Freeverb de Jezar.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>freeverb</emphasis> est une unité de réverbération stéréo basée
+      sur les sources C++ de Jezar du domaine public, composée de huit filtres
+      en peigne en parallèle sur les deux canaux, suivis de quatre unités passe-tout
+      en série. Les filtres du canal de droite sont légèrement déréglés par rapport
+      à ceux du canal de gauche afin de créer un effet stéréo.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aoutL, aoutR <command>freeverb</command> ainL, ainR, kRoomSize, kHFDamp[, iSRate[, iSkip]] </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+
+    <para>
+      <emphasis>iSRate</emphasis> (facultatif, 44100 par défaut) -- ajuste les
+      paramètres de réverbération pour une utilisation avec le taux d'échantillonnage
+      spécifié (cela affecte la longueur en échantillons des lignes à retard et
+      l'atténuation des hautes fréquences). Seuls des multiples entiers de
+      44100 reproduiront exactement le caractère original de la réverbération ;
+      il peut ainsi être utile de fixer ce paramètre à 44100 ou à 88200 pour
+      un taux d'échantillonnage de l'orchestre de 48000 ou de 96000 Hz,
+      respectivement. Bien que <emphasis>iSRate</emphasis> soit normalement
+      supposé être proche du taux d'échantillonnage de l'orchestre, des
+      valeurs différentes peuvent servir à des effets spéciaux.
+    </para>
+
+    <para>
+      <emphasis>iSkip</emphasis> (facultatif, 0 par défaut) -- s'il est différent
+      de zéro, l'initialisation de l'opcode sera ignorée, si c'est possible.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+     <para>
+      <emphasis>ainL, ainR</emphasis> -- signaux d'entrée ; habituellement, les
+      deux sont identiques, mais on peut utiliser des entrées différentes pour
+      des effets spéciaux.
+
+    <note>
+    <title>Note</title>
+    <para>
+      Il est recommendé de traiter les signaux d'entrée avec l'opcode
+      <emphasis>denorm</emphasis> afin d'éviter les nombres dénormalisés qui
+      pourraient augmenter la charge CPU de manière significative dans certains
+      cas.
+    </para>
+    </note>
+
+    </para>
+
+    <para>
+      <emphasis>aoutL, aoutR</emphasis> -- signaux de sortie pour les canaux
+      gauche et droite.
+    </para>
+
+    <para>
+      <emphasis>kRoomSize</emphasis> (compris entre 0 et 1) -- contrôle la
+      longueur de la réverbération, une valeur plus importante signifiant une
+      réverbération plus longue. Les valeurs supérieures à 1 peuvent rendre
+      l'opcode instable.
+    </para>
+
+    <para>
+      <emphasis>kHFDamp</emphasis> (compris entre 0 et 1) -- atténuation des
+      hautes fréquences ; une valeur de zéro signifie que toutes les fréquences
+      décroissent à la même vitesse, tandis que des valeurs supérieures donnent
+      une décroissance plus rapide des hautes fréquences.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode freeverb. Il utilise le fichier
+      <ulink url="examples/freeverb.csd"><citetitle>freeverb.csd</citetitle></ulink>.
+      <example>
+        <title>Un exemple de l'opcode freeverb.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/freeverb.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Istvan Varga</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

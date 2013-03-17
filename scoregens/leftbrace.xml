@@ -1,0 +1,181 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.2
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="leftbrace">
+      <indexterm id="IndexLeftBraceStatement"><primary>{ statement</primary></indexterm>
+  <refmeta>
+    <refentrytitle>Instruction {</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>{</refname>
+    <refpurpose>
+      Commence une boucle imbriquable, sans section.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      On peut utiliser les <emphasis>instructions {</emphasis> et <emphasis>}</emphasis> pour
+      répéter un groupe d'instructions de partition. Ces boucles ne constituent pas des sections
+      de partition indépendantes et peuvent ainsi répéter des évènements dans la même section.
+      Plusieurs boucles peuvent se chevaucher dans le temps ou être imbriquées.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>{</command> p1 p2</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>p1</emphasis> -- Nombre de répétitions de la boucle.
+    </para>
+
+    <para>
+      <emphasis>p2</emphasis> -- Un nom de macro qui est automatiquement défini au début de la
+      boucle et dont la valeur est incrémentée à chaque répétition (facultatif). La valeur
+      initiale est zéro et la valeur finale est (p1 - 1).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      L'<emphasis>instruction {</emphasis> est utilisée conjointement avec
+      l'<link linkend="rightbrace"><citetitle>instruction }</citetitle></link> pour définir des
+      groupes d'évènements de partition qui se répètent. Une boucle de partition commence par
+      l'<emphasis>instruction {</emphasis> qui définit le nombre de répétitions et un nom de
+      macro unique qui contiendra le compteur de boucle. Le corps d'une boucle peut contenir
+      n'importe quel nombre d'évènements (y compris des sauts de section) et il se termine par
+      une <emphasis>instruction }</emphasis> ayant sa propre ligne. L'<emphasis>instruction }</emphasis>
+      ne prend pas de paramètre.
+    </para>
+
+    <para>
+      Le terme "boucle" n'implique aucune sorte de succession temporelle pour les itérations de la
+      boucle. Autrement dit, les valeurs p2 des évènements à l'intérieur de la boucle ne sont pas
+      incrémentées automatiquement de la longueur de la boucle à chaque répétition. C'est un
+      avantage car cela permet de définir facilement des groupes d'évènements simultanés. La macro
+      de boucle peut être utilisée avec des
+      <link linkend="ScoreEval"><citetitle>expressions de partition</citetitle></link> pour
+      incrémenter les dates de début d'évènements ou pour faire varier les évènements de toute
+      autre manière désirée à chaque répétition. Noter que à la différence de
+      l'<emphasis>instruction r</emphasis>, la valeur de la macro au premier passage dans la boucle
+      est zéro (0), pas un (1). Ainsi la valeur finale est inférieure d'une unité au nombre de
+      répétitions.
+    </para>
+
+    <para>
+      Les boucles de partition sont un outil très puissant. Bien que semblables à l'outil de
+      répétition de section (l'<link linkend="r"><citetitle>instruction r</citetitle></link>),
+      leur principal avantage est que les évènements de partition dans les itérations successives
+      de la boucle ne sont pas séparés par une fin de section. Ainsi, il est possible de créer
+      plusieurs boucles qui se chevauchent dans le temps. Les boucles peuvent aussi être
+      imbriquées jusqu'à une profondeur de 39 niveaux.
+    </para>
+
+    <warning>
+      <title>Avertissement</title>
+      <para>
+        En raison de sérieux problèmes d'interaction avec l'expension de macro, les boucles
+        doivent commencer et se terminer dans le même fichier, et pas à l'intérieur d'une macro.
+      </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici quelques exemples des <emphasis>instructions {</emphasis> et <emphasis>}</emphasis>.
+
+      <example>
+        <title>Répétition sequentielle d'une phrase de trois notes, quatre fois.</title>
+        <programlisting>
+<emphasis role="stamnt">{</emphasis> 4 CNT
+
+<emphasis role="stamnt">i</emphasis>1  [0.00 + 0.75 * $CNT.]   0.2   220
+<emphasis role="stamnt">i</emphasis>1  [0.25 + 0.75 * $CNT.]   .     440
+<emphasis role="stamnt">i</emphasis>1  [0.50 + 0.75 * $CNT.]   .     880
+
+<emphasis role="stamnt">}</emphasis>
+        </programlisting>
+      interprété comme
+        <programlisting>
+<emphasis role="stamnt">i</emphasis>1  0.00   0.2   220
+<emphasis role="stamnt">i</emphasis>1  0.25   .     440
+<emphasis role="stamnt">i</emphasis>1  0.50   .     880
+
+<emphasis role="stamnt">i</emphasis>1  0.75   0.2   220
+<emphasis role="stamnt">i</emphasis>1  1.00   .     440
+<emphasis role="stamnt">i</emphasis>1  1.25   .     880
+
+<emphasis role="stamnt">i</emphasis>1  1.50   0.2   220
+<emphasis role="stamnt">i</emphasis>1  1.75   .     440
+<emphasis role="stamnt">i</emphasis>1  2.00   .     880
+
+<emphasis role="stamnt">i</emphasis>1  2.25   0.2   220
+<emphasis role="stamnt">i</emphasis>1  2.50   .     440
+<emphasis role="stamnt">i</emphasis>1  2.75   .     880
+        </programlisting>
+      </example>
+    </para>
+
+    <para>
+      <example>
+        <title>Création d'un groupe d'harmoniques simultanés.</title>
+        Dans cet exemple, <emphasis>p4</emphasis> contient la fréquence de la note. 
+
+        <programlisting>
+<emphasis role="stamnt">{</emphasis> 8 PARTIAL
+<emphasis role="stamnt">i</emphasis>1  0  1   [100 * ($PARTIAL. + 1)]
+<emphasis role="stamnt">}</emphasis>
+        </programlisting>
+      interprété comme
+        <programlisting>
+<emphasis role="stamnt">i</emphasis>1  0  1   100
+<emphasis role="stamnt">i</emphasis>1  0  1   200
+<emphasis role="stamnt">i</emphasis>1  0  1   300
+<emphasis role="stamnt">i</emphasis>1  0  1   400
+<emphasis role="stamnt">i</emphasis>1  0  1   500
+<emphasis role="stamnt">i</emphasis>1  0  1   600
+<emphasis role="stamnt">i</emphasis>1  0  1   700
+<emphasis role="stamnt">i</emphasis>1  0  1   800
+        </programlisting>
+      </example>
+    </para>
+
+    <para>
+      Voici un exemple complet des <emphasis>instructions {</emphasis> et <emphasis>}</emphasis>.
+      Il utilise le fichier <ulink url="examples/leftbrace.csd"><citetitle>leftbrace.csd</citetitle></ulink>.
+
+     <example>
+        <title>Un exemple de boucles imbriquées pour créer plusieurs clusters inharmoniques
+        de sinus.</title>
+
+        <xi:include href="examples-xml/leftbrace.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.52 (?) de Csound.  (Fixé dans la version 5.08).</para>
+  </refsect1>
+</refentry>

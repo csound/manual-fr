@@ -1,0 +1,86 @@
+<chapter id="STKTop">
+  <title>Opcodes STK</title>
+  <note>
+    <para>
+      Ces opcodes sont un composant facultatif de Csound5. On peut tester s'ils
+      sont installés avec la commande "csound -z" qui donne la liste de tous les
+      opcodes disponibles.
+    </para>
+  </note>
+
+  <para>
+    On peut compiler les opcodes STK de différentes manières. Si l'on compile
+    tout Csound, il suffit de suivre les instructions au début du fichier
+    Opcodes/stk/stkOpcodes.cpp.
+  </para>
+  <para>
+    Si l'on ne veut pas compiler la totalité de Csound, on peut compiler les
+    opcodes STK comme un greffon d'opcode (bibliothèque partagée). On peut
+    adapter l'exemple du répertoire pluginSDK de l'entrepôt GIT de Csound.
+    Remplacer le fichier pluginSDK/examplePlugin.c par le fichier
+    opcodes/stk/stkOpcodes.cpp et changer le nom de ce fichier dans le fichier
+    SConstruct. Utiliser ensuite scons pour compiler les opcodes. Il faut faire
+    attention à utiliser l'option de ligne de commande de scons useDouble=0 si
+    Csound est en simple précision (32 bit), et useDouble=1 si Csound est en
+    double précision (64 bit).
+  </para>
+  <para>
+    Il faut aussi ajouter le chemin de tous les fichiers sources STK et des
+    fichiers à inclure dans le fichier SConstruct, ou bien ajouter le chemin
+    d'une bibliothèque STK déjà compilée et des fichiers d'inclusion dans le
+    fichier SConstruct. Les fichiers sources STK seront renseignés vers la
+    ligne 296 du fichier SConstruct :
+
+<programlisting>makePlugin(pluginEnvironment, 'stkOpcodes', Split('''
+    stkOpcodes.cpp
+    ... STK source files ...
+'''))</programlisting>
+  </para>
+
+  <para>La famille des opcodes STK comprend :
+    <itemizedlist>
+      <listitem><link linkend="STKBandedWG"><citetitle>STKBandedWG</citetitle></link></listitem>
+      <listitem><link linkend="STKBeeThree"><citetitle>STKBeeThree</citetitle></link></listitem>
+      <listitem><link linkend="STKBlowBotl"><citetitle>STKBlowBotl</citetitle></link></listitem>
+      <listitem><link linkend="STKBlowHole"><citetitle>STKBlowHole</citetitle></link></listitem>
+      <listitem><link linkend="STKBowed"><citetitle>STKBowed</citetitle></link></listitem>
+      <listitem><link linkend="STKBrass"><citetitle>STKBrass</citetitle></link></listitem>
+      <listitem><link linkend="STKClarinet"><citetitle>STKClarinet</citetitle></link></listitem>
+      <listitem><link linkend="STKDrummer"><citetitle>STKDrummer</citetitle></link></listitem>
+      <listitem><link linkend="STKFlute"><citetitle>STKFlute</citetitle></link></listitem>
+      <listitem><link linkend="STKFMVoices"><citetitle>STKFMVoices</citetitle></link></listitem>
+      <listitem><link linkend="STKHevyMetl"><citetitle>STKHevyMetl</citetitle></link></listitem>
+      <listitem><link linkend="STKMandolin"><citetitle>STKMandolin</citetitle></link></listitem>
+      <listitem><link linkend="STKModalBar"><citetitle>STKModalBar</citetitle></link></listitem>
+      <listitem><link linkend="STKMoog"><citetitle>STKMoog</citetitle></link></listitem>
+      <listitem><link linkend="STKPercFlut"><citetitle>STKPercFlut</citetitle></link></listitem>
+      <listitem><link linkend="STKPlucked"><citetitle>STKPlucked</citetitle></link></listitem>
+      <listitem><link linkend="STKResonate"><citetitle>STKResonate</citetitle></link></listitem>
+      <listitem><link linkend="STKRhodey"><citetitle>STKRhodey</citetitle></link></listitem>
+      <listitem><link linkend="STKSaxofony"><citetitle>STKSaxofony</citetitle></link></listitem>
+      <listitem><link linkend="STKShakers"><citetitle>STKShakers</citetitle></link></listitem>
+      <listitem><link linkend="STKSimple"><citetitle>STKSimple</citetitle></link></listitem>
+      <listitem><link linkend="STKSitar"><citetitle>STKSitar</citetitle></link></listitem>
+      <listitem><link linkend="STKStifKarp"><citetitle>STKStifKarp</citetitle></link></listitem>
+      <listitem><link linkend="STKTubeBell"><citetitle>STKTubeBell</citetitle></link></listitem>
+      <listitem><link linkend="STKVoicForm"><citetitle>STKVoicForm</citetitle></link></listitem>
+      <listitem><link linkend="STKWhistle"><citetitle>STKWhistle</citetitle></link></listitem>
+      <listitem><link linkend="STKWurley"><citetitle>STKWurley</citetitle></link></listitem>
+    </itemizedlist>
+  </para>
+
+  <para>
+    Pour plus d'information sur les opcodes STK, consulter le site web du
+    Synthesis ToolKit en C++ à <ulink
+    url="https://ccrma.stanford.edu/software/stk">https://ccrma.stanford.edu/software/stk</ulink>.
+  </para>
+
+  <bridgehead>Crédits</bridgehead>
+  <para>
+    Cette implémentation des générateurs unitaires STK a été écrite par Perry R. Cook
+    et Gary P. Scavone.
+  </para>
+  <para>
+    Les opcodes ont été ensuite adaptés comme greffon de Csound5 par Michael Gogins.
+  </para>
+</chapter>

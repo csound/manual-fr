@@ -1,0 +1,38 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.2
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="PrefaceToot5">
+  <title>Toot 5</title>
+  <para>
+    Pour ajouter un peu de vibrato retardé à notre instrument en chorus nous utilisons un
+    autre oscillateur pour le vibrato et un générateur de segment linéaire,
+    <link linkend="linseg"><citetitle>linseg</citetitle></link>, comme moyen de contrôle du
+    retard. <link linkend="linseg"><citetitle>linseg</citetitle></link> est un générateur de
+    signal de taux-k ou de taux-a qui trace une suite de segments de ligne droite entre
+    n'importe quel nombre de points spécifiés. On l'utilise comme ceci :
+    <programlisting>
+      kr <emphasis role="opc">linseg</emphasis> ia, idur1, ib[, idur2, ic[...]]
+
+      ar <emphasis role="opc">linseg</emphasis>  ia, idur1, ib[, idur2, ic[...]]</programlisting>
+  </para>
+  <para>
+    <!--Since we intend to use this to slowly scale the amount of signal coming from our vibrato
+    oscillator, we'll choose the k-rate version.-->
+    Les <!--i-rate--> variables : <emphasis>ia</emphasis>, <emphasis>ib</emphasis>,
+    <emphasis>ic</emphasis>, etc., sont les valeurs des points. Les variables de taux-i :
+    <emphasis>idur1</emphasis>, <emphasis>idur2</emphasis>, <emphasis>idur3</emphasis>, etc.,
+    fixent la durée, en secondes, entre les segments.
+  </para>
+  <para>
+    Voici le fichier <ulink url="examples/toot5.csd"><citetitle>toot5.csd</citetitle></ulink> :
+  </para>
+  <para>
+<xi:include href="examples-xml/toot5.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </para>
+</section>

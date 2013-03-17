@@ -1,0 +1,74 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="lpsholdp">
+<indexterm id="Indexlpsholdp"><primary>lpsholdp</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Linear and Exponential Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lpsholdp</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>lpsholdp</refname>
+    <refpurpose>
+      Signaux de contrôle basés sur des segments tenus.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère un signal de contrôle constitué de segments de droite tenus délimités par deux ou plus
+      points spécifiés. L'enveloppe entière peut être parcourue en boucle à une vitesse variable.
+      Chaque coordonnée de segment peut aussi varier au taux-k.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ksig <command>lpsholdp</command>  kphase, ktrig, ktime0, kvalue0  [, ktime1] [, kvalue1] \
+      [, ktime2] [, kvalue2] [...]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ksig</emphasis> - signal de sortie.
+    </para>
+    <para>
+      <emphasis>kphase</emphasis> - 
+    </para>
+    <para>
+      <emphasis>kvalue0</emphasis> ...<emphasis>kvalueN</emphasis> - valeurs des points.
+    </para>
+    <para>
+      <emphasis>ktime0</emphasis> ...<emphasis>ktimeN</emphasis> - dates des points exprimées en
+      fractions d'un cycle.
+    </para>
+    <para>
+      L'opcode <emphasis>lpsholdp</emphasis> est semblable à
+      <link linkend="lpshold"><citetitle>lpshold</citetitle></link> ;
+      la seule différence étant que, à la place de la fréquence, une phase variable est utilisée.
+      Si l'on utilise un phaseur pour obtenir la valeur de la phase, on aura un comportement
+      identique à <emphasis>lpshold</emphasis>, mais on peut obtenir des résultats intéressants
+      avec des phases à l'évolution non linéaire, ce qui rend <emphasis>lpsholdp</emphasis> plus
+      puissant et plus général que <emphasis>lpshold</emphasis>.
+     </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par &namegabriel;.</para>
+    <para>Nouveau dans Csound 5. (Auparavant, disponible seulement dans CsoundAV)</para>
+  </refsect1>
+</refentry>
+
+

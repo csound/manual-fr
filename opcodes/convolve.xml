@@ -1,0 +1,208 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="convolve">
+<indexterm id="IndexConvolve"><primary>convolve</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Convolution and Morphing</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>convolve</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>convolve</refname>
+    <refpurpose>
+      Convolution d'un signal par une réponse impulsionnelle.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      La sortie est le produit de convolution du signal <emphasis>ain</emphasis>
+      par la réponse impulsionnelle contenue dans <emphasis>ifilcod</emphasis>.
+      S'il y a plus d'un signal de sortie, chacun sera obtenu par convolution
+      avec la même réponse impulsionnelle. Noter qu'il est considérablement plus
+      efficace d'utiliser une instance de l'opérateur lorsque l'on traite une
+      entrée mono pour créer des sorties stéréo ou quadraphoniques.
+    </para>
+
+    <para>
+      Note : cet opcode peut aussi s'écrire 
+      <link linkend="convle"><citetitle>convle</citetitle></link>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ar1 [, ar2] [, ar3] [, ar4] <command>convolve</command> ain, ifilcod [, ichannel]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifilcod</emphasis> -- entier ou chaîne de caractères définissant un
+      fichier de données contenant une réponse impulsionnelle. Un entier définit
+      le suffixe d'un fichier <emphasis>convolve.m</emphasis> ; une chaîne de
+      caractères (entre guillemets) donne un nom de fichier, éventuellement un
+      nom de chemin complet. Si ce n'est pas un nom de chemin complet, le fichier
+      est d'abord cherché dans le répertoire courant, puis dans celui qui est
+      donné par la variable d'environnement SADIR (si elle est définie). Le fichier
+      de données contient la transformée de Fourier d'une réponse impulsionnelle.
+      L'occupation mémoire dépend de la taille du fichier de données qui est lu
+      en entier et gardé en mémoire durant le calcul, mais qui est partagé par des
+      appels multiples.
+    </para>
+
+    <para>
+      <emphasis>ichannel</emphasis> (facultatif) -- quel canal du fichier de données
+      de la réponse impulsionnelle utiliser.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ain</emphasis> -- signal audio en entrée.
+    </para>
+
+    <para>
+      <emphasis>convolve</emphasis> implémente la convolution rapide. Le sortie de
+      cet opérateur est retardée en fonction de l'entrée. On peut calculer le
+      délai avec les formules suivantes :
+      <informalexample>
+        <programlisting>
+  Pour (1/kr) &lt;= IRdur:
+          Delay = ceil(IRdur * kr) / kr
+  Pour (1/kr) &gt; IRdur: 
+          Delay = IRdur * ceil(1/(kr*IRdur))
+  Où :
+          kr  = taux de contrôle de Csound
+          IRdur = durée, en secondes, de la réponse impulsionnelle
+          ceil(n) = le plus petit entier qui n'est pas inférieur à n</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      Il faut également faire attention à prendre en compte le délai initial, s'il
+      y en a un, de la réponse impulsionnelle. Par exemple, si une réponse
+      impulsionnelle est créée à partir d'un enregistrement, le fichier son peut
+      ne pas avoir de délai initial. Il faut ainsi soit s'assurer que le fichier
+      son a la quantité correcte de zéro de remplissage au début, soit, de préférence
+      compenser ce retard dans l'orchestre (cette dernière méthode étant plus
+      efficace). Pour compenser le délai dans l'orchestre, il faut soustraire le
+      délai initial du résultat calculé au moyen des formules ci-dessus, lorsque
+      l'on calcule le délai requis à introduire dans la passe audio non "réverbérée".
+    </para>
+
+    <para>
+      Pour des applications typiques telles que la réverbération, le délai sera de
+      l'ordre de 0.5 à 1.5 secondes, ou même plus long. Cela rend cette implémentation
+      impropre aux applications en temps réel. Il est cependant concevable de
+      l'utiliser pour du filtrage en temps réel, si le nombre de points de lecture
+      est suffisamment petit.
+    </para>
+
+    <para>
+      L'auteur a l'intention de créer un opérateur de plus haut niveau qui mélangera
+      le signal original et le signal réverbéré, en utilisant automatiquement la
+      bonne quantité de délai.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Créer le fichier de réponse impulsionnelle dans le domaine fréquentiel au
+      moyen de l'utilitaire
+      <link linkend="cvanal"><citetitle>cvanal utility</citetitle></link> :
+      <screen>
+csound -Ucvanal l1_44.wav l1_44.cv</screen>
+    </para>
+
+    <para>
+      Déterminer la durée de la réponse impulsionnelle. Pour une grande précision,
+      déterminer le nombre de trames d'échantillon dans le fichier de la
+      réponse impulsionnelle, puis calculer la durée avec :
+      <literallayout>
+durée = (trames d'échantillons)/(taux d'échantillonnage du fichier son)</literallayout>
+    </para>
+
+    <para>
+      Cela est du au fait que
+      l'<link linkend="sndinfo"><citetitle>utilitaire sndinfo</citetitle></link> ne
+      fournit la durée arrondie qu'au 10 ms les plus proches. Si l'on dispose d'un
+      utilitaire qui fournit la durée avec la précision requise, alors il suffit
+      d'utiliser directement la valeur retournée.
+      <screen>
+sndinfo l1_44.wav </screen>
+
+      <literallayout>
+length = 60822 samples, sample rate = 44100
+ 
+Duration = 60822/44100 = 1.379s.</literallayout>
+    </para>
+
+    <para>
+      Déterminer le délai initial, s'il existe, de la réponse impulsionnelle. Si
+      le délai initial de la réponse impulsionnelle n'a pas été enlevé, alors on
+      peut ignorer cette étape. S'il a été enlevé, la seule manière de connaître
+      le délai initial est de se procurer l'information séparément. Pour cet
+      exemple, on suppose que le délai initial est de 60 ms (0.06 s).
+    </para>
+
+    <para>
+      Déterminer le délai qu'il faut nécessairement appliqué au signal original
+      pour l'aligner sur le signal convolué :
+
+      <literallayout>
+  Si kr = 441:
+        1/kr = 0.0023, qui est &lt;= IRdur (1.379s), ainsi :
+        Delay1  = ceil(IRdur * kr) / kr
+                = ceil(608.14) / 441
+                = 609/441
+                = 1.38s</literallayout>
+        
+      <literallayout>
+  En prenant comme délai initial :
+        Delay2  = 0.06s
+   Total delay  = delay1 - delay2
+                = 1.38 - 0.06
+                = 1.32s</literallayout>
+    </para>
+
+    <para>
+      Voici un exemple similaire de l'opcode convolve. Il utilise le fichier
+      <ulink url="examples/convolve.csd"><citetitle>convolve.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode convolve.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/convolve.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="pconvolve"><citetitle>pconvolve</citetitle></link>,
+      <link linkend="dconv"><citetitle>dconv</citetitle></link>,
+      <link linkend="cvanal"><citetitle>cvanal</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : Greg Sullivan</para>
+    <para>1996</para>
+    <para>Nouveau dans la version 3.28</para>
+  </refsect1>
+</refentry>

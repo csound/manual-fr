@@ -1,0 +1,79 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="specaddm">
+<indexterm id="IndexSpecaddm"><primary>specaddm</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Non-Standard</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>specaddm</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>specaddm</refname>
+    <refpurpose>
+      Exécute une somme pondérée de deux spectres.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Exécute une somme pondérée de deux spectres.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>wsig <command>specaddm</command> wsig1, wsig2 [, imul2]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>imul2</emphasis> (facultatif, 0 par défaut) -- s'il est différent
+      de zéro, pondère les magnitudes de <emphasis>wsig2</emphasis> avant la
+      somme. La valeur par défaut est 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>wsig1</emphasis> -- le premier spectre en entrée.
+    </para>
+
+    <para>
+      <emphasis>wsig2</emphasis> -- le second spectre en entrée.
+    </para>
+
+    <para>
+      Exécute une somme pondérée de deux spectres. Pour chaque canal des deux
+      spectres en entrée, les deux magnitudes sont combinées et écrites en
+      sortie selon la formule :
+      <literallayout>
+magout = mag1in + mag2in * imul2</literallayout>
+    </para>
+
+    <para>
+      L'opération est exécutée chaque fois qu'un nouveau <emphasis>wsig1</emphasis>
+      est détecté en entrée. Cette unité vérifie à l'initialisation la consistance
+      des deux spectre (même taille, même période, même type de magnitude).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="specdiff"><citetitle>specdiff</citetitle></link>,
+      <link linkend="specfilt"><citetitle>specfilt</citetitle></link>,
+      <link linkend="spechist"><citetitle>spechist</citetitle></link>,
+      <link linkend="specscal"><citetitle>specscal</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

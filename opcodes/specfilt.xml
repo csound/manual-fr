@@ -1,0 +1,86 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="specfilt">
+<indexterm id="IndexSpecfilt"><primary>specfilt</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Non-Standard</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>specfilt</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>specfilt</refname>
+    <refpurpose>
+      Filtre chaque canal d'un spectre en entrée.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Filtre chaque canal d'un spectre en entrée.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>wsig <command>specfilt</command> wsigin, ifhtim</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifhtim</emphasis> -- demi-constante de temps.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>wsigin</emphasis> -- le spectre d'entrée.
+    </para>
+
+    <para>
+      Filtre chaque canal d'un spectre en entrée. A chaque nouvelle trame de
+      <emphasis>wsigin</emphasis>, chaque valeur de magnitude est injectée dans
+      un filtre passe-bas récursif du premier ordre, dont la demi-constante de
+      temps a été initialement fixée en échantillonnant la ftable 
+      <emphasis>ifhtim</emphasis> par l'espace (logarithmique) de fréquence du
+      spectre d'entrée. Cette unité applique effectivement un facteur de
+      <emphasis>persistence</emphasis> aux données apparaissant dans chaque
+      canal spectral, et il est utile pour simuler <emphasis>l'intégration
+      d'énergie</emphasis> qui survient durant la perception auditive. On peut
+      aussi l'utiliser comme <emphasis>histogramme</emphasis> courant atténué
+      dans le temps de la distribution spectrale.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      <informalexample>
+        <programlisting>
+  wsig2    <emphasis role="opc">specdiff</emphasis>    wsig1         <emphasis role="comment">; sense onsets</emphasis>
+  wsig3    <emphasis role="opc">specfilt</emphasis>    wsig2, 2      <emphasis role="comment">; absorb slowly</emphasis>
+           <emphasis role="opc">specdisp</emphasis>    wsig2, 0.1    <emphasis role="comment">; &amp; display both spectra</emphasis>
+           <emphasis role="opc">specdisp</emphasis>    wsig3, 0.1</programlisting>
+      </informalexample>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="specaddm"><citetitle>specaddm</citetitle></link>,
+      <link linkend="specdiff"><citetitle>specdiff</citetitle></link>,
+      <link linkend="spechist"><citetitle>spechist</citetitle></link>,
+      <link linkend="specscal"><citetitle>specscal</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

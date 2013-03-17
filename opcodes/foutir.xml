@@ -1,0 +1,163 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="foutir">
+<indexterm id="IndexFoutir"><primary>foutir</primary></indexterm>
+  <refentryinfo><title>Signal I/O:File I/O</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>foutir</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>foutir</refname>
+    <refpurpose>
+      Envoie des signaux de taux-i d'un nombre arbitraire de canaux dans un
+      fichier spécifié.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>foutir</emphasis> envoie <emphasis>N</emphasis> signaux de taux-i
+      vers un fichier spécifié à <emphasis>N</emphasis> canaux.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>foutir</command> ihandle, iformat, iflag, iout1 [, iout2, iout3,....,ioutN]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ihandle</emphasis> -- un nombre qui spécifie ce fichier.
+    </para>
+
+    <para>
+      <emphasis>iformat</emphasis> -- un indicateur pour choisir le format du fichier
+      de sortie :
+      <itemizedlist>
+        <listitem>
+          <para>0 - flottants en format texte</para>
+        </listitem>
+
+        <listitem>
+          <para>1 - flottants sur 32 bit en format binaire</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>iflag</emphasis> -- choisit le mode d'écriture dans le fichier ASCII
+      (n'est valide qu'en mode ASCII ; en mode binaire <emphasis>iflag</emphasis>
+      n'a aucune signification, mais il doit quand même être présent).
+      <emphasis>iflag</emphasis> peut prendre une des valeurs suivantes :
+      <itemizedlist>
+        <listitem>
+          <para>0 - ligne de texte sans préfixe d'instrument</para>
+        </listitem>
+
+        <listitem>
+          <para>1 - ligne de texte avec préfixe d'instrument (voir ci-dessous)</para>
+        </listitem>
+
+        <listitem>
+          <para>2 - remet à zéro le temps des préfixes d'instrument (à n'utiliser que
+          dans certains cas particuliers. Voir ci-dessous)</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>iout,..., ioutN</emphasis> -- valeurs à écrire dans le fichier
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <link linkend="fouti"><citetitle>fouti</citetitle></link> et <emphasis>foutir</emphasis>
+      écrivent des valeurs de taux-i dans un fichier. On utilise ces opcodes
+      principalement pour générer un fichier de partition pendant une session en
+      temps réel. Pour cela, il faut fixer <emphasis>iformat</emphasis> à 0 (sortie
+      dans un fichier texte) et <emphasis>iflag</emphasis> à 1, ce qui active la
+      sortie d'un préfixe constitué des chaînes de caractères <emphasis>inum</emphasis>,
+      <emphasis>actiontime</emphasis> et <emphasis>duration</emphasis>, avant les
+      valeurs des arguments <emphasis>iout1...ioutN</emphasis>. Les arguments dans
+      le préfixe font référence au numéro de l'instrument, à la date et à la durée
+      de la note courante.
+    </para>
+
+    <para>
+      La différence entre <link linkend="fouti"><citetitle>fouti</citetitle></link> et
+      <emphasis>foutir</emphasis> est que dans le cas de <emphasis>fouti</emphasis>,
+      quand <emphasis>iflag</emphasis> vaut 1, la durée du premier opcode est indéfinie
+      (elle est ainsi remplacée par un point). Tandis que <emphasis>foutir</emphasis>
+      n'est défini qu'à la fin de la note, si bien que la ligne de texte
+      correspondante n'est écrite qu'à la fin de la note courante (afin de
+      connaître sa durée). Le fichier correspondant est lié par la valeur de
+      <emphasis>ihandle</emphasis> générée par l'opcode
+      <link linkend="fiopen"><citetitle>fiopen</citetitle></link>. On peut ainsi
+      utiliser <emphasis>fouti</emphasis> et <emphasis>foutir</emphasis> pour
+      générer une partition Csound tout en jouant une session en temps réel.
+    </para>
+
+    <para>
+      Noter que <link linkend="fout"><citetitle>fout</citetitle></link> et
+      <link linkend="foutk"><citetitle>foutk</citetitle></link> peuvent utiliser
+      soit une chaîne de caractères contenant un nom de chemin de fichier, soit un
+      identificateur numérique généré par
+      <link linkend="fiopen"><citetitle>fiopen</citetitle></link>. Alors qu'avec
+      <link linkend="fouti"><citetitle>fouti</citetitle></link> et <emphasis>foutir</emphasis>,
+      le fichier cible ne peut être spécifié que par un identificateur numérique.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode foutir. Il utilise le fichier
+      <ulink url="examples/foutir.csd"><citetitle>foutir.csd</citetitle></ulink>
+      et il crée la liste "foutir.sco". Celle-ci peut être utilisée comme fichier
+      de partition.
+      <example>
+        <title>Exemple de l'opcode foutir.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/foutir.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="fiopen"><citetitle>fiopen</citetitle></link>,
+      <link linkend="fout"><citetitle>fout</citetitle></link>,
+      <link linkend="fouti"><citetitle>fouti</citetitle></link>,
+      <link linkend="foutk"><citetitle>foutk</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+        <member>1999</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.56 de Csound</para>
+  </refsect1>
+</refentry>

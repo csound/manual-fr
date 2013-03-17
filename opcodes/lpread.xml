@@ -1,0 +1,184 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="lpread">
+<indexterm id="IndexLpread"><primary>lpread</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:LPC</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lpread</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>lpread</refname>
+    <refpurpose>
+      Lit un fichier de contrôle contenant des trames d'information ordonnées dans le temps.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Lit un fichier de contrôle contenant des trames d'information ordonnées dans le temps.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>krmsr, krmso, kerr, kcps <command>lpread</command> ktimpnt, ifilcod [, inpoles] [, ifrmrate]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifilcod</emphasis> -- entier ou chaîne de caractères dénotant un
+      fichier de contrôle (coefficients de réflexion et quatre valeurs de
+      paramètre) provenant de l'analyse spectrale par prédiction linéaire à
+      n pôles d'une source audio. Un entier dénote le suffixe d'un fichier
+      <emphasis>lp.m</emphasis> ; une chaîne de caractères (entre guillemets)
+      donne un nom de fichier, optionnellement un nom de chemin complet. Si ce
+      n'est pas un nom de chemin complet, le fichier est d'abord cherché dans le
+      répertoire courant, ensuite dans celui donné par la variable d'environnement
+      <link linkend="OrchDirFiles"><citetitle>SADIR</citetitle></link> (si elle
+      est définie). L'utilisation de la mémoire dépend de la taille du fichier,
+      qui est maintenu entièrement dans la mémoire durant les calculs mais reste
+      partagé par des appels multiples (voir aussi
+      <link linkend="adsyn"><citetitle>adsyn</citetitle></link> et
+      <link linkend="pvoc"><citetitle>pvoc</citetitle></link>).
+    </para>
+
+    <para>
+      <emphasis>inpoles</emphasis> (facultatif, 0 par défaut) -- nombre de pôles
+      dans l'analyse par prédiction linéaire. Nécessaire seulement si le fichier
+      de contrôle n'a pas d'en-tête ; ignoré si un en-tête est détecté.
+    </para>
+
+    <para>
+      <emphasis>ifrmrate</emphasis> (facultatif, 0 par défaut) -- taux de trames
+      par seconde dans l'analyse par prédiction linéaire. Nécessaire seulement
+      si le fichier de contrôle n'a pas d'en-tête ; ignoré si un en-tête est
+      détecté.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>lpread</emphasis> accède à un fichier de contrôle constitué de
+      trames d'information ordonnées dans le temps, chacune d'entre elles contenant
+      les coefficients d'un filtre à n pôles, provenant de l'analyse par prédiction
+      linéaire d'un signal source à intervalles fixes (par exemple 1/100 de
+      seconde), plus quatre valeurs de paramètres :
+    </para>
+
+    <para>
+      <emphasis>krmsr</emphasis> -- moyenne quadratique du résidu de l'analyse
+    </para>
+
+    <para>
+      <emphasis>krmso</emphasis> -- moyenne quadratique du signal original
+    </para>
+
+    <para>
+      <emphasis>kerr</emphasis> -- le signal d'erreur normalisé
+    </para>
+
+    <para>
+      <emphasis>kcps</emphasis> -- hauteur en Hz
+    </para>
+
+    <para>
+      <emphasis>ktimpnt</emphasis> -- l'écoulement du temps en secondes dans le
+      fichier d'analyse. <emphasis>ktimpnt</emphasis> doit toujours être positif,
+      mais il peut avancer ou reculer, rester stationnaire ou être discontinu,
+      comme pointeur dans le fichier d'analyse.
+    </para>
+
+    <para>
+      <emphasis>lpread</emphasis> reçoit ses valeurs du fichier de contrôle en
+      fonction de la valeur d'entrée <emphasis>ktimpnt</emphasis> (en secondes).
+      Si <emphasis>ktimpnt</emphasis> évolue au taux de l'analyse, il en résulte
+      une synthèse à déroulement temporel normal ; si l'évolution est plus
+      rapide, plus lente ou à taux variable, le déroulement temporel de la synthèse            
+      est déformé. A chaque période-k, <emphasis>lpread</emphasis> fait une
+      interpolation entre trames adjacentes pour déterminer plus précisément
+      les valeurs des paramètres (présentés en sortie) et le réglage des coefficients
+      du filtre (passés en interne à un
+      <link linkend="lpreson"><citetitle>lpreson</citetitle></link>) qui le suit.
+    </para>
+    
+    <para>
+      Le signal d'erreur <emphasis>kerr</emphasis> (entre 0 et 1) provenant de
+      l'analyse prédictive reflète la nature déterministe/aléatoire de la source
+      analysée. Il paraîtra bas pour un matériau tonal (périodique) et plus
+      important pour un matériau bruiteux. La transition de la parole voisée à
+      la parole non-voisée, par exemple, produit une valeur du signal d'erreur
+      d'environ 0.3. Pendant la synthèse, la valeur du signal d'erreur peut être
+      utilisée pour déterminer la nature de la fonction pilotant
+      <link linkend="lpreson"><citetitle>lpreson</citetitle></link> : par exemple
+      en arbitrant entre entrée tonale et non-tonale, ou même en déterminant un
+      mélange des deux. Normalement, dans la resynthèse de la parole, l'entrée
+      tonale de <link linkend="lpreson"><citetitle>lpreson</citetitle></link>
+      est un signal périodique à large bande ou un train d'impulsions dérivé
+      d'une unité telle que <link linkend="buzz"><citetitle>buzz</citetitle></link>,
+      et la source non-tonale est habituellement dérivée de
+      <link linkend="rand"><citetitle>rand</citetitle></link>. Cependant, on peut
+      utiliser n'importe quel signal audio comme fonction pilote, la seule
+      exigence de l'analyse étant qu'il ait une réponse plate.
+    </para>
+    
+    <para>
+      <link linkend="lpfreson"><citetitle>lpfreson</citetitle></link> est un
+      <link linkend="lpreson"><citetitle>lpreson</citetitle></link> dont les formants
+      sont décalés. Son argument <emphasis>kfrqratio</emphasis> est le rapport
+      de la position des formants décalés par rapport à l'original. Cela
+      permet une synthèse dans laquelle l'objet source modifie sa taille acoustique
+      apparente. <link linkend="lpfreson"><citetitle>lpfreson</citetitle></link>
+      avec <emphasis>kfrqratio</emphasis> = 1 est équivalent à
+      <link linkend="lpreson"><citetitle>lpreson</citetitle></link>.
+    </para>
+    
+    <para>
+      Générallement, <link linkend="lpreson"><citetitle>lpreson</citetitle></link>
+      fournit un moyen de contrôler l'évolution du contenu et de la forme spectrale
+      d'un signal audio composite par le contenu spectral dynamique d'un autre
+      signal. Il peut y avoir n'importe quel nombre de paires
+      <emphasis>lpread/lpreson</emphasis> (ou <emphasis>lpfreson</emphasis>)
+      dans un instrument ou dans un orchestre ; ils peuvent lire depuis le même
+      ou depuis différents fichiers de contrôle indépendamment.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode lpread. Il utilise le fichier
+      <ulink url="examples/lpread.csd"><citetitle>lpread.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode lpread.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/lpread.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Le fichier audio <quote>fox.wav</quote> dure 2.8 secondes. Ainsi la sortie
+      contiendra une ligne comme celle-ci :
+      <screen>
+fox.wav = 2.756667 seconds</screen>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="lpfreson"><citetitle>lpfreson</citetitle></link>, 
+      <link linkend="lpreson"><citetitle>lpreson</citetitle></link>, 
+      <link linkend="lpanal"><citetitle>LPANAL</citetitle></link> 
+    </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,241 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="loris">
+<title>Opcodes Loris</title>
+<note>
+	<para>Ces opcodes sont un composant facultatif de Csound5. Pour savoir s'ils sont installés utilisez la
+    commande 'csound -z' qui donne la liste des opcodes disponibles.</para>
+</note>
+<para>La famille des opcodes Loris encapsule :
+  <link linkend="lorisread"><citetitle>lorisread</citetitle></link> qui importe un ensemble de partiels à
+  largeur de bande adaptée depuis un fichier de données au format SDIF, en appliquant, au taux de contrôle,
+  des enveloppes de pondération de fréquence, d'amplitude et de largeur de bande, et qui stocke les partiels
+  modifiés en mémoire ; <link linkend="lorismorph"><citetitle>lorismorph</citetitle></link>, qui opère une
+  transformation (morphing) entre deux ensembles stockés de partiels à largeur de bande adaptée et stocke
+  un nouvel ensemble de partiels représentant le son transformé. La transformation est réalisée en
+  en interpolant linéairement les enveloppes des paramètres (fréquence, amplitude, et largeur de bande, ou
+  aspect bruiteux) des partiels à largeur de bande adaptée selon des fonctions de transformation de la
+  fréquence, de l'amplitude et de la largeur de bande, variant au taux de contrôle ;
+  <link linkend="lorisplay"><citetitle>lorisplay</citetitle></link>, qui restitue un ensemble de partiels
+  à largeur de bande adaptée en utilisant la méthode de Synthèse Additive à Largeur de Bande Adaptée
+  implémentée dans le logiciel Loris, avec application d'enveloppes de pondération de fréquence,
+  d'amplitude, et de largeur de bande, variant au taux de contrôle.
+</para>
+
+<!--<para>Noter qu'une version de Loris avec une interface Python est fournie dans la distribution de CsoundAC,
+  si bien qu'il est possible de réaliser l'analyse et la synthèse avec Loris dans Csound 5.</para>-->
+
+<para>Pour plus d'information sur la transformation du son et sa manipulation avec Loris et le Modèle
+  Additif à Largeur de Bande Adaptée Réassignée, visiter le site web de Loris à
+  <ulink url="http://www.cerlsoundgroup.org/Loris">www.cerlsoundgroup.org/Loris</ulink>.</para>
+
+<bridgehead>Exemples</bridgehead>
+
+<example>
+  <title>Jouer les partiels sans modification</title>
+<programlisting>
+<emphasis role="comment">; 
+; Joue les partiels dans clarinet.sdif
+; de 0 à 3 sec avec un temps de transition de 1 ms 
+; et sans modification de fréquence, d'amplitude, 
+; ou de largeur de bande.
+;</emphasis>
+<emphasis role="oblock">instr 1</emphasis>
+    ktime    <emphasis role="opc">linseg</emphasis>      0, p3, 3.0    <emphasis role="comment">; fonction linéaire du temps de 0 à 3 secondes</emphasis>
+             <emphasis role="opc">lorisread</emphasis>   ktime, "clarinet.sdif", 1, 1, 1, 1, .001
+    asig     <emphasis role="opc">lorisplay</emphasis>   1, 1, 1, 1
+             <emphasis role="opc">out</emphasis>         asig
+<emphasis role="oblock">endin</emphasis></programlisting>
+</example>
+
+<example>
+  <title>Ajouter une intonation et un vibrato</title>
+<programlisting>
+<emphasis role="comment">; Joue les partiels dans clarinet.sdif 
+; de 0 à 3 sec avec un temps de transition de 1 ms
+; ajout d'une intonation et d'un vibrato, accroissement 
+; du "souffle" (aspect bruiteux) et de l'amplitude
+; générale, et ajout d'un filtre passe-haut.
+;</emphasis>
+<emphasis role="oblock">instr 2</emphasis>
+    ktime    <emphasis role="opc">linseg</emphasis>      0, p3, 3.0    <emphasis role="comment">; fonction linéaire du temps de 0 à 3 secondes</emphasis>
+
+    <emphasis role="comment">; calcule le rapport de fréquence pour l'intonation</emphasis>
+    <emphasis role="comment">; (la hauteur originale était sol#3)</emphasis>
+    ifscale  <emphasis role="op">=</emphasis>           <emphasis role="opc">cpspch</emphasis>(p4)<emphasis role="op">/</emphasis><emphasis role="opc">cpspch</emphasis>(8.08)
+
+    <emphasis role="comment">; faire une enveloppe de vibrato</emphasis>
+    kvenv    <emphasis role="opc">linseg</emphasis>      0, p3/6, 0, p3/6, .02, p3/3, .02, p3/6, 0, p3/6, 0
+    kvib     <emphasis role="opc">oscil</emphasis>       kvenv, 4, 1   <emphasis role="comment">; table 1, sinusoid</emphasis>
+
+    kbwenv   <emphasis role="opc">linseg</emphasis>      1, p3<emphasis role="op">/</emphasis>6, 1, p3<emphasis role="op">/</emphasis>6, 2, 2<emphasis role="op">*</emphasis>p3<emphasis role="op">/</emphasis>3, 2
+             <emphasis role="opc">lorisread</emphasis>   ktime, "clarinet.sdif", 1, 1, 1, 1, .001
+    a1       <emphasis role="opc">lorisplay</emphasis>   1, ifscale<emphasis role="op">+</emphasis>kvib, 2, kbwenv  
+    a2       <emphasis role="opc">atone</emphasis>       a1, 1000      <emphasis role="comment">; filtre passe-haut, coupure à 1000 Hz</emphasis>
+             <emphasis role="opc">out</emphasis>         a2
+<emphasis role="oblock">endin</emphasis></programlisting>
+</example>
+
+<para>L'instrument du premier exemple synthétise un son de clarinette en utilisant du début à la fin les
+  partiels dérivés de l'analyse à bande adaptée réassignée d'un son de clarinette de trois secondes, stockés
+  dans le fichier <filename>clarinet.sdif</filename>. L'instrument de l'exemple 2 ajoute une intonation et
+  un vibrato au son de clarinette synthétisé par l'instrument 1, renforce son amplitude et son aspect
+  bruiteux, et applique un filtre passe-haut au résultat. La partition suivante peut être utilisée pour
+  tester les deux instruments décrits ci-dessus.</para>
+
+<programlisting>
+    <emphasis role="comment">; créer une sinus dans la table 1</emphasis>
+    <emphasis role="stamnt">f</emphasis> 1 0 4096 10 1
+
+    <emphasis role="comment">; jouer instr 1</emphasis>
+    <emphasis role="comment">;    début   dur</emphasis>
+    <emphasis role="stamnt">i</emphasis> 1    0      3
+    <emphasis role="stamnt">i</emphasis> 1    +      1
+    <emphasis role="stamnt">i</emphasis> 1    +      6
+    <emphasis role="stamnt">s</emphasis>
+	
+    <emphasis role="comment">; jouer instr 2</emphasis>
+    <emphasis role="comment">;    début   dur   hauteur</emphasis>
+    <emphasis role="stamnt">i</emphasis> 2     1     3    8.08
+    <emphasis role="stamnt">i</emphasis> 2     3.5   1    8.04
+    <emphasis role="stamnt">i</emphasis> 2     4     6    8.00
+    <emphasis role="stamnt">i</emphasis> 2     4     6    8.07
+
+    <emphasis role="stamnt">e</emphasis></programlisting>
+
+<example>
+  <title>Transformation de partiels</title>
+<programlisting>
+<emphasis role="comment">; Transforme les partiels de clarinet.sdif vers
+; les partiels de flute.sdif sur la durée de la
+; partie tenue des deux notes (de 0,2 à 2,0 secondes
+; pour la clarinette, et de 0,5 à 2,1 secondes
+; pour la flûte). Les portions d'attaque et de
+; chute dans le son transformé sont spécifiées
+; par les paramètres p4 et p5, respectivement.
+; Le temps de transformation est le temps entre
+; l'attaque et la chute. Les partiels de la
+; clarinette sont transposés pour s'accorder à
+; la hauteur de la note de la flûte (ré au-dessus
+; du do médium).
+;</emphasis>
+<emphasis role="oblock">instr</emphasis> 1
+    ionset   <emphasis role="op">=</emphasis>           p4
+    idecay   <emphasis role="op">=</emphasis>           p5
+    itmorph  <emphasis role="op">=</emphasis>           p3 <emphasis role="op">-</emphasis> (ionset <emphasis role="op">+</emphasis> idecay)
+    ipshift  <emphasis role="op">=</emphasis>           <emphasis role="opc">cpspch</emphasis>(8.02)<emphasis role="op">/</emphasis><emphasis role="opc">cpspch</emphasis>(8.08)
+    
+      <emphasis role="comment">; fonction temporelle de la clarinette, transformation de 0,2 à 2,0 secondes</emphasis>
+    ktcl     <emphasis role="opc">linseg</emphasis>      0, ionset, .2, itmorph, 2.0, idecay, 2.1
+      <emphasis role="comment">; fonction temporelle de la flûte, transformation de 0,5 à 2,1 secondes</emphasis>
+    ktfl     <emphasis role="opc">linseg</emphasis>      0, ionset, .5, itmorph, 2.1, idecay, 2.3
+    kmurph   <emphasis role="opc">linseg</emphasis>      0, ionset, 0, itmorph, 1, idecay, 1
+             <emphasis role="opc">lorisread</emphasis>   ktcl, "clarinet.sdif", 1, ipshift, 2, 1, .001
+             <emphasis role="opc">lorisread</emphasis>   ktfl, "flute.sdif", 2, 1, 1, 1, .001
+             <emphasis role="opc">lorismorph</emphasis>  1, 2, 3, kmurph, kmurph, kmurph
+    asig     <emphasis role="opc">lorisplay</emphasis>   3, 1, 1, 1
+             <emphasis role="opc">out</emphasis>         asig
+<emphasis role="oblock">endin</emphasis></programlisting>
+</example>
+
+<example>
+  <title>Plus de transformation</title>
+<programlisting>
+<emphasis role="comment">; Transforme les partiels de trombone.sdif vers les
+; partiels de meow.sdif. Les dates de début et de fin
+; de la transformation sont spécifiées par les
+; paramètres p4 et p5, respectivement. La transformation
+; a lieu sur la deuxième des quatre notes dans chaque
+; son, de 0,75 à 1,2 secondes pour le trombone flatterzung,
+; et de 1,7 à 2,2 secondes pour le miaulement de chat.
+; Des fonctions de transformation différentes sont
+; utilisées pour les enveloppes de fréquence et
+; d'amplitude, afin que l'amplitude des partiels
+; ait une transition plus rapide du trombone au
+; chat que les fréquences. (Les enveloppes de largeur
+; de bande utilisent la même fonction de transformation
+; que les amplitudes).
+;</emphasis>
+<emphasis role="oblock">instr</emphasis> 2
+    ionset   <emphasis role="op">=</emphasis>           p4
+    imorph   <emphasis role="op">=</emphasis>           p5 <emphasis role="op">-</emphasis> p4
+    irelease <emphasis role="op">=</emphasis>           p3 <emphasis role="op">-</emphasis> p5
+        
+    kttbn    <emphasis role="opc">linseg</emphasis>      0, ionset, .75, imorph, 1.2, irelease, 2.4
+    ktmeow   <emphasis role="opc">linseg</emphasis>      0, ionset, 1.7, imorph, 2.2, irelease, 3.4
+    
+    kmfreq   <emphasis role="opc">linseg</emphasis>      0, ionset, 0, .75*imorph, .25, .25*imorph, 1, irelease, 1
+    kmamp    <emphasis role="opc">linseg</emphasis>      0, ionset, 0, .75*imorph, .9, .25*imorph, 1, irelease, 1
+    
+             <emphasis role="opc">lorisread</emphasis>   kttbn, "trombone.sdif", 1, 1, 1, 1, .001
+             <emphasis role="opc">lorisread</emphasis>   ktmeow, "meow.sdif", 2, 1, 1, 1, .001
+             <emphasis role="opc">lorismorph</emphasis>  1, 2, 3, kmfreq, kmamp, kmamp
+    asig     <emphasis role="opc">lorisplay</emphasis>   3, 1, 1, 1
+             <emphasis role="opc">out</emphasis>         asig
+<emphasis role="oblock">endin</emphasis></programlisting>
+</example>
+
+<para>L'instrument dans le premier exemple effectue une transformation du son entre une note de
+  clarinette et une note de flûte en utilisant les partiels à bande adaptée réassignée stockés dans
+  <filename>clarinet.sdif</filename> et dans <filename>flute.sdif</filename>.</para>
+
+<para>La transformation est effectuée sur les portions tenues des notes, 0,2 à 2,0 secondes dans le cas
+  de la note de clarinette et 0,5 à 2,1 secondes dans le cas de la note de flûte. Les fonctions d'index
+  temporel, ktcl et ktfl, alignent les portions d'attaque et de chute des notes avec les temps d'attaque
+  et de chute du son transformé, spécifiées respectivement par les paramètres p4 et p5. L'attaque
+  du son transformé est entièrement composée des données de partiel de la clarinette, et la chute est
+  entièrement composée de données de la flûte. Les partiels de la clarinette sont transposés pour
+  s'accorder à la hauteur de la note de flûte (ré au-dessus du do médium).</para>
+
+<para>L'instrument dans le second exemple effectue une transformation du son entre une note de trombone
+  flatterzung et un miaulement de chat en utilisant les partiels à bande adaptée réassignée stockés dans
+  <filename>trombone.sdif</filename> et <filename>meow.sdif</filename>. Les données dans ces fichiers SDIF
+  ont été réparties par canaux et séparées pour établir une correspondance entre partiels.</para>
+
+<para>Les deux ensembles de partiels sont importés et stockés dans des positions mémoire étiquetées 1 et 2,
+  respectivement. Les deux sons originaux ont quatre notes, et la transformation est effectuée sur la
+  seconde note de chaque son (de 0,75 à 1,2 secondes pour le trombone flatterzung, et de 1,7 à 2,2 secondes
+  pour le miaulement de chat). Les fonctions d'index temporel, kttbn et ktmeow, alignent ces
+  segments des ensembles de partiels source et cible avec les paramètres spécifiés pour la durée du début,
+  de la fin, et totale de la transformation. Deux fonctions de transformation différentes sont utilisées,
+  afin que les amplitudes des partiels et les coefficients de largeur de bande se transforment rapidement
+  des valeurs du trombone aux valeurs du miaulement de chat, tandis que les fréquences opèrent une
+  transition plus graduelle. Les partiels transformés sont stockés dans la position mémoire étiquetée 3 et
+  restitués par l'instruction <emphasis>lorisplay</emphasis> qui suit. Ils auraient pu aussi être utilisés
+  comme source pour une autre transformation dans un instrument de transformation à trois étapes. La
+  partition suivante peut être utilisée pour tester les deux instruments décrits ci-dessus.</para>
+
+<programlisting>
+    <emphasis role="comment">; jouer instr 1</emphasis>
+    <emphasis role="comment">;    début   dur  attaque  chute</emphasis>
+    <emphasis role="stamnt">i</emphasis> 1    0      3     .25     .15
+    <emphasis role="stamnt">i</emphasis> 1    +      1     .10     .10
+    <emphasis role="stamnt">i</emphasis> 1    +      6    1.      1.
+    <emphasis role="stamnt">s</emphasis>
+
+    <emphasis role="comment">; jouer instr 2</emphasis>
+    <emphasis role="comment">;    début   dur  début_morph   fin_morph</emphasis>
+    <emphasis role="stamnt">i</emphasis> 2    0      4     .75           2.75
+
+    <emphasis role="stamnt">e</emphasis></programlisting>
+
+
+<bridgehead>Crédits</bridgehead>
+
+<para>Cette implémentation des générateurs unitaires Loris a été écrite par Kelly Fitz
+  (<ulink url="mailto:loris@cerlsoundgroup.org">loris@cerlsoundgroup.org</ulink>).</para>
+  
+<para>Elle est construite d'après une implémentation prototype du générateur unitaire
+  <emphasis>lorisplay</emphasis> écrite par Corbin Champion, et basée sur la méthode de Synthèse Additive
+  à Largeur de Bande Adaptée et sur les algorithmes de transformation du son implémentés dans la bibliothèque
+  Loris pour la modélisation et la manipulation du son. Les opcodes ont été ensuite adaptés en greffon
+  pour Csound 5 par Michael Gogins.</para>
+
+</section>

@@ -1,0 +1,68 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.1
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="PrefaceToot6">
+  <title>Toot 6</title>
+
+  <para>
+    Le premier caractère d'une
+    <link linkend="ScoreStatements"><citetitle>instruction de partition</citetitle></link> est un
+    <emphasis>opcode</emphasis>, déterminant une demande d'action ; les données restantes sont
+    constituées de champs de paramètre numérique (p-champs) à utiliser pour cette action.
+    Jusqu'à présent nous avons eu affaire à deux <emphasis>opcodes</emphasis> différents dans notre
+    partition :
+    <link linkend="f"><citetitle>f</citetitle></link> et
+    <link linkend="i"><citetitle>i</citetitle></link>. Les instructions i, ou instructions de note,
+    invoquent l'instrument p1 au temps p2 et le désactive après p3 secondes ; tous les p-champs
+    restant sont passés à l'instrument.
+  </para>
+  <para>
+    D'autre part, les <link linkend="f"><citetitle>instructions f</citetitle></link>, ou les lignes
+    avec un opcode f, invoquent des sous-programmes de dessin de fonction appelés
+    <link linkend="ScoreGenRef"><citetitle>GENS</citetitle></link>. Il y a plusieurs
+    <link linkend="ScoreGenRef"><citetitle>GENS</citetitle></link> dans Csound qui remplissent
+    des tables de différentes manières. Par exemple,
+    <link linkend="GEN01"><citetitle>GEN01</citetitle></link> transfère des données en provenance
+    d'un fichier son ; <link linkend="GEN07"><citetitle>GEN07</citetitle></link> vous permet de
+    construire des fonctions à partir de segments de lignes droites ; et
+    <link linkend="GEN10"><citetitle>GEN10</citetitle></link>, que nous avons utilisé jusqu'à présent
+    dans nos partitions, génère des formes d'ondes composites faites d'une somme pondérée de simples
+    sinusoïdes. Nous avons appelé la fonction "f1", invoquée au temps 0, définie pour contenir 512
+    points, et demandé à <link linkend="GEN10"><citetitle>GEN10</citetitle></link> de remplir cette
+    table avec une sinusoïde unique dont l'amplitude vaut 1. On peut en fait utiliser
+    <link linkend="GEN10"><citetitle>GEN10</citetitle></link> pour approcher une variété d'autres
+    formes d'onde, comme dans les lignes suivantes :
+  </para>
+  <programlisting>
+  <emphasis role="opc">f</emphasis> 1 0 2048 10 1                                         ; Sinus
+  <emphasis role="opc">f</emphasis> 2 0 2048 10 1 0.5 0.3 0.25 0.2 0.167 0.14 0.125 .111  ; Dent de scie
+  <emphasis role="opc">f</emphasis> 3 0 2048 10 1 0   0.3 0    0.2 0     0.14 0     .111  ; Carrée
+  <emphasis role="opc">f</emphasis> 4 0 2048 10 1 1   1   1    0.7 0.5   0.3  0.1         ; Pulsation</programlisting>
+
+  <para>Pour l'opcode f, les quatre premiers p-champs sont interprétés comme suit :
+    <itemizedlist>
+      <listitem><simpara>p1 - numéro de la table - Dans l'orchestre, vous faites référence à cette table par son numéro.</simpara></listitem>
+      <listitem><simpara>p2 - date de création - La date à laquelle la fonction est générée.</simpara></listitem>
+      <listitem><simpara>p3 - taille de la table - Nombre de points dans la table - doit être une puissance de 2, ou cette valeur plus 1.</simpara></listitem>
+      <listitem><simpara>p4 - sous-programme de génération - La routine GEN à employer.</simpara></listitem>
+      <listitem><simpara>p5 - signification déterminée par la routine GEN particulière.</simpara></listitem>
+    </itemizedlist>
+  </para>
+
+  <para>
+    Dans l'instrument et la partition ci-dessous, nous avons ajouté trois fonctions à la
+    partition et modifié l'orchestre afin que l'instrument puisse les appeler via
+    <emphasis>p11</emphasis>. Le fichier csd est
+    <ulink url="examples/toot6.csd"><citetitle>toot6.csd</citetitle></ulink>.
+  </para>
+
+  <para>
+    <xi:include href="examples-xml/toot6.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </para>
+</section>

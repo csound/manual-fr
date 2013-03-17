@@ -1,0 +1,120 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="lorismorph">
+  <indexterm id="IndexLorisMorph"><primary>lorismorph</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Loris</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lorismorph</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>lorismorph</refname>
+    <refpurpose>réalise un morphing de deux ensembles stockés de partiels à
+    largeur de bande améliorée et stocke un nouvel ensemble de partiels
+    représentant le son transformé. Le morphing est réalisé par interpolation
+    linéaire des enveloppes des paramètres (fréquence, amplitude et largeur de
+    bande ou caractère bruiteux) des partiels à largeur de bande améliorée selon
+    des fonctions de transformation de fréquence, d'amplitude et de largeur de
+    bande au taux de contrôle.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>lorismorph</command> isrcidx, itgtidx, istoreidx, kfreqmorphenv, kampmorphenv, kbwmorphenv</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Description</title> 
+    <para>
+      <emphasis>lorismorph</emphasis> réalise le morphing de deux ensembles
+      stockés de partiels à largeur de bande améliorée et stocke un nouvel
+      ensemble de partiels représentant le son transformé. Le morphing est
+      réalisé par interpolation linéaire des enveloppes des paramètres (fréquence,
+      amplitude et largeur de bande ou caractère bruiteux) des partiels à
+      largeur de bande améliorée selon des fonctions de transformation de fréquence,
+      d'amplitude et de largeur de bande au taux de contrôle.
+    </para>  
+    </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>istoreidx, ireadidx, isrcidx, itgtidx</emphasis> sont des étiquettes
+      qui identifient un ensemble stocké de partiels à largeur de bande améliorée.
+      <emphasis>lorisread</emphasis> importe les partiels depuis un fichier
+      SDIF et les stocke avec l'étiquette entière <emphasis>istoreidx</emphasis>.
+      <emphasis>lorismorph</emphasis> réalise un morphing des ensembles de partiels
+      étiquetés <emphasis>isrcidx</emphasis> et <emphasis>itgtidx</emphasis>, et
+      stocke les partiels résultants avec l'étiquette entière
+      <emphasis>istoreidx</emphasis>. <emphasis>lorisplay</emphasis> restitue
+      les partiels stockés avec l'étiquette <emphasis>ireadidx</emphasis>. Les
+      étiquettes ne sont utilisées qu'à l'initialisation de la note, et l'on
+      peut les réutiliser sans coût supplémentaire ou bénéfice en efficacité,
+      et sans introduire d'interaction entre les instruments ou leurs instances.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>lorismorph</emphasis> génère un ensemble de partiels à largeur
+      de bande améliorée en effectuant le morphing de deux ensembles de partiels
+      stockés, les partiels sources et cibles, qui peuvent avoir été importés au
+      moyen de <emphasis>lorisread</emphasis>, ou générés par un autre générateur
+      unitaire, y compris une autre instance de <emphasis>lorismorph</emphasis>.
+      Le morphing est réalisé en interpolant les paramètres (étiquetés) des partiels
+      correspondants dans les deux sources sonores. Le morphing sonore est décrit
+      par trois enveloppes de morphing au taux de contrôle.
+      <emphasis>kfreqmorphenv</emphasis> décrit l'interpolation des valeurs de
+      fréquence des partiels dans les deux sources sonores. Lorsque
+      <emphasis>kfreqmorphenv</emphasis> vaut 0, les fréquences des partiels sont
+      obtenues à partir des partiels stockés à <emphasis>isrcidx</emphasis>.
+      Lorsque <emphasis>kfreqmorphenv</emphasis> vaut 1, les fréquences des
+      partiels sont obtenues à partir des partiels à <emphasis>itgtidx</emphasis>.
+      Lorsque <emphasis>kfreqmorphenv</emphasis> est compris entre 0 et 1, les
+      fréquences des partiels sont interpolées entre les partiels sources et
+      cibles correspondants. Les interpolations de l'amplitude et de la largeur
+      de bande (caractère bruiteux) des partiels sont décrites de manière
+      similaire par <emphasis>kampmorphenv</emphasis> et par
+      <emphasis>kbwmorphenv</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode lorismorph. Il utilise le fichier
+      <ulink url="examples/lorismorph.csd"><citetitle>lorismorph.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode lorismorph.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/lorismorph.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      Cette implémentation des générateurs unitaires Loris a été écrite par
+      Kelly Fitz (<ulink
+      url="mailto:loris@cerlsoundgroup.org">loris@cerlsoundgroup.org</ulink>).
+      Elle est modèlisée sur un prototype d'implémentation du générateur
+      unitaire <emphasis>lorisplay</emphasis> écrit par Corbin Champion, et
+      basé sur la méthode de synthèse additive à largeur de bande améliorée et
+      sur les algorithmes de métamorphose sonore implémentés dans la bibliothèque
+      Loris pour la modélisation et la manipulation du son. Les opcodes ont été
+      ensuite adaptés sous la forme d'un greffon de Csound 5 par Michael Gogins.
+    </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,61 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="opk">
+<indexterm id="IndexK"><primary>a</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Sample Level Operators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>k</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>k</refname>
+    <refpurpose>
+      Convertit un paramètre de taux-i en une valeur de taux-k.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Convertit une valeur de taux-i en une valeur de taux-k, par exemple pour une utilisation avec
+      <link linkend="rnd"><citetitle>rnd()</citetitle></link> et
+      <link linkend="birnd"><citetitle>birnd()</citetitle></link> pour générer des nombres aléatoires
+      au taux-k.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>k</command>(x) (arguments de taux-i seulement)</synopsis>
+
+    <para>
+      où l'argument entre parenthèses peut être une expression. Les convertisseurs de valeur
+      effectuent une transformation arithmétique d'unités d'une sorte en unités d'une autre sorte.
+      Le résultat peut devenir ensuite un terme dans une autre expression.
+    </para>
+  </refsect1>
+
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="opi"><citetitle>i</citetitle></link>
+      <link linkend="opa"><citetitle>a</citetitle></link>
+    </para>
+    <para>Plus d'information sur cet opcode : <ulink url="http://www.csounds.com/journal/issue10/CsoundRates.html"><citetitle>http://www.csounds.com/journal/issue10/CsoundRates.html</citetitle></ulink>,
+    écrit par Andrés Cabrera.</para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : Istvan Varga</para>
+    <para>Nouveau dans la version 5.00 de Csound</para>
+  </refsect1>
+</refentry>

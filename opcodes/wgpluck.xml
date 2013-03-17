@@ -1,0 +1,127 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.14
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="wgpluck">
+<indexterm id="IndexWgpluck"><primary>wgpluck</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Waveguide Physical Modeling</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>wgpluck</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>wgpluck</refname>
+    <refpurpose>
+      Une simulation haute fidélité de corde pincée.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Une simulation haute fidélité de corde pincée, utilisant des lignes à retard
+      avec interpolation.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>wgpluck</command> icps, iamp, kpick, iplk, idamp, ifilt, axcite</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>icps</emphasis> -- fréquence de la corde pincée
+    </para>
+
+    <para>
+      <emphasis>iamp</emphasis> -- amplitude de la corde pincée
+    </para>
+
+    <para>
+      <emphasis>iplk</emphasis> -- point d'excitation le long de la corde, dans
+      l'intervalle compris entre 0 et 1. 0 = pas d'excitation.
+    </para>
+
+    <para>
+      <emphasis>idamp</emphasis> -- amortissement de la note. Il contrôle l'extinction
+      globale de la corde. Plus la valeur de <emphasis>idamp</emphasis> est importante,
+      plus la décroissance est rapide. Avec une valeur négative, il y aura un accroissement
+      progressif de la sortie.
+    </para>
+
+    <para>
+      <emphasis>ifilt</emphasis> -- contrôle l'atténuation du filtre sur le chevalet.
+      Les valeurs élevées provoquent une décroissance plus rapide des harmoniques
+      supérieurs.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kpick</emphasis> -- Fraction de la longueur de la corde où sera lue
+      la sortie.
+    </para>
+
+    <para>
+      <emphasis>axcite</emphasis> -- un signal d'excitation de la corde.
+    </para>
+
+    <para>
+      Une corde de fréquence <emphasis>icps</emphasis> est pincée avec l'amplitude
+      <emphasis>iamp</emphasis> au point <emphasis>iplk</emphasis>. L'extinction
+      de la corde virtuelle est contrôlée par <emphasis>idamp</emphasis> et
+      <emphasis>ifilt</emphasis> qui simule le chevalet. L'oscillation est lue au
+      point <emphasis>kpick</emphasis>, et excitée par le signal
+      <emphasis>axcite</emphasis>. 
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      L'exemple suivant produit une note moyennement longue avec une décroissance
+      rapide des partiels supérieurs. Il utilise le fichier
+      <ulink url="examples/wgpluck.csd"><citetitle>wgpluck.csd</citetitle></ulink>. 
+
+      <example>
+        <title>Un exemple de l'opcode wgpluck.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/wgpluck.csd.xml"
+          xmlns:xi="http://www.w3.org/2001/XInclude"/> 
+      </example>
+    </para>
+
+   <para>
+     L'exemple suivant produit une note plus courte et plus brillante. Il utilise le fichier
+     file <ulink url="examples/wgpluck_brighter.csd"><citetitle>wgpluck_brighter.csd</citetitle></ulink>. 
+
+      <example>
+        <title>Un exemple de l'opcode wgpluck avec une note plus courte et plus brillante.</title>
+          <xi:include href="examples-xml/wgpluck_brighter.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Michael A. Casey</member>
+        <member>M.I.T.</member>
+        <member>Cambridge, Mass.</member>
+        <member>1997</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la Version 3.47</para>
+  </refsect1>
+
+</refentry>

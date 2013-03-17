@@ -1,0 +1,37 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="SigmodSpeciali">
+  <title>Filtres Spécialisés</title>
+  <simplesect>
+    <title>Filtres passe-haut</title>
+    <itemizedlist>
+      <listitem><para><link linkend="dcblock"><citetitle>dcblock</citetitle></link></para></listitem>
+      <listitem><para><link linkend="dcblock2"><citetitle>dcblock2</citetitle></link></para></listitem>
+    </itemizedlist>
+  </simplesect>
+  <simplesect>
+    <title>Egaliseurs paramétriques</title>
+    <itemizedlist>
+      <listitem><para><link linkend="pareq"><citetitle>pareq</citetitle></link></para></listitem>
+      <listitem><para><link linkend="rbjeq"><citetitle>rbjeq</citetitle></link></para></listitem>
+      <listitem><para><link linkend="eqfil"><citetitle>eqfil</citetitle></link></para></listitem>
+    </itemizedlist>
+  </simplesect>
+  <simplesect>
+    <title>Autres filtres</title>
+    <itemizedlist>
+      <listitem><para><link linkend="nlfilt"><citetitle>nlfilt</citetitle></link></para></listitem>
+      <listitem><para><link linkend="filter2"><citetitle>filter2</citetitle></link></para></listitem>
+      <listitem><para><link linkend="fofilter"><citetitle>fofilter</citetitle></link></para></listitem>
+      <listitem><para><link linkend="hilbert"><citetitle>hilbert</citetitle></link></para></listitem>
+      <listitem><para><link linkend="zfilter2"><citetitle>zfilter2</citetitle></link></para></listitem>
+    </itemizedlist>
+  </simplesect>
+</section>

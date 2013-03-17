@@ -1,0 +1,89 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="centroid">
+<indexterm id="IndexCentroid"><primary>centroid</primary></indexterm>
+  <refentryinfo><title></title></refentryinfo>
+  <refmeta>
+    <refentrytitle>centroid</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>centroid</refname>
+    <refpurpose>
+      Calcule le barycentre spectral d'un signal.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Calcul du barycentre spectral d'un signal audio, déclenché par un signal
+      d'excitation.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kcent <command>centroid</command> asig, ktrig, ifftsize</synopsis>
+  </refsect1>
+
+  <refsect1>
+     <title>Initialisation</title>
+     <emphasis>ifftsize</emphasis>  -- taille de la TFR. Les valeurs qui ne sont
+     pas des puissances de deux sont converties à la première puissance de deux
+     qui n'est pas inférieure à <emphasis>ifftsize</emphasis>. 
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kcent</emphasis> -- le barycentre spectral en Hz.
+    </para>
+    <para>
+      <emphasis>asig</emphasis> -- un signal audio en entrée.
+    </para>
+      <para>
+      <emphasis>ktrig</emphasis> -- 1 pour calculer un nouveau barycentre, 0 pour
+      passer outre et retourner la valeur précédente.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode centroid. Il utilise le fichier
+      <ulink url="examples/centroid.csd"><citetitle>centroid.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode centroid.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/centroid.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="pvscent"><citetitle>pvscent</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : V Lazzarini;</member>
+        <member>Août 2012</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

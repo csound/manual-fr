@@ -1,0 +1,159 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvsbufread">
+<indexterm id="Indexpvsbufread"><primary>pvsbufread</primary></indexterm>
+
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsbufread</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>pvsbufread</refname>
+    <refpurpose>
+      Lit un tampon circulaire de signaux-f (signaux PV en flot).
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode lit à partir d'un tampon circulaire de longueur
+      <emphasis>ilen</emphasis> (secondes), prenant un identificateur pour le
+      tampon et un pointeur temporel qui conserve la position de lecture
+      courante (aussi en secondes). Il est utilisé en conjonction avec un
+      opcode <emphasis>pvsbuffer</emphasis>. La lecture est circulaire avec
+      repliement à la fin du tampon.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>fsig <command>pvsbufread</command>  ktime, khandle[, ilo, ihi, iclear] </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ilo, ihi</emphasis> -- fixe les fréquences la plus basse et la
+      plus haute à lire depuis le tampon (par défaut 0 et fréquence de Nyquist).
+    </para>
+    <para>
+      <emphasis>iclear</emphasis> -- fixé à 1 pour effacer le fsig de sortie
+      avant chaque écriture (1 par défaut), fixé à 0 indique à l'opcode de ne
+      pas effacer le fsig de sortie. Ceci est pertinent lorsque l'on écrit
+      dans des sous-ensembles d'une trame de fsig en utilisant
+      <emphasis>ilo</emphasis> et <emphasis>ihi</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>fsig</emphasis> -- flot pv en sortie.
+    </para>
+   <para>
+      <emphasis>ktime</emphasis> -- position temporelle du pointeur de lecture
+      (en secondes).
+    </para>
+    <para>
+      <emphasis>khandle</emphasis> -- identifiant du tampon à lire. Lorsque l'on
+      utilise des identifiants de taux-k, il est important d'initialiser la variable
+      de taux-k avec un identifiant existant. Lorsque l'on change de tampon, les
+      différents tampons de fsig doivent être compatibles (même format de fsig).
+    </para>
+    <para>
+      Avec cet opcode et <link linkend="pvsbuffer"><citetitle>pvsbuffer</citetitle></link>,
+      il est possible entre autres de :
+      <itemizedlist>
+        <listitem><simpara>étirer/compresser dans le temps un flot fsig, en le
+        lisant à différentes vitesses</simpara></listitem>
+        <listitem><simpara>retarder un fsig ou certaines de ses parties.</simpara></listitem>
+        <listitem><simpara>"brasser" deux ou plusieurs fsigs en alternant les
+        tampons, car les identifiants de lecture sont de taux-k. Noter que
+        lorsque l'on utilise des identifiants de taux-k, il est important
+        d'initialiser la variable de taux-k avec un identifiant donné (afin que
+        l'initialisation du fsig puisse avoir lieu) et on ne peut changer
+        d'identifiant qu'entre des tampons de fsig compatibles (avec les mêmes
+        taille de TFR et de recouvrement).</simpara></listitem>
+      </itemizedlist>
+    </para>
+    <note>
+      <para>
+        Il est important que la valeur de l'identifant passé à
+        <emphasis>pvsbufread</emphasis> soit celle d'un identifiant valide créé par
+        <link linkend="pvsbuffer"><citetitle>pvsbuffer</citetitle></link>. Avec des
+        identifiants non valides, Csound plantera.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode pvsbufread. Il effectue un "brassage" en
+      alternant entre deux tampons.
+      <example>
+        <title>Exemple de l'opcode pvsbufread</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+
+        <programlisting>
+fsig1       <emphasis role="opc">pvsanal</emphasis>     asig1, 1024, 256, 1024, 1
+fsig2       <emphasis role="opc">pvsanal</emphasis>     asig2, 1024, 256, 1024, 1
+
+
+ibuf1, kt1  <emphasis role="opc">pvsbuffer</emphasis>   fsig1, 10   <emphasis role="comment">; 10-sec buf with fsig1</emphasis>
+ibuf2, kt2  <emphasis role="opc">pvsbuffer</emphasis>   fsig2, 7    <emphasis role="comment">; 7-sec buf with fsig2</emphasis>
+
+khan        <emphasis role="opc">init</emphasis>        ibuf1       <emphasis role="comment">; initialise handle to buf1</emphasis>
+
+<emphasis role="opc">if</emphasis>  ktrig  <emphasis role="op">&gt;</emphasis> 0 <emphasis role="opc">then</emphasis>                 <emphasis role="comment">; switch buffers according to trigger</emphasis>
+khan <emphasis role="op">=</emphasis> ibuf2
+<emphasis role="opc">else</emphasis>
+khan <emphasis role="op">=</emphasis> ibuf1
+<emphasis role="opc">endif</emphasis>
+
+fsb         <emphasis role="opc">pvsbufread</emphasis>  kt1, khan   <emphasis role="comment">; read buffer</emphasis></programlisting>
+      </example>
+    </para>
+    <para>
+      Voici un exemple de l'opcode pvsbufread. Il utilise le fichier
+      <ulink url="examples/pvsbufread.csd"><citetitle>pvsbufread.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode pvsbufread.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pvsbufread.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="pvsanal"><citetitle>pvsanal</citetitle></link>,
+      <link linkend="pvsynth"><citetitle>pvsynth</citetitle></link>,
+      <link linkend="pvsbuffer"><citetitle>pvsbuffer</citetitle></link>,
+      <link linkend="pvsadsyn"><citetitle>pvsadsyn</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Juillet 2007</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

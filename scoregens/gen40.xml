@@ -1,0 +1,123 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.5
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="GEN40">
+      <indexterm id="IndexGEN40"><primary>GEN40</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN40</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>GEN40</refname>
+    <refpurpose>
+      Génère une distribution aléatoire à partir d'un histogramme.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère une distribution aléatoire continue en partant de la forme d'un histogramme défini par
+      l'utilisateur.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>f</command> # date taille 40 tblforme</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      La forme de l'histogramme doit être stockée dans une table préalablement définie, en fait,
+      <emphasis>tblforme</emphasis> doit contenir le numéro de cette table.
+    </para>
+
+    <para>
+      La forme de l'histogramme peut être générée avec n'importe quelle GEN routine. Comme il n'y a pas
+      d'interpolation lorque <link linkend="GEN40">GEN40</link> opère la traduction, il est suggéré de
+      donner à la table contenant la forme de l'histogramme une taille raisonnablement grande, afin
+      d'obtenir une meilleure précision (cependant, cette dernière table peut être détruite après le
+      traitement pour récupérer de la mémoire).
+    </para>
+
+    <para>
+      Ce sous-programme est prévu pour être utilisé avec l'opcode <emphasis>cuserrnd</emphasis> (voir
+      <link linkend="cuserrnd"><citetitle>cuserrnd</citetitle></link> pour plus d'information).
+    </para>
+  </refsect1>
+
+    <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode GEN40. Il utilise le fichier
+      <ulink url="examples/gen40.csd"><citetitle>gen40.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode GEN40.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/gen40.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>     
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
+ i   1 time     0.00067:    53.14918
+ i   1 time     0.20067:     0.00000
+ i   1 time     0.40067:     0.00000
+ i   1 time     0.60067:    96.80406
+ i   1 time     0.80067:    94.20729
+ i   1 time     1.00000:     0.00000
+ i   1 time     1.20067:    86.13032
+ i   1 time     1.40067:    31.37096
+ i   1 time     1.60067:    70.35889
+ i   1 time     1.80000:     0.00000
+ i   1 time     2.00000:    49.18914
+
+WARNING: Seeding from current time 2006647442
+
+ i   2 time     3.00067:    21.45002
+ i   2 time     3.20067:    44.32333
+ i   2 time     3.40067:    46.05420
+ i   2 time     3.60000:     0.00000
+ i   2 time     3.80067:    41.32175
+ i   2 time     4.00000:     0.00000
+ i   2 time     4.20000:    63.72019
+ i   2 time     4.40067:     0.00000
+ i   2 time     4.60067:     0.00000
+ i   2 time     4.80067:     0.00000
+ i   2 time     5.00000:    74.49330</screen>
+      
+      <textobject>
+        <phrase>Voici le diagramme de la forme d'onde de la routine GEN40 utilisée
+        dans l'exemple :</phrase>
+      </textobject>
+      
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen40.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 2 0 16384 40 1</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 2 0 16384 40 1</para>
+        </caption>
+      </mediaobject>
+
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+  </refsect1>
+</refentry>

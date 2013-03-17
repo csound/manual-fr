@@ -1,0 +1,99 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="fink">
+<indexterm id="IndexFink"><primary>fink</primary></indexterm>
+  <refentryinfo><title>Signal I/O:File I/O</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>fink</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>fink</refname>
+    <refpurpose>
+      Lit des signaux depuis un fichier au taux-k.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Lit des signaux depuis un fichier au taux-k.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>fink</command> ifilename, iskipframes, iformat, kin1 [, kin2] [, kin3] [,...]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifilename</emphasis> -- nom du fichier d'entrée (peut être une
+      chaîne de caractères ou un identificateur numérique généré par
+      <link linkend="fiopen"><citetitle>fiopen</citetitle></link>).
+    </para>
+
+    <para>
+      <emphasis>iskipframes</emphasis> -- nombre de trames à ignorer au début (chaque
+      trame contient un échantillon de chaque canal).
+    </para>
+
+    <para>
+      <emphasis>iformat</emphasis> -- un nombre spécifiant le format du fichier
+      d'entrée.  Si un en-tête est trouvé, cet argument est ignoré.
+      <itemizedlist>
+        <listitem>
+          <para>0 - flottants sur 32 bit sans en-têter</para>
+        </listitem>
+
+        <listitem>
+          <para>1 - entiers sur 16 bit sans en-tête</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>fink</emphasis> est semblable à
+      <link linkend="fin"><citetitle>fin</citetitle></link> mais il opère au taux-k.
+    </para>
+    <note>
+      <para>Prière de noter que comme cet opcode génére sa sortie en utilisant des
+      paramètres d'entrée (placés à droite de l'opcode), ces variables doivent avoir
+      été initialisées avant leur utilisation, sinon une erreur "utilisé avant
+      d'être défini" se produira. On peut utiliser l'opcode
+      <link linkend="init"><citetitle>init</citetitle></link> pour cela.</para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="fin"><citetitle>fin</citetitle></link>,
+      <link linkend="fini"><citetitle>fini</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+        <member>1999</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.56 de Csound</para>
+  </refsect1>
+</refentry>

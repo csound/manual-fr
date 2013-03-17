@@ -1,0 +1,132 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+
+<refentry id="cpstmid">
+<indexterm id="IndexCpstmid"><primary>cpstmid</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Converters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>cpstmid</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>cpstmid</refname>
+
+    <refpurpose>
+      Retourne un numéro de note MIDI (possibilité d'échelles micro-tonales).
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cette unité est semblable à
+      <link linkend="cpsmidi"><citetitle>cpsmidi</citetitle></link>, mais elle
+      permet de particulariser des échelles micro-tonales.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>icps <command>cpstmid</command> ifn</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn</emphasis> -- table de fonction contenant les paramètres
+      (<emphasis>numgrades</emphasis>, <emphasis>interval</emphasis>,
+      <emphasis>basefreq</emphasis>, <emphasis>basekeymidi</emphasis>) et les
+      rapports d'accordage.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+       Seulement durant l'initialisation.
+    </para>
+
+    <para>
+      <emphasis>cpsmid</emphasis> nécessite cinq paramètres. Le premier,
+      <emphasis>ifn</emphasis>, est le numéro de la table de fonction des rapports
+      d'accordage, et les autres paramètres sont contenus dans la table de fonction
+      elle-même. La table de fonction <emphasis>ifn</emphasis> doit être générée par
+      <link linkend="GEN02"><citetitle>GEN02</citetitle></link>, sans normalisation.
+      Les quatre premières valeurs stockées dans cette fonction sont :
+      <orderedlist>
+        <listitem><para><emphasis>numgrades</emphasis> -- le nombre de degrés de
+          l'échelle micro-tonale</para></listitem>
+	      <listitem><para><emphasis>interval</emphasis> -- l'intervalle de fréquence
+	        couvert avant de répéter les rapports des degrés. Par exemple, 2 pour
+	        une octave, 1.5 pour une quinte, etc.</para></listitem>
+	      <listitem><para><emphasis>basefreq</emphasis> -- la fréquence de base de
+	        l'échelle en Hz</para></listitem>
+	      <listitem><para><emphasis>basekeymidi</emphasis> -- le numéro de note MIDI
+	        auquel <emphasis>basefreq</emphasis> est assigné sans modification</para></listitem>
+      </orderedlist>
+    </para>
+
+    <para>
+      Après ces quatre valeurs, on peut commencer à insérer les rapports d'accordage.
+      Par exemple, pour une échelle standard sur 12 notes avec la fréquence de
+      base 261 Hz assignée à la touche numéro 60, l'instruction <emphasis>f</emphasis>
+      correspondante dans la partition pour générer la table sera :
+      <literallayout>
+  ;          numgrades interval  basefreq basekeymidi tuning ratios (equal temp)   
+  f1 0 64 -2   12       2        261        60         1  1.059463094359  1.122462048309  1.189207115003 ...etc... </literallayout>
+    </para>
+
+    <para>
+      Un autre exemple avec une échelle de 24 notes dont la fréquence de base de
+      440 Hz est assignée à la touche numéro 48, et un intervalle de répétition
+      de 1.5 :
+      <literallayout>
+  ;           numgrades interval  basefreq basekeymidi tuning-ratios (equal temp)   
+  f1 0 64 -2   24        1.5      440        48         1   1.01  1.02  1.03   ...etc...</literallayout>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode cpstmid. Il utilise le fichier
+      <ulink url="examples/cpstmid.csd"><citetitle>cpstmid.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode cpstmid.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+           <xi:include href="examples-xml/cpstmid.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="cpsmidi"><citetitle>cpsmidi</citetitle></link>,
+      <link linkend="GEN02"><citetitle>GEN02</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+        <member>1998</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.492 de Csound.</para>
+  </refsect1>
+</refentry>

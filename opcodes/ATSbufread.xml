@@ -1,0 +1,135 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ATSbufread">
+<indexterm id="IndexATSbufread"><primary>ATSbufread</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:ATS</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ATSbufread</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ATSbufread</refname>
+    <refpurpose>
+      lit des données depuis un fichier ATS et les stocke dans une table interne
+      de paires de données fréquence, amplitude.
+    </refpurpose>
+  </refnamediv>
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>ATSbufread</emphasis> lit des données depuis un fichier ATS et
+      les stocke dans une table interne de paires de données fréquence, amplitude.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>ATSbufread</command> ktimepnt, kfmod, iatsfile, ipartials[, ipartialoffset, \
+          ipartialincr]</synopsis>
+  </refsect1>
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iatsfile</emphasis> – le numéro ATS (n dans ats.n) ou le nom
+      entre guillemets du fichier d'analyse créé avec
+      <ulink url="http://www-ccrma.stanford.edu/~juan/ATS.html"><citetitle>ATS</citetitle></ulink>.
+    </para>
+    <para>
+      <emphasis>ipartials</emphasis> – nombre de partiels qui seront utilisés
+      dans la resynthèse (le bruit a un maximum de 25 bandes).
+    </para>
+    <para>
+      <emphasis>ipartialoffset</emphasis> (facultatif) – le premier
+      partiel utilisé (0 par défaut).
+    </para>
+    <para>
+      <emphasis>ipartialincr</emphasis> (facultatif) – fixe le pas
+      d'incrémentation que ces opcodes de synthèse utilisent pour compter les
+      composants bins à partir de <emphasis>ipartialoffset</emphasis> dans la
+      resynthèse (1 par défaut).
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ktimepnt</emphasis> – Le pointeur de temps en secondes utilisé
+      comme indice sur le fichier ATS. Est utilisé pour
+      <emphasis>ATSbufread</emphasis> exactement de la même manière que pour
+      <link linkend="pvoc"><citetitle>pvoc</citetitle></link>.
+    </para>
+    <para>
+      <emphasis>kfmod</emphasis> – une entrée pour faire une transpositon de
+      hauteur ou une modulation de fréquence sur tous les partiels synthétisés ;
+      si aucune modulation de fréquence ou aucun changement de hauteur ne sont
+      désirés, il faut utiliser 1 pour cette valeur.
+    </para>
+    <para>
+      <emphasis>ATSbufread</emphasis> est basé sur pvbufread par Richard Karpen.
+      <link linkend="ATScross"><citetitle>ATScross</citetitle></link>,
+      <link linkend="ATSinterpread"><citetitle>ATSinterpread</citetitle></link> et
+      <link linkend="ATSpartialtap"><citetitle>ATSpartialtap</citetitle></link>
+      dépendent tous de <emphasis>ATSbufread</emphasis> comme
+      <link linkend="pvcross"><citetitle>pvcross</citetitle></link> et
+      <link linkend="pvinterp"><citetitle>pvinterp</citetitle></link> dépendent de
+      <link linkend="pvbufread"><citetitle>pvbufread</citetitle></link>.
+      <emphasis>ATSbufread</emphasis> lit des données depuis un fichier ATS et
+      les stocke dans une table interne de paires de données fréquence, amplitude.
+      Les données stockées par un <emphasis>ATSbufread</emphasis> ne sont accessibles
+      que par d'autres générateurs unitaires, et ainsi, à cause de l'architecture
+      de Csound, un <emphasis>ATSbufread</emphasis> doit se trouver avant (mais
+      pas nécessairement directement) tout générateur unitaire dépendant. Bien
+      que <emphasis>ATSbufread</emphasis> ne produise pas de données directement,
+      il fonctionne exactement comme
+      <link linkend="ATSadd"><citetitle>ATSadd</citetitle></link>. Il utilise un
+      pointeur temporel (<emphasis>ktimepnt</emphasis>) pour indexer les données
+      dans la durée, <emphasis>ipartials</emphasis>, <emphasis>ipartialoffset</emphasis>
+      et <emphasis>ipartialincr</emphasis> pour sélectionner les partiels à stocker
+      dans la table et <emphasis>kfmod</emphasis> pour pondérer les partiels en
+      fréquence.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode ATSbufread. Il utilise le fichier
+      <ulink url="examples/ATSbufread.csd"><citetitle>ATSbufread.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode ATSbufread.</title>
+          <xi:include href="examples-xml/ATSbufread.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>Voir aussi les exemples de <link linkend="ATScross"><citetitle>ATScross</citetitle></link>,
+      <link linkend="ATSinterpread"><citetitle>ATSinterpread</citetitle></link> et
+      <link linkend="ATSpartialtap"><citetitle>ATSpartialtap</citetitle></link>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Voir aussi</title>
+    <para><link linkend="ATSread"><citetitle>ATSread</citetitle></link>, 
+      <link linkend="ATSreadnz"><citetitle>ATSreadnz</citetitle></link>, 
+      <link linkend="ATSinfo"><citetitle>ATSinfo</citetitle></link>, 
+      <link linkend="ATSsinnoi"><citetitle>ATSsinnoi</citetitle></link>, 
+      <link linkend="ATScross"><citetitle>ATScross</citetitle></link>, 
+      <link linkend="ATSinterpread"><citetitle>ATSinterpread</citetitle></link>, 
+      <link linkend="ATSpartialtap"><citetitle>ATSpartialtap</citetitle></link>, 
+      <link linkend="ATSadd"><citetitle>ATSadd</citetitle></link>, 
+      <link linkend="ATSaddnz"><citetitle>ATSaddnz</citetitle></link></para>
+  </refsect1>
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Alex Norman</member>
+        <member>Seattle,Washington</member>
+        <member>2004</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

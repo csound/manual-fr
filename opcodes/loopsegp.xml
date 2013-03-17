@@ -1,0 +1,93 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="loopsegp">
+<indexterm id="Indexloopsegp"><primary>loopsegp</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Linear and Exponential Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>loopsegp</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>loopsegp</refname>
+    <refpurpose>
+      Signaux de contrôle basés sur des segments de droite.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère un signal de contrôle constitué de segments de droite délimités par deux ou plus
+      points spécifiés. L'enveloppe entière peut être parcourue en boucle à une vitesse variable.
+      Chaque coordonnée de segment peut aussi varier au taux-k.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ksig <command>loopsegp</command>  kphase, kvalue0, kdur0, kvalue1 \
+      [, kdur1, ... , kdurN-1, kvalueN]</synopsis>
+  </refsect1>
+ 
+<!--  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>initphase</emphasis> - valeur de phase initiale (dans l'intervalle de 0 à 1).
+      
+    </para>
+  </refsect1>-->
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ksig</emphasis> - signal de sortie.
+    </para>
+    <para>
+      <emphasis>kphase</emphasis> - point de la séquence lu, exprimé en fraction d'un
+      cycle (de 0 à 1)
+    </para>
+    <para>
+      <emphasis>kvalue0</emphasis> ...<emphasis>kvalueN</emphasis> - valeurs des points.
+    </para>
+    <para>
+      <emphasis>kdur0</emphasis> ...<emphasis>kdurN-1</emphasis> - durée des points exprimée en
+      fractions d'un cycle.
+    </para>
+    <para>
+      L'opcode <emphasis>loopsegp</emphasis> est semblable à
+      <link linkend="loopseg"><citetitle>loopseg</citetitle></link> ;
+      la seule différence étant que, à la place de la fréquence, une phase variable est utilisée.
+      Si l'on utilise un <link linkend="phasor"><citetitle>phaseur</citetitle></link> pour obtenir
+      la valeur de la phase, on aura un comportement identique à celui de
+      <link linkend="loopseg"><citetitle>loopseg</citetitle></link>, mais on peut obtenir des résultats intéressants
+      avec des phases à l'évolution non linéaire, ce qui rend <emphasis>loopsegp</emphasis> plus
+      puissant et plus général que <link linkend="loopseg"><citetitle>loopseg</citetitle></link>.
+     </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode loopsegp. Il utilise le fichier
+      <ulink url="examples/loopsegp.csd"><citetitle>loopsegp.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode loopsegp.</title>
+        <xi:include href="examples-xml/loopsegp.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par &namegabriel;.</para>
+    <para>Nouveau dans Csound 5. (Auparavant, disponible seulement dans CsoundAV)</para>
+  </refsect1>
+</refentry>
+

@@ -1,0 +1,111 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="t">
+      <indexterm id="IndexTStatement"><primary>t statement</primary></indexterm>
+      <indexterm id="IndexTempoStatement"><primary>tempo statement</primary></indexterm>
+  <refmeta>
+    <refentrytitle>Instruction t (instruction de tempo)</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>t</refname>
+    <refpurpose>
+      Fixe le tempo.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cette instruction fixe le tempo et spécifie les accelerando et les ritardando de la section
+      courante. Ceci est réalisé en convertissant les pulsations en secondes.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>t</command>  p1  p2  p3  p4 ... (illimité)</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>p1</emphasis> -- Doit être zéro.
+    </para>
+
+    <para>
+      <emphasis>p2</emphasis> -- Tempo initial en pulsations par minute.
+    </para>
+
+    <para>
+      <emphasis>p3, p5, p7,...</emphasis> -- Dates en pulsations (en ordre non décroissant).
+    </para>
+
+    <para>
+      <emphasis>p4, p6, p8,...</emphasis> -- Tempi pour les dates en pulsations référencées.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Les dates et le Tempo pour chaque date sont donnés en couples ordonnés qui définissent des points
+      sur un graphe <quote>date, tempo</quote>. (L'axe du temps est ici en pulsations et n'est donc pas
+      nécessairement linéaire). Le taux de pulsations d'une section peut être pensé comme un mouvement
+      d'un point à un autre de ce graphe : un mouvement entre deux points à la même hauteur signifie un
+      tempo constant, tandis qu'un mouvement entre deux points de hauteurs différentes traduit un
+      accelerando ou un ritardando selon le cas. Le graphe peut contenir des discontinuités : deux points
+      ayant la même date mais des tempi différents provoqueront un changement de tempo instantané.
+    </para>
+
+    <para>
+      Le mouvement entre différents tempi sur des durées non nulles est inversement linéaire. Cela veut
+      dire qu'un accelerando entre deux tempi M1 et M2 procède par interpolation linéaire des durées de
+      chaque pulsation entre 60/M1 et 60/M2.
+    </para>
+
+    <para>
+      Le premier tempo doit être donné pour la pulsation 0.
+    </para>
+
+    <para>
+      Une fois assigné, un tempo sera effectif à partir de cette date à moins d'être influencé par un
+      tempo suivant, ainsi, le dernier tempo spécifié sera actif jausqu'à la fin de la section.
+    </para>
+
+    <para>
+      Une <emphasis>instruction t</emphasis> ne s'applique que dans la section dans laquelle elle
+      apparaît. Une seule <emphasis>instruction t</emphasis> est pertinente dans une section ; elle
+      peut être placée n'importe où dans la section. Si une section de partition ne contient pas
+      d'<emphasis>instruction t</emphasis>, les pulsations sont alors interprétées comme des secondes
+      (c'est-à-dire avec une instruction <emphasis>t 0 60</emphasis> implicite).
+    </para>
+
+    <para>
+      Nota Bene. Si la commande de Csound comprend une
+      <link linkend="FlagsMinusLowerT"><citetitle>option -t</citetitle></link>, le tempo interprété de
+      toutes les <emphasis>instruction t</emphasis> de la partition sera remplaçé par le tempo de la ligne
+      de commande.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'instruction t. Il utilise le fichier
+      <ulink url="examples/t.csd"><citetitle>t.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'instruction t.</title>
+        <xi:include href="examples-xml/t.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+</refentry>
+

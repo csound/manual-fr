@@ -1,0 +1,122 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="resonx">
+<indexterm id="IndexResonx"><primary>resonx</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Resonant</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>resonx</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>resonx</refname>
+    <refpurpose>
+      Emule une série de filtres utilisant l'opcode
+      <link linkend="reson"><citetitle>reson</citetitle></link>.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>resonx</emphasis> est équivalent à un filtre constitué de plusieurs couches de filtres
+      <link linkend="reson"><citetitle>reson</citetitle></link> avec les mêmes arguments, connectés en
+      série. L'utilisation d'une série d'un nombre important de filtres permet une pente de coupure
+      plus raide. Ils sont plus rapides que l'équivalent obtenu à partir du même nombre d'instances
+      d'opcodes classiques dans un orchestre Csound, car il n'y aura qu'un cycle d'initialisation et une
+      seule passe de k cycles de contrôle à la fois et la boucle audio sera entièrement contenue dans
+      la mémoire cache du processeur.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>resonx</command> asig, kcf, kbw [, inumlayer] [, iscl] [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>inumlayer</emphasis> (optional) -- (facultatif) -- nombre d'éléments dans la série de filtre. La
+      valeur par défaut est 4.
+    </para>
+
+    <para>
+      <emphasis>iscl</emphasis> (facultatif, par défaut 0) -- facteur de pondération codé pour les
+      résonateurs. Une valeur de 1 signifie que la crête du facteur de réponse est 1, c-à-d. toutes les
+      fréquences autres que <emphasis>kcf</emphasis> sont atténuées selon la courbe de réponse
+      (normalisée). Une valeur de 2 élève le facteur de réponse de façon à ce que sa valeur efficace
+      globale soit égale à 1. (Cette égalisation intentionnelle des puissances d'entrée et de sortie
+      suppose que toutes les fréquences sont présentes ; elle est ainsi plus appropriée au bruit blanc.)
+      Une valeur de 0 signifie aucune pondération du signal, laissant cette tâche à un ajustement
+      ultérieur (voir <link linkend="balance"><citetitle>balance</citetitle></link>). La valeur par
+      défaut est 0.
+    </para>
+
+    <para>
+      <emphasis>iskip</emphasis> (facultatif, par défaut 0) -- état initial de l'espace de données interne.
+      Comme le filtrage comprend une boucle de rétroaction sur la sortie précédente, l'état initial de
+      l'espace de stockage utilisé est significatif. Une valeur nulle provoquera l'effacement de cet
+      espace ; une valeur non nulle autorisera la persistance de l'information précédente. La valeur par
+      défaut est 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- signal d'entrée
+    </para>
+
+    <para>
+      <emphasis>kcf</emphasis> -- la fréquence centrale du filtre, ou position fréquentielle de la
+      crête de la réponse.
+    </para>
+
+    <para>
+      <emphasis>kbw</emphasis> -- largeur de bande du filtre (la différence en Hz entre les points haut
+      et bas à mi-puissance).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode resonx. Il utilise le fichier
+      <ulink url="examples/resonx.csd"><citetitle>resonx.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode resonx.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/resonx.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="atonex"><citetitle>atonex</citetitle></link>,
+      <link linkend="tonex"><citetitle>tonex</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel; (adapté par &namejohn;)</member>
+        <member>Italie</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.49 de Csound</para>
+  </refsect1>
+</refentry>

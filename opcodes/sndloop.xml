@@ -1,0 +1,104 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="sndloop">
+<indexterm id="Indexsndloop"><primary>sndloop</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Sample Playback</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>sndloop</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>sndloop</refname>
+    <refpurpose>
+      Une boucle de son avec contrôle de la hauteur.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode enregistre l'entrée audio et la restitue dans une boucle avec une
+      durée définie par l'utilisateur et un fondu enchainé. On peut également
+      contrôler la hauteur de la boucle et sa lecture à l'envers.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>asig, krec <command>sndloop</command> ain, kpitch, ktrig, idur, ifad</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>idur </emphasis> -- durée de la boucle en secondes.
+    </para>
+        <para>
+      <emphasis>ifad </emphasis> -- durée du fondu enchainé en secondes.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- signal de sortie.
+    </para>
+
+    <para>
+      <emphasis>krec</emphasis> -- signal d'activation de l'enregistrement, 1 lors de
+      l'enregistrement, 0 sinon.
+    </para>
+
+    <para>
+      <emphasis>kpitch</emphasis> -- contrôle de la hauteur (rapport de transposition) ;
+      avec des valeurs négatives, la boucle est jouée à l'envers.
+    </para>
+
+    <para>
+      <emphasis>ktrig</emphasis> -- signal de déclenchement : lorsqu'il vaut 0, le
+      traitement est suspendu. Lorsqu'il change (ktrig >= 1), l'opcode commence à
+      enregistrer jusqu'à ce que la mémoire de la boucle soit pleine. Puis il
+      restitue ensuite le son en boucle jusqu'au prochain changement (ktrig = 0).
+      Un autre enregistrement peut recommencer lorsque ktrig >= 1.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode sndloop. Il utilise le fichier
+      <ulink url="examples/sndloop.csd"><citetitle>sndloop.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode sndloop.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/sndloop.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      L'exemple ci-dessus montre l'opération de base de <emphasis>sndloop</emphasis>.
+      La hauteur peut-être contrôlée au taux-k, l'enregistrement commence dès que le
+      signal de déclenchement est >= 1. L'enregistrement peut recommencer en
+      fixant la valeur du signal de déclenchement à 0 puis de nouveau à 1.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Avril 2005 </member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.00</para>
+  </refsect1>
+</refentry>

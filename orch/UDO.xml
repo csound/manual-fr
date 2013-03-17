@@ -1,0 +1,59 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.5
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="OrchUDO">
+  <title>Opcodes définis par l'utilisateur (UDO)</title>
+  <para>
+    Csound permet la définition d'opcodes dans l'en-tête de l'orchestre au moyen des opcodes
+    <link linkend="opcode"><citetitle>opcode</citetitle></link> et
+    <link linkend="endop"><citetitle>endop</citetitle></link>.
+    L'opcode défini peut fonctionner avec un nombre d'échantillons par période de contrôle
+    (<link linkend="ksmps"><citetitle>ksmps</citetitle></link>) différent en utilisant
+    <link linkend="setksmps"><citetitle>setksmps</citetitle></link>.
+  </para>
+  <para>
+    Pour connecter les entrées et les sorties de l'UDO, on utilise
+    <link linkend="xin"><citetitle>xin</citetitle></link> et
+    <link linkend="xout"><citetitle>xout</citetitle></link>.
+  </para>
+  <para>
+    Un UDO ressemble à ceci :
+  </para>
+  <programlisting>
+        <emphasis role="oblock">opcode</emphasis> Lowpass, a, akk
+
+        <emphasis role="opc">setksmps</emphasis> 1              <emphasis role="comment">; nécessite sr=kr</emphasis>
+ain, ka1, ka2   <emphasis role="opc">xin</emphasis>             <emphasis role="comment">; lire les paramètres d'entrée</emphasis>
+aout    <emphasis role="opc">init</emphasis> 0                  <emphasis role="comment">; initialiser la sortie</emphasis>
+aout    <emphasis role="op">=</emphasis>  ain<emphasis role="op">*</emphasis>ka1 <emphasis role="op">+</emphasis> aout<emphasis role="op">*</emphasis>ka2   <emphasis role="comment">; filtre simple comme tone</emphasis>
+        <emphasis role="opc">xout</emphasis> aout               <emphasis role="comment">; écrire la sortie</emphasis>
+
+        <emphasis role="oblock">endop</emphasis></programlisting>
+  <para>
+    Cet UDO appelé <emphasis>Lowpass</emphasis> reçoit trois entrées (la première au taux-a, et les deux
+    autres au taux-k), et délivre une sortie au taux-a. Noter l'utilisation de
+    <link linkend="xin"><citetitle>xin</citetitle></link> pour recevoir les entrées et de
+    <link linkend="xout"><citetitle>xout</citetitle></link> pour délivrer les sorties. Noter aussi
+    l'utilisation de
+    <link linkend="setksmps"><citetitle>setksmps</citetitle></link>, qui est nécessaire pour que le
+    filtre fonctionne correctement.
+  </para>
+  <para>Pour utiliser cet UDO depuis un instrument, on écrirait quelque chose comme :</para>
+  <programlisting>
+afiltre Lowpass asource, kvaleur1, kvaleur2</programlisting>
+  <para>voir l'entrée <link linkend="opcode"><citetitle>opcode</citetitle></link> pour des informations
+    détaillées sur la définition d'UDO.
+  </para>
+  <para>
+    Vous pouvez trouver plusieurs UDO déjà rédigés (ou apporter votre propre contribution) à
+    <ulink url="http://www.csounds.com/udo/"><citetitle>User Defined Opcode Database</citetitle></ulink>
+    sur <ulink url="http://www.csounds.com/"><citetitle>Csounds.com</citetitle></ulink>.
+  </para>
+
+</section>

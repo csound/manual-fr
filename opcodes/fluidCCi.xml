@@ -1,0 +1,79 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="fluidCCi">
+<indexterm id="IndexFluidCCi"><primary>fluidCCi</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Sample Playback</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>fluidCCi</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>fluidCCi</refname>
+    <refpurpose>
+      Envoie un message de données de contrôleur MIDI à fluid.
+    </refpurpose>
+</refnamediv>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>fluidCCi</command> iEngineNumber, iChannelNumber, iControllerNumber, iValue</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Description</title> 
+    <para>Envoie un message de données de contrôleur MIDI (numéro du contrôleur MIDI et valeur à utiliser)
+      à un moteur fluid spécifié par son numéro, sur le numéro de canal MIDI indiqué.
+    </para>  
+    </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para><emphasis>iEngineNumber </emphasis> -- numéro du moteur affecté par fluidEngine</para>
+    <para><emphasis>iChannelNumber </emphasis> -- numéro du canal MIDI auquel le programme Fluidsynth est
+      affecté : de 0 à 255. Les canaux MIDI dont le numéro est supérieur ou égal à 16 sont des canaux
+      virtuels.</para>
+    <para><emphasis>iControllerNumber </emphasis> -- numéro du contrôleur MIDI à utiliser pour ce message</para>
+    <para><emphasis>iValue </emphasis> -- valeur à affecter au contrôleur (habituellement 0-127)</para>
+  </refsect1>
+  <refsect1>
+    <title>Exécution</title>
+    <para>Cet opcode est utilisé pour affecter des valeurs de contrôleur pendant l'initialisation. Pour
+      des changements continus, utilisez fluidCCk.</para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode fluidCCi. Il utilise le fichier
+      <ulink url="examples/fluidCCi.csd"><citetitle>fluidCCi.csd</citetitle></ulink>.
+    </para>
+    <xi:include href="examples-xml/fluidCCi.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </refsect1>
+  
+  <refsect1>
+    <title>Voir aussi</title>
+    <para><link linkend="fluidEngine"><citetitle>fluidEngine</citetitle></link>,
+    <link linkend="fluidNote"><citetitle>fluidNote</citetitle></link>,
+    <link linkend="fluidLoad"><citetitle>fluidLoad</citetitle></link>,
+    <link linkend="fluidCCk"><citetitle>fluidCCk</citetitle></link></para>
+    <para>Plus d'information sur soundfonts dans les Floss Manuals :
+      <ulink url="http://en.flossmanuals.net/csound/ch048_d-reading-midi-files">
+      <citetitle>http://en.flossmanuals.net/csound/ch048_d-reading-midi-files</citetitle>
+      </ulink></para>
+    <para>D'autres informations sur soundfonts dans Wikipedia :
+    <ulink url="http://en.wikipedia.org/wiki/Soundfont"><citetitle>http://en.wikipedia.org/wiki/Soundfont</citetitle></ulink></para>   
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>Michael Gogins (gogins@pipeline.com), Steven Yi. 
+    Merci à Peter Hanappe pour Fluidsynth.</para>
+  </refsect1>
+</refentry>

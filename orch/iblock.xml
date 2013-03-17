@@ -1,0 +1,47 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="OrchIblock">
+  <title>Instructions de bloc d'instrument et d'opcode</title>
+
+  <para>
+    Un bloc d'instrument comprend des <emphasis>instructions ordinaires</emphasis> qui fixent des
+    valeurs, contrôlent le déroulement logique, ou appellent les différents sous-programmes de
+    traitement du signal qui mènent à la sortie audio. Les instructions qui définissent un bloc
+    d'instrument sont :
+    <itemizedlist>
+      <listitem>
+        <para><link linkend="instr"><citetitle>instr</citetitle></link></para>
+      </listitem>
+      <listitem>
+        <para><link linkend="endin"><citetitle>endin</citetitle></link></para>
+      </listitem>
+    </itemizedlist>
+    Un bloc d'instrument ressemble à ceci :
+    <programlisting>
+    <emphasis role="oblock">instr</emphasis> 1   <emphasis role="comment">; Un simple oscillateur sinusoïdal</emphasis>
+aout  <emphasis role="opc">oscils</emphasis>  10000, 440, 0
+out   <emphasis role="opc">aout</emphasis>
+    <emphasis role="oblock">endin</emphasis></programlisting>
+  </para>
+
+  <para>
+    Les instructions qui définissent un bloc d'opcode défini par l'utilisateur (UDO) sont :
+    <itemizedlist>
+      <listitem>
+        <para><link linkend="opcode"><citetitle>opcode</citetitle></link></para>
+      </listitem>
+      <listitem>
+        <para><link linkend="endop"><citetitle>endop</citetitle></link></para>
+      </listitem>
+    </itemizedlist>
+    voir la section <link linkend="OrchUDO"><citetitle>UDO</citetitle></link> pour plus d'information.
+  </para>
+
+</section>

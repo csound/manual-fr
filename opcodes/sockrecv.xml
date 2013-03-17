@@ -1,0 +1,100 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="sockrecv">
+<indexterm id="Indexsockrecv"><primary>sockrecv</primary></indexterm>
+  <refentryinfo><title>Network</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>sockrecv</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>sockrecv</refname>
+    <refpurpose>
+      Reçoit des données d'autres processus en utilisant les protocoles de bas-niveau
+      UDP et TCP.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Reçoit directement en utilisant le protocole UPD (<emphasis>sockrecv</emphasis>
+      et <emphasis>sockrecvs</emphasis>) ou TCP (<emphasis>strecv</emphasis>)
+      à travers un réseau. Les données ne sont sujettes à aucun encodage ou
+      routage spécial. L'opcode <emphasis>sockrecvs</emphasis> reçoit un
+      signal stéréo entrelacé.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>asig <command>sockrecv</command> iport, ilength</synopsis>
+    <synopsis>asigl, asigr <command>sockrecvs</command> iport, ilength</synopsis>
+    <synopsis>asig <command>strecv</command> Sipaddr, iport</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>Sipaddr</emphasis> -- une chaîne qui est l'adresse IP de l'émetteur
+      au format standard sur 4 octets séparés par des points.
+    </para>
+
+    <para>
+      <emphasis>iport</emphasis> -- numéro du port utilisé pour la communication.
+    </para>
+
+    <para>
+      <emphasis>ilength</emphasis> -- longueur des paquets individuels dans la
+      transmission UDP. Cette longueur doit être suffisamment petite pour
+      entrer dans une seule MTU, dont la valeur enregistrée est 1456. Dans les
+      transmissions UDP, l'émetteur et le récepteur doivent s'accorder sur la
+      même valeur.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig, asigl, asigr</emphasis> -- donnéees audio à recevoir.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      L'exemple montre un signal mono reçu sur le port 7777 en utilisant UDP.
+    </para>
+      <informalexample>
+        <programlisting>
+        <emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+        <emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 100
+        <emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 1
+
+
+        <emphasis role="oblock">instr</emphasis>   1
+        a1 <emphasis role="opc">sockrecv</emphasis>   7777, 200
+           <emphasis role="opc">out</emphasis>        a1
+        <emphasis role="oblock">endin</emphasis></programlisting>
+      </informalexample>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>2006</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

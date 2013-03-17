@@ -1,0 +1,178 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="f">
+      <indexterm id="IndexFStatement"><primary>f statement</primary></indexterm>
+      <indexterm id="IndexFunctionTableStatement"><primary>function table statement</primary></indexterm>
+  <refmeta>
+    <refentrytitle>Instruction f (ou instruction de table de fonction)</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>f</refname>
+    <refpurpose>
+      Provoque l'écriture de valeurs dans une table de fonction en mémoire par une routine GEN.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Provoque l'écriture de valeurs dans une table de fonction en mémoire par une routine GEN
+      pour utilisation par des instruments.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>f</command> p1  p2  p3  p4  p5 ... PMAX</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+       <emphasis>p1</emphasis> -- Numéro de table sous lequel la fonction mémorisée sera connue. Un nombre
+       négatif signifie une demande de destruction de la table.
+    </para>
+
+    <para>
+       <emphasis>p2</emphasis> -- Date d'activation de la génération de la fonction (ou de sa destruction)
+       en pulsations. 
+    </para>
+
+    <para>
+       <emphasis>p3</emphasis> -- Taille de la table de la fonction (c'est-à-dire nombre de points). Doit
+       être une puissance de 2, ou une puissance de 2 plus 1 si ce nombre est positif. La taille de table maximale
+       est de 16777216 (2<superscript>24</superscript>) points.
+    </para>
+
+    <para>
+      <emphasis>p4</emphasis> -- Numéro de la routine GEN à appeler (voir
+      <link linkend="ScoreGenRef"><citetitle>ROUTINES GEN</citetitle></link>). Une valeur négative
+      supprimera la normalisation.
+    </para>
+
+    <para>
+       <emphasis>p5 ... PMAX</emphasis> -- Paramètres dont la signification est déterminée par la routine GEN
+       particulière.
+    </para>
+
+    <refsect2>
+      <title>Considérations spéciales</title>
+
+      <para>
+        Les tables de fonction sont des tableaux de valeurs en virgule flottante. On peut créer une simple
+        onde sinusoïdale avec cette ligne :
+        <literallayout>f 1 0 1024 10 1</literallayout>
+        Cette table utilise <link linkend="GEN10"><citetitle>GEN10</citetitle></link> pour son remplissage.
+      </para>
+      <para>
+        Historiquement, à cause des contraintes des anciennes plates-formes, Csound ne pouvait accepter
+        que des tables dont la taille était une puissance de deux. Cette limitation a été levée dans les
+        récentes versions, et l'on peut créer des tables de n'importe quelle taille. Cependant, pour
+        créer une table dont la taille n'est pas une puissance de deux (ou une puissance de deux plus
+        un), il faut spécifier la taille comme un nombre négatif.
+      </para>
+      <note><para>Il y a des opcodes qui n'accepteront pas des tables dont la taille n'est pas une
+        puissance de deux, car ils comptent sur cela pour leur optimisation interne.</para>
+      </note>
+      <para>Pour les tableaux dont la longueur est une puissance de 2, l'allocation d'espace
+        mémoire est toujours prévue pour 2<superscript>n</superscript> points plus un
+        <emphasis>point de garde</emphasis>. La valeur du point de garde, utilisée pour la lecture avec
+        interpolation, peut être fixée automatiquement selon le but de la table : si la
+        <emphasis>taille</emphasis> est une puissance de 2 exacte, le point de garde sera une copie du
+        premier point ; cela convient pour la <emphasis>lecture cyclique avec interpolation</emphasis>
+        comme dans <emphasis>oscili</emphasis>, etc., et devrait même être utilisé pour la version sans
+        interpolation <emphasis>oscil</emphasis> pour rester consistant. Si la <emphasis>taille</emphasis>
+        est fixée à 2<superscript>n</superscript> + 1, le point de garde prolongera automatiquement le
+        contour des valeurs de la table ; cela convient pour les fonctions à lecture non-cyclique comme dans
+        <emphasis>envplx</emphasis>, <emphasis>oscil1</emphasis>, <emphasis>oscil1i</emphasis>, etc.
+      </para>
+
+      <para>
+        La taille de la table est utilisée comme un code pour indiquer à Csound
+        comment remplir ce point de garde. Si la taille est exactement une
+        puissance de deux, alors le point de garde contient une copie du premier
+        point de la table. Si la taille est une puissance-de-deux plus un, Csound
+        étend le contour de la fonction stockée dans la table pour un point
+        supplémentaire.
+      </para>
+      <para>
+        Les tables sont allouées dans la mémoire primaire, avec les données d'instrument. Le nombre
+        maximum de tables était limité à 200. Ceci a changé et il n'est plus limité que par la quantité de
+        mémoire disponible. (Actuellement il y a une limitation logicielle de 300, qui est augmentée
+        automatiquement selon les besoins).
+      </para>
+
+      <para>
+        On peut supprimer une table de fonction existante par une <emphasis>instruction f</emphasis>
+        contenant un p1 négatif et une date d'activation adéquate. Une table de fonction est également
+        supprimée par la génération d'une autre table avec le même p1. Les fonctions ne sont pas
+        automatiquement effacées à la fin d'une section de partition.
+      </para>
+
+      <para>
+        La date p2 est traitée de la même manière que dans l'<emphasis>instruction i</emphasis> en tenant
+        compte du tri et des modifications par les <emphasis>instructions t</emphasis>. Si une
+        <emphasis>instruction f</emphasis> et une <emphasis>instruction i</emphasis> ont le même p2,
+        le tri donnera la priorité à l'<emphasis>instruction f</emphasis> afin que le table de fonction
+        soit disponible pendant l'initialisation de la note.
+      </para>
+      <warning>
+        <para>Le nombre maximum de p-champs acceptés dans la partition est déterminé par PMAX
+        (une variable de compilation). PMAX vaut actuellement 1000. Cela peut éliminer des valeurs
+        entrées au moyen de <link linkend="GEN02"><citetitle>GEN02</citetitle></link>. Pour contourner
+        cette limitation, utiliser <link linkend="GEN23"><citetitle>GEN23</citetitle></link> ou
+        <link linkend="GEN28"><citetitle>GEN28</citetitle></link> pour lire les valeurs à partir d'un
+        fichier.</para>
+      </warning>
+
+      <para>
+        On peut utiliser une <emphasis>instruction f 0</emphasis> (avec zéro en p1 et p2 positif) pour créer
+        une date sans action associée. De tels marqueurs temporels sont utiles pour remplir une section
+        de partition (voir l'<link linkend="s"><citetitle>instruction s</citetitle></link>) et pour lancer
+        une exécution de Csound à partir d'évènements en temps réel (par exemple en n'utilisant que des
+        entrées MIDI sans évènements de partition). La durée indique le nombre de secondes de l'exécution
+        de Csound. Si l'on veut que Csound tourne pendand 10 heures, on utilisera :
+        <literallayout>f0 36000</literallayout>
+
+        <para>
+          La manière la plus simple de remplir une table (f1) avec des 0 est :
+          <literallayout>f1 0 xx 2 0</literallayout>
+          where xx = table size.
+        </para>
+
+        <para>
+          La manière la plus simple de remplir une table (f1) avec n'importe quelle valeur unique est :
+          <literallayout>f1 0 xx -7 yy xx yy</literallayout>
+          où xx = taille de la table et yy = n'importe quelle valeur unique
+        </para>
+
+        <para>
+          Dans les deux exemple ci-dessus, la taille de la table (p3) doit être une puissance de 2
+          ou une puissance-de-2 + 1.
+        </para>
+      </para>
+    </refsect2>
+  </refsect1>
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ScoreGenRef"><citetitle>ROUTINES GEN</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      Mise à jour en août 2002 grâce à une note de &namerasmus;. Il n'y a plus de limite codée en dur à 200 tables de
+      fonction.
+    </para>
+  </refsect1>
+</refentry>

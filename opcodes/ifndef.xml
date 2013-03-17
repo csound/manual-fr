@@ -1,0 +1,79 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.10
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ifndef">
+<indexterm id="IndexIfndefOrch"><primary>&num;ifndef</primary><secondary>orchestra</secondary></indexterm>
+
+<indexterm id="IndexIfndef"><primary>&num;ifndef</primary></indexterm>
+  <refentryinfo><title>Orchestra Syntax:Macros</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>&num;ifndef</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>&num;ifndef</refname>
+
+    <refpurpose>
+      Lecture de code conditionnelle.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Si la macro spécifiée n'est pas définie alors <emphasis>&num;ifndef</emphasis> peut incorporer
+      du texte dans un orchestre jusqu'au prochain <emphasis>&num;end</emphasis>. C'est similaire, tout en étant
+      indépendant, au <link linkend="ScoreMacros"><citetitle>système de macros du langage de
+      partition</citetitle></link>.
+    </para>
+
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>&num;ifndef</command> NOM</synopsis>
+    <synopsis>....</synopsis>
+    <synopsis><command>&num;else</command>&#160;</synopsis>
+    <synopsis>....</synopsis>
+    <synopsis><command>&num;end</command>&#160;</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Noter que l'on peut imbriquer les <emphasis>&num;ifndef</emphasis>, comme dans le langage du
+      préprocesseur C.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="dollar"><citetitle>&dollar;NOM</citetitle></link>, 
+      <link linkend="define"><citetitle>&num;define</citetitle></link>,
+      <link linkend="ifdef"><citetitle>&num;ifdef</citetitle></link>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>University of Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>Avril 2005</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans Csound5 (et 4.23f13)</para>
+  </refsect1>
+</refentry>

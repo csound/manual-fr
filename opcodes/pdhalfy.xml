@@ -1,0 +1,189 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pdhalfy">
+<indexterm id="IndexPdhalfy"><primary>pdhalfy</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Waveshaping</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pdhalfy</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pdhalfy</refname>
+    <refpurpose>
+      Distorsion d'un phaseur pour lire deux parties inégales d'une table avec la
+      même vitesse.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      L'opcode <emphasis>pdhalfy</emphasis> est une variation sur la méthode de
+      distorsion de phase de l'opcode
+      <link linkend="pdhalf"><citetitle>pdhalf</citetitle></link>. Il est utile
+      pour distordre un phaseur afin de lire deux parties inégales d'une table
+      dans le même nombre d'échantillons.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aout <command>pdhalfy</command> ain, kShapeAmount [, ibipolar [, ifullscale]]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ibipolar</emphasis> -- un paramètre facultatif spécifiant le
+      mode unipolaire (0) ou bipolaire (1). Par défaut, mode unipolaire.
+    </para>
+
+    <para>
+      <emphasis>ifullscale</emphasis> -- paramètre facultatif spécifiant
+      l'intervalle des valeurs d'entrée et de sortie. Le maximum sera
+      <emphasis>ifullscale</emphasis>. Le minimum dépend du mode d'opération :
+      zéro pour le mode unipolaire ou -<emphasis>ifullscale</emphasis> pour le
+      mode bipolaire. Vaut 1.0 par défaut. Il faut donner à ce paramètre la
+      valeur maximale attendue en entrée.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ain</emphasis> -- le signal d'entrée à distordre.
+    </para>
+
+    <para>
+      <emphasis>aout</emphasis> -- le signal de sortie.
+    </para>
+
+    <para>
+      <emphasis>kShapeAmount</emphasis> -- la quantité de distorsion appliquée
+      à l'entrée. Doit être comprise entre -1 et +1. Zéro signifie pas de
+      distorsion.
+    </para>
+
+    <para>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/pdhalfy.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>Fonction de transfert créée par pdhalfy avec un kShapeAmount négatif.</phrase>
+        </textobject>
+        <caption>
+          <para>Fonction de transfert créée par pdhalfy avec un kShapeAmount négatif.</para>
+        </caption>
+      </mediaobject>
+
+      L'opcode <emphasis>pdhalfy</emphasis> calcule une fonction de transfert
+      composée de deux segments de droite (voir le graphique). Ces segments se
+      touchent en un "point pivot" qui se trouve toujours sur le même axe
+      vertictal. (En mode unipolaire, l'axe est x = 0.5, et en mode bipolaire
+      c'est l'axe des y). Ainsi, <emphasis>pdhalfy</emphasis> est une variation
+      de l'opcode <link linkend="pdhalf"><citetitle>pdhalf</citetitle></link>
+      qui place le point pivot du motif de distorsion de phase sur un axe vertical
+      au lieu d'un axe horizontal.
+    </para>
+
+    <para>
+      Le paramètre <emphasis>kShapeAmount</emphasis> indique l'endroit de l'axe
+      vertical où se trouve ce point. Lorsque <emphasis>kShapeAmount</emphasis>
+      vaut zéro, le point pivot est au milieu de l'intervalle de sortie, si bien
+      que la fonction de transfert est une droite, ce qui ne provoque aucun
+      changement dans le signal d'entrée. Si <emphasis>kShapeAmount</emphasis>
+      varie de 0 à -1, le point pivot se déplace vers le bas du graphique.
+      S'il varie de 0 à 1, le point pivot se déplace vers le haut, produisant un
+      motif inversé.
+    </para>
+
+    <para>
+      Si l'entrée de <emphasis>pdhalfy</emphasis> est un phaseur et que la sortie
+      est utilisée pour indexer une table, celle-ci sera divisée en deux parties
+      de différentes tailles, chaque partie étant lue pendant la moitié de la
+      période de l'oscillateur. Les valeurs de <emphasis>kShapeAmount</emphasis>
+      inférieures à zéro provoqueront une lecture de moins de la moitié de la
+      table pendant la moitié de la première période d'oscillation. Le reste de
+      la table sera lu pendant la seconde moitié de la période. L'inverse est
+      vrai pour les valeurs de <emphasis>kShapeAmount</emphasis> supérieures à
+      zéro. Noter que la fréquence du phaseur reste inchangée. Ainsi, cette
+      méthode de distorsion de phase ne peut produire que des partiels harmoniques.
+      Elle ne peut pas produire de bandes latérales inharmoniques comme le fait
+      la modulation de fréquence. <emphasis>pdhalfy</emphasis> tend à avoir une
+      qualité de distorsion plus douce que celle de <emphasis>pdhalf</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>pdhalfy</emphasis> peut fonctionner en modes unipolaire ou bipolaire.
+      Le mode unipolaire est approprié pour les signaux comme les phaseurs qui
+      varient entre zéro et une valeur maximale (fixée par <emphasis>ifullscale</emphasis>).
+      Le mode bipolaire est approprié pour les signaux qui varient de part et
+      d'autre de zéro d'environ la même quantité comme la plupart des signaux
+      audio. L'application directe de <emphasis>pdhalfy</emphasis> à un tel signal
+      audio produit une sorte de distorsion non linéaire grossière mais ajustable.
+    </para>
+
+    <para>
+      Voici un exemple typique de l'utilisation de pdhalfy
+
+      <informalexample>
+        <programlisting>
+    aphase    <emphasis role="opc">phasor</emphasis>     ifreq
+    apd       <emphasis role="opc">pdhalfy</emphasis>    aphase, kamount
+    aout      <emphasis role="opc">tablei</emphasis>     apd, 1, 1</programlisting>
+      </informalexample>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode pdhalfy. Il utilise le fichier
+      <ulink url="examples/pdhalfy.csd"><citetitle>pdhalfy.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode pdhalfy.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pdhalfy.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="pdhalf"><citetitle>pdhalf</citetitle></link>,
+      <link linkend="pdclip"><citetitle>pdclip</citetitle></link> 
+    </para>
+
+    <para>
+      On peut trouver plus d'information au sujet de la synthèse par distorsion de phase
+      sur Wikipedia à
+      <ulink url="http://en.wikipedia.org/wiki/Phase_distortion_synthesis">
+        <citetitle>http://en.wikipedia.org/wiki/Phase_distortion_synthesis</citetitle>
+      </ulink>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameanthony;</member>
+        <member>Janvier 2008</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 5.08 de Csound.</para>
+  </refsect1>
+</refentry>

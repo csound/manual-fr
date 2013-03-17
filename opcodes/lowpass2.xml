@@ -1,0 +1,105 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="lowpass2">
+<indexterm id="IndexLowpass2"><primary>lowpass2</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Resonant</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lowpass2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>lowpass2</refname>
+    <refpurpose>
+      Un filtre passe-bas résonant.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Implémentation d'un filtre passe-bas résonant du second ordre.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>lowpass2</command> asig, kcf, kq [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iskip</emphasis> -- disposition initiale de la mémoire interne.
+      Une valeur de zéro efface la mémoire ; une valeur différente de zéro permet
+      de maintenir l'information précédente. La valeur par défaut est 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- signal d'entrée à filtrer
+    </para>
+
+    <para>
+      <emphasis>kcf</emphasis> -- fréquence de coupure ou de résonance du filtre,
+      mesurée en Hz
+    </para>
+
+    <para>
+      <emphasis>kq</emphasis> -- Q du filtre, défini, pour les filtres passe-bande,
+      comme le rapport (largeur de bande)/(fréquence de coupure).
+      <emphasis>kq</emphasis> doit être compris entre 1 et 500.
+    </para>
+
+    <para>
+      <emphasis>lowpass2</emphasis> est un filtre RII passe-bas du second ordre,
+      avec contrôle au taux-k de la fréquence de coupure (<emphasis>kcf</emphasis>)
+      et de Q (<emphasis>kq</emphasis>). Lorsque <emphasis>kq</emphasis> augmente
+      un pic de résonance se forme autour de la fréquence de coupure, transformant
+      la réponse du filtre passe-bas en une réponse semblable à celle d'un filtre
+      passe-bande, mais avec plus d'énergie dans les basses fréquences. Cela
+      correspond à un accroissement de la magnitude et de la &quot;raideur&quot;
+      du pic de résonance. On peut avoir besoin d'une fonction comme
+      <emphasis>balance</emphasis> pour les grandes valeurs de
+      <emphasis>kq</emphasis>. En pratique, cela permet la simulation des filtres
+      contrôlés en tension des synthétiseurs analogiques, ou bien la création
+      d'une hauteur d'amplitude constante lorsque l'on filtre un bruit blanc.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode lowpass2. Il utilise le fichier
+      <ulink url="examples/lowpass2.csd"><citetitle>lowpass2.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcoce lowpass2.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/lowpass2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namesean;</member>
+        <member>Seattle, Washington</member>
+        <member>Août 1999</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 4.0 de Csound.</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,185 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="gendy">
+  <indexterm id="IndexGendy"><primary>gendy</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Models and Emulations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>gendy</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>gendy</refname>
+    <refpurpose>
+      Approche dynamique stochastique de la synthèse de forme d'onde conçue par
+      Iannis Xenakis.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Implémentation de la <emphasis>Génération Dynamique Stochastique</emphasis>
+      (GENDYN), une approche dynamique stochastique de la synthèse de forme
+      d'onde conçue par Iannis Xenakis.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>gendy</command> kamp, kampdist, kdurdist, kadpar, kddpar, kminfreq, kmaxfreq, \
+           kampscl, kdurscl [, initcps] [, knum]</synopsis>
+    <synopsis>kres <command>gendy</command> kamp, kampdist, kdurdist, kadpar, kddpar, kminfreq, kmaxfreq, \
+           kampscl, kdurscl [, initcps] [, knum]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>initcps</emphasis> (facultatif, 12 par défaut) -- nombre maximum
+      de points de contrôle.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamp</emphasis> -- amplitude.
+    </para>
+    <para>
+      <emphasis>kampdist</emphasis> -- choix de la distribution de probabilité
+      pour la perturbation d'amplitude suivante d'un point de contrôle. Les
+      distributions valides sont :
+      <itemizedlist>
+        <listitem><para>0 - LINEAIRE</para></listitem>
+        <listitem><para>1 - CAUCHY</para></listitem>
+        <listitem><para>2 - LOGISTIQUE</para></listitem>
+        <listitem><para>3 - COSINUS HYPERBCOLIQUE</para></listitem>
+        <listitem><para>4 - ARCSINUS</para></listitem>
+        <listitem><para>5 - EXPONENTIELLE</para></listitem>
+        <listitem><para>6 - SINUS (signal externe de taux-k)</para></listitem>
+      </itemizedlist>
+      Si <emphasis>kampdist</emphasis>=6, on peut utiliser un signal externe de
+      taux-k via <emphasis>kadpar</emphasis>.
+    </para>
+    <para>
+      <emphasis>kdurdist</emphasis> -- choix de la distribution de probabilité
+      pour la perturbation de la durée courante entre points de contrôle. Voir
+      <emphasis>kampdist</emphasis> pour les distributions valides. Si
+      <emphasis>kdurdist</emphasis>=6, on peut utiliser un signal externe de
+      taux-k via <emphasis>kddpar</emphasis>.
+    </para>
+    <para>
+      <emphasis>kadpar</emphasis> -- paramètre pour la distribution
+      <emphasis>kampdist</emphasis>. Doit être compris entre 0.0001 et 1.
+    </para>
+    <para>
+      <emphasis>kddpar</emphasis> -- paramètre pour la distribution
+      <emphasis>kdurdist</emphasis>. Doit être compris entre 0.0001 et 1.
+    </para>
+    <para>
+      <emphasis>kminfreq</emphasis> -- fréquence d'oscillation minimale autorisée.
+    </para>
+    <para>
+      <emphasis>kmaxfreq</emphasis> -- fréquence d'oscillation maximale autorisée.
+    </para>
+    <para>
+      <emphasis>kampscl</emphasis> -- multiplicateur pour la valeur du delta de
+      la distribution pour l'amplitude (1.0 pour tout l'intervalle).
+    </para>
+    <para>
+      <emphasis>kdurscl</emphasis> -- multiplicateur pour la valeur du delta de
+      la distribution pour la durée.
+    </para>
+    <para>
+      <emphasis>knum</emphasis> (facultatif, <emphasis>initcps</emphasis> par
+      défaut) -- nombre courant de points de contrôle utilisés.
+    </para>
+
+    <para>
+      La forme d'onde est générée par <emphasis>knum</emphasis> - 1 segments et
+      se répète dans le temps. Les sommets (points de contrôle) bougent par une
+      action stochastique dans les limites de leur réflexion sur un mirroir
+      formé par une barrière d'amplitude et une barrière temporelle.
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gendy.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>[Une répétition de la forme d'onde générée avec <emphasis>knum</emphasis>=12.]</phrase>
+        </textobject>
+
+        <caption>
+          <para>Une répétition de la forme d'onde générée avec <emphasis>knum</emphasis>=12.</para>
+        </caption>
+      </mediaobject>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode gendy. Il utilise le fichier
+      <ulink url="examples/gendy.csd"><citetitle>gendy.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode gendy.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/gendy.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Voici un exemple de l'opcode gendy avec des modulations. Il utilise le fichier
+      <ulink url="examples/gendy-2.csd"><citetitle>gendy-2.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode gendy avec des modulations.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/gendy-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Références</title>
+    <para>
+      <orderedlist>
+        <listitem>
+          <para>
+            I. Xenakis. Formalized Music (1992, Stuyvesant, NY: Pendragon Press),
+            pp. 246 - 254, 289 - 322.
+          </para>
+        </listitem>
+      </orderedlist>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="gendyc"><citetitle>gendyc</citetitle></link>
+      <link linkend="gendyx"><citetitle>gendyx</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Basé sur le générateur unitaire Gendy1 de Nick Collins (SuperCollider)</member>
+        <member>Auteur : &nametito;</member>
+        <member>Janvier 2012</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.16 de Csound.</para>
+  </refsect1>
+</refentry>

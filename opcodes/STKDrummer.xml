@@ -1,0 +1,95 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="STKDrummer">
+  <indexterm id="IndexStkdrummer"><primary>STKDrummer</primary></indexterm>
+  <refentryinfo><title>Signal Generators:STK Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>STKDrummer</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>STKDrummer</refname>
+    <refpurpose>
+      STKDrummer est un synthétiseur à échantillon de tambour.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>STKDrummer</emphasis> est un synthétiseur à échantillon de tambour
+      qui utilise des formes d'onde brutes et des filtres à un pôle. Les fichiers
+      des formes d'ondes brutes sont échantillonnés à 22050 Hz, mais seront
+      interpolés de manière appropriée pour les autres taux d'échantillonnage.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>asignal <command>STKDrummer</command> ifrequency, iamplitude</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+        <para>
+      <emphasis>ifrequency</emphasis> -- Echantillons joués.
+    </para>
+   
+    <para>
+      <emphasis>iamplitude</emphasis> -- Amplitude de la note jouée (entre 0 et 1).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <note>
+      <title>Note</title>
+      <para>
+        Le code pour cet opcode vient directement de la classe
+        <emphasis>Drummer</emphasis> du Synthesis Toolkit en C++ par Perry R.
+        Cook et Gary P. Scavone. On peut en savoir plus sur les classes STK ici :
+        <ulink url="https://ccrma.stanford.edu/software/stk/classes.html">
+        <citetitle>https://ccrma.stanford.edu/software/stk/classes.html</citetitle>
+        </ulink>
+      </para>
+    </note>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode STKDrummer. Il utilise le fichier
+      <ulink url="examples/STKDrummer.csd"><citetitle>STKDrummer.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode STKDrummer.</title>
+        <xi:include href="examples-xml/STKDrummer.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="STKClarinet"><citetitle>STKClarinet</citetitle></link>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namemichael; (d'après &nameperry;)</member>
+        <member>Irreducible Productions</member>
+        <member>New York, NY</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.11 de Csound.</para>
+  </refsect1>
+</refentry>
+

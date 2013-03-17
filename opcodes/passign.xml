@@ -1,0 +1,93 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="passign">
+  <indexterm id="IndexPassign"><primary>passign</primary></indexterm>
+  <refentryinfo>
+    <title>Instrument Control:Initialization and Reinitialization</title>
+  </refentryinfo>
+  <refmeta>
+    <refentrytitle>passign</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>passign</refname>
+    <refpurpose>
+      Affecte un ensemble de p-champs à des variables de taux i.
+   </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Affecte un ensemble de p-champs à des variables de taux i.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis> ivar1, ... <command>passign</command> [istart]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      L'argument optionnel <emphasis>istart</emphasis> donne l'indice du premier
+      p-champ à affecter. La valeur par défaut est 1, ce qui correspond au
+      numéro d'instrument.
+    </para>
+    <para>
+      Une des variables peut être une variable chaîne de caractères, à laquelle
+      sera affecté dans ce cas le seul paramètre de type chaîne de caractères,
+      s'il y en a un, sinon une erreur.
+  </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>passign</emphasis> transfère les p-champs de l'instrument à des
+      variables de l'instrument, en commençant par celui qui est identifié par
+      l'argument <emphasis>istart</emphasis>. Il ne doit pas y avoir plus de
+      variables que de p-champs, mais il peut y en avoir moins.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="assign"><citetitle>assign</citetitle></link>,
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      <example>
+        Voici un exemple de l'opcode passign. Il utilise le fichier
+        <ulink url="examples/passign.csd"><citetitle>passign.csd</citetitle></ulink>.
+        <title>Une variante de toot8.csd qui utilise passign.</title>
+          <xi:include href="examples-xml/passign.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur: &namejohn;</member> d'après une idée de Tobiah
+        <member>Université de Bath, Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>Décembre 2009</member>
+      </simplelist>
+    <para>Nouveau dans la version 5.12</para>
+    </para>
+  </refsect1>
+</refentry>

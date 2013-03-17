@@ -1,0 +1,126 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="midion">
+<indexterm id="IndexMidion"><primary>midion</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Note Output</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>midion</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>midion</refname>
+
+    <refpurpose>
+      Génère des messages de note MIDI au taux-k.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère des messages de note MIDI au taux-k.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>midion</command> kchn, knum, kvel</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kchn</emphasis> -- numéro de canal MIDI (1-16)
+    </para>
+
+    <para>
+      <emphasis>knum</emphasis> -- numéro de note (0-127)
+    </para>
+
+    <para>
+      <emphasis>kvel</emphasis> -- vélocité (0-127)
+    </para>
+
+    <para>
+      <emphasis>midion</emphasis> (note on au taux-k) joue des notes MIDI avec
+      les valeurs courantes de <emphasis>kchn</emphasis>, <emphasis>knum</emphasis>
+      et <emphasis>kvel</emphasis>. Ces arguments peuvent varier au taux-k.
+      Chaque fois que la valeur MIDI convertie de l'un de ces arguments change,
+      la dernière note MIDI jouée par l'instance courante de
+      <emphasis>midion</emphasis> est immédiatement arrêtée et une nouvelle note
+      avec le nouvel argument est activée. Cet opcode, comme
+      <emphasis>moscil</emphasis>, peut générer des textures mélodiques très
+      complexes s'il est contrôlé par des signaux complexes de taux-k.
+    </para>
+
+    <para>
+      Il peut y avoir n'importe quel nombre d'opcodes <emphasis>midion</emphasis>
+      dans le même instrument de Csound, ce qui permet une polyphonie de style
+      contrapointique avec un seul instrument.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode midion. Il utilise le fichier
+      <ulink url="examples/midion_simple.csd"><citetitle>midion_simple.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple simple de l'opcode midion.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <para>Cet exemple génère un accord mineur sur chaque note reçue sur l'entrée
+        MIDI. Il génère des notes MIDI sur la sortie MIDI de Csound, si bien qu'il
+        faut y connecter quelque chose.</para>
+          <xi:include href="examples-xml/midion_simple.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Voici un autre exemple de l'opcode midion. Il utilise le fichier
+      <ulink url="examples/midion_scale.csd"><citetitle>midion_scale.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode midion pour générer aléatoirement des notes
+        sur une échelle.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <para>Cet exemple génère aléatoirement des notes prises dans une échelle
+        donnée pour chaque note reçue sur l'entrée MIDI. Il génère des notes MIDI
+        sur la sortie MIDI de Csound, si bien qu'il faut y connecter quelque chose.</para>
+          <xi:include href="examples-xml/midion_scale.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="moscil"><citetitle>moscil</citetitle></link>,
+      <link linkend="midion2"><citetitle>midion2</citetitle></link>,
+      <link linkend="noteon"><citetitle>noteon</citetitle></link>,
+      <link linkend="noteoff"><citetitle>noteoff</citetitle></link>,
+      <link linkend="noteondur"><citetitle>noteondur</citetitle></link>,
+      <link linkend="noteondur2"><citetitle>noteondur2</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+        <member>Mai 1997</member>
+      </simplelist>
+    </para>
+
+    <para>Merci à &namerasmus; pour avoir indiqué les intervalles corrects pour
+    le canal MIDI et les numéros de contrôleur.</para>
+ </refsect1>
+</refentry>

@@ -1,0 +1,115 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="lpf18">
+<indexterm id="Indexlpf18"><primary>lpf18</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Resonant</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lpf18</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>lpf18</refname>
+    <refpurpose>
+      Un filtre passe-bas résonant glissant à 3 pôles.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Implémentation d'un filtre passe-bas résonant glissant à 3 pôles.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>lpf18</command> asig, kfco, kres, kdist [, iskip]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iskip</emphasis> (facultatif, à par défaut) -- S'il est présent
+      et différent de zéro, l'initialisation est ignorée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kfco</emphasis> -- fréquence de coupure du filtre en Hz. Doit
+      être comprise entre 0 et <emphasis>sr</emphasis>/2.
+    </para>
+
+    <para>
+      <emphasis>kres</emphasis> -- quantité de résonance. Il y a des
+      auto-oscillations lorsque <emphasis>kres</emphasis> est proche de 1. Doit
+      être habituellement compris entre 0 et 1, mais des valeurs légèrement
+      supérieures à 1 sont possibles pour obtenir des oscillations plus
+      soutenues et un effet de <quote>saturation</quote>.
+    </para>
+
+    <para>
+      <emphasis>kdist</emphasis> -- quantité de distortion. <emphasis>kdist</emphasis> = 0
+      donne une sortie propre. <emphasis>kdist</emphasis> &gt; 0 ajoute une
+      distorsion de type <emphasis>tanh</emphasis>() contrôlée par les paramètres
+      du filtre, de façon à ce qu'une faible fréquence de coupure et qu'une résonance
+      importante augmentent le taux de distorsion. Il est conseillé d'expérimenter.
+    </para>
+
+    <para>
+      <emphasis>lpf18</emphasis> est une simulation numérique d'un filtre passe-bas
+      à 3 pôles (18 dB/oct) capable d'auto-oscillations avec une unité de distorsion
+      intégrée. C'est vraiment une version 3 pôles de
+      <link linkend="moogvcf"><citetitle>moogvcf</citetitle></link>, révisée,
+      recalibrée et comportant quelques améliorations. Les tables de réglage et
+      de rétroaction n'utilisent pas plus de 6 additions et 6 multiplications
+      par cycle de contrôle. L'unité de distorsion est basée sur une fonction
+      <link linkend="tanh"><citetitle>tanh</citetitle></link> modifiée, pilotée
+      par les contôles du filtre.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        Ce filtre nécessite un signal d'entrée normalisé à un.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode lpf18. Il utilise le fichier
+      <ulink url="examples/lpf18.csd"><citetitle>lpf18.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode lpf18.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/lpf18.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Josep M Comajuncosas</member>
+        <member>Espagne</member>
+        <member>Décembre 2000</member>
+      </simplelist>
+    </para>
+    <para>Exemple écrit par &namekevin; avec l'aide de Iain Duncan. Merci à Iain
+    pour son aide sur cet exemple.</para>
+    <para>Nouveau dans la version 4.10 de Csound.</para>
+  </refsect1>
+</refentry>

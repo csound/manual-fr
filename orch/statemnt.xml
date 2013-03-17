@@ -1,0 +1,29 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="OrchStatemnt">
+  <title>Instructions ordinaires</title>
+  <para>
+    On utilise une <emphasis>instruction ordinaire</emphasis> soit lors de l'initialisation soit
+    pendant l'exécution soit durant les deux. Les opérations qui produisent un résultat fonctionnent
+    formellement au taux de ce résultat (c'est-à-dire, pendant l'initialisation pour les résultats
+    de taux-i ; pendant l'exécution pour les résultats de taux-k et de taux-a), avec pour seule
+    exception l'opcode <emphasis>init</emphasis>. Cependant, la plupart des générateurs et des
+    modificateurs produisent des signaux que ne dépendent pas seulement de la valeur instantanée de
+    leurs arguments mais aussi d'un état interne conservé. Ainsi, ces unités de la période d'exécution
+    ont un composant implicite de la période d'initialisation pour créer cet état. Le type temporel
+    d'une opération qui ne produit pas de résultat est apparent dans l'opcode.
+  </para>
+
+  <para>
+    Les arguments sont des valeurs qui sont envoyées à une opération. La plupart des arguments
+    accepteront des expressions arithmétiques composées de constantes, de variables, de symboles
+    réservés, de convertisseurs de valeur, d'opérations arithmétiques, et de valeurs conditionnelles.
+  </para>
+</section>

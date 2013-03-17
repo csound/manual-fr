@@ -1,0 +1,102 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vincr">
+<indexterm id="IndexVincr"><primary>vincr</primary></indexterm>
+  <refentryinfo><title>Mathematical Operations:Comparators and Accumulators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vincr</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vincr</refname>
+    <refpurpose>
+      Accumule des signaux audio.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>vincr</emphasis> incrémente une variable audio avec un autre signal,
+      c-à-d qu'il accumule les valeurs dans sa sortie.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>vincr</command> accum, aincr</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>accum</emphasis> -- variable accumulateur de taux-a à incrémenter 
+    </para>
+
+    <para>
+      <emphasis>aincr</emphasis> -- signal d'incrémentation
+    </para>
+
+    <para>
+      <emphasis>vincr</emphasis> (variable increment) et
+      <link linkend="clear"><citetitle>clear</citetitle></link> sont prévus pour être
+      utilisés ensemble. <emphasis>vincr</emphasis> stocke la somme de deux variables
+      audio dans la première variable (qui joue ainsi le rôle d'un accumulateur en
+      polyphonie). L'accumulateur est habituellement une variable globale qui est
+      utilisée pour combiner des signaux provenant de plusieurs sources (différents
+      instruments ou instances d'intruments) pour un traitement ultérieur (par
+      exemple via un effet global qui lit l'accumulateur) ou pour sortir le signal
+      composé par un autre moyen que les opcodes <emphasis>out</emphasis> (par exemple
+      via l'opcode <link linkend="fout"><citetitle>fout</citetitle></link>). Après
+      son utilisation, la variable accumulateur doit être remise à zéro au moyen de
+      l'opcode <emphasis>clear</emphasis> (sinon elle sera saturée).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode vincr. Il utilise le fichier
+      <ulink url="examples/vincr.csd"><citetitle>vincr.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode vincr.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/vincr.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Voici un autre exemple de l'opcode vincr. Il utilise le fichier
+      <ulink url="examples/vincr-complex.csd"><citetitle>vincr-complex.csd</citetitle></ulink>.
+      <example>
+          <xi:include href="examples-xml/vincr-complex.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="clear"><citetitle>clear</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+        <member>1999</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.56 de Csound</para>
+  </refsect1>
+</refentry>

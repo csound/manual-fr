@@ -1,0 +1,96 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="trhighest">
+<indexterm id="Indextrhighest"><primary>trhighest</primary></indexterm>
+
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>trhighest</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>trhighest</refname>
+    <refpurpose>
+      Extrait le canal de fréquence le plus haut d'un flot de suivi de partiels.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      L'opcode <emphasis>trhighest</emphasis> prend en entrée un flot de signal
+      TRACKS pv (tel que généré, par exemple, par <emphasis>partials</emphasis>)
+      et ne restitue que le canal le plus haut. De plus, il fournit en sortie
+      deux signaux de taux-k, correspondant à la fréquence et à l'amplitude du
+      signal de canal le plus haut.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>fsig, kfr, kamp <command>trhighest</command> fin1, kscal</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+      <para>
+      <emphasis>fsig</emphasis> -- flot pv de sortie au format TRACKS.
+    </para>
+  
+    <para>
+      <emphasis>kfr</emphasis> -- fréquence (en Hz) du canal de fréquence le plus
+      haut.
+    </para>
+  
+        <para>
+      <emphasis>kamp</emphasis> -- amplitude du canal de fréquence le plus haut.
+    </para>
+    <para>
+  
+        <emphasis>fin</emphasis> -- flot pv d'entrée au format TRACKS.
+    </para>
+  
+    <para>
+      <emphasis>kscal</emphasis> -- pondération d'amplitude de la sortie.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode trhighest. Il utilise le fichier
+      <ulink url="examples/trhighest.csd"><citetitle>trhighest.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode trhighest.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/trhighest.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    
+    <para>
+      L'exemple ci-dessus montre le suivi de partiels d'un signal d'analyse par
+      distribution de fréquence instantanée, l'extraction de la fréquence la
+      plus haute et la resynthèse.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Février 2006 </member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans Csound 5.01</para>
+  </refsect1>
+</refentry>

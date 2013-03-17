@@ -1,0 +1,118 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.14
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="planet">
+<indexterm id="IndexPlanet"><primary>planet</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Models and Emulations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>planet</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>planet</refname>
+    <refpurpose>
+      Simulation d'un planète en orbite dans un système d'étoile binaire.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>planet</emphasis> simule l'orbite d'une planète dans un système d'étoile
+      binaire. Les sorties sont les coordonnées x, y et z de la planète en orbite. Il est
+      possible que la planète atteigne sa vitesse de libération si elle croise une étoile
+      de très près. Cela rend le système quelque peu instable.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ax, ay, az <command>planet</command> kmass1, kmass2, ksep, ix, iy, iz, ivx, ivy, ivz, idelta \
+      [, ifriction] [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ix, iy, iz</emphasis> -- les coordonnées initiales x, y et z de la planète
+    </para>
+
+    <para>
+      <emphasis>ivx, ivy, ivz</emphasis> -- les composantes initiales du vecteur vitesse
+      de la planète.
+    </para>
+
+    <para>
+      <emphasis>idelta</emphasis> -- la taille du pas utilisé dans l'approximation de
+      l'équation différentielle.
+    </para>
+
+    <para>
+      <emphasis>ifriction</emphasis> (facultatif, 0 par défaut) -- une valeur de frottement
+      que l'on peut utiliser pour empêcher le système de diverger
+    </para>
+    <para>
+      <emphasis>iskip</emphasis> (facultatif, 0 par défaut) -- s'il est non nul,
+      l'initialisation du filtre est ignorée. (Nouveau dans les versions
+      4.23f13 et 5.0 de Csound)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ax, ay, az</emphasis> -- les coordonnées x, y et z de la planète en sortie
+    </para>
+
+    <para>
+      <emphasis>kmass1</emphasis> -- la masse de la première étoile
+    </para>
+
+    <para>
+      <emphasis>kmass2</emphasis> -- la masse de la seconde étoile
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode planet. Il utilise le fichier
+      <ulink url="examples/planet.csd"><citetitle>planet.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode planet.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/planet.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>Plus d'information sur cet opcode :
+    <ulink url="http://www.csounds.com/journal/issue9/FlutesInOrbit.html">
+    <citetitle>http://www.csounds.com/journal/issue9/FlutesInOrbit.html</citetitle>
+    </ulink>,
+    écrit par Brian Redfern.</para>
+  </refsect1> 
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namehans;</member>
+        <member>Décembre 1998</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.50 de Csound</para>
+  </refsect1>
+</refentry>

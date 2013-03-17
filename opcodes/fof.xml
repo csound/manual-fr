@@ -1,0 +1,168 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.14
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="fof">
+<indexterm id="IndexFof"><primary>fof</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Granular Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>fof</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>fof</refname>
+    <refpurpose>
+      Produit des grains FOF (sinusoïde amortie) pour la synthèse par formant et la synthèse granulaire.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      La sortie audio est une succession de grains FOF (fonction d'onde formantique) amorcés à la fréquence
+      <emphasis>xfund</emphasis> avec une pointe spectrale à <emphasis>xform</emphasis>. Pour
+      <emphasis>xfund</emphasis> supérieur à 25 Hz ces grains produisent un formant comme dans la parole
+      avec des caractéristiques spectrales déterminées par les paramètres d'entrée de taux-k. Pour des
+      fondamentales plus basses ce générateur fournit une forme spéciale de synthèse granulaire.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>fof</command> xamp, xfund, xform, koct, kband, kris, kdur, kdec, iolaps, \
+      ifna, ifnb, itotdur [, iphs] [, ifmode] [, iskip]</synopsis>
+ </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iolaps</emphasis> -- quantité de mémoire préallouée nécessaire pour contenir les données
+      de chevauchement des grains. Les chevauchements dépendent de la fréquence, et l'espace requis dépend
+      de la valeur maximale de <emphasis>xfund * kdur</emphasis>. La surestimation de cet espace n'induit
+      pas de coût de calcul supplémentaire. Chaque <emphasis>iolap</emphasis> utilise moins de 50 octets
+      de mémoire.
+    </para>
+
+    <para>
+      <emphasis>ifna, ifnb</emphasis> -- numéro de table de deux fonctions. La première est une table sinus
+      pour la synthèse des grains FOF (une taille d'au moins 4096 est recommandée). La seconde est
+      une forme ascendante, utilisée à l'endroit et à l'envers pour dessiner l'attaque et la chute des grains
+      FOF ; cette forme peut être linéaire
+      (<link linkend="GEN07"><citetitle>GEN07</citetitle></link>) ou bien sigmoïde
+      (<link linkend="GEN19"><citetitle>GEN19</citetitle></link>).
+    </para>
+
+    <para>
+      <emphasis>itotdur</emphasis> -- durée totale durant laquelle ce <emphasis>fof</emphasis> sera actif.
+      Fixée normalement à p3. Aucun nouveau grain FOF n'est créé si son <emphasis>kdur</emphasis> n'est pas
+      contenu complètement dans le <emphasis>itotdur</emphasis> restant.
+    </para>
+
+    <para>
+      <emphasis>iphs</emphasis> (facultatif, par défaut 0) -- phase initiale du fondamental, exprimée
+      comme une fraction d'une période (0 à 1). La valeur par défaut est 0.
+    </para>
+
+    <para>
+      <emphasis>ifmode</emphasis> (facultatif, par défaut 0) -- mode fréquentiel du formant. S'il est nul,
+      chaque grain FOF garde la fréquence <emphasis>xform</emphasis> avec laquelle il a été amorcé. Sinon,
+      chaque grain FOF est influencé par <emphasis>xform</emphasis> en continu. La valeur par défaut est 0.
+    </para>
+
+    <para>
+      <emphasis>iskip</emphasis> (facultatif, par défaut 0) -- s'il est non nul, l'initialisation est
+      ignorée (ce qui permet l'utilisation du legato).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>xamp</emphasis> -- amplitude de crête de chaque grain FOF, observée à la toute fin de son
+      attaque. L'attaque pourra dépasser cette valeur si l'on a une grande largeur de bande (disons
+      Q &lt; 10) et/ou quand les grains FOF se superposent en partie.
+    </para>
+
+    <para>
+      <emphasis>xfund</emphasis> -- la fréquence fondamentale (en Hertz) des impulsions qui créent les
+      nouveaux grains FOF.
+    </para>
+
+    <para>
+      <emphasis>xform</emphasis> -- la fréquence du formant, c'est-à-dire la fréquence du grain FOF induit
+      par chaque impulsion <emphasis>xfund</emphasis>. Cette fréquence peut être fixe pour chaque grain
+      ou varier en continu (voir <emphasis>ifmode</emphasis>).
+    </para>
+
+    <para>
+      <emphasis>koct</emphasis> -- indice d'octaviation, normalement zéro. S'il est supérieur à zéro, il
+      abaisse la fréquence <emphasis>xfund</emphasis> effective en atténuant les grains FOF de rang impair.
+      Les nombres entiers sont des octaves, les fractions sont transitoires.
+    </para>
+
+    <para>
+      <emphasis>kband</emphasis> -- la largeur de bande du formant (à -6dB), exprimée en Hz. La largeur de
+      bande détermine la vitesse de décroissance exponentielle du grain FOF, avant l'application de
+      l'enveloppe décrite ci-dessous.
+    </para>
+
+    <para>
+      <emphasis>kris, kdur, kdec</emphasis> -- attaque, durée globale et chute (en secondes) du grain FOF.
+      Ces valeurs appliquent une enveloppe à chaque grain, à la manière du générateur de Csound
+      <emphasis>linen</emphasis> mais avec des formes d'attaque et de chute dessinées à partir de l'entrée
+      <emphasis>ifnb</emphasis>. <emphasis>kris</emphasis> détermine en proportion inverse la largeur de
+      jupe (à -40 dB) de la région formantique induite. <emphasis>kdur</emphasis> affecte la densité des
+      chevauchements des grains FOF, et par conséquent la vitesse de calcul. Des valeurs typiques pour une
+      imitation vocale sont 0,003, 0,02, 0,007.
+    </para>
+
+    <para>
+      Le générateur <emphasis>fof</emphasis> de Csound est inspiré du codage en C par Michael Clarke du
+      programme <emphasis>CHANT</emphasis> de l'IRCAM (Xavier Rodet et al.). Chaque <emphasis>fof</emphasis>
+      produit un seul formant, et les sorties de quatre ou plus de ceux-ci peuvent être additionnées pour
+      produire une riche imitation vocale. La synthèse <emphasis>fof</emphasis> est une forme spéciale de
+      la synthèse granulaire, et cette implémentation facilite la transformation entre l'imitation vocale
+      et les textures granulaires. La vitesse de calcul dépend de <emphasis>kdur, xfund</emphasis>, et de
+      la densité des chevauchements.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode fof. Il utilise le fichier
+      <ulink url="examples/fof.csd"><citetitle>fof.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode fof.</title>
+
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/fof.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Les valeurs de formant pour le "a" en voix d'alto proviennent de 
+      l'<link linkend="MiscFormants"><citetitle>Appendice Valeurs de Formant</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="fof2"><citetitle>fof2</citetitle></link>, 
+      <link linkend="MiscFormants"><citetitle>Appendice Valeurs de Formant</citetitle></link>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ajouté dans la version 1 (1990)</para>
+  </refsect1>
+</refentry>

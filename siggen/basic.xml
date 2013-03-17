@@ -1,0 +1,57 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.6
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="SiggenBasic">
+  <title>Oscillateurs Elémentaires</title>
+
+  <para>
+    Les opcodes des oscillateurs élémentaires sont : (noter que les opcodes qui se terminent par un 'i'
+    implémentent l'interpolation linéaire et que ceux qui se terminent par un '3' implémentent
+    l'interpolation cubique)
+    <itemizedlist>
+      <listitem><para>Banques d'Oscillateurs : <link linkend="oscbnk"><citetitle>oscbnk</citetitle></link></para>
+      </listitem>
+      <listitem><para>Oscillateurs simples à table : <link linkend="oscil"><citetitle>oscil</citetitle></link>,
+        <link linkend="oscil3"><citetitle>oscil3</citetitle></link> et
+        <link linkend="oscili"><citetitle>oscili</citetitle></link>.</para>
+      </listitem>
+      <listitem><para>Oscillateur sinusoïdal simple, rapide : <link linkend="oscils"><citetitle>oscils</citetitle></link></para>
+      </listitem>
+      <listitem><para>Oscillateurs de précision : <link linkend="poscil"><citetitle>poscil</citetitle></link> et
+        <link linkend="poscil3"><citetitle>poscil3</citetitle></link>.</para>
+      </listitem>
+      <listitem><para>Oscillateurs plus flexibles : <link linkend="oscilikt"><citetitle>oscilikt</citetitle></link>,
+        <link linkend="osciliktp"><citetitle>osciliktp</citetitle></link>,
+        <link linkend="oscilikts"><citetitle>oscilikts</citetitle></link> et
+        <link linkend="osciln"><citetitle>osciln</citetitle></link> (aussi appelé
+        <link linkend="oscilx"><citetitle>oscilx</citetitle></link>).</para>
+      </listitem>
+    </itemizedlist>
+  </para>
+  <para>On peut aussi construire des oscillateurs à partir des opcodes de lecture de table. Voir la
+    section <link linkend="TableReadwrit"><citetitle>Opérations de Lecture/Ecriture de Table</citetitle></link>.</para>
+
+  <simplesect>
+    <title>LFOs</title>
+    <para>
+      <itemizedlist>
+        <listitem><para><link linkend="lfo"><citetitle>lfo</citetitle></link></para>
+        </listitem>
+        <listitem><para><link linkend="vibr"><citetitle>vibr</citetitle></link></para>
+        </listitem>
+        <listitem><para><link linkend="vibrato"><citetitle>vibrato</citetitle></link></para>
+        </listitem>
+      </itemizedlist>
+      Voir la section <link linkend="SiggenTableacc"><citetitle>Accès aux Tables</citetitle></link> pour
+      d'autres opcodes de lecture de table que l'on peut utiliser comme oscillateurs. Voir aussi la section
+      <link linkend="SiggenDynamic"><citetitle>Oscillateurs à Spectre Dynamique</citetitle>.</link>
+    </para>
+  </simplesect>
+
+</section>

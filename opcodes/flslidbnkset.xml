@@ -1,0 +1,121 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.1
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLslidBnkSet">
+<indexterm id="IndexFLslidBnkSet"><primary>FLslidBnkSet</primary></indexterm>
+  <refentryinfo><title>FLTK:Other</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLslidBnkSet</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLslidBnkSet</refname>
+    <refpurpose>
+      mofidie les valeurs d'un banc de réglettes.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>FLslidBnkSet</emphasis> mofidie les valeurs d'un banc de
+      réglettes selon un ensemble de valeurs stockées dans une table.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>FLslidBnkSet</command> ihandle, ifn [, istartIndex, istartSlid, inumSlid]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ihandle</emphasis> - identifiant du sliderBnk (à utiliser pour
+      fixer ses valeurs).
+    </para>
+    <para>
+      <emphasis>ifn</emphasis> - numéro d'une table contenant un ensemble de
+      valeurs à affecter à chaque réglette.
+    </para>
+    <para>
+      <emphasis>istartIndex</emphasis> - (facultatif) indice dans la table du
+      premier élément à être évalué. La valeur par défaut est zéro.
+    </para>
+    <para>
+      <emphasis>istartSlid</emphasis> - (facultatif) première réglette à
+      évaluer. 0 par défaut, indiquant la première réglette.
+    </para>
+    <para>
+      <emphasis>inumSlid</emphasis> - (facultatif) nombre de réglettes à mettre
+      à jour. 0 par défaut, indiquant toutes les réglettes.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+     <emphasis>FLslidBnkSet</emphasis> modifie les valeurs d'un banc de réglettes
+     (créé avec <link linkend="FLslidBnk"><citetitle>FLslidBnk</citetitle></link>
+     ou avec <link linkend="FLvslidBnk"><citetitle>FLvslidBnk</citetitle></link>)
+     selon un ensemble de valeurs stockées dans la table <emphasis>ifn</emphasis>.
+     Il permet actuellement de mettre à jour un banc de réglettes
+     <link linkend="FLslidBnk"><citetitle>FLslidBnk</citetitle></link> (ou
+     <link linkend="FLvslidBnk"><citetitle>FLvslidBnk</citetitle></link>), (par
+     exemple en utilisant l'opcode
+     <link linkend="slider8table"><citetitle>slider8table</citetitle></link>)
+     avec un ensemble de valeurs situées dans une table. Il faut mettre dans
+     l'argument <emphasis>ihandle</emphasis> l'identifiant reçu de l'opcode
+     <link linkend="FLslidBnkGetHandle"><citetitle>FLslidBnkGetHandle</citetitle></link>.
+     Il ne travaille qu'au taux-i. Il est possible de ne réinitialiser qu'une
+     partie des réglettes, en utilisant les arguments facultatifs
+     <emphasis>istartIndex</emphasis>, <emphasis>istartSlid</emphasis>,
+     <emphasis>inumSlid</emphasis>.
+    </para>
+    <para>
+      Il y a une version de taux-k de cet opcode appelée
+      <link linkend="FLslidBnkSetk"><citetitle>FLslidBnkSetk</citetitle></link>.
+    </para>
+
+  </refsect1>
+<!--  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opode FLslidBnkSet. Il utilise le fichier
+      <ulink url="examples/FLslidBnkSet.csd"><citetitle>FLslidBnkSet.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opode FLslidBnkSet.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/FLslidBnkSet.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>-->
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="FLslider"><citetitle>FLslider</citetitle></link>,
+      <link linkend="FLslidBnkGetHandle"><citetitle>FLslidBnkGetHandle</citetitle></link>,
+      <link linkend="FLslidBnk"><citetitle>FLslidBnk</citetitle></link>,
+      <link linkend="FLslidBnk2"><citetitle>FLslidBnk2</citetitle></link>,
+      <link linkend="FLvslidBnk"><citetitle>FLvslidBnk</citetitle></link>,
+      <link linkend="FLvslidBnk2"><citetitle>FLvslidBnk2</citetitle></link>
+      <link linkend="FLslidBnk2Set"><citetitle>FLslidBnk2Set</citetitle></link>,
+      <link linkend="FLslidBnkSetk"><citetitle>FLslidBnkSetk</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 5.06</para>
+  </refsect1>
+</refentry>

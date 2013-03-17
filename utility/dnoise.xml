@@ -1,0 +1,162 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="dnoise">
+  <refentryinfo><title>Utilities</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>dnoise</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>dnoise</refname>
+    <refpurpose>
+      Réduit le bruit dans un fichier.
+      <indexterm id="IndexDnoise"><primary>dnoise</primary></indexterm>
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      C'est un schéma de réduction de bruit au moyen du seuillage de bruit dans le domaine fréquentiel.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>dnoise</command> [options] -i ficref_bruit -o ficson_sortie ficson_entree</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      Options spécifiques à dnoise :
+
+      <itemizedlist>
+        <listitem><para><emphasis>(pas d'option)</emphasis> fichier son en entrée à débruiter</para></listitem>
+        <listitem><para><emphasis>-i nomfic</emphasis> fichier de référence du bruit en entrée</para></listitem>
+        <listitem><para><emphasis>-o nomfic</emphasis> fichier son de sortie</para></listitem>
+        <listitem><para><emphasis>-N fnum</emphasis> nombre de filtres passe-bande (par défaut : 1024)</para></listitem>
+        <listitem><para><emphasis>-w fovlp</emphasis> facteur de chevauchement des filtres : {0,1,(2),3}
+          NE PAS UTILISER <emphasis>-w</emphasis> ET <emphasis>-M</emphasis></para></listitem>
+        <listitem><para><emphasis>-M longfa</emphasis> longueur de la fenêtre d'analyse (par défaut : N-1
+          à moins que <emphasis>-w</emphasis> ne soit spécifié)</para></listitem>
+        <listitem><para><emphasis>-L longfs</emphasis> longueur de la fenêtre de synthèse (par défaut : M)</para></listitem>
+        <listitem><para><emphasis>-D factd</emphasis> facteur de décimation (par défaut : M/8)</para></listitem>
+        <listitem><para><emphasis>-b datedeb</emphasis> date de début dans le fichier de référence du bruit
+          (par défaut : 0)</para></listitem>
+        <listitem><para><emphasis>-B smpdeb</emphasis> échantillon de départ dans le fichier de référence
+          du bruit (par défaut : 0)</para></listitem>
+        <listitem><para><emphasis>-e datefin</emphasis> date de fin dans le fichier de référence du bruit
+          (par défaut : fin du fichier)</para></listitem>
+        <listitem><para><emphasis>-E smpfin</emphasis> échantillon de fin dans le fichier de référence du
+          bruit (par défaut : fin du fichier)</para></listitem>
+        <listitem><para><emphasis>-t seuil</emphasis> seuil au-dessus du bruit de référence en dB (par
+          défaut : 30)</para></listitem>
+        <listitem><para><emphasis>-S gfact</emphasis> raideur de la coupure au seuil de bruit, intervalle :
+          1 à 5 (par défaut : 1)</para></listitem>
+        <listitem><para><emphasis>-n nbrtrm</emphasis> nombre de trames de TFR sur lesquelles calculer la
+          moyenne (par défaut : 5)</para></listitem>
+        <listitem><para><emphasis>-m gainmin</emphasis> gain minimum du seuillage de bruit lorsqu'il est
+          fermé (par défaut : -40)</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      Options de format du fichier son :
+
+      <itemizedlist>
+        <listitem><para><emphasis>-A</emphasis> format de sortie AIFF</para></listitem>
+        <listitem><para><emphasis>-W</emphasis> format de sortie WAV</para></listitem>
+        <listitem><para><emphasis>-J</emphasis> format de sortie IRCAM</para></listitem>
+        <listitem><para><emphasis>-h</emphasis> pas d'en-tête de fichier (non valide pour une sortie
+          AIFF/WAV)</para></listitem>
+        <listitem><para><emphasis>-8</emphasis> échantillons en caractères non signés sur 8 bit</para></listitem>
+        <listitem><para><emphasis>-c</emphasis> échantillons en caractères signés sur 8 bit</para></listitem>
+        <listitem><para><emphasis>-a</emphasis> échantillons en alaw</para></listitem>
+        <listitem><para><emphasis>-u</emphasis> échantillons en ulaw</para></listitem>
+        <listitem><para><emphasis>-s</emphasis> échantillons en entiers courts</para></listitem>
+        <listitem><para><emphasis>-l</emphasis> échantillons en entiers longs</para></listitem>
+        <listitem><para><emphasis>-f</emphasis> échantillons en virgule flottante. Les nombres en virgule
+          flottante sont aussi supportés par les fichiers WAV. (Nouveau dans Csound 3.47.)</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      Options supplémentaires :
+
+      <itemizedlist>
+        <listitem><para><emphasis>-R</emphasis> verbose - impression d'une information d'état</para></listitem>
+        <listitem><para><emphasis>-H [N]</emphasis> imprime un caractère de type pulsation à chaque écriture
+          dans le fichier son.</para></listitem>
+        <listitem><para><emphasis>-- nomfic</emphasis> sortie de journal dans le fichier nomfic</para></listitem>
+        <listitem><para><emphasis>-V</emphasis> verbose - impression d'une information d'état</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        DNOISE consulte aussi la variable d'environnement SFOUTYP pour déterminer le format du fichier de
+        sortie.
+      </para>
+
+      <para>
+        L'option -i est utilisée pour un fichier de référence du bruit (créé normalement à partir d'un
+        court extrait du fichier à débruiter, dans lequel seul le bruit est audible). Le fichier son
+        d'entrée à débruiter peut être donné n'importe où dans la ligne de commande, sans drapeau.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      C'est un schéma de réduction de bruit au moyen du seuillage de bruit dans le domaine fréquentiel. Il
+      fonctionnera mieux dans le cas d'un rapport signal/bruit élevé avec un bruit de type souffle.
+    </para>
+
+    <para>
+      L'algorithme est celui suggéré par Moorer &amp; Berger dans <quote>Linear-Phase Bandsplitting: Theory 
+      and Applications</quote> presenté à la 76ème Convention, 8-11 Octobre 1984 à New York, de l'Audio
+      Engineering Society (préimpression &num;2132) sauf qu'il utilise la formulation par
+      Chevauchement-Addition Pondéré pour l'analyse et la synthèse de Fourier à court terme au lieu de
+      la formulation récursive proposée par Moorer &amp; Berger. Le gain pour chaque bin de fréquence est
+      calculé indépendamment selon la formule
+      <literallayout>gain = g0 + (1-g0) * [moy / (moy + th*th*nref)] &circ; sh</literallayout>
+
+      où <emphasis>moy</emphasis> et <emphasis>nref</emphasis> sont la moyenne quadratique du signal et du
+      bruit respectivement pour le bin en question. (Ceci diffère légèrement de la version dans
+      Moorer &amp; Berger.)
+    </para>
+
+    <para>
+      Les paramètres critiques <emphasis>th</emphasis> et <emphasis>g0</emphasis> sont spécifiés en dB et
+      convertis en interne en valeurs décimales. Les valeurs <emphasis>nref</emphasis> sont calculées
+      au début du programme sur la base d'un fichier de bruit (spécifié dans la ligne de commande) qui
+      contient du bruit sans signal.
+    </para>
+
+    <para>
+      Les valeurs <emphasis>moy</emphasis> sont calculée sur une fenêtre rectangulaire de m trames de TFR
+      centrée sur la date courante. Cela correspond à une extension temporelle de m*D/R (qui vaut
+      typiquement (m*N/8)/R ). Le réglage par défaut de N, m, et D devrait convenir pour la plupart des
+      utilisations. Un taux d'échantillonnage supérieur à 16 kHz pourrait signifier un N plus grand.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : Mark Dolson</para>
+    <para>26 août 1989</para>
+    <para>Auteur : &namejohn;</para>
+    <para>30 décembre 2000</para>
+    <para>Mis à jour par &namerasmus; le 11 mars 2002.</para>
+  </refsect1>
+</refentry>

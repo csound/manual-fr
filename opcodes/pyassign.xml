@@ -1,0 +1,52 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.6
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+<refentry id="pyassign">
+<indexterm id="IndexPyAssign"><primary>pyassign</primary></indexterm>
+  <refentryinfo><title>Python Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pyassign Opcodes</refentrytitle>
+  </refmeta>
+  
+  <refnamediv>
+    <refname>pyassign</refname>
+    <refpurpose>
+      Affecte la valeur de la variable de Csound donnée à une variable Python,
+      écrasant son contenu précédent.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>pyassign</command> "variable", kvalue</synopsis>
+    <synopsis><command>pyassigni</command> "variable", ivalue</synopsis>
+    <synopsis><command>pylassign</command> "variable", kvalue</synopsis>
+    <synopsis><command>pylassigni</command> "variable", ivalue</synopsis>
+    <synopsis><command>pyassignt</command> ktrigger, "variable", kvalue</synopsis>
+    <synopsis><command>pylassignt</command> ktrigger, "variable", kvalue</synopsis>
+  </refsect1>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Affecte la valeur de la variable de Csound donnée à une variable Python,
+      écrasant son contenu précédent. L'objet Python résultant sera un nombre
+      en virgule flottante.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      Copyright (c) 2002 Maurizio Umberto Puxeddu. Tous droits réservés.
+      Certaines parties, copyright (c) 2004 et 2005 Michael Gogins.
+      Ce document a été mis à jour le 25 juillet 2004 et le 1er février
+      2005 par &namemichael;.
+    </para>
+  </refsect1>
+</refentry>

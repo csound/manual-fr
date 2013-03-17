@@ -1,0 +1,119 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="fin">
+<indexterm id="IndexFin"><primary>fin</primary></indexterm>
+  <refentryinfo><title>Signal I/O:File I/O</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>fin</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>fin</refname>
+    <refpurpose>
+      Lit des signaux depuis un fichier au taux-a.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Lit des signaux depuis un fichier au taux-a.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>fin</command> ifilename, iskipframes, iformat, ain1 [, ain2] [, ain3] [,...]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifilename</emphasis> -- nom du fichier d'entrée (peut être une
+      chaîne de caractères ou un identificateur numérique généré par
+      <link linkend="fiopen"><citetitle>fiopen</citetitle></link>).
+    </para>
+
+    <para>
+      <emphasis>iskipframes</emphasis> -- nombre de trames à ignorer au début (chaque
+      trame contient un échantillon de chaque canal).
+    </para>
+
+    <para>
+      <emphasis>iformat</emphasis> -- un nombre spécifiant le format du fichier
+      d'entrée pour les fichiers sans en-tête. Si un en-tête est trouvé, cet argument
+      est ignoré.
+      <itemizedlist>
+        <listitem>
+          <para>0 - flottants sur 32 bit sans en-tête</para>
+        </listitem>
+
+        <listitem>
+          <para>1 - entiers sur 16 bit sans en-tête</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>fin</emphasis> (file input) est le complément de
+      <link linkend="fout"><citetitle>fout</citetitle></link> : il lit un fichier
+      multicanaux pour générer des signaux de taux audio. Il faut s'assurer que le
+      nombre de canaux du fichier d'entrée est le même que le nombre d'arguments
+      <emphasis>ainX</emphasis>.
+    </para>
+    <note>
+      <para>Prière de noter que comme cet opcode génére sa sortie en utilisant des
+      paramètres d'entrée (placés à droite de l'opcode), ces variables doivent avoir
+      été initialisées avant leur utilisation, sinon une erreur "utilisé avant
+      d'être défini" se produira. On peut utiliser l'opcode
+      <link linkend="init"><citetitle>init</citetitle></link> pour cela.</para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode fin. Il utilise les fichiers
+      <ulink url="examples/fin.csd"><citetitle>fin.csd</citetitle></ulink> et
+      <ulink url="examples/fox.wav"><citetitle>fox.wav</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode fin.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/fin.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="fini"><citetitle>fini</citetitle></link>,
+      <link linkend="fink"><citetitle>fink</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+        <member>1999</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.56 de Csound</para>
+  </refsect1>
+</refentry>

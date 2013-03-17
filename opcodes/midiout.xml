@@ -1,0 +1,104 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="midiout">
+<indexterm id="IndexMidiout"><primary>midiout</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Generic I/O</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>midiout</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>midiout</refname>
+
+    <refpurpose>
+      Envoie un message générique MIDI sur le port MIDI OUT.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Envoie un message générique MIDI sur le port MIDI OUT.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>midiout</command> kstatus, kchan, kdata1, kdata2</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kstatus</emphasis> -- le type du message MIDI. Peut être :
+      <itemizedlist>
+  <listitem><para>128 (note off)</para></listitem>
+  <listitem><para>144 (note on)</para></listitem>
+  <listitem><para>160 (aftertouch polyphonique)</para></listitem>
+  <listitem><para>176 (changement de contrôle)</para></listitem>
+  <listitem><para>192 (changement de programme)</para></listitem>
+  <listitem><para>208 (aftertouch de canal)</para></listitem>
+  <listitem><para>224 (pitch bend)</para></listitem>
+  <listitem><para>0 si aucun message MIDI ne doit être envoyé au port MIDI OUT</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>kchan</emphasis> -- canal MIDI (1-16)
+    </para>
+
+    <para>
+      <emphasis>kdata1, kdata2</emphasis> -- données dépendant du message
+    </para>
+
+    <para>
+      <emphasis>midiout</emphasis> n'a pas d'arguments de sortie, car il envoie
+      implicitement un message sur le port MIDI OUT. Il travaille au taux-k. Il
+      n'envoie un message MIDI que lorsque <emphasis>kstatus</emphasis> est
+      différent de zéro.
+    </para>
+
+    <warning>
+      <para>
+        <emphasis>Avertissement :</emphasis> Normallement <emphasis>kstatus</emphasis>
+        doit valoir 0. Il ne faut lui donner le numéro d'un type de message MIDI
+        que si l'on veut envoyer ce message MIDI.
+      </para>
+    </warning>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode midiout. Il utilise le fichier
+      <ulink url="examples/midiout.csd"><citetitle>midiout.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode midiout.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/midiout.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+        <member>1998</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans le version 3.492 de Csound.</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,68 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="turnon">
+<indexterm id="IndexTurnon"><primary>turnon</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Duration Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>turnon</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>turnon</refname>
+    <refpurpose>
+      Active un instrument pour une durée indéfinie.
+     </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Active un instrument pour une durée indéfinie.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>turnon</command> insnum [, itime]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+
+    <para>
+      <emphasis>insnum</emphasis> -- numéro de l'instrument à activer
+    </para>
+
+    <para>
+      <emphasis>itime</emphasis> (facultatif, 0 par défaut) -- délai, en secondes,
+      après lequel l'instrument <emphasis>insnum</emphasis> sera activé.
+      Vaut 0 par défaut.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>turnon</emphasis> active l'instrument <emphasis>insnum</emphasis>
+      après un délai de <emphasis>itime</emphasis> secondes, ou immédiatement si
+      <emphasis>itime</emphasis> n'est pas spécifié. L'instrument reste actif jusqu'à
+      ce qu'il soit explicitement arrêté. (Voir
+      <link linkend="turnoff"><citetitle>turnoff</citetitle></link>)
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="turnoff"><citetitle>turnoff</citetitle></link>,
+      <link linkend="turnoff2"><citetitle>turnoff2</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

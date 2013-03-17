@@ -1,0 +1,157 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.14
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="tempest">
+<indexterm id="IndexTempest"><primary>tempest</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tempest</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>tempest</refname>
+    <refpurpose>
+      Estime le tempo de motifs de pulsation dans un signal de contrôle.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Estime le tempo de motifs de pulsation dans un signal de contrôle.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ktemp <command>tempest</command> kin, iprd, imindur, imemdur, ihp, ithresh, ihtim, ixfdbak, \
+      istartempo, ifn [, idisprd] [, itweek]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iprd</emphasis> -- durée entre les analyses (en secondes).
+      Typiquement autour de 0.02 secondes.
+    </para>
+
+    <para>
+      <emphasis>imindur</emphasis> -- durée minimale (en secondes) pour servir
+      d'unité de tempo. Typiquement autour de 0.2 secondes.
+    </para>
+
+    <para>
+      <emphasis>imemdur</emphasis> -- durée (en secondes) du tampon de mémoire
+      à court-terme <emphasis>kin</emphasis> parcouru pour trouver des
+      motifs périodiques. Typiquement autour de 3 secondes.
+    </para>
+
+    <para>
+      <emphasis>ihp</emphasis> -- point à mi-puissance (en Hz) d'un filtre
+      passe-bas utilisé pour lisser l'entrée <emphasis>kin</emphasis> avant tout
+      autre traitement. Cela tend à supprimer l'activité beaucoup plus rapide.
+      Typiquement 2 Hz.
+    </para>
+
+    <para>
+      <emphasis>ithresh</emphasis> -- seuil d'intensité autour duquel le signal
+      <emphasis>kin</emphasis> filtré est centré et tronqué avant d'être placé
+      dans le tampon à court-terme comme donnée pertinente pour le tempo.
+      Typiquement au niveau du bruit de fond du signal entrant.
+    </para>
+
+    <para>
+      <emphasis>ihtim</emphasis> -- mi-durée (en secondes) d'un filtre interne
+      masque de précédence qui masque les nouvelles données de
+      <emphasis>kin</emphasis> en présence de données récentes plus fortes.
+      Typiquement autour de 0.005 secondes.
+    </para>
+
+    <para>
+      <emphasis>ixfdbak</emphasis> -- proportion de <emphasis>valeur
+      anticipée</emphasis> de cette unité à mélanger avec le signal entrant
+      <emphasis>kin</emphasis> avant tout autre traitement. Typiquement autour de
+      0.3.
+    </para>
+
+    <para>
+      <emphasis>istartempo</emphasis> -- tempo initial (en pulsations par minute).
+      Typiquement 60.
+    </para>
+
+    <para>
+      <emphasis>ifn</emphasis> -- numéro de table d'une fonction stockée (dessinée
+      de gauche à droite) par laquelle la mémoire à court-terme est atténuée au
+      court du temps.
+    </para>
+
+    <para>
+      <emphasis>idisprd</emphasis> (facultatif) -- s'il est différent de zéro,
+      les tampons à court-terme passé et futur sont affichés toutes les
+      <emphasis>idisprd</emphasis> secondes (normallement un multiple de
+      <emphasis>iprd</emphasis>). La valeur par défaut est 0 (pas d'affichage).
+    </para>
+
+    <para>
+      <emphasis>itweek</emphasis> (facultatif) -- règlage fin de cette unité
+      afin qu'elle reste stable durant l'analyse d'évènements contrôlés par sa
+      propre sortie. La valeur par défaut est 1 (pas de changement).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>tempest</emphasis> recherche dans <emphasis>kin</emphasis> une
+      périodicité d'amplitude et estime le tempo courant. L'entrée  passe d'abord
+      par un filtre passe-bas, puis elle est centrée et tronquée et le résultat
+      est placé dans un tampon de mémoire à court-terme (atténué dans le temps)
+      où il est analysé à la recherche de périodicité, au moyen d'une forme
+      d'autocorrélation. La période, exprimée comme un <emphasis>tempo</emphasis>
+      en pulsations par minute, est retournée dans <emphasis>ktemp</emphasis>.
+      La période est aussi utilisée en interne pour prédire les motifs d'amplitude
+      futurs, et ceux-ci sont placés dans un tampon adjacent à celui de l'entrée.
+      On peut afficher périodiquement les deux tampons adjacents et les valeurs
+      prédites facultativement mélangées avec le signal entrant pour simuler les
+      valeurs attendues.
+    </para>
+
+    <para>
+      Cette unité est utile pour détecter les caractéristiques métriques d'un
+      signal de taux-k (par exemple la valeur quadratique moyenne d'un signal
+      audio ou la dérivée seconde d'un geste conducteur), avant de l'envoyer à
+      une instruction <link linkend="tempo"><citetitle>tempo</citetitle></link>.
+    </para>
+  </refsect1>
+
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode tempest. Il utilise les fichiers
+      <ulink url="examples/tempest.csd"><citetitle>tempest.csd</citetitle></ulink>
+      et <ulink url="examples/beats.wav"><citetitle>beats.wav</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode tempest.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/tempest.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Le tempo du fichier audio <quote>beats.wav</quote> est de 120 pulsations par
+      minute. Dans cet exemple, <emphasis>tempest</emphasis> imprimera sa
+      meilleure estimation durant la lecture du fichier. Sa sortie contiendra
+      des lignes comme celles-ci :
+      <screen>
+. i1   118.24654
+. i1   121.72949</screen>
+    </para>
+  </refsect1>
+</refentry>

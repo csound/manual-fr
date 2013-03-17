@@ -1,0 +1,112 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vtabk">
+<indexterm id="IndexVtabk"><primary>vtabk</primary></indexterm>
+  <refentryinfo><title>Vectorial:Tables</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vtabk</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vtabk</refname>
+    <refpurpose>
+      Lit des vecteurs (à partir de tables, ou tableaux de vecteurs).
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode lit des vecteurs à partir de tables au taux-k.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>vtabk</command>  kndx, ifn, kout1 [, kout2, kout3, .... , koutN ]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn</emphasis> - numéro de la table.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kndx</emphasis> - Index dans la f-table, un nombre positif
+      inférieur à la longueur de la table.
+     </para> 
+     <para>
+      <emphasis>kout1...koutN</emphasis> - Composantes du vecteur de sortie.
+    </para> 
+    <para>
+      Cet opcode est utile dans tous les cas où il faut accéder à des ensembles
+      de valeurs associés à des indices uniques (par exemple, des échantillons
+      multi-canaux, des trames de bin de TFCT, des formants spectraux, des
+      partitions basées sur des p-champs, etc). Le nombre de composantes de
+      chaque vecteur (longueur du vecteur) est déterminé par le nombre
+      d'arguments facultatifs à droite (<emphasis>kout1</emphasis>,
+      <emphasis>kout2</emphasis>, <emphasis>kout3</emphasis>, ...,
+      <emphasis>koutN</emphasis>).
+    </para>
+    <para>
+      Noter qu'aucun mode de repliement ou de limitation d'indexation n'est
+      implémenté. Si l'index tente d'accéder à une zone non allouée par la
+      table, il est probable que Csound plante. Cependant on peut facilement
+      éviter cet écueil en utilisant des opcodes de repliement ou de limitation
+      appliqués à l'index avant l'utilisation de <emphasis>vtabk</emphasis>,
+      afin de corriger d'éventuelles valeurs hors-limites.
+    </para>
+    <para>
+      La famille <command>vtab</command> est semblable à <command>vtable</command>,
+      mais elle est bien plus rapide car il n'y a pas d'interpolation, le numéro
+      de table ne peut pas être changé après l'initialisation et seul l'indexation
+      brute est supportée.
+    </para>
+    <note>
+      <para>
+        Noter que les arguments de sortie de <emphasis>vtabk</emphasis> sont
+        placés à droite du nom de l'opcode, contrairement à l'habitude (ce style
+        est aussi utilisé dans d'autres opcodes utilisant des listes indéfinies
+        d'arguments de sortie comme
+        <link linkend="fin"><citetitle>fin</citetitle></link> ou
+        <link linkend="trigseq"><citetitle>trigseq</citetitle></link>).
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Pour un exemple d'utilisation de l'opcode vtabk, voir
+      <link linkend="vtablek"><citetitle>vtablek</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="vtabi"><citetitle>vtabi</citetitle></link>,
+      <link linkend="vtaba"><citetitle>vtaba</citetitle></link>,
+      <link linkend="vtablek"><citetitle>vtablek</citetitle></link>,
+      <link linkend="vtablewk"><citetitle>vtablewk</citetitle></link>,
+      <link linkend="vtabwk"><citetitle>vtabwk</citetitle></link>,
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par Gabriel Maldonado.</para>
+    <para>Nouveau dans Csound 5 (Auparavant seulement disponible dans CsoundAV)</para>
+  </refsect1>
+</refentry>

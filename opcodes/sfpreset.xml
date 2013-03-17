@@ -1,0 +1,138 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="sfpreset">
+<indexterm id="IndexSfpreset"><primary>sfpreset</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Sample Playback</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>sfpreset</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>sfpreset</refname>
+    <refpurpose>
+      Associe un preset d'un fichier d'échantillons SoundFont2 (SF2) à un indice
+      numérique.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Associe un preset d'un fichier d'échantillons SoundFont2 (SF2) préalablement
+      chargé en mémoire à un indice numérique.
+      Ces opcodes permettent la gestion de la structure d'échantillon des fichiers
+      SF2. Afin de comprendre l'utilisation de ces opcodes, il faut connaître le
+      format SF2 dont on peut trouver une brève description dans l'annexe
+      <link linkend="MiscSf2"><citetitle>Format de Fichier SoundFont2</citetitle></link>.
+    </para>
+
+    <para>
+      <emphasis>sfpreset</emphasis> doit être placé dans la section d'en-tête d'un
+      orchestre de Csound.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ir <command>sfpreset</command> iprog, ibank, ifilhandle, ipreindex</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ir</emphasis> -- valeur de retour à utiliser par les autres opcodes
+      SF2. Pour <emphasis>sfpreset</emphasis>, <emphasis>ir</emphasis> est le
+      <emphasis>ipreindex</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>iprog</emphasis> -- numéro de programme d'une banque de presets dans
+      un fichier SF2.
+    </para>
+
+    <para>
+      <emphasis>ibank</emphasis> -- numéro d'une banque spécifique d'un fichier SF2.
+    </para>
+
+    <para>
+      <emphasis>ifilhandle</emphasis> -- nombre unique généré par l'opcode
+      <emphasis>sfload</emphasis> à utiliser comme identificateur pour un fichier
+      SF2. On peut charger et activer plusieurs fichiers SF2 en même temps.
+    </para>
+
+    <para>
+      <emphasis>ipreindex</emphasis> -- indice du preset.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>sfpreset</emphasis> associe un preset d'un fichier SF2 préalablement
+      chargé en mémoire à un indice numérique, à utiliser ensuite avec les opcodes
+      <emphasis>sfplay</emphasis> et <emphasis>sfplaym</emphasis>. L'utilisateur doit
+      connaître à l'avance les numéros de banque du preset afin de remplir les
+      arguments correspondants. On peut placer plusieurs instances de
+      <emphasis>sfpreset</emphasis> dans la section d'en-tête d'un orchestre, chacune
+      associant un preset différent appartenant au même (ou à différents) fichiers
+      SF2 à différents indices numériques.
+    </para>
+
+    <para>
+      Ces opcodes ne supportent que la structure d'échantillon des fichiers SF2. La
+      structure de modulateur du format SoundFormat2 n'est pas supportée dans Csound.
+      Tout traitement ou modulation des données échantillonnées est à la charge de
+      l'utilisateur de Csound, ce qui permet de s'affranchir de toutes les
+      restrictions imposées par le standard SF2.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode sfpreset. Il utilise le fichier
+      <ulink url="examples/sfpreset.csd"><citetitle>sfpreset.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode sfpreset.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/sfpreset.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="sfilist"><citetitle>sfilist</citetitle></link>,
+      <link linkend="sfinstr"><citetitle>sfinstr</citetitle></link>,
+      <link linkend="sfinstrm"><citetitle>sfinstrm</citetitle></link>,
+      <link linkend="sfload"><citetitle>sfload</citetitle></link>,
+      <link linkend="sfpassign"><citetitle>sfpassign</citetitle></link>,
+      <link linkend="sfplay"><citetitle>sfplay</citetitle></link>,
+      <link linkend="sfplaym"><citetitle>sfplaym</citetitle></link>,
+      <link linkend="sfplist"><citetitle>sfplist</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+        <member>Mai 2000</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 4.07 de Csound</para>
+  </refsect1>
+</refentry>

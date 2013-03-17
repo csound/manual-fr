@@ -1,0 +1,120 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vco2ift">
+<indexterm id="IndexVco2ift"><primary>vco2ift</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Dynamic Spectrum Oscillators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vco2ift</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vco2ift</refname>
+    <refpurpose>
+      Retourne un numéro de table au temps-i pour une fréquence d'oscillateur donnée et une forme d'onde.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>vco2ift</emphasis> est le même que <link linkend="vco2ft"><citetitle>vco2ft</citetitle></link>,
+      mais il travaille au temps-i. Il est prévu pour être utilisé avec les opcodes qui attendent un numéro
+      de table au taux-i (par exemple, <link linkend="oscili"><citetitle>oscili</citetitle></link>).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ifn <command>vco2ift</command> icps, iwave [, inyx]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn</emphasis> -- le numéro de ftable.
+    </para>
+
+    <para>
+      <emphasis>icps</emphasis> --  fréquence en Hz. On peut utiliser zéro ou des valeurs négatives.
+      Cependant, si la valeur absolue dépasse <emphasis>sr</emphasis>/2 (ou
+      <emphasis>sr</emphasis> * <emphasis>inyx</emphasis>), la table sélectionnée ne contiendra
+      que du silence.
+    </para>
+
+    <para>
+      <emphasis>iwave</emphasis> -- la forme d'onde dont le numéro doit être choisi. Les valeurs permises
+      sont :
+      <itemizedlist>
+        <listitem><para>0 : dent de scie</para></listitem>
+        <listitem><para>1 : 4 * x * (1 - x)   (integration d'une dent de scie)</para></listitem>
+        <listitem><para>2 : pulsation (non normalisée)</para></listitem>
+        <listitem><para>3 : onde carrée</para></listitem>
+        <listitem><para>4 : triangle</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      De plus, les valeurs négatives de <emphasis>iwave</emphasis> sélectionnent des formes d'onde
+      définies par l'utilisateur (voir aussi
+      <link linkend="vco2init"><citetitle>vco2init</citetitle></link>).
+    </para>
+
+    <para>
+      <emphasis>inyx</emphasis> (facultatif, par défaut 0,5) -- largeur de bande de la forme d'onde
+      générée, exprimée en pourcentage (0 à 1) du taux d'échantillonnage. L'intervalle attendu va de
+      0 à 0,5 (c'est-à-dire jusqu'à <link linkend="sr"><citetitle>sr</citetitle></link>/2), les autres
+      valeurs étant limitées à cet intervalle.
+    </para>
+
+    <para>
+      En fixant <emphasis>inyx</emphasis> à 0,25 (<emphasis>sr</emphasis>/4), ou à 0,3333
+      (<emphasis>sr</emphasis>/3), on peut produire un son plus <quote>gras</quote> dans certains cas,
+      bien que la qualité sera probablement réduite.
+    </para>
+  </refsect1>
+
+   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode vco2ift. Il utilise le fichier
+      <ulink url="examples/vco2ift.csd"><citetitle>vco2ift.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode vco2ift.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/vco2ift.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
+instr 1:  ifn = 22.000
+instr 1:  ifn = 8.000
+instr 1:  ifn = 3.000</screen>
+    </para>
+    <para>
+      Voir aussi l'exemple de l'opcode <link linkend="vco2"><citetitle>vco2</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="vco2ft"><citetitle>vco2ft</citetitle></link>,
+      <link linkend="vco2init"><citetitle>vco2init</citetitle></link> et
+      <link linkend="vco2"><citetitle>vco2</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &nameistvan;</para>
+    <para>Nouveau dans la version 4.22</para>
+  </refsect1>
+</refentry>

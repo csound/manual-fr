@@ -1,0 +1,171 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="locsig">
+<indexterm id="IndexLocsig"><primary>locsig</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Panning and Spatialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>locsig</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>locsig</refname>
+    <refpurpose>
+      Distribue le signal d'entrée entre 2 ou 4 canaux.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>locsig</emphasis> distribue le signal d'entrée entre 2 ou 4 canaux
+      en utilisant des valeurs en degrés pour calculer la balance entre les
+      canaux adjacents. Il y a aussi des arguments pour la distance (pour
+      atténuer les signaux qui doivent être perçus comme s'ils étaient plus
+      éloignés que les haut-parleurs) et pour la quantité de signal qui sera
+      envoyée aux unités de réverbération. Basé sur l'exemple du livre de
+      Charles Dodge/Thomas Jerse, <emphasis>Computer Music</emphasis>, page 320.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>a1, a2 <command>locsig</command> asig, kdegree, kdistance, kreverbsend</synopsis>
+
+    <synopsis>a1, a2,  a3, a4 <command>locsig</command> asig, kdegree, kdistance, kreverbsend</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kdegree</emphasis> -- valeur entre 0 et 360 pour le placement
+      du signal dans un espace à 2 ou 4 canaux configuré comme ceci :
+      a1=0, a2=90, a3=180, a4=270 (kdegree=45 répartirera également le signal
+      entre a1 et a2). <emphasis>locsig</emphasis> applique
+      <emphasis>kdegree</emphasis> à des fonctions sin et cos pour obtenir les
+      balances du signal (par exemple asig=1, kdegree=45, a1=a2=0.707).
+    </para>
+
+    <para>
+      <emphasis>kdistance</emphasis> -- valeur &gt;= 1 pour atténuer le signal
+      et calculer le niveau de réverbération pour simuler l'éloignement. Plus
+      <emphasis>kdistance</emphasis> est important et plus le son sera adouci
+      et quelque peu réverbéré (assumant l'utilisation de
+      <emphasis>locsend</emphasis> dans ce cas).
+    </para>
+
+    <para>
+      <emphasis>kreverbsend</emphasis> -- le pourcentage de signal direct qui
+      sera combiné avec les valeurs de distance et de degrés pour obtenir la
+      quantité de signal qui sera envoyée à une unité de réverbération telle
+      que <emphasis>reverb</emphasis> ou <emphasis>reverb2</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode locsig. Il utilise le fichier
+      <ulink url="examples/locsig_quad.csd"><citetitle>locsig_quad.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode locsig.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/locsig_quad.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+    <para>
+      Dans l'exemple ci-dessus, le signal <emphasis>aout</emphasis> fait un
+      tour complet sur un cercle pendant la durée de la note tout en
+      <quote>s'éloignant</quote> de la position de l'auditeur.
+      <emphasis>locsig</emphasis> envoie en interne à <emphasis>locsend</emphasis>
+      la quantité de signal appropriée. Les sorties de <emphasis>locsend</emphasis>
+      sont ajoutées à des accumulateurs globaux selon la manière habituelle
+      dans Csound et les signaux globaux servent d'entrée aux unités de réverbération
+      dans un instrument séparé.
+    </para>
+
+    <para>
+      <emphasis>locsig</emphasis> est utile pour les panoramiques quadro et
+      stéréo ainsi que pour le placement fixe des sons n'importe où entre deux
+      haut-parleurs. Ci-dessous un exemple de placement fixe de sons dans un
+      champ stéréo.
+    </para>
+
+    <para>
+      <informalexample>
+        <programlisting>
+<emphasis role="oblock">instr</emphasis> 1
+  a1, a2             <emphasis role="opc">locsig</emphasis>  asig, p4, p5, .1
+  ar1, ar2           <emphasis role="opc">locsend</emphasis>
+  ga1 <emphasis role="op">=</emphasis> ga1<emphasis role="op">+</emphasis>ar1
+  ga2 <emphasis role="op">=</emphasis> ga2<emphasis role="op">+</emphasis>ar2
+                     <emphasis role="opc">outs</emphasis> a1, a
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="oblock">instr</emphasis> 99 
+  <emphasis role="comment">; reverb....</emphasis>
+<emphasis role="oblock">endin</emphasis></programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      A few notes:
+      <informalexample>
+        <programlisting>
+  <emphasis role="comment">; place le son dans le haut-parleur gauche et au premier plan :</emphasis>
+  <emphasis role="stamnt">i</emphasis>1 0 1 0 1
+  
+  <emphasis role="comment">; place le son dans le haut-parleur droit et à l'arrière plan :</emphasis>
+  <emphasis role="stamnt">i</emphasis>1 1 1 90 25
+  
+  <emphasis role="comment">; place le son au milieu gauche-droite et à mi-distance en profondeur :</emphasis>
+  <emphasis role="stamnt">i</emphasis>1 2 1 45 12
+  <emphasis role="stamnt">e</emphasis></programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      L'exemple suivant montre une utilisation intuitive simple de la valeur de
+      distance pour simuler un effet Doppler. La même valeur est utilisée comme
+      diviseur pour la fréquence et comme paramètre de distance pour
+      <emphasis>locsig</emphasis>.
+      <informalexample>
+        <programlisting>
+  kdistance          <emphasis role="opc">line</emphasis>    1, p3, 10
+  kfreq <emphasis role="op">=</emphasis> (ifreq <emphasis role="op">*</emphasis> 340) <emphasis role="op">/</emphasis> (340 <emphasis role="op">+</emphasis> kdistance)
+  asig               <emphasis role="opc">oscili</emphasis>  iamp, kfreq, 1
+  kdegree            <emphasis role="opc">line</emphasis>    0, p3, 360
+  a1, a2, a3, a4     <emphasis role="opc">locsig</emphasis>  asig, kdegree, kdistance, .1
+  ar1, ar2, ar3, ar4 <emphasis role="opc">locsend</emphasis></programlisting>
+      </informalexample>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="locsend"><citetitle>locsend</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Richard Karpen</member>
+        <member>Seattle, WA USA</member>
+        <member>1998</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.48 de Csound</para>
+  </refsect1>
+</refentry>

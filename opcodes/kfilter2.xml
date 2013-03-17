@@ -1,0 +1,44 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="kfilter2">
+<indexterm id="IndexKfilter2"><primary>kfilter2</primary></indexterm>
+  <refmeta>
+    <refentrytitle>kfilter2</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>kfilter2</refname>
+    <refpurpose>
+      Obsolète.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Obsolète depuis la version 3.49. Utiliser plutôt l'opcode
+      <link linkend="filter2"><citetitle>filter2</citetitle></link>.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Michael A. Casey</member>
+        <member>M.I.T.</member>
+        <member>Cambridge, Mass.</member>
+        <member>1997</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 3.47</para>
+  </refsect1>
+</refentry>

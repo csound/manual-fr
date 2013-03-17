@@ -1,0 +1,53 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.3
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="x">
+      <indexterm id="IndexXStatement"><primary>x statement</primary></indexterm>
+  <refmeta>
+    <refentrytitle>Instruction x</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>x</refname>
+    <refpurpose>
+      Ignore le reste de la section courante.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      On peut utiliser cette instruction pour ignorer le reste de la section courante.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>x</command> valeurbidon</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      Tous les p-champs sont ignorés.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'instruction x. Il utilise le fichier
+      <ulink url="examples/x.csd"><citetitle>x.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'instruction x.</title>
+        <xi:include href="examples-xml/x.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+</refentry>

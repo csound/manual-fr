@@ -1,0 +1,93 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="xscansmap">
+<indexterm id="IndexXscansmap"><primary>xscansmap</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Scanned Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>xscansmap</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>xscansmap</refname>
+    <refpurpose>
+      Permet de lire la position et la vitesse d'un noeud dans une procédure de balayage.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Permet de lire la position et la vitesse d'un noeud dans une procédure de balayage.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>xscansmap</command> kpos, kvel, iscan, kamp, kvamp [, iwhich]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iscan</emphasis> -- la procédure de balayage à lire
+    </para>
+
+    <para>
+      <emphasis>iwhich</emphasis> (facultatif) -- le noeud à tester. 0 par défaut.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kpos</emphasis> -- la position du noeud.
+    </para>
+
+    <para>
+      <emphasis>kvel</emphasis> -- la vitesse du noeud.
+    </para>
+
+    <para>
+      <emphasis>kamp</emphasis> -- facteur d'amplification de la valeur
+      <emphasis>kpos</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>kvamp</emphasis> -- facteur d'amplification de la valeur
+      <emphasis>kvel</emphasis>.
+    </para>
+
+    <para>
+      L'état interne d'un noeud est lu. Cela comprend sa position et sa vitesse. Ils
+      sont amplifiés par les valeurs <emphasis>kamp</emphasis> et <emphasis>kvamp</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+       On peut trouver plus d'information sur la synthèse par balayage (de même
+       que d'autres matrices) sur la page
+       <ulink url="http://www.csounds.com/scanned/"><citetitle>Scanned Synthesis</citetitle></ulink>
+       du site Csounds.com.
+    </para>
+    <para>
+      Il y a aussi un article sur ces opcodes :
+      <ulink url="http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html"><citetitle>http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html</citetitle></ulink>,
+      écrit par Steven Yi.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>Nouveau dans la version 4.21</para>
+    <para>Novembre 2002. Merci à &namerasmus; pour avoir précisé cet opcode.</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,107 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.3
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLvkeybd">
+<indexterm id="IndexFLvkeybd"><primary>FLvkeybd</primary></indexterm>
+  <refentryinfo><title>FLTK:Other</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLvkeybd</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLvkeybd</refname>
+    <refpurpose>
+      Un opcode de widget FLTK qui crée un widget de clavier virtuel.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Un opcode de widget FLTK qui crée un widget de clavier virtuel. Il doit
+      être utilisé avec le pilote du clavier virtuel midi pour opérer correctement.
+      Cet opcode est utile pour faire des versions de démonstration d'orchestres
+      MIDI avec le clavier virtuel inclus dans la fenêtre principale.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        La version widget du clavier virtuel ne comprend pas les réglettes
+        MIDI que l'on trouve dans la version complète de la fenêtre du clavier
+        virtuel.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>FLvkeybd</command> &quot;keyboard.map&quot;, iwidth, iheight, ix, iy</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis><quote>keyboard.map</quote></emphasis> -- une chaîne de caractères
+      entre guillemets contenant le mappage du clavier à utiliser. On peut
+      fournir une chaîne vide (&quot;&quot;) pour utiliser les valeurs de nom
+      de banque/canal par défaut. Voir
+      <link linkend="MidiVirtual">Clavier Virtuel Midi</link> pour plus
+      d'information sur les mappages du clavier.
+    </para>
+
+    <para>
+      <emphasis>iwidth</emphasis> -- largeur du widget.
+    </para>
+
+    <para>
+      <emphasis>iheight</emphasis> -- hauteur du widget.
+    </para>
+
+    <para>
+      <emphasis>ix</emphasis>-- position horizontale du coin supérieur gauche
+      du clavier, relative au coin supérieur gauche de la fenêtre correspondante
+      (exprimée en pixels).
+    </para>
+
+    <para>
+      <emphasis>iy</emphasis>-- position verticale du coin supérieur gauche
+      du clavier, relative au coin supérieur gauche de la fenêtre correspondante
+      (exprimée en pixels).
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        La largeur et la hauteur standard du clavier virtuel est de 624x120 pour
+        la version dialogue qui est montrée quand <emphasis>FLvkeybd</emphasis>
+        n'est pas utilisé.
+      </para>
+    </note>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="FLbutton"><citetitle>FLbutton</citetitle></link>,
+      <link linkend="FLbox"><citetitle>FLbox</citetitle></link>,
+      <link linkend="FLbutBank"><citetitle>FLbutBank</citetitle></link>,
+      <link linkend="FLprintk"><citetitle>FLprintk</citetitle></link>,
+      <link linkend="FLprintk2"><citetitle>FLprintk2</citetitle></link>,
+      <link linkend="FLvalue"><citetitle>FLvalue</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namesteven;</para>
+    <para>Nouveau dans la version 5.05</para>
+  </refsect1>
+</refentry>

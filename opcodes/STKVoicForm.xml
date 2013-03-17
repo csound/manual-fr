@@ -1,0 +1,114 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="STKVoicForm">
+  <indexterm id="IndexStkvoicform"><primary>STKVoicForm</primary></indexterm>
+  <refentryinfo><title>Signal Generators:STK Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>STKVoicForm</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>STKVoicForm</refname>
+    <refpurpose>
+      STKVoicForm est un instrument de synthèse à quatre formants. 
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>STKVoicForm</emphasis> est un instrument de synthèse à quatre
+      formants. Cet instrument contient une table d'onde d'excitation de voix
+      chantée (onde bouclée avec vibrato aléatoire et périodique, lissage de
+      fréquence, etc.), bruit d'excitation et quatre résonances complexes
+      balayables. Des données de formant mesurées sont comprises et il y a
+      suffisamment de données pour supporter la synthèse en parallèle ou en
+      cascade. En virgule flottante, la synthèse en cascade est la plus naturelle
+      et c'est donc celle-ci que l'on trouve ici.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>asignal <command>STKVoicForm</command> ifrequency, iamplitude, [kmix, kv1[, ksel, kv2[, klfo, kv3[, klfodepth, kv4[, kloud, kv5]]]]]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+      <para>
+      <emphasis>ifrequency</emphasis> -- Fréquence de la note jouée, en Hz.
+    </para>
+   
+    <para>
+      <emphasis>iamplitude</emphasis> -- Amplitude de la note jouée (entre 0 et 1).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+<para><emphasis>kmix</emphasis> -- contrôleur 2, mélange voisé/non voisé. kv1 compris entre 0 et 127.</para>
+<para><emphasis>ksel</emphasis> -- contrôleur 4, sélection voyelle/phonème. kv2 compris entre 0 et 127.</para>
+<para><emphasis>klfo</emphasis> -- contrôleur 11, vitesse de l'oscillateur basse-fréquence. kv3 compris entre 0 et 127.</para>
+<para><emphasis>klfodepth</emphasis> -- contrôleur 1, intensité de l'oscillateur basse-fréquence. kv4 compris entre 0 et 127.</para>
+<para><emphasis>kloud</emphasis> -- contrôleur 128, intensité (pente spectrale). kv5 compris entre 0 et 127.</para>
+  </refsect1>
+ 
+  <refsect1>
+    <note>
+      <title>Notes</title>
+      <para>
+        Le code pour cet opcode vient directement de la classe
+        <emphasis>VoicForm</emphasis> du Synthesis Toolkit en C++ par Perry R.
+        Cook et Gary P. Scavone. On peut en savoir plus sur les classes STK ici :
+        <ulink url="https://ccrma.stanford.edu/software/stk/classes.html">
+        <citetitle>https://ccrma.stanford.edu/software/stk/classes.html</citetitle>
+        </ulink>
+      </para>
+      <para>
+        <emphasis>kc1, kv1, kc2, kv2, kc3, kv3, kc4, kv4, kc5, kv5, kc6, kv6, kc7, kv7, kc8, kv8</emphasis> -- 
+        Jusqu'à 8 paires de contrôle facultatives au taux-k pour les opcodes STK.
+        Chaque paire de contrôle est constituée d'un numéro de contrôleur
+        (<emphasis>kc</emphasis>) suivi d'une valeur de contrôleur
+        (<emphasis>kv</emphasis>). Le numéro de contrôleur ainsi que la valeur
+        associée sont des variables de taux-k. Cependant, durant l'exécution,
+        les numéros de contrôleur sont habituellement constants tandis que les valeurs
+        correspondantes peuvent changer à tout moment. L'ordre des paires de
+        contrôle est arbitraire mais elles doivent apparaître après
+        <emphasis>iamplitude</emphasis>. Il n'est pas non plus nécessaire d'utiliser
+        toutes les paires.
+      </para>
+    </note>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode STKVoicForm. Il utilise le fichier
+      <ulink url="examples/STKVoicForm.csd"><citetitle>STKVoicForm.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode STKVoicForm.</title>
+        <xi:include href="examples-xml/STKVoicForm.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namemichael; (d'après &nameperry;)</member>
+        <member>Irreducible Productions</member>
+        <member>New York, NY</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.11 de Csound.</para>
+  </refsect1>
+</refentry>
+

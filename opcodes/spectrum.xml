@@ -1,0 +1,139 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="spectrum">
+<indexterm id="IndexSpectrum"><primary>spectrum</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Non-Standard</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>spectrum</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>spectrum</refname>
+    <refpurpose>
+      Génère une TFD à Q constant et espacement exponentiel.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère une TFD à Q constant et espacement exponentiel sur toutes les
+      octaves d'un signal de contrôle ou audio en entrée, multiplié et
+      sous-échantillonné.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>wsig <command>spectrum</command> xsig, iprd, iocts, ifrqa [, iq] [, ihann] [, idbout] \
+      [, idsprd] [, idsinrs]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ihann</emphasis> (facultatif) -- applique une fenêtre de
+      Hamming ou de Hanning à l'entrée. La valeur par défaut est 0 (fenêtre de
+      Hamming).
+    </para>
+
+    <para>
+      <emphasis>idbout</emphasis> (facultatif) -- conversion codée de la TFD en
+      sortie :
+       <itemizedlist>
+         <listitem>
+           <para>0 = magnitude</para>
+         </listitem>
+
+         <listitem>
+           <para>1 = dB</para>
+         </listitem>
+
+         <listitem>
+           <para>2 = magnitude au carré</para>
+         </listitem>
+
+         <listitem>
+           <para>3 = racine carrée de la magnitude</para>
+         </listitem>
+       </itemizedlist>
+
+      La valeur par défaut est 0 (magnitude).
+    </para>
+
+    <para>
+      <emphasis>idisprd</emphasis> (facultatif) -- s'il est différent de zéro,
+      le tampon composite de sous-échantillonnage est affiché toutes les
+      <emphasis>idisprd</emphasis> secondes. La valeur par défaut est 0 (pas
+      d'affichage).
+    </para>
+
+    <para>
+      <emphasis>idsines</emphasis> (facultatif) -- s'il est différent de zéro,
+      les sinusoïdes passées dans une fenêtre de Hamming ou de Hanning et utilisées
+      dans le filtrage par TFD sont affichées. La valeur par défaut est 0 (pas
+      d'affichage).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Cette unité passe d'abord le signal <emphasis>asig</emphasis> ou
+      <emphasis>ksig</emphasis> à travers <emphasis>iocts</emphasis> décimations
+      par octave et sous-échantillonnages successifs et garde un tampon de valeurs
+      sous-échantillonnées dans chaque octave (facultativement affiché comme
+      tampon composite toutes les <emphasis>idisprd</emphasis> secondes). Puis,
+      toutes les <emphasis>iprd</emphasis> secondes, les échantillons préservés
+      sont passés dans un banc de filtres (<emphasis>ifrqs</emphasis> filtres
+      parallèles par octave, espacés exponentiellement avec un rapport Q de la
+      fréquence sur la largeur de bande égal à <emphasis>iq</emphasis>), et les
+      magnitudes de sortie (<emphasis>idbout </emphasis>) sont éventuellement
+      converties pour produire un spectre à bande limitée pouvant être lu par
+      d'autres unités.
+    </para>
+
+    <para>
+      Les étapes de ce processus utilisent intensivement les moyens de calcul et
+      le temps de calcul est proportionnel à <emphasis>iocts</emphasis>,
+      <emphasis>ifrqs</emphasis> et <emphasis>iq</emphasis>, et inversement
+      proportionnel à <emphasis>iprd</emphasis>. Les réglages suivants,
+      <emphasis>ifrqs</emphasis> = 12, <emphasis>iq</emphasis> = 10,
+      <emphasis>idbout</emphasis> = 3 et <emphasis>iprd</emphasis> = 0.02,
+      conviendront généralement, mais on recommande l'expérimentation. Actuellement
+      <emphasis>ifrqs</emphasis> a au maximum 120 divisions par octave. Pour une
+      entrée audio, les bins de fréquence sont réglés pour coïncider avec le la
+      440.
+    </para>
+
+    <para>
+      Cette unité produit un bloc de données spectrales auto-définies
+      <emphasis>wsig</emphasis>, dont les caractéristiques utilisées
+      (<emphasis>iprd</emphasis>, <emphasis>iocts</emphasis>,
+      <emphasis>ifrqs</emphasis>, <emphasis>idbout</emphasis>) sont transmises
+      via le bloc de données lui-même à tous les <emphasis>wsigs</emphasis>
+      dérivés. Il peut y avoir n'importe quel nombre d'unités
+      <emphasis>spectrum</emphasis> dans un instrument ou dans un orchestre,
+      mais tous les noms de <emphasis>wsig</emphasis> doivent être uniques.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      <informalexample>
+        <programlisting>
+asig <emphasis role="opc">in</emphasis>                                        <emphasis role="comment">; get external audio</emphasis>
+wsig <emphasis role="opc">spectrum</emphasis>  asig, 0.02, 6, 12, 33, 0, 1, 1  <emphasis role="comment">; downsample in 6 octs &amp; calc a 72 pt dft</emphasis>
+                                               <emphasis role="comment">; (Q 33, dB out) every 20 msecs</emphasis></programlisting>
+      </informalexample>
+    </para>
+  </refsect1>
+</refentry>

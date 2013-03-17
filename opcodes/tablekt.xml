@@ -1,0 +1,156 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.10
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="tablekt">
+<indexterm id="IndexTablekt"><primary>tablekt</primary></indexterm>
+  <refentryinfo><title>Table Control:Dynamic Selection</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tablekt</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>tablekt</refname>
+    <refpurpose>
+      Permet de contrôler au taux-k les numéros de table.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Contrôle des numéros de table au taux-k.
+    </para>
+
+    <para>
+      L'opcode standard <link linkend="table"><citetitle>table</citetitle></link>
+      de Csound, bien que produisant un résultat au taux-k ou au taux-a, ne peut
+      utiliser qu'une variable de taux-i pour choisir le numéro de la table.
+      <emphasis>tablekt</emphasis> accepte un contrôle au taux-k aussi bien
+      qu'au taux-i. Pour le reste, il est semblable à l'opcode original.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>tablekt</command> xndx, kfn [, ixmode] [, ixoff] [, iwrap]</synopsis>
+
+    <synopsis>kres <command>tablekt</command> kndx, kfn [, ixmode] [, ixoff] [, iwrap]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ixmode</emphasis> -- s'il vaut 0, <emphasis>xndx</emphasis> et
+      <emphasis>ixoff</emphasis> couvrent toute la longueur de la table. S'il
+      est différent de zéro, <emphasis>xndx</emphasis> et <emphasis>ixoff</emphasis>
+      varient de 0 à 1. La valeur par défaut est 0.
+    </para>
+
+    <para>
+      <emphasis>ixoff</emphasis> -- s'il vaut 0, l'indice résultant est directement
+      contrôlé par <emphasis>xndx,</emphasis>, démarrant au début de la table.
+      S'il est différent de zéro, l'indexation démarre à l'intérieur de la table.
+      Sa valeur doit être positive et inférieure à la longueur de la table
+      (<emphasis>ixmode</emphasis> = 0) ou inférieure à 1
+      (<emphasis>ixmode</emphasis> différent de 0). La valeur par défaut est 0.
+    </para>
+
+    <para>
+      <emphasis>iwrap</emphasis> -- si <emphasis>iwrap</emphasis> = 0,
+      <emphasis>mode Limite</emphasis> : lorsque l'indice résultant est inférieur
+      à 0, l'indice final vaut 0. Un indice résultant dépassant la longueur de
+      la table donne un indice final égal à la longueur de la table : les indices
+      résultants trop grands se limitent à l'index supérieur de la table. Si
+      <emphasis>iwrap</emphasis> est différent de 0, <emphasis>mode Cyclique</emphasis> :
+      l'indice résultant est replié modulo la longueur de la table de façon à ce
+      que tous les indices résultants tombent dans la table. Par exemple, dans
+      une table de longueur 8, <emphasis>xndx</emphasis> = 5 et
+      <emphasis>ixoff</emphasis> = 6 donnent un indice résultant de 11, qui se
+      replie en un indice final de 3. La valeur par défaut est 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kndx</emphasis> -- Indice dans la table, un nombre positif
+      compris entre 0 et la longueur de la table (<emphasis>ixmode</emphasis> = 0)
+      ou entre 0 et 1 (<emphasis>ixmode</emphasis> différent de 0).
+    </para>
+
+    <para>
+      <emphasis>xndx</emphasis> -- varie sur la longueur de la table
+      (<emphasis>ixmode</emphasis> = 0) ou dans l'intervalle allant de 0 à 1
+      (<emphasis>ixmode</emphasis> différent de 0).
+    </para>
+
+    <para>
+      <emphasis>kfn</emphasis> -- Numéro de table. Doit être &gt;= 1. Les valeurs
+      flottantes sont arrondies à un entier. Si un numéro de table n'indique pas
+      une table valide, ou si la table n'a pas encore été chargée
+      (<link linkend="GEN01"><citetitle>GEN01</citetitle></link>) une erreur se
+      produit et l'instrument est désactivé.
+    </para>
+
+    <caution>
+      <title>Attention avec les numéros de table au taux-k</title>
+      <para>
+        Au taux-k, si un numéro de table &lt; 1 est donné, ou si le numéro de
+        table indique une table inexistante ou une table de longueur nulle
+        (devant être chargée à partie d'un fichier ultérieurement), une erreur
+        se produit et l'instrument est désactivé. <emphasis>kfn</emphasis> doit
+        être initialisé au taux approprié en utilisant
+        <link linkend="init"><citetitle>init</citetitle></link>. Si l'on essaie
+        de charger un valeur de taux-i dans <emphasis>kfn</emphasis>, il y aura
+        une erreur.
+      </para>
+    </caution>
+  </refsect1>
+ 
+   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode tablekt. Il utilise le fichier
+      <ulink url="examples/tablekt.csd"><citetitle>tablekt.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode tablekt.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/tablekt.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Sa sortie comprendra des lignes comme celles-ci :
+      <screen>
+ i1     2.00000
+ i1     1.00000
+ i1     2.00000
+ i1     1.00000
+....</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="tableikt"><citetitle>tableikt</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Robin Whittle</member>
+        <member>Australie</member>
+        <member>Mai 1997</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 3.47</para>
+  </refsect1>
+</refentry>

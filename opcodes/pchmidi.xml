@@ -1,0 +1,113 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pchmidi">
+<indexterm id="IndexPchmidi"><primary>pchmidi</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Converters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pchmidi</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pchmidi</refname>
+
+    <refpurpose>
+      Retourne le numéro de note de l'évènement MIDI courant, exprimé en unités
+      d'octave-point-classe de hauteur.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne le numéro de note de l'évènement MIDI courant, exprimé en unités
+      d'octave-point-classe de hauteur.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ipch <command>pchmidi</command></synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Retourne le numéro de note de l'évènement MIDI courant, exprimé en unités
+      d'octave-point-classe de hauteur, pour traitement local.
+    </para>
+
+    <note>
+      <title>pchmidi vs. pchmidinn</title>
+      <para>
+        L'opcode <emphasis>pchmidi</emphasis> ne produit des résultats significatifs
+        qu'avec une note activée par le MIDI (soit en , soit depuis
+        une partition MIDI avec l'option -F). Avec <emphasis>pchmidi</emphasis>,
+        la valeur du numéro de note MIDI provient de l'évènement MIDI qui est
+        associé en interne avec l'instance de l'instrument. Au contraire,
+        l'opcode <emphasis>pchmidinn</emphasis> peut être utilisé dans n'importe
+        quelle instance d'instrument de Csound, que celle-ci soit activée par un
+        évènement MIDI, un évènement de partition, un évènement en ligne ou
+        depuis un autre instrument. La valeur d'entrée de
+        <emphasis>pchmidinn</emphasis> peut provenir par exemple d'un p-champ
+        dans une partition textuelle ou bien elle peut avoir été extraite au moyen
+        de l'opcode <emphasis>notnum</emphasis> de l'évènement MIDI en 
+        qui a activé la note courante.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode pchmidi. Il utilise le fichier
+      <ulink url="examples/pchmidi.csd"><citetitle>pchmidi.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode pchmidi.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pchmidi.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="aftouch"><citetitle>aftouch</citetitle></link>,
+      <link linkend="ampmidi"><citetitle>ampmidi</citetitle></link>,
+      <link linkend="cpsmidi"><citetitle>cpsmidi</citetitle></link>,
+      <link linkend="cpsmidib"><citetitle>cpsmidib</citetitle></link>,
+      <link linkend="midictrl"><citetitle>midictrl</citetitle></link>,
+      <link linkend="notnum"><citetitle>notnum</citetitle></link>,
+      <link linkend="octmidi"><citetitle>octmidi</citetitle></link>,
+      <link linkend="octmidib"><citetitle>octmidib</citetitle></link>,
+      <link linkend="pchbend"><citetitle>pchbend</citetitle></link>,
+      <link linkend="pchmidib"><citetitle>pchmidib</citetitle></link>,
+      <link linkend="veloc"><citetitle>veloc</citetitle></link>,
+      <link linkend="cpsmidinn"><citetitle>cpsmidinn</citetitle></link>,
+      <link linkend="octmidinn"><citetitle>octmidinn</citetitle></link>,
+      <link linkend="pchmidinn"><citetitle>pchmidinn</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namebarry; - &namemike;</member>
+        <member>MIT - Mills</member>
+        <member>Mai 1997</member>
+      </simplelist>
+    </para>
+    <para>Exemple écrit par &namekevin;.</para>
+  </refsect1>
+</refentry>

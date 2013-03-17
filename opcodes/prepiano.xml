@@ -1,0 +1,175 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="prepiano">
+<indexterm id="IndexPrepiano"><primary>prepiano</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Models and Emulations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>prepiano</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>prepiano</refname>
+    <refpurpose>
+      Crée un son similaire à celui d'une corde de piano préparé à la
+      manière Cage.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      La sortie audio est un son similaire à celui d'une corde de piano préparé avec
+      des gommes et des pièces de monnaie. La méthode utilise un modèle physique
+      développé pour la résolution des équations différentielles partielles.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>prepiano</command> ifreq, iNS, iD, iK, \
+    iT30, iB, kbcl, kbcr, imass, ifreq, iinit, ipos, ivel, isfreq, \
+    isspread[, irattles, irubbers]</synopsis>
+    <synopsis>al,ar <command>prepiano</command> ifreq, iNS, iD, iK, \
+    iT30, iB, kbcl, kbcr, imass, ifreq, iinit, ipos, ivel, isfreq, \
+    isspread[, irattles, irubbers]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+
+    <para>
+    <emphasis>ifreq</emphasis> -- la fréquence de base de la corde.
+    </para>
+
+    <para>
+    <emphasis>iNS</emphasis> -- le nombre de cordes impliquées. Dans un vrai piano
+    on trouve 1, 2 ou 3 cordes dans les différentes plages de fréquence.
+    </para>
+
+    <para>
+    <emphasis>iD</emphasis> -- l'importance du désaccord de chaque corde, hormis
+    la première, par rapport à la fréquence principale ; mesuré en cents.
+    </para>
+    
+    <para>
+    <emphasis>iK</emphasis> -- paramètre de raideur, sans dimension.
+    </para>
+
+    <para>
+    <emphasis>iT30</emphasis> -- durée de chute de 30 db en secondes.
+    </para>
+
+    <para>
+    <emphasis>ib</emphasis> -- paramètre de perte en haute-fréquence (à garder petit).
+    </para>
+
+    <para>
+    <emphasis>imass</emphasis> -- la masse du marteau.
+    </para>
+
+    <para>
+    <emphasis>ifreq</emphasis> -- la fréquence de vibration naturelle du marteau.
+    </para>
+
+    <para>
+    <emphasis>iinit</emphasis> -- la position initiale du marteau.
+    </para>
+
+    <para>
+    <emphasis>ipos</emphasis> -- position de la frappe sur la corde.
+    </para>
+
+    <para>
+    <emphasis>ivel</emphasis> -- vélocité normalisée de la frappe.
+    </para>
+
+    <para>
+    <emphasis>isfreq</emphasis> -- fréquence de balayage du point de lecture.
+    </para>
+
+    <para>
+    <emphasis>isspread</emphasis> -- dispersion de la fréquence de balayage.
+    </para>
+
+    <para>
+    <emphasis>irattles</emphasis> -- numéro de la table donnant les positions de
+    la ou des pièces de monnaie.
+    </para>
+
+    <para>
+    <emphasis>irubbers</emphasis> -- numéro de la table donnant les positions de
+    la ou des gommes.
+    </para>
+
+    <para>
+      Les tables des pièces de monnaie et des gommes sont des collections de
+      quatre valeurs précédées par un compte. Dans le cas d'une pièce de monnaie,
+      les quatre valeurs sont la position, le rapport de densité entre la pièce
+      de monnaie et la corde, la fréquence de la pièce de monnaie et sa
+      longueur verticale. Pour la gomme, les quatre valeurs sont la position, le
+      rapport de densité entre la gomme et la corde, la fréquence de la gomme et
+      le paramètre de perte.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Une note est jouée sur une corde de piano avec les arguments suivants.
+    </para>
+
+    <para>
+      <emphasis>kbcL</emphasis> -- Condition aux limites à l'extrémité gauche de la
+      corde (1 fixée, 2 pivotante, 3 libre).
+    </para>
+
+    <para>
+      <emphasis>kbcR</emphasis> -- Condition aux limites à l'extrémité droite de la
+      corde (1 fixée, 2 pivotante, 3 libre).
+    </para>
+
+    <para>
+      Il faut noter que le changement des conditions au limites durant l'exécution
+      peut produire des bruits parasites et que cette possibilité n'est fournie
+      qu'à titre expérimental.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici en exemple de l'opcode prepiano. Il utilise le fichier
+      <ulink url="examples/prepiano.csd"><citetitle>prepiano.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode prepiano.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/prepiano.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Stefan Bilbao </member>
+        <member>Université d'Edimbourg, UK</member>
+        <member>Auteur : &namejohn; </member>
+        <member>Université de Bath, Codemist Ltd.</member>
+        <member>Bath, UK</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 5.05 de Csound</para>
+  </refsect1>
+</refentry>

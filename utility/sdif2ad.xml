@@ -1,0 +1,105 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="sdif2ad">
+  <refentryinfo><title>Utilities</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>sdif2ad</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>sdif2ad</refname>
+    <refpurpose>
+      Convertit des fichiers SDIF en fichiers utilisables par adsyn.
+      <indexterm id="IndexSdif2ad"><primary>sdif2ad</primary></indexterm>
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Convertit des fichiers Sound Description Interchange Format (SDIF) dans le format utilisable par
+      l'opcode de Csound <emphasis>adsyn</emphasis>. A partir de la version 4.10 de Csound,
+      <emphasis>sdif2ad</emphasis> n'est plus disponible que comme un programme autonome pour console
+      Windows et pour DOS.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <!-- <synopsis><command>csound -U sdif2ad</command> [options] fichier_entree fichier_sortie</synopsis> -->
+    <synopsis><command>sdif2ad</command> [options] fichier_entree fichier_sortie</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      Options :
+      <itemizedlist>
+        <listitem><para><emphasis>-s</emphasis>N -- applique le facteur d'échelle
+        d'amplitude N</para></listitem> 
+        <listitem><para><emphasis>-p</emphasis>N -- ne garde que les N premiers partiels. Limité à 1024
+        partiels. Les indices de piste de partiels de la source sont utilisés directement pour sélectionner
+        le stockage interne. Comme ils peuvent avoir des valeurs arbitraires, le maximum de 1024 partiels
+        peut ne pas être réalisé dans tous les cas.</para></listitem>
+        <listitem><para><emphasis>-r</emphasis> -- fichier de données de sortie en octets inversés. L'option
+        octets inversés est là pour faciliter le transfert entre plates-formes, car
+        le format de fichier <link linkend="HetroFileFormat"><citetitle>adsyn</citetitle></link> de
+        Csound n'est pas portable.</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      Si le nom de fichier passé à <link linkend="hetro"><citetitle>hetro</citetitle></link> a l'extension
+      <quote>.sdif</quote>, les données seront écrites en format SDIF comme des trames 1TRC de données de
+      synthèse additive. Le programme utilitaire <emphasis>sdif2ad</emphasis> peut être utilisé pour
+      convertir tout fichier SDIF contenant un flot de données 1TRC dans le format
+      <link linkend="HetroFileFormat"><citetitle>adsyn</citetitle></link> de Csound.
+      <emphasis>sdif2ad</emphasis> permet à l'utilisateur de limiter le nombre de partiels retenus, et
+      d'appliquer un facteur d'échelle d'amplitude. Ceci est souvent nécessaire, car la spécification SDIF,
+      depuis la réalisation de <emphasis>sdif2ad</emphasis>, ne nécessite pas que les amplitudes soient
+      dans un intervalle particulier. <emphasis>sdif2ad</emphasis> rapporte sur la console l'information
+      sur le fichier, y compris l'intervalle de fréquence.
+    </para>
+
+    <para>
+      Les principaux avantage de SDIF sur le format <emphasis>adsyn</emphasis>, pour les utilisateurs de
+      Csound, sont que les fichiers SDIF sont totalement portables d'une plate-forme à l'autre (les
+      données sont en <quote>big-endian</quote>), et qu'ils n'ont pas la limite de durée de 32,76 secondes
+      imposée par le format <emphasis>adsyn</emphasis> sur 16 bit. Cette limite est nécessairement imposée par
+      <emphasis>sdif2ad</emphasis>. Dans le futur, la lecture du format SDIF pourra être incorporée
+      diretement dans <emphasis>adsyn</emphasis>, permettant ainsi l'analyse et le traitement de fichiers
+      de n'importe quelle longueur (seulement limitée par la capacité mémoire du système).
+    </para>
+
+    <para>
+      Les utilisateurs doivent se souvenir que les formats SDIF sont toujours en développement. Bien que
+      le format 1TRC soit maintenant bien établi, il peut encore changer.
+    </para>
+
+    <para>
+      Pour des informations détaillées sur le Sound Description Interchange Format, se référer au site web
+      du CNMAT :
+<ulink url="http://cnmat.CNMAT.Berkeley.EDU/SDIF"><citetitle>http://cnmat.CNMAT.Berkeley.EDU/SDIF</citetitle></ulink>
+    </para>
+
+    <para>
+      D'autres ressources SDIF (y compris un visionneur) sont disponibles via le site web de NC_DREAM :
+<ulink url="http://www.bath.ac.uk/~masjpf/NCD/dreamhome.html"><citetitle>http://www.bath.ac.uk/~masjpf/NCD/dreamhome.html</citetitle></ulink>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : Richard Dobson</para>
+    <para>Somerset, England</para>
+    <para>Août 2000</para>
+    <para>Nouveau dans la version 4.08 de Csound</para>
+  </refsect1>
+</refentry>

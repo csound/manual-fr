@@ -1,0 +1,113 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<chapter id="OrchTop">
+  <title>Syntaxe de l'orchestre</title>
+  <para>
+    L'orchestre Csound (.orc) ou la section <emphasis>&lt;CsInstruments&gt;</emphasis> d'un fichier csd, contient :
+    <itemizedlist>
+      <listitem>
+        <para>Une <link linkend="OrchHeader"><citetitle>section d'en-tête</citetitle></link>,
+          qui spécifie les options globales pour l'exécution des instruments.</para>
+      </listitem>
+      <listitem>
+        <para>Une liste d'<link linkend="OrchUDO"><citetitle>opcodes définis par l'utilisateur (UDO)</citetitle></link>
+          et de <link linkend="OrchIblock"><citetitle>blocs d'instrument</citetitle></link> contenant les
+          définitions des UDO et des instruments.</para>
+      </listitem>
+    </itemizedlist>
+  </para>
+  <para>
+    L'en-tête de l'orchestre, les blocs d'instrument, et les UDOs contiennent des
+    <emphasis>instructions d'orchestre</emphasis>. Dans Csound une <emphasis>instruction d'orchestre</emphasis>
+    a le format :
+
+    <synopsis>
+      étiquette:   <returnvalue>résultat</returnvalue> <function>opcode</function> <parameter>argument1</parameter>, <parameter>argument2</parameter>, <parameter>...</parameter> ;commentaires
+    </synopsis>
+  </para>
+
+  <para>
+    L'étiquette est facultative et indentifie l'instruction de base qui suit comme cible potentielle
+    d'une opération goto (voir
+    <link linkend="ControlPgmctl"><citetitle>contrôle du déroulement du programme</citetitle></link>).
+    Une étiquette n'a aucun effet sur l'instruction en soi.
+  </para>
+  <para>
+    Selon leur fonction, certains opcodes ne produisent pas de sortie et n'ont donc
+    pas de valeur de retour. D'autres ne prennent pas d'argument et produisent seulement un résultat.
+  </para>
+  <para>
+    Chaque instruction d'orchestre doit tenir sur une seule ligne, cependant les longues lignes
+    peuvent être continuées sur la ligne suivante grâce au caractère '\'. Ce caractère indique
+    que la ligne suivante fait partie de la ligne courante, de façon à pouvoir couper une
+    ligne pour en faciliter la lecture, comme ceci :
+    <programlisting>
+a2  <emphasis role="opc">oscbnk</emphasis> kcps, 1.0, kfmd1, 0.0, 40, 203, 0.1, 0.2, kamfr, kamfr2, 148,  \
+           0, 0, 0, 0, 0, 0, -1,                                          \
+           kfnum, 3, 4</programlisting>
+  </para>
+
+  <para>
+     Les commentaires sont facultatifs et ils ont pour but de permettre à l'utilisateur
+     de commenter le code de son orchestre. Les commentaires commencent par un point-virgule
+     (;) et s'étendent jusqu'à la fin de la ligne. Les commentaires peuvent optionnellement
+     être écrits en style C, s'étendant sur plusieurs lignes comme ceci :
+     <programlisting>
+<emphasis role="comment">/* Tout ce qui se trouve ici --------
+   est un commentaire qui peut couvrir
+   plusieurs lignes ---------  */</emphasis></programlisting>
+  </para>
+
+  <para>
+    Le reste (résultat, opcode, et arguments) forme l'instruction de base. C'est
+    également facultatif, ce qui veut dire qu'une ligne peut n'avoir qu'une étiquette ou
+    un commentaire ou bien être complètement blanche. Si elle est présente, l'instruction
+    de base doit être entièrement contenue dans une ligne, et elle est terminée par
+    un retour chariot et un linefeed.
+  </para>
+
+  <para>
+    L'opcode détermine l'opération à effectuer ; habituellement, il prend un certain nombre
+    de valeurs en entrée (ou arguments, au maximum environ 800) ; et il a
+    normalement un champ résultat variable dans lequel il envoie les valeurs de sortie
+    à un certain taux de cadencement fixe. Il y a quatre taux de cadencement possibles :
+    <orderedlist numeration="arabic">
+      <listitem>
+        <para>une seule fois, au moment de l'initialisation de l'orchestre (en fait une affectation permanente)</para>
+      </listitem>
+
+      <listitem>
+        <para>une fois au début de chaque note (à la date (init) de l'initialisation : taux-i)</para>
+      </listitem>
+
+      <listitem>
+        <para>à chaque passage dans la boucle de contrôle de l'exécution (taux de contrôle, ou taux-k)</para>
+      </listitem>
+
+      <listitem>
+        <para>à chaque échantillon sonore de chaque boucle de contrôle (taux d'exécution audio, ou taux-a)</para>
+      </listitem>
+    </orderedlist>
+  </para>
+
+  &orchheader;
+  &orchiblock;
+  &orchstatemnt;
+  &orchkvar;
+  &orchexpress;
+  &orchdirfiles;
+  &orchnomen;
+  &orchmacros;<!--
+  &orchvarinit;-->
+  &orchnamedinstruments;
+  &orchUDO;
+  &orchtab;
+</chapter>
+

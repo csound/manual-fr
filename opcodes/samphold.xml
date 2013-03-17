@@ -1,0 +1,101 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="samphold">
+<indexterm id="IndexSamphold"><primary>samphold</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Sample Level Operators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>samphold</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>samphold</refname>
+    <refpurpose>
+      Effectue une opération d'échantillonnage-bloquage sur son entrée.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Effectue une opération d'échantillonnage-bloquage sur son entrée.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>samphold</command> asig, agate [, ival] [, ivstor]</synopsis>
+
+    <synopsis>kres <command>samphold</command> ksig, kgate [, ival] [, ivstor]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ival, ivstor</emphasis> (facultatif) -- contrôle l'état initial
+      de l'espace mémoire interne. Si <emphasis>ivstor</emphasis> vaut zéro la
+      valeur interne <quote>bloquée</quote> est fixée à <emphasis>ival</emphasis> ;
+      sinon elle retient sa valeur précédente. Les valeurs par défaut sont 0, 0
+      (c'est-à-dire initialisation à zéro).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kgate, xgate</emphasis> -- Contrôle le blocage du signal.
+    </para>
+
+    <para>
+      <emphasis>samphold</emphasis> effectue une opération d'échantillonnage-blocage
+      sur son entrée en fonction des valeurs de <emphasis>gate</emphasis>. Si
+      <emphasis>gate != 0</emphasis>, les échantillons en entrée sont transmis en
+      sortie ; si <emphasis>gate = 0</emphasis>, la dernière valeur de sortie est
+      répétée. Le paramètre de contrôle <emphasis>gate</emphasis> peut être une
+      constante, un signal de contrôle ou un signal audio.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      <informalexample>
+        <programlisting>
+asrc  <emphasis role="opc">buzz</emphasis>      10000, 440, 20, 1     <emphasis role="comment">; train de pulsations à bande limitée</emphasis>
+adif  <emphasis role="opc">diff</emphasis>      asrc                  <emphasis role="comment">; renforcement des aigus</emphasis>
+anew  <emphasis role="opc">balance</emphasis>   adif, asrc            <emphasis role="comment">; mais en conservant la puissance</emphasis>
+agate <emphasis role="opc">reson</emphasis>     asrc, 0, 440          <emphasis role="comment">; on utilise un filtrage passe-bas de l'original</emphasis>
+asamp <emphasis role="opc">samphold</emphasis>  anew, agate           <emphasis role="comment">; pour laisser passer le nouveau signal audio</emphasis>
+aout  <emphasis role="opc">tone</emphasis>      asamp, 100            <emphasis role="comment">; lissage des discontinuités</emphasis></programlisting>
+      </informalexample>
+    </para>
+    <para>
+      Voici un autre exemple de l'opcode samphold. Il utilise le fichier
+      <ulink url="examples/samphold.csd"><citetitle>samphold.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode samphold.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/samphold.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="diff"><citetitle>diff</citetitle></link>,
+      <link linkend="downsamp"><citetitle>downsamp</citetitle></link>,
+      <link linkend="integ"><citetitle>integ</citetitle></link>,
+      <link linkend="interp"><citetitle>interp</citetitle></link>,
+      <link linkend="upsamp"><citetitle>upsamp</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

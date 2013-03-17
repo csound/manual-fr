@@ -1,0 +1,131 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vbap16">
+<indexterm id="IndexVbap16"><primary>vbap16</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Panning and Spatialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vbap16</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vbap16</refname>
+    <refpurpose>
+      Distribue un signal audio sur 16 canaux.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Distribue un signal audio sur 16 canaux.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ar1, ..., ar16 <command>vbap16</command> asig, kazim [, kelev] [, kspread]</synopsis>
+  </refsect1>
+
+<!--  <refsect1>
+    <title>Initialisation</title>
+  </refsect1>-->
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- signal audio à traiter.
+    </para>
+    <para>
+      <emphasis>kazim</emphasis> -- angle d'azimut de la source virtuelle.
+    </para>
+
+    <para>
+      <emphasis>kelev</emphasis> (facultatif) -- angle d'élévation de la source
+      virtuelle.
+    </para>
+
+    <para>
+      <emphasis>kspread</emphasis> (facultatif) -- diffusion de la source virtuelle
+      (de 0 à 100). S'il vaut 0, on a un panoramique d'amplitude conventionnel.
+      Plus <emphasis>kspread</emphasis> augmente et plus le nombre de haut-parleurs
+      utilisés dans le panoramique augmente. S'il vaut 100, le son est appliqué à
+      tous les haut-parleurs.
+    </para>
+
+    <para>
+      <emphasis>vbap16</emphasis> prend un signal en entrée, <emphasis>asig</emphasis>,
+      et le distribue sur 16 sorties en fonction des contrôles <emphasis>kazim</emphasis>
+      et <emphasis>kelev</emphasis>, et de la disposition des haut-parleurs. Si
+      <emphasis>idim</emphasis> = 2, <emphasis>kelev</emphasis> est mis à zéro.
+      La distribution est réalisée par Panoramique d'Amplitude sur une Base de
+      Vecteurs (VBAP - voir référence). VBAP distribue le signal en tenant compte
+      des données de haut-parleurs configurées avec <emphasis>vbaplsinit</emphasis>.
+      Le signal est appliqué au plus à deux haut-parleurs dans les configurations
+      2D et à trois haut-parleurs dans les configurations 3D. Si la source sonore
+      est distribuée en dehors de la région couverte par les haut-parleurs, les
+      haut-parleurs les plus proches sont utilisés dans le panoramique.
+    </para>
+    <warning>
+      <para>
+        Prière de noter que tous les opcodes de panoramique <emphasis>vbap</emphasis>
+        nécessitent une initialisation du système <emphasis>vbap</emphasis> avec
+        <link linkend="vbaplsinit"><citetitle>vbaplsinit</citetitle></link>.
+      </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voir l'entrée sur <link linkend="vbap8"><citetitle>vbap8</citetitle></link>
+      pour un exemple d'utilisation des opcodes <emphasis>vbap</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Référence</title>
+    <para>
+      Ville Pulkki : <quote>Virtual Sound Source Positioning Using Vector Base
+      Amplitude Panning</quote> <emphasis>Journal of the Audio Engineering Society</emphasis>,
+      juin 1997, Vol. 45/6, p. 456.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="vbap16move"><citetitle>vbap16move</citetitle></link>,
+      <link linkend="vbap4"><citetitle>vbap4</citetitle></link>,
+      <link linkend="vbap4move"><citetitle>vbap4move</citetitle></link>,
+      <link linkend="vbap8"><citetitle>vbap8</citetitle></link>,
+      <link linkend="vbap8move"><citetitle>vbap8move</citetitle></link>,
+      <link linkend="vbaplsinit"><citetitle>vbaplsinit</citetitle></link>,
+      <link linkend="vbapz"><citetitle>vbapz</citetitle></link>,
+      <link linkend="vbapzmove"><citetitle>vbapzmove</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Ville Pulkki</member>
+        <member>Sibelius Academy Computer Music Studio</member>
+        <member>Laboratoire d'Acoustique et de Traitement du Signal Audio</member>
+        <member>Helsinki, Université de Technologie</member>
+        <member>Helsinki, Finlande</member>
+        <member>Mai 2000</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la Version 4.07 de Csound. Les paramètres d'entrée
+      acceptent le taux-k depuis Csound 5.09.</para>
+  </refsect1>
+</refentry>

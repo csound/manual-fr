@@ -1,0 +1,72 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="serialWrite_i">
+<indexterm
+    id="IndexSerialWrite_i"><primary>serialrite_i</primary></indexterm>
+
+  <refentryinfo><title>Serial I/O:</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>serialWrite_i</refentrytitle>
+  </refmeta>
+
+   <refnamediv>
+    <refname>serialWrite_i</refname>
+    <refpurpose>
+      Ecrit des données sur un port série.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ecrit des données sur un port série pour arduino.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+      <synopsis> <command>serialWrite_i</command> iPort, iByte</synopsis>
+      <synopsis> <command>serialWrite_i</command> iPort, SBytes</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iPort</emphasis> -- numéro du port obtenu d'un opcode
+      <emphasis>serialBegin</emphasis>.
+    </para>
+    <para>
+      <emphasis>iByte</emphasis> -- octet à écrire.
+    </para>
+ </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="serialBegin"><citetitle></citetitle>serialBegin</link>,
+      <link linkend="serialEnd"><citetitle></citetitle>serialEnd</link>,
+      <link linkend="serialWrite"><citetitle></citetitle>serialWrite</link>,
+      <link linkend="serialRead"><citetitle></citetitle>serialRead</link>,
+      <link linkend="serialPrint"><citetitle></citetitle>serialPrint</link>,
+      <link linkend="serialFlush"><citetitle></citetitle>serialFlush</link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namematt;</member>
+        <member>2011</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.14</para>
+  </refsect1>
+</refentry>

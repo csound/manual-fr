@@ -1,0 +1,85 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="sqrt">
+<indexterm id="IndexSqrt"><primary>sqrt</primary></indexterm>
+  <refentryinfo><title>Mathematical Operations:Mathematical Functions</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>sqrt</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>sqrt</refname>
+    <refpurpose>
+      Retourne une racine carrée.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne la racine carrée de <emphasis>x</emphasis> (<emphasis>x</emphasis> non-negatif).
+    </para>
+
+    <para>
+      Les valeurs de l'argument sont restreintes pour <link linkend="log"><citetitle>log</citetitle></link>,
+      <link linkend="log10"><citetitle>log10</citetitle></link> et <emphasis>sqrt</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>sqrt</command>(x) (pas de restriction de taux)</synopsis>
+
+    <para>
+      où l'argument entre parenthèses peut être une expression. Les convertisseurs de valeur
+      effectuent une transformation arithmétique d'unités d'une sorte en unités d'une autre sorte.
+      Le résultat peut devenir ensuite un terme dans une autre expression.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode sqrt. Il utilise le fichier
+      <ulink url="examples/sqrt.csd"><citetitle>sqrt.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode sqrt.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/sqrt.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>square root of left channel = 1.000000\r
+square root of left channel = 0.948688
+square root of left channel = 0.894437
+square root of left channel = 0.836676
+square root of left channel = 0.774620
+square root of left channel = 0.707139
+square root of left channel = 0.632499
+square root of left channel = 0.547781
+square root of left channel = 0.447295
+square root of left channel = 0.316242</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="abs"><citetitle>abs</citetitle></link>,
+      <link linkend="exp"><citetitle>exp</citetitle></link>,
+      <link linkend="frac"><citetitle>frac</citetitle></link>,
+      <link linkend="int"><citetitle>int</citetitle></link>,
+      <link linkend="log"><citetitle>log</citetitle></link>,
+      <link linkend="log10"><citetitle>log10</citetitle></link>,
+      <link linkend="opi"><citetitle>i</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

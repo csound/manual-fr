@@ -1,0 +1,47 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="ControlPgmctl">
+  <title>Contrôle séquentiel d'un programme</title>
+
+  <para>
+    Les opcodes pour modifier l'ordre d'exécution des instructions de l'orchestre sont :
+  </para>
+  <itemizedlist>
+    <listitem><para><link linkend="cggoto"><citetitle>cggoto</citetitle></link></para></listitem>
+    <listitem><para><link linkend="cigoto"><citetitle>cigoto</citetitle></link></para></listitem>
+    <listitem><para><link linkend="ckgoto"><citetitle>ckgoto</citetitle></link></para></listitem>
+    <listitem><para><link linkend="cngoto"><citetitle>cngoto</citetitle></link></para></listitem>
+    <listitem><para><link linkend="elseif"><citetitle>elseif</citetitle></link></para></listitem>
+    <listitem><para><link linkend="else"><citetitle>else</citetitle></link></para></listitem>
+    <listitem><para><link linkend="endif"><citetitle>endif</citetitle></link></para></listitem>
+    <listitem><para><link linkend="goto"><citetitle>goto</citetitle></link></para></listitem>
+    <listitem><para><link linkend="if"><citetitle>if</citetitle></link></para></listitem>
+    <listitem><para><link linkend="igoto"><citetitle>igoto</citetitle></link></para></listitem>
+    <listitem><para><link linkend="kgoto"><citetitle>kgoto</citetitle></link></para></listitem>
+    <listitem><para><link linkend="tigoto"><citetitle>tigoto</citetitle></link></para></listitem>
+    <listitem><para><link linkend="timout"><citetitle>timout</citetitle></link></para></listitem>
+  </itemizedlist>
+  <para>
+    Les opcodes pour créer des structures de boucle sont :
+  </para>
+  <itemizedlist>
+    <listitem><para><link linkend="loop_ge"><citetitle>loop_ge</citetitle></link></para></listitem>
+    <listitem><para><link linkend="loop_gt"><citetitle>loop_gt</citetitle></link></para></listitem>
+    <listitem><para><link linkend="loop_le"><citetitle>loop_le</citetitle></link></para></listitem>
+    <listitem><para><link linkend="loop_lt"><citetitle>loop_lt</citetitle></link></para></listitem>
+    <listitem><para><link linkend="until"><citetitle>until</citetitle></link></para></listitem>
+  </itemizedlist>
+  <warning>
+    <simpara>Certains de ces opcodes fonctionnent au taux-i même s'ils contiennent des comparaisons aux
+    taux-k ou -a. Voir la section
+    <link linkend="ControlReinitn"><citetitle>Réinitialisation</citetitle></link>.</simpara>
+  </warning>
+
+</section>

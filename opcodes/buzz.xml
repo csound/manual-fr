@@ -1,0 +1,129 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.15
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="buzz">
+<indexterm id="IndexBuzz"><primary>buzz</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Dynamic Spectrum Oscillators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>buzz</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>buzz</refname>
+    <refpurpose>
+      La sortie est un ensemble de partiels sinus en relation harmonique.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      La sortie est un ensemble de partiels sinus en relation harmonique.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>buzz</command> xamp, xcps, knh, ifn [, iphs]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn</emphasis> -- numéro de la table d'une fonction stockée contenant une onde sinus. Une
+      grande table d'au moins 8192 points est recommandée.
+    </para>
+
+    <para>
+      <emphasis>iphs</emphasis> (facultatif, par défaut 0) -- phase initiale de la fréquence fondamentale,
+      exprimée comme une fraction d'une période (0 à 1). Avec une valeur négative l'initialisation de la
+      phase sera ignorée. La valeur par défaut est zéro.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>xamp</emphasis> -- amplitude
+    </para>
+
+    <para>
+      <emphasis>xcps</emphasis> -- fréquence en cycles par seconde
+    </para>
+
+    <para>
+      Les unités <emphasis>buzz</emphasis> génèrent un ensemble additif de partiels cosinus en relation
+      harmonique de fréquence fondamentale <emphasis>xcps</emphasis>, et dont les amplitudes sont
+      pondérées de telle façon que la crête de leur somme égale <emphasis>xamp</emphasis>. Le choix et
+      l'importance des partiels sont déterminés par les paramètres de contrôle suivants :
+    </para>
+
+    <para>
+      <emphasis>knh</emphasis> -- nombre total d'harmoniques demandés. Nouveau dans la version 3.57 de
+      Csound, <emphasis>knh</emphasis> vaut un par défaut. Si <emphasis>knh</emphasis> est négatif, sa
+      valeur absolue est utilisée.
+    </para>
+
+    <para>
+      <emphasis>buzz</emphasis> et <link linkend="gbuzz"><citetitle>gbuzz</citetitle></link> sont utiles
+      comme sources de son complexe dans la synthèse soustractive. <emphasis>buzz</emphasis> est un cas
+      particulier du plus général <emphasis>gbuzz</emphasis> dans lequel
+      <emphasis>klh</emphasis> = <emphasis>kmul</emphasis> = 1 ; il produit ainsi
+      un ensemble de <emphasis>knh</emphasis> harmoniques de même importance, commençant avec le
+      fondamental. (C'est un train d'impulsions à bande de fréquence limitée ; si les partiels vont
+      jusqu'à la fréquence de Nyquist, c'est-à-dire <emphasis>knh</emphasis> = int (sr / 2 / 
+      fréq. fondamentale), le résultat est un train d'impulsions réelles d'amplitude
+      <emphasis>xamp</emphasis>.) 
+    </para>
+
+    <para>
+      Bien que l'on puisse faire varier <emphasis>knh</emphasis> durant l'exécution, sa valeur interne est
+      nécessairement un entier ce qui peut provoquer des <quote>pops</quote> dûs à des discontinuités dans
+      la sortie. <emphasis>buzz</emphasis> peut être modulé en amplitude et/ou en fréquence soit par des
+      signaux de contrôle soit par des signaux audio.
+    </para>
+
+    <para>
+      Nota Bene : cette unité a son pendant avec <link linkend="GEN11"><citetitle>GEN11</citetitle></link>,
+      dans lequel le même ensemble de cosinus peut être stocké dans une table de fonction qui sera lue par
+      un oscillateur. Bien que plus efficace en termes de calcul, le train d'impulsions stocké a un
+      contenu spectral fixe, non variable dans le temps comme celui décrit ci-dessus.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode buzz. Il utilise le fichier
+      <ulink url="examples/buzz.csd"><citetitle>buzz.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode buzz.</title>
+
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/buzz.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="gbuzz"><citetitle>gbuzz</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Septembre 2003. Merci à &namekanata; pour avoir corrigé les mentions du paramètre
+      <emphasis>kmul</emphasis>.</para>
+  </refsect1>
+</refentry>

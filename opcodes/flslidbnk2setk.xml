@@ -1,0 +1,145 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.1
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLslidBnk2Setk">
+<indexterm id="IndexFLslidBnk2Setk"><primary>FLslidBnk2Setk</primary></indexterm>
+  <refentryinfo><title>FLTK:Other</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLslidBnk2Setk</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLslidBnk2Setk</refname>
+    <refpurpose>
+      mofidie les valeurs d'un banc de réglettes.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>FLslidBnk2Setk</emphasis>mofidie les valeurs d'un banc de
+      réglettes selon un ensemble de valeurs stockées dans une table.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>FLslidBnk2Setk</command>  ktrig, ihandle, ifn [, istartIndex, istartSlid, inumSlid]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ihandle</emphasis> - identifiant du sliderBnk (à utiliser pour
+      fixer ses valeurs).
+    </para>
+    <para>
+      <emphasis>ifn</emphasis> - numéro d'une table contenant un ensemble de
+      valeurs à affecter à chaque réglette.
+    </para>
+    <para>
+      <emphasis>istartIndex</emphasis> - (facultatif) indice dans la table du
+      premier élément à être évalué. La valeur par défaut est zéro.
+    </para>
+    <para>
+      <emphasis>istartSlid</emphasis> - (facultatif) première réglette à
+      évaluer. 0 par défaut, indiquant la première réglette.
+    </para>
+    <para>
+      <emphasis>inumSlid</emphasis> - (facultatif) nombre de réglettes à mettre
+      à jour. 0 par défaut, indiquant toutes les réglettes.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ktrig</emphasis> – la sortie de <emphasis>FLslidBnk2Setk</emphasis>
+      est un déclencheur qui indique si les réglettes doivent être mises à jour ou
+      pas. Une valeur non nulle force la mise à jour des réglettes.
+    </para>
+    <para>
+     <emphasis>FLslidBnk2Setk</emphasis> est semblable à
+     <link linkend="FLslidBnkSet"><citetitle>FLslidBnkSet</citetitle></link>
+     mais il permet de modifier les valeurs de
+     <link linkend="FLslidBnk2"><citetitle>FLslidBnk2</citetitle></link> au taux-k
+     (on peut aussi utiliser <emphasis>FLslidBnk2Setk</emphasis> avec
+     <link linkend="FLvslidBnk2"><citetitle>FLvslidBnk2</citetitle></link>,
+     obtenant un résultat identique). Il permet aussi de relier le banc de
+     réglettes au MIDI. Si l'on utilise le MIDI (par exemple au moyen de
+     l'opcode <link linkend="slider8table"><citetitle>slider8table</citetitle></link>),
+     <emphasis>FLslidBnk2Setk</emphasis> change les valeurs du banc de réglettes
+     <link linkend="FLslidBnk2"><citetitle>FLslidBnk2</citetitle></link> avec un
+     ensemble de valeurs situées dans une table. Cet opcode est ainsi capable
+     de servir de pont MIDI vers le widget
+     <link linkend="FLslidBnk2"><citetitle>FLslidBnk2</citetitle></link> lorsqu'il
+     est utilisé avec la famille d'opcodes <emphasis>sliderXXtable</emphasis>
+     (voir l'entrée <link linkend="slider8table"><citetitle>slider8table</citetitle></link>
+     pour plus d'information). Noter que, si l'on veut utiliser l'indexation
+     de table comme une courbe de réponse, il est impossible de le faire directement
+     dans la configuration <emphasis>iconfigtable</emphasis> de
+     <link linkend="FLslidBnk2"><citetitle>FLslidBnk2</citetitle></link>, lorsque
+     l'on a l'intention d'utiliser l'opcode <emphasis>FLslidBnk2Setk</emphasis>.
+     En fait, l'élément correspondant de l'élément <emphasis>inputTable</emphasis>
+     de <emphasis>FLslidBnk2Setk</emphasis> doit être positionné en mode linéaire
+     et respecter l'intervalle de 0 à 1. Même les éléments correspondants de
+     <emphasis>sliderXXtable</emphasis> doivent être positionnés en mode linéaire
+     dans l'intervalle normalisé. On peut indexer la table plus tard au moyen des
+     opcodes <link linkend="tab"><citetitle>tab</citetitle></link> et
+     <link linkend="tb"><citetitle>tb</citetitle></link>, et recadrer la sortie
+     en fonction des valeurs max et min. D'un autre côté, il est possible d'utiliser
+     une courbe de réponse linéaire ou exponentielle directement, en fixant
+     l'intervalle min-max courant ainsi que l'indicateur à la fois dans
+     l'<emphasis>iconfigtable</emphasis> du
+     <link linkend="FLslidBnk2"><citetitle>FLslidBnk2</citetitle></link>
+     correspondant et dans <emphasis>sliderXXtable</emphasis>.
+    </para>
+    <para>
+      <emphasis>FLslidBnk2Setk</emphasis> est la version de taux-k de
+      <link linkend="FLslidBnk2Set"><citetitle>FLslidBnk2Set</citetitle></link>.
+    </para>
+
+  </refsect1>
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode FLslidBnk2Setk. Il utilise le fichier
+      <ulink url="examples/FLslidBnk2Setk.csd"><citetitle>FLslidBnk2Setk.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode FLslidBnk2Setk.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/FLslidBnk2Setk.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="FLslider"><citetitle>FLslider</citetitle></link>,
+      <link linkend="FLslidBnkGetHandle"><citetitle>FLslidBnkGetHandle</citetitle></link>,
+      <link linkend="FLslidBnk"><citetitle>FLslidBnk</citetitle></link>,
+      <link linkend="FLslidBnk2"><citetitle>FLslidBnk2</citetitle></link>,
+      <link linkend="FLvslidBnk"><citetitle>FLvslidBnk</citetitle></link>,
+      <link linkend="FLvslidBnk2"><citetitle>FLvslidBnk2</citetitle></link>
+      <link linkend="FLslidBnkSet"><citetitle>FLslidBnkSet</citetitle></link>,
+      <link linkend="FLslidBnk2Set"><citetitle>FLslidBnk2Set</citetitle></link>,
+      <link linkend="slider8table"><citetitle>slider8table</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 5.06</para>
+  </refsect1>
+</refentry>

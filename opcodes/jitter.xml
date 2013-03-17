@@ -1,0 +1,93 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="jitter">
+<indexterm id="IndexJitter"><primary>jitter</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Random (Noise) Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>jitter</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>jitter</refname>
+    <refpurpose>
+      Génère aléatoirement une suite de segments de droite.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère aléatoirement une suite de segments de droite.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kout <command>jitter</command> kamp, kcpsMin, kcpsMax</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamp</emphasis> -- Amplitude de la déviation de jitter
+    </para>
+
+    <para>
+      <emphasis>kcpsMin</emphasis> -- Vitesse minimale des variations aléatoires de fréquence (exprimée en cps)
+    </para>
+
+    <para>
+      <emphasis>kcpsMax</emphasis> -- Vitesse maximale des variations aléatoires de fréquence (exprimée en cps)
+    </para>
+
+    <para>
+      <emphasis>jitter</emphasis> génère aléatoirement une suite de segments de droite entre
+      -<emphasis>kamp</emphasis> et +<emphasis>kamp</emphasis>. La durée de chaque segment est
+      une valeur aléatoire générée en fonction des valeurs <emphasis>kcpsmin</emphasis> et <emphasis>kcpsmax</emphasis>.
+    </para>
+
+    <para>
+      On peut utiliser <emphasis>jitter</emphasis> pour donner plus de naturel et une
+      <quote>touche analogique</quote> à des sons statiques et monotones. Pour de meilleurs
+      résultats il est conseillé de garder une amplitude modérée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode jitter. Il utilise le fichier
+      <ulink url="examples/jitter.csd"><citetitle>jitter.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode jitter.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/jitter.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="jitter2"><citetitle>jitter2</citetitle></link>,
+      <link linkend="vibr"><citetitle>vibr</citetitle></link>,
+      <link linkend="vibrato"><citetitle>vibrato</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.15</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,160 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLlabel">
+<indexterm id="IndexFLlabel"><primary>FLlabel</primary></indexterm>
+  <refentryinfo><title>FLTK:Appearance</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLlabel</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLlabel</refname>
+    <refpurpose>
+      Un opcode FLTK qui modifie l'apparence d'une étiquette de texte.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Modifie un ensemble de paramètres en relation avec l'apparence de
+      l'étiquette de texte d'un widget (c'est-à-dire la taille, la police,
+      l'alignement et la couleur du texte correspondant).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>FLlabel</command> isize, ifont, ialign, ired, igreen, iblue</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>isize</emphasis> -- taille de la police du widget cible. Les
+      valeurs normales sont de l'ordre de 15. Des nombres plus grands augmentent
+      la taille de la police, tandis que des nombres plus petits la réduisent.
+    </para>
+
+    <para>
+      <emphasis>ifont</emphasis> -- fixe le type de police de l'étiquette d'un
+      widget.
+    </para>
+
+    <para>
+      Les valeurs admises pour l'argument <emphasis>ifont</emphasis> sont :
+
+      <itemizedlist>
+        <listitem><para>1 - Helvética (comme Arial sous Windows)</para></listitem>
+        <listitem><para>2 - Helvética Gras</para></listitem>
+        <listitem><para>3 - Helvética Italique</para></listitem>
+        <listitem><para>4 - Helvética Gras Italique</para></listitem>
+        <listitem><para>5 - Courrier</para></listitem>
+        <listitem><para>6 - Courrier Gras</para></listitem>
+        <listitem><para>7 - Courrier Italique</para></listitem>
+        <listitem><para>8 - Courrier Gras Italique</para></listitem>
+        <listitem><para>9 - Times</para></listitem>
+        <listitem><para>10 - Times Grasd</para></listitem>
+        <listitem><para>11 - Times Italique</para></listitem>
+        <listitem><para>12 - Times Gras Italique</para></listitem>
+        <listitem><para>13 - Symbole</para></listitem>
+        <listitem><para>14 - Ecran</para></listitem>
+        <listitem><para>15 - Ecran Gras</para></listitem>
+        <listitem><para>16 - Dingbats</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>ialign</emphasis> -- fixe l'alignement de l'étiquette de texte
+      du widget.
+    </para>
+
+    <para>
+      Les valeurs admises pour l'argument <emphasis>ialign</emphasis> sont :
+
+      <itemizedlist>
+        <listitem><para>1 - centré</para></listitem>
+        <listitem><para>2 - en haut</para></listitem>
+        <listitem><para>3 - en bas</para></listitem>
+        <listitem><para>4 - à gauche</para></listitem>
+        <listitem><para>5 - à droite</para></listitem>
+        <listitem><para>6 - en haut à gauche</para></listitem>
+        <listitem><para>7 - en haut à droite</para></listitem>
+        <listitem><para>8 - en bas à gauche</para></listitem>
+        <listitem><para>9 - en bas à droite</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>ired</emphasis> -- la couleur rouge du widget cible. L'intervalle
+      pour chaque composante RVB va de 0 à 255.
+    </para>
+
+    <para>
+      <emphasis>igreen</emphasis> -- la couleur verte du widget cible. L'intervalle
+      pour chaque composante RVB va de 0 à 255.
+    </para>
+
+    <para>
+      <emphasis>iblue</emphasis> -- la couleur bleue du widget cible. L'intervalle
+      pour chaque composante RVB va de 0 à 255.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>FLlabel</emphasis> modifie un ensemble de paramètres en relation
+      avec l'apparence de l'étiquette de texte d'un widget, c'est-à-dire la
+      taille, la police, l'alignement et la couleur du texte correspondant. Cet
+      opcode affecte (presque) tous les widgets définis après lui. On peut
+      placer plusieurs instances de <emphasis>FLlabel</emphasis> avant chaque
+      widget que l'on veut modifier. Cependant, pour modifier un widget
+      particulier, il vaut mieux utiliser l'opcode appartenant au second type
+      (c'est-à-dire ceux ayant un argument <emphasis>ihandle</emphasis>).
+    </para>
+
+    <para>
+      l'influence de <emphasis>FLlabel</emphasis> sur le widget suivant peut
+      être suspendue en lui donnant -1 comme seul argument.
+      <emphasis>FLlabel</emphasis> est conçu pour modifier les attributs de
+      texte d'un groupe de widgets relatifs.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+        <link linkend="FLcolor2"><citetitle>FLcolor2</citetitle></link>, 
+        <link linkend="FLhide"><citetitle>FLhide</citetitle></link>, 
+        <link linkend="FLlabel"><citetitle>FLlabel</citetitle></link>, 
+        <link linkend="FLsetAlign"><citetitle>FLsetAlign</citetitle></link>, 
+        <link linkend="FLsetBox"><citetitle>FLsetBox</citetitle></link>, 
+        <link linkend="FLsetColor"><citetitle>FLsetColor</citetitle></link>, 
+        <link linkend="FLsetColor2"><citetitle>FLsetColor2</citetitle></link>, 
+        <link linkend="FLsetFont"><citetitle>FLsetFont</citetitle></link>, 
+        <link linkend="FLsetPosition"><citetitle>FLsetPosition</citetitle></link>, 
+        <link linkend="FLsetSize"><citetitle>FLsetSize</citetitle></link>, 
+        <link linkend="FLsetText"><citetitle>FLsetText</citetitle></link>, 
+        <link linkend="FLsetTextColor"><citetitle>FLsetTextColor</citetitle></link>, 
+        <link linkend="FLsetTextSize"><citetitle>FLsetTextSize</citetitle></link>, 
+        <link linkend="FLsetTextType"><citetitle>FLsetTextType</citetitle></link>, 
+        <link linkend="FLsetVal_i"><citetitle>FLsetVal_i</citetitle></link>, 
+        <link linkend="FLsetVal"><citetitle>FLsetVal</citetitle></link>, 
+        <link linkend="FLshow"><citetitle>FLshow</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.22</para>
+  </refsect1>
+</refentry>

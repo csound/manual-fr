@@ -1,0 +1,136 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvsfilter">
+<indexterm id="IndexPvsfilter"><primary>pvsfilter</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsfilter</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvsfilter</refname>
+    <refpurpose>
+      Multiplie les amplitude d'un flot pvoc par celles d'un second flot pvoc,
+      avec mise à l'échelle dynamique.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Multiplie les amplitude d'un flot pvoc par celles d'un second flot pvoc,
+      avec mise à l'échelle dynamique.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>fsig <command>pvsfilter</command> fsigin, fsigfil, kdepth[, igain]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>fsig</emphasis> -- flot pv de sortie 
+    </para>
+
+    <para>
+      <emphasis>fsigin</emphasis> -- flot pv d'entrée 
+    </para>
+
+    <para>
+      <emphasis>fsigfil</emphasis> -- flot pvoc filtrant
+    </para>
+
+    <para>
+      <emphasis>kdepth</emphasis> -- contrôle l'importance du filtrage de
+      <emphasis>fsigin</emphasis> par <emphasis>fsigfil</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>igain</emphasis> -- modification de l'amplitude (facultatif,
+      1 par défaut).
+    </para>
+
+  <para>
+    Ici les amplitudes du flot pvoc en entrée sont modifées par le flot filtrant
+    sans changer les fréquences. Comme d'habitude, les deux signaux doivent
+    avoir le même format.
+  </para>
+  <warning>
+    <para>
+        Il est dangereux d'utiliser la même variable-f à la fois comme entrée et
+        comme sortie des opcodes pvs. Ceci peut produire un comportement indéfini
+        de certains de ces opcodes. Utilisez une variable différente à gauche et
+        à droite de l'opcode.
+    </para>
+  </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      <example>
+        <title>Exemples</title>
+        <programlisting>
+kfreq  <emphasis role="opc">expon</emphasis> 500, p3, 4000           <emphasis role="comment">; 3-octave sweep</emphasis>
+kdepth <emphasis role="opc">linseg</emphasis> 1, p3/2, 0.5, p3/2, 1  <emphasis role="comment">; varying filter depth</emphasis>
+
+asig  <emphasis role="opc">in</emphasis>                             <emphasis role="comment">; input</emphasis>
+afil  <emphasis role="opc">oscili</emphasis>  1, kfreq, 1            <emphasis role="comment">; filter t-domain signal</emphasis>
+
+fim   <emphasis role="opc">pvsanal</emphasis>  asig,1024,256,1024,0  <emphasis role="comment">; pvoc analysis</emphasis>
+fil   <emphasis role="opc">pvsanal</emphasis>  afil,1024,256,1024,0  
+fou   <emphasis role="opc">pvsfilter</emphasis> fim, fil, kdepth     <emphasis role="comment">; filter signal</emphasis>
+aout  <emphasis role="opc">pvsynth</emphasis>  fou                   <emphasis role="comment">; pvoc synthesis</emphasis>
+        </programlisting>
+      </example>
+    </para>
+    
+    <para>
+      Dans l'exemple ci-dessus la courbe du filtre dépendra de l'enveloppe
+      spectrale de <emphasis>afil</emphasis> ; dans le cas d'une simple sinusoïde,
+      il sera équivalent à un filtre passe-bande à bande étroite.
+    </para>
+    <para>
+      Voici un exemple de l'opcode pvsfilter. Il utilise le fichier
+      <ulink url="examples/pvsfilter.csd"><citetitle>pvsfilter.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode pvsfilter.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pvsfilter.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="pvsanal"><citetitle>pvsanal</citetitle></link>,
+      <link linkend="pvsynth"><citetitle>pvsynth</citetitle></link>,
+      <link linkend="pvsadsyn"><citetitle>pvsadsyn</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Novembre 2004 </member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau greffon dans la version 5</para>
+    <para>Novembre 2004.</para>
+  </refsect1>
+</refentry>

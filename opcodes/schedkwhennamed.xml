@@ -1,0 +1,148 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="schedkwhennamed">
+<indexterm id="IndexSchedkwhennamed"><primary>schedkwhennamed</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Invocation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>schedkwhennamed</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>schedkwhennamed</refname>
+    <refpurpose>
+      Semblable à schedkwhen mais avec un instrument nommé dans la phase d'initialisation.
+    </refpurpose>
+  </refnamediv>   
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Semblable à <link linkend="schedkwhen"><citetitle>schedkwhen</citetitle></link>
+      mais avec un instrument nommé dans la phase d'initialisation.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+
+    <synopsis><command>schedkwhennamed</command> ktrigger, kmintim, kmaxnum, &quot;name&quot;, kwhen, kdur \
+      [, ip4] [, ip5] [...]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ip4, ip5, ...</emphasis> -- Equivalent à p4, p5, etc., dans une
+      <link linkend="i"><citetitle>instruction i</citetitle></link> de partition.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ktrigger</emphasis> -- déclenche un nouvel évènement de partition.
+      Si <emphasis>ktrigger</emphasis> = 0, aucun nouvel évènement n'est déclenché.
+    </para>
+
+    <para>
+      <emphasis>kmintim</emphasis> -- intervalle de temps minimum entre les évènements générés,
+      en secondes. Si <emphasis>kmintim</emphasis> est inférieur ou égal à 0, il n'y a
+      aucune limite de temps.
+    </para>
+
+    <para>
+      <emphasis>kmaxnum</emphasis> -- nombre maximum d'instances simultanées de l'instrument
+      nommé autorisées. Si le nombre d'instances existantes de l'instrument nommé
+      est supérieur ou égal à <emphasis>kmaxnum</emphasis>, aucun nouvel
+      évènement n'est généré. Si <emphasis>kmaxnum</emphasis> est inférieur ou égal à 0, il
+      n'est pas utilisé pour limiter la génération d'évènement.
+    </para>
+
+    <para>
+      <emphasis>&quot;name&quot;</emphasis> -- le nom de l'instrument.
+    </para>
+
+    <para>
+      <emphasis>kwhen</emphasis> -- date de début du nouvel évènement. Equivalent à
+      p2 dans une <link linkend="i"><citetitle>instruction i</citetitle></link> de
+      partition. Mesurée à partir de l'instant de l'évènement déclencheur.
+      <emphasis>kwhen</emphasis> doit être supérieure ou égale à 0. Si
+      <emphasis>kwhen</emphasis> est supérieure à 0, l'instrument ne sera pas
+      initialisé jusqu'à ce que cette date soit atteinte.
+    </para>
+
+    <para>
+      <emphasis>kdur</emphasis> -- durée de l'évènement. Equivalent à p3 dans une
+      <link linkend="i"><citetitle>instruction i</citetitle></link> de partition. Si
+      <emphasis>kdur</emphasis> vaut 0, l'instrument ne fera qu'une phase d'initialisation,
+      sans exécution. Si <emphasis>kdur</emphasis> est négatif, une note tenue est
+      démarrée. (Voir
+      <link linkend="ihold"><citetitle>ihold</citetitle></link> et
+      <link linkend="i"><citetitle>instruction i</citetitle></link>.)
+    </para>
+
+    <note>
+      <para>Dans l'attente d'évènements à déclencher par <emphasis>schedkwhennamed</emphasis>,
+      l'exécution doit continuer, ou Csound pourrait se terminer si aucun évènement
+      de partition n'est attendu. Pour garantir une exécution continue, on peut utiliser
+      une <link linkend="f"><citetitle>instruction f0</citetitle></link> dans la
+      partition.</para>
+    </note>
+    
+    <note>
+      <para> Noter que l'opcode <emphasis>schedkwhennamed</emphasis> ne peut pas accepter de
+      p-champs chaîne de caractère. Si vous devez passer des chaînes de caractère à
+      l'instanciation d'un instrument, utilisez l'opcode
+      <link linkend="scoreline"><citetitle>scoreline</citetitle></link> ou
+      <link linkend="scoreline_i"><citetitle>scoreline_i</citetitle></link>.</para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode schedkwhennamed. Il utilise le fichier
+      <ulink url="examples/schedkwhennamed.csd"><citetitle>schedkwhennamed.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode schedkwhennamed.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/schedkwhennamed.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="event"><citetitle>event</citetitle></link>,
+      <link linkend="event_i"><citetitle>event_i</citetitle></link>,
+      <link linkend="schedule"><citetitle>schedule</citetitle></link>,
+      <link linkend="schedwhen"><citetitle>schedwhen</citetitle></link>,
+      <link linkend="schedkwhen"><citetitle>schedkwhen</citetitle></link>,
+      <link linkend="scoreline"><citetitle>scoreline</citetitle></link>,
+      <link linkend="scoreline_i"><citetitle>scoreline_i</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namerasmus;</member>
+        <member>EMS, Stockholm, Suède</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 4.23 de Csound</para>
+  </refsect1> 
+</refentry>

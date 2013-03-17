@@ -1,0 +1,90 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ftsr">
+<indexterm id="IndexFtsr"><primary>ftsr</primary></indexterm>
+  <refentryinfo><title>Table Control:Table Queries</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ftsr</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ftsr</refname>
+    <refpurpose>
+      Retourne le taux d'échantillonnage d'une table de fonction en mémoire.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne le taux d'échantillonnage d'une table de fonction en mémoire.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>ftsr</command>(x) (arg de taux-i seulement)</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Retourne le taux d'échantillonnage d'une table générée par
+      <link linkend="GEN01"><citetitle>GEN01</citetitle></link>. Le taux
+      d'échantillonnage est déterminé à partir de l'en-tête du fichier original.
+      Si ce dernier n'a pas d'en-tête ou si la table n'a pas été créée avec
+      <emphasis>GEN01</emphasis>, <emphasis>ftsr</emphasis> retourne 0.
+      Nouveau dans la version 3.49 de Csound.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode ftsr. Il utilise le fichier
+      <ulink url="examples/ftsr.csd"><citetitle>ftsr.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode ftsr.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/ftsr.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
++sampling-rate of table number 1 = 44100
++sampling-rate of table number 2 = 22050
++sampling-rate of table number 3 = 44100
++sampling-rate of table number 4 = 44100</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ftchnls"><citetitle>ftchnls</citetitle></link>,
+      <link linkend="ftlen"><citetitle>ftlen</citetitle></link>,
+      <link linkend="ftlptim"><citetitle>ftlptim</citetitle></link>,
+      <link linkend="nsamp"><citetitle>nsamp</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+        <member>Octobre 1998</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

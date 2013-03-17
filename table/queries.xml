@@ -1,0 +1,33 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.6
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="TableQueries">
+  <title>Requêtes sur une Table</title>
+
+  <para>
+    Les opcodes qui permettent d'obtenir des informations sur une table sont :
+    <itemizedlist>
+      <listitem><para>Pour les tables chargées depuis un fichier son (au moyen de
+      <link linkend="GEN01"><citetitle>GEN01</citetitle></link>) :
+      <link linkend="ftchnls"><citetitle>ftchnls</citetitle></link>,
+      <link linkend="ftcps"><citetitle>ftcps</citetitle></link>,
+      <link linkend="ftlen"><citetitle>ftlen</citetitle></link>,
+      <link linkend="ftlptim"><citetitle>ftlptim</citetitle></link> et
+      <link linkend="ftsr"><citetitle>ftsr</citetitle></link></para></listitem>
+      <listitem><para>Pour n'importe quelle table :
+      <link linkend="nsamp"><citetitle>nsamp</citetitle></link>, 
+      <link linkend="ftlen"><citetitle>ftlen</citetitle></link>,
+      <link linkend="tableng"><citetitle>tableng</citetitle></link></para></listitem>
+    </itemizedlist>
+  </para>
+  <para>
+    L'opcode <link linkend="tabsum"><citetitle>tabsum</citetitle></link> calcule
+    la somme des valeurs dans une table.
+  </para>
+</section>

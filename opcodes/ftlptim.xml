@@ -1,0 +1,97 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ftlptim">
+<indexterm id="IndexFtlptim"><primary>ftlptim</primary></indexterm>
+  <refentryinfo><title>Table Control:Table Queries</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ftlptim</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ftlptim</refname>
+    <refpurpose>
+      Retourne la date du début de boucle d'une table de fonction en mémoire.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne la date du début de boucle d'une table de fonction en mémoire.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>ftlptim</command>(x) (arg de taux-i seulement)</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Retourne la date du début de boucle (en secondes) de la table de fonction
+      numéro <emphasis>x</emphasis>. La valeur retournée est la durée de l'attaque
+      et du decay directement enregistrés avant le segment de boucle. Retourne
+      zéro (et un message d'avertissement) si l'échantillon ne contient pas de
+      points de boucle.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode ftlptim. Il utilise les fichiers
+      <ulink url="examples/ftlptim.csd"><citetitle>ftlptim.csd</citetitle></ulink>
+      et <ulink url="examples/Church.wav"><citetitle>Church.wav</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode ftlptim.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/ftlptim.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Le fichier audio <quote>Church.wav</quote> contenant une boucle, la sortie
+      comprendra des lignes comme celles-ci :
+      <screen>
+Base Note : 60	Detune    : 0
+Low  Note : 0	High Note : 127
+Low  Vel. : 0	High Vel. : 127
+Gain      : 1	Count     : 1
+mode      : 801
+start     : 4529	end       : 4912	count  :0
+mode      : 0
+start     : 0	end       : 0	count  :0</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ftchnls"><citetitle>ftchnls</citetitle></link>,
+      <link linkend="ftlen"><citetitle>ftlen</citetitle></link>,
+      <link linkend="ftsr"><citetitle>ftsr</citetitle></link>,
+      <link linkend="nsamp"><citetitle>nsamp</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namebarry;</member>
+        <member>MIT</member>
+        <member>Cambridge, Massachussetts</member>
+        <member>1997</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

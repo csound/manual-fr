@@ -1,0 +1,252 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.14
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="oscbnk">
+<indexterm id="IndexOscbnk"><primary>oscbnk</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Basic Oscillators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>oscbnk</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>oscbnk</refname>
+    <refpurpose>
+      Mélange la sortie de n'importe quel nombre d'oscillateurs.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ce générateur unitaire mélange la sortie de n'importe quel nombre d'oscillateurs. La fréquence, la
+      phase et l'amplitude de chaque oscillateur peuvent être modulées par deux LFO (tous les oscillateurs
+      ont un jeu de LFO séparé, avec différentes phase et fréquence) ; de plus, la sortie de chaque
+      oscillateur peut être filtrée au travers d'un égaliseur paramétrique (aussi contrôlé par les LFO).
+      Cet opcode trouve sa plus grande utilité dans des instruments de rendu d'ensemble (cordes, ch&oelig;ur,
+      etc.).
+    </para>
+
+    <para>
+      Bien que les LFO fonctionnent au taux-k, les modulations d'amplitude, de phase et de filtrage sont
+      interpolées en interne, et il est ainsi possible (et recommandé dans la plupart des cas) d'utiliser
+      cette unité avec de faibles taux de contrôle (~1000 Hz) sans dégradation audible de la qualité.
+    </para>
+
+    <para>
+      La phase et la fréquence initiale de tous les oscillateurs et LFO peuvent être fixées par un
+      générateur intégré de nombres aléatoires sur 31 bit amorçable par une <quote>graine</quote>, ou
+      spécifiées manuellement dans une table de fonction (GEN2).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>oscbnk</command>  kcps, kamd, kfmd, kpmd, iovrlap, iseed, kl1minf, kl1maxf, \
+      kl2minf, kl2maxf, ilfomode, keqminf, keqmaxf, keqminl, keqmaxl, \
+      keqminq, keqmaxq, ieqmode, kfn [, il1fn] [, il2fn] [, ieqffn]   \
+      [, ieqlfn] [, ieqqfn] [, itabl] [, ioutfn]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iovrlap</emphasis> -- Nombre d'oscillateurs.
+    </para>
+
+    <para>
+      <emphasis>iseed</emphasis> -- Valeur de la graine du générateur de nombres aléatoires (entier
+      positif dans l'intervalle 1 à 2147483646 (2 &circ; 31 - 2)). Si <emphasis>iseed</emphasis> &lt;= 0
+      la graine est l'heure courante.
+    </para>
+
+    <para>
+      <emphasis>ieqmode</emphasis> -- Mode de l'égaliseur paramétrique
+        <itemizedlist>
+          <listitem><para>-1 : désactive l'EQ (plus rapide)</para></listitem>
+          <listitem><para>0 : crête</para></listitem>
+          <listitem><para>1 : à plateau low shelf</para></listitem>
+          <listitem><para>2 : à plateau high shelf</para></listitem>
+          <listitem><para>3 : crête (filtrage sans interpolation)</para></listitem>
+          <listitem><para>4 : à plateau low shelf (sans interpolation)</para></listitem>
+          <listitem><para>5 : à plateau high shelf (sans interpolation)</para></listitem>
+        </itemizedlist>
+
+      Les modes sans interpolation sont plus rapides, et dans certains cas (par exemple filtre à plateau
+      high shelf aux fréquences de coupure basses) également plus stables ; cependant, l'interpolation est
+      utile pour éviter le <quote>bruit de transition</quote> aux faibles taux de contrôle.
+    </para>
+
+    <para>
+      <emphasis>ilfomode</emphasis> -- Type de la modulation par les LFO, somme de :
+        <itemizedlist>
+          <listitem><para>128 : LFO1 module la fréquence</para></listitem>
+          <listitem><para>64 : LFO1 module l'amplitude</para></listitem>
+          <listitem><para>32 : LFO1 module la phase</para></listitem>
+          <listitem><para>16 : LFO1 module l'EQ</para></listitem>
+          <listitem><para>8 : LFO2 module la fréquence</para></listitem>
+          <listitem><para>4 : LFO2 module l'amplitude</para></listitem>
+          <listitem><para>2 : LFO2 module la phase</para></listitem>
+          <listitem><para>1 : LFO2 module l'EQ</para></listitem>
+        </itemizedlist>
+
+      Si un LFO ne module rien, il n'est pas calculé, et le numéro de sa ftable (<emphasis>il1fn</emphasis>
+      ou <emphasis>il2fn</emphasis>) peut être omis.
+    </para>
+
+    <para>
+      <emphasis>il1fn</emphasis> (facultatif : par défaut 0) -- Numéro de la table de fonction de LFO1. La
+      forme d'onde dans cette table doit être normalisée (valeur absolue &lt;= 1), et elle est lue avec une
+      interpolation linéaire.
+    </para>
+
+    <para>
+      <emphasis>il2fn</emphasis> (facultatif : par défaut 0) -- Numéro de la table de fonction de LFO2. La
+      forme d'onde dans cette table doit être normalisée (valeur absolue &lt;= 1), et elle est lue avec une
+      interpolation linéaire.
+    </para>
+
+    <para>
+      <emphasis>ieqffn, ieqlfn, ieqqfn</emphasis> (facultatif : par défaut 0) -- Tables de lecture pour la
+      fréquence, le niveau et le Q de EQ (facultatif si EQ est désactivé). La position de lecture dans une
+      table est 0 si le signal de modulation est inférieur ou égal à -1, (longueur de table / 2) si le
+      signal de modulation vaut zero, et le point de garde si le signal de modulation est supérieur ou égal
+      à 1. Ces tables doivent être normalisées dans l'intervalle 0 - 1, et ont un point de garde étendu
+      (longueur de table = puissance de deux + 1). Toutes les tables sont lues avec une interpolation
+      linéaire.
+    </para>
+
+    <para>
+      <emphasis>itabl</emphasis> (facultatif : par défaut 0) -- Table de fonction stockant les valeurs de
+      phase et de fréquence pour tous les oscillateurs (facultatif). Les valeurs dans cette table sont
+      dans l'ordre suivant (5 pour chaque oscillateur) :
+      <informalexample>
+        <literallayout>phase de l'oscillateur, phase de lfo1, fréquence de lfo1, phase de lfo2, fréquence de lfo2, ...</literallayout>
+      </informalexample>
+      Toutes les valeurs sont dans l'intervalle 0 à 1 ; si le nombre spécifié est supérieur à 1, il est
+      ramené cycliquement (phase) ou limité (fréquence) à l'intérieur de l'intervalle permis. Une valeur
+      négative (ou la fin de la table) utilisera la sortie du générateur de nombres aléatoires. La valeur
+      aléatoire est toujours calculée (même si aucun nombre aléatoire n'est utilisé), si bien que le fait
+      de basculer entre une valeur aléatoire et une valeur fixe n'altérera pas les autres valeurs.
+    </para>
+
+    <para>
+      <emphasis>ioutfn</emphasis> (facultatif : par défaut 0) -- Table de fonction pour écrire les valeurs
+      de phase et de fréquence (facultatif). Le format est le même que celui de <emphasis>itabl</emphasis>.
+      Cette table est utile lors de l'expérimentation avec des nombres aléatoires pour enregistrer les
+      meilleures valeurs.
+    </para>
+
+    <para>
+      L'accès aux deux tables facultatives (<emphasis>itabl</emphasis> et <emphasis>ioutfn</emphasis>) n'a
+      lieu que pendant l'initialisation. Il est utile de savoir cela, car les tables peuvent être réécrites
+      en toute sécurité après l'initialisation de l'opcode, permettant le pré-calcul des paramètres pendant
+      le temps-i et le stockage dans une table temporaire avant l'initialisation de
+      <emphasis>oscbnk</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ares</emphasis> -- Signal de sortie.
+    </para>
+
+    <para>
+      <emphasis>kcps</emphasis> -- Fréquence de l'oscillateur en Hz.
+    </para>
+
+    <para>
+      <emphasis>kamd</emphasis> -- Profondeur de la modulation d'amplitude (0 - 1). 
+      <literallayout>(sortie MA) = (entrée MA) * ((1 - (prof MA)) + (prof MA) * (modulateur))</literallayout>
+
+      Si <emphasis>ilfomode</emphasis> n'est pas réglé pour moduler l'amplitude, alors (sortie MA) =
+      (entrée MA) quelque soit la valeur de <emphasis>kamd</emphasis>. Dans ce cas,
+      <emphasis>kamd</emphasis> n'aura pas d'effet.
+    </para>
+
+    <para>
+      Note : La modulation d'amplitude est appliquée avant l'égaliseur paramétrique. 
+    </para>
+
+    <para>
+      <emphasis>kfmd</emphasis> -- Profondeur de la MF (en Hz).
+    </para>
+
+    <para>
+      <emphasis>kpmd</emphasis> -- Profondeur de la modulation de phase.
+    </para>
+
+    <para>
+      <emphasis>kl1minf, kl1maxf</emphasis> -- Fréquence minimale et maximale de LFO1 en Hz.
+    </para>
+
+    <para>
+      <emphasis>kl2minf, kl2maxf</emphasis> --  Fréquence minimale et maximale de LFO2 en Hz. (Note :
+      il est permis d'avoir des fréquences nulles ou négatives pour l'oscillateur et les LFO.)
+    </para>
+
+    <para>
+      <emphasis>keqminf, keqmaxf</emphasis> -- Fréquence minimale et maximale de l'égaliseur paramétrique
+      en Hz.
+    </para>
+
+    <para>
+      <emphasis>keqminl, keqmaxl</emphasis> -- Niveau minimum et maximum de l'égaliseur paramétrique.
+    </para>
+
+    <para>
+      <emphasis>keqminq, keqmaxq</emphasis> -- Q minimum et maximum de l'égaliseur paramétrique.
+    </para>
+
+    <para>
+      <emphasis>kfn</emphasis> -- Table de la forme d'onde de l'oscillateur. Le numéro de la table peut
+      être changé au taux-k (c'est utile pour choisir parmi un ensemble de tables à bande limitée générées
+      par GEN30, afin d'éviter les erreurs de repliement). La table est lue avec une interpolation linéaire.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        <emphasis>oscbnk</emphasis> utilise le même générateur de nombres aléatoires que
+        <emphasis>rnd31</emphasis>. C'est pourquoi il est également recommandé de lire
+        <link linkend="rnd31"><citetitle>sa documentation</citetitle></link>.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode oscbnk. Il utilise le fichier
+      <ulink url="examples/oscbnk.csd"><citetitle>oscbnk.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode oscbnk.</title>
+
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation de la ligne de commande.</para>
+          <xi:include href="examples-xml/oscbnk.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameistvan;</member>
+        <member>2001</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 4.15</para>
+    <para>Mis à jour en avril 2002 par &nameistvan;</para>
+  </refsect1>
+</refentry>

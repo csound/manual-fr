@@ -1,0 +1,103 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.15
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="assign">
+<indexterm id="IndexAssign"><primary>=</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Initialization and Reinitialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>=</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>=</refname>
+    <refpurpose>
+      Réalise une simple affectation.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>=</command> xarg</synopsis>
+    <synopsis>ires <command>=</command> iarg</synopsis>
+    <synopsis>kres <command>=</command> karg</synopsis>
+    <synopsis>ires, ... <command>=</command> iarg, ...</synopsis>
+    <synopsis>kres, ... <command>=</command> karg, ...</synopsis>
+    <synopsis>table [ kval] <command>=</command> karg</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Description</title>
+    <para> 
+      Réalise une simple affectation.
+    </para> 
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para> 
+      <emphasis>=</emphasis> (simple affectation) - Met la valeur de l'expression
+      <emphasis>iarg</emphasis> (<emphasis>karg, xarg</emphasis>) dans le résultat nommé. On peut ainsi
+      garder en mémoire le résultat d'une évaluation pour une utilisation ultérieure.
+    </para>
+    <para>
+      A partir de la version 5.13 les versions de taux-i et de taux-k de
+      l'affectation peuvent prendre un certain nombre de sorties, et un
+      nombre égal ou inférieur d'entrées. S'il y a moins d'entrées, la dernière
+      valeur est répétée le nombre de fois nécessaires.
+    </para>
+    <para>
+      A partir de la version 5.14 ont peut affecter des valeurs aux éléments d'un
+      vecteur en utilisant la notation des crochets.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opérateur d'affectation. Il utilise le fichier
+      <ulink url="examples/assign.csd"><citetitle>assign.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opérateur d'affectation.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/assign.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie contiendra des lignes comme :
+      <screen>instr 1:  i1 = 1234.000</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="divz"><citetitle>divz</citetitle></link>, 
+      <link linkend="init"><citetitle>init</citetitle></link>, 
+      <link linkend="passign"><citetitle>passign</citetitle></link>,
+      <link linkend="tival"><citetitle>tival</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Exemple écrit par &namekevin;.</para>
+    <para>
+      Extension aux valeurs multiples par
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Université de Bath, et Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>Février 2010</member>
+      </simplelist>
+      <para>Nouveau dans la version 5.13</para>
+    </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,206 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.18
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="soundin">
+<indexterm id="IndexSoundin"><primary>soundin</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Signal Input</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>soundin</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>soundin</refname>
+    <refpurpose>
+      Lit des données audio mono depuis un périphérique externe ou un flot.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Lit des données audio mono depuis un périphérique externe ou un flot. On
+      pouvait lire jusqu'à 24 canaux avant la version 5.14 de Csound, limite
+      étendue à 40 canaux depuis lors.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ar1[, ar2[, ar3[, ... a24]]] <command>soundin</command> ifilcod [, iskptim] [, iformat] \
+      [, iskipinit] [, ibufsize]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifilcod</emphasis> -- entier ou chaîne de caractères donnant le nom
+      du fichier son source. Un entier indique le fichier soundin.filcod ; une chaîne
+      de caractères (entre guillemets, espaces autorisés) donne le nom de fichier
+      lui-même, éventuellement un nom de chemin complet. Si ce n'est pas un nom de
+      chemin complet, le fichier nommé est d'abord cherché dans le répertoire
+      courant, puis dans celui qui est donné par la variable d'environnement
+      <link linkend="CommandEnvironment"><citetitle>SSDIR</citetitle></link>
+      (si elle est définie) puis par
+      <link linkend="CommandEnvironment"><citetitle>SFDIR</citetitle></link>.
+      Voir aussi <link linkend="GEN01"><citetitle>GEN01</citetitle></link>.
+    </para>
+
+    <para>
+      <emphasis>iskptim</emphasis> (facultatif, 0 par défaut) -- portion du son en
+      entrée à ignorer, exprimée en secondes. La valeur par défaut est 0. A partir
+      de Csound 5.00, cette valeur peut être négative ce qui ajoute un délai au
+      lieu d'une portion à ignorer.
+    </para>
+
+    <para>
+      <emphasis>iformat</emphasis> (facultatif, 0 par défaut) -- spécifie le format
+      des données audio du fichier :
+      <itemizedlist>
+        <listitem>
+          <para>1 = caractères signés sur 8 bit (les 8 bit de poids fort d'un entier
+          sur 16 bit)</para>
+        </listitem>
+
+        <listitem>
+          <para>2 = octets sur 8 bit A-law</para>
+        </listitem>
+
+        <listitem>
+          <para>3 = octets sur 8 bit U-law</para>
+        </listitem>
+
+        <listitem>
+          <para>4 = entiers courts sur 16 bit</para>
+        </listitem>
+
+        <listitem>
+          <para>5 = entiers longs sur 32 bit</para>
+        </listitem>
+
+        <listitem>
+          <para>6 = flottants sur 32 bit</para>
+        </listitem>
+
+        <listitem>
+          <para>7 = entiers non signés sur 8 bit (non disponible dans les versions
+          de Csound antérieures à la 5.00)</para>
+        </listitem>
+
+        <listitem>
+          <para>8 = entiers sur 24 bit (non disponible dans les versions de Csound
+          antérieures à la 5.00)</para>
+        </listitem>
+
+        <listitem>
+          <para>9 = doubles sur 64 bit (non disponible dans les versions
+          de Csound antérieures à la 5.00)</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+     <emphasis>iskipinit</emphasis> -- supprime toute initialisation s'il est non nul
+     (vaut 0 par défaut). Fut introduit dans la version 4_23f13 et dans csound5.
+    </para>
+
+    <para>
+     <emphasis>ibufsize</emphasis> -- taille du tampon en échantillons mono (pas en
+     trames d'échantillons). N'est pas disponible dans les versions de Csound
+     antérieures à la 5.00. La taille de tampon par défaut est 2048.
+    </para>
+
+   <para>
+      Si <emphasis>iformat</emphasis> = 0, il est déduit de l'en-tête du fichier,
+      et s'il n'y a pas d'en-tête, de l'option de ligne de commande
+      <link linkend="FlagsMinusLowerO"><citetitle>-o</citetitle></link> de Csound.
+      La valeur par défaut est 0.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>soundin</emphasis> est fonctionnellement un générateur audio dont
+      le signal est dérivé d'un fichier pré-existant. Le nombre de canaux lus est
+      contrôlé par le nombre de variables résultat, a1, a2, etc., qui doivent
+      concorder avec ceux du fichier d'entrée. Un opcode <emphasis>soundin</emphasis>
+      ouvre le fichier chaque fois que l'instrument le contenant est initialisé,
+      puis il le ferme chaque fois que l'instrument est arrêté.
+    </para>
+
+    <para>
+      Il peut y avoir n'importe quel nombre d'opcodes <emphasis>soundin</emphasis>
+      dans un instrument de l'orchestre. Plusieurs d'entre eux peuvent lire
+      simultanément depuis le même fichier.
+    </para>
+
+    <caution>
+      <title>Note pour les utilisateurs de Windows</title>
+      <para>
+        Les utilisateurs de Windows utilisent normalement des anti-slash,
+        <quote>\</quote>, pour spécifier les chemins de leurs fichiers. Par exemple
+        un utilisateur de Windows pourra utiliser le chemin
+        <quote>c:\music\samples\loop001.wav</quote>. Ceci pause problème car les
+        anti-slash servent habituellement à spécifier des caractères spéciaux.
+      </para>
+
+      <para>
+        Pour spécifier correctement ce chemin dans Csound on peut utiliser :
+        <itemizedlist>
+          <listitem><para>soit le <emphasis>slash</emphasis> : c:/music/samples/loop001.wav</para></listitem>
+          <listitem><para>soit le <emphasis>caractère spécial d'anti-slash,
+          <quote>\\</quote></emphasis> : c:\\music\\samples\\loop001.wav</para></listitem>
+        </itemizedlist>
+      </para>
+    </caution>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode soundin. Il utilise les fichiers
+      <ulink url="examples/soundin.csd"><citetitle>soundin.csd</citetitle></ulink>
+      <ulink url="examples/fox.wav"><citetitle>fox.wav</citetitle></ulink> et
+      <ulink url="examples/kickroll.wav"><citetitle>kickroll.wav</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode soundin.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/soundin.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="diskin"><citetitle>diskin</citetitle></link>,
+      <link linkend="in"><citetitle>in</citetitle></link>,
+      <link linkend="inh"><citetitle>inh</citetitle></link>,
+      <link linkend="ino"><citetitle>ino</citetitle></link>,
+      <link linkend="inq"><citetitle>inq</citetitle></link>,
+      <link linkend="ins"><citetitle>ins</citetitle></link>
+     </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteurs : &namebarry;, &namematt;/&namemike;</member>
+        <member>MIT, Mills College</member>
+        <member>1993-1997</member>
+      </simplelist>
+    </para>
+
+    <para>Avertissement pour les utilisateurs de Windows ajouté par &namekevin;,
+    avril 2002</para>
+  </refsect1>
+</refentry>

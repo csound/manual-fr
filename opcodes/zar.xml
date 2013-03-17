@@ -1,0 +1,87 @@
+<!--translated=yes
+authors=Yannick St-Onge
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="zar">
+<indexterm id="IndexZar"><primary>zar</primary></indexterm>
+  <refentryinfo><title>Zak Patch System</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>zar</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>zir</refname>
+    <refpurpose>
+      Lecture à partir d'une position dans l'espace za au taux-a.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Lecture à partir d'une position dans l'espace za au taux-a.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>zar</command> kndx</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kndx</emphasis> -- pointe sur la position za à lire.
+    </para>
+
+    <para>
+      <emphasis>zar</emphasis> lit la suite de nombres décimaux à <emphasis>kndx</emphasis> dans
+      l'espace za, qui sont les ksmps nombres décimaux de taux-a à traiter dans un cycle-k.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple du opcode zar. Il utilise le
+      <ulink url="examples/zar.csd"><citetitle>zar.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode zar.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/zar.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="zarg"><citetitle>zarg</citetitle></link>,
+      <link linkend="zir"><citetitle>zir</citetitle></link>,
+      <link linkend="zkr"><citetitle>zkr</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Robin Whittle</member>
+        <member>Autralie</member>
+        <member>Mai 1997</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 3.45</para>
+    <para>Exemple écrit par &namekevin;.</para>
+  </refsect1>
+</refentry>

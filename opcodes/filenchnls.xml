@@ -1,0 +1,104 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.15
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="filenchnls">
+<indexterm id="IndexFilechnls"><primary>filenchnls</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Soundfile Queries</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>filenchnls</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>filenchnls</refname>
+    <refpurpose>
+      Retourne le nombre de canaux d'un fichier son.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne le nombre de canaux d'un fichier son.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ir <command>filenchnls</command> ifilcod [, iallowraw]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifilcod</emphasis> -- fichier son à interroger
+    </para>
+    <para>
+      <emphasis>iallowraw</emphasis> -- (facultatif) permet des fichiers son bruts
+      (vaut 1 par défaut)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>filenchnls</emphasis> retourne le nombre de canaux du fichier son
+      <emphasis>ifilcod</emphasis>. <emphasis>filenchnls</emphasis> peut
+      retourner le nombre de canaux des fichiers de type convolve et PVOC si le paramètre
+      <emphasis>iallowraw</emphasis> est différent de zéro (il est non nul par
+      défaut).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode filenchnls. Il utilise les fichiers
+      <ulink url="examples/filenchnls.csd"><citetitle>filenchnls.csd</citetitle>,
+      </ulink><ulink url="examples/fox.wav"><citetitle>fox.wav</citetitle></ulink>
+      et <ulink url="examples/kickroll.wav"><citetitle>kickroll.wav</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode filenchnls.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/filenchnls.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Le fichier audio <quote>fox.wav</quote> est monophonique (1 canal), tandis
+      que <quote>kickroll.wav</quote> est stéréophonique (2 canaux). Ainsi
+      la sortie de <emphasis>filenchnls</emphasis> contiendra des lignes comme :
+      <screen>
+instr 1:  ichn = 1.000
+instr 1:  ichn = 2.000</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="filebit"><citetitle>filebit</citetitle></link>,
+      <link linkend="filelen"><citetitle>filelen</citetitle></link>,
+      <link linkend="filepeak"><citetitle>filepeak</citetitle></link>,
+      <link linkend="filesr"><citetitle>filesr</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namematt;</member>
+        <member>Juillet 1999</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.57 de Csound</para>
+  </refsect1>
+</refentry>

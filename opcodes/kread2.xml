@@ -1,0 +1,32 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.6
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="kread2">
+<indexterm id="IndexKread2"><primary>kread2</primary></indexterm>
+  <refmeta>
+    <refentrytitle>kread2</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>kread2</refname>
+    <refpurpose>
+      Obsolète.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Obsolète depuis la version 3.52. Utiliser plutôt l'opcode
+      <link linkend="readk2"><citetitle>readk2</citetitle></link>.
+    </para>
+  </refsect1>
+</refentry>

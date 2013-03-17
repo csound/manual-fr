@@ -1,0 +1,91 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="timeinsts">
+<indexterm id="IndexTimeinsts"><primary>timeinsts</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Time Reading</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>timeinsts</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>timeinsts</refname>
+    <refpurpose>
+      Lit le temps absolu en secondes.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Lit le temps absolu en secondes, depuis le démarrage d'une instance
+      d'un instrument.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kres <command>timeinsts</command></synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Le temps en secondes est donné par <emphasis>timeinsts</emphasis>. Il retournera
+      0.5 après une demi-seconde.
+    </para>
+
+    <para>
+      <emphasis>timeinsts</emphasis> produit une variable de taux-k en sortie. Il n'y
+      a pas de paramètres d'entrée.
+    </para>
+
+    <para>
+      <emphasis>timeinsts</emphasis> est semblable à
+      <link linkend="times"><citetitle>times</citetitle></link> sauf qu'il retourne le
+      temps écoulé depuis le démarrage de cette instance de l'instrument.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode timeinsts. Il utilise le fichier
+      <ulink url="examples/timeinsts.csd"><citetitle>timeinsts.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode timeinsts.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/timeinsts.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="timeinstk"><citetitle>timeinstk</citetitle></link>,
+      <link linkend="timek"><citetitle>timek</citetitle></link>,
+      <link linkend="times"><citetitle>times</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Robin Whittle</member>
+        <member>Australie</member>
+        <member>Mai 1997</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

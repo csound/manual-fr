@@ -1,0 +1,127 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.1
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="transegr">
+<indexterm id="IndexTransegr"><primary>transegr</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Linear and Exponential Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>transegr</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>transegr</refname>
+    <refpurpose>
+      Construit une enveloppe définissable par l'utilisateur prolongée par un
+      segment de relâchement.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Construit une enveloppe définissable par l'utilisateur. Semblable à
+      <link linkend="transeg"><citetitle>transeg</citetitle></link>, avec un
+      segment de relâchement en prolongement.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>transegr</command> ia, idur, itype, ib [, idur2] [, itype] [, ic] ...</synopsis>
+    <synopsis>kres <command>transegr</command> ia, idur, itype, ib [, idur2] [, itype] [, ic] ...</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ia</emphasis> -- valeur de départ.
+    </para>
+
+    <para>
+      <emphasis>ib, ic,</emphasis> etc. -- valeur après <emphasis>idur</emphasis>
+      secondes.
+    </para>
+
+    <para>
+      <emphasis>idur</emphasis> -- durée en secondes du premier segment. Avec une
+      valeur nulle ou négative toute initialisation sera ignorée.
+    </para>
+
+    <para>
+      <emphasis>idur2,... idurx</emphasis> etc. -- durée de segment en secondes.
+    </para>
+
+    <para>
+      <emphasis>itype, itype2,</emphasis> etc. -- s'il vaut 0, un segment de
+      droite est produit. S'il est non nul, alors <emphasis>transegr</emphasis>
+      crée la courbe suivante pour <emphasis>n</emphasis> pas :
+
+      <literallayout>
+ibeg + (ivalue - ibeg) * (1 - exp( i*itype/(n-1) )) / (1 - exp(itype))
+      </literallayout>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Si <emphasis>itype</emphasis> &gt; 0, il y a une courbe croissant lentement
+      (concave) ou decroissant lentement (convexe), tandis que si
+      <emphasis>itype</emphasis> &lt; 0, la courbe est à croissance rapide
+      (convexe) ou à décroissance rapide (concave). Voir aussi
+      <link linkend="GEN16"><citetitle>GEN16</citetitle></link>.
+    </para>
+    <para>
+      Cet opcode est le même que
+      <link linkend="transeg"><citetitle>transeg</citetitle></link> avec un
+      segment de relâchement additionnel déclenché par un évènement MIDI noteoff,
+      un <link linkend="i"><citetitle>évènement de note</citetitle></link> avec p1
+      négatif dans la partition ou un opcode
+      <link linkend="turnoff2"><citetitle>turnoff2</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode transegr. Il utilise le fichier
+      <ulink url="examples/transegr.csd"><citetitle>transegr.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode transegr.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/transegr.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="expsega"><citetitle>expsega</citetitle></link>,
+      <link linkend="expsegr"><citetitle>expsegr</citetitle></link>,
+      <link linkend="linseg"><citetitle>linseg</citetitle></link>,
+      <link linkend="linsegr"><citetitle>linsegr</citetitle></link>,
+      <link linkend="transeg"><citetitle>transeg</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Janvier 2010</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 5.12 de Csound.</para>
+  </refsect1>
+</refentry>

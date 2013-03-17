@@ -1,0 +1,93 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.14
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="exp">
+<indexterm id="IndexExp"><primary>exp</primary></indexterm>
+  <refentryinfo><title>Mathematical Operations:Mathematical Functions</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>exp</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>exp</refname>
+
+    <refpurpose>
+      Retourne e élevé à la puissance <emphasis>x</emphasis>.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne e élevé à la puissance <emphasis>x</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>exp</command>(x) (pas de restriction de taux)</synopsis>
+
+    <para>
+      où l'argument entre parenthèses peut être une expression. Les convertisseurs de valeur
+      effectuent une transformation arithmétique d'unités d'une sorte en unités d'une autre sorte.
+      Le résultat peut devenir ensuite un terme dans une autre expression.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode exp. Il utilise le fichier
+      <ulink url="examples/exp.csd"><citetitle>exp.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode exp.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/exp.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
+Generated events per second: 1
+  rtevent:	   T  0.000 TT  0.000 M:  0.00000  0.00000
+new alloc for instr 10:
+  rtevent:	   T  0.811 TT  0.811 M:  0.48906  0.48906
+new alloc for instr 10:
+Generated events per second: 2
+  rtevent:	   T  1.387 TT  1.387 M:  0.48611  0.48611
+  rtevent:	   T  1.833 TT  1.833 M:  0.48421  0.48421
+Generated events per second: 3
+  rtevent:	   T  2.198 TT  2.198 M:  0.47536  0.47536
+  rtevent:	   T  2.506 TT  2.506 M:  0.46530  0.46530
+  rtevent:	   T  2.773 TT  2.773 M:  0.44986  0.44986
+Generated events per second: 4
+  rtevent:	   T  3.009 TT  3.009 M:  0.48096  0.48096
+  .........</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="abs"><citetitle>abs</citetitle></link>,
+      <link linkend="frac"><citetitle>frac</citetitle></link>,
+      <link linkend="int"><citetitle>int</citetitle></link>,
+      <link linkend="log"><citetitle>log</citetitle></link>,
+      <link linkend="log10"><citetitle>log10</citetitle></link>,
+      <link linkend="opi"><citetitle>i</citetitle></link>,
+      <link linkend="sqrt"><citetitle>sqrt</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <para>Nouveau dans la version 4.21</para>
+  </refsect1>
+</refentry>

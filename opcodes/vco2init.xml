@@ -1,0 +1,215 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vco2init">
+<indexterm id="IndexVco2init"><primary>vco2init</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Dynamic Spectrum Oscillators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vco2init</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>vco2init</refname>
+    <refpurpose>
+      Calcul des tables à utiliser par l'opcode <emphasis>vco2</emphasis>.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>vco2init</emphasis> calcule des tables à utiliser par l'opcode
+      <link linkend="vco2"><citetitle>vco2</citetitle></link>. En option, on peut accéder aussi
+      à ces tables comme si elles étaient des tables de fonction standard de Csound. Dans ce cas, on
+      peut utiliser <link linkend="vco2ft"><citetitle>vco2ft</citetitle></link> pour trouver le numéro
+      de table correct pour une fréquence d'oscillateur donnée.
+    </para>
+
+    <para>
+      Dans la plupart des cas, cet opcode est appelé depuis l'en-tête de l'orchestre. L'utilisation de
+      <emphasis>vco2init</emphasis> dans des instruments est possible mais non recommandée. En effet,
+      le remplacement de tables durant l'exécution peut causer un plantage de Csound si d'autres opcodes
+      sont en train d'accéder à ces tables au même moment.
+    </para>
+
+    <para>
+      Notez que <emphasis>vco2init</emphasis> n'est pas nécessaire au fonctionnement de
+      <emphasis>vco2</emphasis> (les tables sont automatiquement allouées au premier appel de
+      <emphasis>vco2</emphasis>, si ce n'est pas déjà fait), cependant il peut être utile dans certains
+      cas :
+
+      <itemizedlist>
+        <listitem><para>Pré-calcul des tables pendant le chargement de l'orchestre. C'est utile lorque l'on
+          ne veut pas générer les tables pendant l'exécution, afin de ne pas risquer une interruption
+          du traitement en temps réel.</para></listitem>
+        <listitem><para>Partage des tables comme ftables Csound. Par défaut, ces tables ne sont accessibles
+          que par <link linkend="vco2"><citetitle>vco2</citetitle></link>.</para></listitem>
+        <listitem><para>Modification des paramètres par défaut des tables (par exemple leur taille) ou
+          utilisation d'une forme d'onde définie par l'utilisateur spécifiée dans une table de
+          fonction.</para></listitem>
+      </itemizedlist>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ifn <command>vco2init</command> iwave [, ibasfn] [, ipmul] [, iminsiz] [, imaxsiz] [, isrcft]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn</emphasis> -- le premier numéro de table libre après les tables allouées. Si
+      <emphasis>ibasfn</emphasis> n'a pas été spécifié, -1 est retourné.
+    </para>
+
+    <para>
+      <emphasis>iwave</emphasis> -- somme des valeurs suivantes sélectionnant quelles tables
+      d'onde il faut calculer :
+        <itemizedlist>
+          <listitem><para>16 : triangle</para></listitem>
+          <listitem><para>8 : onde carrée</para></listitem>
+          <listitem><para>4 : pulsation (non normalisée)</para></listitem>
+          <listitem><para>2 : 4 * x * (1 - x)   (intégration d'une dent de scie)</para></listitem>
+          <listitem><para>1 : dent de scie</para></listitem>
+        </itemizedlist>
+    </para>
+
+    <para>
+      Alternativement, <emphasis>iwave</emphasis> peut être fixé à un entier négatif qui sélectionne une
+      forme d'onde définie par l'utilisateur. Pour cela, le paramètre <emphasis>isrcft</emphasis> doit
+      être aussi spécifié. <link linkend="vco2"><citetitle>vco2</citetitle></link> peut accéder à la
+      forme d'onde numéro -1. Cependant, les autres formes d'onde définies par l'utilisateur ne sont
+      utilisables qu'avec <link linkend="vco2ft"><citetitle>vco2ft</citetitle></link> ou
+      <link linkend="vco2ift"><citetitle>vco2ift</citetitle></link>.
+    </para>
+
+    <para>
+      <emphasis>ibasfn</emphasis> (facultatif, par défaut -1) -- numéro de ftable à partir duquel les
+      opcodes autres que <emphasis>vco2</emphasis> peuvent accéder à l'ensemble de tables. Il est
+      nécessaire pour les formes d'onde définies par l'utilisateur, à l'exception de -1. Si cette valeur
+      est inférieure à 1, il n'est pas possible d'accéder aux tables calculées par
+      <emphasis>vco2init</emphasis> en tant que tables de fonction de Csound.
+    </para>
+
+    <para>
+      <emphasis>ipmul</emphasis> (facultatif, par défaut 1,05) -- coefficient multiplicatif pour le
+      nombre d'harmoniques. Si une table a n harmoniques, la suivante en aura n * <emphasis>ipmul</emphasis>
+      (au moins n + 1). L'intervalle autorisé pour <emphasis>ipmul</emphasis> va de
+      1,01 à 2. Zéro et les valeurs négatives sélectionnent la valeur par défaut (1,05).
+    </para>
+
+    <para>
+      <emphasis>iminsiz</emphasis> (facultatif, par défaut -1) -- taille de table minimale.
+    </para>
+
+    <para>
+      <emphasis>imaxsiz</emphasis> (facultatif, par défaut -1) -- taille de table maximale.
+    </para>
+
+    <para>
+      La taille de table réelle est calculée en multipliant la racine carrée du nombre d'harmoniques par
+      <emphasis>iminsiz</emphasis>, puis en arrondissant le résultat à la puissance de deux supérieure,
+      tout en l'obligeant à ne pas dépasser <emphasis>imaxsiz</emphasis>.
+    </para>
+
+    <para>
+      Les deux paramètres, <emphasis>iminsiz</emphasis> et <emphasis>imaxsiz</emphasis>, doivent être
+      des puissances de deux, dans l'intervalle autorisé. L'intervalle autorisé va de 16 à 262144 pour
+      <emphasis>iminsiz</emphasis> jusqu'à 16777216 pour <emphasis>imaxsiz</emphasis>. Zéro ou des valeurs
+      négatives sélectionnent les réglages par défaut :
+
+      <itemizedlist>
+        <listitem><para>La taille minimale est 128 pour toutes les formes d'onde sauf pour la pulsation
+          (<emphasis>iwave</emphasis> = 4). Sa taille minimale est de 256.</para></listitem>
+        <listitem><para>La taille maximale par défaut vaut normalement la taille minimale multipliée par
+          64, mais pas plus de 16384 si possible. Elle vaut toujours au moins le taille
+          minimale.</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>isrcft</emphasis> (facultatif, par défaut -1) -- numéro de la ftable source pour les
+      formes d'onde définies par l'utilisateur (si <emphasis>iwave</emphasis> &lt; 0).
+      <emphasis>isrcft</emphasis> doit pointer sur une table de fonction contenant la forme d'onde
+      à utiliser pour générer le tableau de tables. Il est recommandé d'avoir une taille de table
+      d'au moins <emphasis>imaxsiz</emphasis> points. Si <emphasis>iwave</emphasis> n'est pas négatif
+      (les tables d'onde internes sont utilisées), <emphasis>isrcft</emphasis> est ignoré.
+    </para>
+
+    <warning>
+      <title>Avertissement</title>
+      <para>
+        Le nombre et la taille des tables ne sont pas fixes. Les orchestres ne doivent pas dépendre de
+        ces paramètres, car ils peuvent changer d'une version à l'autre de Csound.
+      </para>
+
+      <para>
+        Si la table sélectionnée existe déjà, elle est remplacée. Si un opcode est en train d'accéder aux
+        tables au même moment, il est fort probable qu'un plantage se produise. C'est pourquoi il est
+        recommandé de n'utiliser <emphasis>vco2init</emphasis> que dans l'en-tête de l'orchestre.
+      </para>
+
+      <para>Il ne faut pas remplacer/écraser ces tables par les routines GEN ou l'opcode
+        <emphasis>ftgen</emphasis>. Sinon, un comportement imprévisible voire un plantage de Csound
+        peuvent se produire si <link linkend="vco2"><citetitle>vco2</citetitle></link> est utilisé.
+        Le premier numéro de ftable libre après le tableau de tables est retourné dans
+        <emphasis>ifn</emphasis>.
+      </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode vco2init. Il utilise le fichier
+      <ulink url="examples/vco2init.csd"><citetitle>vco2init.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode vco2init.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/vco2init.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
+ i   1 time     0.00002:   103.00000
+ i   1 time     0.10000:   103.00000
+ i   1 time     0.20000:   103.00000
+ i   1 time     0.30002:   103.00000
+ i   1 time     0.40000:   104.00000
+ i   1 time     0.50000:   104.00000
+.......
+......
+ i   1 time     4.80002:   135.00000
+ i   1 time     4.90000:   136.00000
+ i   1 time     5.00000:   138.00000</screen>
+    </para>
+    <para>
+      Voir aussi l'exemple de l'opcode <link linkend="vco2"><citetitle>vco2</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="vco2ft"><citetitle>vco2ft</citetitle></link>,
+      <link linkend="vco2ift"><citetitle>vco2ift</citetitle></link> et
+      <link linkend="vco2"><citetitle>vco2</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &nameistvan;</para>
+    <para>Nouveau dans la version 4.22</para>
+  </refsect1>
+</refentry>

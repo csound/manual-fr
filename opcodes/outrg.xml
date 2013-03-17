@@ -1,0 +1,102 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.2
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="outrg">
+<indexterm id="IndexOutrg"><primary>outrg</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Signal Output</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>outrg</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>outrg</refname>
+    <refpurpose>
+      Permet la sortie dans un ensemble de canaux contigus sur le
+      périphérique de sortie audio.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>outrg</emphasis> sort les données audio dans un ensemble de canaux
+      contigus sur le périphérique de sortie audio.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>outrg</command> kstart, aout1 [,aout2, aout3, ..., aoutN]</synopsis>
+  </refsect1>
+
+<!--  <refsect1>
+    <title>Initialisation</title>
+    <para>
+    </para>
+  </refsect1>-->
+
+  <refsect1>
+    <title>Exécution</title> 
+    <para>
+      <emphasis>kstart</emphasis> - le numéro du premier canal du périphérique
+      de sortie où écrire (les numéros des canaux commencent à 1, qui est le premier
+      canal).
+    </para>
+    <para>
+      <emphasis>aout1, aout2, ... aoutN</emphasis> - les arguments contenant les
+      données audio à sortir sur les canaux correspondants.
+    </para>
+    <para>
+      <emphasis>outrg</emphasis> permet la sortie vers un ensemble de canaux
+      contigus du périphérique de sortie audio. <emphasis>kstart</emphasis> indique
+      le premier canal où écrire (le canal 1 étant le premier canal). Il faut
+      s'assurer que le nombre obtenu en ajoutant à <emphasis>kstart</emphasis> le
+      nombre de canaux à écrire - 1 est &lt;=
+      <link linkend="nchnls"><citetitle>nchnls</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode outrg. Il utilise le fichier
+      <ulink url="examples/outrg.csd"><citetitle>outrg.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode outrg.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/outrg.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
+speaker 1 position 0.000200
+speaker 1 position 0.000400
+speaker 1 position 0.000600
+.....
+speaker 1 position 1.000000
+speaker 2 position 0.000000
+speaker 2 position 0.000200
+....
+speaker 2 position 0.999800
+speaker 3 position 0.000000
+speaker 3 position 0.000200
+....
+speaker 3 position 0.999600
+speaker 4 position 0.000000
+.....</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 5.06</para>
+  </refsect1>
+</refentry>

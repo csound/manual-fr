@@ -1,0 +1,75 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLshow">
+<indexterm id="IndexFLshow"><primary>FLshow</primary></indexterm>
+  <refentryinfo><title>FLTK:Appearance</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLshow</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLshow</refname>
+    <refpurpose>
+      Rend visible un widget FLTK antérieurement caché.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>FLshow</emphasis> rend visible un widget antérieurement caché.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>FLshow</command> ihandle</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ihandle</emphasis> -- un identifiant (un nombre entier) qui
+      référence de manière univoque le widget correspondant. Il est utilisé par
+      d'autres opcodes qui modifient les propriété du widget (voir
+      <link linkend="ControlFltkAppearance"><citetitle>Modifier l'Apparence des
+      Widgets FLTK</citetitle></link>).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+        <link linkend="FLcolor2"><citetitle>FLcolor2</citetitle></link>, 
+        <link linkend="FLhide"><citetitle>FLhide</citetitle></link>, 
+        <link linkend="FLlabel"><citetitle>FLlabel</citetitle></link>, 
+        <link linkend="FLsetAlign"><citetitle>FLsetAlign</citetitle></link>, 
+        <link linkend="FLsetBox"><citetitle>FLsetBox</citetitle></link>, 
+        <link linkend="FLsetColor"><citetitle>FLsetColor</citetitle></link>, 
+        <link linkend="FLsetColor2"><citetitle>FLsetColor2</citetitle></link>, 
+        <link linkend="FLsetFont"><citetitle>FLsetFont</citetitle></link>, 
+        <link linkend="FLsetPosition"><citetitle>FLsetPosition</citetitle></link>, 
+        <link linkend="FLsetSize"><citetitle>FLsetSize</citetitle></link>, 
+        <link linkend="FLsetText"><citetitle>FLsetText</citetitle></link>, 
+        <link linkend="FLsetTextColor"><citetitle>FLsetTextColor</citetitle></link>, 
+        <link linkend="FLsetTextSize"><citetitle>FLsetTextSize</citetitle></link>, 
+        <link linkend="FLsetTextType"><citetitle>FLsetTextType</citetitle></link>, 
+        <link linkend="FLsetVal_i"><citetitle>FLsetVal_i</citetitle></link>, 
+        <link linkend="FLsetVal"><citetitle>FLsetVal</citetitle></link>, 
+        <link linkend="FLshow"><citetitle>FLshow</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.22</para>
+  </refsect1>
+</refentry>

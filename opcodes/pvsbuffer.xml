@@ -1,0 +1,99 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvsbuffer">
+<indexterm id="Indexpvsbuffer"><primary>pvsbuffer</primary></indexterm>
+
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsbuffer</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvsbuffer</refname>
+    <refpurpose>
+      Crée et écrit dans un tampon circulaire pour signaux-f (signaux
+      PV en flot).
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode crée et écrit dans un tampon circulaire de longueur
+      <emphasis>ilen</emphasis> (secondes), retournant un identifiant pour le
+      tampon et un pointeur temporel qui contient la position courante d'écriture
+      (également en secondes). On peut l'utiliser avec un ou plusieurs opcodes
+      <link linkend="pvsbufread"><citetitle>pvsbufread</citetitle></link>.
+      L'écriture est circulaire, bouclant à la fin du tampon.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ihandle, ktime  <command>pvsbuffer</command> fsig, ilen </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ihandle</emphasis> -- identifiant pour ce tampon particulier, qui
+      doit être passer à un opcode de lecture.
+    </para>
+
+   <para>
+      <emphasis>ilen</emphasis> -- longueur du tampon en secondes.
+    </para>
+
+    <title>Exécution</title>
+    <para>
+      <emphasis>fsig</emphasis> -- un flot pv en entrée
+    </para>
+    <para>
+      <emphasis>ktime</emphasis> -- la position temporelle courante d'écriture
+      dans le tampon.
+    </para>
+    <para>
+      <emphasis>pvsbuffer</emphasis> stocke <emphasis>fsig</emphasis> dans un
+      tampon qui peut être lu par
+      <link linkend="pvsbufread"><citetitle>pvsbufread</citetitle></link> en
+      utilisant l'identifiant <emphasis>ihandle</emphasis>. Différents tampons
+      auront différents identifiants ce qui permet à différents opcodes
+      <link linkend="pvsbufread"><citetitle>pvsbufread</citetitle></link> de les
+      lire indépendamment. <emphasis>pvsbuffer</emphasis> retourne la date
+      courante (<emphasis>ktime</emphasis>) dans le tampon circulaire dans lequel
+      il vient juste d'écrire.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voir <link linkend="pvsbufread"><citetitle>pvsbufread</citetitle></link>
+      pour des exemples de l'opcode pvsbuffer.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="pvsbufread"><citetitle>pvsbufread</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Juillet 2007</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

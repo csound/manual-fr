@@ -1,0 +1,98 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.3
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="date">
+<indexterm id="IndexDate"><primary>date</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Time Reading</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>date</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>date</refname>
+    <refpurpose>
+      Retourne le nombre de secondes écoulées depuis une date de base.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne le nombre de secondes écoulées depuis une date de base, en lisant
+      l'horloge du système d'exploitation. La base est le 1<superscript>er</superscript>
+      janvier 1970 pour la version de Csound utilisant des nombres flottants en
+      double précision et le 1<superscript>er</superscript> janvier 2010 pour les
+      versions utilisant des nombres flottants en simple précision. 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ir <command>date</command></synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+
+    <para>
+      <emphasis>ir</emphasis> -- valeur en secondes à l'initialisation de la note,
+      de l'horloge système depuis le début de l'epoch.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <para>
+      Noter que la date de base était à l'origine 1970, mais depuis la version
+      5.14 elle a été changée pour les nombres flottants en simple précision car
+      ceux-ci sont insuffisants pour indiquer les changements.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode date. Il utilise le fichier
+      <ulink url="examples/date.csd"><citetitle>date.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode date.</title>
+          <xi:include href="examples-xml/date.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
+instr 1:  ii = 1165665152.000
+Sat Dec  9 11:52:32 2006
+Sat Dec  9 11:51:46 2006
+Thu Jan  1 01:00:01 1970</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="dates"><citetitle>dates</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Université de Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>Décembre 2006</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 5.05 de Csound.</para>
+    <para>Modifié dans la version 5.14 de Csound.</para>
+  </refsect1>
+</refentry>

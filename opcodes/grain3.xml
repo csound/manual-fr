@@ -1,0 +1,227 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.16
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="grain3">
+<indexterm id="IndexGrain3"><primary>grain3</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Granular Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>grain3</refentrytitle>
+  </refmeta>
+
+
+
+  <refnamediv>
+    <refname>grain3</refname>
+    <refpurpose>
+      Générateur de textures par synthèse granulaire avec plus de contrôle.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère des textures par synthèse granulaire.
+      <link linkend="grain2"><citetitle>grain2</citetitle></link> est plus simple à utiliser mais
+      <emphasis>grain3</emphasis> offre plus de contrôle.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>grain3</command> kcps, kphs, kfmd, kpmd, kgdur, kdens, imaxovr, kfn, iwfn, \
+      kfrpow, kprpow [, iseed] [, imode]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>imaxovr</emphasis> -- nombre maximum de grains se chevauchant. Le nombre de chevauchements
+      peut être calculé par (<emphasis>kdens</emphasis> * <emphasis>kgdur</emphasis>) ; cependant, il peut
+      être surestimé sans coût supplémentaire lors de l'exécution, et un simple chevauchement utilise
+      (selon le système) de 16 à 32 octets en mémoire.
+    </para>
+
+    <para>
+      <emphasis>iwfn</emphasis> -- table de fonction contenant la forme d'onde d'une fenêtre (utiliser
+      <link linkend="GEN20">GEN20</link> pour calculer <emphasis>iwfn</emphasis>).
+    </para>
+
+
+    <para>
+      <emphasis>iseed</emphasis> (facultatif, par défaut 0) -- valeur de la graine du générateur de
+      nombres aléatoires (entier positif compris entre 1 et 2147483646 (2<superscript>31</superscript> - 2)).
+      Une valeur nulle ou négative force la graine à prendre la valeur de l'horloge de l'ordinateur (c'est
+      le comportement par défaut).
+    </para>
+
+    <para>
+      <emphasis>imode</emphasis> (facultatif, par défaut 0) -- somme de valeurs prises parmi les suivantes :
+      <itemizedlist>
+        <listitem>
+          <para><emphasis>64</emphasis> : synchronise la phase au démarrage des grains sur
+          <emphasis>kcps</emphasis>.</para>
+        </listitem>
+        <listitem>
+          <para><emphasis>32</emphasis> : démarre tous les grains sur une position d'échantillon entière.
+          Ceci peut être plus rapide dans certains cas, tout en rendant moins précis le déroulement
+          temporel des enveloppes de grain.</para>
+        </listitem>
+        <listitem>
+          <para><emphasis>16</emphasis> : ne pas générer de grains ayant une date de démarrage
+          inférieure à zéro. (Voir la figure ci-dessous ; cette option désactive les grains marqués en
+          rouge sur l'image).</para>
+        </listitem>
+        <listitem>
+          <para><emphasis>8</emphasis> : forme d'onde de la fenêtre avec interpolation (plus lent).</para>
+        </listitem>
+        <listitem>
+          <para><emphasis>4</emphasis> : pas d'interpolation pour la forme d'onde des grains (rapide,
+          mais de moindre qualité).</para>
+        </listitem>
+        <listitem>
+          <para><emphasis>2</emphasis> : la fréquence des grains est modifiée continuellement par
+          <emphasis>kcps</emphasis> et <emphasis>kfmd</emphasis> (par défaut, chaque grain garde la
+          fréquence avec laquelle il a démarré). Avec des taux de contrôle élevés, ceci peut ralentir
+          le processus. Contrôle aussi la modulation de phase (<emphasis>kphs</emphasis>)</para>
+        </listitem>
+        <listitem><para><emphasis>1</emphasis> : ignorer l'initialisation.</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/grain3_2.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>[Graphique montrant des grains avec une date de démarrage inférieure à zéro en rouge.]</phrase>
+        </textobject>
+
+        <caption>
+          <para>Graphique montrant des grains avec une date de démarrage inférieure à zéro en rouge.</para>
+        </caption>
+      </mediaobject>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ares</emphasis> -- signal de sortie.
+    </para>
+
+    <para>
+      <emphasis>kcps</emphasis> -- fréquence du grain en Hz.
+    </para>
+
+    <para>
+      <emphasis>kphs</emphasis> -- phase du grain. C'est une position dans la forme d'onde du grain,
+      exprimée comme une fraction (entre 0 et 1) de la longueur de la table.
+    </para>
+
+    <para>
+      <emphasis>kfmd</emphasis> -- variation aléatoire (bipolaire) de la fréquence du grain en Hz.
+    </para>
+
+    <para>
+      <emphasis>kpmd</emphasis> -- variation aléatoire (bipolaire) de la phase au démarrage.
+    </para>
+
+    <para>
+      <emphasis>kgdur</emphasis> -- durée du grain en secondes. <emphasis>kgdur</emphasis> contrôle aussi
+      la durée des grains déjà actifs (en fait la vitesse à laquelle la fonction fenêtre est lue). Ce
+      comportement ne dépend pas des indicateurs positionnés dans <emphasis>imode</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>kdens</emphasis> -- nombre de grains par seconde.
+    </para>
+
+    <para>
+      <emphasis>kfrpow</emphasis> -- cette valeur contrôle la variation de la
+      distribution de la fréquence du grain. Si <emphasis>kfrpow</emphasis> est positif, la distribution
+      aléatoire (<emphasis>x</emphasis> est compris entre -1 et 1) est
+      <literallayout>abs(x) &circ; ((1 / kfrpow) - 1) ;</literallayout> pour des valeurs négatives de
+      <emphasis>kfrpow</emphasis>, elle est
+      <literallayout>(1 - abs(x)) &circ; ((-1 / kfrpow) - 1)</literallayout>
+      En fixant <emphasis>kfrpow</emphasis> à -1, 0, ou 1 on obtiendra une distribution uniforme (dont le
+      calcul est plus rapide). L'image ci-dessous montre quelques exemples pour <emphasis>kfrpow</emphasis>.
+      La valeur par défaut de <emphasis>kfrpow</emphasis> est 0.
+    </para>
+    <para>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/grain2_rand-448x289.png" format="PNG"/>
+        </imageobject>
+        <textobject>
+          <phrase>[Un graphique des distributions pour différentes valeurs de <emphasis>kfrpow</emphasis>.]</phrase>
+        </textobject>
+        <caption>
+          <para>Un graphique des distributions pour différentes valeurs de <emphasis>kfrpow</emphasis>.</para>
+        </caption>
+      </mediaobject>
+    </para>
+    <para>
+      <emphasis>kprpow</emphasis> -- variation de la distribution de phase aléatoire (voir
+      <emphasis>kfrpow</emphasis>).  En fixant <emphasis>kphs</emphasis> et <emphasis>kpmd</emphasis>
+      à 0.5, et <emphasis>kprpow</emphasis> à 0 on émulera <emphasis>grain2</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>kfn</emphasis> -- table de fonction contenant la forme d'onde du grain. Le numéro de
+      table peut changer au taux-k (on peut ainsi choisir parmi un ensemble de tables à bande limitée
+      générées par <link linkend="GEN30">GEN30</link>, afin d'éviter le repliement).
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        <emphasis>grain3</emphasis> utilise en interne le même générateur aléatoire que
+        <emphasis>rnd31</emphasis>. Il est ainsi recommandé de lire également sa
+        <link linkend="rnd31"><citetitle>documentation</citetitle></link>.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode grain3. Il utilise le fichier
+      <ulink url="examples/grain3.csd"><citetitle>grain3.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode grain3.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/grain3.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="grain2"><citetitle>grain2</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameistvan;</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 4.15</para>
+    <para>Mise à jour en avril 2002 par &nameistvan;</para>
+  </refsect1>
+</refentry>

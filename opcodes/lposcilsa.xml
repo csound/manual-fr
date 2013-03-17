@@ -1,0 +1,107 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.3
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="lposcilsa">
+<indexterm id="IndexLposcilsa"><primary>lposcilsa</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Sample Playback</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lposcilsa</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>lposcilsa</refname>
+    <refpurpose>
+      Lit un son stéréo échantillonné depuis une table avec boucle et haute
+      précision.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>lposcilsa</emphasis> lit un son stéréo échantillonné depuis une table
+      avec boucle et haute précision.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ar1, ar2 <command>lposcilsa</command> aamp, kfreqratio, kloop, kend, ift [,iphs] </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ift</emphasis> -- numéro de la table de fonction
+    </para>
+    <para>
+      <emphasis>iphs</emphasis> -- phase initiale (en échantillons)
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ar1, ar2</emphasis> -- signal de sortie
+    </para>
+    <para>
+      <emphasis>aamp</emphasis> -- amplitude
+    </para>
+<!--    <para>
+      <emphasis>kcps</emphasis> - frequency
+    </para>-->
+    <para>
+      <emphasis>kfreqratio</emphasis> -- facteur de multiplication de la fréquence de
+      la table (par exemple : 1 = fréquence originale, 1.5 = une quinte ascendante,
+      0.5 = une octave descendante)
+    </para>
+    <para>
+      <emphasis>kloop</emphasis> -- début de la boucle (en échantillons)
+    </para>
+    <para>
+      <emphasis>kend</emphasis> -- fin de la boucle (en échantillons)
+    </para>
+    <para>
+      <emphasis>lposcilsa</emphasis> est semblable à
+      <link linkend="lposcila"><citetitle>lposcila</citetitle></link>, mais il travaille
+      avec des fichiers stéréo chargés par
+      <link linkend="GEN01"><citetitle>GEN01</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode lposcilsa. Il utilise le fichier
+      <ulink url="examples/lposcilsa.csd"><citetitle>lposcilsa.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode lposcilsa.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/lposcilsa.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="lposcil"><citetitle>lposcil</citetitle></link>,
+      <link linkend="lposcila"><citetitle>lposcila</citetitle></link>,
+      <link linkend="lposcilsa2"><citetitle>lposcilsa2</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 5.06</para>
+  </refsect1>
+</refentry>

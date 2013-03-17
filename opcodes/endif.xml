@@ -1,0 +1,85 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="endif">
+<indexterm id="IndexEndif"><primary>endif</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Program Flow Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>endif</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>endif</refname>
+    <refpurpose>
+      Termine un bloc de code qui commence par une instruction &quot;if...then&quot;.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Termine un bloc de code qui commence par une instruction
+      <link linkend="if"><citetitle>&quot;if...then&quot;</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>endif</command></synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Tout bloc de code commençant par une instruction
+      <link linkend="if"><citetitle>&quot;if...then&quot;</citetitle></link> doit se
+      terminer par une instruction <emphasis>endif</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode endif. Il utilise le fichier
+      <ulink url="examples/endif.csd"><citetitle>endif.csd</citetitle></ulink>.
+            <example>
+        <title>Exemple de l'opcode endif.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/endif.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="elseif"><citetitle>elseif</citetitle></link>,
+      <link linkend="else"><citetitle>else</citetitle></link>,
+      <link linkend="goto"><citetitle>goto</citetitle></link>,
+      <link linkend="if"><citetitle>if</citetitle></link>,
+      <link linkend="igoto"><citetitle>igoto</citetitle></link>,
+      <link linkend="kgoto"><citetitle>kgoto</citetitle></link>,
+      <link linkend="tigoto"><citetitle>tigoto</citetitle></link>,
+      <link linkend="timout"><citetitle>timout</citetitle></link>
+    </para>
+    
+    <para>
+      Plus d'information sur cet opcode :
+      <ulink url="http://www.csounds.com/journal/2006spring/controlFlow.html"><citetitle>http://www.csounds.com/journal/2006spring/controlFlow.html</citetitle></ulink>,
+      écrit par Steven Yi.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Nouveau dans la version 4.21</para>
+  </refsect1>
+</refentry>

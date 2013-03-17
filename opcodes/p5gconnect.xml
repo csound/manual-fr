@@ -1,0 +1,87 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.1
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="p5gconnect">
+<indexterm id="Indexp5gconnect"><primary>p5gconnect</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>p5gconnect</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>p5gconnect</refname>
+    <refpurpose>
+      Lit les données d'un contrôleur P5 Glove.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ouvre et interroge au taux-k un contrôleur P5 Glove (gant de réalité
+      virtuelle).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>p5gconnect</command></synopsis>
+  </refsect1>
+ 
+   <refsect1>
+    <title>Initialisation</title>
+   <para>
+     L'opcode détecte un P5 Glove connecté à l'ordinateur par USB et lance
+     un thread d'écoute pour interroger ce périphérique.
+    </para>
+  </refsect1>
+
+ <refsect1>
+    <title>Exécution</title>
+    <para>
+      A chaque cycle de contrôle, le gant est interrogé sur sa position et sur
+      l'état des doigts et des boutons. Ces valeurs sont lues par l'opcode
+      <emphasis>p5gdata</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de des opcodes p5g. Il utilise le fichier
+      <ulink url="examples/p5g.csd"><citetitle>p5g.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de des opcodes p5g.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/p5g.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="p5gdata"><citetitle>p5gdata</citetitle></link>,
+     </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Codemist Ltd</member>
+        <member>2009</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.12</para>
+  </refsect1>
+</refentry>

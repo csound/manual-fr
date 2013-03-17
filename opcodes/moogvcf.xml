@@ -1,0 +1,129 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.17
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="moogvcf">
+<indexterm id="IndexMoogvcf"><primary>moogvcf</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Resonant</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>moogvcf</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>moogvcf</refname>
+    <refpurpose>
+      Une simulation numérique de la configuration du filtre en échelle à diode de Moog.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Une simulation numérique de la configuration du filtre en échelle à diode de Moog.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>moogvcf</command> asig, xfco, xres [,iscale, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iscale</emphasis> (facultatif, 1 par défaut) -- facteur de
+      pondération interne. A utiliser si <emphasis>asig</emphasis> n'est pas
+      dans l'intervalle +/-1. L'entrée est d'abord divisée par
+      <emphasis>iscale</emphasis>, puis la sortie est multipliée par
+      <emphasis>iscale</emphasis>. La valeur par défaut est 1. (Nouveau dans la
+      version 3.50 de Csound).
+    </para>
+    <para>
+      <emphasis>iskip</emphasis> (facultatif, 0 par défaut) -- s'il est non nul,
+      l'initialisation du filtre est ignorée. (Nouveau dans les versions 4.23f13
+      et 5.0 de Csound).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- signal d'entrée
+    </para>
+
+    <para>
+      <emphasis>xfco</emphasis> -- fréquence de coupure du filtre en Hz. A partir
+      de la version 3.50, peut-être de taux-i, de taux-k ou de taux-a.
+    </para>
+
+    <para>
+      <emphasis>xres</emphasis> -- quantité de résonance. Il y a des
+      auto-oscillations lorsque <emphasis>xres</emphasis> est proche de 1.
+      A partir de la version 3.50, peut-être de taux-i, de taux-k ou de taux-a.
+    </para>
+
+    <para>
+      <emphasis>moogvcf</emphasis> est une simulation numérique de la configuration
+      du filtre en échelle à diode de Moog. Cette émulation est librement basée
+      sur le papier <quote>Analyzing the Moog VCF with Considerations for Digital
+      Implementation</quote> par Stilson et Smith (CCRMA). Cette version fut codée
+      dans Csound à l'origine par Josep Comajuncosas. Quelques modifications et
+      conversions en C ont été apportées par &namehans;.
+    </para>
+
+    <warning>
+      <para>
+        Ce filtre nécessite un signal d'entrée normalisé à un. On peut l'obtenir
+        facilement au moyen de <link linkend="Zerodbfs"><citetitle>0dbfs</citetitle></link>,
+        comme ceci :
+        <literallayout>ares <command>moogvcf</command> asig, kfco, kres, 0dbfs</literallayout>
+      </para>
+      <para>
+        On peut aussi utiliser <link linkend="moogvcf2"><citetitle>moogvcf2</citetitle></link>
+        qui utilise comme mise à l'échelle par défaut
+        <link linkend="Zerodbfs"><citetitle>0dbfs</citetitle></link>.
+      </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode moogvcf. Il utilise le fichier
+      <ulink url="examples/moogvcf.csd"><citetitle>moogvcf.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode moogvcf.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/moogvcf.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="moogvcf2"><citetitle>moogvcf2</citetitle></link>,
+      <link linkend="biquad"><citetitle>biquad</citetitle></link>,
+      <link linkend="rezzy"><citetitle>rezzy</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namehans;</member>
+        <member>Octobre 1998</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.49 de Csound.</para>
+  </refsect1>
+</refentry>

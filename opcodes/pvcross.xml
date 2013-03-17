@@ -1,0 +1,161 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvcross">
+<indexterm id="IndexPvcross"><primary>pvcross</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:STFT</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvcross</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvcross</refname>
+    <refpurpose>
+      Applique les amplitudes d'un fichier d'analyse par vocodeur de phase aux
+      données d'un second fichier.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>pvcross</emphasis> applique les amplitudes d'un fichier d'analyse
+      par vocodeur de phase aux données d'un second fichier et réalise ensuite
+      la resynthèse. Les données proviennent, comme décrit ci-dessus, d'une unité
+      <link linkend="pvbufread"><citetitle>pvbufread</citetitle></link> appelée
+      auparavant. Les deux arguments d'amplitude de taux-k sont utilisés pour
+      pondérer les amplitudes de chaque fichier séparément avant qu'elles ne soient
+      additionnées et utilisées dans la resynthèse (voir ci-dessous les explications
+      plus détaillées). Les fréquences du premier fichier ne sont pas utilisées du
+      tout dans le processus. Cette unité permet simplement de réaliser une
+      synthèse croisée par l'application des amplitudes du spectre d'un signal
+      aux fréquences d'un second signal. A la différence de
+      <link linkend="pvinterp"><citetitle>pvinterp</citetitle></link>,
+      <emphasis>pvcross</emphasis> permet l'utilisation du paramètre
+      <emphasis>ispecwp</emphasis> comme dans
+      <link linkend="pvoc"><citetitle>pvoc</citetitle></link> et dans
+      <link linkend="vpvoc"><citetitle>vpvoc</citetitle></link>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>pvcross</command> ktimpnt, kfmod, ifile, kampscale1, kampscale2 [, ispecwp]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifile</emphasis> -- le numéro <emphasis>pvoc</emphasis> (n dans
+      pvoc.n) ou le nom entre guillemets du fichier d'analyse créé avec
+      <emphasis>pvanal</emphasis>. (Voir
+      <link linkend="pvoc"><citetitle>pvoc</citetitle></link>.)
+    </para>
+
+    <para>
+      <emphasis>ispecwp</emphasis> (facultatif, 0 par défaut) -- s'il est différent
+      de zéro, l'opcode tente de préserver l'enveloppe spectrale tandis que le
+      contenu fréquentiel est modifié par <emphasis>kfmod</emphasis>. La valeur
+      par défaut est zéro.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ktimpnt</emphasis> -- l'écoulement du temps, en secondes, dans
+      ce fichier. <emphasis>ktimpnt</emphasis> doit toujours être positif, mais
+      il peut avancer ou reculer dans le temps, être stationnaire ou discontinu,
+      comme pointeur dans le fichier d'analyse.
+    </para>
+
+    <para>
+      <emphasis>kfmod</emphasis> -- un facteur de transposition au taux de
+      contrôle : la valeur 1 n'implique pas de transposition, 1.5 transpose vers
+      l'aigu d'un quinte juste et 0.5 d'une octave vers le grave.
+    </para>
+
+    <para>
+      <emphasis>kampscale1, kampscale2</emphasis> -- utilisés pour mettre à
+      l'échelle les amplitudes stockées dans chaque trame du fichier d'analyse
+      par vocodeur de phase. <emphasis>kampscale1</emphasis> met à l'échelle les
+      amplitudes des données du fichier lu par un <emphasis>pvbufread</emphasis>
+      appelé précédemment. <emphasis>kampscale2</emphasis> met à l'échelle les
+      amplitudes du fichier nommé par <emphasis>ifile</emphasis>. 
+    </para>
+
+    <para>
+      Il est possible d'ajuster ces valeurs au moyen de ces arguments avant
+      l'application de l'interpolation. Par exemple, si file1 est beaucoup plus
+      fort que file2, on peut vouloir diminuer les amplitudes de file1 ou
+      augmenter celles de file2 avant l'interpolation. De même on peut
+      ajuster les fréquences de chacun pour les rapprocher les unes des autres
+      (ou bien les opposer, bien sûr !) avant d'effectuer l'interpolation.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Ci-dessous un example de l'utilisation de
+      <link linkend="pvbufread"><citetitle>pvbufread</citetitle></link> avec
+      <emphasis>pvcross</emphasis>. Dans cet exemple les amplitudes utilisées
+      dans la resynthèse changent graduellement de celles d'un hautbois à
+      celles d'une clarinette. Les fréquences, naturellement, restent celles de
+      la clarinette durant tout le processus car <emphasis>pvcross</emphasis>
+      n'utilise pas les données de fréquence du fichier lu par
+      <emphasis>pvbufread</emphasis>.
+    </para>
+
+    <para>
+      <informalexample>
+        <programlisting>
+ktime1  <emphasis role="opc">line</emphasis>      0, p3, 3.5 <emphasis role="comment">; used as index in the &quot;oboe.pvoc&quot; file</emphasis>
+ktime2  <emphasis role="opc">line</emphasis>      0, p3, 4.5 <emphasis role="comment">; used as index in the &quot;clar.pvoc&quot; file</emphasis>
+kcross  <emphasis role="opc">expon</emphasis>     0.001, p3, 1
+        <emphasis role="opc">pvbufread</emphasis> ktime1, &quot;oboe.pvoc&quot;
+apv     <emphasis role="opc">pvcross</emphasis>   ktime2, 1, &quot;clar.pvoc&quot;, 1<emphasis role="op">-</emphasis>kcross, kcross</programlisting>
+      </informalexample>
+    </para>
+    <para>
+      Voici un exemple complet de l'opcode pvcross. Il utilise le fichier
+      <ulink url="examples/pvcross.csd"><citetitle>pvcross.csd</citetitle></ulink>
+      <example>
+        <title>Exemple de l'opcode pvcross.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pvcross.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="pvbufread"><citetitle>pvbufread</citetitle></link>,
+      <link linkend="pvinterp"><citetitle>pvinterp</citetitle></link>,
+      <link linkend="pvread"><citetitle>pvread</citetitle></link>,
+      <link linkend="tableseg"><citetitle>tableseg</citetitle></link>,
+      <link linkend="tablexseg"><citetitle>tablexseg</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Richard Karpen</member>
+        <member>Seattle, Wash</member>
+        <member>1997</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 3.44</para>
+  </refsect1>
+</refentry>

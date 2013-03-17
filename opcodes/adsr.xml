@@ -1,0 +1,133 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.16
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="adsr">
+<indexterm id="IndexAdsr"><primary>adsr</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Envelope Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>adsr</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>adsr</refname>
+    <refpurpose>
+      Calcule l'enveloppe ADSR classique à l'aide de segments linéaires.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Calcule l'enveloppe ADSR classique à l'aide de segments linéaires.
+   </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>adsr</command> iatt, idec, islev, irel [, idel]</synopsis>
+
+    <synopsis>kres <command>adsr</command> iatt, idec, islev, irel [, idel]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iatt</emphasis> -- durée de l'attaque (attack)
+    </para>
+
+    <para>
+      <emphasis>idec</emphasis> -- durée de la première chute (decay)
+    </para>
+
+    <para>
+      <emphasis>islev</emphasis> -- niveau d'entretien (sustain)
+    </para>
+
+    <para>
+      <emphasis>irel</emphasis> -- durée de la chute (release)
+    </para>
+
+    <para>
+      <emphasis>idel</emphasis> -- délai de niveau zéro avant le démarrage de l'enveloppe
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      L'enveloppe générée évolue dans l'intervalle de 0 à 1 et peut nécessiter un
+      changement d'échelle par la suite, en fonction de l'amplitude demandée. Si
+      l'on utilise <link linkend="Zerodbfs"><citetitle>0dbfs</citetitle></link> = 1,
+      il sera probablement nécessaire de diminuer l'amplitude de l'enveloppe car
+      plusieurs notes simultanées peuvent provoquer un écrêtage. Si l'on utilise
+      pas <link linkend="Zerodbfs"><citetitle>0dbfs</citetitle></link>, une mise
+      à l'échelle à une grande amplitude (par exemple 32000) sera peut-être
+      nécessaire.
+    </para>
+    <para>
+      Voici une description de l'enveloppe :
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/adsr.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>Image d'une enveloppe ADSR.</phrase>
+        </textobject>
+        
+        <caption>
+          <para>Image d'une enveloppe ADSR.</para>
+        </caption>
+      </mediaobject>
+    </para>
+
+    <para>
+      La longueur de la période d'entretien est calculée à partir de la longueur de la note. C'est
+      pourquoi <emphasis>adsr</emphasis> n'est pas adapté au traitement des évènements MIDI.
+      L'opcode <link linkend="madsr"><citetitle>madsr</citetitle></link> utilise le mécanisme de
+      <link linkend="linsegr"><citetitle>linsegr</citetitle></link>, et peut donc être utilisé dans les
+      applications MIDI.
+    </para>
+
+    <para>
+      <emphasis>adsr</emphasis> est nouveau dans la version 3.49 de Csound.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode adsr. Il utilise le fichier
+      <ulink url="examples/adsr.csd"><citetitle>adsr.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode adsr.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/adsr.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="madsr"><citetitle>madsr</citetitle></link>,
+      <link linkend="mxadsr"><citetitle>mxadsr</citetitle></link>,
+      <link linkend="xadsr"><citetitle>xadsr</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namejohn;</para>
+    <para>Nouveau dans la version 3.49</para>
+  </refsect1>
+</refentry>

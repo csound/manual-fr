@@ -1,0 +1,67 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="q">
+  <indexterm id="IndexQStatement"><primary>q statement</primary></indexterm>
+  <refmeta>
+    <refentrytitle>Instruction q</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>q</refname>
+    <refpurpose>
+      Cette instruction peut être utilisée pour rendre un instrument silencieux.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cette instruction peut être utilisée pour rendre un instrument silencieux.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>q</command> p1  p2  p3</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+       <emphasis>p1</emphasis> -- Numéro de l'instrument à rendre muet/sonore.
+    </para>
+
+    <para>
+       <emphasis>p2</emphasis> -- Date d'action en pulsations. 
+    </para>
+
+    <para>
+       <emphasis>p3</emphasis> -- Détermine si l'instrument doit être rendu silencieux ou sonore. La
+       valeur 0 signifie silencieux, toute autre valeur signifie sonore.
+    </para>
+
+    <para>
+      Noter que ceci n'affecte pas les instruments déjà actifs à la date <emphasis>p2</emphasis>.
+      Ça bloque toute tentative d'en démarrer un après cette date.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'instruction q. Il utilise le fichier
+      <ulink url="examples/q.csd"><citetitle>q.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'instruction q.</title>
+        <xi:include href="examples-xml/q.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+</refentry>

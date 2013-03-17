@@ -1,0 +1,65 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="nstrnum">
+<indexterm id="IndexNstrnum"><primary>nstrnum</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Initialization and Reinitialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>nstrnum</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>nstrnum</refname>
+    <refpurpose>
+      Retourne le numéro d'un instrument nommé.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne le numéro d'un instrument nommé.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>insno <command>nstrnum</command> &quot;name&quot;</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>insno</emphasis> -- le numéro de l'instrument nommé.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Excécution</title>
+    <para>
+      <emphasis>&quot;name&quot;</emphasis> -- le nom de l'instrument nommé.
+    </para>
+
+    <para>
+      Si aucun instrument n'existe avec le nom spécifié, une erreur d'initialisation
+      survient, et la valeur -1 est retournée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameistvan;</member>
+        <member>Nouveau dans la version 4.23</member>
+        <member>Ecrit en 2002.</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

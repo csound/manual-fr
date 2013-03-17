@@ -1,0 +1,108 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="resyn">
+<indexterm id="Indexresyn"><primary>resyn</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>resyn</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>resyn</refname>
+    <refpurpose>
+      Synthèse additive d'un flot de suivi de partiel avec interpolation cubique
+      de la phase, contrôle de hauteur et modification de l'échelle temporelle
+      de l'entrée.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      L'opcode <emphasis>resyn</emphasis> prend en entrée un flot de signal PV
+      TRACKS (tel que généré par l'opcode <emphasis>partials</emphasis> par
+      exemple). Il resynthétise le signal avec interpolation linéaire de
+      l'amplitude et interpolation cubique de la phase pour piloter une banque
+      d'oscillateurs interpolants avec pondération de l'amplitude et de la hauteur.
+      <emphasis>resyn</emphasis> est une version modifiée de<emphasis>sinsyn</emphasis>,
+      qui permet la resynthèse de données avec modification de la hauteur et de
+      l'échelle temporelle.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>asig <command>resyn</command> fin, kscal, kpitch, kmaxtracks, ifn</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+	    <para>
+      <emphasis>asig</emphasis> -- signal audio de sortie
+    </para>
+	
+    <para>
+      <emphasis>fin</emphasis> -- flot PV TRACKS d'entrée
+    </para>
+
+    <para>
+      <emphasis>kscal</emphasis> -- pondération de l'amplitude
+    </para>
+
+    <para>
+      <emphasis>kpitch</emphasis> -- pondération de la hauteur
+    </para>
+
+    <para>
+      <emphasis>kmaxtracks</emphasis> -- nombre maximum de pistes dans la
+      resynthèse. En limitant ce dernier, on obtient un effet de filtrage
+      non-linéaire (les pistes sont ordonnées respectivement par date de début
+      et par fréquence ascendante).
+    </para>
+
+    <para>
+      <emphasis>ifn</emphasis> -- table de fonction contenant une période de
+      fonction sinusoïdale (sinus ou cosinus).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode resyn. Il utilise le fichier
+      <ulink url="examples/resyn.csd"><citetitle>resyn.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode resyn.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/resyn.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      L'exemple ci-dessus montre le suivi de partiel d'un signal d'analyse par
+      distribution de fréquence instantanée et la resynthèse additive avec
+      interpolation cubique de la phase et transposition de hauteur.
+    </para>  
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Juin 2005 </member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau greffon dans la version 5</para>
+    <para>Novembre 2004.</para>
+  </refsect1>
+</refentry>

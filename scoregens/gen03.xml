@@ -1,0 +1,196 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="GEN03">
+      <indexterm id="IndexGEN03"><primary>GEN03</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN03</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>GEN03</refname>
+    <refpurpose>
+      Génère une table de fonction en évaluant un polynôme.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ce sous-programme génère une table de fonction en évaluant un polynôme en x sur un intervalle fixe
+      et avec des coefficients spécifiés.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>f</command>  #  date  taille  3  xval1  xval2  c0  c1  c2  ...  cn</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>taille </emphasis> -- nombre de points dans la table. Doit être une puissance de 2 ou une
+        puissance-de-2 plus 1.
+    </para>
+
+    <para>
+      <emphasis>xval1, xval2 </emphasis> -- limites gauche et droite de l'intervalle x sur lequel le
+      polynôme est défini (<emphasis>xval1</emphasis> &lt; <emphasis>xval2</emphasis>). Celles-ci
+      produiront la 1ère valeur stockée et la (puissance-de-2 plus 1)ème valeur stockée respectivement
+      dans la table de la fonction générée.
+    </para>
+
+    <para>
+      <emphasis>c0, c1, c2, ..., cn</emphasis> -- coefficients du polynôme d'ordre n
+    </para>
+
+    <para>
+      <emphasis>C<subscript>0</subscript></emphasis> + <emphasis>C<subscript>1</subscript>x</emphasis> +
+      <emphasis>C<subscript>2</subscript>x<superscript>2</superscript></emphasis> + . . . +
+      <emphasis>C<subscript>n</subscript>x<superscript>n</superscript></emphasis>
+    </para>
+
+    <para>
+      Les coefficients peuvent être des nombres réels positifs ou négatifs ; un zéro dénote un terme
+      manquant dans le polynôme. La liste de coefficients commence en p7, avec une limite maximale
+      actuelle de 144 termes.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Le segment défini [fn(<emphasis>xval1</emphasis>), fn(<emphasis>xval2</emphasis>)] est
+              distribué également. Ainsi une table de 512 points sur l'interval [-1,1] aura son origine
+              à la cellule 257 (au début de la seconde moitié). Si le point de garde est requis, les deux
+              valeurs fn(-1) et fn(1) existeront dans la table.
+            </para>
+          </listitem>
+
+          <listitem>
+            <para>
+              <emphasis>GEN03</emphasis> est utile en conjonction avec
+              <link linkend="table"><citetitle>table</citetitle></link> ou
+              <link linkend="tablei"><citetitle>tablei</citetitle></link> pour le waveshaping audio
+              (modification du son par distortion non-linéaire). Les coefficients pour produire un
+              formant particulier à partir d'un index de lecture sinusoïdal d'amplitude connue peuvent
+              être déterminés avant le traitement en utilisant des algorithmes tels que les formules
+              de Tchebychev. Voir aussi <link linkend="GEN13"><citetitle>GEN13</citetitle></link>.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de la routine GEN03. Il utilise le fichier
+      <ulink url="examples/gen03.csd"><citetitle>gen03.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de la routine GEN03.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/gen03.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      <textobject>
+        <phrase>Voici les diagrammes des formes d'onde des routines GEN03
+        utilisées dans l'exemple :</phrase>
+      </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen03_1.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f4 0 513 3 1 1 0 1 - Tchebychev du premier ordre : x</phrase>
+        </textobject>
+
+        <caption>
+          <para>f4 0 513 3 1 1 0 1 - Tchebychev du premier ordre : x</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen03_2.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f6 0 513 3 -1 1 -1 0 2 - Tchebychev du second ordre : 2x2 - 1</phrase>
+        </textobject>
+
+        <caption>
+          <para>f6 0 513 3 -1 1 -1 0 2 - Tchebychev du second ordre : 2x2 - 1</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen03_3.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f8 0 513 3 -1 1 0 -3 0 4 - Tchebychev du troisième ordre : 4x3 - 3x</phrase>
+        </textobject>
+
+        <caption>
+          <para>f8 0 513 3 -1 1 0 -3 0 4 - Tchebychev du troisième ordre : 4x3 - 3x</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen03_4.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f10 0 513 3 -1 10 0 -7 0 56 0 -112 0 64 - Tchebychev du septième ordre : 64x7 - 112x5 + 56x3 - 7x</phrase>
+        </textobject>
+
+        <caption>
+          <para>f10 0 513 3 -1 10 0 -7 0 56 0 -112 0 64 - Tchebychev du septième ordre : 64x7 - 112x5 + 56x3 - 7x</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen03_5.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f12 0 513 3 -1 1 5 4 3 2 2 1 - une fonction polynomiale du
+          quatrième ordre, x compris entre -1 et 1</phrase>
+        </textobject>
+
+        <caption>
+          <para>f12 0 513 3 -1 1 5 4 3 2 2 1 - une fonction polynomiale du
+          quatrième ordre, x compris entre -1 et 1</para>
+        </caption>
+      </mediaobject>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="GEN13"><citetitle>GEN13</citetitle></link>,
+      <link linkend="GEN14"><citetitle>GEN14</citetitle></link> et
+      <link linkend="GEN15"><citetitle>GEN15</citetitle></link>.
+      <para>Information au sujet des polynômes de Tchebychev sur Wikipedia :
+      <ulink url="http://fr.wikipedia.org/wiki/Polyn%C3%B4me_de_Tchebychev"><citetitle>http://fr.wikipedia.org/wiki/Polynôme_de_Tchebychev</citetitle></ulink></para>
+    </para>
+  </refsect1>
+</refentry>

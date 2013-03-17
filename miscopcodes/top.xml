@@ -1,0 +1,21 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.2
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<chapter id="MiscopcodesTop">
+  <title>Opcodes divers</title>
+  <para>Voici une liste d'opcodes qui ne rentrent dans aucune catégorie :
+    <itemizedlist>
+      <listitem><link linkend="system"><citetitle>system</citetitle></link> -
+      appelle un programme externe via le mécanisme d'appel du système.</listitem>
+      <listitem><link linkend="modmatrix"><citetitle>modmatrix</citetitle></link> -
+      opcode matrice de modulation avec optimisation pour les matrices creuses.</listitem>
+    </itemizedlist>
+  </para>
+
+</chapter>

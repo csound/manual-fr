@@ -1,0 +1,152 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvbufread">
+<indexterm id="IndexPvbufread"><primary>pvbufread</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:STFT</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvbufread</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvbufread</refname>
+    <refpurpose>
+      Lit un fichier d'analyse par vocodeur de phase et rend accessibles les
+      données récupérées.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>pvbufread</emphasis> lit depuis un fichier
+      <link linkend="pvoc"><citetitle>pvoc</citetitle></link> et rend les données
+      récupérées accessibles à toutes les unités
+      <link linkend="pvinterp"><citetitle>pvinterp</citetitle></link> et
+      <link linkend="pvcross"><citetitle>pvcross</citetitle></link> suivantes
+      qui surviennent dans un instrument avant un <emphasis>pvbufread</emphasis>
+      consécutif (de la même façon que
+      <link linkend="lpread"><citetitle>lpread</citetitle></link> et
+      <link linkend="lpreson"><citetitle>lpreson</citetitle></link> travaillent
+      ensemble). Les données sont passées en interne et l'unité n'a pas de
+      sortie propre.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>pvbufread</command> ktimpnt, ifile</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifile</emphasis> -- le numéro <emphasis>pvoc</emphasis> (n dans
+      pvoc.n) ou le nom entre guillemets du fichier d'analyse créé avec
+      <emphasis>pvanal</emphasis>. (Voir
+      <link linkend="pvoc"><citetitle>pvoc</citetitle></link>.)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ktimpnt</emphasis> -- l'écoulement du temps, en secondes, dans
+      ce fichier. <emphasis>ktimpnt</emphasis> doit toujours être positif, mais
+      il peut avancer ou reculer dans le temps, être stationnaire ou discontinu,
+      comme pointeur dans le fichier d'analyse.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      L'exemple ci-dessous montre une utilisation de <emphasis>pvbufread</emphasis>
+      avec <emphasis>pvinterp</emphasis> pour interpoler entre le son d'un hautbois
+      et celui d'une clarinette. La valeur de <emphasis>kinterp</emphasis>
+      retournée par l'opcode <emphasis>linseg</emphasis> est utilisée pour
+      définir le déroulement temporel de la transition entre les deux sons.
+      Les interpolations des fréquences et des amplitudes sont contrôlées par le
+      même facteur dans cet exemple, mais il peut être intéressant de ne pas les
+      synchroniser de cette manière pour obtenir d'autres effets. Cet exemple
+      commence par un son de clarinette qui se transforme en hautbois et revient
+      ensuite à la clarinette. <emphasis>kfreqscale2</emphasis> vaut 1.065 car
+      dans ce cas le hautbois est plus haut d'un demi-ton que la clarinette et cela
+      les met approximativement à la même hauteur. <emphasis>kampscale2</emphasis>
+      vaut 0.75 car la clarinette analysée était un peu plus forte que le
+      hautbois analysé. Les réglages de ces deux paramètres donnent une transition
+      assez douce dans ce cas, mais de tels ajustements ne sont en aucun cas
+      nécessaires ou même préconisés.
+    </para>
+
+    <para>
+      <informalexample>
+        <programlisting>
+ktime1  <emphasis role="opc">line</emphasis>      0, p3, 3.5 <emphasis role="comment">; used as index in the &quot;oboe.pvoc&quot; file</emphasis>
+ktime2  <emphasis role="opc">line</emphasis>      0, p3, 4.5 <emphasis role="comment">; used as index in the  &quot;clar.pvoc&quot; file</emphasis>
+kinterp <emphasis role="opc">linseg</emphasis>    1, p3<emphasis role="op">*</emphasis>0.15, 1, p3<emphasis role="op">*</emphasis>0.35, 0, p3<emphasis role="op">*</emphasis>0.25, 0, p3<emphasis role="op">*</emphasis>0.15, 1, p3<emphasis role="op">*</emphasis>0.1, 1
+        <emphasis role="opc">pvbufread</emphasis> ktime1, &quot;oboe.pvoc&quot;
+apv     <emphasis role="opc">pvinterp</emphasis>  ktime2,1,&quot;clar.pvoc&quot;, 1, 1.065, 1, 0.75, 1<emphasis role="op">-</emphasis>kinterp, 1<emphasis role="op">-</emphasis>kinterp</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      Ci-dessous un exemple d'utilisation de <emphasis>pvbufread</emphasis> avec
+      <emphasis>pvcross</emphasis>. Dans cet exemple les amplitudes utilisées dans
+      la resynthèse évoluent graduellement de celles du hautbois à celles de la
+      la clarinette. Naturellement, les fréquences sont celles de la clarinette
+      durant tout le processus car <emphasis>pvcross</emphasis> n'utilise pas les
+      données de fréquence du fichier lut par <emphasis>pvbufread</emphasis>.
+    </para>
+
+    <para>
+      <informalexample>
+        <programlisting>
+ktime1  <emphasis role="opc">line</emphasis>      0, p3, 3.5 <emphasis role="comment">; used as index in the &quot;oboe.pvoc&quot; file</emphasis>
+ktime2  <emphasis role="opc">line</emphasis>      0, p3, 4.5 <emphasis role="comment">; used as index in the &quot;clar.pvoc&quot; file</emphasis>
+kcross  <emphasis role="opc">expon</emphasis>     0.001, p3, 1
+        <emphasis role="opc">pvbufread</emphasis> ktime1, &quot;oboe.pvoc&quot;
+apv     <emphasis role="opc">pvcross</emphasis>   ktime2, 1, &quot;clar.pvoc&quot;, 1<emphasis role="op">-</emphasis>kcross, kcross</programlisting>
+      </informalexample>
+    </para>
+    <para>
+      Voici un exemple complet de l'opcode pvbufread. Il utilise le fichier
+      <ulink url="examples/pvbufread.csd"><citetitle>pvbufread.csd</citetitle></ulink>
+      <example>
+        <title>Exemple de l'opcode pvbufread.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pvbufread.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="pvcross"><citetitle>pvcross</citetitle></link>,
+      <link linkend="pvinterp"><citetitle>pvinterp</citetitle></link>,
+      <link linkend="pvread"><citetitle>pvread</citetitle></link>,
+      <link linkend="tableseg"><citetitle>tableseg</citetitle></link>,
+      <link linkend="tablexseg"><citetitle>tablexseg</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Richard Karpen</member>
+        <member>Seattle, WA USA</member>
+        <member>1997</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

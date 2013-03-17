@@ -1,0 +1,35 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.2
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="SpectralNonstand">
+  <title>Traitement Spectral Non-standard</title>
+
+  <para>
+    Ces unités génèrent et traitent des types de données de signaux non-standard, tels que des signaux de
+    contrôle du domaine temporel et des signaux audio sous-échantillonnés, et leur représentation dans le
+    domaine fréquentiel (spectrale). Les types de données (<emphasis>d</emphasis>-, <emphasis>w</emphasis>-)
+    se définissent par eux-mêmes et leur contenu n'est pas utilisable par les autres unités de Csound.
+    Ces générateurs unitaires sont expérimentaux, et sujets à modification entre les différentes versions
+    de Csound ; ils seront aussi complétés par d'autres unités plus tard.
+  </para>
+
+  <para>
+    Les opcodes pour le traitement spectral non-standard sont
+    <link linkend="specaddm"><citetitle>specaddm</citetitle></link>,
+    <link linkend="specdiff"><citetitle>specdiff</citetitle></link>,
+    <link linkend="specdisp"><citetitle>specdisp</citetitle></link>,
+    <link linkend="specfilt"><citetitle>specfilt</citetitle></link>,
+    <link linkend="spechist"><citetitle>spechist</citetitle></link>,
+    <link linkend="specptrk"><citetitle>specptrk</citetitle></link>,
+    <link linkend="specscal"><citetitle>specscal</citetitle></link>,
+    <link linkend="specsum"><citetitle>specsum</citetitle></link> et
+    <link linkend="spectrum"><citetitle>spectrum</citetitle></link>.
+  </para>
+
+</section>

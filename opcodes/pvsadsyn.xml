@@ -1,0 +1,130 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvsadsyn">
+<indexterm id="IndexPvsadsyn"><primary>pvsadsyn</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsadsyn</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvsadsyn</refname>
+    <refpurpose>
+      Resynthèse au moyen d'une banque d'oscillateurs rapide.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Resynthèse au moyen d'une banque d'oscillateurs rapide.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>pvsadsyn</command> fsrc, inoscs, kfmod [, ibinoffset] [, ibinincr] [, iinit]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>inoscs</emphasis> -- Le nombre de bins d'analyse à synthétiser.
+      Ne peut pas être supérieur à la taille de <emphasis>fsrc</emphasis> (voir
+      <link linkend="pvsinfo"><citetitle>pvsinfo</citetitle></link>), par exemple
+      comme celui créé par <link linkend="pvsanal"><citetitle>pvsanal</citetitle></link>.
+      Le temps de traitement est directement proportionnel à <emphasis>inoscs</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>ibinoffset</emphasis> (facultatif, 0 par défaut) -- Le premier
+      bin (le plus bas) à resynthétiser, en comptant à partir de 0 (la valeur
+      par défaut est 0).
+    </para>
+
+    <para>
+      <emphasis>ibinincr</emphasis> (facultatif) -- En partant du bin
+      <emphasis>ibinoffset</emphasis>, l'intervalle entre les bins resynthétisés
+      vaut <emphasis>ibinincr</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>iinit</emphasis> (facultatif) -- Ignore la réinitialisation. N'est
+      actuellement implémenté dans aucun de ces opcodes, et il reste à décider
+      s'il serait de quelque utilité.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kfmod</emphasis> -- Facteur de multiplication pour toutes les
+      fréquences. 1.0 = pas de changement, 2 = une octave vers l'aigu.
+    </para>
+
+    <para>
+      <emphasis>pvsadsyn</emphasis> est expérimental. Il implémente le banc
+      d'oscillateurs en utilisant une méthode de calcul directe, plutôt qu'une
+      table de consultation. On tire ainsi avantage du fait empirique que pour
+      les taux d'analyse généralement pratiqués, (et en supposant que l'analyse
+      se fait avec <link linkend="pvsanal"><citetitle>pvsanal</citetitle></link>,
+      où les fréquences dans un bin ne changent que légèrement entre les trames),
+      il n'est pas nécessaire d'interpoler les fréquences entre les trames,
+      seulement les amplitudes. Une synthèse précise est souvent liée à l'utilisation
+      de <emphasis>pvsanal</emphasis> avec <emphasis>iwinsize = ifftsize*2</emphasis>.
+    </para>
+
+    <para>
+      Cet opcode changera très probablement ou sera bien étendu, selon le retour
+      et les avis des utilisateurs. Il est probable qu'une méthode entièrement
+      basée sur une table avec interpolation sera ajoutée, via un futur argument
+      facultatif <emphasis>iarg</emphasis>. La liste des paramètres de
+      <emphasis>pvsadsyn</emphasis> est calquée sur celle de
+      <link linkend="pvadd"><citetitle>pvadd</citetitle></link>, mais exclut
+      l'extraction spectrale.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode pvsadsyn. Il utilise le fichier
+      <ulink url="examples/pvsadsyn.csd"><citetitle>pvsadsyn.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode pvsadsyn.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pvsadsyn.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="pvsanal"><citetitle>pvsanal</citetitle></link>,
+      <link linkend="pvsynth"><citetitle>pvsynth</citetitle></link>,
+      <link linkend="pvsadsyn"><citetitle>pvsadsyn</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namerichard;</member>
+        <member>Août 2001 </member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 4.13</para>
+  </refsect1>
+</refentry>

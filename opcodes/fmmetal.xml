@@ -1,0 +1,135 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.15
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="fmmetal">
+<indexterm id="IndexFmmetal"><primary>fmmetal</primary></indexterm>
+  <refentryinfo><title>Signal Generators:FM Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>fmmetal</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>fmmetal</refname>
+    <refpurpose>
+      Utilise la synthèse FM pour créer un son de <quote>Heavy Metal</quote>.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Utilise la synthèse FM pour créer un son de <quote>Heavy Metal</quote>. Il provient d'une famille de sons FM
+      qui utilisent tous 4 oscillateurs élémentaires et diverses architectures, comme dans le synthétiseur
+      TX81Z.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>fmmetal</command> kamp, kfreq, kc1, kc2, kvdepth, kvrate, ifn1, ifn2, ifn3, \
+      ifn4, ivfn</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      Tous ces opcodes prennent 5 tables pour l'initialisation. Les 4 premières sont les entrées
+      de base et la dernière est l'oscillateur basse fréquence (LFO) utilisé pour le vibrato. La
+      dernière table contiendra habitullement une onde sinus.
+    </para>
+
+    <para>
+      Les formes d'onde initiales seront :
+      <itemizedlist>
+        <listitem><para><emphasis>ifn1</emphasis> -- onde sinus</para></listitem>
+        <listitem><para><emphasis>ifn2</emphasis> -- <ulink url="examples/twopeaks.aiff"><citetitle>twopeaks.aiff</citetitle></ulink></para></listitem>
+        <listitem><para><emphasis>ifn3</emphasis> -- <ulink url="examples/twopeaks.aiff"><citetitle>twopeaks.aiff</citetitle></ulink></para></listitem>
+        <listitem><para><emphasis>ifn4</emphasis> -- onde sinus</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        Le fichier <quote>twopeaks.aiff</quote> est aussi disponible à
+        <ulink url="ftp://ftp.cs.bath.ac.uk/pub/dream/documentation/sounds/modelling/"><citetitle>ftp://ftp.cs.bath.ac.uk/pub/dream/documentation/sounds/modelling/</citetitle></ulink>.
+      </para>
+    </note>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamp</emphasis> -- Amplitude de la note.
+    </para>
+
+    <para>
+      <emphasis>kfreq</emphasis> -- Fréquence de la note jouée.
+    </para>
+
+    <para>
+      <emphasis>kc1, kc2</emphasis> -- Contrôles pour le synthétiseur :
+      <itemizedlist>
+        <listitem><para><emphasis>kc1</emphasis> -- Indice de modulation total</para></listitem>
+        <listitem><para><emphasis>kc2</emphasis> -- Fondu des deux modulateurs</para></listitem>
+        <listitem><para><emphasis>Algorithme</emphasis> -- 3</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>kvdepth</emphasis> -- Largeur du vibrato
+    </para>
+
+    <para>
+      <emphasis>kvrate</emphasis> -- Vitesse du vibrato
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode fmmetal. Il utilise les fichiers
+      <ulink url="examples/fmmetal.csd"><citetitle>fmmetal.csd</citetitle></ulink> et
+      <ulink url="examples/twopeaks.aiff"><citetitle>twopeaks.aiff</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode fmmetal.</title>
+
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/fmmetal.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>voir Aussi</title>
+    <para>
+      <link linkend="fmb3"><citetitle>fmb3</citetitle></link>,
+      <link linkend="fmbell"><citetitle>fmbell</citetitle></link>,
+      <link linkend="fmpercfl"><citetitle>fmpercfl</citetitle></link>,
+      <link linkend="fmrhode"><citetitle>fmrhode</citetitle></link>,
+      <link linkend="fmwurlie"><citetitle>fmwurlie</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn; (d'après &nameperry;)</member>
+        <member>University of Bath, Codemist Ltd.</member>
+        <member>Bath, UK</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.47 de Csound</para>
+  </refsect1>
+</refentry>

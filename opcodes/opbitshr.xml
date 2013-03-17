@@ -1,0 +1,68 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.1
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="opbitshr">
+<indexterm id="IndexShiftR"><primary>¬</primary></indexterm>
+  <refentryinfo><title>Mathematical Operations:Arithmetic and Logic Operations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>&gt;&gt;</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>&gt;&gt;</refname>
+    <refpurpose>
+      Opérateur de décalage binaire à droite.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Les opérateurs de décalage binaire décalent les bit vers la gauche ou vers
+      la droite du nombre de bit donné.
+    </para>
+
+    <para>
+      La précédence de ces opérateurs est moins élevée que celle des opérateurs
+      arithmétiques, mais plus élevées que celle des comparaisons.
+    </para>
+
+    <para>
+      On peut utiliser des paranthèses comme ci-dessus pour forcer des
+      groupements particuliers.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>a <command>&gt;&gt;</command> b  (décalage binaire à droite)</synopsis>
+
+    <para>
+      où les arguments <emphasis>a</emphasis> et <emphasis>b</emphasis> peuvent
+      être des expressions.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voir l'entrée de l'opérateur
+      <link linkend="opbitshl"><citetitle>&lt;&lt;</citetitle></link> pour un
+      exemple.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="opbitshl"><citetitle>&lt;&lt;</citetitle></link>,
+      <link linkend="opbitand"><citetitle>&amp;</citetitle></link>,
+      <link linkend="opbitor"><citetitle>&verbar;</citetitle></link>
+      <link linkend="opnonequiv"><citetitle>#</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

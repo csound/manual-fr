@@ -1,0 +1,95 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="tempo">
+<indexterm id="IndexTempo"><primary>tempo</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tempo</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>tempo</refname>
+    <refpurpose>
+      Contrôle le tempo d'une partition non interprétée.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Contrôle le tempo d'une partition non interprétée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>tempo</command> ktempo, istartempo</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>istartempo</emphasis> -- tempo initial (en pulsations par minute).
+      Typiquement 60.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ktempo</emphasis> -- le tempo auquel la partition sera ajustée.
+    </para>
+
+    <para>
+      <emphasis>tempo</emphasis> permet de contrôler depuis un orchestre la
+      vitesse d'exécution des évènements de partition de Csound. Il n'opère qu'en
+      présence de <link linkend="FlagsMinusLowerT"><citetitle>l'option -t</citetitle></link>
+      de Csound. Quand cette option est positionnée, les évènements de partition
+      sont exécutés à partir de leurs paramètres p2 et p3 (pulsation) non interprétés,
+      initialement au tempo donné sur la ligne de commande. Lorsqu'une instruction
+      <emphasis>tempo</emphasis> est activée dans n'importe quel instrument
+      (<emphasis>ktempo</emphasis> &gt; 0.), le tempo courant est ajusté à
+      <emphasis>ktempo</emphasis> pulsations par minute. Il peut y avoir n'importe
+      quel nombre d'instructions <emphasis>tempo</emphasis> dans un orchestre,
+      mais il vaut mieux éviter les activations simultanées.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici une exemple de l'opcode tempo. Se rappeler qu'il ne fonctionne que
+      si l'on utilise
+      <link linkend="FlagsMinusLowerT"><citetitle>l'option -t</citetitle></link> avec Csound.
+      L'exemple utilise le fichier
+      <ulink url="examples/tempo.csd"><citetitle>tempo.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode tempo.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/tempo.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="tempoval"><citetitle>tempoval</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Exemple écrit par &namekevin;.</para>
+  </refsect1>
+</refentry>

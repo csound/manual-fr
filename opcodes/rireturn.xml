@@ -1,0 +1,65 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="rireturn">
+<indexterm id="IndexRireturn"><primary>rireturn</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Initialization and Reinitialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>rireturn</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>rireturn</refname>
+    <refpurpose>
+      Termine une phase de réinitialisation.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Termine une phase de
+      <link linkend="reinit"><citetitle>réinitialisation (reinit)</citetitle></link>
+      (c'est-à-dire qu'il n'opère pas pendant l'initialisation standard). Cette
+      instruction, ou un <emphasis>endin</emphasis>, provoquera la reprise de
+      l'exécution normale.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>rireturn</command></synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Les instructions suivantes génèrent un signal de contrôle exponentiel dont les
+      valeurs vont de 440 à 880 exactement dix fois pendant la durée p3. Elles
+      utilisent le fichier
+      <ulink url="examples/reinit.csd"><citetitle>reinit.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode rireturn.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/reinit.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="reinit"><citetitle>reinit</citetitle></link>,
+      <link linkend="rigoto"><citetitle>rigoto</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

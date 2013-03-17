@@ -1,0 +1,31 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<chapter id="CsBeats">
+  <title>Csbeats</title>
+
+  <para>
+    <indexterm id="IndexBeats"><primary>Csbeats</primary></indexterm>
+    <emphasis>Csbeats</emphasis> est un langage de partition alternatif dont le
+    but est de spécifier de simples partitions dans le système standard
+    occidental de notation des hauteurs et des rythmes. On peut invoquer
+    <emphasis>Csbeats</emphasis> via le composant <emphasis>CsScore</emphasis>
+    d'une partition .csd standard avec <emphasis>bin="csbeats"</emphasis> ou
+    comme un programme autonome qui génère une partition numérique standard. 
+  </para>
+
+  <para>
+    Le programme autonome lit depuis l'entrée standard et écrit sur la sortie
+    standard. 
+  </para>
+
+ &csbeatssyntax;
+ &csbeatsexample;
+
+</chapter>

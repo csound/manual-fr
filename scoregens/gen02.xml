@@ -1,0 +1,137 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="GEN02">
+      <indexterm id="IndexGEN02"><primary>GEN02</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN02</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>GEN02</refname>
+    <refpurpose>
+      Transfère les données des p-champs dans une table de fonction.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ce sous-programme transfère les données des p-champs dans une table de fonction.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>f</command> # date taille 2 v1 v2 v3 ...</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>taille</emphasis> -- nombre de points dans la table. Doit être une puissance de 2 ou une
+      puissance-de-2 plus 1 (voir l'<link linkend="f"><citetitle>instruction f</citetitle></link>). La
+      taille de table maximale est de 16777216 (2<superscript>24</superscript>) points.
+    </para>
+
+    <para>
+      <emphasis>v1, v2, v3,</emphasis> etc. -- valeurs à copier directement dans l'espace de la table. Le
+      nombre de valeurs est limité par la variable de compilation <emphasis>PMAX</emphasis>, qui contrôle
+      le nombre maximum de p-champs (actuellement 1000). Les valeurs copiées peuvent comprendre le point
+      de garde de la table ; les cellules de la table non remplies contiendront des zéros.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        Si p4 (le numéro de la routine GEN) est positif, la table sera post-normalisée (reproportionnée
+        avec une valeur absolue maximale de 1 après génération). Une valeur de p4 négative empêche cette
+        opération. On utilisera habituellement la valeur -2 avec cette fonction GEN, afin que les valeurs
+        ne soient pas normalisées.
+      </para>
+    </note>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de la routine GEN02. Il utilise le fichier
+      <ulink url="examples/gen02.csd"><citetitle>gen02.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de la routine GEN02.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/gen02.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      <textobject>
+        <phrase>Voici les diagrammes des formes d'onde des routines GEN02 utilisées
+        dans l'exemple :</phrase>
+      </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen02_1.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 2 0 5 2 0 2 0</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 2 0 5 2 0 2 0</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen02_2.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 3 0 5 2 0 2 10 0</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 3 0 5 2 0 2 10 0</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen02_3.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 4 0 9 2 0 2 10 100 0</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 4 0 9 2 0 2 10 100 0</para>
+        </caption>
+      </mediaobject>
+
+    </para>
+  </refsect1>
+
+  <refsect1>
+     <title>Voir aussi</title>
+     <para>
+       <link linkend="GEN17"><citetitle>GEN17</citetitle></link>
+     </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Décembre 2002. Merci à &namerasmus;, pour avoir corrigé la limite de la variable
+      <emphasis>PMAX</emphasis>.</para>
+  </refsect1>
+</refentry>

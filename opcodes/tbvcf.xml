@@ -1,0 +1,109 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="tbvcf">
+<indexterm id="IndexTbvcf"><primary>tbvcf</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Resonant</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tbvcf</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>tbvcf</refname>
+    <refpurpose>
+      Modélise quelques caractéristiques du filtre contrôlé en tension du TB303
+      de Roland.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode est un essai de modélisation de quelques caractéristiques du
+      filtre contrôlé en tension du TB303 de Roland. On utilise la méthode
+      d'Euler pour obtenir une approximation du système, plutôt que les méthodes
+      traditionnelles des filtres. La fréquence de coupure, Q, et la distorsion
+      sont tous interdépendants. Des méthodes empiriques ont été utilisées pour essayer
+      de les séparer, ce qui a pour effet de rendre la fréquence approximative.
+      La résolution future de certains problèmes de cet opcode pourrait rendre
+      inopérants les orchestres existants qui utilisent cette version de
+      <emphasis>tbvcf</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>tbvcf</command> asig, xfco, xres, kdist, kasym [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iskip</emphasis> (facultatif, 0 par défaut) -- s'il est non nul,
+      l'initialisation du filtre est ignorée. (Nouveau dans les versions 4.23f13
+      et 5.0 de Csound).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- signal d'entrée. Doit être normalisé à &plusmn;1.
+    </para>
+
+    <para>
+      <emphasis>xfco</emphasis> -- fréquence de coupure du filtre. L'intervalle
+      optimal va de 10000 à 1500. Les valeurs inférieures à 1000 peuvent poser
+      problème.
+    </para>
+
+    <para>
+      <emphasis>xres</emphasis> -- résonance ou Q. Typiquement compris entre 0 et 2.
+    </para>
+
+    <para>
+      <emphasis>kdist</emphasis> -- quantité de distortion. Une valeur typique est 2.
+      Si <emphasis>kdist</emphasis> s'écarte de 2 de manière significative, il
+      peut y avoir des intéractions bizarres entre <emphasis>xfco</emphasis> et
+      <emphasis>xres</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>kasym</emphasis> -- asymétrie de la résonance. Typiquement comprise
+      entre 0 et 1.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode tbvcf. Il utilise le fichier
+      <ulink url="examples/tbvcf.csd"><citetitle>tbvcf.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode tbvcf.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/tbvcf.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namehans;</member>
+        <member>Décembre, 2000 -- Janvier, 2001</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans Csound 4.10</para>
+  </refsect1>
+</refentry>

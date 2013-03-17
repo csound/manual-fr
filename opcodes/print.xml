@@ -1,0 +1,97 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.14
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="print">
+<indexterm id="IndexPrint"><primary>print</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Printing and Display</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>print</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>print</refname>
+    <refpurpose>
+      Affiche les valeurs de variables de taux-i.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ces unités affichent des valeurs d'initialisation de l'orchestre.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>print</command> iarg [, iarg1] [, iarg2] [...]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iarg, iarg2, ... </emphasis> -- arguments de taux-i.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>print</emphasis> -- affiche la valeur courante des arguments (ou
+      des expressions) de taux-i <emphasis>iarg</emphasis> à chaque passe
+      d'initialisation dans l'instrument.
+    </para>
+    <note>
+      <para>
+        L'opcode <emphasis>print</emphasis> tronque des positions décimales et peut
+        ainsi ne pas montrer la valeur complète. La précision de Csound varie selon
+        la <link linkend="MiscCsound64"><citetitle>version</citetitle></link>
+        float (32 bit) ou double (64 bit), car la plupart des calculs internes
+        utilisent un de ces formats. Si l'on désire une sortie console avec plus
+        de résolution, on peut essayer
+        <link linkend="printf"><citetitle>printf</citetitle></link>.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode print. Il utilise le fichier
+      <ulink url="examples/print.csd"><citetitle>print.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode print.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/print.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
++instr 1:  irand = 2.930
++instr 1:  irand = 0.420
++instr 1:  irand = 2.316</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="dispfft"><citetitle>dispfft</citetitle></link>,
+      <link linkend="display"><citetitle>display</citetitle></link>, 
+      <link linkend="printk"><citetitle>printk</citetitle></link>,
+      <link linkend="printk2"><citetitle>printk2</citetitle></link>,
+      <link linkend="printks"><citetitle>printks</citetitle></link> ,
+      <link linkend="printf"><citetitle>printf</citetitle></link> and
+      <link linkend="prints"><citetitle>prints</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

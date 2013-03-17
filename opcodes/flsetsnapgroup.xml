@@ -1,0 +1,90 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.2
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLsetSnapGroup">
+<indexterm id="IndexFLsetSnapGroup"><primary>FLsetSnapGroup</primary></indexterm>
+  <refentryinfo><title>FLTK:Other</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLsetSnapGroup</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLsetSnapGroup</refname>
+    <refpurpose>
+      Détermine le groupe d'instantané pour les valuateurs FLTK.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>FLsetSnapGroup</emphasis> détermine le groupe d'instantané des
+      valuateurs déclarés après lui.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>FLsetSnapGroup</command> igroup</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>igroup</emphasis> -- (facultatif) un nombre entier faisant
+      référence à un groupe de widgets en relation avec un instantané. Cela
+      permet de lire/écrire, ou charger/sauvegarder l'état d'un sous-ensemble
+      de valuateurs.
+    </para>
+    <note>
+      <para>
+        Le paramètre <emphasis>igroup</emphasis> n'a pas encore été complètement
+        implémenté dans la version actuelle de Csound. Prière de ne pas s'y fier.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Pour économiser la mémoire, les widgets peuvent être groupés afin que les
+      instantanés n'affectent qu'un groupe défini de widgets. L'opcode
+      <emphasis>FLsetSnapGroup</emphasis> est utilisé pour spécifier le groupe
+      de tous les widgets déclarés après lui jusqu'à la prochaine instruction
+      <emphasis>FLsetSnapGroup</emphasis>.
+    </para>
+    <para>
+      <emphasis>FLsetSnapGroup</emphasis> détermine le groupe d'instantané d'un
+      valuateur déclaré. Pour qu'un valuateur appartienne à un groupe fixé, il
+      faut placer <emphasis>FLsetSnapGroup</emphasis> juste avant la déclaration
+      du widget lui-même. Le groupe fixé par <emphasis>FLsetSnapGroup</emphasis>
+      est valable pour tous les valuateurs déclarés après lui, jusqu'à ce qu'une
+      nouvelle instruction <emphasis>FLsetSnapGroup</emphasis> avec un groupe
+      différent soit rencontrée. Si aucune instruction
+      <emphasis>FLsetSnapGroup</emphasis> n'est présente dans l'orchestre,
+      le groupe par défaut pour tous les widgets sera le groupe zéro.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="FLgetsnap"><citetitle>FLgetsnap</citetitle></link>,
+      <link linkend="FLsetsnap"><citetitle>FLsetsnap</citetitle></link>,
+      <link linkend="FLloadsnap"><citetitle>FLloadsnap</citetitle></link>,
+      <link linkend="FLsavesnap"><citetitle>FLsavesnap</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.22</para>
+  </refsect1>
+</refentry>

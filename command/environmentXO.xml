@@ -1,0 +1,159 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.1
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="CommandEnvironment">
+  <title>Variables d'environnement de Csound</title>
+  <para>Csound peut utiliser les variables d'environnement suivantes :
+  <itemizedlist>
+	  <listitem><simpara>SFDIR : Répertoire par défaut pour les fichiers son. Utilisé si aucun chemin complet n'est
+      fourni pour les fichiers son.</simpara></listitem>
+	  <listitem><simpara>SSDIR : Répertoire par défaut pour les fichiers audio et MIDI en entrée (source). Utilisé
+      si aucun chemin complet n'est fourni pour les fichiers son. On peut l'utiliser conjointement avec SFDIR
+      pour fixer des répertoire d'entrée et de sortie séparés. Prière de noter qu'aussi bien les fichiers MIDI
+      que les fichiers audio sont recherchés aussi dans SSDIR.</simpara></listitem>
+	  <listitem><simpara>SADIR : Répertoire par défaut pour les fichier d'analyse. Utilisé si aucun chemin complet
+      n'est donné pour les fichiers d'analyse.</simpara></listitem>
+	  <listitem><simpara>SFOUTYP : Fixe le type par défaut du fichier de sortie. Actuellement ne sont valides que
+      'WAV', 'AIFF' et 'IRCAM'. Cette variable est testée par l'exécutable de csound et par les utilitaires et
+      elle est utilisée si aucun type de fichier de sortie n'a été spécifié.</simpara></listitem>
+	  <listitem><simpara>INCDIR : Répertoire des fichiers à inclure. Spécifie l'endroit où se trouvent les fichiers
+      utilisés par les instructions
+      <link linkend="include"><citetitle>#include</citetitle></link>.</simpara></listitem> 
+	  <listitem><simpara>OPCODEDIR : Définit l'endroit où se trouvent les greffons d'opcode en version simple
+      précision (32 bit).</simpara></listitem>
+	  <listitem><simpara>OPCODEDIR64 : Définit l'endroit où se trouvent les greffons d'opcode en version double
+      précision (64 bit).</simpara></listitem>
+	  <listitem><simpara>SNAPDIR : Utilisée par les opcodes de contrôle graphique FLTK pour charger et sauvegarder les
+      instantanés.</simpara></listitem>
+	  <listitem><simpara>CSOUNDRC : Définit le fichier de ressource (ou de configuration) de csound. Un chemin
+      complet avec le nom d'un fichier contenant des options de csound doit être donné. Cette variable vaut
+      .csoundrc par défaut.</simpara></listitem>
+	  <listitem><simpara>CSSTRNGS : A partir de Csound 5.00, la localisation des messages est contrôlée par les deux
+      variables d'environnement CSSTRNGS et CS_LANG, qui sont toutes deux optionnelles. CSSTRNGS pointe vers un
+      répertoire contenant des fichiers .xmg.</simpara></listitem>
+	  <listitem><simpara>CS_LANG : Sélectionne une langue pour les messages de csound.</simpara></listitem>
+	  <listitem><simpara>RAWWAVE_PATH : Utilisée par les opcodes STK pour trouver les fichiers son bruts. Ne
+      sert que si vous utilisez des opcodes de sur-couche STK comme STKBowed ou STKBrass.</simpara></listitem>
+	  <listitem><simpara>CSNOSTOP : Si cette variable d'environnement a pour valeur "yes", alors tous les affichages
+      graphiques sont fermés à la fin de l'exécution (ce qui veut dire que vous n'en verrez peut-être pas grand
+      chose dans le cas d'une exécution courte en temps différé). Dans le cas contraire, il faut cliquer sur
+      "Quit" dans la fenêtre d'affichage FLTK pour sortir, ce qui permet de voir les graphiques même après que la
+      fin de la partition soit atteinte.</simpara></listitem>
+	  <listitem><simpara>MFDIR : Répertoire par défaut pour les fichiers MIDI. Utilisé si aucun chemin complet
+      n'est donné pour les fichiers MIDI. Prière de noter que les fichiers MIDI sont également recherchés dans
+      SSDIR et SFDIR.</simpara></listitem>
+  </itemizedlist>
+  Pour plus d'information sur SFDIR, SSDIR, SADIR, MFDIR et INCDIR voir
+  <link linkend="OrchDirFiles"><citetitle>Répertoires et Fichiers</citetitle></link>.
+  </para>
+  <para>
+    Les seules variables d'environnement obligatoires sont OPCODEDIR et OPCODEDIR64. Il est très important de
+    les remplir correctement, sinon la plupart des opcodes ne seront pas disponibles. Assurez-vous de fixer
+    le chemin correctement en fonction de la précision de votre exécutable. Si vous lancez csound en ligne
+    de commande sans aucun argument vous devriez voir un texte ressemblant à : Csound version 5.01.0 beta
+    (float samples) Mar 23 2006. Ce texte fait référence à la version simple précision.
+  </para>
+  <para>
+    CSSTRNGS et CS_LANG sont actuellement peu utiles car Csound n'a pas encore été complètement traduit dans
+    d'autres langues.</para>
+  <para>
+    Voici d'autres variables d'environnement qui ne sont pas propres à Csound mais qui peuvent être importantes :
+  <itemizedlist>
+	  <listitem><simpara><emphasis>PATH</emphasis> : Le répertoire contenant les exécutables de csound devrait être
+      listé dans cette variable.</simpara></listitem>
+	  <listitem><simpara><emphasis>PYTHONPATH</emphasis> : Si vous avez l'intention d'utiliser CsoundVST et
+    python, le répertoire contenant la bibliothèque partagée _CsoundVST et le fichier CsoundVST.py doit être
+    dans votre variable d'environnement <emphasis>PYTHONPATH</emphasis> (ou le chemin de recherche par défaut
+    de python), afin que l'interpréteur Python sache comment charger ces fichiers.</simpara></listitem>
+	  <listitem><simpara><emphasis>LADSPA_PATH et DSSI_PATH</emphasis> : Ces variables d'environnement sont
+    nécessaires si vous utilisez les opcodes du greffon <emphasis>dssi4cs</emphasis>
+    (hôtes LADSPA et DSSI).</simpara></listitem>
+    <listitem><simpara><emphasis>CSDOCDIR</emphasis> : Spécifie le répertoire dans lequel se trouvent les
+    fichiers d'aide html. Bien qu'elle ne soit pas utilisée directement par Csound, cette variable
+    d'environnement peut aider les frontaux et les éditeurs (qui la mettent en &oelig;uvre) à trouver le
+    manuel de csound.</simpara></listitem>
+  </itemizedlist>
+  </para>
+  <simplesect>
+    <title>Fixer les variables d'environnement</title>
+    <bridgehead>Sur la ligne de commande</bridgehead>
+    <para>On peut fixer les variables d'environnement sur la ligne de commande ou dans le fichier de
+      configuration .csoundrc en utilisant l'option de ligne de commande --env:NOM=VALEUR ou --env:NOM+=VALEUR,
+      où NOM est le nom de la variable d'environnement, et VALEUR est sa valeur. Voir
+      <link linkend="CommandFlags"><citetitle>Options de Ligne de Commande</citetitle></link>.
+    </para>
+    <note>
+      <para>Prière de noter que cette méthode ne fonctionnera pas pour les variables d'environnement qui
+      sont lues avant les arguments de la ligne de commande. Pour SADIR, SSDIR, SFDIR, INCDIR, SNAPDIR, RAWWAVE_PATH,
+      CSNOSTOP, SFOUTYP cela devrait marcher, mais les variables d'environnement suivantes doivent être fixées
+      dans le système avant de lancer csound : OPCODEDIR, OPCODEDIR64, CSSTRINGS, et CS_LANG. Actuellement (v. 5.02)
+      CSOUNDRC peut être fixée par --env, mais cette possibilité n'est pas garantie dans les versions futures.</para>
+    </note>
+    <bridgehead>Windows</bridgehead>
+    <para>Pour fixer une variable d'environnement dans Windows XP et 2000 aller dans
+    Panneau de Contrôle->Système->Avancé et cliquer sur le bouton 'Variables d'environnement'. Dans les autres
+    versions de Windows antérieures à XP on fixe les variables d'environnement dans le fichier autoexec.bat.
+    Aller dans 'Poste de travail', choisir le lecteur C:, cliquer avec le bouton droit sur autoexec.bat, et
+    choisir 'Edition'. Le format de l'instruction est : SET NOM=VALEUR.
+    </para>
+    <bridgehead>Linux</bridgehead>
+    <para>Il y a plusieurs manières de fixer les variables d'environnement sur linux. On peut les initialiser
+    avec la commande de shell <emphasis>export</emphasis>, dans le fichier .bashrc ou des fichiers similaires
+    ou en les ajoutant au fichier /etc/profile.</para>
+    <bridgehead>Mac</bridgehead>
+    <para>Si l'on a un Mac avec une version d'OS X inférieure à la 10.3 (y compris 10.2 et 10.1) il est alors
+    possible que le shell par défaut soit le Tenex C-shell (tcsh). Si c'est le cas, il faut alors taper :</para>
+    <screen>~% setenv OPCODEDIR "/Users/you/your/Csound5/build"</screen>
+    <para>ou changer votre fichier /etc/profile et/ou modifier votre fichier .tcshrc.</para>
+    
+    <para>Si l'on a un Mac avec OS X 10.3 ou 10.4 alors il y a certainement un shell C "Bourne-again" (bash) par
+    défaut. Si c'est le cas, alors il faut taper quelque chose comme ça :</para>
+    
+    <screen>~$ export OPCODEDIR=/Users/you/your/Csound5/build</screen>
+    <para>De plus si l'on a un bash shell par défaut, alors il est plus facile de modifier le fichier .bashrc
+      ou le fichier /etc/profile.</para>
+    
+    <para>A noter que si l'on choisit l'une des méthodes ci-dessus, par exemple modifier le fichier .bashrc,
+    alors les variables d'environnement sont allouées quand un nouveau shell est créé. Ceci peut poser un
+    problème lorque votre application implémente une interface Quartz ou Aqua et n'utilise pas la ligne de
+    commande.</para>
+    
+    <para>Si c'est le cas, la solution standard (jusqu'à OS 10.3.9 et à moins que l'application utilise l'API
+    de csound et fixe directement les variables d'environnement) consiste à créer un fichier contenant une
+    liste de propriétés XML (un fichier nommé .plist par l'OS). Ce fichier devrait se trouver dans
+    ~/.MacOSX/Environment.plist. Cette solution a été utilisée spécifiquement pour l'objet [csoundapi~] pour
+    Pd sur OS X. Comme Pd utilise un style de paquetage .app natif OS X, et s'exécute en dehors de
+    l'interface Aqua, les moyens standard de fournir les variables d'environnement à Csound ne fonctionnent pas.
+    La solution consiste à fixer les variables d'environnement de Csound pour l'environnement Aqua.</para>
+    
+    <para>Il est probable que la plupart des utilisateurs n'auront pas de répertoire caché .MaxOSX dans leur
+    répertoire $HOME (alias ~/). Il faut d'abord créer ce répertoire et y ajouter Environment.plist. Le contenu
+    du fichier Environment.plist ressemblera à ceci :</para>
+    <programlisting>
+&lt;?xml version="1.0" encoding='UTF-8"?>
+&lt;!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN"
+    "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+&lt;plist version="1.0">
+&lt;dict>
+&lt;key>OPCODEDIR&lt;/key>
+&lt;string>/Library/Frameworks/CsoundLib.framework/Versions/5.1/Resources/Opcodes&lt;/string>
+&lt;key>OPCODEDIR64&lt;/key>
+&lt;string>/Volumes/ExternalHD/devel/csound5/lib64&lt;/string>
+&lt;key>INCDIR&lt;/key>
+&lt;string>/Volumes/ExternalHD/CSOUND/include&lt;/string>
+&lt;key>SFDIR&lt;/key>
+&lt;string>/Volumes/ExternalHD/iTunes/csoundaudio&lt;/string>
+&lt;/dict>
+&lt;/plist></programlisting>
+    <para>et ainsi de suite, en utilisant la balise XML &lt;key&gt; pour chaque variable d'environnement
+    requise par l'API et la balise &lt;string&gt; pour le chemin correspondant dans le système.</para>
+    <para>Prière de noter qu'il faut se déconnecter et se reconnecter (login) pour que ces changements
+    prennent effet.</para>
+  </simplesect>
+</section>

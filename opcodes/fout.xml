@@ -1,0 +1,207 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.18
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="fout">
+<indexterm id="IndexFout"><primary>fout</primary></indexterm>
+  <refentryinfo><title>Signal I/O:File I/O</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>fout</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>fout</refname>
+    <refpurpose>
+      Envoie des signaux de taux-a vers un nombre arbitraire de canaux dans un
+      fichier externe.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>fout</emphasis> envoie <emphasis>N</emphasis> signaux de taux-a
+      vers un fichier spécifié à <emphasis>N</emphasis> canaux.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>fout</command> ifilename, iformat, aout1 [, aout2, aout3,...,aoutN]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifilename</emphasis> -- le nom du fichier de sortie (entre guillements)
+    </para>
+
+    <para>
+      <emphasis>iformat</emphasis> -- un indicateur pour choisir le format du fichier
+      de sortie (note : il se peut que les versions de Csound antérieures à la 5.0
+      ne supportent que les formats 0, 1 et 2) :
+      <itemizedlist>
+        <listitem>
+          <para>0 - échantillons en flottants sur 32 bit sans en-tête (fichier PCM
+          binaire multicanaux)</para>
+        </listitem>
+
+        <listitem>
+          <para>1 - entiers sur 16 bit sans en-tête (fichier PCM binaire multicanaux)</para>
+        </listitem>
+
+        <listitem>
+          <para>2 - entiers sur 16 bit avec en-tête. Le type de l'en-tête dépend du
+          format de restitution (-o). Par exemple, si l'utilisateur choisit le
+          format AIFF (en utilisant
+          l'<link linkend="FlagsMinusUpperA"><citetitle>option -A</citetitle></link>),
+          le format de l'en-tête sera de type AIFF.</para>
+        </listitem>
+
+        <listitem>
+          <para>3 - échantillons u-law avec un en-tête (voir iformat=2).</para>
+        </listitem>
+
+        <listitem>
+          <para>4 - entiers sur 16 bit avec un en-tête (voir iformat=2).</para>
+        </listitem>
+
+        <listitem>
+          <para>5 - entiers sur 32 bit avec un en-tête (voir iformat=2).</para>
+        </listitem>
+
+        <listitem>
+          <para>6 - flottants sur 32 bit avec un en-tête (voir iformat=2).</para>
+        </listitem>
+
+        <listitem>
+          <para>7 - entiers non signés sur 8 bit avec un en-tête (voir iformat=2).</para>
+        </listitem>
+
+        <listitem>
+          <para>8 - entiers sur 24 bit avec un en-tête (voir iformat=2).</para>
+        </listitem>
+
+        <listitem>
+          <para>9 - flottants sur 64 bit avec un en-tête (voir iformat=2).</para>
+        </listitem>
+
+      </itemizedlist>
+      De plus, les versions de Csound à partir de la 5.0 permettent de choisir
+      explicitement un type d'en-tête particulier en spécifiant le format comme
+      10 * typeFichier + formatEchantillon, où typeFichier peut valoir 1 pour WAV,
+      2 pour AIFF, 3 pour fichiers brut (sans en-tête) et 4 pour IRCAM ;
+      formatEchantillon est l'une des valeurs ci-dessus comprise entre 0 et 9, sauf
+      que le format d'échantillon 0 est déduit de la ligne de commande (-o), le format
+      1 représente des entiers signés sur 8 bit et le format 2 est a-law. Ainsi,
+      par exemple, <emphasis>iformat</emphasis> = 25 signifie des entiers sur 32
+      bit avec un en-tête AIFF.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>aout1,... aoutN</emphasis> -- signaux à écrire dans le fichier. Dans
+      le cas de fichiers bruts, l'étendue de l'amplitude des signaux audio est
+      déterminée par le format d'échantillon choisi ; pour les fichiers son avec un
+      en-tête comme WAV et AIFF, les signaux audio doivent être dans l'intervalle
+      compris entre -0dbfs et 0dbfs.
+    </para>
+
+    <para>
+      <emphasis>fout</emphasis> (file output) écrit des échantillons de signaux
+      audio dans un fichier avec n'importe quel nombre de canaux. Le nombre de
+      canaux dépend du nombre de variables <emphasis>aoutN</emphasis> (par exemple
+      un signal mono avec un seul argument de taux-a, un signal stéréo avec deux
+      arguments de taux-a, etc.) Le nombre maximum de canaux est fixé à 64.
+      Plusieurs opcodes <emphasis>fout</emphasis> peuvent se trouver dans le
+      même instrument, se référant à différents fichiers.
+    </para>
+
+    <para>
+      Noter que, contrairement à <link linkend="out"><citetitle>out</citetitle></link>,
+      <link linkend="outs"><citetitle>outs</citetitle></link> et
+      <link linkend="outq"><citetitle>outq</citetitle></link>, <emphasis>fout</emphasis>
+      ne remet pas à zéro la variable audio, c'est pourquoi l'on doit la remettre à
+      zéro après l'appel. Si l'on travaille en polyphonie, on peut utiliser les
+      opcodes <link linkend="vincr"><citetitle>vincr</citetitle></link> et
+      <link linkend="clear"><citetitle>clear</citetitle></link> pour cela.
+    </para>
+
+    <para>
+      Noter que <emphasis>fout</emphasis> et 
+      <link linkend="foutk"><citetitle>foutk</citetitle></link> peuvent utiliser
+      soit une chaîne de caractères contenant un nom de chemin de fichier, soit un
+      identificateur numérique généré par
+      <link linkend="fiopen"><citetitle>fiopen</citetitle></link>. Alors qu'avec
+      <link linkend="fouti"><citetitle>fouti</citetitle></link> et
+      <link linkend="foutir"><citetitle>foutir</citetitle></link>, le fichier
+      cible ne peut être spécifié que par un identificateur numérique.
+    </para>
+    <note>
+      <para>Si l'on utilise <emphasis>fout</emphasis> pour générer un fichier audio
+      depuis la sortie globale de Csound, il peut être désirable d'utiliser l'opcode
+      <link linkend="monitor"><citetitle>monitor</citetitle></link> qui peut capter
+      le tampon de sortie, ce qui évite le routage.</para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode fout. Il utilise le fichier
+      <ulink url="examples/fout.csd"><citetitle>fout.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode fout.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/fout.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+    <para>
+      Voici un autre exemple de <emphasis>fout</emphasis>, qui l'utilise pour
+      sauvegarder le contenu d'une table dans un fichier audio. Il utilise les
+      fichiers <ulink url="examples/fout_ftable.csd"><citetitle>fout_ftable.csd</citetitle></ulink>
+      et <ulink url="examples/beats.wav"><citetitle>beats.wav</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode fout pour sauvegarder le contenu d'une f-table.</title>
+          <xi:include href="examples-xml/fout_ftable.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="fiopen"><citetitle>fiopen</citetitle></link>,
+      <link linkend="fouti"><citetitle>fouti</citetitle></link>,
+      <link linkend="foutir"><citetitle>foutir</citetitle></link>,
+      <link linkend="foutk"><citetitle>foutk</citetitle></link>,
+      <link linkend="monitor"><citetitle>monitor</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+        <member>1999</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.56 de Csound</para>
+    <para>Octobre 2002. Note ajoutée par Richard Dobson.</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,91 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.15
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="expon">
+<indexterm id="IndexExpon"><primary>expon</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Linear and Exponential Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>expon</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>expon</refname>
+    <refpurpose>
+      Trace une courbe exponentielle entre les points spécifiés.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Trace une courbe exponentielle entre les points spécifiés.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>expon</command> ia, idur, ib</synopsis>
+
+    <synopsis>kres <command>expon</command> ia, idur, ib</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ia</emphasis> -- valeur initiale. Zéro est interdit pour les exponentielles.
+    </para>
+
+    <para>
+      <emphasis>ib</emphasis> -- valeur après <emphasis>idur</emphasis> secondes. Pour les
+      exponentielles, doit être non nulle et du même signe que <emphasis>ia</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>idur</emphasis> -- durée en secondes du segment. Avec une valeur nulle ou
+      négative l'initialisation sera ignorée.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Ces unités génèrent des signaux de contrôle ou audio dont les valeurs passent par deux points
+      spécifiés. La valeur de <emphasis>idur</emphasis> peut égaler ou non la durée d'exécution de
+      l'instrument : avec une exécution plus courte, la courbe sera tronquée alors qu'avec une
+      exécution plus longue, le segment continuera dans la même direction.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode expon. Il utilise le fichier
+      <ulink url="examples/expon.csd"><citetitle>expon.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode expon.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/expon.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="expseg"><citetitle>expseg</citetitle></link>,
+      <link linkend="expsegr"><citetitle>expsegr</citetitle></link>,
+      <link linkend="line"><citetitle>line</citetitle></link>,
+      <link linkend="linseg"><citetitle>linseg</citetitle></link>,
+      <link linkend="linsegr"><citetitle>linsegr</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

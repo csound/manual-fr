@@ -1,0 +1,73 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="spechist">
+<indexterm id="IndexSpechist"><primary>spechist</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Non-Standard</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>spechist</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>spechist</refname>
+    <refpurpose>
+      Accumule les valeurs de trames spectrales successives.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Accumule les valeurs de trames spectrales successives.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>wsig <command>spechist</command> wsigin</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>wsigin</emphasis> -- le spectre d'entrée
+    </para>
+
+    <para>
+      Accumule les valeurs de trames spectrales successives. A chaque nouvelle
+      trame de <emphasis>wsigin</emphasis>, les accumulations récentes dans
+      chaque piste de magnitude sont écrités dans le spectre de sortie. Cette
+      unité fournit ainsi un <emphasis>histogram</emphasis> courant de la
+      distribution spectrale.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      <informalexample>
+        <programlisting>
+  wsig2    <emphasis role="opc">specdiff</emphasis>    wsig1         <emphasis role="comment">; sense onsets</emphasis>
+  wsig3    <emphasis role="opc">specfilt</emphasis>    wsig2, 2      <emphasis role="comment">; absorb slowly</emphasis>
+           <emphasis role="opc">specdisp</emphasis>    wsig2, 0.1    <emphasis role="comment">; &amp; display both spectra</emphasis>
+           <emphasis role="opc">specdisp</emphasis>    wsig3, 0.1</programlisting>
+      </informalexample>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="specaddm"><citetitle>specaddm</citetitle></link>,
+      <link linkend="specdiff"><citetitle>specdiff</citetitle></link>,
+      <link linkend="specfilt"><citetitle>specfilt</citetitle></link>,
+      <link linkend="specscal"><citetitle>specscal</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

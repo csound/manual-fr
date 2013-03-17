@@ -1,0 +1,173 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="envlpxr">
+<indexterm id="IndexEnvlpxr"><primary>envlpxr</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Envelope Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>envlpxr</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>envlpxr</refname>
+    <refpurpose>
+      L'opcode <emphasis>envlpx</emphasis> avec un segment final de relâchement.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>envlpxr</emphasis> est le même que
+      <link linkend="envlpx"><citetitle>envlpx</citetitle></link> sauf que le segment final n'est
+      exécuté qu'après un évènement MIDI de relâchement de note. La note est ensuite allongée de
+      la durée de la chute.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>envlpxr</command> xamp, irise, idec, ifn, iatss, iatdec [, ixmod] [,irind]</synopsis>
+
+    <synopsis>kres <command>envlpxr</command> kamp, irise, idec, ifn, iatss, iatdec [, ixmod] [,irind]</synopsis>
+ </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>irise</emphasis> -- durée de l'attaque en secondes. Une valeur nulle ou négative signifie pas
+      d'attaque.
+    </para>
+
+    <para>
+      <emphasis>idec</emphasis> -- durée de la chute en secondes. Zéro signifie pas de chute.
+    </para>
+
+    <para>
+      <emphasis>ifn</emphasis> -- numéro de la table de fonction avec point de garde 
+      dans laquelle la forme de l'attaque est stockée.
+    </para>
+
+    <para>
+      <emphasis>iatss</emphasis> -- facteur d'atténuation par lequel la dernière valeur de
+      l'attaque d'<emphasis>envlpxr</emphasis> évolue pendant le pseudo entretien de la
+      note. Un facteur supérieur à 1 provoque une montée exponentielle tandis qu'un facteur
+      inférieur à 1 crée une descente exponentielle. Un facteur égal à 1 maintient un véritable
+      entretien de la note sur la dernière valeur de l'attaque. Il faut noter que cette
+      atténuation n'évolue pas à vitesse constante (comme dans le cas du piano), mais qu'elle
+      dépend de la durée de la note. Cependant, si <emphasis>iatss</emphasis> est négatif (ou
+      si l'entretien &lt; 4 périodes-k) une vitesse d'atténuation de
+      <emphasis>abs</emphasis>(<emphasis>iatss</emphasis>) par seconde sera utilisée. 0 est
+      interdit.
+    </para>
+
+    <para>
+      <emphasis>iatdec</emphasis> -- facteur d'atténuation par lequel la dernière valeur de
+      l'entretien diminue exponentiellement pendant la chute. Cette valeur doit être positive
+      et elle est normalement de l'ordre de 0,01. Une valeur trop longue ou excessivement courte
+      peut produire une coupure audible. Les valeurs nulles ou négatives sont interdites.
+    </para>
+
+    <para>
+      <emphasis>ixmod</emphasis> (facultatif, entre +- 0,9 environ) -- facteur de modification
+      de courbe exponentielle, qui influe sur la raideur de la trajectoire exponentielle pendant
+      l'entretien. Les valeurs négatives provoqueront une montée ou une descente accélérée
+      (par exemple <emphasis>subito piano</emphasis>). Les valeurs positives provoqueront une
+      montée ou une descente ralentie. La valeur par défaut est zéro (exponentielle non
+      modifiée).
+    </para>
+
+    <para>
+      <emphasis>irind </emphasis> (facultatif) -- indicateur d'indépendance. S'il est nul, la durée de
+      relâchement (<emphasis>idec</emphasis>) aura une influence sur l'allongement de la note après un
+      note-off. S'il est non nul, la durée <emphasis>idec</emphasis> sera relativement indépendante de
+      l'allongement de la note (voir ci-dessous). La valeur par défaut est 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamp, xamp</emphasis> -- amplitude du signal d'entrée.
+    </para>
+
+    <para>
+      <emphasis>envlpxr</emphasis> fait partie des unités <quote>r</quote> de Csound qui
+      contiennent un détecteur de fin de note et une extension de durée pour le relâchement. Quand
+      la fin d'un évènement ou MIDI note-off est détectée, la durée d'exécution de l'instrument
+      courant est immédiatement allongée de <emphasis>idec</emphasis> secondes à moins qu'il ne soit
+      rendu indépendant par <emphasis>irind</emphasis>. Dans ce cas, la chute démarrera de
+      l'endroit, quelqu'il soit, où l'on se trouvait à ce moment précis.
+    </para>
+
+    <para>
+      On peut utiliser d'autres enveloppes préfabriquées pour lancer un segment de relâchement à
+      la réception d'un message note-off, comme
+      <link linkend="linsegr"><citetitle>linsegr</citetitle></link> et
+      <link linkend="expsegr"><citetitle>expsegr</citetitle></link>, ou bien l'on peut construire des
+      enveloppes plus complexes au moyen de
+      <link linkend="xtratim"><citetitle>xtratim</citetitle></link> et de
+      <link linkend="release"><citetitle>release</citetitle></link>. Noter qu'il n'est pas
+      nécessaire d'utiliser <link linkend="xtratim"><citetitle>xtratim</citetitle></link> avec
+      <emphasis>envlpxr</emphasis>, car la durée est allongée automatiquement.
+    </para>
+
+    <para>
+      Ces unités <quote>r</quote> peuvent être modifiées également par des évènements MIDI note-off
+      provoqués par une vélocité nulle. Si l'indicateur <emphasis>irind</emphasis> est positionné
+      (différent de zéro), la durée d'exécution totale n'est pas affectée par les données de note-off
+      ou de vélocité nulle.
+    </para>
+
+    <formalpara>
+      <title> Unités <quote>r</quote> multiples</title>
+      <para>
+        Quand plusieurs unités <quote>r</quote> sont présentes dans le même instrument, il
+        est habituel qu'une seule d'entre elle influence la durée totale de la note. C'est
+        normalement l'unité contrôlant l'amplitude principale de la note. D'autres unités
+        contrôlant par exemple l'évolution d'un filtre, peuvent toujours être sensibles aux
+        commandes note-off tout en n'affectant pas la durée grâce à leur indépendance
+        (<emphasis>irind</emphasis> non nul). En fonction de leur propre valeur
+        <emphasis>idec</emphasis> (durée de relâchement), les unités <quote>r</quote>
+        indépendantes pourront ou ne pourront pas atteindre leur destination finale
+        avant que la note ne se termine. Si elles y arrivent, elles tiendront
+        simplement leur dernière valeur jusqu'à la fin. Si plusieurs unités
+        <quote>r</quote> sont principales, l'extension de la note sera celle de la plus
+        grande valeur <emphasis>idec</emphasis>.
+      </para>
+    </formalpara>
+  </refsect1>
+
+   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode envlpxr. Il utilise le fichier
+      <ulink url="examples/envlpxr.csd"><citetitle>envlpxr.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode envlpxr.</title>
+          <xi:include href="examples-xml/envlpxr.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="envlpx"><citetitle>envlpx</citetitle></link>,
+      <link linkend="linen"><citetitle>linen</citetitle></link>,
+      <link linkend="linenr"><citetitle>linenr</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Merci à &nameluis; pour avoir signalé une erreur avec <emphasis>iatss</emphasis>.</para>
+  </refsect1>
+</refentry>

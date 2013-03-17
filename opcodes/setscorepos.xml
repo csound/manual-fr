@@ -1,0 +1,75 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="setscorepos">
+<indexterm id="Indexsetscorepos"><primary>setscorepos</primary></indexterm>
+<refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>setscorepos</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>setscorepos</refname>
+    <refpurpose>
+      Modifie la position de lecture de l'exécution courante de la partition.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Modifie la position de lecture de l'exécution courante de la partition.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis> <command>setscorepos ipos</command></synopsis>
+  </refsect1>
+
+ <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ipos</emphasis> -- position de lecture en secondes. 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode setscorepos. Il utilise le fichier
+      <ulink url="examples/setscorepos.csd"><citetitle>setscorepos.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode setscorepos.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/setscorepos.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="rewindscore"><citetitle>rewindscore</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>2008</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.09 de Csound.</para>
+  </refsect1>
+</refentry>

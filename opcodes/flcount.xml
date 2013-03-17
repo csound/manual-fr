@@ -1,0 +1,184 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.16
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLcount">
+<indexterm id="IndexFLcount"><primary>FLcount</primary></indexterm>
+  <refentryinfo><title>FLTK:Valuators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLcount</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLcount</refname>
+    <refpurpose>
+      Un opcode de widget FLTK qui crée un compteur.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Permet à l'utilisateur d'augmenter/diminuer une valeur avec des clics de
+      souris sur un bouton fléché correspondant.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kout, ihandle <command>FLcount</command> &quot;label&quot;, imin, imax, istep1, istep2, itype, \
+      iwidth, iheight, ix, iy, iopcode [, kp1] [, kp2] [, kp3] [...] [, kpN]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ihandle</emphasis> -- un identifiant (un nombre entier) qui
+      référence de manière univoque le widget correspondant. Il est utilisé par
+      d'autres opcodes qui modifient les propriétés du valuateur. Il est
+      automatiquement fixé par le valuateur.
+    </para>
+
+    <para>
+      <emphasis><quote>label</quote></emphasis> -- une chaîne entre guillemets
+      contenant un texte fourni par l'utilisateur placé à côté du widget.
+    </para>
+
+    <para>
+      <emphasis>imin</emphasis> -- valeur minimale de l'intervalle de sortie.
+    </para>
+
+    <para>
+      <emphasis>imax</emphasis> -- valeur maximale de l'intervalle de sortie.
+    </para>
+
+    <para>
+      <emphasis>istep1</emphasis> -- un nombre en virgule flottante indiquant
+      le pas d'incrémentation du valuateur à chaque clic de souris.
+      <emphasis>istep1</emphasis> sert aux réglages fins.
+    </para>
+
+    <para>
+      <emphasis>istep2</emphasis> -- un nombre en virgule flottante indiquant
+      le pas d'incrémentation du valuateur à chaque clic de souris.
+      <emphasis>istep2</emphasis> sert aux réglages grossiers.
+    </para>
+
+    <para>
+      <emphasis>itype</emphasis> -- un nombre entier dénotant l'apparence du
+      valuateur.
+    </para>
+
+    <para>
+      <emphasis>iwidth</emphasis> -- largeur du widget.
+    </para>
+
+    <para>
+      <emphasis>iheight</emphasis> -- hauteur du widget.
+    </para>
+
+    <para>
+      <emphasis>ix</emphasis> -- position horizontale du coin supérieur gauche
+      du valuateur, relative au coin supérieur gauche de la fenêtre correspondante
+      (exprimée en pixels).
+    </para>
+
+    <para>
+      <emphasis>iy</emphasis> -- position verticale du coin supérieur gauche
+      du valuateur, relative au coin supérieur gauche de la fenêtre correspondante
+      (exprimée en pixels).
+    </para>
+
+    <para>
+      <emphasis>iopcode</emphasis> -- type de l'instruction de partition. Il faut
+      fournir le code ASCII de la lettre correspondant à l'instruction de partition.
+      Actuellement seules les instructions de partition <quote>i</quote> (code
+      ASCII 105) sont supportées. Une valeur de zéro fait référence à une valeur
+      de <quote>i</quote> par défaut. Ainsi 0 et 105 activent l'instruction
+      <link linkend="i"><citetitle>i</citetitle></link>. Une valeur de -1
+      désactive cette possibilité.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kout</emphasis> -- valeur de sortie.
+    </para>
+
+    <para>
+      <emphasis>kp1</emphasis>, <emphasis>kp2</emphasis>, ..., <emphasis>kpN</emphasis> --
+      arguments des instruments activés.
+    </para>
+
+    <para>
+      <emphasis>FLcount</emphasis> permet à l'utilisateur d'augmenter/diminuer une
+      valeur avec des clics de souris sur les boutons fléchés correspondants :
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/flcount.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>FLcount.</phrase>
+        </textobject>
+
+        <caption>
+          <para>FLcount.</para>
+        </caption>
+      </mediaobject>
+    </para>
+
+    <para>
+      Il y a deux sortes de boutons fléchés, pour des pas plus grands ou plus
+      petits. Noter que non seulement <emphasis>FLcount</emphasis> retourne une
+      valeur et un identifiant, mais il peut aussi activer (programmer) un
+      instrument fourni par l'utilisateur chaque fois qu'un bouton est cliqué.
+      Les p-champs de l'instrument activé sont <emphasis>kp1</emphasis> (numéro
+      de l'instrument), <emphasis>kp2</emphasis> (date de l'action),
+      <emphasis>kp3</emphasis> (durée) suivis des p-champs de l'utilisateur. Si
+      l'argument <emphasis>iopcode</emphasis> est fixé à un nombre négatif,
+      aucun instrument n'est activé. Ainsi cette possibilité est facultative.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode FLcount. Il utilise le fichier
+      <ulink url="examples/FLcount.csd"><citetitle>FLcount.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode FLcount.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/FLcount.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="FLjoy"><citetitle>FLjoy</citetitle></link>,
+      <link linkend="FLknob"><citetitle>FLknob</citetitle></link>,
+      <link linkend="FLroller"><citetitle>FLroller</citetitle></link>,
+      <link linkend="FLslider"><citetitle>FLslider</citetitle></link>,
+      <link linkend="FLtext"><citetitle>FLtext</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.22</para>
+    <para>Exemple écrit par Iain McCurdy, édité par &namekevin;.</para>
+  </refsect1>
+</refentry>

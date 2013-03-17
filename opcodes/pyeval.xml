@@ -1,0 +1,73 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pyeval">
+<indexterm id="IndexPyEval"><primary>pyeval</primary></indexterm>
+  <refentryinfo><title>Python Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pyeval Opcodes</refentrytitle>
+  </refmeta>
+  
+  <refnamediv>
+    <refname>pyeval</refname>
+    <refpurpose>
+      Evalue une expression Python générique et met le résultat dans une variable
+      de Csound au taux-k ou au taux-i (suffixe i).
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kresult <command>pyeval</command> "expression"</synopsis>
+    <synopsis>iresult <command>pyevali</command> "expression"</synopsis>
+    <synopsis>kresult <command>pyleval</command> "expression"</synopsis>
+    <synopsis>iresult <command>pylevali</command> "expression"</synopsis>
+    <synopsis>kresult <command>pyevalt</command> ktrigger, "expression"</synopsis>
+    <synopsis>kresult <command>pylevalt</command> ktrigger, "expression"</synopsis>
+  </refsect1>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ces opcodes évaluent une expression Python générique et mettent le résultat
+      dans une variable de Csound au taux-k ou au taux-i (suffixe i).
+    </para>
+    <para>
+      L'évaluation de l'expression doit donner un nombre en virgule flottante ou
+      un objet convertible en nombre flottant.
+    </para>
+    <para>
+      Ils peuvent être utilisés pour transférer des données d'un objet Python
+      dans une variable de Csound.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemple du groupe d'opcodes pyeval</title>
+<para>Le code :</para>
+
+<programlisting>
+k1           <emphasis role="opc">pyeval</emphasis>      "v1"</programlisting>
+
+    <para>
+      copie le contenu de la variable Python <emphasis>v1</emphasis> dans la
+      variable <emphasis>k1</emphasis> de Csound à chaque cycle de contrôle.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      Copyright (c) 2002 Maurizio Umberto Puxeddu. Tous droits réservés.
+      Certaines parties, copyright (c) 2004 et 2005 Michael Gogins.
+      Ce document a été mis à jour le 25 juillet 2004 et le 1er février
+      2005 par &namemichael;.
+    </para>
+  </refsect1>
+</refentry>

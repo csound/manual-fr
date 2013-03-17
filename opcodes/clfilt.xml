@@ -1,0 +1,120 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="clfilt">
+<indexterm id="IndexClfilt"><primary>clfilt</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>clfilt</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>clfilt</refname>
+    <refpurpose>
+      Implémente des filtres passe-bas et passe-haut de différents styles.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Implémente les types de filtres analogiques standard classiques : passe-bas
+      et passe-haut. Ils sont implémentés avec les quatre sortes de filtre
+      classiques : Butterworth, Tchebychev de type 1, Tchebychev de type 2 et
+      elliptique. Le nombre de pôles peut être n'importe quel nombre pair compris
+      entre 2 et 80.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>clfilt</command> asig, kfreq, itype, inpol [, ikind] [, ipbr] [, isba] [, iskip]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>itype</emphasis> -- 0 pour passe-bas, 1 pour passe-haut.
+    </para>
+
+    <para>
+      <emphasis>inpol</emphasis> -- Le nombre de pôles du filtre. Ce doit être un
+      nombre pair compris entre 2 et 80.
+    </para>
+
+    <para>
+      <emphasis>ikind</emphasis> (facultatif) -- 0 pour Butterworth, 1 pour
+      Tchebychev de type 1, 2 pour Tchebychev de type 2, 3 pour elliptique. 0 par
+      défaut (Butterworth).
+    </para>
+
+    <para>
+      <emphasis>ipbr</emphasis> (facultatif) -- Ondulation de la bande passante
+      en dB. Doit être supérieure à 0. Elle est ignorée dans les filtres de
+      Butterworth et de Tchebychev de type 2. La valeur par défaut est 1 dB.
+    </para>
+
+    <para>
+      <emphasis>isba</emphasis> (facultatif) -- Atténuation de la bande bloquée
+      en dB. Doit être inférieure à 0. Elle est ignorée dans les filtres de
+      Butterworth et de Tchebychev de type 1. La valeur par défaut est -60 dB.
+    </para>
+
+    <para>
+      <emphasis>iskip</emphasis> (facultatif) -- 0 initialise tous les états
+      internes du filtre à 0. 1 ignore l'initialisation. La valeur par défaut
+      est 0.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- Le signal audio en entrée.
+    </para>
+
+    <para>
+      <emphasis>kfreq</emphasis> -- La fréquence de coupure du filtre passe-bas
+      ou passe-haut.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode clfilt comme filtre passe-bas. Il utilise le fichier
+      <ulink url="examples/clfilt_lowpass.csd"><citetitle>clfilt_lowpass.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode clfilt comme filtre passe-bas.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/clfilt_lowpass.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+    <para>
+      Voici un exemple de l'opcode clfilt comme filtre passe-haut. Il utilise le fichier
+      <ulink url="examples/clfilt_highpass.csd"><citetitle>clfilt_highpass.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode clfilt comme filtre passe-haut.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/clfilt_highpass.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : Erik Spjut</para>
+    <para>Nouveau dans la version 4.20</para>
+  </refsect1>
+</refentry>

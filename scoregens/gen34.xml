@@ -1,0 +1,150 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="GEN34">
+      <indexterm id="IndexGEN34"><primary>GEN34</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN34</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>GEN34</refname>
+    <refpurpose>
+      Génère des formes d'onde complexes en mélangeant des sinus.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ces routines génèrent des formes d'onde complexes en mélangeant des sinus, comme
+      <link linkend="GEN09"><citetitle>GEN09</citetitle></link>, mais les paramètres des partiels sont
+      spécifiés dans une table déjà existante, ce qui permet de calculer n'importe quel nombre de partiels
+      dans l'orchestre.
+    </para>
+
+    <para>
+      La différence entre <link linkend="GEN33"><citetitle>GEN33</citetitle></link> et <emphasis>GEN34</emphasis>
+      est que <emphasis>GEN33</emphasis> utilise la TFR inverse pour générer la sortie, alors que
+      <emphasis>GEN34</emphasis> est basé sur l'algorithme utilisé dans les opcode oscils.
+      <emphasis>GEN33</emphasis> ne permet que des partiels entiers, et ne supporte pas les tailles de table
+      égales à une puissance-de-deux plus 1, mais peut être significativement plus rapide avec un grand
+      nombre de partiels. D'un autre côté, avec <emphasis>GEN34</emphasis>, il est possible d'utiliser des
+      numéros de partiel non entiers et un point de garde, et cette routine peut être plus rapide s'il n'y
+      a qu'un petit nombre de partiels (noter que <emphasis>GEN34</emphasis> est aussi plusieurs fois plus
+      rapide que <link linkend="GEN09"><citetitle>GEN09</citetitle></link>, bien que ce dernier soit plus
+      précis).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>f</command> # date taille 34 src nh ech [fmode]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>size</emphasis> -- nombre de points dans la table. Doit être une puissance de deux ou une
+      puissance-de-deux plus 1.
+    </para>
+
+    <para>
+      <emphasis>src</emphasis> -- numéro de la table source. Cette table contient les paramètres de chaque
+      partiel dans le format suivant : <literallayout>ampa, pna, phsa, ampb, pnb, phsb, ...</literallayout>
+      les paramètres sont :
+      <itemizedlist>
+        <listitem><para><emphasis>ampa, ampb,</emphasis> etc. : amplitude relative des partiels. L'amplitude
+          actuelle dépend de la valeur de <emphasis>ech</emphasis>, ou de la normalisation (si celle-ci
+          est active).</para></listitem>
+        <listitem><para><emphasis>pna, pnb,</emphasis> etc. : numéro de partiel, ou fréquence, en fonction
+          de <emphasis>fmode</emphasis> (voir ci-dessous) ; zéro et des valeurs négatives sont autorisés,
+          cependant, si la valeur absolue du numéro de partiel dépasse (<emphasis>taille</emphasis> / 2),
+          le partiel ne sera pas rendu.</para></listitem>
+        <listitem><para><emphasis>phsa, phsb,</emphasis> etc. : phase initiale, dans l'intervalle de 0 à 1.
+        </para></listitem>
+      </itemizedlist>
+
+      La longueur de la table (sans compter le point de garde) devrait être d'au moins 3 * <emphasis>nh</emphasis>.
+      Si la table est trop courte, le nombre de partiels (<emphasis>nh</emphasis>) est réduit à
+      (longueur de la table) / 3, arrondi vers zéro.
+    </para>
+
+    <para>
+      <emphasis>nh</emphasis> -- nombre de partiels. Zéro ou des valeurs négatives sont autorisés, et
+      donnent une table vide (silence). Le nombre effectif peut être diminué si la table source
+      (<emphasis>src</emphasis>) est trop courte, ou si certains partiels ont une fréquence trop haute.
+    </para>
+
+    <para>
+      <emphasis>ech</emphasis> -- échelle d'amplitude.
+    </para>
+
+    <para>
+      <emphasis>fmode</emphasis> (facultatif, défaut = 0) -- une valeur non nulle indique que les fréquences
+      sont en Hz au lieu de numéros de partiel dans la table source. Le taux d'échantillonage est supposé
+      être <emphasis>fmode</emphasis> si celui-ci est positif, ou -(<emphasis>sr</emphasis> * <emphasis>fmode</emphasis>)
+      si une valeur négative est spécifiée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de la routine GEN34. Il utilise le fichier
+      <ulink url="examples/gen34.csd"><citetitle>gen34.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de la routine GEN34.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/gen34.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      <textobject>
+        <phrase>Voici le diagramme de la forme d'onde générée par GEN34,
+          utilisé dans l'exemple :</phrase>
+      </textobject>
+    </para>
+    <para>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen34.png" format="PNG"/>
+        <textobject>
+          <phrase>f 2 0 262144 -34 1 inumh 1 -1</phrase>
+        </textobject>
+        </imageobject>
+
+        <caption>
+          <para>f 2 0 262144 -34 1 inumh 1 -1</para>
+        </caption>
+      </mediaobject>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="GEN09"><citetitle>GEN09</citetitle></link>,
+      <link linkend="GEN33"><citetitle>GEN33</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Programmeur : &nameistvan;</member>
+        <member>Mars 2002</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 4.19</para>
+  </refsect1>
+</refentry>

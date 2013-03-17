@@ -1,0 +1,124 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="midremot">
+<indexterm id="Indexmidremot"><primary>midremot</primary></indexterm>
+  <refentryinfo><title>Remote Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>midremot</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>midremot</refname>
+    <refpurpose>
+      Un opcode que l'on peut utiliser pour implémenter un orchestre midi distant.
+      Cet opcode envoie des évènements midi d'une machine source vers une machine
+      de destination.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Avec les opcodes <emphasis>midremot</emphasis> et
+      <link linkend="midglobal"><citetitle>midglobal</citetitle></link> il est
+      possible d'exécuter des instruments sur des machines distantes et de
+      les contrôler depuis une machine maître. Les opcodes distants sont implémentés
+      suivant le modèle maître/client. Toutes les machines concernées contiennent
+      le même orchestre mais seule la machine maître possède l'information de la
+      partition midi. Durant l'exécution, la machine maître envoie les évènements
+      midi aux clients. L'opcode <emphasis>midremot</emphasis> envoie des évènements
+      d'une machine source à une machine de destination. Pour envoyer des évènements
+      à plusieurs destinations (diffusion), on utilise l'opcode
+      <link linkend="midglobal"><citetitle>midglobal</citetitle></link>. Ces deux
+      opcodes peuvent être utilisés en combinaison.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>midremot</command> idestination, isource, instrnum [,instrnum...] </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>idestination</emphasis> -- une chaîne représentant l'ordinateur de
+      destination (par exemple 192.168.0.100). C'est l'hôte de destination qui
+      reçoit les évènements de l'instrument donné.
+    </para>
+
+    <para>
+      <emphasis>isource</emphasis> -- une chaîne représentant l'ordinateur hôte
+      (par exemple 192.168.0.100). C'est l'hôte source qui génère les évènements
+      pour l'instruments donné et les envoie à l'adresse donnée par
+      <emphasis>idestination</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>instrnum</emphasis> -- liste des numéros des intruments qui
+      seront joués sur la machines destinataire.
+    </para>
+
+  </refsect1>
+
+<!--  <refsect1>
+    <title>Exécution</title>
+    
+  </refsect1>-->
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode midremot. Il utilise le fichier
+      <ulink url="examples/midremot.csd"><citetitle>insremot.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode midremot.</title>
+        <para>
+          L'exemple montre une fugue de Bach jouée sur 4 ordinateurs distants. La
+          machine maître est nommée "192.168.1.100", le client1 "192.168.1.101"
+          et ainsi de suite. Démarrer le client sur chaque machine (ils attendront
+          de recevoir les évènements de la machine maître), puis démarrer le
+          maître. Sur un système linux, on démarre un client avec la commande
+          (csound -dm0 -odac -+rtaudio=alsa midremot.csd -+rtmidi=Null), tandis que
+          la commande sur la machine maître ressemble à ceci
+          (csound -dm0 -odac -+rtaudio=alsa midremot.csd -F midremot.mid).
+        </para>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/midremot.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="insglobal"><citetitle>insglobal</citetitle></link>,
+      <link linkend="insremot"><citetitle>insremot</citetitle></link>,
+      <link linkend="midglobal"><citetitle>midglobal</citetitle></link>,
+      <link linkend="remoteport"><citetitle>remoteport</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Simon Schampijer</member>
+        <member>2006</member>
+      </simplelist>
+    </para>
+    <para>
+      Nouveau dans la version 5.03
+    </para>
+  </refsect1>
+</refentry>

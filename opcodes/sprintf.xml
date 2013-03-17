@@ -1,0 +1,103 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="sprintf">
+<indexterm id="Indexsprintf"><primary>sprintf</primary></indexterm>
+  <refentryinfo><title>Strings:Manipulation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>sprintf</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>sprintf</refname>
+    <refpurpose>
+      Sortie formattée à la printf dans une variable chaîne de caractères.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>sprintf</emphasis> écrit une sortie formatée à la printf dans
+      une variable chaîne de caractères, comme le fait la fonction C sprintf().
+      <emphasis>sprintf</emphasis> ne s'exécute que pendant l'initialisation.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>Sdst <command>sprintf</command> Sfmt, xarg1[, xarg2[, ... ]]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>Sfmt</emphasis> -- chaîne de formatage comme dans printf() et
+      d'autres fonctions C similaires, sauf que les modificateurs de longueur
+      (l, ll, h, etc.) ne sont pas supportés. Les spécificateurs de conversion
+      suivants sont permis :
+      <itemizedlist>
+        <listitem>
+          <para>d, i, o, u, x, X, e, E, f, F, g, G, c, s</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>xarg1, xarg2, ...</emphasis> -- arguments d'entrée (max. 30) à
+      formater, doivent être de taux-i pour tous les spécificateurs de conversion
+      sauf pour %s, qui nécessite un argument chaîne de caractères. Les formats
+      d'entiers comme %d arrondissent les valeurs d'entrée à l'entier le plus
+      proche.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>Sdst</emphasis> -- variable chaîne de caractères en sortie
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode sprintf. Il utilise le fichier
+      <ulink url="examples/sprintf.csd"><citetitle>sprintf.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode sprintf.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/sprintf.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
+The file name is: 'impuls20.aiff'
+soundin: opened 'impuls20.aiff'</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="sprintfk"><citetitle>sprintfk</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Istvan Varga</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

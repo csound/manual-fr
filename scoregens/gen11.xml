@@ -1,0 +1,162 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="GEN11">
+      <indexterm id="IndexGEN11"><primary>GEN11</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN11</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>GEN11</refname>
+    <refpurpose>
+      Génère un ensemble additif de partiels cosinus.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ce sous-programme génère un ensemble additif de partiels cosinus, à la manière des générateurs de
+      Csound <link linkend="buzz"><citetitle>buzz</citetitle></link> et
+      <link linkend="gbuzz"><citetitle>gbuzz</citetitle></link>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>f</command> # date taille 11 nh [lh] [r]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+   <para>
+      <emphasis>taille</emphasis> -- nombre de points dans la table. Doit être une puissance de 2 ou une
+      puissance-de-2 plus 1 (voir l'<link linkend="f"><citetitle>instruction f</citetitle></link>).
+    </para>
+
+    <para>
+      <emphasis>nh</emphasis> -- nombre d'harmoniques demandés. Doit être positif.
+    </para>
+
+    <para>
+      <emphasis>lh</emphasis>(optional) -- harmonique présent le plus bas. Peut être positif, nul ou négatif.
+      L'ensemble d'harmoniques peut démarrer à n'importe quel numéro d'harmonique et progresse vers le haut ;
+      si <emphasis>lh</emphasis> est négatif, tous les harmoniques en dessous de zéro se réfléchiront autour
+      de zéro pour produire des harmoniques positifs sans changement de phase (car le cosinus est une fonction
+      paire), et s'ajouteront de façon constructive aux harmoniques positifs de l'ensemble. La valeur par
+      défaut est 1.
+    </para>
+
+    <para>
+      <emphasis>r</emphasis>(facultatif) -- multiplicateur dans une série de coefficients d'amplitude. C'est
+      une séries de puissances : si le <emphasis>lh</emphasis> ème harmonique a un coefficient d'amplitude
+      de A le (<emphasis>lh</emphasis> + <emphasis>n</emphasis>)ème harmonique aura un coefficient de A * r<superscript>n</superscript>,
+      c'est-à-dire que les valeurs d'amplitudes suivent une courbe exponentielle. <emphasis>r</emphasis> peut
+      être positif, nul ou négatif, et n'est pas restreint à des entiers. La valeur par défaut est 1.
+    </para>
+
+    <note>
+     <title>Note</title>
+     <para>
+       <itemizedlist>
+         <listitem>
+           <para>
+             Ce sous-programme est une version invariante dans le temps des générateurs de Csound
+             <link linkend="buzz"><citetitle>buzz</citetitle></link> et
+             <link linkend="gbuzz"><citetitle>gbuzz</citetitle></link>, et il est similairement utile
+             comme source sonore complexe pour la synthèse soustractive. Si <emphasis>lh</emphasis> et
+             <emphasis>r</emphasis> sont utilisés, il agit comme <emphasis>gbuzz</emphasis> ; si les
+             deux sont absents ou égaux à 1, il se réduit au générateur plus simple
+             <emphasis>buzz</emphasis> (c'est-à-dire <emphasis>nh</emphasis> harmoniques d'amplitude
+             égale commençant avec le fondamental).
+           </para>
+         </listitem>
+
+         <listitem>
+           <para>
+             Lire la forme d'onde stockée avec un oscillateur est plus efficace que d'utiliser les unités
+             dynamiques buzz. Cependant, le contenu spectral est invariant et il faut faire attention à
+             ce que les harmoniques les plus hauts ne dépassent pas la fréquence de Nyquist pour éviter
+             les repliements.
+           </para>
+         </listitem>
+       </itemizedlist>
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de la routine GEN11. Il utilise le fichier
+      <ulink url="examples/gen11.csd"><citetitle>gen11.csd</citetitle></ulink>.
+
+      <example>
+        <title>Un exemple de la routine GEN11.</title>
+        <xi:include href="examples-xml/gen11.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      <textobject>
+        <phrase>Voici les diagrammes des formes d'onde des routines GEN11 utilisées
+        dans l'exemple :</phrase>
+      </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen11_1.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 1 0 16384 11 1 1</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 1 0 16384 11 1 1</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen11_2.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 2 0 16384 11 10 1 .7</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 2 0 16384 11 10 1 .7</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen11_3.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 3 0 16384 11 10 5 2</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 3 0 16384 11 10 5 2</para>
+        </caption>
+      </mediaobject>
+
+    </para>
+  </refsect1>
+
+  <refsect1>
+     <title>Voir aussi</title>
+     <para>
+       <link linkend="GEN10"><citetitle>GEN10</citetitle></link>
+     </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,107 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="m">
+  <indexterm id="IndexMStatement"><primary>m statement</primary></indexterm>
+  <indexterm id="IndexMarkStatement"><primary>mark statement</primary></indexterm>
+  <refmeta>
+    <refentrytitle>Instruction m (instruction de marquage)</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>m</refname>
+    <refpurpose>
+      Positionne une marque nommée dans la partition.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Positionne une marque nommée dans la partition, qui peut être utilisée par une
+      <link linkend="n"><citetitle>instruction n</citetitle></link>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>m</command> p1</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>p1</emphasis> -- Nom de la marque.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Peut être utile pour construire une structure couplet refrain dans la partition.
+      Les noms peuvent contenir des lettres et des chiffres.
+    </para>
+    <para>
+      Par exemple, la partition suivante :
+    </para>
+    <programlisting>
+<emphasis role="stamnt">m</emphasis> foo
+<emphasis role="stamnt">i</emphasis>1 0 1
+<emphasis role="stamnt">i</emphasis>1 1 1.5
+<emphasis role="stamnt">i</emphasis>1 2.5 2
+<emphasis role="stamnt">s</emphasis>
+<emphasis role="stamnt">i</emphasis>1 0 10
+<emphasis role="stamnt">s</emphasis>
+<emphasis role="stamnt">n</emphasis> foo
+<emphasis role="stamnt">e</emphasis></programlisting>
+    <para>
+      sera passée au préprocesseur de Csound comme :
+    </para>
+    <programlisting>
+<emphasis role="stamnt">i</emphasis>1 0 1
+<emphasis role="stamnt">i</emphasis>1 1 1.5
+<emphasis role="stamnt">i</emphasis>1 2.5 2
+<emphasis role="stamnt">s</emphasis>
+<emphasis role="stamnt">i</emphasis>1 0 10
+<emphasis role="stamnt">s</emphasis>
+<emphasis role="comment">;; ceci est la section nommée répétée</emphasis>
+<emphasis role="stamnt">i</emphasis>1 0 1
+<emphasis role="stamnt">i</emphasis>1 1 1.5
+<emphasis role="stamnt">i</emphasis>1 2.5 2
+<emphasis role="stamnt">s</emphasis>
+<emphasis role="comment">;; fin de la section nommée</emphasis>
+<emphasis role="stamnt">e</emphasis></programlisting>
+  </refsect1>
+ 
+   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'instruction m. Il utilise le fichier
+      <ulink url="examples/m.csd"><citetitle>m.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'instruction m.</title>
+        <xi:include href="examples-xml/m.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Université de Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>Avril 1998</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.48 de Csound</para>
+  </refsect1>
+</refentry>

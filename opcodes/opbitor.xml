@@ -1,0 +1,69 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="opbitor">
+<indexterm id="IndexVerbar"><primary>&verbar;</primary></indexterm>
+  <refentryinfo><title>Mathematical Operations:Arithmetic and Logic Operations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>&verbar;</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>&verbar;</refname>
+    <refpurpose>
+      Opérateur OU binaire.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Les opérateurs binaires effectuent le ET binaire, le OU binaire, la négation binaire et la
+      non-équivalence binaire.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>a <command>&verbar;</command> b  (OU binaire)</synopsis>
+
+    <para>
+      où les arguments <emphasis>a</emphasis> et <emphasis>b</emphasis> peuvent être des expressions.
+      Ils sont convertis à la valeur entière la plus proche selon la précision de la machine et
+      l'opération est ensuite effectuée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      La priorité de ces opérateurs est inférieure à celle des opérateurs
+      arithmétiques, mais supérieure à celle des comparaisons.
+    </para>
+
+    <para>
+      On peut utiliser des parenthèses pour forcer des groupements particuliers.
+    </para>
+
+    <para>
+      Pour un exemple d'utilisation, voir l'entrée pour
+      <link linkend="opbitand"><citetitle>&amp;</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+       <link linkend="opbitand"><citetitle>&amp;</citetitle></link>, 
+      <link linkend="opnonequiv"><citetitle>#</citetitle></link>, 
+      <link linkend="opbitnot"><citetitle>¬</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

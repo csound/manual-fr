@@ -1,0 +1,117 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="atone">
+<indexterm id="IndexAtone"><primary>atone</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>atone</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>atone</refname>
+    <refpurpose>
+      Un filtre passe-haut dont les fonctions de transfert sont les complémentaires de celles de l'opcode
+      <link linkend="tone"><citetitle>tone</citetitle></link>.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Un filtre passe-haut dont les fonctions de transfert sont les complémentaires de celles de l'opcode
+      <link linkend="tone"><citetitle>tone</citetitle></link>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>atone</command> asig, khp [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iskip</emphasis> (facultatif, par défaut 0) -- état initial de l'espace de données interne.
+      Comme le filtrage comprend une boucle de rétroaction sur la sortie précédente, l'état initial de
+      l'espace de stockage utilisé est significatif. Une valeur nulle provoquera l'effacement de cet
+      espace ; une valeur non nulle autorisera la persistance de l'information précédente. La valeur par
+      défaut est 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ares</emphasis> -- le signal de sortie au taux audio.
+    </para>
+
+    <para>
+      <emphasis>asig</emphasis> -- le signal d'entrée au taux audio.
+    </para>
+
+    <para>
+      <emphasis>khp</emphasis> --  le point à mi-puissance de la courbe de réponse, en Hertz. La
+      mi-puissance est définie par puissance maximale / racine de 2.
+    </para>
+
+    <para>
+      <emphasis>atone</emphasis> est un filtre dont les fonctions de transfert sont complémentaires de
+      celles de <link linkend="tone"><citetitle>tone</citetitle></link>. Ainsi <emphasis>atone</emphasis>
+      est un filtre passe-haut dont les fonctions de transfert représentent
+      les aspects <quote>filtrés</quote> de leurs compléments. Cependant, l'échelle de puissance n'est
+      pas normalisée dans <emphasis>atone</emphasis> mais reste le complément réel de l'unité correspondante.
+      Ainsi les deux versions d'un signal audio filtré par des unités <emphasis>tone</emphasis> et
+      <emphasis>atone</emphasis> correspondantes, redonneraient par addition le signal original.
+    </para>
+
+    <para>
+      Cette propriété est particulièrement utile pour contrôler le mélange de différentes sources (voir
+      <link linkend="lpreson"><citetitle>lpreson</citetitle></link>). On peut obtenir des courbes de
+      réponse complexes comme celles qui présentent plusieurs valeurs maximales, en utilisant une banque
+      de filtres adéquats en série. (La réponse résultante est le produit des différentes réponses.)
+      Dans une telle situation, les atténuations combinées peuvent conduire à une sérieuse perte de
+      puissance du signal, mais celle-ci peut être restaurée au moyen de
+      <link linkend="balance"><citetitle>balance</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode atone. Il utilise le fichier
+      <ulink url="examples/atone.csd"><citetitle>atone.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode atone.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/atone.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="areson"><citetitle>areson</citetitle></link>,
+      <link linkend="aresonk"><citetitle>aresonk</citetitle></link>,
+      <link linkend="atonek"><citetitle>atonek</citetitle></link>,
+      <link linkend="port"><citetitle>port</citetitle></link>,
+      <link linkend="portk"><citetitle>portk</citetitle></link>,
+      <link linkend="reson"><citetitle>reson</citetitle></link>,
+      <link linkend="resonk"><citetitle>resonk</citetitle></link>,
+      <link linkend="tone"><citetitle>tone</citetitle></link>,
+      <link linkend="tonek"><citetitle>tonek</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

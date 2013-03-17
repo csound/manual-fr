@@ -1,0 +1,69 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="strcat">
+<indexterm id="Indexstrcat"><primary>strcat</primary></indexterm>
+  <refentryinfo><title>Strings:Manipulation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>strcat</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>strcat</refname>
+    <refpurpose>
+      Concaténation de chaînes de caractères.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Concaténation de deux chaînes et stockage du résultat dans une variable.
+      <emphasis>strcat</emphasis> ne s'exécute que pendant l'initialisation. Il
+      est permis qu'un des arguments d'entrée soit le même que la variable de
+      sortie.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>Sdst <command>strcat</command> Ssrc1, Ssrc2</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode strcat. Il utilise le fichier
+      <ulink url="examples/strcat.csd"><citetitle>strcat.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode strcat.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/strcat.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Voir aussi</title>
+    <para><link linkend="strcatk"><citetitle>strcatk</citetitle></link></para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Istvan Varga</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.02</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,33 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.1
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="PrefaceToot4">
+  <title>Toot 4</title>
+  <para>
+    Ensuite, nous animerons le son de base en le mélangeant avec deux copies de lui-même
+    légèrement désaccordées. Nous emploierons le convertisseur de valeur de Csound
+    <link linkend="cpspch"><citetitle>cpspch</citetitle></link> qui nous permettra de
+    spécifier les hauteurs par octave et classe de hauteur plutôt que par la fréquence,
+    et nous utiliserons le convertisseur <link linkend="ampdb"><citetitle>ampdb</citetitle></link>
+    pour spécifier l'intensité en decibels plutôt que linéairement.
+  </para>
+  <para>
+    Comme nous additionnons les sorties de trois oscillateurs, chacun avec la même
+    enveloppe d'amplitude, nous pondérerons l'amplitude avant de les mélanger.
+    <emphasis>iscale</emphasis> et <emphasis>inote</emphasis> sont des noms arbitraires
+    afin de faciliter la lecture du modèle. Ce sont deux variables de taux-i, évaluées
+    à l'initialisation de l'instrument.
+  </para>
+  <para>
+    Voici le fichier <ulink url="examples/toot4.csd"><citetitle>toot4.csd</citetitle></ulink> :
+  </para>
+  <para>
+<xi:include href="examples-xml/toot4.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </para>
+</section>

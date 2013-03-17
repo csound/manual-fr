@@ -1,0 +1,313 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.2
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<chapter id="ScoregensTop">
+  <title>Instructions de partition et routines GEN</title>
+
+  <section id="ScoreStatementsRef">
+    <title>Instructions de partition</title>
+    <para>
+    Les instructions utilisées dans les partitions sont :
+    <itemizedlist>
+      <listitem><para>
+          <link linkend="a"><citetitle>a</citetitle></link> - Avance le temps de la partition d'une quantité spécifiée
+        </para></listitem>
+      <listitem><para>
+          <link linkend="b"><citetitle>b</citetitle></link> - Réinitialise l'horloge
+        </para></listitem>
+      <listitem><para>
+          <link linkend="e"><citetitle>e</citetitle></link> - Marque la fin de la dernière section de la partition
+        </para></listitem>
+      <listitem><para>
+          <link linkend="f"><citetitle>f</citetitle></link> - Appelle une <link linkend="ScoreGenRef"><citetitle>routine GEN</citetitle></link> pour placer des valeurs dans une table de fonction stockée
+        </para></listitem>
+      <listitem><para>
+          <link linkend="i"><citetitle>i</citetitle></link> - Active un instrument à une date spécifique et pour une certaine durée
+        </para></listitem>
+      <listitem><para>
+          <link linkend="m"><citetitle>m</citetitle></link> - Positionne une marque nommée dans la partition
+        </para></listitem>
+      <listitem><para>
+          <link linkend="n"><citetitle>n</citetitle></link> - Répète une section marquée
+        </para></listitem>
+      <listitem><para>
+          <link linkend="q"><citetitle>q</citetitle></link> - Rend un instrument silencieux
+        </para></listitem>
+      <listitem><para>
+          <link linkend="r"><citetitle>r</citetitle></link> - Commence une section répétée
+        </para></listitem>
+      <listitem><para>
+          <link linkend="s"><citetitle>s</citetitle></link> - Marque la fin d'une section
+        </para></listitem>
+      <listitem><para>
+          <link linkend="t"><citetitle>t</citetitle></link> - Fixe le tempo
+        </para></listitem>
+      <listitem><para>
+          <link linkend="v"><citetitle>v</citetitle></link> - Permet une modification temporelle variable localement des évènements de la partition
+        </para></listitem>
+      <listitem><para>
+          <link linkend="x"><citetitle>x</citetitle></link> - Ignore le reste de la section courante
+        </para></listitem>
+      <listitem><para>
+          <link linkend="leftbrace"><citetitle>{</citetitle></link> - Commence une boucle imbriquable, sans section
+        </para></listitem>
+      <listitem><para>
+          <link linkend="rightbrace"><citetitle>}</citetitle></link> - Termine une boucle imbriquable, sans section
+        </para></listitem>
+    </itemizedlist>
+  </para>
+
+  </section>
+    &scoregensa;
+    &scoregensb;
+    &scoregense;
+    &scoregensf;
+    &scoregensi;
+    &scoregensm;
+    &scoregensn;
+    &scoregensq;
+    &scoregensr;
+    &scoregenss;
+    &scoregenst;
+    &scoregensv;
+    &scoregensx;
+    &scoregensleftbrace;
+    &scoregensrightbrace;
+
+  <section id="ScoreGenRef">
+    <title>Routines GEN</title>
+    <para>Les routines GEN sont utilisées comme générateurs de données pour les tables de fonction. Quand
+ une table de fonction est créée au moyen de <link linkend="f"><citetitle>l'instruction de partition f</citetitle></link>
+ la fonction GEN est donnée dans le quatrième argument. Un numéro de GEN négatif implique que la fonction
+ ne sera pas normalisée et qu'elle gardera ses valeurs originales.</para>
+    <bridgehead>Générateurs Sinus/Cosinus : </bridgehead>
+    <itemizedlist>
+      <listitem>
+        <simpara><link linkend="GEN09"><citetitle>GEN09</citetitle></link> - Formes d'ondes complexes obtenues par une somme pondérée de sinus.</simpara>
+      </listitem>
+      <listitem>
+      <simpara><link linkend="GEN10"><citetitle>GEN10</citetitle></link> - Formes d'ondes complexes obtenues par une somme pondérée de sinus.</simpara>
+      </listitem>
+      <listitem>
+      <simpara><link linkend="GEN11"><citetitle>GEN11</citetitle></link> - Ensemble additif de partiels cosinus.</simpara>
+      </listitem>
+      <listitem>
+      <simpara><link linkend="GEN19"><citetitle>GEN19</citetitle></link> - Formes d'ondes complexes obtenues par une somme pondérée de sinus.</simpara>
+      </listitem>
+      <listitem>
+      <simpara><link linkend="GEN30"><citetitle>GEN30</citetitle></link> - Génère des partiels harmoniques en analysant une table existante.</simpara>
+      </listitem>
+      <listitem>
+      <simpara><link linkend="GEN33"><citetitle>GEN33</citetitle></link> - Génère des formes d'onde complexes en mélangeant des sinus.</simpara>
+      </listitem>
+      <listitem>
+      <simpara><link linkend="GEN34"><citetitle>GEN34</citetitle></link> - Génère des formes d'onde complexes en mélangeant des sinus.</simpara>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead>Générateurs par morceaux de ligne/exponentielle</bridgehead>
+    <itemizedlist>
+      <listitem>
+      <simpara><link linkend="GEN05"><citetitle>GEN05</citetitle></link> - Construit des fonctions à partir de morceaux de courbes exponentielles.</simpara>
+      </listitem>
+      <listitem>
+      <simpara><link linkend="GEN06"><citetitle>GEN06</citetitle></link> - Génère une fonction composée de morceaux de polynômes cubiques.</simpara>
+      </listitem>
+      <listitem>
+      <simpara><link linkend="GEN07"><citetitle>GEN07</citetitle></link> - Construit des fonctions à partir de morceaux de lignes droites.</simpara>
+      </listitem>
+      <listitem>
+      <simpara><link linkend="GEN08"><citetitle>GEN08</citetitle></link> - Génère une courbe spline cubique par morceaux.</simpara>
+      </listitem>
+      <listitem>
+      <simpara><link linkend="GEN16"><citetitle>GEN16</citetitle></link> - Crée une table depuis une valeur initiale jusqu'à une valeur terminale.</simpara>
+      </listitem>
+      <listitem>
+      <simpara><link linkend="GEN25"><citetitle>GEN25</citetitle></link> - Construit des fonctions à partir de morceaux de courbes exponentielles avec des points charnière (breakpoints).</simpara>
+      </listitem>
+      <listitem>
+      <simpara><link linkend="GEN27"><citetitle>GEN27</citetitle></link> - Construit des fonctions à partir de morceaux de lignes droites avec des points charnière.</simpara>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead>
+      Routines GEN d'accès fichier :
+    </bridgehead>
+    <itemizedlist>
+      <listitem>
+      <simpara><link linkend="GEN01"><citetitle>GEN01</citetitle></link> - Transfère des données d'un fichier son dans une table de fonction.</simpara>
+      </listitem>
+      <listitem>
+      <simpara><link linkend="GEN23"><citetitle>GEN23</citetitle></link> - Lit des valeurs numériques à partir d'un fichier texte.</simpara>
+      </listitem>
+      <listitem>
+      <simpara><link linkend="GEN28"><citetitle>GEN28</citetitle></link> - Lit un fichier texte qui contient une trajectoire paramétrée par le temps.</simpara>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead>
+      Routines GEN d'accès à des valeurs numériques
+    </bridgehead>
+    <itemizedlist>
+      <listitem>
+      <simpara><link linkend="GEN02"><citetitle>GEN02</citetitle></link> - Transfère les données des p-champs dans une table de fonction.</simpara>
+      </listitem>
+      <listitem>
+      <simpara><link linkend="GEN17"><citetitle>GEN17</citetitle></link> - Crée une fonction en escalier à partir des paires x-y données.</simpara>
+      </listitem>
+      <listitem>
+      <simpara><link linkend="GEN52"><citetitle>GEN52</citetitle></link> - Crée une table multi-canaux entrelacés à partir des tables source indiquées, dans le format attendu par l'opcode <emphasis>ftconv</emphasis>.</simpara>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead>
+      Routines GEN de fonction fenêtre
+    </bridgehead>
+    <itemizedlist>
+      <listitem>
+      <simpara><link linkend="GEN20"><citetitle>GEN20</citetitle></link> - Génère les fonctions de différentes fenêtres.</simpara>
+    </listitem>
+    </itemizedlist>
+
+
+
+    <bridgehead>
+      Routines GEN de fonction aléatoire
+    </bridgehead>
+    <itemizedlist>
+      <listitem>
+      <simpara><link linkend="GEN21"><citetitle>GEN21</citetitle></link> - Génère les tables de différentes distributions aléatoires.</simpara>
+      </listitem>
+      <listitem>
+      <simpara><link linkend="GEN40"><citetitle>GEN40</citetitle></link> - Génère une distribution aléatoire à partir d'un histogramme.</simpara>
+      </listitem>
+      <listitem>
+      <simpara><link linkend="GEN41"><citetitle>GEN41</citetitle></link> - Génère une liste aléatoire de paires numériques.</simpara>
+      </listitem>
+      <listitem>
+      <simpara><link linkend="GEN42"><citetitle>GEN42</citetitle></link> - Génère une distribution aléatoire d'intervalles discrets de valeurs.</simpara>
+      </listitem>
+      <listitem>
+      <simpara><link linkend="GEN43"><citetitle>GEN43</citetitle></link> - Charge un fichier PVOCEX contenant une analyse VP.</simpara>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead>
+      Routines GEN de distorsion linéaire
+    </bridgehead>
+    <itemizedlist>
+      <listitem>
+      <simpara><link linkend="GEN03"><citetitle>GEN03</citetitle></link> - Génère une table de fonction en évaluant un polynôme.</simpara>
+      </listitem>
+      <listitem>
+      <simpara><link linkend="GEN13"><citetitle>GEN13</citetitle></link> - Mémorise un polynôme dont les coefficients sont dérivés des polynômes de Tchebychev de première espèce.</simpara>
+      </listitem>
+      <listitem>
+      <simpara><link linkend="GEN14"><citetitle>GEN14</citetitle></link> - Mémorise un polynôme dont les coefficients sont dérivés des polynômes de Tchebychev de seconde espèce.</simpara>
+      </listitem>
+      <listitem>
+      <simpara><link linkend="GEN15"><citetitle>GEN15</citetitle></link> - Crée deux tables de fonctions polynomiales mémorisées.</simpara>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead>
+      Routines GEN de dimensionnement de l'amplitude
+    </bridgehead>
+    <itemizedlist>
+      <listitem>
+      <simpara><link linkend="GEN04"><citetitle>GEN04</citetitle></link> - Génère une fonction de normalisation.</simpara>
+      </listitem>
+      <listitem>
+      <simpara><link linkend="GEN12"><citetitle>GEN12</citetitle></link> - Génère le logarithme d'une fonction de Bessel de seconde espèce modifiée.</simpara>
+      </listitem>
+      <listitem>
+      <simpara><link linkend="GEN24"><citetitle>GEN24</citetitle></link> - Lit les valeurs numériques d'une table de fonction déjà allouée en les reproportionnant.</simpara>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead>
+      Routines GEN de mixage
+    </bridgehead>
+    <itemizedlist>
+      <listitem>
+      <simpara><link linkend="GEN18"><citetitle>GEN18</citetitle></link> - Ecrit des formes d'onde complexes construites à partir de formes d'ondes déjà existantes.</simpara>
+      </listitem>
+      <listitem>
+      <simpara><link linkend="GEN31"><citetitle>GEN31</citetitle></link> - Mélange n'importe quelle forme d'onde définie dans une table existante.</simpara>
+      </listitem>
+      <listitem>
+      <simpara><link linkend="GEN32"><citetitle>GEN32</citetitle></link> - Mélange n'importe quelle forme d'onde, reéchantillonnée soit par TFR soit par interpolation linéaire.</simpara>
+      </listitem>
+    </itemizedlist>
+    
+    <bridgehead>
+      Routines GEN de hauteur et d'accordage
+    </bridgehead>
+    <itemizedlist>
+      <listitem>
+      <simpara><link linkend="GEN51"><citetitle>GEN51</citetitle></link> - Remplit une table avec une échelle micro-tonale entièrement personnalisée, à la manière des opcodes <emphasis>cpstun</emphasis>, <emphasis>cpstuni</emphasis> et <emphasis>cpstmid</emphasis>.</simpara>
+      </listitem>
+    </itemizedlist>
+    <bridgehead>
+      Routines GEN nommées
+    </bridgehead>
+    <para>
+      On peut ajouter des routines GEN à Csound au moyen de greffons de fonction GEN. Il y a actuellement un seul greffon GEN
+      qui fournit les fonctions exponentielle et tangente hyperbolique. Ces fonctions GEN ne sont pas appelées par un
+      numéro, mais par un nom.
+    </para>
+    <itemizedlist>
+      <listitem>
+        <simpara>"tanh" - remplit une table à partir d'une formule de tangente hyperbolique.</simpara>
+      </listitem>
+      <listitem>
+        <simpara>"exp" - remplit une table à partir d'une formule de tangente hyperbolique.</simpara>
+      </listitem>
+    </itemizedlist>
+  </section>
+    &scoregensgen01;
+    &scoregensgen02;
+    &scoregensgen03;
+    &scoregensgen04;
+    &scoregensgen05;
+    &scoregensgen06;
+    &scoregensgen07;
+    &scoregensgen08;
+    &scoregensgen09;
+    &scoregensgen10;
+    &scoregensgen11;
+    &scoregensgen12;
+    &scoregensgen13;
+    &scoregensgen14;
+    &scoregensgen15;
+    &scoregensgen16;
+    &scoregensgen17;
+    &scoregensgen18;
+    &scoregensgen19;
+    &scoregensgen20;
+    &scoregensgen21;
+<!--     &scoregensgen22; -->
+    &scoregensgen23;
+    &scoregensgen24;
+    &scoregensgen25;
+    &scoregensgen27;
+    &scoregensgen28;
+    &scoregensgen30;
+    &scoregensgen31;
+    &scoregensgen32;
+    &scoregensgen33;
+    &scoregensgen34;
+    &scoregensgen40;
+    &scoregensgen41;
+    &scoregensgen42;
+    &scoregensgen43;
+    &scoregensgen51;
+    &scoregensgen52;
+
+</chapter>

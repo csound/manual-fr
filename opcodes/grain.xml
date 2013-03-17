@@ -1,0 +1,140 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.15
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="grain">
+<indexterm id="IndexGrain"><primary>grain</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Granular Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>grain</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>grain</refname>
+    <refpurpose>
+      Génère des textures de synthèse granulaire.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère des textures de synthèse granulaire.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>grain</command> xamp, xpitch, xdens, kampoff, kpitchoff, kgdur, igfn, \
+      iwfn, imgdur [, igrnd]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>igfn</emphasis> -- numéro de la ftable de la forme d'onde du grain. Peut être une onde
+      sinus ou un son échantillonné.
+    </para>
+
+    <para>
+      <emphasis>iwfn</emphasis> -- numéro de la ftable de l'enveloppe d'amplitude utilisée pour les grains
+      (voir aussi <link linkend="GEN20"><citetitle>GEN20</citetitle></link>).
+    </para>
+
+    <para>
+      <emphasis>imgdur</emphasis> -- durée maximum du grain en secondes. C'est la plus grande valeur que
+      l'on peut affecter à <emphasis>kgdur</emphasis>.
+    </para>
+
+    <para>
+     <emphasis>igrnd</emphasis> (facultatif) -- s'il est non nul, le décalage aléatoire du grain est
+     désactivé. Cela signifie que tous les grains commenceront à lire la table <emphasis>igfn</emphasis>
+     depuis son début. S'il vaut zéro (par défaut), les grains commenceront leur lecture dans la table
+     <emphasis>igfn</emphasis> à partir de positions aléatoires.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>xamp</emphasis> -- amplitude de chaque grain.
+    </para>
+
+    <para>
+      <emphasis>xpitch</emphasis> -- hauteur du grain. Pour utiliser la fréquence originale du son en
+      entrée, on se sert de la formule :
+      <literallayout>   sndsr / ftlen(<emphasis>igfn</emphasis>)</literallayout>
+    </para>
+
+    <para>
+      où sndsr est le taux d'échantillonnage original du son <emphasis>igfn</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>xdens</emphasis> -- densité des grains mesurée en grains par seconde. Si elle est constante
+      la sortie sera une synthèse granulaire synchrone, très semblable à
+      <link linkend="fof"><citetitle>fof</citetitle></link>. Si <emphasis>xdens</emphasis> a une composante
+      aléatoire (comme du bruit ajouté), alors le résultat ressemblera plus à une synthèse granulaire
+      asynchrone.
+    </para>
+
+    <para>
+      <emphasis>kampoff</emphasis> -- déviation d'amplitude maximale par rapport à <emphasis>xamp</emphasis>.
+      Cela signifie que l'amplitude maximale possible pour un grain est
+      <emphasis>xamp</emphasis> + <emphasis>kampoff</emphasis> et l'amplitude minimale est
+      <emphasis>xamp</emphasis>. Si <emphasis>kampoff</emphasis> est nul alors il n'y a pas d'amplitude
+      aléatoire pour chaque grain.
+    </para>
+
+    <para>
+      <emphasis>kpitchoff</emphasis> -- déviation de hauteur maximale par rapport à
+      <emphasis>xpitch</emphasis> en Hz. Semblable à <emphasis>kampoff</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>kgdur</emphasis> -- durée du grain en secondes. Sa valeur maximale doit être déclarée dans
+      <emphasis>imgdur</emphasis>. Si <emphasis>kgdur</emphasis> dépasse <emphasis>imgdur</emphasis> en
+      un point, sa valeur sera tronquée à celle de <emphasis>imgdur</emphasis>.
+    </para>
+
+    <para>
+      Le générateur <emphasis>grain</emphasis> est principalement basé sur les travaux et les écrits de
+      Barry Truax et de Curtis Roads.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Cet exemple génère une texture avec des grains de plus en plus courts, une amplitude de plus en plus
+      large et une dispersion de hauteur. Il utilise les fichiers
+      <ulink url="examples/grain.csd"><citetitle>grain.csd</citetitle></ulink> et
+      <ulink url="examples/beats.wav"><citetitle>beats.wav</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode grain.</title>
+
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/grain.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameparis;</member>
+        <member>MIT</member>
+        <member>Mai 1997</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

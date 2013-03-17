@@ -1,0 +1,85 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.10
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="undef">
+<indexterm id="IndexUndefMacros"><primary>macros</primary><secondary>orchestra</secondary></indexterm>
+
+<indexterm id="IndexUndefOrch"><primary>&num;undef</primary><secondary>orchestra</secondary></indexterm>
+
+<indexterm id="IndexUndef"><primary>&num;undef</primary></indexterm>
+  <refentryinfo><title>Orchestra Syntax:Macros</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>&num;undef</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>&num;undef</refname>
+
+    <refpurpose>
+      Annule la définition d'une macro.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Les macros sont des substitutions de texte qui sont faites dans l'orchestre lors de sa lecture. Le
+      système de macro de Csound est très simple, et il utilise les caractères &num; et &dollar; pour
+      définir et appeler les macros. Il permet d'économiser de la frappe et peut
+      conduire à une structure cohérente dans un style consistant. Il est similaire, tout en étant
+      indépendant, au <link linkend="ScoreMacros"><citetitle>système de macros du langage de
+      partition</citetitle></link>.
+    </para>
+
+    <para>
+      <emphasis>&num;undef NOM</emphasis> -- annule la définition d'un nom de macro. Si une macro
+      n'est plus nécessaire, on peut annuler sa définition avec <emphasis>&num;undef NOM</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>&num;undef</command> NOM</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Il faut prendre certaines précautions avec les macros de substitution de texte, car elles peuvent
+      parfois produire d'étranges résultats. Elles ne tiennent compte d'aucune valeur sémantique, et
+      ainsi les espaces sont significatifs. C'est pourquoi, au contraire du langage C, la définition
+      délimite le texte de substitution par des caractères &num;. Utilisé avec discernement, ce système
+      de macro est un concept puissant, mais il peut aussi être mal employé.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="define"><citetitle>&num;define</citetitle></link>,
+      <link linkend="dollar"><citetitle>&dollar;NOM</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>University of Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>Avril 1998</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.48 de Csound</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,70 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="ScoreNextp">
+  <title>Symboles next-P et previous-P</title>
+  <para>
+    A la fin de chacune des opération <link linkend="ScoreCarry"><citetitle>Carry</citetitle></link>,
+    <link linkend="ScoreTempo"><citetitle>Tempo</citetitle></link>, et
+    <link linkend="ScoreSort"><citetitle>Sort</citetitle></link>, trois fonctions de partition
+    supplémentaires sont interprétées durant l'écriture du fichier : next-p, previous-p, et
+    <emphasis>ramping</emphasis>.
+
+    <indexterm id="IndexNp"><primary>np</primary></indexterm>
+    <indexterm id="IndexPp"><primary>pp</primary></indexterm>
+    <indexterm id="IndexScoreNextP"><primary>score</primary><secondary>next-p</secondary></indexterm>
+    <indexterm id="IndexScorePreviousP"><primary>score</primary><secondary>previous-p</secondary></indexterm>
+  </para>
+
+  <para>
+    Les p-champs d'une <link linkend="i"><citetitle>instruction i</citetitle></link> contenant les
+    symboles <emphasis>np</emphasis><emphasis>x</emphasis> ou <emphasis>pp</emphasis><emphasis>x</emphasis>
+    (où <emphasis>x</emphasis> est un entier) seront remplacés par la valeur du p-champ approprié de
+    l'instruction i suivante (ou de l'instruction i précédente) ayant le même p1. Par exemple, le symbole
+    <emphasis>np</emphasis>7 sera remplacé par la valeur du p7 de la note suivante devant être jouée par
+    le même instrument. Les symboles <emphasis>np</emphasis> et <emphasis>pp </emphasis> sont récursifs
+    et peuvent référencer d'autres symboles <emphasis>np</emphasis> et <emphasis>pp</emphasis>
+    qui peuvent en référencer d'autres, etc. Les références doivent se terminer par un nombre réel ou
+    un <emphasis>symbole ramp</emphasis>. Il faut éviter les références en boucle fermée. Les symboles
+    <emphasis>np</emphasis> et <emphasis>pp</emphasis> sont interdits en p1, p2 et p3 (bien qu'ils
+    puissent référencer ces derniers). Les symboles <emphasis>np</emphasis> et <emphasis>pp</emphasis>
+    peuvent être reportés (Carry). Les référence de <emphasis>np</emphasis> et de <emphasis>pp</emphasis>
+    ne peuvent traverser une limite de Section. Toute référence avant ou arrière à une instruction de note
+    inexistante recevra la valeur zéro.
+  </para>
+
+  <para>
+   Par exemple : les instructions
+   <informalexample>
+     <programlisting>
+<emphasis role="stamnt">i</emphasis>1   0    1    10   np4  pp5 
+<emphasis role="stamnt">i</emphasis>1   1    1    20
+<emphasis role="stamnt">i</emphasis>1   1    1    30</programlisting>
+   </informalexample>
+
+   se transformeront en
+
+   <informalexample>
+     <programlisting>
+<emphasis role="stamnt">i</emphasis>1   0    1    10   20   0 
+<emphasis role="stamnt">i</emphasis>1   1    1    20   30   20 
+<emphasis role="stamnt">i</emphasis>1   2    1    30   0    30</programlisting>
+   </informalexample>
+  </para>
+
+  <para>
+    Les symboles <emphasis>np</emphasis> et <emphasis>pp</emphasis> peuvent apporter à un instrument
+    une connaissance contextuelle de la partition, ce qui permettra de réaliser un glissando ou un
+    crescendo, par exemple, vers la hauteur ou l'intensité d'un évènement futur (qui peut être
+    immédiatement adjacent ou non). A noter que bien que la fonction
+    <link linkend="ScoreCarry"><citetitle>Carry</citetitle></link> propage <emphasis>np</emphasis>
+    et <emphasis>pp</emphasis> vers des instructions non triées, l'opération d'interprétation de ces
+    symboles se fait sur une version de la partition résolue temporellement et complètement triée.
+  </para>
+</section>

@@ -1,0 +1,191 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pyexec">
+<indexterm id="IndexPyExec"><primary>pyexec</primary></indexterm>
+  <refentryinfo><title>Python Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pyexec Opcodes</refentrytitle>
+  </refmeta>
+  
+  <refnamediv>
+    <refname>pyexec</refname>
+    <refpurpose>
+      Exécute un script depuis un fichier au taux-k ou au taux-i (suffixe i).
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>pyexec</command> "filename"</synopsis>
+    <synopsis><command>pyexeci</command> "filename"</synopsis>
+    <synopsis><command>pylexec</command> "filename"</synopsis>
+    <synopsis><command>pylexeci</command> "filename"</synopsis>
+    <synopsis><command>pyexect</command> ktrigger, "filename"</synopsis>
+    <synopsis><command>plyexect</command> ktrigger, "filename"</synopsis>
+  </refsect1>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Exécute un script depuis un fichier au taux-k ou au taux-i (suffixe i).
+    </para>
+    <para>
+      Ce n'est pas la même chose que d'appeler le script avec la commande
+      <literal>system()</literal>, car le code est exécuté par l'interpréteur
+      embarqué.
+    </para>
+    <para>
+      Le code contenu dans le fichier spécifié est exécuté dans l'environnement
+      global pour les opcodes <emphasis>pyexec</emphasis> et <emphasis>pyexeci</emphasis>
+      et dans l'environnement privé pour les opcodes <emphasis>pylexec</emphasis> et
+      <emphasis>pylexeci</emphasis>.
+    </para>
+    <para>
+      Ces opcodes n'effectuent aucune transmission de message. Cependant, comme
+      leurs instructions ont accès aux espaces de noms globaux et privés, ils
+      peuvent interagir avec des objets préalablement créés dans ces environnements.
+    </para>
+    <para>
+      Les versions <quote>locales</quote> des opcodes <emphasis>pyexec</emphasis>
+      sont utiles lorsque le code exécuté par différentes instances d'un instrument
+      ne doit pas interagir.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemple du groupe d'opcodes pyexec</title>
+    <example>
+      <title>Orchestre (pyexec.orc)</title>
+<programlisting>
+<emphasis role="ohdr">sr</emphasis>=44100
+<emphasis role="ohdr">kr</emphasis>=4410
+<emphasis role="ohdr">ksmps</emphasis>=10
+<emphasis role="ohdr">nchnls</emphasis>=1
+
+<emphasis role="comment">;Si vous n'exécutez pas CsoundAC, la ligne suivante est</emphasis>
+<emphasis role="comment">;nécessaire pour initialiser l'interpréteur Python</emphasis>
+<emphasis role="comment">;pyinit</emphasis>
+
+        <emphasis role="opc">pyruni</emphasis> "import random"
+
+        <emphasis role="opc">pyexeci</emphasis> "pyexec1.py"
+
+<emphasis role="oblock">instr</emphasis> 1
+
+        <emphasis role="opc">pyexec</emphasis>          "pyexec2.py"
+
+        <emphasis role="opc">pylexeci</emphasis>        "pyexec3.py"
+        <emphasis role="opc">pylexec</emphasis>         "pyexec4.py"
+
+<emphasis role="oblock">endin</emphasis></programlisting>
+    </example>
+
+    <example>
+      <title>Partition (pyexec.sco)</title>
+
+<programlisting>
+<emphasis role="stamnt">i</emphasis>1 0 0.01
+<emphasis role="stamnt">i</emphasis>1 0 0.01</programlisting>
+
+    </example>
+    
+    <example>
+      <title>Le script pyexec1.py</title>
+
+<programlisting>
+import time, os
+
+print
+print "Bienvenue dans Csound !"
+
+try:
+    s = ', %s?' % os.getenv('USER')
+except:
+    s = '?'
+
+print 'Quel son voulez-vous écouter aujourd'hui, %s ?' % s
+answer = raw_input()</programlisting>
+    </example>
+    
+    <example>
+      <title>Le script pyexec2.py</title>
+<programlisting>
+print 'votre réponse est "%s"' % answer</programlisting>
+    </example>
+    
+    <example>
+      <title>Le script pyexec3.py</title>
+<programlisting>
+message = 'un nombre aléatoire privé : %f' % random.random()</programlisting>
+    </example>
+    
+    <example>
+      <title>Le script pyexec4.py</title>
+
+<programlisting>
+print message</programlisting>
+    </example>
+
+    <para>Si j'exécute cet exemple sur ma machine, j'obtiens quelque chose comme ceci :</para>
+<screen>
+Using ../../csound.xmg
+Csound Version 4.19 (Mar 23 2002)
+Embedded Python interpreter version 2.2
+orchname:  pyexec.orc
+scorename: pyexec.sco
+sorting score ...
+        ... done
+orch compiler:
+11 lines read
+        instr   1       
+Csound Version 4.19 (Mar 23 2002)
+displays suppressed
+
+Bienvenue dans Csound !
+Quel son voulez-vous écouter aujourd'hui, maurizio ?</screen>
+
+    <para>je réponds alors</para>
+<screen>
+un son</screen>
+
+<para>Csound continue l'exécution normale</para>
+<screen>
+votre réponse est "un son"
+un nombre aléatoire privé : 0.884006
+new alloc for instr 1:
+votre réponse est "un son"
+un nombre aléatoire privé : 0.884006
+votre réponse est "un son"
+un nombre aléatoire privé : 0.889868
+votre réponse est "un son"
+un nombre aléatoire privé : 0.884006
+votre réponse est "un son"
+un nombre aléatoire privé : 0.889868
+votre réponse est "un son"
+un nombre aléatoire privé : 0.884006
+votre réponse est "un son"
+...</screen>
+
+    <para>
+      Dans le même instrument un message est créé dans l'espace de noms
+      privé et affiché, apparaissant différent pour chaque instance.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      Copyright (c) 2002 Maurizio Umberto Puxeddu. Tous droits réservés.
+      Certaines parties, copyright (c) 2004 et 2005 Michael Gogins.
+      Ce document a été mis à jour le 25 juillet 2004 et le 1er février
+      2005 par &namemichael;.
+    </para>
+  </refsect1>
+</refentry>

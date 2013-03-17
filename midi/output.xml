@@ -1,0 +1,47 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="MidiOutput">
+  <title>Sortie de message MIDI</title>
+
+  <para>
+    Les opcodes qui produisent des sorties MIDI sont :
+    <itemizedlist>
+      <listitem><para><link linkend="mdelay"><citetitle>mdelay</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="nrpn"><citetitle>nrpn</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="outiat"><citetitle>outiat</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="outic"><citetitle>outic</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="outic14"><citetitle>outic14</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="outipat"><citetitle>outipat</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="outipb"><citetitle>outipb</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="outipc"><citetitle>outipc</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="outkat"><citetitle>outkat</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="outkc"><citetitle>outkc</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="outkc14"><citetitle>outkc14</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="outkpat"><citetitle>outkpat</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="outkpb"><citetitle>outkpb</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="outkpc"><citetitle>outkpc</citetitle></link></para>
+      </listitem>
+    </itemizedlist>
+  </para>
+
+</section>

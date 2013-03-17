@@ -1,0 +1,22 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.1
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="ControlStacks">
+  <title>Piles</title>
+  <para>
+    Csound implémente une pile globale qui peut être manipulée par les opcodes suivants :
+    <itemizedlist>
+      <listitem><para><link linkend="stack"><citetitle>stack</citetitle></link></para></listitem>
+      <listitem><para><link linkend="pop"><citetitle>pop</citetitle></link></para></listitem>
+      <listitem><para><link linkend="push"><citetitle>push</citetitle></link></para></listitem>
+      <listitem><para><link linkend="pop_f"><citetitle>pop_f</citetitle></link></para></listitem>
+      <listitem><para><link linkend="push_f"><citetitle>push_f</citetitle></link></para></listitem>
+    </itemizedlist>
+  </para>
+</section>

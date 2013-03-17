@@ -1,0 +1,108 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.2
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="polynomial">
+<indexterm id="IndexPolynomial"><primary>polynomial</primary></indexterm>
+  <refentryinfo><title>Mathematical Operations:Opcode Equivalents of Functions</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>polynomial</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>polynomial</refname>
+    <refpurpose>
+      Evalue efficacement un polynôme d'ordre arbitraire.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      L'opcode <emphasis>polynomial</emphasis> calcule un polynôme à une seule
+      variable d'entrée de taux-a. Le polynôme est la somme de n'importe quel
+      nombre de termes de la forme <emphasis>kn*x^n</emphasis> où
+      <emphasis>kn</emphasis> est le nième coefficient de l'expression. Ces
+      coefficients sont des valeurs de taux-k.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aout <command>polynomial</command> ain, k0 [, k1 [, k2 [...]]]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ain</emphasis> -- le signal d'entrée jouant le rôle de la variable
+      indépendante du polynôme ("x").
+    </para>
+
+    <para>
+      <emphasis>aout</emphasis> -- le signal de sortie ("y").
+    </para>
+
+    <para>
+      <emphasis>k0, k1, k2, ...</emphasis> -- les coefficients pour chaque terme
+      du polynôme.
+    </para>
+
+    <para>
+      Si l'on considère que le paramètre d'entrée <emphasis>ain</emphasis> est
+      "x" et que la sortie <emphasis>aout</emphasis> est "y", alors l'opcode
+      <emphasis>polynomial</emphasis> calcule l'équation suivante :
+      <literallayout>
+        y = k0 + k1*x + k2*x^2 + k3*x^3 + ...</literallayout>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="chebyshevpoly"><citetitle>chebyshevpoly</citetitle></link>, 
+      <link linkend="mac"><citetitle>mac</citetitle></link>
+      <link linkend="maca"><citetitle>maca</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode polynomial. Il utilise le fichier
+      <ulink url="examples/polynomial.csd"><citetitle>polynomial.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode polynomial.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/polynomial.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="chebyshevpoly"><citetitle>chebyshevpoly</citetitle></link>, 
+      <link linkend="mac"><citetitle>mac</citetitle></link>
+      <link linkend="maca"><citetitle>maca</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameanthony;</member>
+        <member>Janvier 2008</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.08 de Csound.</para>
+  </refsect1>
+</refentry>

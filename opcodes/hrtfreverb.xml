@@ -1,0 +1,156 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="hrtfreverb">
+<indexterm id="Indexhrtfreverb"><primary>hrtfreverb</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Panning and Spatialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>hrtfreverb</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>hrtfreverb</refname>
+    <refpurpose>
+      Une réverbération binaurale à champ de diffusion basée sur un réseau de
+      lignes à retard rétroactives (Feedback Delay Network) dynamique.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode fonctionne de manière autonome comme une réverbération souple et
+      efficace. Il est cependant conçu pour être utilisé avec
+      <link linkend="hrtfearly"><citetitle>hrtfearly</citetitle></link> pour
+      obtenir une réverbération spatialement précise avec des trajectoires de la
+      source définissables par l'utilisateur. Il fournit aussi une cohérence
+      inter-oreilles précise.
+    </para>
+    <para>
+      Un champ réverbérant efficace, fonction de la fréquence, est créé en se
+      basant sur les durées de réverbération souhaitées pour les basses et les
+      hautes fréquences. L'opcode est conçu pour fonctionner avec
+      <link linkend="hrtfearly"><citetitle>hrtfearly</citetitle></link>, utilisant
+      idéalement les sorties de ce dernier comme entrées. Cependant, on peut
+      utiliser <link linkend="hrtfreverb"><citetitle>hrtfreverb</citetitle></link>
+      de manière autonome. La stabilité est renforcée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aleft, aright, idel <command>hrtfreverb</command> asrc, ilowrt60, ihighrt60, ifilel, ifiler [,isr, imfp, iorder]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ilowrt60</emphasis> - durée de réverbération des basses fréquences. 
+    </para>
+    <para>
+      <emphasis>ihighrt60</emphasis> - durée de réverbération des hautes fréquences.
+    </para>
+    <para>
+      <emphasis>ifilel</emphasis> - fichier des données spectrales HRTF de gauche.
+    </para>
+    <para>
+      <emphasis>ifiler</emphasis> - fichier des données spectrales HRTF de droite.
+    </para>
+    <note>
+      <para>
+        Des fichiers de données spectrales (basés sur la base de données HRTF du
+        MIT) sont disponibles sous trois différents taux d'échantillonnage :
+        44.1, 48 et 96 kHz et sont nommés en conséquence. Le
+        <emphasis>sr</emphasis> d'entrée et de traitement doit correspondre
+        au <emphasis>sr</emphasis> du fichier de données. Les fichiers doivent
+        se trouver dans le répertoire courant ou dans SADIR (voir
+        <link linkend="CommandEnvironment"><citetitle>Variables d'environnement</citetitle></link>).
+      </para>
+    </note>
+    <note>
+      <para>
+        Les fichiers de données HRTF à utiliser avec 
+        <link linkend="hrtfmove"><citetitle>hrtfmove</citetitle></link>,
+        <link linkend="hrtfmove2"><citetitle>hrtfmove2</citetitle></link>,
+        <link linkend="hrtfstat"><citetitle>hrtfstat</citetitle></link>,
+        <link linkend="hrtfearly"><citetitle>hrtfearly</citetitle></link> et
+        <link linkend="hrtfreverb"><citetitle>hrtfreverb</citetitle></link>
+        ont été mis à jour pour les versions 5.15 et ultérieures de Csound (le
+        code a été mis à jour et il est plus efficace). Les anciens fichiers de
+        données sont maintenant obsolètes.
+      </para>
+    </note>
+    <para>
+      <emphasis>isr</emphasis> - facultatif, 44.1kHz par défaut. Valeurs acceptées :
+      44100, 48000 et 96000.
+    </para>
+    <para>
+      <emphasis>imfp</emphasis> - facultatif, chemin libre moyen, celui d'un pièce
+      de taille moyenne par défaut. Si cet opcode est utilisé avec
+      <link linkend="hrtfearly"><citetitle>hrtfearly</citetitle></link>, le chemin
+      libre moyen de la pièce peut être utilisé pour calculer le retard approprié
+      pour la réverbération tardive. Intervalle accepté : le chemin libre moyen
+      de la plus petite pièce autorisée par <emphasis>hrtfearly</emphasis>
+      (0.003876)  1.
+    </para>
+    <para>
+      <emphasis>iorder</emphasis> - facultatif, ordre du traitement des premières
+      réflexions. Si cet opcode est utilisé avec
+      <link linkend="hrtfearly"><citetitle>hrtfearly</citetitle></link>, l'ordre
+      des premières réflexions peut être utilisé pour calculer le retard pour la
+      réverbération tardive.
+    </para>
+
+    <title>Exécution</title>
+    <para>
+      <emphasis>asrc</emphasis> - Signal source en entrée.
+    </para>
+    
+    <title>Sortie</title>
+    <para>
+      <emphasis>idel</emphasis> - Si cet opcode est utilisé avec
+      <link linkend="hrtfearly"><citetitle>hrtfearly</citetitle></link>, ce
+      paramètre est le retard approprié pour la réverbération tardive, basé sur
+      la pièce et l'ordre du traitement.
+    </para>
+    
+  </refsect1>
+
+  <refsect1>  
+    <title>Exemple</title>
+    <para>
+      Voir la page du manuel <link linkend="hrtfearly"><citetitle>hrtfearly</citetitle></link>
+      pour un exemple simple des opcodes
+      <link linkend="hrtfearly"><citetitle>hrtfearly</citetitle></link> et
+      <emphasis>hrtfreverb</emphasis>.
+    </para>
+   </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="hrtfearly"><citetitle>hrtfearly</citetitle></link>
+      <link linkend="hrtfmove"><citetitle>hrtfmove</citetitle></link>,
+      <link linkend="hrtfmove2"><citetitle>hrtfmove2</citetitle></link>,
+      <link linkend="hrtfstat"><citetitle>hrtfstat</citetitle></link>,
+      <link linkend="hrtfer"><citetitle>hrtfer</citetitle></link>.
+    </para>        
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Brian Carty</member>
+        <member>Maynooth</member>
+        <member>2011</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

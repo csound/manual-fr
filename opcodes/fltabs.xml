@@ -1,0 +1,231 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.14
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLtabs">
+<indexterm id="IndexFLtabs"><primary>FLtabs</primary></indexterm>
+  <refentryinfo><title>FLTK:Containers</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLtabs</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLtabs</refname>
+    <refpurpose>
+      Crée une interface FLTK à onglets.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>FLtabs</emphasis> est une interface à onglets qui est utile pour
+      afficher alternativement plusieurs zones contenant des widgets dans la
+      même fenêtre. Il doit être utilisé en même temps qu'un
+      <link linkend="FLgroup"><citetitle>FLgroup</citetitle></link>, un autre
+      conteneur qui regroupe des widgets enfants.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>FLtabs</command> iwidth, iheight, ix, iy</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iwidth</emphasis> -- largeur du widget.
+    </para>
+
+    <para>
+      <emphasis>iheight</emphasis> -- hauteur du widget.
+    </para>
+
+    <para>
+      <emphasis>ix</emphasis> -- position horizontale du coin supérieur gauche
+      du conteneur, relative au coin supérieur gauche de la fenêtre correspondante
+      (exprimée en pixels).
+    </para>
+
+    <para>
+      <emphasis>iy</emphasis> -- position verticale du coin supérieur gauche
+      du conteneur, relative au coin supérieur gauche de la fenêtre correspondante
+      (exprimée en pixels).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Les conteneurs sont utiles pour formater l'apparence graphiques des widgets.
+      Le conteneur le plus important est
+      <link linkend="FLpanel"><citetitle>FLpanel</citetitle></link>, qui crée une
+      fenêtre. Il peut être rempli avec d'autres conteneurs et/ou des valuateurs
+      ou d'autres sortes de widgets.
+    </para>
+
+    <para>
+      Il n'y a pas d'arguments de taux-k dans les conteneurs.
+    </para>
+
+    <para>
+      <emphasis>FLtabs</emphasis> est une interface à onglets qui est utile pour
+      afficher alternativement plusieurs zones contenant des widgets dans la
+      même fenêtre.
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/fltabs.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>FLtabs.</phrase>
+        </textobject>
+
+        <caption>
+          <para>FLtabs.</para>
+        </caption>
+      </mediaobject>
+    </para>
+
+    <para>
+      Il doit être utilisé en même temps qu'un
+      <link linkend="FLgroup"><citetitle>FLgroup</citetitle></link>, un autre
+      opcode de conteneur FLTK qui regroupe des widgets enfants.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Le code de l'exemple suivant :
+
+      <informalexample>
+        <programlisting>
+         <emphasis role="opc">FLpanel</emphasis>  "Panel1", 450, 550, 100, 100
+         <emphasis role="opc">FLscroll</emphasis> 450, 550, 0, 0
+         <emphasis role="opc">FLtabs</emphasis>   400, 550, 5, 5
+         
+         <emphasis role="opc">FLgroup</emphasis>  "sliders", 380, 500, 10, 40, 1
+gk1, ihs <emphasis role="opc">FLslider</emphasis>  "FLslider 1", 500, 1000, 2 ,1, -1, 300,15, 20,50
+gk2, ihs <emphasis role="opc">FLslider</emphasis>  "FLslider 2", 300, 5000, 2 ,3, -1, 300,15, 20,100
+gk3, ihs <emphasis role="opc">FLslider</emphasis>  "FLslider 3", 350, 1000, 2 ,5, -1, 300,15, 20,150
+gk4, ihs <emphasis role="opc">FLslider</emphasis>  "FLslider 4", 250, 5000, 1 ,11, -1, 300,30, 20,200
+gk5, ihs <emphasis role="opc">FLslider</emphasis>  "FLslider 5", 220, 8000, 2 ,1, -1, 300,15, 20,250
+gk6, ihs <emphasis role="opc">FLslider</emphasis>  "FLslider 6", 1, 5000, 1 ,13, -1, 300,15, 20,300
+gk7, ihs <emphasis role="opc">FLslider</emphasis>  "FLslider 7", 870, 5000, 1 ,15, -1, 300,30, 20,350
+gk8, ihs <emphasis role="opc">FLslider</emphasis>  "FLslider 8", 20, 20000, 2 ,6, -1, 30,400, 350,50
+         <emphasis role="opc">FLgroupEnd</emphasis>
+
+         <emphasis role="opc">FLgroup</emphasis>  "rollers", 380, 500, 10, 30, 2
+gk1, ihr <emphasis role="opc">FLroller</emphasis>  "FLroller 1", 50, 1000,.1,2 ,1 ,-1, 200,22, 20,50
+gk2, ihr <emphasis role="opc">FLroller</emphasis>  "FLroller 2", 80, 5000,1,2 ,1 ,-1, 200,22, 20,100
+gk3, ihr <emphasis role="opc">FLroller</emphasis>  "FLroller 3", 50, 1000,.1,2 ,1 ,-1, 200,22, 20,150
+gk4, ihr <emphasis role="opc">FLroller</emphasis>  "FLroller 4", 80, 5000,1,2 ,1 ,-1, 200,22, 20,200
+gk5, ihr <emphasis role="opc">FLroller</emphasis>  "FLroller 5", 50, 1000,.1,2 ,1 ,-1, 200,22, 20,250
+gk6, ihr <emphasis role="opc">FLroller</emphasis>  "FLroller 6", 80, 5000,1,2 ,1 ,-1, 200,22, 20,300
+gk7, ihr <emphasis role="opc">FLroller</emphasis>  "FLroller 7",50, 5000,1,1 ,2 ,-1, 30,300, 280,50
+         <emphasis role="opc">FLgroupEnd</emphasis>
+
+         <emphasis role="opc">FLgroup</emphasis> "joysticks", 380, 500, 10, 40, 3
+gk1, gk2, ihj1, ihj2 <emphasis role="opc">FLjoy</emphasis> "FLjoy", 50, 18000, 50, 18000, 2, 2, -1, -1, 300, 300, 30, 60
+         <emphasis role="opc">FLgroupEnd</emphasis>
+
+         <emphasis role="opc">FLtabsEnd</emphasis>
+         <emphasis role="opc">FLscrollEnd</emphasis>
+         <emphasis role="opc">FLpanelEnd</emphasis></programlisting>
+      </informalexample>
+
+       ... produira le résultat suivant :
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/fltabs_sliders-tab.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>Exemple FLtabs, onglet des réglettes.</phrase>
+        </textobject>
+
+        <caption>
+          <para>Exemple FLtabs, onglet des réglettes.</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/fltabs_rollers-tab.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>Exemple FLtabs, onglet des molettes.</phrase>
+        </textobject>
+
+        <caption>
+          <para>Exemple FLtabs, onglet des molettes.</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/fltabs_joysticks-tab.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>Exemple FLtabs, onglet du joystick.</phrase>
+        </textobject>
+
+        <caption>
+          <para>Exemple FLtabs, onglet du joystick.</para>
+        </caption>
+      </mediaobject>
+
+       (Chaque image montre un onglet différent sélectionné dans la même
+       fenêtre.)
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode FLtabs. Il utilise le fichier
+      <ulink url="examples/FLtabs.csd"><citetitle>FLtabs.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode FLtabs.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/FLtabs.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="FLgroup"><citetitle>FLgroup</citetitle></link>, 
+      <link linkend="FLgroupEnd"><citetitle>FLgroupEnd</citetitle></link>, 
+      <link linkend="FLpack"><citetitle>FLpack</citetitle></link>, 
+      <link linkend="FLpackEnd"><citetitle>FLpackEnd</citetitle></link>, 
+      <link linkend="FLpanel"><citetitle>FLpanel</citetitle></link>, 
+      <link linkend="FLpanelEnd"><citetitle>FLpanelEnd</citetitle></link>, 
+      <link linkend="FLscroll"><citetitle>FLscroll</citetitle></link>, 
+      <link linkend="FLscrollEnd"><citetitle>FLscrollEnd</citetitle></link>, 
+      <link linkend="FLtabsEnd"><citetitle>FLtabsEnd</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.22</para>
+    <para>Exemple écrit par Iain McCurdy, édité par &namekevin;.</para>
+  </refsect1>
+</refentry>

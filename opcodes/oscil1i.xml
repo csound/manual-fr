@@ -1,0 +1,98 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="oscil1i">
+<indexterm id="IndexOscil1i"><primary>oscil1i</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Table Access</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>oscil1i</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>oscil1i</refname>
+    <refpurpose>
+      Accède aux valeurs d'une table par échantillonnage incrémentiel avec interpolation
+      linéaire.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Accède aux valeurs d'une table par échantillonnage incrémentiel avec interpolation
+      linéaire.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kres <command>oscil1i</command> idel, kamp, idur, ifn</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>idel</emphasis> -- délai en secondes avant que l'échantillonnage
+      incrémentiel d'<emphasis>oscil1i</emphasis> ne commence.
+    </para>
+
+    <para>
+      <emphasis>idur</emphasis> -- durée en secondes de l'unique passe d'échantillonnage
+      dans la table d'<emphasis>oscil1i</emphasis>. Avec une valeur nulle ou négative,
+      l'initialisation sera ignorée.
+    </para>
+
+    <para>
+      <emphasis>ifn</emphasis> -- numéro de la table de fonction. <emphasis>oscil1i</emphasis>
+      nécessitent un point de garde.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamp</emphasis> -- facteur d'amplitude
+    </para>
+
+    <para>
+      <emphasis>oscil1i</emphasis> est une unité avec interpolation dans laquelle la
+      partie fractionnaire de l'index est utilisée pour interpoler entre les entrées
+      adjacentes de la table. La régularité apportée par l'interpolation se paie par
+      une légère augmentation du temps d'exécution (voir aussi
+      <link linkend="oscili"><citetitle>oscili</citetitle></link>, etc.), mais sinon
+      les unités avec ou sans interpolation sont interchangeables.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode oscil1i. Il utilise le fichier
+      <ulink url="examples/oscil1i.csd"><citetitle>oscil1i.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode oscil1i.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/oscil1i.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="table"><citetitle>table</citetitle></link>,
+      <link linkend="tablei"><citetitle>tablei</citetitle></link>,
+      <link linkend="table3"><citetitle>table3</citetitle></link>,
+      <link linkend="oscil1"><citetitle>oscil1</citetitle></link>,
+      <link linkend="osciln"><citetitle>osciln</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

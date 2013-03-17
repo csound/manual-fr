@@ -1,0 +1,79 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="scanhammer">
+<indexterm id="IndexScanhammer"><primary>scanhammer</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Scanned Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>scanhammer</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>scanhammer</refname>
+    <refpurpose>
+      Copie d'une table vers une autre avec contrôle du gain.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      C'est une variante de <link linkend="tablecopy"><citetitle>tablecopy</citetitle></link>,
+      qui copie d'une table vers une autre, à partir de <emphasis>ipos</emphasis>,
+      et avec un contrôle du gain. Le nombre de points copiés est déterminé par la
+      longueur de la source. Les autres points ne sont pas changés. On peut utiliser
+      cet opcode pour <quote>frapper</quote> une corde dans le code
+      de synthèse par balayage.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>scanhammer</command> isrc, idst, ipos, imult</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>isrc</emphasis> -- table de fonction source.
+    </para>
+
+    <para>
+      <emphasis>idst</emphasis> -- table de fonction destination.
+    </para>
+
+    <para>
+      <emphasis>ipos</emphasis> -- position de départ (en points).
+    </para>
+
+    <para>
+      <emphasis>imult</emphasis> -- multiplicateur du gain. S'il vaut 0, les
+      valeurs ne seront pas modifiées.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="scantable"><citetitle>scantable</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Matt Gilliard</member>
+        <member>Avril 2002</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 4.20</para>
+  </refsect1>
+</refentry>

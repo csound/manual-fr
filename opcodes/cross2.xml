@@ -1,0 +1,101 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.15
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="cross2">
+<indexterm id="IndexCross2"><primary>cross2</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Convolution and Morphing</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>cross2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>cross2</refname>
+    <refpurpose>
+      Synthèse croisée au moyen de TFR.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      C'est une implémentation de synthèse croisée au moyen de TFR.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>cross2</command> ain1, ain2, isize, ioverlap, iwin, kbias</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>isize</emphasis> -- Taille de la TFR à effectuer. Plus la taille
+      est grande, meilleure est la réponse en fréquence mais avec une réponse
+      temporelle imprécise.
+    </para>
+
+    <para>
+      <emphasis>ioverlap</emphasis> -- Facteur de chevauchement des TFR, doit être
+      une puissance de deux. Les meilleurs réglages sont 2 et 4. Un grand
+      chevauchement prend un long temps de calcul.
+    </para>
+
+    <para>
+      <emphasis>iwin</emphasis> -- Table de fonction contenant la fenêtre à
+      utiliser dans l'analyse. On peut créer cette fenêtre au moyen de la routine
+      <link linkend="GEN20"><citetitle>GEN20</citetitle></link>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ain1</emphasis> -- Le son d'excitation. Doit contenir des
+      fréquence élevées pour de meilleurs résultats.
+    </para>
+
+    <para>
+      <emphasis>ain2</emphasis> -- Le son modulant. Doit avoir une réponse en
+      fréquence changeante (comme la parole) pour de meilleurs résultats.
+    </para>
+
+    <para>
+      <emphasis>kbias</emphasis> -- la proportion de synthèse croisée. 1 est la
+      normale, 0 signifie pas de synthèse croisée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode cross2. Il utilise les fichiers
+      <ulink url="examples/cross2.csd"><citetitle>cross2.csd</citetitle></ulink>
+      et <ulink url="examples/fox.wav"><citetitle>fox.wav</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode cross2.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/cross2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameparis;</member>
+        <member>MIT, Cambridge</member>
+        <member>1997</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

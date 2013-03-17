@@ -1,0 +1,116 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.5
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="s">
+  <indexterm id="IndexSStatement"><primary>s statement</primary></indexterm>
+  <refmeta>
+    <refentrytitle>Instruction s</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>s</refname>
+    <refpurpose>
+      Marque le fin d'une section.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      L'<emphasis>instruction s</emphasis> marque le fin d'une section.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>s</command> [temps]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      Le premier p-champ <emphasis>temps</emphasis> est facultatif et s'il est présent, il
+      détermine la date de fin (en pulsations) de la section. Cette date doit être après la fin du
+      dernier évènement de la section sinon elle n'aura pas d'effet. On peut l'utiliser pour
+      créer une pause avant le début de la section suivante ou pour permettre aux instruments
+      "actifs en permanence" tels que les effets de jouer seuls pendant une certaine durée.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Le tri des <link linkend="i"><citetitle>instructions i</citetitle></link>, des
+      <link linkend="f"><citetitle>instructions f</citetitle></link> et des
+      <link linkend="a"><citetitle>instructions a</citetitle></link> par date d'action est effectué
+      section par section.
+    </para>
+
+    <para>
+      La modification temporelle par l'<link linkend="t"><citetitle>instruction t</citetitle></link> est
+      faite section par section.
+    </para>
+
+    <para>
+      Toute les dates d'action à l'intérieur d'une section sont relatives à son début. Une instruction de
+      section établit un nouveau temps relatif de 0, mais n'a pas d'autres effets de réinitialisation
+      (par exemple les tables de fonction mémorisées sont préservées par delà les limites de section).
+    </para>
+
+    <para>
+      On considère qu'une section est complète lorsque toutes les dates d'action et toutes les durées
+      finies ont été satisfaites. (C'est-à-dire que la &quot;longueur&quot; d'une section est déterminée
+      par la dernière action apparue ou par l'arrêt du système). Une section peut être allongée par
+      l'utilisation d'une <link linkend="f"><citetitle>instruction f0</citetitle></link> ou en
+      fournissant la valeur de <emphasis>p1</emphasis>facultative à l'instruction
+      <emphasis>s</emphasis>.
+    </para>
+
+    <para>
+      A la fin d'une section, le système provoque automatiquement le nettoyage des instruments inactifs
+      et de leur espace de données.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Puisque les instructions de partition sont traitées section par section, la quantité de
+              mémoire requise dépend du nombre maximum d'instructions de partition dans une section.
+              L'allocation de mémoire est dynamique, et l'utilisateur sera informé chaque fois que des
+              blocs de mémoire supplémentaires sont demandés pendant le traitement de la partition.
+            </para>
+          </listitem>
+
+          <listitem>
+            <para>
+              Pour la dernière section d'une partition, l'<emphasis>instruction s</emphasis> est
+              facultative ; l'<link linkend="e"><citetitle>instruction e</citetitle></link> peut être
+              utilisée à la place.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'instruction s. Il utilise le fichier
+      <ulink url="examples/s.csd"><citetitle>s.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'instruction s.</title>
+        <xi:include href="examples-xml/s.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+</refentry>

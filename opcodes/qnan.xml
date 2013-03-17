@@ -1,0 +1,59 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="qnan">
+<indexterm id="IndexQnan"><primary>qnan</primary></indexterm>
+  <refentryinfo><title>Mathematical Operations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>qnan</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>qnan</refname>
+
+    <refpurpose>
+      Teste si l'argument est un nombre infini.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne le nombre de fois où l'argument n'est pas un nombre.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>qnan</command>(x) (aucune restriction de taux)</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode qnan. Il utilise le fichier
+      <ulink url="examples/qnan.csd"><citetitle>qnan.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode qnan.</title>
+        
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link>
+        pour plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/qnan.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par &namejohn;.</para>
+    <para>Nouveau dans Csound 5.14</para>
+  </refsect1>
+</refentry>

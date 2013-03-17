@@ -1,0 +1,122 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="valpass">
+<indexterm id="IndexValpass"><primary>valpass</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Reverberation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>valpass</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>valpass</refname>
+    <refpurpose>
+      Réverbération variable du signal en entrée avec une réponse en fréquence plate.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Réverbération variable du signal en entrée avec une réponse en fréquence plate.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>valpass</command> asig, krvt, xlpt, imaxlpt [, iskip] [, insmps]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>imaxlpt</emphasis> -- durée de boucle maximale pour <emphasis>klpt</emphasis>
+    </para>
+
+    <para>
+      <emphasis>iskip</emphasis> (facultatif, 0 par défaut) -- état initial de
+      l'espace de données de la boucle de retard (cf.
+      <link linkend="reson"><citetitle>reson</citetitle></link>). La valeur par
+      défaut est 0.
+    </para>
+
+    <para>
+      <emphasis>insmps</emphasis> (facultatif, 0 par défaut) -- valeur du
+      retard, en nombre d'échantillons.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>krvt</emphasis> -- la durée de réverbération (définie comme le
+      temps en secondes pris par un signal pour décroitre à 1/1000 ou 60 dB de
+      son amplitude originale).
+    </para>
+
+    <para>
+      <emphasis>xlpt</emphasis> -- durée de boucle variable en secondes, comme
+      <emphasis>ilpt</emphasis> dans <emphasis>comb</emphasis>. La durée de
+      boucle peut aller jusqu'à <emphasis>imaxlpt</emphasis>.
+    </para>
+
+    <para>
+      Ce filtre répète l'entrée avec une densité d'écho déterminée par la durée
+      de boucle <emphasis>xlpt</emphasis>. Le taux d'atténuation est indépendant
+      et il est déterminé par <emphasis>krvt</emphasis>, la durée de réverbération
+      (définie comme le temps en secondes pris par un signal pour décroitre à
+      1/1000 ou 60 dB de son amplitude originale). La sortie apparait sans retard.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode valpass. Il utilise le fichier
+      <ulink url="examples/valpass.csd"><citetitle>valpass.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode valpass.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/valpass.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Voici un autre exemple de l'opcode valpass. Il utilise le fichier
+      <ulink url="examples/valpass-2.csd"><citetitle>valpass-2.csd</citetitle></ulink>.
+      <example>
+        <title>Second exemple de l'opcode valpass.</title>
+         <xi:include href="examples-xml/valpass-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="alpass"><citetitle>alpass</citetitle></link>,
+      <link linkend="comb"><citetitle>comb</citetitle></link>,
+      <link linkend="reverb"><citetitle>reverb</citetitle></link>,
+      <link linkend="vcomb"><citetitle>vcomb</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : William <quote>Pete</quote> Moss</member>
+        <member>Université du Texas à Austin</member>
+        <member>Austin, Texas USA</member>
+        <member>Janvier 2002</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,201 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.14
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLjoy">
+<indexterm id="IndexFLjoy"><primary>FLjoy</primary></indexterm>
+  <refentryinfo><title>FLTK:Valuators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLjoy</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLjoy</refname>
+    <refpurpose>
+      Un opcode FLTK qui agit comme un joystick. 
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>FLjoy</emphasis> est une zone carrée qui permet à l'utilisateur
+      de modifier deux valeurs de sortie en même temps. Il agit comme un
+      joystick. 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>koutx, kouty, ihandlex, ihandley <command>FLjoy</command> &quot;label&quot;, iminx, imaxx, iminy, \
+      imaxy, iexpx, iexpy, idispx, idispy, iwidth, iheight, ix, iy</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ihandlex</emphasis> -- un identifiant (un nombre entier) qui
+      référence de manière univoque le widget correspondant. Il est utilisé par
+      d'autres opcodes qui modifient les propriétés du valuateur. Il est
+      automatiquement fixé par le valuateur.
+    </para>
+
+    <para>
+      <emphasis>ihandley</emphasis> -- un identifiant (un nombre entier) qui
+      référence de manière univoque le widget correspondant. Il est utilisé par
+      d'autres opcodes qui modifient les propriétés du valuateur. Il est
+      automatiquement fixé par le valuateur.
+    </para>
+
+    <para>
+      <emphasis><quote>label</quote></emphasis> -- une chaîne entre guillemets
+      contenant un texte fourni par l'utilisateur placé à côté du widget.
+    </para>
+
+    <para>
+      <emphasis>iminx</emphasis> -- valeur x minimale de l'intervalle de sortie.
+    </para>
+
+    <para>
+      <emphasis>imaxx</emphasis> -- valeur x maximale de l'intervalle de sortie.
+    </para>
+
+    <para>
+      <emphasis>iminy</emphasis> -- valeur y minimale de l'intervalle de sortie.
+    </para>
+
+    <para>
+      <emphasis>imaxy</emphasis> -- valeur y maximale de l'intervalle de sortie.
+    </para>
+
+    <para>
+      <emphasis>idispx</emphasis> -- un identifiant retourné par une instance
+      précédente de l'opcode
+      <link linkend="FLvalue"><citetitle>FLvalue</citetitle></link> pour afficher
+      la valeur courante du valuateur dans le widget <emphasis>FLvalue</emphasis>.
+      Si l'on ne veut pas utiliser cette possibilité d'affichage des valeurs
+      courantes, il faut donner à cet identifiant un nombre négatif.
+    </para>
+
+    <para>
+      <emphasis>idispy</emphasis> -- un identifiant retourné par une instance
+      précédente de l'opcode
+      <link linkend="FLvalue"><citetitle>FLvalue</citetitle></link> pour afficher
+      la valeur courante du valuateur dans le widget <emphasis>FLvalue</emphasis>.
+      Si l'on ne veut pas utiliser cette possibilité d'affichage des valeurs
+      courantes, il faut donner à cet identifiant un nombre négatif.
+    </para>
+
+    <para>
+      <emphasis>iexpx</emphasis> -- un nombre entier indiquant le comportement
+      du valuateur :
+      <itemizedlist>
+        <listitem><para>0 = la sortie est linéaire</para></listitem>
+        <listitem><para>-1 = la sortie est exponentielle</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      Tout autre nombre positif pour <emphasis>iexpx</emphasis> indique le
+      numéro d'une table existante lue par indexation avec interpolation
+      linéaire. Un numéro de table négatif supprime l'interpolation.
+    </para>
+
+    <para>
+      <emphasis>iexpy</emphasis> -- un nombre entier indiquant le comportement
+      du valuateur :
+      <itemizedlist>
+        <listitem><para>0 = la sortie est linéaire</para></listitem>
+        <listitem><para>-1 = la sortie est exponentielle</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      Tout autre nombre positif pour <emphasis>iexpy</emphasis> indique le
+      numéro d'une table existante lue par indexation avec interpolation
+      linéaire. Un numéro de table négatif supprime l'interpolation.
+    </para>
+
+    <warning>
+      <title>IMPORTANT !</title>
+      <para>
+        Noter que les tables utilisées par les valuateurs doivent être créées
+        avec l'opcode <link linkend="ftgen"><citetitle>ftgen</citetitle></link>
+        et placées dans l'orchestre avant le valuateur correspondant. On ne
+        peut pas les placer dans la partition. En fait, les tables placées
+        dans la partition sont créées après l'initialisation des opcodes
+        placés dans la section d'en-tête de l'orchestre.
+      </para>
+    </warning>
+
+    <para>
+      <emphasis>iwidth</emphasis> -- largeur du widget.
+    </para>
+
+    <para>
+      <emphasis>iheight</emphasis> -- hauteur du widget.
+    </para>
+
+    <para>
+      <emphasis>ix</emphasis> -- position horizontale du coin supérieur gauche
+      du valuateur, relative au coin supérieur gauche de la fenêtre correspondante
+      (exprimée en pixels).
+    </para>
+
+    <para>
+      <emphasis>iy</emphasis> -- position verticale du coin supérieur gauche
+      du valuateur, relative au coin supérieur gauche de la fenêtre correspondante
+      (exprimée en pixels).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>koutx</emphasis> -- valeur x en sortie.
+    </para>
+
+    <para>
+      <emphasis>kouty</emphasis> -- valeur y en sortie.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode FLjoy. Il utilise le fichier
+      <ulink url="examples/FLjoy.csd"><citetitle>FLjoy.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode FLjoy.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/FLjoy.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="FLcount"><citetitle>FLcount</citetitle></link>,
+      <link linkend="FLknob"><citetitle>FLknob</citetitle></link>,
+      <link linkend="FLroller"><citetitle>FLroller</citetitle></link>,
+      <link linkend="FLslider"><citetitle>FLslider</citetitle></link>,
+      <link linkend="FLtext"><citetitle>FLtext</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.22</para>
+    <para>Exemple écrit par Iain McCurdy, édité par &namekevin;.</para>
+  </refsect1>
+</refentry>

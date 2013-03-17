@@ -1,0 +1,67 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="ScoreRamping">
+  <title>Ramping</title>
+
+  <para>
+    Les p-champs d'une <emphasis>instruction i</emphasis> contenant le symbole <emphasis>&lt;</emphasis>
+    seront remplacés par des valeurs issues de l'interpolation linéaire d'une pente temporelle. Les pentes
+    sont attachées à chaque extrémité au premier nombre réel trouvé dans le même p-champ de notes
+    précédentes et suivantes jouées par le même instrument. Par exemple : les instructions
+
+    <indexterm id="IndexRamping"><primary>score</primary><secondary>ramping</secondary></indexterm>
+
+    <informalexample>
+      <programlisting>
+<emphasis role="stamnt">i</emphasis>1   0    1    100
+<emphasis role="stamnt">i</emphasis>1   1    1    &lt;
+<emphasis role="stamnt">i</emphasis>1   2    1    &lt;
+<emphasis role="stamnt">i</emphasis>1   3    1    400
+<emphasis role="stamnt">i</emphasis>1   4    1    &lt;
+<emphasis role="stamnt">i</emphasis>1   5    1    0</programlisting>
+    </informalexample>
+
+    se transformeront en
+
+    <informalexample>
+      <programlisting>
+<emphasis role="stamnt">i</emphasis>1   0    1    100 
+<emphasis role="stamnt">i</emphasis>1   1    1    200
+<emphasis role="stamnt">i</emphasis>1   2    1    300
+<emphasis role="stamnt">i</emphasis>1   3    1    400
+<emphasis role="stamnt">i</emphasis>1   4    1    200
+<emphasis role="stamnt">i</emphasis>1   5    1    0</programlisting>
+    </informalexample>
+  </para>
+
+  <para>
+    Les pentes ne peuvent pas traverser une limite de Section. Les pentes ne peuvent pas être attachées
+    à un symbole <emphasis>np</emphasis> ou <emphasis>pp</emphasis> (mais elles peuvent être référencées
+    par ceux-ci). Les symboles de pente sont interdits en p1, p2 et p3. Les symboles de pente peuvent
+    être reportés. A noter cependant que, bien que la fonction
+    <link linkend="ScoreCarry"><citetitle>Carry</citetitle></link> propage les symboles de pente
+    vers des instructions non triées, l'opération d'interprétation de ces
+    symboles se fait sur une version de la partition résolue temporellement et complètement triée. En
+    fait, l'interpolation linéaire temporelle est basé sur le temps de partition résolu, de façon à
+    ce qu'une pente couvrant un groupe de notes accelerando reste linéaire par rapport au temps
+    strictement chronologique.
+  </para>
+
+  <para>
+    A partir de la version 3.52 de Csound, l'utilisation des symboles ( ou ) donne une pente
+    d'interpolation exponentielle, comme <emphasis>expon</emphasis>. L'utilisation du symbole
+    &tilde; donnera une distribution aléatoire uniforme entre la première et la dernière valeur de
+    la pente. L'utilisation de ces fontions suit les mêmes règles que la fonction de pente linéaire.
+
+    <indexterm id="IndexLeftParen"><primary>(</primary></indexterm>
+    <indexterm id="IndexRightParen"><primary>)</primary></indexterm>
+    <indexterm id="IndexTilde"><primary>&tilde;</primary></indexterm>
+  </para>
+</section>

@@ -1,0 +1,123 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ampmidid">
+<indexterm id="IndexAmpmidid"><primary>ampmidid</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Converters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ampmidid</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ampmidid</refname>
+    <refpurpose>
+      Fait correspondre musicalement la vélocité MIDI avec l'amplitude dans un
+      intervalle dynamique spécifié en décibels.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Fait correspondre musicalement la vélocité MIDI avec l'amplitude dans un
+      intervalle dynamique spécifié en décibels.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>iamplitude <command>ampmidid</command> ivelocity, idecibels</synopsis>
+    <synopsis>kamplitude <command>ampmidid</command> kvelocity, idecibels</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iamplitude</emphasis> -- Amplitude.
+    </para>
+
+    <para>
+      <emphasis>ivelocity</emphasis> -- vélocité MIDI, comprise entre 0 et 127.
+    </para>
+
+    <para>
+      <emphasis>idecibels</emphasis> -- Intervalle dynamique désiré en décibels.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamplitude</emphasis> -- Amplitude.
+    </para>
+
+    <para>
+      <emphasis>kvelocity</emphasis> -- vélocité MIDI, comprise entre 0 et 127.
+    </para>
+
+    <para>
+      Fait correspondre musicalement la vélocité MIDI avec l'amplitude dans un
+      intervalle dynamique spécifié en décibels : a = (m * v + b) ^ 2, où
+      a = amplitude,
+      v = vélocité MIDI,
+      r = 10 ^ (R / 20),
+      b = 127 / (126 * sqrt( r )) - 1 / 126,
+      m = (1 - b) / 127,
+      et R = intervalle dynamique spécifié en décibels.
+      Voir Roger Dannenberg, "The Interpretation of MIDI Velocity," dans
+      Georg Essl and Ichiro Fujinaga (Eds.), Proceedings of the
+      2006 International Computer Music Conference,
+      Novembre 6-11, 2006 (San Francisco :
+      The International Computer Music Association), pp. 193-196.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode ampmidid. Il utilise le fichier
+      <ulink url="examples/ampmidid.csd"><citetitle>ampmidid.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode ampmidid.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/ampmidid.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="aftouch"><citetitle>aftouch</citetitle></link>,
+      <link linkend="cpsmidi"><citetitle>cpsmidi</citetitle></link>,
+      <link linkend="cpsmidib"><citetitle>cpsmidib</citetitle></link>,
+      <link linkend="midictrl"><citetitle>midictrl</citetitle></link>,
+      <link linkend="notnum"><citetitle>notnum</citetitle></link>,
+      <link linkend="octmidi"><citetitle>octmidi</citetitle></link>,
+      <link linkend="octmidib"><citetitle>octmidib</citetitle></link>,
+      <link linkend="pchbend"><citetitle>pchbend</citetitle></link>,
+      <link linkend="pchmidi"><citetitle>pchmidi</citetitle></link>,
+      <link linkend="pchmidib"><citetitle>pchmidib</citetitle></link>,
+      <link linkend="veloc"><citetitle>veloc</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namemichael;</member>
+        <member>2006</member>
+      </simplelist>
+    </para>
+
+  </refsect1>
+</refentry>

@@ -1,0 +1,96 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="mdelay">
+<indexterm id="IndexMdelay"><primary>mdelay</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Signal Output</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>mdelay</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>mdelay</refname>
+
+    <refpurpose>
+      Un opcode de délai MIDI.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Un opcode de délai MIDI.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>mdelay</command> kstatus, kchan, kd1, kd2, kdelay</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kstatus</emphasis> -- octet d'état du message MIDI message à retarder.
+    </para>
+
+    <para>
+      <emphasis>kchan</emphasis> -- canal MIDI (1-16)
+    </para>
+
+    <para>
+      <emphasis>kd1</emphasis> -- premier octet de donnée MIDI
+    </para>
+
+    <para>
+      <emphasis>kd2</emphasis> -- deuxième octet de donnée MIDI
+    </para>
+
+    <para>
+      <emphasis>kdelay</emphasis> -- délai en secondes
+    </para>
+
+    <para>
+      Chaque fois que <emphasis>kstatus</emphasis> est différent zéro,
+      <emphasis>mdelay</emphasis> envoie un message MIDI sur le port de sortie
+      MIDI après <emphasis>kdelay</emphasis> secondes. Cet opcode est utile
+      pour implémenter des délais MIDI. Il peut y avoir plusieurs instances
+      de <emphasis>mdelay</emphasis> dans le même instrument avec des valeurs
+      d'argument différentes, si bien que l'on peut implémenter des echos MIDI
+      complexes et colorés. De plus, on peut changer la durée du retard au taux-k.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode mdelay. Il utilise le fichier
+      <ulink url="examples/mdelay.csd"><citetitle>mdelay.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode mdelay.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/mdelay.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+        <member>Novembre 1998</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.492 de Csound</para>
+  </refsect1>
+</refentry>

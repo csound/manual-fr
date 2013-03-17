@@ -1,0 +1,47 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.2
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<appendix id="MiscSf2">
+  <title>Format de fichier SoundFont2</title>
+
+  <para>
+    A partir de la version 4.07 de Csound, <link linkend="sfload"><citetitle>Csound supporte le format de
+    fichier de sons échantillonnés SoundFont2</citetitle></link>. SoundFont2 (ou SF2) est un standard
+    répandu qui permet l'encodage de banques de sons basés sur des tables d'onde dans un fichier binaire.
+    Afin de comprendre l'usage de ces opcodes, l'utilisateur doit avoir une certaine connaissance
+    du format SF2, c'est pourquoi une brève description de ce format suit.
+  </para>
+
+  <para>
+    Le format SF2 comprend des objets générateurs et modulateurs. Tous les opcodes actuels de Csound
+    concernant SF2 ne supportent que la fonction générateur.
+  </para>
+
+  <para>
+    Il y a plusieurs niveaux de générateurs ayant une structure hiérarchique. Le type de générateur le
+    plus élémentaire est le <quote>sample</quote> (son échantillonné). Les samples peuvent être bouclés
+    ou non, et sont associés avec un numéro de note MIDI, appelé la touche de base. Quand un sample est
+    associé à un intervalle de numéros de notes MIDI, un intervalle de vélocités, une transposition
+    (accord grossier et fin), un accord d'échelle, un facteur de pondération de niveau, le sample et
+    ses associations constituent un <quote>split</quote> (division). Un ensemble de splits, avec un nom,
+    constituent un <quote>instrument</quote>. Quand un instrument est associé avec un intervalle de
+    touches, un intervalle de vélocités, un facteur de pondération de niveau, et une transposition,
+    l'instrument et ses associations constituent un <quote>layer</quote> (couche). Un ensemble de layers,
+    avec un nom, constituent un <quote>preset</quote>. Les presets sont normalement les structures de
+    génération sonore finales prêtes pour l'utilisateur. Ils génèrent le son selon les réglages de leurs
+    composants des niveaux inférieurs.
+  </para>
+
+  <para>
+    Les données des sons échantillonnés et les données de structure sont incorporées dans le même fichier
+    binaire SF2. Un fichier SF2 unique peut contenir au maximum 128 banques de 128 programmes de preset,
+    soit un total de 16384 presets dans un fichier SF2. Le nombre maximum de layers, instruments, splits
+    et samples n'est probablement limité que par la mémoire de l'ordinateur.
+  </para>
+</appendix>

@@ -1,0 +1,85 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="follow">
+<indexterm id="IndexFollow"><primary>follow</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>follow</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>follow</refname>
+    <refpurpose>
+      Générateur unitaire suiveur d'enveloppe.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Générateur unitaire suiveur d'enveloppe.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>follow</command> asig, idt</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>idt</emphasis> -- C'est la période, en secondes, durant laquelle
+      l'amplitude moyenne de <emphasis>asig</emphasis> est calculée. Si la fréquence
+      de <emphasis>asig</emphasis> est faible, <emphasis>idt</emphasis> doit
+      être grande (plus de la moitié de la période de <emphasis>asig</emphasis>).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- Le signal dont on veut extraire l'enveloppe.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode follow. Il utilise les fichiers
+      <ulink url="examples/follow.csd"><citetitle>follow.csd</citetitle></ulink>
+      et <ulink url="examples/beats.wav"><citetitle>beats.wav</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode follow.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/follow.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+    <para>
+      Pour éviter le bruit de transition produit par les discontinuités lors de
+      la détection d'une enveloppe complexe, on peut utiliser un filtre passe-bas
+      qui lissera l'enveloppe estimée.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameparis;</member>
+        <member>MIT, Cambridge</member>
+        <member>1995</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

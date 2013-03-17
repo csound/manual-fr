@@ -1,0 +1,133 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLgroup">
+<indexterm id="IndexFLgroup"><primary>FLgroup</primary></indexterm>
+  <refentryinfo><title>FLTK:Containers</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLgroup</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLgroup</refname>
+    <refpurpose>
+      Un opcode de conteneur FLTK qui regroupe  des widgets enfants.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Un opcode de conteneur FLTK qui regroupe  des widgets enfants.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>FLgroup</command> &quot;label&quot;, iwidth, iheight, ix, iy [, iborder] [, image]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis><quote>label</quote></emphasis> -- une chaîne entre guillemets
+      contenant un texte fourni par l'utilisateur placé à côté du widget.
+    </para>
+
+    <para>
+      <emphasis>iwidth</emphasis> -- largeur du widget.
+    </para>
+
+    <para>
+      <emphasis>iheight</emphasis> -- hauteur du widget.
+    </para>
+
+    <para>
+      <emphasis>ix</emphasis> -- position horizontale du coin supérieur gauche
+      du conteneur, relative au coin supérieur gauche de la fenêtre correspondante
+      (exprimée en pixels).
+    </para>
+
+    <para>
+      <emphasis>iy</emphasis> -- position verticale du coin supérieur gauche
+      du conteneur, relative au coin supérieur gauche de la fenêtre correspondante
+      (exprimée en pixels).
+    </para>
+
+    <para>
+      <emphasis>iborder</emphasis> (facultatif, 0 par défaut) -- type de la
+      bordure du conteneur. Il est exprimé par un nombre entier choisi parmi
+      les suivants :
+
+      <itemizedlist>
+        <listitem><para>0 - pas de bordure</para></listitem>
+        <listitem><para>1 - bordure de boîte en creux</para></listitem>
+        <listitem><para>2 - bordure de boîte saillante</para></listitem>
+        <listitem><para>3 - bordure gravée</para></listitem>
+        <listitem><para>4 - bordure en relief</para></listitem>
+        <listitem><para>5 - bordure ligne noire</para></listitem>
+        <listitem><para>6 - mince bordure en creux</para></listitem>
+        <listitem><para>7 - mince bordure saillante</para></listitem>
+      </itemizedlist>
+
+      Si le nombre entier ne correspond à aucune de ces valeurs, aucune bordure
+      n'est fournie par défaut.
+    </para>
+
+    <para>
+      <emphasis>image</emphasis> (facultatif) -- un identifiant faisant référence
+      à une image éventuellement  ouverte avec l'opcode <emphasis>bmopen</emphasis>.
+      S'il est utilisé, cela permet un skin pour ce widget.
+    </para>
+
+    <note>
+      <title>Note sur l'opcode <emphasis>bmopen</emphasis></title>
+      <para>
+        Bien qu'il soit mentionné, l'opcode <emphasis>bmopen</emphasis> n'a pas
+        été implémenté dans Csound 4.22.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Les conteneurs sont utiles pour formater l'apparence graphiques des widgets.
+      Le conteneur le plus important est
+      <link linkend="FLpanel"><citetitle>FLpanel</citetitle></link>, qui crée une
+      fenêtre. Il peut être rempli avec d'autres conteneurs et/ou des valuateurs
+      ou d'autres sortes de widgets.
+    </para>
+
+    <para>
+      Il n'y a pas d'arguments de taux-k dans les conteneurs.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="FLgroupEnd"><citetitle>FLgroupEnd</citetitle></link>, 
+      <link linkend="FLpack"><citetitle>FLpack</citetitle></link>, 
+      <link linkend="FLpackEnd"><citetitle>FLpackEnd</citetitle></link>, 
+      <link linkend="FLpanel"><citetitle>FLpanel</citetitle></link>, 
+      <link linkend="FLpanelEnd"><citetitle>FLpanelEnd</citetitle></link>, 
+      <link linkend="FLscroll"><citetitle>FLscroll</citetitle></link>, 
+      <link linkend="FLscrollEnd"><citetitle>FLscrollEnd</citetitle></link>, 
+      <link linkend="FLtabs"><citetitle>FLtabs</citetitle></link>, 
+      <link linkend="FLtabsEnd"><citetitle>FLtabsEnd</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.22</para>
+  </refsect1>
+</refentry>

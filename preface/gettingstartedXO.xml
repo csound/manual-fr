@@ -1,0 +1,219 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="PrefaceGettingStarted">
+  <title>Débuter avec Csound</title>
+  <bridgehead>Ce qui est nécessaire</bridgehead>
+  <para>
+    Csound est préinstallé dans le XO et il est utilisé en interne par d'autres activités
+    comme TamTam, ce qui fait que le XO est prêt pour l'utilisation de tout ce qui est
+    exposé dans ce manuel. Ce manuel peut être parcouru en ligne
+    <ulink url="http://csounds.com/manualOLPC-fr"><citetitle>ici</citetitle></ulink>,
+    mais c'est peut-être une bonne idée de le télécharger sous la forme d'un paquet de
+    contenu <ulink url="http://wiki.laptop.org/go/Csound#OLPCsound_Manual"><citetitle>ici</citetitle></ulink>,
+    car il sera ainsi accessible rapidement et hors ligne à partir de l'Activité Web sous la
+    catégorie "Media" de la page initiale. <!--On peut récupérer le
+    paquet de contenu en téléchargeant
+    <ulink url="http://csounds.com/csound5.08_manual_xo-fr.xol"><citetitle>csound5.08_manual_xo-fr.xol</citetitle></ulink>
+    et en le reprenant depuis le <emphasis>Journal</emphasis>. Le manuel pour OLPCsound sera
+    disponible dans la bibliothèque, dans la catégorie Media.-->
+  </para>
+  <bridgehead>Exécution</bridgehead>
+  <para>
+    Lors de son exécution, Csound lit un fichier Csound et produit un résultat audio selon les
+    instructions fournies par ce fichier. Il y a différentes manières d'exécuter Csound. On peut
+    l'appeler soit depuis un terminal, soit depuis un frontal. Un frontal est un programme graphique
+    qui facilite le lancement de Csound et qui peut souvent aider à éditer les fichiers csound,
+    comme <!--<ulink url="http://wiki.laptop.org/go/Pippy"><citetitle>Pippy</citetitle></ulink> ou-->
+    l'<ulink url="http://wiki.laptop.org/go/Csound:Csound_Editor"><citetitle>Activité
+    Editeur de Csound</citetitle></ulink>.
+  </para>
+  <bridgehead>Utilisation de l'Activité Editeur de Csound</bridgehead>
+  <para>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="imagesXO/editorXO.jpg" format="JPG"/>
+      </imageobject>
+      <textobject>
+        <phrase>[L'Activité Editeur de Csound]</phrase>
+      </textobject>
+      <caption>
+        <para>L'Activité Editeur de Csound</para>
+      </caption>
+    </mediaobject>
+  </para>
+  <para>
+    L'Activité Editeur de Csound facilite l'édition et l'exécution des fichiers Csound.
+    <orderedlist>
+      <listitem>
+        <para>
+          Vous pouvez charger et sauvegarder des fichiers Csound au moyen de ce panneau. Lorsque
+          vous choisissez charger dans ce menu, vous trouverez le répertoire contenant les exemples
+          de Csound. Il y a plusieurs répertoires qui contiennent différents fichiers d'exemple. Les
+          fichiers valides sont ceux qui se terminent par <emphasis>.csd</emphasis>.
+        </para>
+        <para>
+          Vous pouvez aussi naviguer vers ce répertoire des exemples du manuel qui se trouve par
+          défaut dans le répertoire /home/olpc/Library/csound5.08_manual-fr_xo/examples.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          La barre de temps et de transport montre la valeur actuelle du compteur de temps du fichier
+          étant joué et fournit des boutons pour démarrer, mettre en pause ou arrêter l'exécution. Après
+          avoir chargé un fichier Csound, vous essayerez sans doute le bouton Play (celui avec le triangle).
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Le panneau de texte supérieur de l'éditeur montre la section de l'orchestre du fichier Csound.
+          C'est là que sont définis les instruments et les traitements du son.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Le panneau de texte inférieur contient la partition. La partition déroule un ensemble d'évènements
+          qui activent les instruments définis dans la section de l'orchestre. Ce sont les "notes" que
+          jouent les instruments.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Les boutons sélectionnent ce qui est affiché dans le panneau inférieur. Le panneau inférieur
+          peut montrer la section de la partition, la sortie de la console de Csound (un rapport sur
+          les processus internes de Csound) et un clavier MIDI pour la génération d'évènements de
+          note en temps réel.
+        </para>
+      </listitem>
+    </orderedlist>
+  </para>
+  <bridgehead>Utilisation d'OLPCsound depuis l'Activité Terminal</bridgehead>
+  <para>
+    Pour utiliser Csound en ligne de commande, ouvrez
+    l'<ulink url="http://wiki.laptop.org/go/Terminal"><citetitle>Terminal Activity</citetitle></ulink>.
+    Vous pouvez essayer les fichiers d'exemples inclus dans ce manuel en naviguant vers le répertoire
+    des exemples du manuel comme ceci :
+    <screen>
+cd /home/olpc/Library/csound5.08_manual_xo/examples</screen>
+    puis en tapant :
+    <screen>
+csound oscils.csd</screen>
+    Csound jouera le fichier "oscils.csd". Vous pouvez voir la longue liste des exemples
+    disponibles en tapant :
+<screen>
+ls</screen>
+ou :
+<screen>
+ls|more</screen>
+     qui montre tout le contenu du répertoire courant.
+  </para>
+<!--  <para>
+    Que ce soit avec un frontal ou en ligne de commande, l'exécution de Csound nécessite deux choses :
+    <itemizedlist>
+      <listitem>
+        <simpara>Un fichier Csound ('.csd' ou bien un fichier '.orc' et un fichier '.sco')</simpara>
+      </listitem>
+      <listitem>
+        <simpara>Une liste de drapeaux de ligne de commande (ou options de configuration) qui configurent
+        l'exécution. Ils déterminent des éléments comme le nom et le format du fichier de sortie,
+        si le  audio et le MIDI sont actifs, quelle carte son utiliser, la taille des tampons,
+        la quantité de messages imprimés, etc. On peut inclure ces options dans le fichier '.csd' lui-même,
+        aussi dans le cas des exemples inclus dans ce manuel,
+        <emphasis>vous ne devriez pas avoir en vous en soucier</emphasis>. Vous pouvez trouver
+        la liste complète et très longue des options de ligne de commande
+        <link linkend="CommandFlags"><citetitle>ici</citetitle></link>,
+        mais vous voudrez peut-être la consulter plus tard...</simpara>
+      </listitem>
+    </itemizedlist>-->
+    <!--Consultez la section <link linkend="Configuring"><citetitle>Configuration</citetitle></link>
+    si vous rencontrez des problèmes avec Csound.-->
+<!--  </para>-->
+<!--  <para>
+
+</para>-->
+<!--  <para>
+    Les fichiers exemples étant configurés pour fonctionner en  par défaut,
+    vous devriez avoir entendu une onde sinusoidale de 2 secondes.
+  </para>-->
+  <bridgehead>Editer et écrire vos propres fichiers csd</bridgehead>
+<!--  <para>Un fichier <emphasis>.csd</emphasis> ressemble à ceci (ce fichier est
+  <ulink url="examples/oscils.csd"><citetitle>oscils.csd</citetitle></ulink>) :</para>
+<xi:include href="examples-xml/oscils.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>-->
+  <para>
+    Csound lit des fichiers textes qui contiennent des instructions pour produire du son.
+    Ces fichiers ont habituellement pour extension ".csd" et sont appelés des fichiers
+    <emphasis>csd</emphasis>. On peut les créer et les éditer au moyen de simples éditeurs
+    de texte comme <ulink url="http://wiki.laptop.org/go/Pippy"><citetitle>Pippy</citetitle></ulink>
+    ou l'<ulink url="http://wiki.laptop.org/go/Csound:Csound_Editor"><citetitle>Activité Editeur
+    de Csound</citetitle></ulink>.
+  </para>
+  <para>
+    Les fichiers <link linkend="CommandUnifile"><citetitle>.csd</citetitle></link> de Csound
+    comprennent 3 sections principales inclues entre les balises
+    <emphasis>&lt;CsSynthesizer&gt;</emphasis> et <emphasis>&lt;/CsSynthesizer&gt;</emphasis> :
+    <itemizedlist>
+      <listitem>
+        <simpara><emphasis>&lt;CsOptions&gt;</emphasis> - Contient les
+        <link linkend="CommandFlagsCategory"><citetitle>options de ligne de commande</citetitle></link>
+        spécifiques à ce fichier particulier. Ces options peuvent aussi être définies dans le fichier
+        <link linkend="CommandUnifileParFile"><citetitle>.csoundrc</citetitle></link> ou directement dans la
+        <link linkend="CommandDesc"><citetitle>ligne de commande</citetitle></link>.
+        Certains frontaux offrent également des moyens de spécifier des options globales ou locales.
+        </simpara>
+      </listitem>
+      <listitem>
+        <simpara>
+          <emphasis>&lt;CsInstruments&gt;</emphasis> - Contient les instruments ou processus disponibles dans
+          le fichier. Les instruments sont définis en utilisant les codes d'opération
+          <link linkend="instr"><citetitle>instr</citetitle></link> et
+          <link linkend="endin"><citetitle>endin</citetitle></link>. La section
+          <emphasis>CsInstruments</emphasis> contient aussi
+          l'<link linkend="OrchHeader"><citetitle>En-tête de l'Orchestre</citetitle></link>
+          qui définit des choses comme le
+          <link linkend="sr"><citetitle>taux d'échantillonnage</citetitle></link>,
+          le <link linkend="ksmps"><citetitle>nombre d'échantillons dans une période de contrôle</citetitle></link>
+          et le <link linkend="nchnls"><citetitle>nombre de canaux de sortie</citetitle></link>.
+        </simpara>
+      </listitem>
+      <listitem>
+        <simpara>
+          <emphasis>&lt;CsScore&gt;</emphasis> - Contient les 'notes' à jouer et optionnellement la définition
+          de f-tables. Les notes sont crées en utilisant
+          l'<link linkend="i"><citetitle>instruction i</citetitle></link>,
+          et les f-tables sont crées en utilisant
+          l'<link linkend="f"><citetitle>instruction f</citetitle></link>. Plusieurs autres
+          <link linkend="ScoreStatements"><citetitle>instructions de partition</citetitle></link> sont disponibles.
+        </simpara>
+      </listitem>
+    </itemizedlist>
+    Notez que tout ce qui suit un point-virgule (;) jusqu'à la fin de la ligne est un commentaire, et
+    est ignoré par csound.
+  </para>
+  <tip>
+    <para>
+      Lorsque vous utilisez
+      l'<ulink url="http://wiki.laptop.org/go/Csound:Csound_Editor"><citetitle>Activité Editeur
+      de Csound</citetitle></ulink>, vous ne voyez pas les balises décrites ci-dessus, car elle les
+      cache afin de faciliter l'édition. Vous ne voyez que les deux panneaux contenant les sections
+      de l'orchestre et de la partition du fichier csd. Autrement dit, si vous utilisez
+      l'<ulink url="http://wiki.laptop.org/go/Csound:Csound_Editor"><citetitle>Activité Editeur
+      de Csound</citetitle></ulink>, vous n'avez pas à vous préoccuper de ces balises et de la
+      structure du fichier, car l'activité s'en charge pour vous.
+    </para>
+    <para>
+      Pour utiliser les exemples de csound dans ce manuel, vous pouvez les ouvrir directement dans 
+      l'Activité Editeur de Csound, ou vous pouvez copier (CTRL-C) et coller (CTRL-V) directement
+      depuis la page. Si vous copiez et collez, pensez à copier/coller les sections de l'orchestre
+      (<emphasis>&lt;CsInstruments&gt;</emphasis>) et de la partition 
+      (<emphasis>&lt;CsScore&gt;</emphasis>) séparément. Pensez à ne pas intégrer les balises
+      (par exemple <emphasis>&lt;CsInstruments&gt;</emphasis>) dans l'Activité Editeur de Csound.
+    </para>
+  </tip>
+</section>
+

@@ -1,0 +1,107 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="system">
+<indexterm id="Indexsystem_i"><primary>system_i</primary></indexterm>
+
+<indexterm id="Indexsystem"><primary>system</primary></indexterm>
+  <refentryinfo><title>Miscellaneous</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>system</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>system</refname>
+    <refpurpose>
+      Appelle un programme externe via le système.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <command>system</command> et <command>system_i</command> appellent toute
+      commande externe comprise par le système d'exploitation, comme le fait
+      la fonction system() du langage C. <command>system_i</command> ne s'exécute que
+      pendant l'initialisation, tandis que <command>system</command> s'exécute
+      pendant l'initialisation aussi bien que durant l'exécution.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ires <command>system_i</command> itrig, Scmd, [inowait]</synopsis>
+    <synopsis>kres <command>system</command> ktrig, Scmd, [knowait]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>Scmd</emphasis> -- chaîne de commande.
+    </para>
+    <para>
+      <emphasis>itrig</emphasis> -- s'il est supérieur à zéro, l'opcode exécute
+      la commande demandée ; sinon c'est une opération nulle.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ktrig</emphasis> -- s'il est supérieur à zéro et différent de la
+      valeur qu'il avait lors du précédent cycle de contrôle, l'opcode exécute
+      la commande demandée. La valeur précédente initiale est prise à zéro.
+    </para>
+    <para>
+      <emphasis>inowait, knowait</emphasis> -- s'il est différent de zéro, la
+      commande est exécutée en arrière-plan et l'on attend pas son résultat
+      (0 par défaut).
+    </para>
+    <para>
+      <emphasis>ires, kres</emphasis> -- le code retourné par la commande en
+      mode attente et si la commande est exécutée. Retourne zéro dans les
+      autres cas.
+    </para>
+    <para>
+      Un seul opcode <command>system</command> peut exécuter plus d'une commande
+      si l'on entoure la chaîne avec des accolades doubles {{ }}.
+    </para>
+    <note>
+      Cet opcode dépendant fortement du système, il faut l'utiliser avec beaucoup
+      de précautions (ou ne pas l'utiliser) si l'on désire rester neutre par
+      rapport à la plateforme.
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+      <para>Voici un exemple de l'opcode system_i. Il utilise le fichier
+      <ulink url="examples/system.csd"><citetitle>system.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode system_i.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/system.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur: &namejohn;</member>
+        <member>2007</member>
+      </simplelist>
+      <para>Nouveau dans la version 5.06</para>
+    </para>
+  </refsect1>
+</refentry>

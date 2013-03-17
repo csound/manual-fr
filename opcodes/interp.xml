@@ -1,0 +1,140 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="interp">
+<indexterm id="IndexInterp"><primary>interp</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Sample Level Operators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>interp</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>interp</refname>
+    <refpurpose>
+      Convertit un signal de contrôle en signal audio avec interpolation linéaire.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Convertit un signal de contrôle en signal audio avec interpolation linéaire.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>interp</command> ksig [, iskip] [, imode]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iskip</emphasis> (facultatif) -- état initial de l'espace
+      mémoire interne (voir
+      <link linkend="reson"><citetitle>reson</citetitle></link>). La valeur par
+      défaut est 0.
+    </para>
+
+    <para>
+      <emphasis>imode</emphasis> (facultatif, 0 par défaut) -- donne à la valeur
+      de sortie initiale la valeur de la première entrée de taux-k au lieu de
+      zéro. Les graphes suivants montre la sortie de <emphasis>interp</emphasis>
+      avec une valeur d'entrée constante, en mode original, en ignorant
+      l'initialisation et avec le nouveau mode :
+
+      <example>
+        <title>iskip=0, imode=0</title>
+        <literallayout>
+ |    ________
+ |   /        
+ |  /         
+ | /          
+ |/           
+-+------------
+ |            
+        </literallayout>
+      </example>
+
+      <example>
+        <title>iskip=1, imode=0</title>
+        <literallayout>
+(prev)
+ |  __________
+ | /          
+ |/           
+ |            
+ |            
+-+------------
+ |            
+        </literallayout>
+      </example>
+
+      <example>
+        <title>iskip=0, imode=1</title>
+        <literallayout>
+ |____________
+ |
+ |
+ |
+ |
+-+------------
+ |
+        </literallayout>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ksig</emphasis> -- signal de taux-k en entrée.
+    </para>
+
+    <para>
+      <emphasis>interp</emphasis> convertit un signal de contrôle en signal
+      audio. Il utilise l'interpolation linéaire entre les valeurs successives
+      de <emphasis>ksig</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode interp. Il utilise le fichier
+      <ulink url="examples/interp.csd"><citetitle>interp.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode interp.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/interp.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="diff"><citetitle>diff</citetitle></link>,
+      <link linkend="downsamp"><citetitle>downsamp</citetitle></link>,
+      <link linkend="integ"><citetitle>integ</citetitle></link>,
+      <link linkend="samphold"><citetitle>samphold</citetitle></link>,
+      <link linkend="upsamp"><citetitle>upsamp</citetitle></link>
+    </para>
+    <para>Plus d'information sur cet opcode :
+    <ulink url="http://www.csounds.com/journal/issue10/CsoundRates.html"><citetitle>http://www.csounds.com/journal/issue10/CsoundRates.html</citetitle></ulink>,
+    écrit par Andrés Cabrera.</para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Mis à jour en novembre 2002, grâce à une note de &namerasmus; et &nameistvan;.</para>
+  </refsect1>
+</refentry>

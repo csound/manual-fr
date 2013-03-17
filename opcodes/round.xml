@@ -1,0 +1,93 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="round">
+<indexterm id="IndexRound"><primary>round</primary></indexterm>
+  <refentryinfo><title>Mathematical Operations:Mathematical Functions</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>round</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>round</refname>
+    <refpurpose>
+      Retourne la valeur entière la plus proche de <emphasis>x</emphasis> ; si la partie décimale de
+      <emphasis>x</emphasis> vaut exactement 0.5, la direction de l'arrondi est indéfinie.
+     </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      La valeur entière la plus proche de <emphasis>x</emphasis> ; si la partie décimale de
+      <emphasis>x</emphasis> vaut exactement 0.5, la direction de l'arrondi est indéfinie.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>round</command>(x) (des arguments de taux-i, -k ou -a sont permis)</synopsis>
+    <para>
+      où l'argument entre parenthèses peut être une expression. Les convertisseurs de valeur réalisent
+      une transformation arithmétique d'unités d'une sorte en unités d'une autre sorte. Le résultat peut
+      devenir ensuite un terme dans une autre expression.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode round. Il utilise le fichier
+      <ulink url="examples/round.csd"><citetitle>round.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode round.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/round.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
+instr 1:  inumber = 9.000  idiv = 1.000  ifl = 9.000
+instr 1:  inumber = 9.000  idiv = 2.000  ifl = 5.000
+instr 1:  inumber = 9.000  idiv = 3.000  ifl = 3.000
+instr 1:  inumber = 9.000  idiv = 4.000  ifl = 2.000
+instr 1:  inumber = 9.000  idiv = 5.000  ifl = 2.000
+instr 1:  inumber = 9.000  idiv = 6.000  ifl = 2.000
+instr 1:  inumber = 9.000  idiv = 7.000  ifl = 1.000
+instr 1:  inumber = 9.000  idiv = 8.000  ifl = 1.000
+instr 1:  inumber = 9.000  idiv = 9.000  ifl = 1.000
+instr 1:  inumber = 9.000  idiv = 10.000  ifl = 1.000</screen>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="abs"><citetitle>abs</citetitle></link>,
+      <link linkend="exp"><citetitle>exp</citetitle></link>,
+      <link linkend="int"><citetitle>int</citetitle></link>,
+      <link linkend="log"><citetitle>log</citetitle></link>,
+      <link linkend="log10"><citetitle>log10</citetitle></link>,
+      <link linkend="opi"><citetitle>i</citetitle></link>,
+      <link linkend="sqrt"><citetitle>sqrt</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Istvan Varga</member>
+        <member>Nouveau dans Csound 5</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

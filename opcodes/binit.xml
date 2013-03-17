@@ -1,0 +1,94 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="binit">
+<indexterm id="Indexbinit"><primary>binit</primary></indexterm>
+
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>binit</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>binit</refname>
+    <refpurpose>
+      Conversion de bandes PVS en amplitude+fréquence.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      L'opcode <emphasis>binit</emphasis> reçoit une entrée contenant un flot de
+      signal TRACKS de vocodeur de phase (généré par exemple par <emphasis>partials</emphasis>
+      et le convertit en trames de bins à largeur de bande régulière contenant des
+      paires amplitude/fréquence (PVS_AMP_FREQ), adaptées à la resynthèse par
+      recouvrement-addition (telle que celle réalisée par <emphasis>pvsynth</emphasis>)
+      ou bien à des transformations de flot de signal de vocodeur de phase PVS.
+      Pour chaque bin de fréquence, il cherche une bande de signal adaptée pour
+      la remplir ; s'il n'en trouve pas, le bin sera vide (amplitude 0). Si plus
+      d'une bande correspond à un bin, celle qui a la plus grande amplitude sera
+      choisie. Cela signifie que l'intégralité du signal n'est pas traitée, c'est
+      une opération avec pertes. Cependant, dans bien des situations, la perte
+      n'est pas perceptible.
+	  </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>fsig <command>binit</command> fin, isize</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+	  <para>
+      <emphasis>fsig</emphasis> -- flot pv en sortie au format PVS_AMP_FREQ.
+    </para>
+	
+    <para>
+      <emphasis>fin</emphasis> -- flot pv en entrée au format TRACKS.
+    </para>
+    <para>
+      <emphasis>isize</emphasis> -- taille de la TFR de la sortie (N).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode binit. Il utilise le fichier
+      <ulink url="examples/binit.csd"><citetitle>binit.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode binit.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/binit.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      <para>
+        L'exemple ci-dessus montre la recherche de partiels d'un signal d'analyse
+        de distribution de fréquence instantanée, leur conversion en trames de bins
+        et la resynthèse par recouvrement-addition.
+      </para>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Février 2006 </member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans Csound5.01</para>
+  </refsect1>
+  
+</refentry>

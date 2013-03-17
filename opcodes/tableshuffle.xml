@@ -1,0 +1,88 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="tableshuffle">
+<indexterm id="IndexTableshuffle"><primary>tableshuffle</primary></indexterm>
+  <refentryinfo><title>Miscellaneous</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tableshuffle</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>tableshuffle</refname>
+    <refpurpose>
+      mélange le contenu d'une table de fonction de façon à ce que chaque élément
+      de la table source se trouve dans une position aléatoire différente.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode peut être utilisé pour mélanger le contenu de tables de fonction
+      dans un ordre aléatoire mais en conservant tous les élements. Imaginez la
+      battue d'un jeu de cartes. Chaque élément de la table est copié dans une
+      position aléatoire différente. Si cette position est déjà occupée, la
+      position libre suivante est choisie. La longueur de la table reste la
+      même.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>tableshuffle</command> ktablenum</synopsis>
+    <synopsis><command>tableshufflei</command> itablenum</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ktablenum</emphasis> ou <emphasis>itablenum</emphasis>
+      -- le numéro de la table à mélanger.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode tableshuffle. Il utilise le fichier
+      <ulink url="examples/farey7shuffled.csd"><citetitle>farey7shuffled.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode tableshuffle.</title>
+
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/farey7shuffled.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="GENfarey"><citetitle>GEN farey</citetitle></link>,
+      <link linkend="tablefilter"><citetitle>tablefilter</citetitle></link>,
+      <link linkend="tablecopy"><citetitle>tablecopy</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Georg Boenn </member>
+        <member>Université de Glamorgan, UK</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 5.13 de Csound.</para>
+  </refsect1>
+</refentry>

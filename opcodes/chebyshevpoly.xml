@@ -1,0 +1,150 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.1
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="chebyshevpoly">
+<indexterm id="IndexChebyshevpoly"><primary>chebyshevpoly</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Waveshaping</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>chebyshevpoly</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>chebyshevpoly</refname>
+    <refpurpose>
+      Evalue efficacement la somme de polynomes de Tchebychev d'ordre arbitraire.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      L'opcode <emphasis>chebyshevpoly</emphasis> calcule la valeur d'une expression
+      polynomiale d'une variable d'entrée unique de taux-a. Cette expression est
+      constituée d'une combinaison linéaire des N premiers polynome de Tchebychev
+      de première espèce. Chaque polynome de Tchebychev,
+      <emphasis>T<subscript>n</subscript></emphasis>(<emphasis>x</emphasis>),
+      est pondéré par un coefficient de taux-k, <emphasis>kn</emphasis>, de façon
+      à ce que l'opcode calcule la somme de n'importe quel nombre de termes de la
+      forme <emphasis>kn</emphasis> *
+      <emphasis>T<subscript>n</subscript></emphasis>(<emphasis>x</emphasis>). Ainsi,
+      l'opcode <emphasis>chebyshevpoly</emphasis> permet d'effectuer la distorsion
+      non-linéaire d'un signal audio avec une fonction de transfert
+      <emphasis>dynamique</emphasis> donnant un contrôle précis du contenu
+      harmonique de la sortie.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aout <command>chebyshevpoly</command> ain, k0 [, k1 [, k2 [...]]]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ain</emphasis> -- le signal d'entrée utilisé comme variable
+      indépendante des polynomes de Tchebychev ("x").
+    </para>
+
+    <para>
+      <emphasis>aout</emphasis> -- le signal de sortie ("y").
+    </para>
+
+    <para>
+      <emphasis>k0, k1, k2, ...</emphasis> -- multiplicateurs de taux-k pour
+      chaque polynome de Tchebychev.
+    </para>
+
+    <para>
+      Cet opcode est très utile pour la distorsion non-linéaire dynamique d'un
+      signal audio. Les techniques traditionnelles de distorsion non-linéaire
+      utilisent une table à consulter pour la fonction de transfert -- habituellement
+      une somme de polynomes de Tchebychev. Lorsqu'une onde sinusoïdale dont
+      l'amplitude couvre toute l'échelle est utilisée comme index pour lire la
+      table, le spectre harmonique précis défini par les poids des polynomes de
+      Tchebychev est produit. On obtient un spectre dynamique en variant l'amplitude
+      de l'onde sinusoïdale en entrée, mais cela produit un changement
+      non-linéaire du spectre.
+    </para>
+
+    <para>
+      En calculant directement les polynomes de Tchebychev, l'opcode
+      <emphasis>chebyshevpoly</emphasis> donne plus de contrôle sur le spectre,
+      et le nombre d'harmoniques ajoutés à l'entrée peut varier dans le temps.
+      La valeur de chaque coefficient <emphasis>kn</emphasis> contrôle directement
+      l'amplitude du nième harmonique si l'entrée <emphasis>ain</emphasis> est
+      une onde sinus d'amplitude = 1.0. Cela fait de <emphasis>chebyshevpoly</emphasis>
+      un outil de synthèse additive efficace pour N partiels, ne nécessitant qu'un
+      oscillateur au lieu de N. On peut aussi changer l'amplitude ou la forme
+      d'onde du signal d'entrée pour obtenir différents effets de distorsion
+      non-linéaire.
+    </para>
+
+    <para>
+      Si nous considérons que le paramètre d'entrée <emphasis>ain</emphasis> est
+      "x" et que la sortie <emphasis>aout</emphasis> est "y", alors l'opcode
+      <emphasis>chebyshevpoly</emphasis> calcule l'équation suivante :
+      <literallayout>
+        y = k0*T0(x) + k1*T1(x) + k2*T2(x) + k3*T3(x) + ...</literallayout>
+    </para>
+
+    <para>
+      où les <emphasis>T<subscript>n</subscript></emphasis>(<emphasis>x</emphasis>)
+      sont définis par la relation de récurrence
+      <literallayout>
+        T0(x) = 1,
+        T1(x) = x, 
+        Tn(x) = 2x*T[n-1](x) - T[n-2](x)</literallayout>
+    </para>
+
+    <para>
+      On peut trouver plus d'information sur les polynomes de Tchebychev sur
+      Wikipedia à
+      <ulink url="http://en.wikipedia.org/wiki/Chebyshev_polynomial">
+        <citetitle>http://en.wikipedia.org/wiki/Chebyshev_polynomial</citetitle>
+      </ulink>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="polynomial"><citetitle>polynomial</citetitle></link>, 
+      <link linkend="mac"><citetitle>mac</citetitle></link>
+      <link linkend="maca"><citetitle>maca</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode chebyshevpoly. Il utilise le fichier
+      <ulink url="examples/chebyshevpoly.csd"><citetitle>chebyshevpoly.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode chebyshevpoly.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/chebyshevpoly.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameanthony;</member>
+        <member>Janvier 2008</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 5.08 de Csound.</para>
+  </refsect1>
+</refentry>

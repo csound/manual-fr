@@ -1,0 +1,142 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="duserrnd">
+<indexterm id="IndexDuserrnd"><primary>duserrnd</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Random (Noise) Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>duserrnd</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>duserrnd</refname>
+    <refpurpose>
+      Générateur de nombres aléatoires de distribution discrète définie par l'utilisateur.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Générateur de nombres aléatoires de distribution discrète définie par l'utilisateur.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aout <command>duserrnd</command> ktableNum</synopsis>
+
+    <synopsis>iout <command>duserrnd</command> itableNum</synopsis>
+
+    <synopsis>kout <command>duserrnd</command> ktableNum</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>itableNum</emphasis> -- numéro d'une table contenant la fonction
+      de la distribution aléatoire. Cette table est générée par l'utilisateur.
+      Voir <link linkend="GEN40">GEN40</link>, <link linkend="GEN41">GEN41</link>
+      et <link linkend="GEN42">GEN42</link>. La longueur de la table peut être
+      différente d'une puissance de 2.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ktableNum</emphasis> -- numéro d'une table contenant la fonction
+      de la distribution aléatoire. Cette table est générée par l'utilisateur.
+      Voir <link linkend="GEN40">GEN40</link>, <link linkend="GEN41">GEN41</link>
+      et <link linkend="GEN42">GEN42</link>. La longueur de la table peut être
+      différente d'une puissance de 2.
+    </para>
+
+    <para>
+      <emphasis>duserrnd</emphasis> (Discrete USER-defined-distribution RaNDom generator)
+      génère des nombres aléatoires selon une distribution aléatoire discrète créée par l'utilisateur.
+      L'utilisateur peut créer l'histogramme de la distribution discrète au moyen de
+      <link linkend="GEN41">GEN41</link>. Afin de créer cette table, on doit définir
+      une quantité arbitraire de couples de nombres, le premier nombre de chaque
+      paire représentant une valeur et le second représentant sa probabilité (voir
+      <link linkend="GEN41">GEN41</link> pour plus de détails).  
+    </para>
+
+    <para>
+      Lorsqu'on l'utilise comme une fonction, le taux de génération dépend du type
+      du taux de la variable d'entrée <emphasis>XtableNum</emphasis>. Dans ce cas,
+      on peut l'insérer dans n'importe quelle formule. Le numéro de table peut
+      varier au taux-k, ce qui permet de changer l'histogramme de la distribution
+      durant l'exécution d'une note. <emphasis>duserrnd</emphasis> est destiné à
+      être utilisé pour la génération de musique algorithmique.
+    </para>
+
+    <para>
+      On peut aussi utiliser <emphasis>duserrnd</emphasis> pour générer des valeurs
+      suivant un ensemble d'intervalles de probabilités au moyen de fonctions de
+      distribution générées par GEN42 (voir <link linkend="GEN42">GEN42</link> pour
+      plus de détails). Dans ce cas, si l'on veut simuler des intervalles continus,
+      la longueur de la table <emphasis>XtableNum</emphasis> doit être raisonnablement
+      grande car <emphasis>duserrnd</emphasis> ne fait pas d'interpolation entre les
+      éléments de la table.
+    </para>
+
+    <para>
+      Pour un tutoriel sur les histogrammes et les fonctions de distribution aléatoires
+      consulter :
+      <itemizedlist>
+        <listitem>
+          <para>
+            D. Lorrain. "A panoply of stochastic cannons". In C. Roads, ed. 1989. Music machine. Cambridge, Massachusetts: MIT press, pp. 351 - 379.
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </refsect1>
+
+    <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode duserrnd. Il utilise le fichier
+      <ulink url="examples/duserrnd.csd"><citetitle>duserrnd.csd</citetitle></ulink>.
+            <example>
+        <title>Exemple de l'opcode duserrnd.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/duserrnd.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>     
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
+i   1 time     0.00067:     8.00000
+i   1 time     0.00133:     8.00000
+i   1 time     0.00200:     8.00000
+i   1 time     0.00267:     8.00000
+i   1 time     0.00333:     2.00000
+i   1 time     0.00400:     8.00000
+i   1 time     0.00533:     8.00000
+i   1 time     0.00600:     8.00000
+..........</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="cuserrnd"><citetitle>cuserrnd</citetitle></link>,
+      <link linkend="urd"><citetitle>urd</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.16</para>
+  </refsect1>
+</refentry>

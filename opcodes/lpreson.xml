@@ -1,0 +1,137 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="lpreson">
+<indexterm id="IndexLpreson"><primary>lpreson</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:LPC</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lpreson</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>lpreson</refname>
+    <refpurpose>
+      Resynthétise un signal à partir des données passées en interne par un
+      lpread précédent.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Resynthétise un signal à partir des données passées en interne par un
+      <emphasis>lpread</emphasis> précédent.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>lpreson</command> asig</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- une fonction audio pour piloter la resynthèse.
+    </para>
+
+    <para>
+      <emphasis>lpreson</emphasis> reçoit en interne des valeurs produites par
+      un <emphasis>lpread</emphasis> conducteur. <emphasis>lpread</emphasis>
+      reçoit ses valeurs du fichier de contrôle en fonction de la valeur d'entrée
+      <emphasis>ktimpnt</emphasis> (en secondes). Si <emphasis>ktimpnt</emphasis>
+      évolue au taux de l'analyse, il en résulte une synthèse à déroulement temporel
+      normal ; si l'évolution est plus rapide, plus lente ou à taux variable, le
+      déroulement temporel de la synthèse est déformé. A chaque période-k,
+      <emphasis>lpread</emphasis> fait une interpolation entre trames adjacentes
+      pour déterminer plus précisément les valeurs du paramètre présenté en
+      sortie et le réglage des coefficients du filtre (passés en interne à un
+      <emphasis>lpreson</emphasis>) qui le suit.
+    </para>
+    
+    <para>
+      Le signal d'erreur <emphasis>kerr</emphasis> (entre 0 et 1) provenant de
+      l'analyse prédictive reflète la nature déterministe/aléatoire de la source
+      analysée. Il paraîtra bas pour un matériau tonal (périodique) et plus
+      important pour un matériau bruiteux. La transition de la parole voisée à
+      la parole non-voisée, par exemple, produit une valeur du signal d'erreur
+      d'environ 0.3. Pendant la synthèse, la valeur du signal d'erreur peut être
+      utilisée pour déterminer la nature de la fonction pilotant
+      <emphasis>lpreson</emphasis> : par exemple
+      en arbitrant entre entrée tonale et non-tonale, ou même en déterminant un
+      mélange des deux. Normalement, dans la resynthèse de la parole, l'entrée
+      tonale de <emphasis>lpreson</emphasis>
+      est un signal périodique à large bande ou un train d'impulsions dérivé
+      d'une unité telle que <link linkend="buzz"><citetitle>buzz</citetitle></link>,
+      et la source non-tonale est habituellement dérivée de
+      <link linkend="rand"><citetitle>rand</citetitle></link>. Cependant, on peut
+      utiliser n'importe quel signal audio comme fonction pilote, la seule
+      exigence de l'analyse étant qu'il ait une réponse plate.
+    </para>
+    
+    <para>
+      <link linkend="lpfreson"><citetitle>lpfreson</citetitle></link> est un
+      <emphasis>lpreson</emphasis> dont les formants
+      sont décalés. Son argument <emphasis>kfrqratio</emphasis> est le rapport
+      de décalage de formant par rapport à l'original. Cela
+      permet une synthèse dans laquelle l'objet source modifie sa taille acoustique
+      apparente. <link linkend="lpfreson"><citetitle>lpfreson</citetitle></link>
+      avec <emphasis>kfrqratio</emphasis> = 1 est équivalent à
+      <emphasis>lpreson</emphasis>.
+    </para>
+    
+    <para>
+      Générallement, <emphasis>lpreson</emphasis>
+      fournit un moyen de contrôler l'évolution du contenu et de la forme spectrale
+      d'un signal audio composite par le contenu spectral dynamique d'un autre
+      signal. Il peut y avoir n'importe quel nombre de paires
+      <emphasis>lpread/lpreson</emphasis> (ou <emphasis>lpfreson</emphasis>)
+      dans un instrument ou dans un orchestre ; ils peuvent lire depuis le même
+      ou depuis différents fichiers de contrôle indépendamment.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode lpreson. Il utilise le fichier
+      <ulink url="examples/lpreson.csd"><citetitle>lpreson.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode lpreson.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/lpreson.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Le fichier audio <quote>fox.wav</quote> dure 2.8 secondes. Ainsi la sortie
+      contiendra une ligne comme celle-ci :
+      <screen>
+fox.wav = 2.756667 seconds</screen>
+    </para>
+    <para>
+      Voici un autre exemple de l'opcode lpreson. Il utilise le fichier
+      <ulink url="examples/lpreson-2.csd"><citetitle>lpreson-2.csd</citetitle></ulink>.
+      <example>
+        <title>Un autre exemple de l'opcode lpreson.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/lpreson-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="lpfreson"><citetitle>lpfreson</citetitle></link>,
+      <link linkend="lpread"><citetitle>lpread</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,2618 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="PrefaceWhatsNew"><title>Les nouveautés de Csound &csoundversion;</title>
+<!--     <bridgehead>Nouveautés dans la version 5.XX ()</bridgehead> --><!--  <para>
+    <itemizedlist>
+      <listitem>
+        <para>Nouveaux opcodes :
+          <itemizedlist>
+            <listitem>
+              <simpara><link linkend=""><citetitle></citetitle></link></simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Nouvelles fonctionnalités :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Bogues corrigés et améliorations :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Changements Internes :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>-->
+<bridgehead>Nouveautés dans la version 5.19 (7 janvier 2013)</bridgehead>
+<para>
+  C'est principalement une distribution de correction de bogues avec cependant
+  de nouveaux opcodes et des améliorations.
+</para>
+<para>
+  <itemizedlist>
+    <listitem>
+      <para>Nouveaux opcodes :
+        <itemizedlist>
+          <listitem>
+            <simpara>Module <emphasis>ipmidi</emphasis> pour le MIDI sur un réseau.</simpara>
+          </listitem>
+        </itemizedlist>
+        <itemizedlist>
+          <listitem>
+            <simpara>Opcode <emphasis>ppltrack</emphasis>.</simpara>
+          </listitem>
+        </itemizedlist>
+        <itemizedlist>
+          <listitem>
+            <simpara>Opcode <link linkend="combinv"><citetitle>combinv</citetitle></link>.</simpara>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </listitem>
+    <listitem>
+      <para>GEN et macros :
+        <itemizedlist>
+          <listitem>
+            <simpara>
+              Vérification améliorée dans <link linkend="GEN28"><citetitle>GEN28</citetitle></link>.
+            </simpara>
+          </listitem>
+          <listitem>
+            <simpara>
+              Vérification de l'intervalle dans <link linkend="outrg"><citetitle>outrg</citetitle></link>
+              et option de repliement.
+            </simpara>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </listitem>
+    <listitem>
+      <para>Orchestre :
+        <itemizedlist>
+          <listitem>
+            <simpara>
+              Une instruction vide provoque un avertissement.
+            </simpara>
+          </listitem>
+          <listitem>
+            <simpara>
+              Numéros de ligne ajoutés à plusieurs messages d'arguments en entrée
+              (nouveau parseur).
+            </simpara>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </listitem>
+    <listitem>
+      <para>Opcodes et GENs modifiés :
+        <itemizedlist>
+          <listitem>
+            <simpara>
+              De meilleurs messages d'erreur et d'avertissement.
+            </simpara>
+          </listitem>
+          <listitem>
+            <simpara>
+              <link linkend="loopseg"><citetitle>loopseg</citetitle></link> vérifie
+              maintenant le nombre de ses arguments.
+            </simpara>
+          </listitem>
+          <listitem>
+            <simpara>
+              <link linkend="harmon2"><citetitle>harmon2/3/4</citetitle></link>
+              ont été améliorés.
+            </simpara>
+          </listitem>
+          <listitem>
+            <simpara>
+              <link linkend="active"><citetitle>active</citetitle></link> : une
+              option a été ajoutée pour ignorer les instances en phase de
+              relâchement.
+            </simpara>
+          </listitem>
+          <listitem>
+            <simpara>
+              Une nouvelle implémentation mieux testée de ChordSpace.
+            </simpara>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </listitem>
+    <listitem>
+      <para>Bogues corrigés :
+        <itemizedlist>
+          <listitem>
+            <simpara>
+              L'optimisation bâclée des filtres passe-bas a été corrigée.
+            </simpara>
+          </listitem>
+          <listitem>
+            <simpara>
+              Les opcodes chn ont été corrigés sous Linux.
+            </simpara>
+          </listitem>
+          <listitem>
+            <simpara>
+              Un bogue de silence a été corrigé dans
+              <link linkend="loscil"><citetitle>loscil</citetitle></link>.
+            </simpara>
+          </listitem>
+          <listitem>
+            <simpara>
+              <link linkend="GEN23"><citetitle>GEN23</citetitle></link> a été
+              corrigé lorsqu'un commentaire ne se termine pas par une nouvelle
+              ligne.
+            </simpara>
+          </listitem>
+          <listitem>
+            <simpara>
+              <link linkend="loopseg"><citetitle>loopseg</citetitle></link> a été
+              corrigé.
+            </simpara>
+          </listitem>
+          <listitem>
+            <simpara>
+              Le nombre de canaux d'entrée et de sortie a été corrigé dans le
+              nouveau parseur.
+            </simpara>
+          </listitem>
+          <listitem>
+            <simpara>
+              Le problème de <link linkend="GEN43"><citetitle>GEN43</citetitle></link>
+              a été corrigé.
+            </simpara>
+          </listitem>
+          <listitem>
+            <simpara>
+              <link linkend="fout"><citetitle>fout</citetitle></link> a été corrigé.
+            </simpara>
+          </listitem>
+          <listitem>
+            <simpara>
+              <link linkend="centroid"><citetitle>centroid</citetitle></link>
+              avait tendance à planter.
+            </simpara>
+          </listitem>
+          <listitem>
+            <simpara>
+              Bogue mineur dans le système d'impression qui perdait les %.
+            </simpara>
+          </listitem>
+          <listitem>
+            <simpara>
+              Il y avait une valeur non initialisée dans
+              <link linkend="fold"><citetitle>fold</citetitle></link>.
+            </simpara>
+          </listitem>
+          <listitem>
+            <simpara>
+              Il y avait des valeurs non initialisées dans
+              <link linkend="dconv"><citetitle>dconv</citetitle></link>.
+            </simpara>
+          </listitem>
+          <listitem>
+            <simpara>
+              L'affectation des fsigs fonctionne maintenant.
+            </simpara>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </listitem>
+    <listitem>
+      <para>Changements système :
+        <itemizedlist>
+          <listitem>
+            <simpara>
+              Des erreurs de segmentation sont évitées lors de certaines
+              erreurs de l'utilisateur.
+            </simpara>
+          </listitem>
+          <listitem>
+            <simpara>
+              Les opcodes modal4 sont plus rapides.
+            </simpara>
+          </listitem>
+          <listitem>
+            <simpara>
+              La compilation cabbage est possible.
+            </simpara>
+          </listitem>
+          <listitem>
+            <simpara>
+              La taille des pchamps a été rendue dynamique dans le message
+              d'évènement de csoundapi~.
+            </simpara>
+          </listitem>
+          <listitem>
+            <simpara>
+              Le format de sortie par défaut pour les tuyaux et les réels en
+              double précision est AU.
+            </simpara>
+          </listitem>
+          <listitem>
+            <simpara>
+              Changement pour ircam avec le format par défaut, '-o stdout' et
+              les tuyaux.
+            </simpara>
+          </listitem>
+          <listitem>
+            <simpara>
+              Réels en double précision ajouté au format de sortie.
+            </simpara>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </listitem>
+    <listitem>
+      <para>Changement sur les plates-formes :
+        <itemizedlist>
+          <listitem>
+            <para>Linux :
+              <itemizedlist>
+                <listitem>
+                  <simpara>Les spinlocks sont initialisés (bogue corrigés dans
+                  les opcodes chn).</simpara>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>OSX :
+              <itemizedlist>
+                <listitem>
+                  <simpara>
+                    Sélection des périphériques améliorée dans le module rtauhal.
+                  </simpara>
+                </listitem>
+                <listitem>
+                  <simpara>
+                    Un tampon circulaire et une opération sans verrou ont été
+                    ajoutés à rtauhal.
+                  </simpara>
+                </listitem>
+                <listitem>
+                  <simpara>
+                    Le programme d'installation sur MacOSX a été corrigé
+                    (en créant des liens symboliques vers lib_csnd.dylib).
+                  </simpara>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>Haiku :
+              <itemizedlist>
+                <listitem>
+                  <simpara>Nouvelle plate-forme.</simpara>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>Android :
+            <itemizedlist>
+              <listitem>
+                <simpara>
+                  On peut utiliser -B pour fixer la taille de
+                  tampon circulaire.
+                </simpara>
+              </listitem>
+              <listitem>
+                <simpara>
+                  On a ajouté les opcodes fluidsynth.
+                </simpara>
+              </listitem>
+              <listitem>
+                <simpara>
+                  On a ajouté la méthode inputMessage à CsoundObj.
+                </simpara>
+              </listitem>
+              <listitem>
+                <simpara>
+                  Il est possible d'installer CSDPlayer sur une carte SD.
+                </simpara>
+              </listitem>
+            </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>iOS :
+            <itemizedlist>
+              <listitem>
+                <simpara>
+                  Routage audio amélioré.
+                </simpara>
+              </listitem>
+              <listitem>
+                <simpara>
+                  Le haut-parleur inférieur est choisi par défaut.
+                </simpara>
+              </listitem>
+            </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </listitem>
+    <listitem>
+      <para>API :
+        <itemizedlist>
+          <listitem>
+            <simpara>
+              Nouvelle fonction <emphasis>csoundCompileFromStrings()</emphasis>.
+            </simpara>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </listitem>
+  </itemizedlist>
+</para>
+<bridgehead>Nouveautés dans la version 5.18 (29 août 2012)</bridgehead>
+<para>
+  C'est principalement une distribution de correction de bogues avec cependant
+  de nouveaux opcodes et des améliorations.
+</para>
+<para>
+  <itemizedlist>
+    <listitem>
+      <para>Nouveaux opcodes :
+      <itemizedlist>
+        <listitem>
+          <simpara><link linkend="centroid"><citetitle>centroid</citetitle></link>
+          semblable à <emphasis>pvscent</emphasis> mais agissant sur des
+          signaux audio.</simpara>
+        </listitem>
+        <listitem>
+          <simpara><link linkend="cosseg"><citetitle>cosseg</citetitle></link>
+          comme <emphasis>linseg</emphasis> mais avec interpolation cosinusoïdale.</simpara>
+        </listitem>
+        <listitem>
+          <simpara><link linkend="cossegb"><citetitle>cossegb</citetitle></link>
+          comme <emphasis>linsegb</emphasis> mais avec interpolation cosinusoïdale.</simpara>
+        </listitem>
+        <listitem>
+          <simpara><link linkend="cossegr"><citetitle>cossegr</citetitle></link>
+          comme <emphasis>linsegr</emphasis> mais avec interpolation cosinusoïdale.</simpara>
+        </listitem>
+        <listitem>
+          <simpara><link linkend="joystick"><citetitle>joystick</citetitle></link>
+          pour lire des valeurs venant d'un joystick externe (seulement sous Linux).</simpara>
+        </listitem>
+        <listitem>
+          <simpara><link linkend="log2"><citetitle>log2</citetitle></link>,
+          fonction logarithme de base 2.</simpara>
+        </listitem>
+        <listitem>
+          <simpara><link linkend="platerev"><citetitle>platerev</citetitle></link>
+          modélisant une plaque réverbérante carrée.</simpara>
+        </listitem>
+        <listitem>
+          <simpara><link linkend="pwd"><citetitle>pwd</citetitle></link>
+          pour déterminer le répertoire courant</simpara>
+        </listitem>
+        <listitem>
+          <simpara><link linkend="readf"><citetitle>readf</citetitle></link>
+          pour lire des chaînes de caractères d'un fichier</simpara>
+        </listitem>
+        <listitem>
+          <simpara><link linkend="readfi"><citetitle>readfi</citetitle></link>
+          pour lire des chaînes de caractères d'un fichier à l'initialisation</simpara>
+        </listitem>
+        <listitem>
+          <simpara><link linkend="vbap"><citetitle>vbap</citetitle></link>
+          de la famille vbap, flexible sur le nombre de haut-parleurs
+          et sur le choix des dispositions.</simpara>
+        </listitem>
+        <listitem>
+          <simpara><link linkend="vbapg"><citetitle>vbapg</citetitle></link>
+          semblable à <emphasis>vbap</emphasis> mais ne calculant que les
+          gains sur les canaux.</simpara>
+        </listitem>
+      </itemizedlist>
+      </para>
+    </listitem>
+      <listitem>
+        <para>
+          Nouvelles fonctionnalités
+          <itemizedlist>
+            <listitem>
+              <simpara>
+              Changements à &lt;CsOptions&gt; permettant les espaces entre les
+              mots et les caractères d'échappement.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+              <link linkend="fout"><citetitle>fout</citetitle></link>
+              et <link linkend="fin"><citetitle>fin</citetitle></link> utilisent
+              une meilleure stratégie de mémoire tampon et sont ainsi plus rapides.
+              </simpara>
+            </listitem>
+              <listitem>
+                <simpara>
+                  Il est possible de ne spécifier qu'un fichier d'orchestre avec
+                  l'option --orc. Utile lorsqu'on a pas besoin de partition.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Une nouvelle option de ligne de commande, --ogg, a été ajoutée
+                pour avoir aisément une sortie au format ogg/vorbis.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                On a ajouté alsaseq au midi en temps réel.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Bogues corrigés et améliorations :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Les opcodes
+                <link linkend="dates"><citetitle>dates</citetitle></link>
+                pouvaient planter sur les architectures 64 bit ; c'est corrigé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Certains inter-verrous multicoeur étaient erronés. On pense que
+                ce n'était pas encore un problème, mais que ça le serait devenu
+                dans le futur.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Il y avait des cas de double fermeture d'un fichier conduisant
+                au plantage en fin de programme.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Deux nouvelles fonctionnalités dans
+                <link linkend="partikkel"><citetitle>partikkel</citetitle></link>.
+                La loi de panoramique pour <emphasis>channelmasks</emphasis> peut
+                maintenant être fixée par une table de fonction (second argument
+                facultatif de <emphasis>partikkel</emphasis>), et les nouveaux opcodes
+                de support <emphasis>partikkelget</emphasis> et
+                <emphasis>partikkelset</emphasis>, pour atteindre et modifier les
+                indices de masquage interne de <emphasis>partikkel</emphasis>.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+              <link linkend="follow2"><citetitle>follow2</citetitle></link> a été
+              retravaillé pour que les calculs au taux-i et au taux-k soient les
+              mêmes.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+              <link linkend="pvscent"><citetitle>pvscent</citetitle></link> a été
+              corrigé car il retournait la moitié de la valeur correcte.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+              <link linkend="vbaplsinit"><citetitle>vbaplsinit</citetitle></link>
+              peut créer plus d'une disposition de haut-parleurs utilisables par
+              <emphasis>vbap</emphasis>/<emphasis>vbapg</emphasis>. Egalement
+              des diagnostics bien meilleurs sur les dispositions incorrectes.
+              </simpara> 
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Changements internes :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Changement du code pour une possible utilisation de bison 2.6.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Il est supposé que la version 1.0.19 ou une version ultérieure
+                de libsndfile est disponible.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Si la partition est omise, une boucle d'attente quasi infinie est
+                générée.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+  <bridgehead>Nouveautés dans la version 5.17 (mars 2012)</bridgehead>
+  <para>
+    C'est principalement une distribution sans changement majeur mais avec de
+    nombreuses corrections.
+  </para>
+  <para>
+    <itemizedlist>
+      <listitem>
+        <para>Nouvel opcode :
+          <itemizedlist>
+            <listitem>
+              <simpara>opcode <link linkend="cell"><citetitle>cell</citetitle></link>
+               d'automate cellulaire.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Opcodes et GENs modifiés :
+          <itemizedlist>
+            <listitem>
+              <simpara><emphasis>active</emphasis> rapporte maintenant le nombre
+              total d'instruments actifs ou alloués si son argument vaut zéro.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Les opcodes de socket TCP <emphasis>stsend</emphasis> et
+              <emphasis>strecv</emphasis> ont été remodelés selon un schéma
+              logique.</simpara> 
+            </listitem>
+            <listitem>
+              <simpara>Le système DSSI accepte maintenant jusqu'à 9 canaux.</simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>FLsavesnap</emphasis> fonctionne avec d'autres
+              widgets pour lesquels <emphasis>imin</emphasis> &gt; <emphasis>imax</emphasis>.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Utilititaires :
+          <itemizedlist>
+            <listitem>
+              <simpara><emphasis>csbeats</emphasis> est mieux documenté et il est
+              compilé par défaut ; il propose également plus de durées de notes.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Quelques failles de sécurité dans les utilitaires ont été
+              corrigées.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Bogues corrigés :
+          <itemizedlist>
+            <listitem>
+              <simpara>L'opcode <emphasis>unirand</emphasis> au taux-a a été
+              corrigé.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Correction des paramètres régionaux pour les constantes
+              virgule flottante dans l'orchestre.</simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>transegr</emphasis> a été corrigé.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Changements système :
+          <itemizedlist>
+            <listitem>
+              <simpara>La partition peut maintenant durer plus longtemps (changement
+              de la taille de variable temporelle).</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Une partition vide donne une durée d'exécution très longue
+              (de nombreuses années).</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Le code Android est distribué.</simpara>
+            </listitem>
+            <listitem><simpara>Changement dans l'utilisation des fichiers tmp ;
+              ils sont maintenant tous effacés à la fin de l'exécution (auparavant
+              certains d'entre eux restaient) et la variable d'environnement
+              TMPDIR est utilisée.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>L'interaction entre les commentaires, les fins de ligne et
+              la fin de fichier a été fixée.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Les nombres hexadécimaux sont maintenant autorisés dans
+              l'orchestre.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Un orchestre vide ne provoque plus de plantage.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>L'expansion de macro dans une chaîne a changé.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Lorsque qu'il y a un eof dans une macro de partition mal
+              formée, la boucle infinie est évité.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Les diagnostiques de noms de macro avec arguments et de
+              fuites de mémoire ont été corrigés.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Changement du préprocesseur : {{ }} à l'intérieur de "..."
+              et de meilleurs diagnostiques.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>L'installeur pour Windows a été corrigé afin de supprimer
+              complètement $INSTDIR\bin de PATH durant la désinstallation : cela
+              nettoie la variable d'environnement PATH lors d'une désinstallation
+              sous Windows. Auparavant, il restait un "\bin" résiduel dans le PATH.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>La classe CsoundAC de MusicModel est plus utilisable par
+              les programmes C++.</simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>ftcps</emphasis> manquait en tant que fonction.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Changement internes :
+          <itemizedlist>
+            <listitem>
+              <simpara>Beaucoup ! Certains messages modérés, amélioration du code,
+              etc.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+  <bridgehead>Nouveautés dans la version 5.16 (février 2012)</bridgehead>
+  <para>
+    Le changement principal est que le nouveau parseur est maintenant employé
+    par défaut. L'ancien parseur est toujours disponible en cas de difficultés,
+    mais le nouveau parseur a été testé en profondeur depuis le début de l'année,
+    et il a reçu une restructuration complète de l'expansion des macros. Une des
+    conséquences est l'exécution plus rapide de la plupart des orchestres bien
+    que leur analyse soit plus lente. Quelques optimisations sont implémentées
+    sous la forme de réduction en constante dans des cas simples. Les numéros de
+    ligne et les noms de fichier sont mieux tracés qu'auparavant.
+  </para>
+  <para>
+    Quelques fuites de mémoire ont été aussi corrigées.
+  </para>
+  <para>
+    <itemizedlist>
+      <listitem>
+        <para>Nouveaux opcodes :
+          <itemizedlist>
+            <listitem>
+              <simpara>Opcodes adaptés de SuperCollider par &nametito;:
+              <link linkend="dust"><citetitle>dust</citetitle></link>,
+              <link linkend="dust2"><citetitle>dust2</citetitle></link>,
+              <link linkend="gausstrig"><citetitle>gausstrig</citetitle></link>,
+              <link linkend="gendy"><citetitle>gendy</citetitle></link>,
+              <link linkend="gendyc"><citetitle>gendyc</citetitle></link> et
+              <link linkend="gendyx"><citetitle>gendyx</citetitle></link>.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Un générateur de bruit fractal par &nametito;:
+              <link linkend="fractalnoise"><citetitle>fractalnoise</citetitle></link>.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Opcodes pour accéder aux valeurs dans les tables par indexation
+              directe, par &namejohn;:
+              <link linkend="ptable"><citetitle>ptable</citetitle></link>,
+              <link linkend="ptablei"><citetitle>ptablei</citetitle></link>,
+              <link linkend="ptable3"><citetitle>ptable3</citetitle></link> et
+              <link linkend="ptablew"><citetitle>ptablew</citetitle></link>. Ces opcodes
+              sont semblables respectivement à
+              <link linkend="table"><citetitle>table</citetitle></link>,
+              <link linkend="tablei"><citetitle>tablei</citetitle></link>,
+              <link linkend="table3"><citetitle>table3</citetitle></link> et
+              <link linkend="tablew"><citetitle>tablew</citetitle></link>, mais ils ne
+              nécessitent pas des tables ayant une longueur en puissance de deux.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Opcodes et GENs modifiés :
+          <itemizedlist>
+            <listitem>
+              <simpara>Il y avait un problème de borne d'intervalle dans l'opcode tab
+              qui pouvait induire une référence hors-limites erronée.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>GEN15 appelait en interne GEN13 et GEN14, en leur passant des
+              valeurs d'amplitude non initialisées. Problème corrigé.</simpara> 
+            </listitem>
+                <listitem>
+              <simpara>fmbell prend maintenant un argument facultatif pour contrôler la durée
+              d'entretien.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Changement de base de pvs pour les conversion de tab vers table.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>poscil est maintenant polymorphique, ce qui permet d'avoir des amplitudes
+              et des fréquences de taux-k ou de taux-a.</simpara> 
+            </listitem>
+            <listitem>
+              <simpara>Le comportement de p() et de i() a changé lorsque l'argument est
+              de taux-k.</simpara> 
+            </listitem>
+            <listitem>
+              <simpara>Le fonctionnement différé GEN49 est corrigé.</simpara> 
+            </listitem>
+            <listitem>
+              <simpara>GEN23 offre maintenant un fonctionnement différé.</simpara> 
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Utilititaires :
+          <itemizedlist>
+            <listitem>
+              <simpara>Indicateur pour utiliser avec le nouveau parseur les fichiers en mémoire.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Frontaux :
+          <itemizedlist>
+            <listitem>
+              <simpara>Un accès aux tables a été ajouté à csoundapi~ via de nouvelles
+              méthodes get/set.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Bogues corrigés et améliorations :
+          <itemizedlist>
+            <listitem>
+              <simpara>Un grand nombre dans le nouveau parseur en relation avec la
+              précédence et le multicoeur.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>De meilleurs diagnostiques lorsqu'un fichier ou un csd est
+              manquant.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>fichier csd : CsFileB et CsSampleB corrigés.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>L'instruction de partition 'n' a été corrigée.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Un bogue dans diskin2 produisant une boucle infinie a été corrigé.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Un bogue dans hrtfmove causant un fondu-enchaîné bruiteux a été corrigé.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Des dépassement de tampon aléatoires ont été corrigés dans certains
+              utilitaires.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Une erreur de segmentation dans midicN est maintenant évitée.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Bogue dans mp3in lorsque skip=0, corrigé.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>L'instruction de partition 'r' a été corrigée en ce qui concerne les
+              macros.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>sndwarp pouvait engendrer une erreur de segmentation.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Changements système :
+          <itemizedlist>
+            <listitem>
+              <simpara>Les commandes de préprocesseur #if #else #endin fonctionnent.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>La profondeur d'#includes est maintenant limitée à la place d'une
+              récursion infinie.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Si --nodisplays ou -d est utilisé, tous les affichages sont réellement
+              supprimés ; cela corrige le bogue qui, lorsque l'on utilisait -d ou --nodisplays,
+              permettait à la fonction csoundModuleInit de winFLTK.c de fixer des procédures de
+              rappel pour l'affichage ; ce bogue était causé par l'appel d'applications python
+              TK et de CsoundYield_FLTK.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Les fuites de mémoire dans mp3in et dans mp3len ont été corrigées.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Changement internes :
+          <itemizedlist>
+            <listitem>
+              <simpara>Très, très, très nombreux ! Et le nouveau parseur ...</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+<bridgehead>Nouveautés dans la version 5.15 (décembre 2011)</bridgehead>
+<para>
+  <itemizedlist>
+      <listitem>
+        <para>Nouveaux opcodes:
+          <itemizedlist>
+            <listitem>
+              <simpara>opcode <citetitle>ftab2tab</citetitle>.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>opcode <link linkend="tab2pvs"><citetitle>tab2pvs</citetitle></link>.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>opcode <link linkend="pvs2tab"><citetitle>pvs2tab</citetitle></link>.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>opcode <link linkend="cpumeter"><citetitle>cpumeter</citetitle></link>,
+              (pas vraiment nouveau mais désormais disponible sous OSX)</simpara>
+              </listitem>
+            <listitem>
+              <simpara>opcode <citetitle>minmax</citetitle>.</simpara>
+            </listitem>
+            <listitem>
+              <simpara><citetitle>opcode <emphasis>ftresize</emphasis> (EXPERIMENTAL)</citetitle>.</simpara>
+            </listitem>
+            <listitem>
+              <simpara><citetitle>opcode <emphasis>ftresizei</emphasis> (EXPERIMENTAL)</citetitle>.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>opcode <link linkend="hrtfearly"><citetitle>hrtfearly</citetitle></link>.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>opcode <link linkend="hrtfreverb"><citetitle>hrtfreverb</citetitle></link>.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+
+        <para>
+          Nouveau GEN et macros
+          <itemizedlist>
+            <listitem>
+              <simpara>Code permettant de différer GEN49 [NB semble ne pas fonctionner] </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Opcodes et GENS modifiés
+          <itemizedlist>
+            <listitem>
+              <simpara><emphasis>socksend</emphasis> et <emphasis>sockrecv</emphasis> n'effectuent
+              plus de test MTFU et fonctionnent sous Windows.</simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>mpulse</emphasis> a été modifié de façon à ce que si l'évènement
+              suivant a une date négative, sa valeur absolue est utilisée.</simpara> 
+            </listitem>
+                <listitem>
+              <simpara>l'opcode <emphasis>serial</emphasis> fonctionne maintenant sous Windows
+              comme sous Un*x.</simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>out, out2, outq, outh, outo, outx</emphasis> et <emphasis>out32</emphasis>
+              sont maintenant identiques et prennent autant d'arguments que <emphasis>nchnls</emphasis>.
+              Cela remplace le remappage d'opcodes actuel.</simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>turnoff2</emphasis> est maintenant polymorphe quant aux type S et k
+              (il accepte les noms d'instrument).</simpara> 
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Bogues corrigés :
+        <itemizedlist>
+          <listitem>
+            <simpara><emphasis>GEN42</emphasis> a été corrigé.</simpara>
+          </listitem>
+          <listitem>
+            <simpara><emphasis>jacko</emphasis> : une erreur de segmentation a été corrigée
+            en supprimant l'option inutilisée de JackSessionID.</simpara>
+          </listitem>
+          <listitem>
+            <simpara>la fuite de mémoire de <emphasis>doppler</emphasis> a été corrigée.</simpara>
+          </listitem>
+          <listitem>
+            <simpara><emphasis>transegr</emphasis> a été corrigé en mode release,
+            lorsque la majeure partie de l'enveloppe est ignorée.</simpara>
+          </listitem>
+          <listitem>
+            <simpara><emphasis>FLPack</emphasis> est maintenant conforme au manuel.</simpara>
+          </listitem>
+          <listitem>
+            <simpara><emphasis>max_k</emphasis> est maintenant conforme au manuel.</simpara>
+          </listitem>
+          <listitem>
+            <simpara><emphasis>hrtfreverb</emphasis> a été corrigé.</simpara>
+          </listitem>
+          <listitem>
+            <simpara>le code atsa fonctionne maintenant sous Windows dans la plupart des cas.</simpara>
+          </listitem>
+          <listitem>
+            <simpara>bogue de <emphasis>tabmorph</emphasis> corrigé.</simpara>
+          </listitem>
+          <listitem>
+            <simpara>le problème des opcodes définis par l'utilisateur n'ayant pas
+            de sortie est réglé.</simpara>
+          </listitem>
+          <listitem>
+            <simpara>Différentes corrections aux commentaires de type /* ... */.</simpara>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </listitem>
+      <listitem>
+        <para>Changements systèmes :
+        <itemizedlist>
+          <listitem>
+            <simpara>Différents questions de licence ont été réglées.</simpara>
+          </listitem>
+          <listitem>
+            <simpara>Loris ne fait plus partie de l'arbre de Csound.</simpara>
+          </listitem>
+          <listitem>
+            <simpara>Des fuites de mémoire ont été corrigées.</simpara>
+          </listitem>
+          <listitem>
+            <simpara>Si aucune partition n'est fournie, une partition factice avec
+            une durée de 100 ans est créée.</simpara>
+          </listitem>
+          <listitem>
+            <simpara>Tout le traitement de partition se fait en mémoire sans fichier
+            temporaire.</simpara>
+          </listitem>
+          <listitem>
+            <simpara>La mémoire des chaînes de caractère est maintenant extensible
+            et sans limitation de taille.</simpara>
+          </listitem>
+          <listitem>
+            <simpara>#if #else #end sont maintenant dans le nouveau parseur.</simpara>
+          </listitem>
+          <listitem>
+            <simpara>Ajustements de la précision des fichier MIDI en sortie.</simpara>
+          </listitem>
+          <listitem>
+            <simpara>Sous OSX, passage de Coreaudio à AuHAL </simpara> 
+          </listitem>
+          <listitem>
+            <simpara>Le multicoeur est maintenant sûr avec ZAK, les canaux d'E/S et
+            la modification de tables.</simpara>
+          </listitem>
+          <listitem>
+            <simpara>Nouveau module coremidi.</simpara>
+          </listitem>
+          <listitem>
+            <simpara>Amélioration du clavier virtuel :
+                 1) Menu déroulant pour choisir l'octave de base (celle qui commence
+                 avec la touche virtuelle correspondant à la lettre Z du clavier de
+                 l'ordinateur). La valeur par défaut est 5, ce qui préserve la
+                 compatibilité descendante.
+                 2) Correspondance Maj-X ce qui ajoute deux octaves à la
+                 correspondance X pour un total de quatre octaves jouables depuis
+                 le clavier de l'ordinateur (en partant de l'octave de base choisie).
+                 3) Correspondances Ctrl-N / Ctrl-Maj-N pour incrémenter /
+                 décrémenter la réglette du contrôleur N.
+                 4) La roulette de la souris contrôle maintenant les réglettes.</simpara>
+          </listitem>
+          <listitem>
+            <simpara>type tsig pour les vecteurs.</simpara>
+          </listitem>
+          <listitem>
+            <simpara>tsigs et fsigs autorisés comme arguments des UDOs </simpara>
+          </listitem>
+          <listitem>
+            <simpara>API : version mineure augmentée.</simpara>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </listitem>
+    <listitem>
+        <para>
+          Changements internes :
+          <itemizedlist>
+            <listitem>
+              <simpara>Très, très, très nombreux ! </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+<bridgehead>Nouveautés dans la version 5.14 (octobre 2011)</bridgehead>
+<para>
+  <itemizedlist>
+      <listitem>
+        <para>Nouveaux opcodes :
+          <itemizedlist>
+            <listitem>
+              <simpara>opcode <link linkend="mp3len"><citetitle>mp3len</citetitle></link>.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>opcode <link linkend="qnan"><citetitle>qnan</citetitle></link>.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>opcode <link linkend="qinf"><citetitle>qinf</citetitle></link>.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>opcode <link linkend=" exprandi"><citetitle>exprandi</citetitle></link>.</simpara>
+              </listitem>
+            <listitem>
+              <simpara>opcode <link linkend="cauchyi"><citetitle>cauchyi</citetitle></link>.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>opcode <link linkend="gaussi"><citetitle>gaussi</citetitle></link>.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>opcode <link linkend="cpumeter"><citetitle>cpumeter</citetitle></link>.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>opcode <link linkend="linsegb"><citetitle>linsegb</citetitle></link>.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>opcode <link linkend="expsegb"><citetitle>expsegb</citetitle></link>.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>opcode <link linkend="transegb"><citetitle>transegb</citetitle></link>.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>opcode <link linkend="expsegba"><citetitle>expsegba</citetitle></link>.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>opcode <link linkend="pvsgain"><citetitle>pvsgain</citetitle></link>.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>opcode <link linkend="pvsbufread2"><citetitle>pvsbufread2</citetitle></link>.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>opcodes <link linkend="serialBegin"><citetitle>serial</citetitle></link>.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>opcodes <link linkend="lua"><citetitle>lua</citetitle></link>.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>opcode <link linkend="plustab"><citetitle>plustab</citetitle></link>.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>opcode <link linkend="multtab"><citetitle>multtab</citetitle></link>.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>opcode <link linkend="maxtab"><citetitle>maxtab</citetitle></link>.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>opcode <link linkend="mintab"><citetitle>mintab</citetitle></link>.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>opcode <link linkend="sumtab"><citetitle>sumtab</citetitle></link>.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>opcode <link linkend="scalet"><citetitle>scalet</citetitle></link>.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Nouvelles fonctionnalités :
+          <itemizedlist>
+            <listitem>
+              <simpara>le processeur beats est renommé csbeats et distribué</simpara>
+            </listitem>
+            <listitem>
+              <simpara>l'utilité mkdb qui fournit un catalogue des greffons opcodes/bibliothèques</simpara>
+            </listitem>
+                <listitem>
+              <simpara>la bibliothèque ladspa construite dans le système par défaut</simpara>
+            </listitem>
+                <listitem>
+              <simpara>les macros sont maintenant déroulées en chaînes dans la
+              partition</simpara>
+            </listitem>
+            <listitem>
+              <simpara>il y a une syntaxe de boucle until .. do .. od (seulement
+              avec le nouveau parseur) </simpara> 
+            </listitem>
+            <listitem>
+              <simpara>les signaux SIGPIPE sont ignorés plutôt que de provoquer
+              la sortie de Csound</simpara>
+            </listitem>
+            <listitem>
+              <simpara>il est possible d'utiliser des vecteurs de valeurs de taux-k,
+              appelés variables-t. Ils sont initialisés à une taille donnée et
+              peuvent être lus avec la syntaxe simple []. L'affectation des
+              composantes ne se fait qu'avec =. Il y a aussi quelques nouveaux
+              opcodes qui fournissent des fonctionnalités plus larges.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Bogues corrigés et améliorations :
+        <itemizedlist>
+          <listitem>
+            <simpara>la lecture de valeurs pour remplir des tables était défectueuse
+            à cause de commentaires</simpara>
+          </listitem>
+          <listitem>
+            <simpara>l'erreur interne dans wii_data a été corrigée</simpara>
+          </listitem>
+          <listitem>
+            <simpara>pvsshift a été corrigé</simpara>
+          </listitem>
+          <listitem>
+            <simpara>jacko a été corrigé</simpara>
+          </listitem>
+          <listitem>
+            <simpara>petite correction dans gen23</simpara>
+          </listitem>
+          <listitem>
+            <simpara>wiimote corrigé</simpara>
+          </listitem>
+          <listitem>
+            <simpara>atsaadd corrigé</simpara>
+          </listitem>
+          <listitem>
+            <simpara>compress corrigé pour fonctionner avec 0dbfs</simpara>
+          </listitem>
+          <listitem>
+            <simpara>le compteur de position de pvsbufread a été corrigé</simpara> 
+          </listitem>
+          <listitem>
+            <simpara>l'opcode tempo a été corrigé</simpara>
+          </listitem>
+          <listitem>
+            <simpara>la section CsFileB des fichiers .csd était défectueuse, c'est corrigé</simpara>
+          </listitem>
+          <listitem>
+            <simpara>les tables différées de gen01 pouvait avoir une taille erronée</simpara>
+          </listitem>
+          <listitem>
+            <simpara>vbap_zak rendu fonctionnel (!) </simpara>
+          </listitem>
+          <listitem>
+            <simpara>le problème de mémoire dans ATSsinoi est corrigé</simpara>
+          </listitem>
+          <listitem>
+            <simpara>différentes corrections dans cscore </simpara>
+          </listitem>
+          <listitem>
+            <simpara>différentes corrections dans partials et dans tradsyn</simpara>
+          </listitem>
+          <listitem>
+            <simpara>transegr pouvait planter dans certains cas</simpara>
+          </listitem>
+          <listitem>
+            <simpara>les opcodes loris proviennent de la dernière version</simpara>
+          </listitem>
+          <listitem>
+            <simpara>l'opcode date a une nouvelle origine sur certaines plates-formes
+            pour éviter les dépassements</simpara> 
+          </listitem>
+          <listitem>
+            <simpara>pvsblur fonctionne maintenant après un reinit</simpara>
+          </listitem>
+          <listitem>
+            <simpara>diskin, diskin2 et soundin peuvent lire maintenant jusqu'à 40
+            canaux</simpara> 
+          </listitem>
+          <listitem>
+            <simpara>prints se comporte mieux avec les arrondis</simpara>
+          </listitem>
+          <listitem>
+            <simpara>fmpercfl a maintenant un vibrato qui fonctionne</simpara>
+          </listitem>
+          <listitem>
+            <simpara>atreson a maintenant un paramètre de gain au taux-k</simpara>
+          </listitem>
+          <listitem>
+            <simpara>l'opcode comb est consolidé pour pouvoir accepter le même
+            argument en entrée et en sortie</simpara> 
+          </listitem>
+          <listitem>
+            <simpara>précision accrue dans line et expon</simpara>
+          </listitem>
+          <listitem>
+            <simpara>OSCsend retrouve l'espace préalablement perdu</simpara>
+          </listitem>
+          <listitem>
+            <simpara>OSCsend peut envoyer une table sous forme d'objet binaire
+            (blob) avec la balise T -- expérimental et non testé</simpara>
+          </listitem>
+          <listitem>
+            <simpara>lpf18 a maintenant un argument facultatif iskip</simpara>
+          </listitem>
+          <listitem>
+            <simpara>i() accepte aussi une valeur de taux-i. Dans ce cas, c'est
+            un no-op (opcode neutre)</simpara> 
+          </listitem>
+          <listitem>
+            <simpara>makecsd a été révisé et étendu pour avoir des options pour
+            le traitement du MIDI et des partitions et les licences</simpara> 
+          </listitem>
+          <listitem>
+            <simpara>lpanal revu pour supprimer les boques et des étrangetés</simpara>
+          </listitem>
+            <listitem>
+              <simpara>un problème de bruit dans alsa et un clic dans portaudio
+              ont été corrigés</simpara>
+            </listitem>
+            <listitem>
+              <simpara>le pilote portaudio a été modifié pour être plus robuste
+              lors du stop/exit </simpara>
+            </listitem>
+        </itemizedlist>
+      </para>
+    </listitem>
+    <listitem>
+        <para>
+          Changements internes :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                De nombreuses modifications dans le nouveau parseur pour le
+                rendre opérationnel, mais à utiliser avec précaution</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Le système multi-coeurs est distribué en mode expérimental
+              et doit être utilisé avec beaucoup de précautions.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+<bridgehead>Nouveautés dans la version 5.13 (janvier 2011)</bridgehead>
+  <para>
+    <itemizedlist>
+      <listitem>
+        <para>Nouveaux opcodes :
+          <itemizedlist>
+            <listitem>
+              <simpara>opcode <link linkend="median"><citetitle>median</citetitle></link>.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>opcode<link linkend="filevalid"><citetitle>filevalid</citetitle></link>.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>opcodes de traitement spectral
+              <link linkend="pvstanal"><citetitle>pvstanal</citetitle></link>,
+              <link linkend="pvswarp"><citetitle>pvswarp</citetitle></link>,
+              <link linkend="temposcal"><citetitle>temposcal</citetitle></link> et
+              <link linkend="pvslock"><citetitle>pvslock</citetitle></link>.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>opcode <link linkend="mincer"><citetitle>mincer</citetitle></link>.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>opcode de suite de <link linkend="fareylen"><citetitle>fareylen</citetitle></link>.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Nouvelles fonctionnalités :
+          <itemizedlist>
+            <listitem>
+              <simpara>Générateurs de nombres aléatoires réels utilisant /dev/random
+                (seulement sur Linux).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>macro INF ajoutée aux orchestres ; z se lit infini dans les
+              partitions</simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>init</emphasis> a été changé pour permettre plusieurs initialisations
+              en une seule instruction</simpara>
+            </listitem>
+            <listitem>
+              <simpara>GEN pour supporter les suites de Farey</simpara>
+            </listitem>
+            <listitem>
+              <simpara><link linkend="maxalloc"><citetitle>maxalloc</citetitle></link>,
+                <link linkend="cpuprc"><citetitle>cpuprc</citetitle></link> et
+                <link linkend="active"><citetitle>active</citetitle></link> 
+                acceptent maintenant les instruments nommés.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Si la normalisation dans les opcodes <emphasis>pow</emphasis>
+              vaut 0, elle est traitée comme si elle valait 1</simpara>
+            </listitem>
+            <listitem>
+              <simpara><link linkend="inch"><citetitle>inch</citetitle></link> peut
+              prendre jusqu'à 20 entrées et sorties.</simpara>
+            </listitem>
+            <listitem>
+              <simpara><link linkend="pvscale"><citetitle>pvscale</citetitle></link>,
+              <link linkend="pvsvoc"><citetitle>pvsvoc</citetitle></link> et
+              <link linkend="pvsmix"><citetitle>pvsmix</citetitle></link> ont
+              maintenant de très bons modes de préservation d'enveloppe spectrale
+              (1 = cepstrum filtré, 2 = enveloppe véritable).</simpara>
+            </listitem>
+            <listitem>
+              <simpara><link linkend="oscil1"><citetitle>oscil1</citetitle></link>
+              pouvait être statique si la durée était trop longue ; maintenant
+              il y a un incrément positive minimum.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>GEN49 utilise maintenant les chemins de recherche.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Bogues corrigés et améliorations :
+          <itemizedlist>
+            <listitem>
+              <simpara>Le compte des lignes a été fixé dans les orchestres, ainsi
+              que le caractère \ dans les chaînes.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Les opcodes rapides <emphasis>tab</emphasis> sont protégés
+              contre les plantages</simpara>
+            </listitem>
+            <listitem>
+              <simpara>% dans les impressions formatées pouvait planter</simpara>
+            </listitem>
+            <listitem>
+              <simpara>La double libération de mémoire dans fgen a été fixée</simpara>
+            </listitem>
+            <listitem>
+              <simpara><link linkend="sndwarp"><citetitle>sndwarp</citetitle></link>
+              est plus discret (il donnait trop de messages)</simpara>
+            </listitem>
+            <listitem>
+              <simpara>gen41 utilise des probabilités positives</simpara>
+            </listitem>
+            <listitem>
+              <simpara><link linkend="adsynt"><citetitle>adsynt</citetitle></link> 
+              a été retravaillé pour supprimer de nombreux bogues</simpara>
+            </listitem>
+            <listitem>
+              <simpara>L'erreur de phase de<link linkend="adsynt2"><citetitle>adsynt2</citetitle></link>
+              a été fixée</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Le boque du nombre maximum de gens a été fixé</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Meilleur test dans grain4</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Meilleur test dans <link linkend="adsyn"><citetitle>adsyn</citetitle></link></simpara>
+            </listitem>
+            <listitem>
+              <simpara>Le module était erroné dans le nouveau parseur</simpara>
+            </listitem>
+            <listitem>
+              <simpara><link linkend="atonex"><citetitle>atonex</citetitle></link>/<link linkend="tonex"><citetitle>tonex</citetitle></link>
+              faisaient de fausses opérations</simpara>
+            </listitem>
+            <listitem>
+              <simpara><link linkend="mp3in"><citetitle>mp3in</citetitle></link>
+              pouvait répéter le son en fin de fichier</simpara>
+            </listitem>
+            <listitem>
+              <simpara>l'opcode <link linkend="changed"><citetitle>changed</citetitle></link>
+              s'initialise à zéro</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Un bogue sérieux a été corrigé dans
+              <link linkend="tabmorpha"><citetitle>tabmorpha</citetitle></link></simpara>
+            </listitem>
+            <listitem>
+              <simpara>Un bogue sérieux a été supprimé de GEN49, ce qui fait qu'il
+              n'y a plus de longs silences incorrects.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Opcode <link linkend="partikkel"><citetitle>partikkel</citetitle></link> :
+              un bogue de placement de grain dans un sous-échantillon lorsque l'on
+              utilise la MF du taux de grains a été fixé</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Changements internes :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                On trouve dans le nouveau parseur seulement les opérateurs @ et
+                @@ pour arrondir l'entier suivant à une puissance de 2 ou à une
+                puissance de 2 + 1
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Le tri de la partition a été rendu beaucoup plus rapide</simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>lineto</emphasis> a été amélioré</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Les gens nommés sont autorisés</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Les divers affichages comprennent le nom d'instrument si
+              celui-ci est disponible</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Une option de ligne de commande pour omettre le chargement
+              d'une bibliothèque</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Le nombre de canaux de sortie n'est plus contraint à égaler
+              celui des canaux d'entrée</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Plusieurs corrections au nouveau parseur</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Les avertissements sont plus utilisés que les messages
+              (ce qui permet de les désactiver)</simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>csoundSetMessageCallback</emphasis> est réinitialisé
+              si <emphasis>callback</emphasis> vaut null</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+ <bridgehead>Nouveautés dans la version 5.12 (janvier 2010)</bridgehead>
+ <para>
+   <itemizedlist>
+     <listitem>
+       <para>Nouveaux opcodes :
+         <itemizedlist>
+           <listitem>
+             <simpara>
+               <link linkend="transegr"><citetitle>transegr</citetitle></link>
+               est une version de l'opcode
+               <link linkend="transeg"><citetitle>transeg</citetitle></link>
+               qui a une section de relâchement déclenchée par midi, par un
+               opcode <link linkend="turnoff2"><citetitle>turnoff2</citetitle></link>
+               ou par un <link linkend="i"><citetitle>évènement de partition
+               i</citetitle></link> dont le numéro d'instrument est négatif.
+             </simpara>
+           </listitem>
+           <listitem>
+             <simpara>
+               <link linkend="ftgenonce"><citetitle>ftgenonce</citetitle></link>
+               génère une table de fonction depuis la définition d'un instrument,
+               sans duplication de données.
+             </simpara>
+           </listitem>
+           <listitem>
+             <simpara><link linkend="passign"><citetitle>passign</citetitle></link>
+             permet une initialisation rapide de variables de taux-i à partir de
+             p-champs.</simpara>
+           </listitem>
+           <listitem>
+             <simpara><link linkend="crossfm"><citetitle>crossfm</citetitle></link>
+             implémente la synthèse par modulation de fréquence croisée.</simpara>
+           </listitem>
+           <listitem>
+             <simpara>
+               <link linkend="loopxseg"><citetitle>loopxseg</citetitle></link>
+               est comme
+               <link linkend="loopseg"><citetitle>loopseg</citetitle></link>
+               mais avec une enveloppe exponentielle.
+       </simpara>
+           </listitem>
+           <listitem>
+             <simpara>
+               <link linkend="looptseg"><citetitle>looptseg</citetitle></link>
+               est comme
+               <link linkend="loopseg"><citetitle>loopseg</citetitle></link>
+               mais avec une enveloppe flexible comme
+               <link linkend="transeg"><citetitle>transeg</citetitle></link>.
+             </simpara>
+           </listitem>
+         </itemizedlist>
+       </para>
+     </listitem>
+     <listitem>
+       <para>Bogues corrigés et améliorations :
+         <itemizedlist>
+           <listitem>
+             <simpara>    
+               <link linkend="pvshift"><citetitle>pvshift</citetitle></link>
+               écrasait les données en mode double.
+             </simpara>
+           </listitem>
+           <listitem>
+             <simpara>
+               Le cas 3 de 
+               <link linkend="pan2"><citetitle>pan2</citetitle></link> a été
+               fixé.
+             </simpara>
+           </listitem>
+           <listitem>
+ <!--             <simpara> -->
+<!--          <link linkend="gettempo"><citetitle>gettempo</citetitle></link> fonctionne maintenant. -->
+<!--              </simpara> -->
+           </listitem>
+           <listitem>
+             <simpara>
+               <link linkend="clockon"><citetitle>clockon</citetitle></link>
+               et <link linkend="clockoff"><citetitle>clockoff</citetitle></link>
+               fonctionnent à nouveau.
+             </simpara>
+           </listitem>
+           <listitem>
+             <simpara>
+               <link linkend="cross2"><citetitle>cross2</citetitle></link> et
+               <link linkend="interp"><citetitle>interp</citetitle></link>
+               pouvaient avoir des divisions par zéro.
+             </simpara>
+           </listitem>
+           <listitem>
+             <simpara>
+               Le numéro de ligne dans les messages d'erreur n'inclut plus de
+               texte de
+               <link linkend="CommandUnifileParFile"><citetitle>.csoundrc</citetitle></link>.
+             </simpara>
+           </listitem>
+           <listitem>
+             <simpara>
+               <link linkend="p5gconnect"><citetitle>p5gconnect</citetitle></link>
+               a été modifié pour utiliser un processus léger séparé afin
+               d'éviter les problèmes de temps mort.
+             </simpara>
+           </listitem>
+           <listitem>
+             <simpara>
+               <link linkend="transeg"><citetitle>transeg</citetitle></link>
+               vérifie le nombre de ses arguments.
+             </simpara>
+           </listitem>
+           <listitem>
+             <simpara>
+               <link linkend="sfload"><citetitle>sfload</citetitle></link>
+               se limitait à 10 soundfonts et n'était pas sécurisé. Il n'est
+               plus limité.
+             </simpara>
+           </listitem>
+         </itemizedlist>
+       </para>
+     </listitem>
+     <listitem>
+       <para>
+         Changements Internes :
+         <itemizedlist>
+           <listitem>
+             <simpara>
+               \&quot; peut être utilisé comme caractère d'échapement dans les
+               chaînes de l'orchestre.
+             </simpara>
+           </listitem>
+           <listitem>
+             <simpara>
+               Le nouveau parseur a été corrigé pour les arguments facultatifs.
+             </simpara>
+           </listitem>
+           <listitem>
+             <simpara>
+               Meilleure vérification de l'instruction
+               <link linkend="f"><citetitle>f</citetitle></link> avec un nombre
+               négatif.
+             </simpara>
+           </listitem>
+           <listitem>
+             <simpara>
+               Les soundfonts n'initialisent le tableau des hauteurs qu'une
+               seule fois dans les opcodes de soundfont.
+             </simpara>
+           </listitem>
+           <listitem>
+             <simpara>
+               La collection usuelle de changements mineurs, de mises en forme
+               et de commentaires.
+             </simpara>
+           </listitem>
+         </itemizedlist>
+       </para>
+     </listitem>
+   </itemizedlist>
+ </para>
+  <bridgehead>Nouveautés dans la version 5.11 (juin 2009)</bridgehead>
+  <para>
+    <itemizedlist>
+      <listitem>
+        <para>Nouveaux opcodes :
+          <itemizedlist>
+            <listitem>
+              <simpara><link linkend="mp3in"><citetitle>mp3in</citetitle></link> :
+              permet la lecture des fichiers mp3 directement dans l'orchestre.</simpara>
+            </listitem>
+            <listitem>
+              <simpara><link linkend="wiiconnect"><citetitle></citetitle>wiiconnect</link>,
+              <link linkend="wiidata"><citetitle></citetitle>wiidata</link>,
+              <link linkend="wiisend"><citetitle></citetitle>wiisend</link>,
+              <link linkend="wiirange"><citetitle></citetitle>wiirange</link> opcodes par
+              john ffitch pour recevoir et envoyer des données de ou vers un contrôleur wiimote.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Nouveaux opcodes pour recevoir des données directement d'un P5 Glove
+              (gant de données) par john ffitch
+              <link linkend="p5gdata"><citetitle>p5gdata</citetitle></link></simpara>
+            </listitem>
+            <listitem>
+              <simpara><link linkend="tabsum"><citetitle>tabsum</citetitle></link>
+              additionne des sections de ftables</simpara>
+            </listitem>
+            <listitem>
+              <simpara><link linkend="MixerSetLevel_i"><citetitle>MixerSetLevel_i</citetitle></link>
+              une version du taux d'initialisation seulement de
+              <link linkend="MixerSetLevel"><citetitle>MixerSetLevel</citetitle></link></simpara>
+            </listitem>
+             <listitem>
+              <simpara><link linkend="doppler"><citetitle>doppler</citetitle></link>
+              implémente une simulation d'effet Doppler.</simpara>
+            </listitem>
+             <listitem>
+              <simpara><link linkend="filebit"><citetitle>filebit</citetitle></link> retourne la
+              profondeur binaire d'un fichier.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Les nouveaux
+                <link linkend="SignalFlowGraphOpcodes"><citetitle>opcodes de
+                Graphe de Fluence</citetitle></link> permettent l'utilisation de
+                graphes de fluences (graphes de flots de données asynchrones)
+                dans Csound.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Nouvelles fonctionnalités :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Nouveau type de panning pour l'opcode <link linkend="pan2"><citetitle></citetitle>pan2</link>
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Nouvelle balise &lt;CsExScore&gt; de partition csd.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Nouvelle option -Ma pour le module ALSA RT MIDI qui écoute tous les périphérique.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Il y a un GEN49 pour lire des fichiers mp3.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Un code d'arrondi de bin a été ajouté à
+                <link linkend="pvscale"><citetitle>pvscale</citetitle></link>
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Le support de taille de table non puissance de 2 a été ajouté à
+                <link linkend="ftload"><citetitle>ftload</citetitle>></link> et à
+                <link linkend="ftsave"><citetitle>ftsave</citetitle></link>
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+              GEN23 a été totalement réécrit pour être plus consistant dans ce qui constitue
+              un séparateur et des commentaires. (Il n'y a toujours pas de commentaires /* */)
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Bogues corrigés et améliorations :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Nouveaux exemples pour les opcodes pvs par by Joachim Heintz :
+                <link linkend="pvsarp"><citetitle></citetitle>pvsarp</link>,
+                <link linkend="pvscent"><citetitle></citetitle>pvscent</link>,
+                <link linkend="pvsbandp"><citetitle></citetitle>pvsbandp</link>,
+                <link linkend="pvsbandr"><citetitle></citetitle>pvsbandr</link>,
+                <link linkend="pvsbufread"><citetitle></citetitle>pvsbufread</link>,
+                <link linkend="pvsadsyn"><citetitle></citetitle>pvsadsyn</link>,
+                <link linkend="pvsynth"><citetitle></citetitle>pvsynth</link>,
+                <link linkend="pvsblur"><citetitle></citetitle>pvsblur</link>,
+                <link linkend="pvscale"><citetitle></citetitle>pvscale</link>,
+                <link linkend="pvscross"><citetitle></citetitle>pvscross</link>,
+                <link linkend="pvsfilter"><citetitle></citetitle>pvsfilter</link>,
+                <link linkend="pvsfreeze"><citetitle></citetitle>pvsfreeze</link>,
+                <link linkend="pvshift"><citetitle></citetitle>pvshift</link>,
+                <link linkend="pvsmaska"><citetitle></citetitle>pvsmaska</link>,
+                <link linkend="pvsmorph"><citetitle></citetitle>pvsmorph</link>
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>L'utilisation de la numérotation automatique des ftables réutilise
+                les numéros de table
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara><link linkend="seed"><citetitle></citetitle>seed</link> avec un argument
+                positif était défectueux
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara><link linkend="sprintf"><citetitle></citetitle>sprintf</link> avec une
+              chaîne vide imprimait des données erronées
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara><link linkend="mute"><citetitle></citetitle>mute</link> fonctionne
+              maintenant à la fois avec les instruments numérotés et nommés
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Petites corrections dans <link
+              linkend="diskin"><citetitle></citetitle>diskin</link> et dans
+              <link linkend="tablexkt"><citetitle></citetitle>tablexkt</link>
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Changements Internes :
+          <itemizedlist>
+            <listitem>
+              <simpara>SConstruct construit maintenant des bibliothèques partagées
+                complètement indépendantes pour les adaptateurs de Python, Lua et
+                Java.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Le nouveau Parseur est presque fonctionnel
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Le retraçage des graphiques a été modifié de façon à ne
+                redessiner que ceux qui sont sélectionnés.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Alsa-TR est plus tolérant sur les taux d'échantillonnage
+                approchés.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Il est possible d'avoir une partition générée par un
+                programme externe plutôt que d'utiliser le format de partition
+                standard en spécifiant &lt;CScore bin="translater"&gt; pour appeler
+                le programme de traduction des données de la partition.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>lpc_export corrigé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>La limite sur la longueur des noms de macro a été supprimée.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>PMAX, le nombre d'arguments d'un évènement de partition a été
+                réduit de 2 unités, et un système de dépassement a été introduit pour
+                que les GENs puissent avoir un nombre arbitraire d'arguments.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>La version de l'API a été incrémentée à 2.1.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Nouvelle fonction de l'API ldmemfile2withCB() qui est une
+                version de ldmemfile() qui permet de spécifier un callback
+                appelé exactement une seule fois pour traiter le tampon MEMFIL après
+                son chargement.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>csound->floatsize corrigé; valait zéro dans les versions précédentes.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>GetChannelLock ajouté.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+  <bridgehead>Nouveautés dans la version 5.10 (décembre 2008)</bridgehead>
+  <para>
+    <itemizedlist>
+<!--      <listitem>
+        <para>Nouveaux opcodes :
+          <itemizedlist>
+            <listitem>
+              <simpara><link linkend="ephasor"><citetitle>ephasor</citetitle></link></simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>-->
+      <listitem>
+        <para>
+          Nouvelles fonctionnalités :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Nouvelle option pour écouter tous les périphériques MIDI avec le module
+                temps réel de portmidi. Pour activer l'écoute de tous les périphériques
+                utiliser "-+rtmidi=portmidi -Ma".
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Implémentation du dithering sur la sortie ; le dithering rectangulaire
+              et triangulaire est disponible dans certains cas.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Le type 6 de <link linkend="GEN20"><citetitle>GEN20</citetitle></link> 
+              a maintenant une option pour fixer la variance.
+              </simpara>
+            </listitem>
+<!--            <listitem>
+              <simpara>un greffon sone GEN pour imiter gen13 de Music360 (ceci pourra changer
+              dans les détails)
+              </simpara>
+            </listitem>-->
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Bogues corrigés et améliorations :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                La variable d'environnement Locale a été fixée à "C numeric" pour éviter les
+                problèmes de point décimal (, vs .).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Bogue corrigé dans <link linkend="diskin"><citetitle>diskin</citetitle></link>
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara><link linkend="outo"><citetitle>outo</citetitle></link> était défectueux
+              pour le canal 6
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Bogue corrigé dans <link linkend="pitchamdf"><citetitle>pitchamdf</citetitle></link>
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>L'initialisation de <link linkend="zfilter2"><citetitle>zfilter2</citetitle></link>
+              a été corrigée
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Bogue corrigé dans <link linkend="s32b14"><citetitle>s32b14</citetitle></link>
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>D'autres bogues qui n'avaient pas été publiés ont été corrigés.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Changements Internes :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                La version majeure de l'API de Csound est incrémentée à 2, ceci affectant aussi
+                csound.so. Ceci signifie que Csound 5.10 est incompatible avec les applications
+                (frontaux, clients ou hôtes) construites pour Csound 5.08 et pour les versions
+                antérieures qui utilisent la version 1.x de l'API. Il faudra reconstruire ces
+                applications pour qu'elles fonctionnent avec les versions courante ou futures de
+                Csound. Les frontaux pour Csound écrits dans des langages interprétés tels que
+                Python ou Java pourront continuer à fonctionner sans modification. Il est
+                également possible de garder une version antérieure de la bibliothèque de Csound
+                et une version de l'API 2.0 sur la même machine afin que les applications basées
+                sur l'ancienne ou sur la nouvelle version de Csound puissent coexister. Ces
+                changements n'affectent en rien la compatibilité des orchestres et des partitions
+                de Csound : tous les anciens documents devraient continuer à fonctionner comme
+                par le passé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Le temps est maintenant mesuré en interne en échantillons, ce qui résoud un
+                ancien bogue concernant l'arrondi du temps au taux-k.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Plusieurs changements internes concernant les branchements. Certains opcodes
+                sont significativement plus rapides.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+
+  <bridgehead>Nouveautés dans la version 5.09 (octobre 2008)</bridgehead>
+    <para>
+    <itemizedlist>
+      <listitem>
+        <para>Nouveaux opcodes :
+          <itemizedlist>
+            <listitem>
+              <simpara>Nouvel opcode <link linkend="vosim"><citetitle>vosim</citetitle></link>
+                par Rasmus Ekman qui recrée la technique historique VOSIM (VOcal SIMulator).</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Nouvel opcode <link linkend="dcblock2"><citetitle>dcblock2</citetitle></link>
+                par &namevictor;.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Nouveau modèle de l'oscillateur de Chua :
+              <link linkend="chuap"><citetitle>chuap</citetitle></link> par Michael Gogins.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Nouveaux opcodes d'<link linkend="linearalgebraopcodes"><citetitle>Algèbre
+                Linéaire</citetitle></link> par Michael Gogins. Algèbre linéaire standard sur
+                vecteurs et matrices réels et complexes : arithmétique composante à composante,
+                normes, transposition et conjugaison, produits scalaires, matrice inverse,
+                décomposition LU, décomposition QR et décomposition QR en valeurs propres.
+                Inclut la copie de vecteur de et vers des signaux de taux-a, des tables de fonction
+                et des signaux-f.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Nouveaux opcodes ambisonic :
+              <link linkend="bformdec1"><citetitle>bformdec1</citetitle></link> et
+              <link linkend="bformenc1"><citetitle>bformenc1</citetitle></link>. Ces opcodes
+              rendent obsolètes les anciens
+              <link linkend="bformdec"><citetitle>bformdec</citetitle></link> et
+              <link linkend="bformenc"><citetitle>bformenc</citetitle></link>.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Nouveaux opcodes de contrôle de la partition par &namevictor; :
+              <link linkend="rewindscore"><citetitle>rewindscore</citetitle></link>et
+              <link linkend="setscorepos"><citetitle>setscorepos</citetitle></link>.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Nouvelles fonctionnalités :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Les opcodes de la famille <emphasis>vbap</emphasis>
+                (<link linkend="vbap4"><citetitle>vbap4</citetitle></link>,
+                <link linkend="vbap8"><citetitle>vbap8</citetitle></link>,
+                <link linkend="vbap16"><citetitle>vbap16</citetitle></link> et
+                <link linkend="vbapz"><citetitle>vbapz</citetitle></link>) acceptent
+                maintenant des variables de taux-k pour tous leurs arguments en entrée.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Nouveau module d'E/S pulseaudio sous Linux.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Nouveau paramètre facultatif <emphasis>ienv</emphasis> pour générer des
+                enveloppes pour les opcodes de soundfont :
+                <link linkend="sfplay"><citetitle>sfplay</citetitle></link>,
+                <link linkend="sfplay3"><citetitle>sfplay3</citetitle></link>,
+                <link linkend="sfplaym"><citetitle>sfplaym</citetitle></link> et
+                <link linkend="sfplay3m"><citetitle>sfplay3m</citetitle></link>.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Ajout d'un 'argument de non-normalisation' à la routine GEN nommée "tanh". (Voir
+                <link linkend="ScoreGenRef"><citetitle>Routines GEN Nommées</citetitle></link>)
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Ajout d'une option d'ordonnanceur de priorité sur alsa.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Bogues corrigés et améliorations :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Notation scientifique permise dans
+                <link linkend="GEN23"><citetitle>GEN23</citetitle></link> (comme c'était le cas
+                dans csound4 !).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Bogue fixé dans l'initialisation de FLTK. L'utilisation de FLTK devrait
+                être plus stable.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                L'erreur sur les commentaires /* */ dans l'orchestre a été corrigée.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="poscil"><citetitle>poscil</citetitle></link> n'écrase plus
+                la fréquence si la variable est partagée.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="printk"><citetitle>printk</citetitle></link> et
+                <link linkend="printks"><citetitle>printks</citetitle></link> vérifient que
+                l'opcode est initialisé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="soundout"><citetitle>soundout</citetitle></link> et
+                <link linkend="soundouts"><citetitle>soundouts</citetitle></link> sont
+                déclarés obsolètes en faveur de
+                <link linkend="fout"><citetitle>fout</citetitle></link>.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                L'opcode <link linkend="space"><citetitle>space</citetitle></link> a été
+                modifié pour accepter des tables dont la taille n'est pas une puissance
+                de 2 (taille différée).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Un bogue de <link linkend="pvsmorph"><citetitle>pvsmorph</citetitle></link>
+                a été corrigé.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Changements Internes :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Le nouveau parseur reconnaît #include et les macros sans argument.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Moins de forçage de type entre floats et doubles dans la version float.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Un support expérimental multicore a été inclut.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                L'opcode <link linkend="buzz"><citetitle>buzz</citetitle></link> a été réécrit.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Plusieurs autres changements internes et quelques corrections de bogues.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+<bridgehead>Nouveautés dans la version 5.08 (février 2008)</bridgehead>
+  <para>
+    <itemizedlist>
+      <listitem>
+        <para>Nouveaux opcodes :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                <link linkend="imagecreate"><citetitle>imagecreate</citetitle></link>,
+                <link linkend="imagesize"><citetitle>imagesize</citetitle></link>,
+                <link linkend="imagegetpixel"><citetitle>imagegetpixel</citetitle></link>,
+                <link linkend="imagesetpixel"><citetitle>imagesetpixel</citetitle></link>,
+                <link linkend="imagesave"><citetitle>imagesave</citetitle></link>,
+                <link linkend="imageload"><citetitle>imageload</citetitle></link> et
+                <link linkend="imagefree"><citetitle>imagefree</citetitle></link>: 
+                nouveaux opcodes de traitement d'image par Cesare Marilungo pour lire/écrire
+                des images png depuis Csound.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara><link linkend="pvsbandp"><citetitle>pvsbandp</citetitle></link> et
+              <link linkend="pvsbandr"><citetitle>pvsbandr</citetitle></link> par John ffitch, qui
+              réalisent le filtrage passe-bande et réjection de bande dans le domaine spectral sur
+              un signal pvs.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Nouveaux opcodes HRTF par Brian Carty :
+                <link linkend="hrtfmove"><citetitle>hrtfmove</citetitle></link>,
+                <link linkend="hrtfmove2"><citetitle>hrtfmove2</citetitle></link> et
+                <link linkend="hrtfstat"><citetitle>hrtfstat</citetitle></link>.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Nouveau opcodes de distorsion non-linéaire :
+                <link linkend="powershape"><citetitle>powershape</citetitle></link>,
+                <link linkend="polynomial"><citetitle>polynomial</citetitle></link>, 
+                <link linkend="chebyshevpoly"><citetitle>chebyshevpoly</citetitle></link>,
+                <link linkend="pdclip"><citetitle>pdclip</citetitle></link>,
+                <link linkend="pdhalf"><citetitle>pdhalf</citetitle></link>,
+                <link linkend="pdhalfy"><citetitle>pdhalfy</citetitle></link>, et
+                <link linkend="syncphasor"><citetitle>syncphasor</citetitle></link>
+              </simpara>
+            </listitem>
+            <listitem><simpara>Nouvel opcode de contrôle de transport jack :
+              <link linkend="jacktransport"><citetitle>jacktransport</citetitle></link></simpara></listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      Améliorations :
+      
+      <listitem>
+        <para>
+          Nouvelles fonctionnalités :
+          <itemizedlist>
+            <listitem>
+              <simpara>Ajout de l'option de ligne de commande
+              <link linkend="FlagsMinusCsdLineNums"><citetitle>--csd-line-nums=</citetitle></link>
+              pour sélectionner la façon de rapporter la ligne d'une erreur.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Nouvel opérateur de "non-report" (<link linkend="ScoreCarry"><citetitle>!</citetitle></link>)
+                du langage de partition qui empêche le report
+                implicite des p-champs dans les instructions i.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Ajout de l'option de ligne de commande
+                <link linkend="FlagsMinusSyntaxCheckOnly"><citetitle>--syntax-check-only</citetitle></link>
+                (mutuellement exclusive avec
+                <link linkend="FlagsMinusUpperI"><citetitle>--i-only</citetitle></link>)
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Balise <emphasis>&lt;CsLicence&gt;</emphasis> pour les
+                <link linkend="CommandUnifileDescription"><citetitle>CSDs</citetitle></link>.
+                <emphasis>&lt;CsLicense&gt;</emphasis> est acceptée comme une alternative à
+                <emphasis>&lt;CsLicence&gt;</emphasis>.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Bogues corrigés et améliorations :
+          <itemizedlist>
+            <listitem>
+              <simpara>L'ordre des sorties pour <link linkend="hilbert"><citetitle>hilbert</citetitle></link>
+              a été changé. Ce changement brise la compatibilité avec les versions précédentes, mais
+              il fixe l'opcode qui travaille maintenant comme c'est décrit dans la documentation.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Les messages sur le chargement de greffons d'opcode ont été modifiés pour pouvoir être
+              supprimés avec une option de niveau de message.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Changements majeurs sur les rapport d'erreur de partition ; les numéros de
+              ligne dans la chaîne des entrées sont rapportés précisement pour la plupart des
+              erreurs.</simpara>
+            </listitem>
+            <listitem>
+              <simpara><link linkend="pan2"><citetitle>pan2</citetitle></link> a été corrigé afin
+              d'être conforme à la documentation.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                La balise
+                <link linkend="CommandUnifileDescription"><citetitle>&lt;CsVersion&gt;</citetitle></link>
+                fonctionne à nouveau en conformité avec le manuel.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Les instructions de boucle { et } ont été fixées. Leur documentation ainsi que
+                celles des opérateurs des expressions de partition ~, &amp;, |, et # ont été
+                ajoutées.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="hilbert"><citetitle>hilbert</citetitle></link> avait ses
+                sorties permutées, c'est corrigé. L'exemple de manual a été mis à jour.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Changements Internes :
+          <itemizedlist>
+            <listitem>
+              <simpara>Changement de la localisation pour gettext ; les traductions en
+              français et en espagnol (Colombie) sont disponibles.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Changements internes dans
+                <link linkend="partikkel"><citetitle>partikkel</citetitle></link>,
+                interpolation de la lecture de forme d'onde et du fenêtrage, ce qui permet
+                une synthèse granulaire synchrone de hauteur plus précise. Exemples
+                mis à jour pour
+                <link linkend="partikkel"><citetitle>partikkel</citetitle></link>.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="pvscale"><citetitle>pvscale</citetitle></link> :
+                algorithme amélioré pour la SDFT, supprimant la variation d'amplitude.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+  <bridgehead>Nouveautés dans la version 5.07 (octobre 2007)</bridgehead>
+    <para>
+      <itemizedlist>
+        <listitem>
+          <para>Nouveaux opcodes :
+            <itemizedlist>
+              <listitem>
+                <simpara><link linkend="pan2"><citetitle>pan2</citetitle></link> :
+                un opcode de spatialisation stéréo</simpara>
+              </listitem>
+              <listitem>
+                <simpara><link linkend="cpsmidinn"><citetitle>cpsmidinn</citetitle></link>,
+                <link linkend="pchmidinn"><citetitle>pchmidinn</citetitle></link>,
+                <link linkend="octmidinn"><citetitle>octmidinn</citetitle></link> :
+                des convertisseurs de numéros de note MIDI</simpara>
+              </listitem>
+              <listitem>
+                <simpara><link linkend="fluidSetInterpMethod"><citetitle>fluidSetInterpMethod</citetitle></link> :
+                interpolation dans les SoundFonts de fluid</simpara>
+              </listitem>
+              <listitem>
+                <simpara><link linkend="sflooper"><citetitle>sflooper</citetitle></link> :
+                une version SoundFont de
+                <link linkend="flooper2"><citetitle>flooper2</citetitle></link></simpara>
+              </listitem>
+              <listitem>
+                <simpara><link linkend="pvsbuffer"><citetitle>pvsbuffer</citetitle></link> et
+                <link linkend="pvsbufread"><citetitle>pvsbufread</citetitle></link> :
+                mise en tampon/lecture de fsigs pour des changements de retards/échelle
+                temporelle.</simpara>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Nouvelles fonctionnalités :
+            <itemizedlist>
+              <listitem>
+                <para>SDFT - la Transformée de Fourier Discrète à fenêtre Glissante -- intégrée aux opcodes
+                <link linkend="pvsanal"><citetitle>pvsanal</citetitle></link>, etc si le recouvrement est inférieur à
+                <emphasis>ksmps</emphasis> ou inférieur à 10. Certains opcodes pvsXXX sont étendus pour prendre des paramètres
+                de taux-a dans cette situation.
+                </para>
+              </listitem>
+              <listitem>
+                <para>Nouvelle option (<link linkend="FlagsCatMinusUpperO"><citetitle>-O null</citetitle></link> / 
+                <link linkend="FlagsCatMinusUpperO"><citetitle>--logfile=null</citetitle></link>) qui désactive tous les messages
+                et toutes les impressions sur la console.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+        <listitem>
+          <para>Bogues corrigés et améliorations :
+            <itemizedlist>
+              <listitem>
+                <simpara><link linkend="partikkel"><citetitle>partikkel</citetitle></link> -- la synthèse par particule avait un bogue
+                accidentel, corrigé.</simpara>
+              </listitem>
+              <listitem>
+                <simpara>La fermeture de l'entrée MIDI sur Windows(MM) échouait ; corrigé.</simpara>
+              </listitem>
+              <listitem>
+                <simpara>L'opcode <link linkend="fluidEngine"><citetitle>fluidEngine</citetitle></link> prend maintenant comme paramètres
+                facultatifs le nombre de canaux (compris entre 16 et 256) et le nombre de voix à jouer en polyphonie
+                (compris entre 16 et 4096, la valeur par défaut étant 4096).</simpara>
+              </listitem>
+              <listitem>
+                <simpara>L'utilitaire <link linkend="UtilityAtsa"><citetitle>atsa</citetitle></link> se comporte de manière plus sûre
+                lorsqu'il reçoit du silence.</simpara>
+              </listitem>
+              <listitem>
+                <simpara><link linkend="ATSaddnz"><citetitle>ATSaddnz</citetitle></link> :
+                vérifications améliorées.</simpara>
+              </listitem>
+              <listitem>
+                <simpara>Les ambisonics
+                (<link linkend="bformdec"><citetitle>bformdec</citetitle></link>,
+                <link linkend="bformenc"><citetitle>bformenc</citetitle></link>) ont plus
+                d'options pour le contrôle des opposés.</simpara>
+              </listitem>
+              <listitem>
+                <simpara>Le bogue dans
+                <link linkend="turnoff2"><citetitle>turnoff2</citetitle></link> est corrigé.</simpara>
+              </listitem>
+              <listitem>
+                <simpara><link linkend="het_export"><citetitle>het_export</citetitle></link> :
+                une vérification erronée plantait l'export.</simpara>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Changements Internes :
+            <itemizedlist>
+              <listitem>
+                <simpara>L'installeur sous Windows a été amélioré.</simpara>
+              </listitem>
+              <listitem>
+                <simpara>CsoundVST a été remplacé par CsoundAC, qui ne dépend pas des en-têtes
+                du SDK de VST.</simpara>
+              </listitem>
+              <listitem>
+                <simpara>Moins de messages lors du démarrage sous Windows(MM).</simpara>
+              </listitem>
+              <listitem>
+                <simpara>Le type d'argument p (le taux-k vaut alors 1 par défaut) a été ajouté
+                dans les types des paramètres d'entrée et de sortie des opcodes.</simpara>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  <bridgehead>Nouveautés dans la version 5.06 (juin 2007)</bridgehead>
+  <para>
+    <itemizedlist>
+      <listitem>
+        <para>Nouveaux opcodes granulaires :
+          <link linkend="partikkel"><citetitle>partikkel</citetitle></link>,
+          <link linkend="partikkelsync"><citetitle>partikkelsync</citetitle></link> et
+          <link linkend="diskgrain"><citetitle>diskgrain</citetitle></link>.
+        </para>
+      </listitem>
+      <listitem>
+        <para>Nouvel opcode pour distribuer des évènements :
+          <link linkend="scoreline"><citetitle>scoreline</citetitle></link>.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Plusieurs nouveaux opcodes en provenance de CsoundAV de Grabriel Maldonado :
+          <link linkend="hvs1"><citetitle>hvs1</citetitle></link>,
+          <link linkend="hvs2"><citetitle>hvs2</citetitle></link>,
+          <link linkend="hvs3"><citetitle>hvs3</citetitle></link>,
+          <link linkend="vphaseseg"><citetitle>vphaseseg</citetitle></link>,
+          <link linkend="inrg"><citetitle>inrg</citetitle></link>,
+          <link linkend="outrg"><citetitle>outrg</citetitle></link>,
+          <link linkend="lposcila"><citetitle>lposcila</citetitle></link>,
+          <link linkend="lposcilsa"><citetitle>lposcilsa</citetitle></link>,
+          <link linkend="lposcilsa2"><citetitle>lposcilsa2</citetitle></link>,
+          <link linkend="tabmorph"><citetitle>tabmorph</citetitle></link>,
+          <link linkend="tabmorpha"><citetitle>tabmorpha</citetitle></link>,
+          <link linkend="tabmorphi"><citetitle>tabmorphi</citetitle></link>,
+          <link linkend="tabmorphak"><citetitle>tabmorphak</citetitle></link>,
+          <link linkend="trandom"><citetitle>trandom</citetitle></link>,
+          <link linkend="vtable1k"><citetitle>vtable1k</citetitle></link>,
+          <link linkend="slider8table"><citetitle>slider8table</citetitle></link>,
+          <link linkend="slider16table"><citetitle>slider16table</citetitle></link>,
+          <link linkend="slider32table"><citetitle>slider32table</citetitle></link>,
+          <link linkend="slider64table"><citetitle>slider64table</citetitle></link>,
+          <link linkend="slider8tablef"><citetitle>slider8tablef</citetitle></link>,
+          <link linkend="slider16tablef"><citetitle>slider16tablef</citetitle></link>,
+          <link linkend="slider32tablef"><citetitle>slider32tablef</citetitle></link>,
+          <link linkend="slider64tablef"><citetitle>slider64tablef</citetitle></link>,
+          <link linkend="sliderKawai"><citetitle>sliderKawai</citetitle></link>
+          et la version au taux-a de
+          <link linkend="ctrl7"><citetitle>ctrl7</citetitle></link>.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Egalement depuis CsoundAV, plusieurs nouveaux widgets FLTK :
+          <link linkend="FLkeyIn"><citetitle>FLkeyIn</citetitle></link>,
+          <link linkend="FLslidBnk2"><citetitle>FLslidBnk2</citetitle></link>,
+          <link linkend="FLvslidBnk"><citetitle>FLvslidBnk</citetitle></link>,
+          <link linkend="FLvslidBnk2"><citetitle>FLvslidBnk2</citetitle></link>,
+          <link linkend="FLmouse"><citetitle>FLmouse</citetitle></link>,
+          <link linkend="FLxyin"><citetitle>FLxyin</citetitle></link>,
+          <link linkend="FLhvsBox"><citetitle>FLhvsBox</citetitle></link>,
+          <link linkend="FLslidBnkSet"><citetitle>FLslidBnkSet</citetitle></link>,
+          <link linkend="FLslidBnkSetk"><citetitle>FLslidBnkSetk</citetitle></link>,
+          <link linkend="FLslidBnk2Set"><citetitle>FLslidBnk2Set</citetitle></link>,
+          <link linkend="FLslidBnk2Setk"><citetitle>FLslidBnk2Setk</citetitle></link>,
+          <link linkend="FLslidBnkGetHandle"><citetitle>FLslidBnkGetHandle</citetitle></link>,
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          De nouveaux opcodes pvs :
+          <link linkend="pvsdiskin"><citetitle>pvsdiskin</citetitle></link>,
+          <link linkend="pvsmorph"><citetitle>pvsmorph</citetitle></link>,
+        </para>
+      </listitem>
+      <listitem>
+        <para><link linkend="eqfil"><citetitle>eqfil</citetitle></link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>De nouvelles options de ligne de commande
+          (<link linkend="FlagsCatMinusLowerMW"><citetitle>--m-warnings</citetitle></link>)
+          pour contrôler les messages
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          csladspa : un kit de greffon CSD vers LADSPA.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Et plusieurs corrections de bogues parmi lesquelles : version au taux-k de
+          <link linkend="system"><citetitle>system</citetitle></link> ; problèmes de changement d'échelle de
+          <link linkend="vrandh"><citetitle>vrandh</citetitle></link> et de
+          <link linkend="vrandi"><citetitle>vrandi</citetitle></link> ;
+          plantage occasionnel de <link linkend="turnoff"><citetitle>turnoff</citetitle></link> ;
+          <link linkend="tempest"><citetitle></citetitle></link> bogue OS X ;
+          <link linkend="ATScross"><citetitle>ATScross</citetitle></link>
+          et <link linkend="modulus"><citetitle>mod</citetitle></link>.
+        </para>
+        <para>Csound5GUI fonctionne maintenant correctement sur toutes les plates-formes et
+          csoundapi~ (objet pd) a été mis à jour.
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+</section>

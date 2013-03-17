@@ -1,0 +1,89 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.5
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="GEN43">
+      <indexterm id="IndexGEN43"><primary>GEN43</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN43</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>GEN43</refname>
+    <refpurpose>
+      Charge un fichier PVOCEX contenant une analyse VP.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ce sous-programme charge un fichier PVOCEX contenant l'analyse VP (amp-fréq) d'un fichier son et 
+      calcule les magnitudes moyennes de toutes les trames d'analyse d'un ou de tous les canaux audio. Il
+      crée ensuite une table avec ces magnitudes pour chaque bin VP.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>f</command> # date taille 43 codfic canal</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+    <emphasis>taille</emphasis> -- nombre de points dans la table, puissance de deux ou
+      puissance-de-deux plus 1. <emphasis>GEN43</emphasis> ne fait aucune distinction entre ces deux
+      tailles, mais la table doit avoir pour taille au moins la moitié de celle de la tfr. Les bins
+      VP couvrent le spectre positif de 0 Hz (index 0 de la table) à la fréquence de Nyquist (index
+      <emphasis>tailletfr</emphasis>/2+1 de la table) par incréments réguliers (de taille
+      <emphasis>sr</emphasis>/<emphasis>tailletfr</emphasis>).
+    </para>
+
+    <para>
+      <emphasis>codfic</emphasis> -- un fichier pvocex (qui peut être généré par pvanal).
+    </para>
+
+    <para>
+      <emphasis>canal</emphasis> -- numéro du canal audio duquel les magnitudes seront extraites ; un 0
+      donnera la moyenne des magnitudes de tous les canaux.
+    </para>
+
+    <para>
+      La lecture s'arrête à la fin du fichier.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>Si p4 est positif, la table sera post-normalisée. Un p4 négatif empêchera la post-normalisation.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+       <programlisting>
+<emphasis role="stamnt">f</emphasis>1 0   512  43 "viola.pvx" 1
+<emphasis role="stamnt">f</emphasis>1 0 -1024 -43 "noiseprint.pvx" 0</programlisting>
+</para>
+<para>
+  On peut utiliser cette table comme table de masquage pour <emphasis>pvstencil</emphasis> et
+  <emphasis>pvsmaska</emphasis>. Le premier exemple utilise un fichier d'analyse de vocodeur de phase par
+  TFR à 1024 points duquel on utilise le premier canal. Le second utilise tous les canaux d'un fichier de
+  2048 points, sans post-normalisation. Pour les applications à la réduction de bruit avec
+  <emphasis>pvstencil</emphasis>, il est mieux de ne pas normaliser la table (code GEN négatif).
+</para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namevictor;</para>
+  </refsect1>
+</refentry>

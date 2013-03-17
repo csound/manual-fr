@@ -1,0 +1,113 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="printk2">
+<indexterm id="IndexPrintk2"><primary>printk2</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Printing and Display</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>printk2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>printk2</refname>
+    <refpurpose>
+      Affiche une nouvelle valeur chaque fois qu'une variable de contrôle change.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Affiche une nouvelle valeur chaque fois qu'une variable de contrôle change.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>printk2</command> kvar [, inumspaces]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>inumspaces</emphasis> (facultatif, 0 par défaut) -- nombre d'espaces
+      imprimés avant la valeur de <emphasis>kvar</emphasis>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kvar</emphasis> -- signal à imprimer
+    </para>
+
+    <para>
+      Dérivé du <emphasis>printk</emphasis> de Robin Whittle, il affiche une
+      nouvelle valeur de <emphasis>kvar</emphasis> chaque fois que
+      <emphasis>kvar</emphasis> change. Utile pour surveiller les changements
+      des contrôles MIDI lorsque l'on utilise des réglettes.
+    </para>
+
+    <warning>
+      <para>
+        Ne pas utiliser cet opcode avec des signaux de taux-k normaux variant
+        continuellement, car cela pourrait bloquer l'ordinateur, le taux
+        d'impression devenant trop rapide.
+      </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+
+    <para>
+      Voici un exemple de l'opcode printk2. Il utilise le fichier
+      <ulink url="examples/printk2.csd"><citetitle>printk2.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode printk2.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/printk2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
+ i1     0.00000
+ i1     3.00000
+ i1     1.00000
+ i1     3.00000
+ i1     1.00000
+ i1     2.00000
+ i1     3.00000</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="printk"><citetitle>printk</citetitle></link> and
+      <link linkend="printks"><citetitle>printks</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+        <member>1998</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.48 de Csound</para>
+  </refsect1>
+</refentry>

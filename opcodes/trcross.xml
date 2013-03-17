@@ -1,0 +1,111 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="trcross">
+<indexterm id="Indextrcross"><primary>trcross</primary></indexterm>
+
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>trcross</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>trcross</refname>
+    <refpurpose>
+      Synthèse croisée à flot de suivi de partiels.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      L'opcode <emphasis>trcross</emphasis> prend deux entrées contenant des flots
+      de signal TRACKS pv (tels que générés, par exemple, par <emphasis>partials</emphasis>)
+      et en fait une synthèse croisée dans un flot TRACKS unique. Deux modes
+      d'opération différents sont utilisés : mode 0, synthèse croisée par
+      multiplication de l'amplitude des deux entrées et mode 1, synthèse croisée
+      par remplacement des amplitudes de l'entrée 1 par celles de l'entrée 2. Les
+      fréquences et les phases de l'entrée 1 sont conservées dans la sortie. La
+      synthèse croisée est réalisée en assortissant les canaux entre les deux entrées
+      en utilisant un "intervalle de recherche". L'algorithme d'assortiment cherche
+      dans la seconde entrée les canaux qui se trouvent dans l'intervalle de
+      recherche entourant chaque canal de la première entrée. On peut changer
+      cet intervalle au taux de contrôle. Plus les intervalles sont larges et
+      plus on trouve d'assortiments.
+  </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>fsig <command>trcross</command> fin1, fin2, ksearch, kdepth [, kmode] </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+      <para>
+      <emphasis>fsig</emphasis> -- flot pv de sortie au format TRACKS.
+    </para>
+    
+    <para>
+      <emphasis>fin1</emphasis> -- premier flot pv d'entrée au format TRACKS.
+    </para>
+  
+    <para>
+      <emphasis>fin2</emphasis> -- second flot pv d'entrée au format TRACKS.
+    </para>
+      
+    <para>
+      <emphasis>ksearch</emphasis> -- rapport de l'intervalle de recherche
+      définissant une "zone de recherche" autour de chaque canal de la
+      première entrée pour l'assortiment.
+    </para>
+      
+    <para>
+      <emphasis>kdepth</emphasis> -- importance de l'effet (entre 0 et 1).
+    </para>
+      
+    <para>
+      <emphasis>kmode</emphasis> -- mode de synthèse croisée. 0, multiplication
+      des amplitudes (filtrage), 1, remplacement des amplitudes de l'entrée 1
+      par celles de l'entrée 2 (comme pour le vocodeur). Vaut 0 par défaut.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode trcross. Il utilise le fichier
+      <ulink url="examples/trcross.csd"><citetitle>trcross.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode trcross.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/trcross.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    
+    <para>
+      L'exemple ci-dessus montre le suivi de partiels de deux signaux d'analyse
+      par distribution de fréquence instantanée, la synthèse croisée suivie du
+      remixage des deux parties du spectre et de la resynthèse.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Février 2006 </member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans Csound 5.01</para>
+  </refsect1>
+</refentry>

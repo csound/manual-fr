@@ -1,0 +1,50 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="SiggenTableacc">
+  <title>Accès aux Tables</title>
+
+  <para>
+    Les opcodes qui permettent l'accès aux tables sont :
+    <itemizedlist>
+      <listitem><para><link linkend="oscil1"><citetitle>oscil1</citetitle></link></para></listitem>
+      <listitem><para><link linkend="oscil1i"><citetitle>oscil1i</citetitle></link></para></listitem>
+      <listitem><para><link linkend="osciln"><citetitle>osciln</citetitle></link></para></listitem>
+      <listitem><para><link linkend="oscilx"><citetitle>oscilx</citetitle></link></para></listitem>
+      <listitem><para><link linkend="table"><citetitle>table</citetitle></link></para></listitem>
+      <listitem><para><link linkend="table3"><citetitle>table3</citetitle></link></para></listitem>
+      <listitem><para><link linkend="tablei"><citetitle>tablei</citetitle></link></para></listitem>
+    </itemizedlist>
+
+    Les opcodes se terminant par 'i' implémentent l'interpolation linéaire et les opcodes se terminant par
+    '3' implémentent l'interpolation cubique.
+  </para>
+  <para>Les opcodes suivants implémentent la lecture/écriture rapide dans une table sans en tester les
+    limites :
+    <itemizedlist>
+      <listitem><para><link linkend="tab"><citetitle>tab</citetitle></link></para></listitem>
+      <listitem><para><link linkend="tab"><citetitle>tab_i</citetitle></link></para></listitem>
+      <listitem><para><link linkend="tab"><citetitle>tabw</citetitle></link></para></listitem>
+      <listitem><para><link linkend="tab"><citetitle>tabw_i</citetitle></link></para></listitem>
+    </itemizedlist>
+  </para>
+  <para>
+    Voir les sections <link linkend="TableQueries"><citetitle>Requêtes de Table</citetitle></link>,
+    <link linkend="TableReadwrit"><citetitle>Opérations de Lecture/Ecriture de Table</citetitle></link> et
+    <link linkend="TableSelect"><citetitle>Lecture de Table avec Sélection Dynamique</citetitle></link> pour
+    d'autres opérations de table.
+  </para>
+  <note><para>
+    Bien que des tables avec une taille qui n'est pas une puissance de deux puissent être créées en
+    utilisant une taille négative (voir
+    <link linkend="f"><citetitle>instruction de partition f</citetitle></link>), certains opcodes ne les
+    accepteront pas.
+  </para></note>
+
+</section>

@@ -1,0 +1,198 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="phaser1">
+<indexterm id="IndexPhaser1"><primary>phaser1</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Special Effects</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>phaser1</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>phaser1</refname>
+    <refpurpose>
+      Filtres passe-tout du premier ordre arrangés en série.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Une implémentation de <emphasis>iord</emphasis> filtres passe-tout du
+      premier ordre en série.
+   </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>phaser1</command> asig, kfreq, kord, kfeedback [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iskip</emphasis> (facultatif, 0 par défaut) -- utilisé pour contrôler
+      l'état initial de la mémoire interne. Comme le filtrage comprend une boucle
+      rétroactive de la sortie précédente, l'état initial de la mémoire utilisée
+      est significatif. Une valeur nulle efface l'état ; une valeur non-nulle
+      permet de conserver l'information précédente. La valeur par défaut est 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kfreq</emphasis> -- fréquence (en Hz) du(des) filtre(s). C'est la
+      fréquence à laquelle chaque filtre de la série déphase sont entrée de 90
+      degrés.
+    </para>
+
+    <para>
+      <emphasis>kord</emphasis> -- le nombre d'étages passe-tout en série. Ce sont
+      des filtres du premier ordre et il peut y en avoir de 1 à 4999.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        Bien que <emphasis>kord</emphasis> soit présenté au taux-k, il n'est en
+        fait lu qu'à l'initialisation. Ainsi, si l'on utilise un argument de taux-k,
+        il faut lui affecter une valeur avec
+        <link linkend="init"><citetitle>init</citetitle></link>.
+      </para>
+    </note>
+
+    <para>
+      <emphasis>kfeedback</emphasis> -- quantité du signal de sortie qui est
+      réinjectée dans l'entrée de la chaîne passe-tout. Plus la rétroaction
+      est importante et plus il y aura d'encoches proéminentes dans le spectre de
+      la sortie. <emphasis>kfeedback</emphasis> doit être compris entre -1 et
+      +1 pour la stabilité.
+    </para>
+
+    <para>
+      <emphasis>phaser1</emphasis> implémente <emphasis>iord</emphasis> sections
+      passe-tout du premier ordre, connectées en série, partageant toutes le
+      même coefficient. Chaque section passe-tout peut être représentée par
+      l'équation aux différences suivante :
+      <literallayout>
+y(n) = C * x(n) + x(n-1) - C * y(n-1)</literallayout>
+      où x(n) est l'entrée, x(n-1) est l'entrée précédente, y(n) est la sortie,
+      y(n-1) est la sortie précédente et C est un coefficient qui est calculé
+      à partir de la valeur de <emphasis>kfreq</emphasis> en utilisant une
+      transformée en z bilinéaire.
+    </para>
+
+    <para>
+      En faisant varier <emphasis>kfreq</emphasis> lentement et en mélangeant la
+      sortie globale de la chaîne passe-tout à l'entrée, on obtient l'effet
+      &quot;phase shifter&quot; classique, avec des encoches se déplaçant en fréquence
+      dans les deux directions. On obtient les meilleurs résultats avec
+      <emphasis>iord</emphasis> compris entre 4 et 16. Lorsque l'entrée est
+      mélangée avec la sortie, 1 encoche est générée pour chaque couple d'étages
+      passe-tout ; ainsi avec <emphasis>iord</emphasis> = 6, il y aura 3 encoches
+      dans la sortie. Avec des valeurs plus importantes de <emphasis>iord</emphasis>,
+      en modulant <emphasis>kfreq</emphasis> on obtiendra une forme de modulation
+      non-linéaire de la hauteur.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode phaser1. Il utilise le fichier
+      <ulink url="examples/phaser1.csd"><citetitle>phaser1.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode phaser1.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/phaser1.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Historique Technique</title>
+    <para>
+      On trouve dans Hartmann [1] une description générale des différences entre
+      flanging et phasing. On peut trouver une implémentation ancienne de filtres
+      passe-tout du premier ordre connectés en série dans Beigel [2], dans laquelle
+      la transormation en z bilinéaire est utilisée pour déterminer la fréquence
+      du déphasage de chaque étage. Cronin [3] présente une implémentation
+      similaire pour un réseau déphaseur à quatre étages. Chamberlin [4] et
+      Smith [5] discutent tous deux de l'utilisation de sections passe-tout du
+      deuxième ordre pour un meilleur contrôle de la profondeur, de la largeur
+      et de la fréquence des encoches.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Références</title>
+    <para>
+      <orderedlist>
+        <listitem>
+          <para>
+            Hartmann, W.M. &quot;Flanging and Phasers.&quot; Journal of the Audio Engineering Society, Vol. 26, No. 6, pp. 439-443, juin 1978. 
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            Beigel, Michael I. &quot;A Digital 'Phase Shifter' for Musical Applications, Using the Bell Labs (Alles-Fischer) Digital Filter Module.&quot; Journal of the Audio Engineering Society, Vol. 27, No. 9, pp. 673-676, septembre 1979. 
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            Cronin, Dennis. &quot;Examining Audio DSP Algorithms.&quot; Dr. Dobb's Journal, juillet 1994, p. 78-83.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            Chamberlin, Hal. Musical Applications of Microprocessors. Second edition. Indianapolis, Indiana: Hayden Books, 1985.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            Smith, Julius O. &quot;An Allpass Approach to Digital Phasing and Flanging.&quot; Proceedings of the 1984 ICMC, p. 103-108.
+          </para>
+        </listitem>
+      </orderedlist>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="phaser2"><citetitle>phaser2</citetitle></link>
+      <para>D'autres informations au sujet des phaseurs sur Wikipedia :
+      <ulink url="http://en.wikipedia.org/wiki/Phaser_(effect)">
+      <citetitle>http://en.wikipedia.org/wiki/Phaser_(effect)</citetitle>
+      </ulink></para>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namesean;</member>
+        <member>Seattle, Washington</member>
+        <member>1999</member>
+      </simplelist>
+    </para>
+
+    <para>Novembre 2002. Ajout d'une note sur le paramètre <emphasis>kord</emphasis>,
+    grâce à &namerasmus;.</para>
+    <para>Nouveau dans la version 4.0 de Csound.</para>
+  </refsect1>
+</refentry>

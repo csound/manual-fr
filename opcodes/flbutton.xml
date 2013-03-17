@@ -1,0 +1,253 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.17
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLbutton">
+<indexterm id="IndexFlbutton"><primary>FLbutton</primary></indexterm>
+  <refentryinfo><title>FLTK:Other</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLbutton</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLbutton</refname>
+    <refpurpose>
+      Un opcode de widget FLTK qui crée un bouton.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Un opcode de widget FLTK qui crée un bouton.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kout, ihandle <command>FLbutton</command> &quot;label&quot;, ion, ioff, itype, iwidth, iheight, ix, \
+      iy, iopcode [, kp1] [, kp2] [, kp3] [, kp4] [, kp5] [....] [, kpN]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ihandle</emphasis> -- un identifiant (un nombre entier) qui
+      référence de manière univoque le widget correspondant. Il est utilisé par
+      d'autres opcodes qui modifient les propriété du widget (voir
+      <link linkend="ControlFltkAppearance"><citetitle>Modifier l'Apparence des
+      Widgets FLTK</citetitle></link>). Il est automatiquement retourné par
+      <emphasis>FLbutton</emphasis> et ne doit pas être fixé par l'étiquette de
+      l'utilisateur. (L'étiquette de l'utilisateur est une chaîne entre
+      guillemets contenant un texte fourni par l'utilisateur placé à côté du
+      widget.)
+    </para>
+
+    <para>
+      <emphasis><quote>label</quote></emphasis> -- une chaîne entre guillemets
+      contenant un texte fourni par l'utilisateur placé à côté du widget.
+    </para>
+
+    <para>
+      Noter qu'avec <emphasis>FLbutton</emphasis> il n'est pas nécessaire d'appeler
+      l'opcode <link linkend="FLsetTextType"><citetitle>FLsetTextType</citetitle></link>
+      pour utiliser un symbole. Dans ce cas, il suffit d'utiliser une étiquette
+      commençant par <quote>@</quote> suivi de la chaîne de formatage correcte.
+    </para>
+
+    <para>
+      Les symboles suivants sont supportés :
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/symbols.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>Symboles d'étiquette FLTK supportés.</phrase>
+        </textobject>
+
+        <caption>
+          <para>Symboles d'étiquette FLTK supportés.</para>
+        </caption>
+      </mediaobject>
+    </para>
+
+    <para>
+      Le signe @ peut être suivi par les caractères de <quote>formatage</quote>
+      facultatifs suivants, dans cet ordre :
+
+      <orderedlist>
+        <listitem><para><quote>#</quote> force une image carrée sans
+        distortion de la forme du widget.</para></listitem>
+        <listitem><para>+[1-9] or -[1-9] grossit ou diminue l'image.</para></listitem>
+        <listitem><para>[1-9] effectue une rotation d'un multiple de 45 degrés.
+        <quote>6</quote> ne fait rien, les autres valeurs pointent dans la
+        direction de cette touche sur un pavé numérique.</para></listitem>
+      </orderedlist>
+    </para>
+
+    <para>
+      <emphasis>ion</emphasis> -- valeur retournée quand le bouton est coché.
+    </para>
+
+    <para>
+      <emphasis>ioff</emphasis> -- valeur retournée quand le bouton est décoché.
+    </para>
+
+    <para>
+      <emphasis>itype</emphasis> -- un nombre entier dénotant l'apparence du
+      widget.
+    </para>
+
+    <para>
+      Plusieurs types de bouton sont possibles selon la valeur de l'argument
+      <emphasis>itype</emphasis> :
+
+      <itemizedlist>
+        <listitem><para>1 - bouton normal</para></listitem>
+        <listitem><para>2 - bouton lumineux</para></listitem>
+        <listitem><para>3 - bouton à cocher</para></listitem>
+        <listitem><para>4 - bouton avec un cercle à cocher</para></listitem>
+      </itemizedlist>
+      On peut ajouter 20 à la valeur pour créer un bouton de type "plastique".
+      Noter qu'il n'y a pas de bouton arrondi plastique (si vous fixer le type
+      à 24, le bouton aura la même apparence qu'avec le type 23).
+    </para>
+
+    <para>
+      Voici l'apparence des boutons :
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/flbutton.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>FLbutton.</phrase>
+        </textobject>
+
+        <caption>
+          <para>FLbutton.</para>
+        </caption>
+      </mediaobject>
+    </para>
+
+    <para>
+      <emphasis>iwidth</emphasis> -- largeur du widget.
+    </para>
+
+    <para>
+      <emphasis>iheight</emphasis> -- hauteur du widget.
+    </para>
+
+    <para>
+      <emphasis>ix</emphasis> -- position horizontale du coin supérieur gauche
+      du widget, relative au coin supérieur gauche de la fenêtre correspondante
+      (exprimée en pixels).
+    </para>
+
+    <para>
+      <emphasis>iy</emphasis> -- position verticale du coin supérieur gauche
+      du widget, relative au coin supérieur gauche de la fenêtre correspondante
+      (exprimée en pixels).
+    </para>
+
+    <para>
+      <emphasis>iopcode</emphasis> -- type de l'instruction de partition. Il faut
+      fournir le code ASCII de la lettre correspondant à l'instruction de partition.
+      Actuellement seules les instructions de partition <quote>i</quote> (code
+      ASCII 105) sont supportées. Une valeur de zéro fait référence à une valeur
+      de <quote>i</quote> par défaut. Ainsi 0 et 105 activent l'instruction
+      <link linkend="i"><citetitle>i</citetitle></link>. Une valeur de -1
+      désactive cette possibilité.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kout</emphasis> -- valeur de sortie.
+    </para>
+
+    <para>
+      <emphasis>kp1</emphasis>, <emphasis>kp2</emphasis>, ..., <emphasis>kpN</emphasis> --
+      arguments des instruments activés.
+    </para>
+
+    <para>
+      Les boutons de type 2, 3 et 4 retournent (argument <emphasis>kout</emphasis>)
+      la valeur contenue dans l'argument <emphasis>ion</emphasis> lorsqu'ils sont
+      cochés et celle contenue dans l'argument <emphasis>ioff</emphasis>
+      lorsqu'ils sont décochés.
+    </para>
+
+    <para>
+      En ajoutant 10 à l'argument <emphasis>itype</emphasis> (c'est à dire en
+      lui attribuant la valeur 11 pour le type 1, 12 pour le type 2, 13 pour le
+      type 3 et 14 pour le type 4), il est possible d'ignorer la valeur du
+      bouton lorsque l'on sauve ou que l'on récupère des instantanés (voir la
+      section suivante). Non seulement <emphasis>FLbutton</emphasis> retourne
+      une valeur, mais il peut aussi activer (ou programmer) un instrument
+      fourni par l'utilisateur chaque fois le bouton est cliqué. On peut aussi
+      ajouter 10 aux type de boutons "plastiques" (31 pour le type
+      1, 32 pour le type 2, etc).
+    </para>
+
+    <para>
+      Si l'argument <emphasis>iopcode</emphasis> est fixé à un nombre négatif,
+      aucun instrument n'est activé. Ainsi cette possibilité est facultative.
+      Pour activer un instrument, <emphasis>iopcode</emphasis> doit valoir 0 ou
+      105 (le code ASCII du caractère <quote>i</quote>, faisant référence à
+      l'instruction de partition <link linkend="i"><citetitle>i</citetitle></link>).
+    </para>
+
+    <para>
+      Les p-champs de l'instrument activé sont <emphasis>kp1</emphasis> (numéro
+      de l'instrument), <emphasis>kp2</emphasis> (date de l'action),
+      <emphasis>kp3</emphasis> (durée), suivis des p-champs de l'utilisateur.
+      Noter que pour les boutons à deux états (bouton lumineux, bouton à cocher,
+      bouton avec un cercle à cocher), l'instrument n'est activé que lorsque le
+      l'état du bouton passe de décoché à coché (pas de coché à décoché).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode FLbutton. Il utilise les fichiers
+      <ulink url="examples/FLbutton.csd"><citetitle>FLbutton.csd</citetitle></ulink>
+      et <ulink url="examples/beats.wav"><citetitle>beats.wav</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode FLbutton.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/FLbutton.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="FLbox"><citetitle>FLbox</citetitle></link>,
+      <link linkend="FLbutBank"><citetitle>FLbutBank</citetitle></link>,
+      <link linkend="FLprintk"><citetitle>FLprintk</citetitle></link>,
+      <link linkend="FLprintk2"><citetitle>FLprintk2</citetitle></link>,
+      <link linkend="FLvalue"><citetitle>FLvalue</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.22</para>
+    <para>Exemple écrit par Iain McCurdy, édité par &namekevin;.</para>
+  </refsect1>
+</refentry>

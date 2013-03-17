@@ -1,0 +1,72 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.16
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ampdbfs">
+<indexterm id="IndexAmpdbfs"><primary>ampdbfs</primary></indexterm>
+  <refentryinfo><title>Mathematical Operations:Amplitude Functions</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ampdbfs</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>ampdbfs</refname>
+    <refpurpose>
+      Retourne l'amplitude équivalente (sur une échelle d'entiers signés sur 16 bit) à la
+      valeur <emphasis>x</emphasis> de l'amplitude maximale (dB FS).
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne l'amplitude équivalente à la valeur <emphasis>x</emphasis> de l'amplitude
+      maximale (dB FS). Les valeurs logarithmiques de l'échelle en décibels sont converties
+      en valeurs linéaires entières sur 16 bit allant de -32768 à +32767.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>ampdbfs</command>(x)  (pas de restriction de taux)</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode ampdbfs. Il utilise le fichier
+      <ulink url="examples/ampdbfs.csd"><citetitle>ampdbfs.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode ampdbfs.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/ampdbfs.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie contiendra cette ligne :
+      <screen>
+instr 1:  iamp = 29204.511
+instr 1:  iamp = 18426.801
+instr 1:  iamp = 16422.904
+instr 1:  iamp = 3276.800</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ampdb"><citetitle>ampdb</citetitle></link>,
+      <link linkend="dbamp"><citetitle>dbamp</citetitle></link>,
+      <link linkend="dbfsamp"><citetitle>dbfsamp</citetitle></link>,
+      <link linkend="Zerodbfs"><citetitle>0dbfs</citetitle></link>
+    </para>
+    <para>Nouveau dans la version 4.10 de Csound.</para>
+  </refsect1>
+</refentry>

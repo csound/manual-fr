@@ -1,0 +1,104 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="eqfil">
+<indexterm id="Indexeqfil"><primary>eqfil</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Specialized Filters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>eqfil</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>eqfil</refname>
+    <refpurpose>
+      Filtre égaliseur.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      L'opcode <emphasis>eqfil</emphasis> est un filtre d'égalisation du second
+      ordre accordable basé sur le modèle de Regalia et Mitra ("Tunable Digital
+      Frequency Response Equalization Filters", IEEE Trans. on Ac., Sp. and Sig
+      Proc., 35 (1), 1987). Il fournit un filtre à pics/creux pour construire des
+      égaliseurs paramétriques/graphiques.
+    </para>
+    <para>
+      L'amplitude de la réponse du filtre sera plate (=1) pour <emphasis>kgain</emphasis>=1.
+      Si <emphasis>kgain</emphasis> est supérieur à 1, il y aura un pic à la fréquence
+      centrale dont la largeur est donnée par le paramètre <emphasis>kbw</emphasis>, et
+      en-dehors de cette bande, la réponse tendra vers 1. Inversement, si
+      <emphasis>kgain</emphasis> est inférieur à 1, il y aura un creux autour
+      de la fréquence centrale.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>asig <command>eqfil</command> ain, kcf, kbw, kgain[, istor]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+      <para>
+        <emphasis>istor</emphasis> -- état initial de l'espace de données interne.
+      Comme le filtrage comprend une boucle de rétroaction sur la sortie précédente,
+      l'état initial de l'espace de stockage utilisé est significatif. Une valeur
+      nulle provoquera l'effacement de cet espace ; une valeur non nulle autorisera
+      la persistance de l'information précédente. La valeur par défaut est 0.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- signal de sortie filtré.
+    </para>
+    <para>
+      <emphasis>ain</emphasis> -- signal d'entrée.
+    </para>
+    <para>
+      <emphasis>kcf</emphasis> -- fréquence centrale du filtre.
+    </para>
+
+    <para>
+      <emphasis>kbw</emphasis> -- largeur de bande du pic/creux (Hz). 
+    </para>
+  <para>
+      <emphasis>kgain</emphasis> -- gain du pic/creux. 
+    </para>
+
+  </refsect1>
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode eqfil. Il utilise le fichier
+      <ulink url="examples/eqfil.csd"><citetitle>eqfil.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode eqfil.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/eqfil.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Avril 2007</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.06</para>
+  </refsect1>
+</refentry>

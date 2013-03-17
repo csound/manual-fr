@@ -1,0 +1,125 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="GEN27">
+      <indexterm id="IndexGEN27"><primary>GEN27</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN27</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>GEN27</refname>
+    <refpurpose>
+      Construit des fonctions à partir de morceaux de lignes droites avec des points charnière.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Construit des fonctions à partir de morceaux de lignes droites avec des points charnière.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>f</command> # date taille 27 x1 y1 x2 y2 x3 ...</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>taille </emphasis> -- nombre de points dans la table. Doit être une puissance de 2 ou une
+      puissance-de-2 plus 1. (voir l'<link linkend="f"><citetitle>instruction f</citetitle></link>).
+    </para>
+
+    <para>
+      <emphasis>x1, x2, x3,</emphasis> etc. -- positions dans la table auxquelles la valeur y suivante devra
+      être atteinte. Doivent être en ordre croissant. Si la dernière valeur est inférieure à la taille,
+      les positions restantes seront mises à zéro. Ne doivent pas être négatives mais peuvent être nulles.
+    </para>
+
+    <para>
+      <emphasis>y1, y2, y3,</emphasis> etc. -- Valeurs charnière atteintes à la position spécifiée par la
+      valeur x précédente.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        Si p4 est positif, les fonctions sont post-normalisées (reproportionnées à une valeur absolue
+        maximale de 1 après génération). Un p4 négatif empêchera cette opération.
+      </para>
+    </note>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de la routine GEN27. Il utilise le fichier
+      <ulink url="examples/gen27.csd"><citetitle>gen27.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de la routine GEN27.</title>
+        <para>
+          Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+          et <link linkend="CommandFlags"><citetitle>Options de Ligne de Commande</citetitle></link> pour
+          plus d'information sur l'utilisation des options de la ligne de commande.
+        </para>
+        <xi:include href="examples-xml/gen27.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>  
+      
+      <textobject>
+        <phrase>Voici le diagramme de la forme d'onde de la routine GEN27 utilisée
+        dans l'exemple :</phrase>
+      </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen27.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 2 0 1025 27 0 0 200 1 400 -1 513 0 - une fonction qui
+          commence à 0, monte jusqu'à 1 à la position 200 de la table, descend
+          jusqu'à -1 à la position 400, et revient à 0 à la fin de la table.
+          L'interpolation est linéaire</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 2 0 1025 27 0 0 200 1 400 -1 513 0 - une fonction qui
+          commence à 0, monte jusqu'à 1 à la position 200 de la table, descend
+          jusqu'à -1 à la position 400, et revient à 0 à la fin de la table.
+          L'interpolation est linéaire</para>
+        </caption>
+      </mediaobject>
+   
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="f"><citetitle>Instruction f</citetitle></link>,
+      <link linkend="GEN25"><citetitle>GEN25</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>University of Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.49 de Csound</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,120 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="MixerSetLevel">
+<indexterm id="IndexMixerSetLevel"><primary>MixerSetLevel</primary></indexterm>
+  <refentryinfo><title>Mixer Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>MixerSetLevel</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>MixerSetLevel</refname>
+    <refpurpose>
+      Fixe le niveau d'un départ vers un bus.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>MixerSetLevel</command> isend, ibuss, kgain</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Description</title> 
+    <para>
+      Fixe le niveau avec lequel les signaux d'un départ sont ajoutés au bus.
+      L'envoi du signal vers le bus est effectué par l'opcode
+      <link linkend="MixerSend"><citetitle>MixerSend</citetitle></link>. 
+    </para>  
+    </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+
+    <para><emphasis>isend</emphasis> -- Le numéro du départ, par exemple, le
+    numéro de l'instrument envoyant le signal (mais on peut utiliser n'importe
+    quel nombre entier.</para>
+
+    <para><emphasis>ibuss</emphasis> -- Le numéro du bus, par exemple, le
+    numéro de l'instrument recevant le signal (mais on peut utiliser n'importe
+    quel nombre entier.</para>
+
+    <para>En fixant le gain pour un bus, le bus est également créé.</para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para><emphasis>kgain</emphasis> -- Le niveau (n'importe quel nombre réel)
+    avec lequel le signal du départ est mélangé sur le bus. La valeur par défaut
+    est 0.</para>
+
+    <para>
+      L'utilisation du mélangeur nécessite que les instruments fixant les gains
+      aient des numéros inférieurs à ceux des instruments envoyant des signaux,
+      et que les intruments envoyant des signaux aient des numéros inférieurs
+      à ceux des instruments recevant ces signaux. Cependant, un instrument
+      peut avoir n'importe quel nombre de départs et de retours. Après la réception
+      du dernier signal, il faut invoquer
+      <link linkend="MixerClear"><citetitle>MixerClear</citetitle></link> pour
+      réinitialiser les bus à 0 avant le k-cycle suivant.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+
+    <para>Dans l'orchestre, définir un instrument pour contrôler les niveaux du
+    mélangeur :</para>
+<programlisting>
+<emphasis role="oblock">instr</emphasis> 1
+  <emphasis role="opc">MixerSetLevel</emphasis>    p4, p5, p6
+<emphasis role="oblock">endin</emphasis></programlisting>
+
+    <para>Dans la partitioin, utiliser cet instrument pour fixer les niveaux du
+    mélangeur :</para>
+<programlisting>
+<emphasis role="comment">; SoundFonts</emphasis>
+<emphasis role="comment">; to Chorus</emphasis>
+<emphasis role="stamnt">i</emphasis> 1  0  0 100  200  0.9
+<emphasis role="comment">; to Reverb</emphasis>
+<emphasis role="stamnt">i</emphasis> 1  0  0  100  210  0.7
+<emphasis role="comment">; to Output</emphasis>
+<emphasis role="stamnt">i</emphasis> 1  0  0  100  220  0.3
+
+<emphasis role="comment">; Kelley Harpsichord</emphasis>
+<emphasis role="comment">; to Chorus</emphasis>
+<emphasis role="stamnt">i</emphasis> 1  0  0  3  200  0.30
+<emphasis role="comment">; to Reverb</emphasis>
+<emphasis role="stamnt">i</emphasis> 1  0  0  3  210  0.9
+<emphasis role="comment">; to Output</emphasis>
+<emphasis role="stamnt">i</emphasis> 1  0  0  3  220  0.1
+
+<emphasis role="comment">; Chorus to Reverb</emphasis>
+<emphasis role="stamnt">i</emphasis> 1  0  0  200  210  0.5
+<emphasis role="comment">; Chorus to Output</emphasis>
+<emphasis role="stamnt">i</emphasis> 1  0  0  200  220  0.5
+<emphasis role="comment">; Reverb to Output</emphasis>
+<emphasis role="stamnt">i</emphasis> 1  0  0  210  220  0.2</programlisting>
+
+    <para>
+      Voici un exemple complet de l'opcode MixerSetLevel. Il utilise le fichier
+      <ulink url="examples/Mixer.csd"><citetitle>Mixer.csd</citetitle></ulink>
+      <example>
+        <title>Exemple complet de l'opcode MixerSetLevel.</title>
+        <xi:include href="examples-xml/Mixer.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Michael Gogins (gogins at pipeline dot com).</para>
+  </refsect1>
+</refentry>

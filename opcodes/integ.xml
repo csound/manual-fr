@@ -1,0 +1,90 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.14
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="integ">
+<indexterm id="IndexInteg"><primary>integ</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Sample Level Operators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>integ</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>integ</refname>
+    <refpurpose>
+      Modifie un signal par intégration.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Modifie un signal par intégration.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>integ</command> asig [, iskip]</synopsis>
+
+    <synopsis>kres <command>integ</command> ksig [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iskip</emphasis> (facultatif) --état initial de l'espace
+      mémoire interne (voir
+      <link linkend="reson"><citetitle>reson</citetitle></link>).  La valeur par
+      défaut est 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>integ</emphasis> et <link linkend="diff"><citetitle>diff</citetitle></link>
+      réalisent l'intégration et la différentiation
+      d'un signal de contrôle ou audio en entrée. Ils sont mutuellement inverses
+      et l'application des deux reconstruit le signal original. Comme ces unités
+      sont des cas particuliers de filtres passe-bas et passe-haut, ils produisent
+      une sortie pondérée (et modifiée en phase) en fonction de la fréquence.
+      Ainsi <emphasis>diff</emphasis> d'un sinus produit un cosinus dont l'amplitude
+      vaut 2 * <emphasis>pi</emphasis> * Hz / <emphasis>sr</emphasis> de l'original
+      (pour chaque partiel) ; <emphasis>integ</emphasis> affectera inversement
+      les amplitudes de ses composants en entrée. Sachant cela, ces unités peuvent
+      fournir d'utiles modifications de signal.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+     Voici un exemple de l'opcode integ. Il utilise le fichier
+     <ulink url="examples/integ.csd"><citetitle>integ.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode integ.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/integ.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="diff"><citetitle>diff</citetitle></link>,
+      <link linkend="downsamp"><citetitle>downsamp</citetitle></link>,
+      <link linkend="interp"><citetitle>interp</citetitle></link>,
+      <link linkend="samphold"><citetitle>samphold</citetitle></link>,
+      <link linkend="upsamp"><citetitle>upsamp</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

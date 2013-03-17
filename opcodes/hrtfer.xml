@@ -1,0 +1,127 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.14
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="hrtfer">
+<indexterm id="IndexHrtfer"><primary>hrtfer</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Panning and Spatialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>hrtfer</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>hrtfer</refname>
+    <refpurpose>
+      Crée de l'audio 3D pour deux haut-parleurs.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      La sortie audio en 3D est binaurale (casque stéréo).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aleft, aright <command>hrtfer</command> asig, kaz, kelev, <quote>HRTFcompact</quote></synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>kAz</emphasis> -- valeur d'azimut en degrés. Les valeurs positives
+      représentent les positions à droite, les valeurs négatives les positions à
+      gauche.
+    </para>
+
+    <para>
+      <emphasis>kElev</emphasis> -- valeur d'élévation en degrés. Les valeurs
+      positives représentent les positions au-dessus de l'horizontale, les
+      valeurs négatives les positions sous l'horizontale.
+    </para>
+
+    <para>
+      Actuellement, le seul fichier qui peut être utilisé avec <emphasis>hrtfer</emphasis>
+      est <ulink url="examples/HRTFcompact"><citetitle>HRTFcompact</citetitle></ulink>.
+      Il doit être passé à l'opcode en dernier argument entre guillements comme
+      ci-dessus.
+    </para>
+
+    <para>
+      On peut aussi obtenir HRTFcompact par ftp anonyme depuis :
+      <ulink url="ftp://ftp.cs.bath.ac.uk/pub/dream/utilities/Analysis/HRTFcompact"><citetitle>ftp://ftp.cs.bath.ac.uk/pub/dream/utilities/Analysis/HRTFcompact</citetitle></ulink>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Ces générateurs unitaires placent un signal d'entrée mono dans un espace 3D
+      virtuel autour de l'auditeur en faisant une convolution entre l'entrée et les
+      données HRTF appropriées spécifiées par les valeurs d'azimut et d'élévation de
+      l'opcode. <emphasis>hrtfer</emphasis> accepte que ces valeurs soient de taux-k,
+      ce qui permet une spatialisation dynamique. <emphasis>hrtfer</emphasis> ne peut
+      placer l'entrée qu'à la position demandée car le HRTF est chargé à l'initialisation
+      (souvenez-vous qu'actuellement Csound limite à 20 le nombre de fichiers qu'il
+      peut garder en mémoire sans causer d'erreur de segmentation). Il faut ajuster
+      la sortie soit en utilisant
+      <link linkend="balance"><citetitle>balance</citetitle></link> soit en la
+      multipliant par une constante de mise à l'échelle.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        Le taux d'échantillonnage de l'orchestre doit être de 44.1 kHz. C'est le
+        taux auquel les HRTFs ont été mesurés. Si l'on veut utiliser les HRTFs à
+        un taux différent, il faut les rééchantillonner au taux désiré.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode hrtfer. Il utilise les fichiers
+      <ulink url="examples/hrtfer.csd"><citetitle>hrtfer.csd</citetitle></ulink>,
+      <ulink url="examples/HRTFcompact"><citetitle>HRTFcompact</citetitle></ulink>
+      et <ulink url="examples/beats.wav"><citetitle>beats.wav</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode hrtfer.</title>
+      <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+      et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+      d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/hrtfer.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="hrtfmove"><citetitle>hrtfmove</citetitle></link>,
+      <link linkend="hrtfmove2"><citetitle>hrtfmove2</citetitle></link>,
+      <link linkend="hrtfstat"><citetitle>hrtfstat</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteurs : Eli Breder et David MacIntyre</member>
+        <member>Montréal</member>
+        <member>1996</member>
+      </simplelist>
+    </para>
+
+    <para>Correction de l'exemple grâce à un message d'&nameistvan;.</para>
+  </refsect1>
+</refentry> 

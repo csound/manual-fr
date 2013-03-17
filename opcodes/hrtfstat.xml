@@ -1,0 +1,172 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.10
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="hrtfstat">
+  <indexterm id="IndexHrtfstat">
+    <primary>hrtfstat</primary>
+  </indexterm>
+  <refentryinfo><title>Signal Modifiers:Panning and Spatialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>hrtfstat</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>hrtfstat</refname>
+    <refpurpose>
+      Génère un signal audio statique 3D binaural pour casque en utilisant un
+      modèle de Woodworth de tête sphérique avec précision améliorée de la phase
+      en basse fréquence.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode prend un signal source et le spatialise dans les trois dimensions
+      entourant l'auditeur en utilisant des filtres basés sur une fonction de
+      transfert en relation avec la tête (HRTF). Il produit une sortie statique
+      (les paramètres d'azimut et d'élévation sont de taux-i), car une source
+      statique permet un traitement bien plus efficace que
+      <link linkend="hrtfmove"><citetitle>hrtfmove</citetitle></link> et
+      <link linkend="hrtfmove2"><citetitle>hrtfmove2</citetitle></link>. 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>
+      aleft, aright <command>hrtfstat</command> asrc, iAz, iElev, ifilel, ifiler [,iradius, isr]
+    </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iAz</emphasis> -- valeur d'azimut en degrés. Les valeurs positives
+      représentent les positions sur la droite, les valeurs négatives les positions
+      sur la gauche.
+    </para>
+    <para>
+      <emphasis>iElev</emphasis> -- valeur d'élévation en degrés. Les valeurs
+      positives représentent les positions au-dessus de l'horizontale, les valeurs
+      négatives les positions sous l'horizontale (min -40).
+    </para>
+    <para>
+      <emphasis>ifilel </emphasis> -- fichier des données spectrales HRTF de gauche.
+    </para>
+    <para>
+      <emphasis>ifiler </emphasis> -- fichier des données spectrales HRTF de droite.
+    </para>
+    <note>
+      <para>
+        Des fichiers de données spectrales (basés sur la base de donnée HTRF du MIT)
+        sont disponibles dans trois taux d'échantillonnage : 44.1, 48 et 96 kHz et
+        sont nommés en conséquense. Le <emphasis>sr</emphasis> d'entrée et de
+        traitement doit concorder avec celui du fichier de données. Les fichiers
+        doivent se trouver dans le répertoire courant ou le SADIR (voir
+        <link linkend="CommandEnvironment"><citetitle>Variables d'Environnement</citetitle></link>).
+      </para>
+    </note>
+    <note>
+      <para>
+        Les fichiers de données HRTF à utiliser avec 
+        <link linkend="hrtfmove"><citetitle>hrtfmove</citetitle></link>,
+        <link linkend="hrtfmove2"><citetitle>hrtfmove2</citetitle></link>,
+        <link linkend="hrtfstat"><citetitle>hrtfstat</citetitle></link>,
+        <link linkend="hrtfearly"><citetitle>hrtfearly</citetitle></link> et
+        <link linkend="hrtfreverb"><citetitle>hrtfreverb</citetitle></link>
+        ont été mis à jour pour les versions 5.15 et ultérieures de Csound (le
+        code a été mis à jour et il est plus efficace). Les anciens fichiers de
+        données sont maintenant obsolètes.
+      </para>
+    </note>
+    <para>
+      <emphasis>iradius</emphasis> -- facultatif, rayon de la tête en centimètres
+      utilisé pour le calcul du spectre de phase (9.0 par défaut).
+    </para>
+    <para>
+      <emphasis>isr</emphasis> - facultatif (44.1 kHz par défaut). Les valeurs
+      autorisées sont 44100, 48000 et 96000.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Une spatialisation statique sans artefact définie par l'utilisateur est
+      rendue possible au moyen d'un algorithme basé sur l'interpolation de
+      magnitude spectrale et un spectre de phase dérivé basé sur le modèle de
+      tête sphérique de Woodworth. La précision de l'ensemble de données fourni
+      est augmentée en extrayant et en appliquant au spectre de phase un facteur
+      de pondération dépendant de la fréquence, ce qui conduit à un délai
+      interaural plus précis dans les basses fréquences. On peut contrôler le
+      rayon de la tête pour la dérivation de la phase ce qui donne un niveau
+      simple d'individualisation. La version à source statique de l'opcode
+      utilise la convolution par chevauchement et addition (le traitement par
+      TFCT n'est pas nécessaire, voir
+      <link linkend="hrtfmove2"><citetitle>hrtfmove2</citetitle></link>), et
+      elle est ainsi considérablement plus efficace que
+      <link linkend="hrtfmove2"><citetitle>hrtfmove2</citetitle></link> ou
+      <link linkend="hrtfmove"><citetitle>hrtfmove</citetitle></link>, mais elle
+      ne peut pas générer de sources en mouvement.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode hrtfstat. Il utilise le fichier
+      <ulink url="examples/hrtfstat.csd"><citetitle>hrtfstat.csd</citetitle></ulink>. 
+    </para>
+
+    <example>
+      <title>Exemple de l'opcode hrtfstat.
+      </title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/hrtfstat.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </example>
+    <para>
+      Voici un autre exemple de l'opcode hrtfstat. Il utilise les fichiers
+      <ulink url="examples/hrtfstat-2.csd"><citetitle>htrfstat-2.csd</citetitle></ulink>
+      et <ulink url="examples/Church.wav"><citetitle>Church.wav</citetitle></ulink>,
+      qui contient un son échantillonné avec boucle.
+
+      <example>
+        <title>Deuxième exemple de l'opcode hrtfstat</title>
+          <xi:include href="examples-xml/hrtfstat-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="hrtfmove"><citetitle>hrtfmove</citetitle></link>,
+      <link linkend="hrtfmove2"><citetitle>hrtfmove2</citetitle></link>,
+      <link linkend="hrtfer"><citetitle>hrtfer</citetitle></link>.
+    </para>
+    <para>Plus d'information sur cet opcode :
+      <ulink url="http://www.csounds.com/journal/issue9/newHRTFOpcodes.html"><citetitle>http://www.csounds.com/journal/issue9/newHRTFOpcodes.html</citetitle></ulink>,
+      écrit par Brian Carty.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Brian Carty</member>
+        <member>Maynooth</member>
+        <member>2008</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

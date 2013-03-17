@@ -1,0 +1,93 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.5
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="CommandPreproc">
+  <title>Prétraitement du fichier de partition</title>
+
+  <section id="commandpreextract">
+    <title>La fonction Extract</title> 
+
+    <para>
+      <indexterm id="IndexExtract"><primary>extract</primary></indexterm>
+      Cette fonction va extraire une partie d'un fichier de partition numérique triée en suivant les instructions
+      venant d'un fichier de contrôle. Le fichier de contrôle contient une liste d'instruments et deux points
+      dans le temps depuis (from) et à (to), de la forme :
+      <informalexample>
+        <programlisting>instruments 1  2  from  1:27.5  to  2:2</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      Les étiquettes des composants peuvent être abrégés en i, f et t. Les points dans le temps marquent le
+      début et la fin de l'extraction en termes de :
+      <informalexample>
+        <programlisting>[no de section] : [no de pulsation].</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      chacune des trois parties de l'argument est optionnelle. Les valeurs par défaut lorsque i, f ou t sont manquants sont :
+      <informalexample>
+        <programlisting>tous les instruments, début de la partition, fin de la partition.</programlisting>
+      </informalexample>
+    </para>
+  </section>
+
+
+  <section id="CommandPreindie">
+    <title>Prétraitement indépendant avec Scsort</title>
+    <para>
+      <indexterm id="IndexScsort"><primary>Scsort</primary></indexterm>
+      Bien que le résultat de tout le prétraitement de la partition se trouvent dans le fichier
+      <emphasis>score.srt</emphasis> après l'exécution de l'orchestre (il existe dès que le prétraitement
+      de la partition est fini), l'utilisateur peut vouloir parfois lancer ces phases indépendamment. La
+      commande
+
+      <informalexample>
+        <programlisting><command>scot</command> nomfichier</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      va traiter le fichier au format Scot <emphasis>nomfichier</emphasis>, et produira comme résultat une
+      <link linkend="ScoreTop"><citetitle>partition numérique standard</citetitle></link> dans un fichier
+      appelé <emphasis>score</emphasis> pour consultation ou traitement ultérieur.
+    </para>
+
+    <para>
+      La commande
+      <informalexample>
+        <programlisting><command>scscort</command> &lt; fichierentrée &gt; fichiersortie</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      effectuera les prétraitements de Report de Valeur (Carry), Tempo et Tri sur une partition numérique
+      dans fichierentrée, déposant le résultat dans fichiersortie.
+    </para>
+
+    <para>
+      De même <emphasis>extract</emphasis>, lui aussi invoqué normalement comme élément de la
+      <link linkend="CommandTop"><citetitle>commande Csound</citetitle></link>, peut être invoqué comme
+      programme autonome :
+      <informalexample>
+        <programlisting><command>extract</command> xfile &lt; partition.triée &gt; extrait.partition</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      Cette commande attend une partition déjà triée. Une partition non triée doit d'abord passer par
+      Scsort pour ensuite enchaîner avec le programme extract :
+      <informalexample>
+        <programlisting>
+<command>scsort</command> &lt; fichierpartition | <command>extract</command> xfile &gt; extrait.partition</programlisting>
+      </informalexample>
+    </para>
+  </section>
+</section>

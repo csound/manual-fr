@@ -1,0 +1,98 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="specscal">
+<indexterm id="IndexSpecscal"><primary>specscal</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Non-Standard</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>specscal</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>specscal</refname>
+    <refpurpose>
+      Pondère un bloc spectral en entrée avec des enveloppes spectrales.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Pondère un bloc spectral en entrée avec des enveloppes spectrales.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>wsig <command>specscal</command> wsigin, ifscale, ifthresh</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifscale</emphasis> -- table de la fonction de pondération
+      contenant les valeurs par lesquelles une valeur de magnitude est pondérée.
+    </para>
+
+    <para>
+      <emphasis>ifthresh</emphasis> -- table de la fonction de seuil. Si
+      <emphasis>ifthresh</emphasis> est différent de zéro, chaque magnitude est
+      réduite par sa valeur de table correspondante (on ne descend pas en-dessous
+      de zéro).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>wsig</emphasis> -- le spectre de sortie
+    </para>
+
+    <para>
+      <emphasis>wsigin</emphasis> -- le spectre d'entrée
+    </para>
+
+    <para>
+      Pondère un bloc spectral en entrée avec des enveloppes spectrales. Les
+      tables de fonction <emphasis>ifthresh</emphasis> et <emphasis>ifscale</emphasis>
+      sont initialement échantillonnée dans l'espace de fréquence (logarithmique)
+      du spectre d'entrée ; puis, chaque fois qu'un nouveau spectre d'entrée est
+      détecté, les valeurs échantillonnées sont utilisées pour pondérer chacun
+      de ses canaux de magnitude de la manière suivante : si
+      <emphasis>ifthresh</emphasis> est différent de zéro, chaque magnitude est
+      réduite par sa valeur de table correspondante (on ne descend pas en-dessous
+      de zéro) ; ensuite chaque magnitude est repondérée par la valeur de
+      <emphasis>ifscale</emphasis> correspondante, et le spectre résultant est
+      écrit dans <emphasis>wsig</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      <informalexample>
+        <programlisting>
+  wsig2    <emphasis role="opc">specdiff</emphasis>    wsig1         <emphasis role="comment">; sense onsets</emphasis>
+  wsig3    <emphasis role="opc">specfilt</emphasis>    wsig2, 2      <emphasis role="comment">; absorb slowly</emphasis>
+           <emphasis role="opc">specdisp</emphasis>    wsig2, 0.1    <emphasis role="comment">; &amp; display both spectra</emphasis>
+           <emphasis role="opc">specdisp</emphasis>    wsig3, 0.1</programlisting>
+      </informalexample>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="specaddm"><citetitle>specaddm</citetitle></link>,
+      <link linkend="specdiff"><citetitle>specdiff</citetitle></link>,
+      <link linkend="specfilt"><citetitle>specfilt</citetitle></link>,
+      <link linkend="spechist"><citetitle>spechist</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,101 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.2
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="trandom">
+<indexterm id="IndexTrandom"><primary>trandom</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Random (Noise) Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>trandom</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>trandom</refname>
+    <refpurpose>
+     Génère une suite contrôlée de nombres pseudo-aléatoires entre des valeurs
+     minimale et maximale en fonction d'un déclencheur.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère au taux-k une suite contrôlée de nombres pseudo-aléatoires entre des
+      valeurs minimale et maximale chaque fois que le paramètre de déclenchement
+      est différent de 0.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kout <command>trandom</command> ktrig, kmin, kmax</synopsis>
+  </refsect1>
+ 
+<!--  <refsect1>
+    <title>Initialisation</title>
+    <para> <emphasis>ixmode</emphasis> -  index data mode. The default value is 0.
+    </para>
+      <para>                == 0 index is treated as a raw table location,
+      </para>
+      <para>                == 1 index is normalized (0 to 1).
+      </para>
+      <para>
+      <emphasis>kinterp</emphasis> - switch beetween interpolated or non-interpolated output. 0 -&gt; non-interpolation , non-zero -&gt; interpolation activated
+      </para>
+  </refsect1>-->
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ktrig</emphasis> -- déclencheur (l'opcode produit un nouveau
+      nombre aléatoire chaque fois que cette valeur est différente de 0.
+    </para>
+    <para>
+      <emphasis>kmin</emphasis> -- limite inférieure de l'intervalle
+    </para>
+    <para>
+      <emphasis>kmax</emphasis> -- limite supérieure de l'intervalle
+    </para>
+    <para>
+     <emphasis>trandom</emphasis> est presque identique à l'opcode
+     <link linkend="random"><citetitle>random</citetitle></link> sauf que
+     <emphasis>trandom</emphasis> ne renouvelle sa sortie avec une nouvelle
+     valeur aléatoire que si l'argument <emphasis>ktrig</emphasis> est déclenché
+     (c-à-d chaque fois qu'il est différent de zéro).
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode trandom. Il utilise le fichier
+      <ulink url="examples/trandom.csd"><citetitle>trandom.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode trandom.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/trandom.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="random"><citetitle>random</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par Gabriel Maldonado.</para>
+<!--    <para>Exemple écrit par Andres Cabrera.</para>-->
+    <para>Nouveau dans Csound 5.06</para>
+  </refsect1>
+</refentry>

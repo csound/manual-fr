@@ -1,0 +1,158 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="chuap">
+  <indexterm id="Indexchuap"><primary>chuap</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Models and Emulations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>chuap</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>chuap</refname>
+    <refpurpose>
+      Simule un oscillateur de Chua, un oscillateur RLC avec une résistance active, qui peut avoir
+      bifurcation et attracteurs chaotiques, avec un contrôle de taux-k des éléments du circuit.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Simule un oscillateur de Chua, un oscillateur RLC avec une résistance active, qui peut avoir
+      bifurcation et attracteurs chaotiques, avec un contrôle de taux-k des éléments du circuit.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aI3, aV2, aV1 <command>chuap</command> kL, kR0, kC1, kG, kGa, kGb, kE, kC2, iI3, iV2, iV1, ktime_step</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iI3</emphasis> -- Courant initial dans G
+    </para>
+    <para>
+      <emphasis>iV2</emphasis> -- Tension initiale aux bornes de C2
+    </para>
+    <para>
+      <emphasis>iV1</emphasis> -- Tension initiale aux bornes de C1
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kL</emphasis> -- Inductance L
+    </para>
+    <para>
+      <emphasis>kR0</emphasis> -- Résistance R0
+    </para>
+    <para>
+      <emphasis>kC1</emphasis> -- Capacité C1
+    </para>
+    <para>
+      <emphasis>kG</emphasis> -- Résistance G
+    </para>
+    <para>
+      <emphasis>kGa</emphasis> -- Résistance V (terme non linéaire)
+    </para>
+    <para>
+      <emphasis>kGb</emphasis> -- Résistance V (terme non linéaire)
+    </para>
+    <para>
+      <emphasis>kGb</emphasis> -- Résistance V (terme non linéaire)
+    </para>
+    <para>
+      <emphasis>ktime_step</emphasis> -- Pas temporel de l'équation aux différences, permet de contrôler
+      plus ou moins la hauteur.
+    </para>
+    <para>
+      <emphasis>L'oscillateur de Chua</emphasis> est un simple oscillateur RLC avec une résistance active.
+      L'oscillateur peut être amené à une bifurcation de période, et ainsi vers le chaos, à cause de la
+      réponse non linéaire de la résistance active.
+    </para>
+    <mediaobject>
+      <imageobject>
+<!--         This image is taken from Wikipedia and is in the public domain en.wikipedia.org/wiki/File:Chua's_circuit.svg-->
+        <imagedata fileref="images/600px-Chua's_circuit.svg.png" format="PNG"/>
+      </imageobject>
+      <caption>
+        <para>Diagramme du Circuit de l'Oscillateur de Chua</para>
+      </caption>
+    </mediaobject>
+    <para>
+      Le circuit est décrit par un ensemble de trois équations différentielles ordinaires appelées
+      équations de Chua :
+    </para>
+    <literallayout>
+      dI3      R0      1
+      --- =  - -- I3 - - V2
+      dt       L       L
+
+      dV2    1       G
+      --- = -- I3 - -- (V2 - V1)
+      dt    C2      C2
+
+      dV1    G              1
+      --- = -- (V2 - V1) - -- f(V1)
+      dt    C1             C1
+    </literallayout>
+    <para>
+      où f() est une fonction dsicontinue par morceaux simulant la résistance active :
+    </para>
+    <literallayout>
+      f(V1) = Gb V1 + - (Ga - Gb)(|V1 + E| - |V1 - E|)
+    </literallayout>
+    <para>
+      Une solution (I3,V2,V1)(t) de ces équations partant d'un état initial (I3,V2,V1)(0) est appelée une
+      trajectoire de l'oscillateur de Chua. L'implémentation dans Csound est une simulation de l'oscillateur
+      de Chua par une équation aux différences avec intégration de Runge-Kutta.
+    </para>
+    <note>
+      <para>Cet algorithme utilise des boucles de rétroaction internes non linéaires ce qui
+      fait dépendre le résultat audio du taux d'échantillonnage de l'orchestre. Par exemple,
+      si l'on développe un projet avec <emphasis>sr</emphasis>=48000Hz et si l'on veut
+      produire un CD audio de ce projet, il faut enregistrer un fichier avec
+      <emphasis>sr</emphasis>=48000Hz, puis sous-échantillonner ce fichier à 44100Hz avec
+      l'utilitaire <link linkend="srconv"><citetitle>srconv</citetitle></link>.</para> 
+    </note>
+    <warning>
+      Attention ! Certains jeux de paramètres produiront des pics d'amplitude ou une rétroaction positive
+      pouvant endommager vos haut-parleurs.
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode chuap. Il utilise le fichier
+      <ulink url="examples/chuap.csd"><citetitle>chuap.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode chuap.</title>
+        <xi:include href="examples-xml/chuap.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+	<member>Inventeur de l'oscillateur de Chua : <ulink url="http://www.eecs.berkeley.edu/~chua"><citetitle>Leon O. Chua</citetitle></ulink></member>
+        <member>Auteur de la simulation dans MATLAB : James Patrick McEvoy <ulink url="http://www.mathworks.com/matlabcentral/fileexchange/loadFile.do?objectId=3541"><citetitle>MATLAB Adventures in Bifurcations and Chaos (ABC++)</citetitle></ulink></member>
+        <member>Auteur du portage dans Csound : Michael Gogins</member>
+    </simplelist>
+  </para>
+  <para>Nouveau dans la version 5.09 de Csound</para>
+  <para>Note ajoutée par &namepinot;, août 2009</para>
+</refsect1>
+</refentry>

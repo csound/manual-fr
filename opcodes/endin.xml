@@ -1,0 +1,85 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="endin">
+<indexterm id="IndexEndin"><primary>endin</primary></indexterm>
+  <refentryinfo><title>Orchestra Syntax:Block Statements</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>endin</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>endin</refname>
+    <refpurpose>
+      Termine un bloc d'instrument.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Termine le bloc d'instrument courant.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>endin</command></synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      Termine le bloc d'instrument courant.
+    </para>
+
+    <para>
+      On peut définir les instruments dans n'importe quel ordre (mais ils seronts toujours initialisés
+      et exécutés par ordre de numéro d'instrument ascendant). Les blocs d'instruments ne peuvent pas être
+      imbriqués (un bloc ne peut pas en contenir un autre).
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        Il peut y avoir n'importe quel nombre de blocs d'instrument dans un orchestre.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode <emphasis>endin</emphasis>. Il utilise le fichier
+      <ulink url="examples/endin.csd"><citetitle>endin.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode <emphasis>endin</emphasis>.</title>
+
+        <para>Voir les sections
+          <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+          <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+          plus d'information sur l'utilisation des options de la ligne de commande.</para>
+<xi:include href="examples-xml/endin.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="instr"><citetitle>instr</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Exemple écrit par &namekevin;.</para>
+  </refsect1>
+</refentry>

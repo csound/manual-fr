@@ -1,0 +1,72 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.1
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="jacktransport">
+<indexterm id="IndexJacktransport"><primary>jacktransport</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Realtime Performance Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>jacktransport</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>jacktransport</refname>
+    <refpurpose>
+      Démarre/arrête jack_transport et peut optionnellement repositionner la tête
+      de lecture.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Démarre/arrête jack_transport et peut optionnellement repositionner la tête
+      de lecture.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>jacktransport</command> icommand [, ilocation]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>icommand</emphasis> -- 1 pour démarrer, 0 pour arrêter.
+    </para>
+    <para>
+      <emphasis>ilocation</emphasis> -- position facultative en secondes pour
+      indiquer où la tête de lecture doit aller. S'il est omis, le transport
+      commence depuis la position courante.
+    </para>
+    <note>Comme <emphasis>jacktransport</emphasis> dépend du kit de connexion
+    audio de jack, il ne fonctionne que sur les systèmes Linux ou Mac OS X qui
+    exécutent un serveur jack.</note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple simple de l'opcode jacktransport. Il utilise le fichier
+      <ulink url="examples/jacktransport.csd"><citetitle>jacktransport.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple simple de l'opcode jacktransport.</title>
+        <xi:include href="examples-xml/jacktransport.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <simplelist>
+      <member>Auteur : Cesare Marilungo</member>
+    </simplelist>
+    <para>Nouveau dans la version 5.08</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,53 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="strlenk">
+<indexterm id="Indexstrlenk"><primary>strlenk</primary></indexterm>
+  <refentryinfo><title>Strings:Manipulation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>strlenk</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>strlenk</refname>
+    <refpurpose>
+      Retourne la longueur d'une chaîne de caractères.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne la longueur d'une chaîne, ou zéro si elle est vide.
+      <emphasis>strlenk</emphasis> s'exécute à la fois pendant l'initialisation
+      et pendant l'exécution.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>klen <command>strlenk</command> Sstr</synopsis>
+  </refsect1>
+
+  <refsect1>
+	  <title>Voir aussi</title>
+	  <para><link linkend="strlen"><citetitle>strlen</citetitle></link></para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Istvan Varga</member>
+        <member>2006</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.02</para>
+  </refsect1>
+</refentry>

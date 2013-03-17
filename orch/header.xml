@@ -1,0 +1,81 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.6
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="OrchHeader">
+  <title>Instructions de l'en-tête de l'orchestre</title>
+
+  <para>
+    L'<emphasis>en-tête de l'orchestre</emphasis> contient l'information globale qui
+    s'applique à tous les instruments et qui définit les aspects de la sortie de
+    Csound. On y fait parfois référence comme <emphasis>instr 0</emphasis>, parce
+    qu'il se comporte comme un instrument, mais sans traitement de taux-k ou de taux-a
+    (seuls les opcodes et les instructions qui fonctionnent au taux-i y sont autorisés).
+  </para>
+  <para>
+    Une <emphasis>instruction d'en-tête d'orchestre</emphasis> n'opère qu'une fois, à
+    l'initialisation de l'orchestre. La plupart du temps il s'agit de l'affectation
+    d'une valeur à un <emphasis>symbole global réservé</emphasis>, par exemple sr = 20000.
+    Toutes les instructions d'en-tête d'orchestre appartiennent au pseudo instrument 0,
+    dont un passage <emphasis>init</emphasis> est effectué avant tout autre instrument
+    au temps 0 de la partition. Toute <emphasis>instruction ordinaire</emphasis> peut
+    servir d'instruction d'en-tête d'orchestre, par exemple gifreq = cpspch(8.09) à
+    condition d'être seulement une opération du moment d'initialisation. Les instructions
+    placées normallement dans un en-tête d'orchestre sont :
+    <itemizedlist>
+      <listitem>
+        <para><link linkend="Zerodbfs"><citetitle>0dbfs</citetitle></link></para>
+      </listitem>
+      <listitem>
+        <para><link linkend="ctrlinit"><citetitle>ctrlinit</citetitle></link></para>
+      </listitem>
+      <listitem>
+        <para><link linkend="ftgen"><citetitle>ftgen</citetitle></link></para>
+      </listitem>
+      <listitem>
+        <para><link linkend="kr"><citetitle>kr</citetitle></link></para>
+      </listitem>
+      <listitem>
+        <para><link linkend="ksmps"><citetitle>ksmps</citetitle></link></para>
+      </listitem>
+      <listitem>
+        <para><link linkend="massign"><citetitle>massign</citetitle></link></para>
+      </listitem>
+      <listitem>
+        <para><link linkend="nchnls"><citetitle>nchnls</citetitle></link></para>
+      </listitem>
+      <listitem>
+        <para><link linkend="pgmassign"><citetitle>pgmassign</citetitle></link></para>
+      </listitem>
+      <listitem>
+        <para><link linkend="pset"><citetitle>pset</citetitle></link></para>
+      </listitem>
+      <listitem>
+        <para><link linkend="seed"><citetitle>seed</citetitle></link></para>
+      </listitem>
+      <listitem>
+        <para><link linkend="sr"><citetitle>sr</citetitle></link></para>
+      </listitem>
+      <listitem>
+        <para><link linkend="strset"><citetitle>strset</citetitle></link></para>
+      </listitem>
+    </itemizedlist>
+    Par exemple, un en-tête de Csound peut ressembler à ceci :
+    <programlisting>
+<emphasis role="ohdr">sr</emphasis> = 44100
+<emphasis role="ohdr">kr</emphasis> = 4410
+<emphasis role="ohdr">ksmps</emphasis> = 10
+<emphasis role="ohdr">nchnls</emphasis> = 2
+<emphasis role="ohdr">0dbfs</emphasis> = 1
+
+<emphasis role="ohdr">massign</emphasis> 1, 10</programlisting>
+  </para>
+  
+
+</section>
+

@@ -1,0 +1,141 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.5
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="GEN28">
+      <indexterm id="IndexGEN28"><primary>GEN28</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN28</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>GEN28</refname>
+    <refpurpose>
+      Lit un fichier texte qui contient une trajectoire paramétrée par le temps.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ce générateur de fonction lit un fichier texte qui contient des ensembles de trois valeurs représentant
+      des coordonnées xy et un paramètre temporel indiquant quand placer le signal à cette position,
+      permettant à l'utilisateur de définir une trajectoire paramétrée par le temps. Le format du fichier
+      est de la forme :
+      <literallayout>
+temps1    X1    Y1
+temps2    X2    Y2
+temps3    X3    Y3
+      </literallayout>
+    </para>
+
+    <para>
+      La configuration des coordonnées xy dans l'espace place le signal de la manière suivante :
+
+      <itemizedlist>
+        <listitem>
+          <para>a1 est -1, 1</para>
+        </listitem>
+        <listitem>
+    <para>a2 est 1, 1</para>
+        </listitem>
+        <listitem>
+    <para>a3 est -1, -1</para>
+        </listitem>
+        <listitem>
+    <para>a4 est 1, -1</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      Cela suppose des haut-parleurs disposés avec a1 en avant gauche, a2 en avant droite, a3 en arrière
+      gauche, a4 en arrière droite. Les valeurs supérieures à 1 provoqueront une atténuation des sons
+      comme s'ils étaient distants. <emphasis>GEN28</emphasis> crée les valeurs avec une résolution de
+      10 millisecondes.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>f</command> # date taille 28 codfic</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>taille</emphasis> -- nombre de points dans la table. Doit être 0. <emphasis>GEN28</emphasis>
+      prend une taille de 0 et alloue la mémoire automatiquement.
+    </para>
+
+    <para>
+      <emphasis>codfic</emphasis> -- chaîne de caractères dénotant le nom du fichier source. Une chaîne de
+      caractères (entre apostrophes doubles, espaces autorisés) donne le nom du fichier lui-même,
+      optionnellement un nom de chemin complet. Si le chemin n'est pas complet, le fichier nommé est cherché
+      dans le répertoire courant.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      <informalexample>
+        <programlisting><emphasis role="stamnt">f</emphasis>1 0 0 28 &quot;move&quot;</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      Le fichier &quot;move&quot; ressemblera à ceci :
+
+      <literallayout>
+0       -1       1
+1        1       1
+2        4       4
+2.1     -4      -4
+3       10     -10
+5      -40       0
+      </literallayout>
+
+      Puisque <emphasis>GEN28</emphasis> crée les valeurs avec une résolution de 10 millisecondes, il y
+      aura 500 valeurs créées en interpolant entre X1 et X2, X2 et X3, etc., et entre Y1 et Y2, Y2 et Y3,
+      etc., sur le nombre approprié de valeurs qui sont stockées dans la table de fonction. Le son
+      démarrera à l'avant gauche, il bougera pendant 1 seconde vers l'avant droite, durant la seconde
+      suivante il s'éloignera mais toujours à l'avant droite, ensuite il bougera vers l'arrière gauche en
+      seulement 1/10 de seconde, un peu éloigné. Enfin, pendant les 0,9 secondes restantes le son bougera
+      vers l'arrière droite, modérément éloigné, et il viendra s'arrêter entre les deux canaux gauche (plein
+      ouest !), assez éloigné.
+    </para>
+
+    <para>
+      Voici un exemple de la routine GEN28. Il utilise le fichier
+      <ulink url="examples/gen28.csd"><citetitle>gen28.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de la routine GEN28.</title>
+        <para>
+          Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+          et <link linkend="CommandFlags"><citetitle>Options de Ligne de Commande</citetitle></link> pour
+          plus d'information sur l'utilisation des options de la ligne de commande.
+        </para>
+        <xi:include href="examples-xml/gen28.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Richard Karpen</member>
+        <member>Seattle, Wash</member>
+        <member>1998</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.48 de Csound</para>
+  </refsect1>
+</refentry>

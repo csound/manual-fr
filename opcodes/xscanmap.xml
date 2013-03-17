@@ -1,0 +1,100 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="xscanmap">
+<indexterm id="IndexXscanmap"><primary>xscanmap</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Scanned Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>xscanmap</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>xscanmap</refname>
+    <refpurpose>
+      Permet de lire la position et la vitesse d'un noeud dans une procédure de balayage.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Permet de lire la position et la vitesse d'un noeud dans une procédure de balayage.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kpos, kvel <command>xscanmap</command> iscan, kamp, kvamp [, iwhich]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iscan</emphasis> -- la procédure de balayage à lire
+    </para>
+
+    <para>
+      <emphasis>iwhich</emphasis> (facultatif) -- le noeud à tester. 0 par défaut.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamp</emphasis> -- facteur d'amplification de la valeur
+      <emphasis>kpos</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>kvamp</emphasis> -- facteur d'amplification de la valeur
+      <emphasis>kvel</emphasis>.
+    </para>
+
+    <para>
+      L'état interne d'un noeud est lu. Cela comprend sa position et sa vitesse. Ils
+      sont amplifiés par les valeurs <emphasis>kamp</emphasis> et <emphasis>kvamp</emphasis>.
+    </para>
+  </refsect1>
+
+   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode xscanmap. Il utilise le fichier
+      <ulink url="examples/xscanmap.csd"><citetitle>xscanmap.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode xscanmap.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/xscanmap.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+   <refsect1>
+     <title>Voir aussi</title>
+     <para>
+       On peut trouver plus d'information sur la synthèse par balayage (de même
+       que d'autres matrices) sur la page
+       <ulink url="http://www.csounds.com/scanned/"><citetitle>Scanned Synthesis</citetitle></ulink>
+       du site Csounds.com.
+    </para>
+    <para>
+      Il y a aussi un article sur ces opcodes :
+      <ulink url="http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html"><citetitle>http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html</citetitle></ulink>,
+      écrit par Steven Yi.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namejohn;</para>
+    <para>Nouveau dans la version 4.20</para>
+  </refsect1>
+</refentry>

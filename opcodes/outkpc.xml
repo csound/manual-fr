@@ -1,0 +1,135 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="outkpc">
+<indexterm id="IndexOutkpc"><primary>outkpc</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Output</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>outkpc</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>outkpc</refname>
+
+    <refpurpose>
+      Envoie des messages MIDI de changement de programme au taux-k.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Envoie des messages MIDI de changement de programme au taux-k.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>outkpc</command> kchn, kprog, kmin, kmax</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kchn</emphasis> -- numéro de canal MIDI (1-16)
+    </para>
+
+    <para>
+      <emphasis>kprog</emphasis> -- numéro de changement de programme en virgule flottante
+    </para>
+
+    <para>
+      <emphasis>kmin</emphasis> -- valeur minimale en virgule flottante (convertie
+      en valeur entière MIDI 0)
+    </para>
+
+    <para>
+      <emphasis>kmax</emphasis> -- valeur maximale en virgule flottante (convertie
+      en valeur entière MIDI 127 (7 bit))
+    </para>
+
+    <para>
+      <emphasis>outkpc</emphasis> envoie des messages MIDI de changement de programme
+      au taux-k. Il ne fonctionne qu'avec les instruments MIDI qui les reconnaissent.
+      Il peut piloter une valeur différente de paramètre pour chaque note active.
+    </para>
+
+    <para>
+      Il peut échelonner un argument de taux-k en virgule flottante selon les
+      valeurs <emphasis>kmin</emphasis> et <emphasis>kmax</emphasis>. Par exemple
+      avec <emphasis>kmin</emphasis> = 1.0 et <emphasis>kmax</emphasis> = 2.0,
+      lorque l'argument <emphasis>kvalue</emphasis> reçoit la valeur 2.0,
+      l'opcode envoie la valeur 127 sur le périphérique MIDI OUT. Lorsque
+      l'argument <emphasis>kvalue</emphasis> reçoit la valeur 1.0, il envoie la
+      valeur 0. Les opcodes de taux-k envoient un message chaque fois que la
+      valeur MIDI traduite de l'argument <emphasis>kvalue</emphasis> change.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode outkpc. Il utilise le fichier
+      <ulink url="examples/outkpc.csd"><citetitle>outkpc.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode outkpc.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <para>Cet exemple génère un changement de programme et une note sur le
+        port de sortie MIDI de Csound chaque fois qu'une note est reçu sur le
+        canal 1. Il faut que quelque chose soit connecté sur le port MIDI de
+        sortie de Csound pour entendre le résultat.</para>
+          <xi:include href="examples-xml/outkpc.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Voici un autre exemple de l'opcode outkpc. Il utilise le fichier
+      <ulink url="examples/outkpc_fltk.csd"><citetitle>outkpc_flkt.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode outkpc utilisant FLTK.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/outkpc_fltk.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="outiat"><citetitle>outiat</citetitle></link>,
+      <link linkend="outic14"><citetitle>outic14</citetitle></link>,
+      <link linkend="outic"><citetitle>outic</citetitle></link>,
+      <link linkend="outipat"><citetitle>outipat</citetitle></link>,
+      <link linkend="outipb"><citetitle>outipb</citetitle></link>,
+      <link linkend="outipc"><citetitle>outipc</citetitle></link>,
+      <link linkend="outkat"><citetitle>outkat</citetitle></link>,
+      <link linkend="outkc14"><citetitle>outkc14</citetitle></link>,
+      <link linkend="outkc"><citetitle>outkc</citetitle></link>,
+      <link linkend="outkpat"><citetitle>outkpat</citetitle></link>,
+      <link linkend="outkpb"><citetitle>outkpb</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.47 de Csound.</para>
+    <para>Merci à &namerasmus; pour avoir indiqué les intervalles corrects pour
+    le canal MIDI et les numéros de contrôleur.</para>
+  </refsect1>
+</refentry>

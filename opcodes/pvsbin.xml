@@ -1,0 +1,88 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvsbin">
+<indexterm id="Indexpvsbin"><primary>pvsbin</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsbin</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvsbin</refname>
+    <refpurpose>
+      Obtient les valeurs d'amplitude et de fréquence d'un bin de signal PVS.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Obtient les valeurs d'amplitude et de fréquence d'un bin de signal PVS,
+      comme variables de taux-k.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kamp, kfr <command>pvsbin</command> fsig, kbin</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamp</emphasis> -- amplitude du bin
+    </para>
+	   <para>
+      <emphasis>kfr</emphasis> -- fréquence du bin
+    </para>
+    <para>
+      <emphasis>fsig</emphasis> -- flot d'entrée pv
+    </para>
+   <para>
+      <emphasis>kbin</emphasis> -- numéro du bin
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode pvsbin. Il utilise le fichier
+      <ulink url="examples/pvsbin.csd"><citetitle>pvsbin.csd</citetitle></ulink>.
+      Cet exemple utilise une entrée en temps réel, mais on peut aussi utiliser
+      un fichier son en entrée.
+      <example>
+        <title>Exemple de l'opcode pvsbin</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/pvsbin.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="pvsanal"><citetitle>pvsanal</citetitle></link>,
+      <link linkend="pvsynth"><citetitle>pvsynth</citetitle></link>,
+      <link linkend="pvsadsyn"><citetitle>pvsadsyn</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Août 2006</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,174 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="sfinstr">
+<indexterm id="IndexSfinstr"><primary>sfinstr</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Sample Playback</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>sfinstr</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>sfinstr</refname>
+    <refpurpose>
+      Joue un instrument échantillonné SoundFont2 (SF2), produisant un son stéréo.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Joue un instrument échantillonné SoundFont2 (SF2), produisant un son stéréo.
+      Ces opcodes permettent la gestion de la structure d'échantillon des fichiers
+      SF2. Afin de comprendre l'utilisation de ces opcodes, il faut connaître le
+      format SF2 dont on peut trouver une brève description dans l'annexe
+      <link linkend="MiscSf2"><citetitle>Format de Fichier SoundFont2</citetitle></link>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ar1, ar2 <command>sfinstr</command> ivel, inotenum, xamp, xfreq, instrnum, ifilhandle \
+      [, iflag] [, ioffset]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ivel</emphasis> -- vélocité.
+    </para>
+
+    <para>
+      <emphasis>inotenum</emphasis> -- numéro de note MIDI.
+    </para>
+
+    <para>
+      <emphasis>instrnum</emphasis> -- numéro d'un instrument d'un fichier SF2.
+    </para>
+
+    <para>
+      <emphasis>ifilhandle</emphasis> -- nombre unique généré par l'opcode
+      <emphasis>sfload</emphasis> à utiliser comme identificateur pour un fichier
+      SF2. On peut charger et activer plusieurs fichiers SF2 en même temps.
+    </para>
+
+    <para>
+      <emphasis>iflag</emphasis> (facultatif) -- drapeau concernant le comportement
+      de <emphasis>xfreq</emphasis> et de <emphasis>inotenum</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>ioffset</emphasis> (facultatif) -- endroit où commence la lecture, en
+      échantillons.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>xamp</emphasis> -- facteur de correction de l'amplitude.
+    </para>
+
+    <para>
+      <emphasis>xfreq</emphasis> -- valeur de fréquence ou multiplicateur de
+      fréquence, selon la valeur de <emphasis>iflag</emphasis>. Quand
+      <emphasis>iflag</emphasis> = 0, <emphasis>xfreq</emphasis> est un multiplicateur
+      de la fréquence par défaut, fixée par le preset SF2 à la valeur
+      <emphasis>inotenum</emphasis>. Quand <emphasis>iflag</emphasis> = 1,
+      <emphasis>xfreq</emphasis> est la fréquence absolue du son produit, en Hz. La
+      valeur par défaut est 0.
+    </para>
+
+    <para>
+      Lorsque <emphasis>iflag</emphasis> = 0, <emphasis>inotenum</emphasis> fixe la
+      fréquence de la sortie en fonction du numéro de note MIDI utilisé, et
+      <emphasis>xfreq</emphasis> est utilisé comme un multiplicateur. Lorsque
+      <emphasis>iflag</emphasis> = 1, la fréquence de la sortie est fixée directement
+      par <emphasis>xfreq</emphasis>. Cela permet l'utilisation de n'importe quelle
+      échelle micro-tonale. Cependant, cette méthode n'est conçue pour travailler
+      correctement qu'avec des presets accordés selon le classique tempérament égal.
+      L'utilisation de cette méthode avec un preset ayant déjà un accordage non
+      standard ou bien avec des presets de drum-kit donnera des résultats
+      imprévisibles.
+    </para>
+
+    <para>
+      L'amplitude peut être ajustée en variant l'argument <emphasis>xamp</emphasis>
+      qui agit comme un multiplicateur.
+    </para>
+
+    <para>
+      Le paramètre <emphasis>ioffset</emphasis> permet de commencer la lecture depuis
+      un autre échantillon que le premier. L'utilisateur doit s'assurer que sa valeur
+      est inférieure à la longueur du son. Sinon, il y a un risque de plantage de
+      Csound.
+    </para>
+
+    <para>
+      <emphasis>sfinstr</emphasis> joue un instrument SF2 plutôt qu'un preset (un
+      instrument SF2 est la base d'une couche de preset).
+      <emphasis>instrnum</emphasis> indique le numéro de l'instrument, et
+      l'utilisateur doit s'assurer que le numéro spécifié est celui d'un instrument
+      existant d'une banque soundfont déterminée. Noter que
+      <emphasis>xamp</emphasis> et <emphasis>xfreq</emphasis> peuvent opérer aussi
+      bien au taux-k qu'au taux-a, mais les deux arguments doivent travailler au
+      même taux.
+    </para>
+
+    <para>
+      Ces opcodes ne supportent que la structure d'échantillon des fichiers SF2. La
+      structure de modulateur du format SoundFormat2 n'est pas supportée dans Csound.
+      Tout traitement ou modulation des données échantillonnées est à la charge de
+      l'utilisateur de Csound, ce qui permet de s'affranchir de toutes les
+      restrictions imposées par le standard SF2.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode sfinstr. Il utilise le fichier
+      <ulink url="examples/sfinstr.csd"><citetitle>sfinstr.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode sfinstr.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/sfinstr.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="sfilist"><citetitle>sfilist</citetitle></link>,
+      <link linkend="sfinstrm"><citetitle>sfinstrm</citetitle></link>,
+      <link linkend="sfload"><citetitle>sfload</citetitle></link>,
+      <link linkend="sfpassign"><citetitle>sfpassign</citetitle></link>,
+      <link linkend="sfplay"><citetitle>sfplay</citetitle></link>,
+      <link linkend="sfplaym"><citetitle>sfplaym</citetitle></link>,
+      <link linkend="sfplist"><citetitle>sfplist</citetitle></link>,
+      <link linkend="sfpreset"><citetitle>sfpreset</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+        <member>Mai 2000</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 4.07 de Csound</para>
+  </refsect1>
+</refentry>

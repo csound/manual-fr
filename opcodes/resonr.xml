@@ -1,0 +1,214 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="resonr">
+<indexterm id="IndexResonr"><primary>resonr</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Resonant</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>resonr</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>resonr</refname>
+    <refpurpose>
+      Un filtre passe-bande avec une réponse en fréquence variable.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Implémentation d'un filtre passe-bande du second ordre à deux pôles et
+      deux zéros, avec une réponse en fréquence variable.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>resonr</command> asig, kcf, kbw [, iscl] [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      Les variables d'initialisation facultatives de <emphasis>resonr</emphasis>
+      sont identiques aux variables de taux-i de
+      <link linkend="reson"><citetitle>reson</citetitle></link>.
+    </para>
+
+    <para>
+      <emphasis>iscl</emphasis> (facultatif, 0 par défaut) -- facteur de pondération codé pour les
+      résonateurs. Une valeur de 1 signifie que la crête du facteur de réponse est 1, c-à-d. toutes les
+      fréquences autres que <emphasis>kcf</emphasis> sont atténuées selon la courbe de réponse
+      (normalisée). Une valeur de 2 élève le facteur de réponse de façon à ce que sa valeur efficace
+      globale soit égale à 1. Cette égalisation intentionnelle des puissances d'entrée et de sortie
+      suppose que toutes les fréquences sont présentes ; elle est ainsi plus appropriée au bruit blanc.
+      Une valeur de 0 signifie aucune pondération du signal, laissant cette tâche à un ajustement
+      ultérieur (voir <link linkend="balance"><citetitle>balance</citetitle></link>). La valeur par
+      défaut est 0.
+    </para>
+
+    <para>
+      <emphasis>iskip</emphasis> (facultatif, 0 par défaut) -- état initial de l'espace de données interne.
+      Comme le filtrage comprend une boucle de rétroaction sur la sortie précédente, l'état initial de
+      l'espace de stockage utilisé est significatif. Une valeur nulle provoquera l'effacement de cet
+      espace ; une valeur non nulle autorisera la persistance de l'information précédente. La valeur par
+      défaut est 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- signal d'entrée à filtrer
+    </para>
+
+    <para>
+      <emphasis>kcf</emphasis> -- fréquence de coupure ou de résonance du filtre,
+      mesurée en Hz
+    </para>
+
+    <para>
+      <emphasis>kbw</emphasis> -- largeur de bande du filtre (la différence en Hz
+      entre les points à mi-puissance inférieur et supérieur).
+    </para>
+
+    <para>
+      <emphasis>resonr</emphasis> et <emphasis>resonz</emphasis> sont des variations
+      du résonateur passe-bande classique à deux pôles
+      (<link linkend="reson"><citetitle>reson</citetitle></link>). Ces deux filtres
+      ont deux zéros dans leur fonction de transfert en plus des deux pôles.
+      Les zéros de <emphasis>resonz</emphasis> se trouvent à z = 1 et à z = -1.
+      Les zéros de <emphasis>resonr</emphasis> se trouvent à
+      +racine_carrée(<emphasis>R</emphasis>) et à -racine_carrée(<emphasis>R</emphasis>),
+      où <emphasis>R</emphasis> est le rayon des pôles dans le plan complexe des z.
+      L'ajout de zéros à <emphasis>resonr</emphasis> et à <emphasis>resonz</emphasis>
+      améliore la sélectivité de la magnitude de la réponse de ces filtres aux
+      fréquences de coupure proches de 0, ceci au prix d'une moins grande sélectivité
+      aux fréquences supérieures à la crête de la fréquence de coupure.
+    </para>
+
+    <para>
+      <emphasis>resonr</emphasis> et <emphasis>resonz</emphasis> sont très proches
+      du gain constant lorsque la fréquence centrale glisse, ce qui donne
+      un contrôle plus efficace de la magnitude de la réponse qu'avec les résonateurs
+      à deux pôles traditionnels tels que <emphasis>reson</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>resonr</emphasis> et <emphasis>resonz</emphasis> produisent une
+      sonorité considérablement différente de celle de <emphasis>reson</emphasis>,
+      spécialement pour les faibles fréquences centrales ; la méthode par
+      tâtonnement est la meilleure façon de déterminer quel résonateur est le plus
+      adapté à une application particulière.
+    </para>
+ </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple des opcodes resonr et resonz. Il utilise le fichier
+      <ulink url="examples/resonr.csd"><citetitle>resonr.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple des opcodes resonr et resonz.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/resonr.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Historique Technique</title>
+    <para>
+      <emphasis>resonr</emphasis> et <emphasis>resonz</emphasis> ont étés décrits
+      à l'origine dans un article de Julius O. Smith et James B. Angell.
+      <superscript>1</superscript> Smith et Angell recommandait la forme
+      <emphasis>resonz</emphasis> (zéros à +1 et -1) quand l'efficacité calculatoire
+      était la préoccupation principale car il y a une multiplication de moins
+      par échantillon, tandis que <emphasis>resonr</emphasis> (zéros à + et - la
+      racine carrée du rayon des pôles R) était recommandé pour les situations
+      où l'on voulait un pic central parfait à gain constant.
+    </para>
+
+    <para>
+      Ken Steiglitz, dans un article ultérieur <superscript>2</superscript>,
+      demontra que <emphasis>resonz</emphasis> avait un gain constant au pic réel
+      du filtre, à l'opposé de <emphasis>resonr</emphasis>, qui affichait un gain
+      constant à la position angulaire des pôles. Steiglitz recommandait aussi
+      <emphasis>resonz</emphasis> pour ses encoches dans la courbe du gain plus
+      raides à zéro et à la fréquence de Nyquist. Le livre récent de Steiglitz
+      <superscript>3</superscript> présente une discussion technique détaillée
+      de <emphasis>reson</emphasis> et de <emphasis>resonz</emphasis>, tandis que
+      le livre de Dodge et Jerse's <superscript>4</superscript> illustre les
+      différences dans les courbes de réponse de <emphasis>reson</emphasis> et
+      de <emphasis>resonz</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Références</title>
+    <para>
+      <orderedlist>
+        <listitem>
+          <para>
+            Smith, Julius O. et Angell, James B., &quot;A Constant-Gain Resonator
+            Tuned by a Single Coefficient,&quot; <emphasis>Computer Music
+            Journal</emphasis>, vol. 6, no. 4, pp. 36-39, Hiver 1982.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            Steiglitz, Ken, &quot;A Note on Constant-Gain Digital Resonators,&quot;
+            <emphasis>Computer Music Journal</emphasis>, vol. 18, no. 4, pp. 8-10,
+            Hiver 1994.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            Ken Steiglitz, <emphasis>A Digital Signal Processing Primer, with
+            Applications to Digital Audio and Computer Music</emphasis>.
+            Addison-Wesley Publishing Company, Menlo Park, CA, 1996.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            Dodge, Charles et Jerse, Thomas A., <emphasis>Computer Music:
+            Synthesis, Composition, and Performance</emphasis>. New York:
+            Schirmer Books, 1997, 2nde édition, pp. 211-214.
+          </para>
+        </listitem>
+      </orderedlist>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="resonz"><citetitle>resonz</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namesean;</member>
+        <member>Seattle, Washington</member>
+        <member>1999</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.55 de Csound.</para>
+  </refsect1>
+</refentry>

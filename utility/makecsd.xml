@@ -1,0 +1,187 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="makecsd">
+  <refentryinfo><title>Utilities</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>makecsd</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>makecsd</refname>
+    <refpurpose>
+      Crée un fichier CSD à partir des fichiers spécifiés en entrée.
+      <indexterm id="IndexMakecsd"><primary>makecsd</primary></indexterm>
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+    	Crée un fichier CSD à partir des fichiers spécifiés en entrée. Le premier fichier d'entrée qui a une
+      extension .orc (la casse n'est pas significative) est mis dans la section &lt;CsInstruments&gt;, et
+      le premier fichier d'entrée qui a une extension .sco devient &lt;CsScore&gt;. Tous les fichiers
+      restants sont encodés en Base64 et ajoutés dans des balises &lt;CsFileB&gt;. Une section
+    	&lt;CsOptions&gt; vide est toujours ajoutée.
+    </para>
+
+    <para>
+      Un filtrage du texte est effectué sur les fichiers d'orchestre et de partition :
+    <itemizedlist>
+    	<listitem>
+    		<para>
+          les caractères de nouvelle ligne sont convertis dans le format natif du système sur lequel
+          <emphasis>makecsd</emphasis> est exécuté.
+    		</para>
+    	</listitem>
+
+    	<listitem>
+    		<para>
+          les lignes vides sont enlevées du début et de la fin des fichiers.
+    		</para>
+    	</listitem>
+
+    	<listitem>
+    		<para>
+          tous les espaces restant en fin de ligne sont supprimés.
+    		</para>
+    	</listitem>
+
+    	<listitem>
+    		<para>
+          en option, les tabulations peuvent être développées en espaces avec une taille de tabulation
+          spécifiée par l'utilisateur.
+    		</para>
+    	</listitem>
+
+    	<listitem>
+    		<para>
+    			en option, un fichier MIDI peut être inclus.
+    		</para>
+    	</listitem>
+
+    	<listitem>
+    		<para>
+    		  en option, une licence peut être spécifiée soit comme un fichier soit
+    		  comme une licence commune.
+    		</para>
+    	</listitem>
+
+     	<listitem>
+    		<para>
+    		  si on veut utiliser un processeur de partition, on peut l'indiquer pour la
+    		  section &lt;CsScore&gt;.
+    		</para>
+    	</listitem>
+
+    </itemizedlist>
+
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>makecsd</command> [OPTIONS ... ] fichier1 [ fichier2 [ ... ]]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      Options :
+      <itemizedlist>
+        <listitem>
+        	<para>
+        		- <emphasis>t n</emphasis> = développe les tabulations en espaces en utilisant une taille de
+            tabulation égale à n (désactivé par défaut). Ceci s'applique seulement à l'orchestre et à la
+            partition.
+        	</para>
+        </listitem>
+
+        <listitem>
+        	<para>
+        		- <emphasis>w n</emphasis> = fixe la largeur de ligne Base64 à n (par défaut : 72). Note :
+            l'orchestre et la partition ne sont pas concernés.
+        	</para>
+        </listitem>
+
+        <listitem>
+        	<para>
+        		- <emphasis>o nomfic</emphasis> = nom du fichier de sortie (par défaut : stdout)
+        	</para>
+        </listitem>
+
+        <listitem>
+        	<para>
+        		- <emphasis>m nomfic</emphasis> = nom d'un fichier MIDI à inclure (aucun par défaut)
+        	</para>
+        </listitem>
+
+        <listitem>
+        	<para>
+        		- <emphasis>b nomprog</emphasis> = spécifie le programme pour traiter la
+        		partition (aucun par défaut)
+        	</para>
+        </listitem>
+
+        <listitem>
+        	<para>
+        		- <emphasis>L nomfic</emphasis> = nom du fichier contenant le texte de la
+        		licence (aucun par défaut)
+        	</para>
+        </listitem>
+
+        <listitem>
+        	<para>
+        		- <emphasis>l entier</emphasis> = spécifie une licence standard (aucune par défaut).
+        		Les valeurs utilisables sont :
+            <itemizedlist>
+              <listitem> 0 : Tous droits réservés</listitem>
+              <listitem> 1 : CC BY-NC-ND</listitem>
+              <listitem> 2 : CC BY-NC-SA</listitem>
+              <listitem> 3 : CC BY-NC</listitem>
+              <listitem> 4 : CC BY-ND</listitem>
+              <listitem> 5 : CC BY-SA</listitem>
+              <listitem> 6 : CC BY</listitem>
+              <listitem> 7 : Sous licence BSD</listitem>
+            </itemizedlist>
+        	</para>
+        </listitem>
+      </itemizedlist>
+
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+  	<title>Exemples</title>
+  	<para>
+
+<programlisting>
+<emphasis>makecsd</emphasis> -t 6 -w 78 -o fichier.csd fichier.mid fichier.orc fichier.sco sample.aif</programlisting>
+
+      Crée un fichier CSD à partir de fichier.orc et de fichier.sco (les tabulations sont développées en
+      espaces sachant qu'une tabulation vaut 6 caractères), et fichier.mid et sample.aif sont ajoutés
+      dans des balises &lt;CsFileB&gt; contenant les données encodées en Base64 avec une largeur de ligne
+      de 78 caractères. Le fichier de sortie est fichier.csd.
+  	</para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : Istvan Varga</para>
+    <para>Janvier 2003</para>
+    <para>Auteur : &namejohn;</para>
+    <para>Février 2011</para>
+    <para>Les options pour le MIDI, le traitement de partition et la licence ont
+    été ajoutées dans la version 5.14</para>
+  </refsect1>
+
+</refentry>

@@ -1,0 +1,115 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.14
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="expseg">
+<indexterm id="IndexExpseg"><primary>expseg</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Linear and Exponential Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>expseg</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>expseg</refname>
+    <refpurpose>
+      Trace une suite de segments d'exponentielle entre les points spécifiés.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Trace une suite de segments d'exponentielle entre les points spécifiés.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>expseg</command> ia, idur1, ib [, idur2] [, ic] [...]</synopsis>
+
+    <synopsis>kres <command>expseg</command> ia, idur1, ib [, idur2] [, ic] [...]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ia</emphasis> -- valeur initiale. Zéro est interdit pour les exponentielles.
+    </para>
+
+    <para>
+      <emphasis>ib, ic</emphasis>, etc. -- valeur après <emphasis>dur1</emphasis> secondes, etc.
+      Pour les exponentielles, doivent être différentes de zéro et du même signe que
+      <emphasis>ia</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>idur1</emphasis> -- durée en secondes du premier segment. Avec une valeur nulle ou 
+      négative l'initialisation sera ignorée.
+    </para>
+
+    <para>
+      <emphasis>idur2, idur3</emphasis>, etc. -- durée en secondes des segments suivants. Une valeur
+      nulle ou négative terminera la phase d'initialisation avec le point précédent, permettant
+      au dernier segment défini de continuer durant toute l'exécution. La valeur par défaut est zéro.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Ces unités génèrent des signaux de contrôle ou audio dont les valeurs passent par 2 ou plus
+      points spécifiés. La somme des valeurs <emphasis>dur</emphasis> peut égaler ou non la durée
+      d'exécution de l'instrument : avec une exécution plus courte, la courbe sera tronquée alors
+      qu'avec une exécution plus longue, le dernier segment défini continuera dans la même direction.
+    </para>
+ 
+    <para>
+      Noter que l'opcode <emphasis>expseg</emphasis> n'opère pas correctement au taux audio lorsque
+      les segments sont plus courts qu'une k-période. Dans ce cas, il vaut mieux utiliser l'opcode
+      <link linkend="expsega"><citetitle>expsega</citetitle></link>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode expseg. Il utilise le fichier
+      <ulink url="examples/expseg.csd"><citetitle>expseg.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode expseg.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/expseg.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="expon"><citetitle>expon</citetitle></link>,
+      <link linkend="expsega"><citetitle>expsega</citetitle></link>,
+      <link linkend="expsegr"><citetitle>expsegr</citetitle></link>,
+      <link linkend="line"><citetitle>line</citetitle></link>,
+      <link linkend="linseg"><citetitle>linseg</citetitle></link>,
+      <link linkend="linsegr"><citetitle>linsegr</citetitle></link>
+      <link linkend="transeg"><citetitle>transeg</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Exemple écrit par &namekevin;.</para>
+    <para>Nouveau dans Csound 3.57</para>
+  </refsect1>
+</refentry>

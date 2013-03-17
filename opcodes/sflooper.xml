@@ -1,0 +1,169 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="sflooper">
+<indexterm id="Indexsflooper"><primary>sflooper</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Sample Playback</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>sflooper</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>sflooper</refname>
+    <refpurpose>
+      Joue un preset d'échantillons SoundFont2 (SF2), générant un son stéréo, avec
+      une boucle en fondu-enchainé à durée variable, définie par l'utilisateur.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Joue un preset d'échantillons SoundFont2 (SF2), générant un son stéréo, comme
+      <emphasis>sfplay</emphasis>. Mais à l'inverse de ce dernier, il ignore les
+      points de boucle fixés dans le fichier SF2 et les remplace par une boucle en
+      fondu-enchainé définie par l'utilisateur. C'est un mélange de
+      <link linkend="sfplay"><citetitle>sfplay</citetitle></link> et de
+      <link linkend="flooper2"><citetitle>flooper2</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ar1, ar2 <command>sflooper</command> ivel, inotenum, kamp, kpitch, ipreindex, kloopstart, kloopend, kcrossfade \
+      [, istart, imode, ifenv, iskip] </synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ivel</emphasis> -- vélocité.
+    </para>
+
+    <para>
+      <emphasis>inotenum</emphasis> -- numéro de note MIDI.
+    </para>
+
+    <para>
+      <emphasis>ipreindex</emphasis> -- indice de preset.
+    </para>
+
+       <para>
+      <emphasis>istart </emphasis> -- début de la lecture en secondes.
+    </para>
+    <para>
+      <emphasis>imode </emphasis> -- modes de boucle : 0 à l'endroit, 1 à l'envers,
+      2 à l'envers et à l'endroit [0 par défaut].
+    </para>
+        <para>
+      <emphasis>ifenv </emphasis> -- s'il est différent de zéro, numéro de la table de
+      l'enveloppe de fondu-enchainé. La valeur par défaut de 0 définit un fondu-enchainé
+      linéaire.
+    </para>
+    <para>
+      <emphasis>iskip </emphasis> -- s'il vaut 1, l'initialisation de l'opcode est
+      ignorée, pour les notes liées, l'exécution continuant depuis la position
+      dans la boucle où la note précédente s'est terminée. Avec la valeur par
+      défaut de 0, l'initialisation a lieu.
+    </para>
+  
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+
+   <para>
+      <emphasis>kamp</emphasis> -- contrôle de l'amplitude </para>
+    <para>
+      <emphasis>kpitch</emphasis> -- contrôle de la hauteur (rapport de transposition) ;
+      les valeurs négatives sont interdites.
+    </para>
+    <para>
+      <emphasis>kloopstart</emphasis> -- début de la boucle (en secondes). Noter que
+      bien qu'étant de taux-k, les paramètres de boucle comme celui-ci ne sont mis à
+      jour qu'une fois par itération de la boucle. Si le début de la boucle est fixé
+      au-dela de la fin des échantillons, il n'y aura pas de boucle.
+    </para>
+    <para>
+      <emphasis>kloopend</emphasis> -- fin de la boucle (en secondes), mis à jour une
+      seule fois par itération de la boucle.
+    </para>
+    <para>
+      <emphasis>kcrossfade </emphasis> -- longueur du fondu enchainé (en secondes), mis
+      à jour une seule fois par itération de la boucle et limité par la longueur de
+      la boucle.
+    </para>
+  </refsect1>
+   
+  <refsect1>
+    <para>
+      <emphasis>sflooper</emphasis> joue un preset, générant un son stéréo. 
+    </para>
+    <para>
+      Ces opcodes ne supportent que la structure d'échantillon des fichiers SF2. La
+      structure de modulateur du format SoundFormat2 n'est pas supportée dans Csound.
+      Tout traitement ou modulation des données échantillonnées est à la charge de
+      l'utilisateur de Csound, ce qui permet de s'affranchir de toutes les
+      restrictions imposées par le standard SF2.
+    </para>
+    <para>
+      Note : les points de boucle sont fixés par rapport à la touche de base de
+      chaque son échantillonné faisant partie du preset du soundfont. Par exemple,
+      un soundfont peu avoir un seul son échantillonné pour tout le clavier. Dans
+      ce cas, <emphasis>sflooper</emphasis> fonctionnera comme
+      <emphasis>flooper</emphasis> et <emphasis>flooper2</emphasis>, car lorsque
+      le son échantillonné est transposé (joué à différentes vitesses), la
+      boucle se raccourcit ou s'allonge. Au contraire, si le soundfont possède
+      un son échantillonné pour chaque touche, il n'y aura pas de transposition
+      et la boucle gardera la même longueur (sauf si <emphasis>kpitch</emphasis>
+      est modifié).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode sflooper. Il utilise le fichier
+      <ulink url="examples/sflooper.csd"><citetitle>sflooper.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode sflooper.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/sflooper.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="sfilist"><citetitle>sfilist</citetitle></link>,
+      <link linkend="sfinstr"><citetitle>sfinstr</citetitle></link>,
+      <link linkend="sfinstrm"><citetitle>sfinstrm</citetitle></link>,
+      <link linkend="sfload"><citetitle>sfload</citetitle></link>,
+      <link linkend="sfpassign"><citetitle>sfpassign</citetitle></link>,
+      <link linkend="sfplaym"><citetitle>sfplaym</citetitle></link>,
+      <link linkend="sfplist"><citetitle>sfplist</citetitle></link>,
+      <link linkend="sfpreset"><citetitle>sfpreset</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Août 2007</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 5.07 de Csound</para>
+  </refsect1>
+</refentry>

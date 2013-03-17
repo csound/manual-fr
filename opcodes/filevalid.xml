@@ -1,0 +1,92 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="filevalid">
+<indexterm id="IndexFilevalid"><primary>filevalid</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Soundfile Queries</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>filevalid</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>filevalid</refname>
+    <refpurpose>
+      Teste si un fichier peut être utilisé.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne 1 si le fichier son est valide, 0 sinon.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ir <command>filevalid</command> ifilcod</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifilcod</emphasis> -- fichier son à tester
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>filevalid</emphasis> retourne 1 si le fichier son
+      <emphasis>ifilcod</emphasis> peut être utilisé.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode filevalid. Il utilise le fichier
+      <ulink url="examples/filevalid.csd"><citetitle>filevalid.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode filevalid.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/filevalid.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Sa sortie contiendra une ligne comme celle-ci :
+      <screen>
+Audiofile 'frox.wav' does not exist!</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="filebit"><citetitle>filebit</citetitle></link>,
+      <link linkend="filelen"><citetitle>filelen</citetitle></link>,
+      <link linkend="filenchnls"><citetitle>filenchnls</citetitle></link>,
+     <link linkend="filepeak"><citetitle>filepeak</citetitle></link>,
+      <link linkend="filesr"><citetitle>filesr</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namematt;</member>
+        <member>Juillet 2010</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 5.13</para>
+  </refsect1>
+</refentry>

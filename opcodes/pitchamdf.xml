@@ -1,0 +1,157 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pitchamdf">
+<indexterm id="IndexPitchamdf"><primary>pitchamdf</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pitchamdf</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pitchamdf</refname>
+    <refpurpose>
+      Suit la hauteur d'un signal en se basant sur la méthode AMDF.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Suit la hauteur d'un signal en se basant sur la méthode AMDF (fonction de
+      différence de grandeur moyenne). Retourne les signaux de hauteur et d'amplitude
+      détectées. La methode est assez rapide et devrait fonctionner en temps réel.
+      Cette technique est habituellement plus efficace avec des signaux monophoniques.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kcps, krms <command>pitchamdf</command> asig, imincps, imaxcps [, icps] [, imedi] \
+      [, idowns] [, iexcps] [, irmsmedi]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>imincps</emphasis> -- estimation de la fréquence minimale (en Hz)
+      présente dans le signal.
+    </para>
+
+    <para>
+      <emphasis>imaxcps</emphasis> -- estimation de la fréquence maximale présente
+      dans le signal.
+    </para>
+
+    <para>
+      <emphasis>icps</emphasis> (facultatif, 0 par défaut) -- estimation de la
+      fréquence initiale du signal. Si elle vaut 0, <emphasis>icps</emphasis> =
+      (<emphasis>imincps</emphasis>+<emphasis>imaxcps</emphasis>) / 2. La valeur
+      par défaut est 0.
+    </para>
+
+    <para>
+      <emphasis>imedi</emphasis> (facultatif, 1 par défaut) -- taille du filtre
+      médian appliqué à la sortie <emphasis>kcps</emphasis>. La taille du filtre
+      sera <emphasis>imedi</emphasis>*2+1. Si elle vaut 0, aucun filtre médian
+      n'est appliqué. La valeur par défaut est 1.
+    </para>
+
+    <para>
+      <emphasis>idowns</emphasis> (facultatif, 1 par défaut) -- facteur de
+      sous-échantillonnage pour <emphasis>asig</emphasis>. Doit être un entier.
+      Un facteur <emphasis>idowns</emphasis> &gt; 1 donne une exécution plus
+      rapide, mais au risque d'une détection de hauteur moins bonne. L'intervalle
+      utile est 1 - 4. La valeur par défaut est 1.
+    </para>
+
+    <para>
+      <emphasis>iexcps</emphasis> (facultatif, 0 par défaut) -- fréquence, en Hz,
+      d'exécution de l'analyse de hauteur. Si elle vaut 0,
+      <emphasis>iexcps</emphasis> est fixé à <emphasis>imincps</emphasis>. C'est
+      habituellement raisonnable, mais l'expérimentation avec d'autres valeurs
+      peut conduire à de meilleurs résultats. Vaut 0 par défaut.
+    </para>
+
+    <para>
+      <emphasis>irmsmedi</emphasis> (facultatif, 0 par défaut) -- taille du filtre
+      médian appliqué à la sortie <emphasis>krms</emphasis>. La taille du filtre
+      sera <emphasis>irmsmedi</emphasis>*2+1. Si elle vaut 0, aucun filtre médian
+      n'est appliqué. La valeur par défaut est 0.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kcps</emphasis> -- sortie de la hauteur détectée
+    </para>
+
+    <para>
+      <emphasis>krms</emphasis> -- sortie de l'amplitude détectée
+    </para>
+
+    <para>
+      Habituellement, <emphasis>pitchamdf</emphasis> fonctionne mieux avec des
+      signaux monophoniques et il est assez fiable si des valeurs initiales
+      appropriées sont choisies. En donnant à <emphasis>imincps</emphasis> et à
+      <emphasis>imaxcps</emphasis> des valeurs aussi proches que possible que
+      celles de la hauteur du signal, on obtient une meilleur détection et de
+      meilleurs résultats.
+    </para>
+
+    <para>
+      Parce que le processus ne peut détecter la hauteur qu'après un délai
+      initial, l'affectation à <emphasis>icps</emphasis> d'une valeur proche de la
+      hauteur initiale réelle du signal protège des données erronées du début.
+    </para>
+
+    <para>
+      Le filtre médian évite les sauts de <emphasis>kcps</emphasis>. Expérimentez
+      pour déterminer la valeur optimale de <emphasis>imedi</emphasis> pour un
+      signal donné.
+    </para>
+
+    <para>
+      Les autres valeurs initiales peuvent habituellement prendre leurs valeurs
+      par défaut. Passer <emphasis>asig</emphasis> dans un filtre passe-bas
+      avant <emphasis>pitchamdf</emphasis> peut améliorer les résultats, en
+      particulier avec des formes d'onde complexes.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode pitchamdf. Il utilise le fichier
+      <ulink url="examples/pitchamdf.csd"><citetitle>pitchamdf.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode pitchamdf.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pitchamdf.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Peter Neub&auml;cker</member>
+        <member>Munich, Allemagne</member>
+        <member>Août 1999</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.59 de Csound.</para>
+  </refsect1>
+</refentry>

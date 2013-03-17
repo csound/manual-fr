@@ -1,0 +1,167 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.19
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="loscil3">
+<indexterm id="IndexLoscil3"><primary>loscil3</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Sample Playback</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>loscil3</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>loscil3</refname>
+    <refpurpose>
+      Lit un son échantillonné depuis une table avec interpolation cubique.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Lit un son échantillonné (mono ou stéréo) depuis une table, avec des boucles
+      facultatives d'entretien et de relâchement, et interpolation cubique.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ar1 [,ar2] <command>loscil3</command> xamp, kcps, ifn [, ibas] [, imod1] [, ibeg1] [, iend1] \
+      [, imod2] [, ibeg2] [, iend2]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn</emphasis> -- numéro de table de fonction, contenant typiquement
+      un son échantillonné avec des points de boucle précisés, remplie au moyen de
+      <link linkend="GEN01"><citetitle>GEN01</citetitle></link>. Le fichier source peut
+      être mono ou stéréo.
+    </para>
+
+    <para>
+      <emphasis>ibas</emphasis> (facultatif) -- fréquence de base en Hz du son
+      enregistré. Elle remplace éventuellement la fréquence donnée dans le fichier
+      audio, mais devient nécessaire si le fichier n'en contient pas. La valeur par
+      défaut est 261,626 Hz, c-à-d le do médian. (Nouveau dans Csound 4.03). Si la
+      valeur est inconnue ou absente il faut utiliser 1 ici et dans
+      <emphasis>kcps</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>imod1, imod2</emphasis> (facultatif, -1 par défaut) -- modes
+      d'interprétation des boucles d'entretien et de relâchement. Une valeur de 1
+      signifie une boucle normale, 2 signifie une boucle à l'endroit et à l'envers,
+      0 signifie pas de boucle. La valeur par défaut (-1) s'en remet au mode et aux
+      points de boucle définis dans le fichier source. Il faut s'assurer de choisir
+      un mode approprié si le fichier ne contient pas cette information.
+    </para>
+
+    <para>
+      <emphasis>ibeg1, iend1, ibeg2, iend2</emphasis> (facultatifs, dépendants de
+      <emphasis>mod1, mod2</emphasis>) -- début et fin des boucles d'entretien et de
+      relâchement. Ils sont mesurés en <emphasis>trames d'échantillon</emphasis>
+      depuis le début du fichier, et auront ainsi la même valeur que le son soit
+      mono ou stéréo. Si aucun point de boucle n'est spécifié et qu'un mode de
+      boucle est donné (<emphasis>imod1</emphasis>, <emphasis>imod2</emphasis>, le
+      fichier sera lu en boucle sur toute sa longueur.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+
+    <para>
+      <emphasis>ar1, ar2</emphasis> -- la sortie de taux audio. Il n'y a que
+      <emphasis>ar1</emphasis> pour une sortie mono, alors qu'il y a
+      <emphasis>ar1</emphasis> et <emphasis>ar2</emphasis> pour une sortie stéréo.
+    </para>
+
+    <para>
+      <emphasis>xamp</emphasis> -- l'amplitude du signal de sortie.
+    </para>
+
+    <para>
+      <emphasis>kcps</emphasis> -- la fréquence du signal de sortie en Hz.
+    </para>
+
+    <para>
+      <emphasis>loscil3</emphasis> est identique à
+      <link linkend="loscil"><citetitle>loscil</citetitle></link> sauf qu'il utilise
+      l'interpolation cubique. Nouveau dans la version 3.50 de Csound.
+    </para>
+    
+    <caution>
+      <title>Note pour les utilisateurs de Windows</title>
+      <para>
+        Les utilisateurs de Windows utilisent normalement l'antislash,
+        <quote>\</quote>, lorsqu'ils écrivent les chemins de leurs fichiers. Par
+        exemple, un utilisateur de Windows pourra utiliser le chemin
+        <quote>c:\music\samples\loop001.wav</quote>. Ceci pose problème car les
+        l'antislash est normalement utilisé pour spécifier des caractères spéciaux.
+      </para>
+      <para>
+        Pour écrire correctement ce chemin dans Csound, on peut :
+        <itemizedlist>
+          <listitem><para>Soit <emphasis>utiliser le slash</emphasis> :
+          c:/music/samples/loop001.wav</para></listitem>
+          <listitem><para>Soit <emphasis>utiliser le caractère spécial d'antislash,
+          <quote>\\</quote></emphasis>: c:\\music\\samples\\loop001.wav</para></listitem>
+        </itemizedlist>
+      </para>
+    </caution>
+    <note>
+      <title>Note</title>
+      <para>
+        Voici <emphasis>loscil3</emphasis> en mono :
+
+        <informalexample>
+          <programlisting>
+a1 <emphasis role="opc">loscil3</emphasis> 10000, 1, 1, 1, 1</programlisting>
+        </informalexample>
+ 
+        ... et <emphasis>loscil3</emphasis> en stéréo :
+ 
+        <informalexample>
+          <programlisting>
+a1, a2 <emphasis role="opc">loscil3</emphasis> 10000, 1, 1, 1, 1</programlisting>
+        </informalexample>
+      </para>
+    </note>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode loscil3. Il utilise les fichiers
+      <ulink url="examples/loscil3.csd"><citetitle>loscil3.csd</citetitle></ulink>,
+      <ulink url="examples/mary.wav"><citetitle>mary.wav</citetitle></ulink>
+      et <ulink url="examples/kickroll.wav"><citetitle>kickroll.wav</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode loscil3.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/loscil3.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="loscil"><citetitle>loscil</citetitle></link> et
+      <link linkend="GEN01"><citetitle>GEN01</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>La note au sujet de la différence mono/stéréo est due à &namerasmus;.</para>
+  </refsect1>
+</refentry>

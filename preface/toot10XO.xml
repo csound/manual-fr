@@ -1,0 +1,24 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.1
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="PrefaceToot10">
+  <title>Toot 10</title>
+
+  <para>
+    L'instrument suivant utilise l'opcode <link linkend="rand"><citetitle>rand</citetitle></link>
+    de Csound pour produire du bruit et un opcode <link linkend="reson"><citetitle>reson</citetitle></link>
+    pour le filtrer. La largeur de bande de <link linkend="reson"><citetitle>reson</citetitle></link>
+    est fixée à l'initialisation, mais sa fréquence centrale sera balayée au moyen d'une unité
+    <emphasis>line</emphasis> dans un large intervalle de fréquences durant chaque note. Nous
+    ajoutons de la réverbération comme dans Toot 9.
+  </para>
+  <para>
+    <xi:include href="examples-xml/toot10.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </para>
+</section>

@@ -1,0 +1,64 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="strcmp">
+<indexterm id="Indexstrcmp"><primary>strcmp</primary></indexterm>
+  <refentryinfo><title>Strings:Manipulation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>strcmp</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>strcmp</refname>
+    <refpurpose>
+      Compare des chaînes de caractères.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Compare des chaînes et retourne -1, 0 ou 1 si la première chaîne est
+      inférieure, égale ou supérieure à la seconde, respectivement.
+      <emphasis>strcmp</emphasis> ne compare que pendant l'initialisation.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ires <command>strcmp</command> S1, S2</synopsis>
+  </refsect1>
+    
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode strcmp. Il utilise le fichier
+      <ulink url="examples/strcmp.csd"><citetitle>strcmp.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode strcmp.</title>
+        <xi:include href="examples-xml/strcmp.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+	  <title>Voir aussi</title>
+	  <para><link linkend="strcmpk"><citetitle>strcmpk</citetitle></link></para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Istvan Varga</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

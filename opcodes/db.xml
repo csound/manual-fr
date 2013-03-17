@@ -1,0 +1,90 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.14
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="db">
+<indexterm id="IndexDb"><primary>db</primary></indexterm>
+  <refentryinfo><title>Mathematical Operations:Amplitude Functions</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>db</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>db</refname>
+    <refpurpose>
+      Retourne l'amplitude équivalente pour une valeur donnée en décibels.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne l'amplitude équivalente pour une valeur donnée en décibels. Cet opcode est le même que
+      <link linkend="ampdb"><citetitle>ampdb</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>db</command>(x)</synopsis>
+
+    <para>
+      Cette fonction fonctionne aux taux-i, -k et -a.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>x</emphasis> -- une valeur exprimée en décibels.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Retourne l'amplitude équivalente pour une valeur donnée en décibels.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode db. Il utilise le fichier
+      <ulink url="examples/db.csd"><citetitle>db.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode db.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/db.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie contiendra ces lignes :
+      <screen>instr 1:  iamp = 316.252
+      instr 1:  iamp = 1211.582
+      instr 1:  iamp = 4641.643
+      instr 1:  iamp = 17782.420</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ampdb"><citetitle>ampdb</citetitle></link>,
+      <link linkend="cent"><citetitle>cent</citetitle></link>,
+      <link linkend="octave"><citetitle>octave</citetitle></link>,
+      <link linkend="semitone"><citetitle>semitone</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <para>Nouveau dans la version 4.16</para>
+  </refsect1>
+</refentry>

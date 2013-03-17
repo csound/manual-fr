@@ -1,0 +1,91 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vibr">
+<indexterm id="IndexVibr"><primary>vibr</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Basic Oscillators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vibr</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vibr</refname>
+    <refpurpose>
+      Vibrato contrôlable par l'utilisateur, d'usage plus facile.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Vibrato contrôlable par l'utilisateur, d'usage plus facile.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kout <command>vibr</command> kAverageAmp, kAverageFreq, ifn</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn</emphasis> -- Numéro de la table de vibrato. Elle contient normalement une onde
+      sinus ou triangle.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kAverageAmp</emphasis> -- Valeur d'amplitude moyenne du vibrato
+    </para>
+
+    <para>
+      <emphasis>kAverageFreq</emphasis> -- Valeur de fréquence moyenne du vibrato (en cps)
+    </para>
+
+    <para>
+      <emphasis>vibr</emphasis> est une version de <link linkend="vibrato"><citetitle>vibrato</citetitle></link>
+      d'usage plus facile. Il a le même moteur de génération que <emphasis>vibrato</emphasis>, mais les
+      paramètres correspondant aux arguments d'entrée manquants sont codés en dur sur des valeurs par
+      défaut.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode vibr. Il utilise le fichier
+      <ulink url="examples/vibr.csd"><citetitle>vibr.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode vibr.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/vibr.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="jitter"><citetitle>jitter</citetitle></link>,
+      <link linkend="jitter2"><citetitle>jitter2</citetitle></link>,
+      <link linkend="vibrato"><citetitle>vibrato</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.15</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,32 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.5
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="MathAmp">
+  <title>Conversion d'amplitude</title>
+
+  <para>
+    Les opcodes pour opérer des conversions entre différentes mesures d'amplitude sont :
+    <itemizedlist>
+      <listitem><para><link linkend="ampdb"><citetitle>ampdb</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="ampdbfs"><citetitle>ampdbfs</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="db"><citetitle>db</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="dbamp"><citetitle>dbamp</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="dbfsamp"><citetitle>dbfsamp</citetitle></link></para>
+      </listitem>
+    </itemizedlist>
+    Utiliser <link linkend="rms"><citetitle>rms</citetitle></link> pour trouver la valeur de la moyenne
+    quadratique d'un signal. Voir aussi <link linkend="Zerodbfs"><citetitle>0dbfs</citetitle></link> pour
+    un autre moyen de gérer les amplitudes dans csound.
+  </para>
+
+</section>

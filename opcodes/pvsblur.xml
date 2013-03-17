@@ -1,0 +1,111 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvsblur">
+<indexterm id="IndexPvsblur"><primary>pvsblur</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsblur</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvsblur</refname>
+    <refpurpose>
+      Prend la moyenne des fonctions temporelles amp/fréq de chaque canal
+      d'analyse sur une durée spécifiée.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Prend la moyenne des fonctions temporelles amp/fréq de chaque canal
+      d'analyse sur une durée spécifiée (tronquée au nombre de trames). Il y a
+      un effet de bord : le flot pvoc en entrée est retardé de cette durée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>fsig <command>pvsblur</command> fsigin, kblurtime, imaxdel</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>fsig</emphasis> -- flot pv de sortie
+    </para>
+
+    <para>
+      <emphasis>fsigin</emphasis> -- flot pv d'entrée
+    </para>
+
+    <para>
+      <emphasis>kblurtime</emphasis> -- durée en secondes pendant laquelle les
+      valeurs moyennes des fenêtres seront prises.
+    </para>
+
+    <para>
+      <emphasis>imaxdel</emphasis> -- retard maximum, utilisé pour allouer la
+      mémoire utilisée dans le calcul de la moyenne. 
+    </para>
+
+    <para>
+      Cet opcode estompe un flot pvs en lissant les fonctions temporelles
+      d'amplitude et fréquence (une sorte de filtrage passe-bas) ; l'importance
+      de cet effet dépend de la longueur de la période sur laquelle est prise la
+      moyenne, de plus grandes périodes donnant un effet plus prononcé.
+    </para>
+    <warning>
+      <para>
+        Il est dangereux d'utiliser la même variable-f à la fois comme entrée et
+        comme sortie des opcodes pvs. Ceci peut produire un comportement indéfini
+        de certains de ces opcodes. Utilisez une variable différente à gauche et
+        à droite de l'opcode.
+      </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode pvsblur. Il utilise le fichier
+      <ulink url="examples/pvsblur.csd"><citetitle>pvsblur.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode pvsblur.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pvsblur.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="pvsanal"><citetitle>pvsanal</citetitle></link>,
+      <link linkend="pvsynth"><citetitle>pvsynth</citetitle></link>,
+      <link linkend="pvsadsyn"><citetitle>pvsadsyn</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Novembre 2004 </member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau greffon dans la version 5</para>
+    <para>Novembre 2004.</para>
+  </refsect1>
+</refentry>

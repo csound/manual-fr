@@ -1,0 +1,93 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.6
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="SiggenNoise">
+  <title>Générateurs de Nombres Aléatoires (de Bruit)</title>
+
+  <para>
+    Les opcodes qui génèrent des nombres aléatoires sont :
+    <itemizedlist>
+      <listitem><para><link linkend="betarand"><citetitle>betarnd</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="bexprnd"><citetitle>bexprnd</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="cauchy"><citetitle>cauchy</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="cuserrnd"><citetitle>cuserrnd</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="duserrnd"><citetitle>duserrnd</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="dust"><citetitle>dust</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="dust2"><citetitle>dust2</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="exprand"><citetitle>exprand</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="fractalnoise"><citetitle>fractalnoise</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="gauss"><citetitle>gauss</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="gausstrig"><citetitle>gausstrig</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="linrand"><citetitle>linrand</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="noise"><citetitle>noise</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="pcauchy"><citetitle>pcauchy</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="pinkish"><citetitle>pinkish</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="poisson"><citetitle>poisson</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="rand"><citetitle>rand</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="randh"><citetitle>randh</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="randi"><citetitle>randi</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="rnd31"><citetitle>rnd31</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="random"><citetitle>random</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="randomh"><citetitle>randomh</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="randomi"><citetitle>randomi</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="trirand"><citetitle>trirand</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="unirand"><citetitle>unirand</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="urd"><citetitle>urd</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="weibull"><citetitle>weibull</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="jitter"><citetitle>jitter</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="jitter2"><citetitle>jitter2</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="trandom"><citetitle>trandom</citetitle></link></para>
+      </listitem>
+    </itemizedlist>
+  </para>
+  <para>
+	  Voir <link linkend="seed"><citetitle>seed</citetitle></link> qui fixe la valeur de la racine globale
+    pour tous les générateurs de bruit de classe x, ainsi que d'autres opcodes qui utilisent un appel
+    de fonction aléatoire comme <link linkend="grain"><citetitle>grain</citetitle></link>.
+    <link linkend="rand"><citetitle>rand</citetitle></link>,
+    <link linkend="randh"><citetitle>randh</citetitle></link>,
+    <link linkend="randi"><citetitle>randi</citetitle></link>,
+    <link linkend="rnd"><citetitle>rnd(x)</citetitle></link> et
+    <link linkend="birnd"><citetitle>birnd(x)</citetitle></link> ne sont pas affectés par
+    <emphasis>seed</emphasis>.
+  </para>
+
+  <para>Voir aussi les fonctions qui génèrent des nombres aléatoires dans la section
+    <link linkend="MathRndfunc"><citetitle>Fonctions Aléatoires</citetitle></link>.
+  </para>
+</section>

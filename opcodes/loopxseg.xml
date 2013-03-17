@@ -1,0 +1,135 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.3
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="loopxseg">
+<indexterm id="IndexLoopxseg"><primary>loopxseg</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Linear and Exponential Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>loopxseg</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>loopxseg</refname>
+    <refpurpose>
+      Génère un signal de contrôle constitué de segments exponentiels
+      délimités par deux ou plus points spécifiés.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère un signal de contrôle constitué de segments exponentiels délimités
+      par deux ou plus points spécifiés. L'enveloppe entière est parcourue en
+      boucle au taux <emphasis>kfreq</emphasis>. Chaque paramètre peut varier
+      au taux-k.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ksig <command>loopxseg</command> kfreq, ktrig, iphase, ktime0, kvalue0 [, ktime1] [, kvalue1] \
+      [, ktime2] [, kvalue2] [...]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ksig</emphasis> -- Signal de sortie.
+    </para>
+
+    <para>
+      <emphasis>kfreq</emphasis> -- Taux de répétition en Hz ou en fraction de Hz.
+    </para>
+
+    <para>
+      <emphasis>ktrig</emphasis> -- S'il est non nul, redéclanche l'enveloppe
+      depuis le début (voir l'opcode
+      <link linkend="trigger"><citetitle>trigger</citetitle></link>), avant que
+      le cycle de l'enveloppe ne soit complet.
+    </para>
+
+    <para>
+      <emphasis>iphase</emphasis> -- Une valeur comprise entre 0 et 1 pour indiquer
+      où commence la boucle. Zéro, la valeur la plus usuelle, indique le début du
+      signal.
+    </para>
+    
+    <para>
+      <emphasis>ktime0...ktimeN</emphasis> -- Dates des points ; exprimées en
+      fraction d'une période.
+    </para>
+
+    <para>
+      <emphasis>kvalue0...kvalueN</emphasis> -- Valeurs des points.
+    </para>
+
+    <para>
+      L'opcode <emphasis>loopxseg</emphasis> est semblable à
+      <link linkend="expseg"><citetitle>expseg</citetitle></link>, mais
+      l'enveloppe entière est parcourue en boucle au taux <emphasis>kfreq</emphasis>.
+      Noter que les valeurs temporelles ne sont pas exprimées en secondes mais
+      en fractions d'une période. Concrètement chaque durée est proportionnelle
+      aux autres, et la durée du cycle complet est proportionnelle à la somme de
+      toutes les valeurs de durée.
+    </para>
+
+    <para>
+      La somme de toutes les durées est ensuite pondérée en fonction de l'argument
+      <emphasis>kfreq</emphasis>. Par exemple, considérant une enveloppe faite de 3 segments,
+      chaque segment ayant une valeur de durée de 100, leur somme sera 300. Cette valeur
+      représente la durée totale de l'enveloppe, et elle est divisée en 3 parties égales, une
+      partie pour chaque segment.
+    </para>
+
+    <para>
+      Concrètement, la durée réelle de l'enveloppe en secondes est déterminée par
+      <emphasis>kfreq</emphasis>. Si l'enveloppe est à nouveau constituée de 3 segments, mais cette
+      fois-ci le premier et le dernier segments ayant une durée de 50, tandis que le segment
+      central a une durée de 100, leur somme sera 200. Ici 200 représente la durée totale des 3
+      segments, et ainsi le segment central sera deux fois plus long que les autres segments.
+    </para>
+
+    <para>
+      Tous les paramètres peuvent varier au taux-k. Si les valeurs de fréquence sont négatives,
+      l'enveloppe est lue à l'envers. <emphasis>ktime0</emphasis> doit toujours valoir 0, sauf si
+      l'on désire un effet spécial.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode loopxseg. Il utilise le fichier
+      <ulink url="examples/loopxseg.csd"><citetitle>loopxseg.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode loopxseg.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/loopxseg.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="lpshold"><citetitle>lpshold</citetitle></link>
+      <link linkend="loopseg"><citetitle>loopseg</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namejohn;</para>
+    <para>Nouveau dans la version 5.12</para>
+  </refsect1>
+</refentry>

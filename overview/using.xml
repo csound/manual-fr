@@ -1,0 +1,344 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<chapter id="Using">
+
+  <title>Utiliser Csound</title>
+
+  <para>On peut faire fonctionner Csound dans divers modes et configurations.
+    La méthode originale pour lancer Csound était un programme de console
+    (invite DOS pour Windows, Terminal pour Mac OS X). Bien sûr, ceci fonctionne
+    toujours. Lancer <application>csound</application> sans argument retourne
+    une liste d'options de commande en ligne, qui sont expliquées plus en détail
+    dans la section <link linkend="CommandFlagsCategory"><citetitle>options
+    de ligne de commande (par catégorie)</citetitle></link>.
+    Normallement, l'utilisateur exécute quelque chose comme :
+    <programlisting>csound monfichier.csd</programlisting>
+    ou si l'on utilise des fichiers d'orchestre (orc) et de partition (sco) séparés :
+    <programlisting>csound monorchestre.orc mapartition.sco</programlisting>
+    On peut trouver plusieurs fichiers .csd dans le répertoire des exemples. La plupart
+    des articles de ce manuel sur les opcodes incluent également des fichiers .csd
+    simples montrant l'utilisation de l'opcode.
+  </para>
+  <para>
+    Il y a aussi plusieurs <link linkend="OviewFrontEnds"><citetitle>frontaux</citetitle></link>
+    que l'on peut utiliser pour lancer
+    <application>csound</application>. Un <link linkend="OviewFrontEnds"><citetitle>frontal</citetitle></link>
+    est un programme graphique
+    qui facilite la tâche de lancer csound, et qui fournit parfois
+    des fonctionnalités d'édition et de composition.
+  </para>
+  <para>
+    Csound a aussi plusieurs moyens de produire une sortie. Il peut :
+    <itemizedlist>
+      <listitem><simpara>Lire et écrire dans des fichiers son (restitution différée) -
+      En utilisant les options <link linkend="FlagsCatMinusLowerO"><citetitle>-o</citetitle></link> et
+      <link linkend="FlagsCatMinusLowerI"><citetitle>-i</citetitle></link>
+      pour spécifier un fichier de sortie.</simpara>
+      </listitem>
+      <listitem><simpara>
+        Lire et écrire des données audio-numériques en utilisant une carte son
+        (restitution en ) -
+        En utilisant les options <link linkend="FlagsCatMinusLowerOdac"><citetitle>-odac</citetitle></link> et
+        <link linkend="FlagsCatMinusLowerIadc"><citetitle>-iadc</citetitle></link>
+        </simpara>
+        </listitem>
+      <listitem><simpara>Lire et écrire dans des fichiers MIDI (temps différé) -
+        En utilisant les options <link linkend="FlagsCatMinusUpperF"><citetitle>-F</citetitle></link> et
+        <link linkend="FlagsCatMinusMidiOutFile"><citetitle>--midioutfile</citetitle></link>.</simpara>
+      </listitem>
+      <listitem><simpara>
+        Lire et écrire des données MIDI en utilisant une interface et un contrôleur
+	      MIDI (contrôle en temps réel) -
+        En utilisant les options <link linkend="FlagsCatMinusUpperM"><citetitle>-M</citetitle></link> et
+        <link linkend="FlagsCatMinusUpperQ"><citetitle>-Q</citetitle></link>.
+      </simpara>
+      </listitem>
+    </itemizedlist>
+  </para>
+  <section id="ConsoleOutput">
+    <title>Sortie console de Csound</title>
+    <para>
+      Pendant son exécution, Csound écrit une sortie texte sur la console, qui montre
+      des données sur cette exécution. Une sortie console ressemble à ceci :
+      <programlisting>time resolution is 0.455 ns                                  
+PortMIDI real time MIDI greffon for Csound                    
+virtual_keyboard real time MIDI greffon for Csound                                       
+PortAudio real-time audio module for Csound                                              
+0dBFS level = 32768.0                                                                    
+Csound version 5.10 beta (float samples) Apr 19 2009                                     
+libsndfile-1.0.17                                                                        
+Reading options from $HOME/.csoundrc                                                     
+UnifiedCSD:  oscil.csd                                                                   
+STARTING FILE                                                                            
+Creating options                                                                         
+Creating orchestra                                                                       
+Creating score                                                                           
+orchname:  /tmp/csound-XYACV6.orc                                                        
+scorename: /tmp/csound-IYtLAJ.sco                                                        
+rtaudio: ALSA module enabled                                                             
+rtmidi: PortMIDI module enabled                                                          
+orch compiler:                                                                           
+17 lines read                                                                            
+        instr   1                                                                        
+Elapsed time at end of orchestra compile: real: 0.129s, CPU: 0.020s                      
+sorting score ...                                                                        
+        ... done                                                                         
+Elapsed time at end of score sort: real: 0.130s, CPU: 0.020s                             
+Csound version 5.10 beta (float samples) Apr 19 2009                                     
+displays suppressed                                                                      
+0dBFS level = 32768.0
+orch now loaded
+audio buffered in 256 sample-frame blocks
+ALSA input: total buffer size: 1024, period size: 256
+reading 1024-byte blks of shorts from adc (RAW)
+ALSA output: total buffer size: 1024, period size: 256
+writing 1024-byte blks of shorts to dac
+SECTION 1:
+ftable 1:
+new alloc for instr 1:
+B  0.000 ..  2.000 T  2.000 TT  2.000 M:  10000.0  10000.0
+Score finished in csoundPerform().
+inactive allocs returned to freespace
+end of score.              overall amps:  10000.0  10000.0
+           overall samples out of range:        0        0
+0 errors in performance
+Elapsed time at end of performance: real: 2.341s, CPU: 0.050s
+345 1024-byte soundblks of shorts written to dac
+Removing temporary file /tmp/csound-CoVcrm.srt ...
+Removing temporary file /tmp/csound-IYtLAJ.sco ...
+Removing temporary file /tmp/csound-XYACV6.orc ...</programlisting>
+      La sortie console de Csound est assez fournie, particulièrement avant le
+      début de l'exécution proprement dite (version, greffons chargés, etc.).
+      L'exécution commence lorqu'apparaît sur la console :
+      <programlisting>SECTION 1:</programlisting>
+      Dans cette exécution particulière, les lignes :
+      <programlisting>new alloc for instr 1:
+B  0.000 ..  2.000 T  2.000 TT  2.000 M:  10000.0  10000.0</programlisting>
+      montrent qu'une note pour l'instrument 1, durant 2 secondes et commençant à la
+      date 0.000, a été produite avec une amplitude de 10000 sur les canaux 1 et 2.
+      Une section importante de la sortie console est :
+      <programlisting>end of score.              overall amps:  10000.0  10000.0
+           overall samples out of range:        0        0</programlisting>
+      qui montre l'amplitude globale et le nombre d'échantillons qui ont été rognés
+      parce qu'ils étaient hors limites.
+    </para>
+<!--     The following paragraph adapted from an email by Victor Lazzarini in the Csound mailing list -->
+    <para>
+      La ligne :
+      <programlisting>Elapsed time at end of performance: real: 2.341s, CPU: 0.050s</programlisting>
+      montre le temps d'horloge et le temps CPU utilisés par le processeur pour
+      compléter le travail. Si le temps CPU est inférieur au temps d'horloge, cela veut
+      dire que le csd peut être exécuté en temps réel (à moins qu'il ne contienne
+      certaines sections très gourmandes en ressources CPU). La valeur "real time" est
+      le temps total de traitement et il est supérieur car il comprend les accès disque,
+      le chargement de modules, etc. (le temps CPU ne comptabilise que les calculs
+      numériques). Si vous avez un son qui dure 100 secondes et que sa génération hors
+      ligne ne dure que 5 secondes, cela veut dire que vous n'utilisez qu'environ 5%
+      du CPU, et que son exécution ne nécessite que 0.05 du temps réel.
+    </para>
+  </section>
+
+  &oviewdesign;
+  
+  <section id="UsingRealTime">
+
+    <title>Audio en temps réel</title>
+    <para>
+      L'information suivante concerne en premier lieu l'utilisation de csound à partir de la ligne
+      de commande. Les frontaux implémentent ces caractéristiques de différentes manières,
+      mais leur connaissance est nécessaire dans certains d'entre eux.
+    </para>
+    <para>
+      Les options <link linkend="FlagsCatMinusLowerI"><citetitle>-i</citetitle></link> et
+      <link linkend="FlagsCatMinusLowerO"><citetitle>-o</citetitle></link> sont utilisées
+      pour spécifier une sortie en  à la place de l'habituelle sortie différée
+      dans un fichier. On utilise <literal>-o dac</literal> pour la sortie en 
+      et <literal>-i adc</literal> pour l'entrée en . Naturellement, on peut
+      utiliser l'un ou les deux selon les possibilités matérielles. On peut aussi spécifier
+      le matériel à utiliser en ajoutant un numéro ou un nom de périphérique au drapeau
+      (voir <link linkend="FlagsCatMinusLowerI"><citetitle>-i</citetitle></link> et
+      <link linkend="FlagsCatMinusLowerO"><citetitle>-o</citetitle></link>).
+    </para>
+    <para>
+      Il peut aussi être nécessaire d'utiliser l'option
+      <link linkend="FlagsCatMinusPlusRtaudio"><citetitle>-+rtaudio</citetitle></link>
+      pour spécifier le pilote d'interface à utiliser. Csound utilise Portaudio par défaut,
+      qui est multi plates-formes et fiable, mais, pour obtenir de meilleures performances,
+      on peut utiliser ALSA et JACK sur linux, et CoreAudio sur Mac. On peut utiliser ASIO
+      sur Windows si la version de Portaudio a été compilée avec le support ASIO.
+    </para>
+    <para>
+      On peut voir une liste des périphériques disponibles en donnant un numéro de périphérique
+      trop grand, par example <literal>-o dac99</literal>. Si vous utilisez Portaudio,
+      ceci indiquera également si ASIO est disponible.
+    </para>
+    <bridgehead>
+      Tailles de période et de tampon</bridgehead>
+    <para>Les tailles de période et de tampon varient beaucoup d'une machine à l'autre.
+      Plus la taille du tampon est petite et plus la latence est courte, mais cela peut
+      causer des interruptions et des clics dans le flux audio. Les options Csound qui contrôlent
+      les tailles de période et de tampon sont respectivement
+      <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> et
+      <link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link>. La
+      taille de tampon dépend du matériel, et des essais peuvent être nécessaires pour
+      trouver l'équilibre optimal entre une faible latence et un flux audio continu.
+      Les valeurs données à
+      <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> et
+      <link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link>
+      doivent être des puissances de deux, et la valeur de
+      <link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link> doit surpasser celle de
+      <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> d'au moins une puissance
+      de deux.
+    </para>
+    <para>Actuellement, avec
+      <literal><link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link></literal>
+      fixé à 512, la latence
+      de la sortie audio est d'environ 12 millisecondes, suffisamment rapide 
+      pour un jeu au clavier raisonnablement réactif. On peut même obtenir des
+      latences plus courtes sur certains systèmes.</para>
+    <bridgehead>Cadence de contrôle</bridgehead>
+    <para>
+      De faibles valeurs de ksmps donneront en général une synthèse de meilleure
+      qualité, mais consommeront plus de ressources système. Il n'y a pas de règle
+      absolue pour fixer ksmps - différents orchestres nécessiteront différentes
+      cadences de contrôle. Un instrument à guide d'onde nécessitera une valeur
+      de ksmps de 1 (et pourra ne pas convenir au ), alors qu'une simple
+      synthèse FM pourra fonctionner avec de plus grandes valeurs de ksmps sans
+      dégradation notable du son. Si cette synthèse FM doit jouer une ligne de
+      basse monodique, on peut utiliser une très faible valeur de ksmps, cependant
+      des clusters de notes plus complexes nécessiteront une valeur de ksmps plus
+      grande. Un système linux bien réglé devrait même être capable de produire
+      des synthèses polyphoniques complexes avec des valeurs de ksmps aussi faibles
+      que 4 ou 8. Si l'on a besoin de capacités audio duplex complètes,
+      <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> doit
+      être un multiple entier de ksmps. En gardant cela à l'esprit, on peut poser
+      comme règle empirique de n'utiliser que des puissances de deux pour ksmps.
+    </para>
+    <para>
+      Certains réglages diffèrent selon la plate-forme. Voir la suite pour
+      de l'informations sur chaque plate-forme.
+    </para>
+
+&oviewrealtimelinux;
+&oviewrealtimewindows;
+&oviewrealtimemac;
+
+
+  </section>
+  <section id="UsingOptimizing">
+    <title>Optimisation de la latence audio en E/S</title>
+<!--    Written by Jonathan Murphy-->
+    <para>
+      Pour atteindre la latence la plus basse possible sans interruptions audio, il faut régler une
+      combinaison de variables. Les valeurs retenues dépendront de la plate-forme et du système, et
+      aussi de la complexité des calculs audio mis en &oelig;uvre. Il faut ajuster
+      <link linkend="ksmps"><citetitle>ksmps</citetitle></link> dans l'orchestre, ainsi que la taille
+      du tampon logiciel (<link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link>) et
+      celle du tampon matériel (<link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link>).
+    </para>
+    <para>
+      Habituellement la solution la plus simple est la suivante :
+    </para>
+      <orderedlist>
+        <listitem>
+          <para>Fixer <link linkend="ksmps"><citetitle>ksmps</citetitle></link> à une valeur de
+          compromis entre qualité et performance, sans ajuster
+          <link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link> du tout.</para>
+        </listitem>
+        <listitem>
+          <para>Fixer <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> à une
+          puissance de deux négative.</para>
+          <para>
+            Pour obtenir les valeurs optimales, commencer avec une valeur qui vous semble trop petite,
+            c'est-à-dire -1, et continuer ensuite en "augmentant", -2, -4, etc., jusqu'à ne plus
+            avoir de défauts dans le son. La valeur réelle de
+            <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> sera la valeur
+            absolue de <emphasis>-b * ksmps</emphasis>.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Réduire le tampon matériel
+            (<link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link>). Partir de la
+            valeur par défaut (1024 sur Linux, 4096 sur Max OS X, 16384 sur Windows), et la réduire
+            de moitié à chaque fois, jusqu'à entendre à nouveau des défauts. La remonter alors
+            jusqu'à ce que l'exécution soit continue.
+          </para>
+        </listitem>
+      </orderedlist>
+      <para>
+        Cette procédure s'applique aux cartes 16 bit. Si vous avez une carte son 24 bit, alors
+        <link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link> doit valoir 3/2, ou
+        3 fois <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link>, plutôt que
+        2 ou 4 fois. Csound travaille avec des nombres en virgule flottante en 32 bit ou 64 bit alors que la
+        plupart des cartes son utilisent des entiers en 16 ou 24 bit.
+        <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> est le tampon interne,
+        c'est pourquoi il traite de la partie 32 ou 64 bit, tandis que
+        <link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link> est le tampon matériel,
+        et il traite ainsi de la partie 16 ou 24 bit. Le réglage par défaut de csound pour les réels
+        est <emphasis>-B = 4 * -b</emphasis>. C'est une valeur sûre pour une carte 16 bit. On peut s'en
+        sortie avec <emphasis>-B = 2 * -b</emphasis>, mais c'est le minimum absolu. Par exemple,
+        si votre réglage est <emphasis>-b1024 -B2048</emphasis>, csound vous dira ceci :
+        <screen>audio buffered in 1024 sample-frame blocks
+writing 4096-byte blocks to dac</screen>
+      </para>
+      <para>
+        4096 octets font 32768 bits. 32768/32 = 1024, notre taille de bloc de trames d'échantillons,
+        1024 * 32/16 = 2048, notre taille de tampon. Si nous réduisons la valeur de
+        <link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link>, il faudra réduire
+        la valeur de <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> d'un
+        montant proportionnel afin de continuer à écrire des entiers en 16 bit sur le CNA. La
+        taille minimale de <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> est
+        <emphasis>(-B * bitrate)/32</emphasis>. Cela veut dire que le rapport minimum de
+        <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> à
+        <link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link> doit être :
+        <itemizedlist>
+          <listitem>
+            <simpara>1/2 en 16 bit</simpara>
+          </listitem>
+          <listitem>
+            <simpara>2/3 en 24 bit</simpara>
+          </listitem>
+          <listitem>
+            <simpara>1/1 en 32 bit</simpara>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        Bien qu'il n'y ait théoriquement pas de rapport maximum, il n'y a aucun sens à avoir un rapport
+        très élévé ici, car le tampon logiciel doit remplir le tampon matériel avant de retourner. Si
+        le rapport est élevé, cela prendra plus de temps, annulant le bénéfice de mettre une petite valeur
+        pour <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link>.
+      </para>
+      <para>
+        Il faudra varier la valeur de
+        <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> en fonction de la
+        complexité de l'instrument sur lequel vous travaillez, mais comme elle est intimement liée à celle
+        de ksmps, il vaut mieux la synchroniser avec
+        <link linkend="ksmps"><citetitle>ksmps</citetitle></link> et partir de là. Une manière de faire
+        est de décider quelle sera la longueur optimale de la chute de vos enveloppes
+        (pour l'effet désiré), de fixer toutes les enveloppes au maximum, de donner vous-même une valeur
+        généreuse à <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link>, et de jouer.
+        S'il y a des interruptions, doubler ksmps, et répéter le processus jusqu'à obtenir la fluidité,
+        descendre ensuite la valeur de <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link>
+        aussi bas que possible.
+      </para>
+      <para>
+        La valeur de <link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link> est d'abord
+        déterminée par le système d'explotation et la carte son. Essayez de trouver (par la méthode
+        ci-dessus) jusqu'où vous pouvez descendre, et utilisez cette valeur (ou une valeur supérieure
+        par sécurité). Si vous rencontrez des problèmes ce sera probablement à cause d'une valeur de
+        ksmps inappropriée, d'une valeur de
+        <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> trop faible, ou
+        de nombres hors-norme (voir <link linkend="denorm"><citetitle>denorm</citetitle></link>).
+      </para>
+  </section>
+</chapter>
+

@@ -1,0 +1,87 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="JackoAudioOut">
+  <indexterm id="IndexJackoAudioOut"><primary>JackoAudioOut</primary></indexterm>
+  <refentryinfo><title>Jacko Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>JackoAudioOut</refentrytitle>
+  </refmeta>
+  
+  <refnamediv>
+    <refname>JackoAudioOut</refname>
+    <refpurpose>
+      Envoie un signal audio vers un port de Jack.
+     </refpurpose>
+  </refnamediv>  
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Envoie un signal audio vers un port de sortie audio interne de Jack, qui
+      lui-même l'envoie vers son port d'entrée audio externe de Jack connecté.
+    </para>
+    
+    <para>
+      Notez qu'il est possible d'envoyer le flot audio vers l'interface audio du
+      système via Jack, tandis qu'on l'envoie en même temps dans un fichier de
+      sortie de Csound.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>JackoAudioOut </command> ScsoundPortName, asignal</synopsis>
+  </refsect1>
+  
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ScsoundPortName</emphasis> -- Le nom abrégé ("portname") 
+      du port de sortie audio interne de Jack.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para> 
+      <emphasis>asignal</emphasis> -- Signal audio à envoyer vers le port d'entrée
+      audio externe de Jack auquel <emphasis>CsoundPortName</emphasis> est
+      connecté.
+    </para>
+
+    <para>
+      Les signaux audio provenant de plusieurs instances de l'opcode routant
+      vers le même port de Jack sont additionnés avant l'envoi.
+    </para>    
+  </refsect1>
+  
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="JackoInit"><citetitle>JackoInfo</citetitle></link>, 
+      <link linkend="JackoInfo"><citetitle>JackoInfo</citetitle></link>, 
+      <link linkend="JackoFreewheel"><citetitle>JackoFreewheel</citetitle></link>, 
+      <link linkend="JackoAudioInConnect"><citetitle>JackoAudioOutConnect</citetitle></link>, 
+      <link linkend="JackoMidiInConnect"><citetitle>JackoMidiInConnect</citetitle></link>, 
+      <link linkend="JackoMidiOutConnect"><citetitle>JackoMidiOutConnect</citetitle></link>, 
+      <link linkend="JackoOn"><citetitle>JackoOn</citetitle></link>, 
+      <link linkend="JackoAudioIn"><citetitle>JackoAudioIn</citetitle></link>, 
+      <link linkend="JackoMidiOut"><citetitle>JackoMidiOut</citetitle></link>, 
+      <link linkend="JackoMidiOut"><citetitle>JackoMidiOut</citetitle></link>, 
+      <link linkend="JackoTransport"><citetitle>JackoTransport</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par : &namemichael; 2010</para>
+  </refsect1>
+
+</refentry>

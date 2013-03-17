@@ -1,0 +1,143 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="flooper2">
+<indexterm id="Indexflooper2"><primary>flooper2</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Sample Playback</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>flooper2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>flooper2</refname>
+    <refpurpose>
+      Lecture en boucle basée sur une table de fonction avec fondu enchainé.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode implémente une lecture de boucle avec fondu enchainé, avec des
+      paramètres variables, trois modes de boucle, et une utilisation facultative
+      d'une table pour la forme du fondu enchainé. Il accepte comme source audio
+      des tables dont la longueur n'est pas une puissance de deux, telles que celles
+      de GEN01 avec allocation différée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>asig <command>flooper2</command> kamp, kpitch, kloopstart, kloopend, kcrossfade, ifn \
+      [, istart, imode, ifenv, iskip]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+ <para>
+      <emphasis>ifn </emphasis> -- numéro de la table de fonction de la source audio,
+      généralement créée au moyen de GEN01
+    </para>
+        <para>
+      <emphasis>istart </emphasis> -- début de la lecture en secondes
+    </para>
+    <para>
+      <emphasis>imode </emphasis> -- modes de boucle : 0 à l'endroit, 1 à l'envers, 2
+      à l'endroit et à l'envers. (0 par défaut)
+    </para>
+        <para>
+      <emphasis>ifenv </emphasis> -- s'il est non nul, numéro de la table de la forme
+      de l'enveloppe du fondu enchainé. La valeur par défaut, 0, donne un fondu enchainé
+      linéaire.
+    </para>
+        <para>
+      <emphasis>iskip </emphasis> -- s'il vaut 1, l'initialisation de l'opcode est
+      ignorée, pour les notes liées, l'exécution continuant depuis la position dans
+      la boucle où la note précédente s'est terminée. Avec la valeur par défaut, 0,
+      l'initialisation a lieu.
+    </para>
+
+</refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- signal de sortie
+    </para>
+    <para>
+      <emphasis>kamp</emphasis> -- contrôle de l'amplitude </para>
+    <para>
+      <emphasis>kpitch</emphasis> -- contrôle de la hauteur (rapport de transposition) ;
+      les valeurs négatives sont interdites.
+    </para>
+    <para>
+      <emphasis>kloopstart</emphasis> -- début de la boucle (en secondes). Noter que
+      bien qu'étant de taux-k, les paramètres de boucle comme celui-ci ne sont mis
+      à jour qu'une fois par itération de la boucle.
+    </para>
+    <para>
+      <emphasis>kloopend</emphasis> -- fin de la boucle (en secondes), mis à jour une
+      seule fois par itération de la boucle.
+    </para>
+    <para>
+      <emphasis>kcrossfade </emphasis> -- longueur du fondu enchainé (en secondes), mis
+      à jour une seule fois par itération de la boucle et limité par la longueur de
+      la boucle.
+    </para>
+      Avec le mode 1 de <emphasis>imode </emphasis> la boucle ne se fait qu'à l'envers
+      depuis la fin jusqu'au début.
+    <para>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      <example>
+        <programlisting>
+aout <emphasis role="opc">flooper2</emphasis> 16000, 1, 1, 5, 0.05, 1  <emphasis role="comment">; loop starts at 1 sec, for 4 secs, 0.05 crossfade</emphasis>
+     <emphasis role="opc">out</emphasis>      aout</programlisting>
+      </example>
+    </para>
+
+    <para>
+      L'exemple ci-dessus montre l'opération de base de <emphasis>flooper2</emphasis>.
+      La hauteur peut être contrôlée au taux-k ainsi que l'amplitude et les paramètres
+      de boucle. L'exemple suppose que la table 1 contient au moins 5.05 secondes de
+      données audio (boucle durant 4 secondes, commençant 1 seconde après le début de
+      la table, avec un fondu enchainé de 0.05 secondes après la fin de la boucle). La
+      boucle est en mode 0 (boucle normale à l'endroit).
+    </para>
+
+    <para>
+      Voici un autre exemple de l'opcode flooper2. Il utilise le fichier
+      <ulink url="examples/flooper2.csd"><citetitle>flooper2.csd</citetitle></ulink>
+      et <ulink url="examples/fox.wav"><citetitle>fox.wav</citetitle></ulink>.
+      <example>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/flooper2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Juillet 2006 </member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau greffon dans la version 5</para>
+    <para>Juillet 2006.</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,123 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="GEN12">
+      <indexterm id="IndexGEN12"><primary>GEN12</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN12</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>GEN12</refname>
+    <refpurpose>
+      Génère le logarithme d'une fonction de Bessel de seconde espèce modifiée.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère le logarithme d'une fonction de Bessel de seconde espèce modifiée, d'ordre 0, adaptée pour la
+      MF modulée en amplitude.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>f</command> # date taille 12 intx</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>taille</emphasis> -- nombre de points dans la table. Doit être une puissance de 2 ou une
+      puissance-de-2 plus 1 (voir l'<link linkend="f"><citetitle>instruction f</citetitle></link>).
+    </para>
+
+    <para>
+      <emphasis>intx</emphasis> -- spécifie l'intervalle des <emphasis>x</emphasis> [0 à
+      <emphasis>+intx</emphasis>] sur lequel la fonction est définie.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Ce sous-programme calcule le logarithme naturel d'une fonction de Bessel de seconde espèce
+              modifiée, d'ordre 0 (habituellement écrite comme
+              <emphasis>I<subscript>0</subscript></emphasis>),
+              sur l'intervalle des x demandé. Cet appel devrait désactiver la normalisation.
+            </para>
+          </listitem>
+
+          <listitem>
+            <para>
+              Cette fonction est utile comme facteur d'échelle d'amplitude dans la MF à période synchrone
+              modulée en amplitude. (Voir Palamin &amp; Palamin, <emphasis>J. Audio Eng. Soc., 36/9</emphasis>,
+              Sept. 1988, pp.671-684.) L'algorithme est intéressant car il permet de rendre le spectre de
+              MF, habituellement symétrique, assymétrique autour d'une fréquence autre que la porteuse, et
+              il est ainsi utile pour placer des formants. En utilisant un index de lecture dans la table
+              de <emphasis>I</emphasis>(<emphasis>r</emphasis> - 1/<emphasis>r</emphasis>), où
+              <emphasis>I</emphasis> est l'index de modulation et <emphasis>r</emphasis> est un paramètre
+              exponentiel affectant l'importance des partiels, l'algorithme Palamin se montre relativement
+              efficace, ne demandant que des oscil, des lecture de table, et un appel
+              d'<emphasis>exp</emphasis>.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </note>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de la routine GEN12. Il utilise le fichier
+      <ulink url="examples/gen12.csd"><citetitle>gen12.csd</citetitle></ulink>.
+      <example>
+        <title>Un exemple de la routine GEN12.</title>
+        <para>
+          Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+          et <link linkend="CommandFlags"><citetitle>Options de Ligne de Commande</citetitle></link> pour
+          plus d'information sur l'utilisation des options de la ligne de commande.
+        </para>
+        <xi:include href="examples-xml/gen12.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      <textobject>
+        <phrase>Voici le diagramme de la forme d'onde de la routine GEN12 utilisée
+        dans l'exemple :</phrase>
+      </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen12.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 37 0 1024 -12 40 - fonction de Bessel définie de 0 à 40</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 37 0 1024 -12 40 - fonction de Bessel définie de 0 à 40</para>
+        </caption>
+      </mediaobject>
+
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      L'exemple provient du Csound Book (p. 87) avec de légères modifications.
+    </para>
+  </refsect1>
+</refentry>

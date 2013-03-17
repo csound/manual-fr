@@ -1,0 +1,184 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvanal">
+  <refentryinfo><title>Utilities</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvanal</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>pvanal</refname>
+    <refpurpose>
+      Convertit un fichier son en une série de trames de transformation de Fourier à
+      court terme.
+      <indexterm id="IndexPvanal"><primary>pvanal</primary></indexterm>
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Analyse de Fourier pour le générateur de Csound
+      <link linkend="pvoc"><citetitle>pvoc</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>csound -U pvanal</command> [options] nomfic_entree nomfic_sortie</synopsis>
+
+    <synopsis><command>pvanal</command> [options] nomfic_entree nomfic_sortie</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Extension de pvanal pour créer un fichier PVOC-EX.</title>
+    <para>
+      L'utilitaire standard de Csound pvanal a été étendu pour permettre la création d'un
+      fichier au format PVOC-EX, en utilisant l'interface existante. Pour créer un fichier
+      PVOC-EX, le nom de fichier doit avoir comme extension <quote>.pvx</quote>, par exemple
+      <quote>test.pvx</quote>. La nécessité pour la taille de TFR d'être une puissance de
+      deux n'est plus obligatoire ici, et n'importe quelle valeur positive est acceptée ;
+      les nombres impairs sont arrondis en interne. Cependant, les tailles en puissance de
+      deux sont toujours préférables pour toutes les applications normales.
+    </para>
+
+    <para>
+      Les drapeaux de sélection de canal sont ignorés, et tous les canaux de la source
+      seront analysés et écrits dans le fichier de sortie, jusqu'à la limite, fixée à 
+      la compilation, de huit canaux. La taille de la fenêtre d'analyse (itaillefen) est
+      fixée en interne au double de la taille de la TFR.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>pvanal</emphasis> convertit un fichier son en une série de trames de
+      transformation de Fourier à court terme (STFT) à espacement temporel régulier
+      (une représentation du domaine fréquentiel). Le fichier de sortie peut être
+      utilisé par <link linkend="pvoc"><citetitle>pvoc</citetitle></link> pour générer
+      des fragments audio basés sur le son échantillonné original, avec des échelles
+      de temps et des hauteurs arbitraires et modifiées dynamiquement. L'analyse est
+      conditionnée par les options ci-dessous. Un espace est facultatif entre le
+      drapeau et son argument.
+    </para>
+
+    <para>
+      <emphasis>-s srate</emphasis> -- taux d'échantillonnage du fichier audio d'entrée. Il
+      remplacera la valeur srate de l'en-tête du fichier audio, qui s'applique autrement. Si
+      aucun des deux n'est présent, la valeur par défaut est 10000.
+    </para>
+
+    <para>
+      <emphasis>-c canal</emphasis> -- numéro du canal à traiter. La valeur par défaut est 1.
+    </para>
+
+    <para>
+      <emphasis>-b début</emphasis> -- date du début (en secondes) du segment audio à
+      analyser. La valeur par défaut est 0,0
+    </para>
+
+    <para>
+      <emphasis>-d durée</emphasis> -- durée (en secondes) du segment audio à analyser.
+      La valeur par défaut de 0,0 signifie la fin du fichier.
+    </para>
+
+    <para>
+      <emphasis>-n tailletrame</emphasis> -- taille de trame STFT, le nombre d'échantillons
+      dans chaque trame de l'analyse de Fourier. Doit être une puissance de deux dans
+      l'intervalle 16 à 16384. Pour des résultats propres, une trame doit être plus grande
+      que la période de hauteur la plus longue du son échantillonné. Cependant, des trames
+      très longues donnent un &quot;brouillage&quot; temporel ou une réverbération. La
+      largeur de bande de chaque bin de STFT est déterminée par le rapport
+      <emphasis>srate</emphasis> / <emphasis>tailletrame</emphasis>. La
+      taille de trame par défaut est la plus petite puissance de deux qui correspond à
+      plus de 20 ms de la source (par exemple 256 points avec un échantillonage à 10 kHz,
+      donnant une trame de 25,6 ms).
+    </para>
+
+    <para>
+      <emphasis>-w factfen</emphasis> -- facteur de chevauchement de fenêtre. Il contrôle
+      le nombre de trames de transformation de Fourier par seconde.
+      <link linkend="pvoc"><citetitle>pvoc</citetitle></link> interpolera entre les trames,
+      mais un nombre insuffisant de trames générera des distorsions audibles ; trop de
+      trames donneront un fichier d'analyse gigantesque. 4 est un bon compromis pour
+      <emphasis>factfen</emphasis>, signifiant que chaque point d'entrée apparaît dans 4
+      fenêtres de sortie, ou inversement que le décalage entre trames de STFT successives
+      est <emphasis>tailletrame</emphasis> / 4. La valeur par défaut est 4. N'utilisez pas
+      cette option en même temps que <emphasis>-h</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>-h taillesaut</emphasis> -- décalage de trame STFT. Le contraire de
+      l'option précédente, spécifiant l'incrément en échantillons entre les trames d'analyse
+      successives (voir aussi <link linkend="lpanal"><citetitle>lpanal</citetitle></link>).
+      N'utilisez pas cette option en même temps que <emphasis>-w</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>-H</emphasis> -- utilise une fenêtre de Hamming à la place de la fenêtre
+      de von Hann employée par défaut.
+    </para>
+
+    <para>
+      <emphasis>-K</emphasis> -- utilise une fenêtre de Kaiser à la place de la fenêtre
+      de von Hann employée par défaut. Le paramètre de la fenêtre de Kaiser vaut 6,8 par
+      défaut, mais il peut être fixé avec l'option <emphasis>-B</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>-B beta</emphasis> -- fixe le paramètre beta d'une fenêtre de Kaiser utilisée,
+      à la valeur en virgule flottante <emphasis>beta</emphasis>.
+    </para>
+
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+<!--       <informalexample> -->
+        <programlisting><emphasis>pvanal</emphasis> unson fichierpv</programlisting>
+<!--       </informalexample> -->
+      analysera le fichier son &quot;unson&quot; en utilisant les valeurs par défaut de
+      <emphasis>tailletrame</emphasis> et de <emphasis>factfen</emphasis> pour produire
+      le fichier &quot;pvfile&quot; approprié pour une utilisation avec
+      <emphasis>pvoc</emphasis>.
+    </para>
+
+    <refsect2>
+      <title>Fichiers</title>
+      <para>
+        Le fichier de sortie a un en-tête spécial <emphasis>pvoc</emphasis> contenant les
+        détails du fichier source audio, le taux des trames d'analyse et le facteur de
+        chevauchement. Les trames de données de l'analyse sont stockées en virgule flottante,
+        avec la magnitude et la <quote>fréquence</quote> (en Hz) des N/2 + 1 premiers bins
+        de Fourier de chaque trame successive. La <quote>fréquence</quote> encode
+        l'incrément de phase de façon à donner une bonne indication de la fréquence réelle
+        pour les harmoniques à fort niveau. Pour les faibles amplitudes ou les harmoniques
+        évoluant rapidement c'est moins significatif.
+      </para>
+    </refsect2>
+
+    <refsect2>
+      <title>Diagnostiques</title>
+      <para>
+        Imprime le nombre total de trames, et le nombre de trames complétées toutes les 20 trames.
+      </para>
+    </refsect2>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : Dan Ellis</para>
+    <para>MIT Media Lab</para>
+    <para>Cambridge, Massachussetts</para>
+    <para>1990</para>
+  </refsect1>
+</refentry>

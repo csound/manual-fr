@@ -1,0 +1,109 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.10
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ATSinterpread">
+<indexterm id="IndexATSinterpread"><primary>ATSinterpread</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:ATS</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ATSinterpread</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ATSinterpread</refname>
+    <refpurpose> permet de déterminer l'enveloppe de fréquence de n'importe quel
+    <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>.
+    </refpurpose>
+  </refnamediv>
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>ATSinterpread</emphasis> permet de déterminer l'enveloppe de
+      fréquence de n'importe quel
+      <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kamp <command>ATSinterpread</command> kfreq</synopsis>
+  </refsect1>
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kfreq</emphasis> - une valeur de fréquence (en Hz) utilisée par
+      <emphasis>ATSinterpread</emphasis> comme indice dans la table produite par
+      un <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>.
+    </para>
+    <para>
+      <emphasis>ATSinterpread</emphasis> prend une valeur de fréquence
+      (<emphasis>kfreq</emphasis> en Hz). Cette fréquence sert à indexer les
+      données d'un
+      <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>. La
+      valeur retournée est une amplitude obtenue de
+      l'<link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>
+      après interpolation. <emphasis>ATSinterpread</emphasis> permet de
+      déterminer l'enveloppe de fréquence de n'importe quel
+      <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>. Ces
+      données peuvent être utiles pour plusieurs raisons, dont l'une est la
+      réalisation de la synthèse croisée entre des données provenant d'un
+      fichier ATS et des données non ATS.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode ATSinterpread. Il utilise le fichier
+      <ulink url="examples/ATSinterpread.csd"><citetitle>ATSinterpread.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode ATSinterpread.</title>
+          <xi:include href="examples-xml/ATSinterpread.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Cet exemple montre comment utiliser <emphasis>ATSinterpread</emphasis>.
+      Ici une fréquence est fournie par la partition (p4) et cette fréquence est
+      passée à un <emphasis>ATSinterpread</emphasis> (avec un
+      <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>)
+      correspondant. L'<emphasis>ATSinterpread</emphasis> utilise cette
+      fréquence pour retourner l'amplitude correspondante basée sur le fichier
+      ATS donné par le
+      <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>
+      (beats.ats dans ce cas). Nous utilisons ensuite cette amplitude pour
+      pondérer une onde sinus qui est synthétisée avec la même fréquence (p4).
+      On peut étendre ceci pour inclure plusieurs ondes sinus. De cette manière
+      il est possible de synthétiser n'importe quelle fréquence raisonnable
+      (comprise entre la fréquence basse et la fréquence haute du fichier ATS
+      indiqué), et de conserver la forme (en fréquence) du fichier ATS (donné
+      par l'<link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>).
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ATSread"><citetitle>ATSread</citetitle></link>, 
+      <link linkend="ATSreadnz"><citetitle>ATSreadnz</citetitle></link>, 
+      <link linkend="ATSinfo"><citetitle>ATSinfo</citetitle></link>, 
+      <link linkend="ATSsinnoi"><citetitle>ATSsinnoi</citetitle></link>, 
+      <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>, 
+      <link linkend="ATScross"><citetitle>ATScross</citetitle></link>, 
+      <link linkend="ATSpartialtap"><citetitle>ATSpartialtap</citetitle></link>, 
+      <link linkend="ATSadd"><citetitle>ATSadd</citetitle></link>, 
+      <link linkend="ATSaddnz"><citetitle>ATSaddnz</citetitle></link></para>
+  </refsect1>
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Alex Norman</member>
+        <member>Seattle, Washington</member>
+        <member>2004</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

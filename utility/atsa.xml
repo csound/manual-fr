@@ -1,0 +1,184 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.10
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="UtilityAtsa">
+  <refentryinfo><title>Utilities</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>atsa</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>atsa</refname>
+    <refpurpose>
+      Effectue une analyse ATS sur un fichier son.
+      <indexterm id="IndexAtsa"><primary>atsa</primary></indexterm>
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Analyse ATS à utiliser avec les opcodes de Csound de
+	    <link linkend="SpectralATS"><citetitle>Resynthèse ATS</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>csound -U atsa</command> [options] nomfichier_entree nomfichier_sortie</synopsis>
+
+  </refsect1>
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      Les options suivantes peuvent être positionnées pour atsa. (Les valeurs par défaut sont mises entre
+      parenthèses) :
+      <simplelist type='horiz'>
+        <member>-b début (0,000000 secondes)</member>
+        <member>-e durée (0,000000 secondes, signifie jusqu'à la fin)</member>
+        <member>-l fréquence la plus basse (20,000000 Hz)</member>
+        <member>-H fréquence la plus haute (20000,000000 Hz)</member>
+        <member>-d déviation en fréquence (0,100000 de la fréquence d'un partiel)</member>
+        <member>-c cycles par fenêtre (4 cycles)</member>
+        <member>-w type de fenêtre (type : 1) (Options : 0=BLACKMAN, 1=BLACKMAN_H, 2=HAMMING, 3=VONHANN)</member>
+        <member>-h taille de saut (0,250000 de la taille de fenêtre)</member>
+        <member>-m magnitude la plus faible (-60,000000)</member>
+        <member>-t longueur de trajectoire (3 trames)</member>
+        <member>-s longueur minimale de segment (3 trames)</member>
+        <member>-g longueur minimale des blancs (3 trames)</member>
+        <member>-T seuil du SMR (30,000000 dB SPL)</member>
+        <member>-S SMR Minimum de Segment (60,000000 dB SPL)</member>
+        <member>-P contribution du dernier pic (0,000000 des paramètres du dernier pic)</member>
+        <member>-M contribution du SMR (0,500000)</member>
+        <member>-F Type de Fichier (type : 4) (Options : 1=amp. et fréq. seulement,
+          2=amp., fréq. et phase, 3=amp., fréq. et résiduel, 4=amp., fréq., phase et résiduel)</member>
+      </simplelist>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Paramètres</title>
+    <para>L'analyse ATS a été conçue par Juan Pampin. Pour une information complète sur ATS visiter : <ulink
+      url="http://www-ccrma.stanford.edu/~juan/ATS.html">http://www-ccrma.stanford.edu/~juan/ATS.html</ulink>.
+    </para>
+    <para>Les paramètres d'analyse doivent être réglés soigneusement pour l'Algorithme d'Analyse (ATSA) afin
+      de capturer la nature du signal à analyser. Comme ils sont nombreux, ATSH offre la possibilité de les
+      Sauvegarder/Charger dans un Fichier Binaire portant l'extension "<filename>.apf</filename>".
+      L'extension n'est pas obligatoire, mais recommandée. Une brève explication de chaque Paramètre
+      d'Analyse suit :
+    </para>
+    <orderedlist>
+      <listitem><para>Début (secs.): la date de début de l'analyse en secondes.</para>
+      </listitem>
+      <listitem><para>Durée (secs.): la durée de l'analyse en secondes. Un zéro signifie la durée entière
+        du fichier son en entrée.</para>
+      </listitem>
+      <listitem><para>Fréquence la Plus Basse (Hz) : ce paramètre va déterminer partiellement la taille
+        de la Fenêtre d'Analyse à utiliser. Pour calculer la taille de la Fenêtre d'Analyse, la période
+        de la Fréquence la Plus Basse en échantillons (<emphasis>SR</emphasis> / <emphasis>LF</emphasis>)
+        est multipliée par le nombre de cycles de celle-ci que l'utilisateur veut caser dans la Fenêtre
+        d'Analyse (voir paramètre 6). Cette valeur est arrondie à la plus proche puissance de deux supérieure
+        pour déterminer la taille de la TFR pour l'analyse. Les échantillons en trop sont remplis par des
+        zéros. Si le signal est un son unique, harmonique, alors la valeur de la Fréquence la Plus Basse
+        sera celle du fondamental ou d'un sous-harmonique de celui-ci. Si le son n'est pas harmonique,
+        alors sa fréquence significative la plus basse pourra être une bonne valeur de départ.</para>
+      </listitem>
+      <listitem><para>Fréquence la Plus Haute (Hz) : fréquence la plus haute à prendre en compte pour la
+        Détection de Pic. Une fois que l'on sait qu'aucune information pertinente ne se trouve au-delà
+        d'une certaine fréquence, l'analyse peut être plus rapide et plus précise en réglant la Fréquence
+        la Plus Haute à cette valeur.</para>
+      </listitem>
+      <listitem><para>Déviation de Fréquence (Rapport) : déviation de fréquence autorisée pour chaque
+        pic dans l'Algorithme de Continuation des Pics, comme fraction de la fréquence concernée. Par
+        exemple, si l'on considère un pic à 440 Hz et une Déviation de 0,1 l'Algorithme de
+        Continuation des Pics n'essaiera de trouver des candidats pour la continuité qu'entre 396 et 484 Hz
+        (10% au-dessus et en-dessous de la fréquence du pic). Une petite valeur produira probablement
+        plus de trajectoires tandis qu'une grande valeur les réduira, mais au prix d'une plus grande
+        difficulté à traiter l'information par la suite.</para>
+      </listitem>
+      <listitem><para>Nombre de Cycles de la Fréquence la Plus Basse à caser dans une Fenêtre d'Analyse :
+        il déterminera aussi partiellement la taille de la Fenêtre de Transformation de Fourier à utiliser.
+        Voir le paramètre 3. Pour des signaux à un seul harmonique, il est supposé être supérieur à 1
+        (typiquement 4).</para>
+      </listitem>
+      <listitem><para>Taille de Saut (Rapport) : taille de l'intervalle entre une Fenêtre d'Analyse et la
+        suivante exprimée comme une fraction de la Taille de Fenêtre. Par exemple, une Taille de Saut de
+        0,25 "sautera" de 512 échantillons (les Fenêtres se chevaucheront sur 75% de leur taille). Ce
+        paramètre déterminera aussi la taille des trames d'analyse obtenues. Les signaux qui changent leur
+        spectre très rapidement (comme les sons de la Parole) peuvent nécessiter un taux de trame élévé
+        afin de suivre au mieux leurs changements.</para>
+      </listitem>
+      <listitem><para>Limite d'Amplitude (dB) : la valeur d'amplitude la plus élévée à prendre en compte pour
+        la Détection de Pic.</para>
+      </listitem>
+      <listitem><para>Type de Fenêtre : la forme de la fonction de lissage à utiliser pour l'Analyse de
+        Fourier. Il y a quatre choix possibles pour le moment : Blackman, Blackman-Harris, Von Hann, et
+        Hanning. Des spécifications précises sur celles-ci se trouvent facilement dans la bibliographie
+        sur le traitement numérique du signal.</para>
+      </listitem>
+      <listitem><para>Longueur de Trajectoire (Trames) : L'Algorithme de Continuation des Pics regardera
+        "en arrière" sur un nombre de trames égal à Longueur afin de réaliser sa tâche au mieux, et
+        d'éviter que les trajectoires de fréquence ne s'incurvent trop et perdent leur stabilité.
+        Cependant, une grande valeur pour ce paramètre ralentira l'analyse de manière significative.</para>
+      </listitem>
+      <listitem><para>Longueur Minimale de Segment (Trames) : une fois l'analyse réalisée, les données
+        spectrales peuvent être "nettoyées" durant le post-traitement. Les trajectoires plus petites que
+        cette valeur sont supprimées si leur SMR moyen est inférieur au SMR Minimum de Segment (voir les
+        paramètres 16 et 14). Ceci peut aider à éviter les changements soudains non pertinents tout en
+        gardant un taux de trames élevé, réduisant aussi le nombre de sinusoïdes épisodiques durant la
+        synthèse.</para>
+      </listitem>
+      <listitem><para>Longueur Minimale des Blancs (Trames): comme le paramètre 11, celui-ci est aussi
+        utilisé pour nettoyer les données durant le post-traitement. Dans ce cas, les blancs (valeurs
+        d'amplitude nulle, c'est-à-dire le "silence" théorique) contigus dont le nombre de trames est plus
+        grand que Longueur sont remplis avec des valeurs d'amplitude/fréquence obtenues par interpolation
+        linéaire des trames actives adjacentes. Ce paramètre empêche les interruptions soudaines des
+        trajectoires stables tout en gardant un taux de trames élevé.</para>
+      </listitem>
+      <listitem><para>Seuil du SMR (dB SPL) : également un paramètre de post-traitement, le seuil du SMR
+        est utilisé pour éliminer les partiels avec de faibles moyennes.</para>
+      </listitem>
+      <listitem><para>SMR Minimum de Segment (dB SPL) : ce paramètre est utilisé en combinaison avec le
+        paramètre 11. Les segments courts ayant un SMR moyen inférieur à cette valeur seront supprimés
+        durant le post-traitement.</para>
+      </listitem>
+      <listitem><para>Contribution du Dernier Pic (0 à 1) : comme c'est expliqué dans le Paramètre
+        10, l'Algorithme de Continuation des Pics regarde "en arrière" sur plusieurs trames afin de réaliser
+        sa tâche au mieux. Ce paramètre aidera à pondérer la contribution du premier des pics
+        précédents sur les autres. Une valeur de zéro signifie que tous les pics précédents (jusqu'à
+        la taille du Paramètre 10) sont pris également en compte.</para>
+      </listitem>
+      <listitem><para>Contribution du SMR (0 à 1) : en plus de la proximité en fréquence des pics,
+        l'Algorithme de Continuation des Pics ATS peut utiliser une information psychoacoustique (le
+        Rapport Signal-Masque, ou SMR) pour améliorer les résultats perceptifs. Ce paramètre indique quelle
+        quantité d'information SMR est utilisée durant la détection. Par exemple, une valeur de 0,5 fait que
+        l'Algorithme de Continuation des Pics utilise 50% d'information SMR et 50% d'information de Proximité
+        en Fréquence pour décider quel est le meilleur candidat pour continuer la trajectoire
+        sinusoïdale.</para>
+      </listitem>
+    </orderedlist>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      La commande suivante :
+<!--      <informalexample> -->
+        <programlisting>
+<emphasis>atsa</emphasis> -b0.1 -e1 -l100 -H10000 -w2 fichieraudio.wav fichieraudio.ats</programlisting>
+<!--      </informalexample> -->
+      Génère le fichier d'analyse ATS '<filename>fichieraudio.ats</filename>' à partir du fichier original
+      '<filename>fichieraudio.wav</filename>'. L'analyse commence à partir de 0,1 seconde dans le
+      fichier et elle est effectuée sur 1 seconde. La fréquence la plus basse est 100 Hz et la plus
+      haute est 10 kHz. Une fenêtre de Hamming est utilisée pour chaque trame d'analyse.
+    </para>
+
+  </refsect1>
+</refentry>

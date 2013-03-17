@@ -1,0 +1,114 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="mincer">
+<indexterm id="IndexMincer"><primary>mincer</primary></indexterm>
+  <refentryinfo><title>Spectral processing: mincer</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>mincer</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>mincer</refname>
+    <refpurpose>
+      Traitement vocodeur à verrouillage de phase.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>mincer</emphasis> implémente le traitement vocodeur à verrouillage
+      de phase en utilisant des tables de fonction contenant des sources sonores
+      échantillonnées avec <link linkend="GEN01"><citetitle>GEN01</citetitle></link>.
+      <emphasis>mincer</emphasis> accepte les tables à allocation différée.
+    </para>
+    <para>
+      Cet opcode permet des mises à l'échelle du temps et de la fréquence indépendantes.
+      Le temps est contrôlé par un indice temporel (en secondes) de la position
+      dans la table de fonction et peut évoluer en avant ou en arrière à n'importe
+      quelle vitesse ainsi que s'arrêter à une position donnée ("gelé"). La
+      qualité de l'effet est généralement améliorée avec le verrouillage de
+      phase activé.
+    </para>
+    <para>
+      <emphasis>mincer</emphasis> met aussi à l'échelle la hauteur, indépendamment
+      de la fréquence, en utilisant un facteur de transposition (de taux-k).
+     </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>asig <command>mincer</command> atimpt, kamp, kpitch, ktab, klock[,ifftsize,idecim]
+      </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+      <para>
+      <emphasis>ifftsize</emphasis> -- taille de la TFR size (puissance de deux),
+      2048 par défaut.
+    </para>
+	      <para>
+      <emphasis>idecim</emphasis> -- décimation, 4 par défaut (ce qui signifie que
+      la taille du saut est égale à la taille de la TFR divisée par 4)
+    </para>
+	</refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+  <para>
+      <emphasis>atimpt</emphasis> -- position temporelle de l'échantillon audio
+      courant en secondes. La lecture de table cycle à la fin de la table de
+      fonction.
+    </para>
+    <para>
+      <emphasis>kamp</emphasis> -- mise à l'échelle de l'amplitude.
+    </para>
+    <para>
+      <emphasis>kpitch</emphasis> -- mise à l'échelle de la hauteur de grain
+      (1=hauteur normale, &lt; 1 plus grave, &gt; 1 plus aigu ; négatif, inversée)
+    </para>
+
+    <para>
+      <emphasis>klock</emphasis> -- 0 ou 1, pour désactiver ou activer le verrouillage
+      de phase.
+    </para>
+    <para>
+      <emphasis>ktab</emphasis> -- table de fonction du signal source. Les tables
+      à allocation différée sont acceptées (voir
+      <link linkend="GEN01"><citetitle>GEN01</citetitle></link>), mais l'opcode
+      attend une source mono. On peut changer de table au taux-k.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode mincer. Il utilise le fichier
+      <ulink url="examples/mincer.csd"><citetitle>mincer.csd</citetitle></ulink>
+      <example>
+        <title>Exemple de l'opcode mincer.</title>
+        <xi:include href="examples-xml/mincer.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Février 2010</member>
+      </simplelist>
+    </para>
+    <para>Nouveau greffon dans la version 5.13</para>
+    <para>Février 2005.</para>
+  </refsect1>
+</refentry>

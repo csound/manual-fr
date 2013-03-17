@@ -1,0 +1,79 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="p">
+<indexterm id="IndexP"><primary>p</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Initialization and Reinitialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>p</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>p</refname>
+    <refpurpose>
+      Montre la valeur contenu dans un p-champ donné.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Montre la valeur contenu dans un p-champ donné.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>p</command>(x) </synopsis>
+
+    <para>
+      Cette fonction tourne au taux-i et au taux-k.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>x</emphasis> -- le numéro du p-champ.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      La valeur retournée par la fonction <emphasis>p</emphasis> est la valeur
+      contenue dans un p-champ.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode p. Il utilise le fichier
+      <ulink url="examples/p.csd"><citetitle>p.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode p.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/p.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie contiendra des lignes comme celle-ci :
+      <screen>
+instr 1:  i1 = 50.375</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Exemple écrit par &namekevin;.</para>
+  </refsect1>
+</refentry>

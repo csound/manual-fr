@@ -1,0 +1,92 @@
+<!--translated=yes
+authors=Yannick St-Onge
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="veloc">
+<indexterm id="IndexVeloc"><primary>veloc</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Input</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>veloc</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>veloc</refname>
+    <refpurpose>
+      Donne la vélocité d'un évènement MIDI.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Donne la vélocité d'un évènement MIDI.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ival <command>veloc</command> [ilow] [, ihigh]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ilow, ihigh</emphasis> -- Limites basse et haute pour le mappage
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Donne la valeur de l'octet MIDI (0 - 127) pour la vélocité de l'évènement courant.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode veloc. Il utilise le fichier
+      <ulink url="examples/veloc.csd"><citetitle>veloc.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple le l'opcode veloc.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/veloc.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="aftouch"><citetitle>aftouch</citetitle></link>,
+      <link linkend="ampmidi"><citetitle>ampmidi</citetitle></link>,
+      <link linkend="cpsmidi"><citetitle>cpsmidi</citetitle></link>,
+      <link linkend="cpsmidib"><citetitle>cpsmidib</citetitle></link>,
+      <link linkend="midictrl"><citetitle>midictrl</citetitle></link>,
+      <link linkend="notnum"><citetitle>notnum</citetitle></link>,
+      <link linkend="octmidi"><citetitle>octmidi</citetitle></link>,
+      <link linkend="octmidib"><citetitle>octmidib</citetitle></link>,
+      <link linkend="pchbend"><citetitle>pchbend</citetitle></link>,
+      <link linkend="pchmidi"><citetitle>pchmidi</citetitle></link>,
+      <link linkend="pchmidib"><citetitle>pchmidib</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namebarry; - &namemike;</member>
+        <member>MIT - Mills</member>
+        <member>Mai 1997</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

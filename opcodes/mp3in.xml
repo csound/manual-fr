@@ -1,0 +1,121 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.5
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="mp3in">
+<indexterm id="IndexMp3in"><primary>mp3in</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Signal Input</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>mp3in</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>mp3in</refname>
+    <refpurpose>
+      Lit des données audio stéréo depuis un fichier MP3 externe.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Lit des données audio stéréo depuis un fichier MP3 externe.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ar1, ar2 <command>mp3in</command> ifilcod[, iskptim, iformat, iskipinit, ibufsize]</synopsis>
+  </refsect1>
+
+   <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifilcod</emphasis> -- entier ou chaîne de caractères donnant le nom
+      du fichier son source. Un entier indique le fichier soundin.filcod ; une chaîne
+      de caractères (entre guillemets, espaces autorisés) donne le nom de fichier
+      lui-même, éventuellement un nom de chemin complet. Si ce n'est pas un nom de
+      chemin complet, le fichier nommé est d'abord cherché dans le répertoire
+      courant, puis dans celui qui est donné par la variable d'environnement
+      <link linkend="CommandEnvironment"><citetitle>SSDIR</citetitle></link>
+      (si elle est définie) puis par
+      <link linkend="CommandEnvironment"><citetitle>SFDIR</citetitle></link>.
+    </para>
+
+    <para>
+      <emphasis>iskptim</emphasis> (facultatif) -- portion du son en entrée à
+      ignorer, exprimée en secondes. La valeur par défaut est 0.
+    </para>
+
+    <para>
+      <emphasis>iformat</emphasis> (facultatif) -- spécifie le format des données
+      du fichier audio : n'est pas encore implémenté et vaut stéréo par défaut.
+    </para>
+
+    <para>
+     <emphasis>iskipinit</emphasis> (facultatif) -- supprime toute initialisation
+     s'il est non nul (vaut 0 par défaut).
+    </para>
+
+    <para>
+     <emphasis>ibuffersize</emphasis> (facultatif) -- fixe la taille du tampon de
+     lecture interne. Si la valeur est omise, nulle ou négative la taille par défaut est
+     de 4096 octets.
+    </para>
+  </refsect1>
+
+ <refsect1>
+    <title>Exécution</title>
+    <para>
+      Lit des données audio stéréo depuis un fichier MP3 externe.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode mp3in. Il utilise le fichier
+      <ulink url="examples/mp3in.csd"><citetitle>mp3in.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode mp3in.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/mp3in.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="diskin"><citetitle>diskin</citetitle></link>,
+      <link linkend="ins"><citetitle>ins</citetitle></link>,
+      <link linkend="in"><citetitle>in</citetitle></link>,
+      <link linkend="inch"><citetitle>inh</citetitle></link>,
+      <link linkend="inh"><citetitle>inh</citetitle></link>,
+      <link linkend="ino"><citetitle>ino</citetitle></link>,
+      <link linkend="inq"><citetitle>inq</citetitle></link>,
+      <link linkend="mp3len"><citetitle>mp3len</citetitle></link>,
+      <link linkend="soundin"><citetitle>soundin</citetitle></link>
+     </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Codemist Ltd</member>
+        <member>2009</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.11</para>
+  </refsect1>
+</refentry>

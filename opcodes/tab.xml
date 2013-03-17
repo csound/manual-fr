@@ -1,0 +1,113 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="tab">
+<indexterm id="IndexTabw_i"><primary>tabw_i</primary></indexterm>
+
+<indexterm id="IndexTabw"><primary>tabw</primary></indexterm>
+
+<indexterm id="IndexTab_i"><primary>tab_i</primary></indexterm>
+
+<indexterm id="IndexTab"><primary>tab</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Table Access</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tab</refentrytitle>
+  </refmeta>
+
+   <refnamediv>
+    <refname>tab</refname>
+    <refpurpose>
+      Opcodes de table rapides.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Opcodes de table rapides. Plus rapides que
+      <link linkend="table"><citetitle>table</citetitle></link> et que
+      <link linkend="tablew"><citetitle>tablew</citetitle></link> parce qu'ils
+      fonctionnent sans indexation cyclique et sans limite et qu'ils ne testent
+      pas la validité des index. Ils ont été implémentés pour fournir un accès
+      rapide aux tableaux. Ils supportent les tables dont la longueur n'est pas
+      une puissance de deux (pouvant être générées par n'importe quelle
+      fonction GEN en lui donnant une valeur de longueur négative).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+      <synopsis>ir <command>tab_i</command> indx, ifn[, ixmode]</synopsis>
+      <synopsis>kr <command>tab</command> kndx, ifn[, ixmode]</synopsis>
+      <synopsis>ar <command>tab</command> xndx, ifn[, ixmode]</synopsis>
+      <synopsis><command>tabw_i</command> isig, indx, ifn [,ixmode]</synopsis>
+      <synopsis><command>tabw</command> ksig, kndx, ifn [,ixmode]</synopsis>
+      <synopsis><command>tabw</command> asig, andx, ifn [,ixmode]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn</emphasis> -- numéro de la table.
+    </para>
+    <para>
+      <emphasis>ixmode</emphasis> -- zéro par défaut. S'il est nul, l'intervalle
+      de variation de <emphasis>xndx</emphasis> et de <emphasis>ixoff</emphasis>
+      est la longueur de la table ; s'il est non nul, <emphasis>xndx</emphasis>
+      et <emphasis>ixoff</emphasis> varient entre 0 et 1. 
+    </para>
+    <para>
+      <emphasis>isig</emphasis> -- valeur d'entrée à écrire.
+    </para>
+    <para>
+      <emphasis>indx</emphasis> -- index de la table.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig, ksig</emphasis> -- signal d'entrée à écrire.
+    </para>
+    <para>
+      <emphasis>andx, kndx</emphasis> -- index de la table.
+    </para>
+    <para>
+      Les opcodes <emphasis>tab</emphasis> et <emphasis>tabw</emphasis> sont
+      semblables à <emphasis>table</emphasis> et à <emphasis>tablew</emphasis>,
+      mais ils sont plus rapides et supportent des tables dont la longueur n'est
+      une puissance de deux.
+    </para>
+    <para>
+      Il faut apporter une attention spéciale aux valeurs de l'index. Des valeurs
+      d'index en dehors de l'espace alloué pour la table provoqueront un
+      plantage de Csound.
+    </para>
+  </refsect1>
+
+   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode tab. Il utilise le fichier
+      <ulink url="examples/tab.csd"><citetitle>tab.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode tab.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/tab.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par &namegabriel;.</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,102 @@
+<!--translated=yes
+authors=Yannick St-Onge
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="initc14">
+<indexterm id="IndexInitc14"><primary>initc14</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Input</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>initc14</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>initc14</refname>
+
+    <refpurpose>
+      Initialise les contrôleurs pour créer une valeur MIDI sur 14 bit.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Initialise les contrôleurs pour créer une valeur MIDI sur 14 bit.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>initc14</command> ichan, ictlno1, ictlno2, ivalue</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ichan</emphasis> -- canal MIDI (1-16)
+    </para>
+
+    <para>
+      <emphasis>ictlno1</emphasis> -- numéro de contrôleur pour l'octet de poids fort (0-127)
+    </para>
+
+    <para>
+      <emphasis>ictlno2</emphasis> -- numéro de contrôleur pour l'octet de poids faible (0-127)
+    </para>
+
+    <para>
+      <emphasis>ivalue</emphasis> -- valeur décimale (doit être entre 0 et 1)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+     <emphasis>initc14</emphasis> peut être utilisé conjointement avec les opcodes
+     <link linkend="midic14"><citetitle>midic14</citetitle></link> et
+     <link linkend="ctrl14"><citetitle>ctrl14</citetitle></link> pour initialiser la première
+     valeur du contrôleur. L'argument <emphasis>ivalue</emphasis> doit être un nombre entre 0 et 1.
+     Une erreur aura lieu si ce n'est pas le cas. Utiliser cette formule afin d'ajuster
+     <emphasis>ivalue</emphasis> selon les limites min et max de l'intervalle de
+     <emphasis>midic14</emphasis> et de <emphasis>ctrl14</emphasis>:
+
+       <literallayout>
+ivalue = (valeur_initiale - min) / (max - min)
+       </literallayout>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ctrl7"><citetitle>ctrl7</citetitle></link>,
+      <link linkend="ctrl14"><citetitle>ctrl14</citetitle></link>,
+      <link linkend="ctrl21"><citetitle>ctrl21</citetitle></link>,
+      <link linkend="ctrlinit"><citetitle>ctrlinit</citetitle></link>,
+      <link linkend="initc7"><citetitle>initc7</citetitle></link>,
+      <link linkend="initc21"><citetitle>initc21</citetitle></link>,
+      <link linkend="midic7"><citetitle>midic7</citetitle></link>,
+      <link linkend="midic14"><citetitle>midic14</citetitle></link>,
+      <link linkend="midic21"><citetitle>midic21</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.47 de Csound</para>
+    <para>Merci à &namerasmus; pour avoir indiqué les bons intervalles pour le canal MIDI et le numéro de contrôleur.</para>
+  </refsect1>
+</refentry>

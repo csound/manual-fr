@@ -1,0 +1,112 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ntrpol">
+<indexterm id="IndexNtrpol"><primary>ntrpol</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Sample Level Operators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ntrpol</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ntrpol</refname>
+    <refpurpose>
+      Calcule la valeur de la moyenne pondérée de deux signaux d'entrée.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Calcule la valeur de la moyenne pondérée (c'est-à-dire l'interpolation
+      linéaire) de deux signaux d'entrée.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>ntrpol</command> asig1, asig2, kpoint [, imin] [, imax]</synopsis>
+
+    <synopsis>ires <command>ntrpol</command> isig1, isig2, ipoint [, imin] [, imax]</synopsis>
+
+    <synopsis>kres <command>ntrpol</command> ksig1, ksig2, kpoint [, imin] [, imax]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>imin</emphasis> -- valeur minimale pour <emphasis>xpoint</emphasis>
+      (facultatif, 0 par défaut)
+    </para>
+
+    <para>
+      <emphasis>imax</emphasis> -- valeur maximale pour <emphasis>xpoint</emphasis>
+      (facultatif, 1 par défaut)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>xsig1</emphasis>, <emphasis>xsig2</emphasis> -- signaux d'entrée
+    </para>
+
+    <para>
+      <emphasis>xpoint</emphasis> -- point d'interpolation entre les deux valeurs
+    </para>
+
+    <para>
+      L'opcode <emphasis>ntrpol</emphasis> produit l'interpolation linéaire entre
+      deux valeurs d'entrée. <emphasis>xpoint</emphasis> est la distance entre le
+      point d'évaluation et la première valeur. Avec les valeurs par défaut de
+      <emphasis>imin</emphasis> et de <emphasis>imax</emphasis> (0 and 1), une
+      valeur de zéro indique aucune distance depuis la première valeur et une
+      distance maximale à la seconde valeur. Avec une valeur de 0.5,
+      <emphasis>ntrpol</emphasis> produit la valeur moyenne des deux entrées,
+      indiquant exactement le point médian entre <emphasis>xsig1</emphasis> et
+      <emphasis>xsig2</emphasis>. Une valeur de un indique la distance maximale
+      de la première valeur et pas de distance avec la seconde valeur. La plage
+      de valeurs de <emphasis>xpoint</emphasis> peut aussi être définie avec
+      <emphasis>imin</emphasis> et <emphasis>imax</emphasis> pour rendre sa gestion
+      plus facile.
+    </para>
+
+    <para>
+      Ces opcodes sont utiles pour réaliser un fondu-enchainé de deux signaux.
+    </para>
+  </refsect1>
+
+   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode ntrpol. Il utilise le fichier
+      <ulink url="examples/ntrpol.csd"><citetitle>ntrpol.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode ntrpol.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/ntrpol.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+        <member>Octobre 1998</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.49 de Csound.</para>
+  </refsect1>
+</refentry>

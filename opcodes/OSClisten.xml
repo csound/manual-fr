@@ -1,0 +1,175 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.10
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="OSClisten">
+<indexterm id="IndexOSClisten"><primary>OSClisten</primary></indexterm>
+  <refentryinfo><title>OSC</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>OSClisten</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>OSClisten</refname>
+    <refpurpose>
+      Ecoute les messages OSC sur un chemin particulier.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cherche à chaque cycle-k si un message OSC a été envoyé à un certain
+      chemin d'un certain type.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kans <command>OSClisten</command> ihandle, idest, itype [, xdata1, xdata2, ...]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ihandle</emphasis> -- un identifiant retourné par un appel
+      antérieur à <link linkend="OSCinit"><citetitle>OSCinit</citetitle></link>,
+      pour associer <emphasis>OSClisten</emphasis> avec un numéro de port
+      particulier.
+    </para>
+    <para>
+      <emphasis>idest</emphasis> -- une chaîne de caractères représentant
+      l'adresse de destination. Elle est formatée comme un nom de fichier avec
+      des répertoires. Csound utilise cette adresse pour décider si les
+      messages sont destinés à Csound.
+    </para>
+
+    <para>
+      <emphasis>itype</emphasis> -- une chaîne de caractères indiquant le type
+      des arguments optionnels à lire. La chaîne peut contenir les caractères
+      "cdfhis" qui signifient caractère, double, flottant, entier sur 64 bit,
+      entier sur 32 bit et chaîne de caractères. Tous les types sauf 's'
+      nécessitent une variable de taux-k, tandis que 's' nécessite une variable
+      chaîne de caractères.
+    </para>
+
+    <para>
+      Un identifiant est inséré dans le module d'écoute (voir
+      <link linkend="OSCinit"><citetitle>OSCinit</citetitle></link>) pour
+      intercepter les messages conformes à ce modèle.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kans</emphasis> -- fixé à 1 si un nouveau message a été reçu,
+      ou 0 dans le cas contraire. Si plusieurs messages sont reçus dans une
+      seule période de contrôle, les messages sont mis dans un tampon, et
+      <emphasis>OSClisten</emphasis> peut être rappelé jusqu'à ce que 0 soit
+      retourné.
+    </para>
+
+    <para>
+      S'il y avait un message les variables <emphasis>xdata</emphasis>
+      recoivent les valeurs en entrée, selon l'interpétration du
+      paramètre <emphasis>itype</emphasis>. Noter que bien que les variables
+      <emphasis>xdata</emphasis> soient situées à droite de l'opérateur, ce
+      sont des sorties, et elles doivent donc être des variables k, gk, S ou gS,
+      et peut-être nécessiter une déclaration avec <emphasis>init</emphasis>
+      ou = dans le cas des variables chaîne de caractères, avant l'appel à
+      <emphasis>OSClisten</emphasis>.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      L'exemple montre une paire de nombres en virgule flottante reçus sur
+      le port 7770.
+    </para>
+
+      <informalexample>
+        <programlisting>
+  <emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+  <emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 100
+  <emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+
+  gihandle <emphasis role="opc">OSCinit</emphasis> 7770
+
+  <emphasis role="oblock">instr</emphasis>   1
+    kf1 <emphasis role="opc">init</emphasis> 0
+    kf2 <emphasis role="opc">init</emphasis> 0
+nxtmsg:
+    kk  <emphasis role="opc">OSClisten</emphasis> gihandle, &quot;/foo/bar&quot;, &quot;ff&quot;, kf1, kf2
+if (kk <emphasis role="op">==</emphasis> 0) goto ex
+    <emphasis role="opc">printk</emphasis> 0,kf1
+    <emphasis role="opc">printk</emphasis> 0,kf2
+    <emphasis role="opc">kgoto</emphasis> nxtmsg
+ex:
+  <emphasis role="oblock">endin</emphasis>
+        </programlisting>
+      </informalexample>
+
+    <para>
+      Ci-dessous deux fichiers .csd démontrent l'utilisation des opcodes OSC.
+      Ils utilisent les fichiers
+      <ulink url="examples/OSCmidisend.csd"><citetitle>OSCmidisend.csd</citetitle></ulink>
+      et <ulink url="examples/OSCmidircv.csd"><citetitle>OSCmidircv.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemples des opcodes OSC.</title>
+        <para>
+          Les deux fichiers .csd suivants démontrent l'utilisation des opcodes
+          OSC dans Csound. Le premier fichier,
+          <ulink url="examples/OSCmidisend.csd"><citetitle>OSCmidisend.csd</citetitle></ulink>,
+          transforme des messages MIDI reçus en  en données OSC. Le
+          second fichier,
+          <ulink url="examples/OSCmidircv.csd"><citetitle>OSCmidircv.csd</citetitle></ulink>,
+          peut prendre ces messages OSC et les interpréter pour générer du son
+          à partir des messages de note, et stocker les valeurs de contrôleur. Il
+          utilise le contrôleur 7 pour modifier le volume. Noter que ces fichiers
+          sont conçus pour se trouver sur la même machine, mais si une adresse
+          d'hôte différente (dans la macro IPADDRESS) est utilisée, ils peuvent
+          se trouver sur différentes machines d'un réseau, ou connectées via
+          l'internet.
+        </para>
+        <para>Fichier CSD pour envoyer des messages OSC :</para>
+          <xi:include href="examples-xml/OSCmidisend.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <para>Fichier CSD pour recevoir des messages OSC :</para>
+          <xi:include href="examples-xml/OSCmidircv.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="OSCsend"><citetitle>OSCsend</citetitle></link>,
+      <link linkend="OSCinit"><citetitle>OSCinit</citetitle></link>
+    </para>
+    <para>
+      Plus d'information sur cet opcode :
+      <ulink url="http://www.youtube.com/watch?v=JX1C3TqP_9Y"><citetitle>http://www.youtube.com/watch?v=JX1C3TqP_9Y</citetitle></ulink>,
+      par Andrés Cabrera.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>2005</member>
+        <member>Exemples par David Akbari, &nameandres; et Jonathan Murphy 2007</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

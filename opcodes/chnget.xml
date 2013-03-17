@@ -1,0 +1,106 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="chnget">
+<indexterm id="Indexchnget"><primary>chnget</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Software Bus</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>chnget</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>chnget</refname>
+    <refpurpose>
+      Lit des données depuis le bus logiciel.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Lit des données depuis un canal du bus logiciel entrant nommé. Cela implique
+      la déclaration du canal avec <emphasis>imode</emphasis>=1 (voir aussi
+      <link linkend="chn"><citetitle>chn_k, chn_a et chn_S</citetitle></link>).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ival <command>chnget</command> Sname</synopsis>
+    <synopsis>kval <command>chnget</command> Sname</synopsis>
+    <synopsis>aval <command>chnget</command> Sname</synopsis>
+    <synopsis>Sval <command>chnget</command> Sname</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>Sname</emphasis> -- une chaîne de caractères identifiant le
+      canal du bus logiciel nommé à lire.
+    </para>
+    <para>
+      <emphasis>ival</emphasis> -- la valeur de contrôle lue à l'initialisation.
+    </para>
+    <para>
+      <emphasis>Sval</emphasis> -- la chaîne de caractères lue à l'initialisation.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kval</emphasis> -- la valeur de contrôle lue pendant l'exécution.
+    </para>
+    <para>
+      <emphasis>aval</emphasis> -- le signal audio lu pendant l'exécution.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      L'exemple montre l'utilisation du bus logiciel comme signal de contrôle
+      asynchrone pour fixer la fréquence de coupure du filtre. On suppose qu'un
+      programme externe utilisant l'API fournit les valeurs.
+    </para>
+
+    <informalexample>
+      <programlisting>
+        <emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+        <emphasis role="ohdr">kr</emphasis> <emphasis role="op">=</emphasis> 100
+        <emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 1
+
+        <emphasis role="oblock">instr</emphasis>   1
+           kc   <emphasis role="opc">chnget</emphasis>    "cutoff"
+           a1   <emphasis role="opc">oscil</emphasis>     p4, p5, 100
+           a2   <emphasis role="opc">lowpass2</emphasis>  a1, kc, 200
+                <emphasis role="opc">out</emphasis>       a2
+        <emphasis role="oblock">endin</emphasis>
+      </programlisting>
+    </informalexample>
+    <para>
+      Voici un autre exemple de l'opcode chnget. Il utilise le fichier
+      <ulink url="examples/chnget.csd"><citetitle>chnget.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode chnget.</title>
+        <xi:include href="examples-xml/chnget.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameistvan;</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

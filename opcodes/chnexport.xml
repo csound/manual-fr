@@ -1,0 +1,160 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="chnexport">
+<indexterm id="Indexchnexport"><primary>chnexport</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Software Bus</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>chnexport</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>chnexport</refname>
+    <refpurpose>
+      Exporte une variable globale en tant que canal du bus.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Exporte une variable globale en tant que canal du bus ; le canal ne doit
+      pas déjà exister sinon il y aura une erreur d'initialisation. On appelle
+      normalement cet opcode depuis l'en-tête de l'orchestre ; il permet à
+      l'application hôte de lire et d'écrire directement dans des variables de
+      l'orchestre, sans avoir à utiliser
+      <link linkend="chnget"><citetitle>chnget</citetitle></link> ou
+      <link linkend="chnset"><citetitle>chnset</citetitle></link> pour copier les
+      données.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+<synopsis>gival <command>chnexport</command> Sname, imode[, itype, idflt, imin, imax]</synopsis>
+<synopsis>gkval <command>chnexport</command> Sname, imode[, itype, idflt, imin, imax]</synopsis>
+<synopsis>gaval <command>chnexport</command> Sname, imode</synopsis>
+<synopsis>gSval <command>chnexport</command> Sname, imode</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>imode</emphasis> -- somme d'au moins un des nombres suivants : 1 pour
+      entrée et 2 pour sortie.
+    </para>
+    <para>
+      <emphasis>itype</emphasis> (facultatif, 0 par défaut) -- sous-type du canal,
+      seulement pour les canaux de contrôle. Les valeurs possibles sont :
+      <itemizedlist>
+        <listitem>
+          <para>
+            0: par défault / indéfini (<emphasis>idflt</emphasis>, <emphasis>imin</emphasis>
+            et <emphasis>imax</emphasis> sont ignorés)
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            1: seulement des valeurs entières
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            2: échelle linéaire
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            3: échelle exponentielle
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+    <para>
+      <emphasis>idflt</emphasis> (facultatif, 0 par défaut) -- valeur par défaut,
+      seulement pour les canaux de contrôle avec <emphasis>itype</emphasis>
+      différent de zéro. Doit être supérieur ou égal à <emphasis>imin</emphasis>
+      et inférieur ou égal à <emphasis>imax</emphasis>.
+    </para>
+    <para>
+      <emphasis>imin</emphasis> (facultatif, 0 par défaut) -- valeur minimale,
+      seulement pour les canaux de contrôle avec <emphasis>itype</emphasis>
+      différent de zéro. Doit être différent de zéro pour l'échelle exponentielle
+      (<emphasis>itype</emphasis> = 3).
+    </para>
+    <para>
+      <emphasis>imax</emphasis> (facultatif, 0 par défaut) -- valeur maximale,
+      seulement pour les canaux de contrôle avec <emphasis>itype</emphasis>
+      différent de zéro. Doit être supérieur à <emphasis>imin</emphasis>. Dans le
+      cas d'une échelle exponentielle, il doit également avoir le même signe que
+      <emphasis>imin</emphasis>.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Notes</title>
+    <para>
+      Les paramètres du canal (<emphasis>imode</emphasis>, <emphasis>itype</emphasis>,
+      <emphasis>idflt</emphasis>, <emphasis>imin</emphasis> et <emphasis>imax</emphasis>)
+      ne sont que des indications pour l'application hôte ou un logiciel externe
+      accédant au bus par l'API, et ils ne restreignent en rien la lecture ou
+      l'écriture sur le canal.
+    </para>
+    <para>
+      Bien que la variable globale soit utilisée comme argument de sortie,
+      <emphasis>chnexport</emphasis> ne la change pas, et ne s'exécute seulement
+      qu'au taux-i. Si la variable n'a pas été préalablement déclarée, elle est
+      créée par Csound avec une valeur initiale de zéro ou une chaîne de caractères
+      nulle.
+    </para>
+  </refsect1>
+
+  <!--<refsect1>
+    <title>Exécution</title>
+    <para>
+    </para>
+  </refsect1>-->
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      L'exemple montre l'utilisation du bus logiciel comme signal de contrôle
+      asynchrone pour fixer la fréquence de coupure du filtre. On suppose qu'un
+      programme externe utilisant l'API fournit les valeurs.
+    </para>
+
+    <informalexample>
+      <programlisting>
+        <emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+        <emphasis role="ohdr">kr</emphasis> <emphasis role="op">=</emphasis> 100
+        <emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 1
+
+        gkc <emphasis role="opc">init</emphasis> 1000   <emphasis role="comment">; set default value</emphasis>
+        gkc <emphasis role="opc">chnexport</emphasis> "cutoff", 1, 3, <emphasis role="opc">i</emphasis>(gkc), 500, 2000
+
+        <emphasis role="oblock">instr</emphasis>   1
+           a1   <emphasis role="opc">oscil</emphasis>     p4, p5, 100
+           a2   <emphasis role="opc">lowpass2</emphasis>  a1, gkc, 200
+                <emphasis role="opc">out</emphasis>       a2
+        <emphasis role="oblock">endin</emphasis>
+      </programlisting>
+    </informalexample>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameistvan;</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

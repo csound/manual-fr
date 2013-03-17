@@ -1,0 +1,39 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLpack_end">
+<indexterm id="IndexFLpack_end"><primary>FLpack_end</primary></indexterm>
+  <refentryinfo><title>FLTK:Containers</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLpack_end</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLpack_End</refname>
+    <refpurpose>
+      Marque la fin d'un groupe de widgets FLTK concentrés ou alignés.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Marque la fin d'un groupe de widgets FLTK concentrés ou alignés. C'est un
+      autre nom pour <command>FLpackEnd</command> fourni pour des raisons de
+      compatibilité. Voir
+      <link linkend="FLpackEnd"><citetitle>FLpackEnd</citetitle></link>
+    </para> 
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.22</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,95 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.6
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="puts">
+<indexterm id="Indexputs"><primary>puts</primary></indexterm>
+  <refentryinfo><title>Strings:Manipulation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>puts</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>puts</refname>
+    <refpurpose>
+      Imprime une chaîne de caractères constante ou variable.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>puts</emphasis> imprime une chaîne de caractères terminée par un
+      retour à la ligne facultatif chaque fois que le signal de déclenchement
+      est positif et change de valeur.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>puts</command> Sstr, ktrig[, inonl]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>Sstr</emphasis> -- chaîne à imprimer.
+    </para>
+
+    <para>
+      <emphasis>inonl</emphasis> (facultatif, 0 par défaut) -- s'il est
+      différent de zéro, désactive l'impression automatique d'un retour à
+      la ligne à la fin de la chaîne.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ktrig</emphasis> -- signal de déclenchement, doit être valide
+      au temps-i. La chaîne est imprimée à l'initialisation si
+      <emphasis>ktrig</emphasis> est positif, et pendant l'exécution chaque
+      fois que <emphasis>ktrig</emphasis> est positif et différent de sa valeur
+      précédente. Utiliser une valeur constante de 1 pour n'imprimer qu'une fois
+      à l'initialisation de la note.
+    </para>
+  </refsect1>
+
+   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode puts. Il utilise le fichier
+      <ulink url="examples/puts.csd"><citetitle>puts.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode puts.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/puts.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
+frequency in Hertz : 440 
+frequency in Hertz : 441 
+frequency in Hertz : 442 
+....
+frequency in Hertz : 459 
+frequency in Hertz : 460 </screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Istvan Varga</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

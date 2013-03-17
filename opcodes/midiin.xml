@@ -1,0 +1,109 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="midiin">
+<indexterm id="IndexMidiin"><primary>midiin</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Generic I/O</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>midiin</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>midiin</refname>
+
+    <refpurpose>
+      Retourne un message MIDI générique reçu sur le port MIDI IN.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne un message MIDI générique reçu sur le port MIDI IN.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kstatus, kchan, kdata1, kdata2 <command>midiin</command></synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kstatus</emphasis> -- le type de message MIDI. Peut être :
+      <itemizedlist>
+	<listitem><para>128 (note off)</para></listitem>
+	<listitem><para>144 (note on)</para></listitem>
+	<listitem><para>160 (aftertouch polyphonique)</para></listitem>
+	<listitem><para>176 (changement de contrôle)</para></listitem>
+	<listitem><para>192 (changement de programme)</para></listitem>
+	<listitem><para>208 (aftertouch de canal)</para></listitem>
+	<listitem><para>224 (pitch bend</para></listitem>
+	<listitem><para>0 si aucun message MIDI n'est en attente dans le tampon MIDI IN</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>kchan</emphasis> -- canal MIDI (1-16)
+    </para>
+
+    <para>
+      <emphasis>kdata1, kdata2</emphasis> -- données dépendant du message
+    </para>
+
+    <para>
+      <emphasis>midiin</emphasis> n'a pas d'arguments en entrée, car il lit
+      implicitement le port MIDI. Il travaille au taux-k. Normalement (quand
+      aucun message n'est en attente), <emphasis>kstatus</emphasis> vaut zéro.
+      <emphasis>kstatus</emphasis> ne prend la valeur du type de message
+      adéquat que lorsque des données MIDI sont présentes dans le tampon MIDI IN.
+    </para>
+    <note>
+      <para>
+        Il faut faire attention lorsque l'on utilise <emphasis>midiin</emphasis>
+        dans des instruments de faible numéro car une note MIDI démarrera des
+        instances supplémentaires des instruments, ce qui provoquera des
+        duplications d'évènement et un comportement étrange. Utiliser
+      	<link linkend="massign"><citetitle>massign</citetitle></link> pour
+      	diriger les messages de note MIDI vers un intrument différent ou pour
+      	désactiver l'activation d'instruments à partir du MIDI.
+      </para>
+    </note>
+  </refsect1>
+  
+   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple ce l'opcode midiin. Il utilise le fichier
+      <ulink url="examples/midiin.csd"><citetitle>midiin.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple ce l'opcode midiin.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/midiin.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+        <member>1998</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans le version 3.492 de Csound.</para>
+  </refsect1>
+</refentry>

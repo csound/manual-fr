@@ -1,0 +1,168 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="scaleutility">
+  <refentryinfo><title>Utilities</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>scale</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>scale</refname>
+    <refpurpose>
+      Calibre l'amplitude d'un fichier son.
+      <indexterm id="IndexScaleUtility"><primary>scale</primary></indexterm>
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Prend un fichier son et le calibre en appliquant un gain, constant ou variable. L'échelle peut être
+      comme un multiplicateur, un maximum ou un pourcentage de 0dB.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>scale</command> [OPTIONS ... ] fichier</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      Options :
+
+      <itemizedlist>
+        <listitem>
+          <para>
+              -<emphasis>A</emphasis> = Génère un fichier de sortie AIFF.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+              -<emphasis>W</emphasis> = Génère un fichier de sortie WAV.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+              -<emphasis>h</emphasis> = Génère un fichier de sortie sans en-tête.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+               -<emphasis>c</emphasis> = Génère des échantillons en caractères signés sur 8 bit.
+         </para>
+        </listitem>
+
+        <listitem>
+          <para>
+               -<emphasis>a</emphasis> = Génère des échantillons alaw.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+               -<emphasis>u</emphasis> = Génère des échantillons ulaw.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+               -<emphasis>s</emphasis> = Génère des échantillons en entiers courts.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+              -<emphasis>l</emphasis> = Génère des échantillons en entiers longs (32 bit)
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+              -<emphasis>f</emphasis> = Génère des échantillons en virgule flottante.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+              -<emphasis>F arg</emphasis> = Spécifie le gain à appliquer. Si <emphasis>arg</emphasis> est
+              un nombre en virgule flottante ce gain est appliqué uniformément à l'entrée. Alternativement
+              ça peut être un nom de fichier qui spécifie un fichier de points charnière pour varier le
+              gain sur différentes périodes.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+              -<emphasis>M fpnum</emphasis> = Calibre l'entrée de façon telle que la valeur absolue du
+              déplacement maximum soit la valeur donnée.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+              -<emphasis>P fpnum</emphasis> = Calibre l'entrée de façon telle que la valeur absolue du
+              déplacement maximum soit le pourcentage donné de 0dB.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+              -<emphasis>R</emphasis> = Réécrit continuellement l'en-tête pendant l'écriture du fichier son
+              (WAV/AIFF). 
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+              -<emphasis>H entier</emphasis> = Montre une "pulsation" pour indiquer la progression, dans
+              le style 1, 2 ou 3.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+              -<emphasis>N</emphasis> = Alerte (habituellement la cloche système) lorsque c'est fini.
+          </para>
+        </listitem>
+
+        <listitem>
+        	<para>
+        		-<emphasis>o nomfic</emphasis> = nom du fichier de sortie (par défaut : test.wav)
+        	</para>
+        </listitem>
+      </itemizedlist>
+
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+  	<title>Exemples</title>
+  	<para>
+
+<programlisting><emphasis>scale</emphasis> -s -W -F 0.96 -o out.wav sound.wav</programlisting>
+      Ceci crée un nouveau fichier son avec un gain constant de 0,96. C'est particulièrement utile si le
+      fichier d'entrée est en format virgule flottante.
+  	</para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namejohn;</para>
+    <para>1994</para>
+  </refsect1>
+
+</refentry>

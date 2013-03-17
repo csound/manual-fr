@@ -1,0 +1,213 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="mixer">
+  <refentryinfo><title>Utilities</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>mixer</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>mixer</refname>
+    <refpurpose>
+      Mélange ensemble plusieurs fichiers son.
+      <indexterm id="IndexMixer"><primary>mixer</primary></indexterm>
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Mélange ensemble plusieurs fichiers son, démarrant à des temps différents et
+      avec une sélection individuelle des canaux dans les fichiers d'entrée.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>mixer</command> [OPTIONS ... ] fichier [[OPTIONS... ] fichier] ...</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      Options :
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+            -<emphasis>A</emphasis> = Génère un fichier de sortie en AIFF.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+            -<emphasis>W</emphasis> = Génère un fichier de sortie en WAV.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+            -<emphasis>h</emphasis> = Génère un fichier de sortie sans en-tête.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+              -<emphasis>c</emphasis> = Génère des échantillons en caractères signés sur 8 bit.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+              -<emphasis>a</emphasis> = Génère des échantillons alaw.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+              -<emphasis>u</emphasis> = Génère des échantillons ulaw.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+              -<emphasis>s</emphasis> = Génère des échantillons en entiers courts.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+            -<emphasis>l</emphasis> = Génère des échantillons en entiers longs (32 bit).
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+            -<emphasis>f</emphasis> = Génère des échantillons en virgule flottante.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+            -<emphasis>F arg</emphasis> = Spécifie le gain à appliquer au fichier d'entrée
+            qui suit. Si arg est un nombre en virgule flottante ce gain est appliqué
+            uniformément à l'entrée. Alternativement ça peut être un nom de fichier qui
+            spécifie un fichier de points charnière pour varier le gain sur différentes
+            périodes.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+            -<emphasis>S entier</emphasis> = Indique à partir de quel échantillon commencer
+            le mixage dans le fichier d'entrée suivant.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+            -<emphasis>T fpnum</emphasis> = Indique à quel date (en secondes) commencer le
+            mixage dans le fichier d'entrée suivant.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+            -<emphasis>1</emphasis> = Mixer le canal 1 du fichier son suivant.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+            -<emphasis>2</emphasis> = Mixer le canal 2 du fichier son suivant.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+            -<emphasis>3</emphasis> = Mixer le canal 3 du fichier son suivant.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+            -<emphasis>4</emphasis> = Mixer le canal 4 du fichier son suivant.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+            -<emphasis>^ entx enty</emphasis> = Mixer le canal x du fichier son suivant
+            vers le canal y dans le fichier de sortie.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+            -<emphasis>v</emphasis> = Mode verbeux.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+            -<emphasis>R</emphasis> = Réécrit continuellement l'en-tête lors des opérations
+            d'écriture du fichier son (WAV/AIFF)
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+            -<emphasis>H entier</emphasis> = Montre une "pulsation" pour indiquer la
+            progression, dans le style 1, 2 ou 3.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+            -<emphasis>N</emphasis> = Alerte (habituellement la cloche système) lorsque
+            le mixage est fini.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+            -<emphasis>o nomfic</emphasis> = nom du fichier de sortie (par défaut : test.wav)
+        </para>
+      </listitem>
+    </itemizedlist>
+
+
+  </refsect1>
+
+  <refsect1>
+  	<title>Exemples</title>
+  	<para>
+
+        Les valeurs par défaut sont :
+<programlisting><emphasis>mixer</emphasis> -s -otest -F 1.0 -S 0</programlisting>
+
+    Par exemple
+<programlisting>
+<emphasis>mixer</emphasis> -F 0.96 in1.wav -S 300 -2 in2.aiff -S 300 -^4 1 in3.wav -o out.wav</programlisting>
+
+    Cela crée un nouveau fichier son avec un gain constant de 0,96 pour in1.wav, le second
+    canal de in2.aiff mixé après 300 échantillons et le canal 4 de in3.wav sorti comme le
+    canal 1 après 300 échantillons.
+  	</para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namejohn;</para>
+    <para>1994</para>
+  </refsect1>
+
+</refentry>

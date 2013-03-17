@@ -1,0 +1,96 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="mute">
+<indexterm id="IndexMute"><primary>mute</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Invocation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>mute</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>mute</refname>
+    <refpurpose>
+      Rend muettes/sonores de nouvelles instances d'un instrument donné.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Rend muettes/sonores de nouvelles instances d'un instrument donné.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>mute</command> insnum [, iswitch]</synopsis>
+    <synopsis><command>mute</command> &quot;insname&quot; [, iswitch]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>insnum</emphasis> -- numéro d'instrument. Equivalent à
+      <emphasis>p1</emphasis> dans une
+      <link linkend="i"><citetitle>instruction i</citetitle></link> de partition.
+    </para>
+
+    <para>
+      <emphasis><quote>insname</quote></emphasis> -- Une chaîne de caractères (entre
+      guillemets) représentant un instrument nommé.
+    </para>
+
+    <para>
+      <emphasis>iswitch</emphasis> (facultatif, 0 par défaut) -- représente un
+      commutateur pour rendre muet/sonore un instrument. Une valeur de 0 rendra
+      muettes de nouvelles instances de l'instrument, tandis que les autres valeurs
+      les rendront sonores. La valeur par défaut est 0.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Toutes les nouvelles instances de l'instrument seront muettes
+      (<emphasis>iswitch</emphasis> = 0) ou sonores (<emphasis>iswitch</emphasis>
+      différent de 0). Il n'y a aucun problème à rendre muets des instruments muets
+      ou à rendre sonores des instruments sonores. Le mécanisme est le même que
+      celui qui est utilisé par l'<link linkend="q"><citetitle>instruction q</citetitle></link>.
+      de partition. Par exemple, il est possible de rendre muet depuis la partition
+      et de rendre ensuite sonore depuis un instrument.
+    </para>
+
+    <para>
+      L'état Muet/Sonore est indiqué par un message (en fonction du niveau des
+      messages).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici en exemple de l'opcode mute. Il utilise le fichier
+      <ulink url="examples/mute.csd"><citetitle>mute.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode mute.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/mute.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Nouveau dans la version 4.22</para>
+  </refsect1>
+</refentry>

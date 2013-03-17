@@ -1,0 +1,87 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="chnparams">
+<indexterm id="Indexchnparams"><primary>chnparams</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Software Bus</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>chnparams</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>chnparams</refname>
+    <refpurpose>
+      Demande les paramètres d'un canal.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Demande les paramètres d'un canal (s'il n'existe pas, toutes les valeurs
+      retournées sont nulles).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>itype, imode, ictltype, idflt, imin, imax <command>chnparams</command></synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>itype</emphasis> -- type des données du canal (1 : contrôle, 2 : audio,
+      3 : chaînes de caractères)
+    </para>
+    <para>
+      <emphasis>imode</emphasis> -- somme d'au moins un des nombres suivants : 1 pour
+      entrée et 2 pour sortie.
+    </para>
+    <para>
+      <emphasis>ictltype</emphasis> -- paramètre spécial seulement pour les canaux de
+      contrôle ; s'il n'est pas disponible, il est mis à zéro.
+    </para>
+    <para>
+      <emphasis>idflt</emphasis> -- paramètre spécial seulement pour les canaux de
+      contrôle ; s'il n'est pas disponible, il est mis à zéro.
+    </para>
+    <para>
+      <emphasis>imin</emphasis> -- paramètre spécial seulement pour les canaux de
+      contrôle ; s'il n'est pas disponible, il est mis à zéro.
+    </para>
+    <para>
+      <emphasis>imax</emphasis> -- paramètre spécial seulement pour les canaux de
+      contrôle ; s'il n'est pas disponible, il est mis à zéro. 
+    </para>
+
+  </refsect1>
+
+  <!--<refsect1>
+    <title>Exécution</title>
+    <para>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+    </para>
+  </refsect1>-->
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameistvan;</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,188 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.10
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="tablexkt">
+<indexterm id="IndexTablexkt"><primary>tablexkt</primary></indexterm>
+  <refentryinfo><title>Table Control:Dynamic Selection</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tablexkt</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>tablexkt</refname>
+    <refpurpose>
+      Lit des tables de fonction avec interpolation linéaire, cubique ou sinc.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Lit des tables de fonction avec interpolation linéaire, cubique ou sinc.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>tablexkt</command> xndx, kfn, kwarp, iwsize [, ixmode] [, ixoff] [, iwrap]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iwsize</emphasis> -- Ce paramètre contrôle le type d'interpolation
+      à utiliser :
+      <itemizedlist>
+        <listitem>
+          <para><emphasis>2 :</emphasis> Interpolation linéaire. C'est la qualité
+          la plus faible, mais aussi le mode le plus rapide.</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis>4 :</emphasis> Interpolation cubique. Qualité légèrement
+          meilleure qu'avec <emphasis>iwsize</emphasis> = 2, au prix d'un
+          traitement moins rapide.</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis>8 et au-dessus (jusqu'à 1024) :</emphasis>
+          interpolation sinc avec une taille de fenêtre égale à
+          <emphasis>iwsize</emphasis> (doit être un multiple entier de 4).
+          Meilleure qualité que l'interpolation linéaire ou cubique, mais très
+          lent. Lorsque l'on transpose vers le haut, on peut utiliser une valeur
+          de <emphasis>kwarp</emphasis> supérieure à 1 pour un meilleur lissage
+          (c'est encore plus lent).</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>ixmode</emphasis> (facultatif) -- mode d'indexation. La valeur par
+      défaut est 0.
+      <itemizedlist>
+        <listitem>
+          <para><emphasis>0 :</emphasis> indices bruts</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis>valeur différente de 0 :</emphasis> normalisé (0 à 1)</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <note>
+      <title>Notes</title>
+      <para>
+        Si l'on utilise <emphasis>tablexkt</emphasis> pour reproduire des
+        échantillons avec boucle (par exemple avec un indice de table généré par
+        <emphasis>lphasor</emphasis>), il faut qu'il y ait au moins
+        <emphasis>iwsize</emphasis> / 2 échantillons après la fin de la boucle
+        pour l'interpolation, sinon il pourra y avoir des clics audibles
+        (il doit y avoir aussi au moins <emphasis>iwsize</emphasis> / 2
+        échantillons avant le début de la boucle).
+      </para>
+    </note>
+
+    <para>
+      <emphasis>ixoff</emphasis> (facultatif) -- valeur de décalage de l'indice.
+      Pour une table dont l'origine est au centre, il faut utiliser
+      <emphasis>taille_table</emphasis> / 2 (indices bruts) ou 0.5 (indices
+      normalisés). La valeur par défaut est 0.
+    </para>
+
+    <para>
+      <emphasis>iwrap</emphasis> (facultatif) -- indicateur de parcours cyclique
+      des indices. La valeur par défaut est 0.
+      <itemizedlist>
+        <listitem>
+          <para><emphasis>0 :</emphasis> Pas de lecture cyclique (les indices
+          &lt; 0 sont ramenés à 0 ; les indices &gt;= à la taille de la table
+          (ou 1.0 en mode normalisé) restent bloqués sur le point de garde).</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis>valeur différente de 0 :</emphasis> l'indice est replié
+          dans l'intervalle autorisé (sans inclure le point de garde dans ce
+          cas).</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        <emphasis>iwrap</emphasis> s'applique aussi aux échantillons
+        supplémentaires pour l'interpolation.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ares</emphasis> -- sortie audio.
+    </para>
+
+    <para>
+      <emphasis>xndx</emphasis> -- index de la table.
+    </para>
+
+    <para>
+      <emphasis>kfn</emphasis> -- numéro de la table de fonction.
+    </para>
+
+    <para>
+      <emphasis>kwarp</emphasis> -- s'il est supérieur à 1, on utilise la fonction
+      sin(<emphasis>x</emphasis> / <emphasis>kwarp</emphasis>) / <emphasis>x</emphasis>
+      pour l'interpolation sinc au lieu de la fonction par défaut
+      sin(<emphasis>x</emphasis>) / <emphasis>x</emphasis>. C'est utile pour lisser
+      lorque l'on transpose vers le haut (<emphasis>kwarp</emphasis> doit être
+      fixé au facteur de transposition dans ce cas, par exemple 2.0 pour une
+      octave), cependant le rendu peut-être jusqu'à deux fois plus lent. De plus,
+      <emphasis>iwsize</emphasis> doit valoir au moins <emphasis>kwarp</emphasis>
+      * 8. Cette possibilité est expérimentale et pourra être améliorée à la fois
+      en termes de vitesse et de qualité dans de nouvelles versions.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        <emphasis>kwarp</emphasis> n'a aucun effet s'il est inférieur ou égal à
+        1, ou si l'interpolation linéaire ou cubique est utilisée.
+      </para>
+    </note>
+  </refsect1>
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode tablexkt. Il utilise le fichier
+      <ulink url="examples/tablexkt.csd"><citetitle>tablexkt.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode tablexkt.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/tablexkt.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameistvan;</member>
+        <member>Janvier 2002</member>
+        <member>Exemple par Jonathan Murphy 2006</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 4.18</para>
+  </refsect1>
+</refentry>

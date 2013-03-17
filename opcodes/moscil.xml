@@ -1,0 +1,122 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="moscil">
+<indexterm id="IndexMoscil"><primary>moscil</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Note Output</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>moscil</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>moscil</refname>
+
+    <refpurpose>
+      Envoie un flot de notes MIDI.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Envoie un flot de notes MIDI.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>moscil</command> kchn, knum, kvel, kdur, kpause</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kchn</emphasis> -- numéro de canal MIDI (1-16)
+    </para>
+
+    <para>
+      <emphasis>knum</emphasis> -- numéro de note (0-127)
+    </para>
+
+    <para>
+      <emphasis>kvel</emphasis> -- vélocité (0-127)
+    </para>
+
+    <para>
+      <emphasis>kdur</emphasis> -- durée de note en secondes
+    </para>
+
+    <para>
+      <emphasis>kpause</emphasis> -- durée de la pause après chaque noteoff et
+      avant la note suivante en secondes
+    </para>
+
+    <para>
+      <emphasis>moscil</emphasis> et <link linkend="midion"><citetitle>midion</citetitle></link>
+      sont les opcodes MIDI OUT les plus puissants. <emphasis>moscil</emphasis>
+      (MIDI oscil) joue un flot de notes de durée <emphasis>kdur</emphasis>. Le
+      canal, la hauteur, la vélocité, la durée et le temps de pause sont contrôlables
+      au taux-k, ce qui permet de générer par algorithme des lignes mélodiques 
+      très complexes. Lorsque l'instrument courant est désactivé, les notes jouées
+      par l'instance courante de <emphasis>moscil</emphasis> sont tronquées d'office.
+    </para>
+
+    <para>
+      Il peut y avoir n'importe quel nombre d'opcodes <emphasis>moscil</emphasis>
+      dans le même instrument de Csound, ce qui permet une polyphonie de style
+      contrapointique avec un seul instrument.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode moscil. Il utilise le fichier
+      <ulink url="examples/moscil.csd"><citetitle>moscil.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode moscil.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <para>Cet exemple génère un flot de notes pour chaque note reçue sur
+        l'entrée MIDI. Il génère des notes MIDI sur la sortie MIDI de Csound, si
+        bien qu'il faut y connecter quelque chose.</para>
+          <xi:include href="examples-xml/moscil.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="midion"><citetitle>midion</citetitle></link>,
+      <link linkend="midion2"><citetitle>midion2</citetitle></link>,
+      <link linkend="noteon"><citetitle>noteon</citetitle></link>,
+      <link linkend="noteoff"><citetitle>noteoff</citetitle></link>,
+      <link linkend="noteondur"><citetitle>noteondur</citetitle></link>,
+      <link linkend="noteondur2"><citetitle>noteondur2</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+        <member>Mai 1997</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.47 de Csound.</para>
+    <para>Merci à &namerasmus; pour avoir indiqué les intervalles corrects pour
+    le canal MIDI et les numéros de contrôleur.</para>
+  </refsect1>
+</refentry>

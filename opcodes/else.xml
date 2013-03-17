@@ -1,0 +1,88 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="else">
+<indexterm id="IndexElse"><primary>else</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Program Flow Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>else</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>else</refname>
+    <refpurpose>
+      Exécute un bloc de code lorsqu'une condition &quot;if...then&quot; est fausse.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Exécute un bloc de code lorsqu'une condition &quot;if...then&quot; est fausse.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>else</command></synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>else</emphasis> est utilisé dans un bloc de code entre les opcodes
+      <link linkend="if"><citetitle>&quot;if...then&quot;</citetitle></link> et
+      <link linkend="endif"><citetitle>endif</citetitle></link>. Il définit les
+      instructions à exécuter lorsqu'une condition &quot;if...then&quot; est
+      fausse. Il ne peut y avoir qu'une seule instruction <emphasis>else</emphasis>
+      et celle-ci doit être la dernière instruction conditionnelle avant l'opcode
+      <emphasis>endif</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode else. Il utilise le fichier
+      <ulink url="examples/else.csd"><citetitle>else.csd</citetitle></ulink>.
+            <example>
+        <title>Exemple de l'opcode else.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/else.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="elseif"><citetitle>elseif</citetitle></link>,
+      <link linkend="endif"><citetitle>endif</citetitle></link>,
+      <link linkend="goto"><citetitle>goto</citetitle></link>,
+      <link linkend="if"><citetitle>if</citetitle></link>,
+      <link linkend="igoto"><citetitle>igoto</citetitle></link>,
+      <link linkend="kgoto"><citetitle>kgoto</citetitle></link>,
+      <link linkend="tigoto"><citetitle>tigoto</citetitle></link>,
+      <link linkend="timout"><citetitle>timout</citetitle></link>
+    </para>
+    
+    <para>
+      Plus d'information sur cet opcode :
+      <ulink url="http://www.csounds.com/journal/2006spring/controlFlow.html"><citetitle>http://www.csounds.com/journal/2006spring/controlFlow.html</citetitle></ulink>,
+      écrit par Steven Yi.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Nouveau dans la version 4.21</para>
+  </refsect1>
+</refentry>

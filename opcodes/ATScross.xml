@@ -1,0 +1,177 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.10
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ATScross">
+<indexterm id="IndexATScross"><primary>ATScross</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:ATS</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ATScross</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ATScross</refname>
+    <refpurpose>
+      exécute une synthèse croisée à partir de fichiers d'analyse ATS.
+    </refpurpose>
+  </refnamediv>
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>ATScross</emphasis> utilise les données d'un fichier d'analyse
+      ATS et d'un
+      <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link> pour
+      exécuter une synthèse croisée.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ar <command>ATScross</command> ktimepnt, kfmod, iatsfile, ifn, kmylev, kbuflev, ipartials \
+          [, ipartialoffset, ipartialincr]</synopsis>
+  </refsect1>
+  <refsect1>
+  <title>Initialisation</title>
+    <para>
+      <emphasis>iatsfile</emphasis> – entier ou chaîne de caractères dénotant
+      un fichier de contrôle dérivé de l'analyse ATS d'un signal audio. Un
+      entier indique le suffixe d'un fichier ATS.m ; une chaîne de caractères
+      (entre guillemets) donne un nom de fichier, ou un nom de chemin
+      complet. Si ce n'est pas un chemin complet, le fichier est d'abord
+      cherché dans le répertoire courant, puis dans celui qui est donné par
+      la variable d'environnement SADIR (si elle est définie).
+    </para>
+    <para>
+      <emphasis>ifn</emphasis> – numéro de la table d'une fonction stockée
+      contenant une onde sinusoïdale.
+    </para>
+    <para>
+      <emphasis>ipartials</emphasis> – nombre de partiels qui seront utilisés
+      dans la resynthèse.
+    </para>
+    <para>
+      <emphasis>ipartialoffset</emphasis> (facultatif) – le premier
+      partiel utilisé (0 par défaut).
+    </para>
+    <para>
+      <emphasis>ipartialincr</emphasis> (facultatif) – fixe le pas
+      d'incrémentation que ces opcodes de synthèse utilisent pour compter les
+      composants bins à partir de <emphasis>ipartialoffset</emphasis> dans la
+      resynthèse (1 par défaut).
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Exécution</title>
+    <para><emphasis>ktimepnt</emphasis> – Le pointeur de temps en secondes utilisé
+      comme indice sur le fichier ATS. Est utilisé pour
+      <emphasis>ATScross</emphasis> exactement de la même manière que pour
+      <link linkend="pvoc"><citetitle>pvoc</citetitle></link>.</para>
+    <para>
+      <emphasis>kfmod</emphasis> – une entrée pour faire une transpositon de
+      hauteur ou une modulation de fréquence sur tous les partiels synthétisés ;
+      si aucune modulation de fréquence ou aucun changement de hauteur ne sont
+      désirés, il faut utiliser 1 pour cette valeur.
+    </para>
+    <para>
+      <emphasis>kmylev</emphasis> - pondère le composant <emphasis>ATScross</emphasis>
+      du spectre de fréquence appliqué aux partiels depuis le fichier ATS indiqué
+      par l'opcode <emphasis>ATScross</emphasis>. L'information du spectre de
+      fréquence vient du fichier ATS de <emphasis>ATScross</emphasis>. Une valeur
+      de 1 (et 0 pour <emphasis>kbuflev</emphasis>) donne le même résultat que
+      <link linkend="ATSadd"><citetitle>ATSadd</citetitle></link>.
+    </para>
+    <para>
+      <emphasis>kbuflev</emphasis> - pondère le composant
+      <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link> du spectre
+      de fréquence appliqué aux partiels depuis le fichier ATS indiqué par l'opcode
+      <emphasis>ATScross</emphasis>. L'information du spectre de fréquence vient
+      du fichier ATS <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>.
+      Une valeur de 1 (et 0 pour <emphasis>kmylev</emphasis>) donne des partiels qui
+      ont l'information de fréquence du fichier ATS donné par
+      l'<emphasis>ATScross</emphasis>, mais les amplitudes imposées par les données
+      du fichier ATS donné par
+      <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>.
+    </para>
+    <para>
+      <emphasis>ATScross</emphasis> utilise les données d'un fichier d'analyse ATS
+      (indiqué par <emphasis>iatsfile</emphasis>) et les données d'un
+      <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link> pour exécuter
+      une synthèse croisée. <emphasis>ATScross</emphasis> utilise
+      <emphasis>ktimepnt</emphasis>, <emphasis>kfmod</emphasis>,
+      <emphasis>ipartials</emphasis>, <emphasis>ipartialoffset</emphasis> et
+      <emphasis>ipartialincr</emphasis> de la même manière que
+      <link linkend="ATSadd"><citetitle>ATSadd</citetitle></link>.
+      <emphasis>ATScross</emphasis> synthétise une onde sinus pour chaque partiel
+      sélectionné par l'utilisateur et utilise la fréquence de ce partiel (après
+      pondération en fréquence par <emphasis>kfmod</emphasis>) comme indice dans la
+      table créée par <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>.
+      Les valeurs intermédiaires sont obtenues par interpolation.
+      <emphasis>ATScross</emphasis> utilise la somme des données d'amplitude de son
+      fichier ATS (pondérée par <emphasis>kmylev</emphasis>) et les données d'amplitude
+      fournies par <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>
+      (pondérées par <emphasis>kbuflev</emphasis>) pour mettre à l'échelle l'amplitude
+      de chaque partiel qu'il synthétise. En fixant <emphasis>kmylev</emphasis> à un
+      et <emphasis>kbuflev</emphasis> à zéro, <emphasis>ATScross</emphasis> agira
+      exactement comme <link linkend="ATSadd"><citetitle>ATSadd</citetitle></link>.
+      En fixant <emphasis>kmylev</emphasis> à zéro et <emphasis>kbuflev</emphasis>
+      à un, on produira un son qui aura tous les partiels sélectionnés par l'unité
+      <emphasis>ATScross</emphasis>, mais avec les amplitudes fournies par
+      <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>. Il n'est
+      pas nécessaire que le pointeur de temps de
+      l'<link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link> soit
+      le même que celui de l'<emphasis>ATScross</emphasis>.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode ATScross. Il utilise le fichier
+      <ulink url="examples/ATScross.csd"><citetitle>ATScross.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode ATScross.</title>
+          <xi:include href="examples-xml/ATScross.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Cet exemple exécute une synthèse croisée à partir des deux fichiers ATS
+      "fox.ats" et "beats.ats". Le résultat sera un son qui débute avec le profil
+      (en fréquence) de fox.ats et se termine avec le profil de beats.ats. Toutes
+      les fréquences d'onde sinusoïdale viennent de beats.ats. La valeur de
+      <emphasis>kbuflev</emphasis> est pondérée parce que l'énergie produite en
+      appliquant le spectre de fréquence de fox.ats aux partiels de beats.ats est
+      très importante. Noter également que les pointeurs de temps
+      d'<emphasis>ATSbufread</emphasis> (fox.atds) et d'<emphasis>ATScross</emphasis> (beats.ats) n'ont
+      pas nécessairement la même valeur, ce qui permet de lire les deux fichiers ATS
+      à des vitesses différentes.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ATSread"><citetitle>ATSread</citetitle></link>, 
+      <link linkend="ATSreadnz"><citetitle>ATSreadnz</citetitle></link>, 
+      <link linkend="ATSinfo"><citetitle>ATSinfo</citetitle></link>, 
+      <link linkend="ATSsinnoi"><citetitle>ATSsinnoi</citetitle></link>, 
+      <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>, 
+      <link linkend="ATSinterpread"><citetitle>ATSinterpread</citetitle></link>, 
+      <link linkend="ATSpartialtap"><citetitle>ATSpartialtap</citetitle></link>, 
+      <link linkend="ATSadd"><citetitle>ATSadd</citetitle></link>, 
+      <link linkend="ATSaddnz"><citetitle>ATSaddnz</citetitle></link>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Alex Norman</member>
+        <member>Seattle,Washington</member>
+        <member>2004</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,117 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="xtratim">
+<indexterm id="IndexXtratim"><primary>xtratim</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Event Extenders</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>xtratim</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>xtratim</refname>
+
+    <refpurpose>
+      Allonge la durée d'évènements générés en temps réel.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Allonge la durée d'évènements générés en temps réel et gère cet allongement.
+      (Habituellement on l'utilise avec 
+      <link linkend="release"><citetitle>release</citetitle></link> au lieu de
+      <link linkend="linenr"><citetitle>linenr</citetitle></link>,
+      <link linkend="linsegr"><citetitle>linsegr</citetitle></link>, etc).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>xtratim</command> iextradur</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iextradur</emphasis> -- durée additionnelle pour l'instance
+      courante de l'instrument.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>xtratim</emphasis> allonge la durée de la note MIDI courante de
+      <emphasis>iextradur</emphasis> secondes après que le message note off
+      correspondant ait désactivé cette note. On l'utilise habituellement avec
+      <link linkend="release"><citetitle>release</citetitle></link>. Cet opcode
+      n'a pas d'arguments en sortie.
+    </para>
+    <para>
+      Cet opcode est utile pour implémenter des enveloppes complexes avec
+      relâchement, dont la durée n'est pas connue lors du démarrage de l'enveloppe
+      (par exemple pour des évènements MIDI en temps réel).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode xtratim. Il utilise le fichier
+      <ulink url="examples/xtratim.csd"><citetitle>xtratim.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode xtratim.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <para>Cet exemple montre comment générer un segment de relâchement pour
+        une enveloppe ADSR après qu'un note off MIDI ait été reçu, en allongeant
+        la durée avec <emphasis>xtratim</emphasis> et en utilisant 
+        <link linkend="release"><citetitle>release</citetitle></link> pour
+        tester si la note est dans sa phase de relâchement.</para>
+          <xi:include href="examples-xml/xtratim.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Voici un exemple plus élaboré de l'opcode xtratim. Il utilise le fichier
+      <ulink url="examples/xtratim-2.csd"><citetitle>xtratim-2.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple plus complexe de l'opcode xtratim.</title>
+        <para>Cet exemple montre comment générer un segment de relâchement pour
+        une enveloppe ADSR après qu'un note off MIDI ait été reçu, en allongeant
+        la durée avec <emphasis>xtratim</emphasis> et en utilisant 
+        <link linkend="release"><citetitle>release</citetitle></link> pour
+        tester si la note est dans sa phase de relâchement. Deux enveloppes sont
+        générées simultanément pour les canaux gauche et droit.</para>
+          <xi:include href="examples-xml/xtratim-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="linenr"><citetitle>linenr</citetitle></link>, 
+      <link linkend="release"><citetitle>release</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Italie</para>
+    <para>Exemples par Gabriel Maldonado et Jonathan Murphy</para>
+
+    <para>Nouveau dans la version 3.47 de Csound.</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,85 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pset">
+<indexterm id="IndexPset"><primary>pset</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Initialization and Reinitialization</title></refentryinfo>
+  <refmeta>  
+    <refentrytitle>pset</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pset</refname>
+    <refpurpose>
+      Définit et initialise des tableaux numériques au chargement de l'orchestre.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Définit et initialise des tableaux numériques au chargement de l'orchestre.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>pset</command> icon1 [, icon2] [...]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>icon1, icon2, ...</emphasis> -- valeurs de preset pour un instrument
+      MIDI
+    </para>
+
+    <para>
+      <emphasis>pset</emphasis> (facultatif) définit et initialise des tableaux
+      numériques au chargement de l'orchestre. On peut l'utiliser comme instruction
+      dans l'en-tête de l'orchestre (c'est-à-dire dans l'instrument 0) ou dans un
+      instrument. Lorsqu'il est défini dans un instrument, il ne fait pas partie de ses
+      opérations des périodes d'initialisation ou d'exécution, et une seule de ces
+      instructions est autorisée par instrument. Ces valeurs sont disponibles comme
+      valeurs d'initialisation par défaut. Quand un instrument est déclenché à partir
+      du MIDI, il ne recoit que p1 et p2 de l'évènement, alors que p3, p4, etc
+      proviennent des valeurs définies dans le preset.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode pset. Il utilise le fichier
+      <ulink url="examples/pset.csd"><citetitle>pset.csd</citetitle></ulink>
+      <example>
+        <title>Exemple de l'opcode pset.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pset.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      <para>Voici un autre exemple d'utilisation de l'opcode pset avec le midi.
+      Il utilise le fichier
+      <ulink url="examples/pset-midi.csd"><citetitle>pset-midi.csd</citetitle></ulink>
+      </para>
+      <example>
+        <title>Second exemple de l'opcode pset.</title>
+          <xi:include href="examples-xml/pset-midi.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="strset"><citetitle>strset</citetitle></link>
+    </para>
+  </refsect1>
+</refentry> 

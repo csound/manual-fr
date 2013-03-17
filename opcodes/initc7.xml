@@ -1,0 +1,109 @@
+<!--translated=yes
+authors=Yannick St-Onge
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="initc7">
+<indexterm id="IndexInitc7"><primary>initc7</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Input</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>initc7</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>initc7</refname>
+    <refpurpose>
+      Initialise le contrôleur utilisé pour créer une valeur MIDI sur 7 bit.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Initialise le contrôleur MIDI <emphasis>ictlno</emphasis> avec <emphasis>ivalue</emphasis>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>initc7</command> ichan, ictlno, ivalue</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ichan</emphasis> -- canal MIDI (1-16)
+    </para>
+
+    <para>
+      <emphasis>ictlno</emphasis> -- numéro du contrôleur (0-127)
+    </para>
+
+    <para>
+      <emphasis>ivalue</emphasis> -- valeur décimale (doit être entre 0 et 1)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+     <emphasis>initc7</emphasis> peut être utilisé conjointement avec les opcodes
+     <link linkend="midic7"><citetitle>midic7</citetitle></link> et
+     <link linkend="ctrl7"><citetitle>ctrl7</citetitle></link> pour initialiser la première
+     valeur du contrôleur. L'argument <emphasis>ivalue</emphasis> doit être un nombre entre 0 et 1.
+     Une erreur aura lieu si ce n'est pas le cas. Utiliser cette formule afin d'ajuster
+     <emphasis>ivalue</emphasis> selon les limites min et max de l'intervalle de
+     <emphasis>midic7</emphasis> et de <emphasis>ctrl7</emphasis>:
+
+       <literallayout>
+ivalue = (valeur_initiale - min) / (max - min)</literallayout>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode initc7. Il utilise le fichier
+      <ulink url="examples/initc7.csd"><citetitle>initc7.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode initc7.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/initc7.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ctrl7"><citetitle>ctrl7</citetitle></link>,
+      <link linkend="ctrl14"><citetitle>ctrl14</citetitle></link>,
+      <link linkend="ctrl21"><citetitle>ctrl21</citetitle></link>,
+      <link linkend="ctrlinit"><citetitle>ctrlinit</citetitle></link>,
+      <link linkend="initc14"><citetitle>initc14</citetitle></link>,
+      <link linkend="initc21"><citetitle>initc21</citetitle></link>,
+      <link linkend="midic7"><citetitle>midic7</citetitle></link>,
+      <link linkend="midic14"><citetitle>midic14</citetitle></link>,
+      <link linkend="midic21"><citetitle>midic21</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.47 de Csound</para>
+    <para>Merci à &namerasmus; pour avoir indiqué les bons intervalles pour le canal MIDI et le numéro de contrôleur.</para>
+  </refsect1>
+</refentry>

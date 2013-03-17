@@ -1,0 +1,38 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLgroup_end">
+<indexterm id="IndexFLgroup_end"><primary>FLgroup_end</primary></indexterm>
+  <refentryinfo><title>FLTK:Containers</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLgroup_end</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLgroup_end</refname>
+    <refpurpose>
+      Marque la fin d'un groupe de widgets FLTK enfants.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Marque la fin d'un groupe de widgets FLTK enfants. C'est un autre nom pour
+      <command>FLgroupEnd</command> fourni pour des raisons de compatibilité.
+      Voir <link linkend="FLgroupEnd"><citetitle>FLgroupEnd</citetitle></link> 
+   </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.22</para>
+  </refsect1>
+</refentry>

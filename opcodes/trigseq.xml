@@ -1,0 +1,152 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="trigseq">
+<indexterm id="IndexTrigseq"><primary>trigseq</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>trigseq</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>trigseq</refname>
+    <refpurpose>
+      Accepte un signal déclencheur en entrée et retourne un groupe de valeurs.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Accepte un signal déclencheur en entrée et retourne un groupe de valeurs.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>trigseq</command> ktrig_in, kstart, kloop, kinitndx, kfn_values, kout1 [, kout2] [...]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ktrig_in</emphasis> -- signal de déclenchement en entrée.
+    </para>
+
+    <para>
+      <emphasis>kstart</emphasis> -- indice du début de la section en boucle.
+    </para>
+
+    <para>
+      <emphasis>kloop</emphasis> -- indice de la fin de la section en boucle.
+    </para>
+
+    <para>
+      <emphasis>kinitndx</emphasis> -- indice initial.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        Bien que <emphasis>kinitndx</emphasis> soit renseigné au taux-k, l'accès
+        ne s'y fait qu'au taux d'initialisation. Ainsi, si l'on utilise un
+        argument de taux-k, son affectation doit se faire avec
+        <link linkend="init"><citetitle>init</citetitle></link>.
+     </para>
+    </note>
+
+    <para>
+      <emphasis>kfn_values</emphasis> -- numéro d'une table contenant une suite
+      de groupes de valeurs.
+    </para>
+
+    <para>
+      <emphasis>kout1</emphasis> -- valeurs retournées
+    </para>
+
+    <para>
+      <emphasis>kout2, ...</emphasis> (facultatif) -- plus de valeurs retournées
+    </para>
+
+    <para>
+      Cet opcode traite des suites temporelles de groupes de valeurs stockées
+      dans une table.
+    </para>
+
+    <para>
+      <emphasis>trigseq</emphasis> accepte un signal déclencheur
+      (<emphasis>ktrig_in</emphasis>) en entrée et retourne un groupe de valeurs
+      (contenues dans la table <emphasis>kfn_values</emphasis>) chaque fois
+      que <emphasis>ktrig_in</emphasis> admet une valeur différente de zéro.
+      Chaque fois qu'un groupe de valeurs est déclenché, le pointeur de la table
+      est avancé du nombre de positions correspondant au nombre d'éléments de ce
+      groupe, afin de pointer vers le groupe suivant de valeurs. Le nombre
+      d'éléments des groupes est déterminé par le nombre d'arguments
+      <emphasis>koutX</emphasis>. 
+    </para>
+
+    <para>
+      Il est possible de démarrer la séquence depuis une valeur différente de la
+      première, en affectant à <emphasis>kinitndx</emphasis> un indice différent
+      de zéro (qui correspond à la première valeur de la table). Normalement la
+      séquence est bouclée, et le début et la fin de la boucle peuvent être
+      ajustés en modifiant les arguments <emphasis>kstart</emphasis> et
+      <emphasis>kloop</emphasis>. L'utilisateur doit s'assurer que les valeurs
+      de ces arguments (ainsi que celle de <emphasis>kinitndx</emphasis>)
+      correspondent à des indices de table valides, sinon Csound plantera (car
+      il n'y a aucun test sur ces indices).
+    </para>
+
+    <para>
+      Il est possible de désactiver la boucle (mode à une passe) en affectant la
+      même valeur aux arguments <emphasis>kstart</emphasis> et
+      <emphasis>kloop</emphasis>. Dans ce cas, le dernier élément lu sera celui
+      correspondant à la valeur de ces arguments. La table peut être lue à l'envers
+      en affectant une valeur négative à <emphasis>kloop</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>trigseq</emphasis> est conçu pour être utilisé avec les opcodes
+      <link linkend="seqtime"><citetitle>seqtime</citetitle></link> ou
+      <link linkend="trigger"><citetitle>trigger</citetitle></link>.
+    </para>
+  </refsect1>
+
+   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode trigseq. Il utilise le fichier
+      <ulink url="examples/trigseq.csd"><citetitle>trigseq.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode trigseq.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/trigseq.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="seqtime"><citetitle>seqtime</citetitle></link>,
+      <link linkend="trigger"><citetitle>trigger</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Novembre 2002. Note sur le paramètre <emphasis>kinitndx</emphasis>
+    ajoutée grâce à &namerasmus;.</para>
+    <para>Janvier 2003. J'ai corrigé les crédits grâce à une note de &nameoeyvind;.</para>
+    <para>Nouveau dans la version 4.06</para>
+  </refsect1>
+</refentry>

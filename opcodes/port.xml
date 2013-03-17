@@ -1,0 +1,101 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="port">
+<indexterm id="IndexPort"><primary>port</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>port</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>port</refname>
+    <refpurpose>
+      Applique un portamento à un signal de contrôle en escalier.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Applique un portamento à un signal de contrôle en escalier.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kres <command>port</command> ksig, ihtim [, isig]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ihtim</emphasis> -- durée à mi-parcours de la fonction, en secondes.
+    </para>
+
+    <para>
+      <emphasis>isig</emphasis> (facultatif, par défaut 0) -- valeur initiale (c-à-d. précédente) pour
+      la rétroaction interne. La valeur par défaut est 0. Avec une valeur négative l'initialisation
+      sera ignorée et la dernière valeur de l'instance précédente sera la valeur initiale de la note.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kres</emphasis> -- le signal de sortie au taux de contrôle.
+    </para>
+
+    <para>
+      <emphasis>ksig</emphasis> -- le signal d'entrée au taux de contrôle.
+    </para>
+
+    <para>
+      <emphasis>port</emphasis> applique un portamento à un signal de contrôle en escalier. A chaque
+      nouveau palier, <emphasis>ksig</emphasis> est filtré par un filtre passe-bas pour que la transition
+      vers cette valeur se fasse au taux déterminé par <emphasis>ihtim</emphasis>. <emphasis>ihtim</emphasis>
+      est la durée à <quote>mi-parcours</quote> de la fonction (en secondes), au cours de laquelle la courbe
+      parcourera la moitié de la distance la séparant de la nouvelle valeur, puis la moitié de la moitié,
+      etc., n'atteignant théoriquement jamais son asymptote. Avec
+      <link linkend="portk"><citetitle>portk</citetitle></link>, la durée à mi-parcours peut être variée au
+      taux de contrôle.
+    </para>
+  </refsect1>
+
+   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode port. Il utilise le fichier
+      <ulink url="examples/port.csd"><citetitle>port.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode port.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/port.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+         <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+     </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="areson"><citetitle>areson</citetitle></link>,
+      <link linkend="aresonk"><citetitle>aresonk</citetitle></link>,
+      <link linkend="atone"><citetitle>atone</citetitle></link>,
+      <link linkend="atonek"><citetitle>atonek</citetitle></link>,
+      <link linkend="portk"><citetitle>portk</citetitle></link>,
+      <link linkend="reson"><citetitle>reson</citetitle></link>,
+      <link linkend="resonk"><citetitle>resonk</citetitle></link>,
+      <link linkend="tone"><citetitle>tone</citetitle></link>,
+      <link linkend="tonek"><citetitle>tonek</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

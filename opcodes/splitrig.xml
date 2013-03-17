@@ -1,0 +1,120 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="splitrig">
+<indexterm id="Indexsplitrig"><primary>splitrig</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>splitrig</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>splitrig</refname>
+    <refpurpose>
+      Divise un signal déclencheur.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>splitrig</emphasis> divise un signal déclencheur (c-à-d une suite
+      temporelle d'impulsions au taux de contrôle) en plusieurs canaux suivant
+      une structure conçue par l'utilisateur.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>splitrig</command> ktrig, kndx, imaxtics, ifn, kout1 [,kout2,...,koutN]</synopsis>
+  </refsect1>
+ 
+    <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>imaxtics</emphasis> -- nombre de tics appartenant au motif le
+      plus grand.
+    </para>
+    <para>
+      <emphasis>ifn</emphasis> -- numéro de la table contenant la structure des
+      données par canal.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- signal entrant
+    </para>
+    <para>
+      <emphasis>ktrig</emphasis> -- signal déclencheur
+    </para>
+    <para>
+      L'opcode <emphasis>splitrig</emphasis> divise un signal déclencheur en plusieurs
+      canaux suivant un ou plusieurs motifs fournis par l'utilisateur. Normalement
+      le signal déclencheur régulier généré par l'opcode <emphasis>metro</emphasis>
+      est utilisé pour être transformé en motif rythmique pouvant déclenché
+      plusieurs mélodies indépendantes ou plusieurs riffs de percussion. Mais on
+      peut aussi partir de signaux de déclenchement non-isochrones. Ceci permet
+      des variations de groove "interprétées" et moins "mécaniques". Les motifs
+      sont en boucle et le cycle est répété chaque
+      <emphasis>nombre_de_tics_du_motif_N</emphasis>.
+    </para>
+    <para>
+      Le schéma des motifs est défini par l'utilisateur et stocké dans la table
+      <emphasis>ifn</emphasis> dans le format suivant :
+    </para>
+    <para>
+      <programlisting>
+        <xi:include href="opcodes/splitrig.txt" parse="text" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </programlisting>
+   </para>
+   <para>
+     Ce schéma peut contenir plus d'un motif, chacun avec un nombre différent de
+     lignes. Chaque motif est précédé par une ligne spéciale contenant un seul
+     champ <emphasis>nombre_de_tics_du_motif_N</emphasis> ; ce champ donne le
+     nombre de tics constituant le motif correspondant. Chaque ligne du motif
+     compose un tic. Chaque colonne du motif correspond à un canal, et chaque
+     champ d'une ligne est un nombre qui constitue le valeur sortie par le canal
+     correspondant <emphasis>koutXX</emphasis> (si ce nombre est zéro, le canal
+     de sortie correspondant ne déclenchera rien dans cet argument particulier).
+     Evidemment, chaque ligne doit contenir le même nombre de champs qui doit
+     égaler le nombre de canaux <emphasis>koutXX</emphasis>. Tous les motifs
+     doivent contenir le même nombre de lignes ; ce nombre doit être égal au
+     plus grand des motifs et il est défini par la variable
+     <emphasis>imaxtics</emphasis>. Même si un motif compte moins de tics que le
+     motif le plus grand, il doit contenir le même nombre de lignes. Dans ce cas,
+     certaines de ces lignes, à la fin du motif, ne seront pas utilisées (et
+     peuvent ainsi prendre n'importe quelle valeur, car elle est sans importance).
+   </para>
+    <para>
+      La variable <emphasis>kndx</emphasis> donne le numéro du motif à jouer,
+      zéro indiquant le premier motif. Chaque fois que la partie entière de
+      <emphasis>kndx</emphasis> change, le compteur de tic est remis à zéro.
+    </para>
+    <para>
+      Les motifs sont en boucle et le cycle est répété chaque
+      <emphasis>nombre_de_tics_du_motif_N</emphasis>.
+    </para>
+    <para>exemples
+      4 - calcule la valeur moyenne de <emphasis>asig</emphasis> dans l'intervalle
+      de temps.
+    </para>
+    <para>
+      Cet opcode peut être utile dans certaines situations, par exemple pour
+      implémenter un vu-mètre. 
+    </para>
+
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par &namegabriel;.</para>
+    <para>Nouveau dans Csound 5 (n'était disponible auparavant que dans CsoundAV).</para>
+  </refsect1>
+</refentry>

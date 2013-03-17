@@ -1,0 +1,122 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="wguide1">
+<indexterm id="IndexWguide1"><primary>wguide1</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Waveguides</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>wguide1</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>wguide1</refname>
+    <refpurpose>
+      Un modèle simple de guide d'onde constitué d'une ligne à retard et d'un
+      filtre passe-bas du premier ordre.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Un modèle simple de guide d'onde constitué d'une ligne à retard et d'un
+      filtre passe-bas du premier ordre.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>wguide1</command> asig, xfreq, kcutoff, kfeedback</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- l'entrée du bruit d'excitation.
+    </para>
+
+    <para>
+      <emphasis>xfreq</emphasis> -- la fréquence (c-à-d l'inverse de la durée du
+      retard). A été changé au taux-x dans la version 3.59 de Csound.
+    </para>
+
+    <para>
+      <emphasis>kcutoff</emphasis> -- la fréquence de coupure du filtre en Hz.   
+    </para>
+
+    <para>
+      <emphasis>kfeedback</emphasis> -- le facteur de rétroaction.
+    </para>
+
+    <para>
+      <emphasis>wguide1</emphasis> est le modèle de guide d'onde le plus élémentaire,
+      consistant en une ligne à retard et un filtre passe-bas du premier ordre.
+    </para>
+
+    <para>
+      L'implémentation des algorithmes de guide d'onde comme opcodes au lieu
+      d'instruments d'un orchestre de Csound permet de fixer une valeur de
+      <emphasis>kr</emphasis> différente de celle de <emphasis>sr</emphasis>, ce
+      qui donne de meilleures performances particulièrement en .
+    </para>
+
+    <para>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/wguide1.png" format="PNG"/>
+        </imageobject>
+ 
+        <textobject>
+          <phrase>wguide1.</phrase>
+        </textobject>
+ 
+        <caption>
+          <para>wguide1.</para>
+        </caption>
+      </mediaobject>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode wguide1. Il utilise le fichier
+      <ulink url="examples/wguide1.csd"><citetitle>wguide1.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode wguide1.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/wguide1.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="wguide2"><citetitle>wguide2</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+        <member>Octobre 1998</member>
+      </simplelist>
+    </para>
+    <para>Exemple écrit par &namekevin;.</para>
+
+    <para>Nouveau dans la version 3.49 de Csound.</para>
+  </refsect1>
+</refentry>

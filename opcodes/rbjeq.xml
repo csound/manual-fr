@@ -1,0 +1,259 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="rbjeq">
+<indexterm id="IndexRbjeq"><primary>rbjeq</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Specialized Filters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>rbjeq</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>rbjeq</refname>
+    <refpurpose>
+      Opcode de filtrage et d'égalisation paramétrique avec 7 types de filtre,
+      basé sur un algorithme de Robert Bristow-Johnson.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Opcode de filtrage et d'égalisation paramétrique avec 7 types de filtre,
+      basé sur un algorithme de Robert Bristow-Johnson.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ar <command>rbjeq</command> asig, kfco, klvl, kQ, kS[, imode]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+
+    <para>
+      <emphasis>imode (</emphasis> (facultatif, 0 par défaut) - somme de :
+
+      <itemizedlist>
+      	<listitem>
+      		<para>
+      			1 : l'initialisation est ignorée (à n'utiliser qu'avec des notes liées
+      			ou réinitialisées)
+      		</para>
+      	</listitem>
+      </itemizedlist>
+
+      et exactement une seule des valeurs suivantes pour sélectionner le type de
+      filtre :
+
+      <itemizedlist>
+      	<listitem>
+      		<para>
+            0 : filtre passe-bas résonant. <emphasis>kQ</emphasis> contrôle la
+            résonance : à la fréquence de coupure (<emphasis>kfco</emphasis>),
+            le gain en amplitude est <emphasis>kQ</emphasis> (par exemple 20 dB
+            pour <emphasis>kQ</emphasis> = 10), les valeurs supérieures de
+            <emphasis>kQ</emphasis> produisant un pic de résonance plus étroit.
+            Si <emphasis>kQ</emphasis> vaut racine carrée de 0.5 (environ 0.7071),
+            il n'y a pas de résonance et le filtre a une réponse ressemblant
+            beaucoup à celle de <emphasis>butterlp</emphasis>. Si
+            <emphasis>kQ</emphasis> est inférieur à racine carrée de 0.5, il
+            n'y a pas de résonance et le filtre a une réponse de -6 dB / octave
+            approximativement de <emphasis>kfco</emphasis> * <emphasis>kQ</emphasis>
+            à <emphasis>kfco</emphasis>. Au-delà de <emphasis>kfco</emphasis>,
+      		  l'atténuation est toujours de -12 dB / octave.
+
+          <note><title>NOTE</title>
+            <para>
+              Le filtre passe-bas <emphasis>rbjeq</emphasis> se comporte
+              sensiblement comme "ar <command>pareq</command> asig, kfco, 0, kQ, 2"
+              mais il est calculé plus rapidement.
+            </para>
+          </note>
+
+      		</para>
+      	</listitem>
+
+      	<listitem>
+      		<para>
+      			2 : filtre passe-haut résonant. Les paramètres sont les mêmes que
+      			pour le filtre passe-bas, mais le filtre équivalent est
+      			<emphasis>butterhp</emphasis> si <emphasis>kQ</emphasis> vaut 0.7071,
+      			et "ar <command>pareq</command> asig, kfco, 0, kQ, 1" dans les autres
+      			cas.
+      		</para>
+      	</listitem>
+
+      	<listitem>
+      		<para>
+      			4 : filtre passe-bande. <emphasis>kQ</emphasis> contrôle la largeur
+      			de bande qui vaut <emphasis>kfco</emphasis> / <emphasis>kQ</emphasis>,
+      			et doit toujours être inférieur à <emphasis>sr</emphasis> / 2. La
+      			largeur de bande est mesurée entre les points à -3 dB (gain en
+      			amplitude  = 0.7071), au-delà desquels la pente est de +/- 6 dB / octave.
+      			Ce type de filtre ressemble beaucoup à
+      			"ar <command>butterbp</command> asig, kfco, kfco / kQ".
+      		</para>
+      	</listitem>
+
+      	<listitem>
+      		<para>
+      			6 : filtre réjecteur de bande avec les mêmes paramètres que le filtre
+      			passe-bande et une réponse semblable à celle de
+      			<emphasis>butterbr</emphasis>.
+      		</para>
+      	</listitem>
+
+      	<listitem>
+      		<para>
+      			8 : EQ peak. Le gain en amplitude vaut 1 (0 dB) à 0 Hz et à
+      			<emphasis>sr</emphasis> / 2, et <emphasis>klvl</emphasis> à la
+      			fréquence centrale (<emphasis>kfco</emphasis>). Ainsi,
+      			<emphasis>klvl</emphasis> contrôle le renforcement (s'il est
+      			supérieur à 1) ou l'atténuation (s'il est inférieur à 1).
+      			<emphasis>klvl</emphasis> à 1 produit une réponse plate. Comme pour
+      			les filtres passe-bande et réjecteur de bande, la largeur de bande
+      			est déterminées par <emphasis>kfco</emphasis> / <emphasis>kQ</emphasis>
+      			(qui doit être encore inférieur à <emphasis>sr</emphasis> / 2) ;
+      			cependant, elle se trouve cette fois-ci entre les points situés à
+      			racine carrée de <emphasis>klvl</emphasis> (autrement dit à
+      			mi-renforcement ou mi-atténuation en décibels). NOTE : il faut
+      			éviter les valeurs de <emphasis>klvl</emphasis> excessivement faibles
+      			ou élévées, encore que l'opcode ait été testé avec
+      			<emphasis>klvl</emphasis> = 0.01 et <emphasis>klvl</emphasis> = 100.
+      			<emphasis>klvl</emphasis> = 0 est toujours une erreur, contrairement
+      			au cas de <emphasis>pareq</emphasis> qui accepte un niveau de zéro.
+      		</para>
+      	</listitem>
+
+      	<listitem>
+      		<para>
+      			10 : EQ low shelf, contrôlé par <emphasis>klvl</emphasis> et
+      			<emphasis>kS</emphasis> (<emphasis>kQ</emphasis> est ignoré par ce
+      			type de filtre). Le gain en amplitude est de <emphasis>klvl</emphasis>
+      			à la fréquence zéro tandis que le niveau des hautes fréquences
+      			(proches de <emphasis>sr</emphasis> / 2) n'est pas changé. A la
+      			fréquence de coupure (<emphasis>kfco</emphasis>), le gain est de
+      			racine carrée de <emphasis>klvl</emphasis> (mi-renforecemnt ou
+      			mi-atténuation en décibels). Le paramètre <emphasis>kS</emphasis>
+      			contrôle la raideur de la pente de la réponse en fréquence (voir
+      			ci-dessous).
+      		</para>
+      	</listitem>
+
+      	<listitem>
+      		<para>
+      			12 : EQ high shelf. Très semblable à l'EQ low shelf, mais il affecte
+      			la région des hautes fréquendes.
+      		</para>
+      	</listitem>
+      </itemizedlist>
+
+      La valeur par défaut de <emphasis>imode</emphasis> est zéro (filtre
+      passe-bas, initialisation réalisée).
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+
+    <para>
+      <emphasis>ar</emphasis> -- le signal de sortie.
+    </para>
+
+	<para>
+      <emphasis>asig</emphasis> -- le signal d'entrée.
+
+      <note>
+      <title>NOTE</title>
+
+      <para>
+        Si l'entrée contient des sections silencieuses, il peut y avoir un
+        ralentissement significatif sur les processeurs Intel du aux nombres
+        dénormalisés. Dans de tels cas, il est recommandé de traiter le signal
+        d'entrée avec l'opcode <emphasis>denorm</emphasis> avant le filtrage
+        par <emphasis>rbjeq</emphasis> (et actuellement avec plusieurs autres
+        filtres).
+      </para>
+
+      </note>
+    </para>
+
+    <para>
+      <emphasis>kfco</emphasis> -- fréquence de coupure ou fréquence centrale,
+      selon le type de filtre, en Hz. Doit être supérieure à zéro et inférieure
+      à <emphasis>sr</emphasis> / 2 (l'intervalle compris entre
+      <emphasis>sr</emphasis> * 0.0002 et <emphasis>sr</emphasis> * 0.49 devrait
+      être sûr).
+    </para>
+
+    <para>
+      <emphasis>klvl</emphasis> -- niveau de renforcement ou d'atténuation,
+      exprimé comme gain d'amplitude (par exemple, 1 : réponse plate, 4 :
+      renforcement de 12 dB, 0.1 : atténuation de 20 dB) ; les valeurs nulle ou
+      négatives sont interdites. Il est reconnu seulement par les types peak et
+      shelf EQ (8, 10, 12) et ignoré par les autres filtres.
+    </para>
+
+    <para>
+      <emphasis>kQ</emphasis> -- résonance (également <emphasis>kfco</emphasis>
+      / (largeur de bande) dans plusieurs types de filtre). N'est pas utilisé
+      par les shelf EQs (<emphasis>imode</emphasis> = 10 et 12). La signification
+      exacte de ce paramètre dépend du type de filtre (voir ci-dessus), mais il
+      doit toujours être supérieur à zéro, et habituellement
+      (<emphasis>kfco</emphasis> / <emphasis>kQ</emphasis>) doit être inférieur
+      à <emphasis>sr</emphasis> / 2.
+    </para>
+
+    <para>
+      <emphasis>kS</emphasis> -- paramètre de pente pour les filtres shelf. Doit
+      être supérieur à zéro ; plus la valeur est grande et plus la pente est
+      raide, avec résonance si <emphasis>kS</emphasis> &gt; 1 (cependant, une
+      valeur trop grande de <emphasis>kS</emphasis> peut rendre le filtre
+      instable). Si <emphasis>kS</emphasis> vaut exactement 1, la pente est aussi
+      raide que possible sans résonance. Noter que l'effet de <emphasis>kS</emphasis> -
+      spécialement s'il est supérieur à 1 - dépend aussi de <emphasis>klvl</emphasis>
+      et qu'il n'a pas d'unité bien définie.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode rbjeq. Il utilise le fichier
+      <ulink url="examples/rbjeq.csd"><citetitle>rbjeq.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode rbjeq.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/rbjeq.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+	  <simplelist>
+        <member>Algorithme original de Robert Bristow-Johnson.</member>
+        <member>
+          Version orchestre de Csound par Josep M Comajuncosas, août 1999.
+        </member>
+        <member>
+          Converti en C (avec optimisations et correction des bogues) par
+        	Istvan Varga, Décembre 2002.
+        </member>
+      </simplelist>
+   </para>
+  </refsect1>
+</refentry>

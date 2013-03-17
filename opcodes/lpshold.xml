@@ -1,0 +1,107 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="lpshold">
+<indexterm id="IndexLpshold"><primary>lpshold</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Linear and Exponential Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lpshold</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>lpshold</refname>
+    <refpurpose>
+      Génère un signal de contrôle constitué de segments tenus.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère un signal de contrôle constitué de segments tenus délimités par deux ou plus
+      points spécifiés. L'enveloppe entière est parcourue en boucle au taux
+      <emphasis>kfreq</emphasis>. Chaque paramètre peut varier au taux-k.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ksig <command>lpshold</command> kfreq, ktrig, iphase, ktime0, kvalue0  [, ktime1] [, kvalue1] [, ktime2] [, kvalue2] [...]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ksig</emphasis> -- Signal de sortie.
+    </para>
+
+    <para>
+      <emphasis>kfreq</emphasis> -- Taux de répétition en Hz ou en fraction de Hz.
+    </para>
+
+    <para>
+      <emphasis>ktrig</emphasis> -- S'il est non nul, redéclanche l'enveloppe depuis le début
+      (voir l'opcode <link linkend="trigger"><citetitle>trigger</citetitle></link>), avant que
+      le cycle de l'enveloppe ne soit complet.
+    </para>
+
+    <para>
+      <emphasis>iphase</emphasis> -- Une valeur comprise entre 0 et 1 pour indiquer
+      où commence la boucle. Zéro, la valeur la plus usuelle, indique le début du
+      signal.
+    </para>
+    
+    <para>
+      <emphasis>ktime0...ktimeN</emphasis> -- Dates des points ; exprimées en fraction de cycle.
+    </para>
+
+    <para>
+      <emphasis>kvalue0...kvalueN</emphasis> -- Valeurs des points.
+    </para>
+
+    <para>
+      <emphasis>lpshold</emphasis> est semblable à
+      <link linkend="loopseg"><citetitle>loopseg</citetitle></link>, mais il ne peut générer
+      que des segments horizontaux, car il maintient une valeur constante pendant chaque
+      intervalle de temps placé entre <emphasis>ktimeN</emphasis> et
+      <emphasis>ktimeN+1</emphasis>. Il est utile, entre autres, pour un contrôle mélodique
+      comme celui des vieux séquenceurs analogiques.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode lpshold. Il utilise le fichier
+      <ulink url="examples/lpshold.csd"><citetitle>lpshold.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode lpshold.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/lpshold.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="loopseg"><citetitle>loopseg</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la Version 4.13</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,174 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.15
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLtext">
+<indexterm id="IndexFLtext"><primary>FLtext</primary></indexterm>
+  <refentryinfo><title>FLTK:Valuators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLtext</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLtext</refname>
+    <refpurpose>
+      Un opcode de widget FLTK qui crée une boîte de texte.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>FLtext</emphasis> permet à l'utilisateur de modifier la valeur
+      d'un paramètre en la tapant directement dans un champ de texte.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kout, ihandle <command>FLtext</command> &quot;label&quot;, imin, imax, istep, itype, iwidth, \
+      iheight, ix, iy</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ihandle</emphasis> -- un identifiant (un nombre entier) qui
+      référence de manière univoque le widget correspondant. Il est utilisé par
+      d'autres opcodes qui modifient les propriété du widget (voir
+      <link linkend="ControlFltkAppearance"><citetitle>Modifier l'Apparence des
+      Widgets FLTK</citetitle></link>). Il est automatiquement retourné par
+      <emphasis>FLtext</emphasis> et ne doit pas être fixé par l'étiquette de
+      l'utilisateur. (L'étiquette de l'utilisateur est une chaîne entre
+      guillemets contenant un texte fourni par l'utilisateur placé à côté du
+      widget.)
+    </para>
+
+    <para>
+      <emphasis><quote>label</quote></emphasis> -- une chaîne entre guillemets
+      contenant un texte fourni par l'utilisateur placé à côté du widget.
+    </para>
+
+    <para>
+      <emphasis>imin</emphasis> -- valeur minimale de l'intervalle de sortie.
+    </para>
+
+    <para>
+      <emphasis>imax</emphasis> -- valeur maximale de l'intervalle de sortie.
+    </para>
+
+    <para>
+      <emphasis>istep</emphasis> -- un nombre en virgule flottante indiquant
+      le pas d'incrémentation du valuateur correspondant au glissé de souris.
+      L'argument <emphasis>istep</emphasis> permet de ralentir le glissé
+      autorisant une précision arbitraire.
+    </para>
+
+    <para>
+      <emphasis>itype</emphasis> -- un nombre entier indiquant l'apparence du
+      valuateur.
+    </para>
+
+    <para>
+      L'argument <emphasis>itype</emphasis> accepte les valeurs suivantes :
+
+      <itemizedlist>
+        <listitem><para>1 - comportement normal</para></listitem>
+        <listitem><para>2 - l'opération du glissé de souris est suppimée, deux
+        boutons fléchés la remplacent. Un clic de souris sur un de ces boutons
+        peut accroitre/diminuer la valeur en sortie.</para></listitem>
+        <listitem><para>3 - l'édition du texte est supprimée, seul le glissé de
+        souris modifie la valeur en sortie.</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>iwidth</emphasis> -- largeur du widget.
+    </para>
+
+    <para>
+      <emphasis>iheight</emphasis> -- hauteur du widget.
+    </para>
+
+    <para>
+      <emphasis>ix</emphasis> -- position horizontale du coin supérieur gauche
+      du valuateur, relative au coin supérieur gauche de la fenêtre correspondante
+      (exprimée en pixels).
+    </para>
+
+    <para>
+      <emphasis>iy</emphasis> -- position verticale du coin supérieur gauche
+      du valuateur, relative au coin supérieur gauche de la fenêtre correspondante
+      (exprimée en pixels).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+   <para>
+      <emphasis>kout</emphasis> -- valeur en sortie.
+    </para>
+
+    <para>
+      <emphasis>FLtext</emphasis> permet à l'utilisateur de modifier la valeur
+      d'un paramètre en la tapant directement dans un champ de texte.
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/fltext.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>FLtext.</phrase>
+        </textobject>
+
+        <caption>
+          <para>FLtext.</para>
+        </caption>
+      </mediaobject>
+
+      On peut aussi modifier sa valeur en le cliquant et en glissant la souris
+      horizontalement. L'argument <emphasis>istep</emphasis> permet à l'utilisateur
+      de fixer arbitrairement la réponse au glissé de souris.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode FLtext. Il utilise le fichier
+      <ulink url="examples/FLtext.csd"><citetitle>FLtext.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode FLtext.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/FLtext.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="FLcount"><citetitle>FLcount</citetitle></link>,
+      <link linkend="FLjoy"><citetitle>FLjoy</citetitle></link>,
+      <link linkend="FLknob"><citetitle>FLknob</citetitle></link>,
+      <link linkend="FLroller"><citetitle>FLroller</citetitle></link>,
+      <link linkend="FLslider"><citetitle>FLslider</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.22</para>
+    <para>Exemple écrit par Iain McCurdy, édité par &namekevin;.</para>
+  </refsect1>
+</refentry>

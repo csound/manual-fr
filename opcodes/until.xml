@@ -1,0 +1,95 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="until">
+<indexterm id="IndexUntil"><primary>until</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Program Flow Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>until</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>until</refname>
+    <refpurpose>
+      Une construction syntactique de boucle.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Une construction syntactique de boucle.
+   </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>until</command>  condition <command>do</command>
+    ... <command>od</command></synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Les instructions entre <emphasis>do</emphasis> et <emphasis>od</emphasis>
+      forment le corps d'une boucle qui est exécutée jusqu'à ce que la condition
+      devienne vraie.
+    </para>
+   </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de la construction until. Il utilise le fichier
+      <ulink url="examples/until.csd"><citetitle>until.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de la construction until.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/until.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
+B  0.000 ..  1.000 T  1.000 TT  1.000 M:      0.0
+new alloc for instr 1:
+instr 1:  p4 = 3.000
+instr 1:  p4 = 2.000
+instr 1:  p4 = 1.000
+instr 1:  p4 = 0.000
+instr 1:  p4 = -1.000
+B  1.000 ..  2.000 T  2.000 TT  2.000 M:      0.0
+new alloc for instr 2:
+instr 2:  p4 = 3.000
+instr 2:  p4 = 2.000
+instr 2:  p4 = 1.000
+instr 2:  p4 = 0.000
+instr 2:  p4 = -1.000
+B  2.000 ..  3.000 T  3.000 TT  3.000 M:      0.0
+      </screen>
+    </para>
+  </refsect1>
+      
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="loop_ge"><citetitle>loop_ge</citetitle></link>,
+      <link linkend="loop_gt"><citetitle>loop_gt</citetitle></link>,
+      <link linkend="loop_le"><citetitle>loop_le</citetitle></link> et
+      <link linkend="loop_lt"><citetitle>loop_lt</citetitle></link>.
+    </para>
+    
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>&namejohn;.</para>
+    <para>Nouveau dans la version 5.14 de Csound avec le nouveau parseur.</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,138 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvstanal">
+<indexterm id="IndexPvstanal"><primary>pvstanal</primary></indexterm>
+  <refentryinfo><title>Spectral processing: pvstanal</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvstanal</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvstanal</refname>
+    <refpurpose>
+      Traitement par analyse de vocodeur de phase avec détection/traitement
+      d'attaque.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>pvstanal</emphasis> implémente une analyse par vocodeur de phase
+      en lisant des tables de fonction contenant des sources de son échantillonné
+      avec <link linkend="GEN01"><citetitle>GEN01</citetitle></link>.
+      <emphasis>pvstanal</emphasis> accepte ainsi les tables à allocation diférée.
+    </para>
+    
+    <para>
+      Cet opcode permet une mise à l'échelle du temps indépendante de celle de la
+      fréquence. Le temps progresse en interne mais il est contrôlé par un
+      paramètre de mise à l'échelle du tempo ; lorsqu'une attaque est détectée,
+      l'échelonnement du temps est momentanément stoppé pour éviter le brouillage
+      des attaques. La qualité de l'effet est généralement améliorée avec le
+      verrouillage de phase activé.
+    </para>
+    
+    <para>
+      <emphasis>pvstanal</emphasis> met aussi à l'échelle la hauteur, indépendamment
+      de la fréquence, en utilisant un facteur de transposition (taux-k).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>fsig <command>pvstanal</command> ktimescal, kamp, kpitch, ktab, [kdetect, kwrap, ioffset, ifftsize, ihop, idbthresh]
+      </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+      <para>
+      <emphasis>ifftsize</emphasis> -- taille de la TFR (puissance de deux), vaut
+      par défaut 2048.
+    </para>
+        <para>
+      <emphasis>ihop</emphasis> -- taille du saut, vaut par défaut 512
+    </para>
+    <para>
+      <emphasis>ioffset</emphasis> -- décalage du début de la lecture dans la
+      table, en secondes
+    </para>
+    <para>
+      <emphasis>idbthresh</emphasis> -- seuil pour la détection des attaques,
+      basé sur le rapport de spectre de puissance en dB entre deux fenêtres
+      successives. Un rapport détecté au-dessus du seuil stoppe momentanément
+      l'échelonnement du temps, pour éviter le brouillage (vaut 1 par défaut).
+      Par défaut, tout ce qui dépasse une différence de puissance de 1 dB entre
+      trames sera détecté comme un attaque.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+  <para>
+      <emphasis>ktimescal</emphasis> -- rapport de mise à l'échelle du temps,
+      &lt; 1 étirement, > 1 contraction.
+    </para>
+    <para>
+      <emphasis>kamp</emphasis> -- mise à l'échelle de l'amplitude
+    </para>
+    <para>
+      <emphasis>kpitch</emphasis> -- mise à l'échelle de la hauteur de grain
+      (1=hauteur normale, &lt; 1 plus grave, > 1 plus aigu ; négatif, à l'envers)
+    </para>
+    <para>
+      <emphasis>kdetect</emphasis> -- 0 ou 1, pour désactiver/activer les
+      détections/traitements d'attaque. Le détecteur d'attaque cherche les
+      différences de puissance entre les fenêtres d'analyse. S'il trouve plus
+      que ce qui a été spécifié dans le paramètre <emphasis>dbthresh</emphasis>,
+      une attaque est déclarée. La mise à l'échelle du temps est momentanément
+      suspendue afin que les attaques ne soient pas modifiées.
+    </para>
+    <para>
+      <emphasis>ktab</emphasis> -- table de fonction du signal source. Les
+      tables à allocation différée (voir
+      <link linkend="GEN01"><citetitle>GEN01</citetitle></link>) sont acceptées,
+      mais l'opcode attend une source mono. On peut changer de table au taux-k.
+    </para>
+    <para>
+      <emphasis>kwrap</emphasis> -- 0 ou 1, pour désactiver/activer la lecture
+      cyclique de table (vaut 1 par défaut).
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode pvstanal. Il utilise le fichier
+      <ulink url="examples/pvstanal.csd"><citetitle>pvstanal.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode pvstanal.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pvstanal.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Février 2010</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau greffon dans la version 5.13</para>
+    <para>Février 2005.</para>
+  </refsect1>
+</refentry>

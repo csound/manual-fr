@@ -1,0 +1,92 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.3
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="a">
+  <indexterm id="IndexAStatement"><primary>a statement</primary></indexterm> 
+  <indexterm id="IndexAdvanceStatement"><primary>advance statement</primary></indexterm> 
+  <refmeta>
+    <refentrytitle>Instruction a (ou instruction avancer)</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>a</refname>
+    <refpurpose>
+      Avancer le temps de la partition de la quantité spécifiée.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Provoque l'avancement du temps de la partition de la quantité spécifiée sans produire d'échantillons
+      sonores.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>a</command> p1  p2  p3</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <literallayout>
+  p1    Non significatif. Habituellement zéro.
+  p2    Date en pulsations à laquelle l'avance doit commencer.
+  p3    Nombre de pulsations duquel il faut avancer sans produire de son.
+  p4    |
+  p5    |    Non significatifs.
+  p6    |
+  .
+  .
+      </literallayout>
+    </para>
+
+    <refsect2>
+      <title>Considérations Spéciales</title>
+      <para>
+        Cette instruction permet d'avancer le compteur de pulsations dans une partition sans générer les
+        échantillons sonores correspondants. On peut l'utiliser quand une section de la partition est
+        incomplète (le début ou le milieu sont manquants) et que l'on ne souhaite pas générer et écouter
+        une longue période de silence.
+      </para>
+
+      <para>
+        p2, date d'activation, et p3, nombre de pulsations, sont traités comme dans
+        l'<link linkend="i"><citetitle>instruction i</citetitle></link>,en tenant compte du tri et des
+        modifications par les <link linkend="t"><citetitle>instructions t</citetitle></link>.
+      </para>
+
+      <para>
+        Une <emphasis>instruction a</emphasis> sera insérée temporairement dans la partition par la fonction
+        Score Extract lorsque l'extrait commence après le début de la Section. Ceci afin de
+        conserver le compte de pulsations de la partition originale pour les messages de pic d'amplitude
+        qui sont rapportés sur la console de l'utilisateur.
+      </para>
+
+      <para>
+        A chaque exécution d'un orchestre lorsqu'une <emphasis>instruction a</emphasis> est rencontrée, sa
+        présence et son effet son rapportés sur la console de l'utilisateur.
+      </para>
+    </refsect2>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'instruction a. Il utilise le fichier
+      <ulink url="examples/a.csd"><citetitle>a.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'instruction a.</title>
+        <xi:include href="examples-xml/a.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+</refentry>

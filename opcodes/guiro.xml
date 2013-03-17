@@ -1,0 +1,119 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="guiro">
+<indexterm id="IndexGuiro"><primary>guiro</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Models and Emulations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>guiro</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>guiro</refname>
+    <refpurpose>
+      Modèle semi-physique d'un son de guiro.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>guiro</emphasis> est un modèle semi-physique d'un son de guiro. Il fait partie
+      des opcodes de percussion de PhISEM. PhISEM (Physically Informed Stochastic Event Modeling)
+      est une approche algorithmique pour simuler les collisions de multiples objets indépendants
+      produisant des sons.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>guiro</command> kamp, idettack [, inum] [, idamp] [, imaxshake] [, ifreq] [, ifreq1]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>idettack</emphasis> -- période de temps durant laquelle tous les sons sont stoppés.
+    </para>
+ 
+    <para>
+      <emphasis>inum</emphasis> (optional) -- (facultatif) -- le nombre de perles, de dents, de cloches, de
+      tambourins, etc. S'il vaut zéro, il prend la valeur par défaut de 128.
+    </para>
+
+    <para>
+      <emphasis>idamp</emphasis> (facultatif) -- le facteur d'amortissement de l'instrument.
+      <emphasis>Inutilisé.</emphasis>
+    </para>
+
+    <para>
+      <emphasis>imaxshake</emphasis> (facultatif, 0 par défaut) -- quantité d'énergie à réinjecter
+      dans le système. La valeur doit être comprise entre 0 et 1.
+    </para>
+
+    <para>
+      <emphasis>ifreq</emphasis> (facultatif) -- la fréquence de résonance principale. La valeur
+      par défaut est 2500 Hz.
+    </para>
+
+    <para>
+      <emphasis>ifreq1</emphasis> (facultatif) -- la première fréquence de résonance. La valeur
+      par défaut est 4000 Hz.
+    </para>
+ </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamp</emphasis> -- Amplitude de la sortie. Note : comme ces instruments sont
+      stochastiques, ce n'est qu'une approximation.
+    </para>
+ </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode guiro. Il utilise le fichier
+      <ulink url="examples/guiro.csd"><citetitle>guiro.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode guiro.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/guiro.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="bamboo"><citetitle>bamboo</citetitle></link>, 
+      <link linkend="dripwater"><citetitle>dripwater</citetitle></link>, 
+      <link linkend="sleighbells"><citetitle>sleighbells</citetitle></link>, 
+      <link linkend="tambourine"><citetitle>tambourine</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameperry;, fait partie de PhISEM (Physically Informed Stochastic Event Modeling)</member>
+        <member>Adapté par &namejohn;</member>
+        <member>Université de Bath, Codemist Ltd.</member>
+        <member>Bath, UK</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 4.07 de Csound</para>
+    <para>Notes ajoutées par &namerasmus; en mai 2002.</para>
+  </refsect1>
+</refentry>

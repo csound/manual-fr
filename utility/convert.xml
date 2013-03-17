@@ -1,0 +1,80 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="UtilityConversion">
+  <title>Conversion de fichier (<!--DNOISE-->, HET_EXPORT, HET_IMPORT, PVLOOK, PV_EXPORT, PV_IMPORT, SDIF2AD,
+    SRCONV)</title>
+  <para>Les utilitaires suivants existent pour la conversion de fichier :
+    <itemizedlist>
+<!--      <listitem>
+        <para>
+          <link linkend="dnoise"><citetitle>DNOISE</citetitle></link> : Réduit le bruit dans un fichier.
+        </para>
+      </listitem>-->
+      <listitem>
+        <para>
+          <link linkend="het_export"><citetitle>HET_EXPORT</citetitle></link> : exporte un fichier
+          <filename>.het</filename> (produit par
+          <link linkend="hetro"><citetitle>HETRO</citetitle></link>) vers un fichier texte à séparateur
+          virgule.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <link linkend="het_import"><citetitle>HET_IMPORT</citetitle></link> : génère un fichier
+          <filename>.het</filename> (dans le format produit par
+          <link linkend="hetro"><citetitle>HETRO</citetitle></link>) à partir d'un fichier texte à
+          séparateur virgule pour l'utiliser avec le générateur
+          <link linkend="adsyn"><citetitle>adsyn</citetitle></link>.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <link linkend="pvlook"><citetitle>PVLOOK</citetitle></link> : affiche une sortie texte formatée
+          de fichiers d'analyse STFT.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <link linkend="pv_export"><citetitle>PV_EXPORT</citetitle></link> : convertit un fichier généré
+          par <link linkend="pvanal"><citetitle>PVANAL</citetitle></link> en un fichier texte.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <link linkend="pv_import"><citetitle>PV_IMPORT</citetitle></link> : convertit un fichier texte
+          (dans le format généré par <link linkend="pv_export"><citetitle>PV_EXPORT</citetitle></link>) en un
+          fichier de format <link linkend="pvanal"><citetitle>PVANAL</citetitle></link> à utiliser par
+          l'opcode <link linkend="pvoc"><citetitle>pvoc</citetitle></link>.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <link linkend="sdif2ad"><citetitle>SDIF2AD</citetitle></link> : convertit des fichiers SDIF en
+          fichiers utilisables par adsynt.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <link linkend="srconv"><citetitle>SRCONV</citetitle></link>: convertit le taux d'échantillonnage
+          d'un fichier audio.
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+
+  &utilitydnoise;
+  &utilityhet_export;
+  &utilityhet_import;
+  &utilitypvlook;
+  &utilitypv_export;
+  &utilitypv_import;
+  &utilitysdif2ad;
+  &utilitysrconv;
+</section>

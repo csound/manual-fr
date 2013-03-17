@@ -1,0 +1,97 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.2
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="inrg">
+<indexterm id="IndexInrg"><primary>inrg</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Signal Input</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>inrg</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>inrg</refname>
+    <refpurpose>
+      Permet une entrée depuis un ensemble de canaux contigus du périphérique
+      d'entrée audio.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>inrg</emphasis> lit des données audio depuis un ensemble de canaux
+      contigus du périphérique d'entrée audio.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>inrg</command> kstart, ain1 [,ain2, ain3, ..., ainN]</synopsis>
+  </refsect1>
+
+<!--  <refsect1>
+    <title>Initialisation</title>
+    <para>
+    </para>
+  </refsect1>-->
+
+  <refsect1>
+    <title>Exécution</title> 
+    <para>
+      <emphasis>kstart</emphasis> - le numéro du premier canal du périphérique
+      d'entrée à lire (les numéros des canaux commencent à 1, qui est le premier
+      canal).
+    </para>
+    <para>
+      <emphasis>ain1, ain2, ... ainN</emphasis> - les arguments de sortie remplis
+      avec les données audio lues depuis les canaux correspondants.
+    </para>
+    <para>
+      <emphasis>inrg</emphasis> permet une entrée depuis un ensemble de canaux
+      contigus du périphérique d'entrée audio. <emphasis>kstart</emphasis> indique
+      le premier canal à lire (le canal 1 étant le premier canal). Il faut
+      s'assurer que le nombre obtenu en ajoutant à <emphasis>kstart</emphasis> le
+      nombre de canaux à lire - 1 est &lt;=
+      <link linkend="nchnls_i"><citetitle>nchnls_i</citetitle></link>.
+    </para>
+    <note>
+      <para>
+        Noter que cet opcode est exceptionnel en ce sens qu'il produit sa
+        <quote>sortie</quote> dans les paramètres situés à sa droite.
+      </para>
+    </note>
+  </refsect1>
+<!--
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Here is an example of the inrg opcode. It uses the file <ulink url="examples/inrg.csd"><citetitle>inrg.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the inrg opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/inrg.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>-->
+<!--  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="lposcil"><citetitle>lposcil</citetitle></link>,
+      <link linkend="lposcila"><citetitle>lposcila</citetitle></link>,
+      <link linkend="inrg2"><citetitle>inrg2</citetitle></link>
+    </para>
+  </refsect1>-->
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 5.06</para>
+  </refsect1>
+</refentry>

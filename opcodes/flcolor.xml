@@ -1,0 +1,133 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLcolor">
+<indexterm id="IndexFLcolor"><primary>FLcolor</primary></indexterm>
+  <refentryinfo><title>FLTK:Appearance</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLcolor</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLcolor</refname>
+    <refpurpose>
+      Un opcode FLTK qui fixe les couleurs principales.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Fixe les couleurs principales à des valeurs RVB données par l'utilisateur.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>FLcolor</command> ired, igreen, iblue [, ired2, igreen2, iblue2]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ired</emphasis> -- La composante rouge du widget cible. Chaque
+      composante RVB est comprise entre 0 et 255.
+    </para>
+
+    <para>
+      <emphasis>igreen</emphasis> -- La composante verte du widget cible. Chaque
+      composante RVB est comprise entre 0 et 255.
+    </para>
+
+    <para>
+      <emphasis>iblue</emphasis> -- La composante bleue du widget cible. Chaque
+      composante RVB est comprise entre 0 et 255.
+    </para>
+    <para>
+      <emphasis>ired2</emphasis> -- La composante rouge de la couleur secondaire
+      du widget cible. Chaque composante RVB est comprise entre 0 et 255.
+    </para>
+
+    <para>
+      <emphasis>igreen2</emphasis> -- La composante verte de la couleur secondaire
+      du widget cible. Chaque composante RVB est comprise entre 0 et 255.
+    </para>
+
+    <para>
+      <emphasis>iblue2</emphasis> -- La composante bleue de la couleur secondaire
+      du widget cible. Chaque composante RVB est comprise entre 0 et 255.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Ces opcodes modifient l'apparence d'autres widgets. Ils sont de deux
+      types : ceux ne contenant pas d'argument <emphasis>ihandle</emphasis>
+      qui affectent tous les widgets déclarés après eux, et ceux ayant un
+      argument <emphasis>ihandle</emphasis> qui n'affectent qu'un widget cible
+      déclaré avant eux.
+    </para>
+
+    <para>
+      <emphasis>FLcolor</emphasis> fixe les couleurs principales à des valeurs
+      RVB données par l'utilisateur. Cet opcode affecte la couleur principale
+      de (presque) tous les widgets définis après lui. On peut placer plusieurs
+      instances de <emphasis>FLcolor</emphasis> devant chaque widget que l'on
+      veut modidier. Cependant, pour modifier un seul widget, il sera plus
+      judicieux d'utiliser un opcode appartenant à la seconde catégorie
+      (c'est-à-dire ceux contenant l'argument <emphasis>ihandle</emphasis>).
+    </para>
+
+    <para>
+      <emphasis>FLcolor</emphasis> est conçu pour modifier les couleurs d'un
+      groupe de widgets en relation, supposés être de la même couleur.
+      L'influence de <emphasis>FLcolor</emphasis> sur les widgets suivants
+      peut-être désactivée en utilisant -1 comme seul argument de l'opcode.
+      De plus, en utilisant -2 (ou -3) comme seul argument de
+      <emphasis>FLcolor</emphasis>, tous les widgets suivants auront une
+      couleur choisie aléatoirement. -2 sélectionne une couleur aléatoire
+      claire, tandis que -3 sélectionne une couleur aléatoire foncée.
+    </para>
+    <para>
+      L'utilisation de <emphasis>ired2</emphasis>, <emphasis>igreen2</emphasis>,
+      <emphasis>iblue2</emphasis> est équivalente à l'utilisation d'un
+      <link linkend="FLcolor2"><citetitle>FLcolor2</citetitle></link> séparé.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="FLcolor2"><citetitle>FLcolor2</citetitle></link>, 
+      <link linkend="FLhide"><citetitle>FLhide</citetitle></link>, 
+      <link linkend="FLlabel"><citetitle>FLlabel</citetitle></link>, 
+      <link linkend="FLsetAlign"><citetitle>FLsetAlign</citetitle></link>, 
+      <link linkend="FLsetBox"><citetitle>FLsetBox</citetitle></link>, 
+      <link linkend="FLsetColor"><citetitle>FLsetColor</citetitle></link>, 
+      <link linkend="FLsetColor2"><citetitle>FLsetColor2</citetitle></link>, 
+      <link linkend="FLsetFont"><citetitle>FLsetFont</citetitle></link>, 
+      <link linkend="FLsetPosition"><citetitle>FLsetPosition</citetitle></link>, 
+      <link linkend="FLsetSize"><citetitle>FLsetSize</citetitle></link>, 
+      <link linkend="FLsetText"><citetitle>FLsetText</citetitle></link>, 
+      <link linkend="FLsetTextColor"><citetitle>FLsetTextColor</citetitle></link>, 
+      <link linkend="FLsetTextSize"><citetitle>FLsetTextSize</citetitle></link>, 
+      <link linkend="FLsetTextType"><citetitle>FLsetTextType</citetitle></link>, 
+      <link linkend="FLsetVal_i"><citetitle>FLsetVal_i</citetitle></link>, 
+      <link linkend="FLsetVal"><citetitle>FLsetVal</citetitle></link>, 
+      <link linkend="FLshow"><citetitle>FLshow</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.22</para>
+  </refsect1>
+</refentry>

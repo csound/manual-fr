@@ -1,0 +1,80 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="strget">
+<indexterm id="Indexstrget"><primary>strget</primary></indexterm>
+  <refentryinfo><title>Strings:Definition</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>strget</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>strget</refname>
+    <refpurpose>
+      Donne à une variable chaîne de caractères une valeur venant de la table
+      de strset ou d'un p-champ chaîne de caractères.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>strget</emphasis> donne à une variable chaîne de caractères
+      pendant l'initialisation une valeur mémorisée de la table de
+      <link linkend="strset"><citetitle>strset</citetitle></link> à l'indice
+      spécifié ou dans un p-champ chaîne de caractères de la partition. S'il
+      n'y a pas de chaîne définie pour cet indice, la variable reçoit une
+      chaîne vide.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>Sdst <command>strget</command> indx</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>indx</emphasis> -- indice de <emphasis>strset</emphasis> ou
+      p-champ de la partition.
+    </para>
+
+    <para>
+      <emphasis>Sdst</emphasis> -- variable chaîne de caractères de destination.
+    </para>
+  </refsect1>
+
+   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode strget. Il utilise le fichier
+      <ulink url="examples/strget.csd"><citetitle>strget.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode strget.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/strget.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para><link linkend="strset"><citetitle>strset</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : Istvan Varga</para>
+    <para>2005</para>
+  </refsect1>
+</refentry>

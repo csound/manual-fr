@@ -1,0 +1,136 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.1
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLcloseButton">
+<indexterm id="IndexFLcloseButton"><primary>FLcloseButton</primary></indexterm>
+  <refentryinfo><title>FLTK:Other</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLcloseButton</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLcloseButton</refname>
+    <refpurpose>
+      Un opcode de widget FLTK qui crée un bouton qui fermera la fenêtre du
+      panneau auquel il appartient.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Un opcode de widget FLTK qui crée un bouton qui fermera la fenêtre du
+      panneau auquel il appartient.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ihandle <command>FLcloseButton</command> &quot;label&quot;, iwidth, iheight, ix, iy</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ihandle</emphasis> -- un identifiant (un nombre entier) qui
+      référence de manière univoque le widget correspondant. Il est utilisé par
+      d'autres opcodes qui modifient les propriété du widget (voir
+      <link linkend="ControlFltkAppearance"><citetitle>Modifier l'Apparence des
+      Widgets FLTK</citetitle></link>). Il est automatiquement retourné par
+      <emphasis>FLcloseButton</emphasis> et ne doit pas être fixé par l'étiquette de
+      l'utilisateur. (L'étiquette de l'utilisateur est une chaîne entre
+      guillemets contenant un texte fourni par l'utilisateur placé à côté du
+      widget.)
+    </para>
+
+    <para>
+      <emphasis><quote>label</quote></emphasis> -- une chaîne entre guillemets
+      contenant un texte fourni par l'utilisateur placé à côté du widget.
+    </para>
+
+    <para>
+      Noter qu'avec <emphasis>FLcloseButton</emphasis> il n'est pas nécessaire d'appeler
+      l'opcode <link linkend="FLsetTextType"><citetitle>FLsetTextType</citetitle></link>
+      pour utiliser un symbole. Dans ce cas, il suffit d'utiliser une étiquette
+      commençant par <quote>@</quote> suivi de la chaîne de formatage correcte.
+    </para>
+
+    <para>
+      Les symboles suivants sont supportés :
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/symbols.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>Symboles d'étiquette FLTK supportés.</phrase>
+        </textobject>
+
+        <caption>
+          <para>Symboles d'étiquette FLTK supportés.</para>
+        </caption>
+      </mediaobject>
+    </para>
+
+    <para>
+      Le signe @ peut être suivi par les caractères de <quote>formatage</quote>
+      facultatifs suivants, dans cet ordre :
+
+      <orderedlist>
+        <listitem><para><quote>#</quote> force une image carrée sans
+        distortion de la forme du widget.</para></listitem>
+        <listitem><para>+[1-9] or -[1-9] grossit ou diminue l'image.</para></listitem>
+        <listitem><para>[1-9] effectue une rotation d'un multiple de 45 degrés.
+        <quote>6</quote> ne fait rien, les autres valeurs pointent dans la
+        direction de cette touche sur un pavé numérique.</para></listitem>
+      </orderedlist>
+    </para>
+
+    <para>
+      <emphasis>iwidth</emphasis> -- largeur du widget.
+    </para>
+
+    <para>
+      <emphasis>iheight</emphasis> -- hauteur du widget.
+    </para>
+
+    <para>
+      <emphasis>ix</emphasis> -- position horizontale du coin supérieur gauche
+      du widget, relative au coin supérieur gauche de la fenêtre correspondante
+      (exprimée en pixels).
+    </para>
+
+    <para>
+      <emphasis>iy</emphasis> -- position verticale du coin supérieur gauche
+      du widget, relative au coin supérieur gauche de la fenêtre correspondante
+      (exprimée en pixels).
+    </para>
+
+  </refsect1>
+
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="FLbutton"><citetitle>FLbutton</citetitle></link>,
+      <link linkend="FLbox"><citetitle>FLbox</citetitle></link>,
+      <link linkend="FLbutBank"><citetitle>FLbutBank</citetitle></link>,
+      <link linkend="FLprintk"><citetitle>FLprintk</citetitle></link>,
+      <link linkend="FLprintk2"><citetitle>FLprintk2</citetitle></link>,
+      <link linkend="FLvalue"><citetitle>FLvalue</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namesteven;</para>
+    <para>Nouveau dans la version 5.05</para>
+  </refsect1>
+</refentry>

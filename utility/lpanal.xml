@@ -1,0 +1,143 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="lpanal">
+  <refentryinfo><title>Utilities</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lpanal</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>lpanal</refname>
+    <refpurpose>
+      Effectue une analyse par prédiction linéaire et par détection de hauteur sur un fichier son.
+      <indexterm id="IndexLpanal"><primary>lpanal</primary></indexterm>
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Analyse par prédiction linéaire pour les opcodes de Csound
+      <link linkend="SpectralLpcresyn"><citetitle>Resynthèse par Codage Prédictif Linéaire (LPC)</citetitle></link>. 
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>csound -U lpanal</command> [options] nomfichier_entree nomfichier_sortie</synopsis>
+
+    <synopsis><command>lpanal</command> [options] nomfichier_entree nomfichier_sortie</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>lpanal</emphasis> effectue à la fois une analyse par lpc et par détection de hauteur sur
+      un fichier son pour produire une suite ordonnée de <emphasis>trames</emphasis> d'information de
+      contrôle appropriée pour la resynthèse avec Csound. L'analyse est conditionnée par les options de
+      contrôle ci-dessous. Un espace est facultatif entre le drapeau et sa valeur.
+    </para>
+
+    <para>
+      <emphasis>-a</emphasis> -- [stockage alternatif] demande à lpanal d'écrire un fichier avec les
+      valeurs des pôles du filtre plutôt que les fichiers de coefficients de filtre habituels. Quand
+      <emphasis>lpread</emphasis> / <emphasis>lpreson</emphasis> sont utilisés avec des fichiers de pôles,
+      une stabilisation automatique est effectuée et le filtre ne deviendra pas incontrôlable. (C'est le réglage
+      par défaut dans la GUI Windows) - Changé par Marc Resibois.
+    </para>
+
+    <para>
+      <emphasis>-s srate</emphasis> -- taux d'échantillonnage du fichier audio d'entrée. Il remplacera la
+      valeur srate de l'en-tête du fichier audio, qui s'applique autrement. Si aucun des deux n'est présent,
+      la valeur par défaut est 10000.
+    </para>
+
+    <para>
+      <emphasis>-c canal</emphasis> -- numéro du canal à traiter. La valeur par défaut est 1.
+    </para>
+
+    <para>
+      <emphasis>-b début</emphasis> -- date du début (en secondes) du segment audio à analyser. La valeur
+      par défaut est 0,0
+    </para>
+
+    <para>
+      <emphasis>-d durée</emphasis> -- durée (en secondes) du segment audio à analyser. La valeur par défaut
+      de 0,0 signifie jusqu'à la fin du fichier.
+    </para>
+
+    <para>
+      <emphasis>-p npoles</emphasis> -- nombres de pôles pour l'analyse. La valeur par défaut est 34, le
+      maximum 50.
+    </para>
+
+    <para>
+      <emphasis>-h taillesaut</emphasis> -- taille du saut (en échantillons) entre les trames d'analyse.
+      Détermine le nombre de trames par seconde (<emphasis>srate</emphasis> / <emphasis>taillesaut</emphasis>)
+      dans le fichier de contrôle en sortie. La taille des trames d'analyse est de
+      <emphasis>taillesaut</emphasis> * 2 échantillons. La valeur par défaut est 200, le maximum 500.
+    </para>
+
+    <para>
+      <emphasis>-C chaîne</emphasis> -- texte pour le champ commentaire de l'en-tête du fichier lp. La valeur
+      par défaut est une chaîne nulle.
+    </para>
+
+    <para>
+      <emphasis>-P mincps</emphasis> -- fréquence la plus basse (en Hz) pour la détection de hauteur. -P0
+      signifie pas de détection de hauteur.
+    </para>
+
+    <para>
+      <emphasis>-Q maxcps</emphasis> -- fréquence la plus haute (en Hz) pour la détection de hauteur. Plus
+      l'intervalle de hauteurs est étroit, plus l'estimation de hauteur est précise. Les valeurs par défaut
+      sont -P70, -Q200.
+    </para>
+
+    <para>
+      <emphasis>-v verbosité</emphasis> -- niveau d'information affiché sur le terminal pendant l'analyse. 
+      <itemizedlist>
+        <listitem><para>0 = aucune</para></listitem>
+        <listitem><para>1 = verbeux</para></listitem>
+        <listitem><para>2 = débogage</para></listitem>
+      </itemizedlist>
+      La valeur par défaut est 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+<!--       <informalexample> -->
+        <programlisting>
+<emphasis>lpanal</emphasis> -a -p26 -d2.5 -P100 -Q400 fichieraudio.test lpfil22</programlisting>
+<!--       </informalexample> -->
+      analysera les premières 2,5 secondes du fichier &quot;fichieraudio.test&quot;, produisant
+      <emphasis>srate</emphasis> / 200 trames par seconde, chacune contenant les coefficients d'un filtre
+      à 26 pôles et une estimation de hauteur entre 100 et 400 Hz. La sortie stabilisée
+      (<emphasis>-a</emphasis>) sera placée dans &quot;lpfil22&quot; dans le répertoire courant.
+    </para>
+
+    <refsect2>
+      <title>Format de Fichier</title>
+      <para>
+        La sortie est un fichier constitué d'un en-tête identifiable plus un ensemble de trames de données
+        d'analyse en virgule flottante. Chaque trame contient quatre valeurs d'information de hauteur et
+        de gain, suivies par <emphasis>npoles</emphasis> coefficients de filtre. Le fichier est lisible
+        par l'opcode <link linkend="lpread"><citetitle>lpread</citetitle></link> de Csound.
+      </para>
+
+      <para>
+        <emphasis>lpanal</emphasis> est une modification importante des programmes d'analyse lpc de Paul
+        Lanksy.
+      </para>
+    </refsect2>
+  </refsect1>
+</refentry>

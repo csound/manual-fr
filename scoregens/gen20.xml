@@ -1,0 +1,215 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="GEN20">
+      <indexterm id="IndexGEN20"><primary>GEN20</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN20</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>GEN20</refname>
+    <refpurpose>
+      Génère les fonctions de différentes fenêtres.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ce sous-programme génère les fonctions de différentes fenêtres. Ces fenêtres sont utilisées
+      habituellement pour l'analyse spectrale ou pour des enveloppes de grain.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>f</command> # date taille 20 fenêtre max [opt]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>taille</emphasis> -- nombre de points dans la table. Doit être une puissance de 2 ( + 1).
+    </para>
+
+    <para>
+      <emphasis>fenêtre</emphasis> -- Type de la fenêtre à générer :
+
+      <itemizedlist>
+        <listitem>
+          <para>1 = Hamming</para>
+        </listitem>
+        <listitem>
+    <para>2 = Hanning</para>
+        </listitem>
+        <listitem>
+    <para>3 = Bartlett (triangle)</para>
+        </listitem>
+        <listitem>
+    <para>4 = Blackman (3-termes)</para>
+        </listitem>
+        <listitem>
+    <para>5 = Blackman - Harris (4-termes)</para>
+        </listitem>
+        <listitem>
+    <para>6 = Gaussienne</para>
+        </listitem>
+        <listitem>
+    <para>7 = Kaiser</para>
+        </listitem>
+        <listitem>
+    <para>8 = Rectangle</para>
+        </listitem>
+        <listitem>
+    <para>9 = Sync</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>max</emphasis> -- Pour p4 négatif ce sera la valeur absolue au pic de la
+      fenêtre. Si p4 est positif ou si p4 est négatif et p6 est absent la table sera post-normalisée à
+      une valeur maximale de 1.
+    </para>
+
+    <para>
+      <emphasis>opt</emphasis> -- Argument facultatif nécessaire pour la fenêtre gaussienne
+      et pour la fenêtre de Kaiser.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">f</emphasis>       1       0       1024    20      5</programlisting>
+      </informalexample>
+
+      Crée une fonction qui contient une fenêtre de Blackman - Harris à 4 termes avec une valeur maximale
+      de 1.
+    </para>
+
+    <para>
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">f</emphasis>       1       0       1024    -20     2       456</programlisting>
+      </informalexample>
+
+      Crée une fonction qui contient une fenêtre de Hanning avec une valeur maximale de 456.
+    </para>
+
+    <para>
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">f</emphasis>       1       0       1024    -20     1</programlisting>
+      </informalexample>
+
+      Crée une fonction qui contient une fenêtre de Hamming avec une valeur maximale de 1.
+    </para>
+
+    <para>
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">f</emphasis>       1       0       1024    20      7       1       2</programlisting>
+      </informalexample>
+
+      Crée une fonction qui contient une fenêtre de Kaiser avec une valeur maximale de 1. L'argument
+      supplémentaire spécifie comment la fenêtre est &quot;ouverte&quot;, par exemple une valeur de 0
+      donne une fenêtre rectangulaire et une valeur de 10 donne une fenêtre semblable à une fenêtre
+      de Hamming.
+    </para>
+
+    <para>
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">f</emphasis>       1       0       1024    20      6       1       2</programlisting>
+      </informalexample>
+
+      Crée une fonction qui contient une fenêtre gaussienne avec une valeur maximale de 1. L'argument
+      supplémentaire spécifie la largeur de la fenêtre, comme l'écart type de la courbe ;
+      dans cette exemple l'écart type vaut 2. La valeur par défaut est 1.
+    </para>
+    <para>
+      Pour tous les diagrammes, voir les <link linkend="MiscWindows"><citetitle>Fonctions fenêtre</citetitle></link>
+    </para>
+
+    <para>
+      Voici un exemple de la routine GEN20. Il utilise le fichier
+      <ulink url="examples/gen20.csd"><citetitle>gen20.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de la routine GEN20.</title>
+        <para>
+          Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+          et <link linkend="CommandFlags"><citetitle>Options de Ligne de Commande</citetitle></link> pour
+          plus d'information sur l'utilisation des options de la ligne de commande.
+        </para>
+        <xi:include href="examples-xml/gen20.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example> 
+      
+      <textobject>
+        <phrase>Voici les diagrammes des formes d'onde des routines GEN20 utilisées
+        dans l'exemple :</phrase>
+      </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen20_1.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>  f 1  0 512 20 2 - fenêtre de Hanning</phrase>
+        </textobject>
+
+        <caption>
+          <para>  f 1  0 512 20 2 - fenêtre de Hanning</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen20_2.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>  f 2  0 512 20 6 1 - fenêtre gaussienne</phrase>
+        </textobject>
+
+        <caption>
+          <para>  f 2  0 512 20 6 1 - fenêtre gaussienne</para>
+        </caption>
+      </mediaobject>
+   
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameparis;</member>
+        <member>MIT, Cambridge</member>
+        <member>1995</member>
+      </simplelist>
+    </para>
+
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>University of Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.2 de Csound</para>
+    <para>L'argument facultatif de la gaussienne a été ajouté dans la version 5.10</para>
+  </refsect1>
+</refentry>

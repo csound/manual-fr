@@ -1,0 +1,173 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.16
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="madsr">
+<indexterm id="IndexMadsr"><primary>madsr</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Envelope Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>madsr</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>madsr</refname>
+    <refpurpose>
+      Calcule l'enveloppe ADSR classique en utilisant le mécanisme de <emphasis>linsegr</emphasis>.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Calcule l'enveloppe ADSR classique en utilisant le mécanisme de
+      <link linkend="linsegr"><citetitle>linsegr</citetitle></link>.
+   </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>madsr</command> iatt, idec, islev, irel [, idel] [, ireltim]</synopsis>
+
+    <synopsis>kres <command>madsr</command> iatt, idec, islev, irel [, idel] [, ireltim]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iatt</emphasis> -- durée de l'attaque (attack)
+    </para>
+
+    <para>
+      <emphasis>idec</emphasis> -- durée de la première chute (decay)
+    </para>
+
+    <para>
+      <emphasis>islev</emphasis> -- niveau d'entretien (sustain)
+    </para>
+
+    <para>
+      <emphasis>irel</emphasis> -- durée de la chute (release)
+    </para>
+
+    <para>
+      <emphasis>idel</emphasis> -- délai de niveau zéro avant le démarrage de l'enveloppe
+    </para>
+
+    <para>
+      <emphasis>ireltim</emphasis> (facultatif, par défault = -1) -- Contrôle la durée du
+      relâchement après la réception d'un évènement MIDI note-off. S'il est inférieur à zéro,
+      la durée de relâchement la plus longue de l'instrument courant est utilisée. S'il est nul
+      ou positif, la valeur donnée sera utilisée comme durée de relâchement. Sa valeur par
+      défaut est -1. (Nouveau dans Csound 3.59 - pas encore entièrement testé).
+    </para>
+
+    <para>
+      Noter que la durée du relâchement ne peut pas dépasser
+      32767/<link linkend="kr"><citetitle>kr</citetitle></link> secondes.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      L'enveloppe évolue dans l'intervalle de 0 à 1 et peut être changée d'échelle par
+      la suite. Voici une description de l'enveloppe :
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/adsr.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>Image d'une enveloppe ADSR.</phrase>
+        </textobject>
+        <caption>
+          <para>Image d'une enveloppe ADSR.</para>
+        </caption>
+      </mediaobject>
+    </para>
+
+    <para>
+      La longueur de la période d'entretien est calculée à partir de la longueur de la note.
+      C'est pourquoi <link linkend="adsr"><citetitle>adsr</citetitle></link> n'est pas adapté au
+      traitement des évènements MIDI. L'opcode <emphasis>madsr</emphasis> utilise le mécanisme
+      de <link linkend="linsegr"><citetitle>linsegr</citetitle></link>, et peut donc être utilisé
+      dans les applications MIDI.
+    </para>
+    <para>
+      On peut utiliser d'autres enveloppes préfabriquées pour lancer un segment de relâchement à
+      la réception d'un message note-off, comme
+      <link linkend="linsegr"><citetitle>linsegr</citetitle></link> et
+      <link linkend="expsegr"><citetitle>expsegr</citetitle></link>, ou bien l'on peut construire des
+      enveloppes plus complexes au moyen de
+      <link linkend="xtratim"><citetitle>xtratim</citetitle></link> et de
+      <link linkend="release"><citetitle>release</citetitle></link>. Noter qu'il n'est pas
+      nécessaire d'utiliser <link linkend="xtratim"><citetitle>xtratim</citetitle></link> avec
+      <emphasis>madsr</emphasis>, car la durée est allongée automatiquement.
+    </para>
+    <note>
+      <para>Les durées pour <emphasis>iatt</emphasis>, <emphasis>idec</emphasis> et
+      <emphasis>irel</emphasis> ne peuvent pas être 0. Si l'on utilise 0, aucune
+      enveloppe n'est générée. Utilisez une très petite valeur comme 0.0001 si vous
+      désirez une attaque, une chute ou un relâchement instantanés.</para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode madsr. Il utilise le fichier
+      <ulink url="examples/madsr.csd"><citetitle>madsr.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode madsr.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/madsr.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      
+      Voici un autre exemple de l'opcode madsr, utilisant l'entrée midi. Il
+      utilise le fichier
+      <ulink url="examples/madsr-2.csd"><citetitle>madsr-2.csd</citetitle></ulink>.
+      
+      <example>
+        <title>Second exemple de l'opcode madsr</title>
+          <xi:include href="examples-xml/madsr-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="expsegr"><citetitle>linsegr</citetitle></link>,
+      <link linkend="linenr"><citetitle>expsegr</citetitle></link>,
+      <link linkend="envlpxr"><citetitle>envlpxr</citetitle></link>,
+      <link linkend="mxadsr"><citetitle>mxadsr</citetitle></link>,
+      <link linkend="adsr"><citetitle>madsr</citetitle></link>,
+      <link linkend="xadsr"><citetitle>xadsr</citetitle></link>
+      <link linkend="expon"><citetitle>expon</citetitle></link>,
+      <link linkend="expseg"><citetitle>expseg</citetitle></link>,
+      <link linkend="expsega"><citetitle>expsega</citetitle></link>
+      <link linkend="line"><citetitle>line</citetitle></link>,
+      <link linkend="linseg"><citetitle>linseg</citetitle></link>,
+      <link linkend="xtratim"><citetitle>xtratim</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namejohn;</para>
+    <para>Novembre 2002. Merci à &namerasmus; pour avoir documenté le paramètre <emphasis>ireltim</emphasis>.</para>
+    <para>Décembre 2002. Merci à Iain McCurdy pour avoir ajouté un exemple.</para>
+    <para>Décembre 2002. Merci à &nameistvan; pour avoir indiqué la durée maximale de relâchement.
+    </para>
+    <para>Nouveau dans la version 3.49 de Csound.</para>
+  </refsect1>
+</refentry>

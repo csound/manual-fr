@@ -1,0 +1,95 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="moogladder">
+<indexterm id="IndexMoogladder"><primary>moogladder</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Resonant</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>moogladder</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>moogladder</refname>
+    <refpurpose>
+      Filtre passe-bas en échelle de Moog.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>moogladder</emphasis> est une nouvelle implémentation numérique
+      du filtre en échelle de Moog, basée sur le travail d'Antti Huovilainen
+      décrit dans le papier "Non-Linear Digital Implementation of the Moog Ladder
+      Filter" (Proceedings of DaFX04, Université de Naples). Cette implémentation
+      est probablement une représentation numérique plus précise du filtre
+      analogique original.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>asig <command>moogladder</command> ain, kcf, kres[, istor]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+      <para>
+      <emphasis>istor</emphasis> -- état initial de l'espace de données interne.
+      Comme le filtrage comprend une boucle de rétroaction sur la sortie précédente, l'état initial de
+      l'espace de stockage utilisé est significatif. Une valeur nulle provoquera l'effacement de cet
+      espace ; une valeur non nulle autorisera la persistance de l'information précédente. La valeur par
+      défaut est 0.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- signal d'entrée.
+    </para>
+    <para>
+      <emphasis>kcf</emphasis> -- fréquence de coupure du filtre
+    </para>
+
+    <para>
+      <emphasis>kres</emphasis> -- résonance, généralement &lt; 1, mais pas
+      limitée à cette valeur. Les valeurs de résonance supérieures à 1 peuvent
+      produire des bruits de repliement ; les synthétiseurs analogiques permettent
+      généralement d'avoir des résonances supérieures à 1.
+    </para>
+
+  </refsect1>
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode moogladder. Il utilise le fichier
+      <ulink url="examples/moogladder.csd"><citetitle>moogladder.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode moogladder.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/moogladder.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Janvier 2005</member>
+      </simplelist>
+    </para>
+    <para>Nouveau greffon dans la version 5</para>
+    <para>Janvier 2005.</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,109 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="GENsone">
+      <indexterm id="IndexGENsone"><primary>GENsone</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GENsone</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>"sone"</refname>
+    <refpurpose>
+      Génère une table contenant des valeurs de sonie.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Crée une ftable avec des valeurs de sonie à puissance constante.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>f</command> # time size "sone" start end equalpoint rescale</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>size</emphasis> -- nombre de points dans la table. Doit être une
+      puissance de 2 ou une puissance-de-2 plus 1 (voir
+      l'<link linkend="f"><citetitle>instruction f</citetitle></link>).
+    </para>
+
+    <para>
+      <emphasis>start, end</emphasis> -- la première et la dernière valeur à
+      mémoriser. Les points mis en mémoire sont répartis uniformément entre ces
+      deux valeurs sur la longueur de la table.
+    </para>
+    <para>
+      <emphasis>equalpoint</emphasis> -- le point de la courbe où les valeurs
+      d'entrée et de sortie sont égales.
+    </para>
+    <para>
+      <emphasis>rescale</emphasis> -- s'il est différent de zéro, la table n'est
+      pas normalisée.
+    </para>
+
+    <para>
+      la table est remplie par la fonction x*POWER(x/<emphasis>equalpoint</emphasis>,
+      FL(33.0)/FL(78.0))
+      pour x compris entre les points <emphasis>start</emphasis> et 
+      <emphasis>end</emphasis>. C'est la courbe d'intensité en sone.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple simple de la routine <emphasis>GENsone</emphasis>. Il
+      utilise le fichier <ulink
+      url="examples/gensone.csd"><citetitle>gensone.csd</citetitle></ulink>.
+
+      <example>
+        <title>Un exemple simple de la routine GENsone.</title>
+        <xi:include href="examples-xml/gensone.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      
+      <textobject>
+        <phrase>Voici le diagramme de la forme d'onde de la routine GENsone
+        utilisée dans l'exemple :</phrase>
+      </textobject>
+      
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gensone.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 2 0 16385 "sone" 0 32000 32000 0</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 2 0 16385 "sone" 0 32000 32000 0</para>
+        </caption>
+      </mediaobject>
+      
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>Plus d'information sur le sone :
+    <ulink url="http://fr.wikipedia.org/wiki/Sone">
+    <citetitle>http://fr.wikipedia.org/wiki/Sone</citetitle></ulink></para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par &namevictor;</para>
+  </refsect1>
+</refentry>

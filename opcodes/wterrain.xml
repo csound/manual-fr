@@ -1,0 +1,79 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="wterrain">
+<indexterm id="IndexWterrain"><primary>wterrain</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Wave Terrain Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>wterrain</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>wterrain</refname>
+    <refpurpose>
+      Un opcode simple de synthèse par terrain d'onde.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Un opcode simple de synthèse par terrain d'onde.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aout <command>wterrain</command> kamp, kpch, k_xcenter, k_ycenter, k_xradius, k_yradius, \
+      itabx, itaby</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>itabx, itaby</emphasis> -- Les deux tables qui définissent le terrain.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      La sortie est le résultat du dessin d'une ellipse dont les axes
+      <emphasis>k_xradius</emphasis> et <emphasis>k_yradius</emphasis> centrés en
+      (<emphasis>k_xcenter</emphasis>, <emphasis>k_ycenter</emphasis>), et de sa
+      traversée à la fréquence <emphasis>kpch</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode wterrain. Il utilise le fichier
+      <ulink url="examples/wterrain.csd"><citetitle>wterrain.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode wterrain.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/wterrain.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Matthew Gillard</member>
+        <member>Nouveau dans la version 4.19</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

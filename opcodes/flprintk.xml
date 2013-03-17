@@ -1,0 +1,94 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.10
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLprintk">
+<indexterm id="IndexFLprintk"><primary>FLprintk</primary></indexterm>
+  <refentryinfo><title>FLTK:Other</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLprintk</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLprintk</refname>
+    <refpurpose>
+      Un opcode FLTK qui imprime une valeur de taux-k à intervalles donnés.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>FLprintk</emphasis> est semblable à
+      <link linkend="printk"><citetitle>printk</citetitle></link> mais il
+      montre les valeurs d'un signal de taux-k dans un champ texte plutôt que
+      dans la console.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>FLprintk</command> itime, kval, idisp</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>itime</emphasis> -- l'intervalle de temps en secondes entre
+      deux mises à jour de l'affichage.
+    </para>
+
+    <para>
+      <emphasis>idisp</emphasis> -- la valeur d'un identifiant retourné par
+      une instance précédente de l'opcode
+      <link linkend="FLvalue"><citetitle>FLvalue</citetitle></link> pour
+      afficher la valeur courante dans le widget <emphasis>FLvalue</emphasis>.
+      Si l'on ne veut pas utiliser cette possibilité d'affichage des valeurs
+      courantes, il faut fixer ce paramètre à une valeur négative.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kval</emphasis> -- signal de taux-k à afficher.
+    </para>
+
+    <para>
+      <emphasis>FLprintk</emphasis> est semblable à
+      <link linkend="printk"><citetitle>printk</citetitle></link>, mais il
+      montre les valeurs d'un signal de taux-k dans un champ texte plutôt que
+      dans la console. L'argument <emphasis>idisp</emphasis> doit contenir la
+      valeur du <emphasis>ihandle</emphasis> retourné par un opcode
+      <emphasis>FLvalue</emphasis> précédent. Alors que
+      <emphasis>FLvalue</emphasis> doit être placé dans la section d'en-tête
+      d'un orchestre dans un bloc
+      <link linkend="FLpanel"><citetitle>FLpanel</citetitle></link>/<link linkend="FLpanelEnd"><citetitle>FLpanelEnd</citetitle></link>,
+      <emphasis>FLprintk</emphasis> doit être placé dans un instrument pour
+      opérer correctement. Pour cette raison, il ralentit l'exécution et il ne
+      faut l'utiliser que pour des raisons de débogages.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="FLbox"><citetitle>FLbox</citetitle></link>,
+      <link linkend="FLbutBank"><citetitle>FLbutBank</citetitle></link>,
+      <link linkend="FLbutton"><citetitle>FLbutton</citetitle></link>,
+      <link linkend="FLprintk2"><citetitle>FLprintk2</citetitle></link>,
+      <link linkend="FLvalue"><citetitle>FLvalue</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.22</para>
+  </refsect1>
+</refentry>

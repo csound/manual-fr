@@ -1,0 +1,75 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ino">
+<indexterm id="Indexino"><primary>ino</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Signal Input</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ino</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ino</refname>
+    <refpurpose>
+      Lit des données audio sur huit canaux depuis un périphérique externe ou un flot.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Lit des données audio sur huit canaux depuis un périphérique externe ou un flot.
+    </para>
+    <warning>
+      <title>Avertissement</title>
+      <para>
+        Cet opcode est prévu pour ne fonctionner qu'avec des orchestres qui
+        ont <emphasis>nchnls_i</emphasis>=8. Avec des orchestres dont
+        <emphasis>nchnls_i</emphasis> &gt; 8, la sortie audio ne sera pas
+        correcte.
+      </para>
+    </warning>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ar1, ar2, ar3, ar4, ar5, ar6, ar7, ar8 <command>ino</command></synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Lit des données audio sur huit canaux depuis un périphérique externe ou un
+      flot. Si l'option de ligne de commande
+      <link linkend="FlagsMinusLowerI"><citetitle>-i</citetitle></link> est
+      positionnée, le son est lu en continu depuis le flot audio en entrée
+      (par exemple <emphasis>stdin</emphasis> ou un fichier son) dans un tampon
+      interne. N'importe quel nombre de ces opcodes peuvent lire librement
+      depuis ce tampon.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="diskin"><citetitle>diskin</citetitle></link>,
+      <link linkend="in"><citetitle>in</citetitle></link>,
+      <link linkend="inch"><citetitle>inh</citetitle></link>,
+      <link linkend="inh"><citetitle>inh</citetitle></link>,
+      <link linkend="inq"><citetitle>inq</citetitle></link>,
+      <link linkend="ins"><citetitle>ins</citetitle></link>,
+      <link linkend="soundin"><citetitle>soundin</citetitle></link>
+     </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namejohn;</para>
+  </refsect1>
+</refentry>

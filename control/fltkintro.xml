@@ -1,0 +1,232 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.10
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="ControlFltkIntro">
+  <title>Widgets FLTK et contrôleurs GUI</title>
+
+<!--  <para>
+    Ecrit par Gabriel Maldonado
+    (<ulink url="http://www.csounds.com/maldonado"><citetitle>http://www.csounds.com/maldonado</citetitle></ulink>)
+  </para>-->
+
+  <para>
+    Les widgets permettent de dessiner une Interface Utilisateur Graphique (GUI) personnalisée
+    pour contrôler un orchestre en temps réel. Ils sont dérivés de la bibliothèque libre FLTK (Fast Light
+    ToolKit). Cette bibliothèque est une des plus rapides parmi les bibliothèques disponibles, supporte
+    OpenGL et devrait être compatible avec différentes plates-formes (Windows, Linux, Unix et Mac OS). Le
+    sous-ensemble de FLTK implémenté dans Csound fournit les types d'objets suivants :
+    <variablelist>
+      <varlistentry><term>Conteneurs</term>
+        <listitem>
+          <para>
+            Les <link linkend="ControlFltkContainers"><citetitle>Conteneurs FLTK</citetitle></link> sont des
+            widgets qui contiennent d'autres widgets tels que des panneaux, des fenêtres,
+            etc. Csound fournit les objets conteneurs suivants :
+            <itemizedlist>
+              <listitem><simpara>Panneaux</simpara></listitem>
+              <listitem><simpara>Zones déroulantes</simpara></listitem>
+              <listitem><simpara>Paquets</simpara></listitem>
+              <listitem><simpara>Onglets</simpara></listitem>
+              <listitem><simpara>Groupes</simpara></listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry><term>Valuateurs</term>
+        <listitem>
+          <para>
+            Les objets les plus utiles sont appelés
+            <link linkend="ControlFltkValuators"><citetitle>Valuateurs FLTK</citetitle></link>. Ces objets
+            permettent à l'utilisateur de modifier les valeurs des paramètres de synthèse en temps réel. Csound
+            fournit les objets valuateurs suivants :
+            <itemizedlist>
+              <listitem><simpara>Réglettes</simpara></listitem>
+              <listitem><simpara>Boutons rotatifs</simpara></listitem>
+              <listitem><simpara>Molettes</simpara></listitem>
+              <listitem><simpara>Champs texte</simpara></listitem>
+              <listitem><simpara>Joysticks</simpara></listitem>
+              <listitem><simpara>Compteurs</simpara></listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Autres widgets</term>
+        <listitem>
+          <para>
+            Il y a 
+            d'<link linkend="ControlFltkOther"><citetitle>autres widgets FLTK</citetitle></link>
+            qui ne sont ni des valuateurs ni des conteneurs :
+            <itemizedlist>
+              <listitem><simpara>Boutons</simpara></listitem>
+              <listitem><simpara>Bancs de boutons</simpara></listitem>
+              <listitem><simpara>Etiquettes</simpara></listitem>
+              <listitem><simpara>Détection Clavier et Souris</simpara></listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </para>
+
+  <para>
+    Il y a aussi d'autres opcodes utiles pour modifier
+    l'<link linkend="ControlFltkAppearance"><citetitle>apparence des widgets</citetitle></link> :
+    <itemizedlist>
+      <listitem><simpara>Mettre à jour la valeur d'un widget.</simpara></listitem>
+      <listitem><simpara>Choisir les couleurs principale et de sélection d'un widget.</simpara></listitem>
+      <listitem><simpara>Choisir le type, la taille et la couleur de police des widgets.</simpara></listitem>
+      <listitem><simpara>Redimensionner un widget.</simpara></listitem>
+      <listitem><simpara>Cacher et Montrer un widget.</simpara></listitem>
+    </itemizedlist>
+  </para>
+
+  <para>
+    Il y a aussi ces <link linkend="ControlFltkGeneral"><citetitle>opcodes généraux</citetitle></link>
+    qui permettent les actions suivantes :
+    <itemizedlist>
+      <listitem><simpara>Lancer le processus léger (thread) des widgets :
+        <link linkend="FLrun"><citetitle>FLrun</citetitle></link></simpara>
+      </listitem>
+      <listitem><simpara>Charger des instantanés contenant l'état de tous les valuateurs d'un orchestre :
+        <link linkend="FLgetsnap"><citetitle>FLgetsnap</citetitle></link> et
+        <link linkend="FLloadsnap"><citetitle>FLloadsnap</citetitle></link>.</simpara>
+      </listitem>
+      <listitem><simpara>Sauvegarder des instantanés contenant l'état de tous les valuateurs d'un orchestre :
+        <link linkend="FLsavesnap"><citetitle>FLsavesnap</citetitle></link> et
+        <link linkend="FLsetsnap"><citetitle>FLsetsnap</citetitle></link></simpara>
+      </listitem>
+      <listitem><simpara>Fixer le groupe d'instantanés d'un valuateur déclaré :
+        <link linkend="FLsetSnapGroup"><citetitle>FLsetSnapGroup</citetitle></link></simpara>
+      </listitem>
+    </itemizedlist>
+  </para>
+
+  <para>
+    Ci-dessous un exemple simple de code Csound pour créer une fenêtre. Noter que tous les opcodes
+    sont de taux-init et ne doivent être appelés qu'une seule fois par session. La meilleure manière de les
+    utiliser est de les placer dans la section d'en-tête de l'orchestre, avant tout instrument. Même
+    s'il n'est pas interdit de les placer dans un instrument, cela peut conduire à des résultats
+    imprévisibles si l'instrument est appelé plus d'une fois.
+  </para>
+
+  <para>
+    Chaque conteneur est fait d'un couple d'opcodes : le premier indique le début du bloc du conteneur et
+    le deuxième indique la fin du bloc du conteneur. Certains blocs de conteneur peuvent être imbriqués
+    mais il ne peuvent pas se chevaucher. Après avoir défini tous les conteneurs, il faut lancer un
+    processus léger de widgets en utilisant l'opcode spécial <emphasis>FLrun</emphasis> qui
+    ne prend pas d'argument.
+  </para>
+
+  <para>
+    <informalexample>
+      <programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Sélectionner les options audio/midi ici, en fonction de la plate-forme</emphasis>
+<emphasis role="comment">; Sortie audio   Entrée audio    Pas de messages</emphasis>
+   -odac           -iadc            -d           <emphasis role="comment">;;; E/S audio en Temps Réel</emphasis>
+<emphasis role="comment">; Pour une sortie différée ne garder que la ligne ci-dessous :</emphasis>
+<emphasis role="comment">; -o linseg.wav -W ;;; pour une sortie dans un fichier sur toute plate-forme</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="comment">;*******************************</emphasis>
+<emphasis role="ohdr">sr</emphasis><emphasis role="op">=</emphasis>48000
+<emphasis role="ohdr">kr</emphasis><emphasis role="op">=</emphasis>480
+<emphasis role="ohdr">ksmps</emphasis><emphasis role="op">=</emphasis>100
+<emphasis role="ohdr">nchnls</emphasis><emphasis role="op">=</emphasis>1
+
+<emphasis role="comment">;*** Il est recommandé de placer presque tout le code GUI dans la</emphasis>
+<emphasis role="comment">;*** section d'en-tête de l'orchestre</emphasis>
+
+        <emphasis role="opc">FLpanel</emphasis>         "Panel1",450,550 <emphasis role="comment">;***** début du conteneur</emphasis>
+<emphasis role="comment">; placer ici quelques widgets</emphasis>
+        <emphasis role="opc">FLpanelEnd</emphasis>      <emphasis role="comment">;***** fin du conteneur</emphasis>
+
+        <emphasis role="opc">FLrun</emphasis>           <emphasis role="comment">;***** lance le thread FLTK, toujours requis !</emphasis>
+<emphasis role="oblock">instr</emphasis> 1
+<emphasis role="comment">; placer ici du code de synthèse</emphasis>
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="comment">;*******************************</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis> 0 3600 <emphasis role="comment">; table bidon pour l'entrée en temps réel</emphasis>
+<emphasis role="stamnt">e</emphasis>
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis></programlisting>
+    </informalexample>
+
+    Le code précédent crée simplement un panneau (une fenêtre vide car aucun widget n'est
+    défini à l'intérieur du conteneur).
+
+  </para>
+
+  <para>
+    L'exemple suivant crée deux panneaux et insère une réglette dans chacun d'entre eux :
+
+    <informalexample>
+      <programlisting>
+<emphasis role="csdtag">&lt;CsoundSynthesizer&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsOptions&gt;</emphasis>
+<emphasis role="comment">; Sélectionner les options audio/midi ici, en fonction de la plate-forme</emphasis>
+<emphasis role="comment">; Sortie audio   Entrée audio    Pas de messages</emphasis>
+   -odac           -iadc            -d           <emphasis role="comment">;;; E/S audio en Temps Réel</emphasis>
+<emphasis role="comment">; Pour une sortie différée ne garder que la ligne ci-dessous :</emphasis>
+<emphasis role="comment">; -o linseg.wav -W ;;; pour une sortie dans un fichier sur toute plate-forme</emphasis>
+<emphasis role="csdtag">&lt;/CsOptions&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsInstruments&gt;</emphasis>
+<emphasis role="comment">;*******************************</emphasis>
+<emphasis role="ohdr">sr</emphasis><emphasis role="op">=</emphasis>48000
+<emphasis role="ohdr">kr</emphasis><emphasis role="op">=</emphasis>480
+<emphasis role="ohdr">ksmps</emphasis><emphasis role="op">=</emphasis>100
+<emphasis role="ohdr">nchnls</emphasis><emphasis role="op">=</emphasis>1
+
+        <emphasis role="opc">FLpanel</emphasis>         "Panel1",450,550,100,100 <emphasis role="comment">;***** début de conteneur</emphasis>
+gk1,iha <emphasis role="opc">FLslider</emphasis>        "FLslider 1", 500, 1000, 0 ,1, -1, 300,15, 20,50
+        <emphasis role="opc">FLpanelEnd</emphasis>      <emphasis role="comment">;***** fin de conteneur</emphasis>
+
+        <emphasis role="opc">FLpanel</emphasis>         "Panel2",450,550,100,100 <emphasis role="comment">;***** début de conteneur</emphasis>
+gk2,ihb <emphasis role="opc">FLslider</emphasis>        "FLslider 2", 100, 200, 0 ,1, -1, 300,15, 20,50
+        <emphasis role="opc">FLpanelEnd</emphasis>      <emphasis role="comment">;***** fin de conteneur</emphasis>
+
+        <emphasis role="opc">FLrun</emphasis>           <emphasis role="comment">;***** lance le thread FLTK, toujours requis !</emphasis>
+
+<emphasis role="oblock">instr 1</emphasis>
+<emphasis role="comment">; les variables gk1 et gk2 qui contiennent les valeurs de sortie des valuateurs</emphasis>
+<emphasis role="comment">; définis précédemment, peuvent être utilisées à l'intérieur des instruments</emphasis>
+<emphasis role="opc">printk2</emphasis> gk1
+<emphasis role="opc">printk2</emphasis> gk2   <emphasis role="comment">; imprime les valeurs des valuateurs chaque fois qu'elles changent</emphasis>
+<emphasis role="oblock">endin</emphasis>
+<emphasis role="comment">;*******************************</emphasis>
+<emphasis role="csdtag">&lt;/CsInstruments&gt;</emphasis>
+<emphasis role="csdtag">&lt;CsScore&gt;</emphasis>
+<emphasis role="stamnt">f</emphasis> 0 3600 <emphasis role="comment">; table bidon pour l'entrée en temps réel</emphasis>
+<emphasis role="stamnt">e</emphasis>
+
+<emphasis role="csdtag">&lt;/CsScore&gt;</emphasis>
+<emphasis role="csdtag">&lt;/CsoundSynthesizer&gt;</emphasis></programlisting>
+    </informalexample>
+  </para>
+
+  <para>
+    Tous les opcodes de widget sont des opcodes de taux-init, même si les valuateurs donnent en
+    sortie des variables de taux-k. Ceci est dû au fait qu'un processus léger indépendant est exécuté sur la
+    base d'un mécanisme de fonctions de rappel. Cela permet de consommer très peu de ressources système car
+    on évite la scrutation. (A la différence des autres opcodes de contrôleurs basés sur le MIDI). On peut
+    ainsi utiliser n'importe quel nombre de fenêtres et de valuateurs sans dégrader l'exécution en temps réel.
+  </para>
+
+  &controlfltkcontainers;
+  &controlfltkvaluators;
+  &controlfltkother;  
+  &controlfltkappearance;
+  &controlfltkgeneral;
+
+</section>

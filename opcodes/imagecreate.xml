@@ -1,0 +1,84 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.2
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="imagecreate">
+  <indexterm id="IndexImagecreate"><primary>imagecreate</primary></indexterm>
+  <refentryinfo><title>Image Processing Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>imagecreate</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>imagecreate</refname>
+    <refpurpose>
+      Crée une image vide de la taille donnée.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Crée une image vide de taille donnée. On peut ensuite fixer des points
+      individuellement avec
+      <link linkend="imagesetpixel"><citetitle>imagegetpixel</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>iimagenum <command>imagecreate</command> iwidth, iheight</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iimagenum</emphasis> -- numéro assigné à l'image créée.
+    </para>
+    <para>
+      <emphasis>iwidth</emphasis> -- largeur d'image souhaitée.
+    </para>
+    <para>
+      <emphasis>iheight</emphasis> -- hauteur d'image souhaitée.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode imagecreate. Il utilise le fichier
+      <ulink url="examples/imageopcodes.csd"><citetitle>imageopcodes.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode imagecreate.</title>
+        <xi:include href="examples-xml/imageopcodes.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="imageload"><citetitle>imageload</citetitle></link>,
+      <link linkend="imagesize"><citetitle>imagesize</citetitle></link>,
+      <link linkend="imagesave"><citetitle>imagesave</citetitle></link>,
+      <link linkend="imagegetpixel"><citetitle>imagegetpixel</citetitle></link>,
+      <link linkend="imagesetpixel"><citetitle>imagesetpixel</citetitle></link>,
+      <link linkend="imagefree"><citetitle>imagefree</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Cesare Marilungo</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.08</para>
+  </refsect1>
+</refentry>

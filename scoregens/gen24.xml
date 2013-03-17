@@ -1,0 +1,83 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.3
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="GEN24">
+      <indexterm id="IndexGEN24"><primary>GEN24</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN24</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>GEN24</refname>
+    <refpurpose>
+      Lit les valeurs numériques d'une table de fonction déjà allouée en les reproportionnant.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ce sous-programme lit les valeurs numériques d'une table de fonction déjà allouée et les reproportionne
+      selon les valeurs <emphasis>min</emphasis> et <emphasis>max</emphasis> données par l'utilisateur.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>f</command> # date taille -24 ftable min max</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>#, date, taille</emphasis> -- les paramètres GEN habituels. Voir
+      l'<link linkend="f">instruction f</link>.
+    </para>
+
+    <para>
+      <emphasis>ftable</emphasis> -- ftable doit être une table déjà allouée avec la même taille que cette
+      fonction.
+    </para>
+
+    <para>
+      <emphasis>min, max</emphasis> -- l'intervalle de recadrage.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        Ce GEN est utile, par exemple, pour éliminer le décalage du début dans les morceaux d'exponentielle
+        permettant d'avoir une vrai origine à zéro.
+      </para>
+    </note>
+  </refsect1>
+ 
+    <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de la routine GEN24. Il utilise le fichier
+      <ulink url="examples/gen24.csd"><citetitle>gen24.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de la routine GEN24.</title>
+        <para>
+          Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+          et <link linkend="CommandFlags"><citetitle>Options de Ligne de Commande</citetitle></link> pour
+          plus d'information sur l'utilisation des options de la ligne de commande.
+        </para>
+        <xi:include href="examples-xml/gen24.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>  
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.16 de Csound</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,201 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.6
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="UsingDesign">
+   <title>Comment Csound5 fonctionne</title>
+<!--    Adapted from John ffitch's article at LAC2005 "On the design of Csound5"
+        and an email by Richard Dobson on the csound list -->
+   Csound calcule et génère sa sortie en utilisant des "générateurs unitaires" (ugens) appelés
+   <emphasis>opcodes</emphasis>. Ces opcodes sont utilisés pour définir des 
+   <link linkend="OrchIblock"><citetitle>instruments</citetitle></link> dans
+   l'<link linkend="OrchTop"><citetitle>orchestre</citetitle></link>. Quand vous lancez Csound, le moteur
+   charge les Opcodes de base, et les opcodes contenus dans des "bibliothèques d'opcodes" séparées et
+   chargeable<!-- (il y a aussi des routines GEN chargeables)-->. Il interprète ensuite l'orchestre (au moyen
+   du chargeur d'orchestre). Le moteur met en place une chaîne de traitement des instruments, qui reçoit
+   ensuite des évènements depuis la partition ou en temps réel. La chaîne de traitement utilise les modules
+   d'entrée/sortie pour générer la sortie. Il y a des modules qui peuvent écrire dans un fichier, ou
+   générer une <link linkend="UsingRealTime"><citetitle>sortie audio en temps réel</citetitle></link>.
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/engine.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>[La Structure Modulaire de Csound5.]</phrase>
+        </textobject>
+        <caption>
+          <para>La Structure Modulaire de Csound5.</para>
+        </caption>
+      </mediaobject>
+  <bridgehead>Les tampons de traitement de Csound</bridgehead>
+  <para>
+    Csound traite les données audio par blocs d'échantillons appelés tampons. Il y a trois couches de
+    tampons séparées :
+    <orderedlist>
+      <listitem>
+        <para><emphasis>spout</emphasis> = tampon logiciel de bas niveau de Csound, contient
+        <link linkend="ksmps"><citetitle>ksmps</citetitle></link> trames d'échantillon. Csound traite
+        les évènements de contrôle en temps réel toutes les
+        <link linkend="ksmps"><citetitle>ksmps</citetitle></link> trames d'échantillon.</para>
+      </listitem>
+      <listitem>
+        <para><emphasis>-b</emphasis> = Tampon logiciel intermédiare de Csound (le tampon "logiciel"), en
+        trames d'échantillon. Devrait être (mais ce n'est pas nécessaire) un multiple entier de
+        <link linkend="ksmps"><citetitle>ksmps</citetitle></link> (peut également être égal à ksmps). Une
+        fois toutes les ksmps trames d'échantillon, Csound copie <emphasis>spout</emphasis> dans le tampon
+        <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link>. Une fois toutes les
+        <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> trames d'échantillon, Csound
+        copie le tampon
+        <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> dans le tampon "matériel"
+        <link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link>.</para>
+      </listitem>
+      <listitem>
+        <para><emphasis>-B</emphasis> = tampon interne de la carte son (le tampon "matériel"), en trames
+        d'échantillon. Devrait être (et cela peut être nécessaire) un multiple entier de
+        <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link>. Si Csound n'arrive pas à
+        délivrer un des 
+        <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link>, les trames d'échantillon
+        <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> en plus dans
+        <link linkend="FlagsCatMinusUpperB"><citetitle>-b</citetitle></link> sont toujours là pour que la
+        carte son continue de jouer tandis que Csound se rattrape. Mais ils peuvent être de la même taille
+        si vous escomptez que Csound sera toujours en continuité avec la carte son.</para>
+      </listitem>
+    </orderedlist>
+  </para>
+  <section id="AmplitudeCsound">
+    <title>Valeurs d'amplitude dans Csound</title>
+    <para>
+      Les valeurs d'amplitude dans Csound sont toujours relatives à une valeur
+      "<link linkend="Zerodbfs"><citetitle>0dbfs</citetitle></link>" représentant l'amplitude de crête
+      avant écrêtement, soit dans un codec AN/NA, soit dans un fichier son avec une étendue définie (ce qui
+      est le cas de WAVE et de AIFF). A l'origine, dans Csound, cette valeur était toujours 32767,
+      correspondant à l'étendue bipolaire d'un fichier son 16 bit ou d'un codec AN/NA 16 bit, les seules
+      sorties possibles de Csound à l'époque. Ceci reste l'amplitude de crête <emphasis>par défaut</emphasis>
+      dans Csound, pour une compatibilité descendante et vous verrez que certains des exemples de ce
+      manuel utilisent toujours cette valeur (c'est pourquoi l'on trouve de grandes valeurs d'amplitude
+      comme 10000).
+    </para>
+    <para>
+      La valeur <link linkend="Zerodbfs"><citetitle>0dbfs</citetitle></link> permet à Csound de produire
+      des valeurs convenablement calibrées quelque soit le format utilisé, entiers sur 24 bit, nombres en
+      virgule flottante sur 32 bit, ou même entiers sur 32 bit. Autrement dit, les valeurs d'amplitude
+      littérales écrites dans un instrument de Csound ne concordent avec celles qui sont écrites
+      <emphasis>littéralement</emphasis> dans le fichier que si la valeur 
+      <link linkend="Zerodbfs"><citetitle>0dbfs</citetitle></link> dans Csound correspond
+      exactement à celle du format d'échantillonnage de la sortie. La conséquence de cette approche est
+      que l'on peut écrire une pièce avec une certaine amplitude et en avoir une restitution correcte et
+      identique (sans tenir compte bien sûr de la gamme dynamique meilleure des formats en haute
+      résolution) qu'elle soit écrite dans un fichier de nombres entiers ou en virgule flottante, ou
+      rendue en temps réel.
+    </para>
+    <note>
+      <para>La seule exception à ceci se produit si l'on choisit d'écrire dans un format de fichier "brut"
+      (sans en-tête). Dans de tels cas la valeur interne 
+      <link linkend="Zerodbfs"><citetitle>0dbfs</citetitle></link> est sans
+      signification, et quelques soient
+      les valeurs utilisées, elles sont écrites inchangées. Cela permet de faire générer ou traiter par
+      Csound des données arbitraires. C'est une chose relativement exotique à faire, mais certains
+      utilisateurs en ont besoin.</para>
+    </note>
+    <para>
+      Vous pouvez choisir de redéfinir la valeur <link linkend="Zerodbfs"><citetitle>0dbfs</citetitle></link>
+      dans l'en-tête de l'orchestre, par pure commodité ou selon vos préférences. Beaucoup de personnes
+      choisiront 1,0 (le standard pour SAOL, d'autres logiciels comme Pure Date, et pour beaucoup de
+      greffons standard comme VST, LADSPA, CoreAudio AudioUnits, etc), mais n'importe quelle valeur est
+      possible.
+    </para>
+    <para>
+      Le facteur commun dans la définition des amplitudes est l'échelle en décibel (dB), avec
+      0dB<subscript>FS</subscript> toujours compris comme la crête numérique ; ainsi "0dbfs" veut dire
+      valeur de "0dB Full-Scale" (sur l'étendue complète). Cette mesure est différentes des valeurs
+      d'amplitude réelles, puisque celles-ci sont sur une échelle linéaire qui montre l'oscillation
+      réelle autour de 0, et peuvent ainsi être positives ou négatives. Les valeurs en décibel forment
+      une échelle logarithmique absolue, mais peuvent être également utiles pour la plupart des opcodes.
+      On peut convertir les amplitudes de et en décibel en utilisant les fonctions
+      <link linkend="ampdb"><citetitle>ampdb</citetitle></link>,
+      <link linkend="ampdbfs"><citetitle>ampdbfs</citetitle></link>,
+      <link linkend="dbamp"><citetitle>dbamp</citetitle></link> et
+      <link linkend="dbfsamp"><citetitle>dbfsamp</citetitle></link>. De cette manière, Csound permet au
+      programmeur d'exprimer toutes les amplitudes en dB - les amplitudes plus faibles seront alors
+      représentées par des valeurs de décibel négatives. Cela reflète les pratiques de l'industrie (par
+      exemple sur les indicateurs de niveau des tables de mixage, etc).</para>
+
+    <para>
+      Par exemple le même niveau de -6dB (la moitié de l'amplitude) ou de -20dB représentent
+      une amplitude linéaire par rapport à 0dbfs comme ceci :
+    <table frame="all" colsep="1">
+      <title>dB<subscript>FS</subscript> en relation avec l'amplitude</title>
+      <tgroup cols="4">
+        <thead>
+          <row>
+            <entry>dB<subscript>FS</subscript></entry>
+            <entry>0dbfs = 32767 (par défaut)</entry>
+            <entry>0dbfs = 1</entry>
+            <entry>0dbfs = 1000 (inhabituel)</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>0 dB</entry>
+            <entry>32767</entry>
+            <entry>1</entry>
+            <entry>1000</entry>
+          </row>
+          <row>
+            <entry>-6 dB</entry>
+            <entry>16384</entry>
+            <entry>0.5</entry>
+            <entry>500</entry>
+          </row>
+          <row>
+            <entry>-20 dB</entry>
+            <entry>3276.7</entry>
+            <entry>0.1</entry>
+            <entry>100</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </para>
+
+    <para>
+      Certains utilisateurs de Csound peuvent ainsi avoir l'intention d'exprimer tous les niveaux en dB<subscript>FS</subscript>,
+      et éviter toute confusion ou toute ambiguïté de niveau qui pourrait autrement se produire lorsque
+      des valeurs explicites d'amplitude sont utilisées. L'échelle en décibel reflète la réponse de
+      l'oreille assez fidèlement, et si vous voulez exprimer un niveau vraiment doux, il peut être plus
+      facile et plus expressif d'écrire "-46dB" que "0.005" ou "163.8".
+    </para>
+    <para>
+      La raison d'utiliser 0dbfs est très simple : la crête numérique est égale au niveau
+      maximum quelque soit la résolution de l'échantillonnage. Si vous définissez un
+      signal à -110dB, il disparaîtra s'il est restitué dans un fichier 16 bit, mais il
+      restera (audible ou non) s'il est restitué en 24 bit ou mieux. Autrement dit, il
+      y a un plafond fixe mais un plancher mobile - vous pouvez définir des sons aussi
+      doux que vous le voulez (par exemple des queues d'enveloppe), de manière prévisible,
+      et les préserver ou non (sans changer le code de l'orchestre), selon la résolution
+      de leur restitution (dans un fichier ou sur une e/s audio).
+    </para>
+    <note>
+      <title>Une note sur l'amplitude numérique, les décibels et l'étendue dynamique</title>
+      <para>
+        Une approche commode de l'étendue dynamique pour une certaine précision
+        numérique est de calculer l'intervalle en décibels entre la valeur minimale
+        et la valeur maximale pour un échantillon. En général, 1 bit (doublement du
+        niveau) vaut 6dB, donc 16 bit = 96dB.
+      </para>
+      <para>
+        Ceci n'est pas entièrement exact car les valeurs des échantillons audio sont
+        représentées sur une échelle bipolaire avec des valeurs positives et négatives,
+        et un bit est utilisé pour le signe. Ainsi, puisque les échantillons en entiers
+        sur 16 bit utilisent 1 bit pour le signe et 15 bit pour la valeur, l'intervalle
+        dynamique est de 90dB.
+      </para>
+    </note>
+  </section>
+</section>

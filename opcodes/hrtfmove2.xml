@@ -1,0 +1,154 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.5
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="hrtfmove2">
+<indexterm id="IndexHrtfmove2"><primary>hrtfmove2</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Panning and Spatialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>hrtfmove2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>hrtfmove2</refname>
+    <refpurpose>
+      Génère un signal audio dynamique 3D binaural pour casque en utilisant un
+      modèle de Woodworth de tête sphérique avec précision améliorée de la phase
+      en basse fréquence.
+    </refpurpose>
+  </refnamediv>                                                 
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode prend un signal source et le spatialise dans les trois dimensions
+      entourant l'auditeur en utilisant des filtres basés sur une fonction de
+      transfert en relation avec la tête (HRTF).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aleft, aright <command>hrtfmove2</command> asrc, kAz, kElev, ifilel, ifiler [,ioverlap, iradius, isr]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifilel</emphasis> -- fichier des données spectrales HRTF de gauche.
+    </para>
+    <para>
+      <emphasis>ifiler</emphasis> -- fichier des données spectrales HRTF de droite. 
+    </para>
+    <note>
+      <para>
+        Des fichiers de données spectrales (basés sur la base de donnée HTRF du MIT)
+        sont disponibles dans trois taux d'échantillonnage : 44.1, 48 et 96 kHz et
+        sont nommés en conséquense. Le <emphasis>sr</emphasis> d'entrée et de
+        traitement doit concorder avec celui du fichier de données. Les fichiers
+        doivent se trouver dans le répertoire courant ou le SADIR (voir
+        <link linkend="CommandEnvironment"><citetitle>Variables d'Environnement</citetitle></link>).
+      </para>
+    </note>
+    <note>
+      <para>
+        Les fichiers de données HRTF à utiliser avec 
+        <link linkend="hrtfmove"><citetitle>hrtfmove</citetitle></link>,
+        <link linkend="hrtfmove2"><citetitle>hrtfmove2</citetitle></link>,
+        <link linkend="hrtfstat"><citetitle>hrtfstat</citetitle></link>,
+        <link linkend="hrtfearly"><citetitle>hrtfearly</citetitle></link> et
+        <link linkend="hrtfreverb"><citetitle>hrtfreverb</citetitle></link>
+        ont été mis à jour pour les versions 5.15 et ultérieures de Csound (le
+        code a été mis à jour et il est plus efficace). Les anciens fichiers de
+        données sont maintenant obsolètes.
+      </para>
+    </note>
+    <para>
+      <emphasis>ioverlap</emphasis> -- facultatif, nombre de chevauchements pour
+      le traitement de la TFCT (4 par défaut). Voir la section du manuel sur la TFCT.
+    </para>
+    <para>
+      <emphasis>iradius</emphasis> -- facultatif, rayon de la tête en centimètres
+      utilisé pour le calcul du spectre de phase (9.0 par défaut).
+    </para>
+
+    <para>
+      <emphasis>isr</emphasis> - facultatif, 44.1 kHz par défaut : valeurs autorisées :
+      44100, 48000 et 96000.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asrc</emphasis> -- Signal source.
+    </para>
+    <para>
+      <emphasis>kAz</emphasis> -- valeur d'azimut en degrés. Les valeurs positives
+      représentent les positions sur la droite, les valeurs négatives les positions
+      sur la gauche.
+    </para>
+    <para>
+      <emphasis>kElev</emphasis> -- valeur d'élévation en degrés. Les valeurs
+      positives représentent les positions au-dessus de l'horizontale, les valeurs
+      négatives les positions sous l'horizontale (min -40).
+    </para>
+    <para>
+      Les trajectoires sans artefact définies par l'utilisateur sont rendues
+      possibles par un algorithme basé sur l'interpolation de magnitude spectrale
+      et un spectre de phase dérivé basé sur le modèle de tête sphérique de
+      Woodworth. La précision de l'ensemble de données fourni est augmentée en
+      extrayant et en appliquant au spectre de phase un facteur de pondération
+      dépendant de la fréquence, ce qui conduit à un délai interaural plus précis
+      dans les basses fréquences. On peut contrôler le rayon de la tête pour
+      la dérivation de la phase ce qui donne un niveau simple d'individualisation.
+      La version de l'opcode à source dynamique utilise un algorithme de
+      Transformation de Fourier à Court Terme pour éviter les artefacts causés
+      par les changements des spectres de phase dérivés. Le traitement par TFCT
+      signifie que cet opcode est plus gourmand en ressources que
+      <link linkend="hrtfmove"><citetitle>hrtfmove</citetitle></link> qui tronque
+      la phase, mais la phase est constamment actualisée par
+      <emphasis>hrtfmove2</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode hrtfmove2. Il utilise le fichier
+      <ulink url="examples/hrtfmove2.csd"><citetitle>hrtfmove2.csd</citetitle></ulink>.
+    </para>
+    <example>
+      <title>Exemple de l'opcode hrtfmove2.</title>
+<xi:include href="examples-xml/hrtfmove2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </example>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="hrtfmove"><citetitle>hrtfmove</citetitle></link>,
+      <link linkend="hrtfstat"><citetitle>hrtfstat</citetitle></link>,
+      <link linkend="hrtfer"><citetitle>hrtfer</citetitle></link>.
+    </para>
+    <para>Plus d'information sur cet opcode :
+      <ulink url="http://www.csounds.com/journal/issue9/newHRTFOpcodes.html"><citetitle>http://www.csounds.com/journal/issue9/newHRTFOpcodes.html</citetitle></ulink>,
+      écrit par Brian Carty.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Brian Carty</member>
+        <member>Maynooth</member>
+        <member>2008</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry> 

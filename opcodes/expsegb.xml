@@ -1,0 +1,117 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="expsegb">
+<indexterm id="IndexExpsegb"><primary>expsegb</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Linear and Exponential Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>expsegb</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>expsegb</refname>
+    <refpurpose>
+      Trace une suite de segments d'exponentielle entre les points absolus spécifiés.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Trace une suite de segments d'exponentielle entre les points absolus spécifiés.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>expsegb</command> ia, itim1, ib [, itim2] [, ic] [...]</synopsis>
+
+    <synopsis>kres <command>expsegb</command> ia, itim1, ib [, itim2] [, ic] [...]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ia</emphasis> -- valeur initiale. Zéro est interdit pour les exponentielles.
+    </para>
+
+    <para>
+      <emphasis>ib, ic</emphasis>, etc. -- valeurs à <emphasis>tim1</emphasis> secondes, etc.
+      Pour les exponentielles doivent être différentes de zéro et de même signe que
+      <emphasis>ia</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>itim1</emphasis> -- date en secondes de la fin du premier segment.
+    </para>
+
+    <para>
+      <emphasis>itim2, itim3</emphasis>, etc. -- date en secondes de la fin des
+      segments suivants.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Ces unités génèrent des signaux de contrôle ou audio dont les valeurs passent par 2 ou plus
+      points spécifiés. La dernière valeur <emphasis>tim</emphasis> peut égaler ou non la durée
+      d'exécution de l'instrument : avec une exécution plus courte, la courbe sera tronquée alors
+      qu'avec une exécution plus longue, la dernière valeur sera répétée jusqu'à la fin de la note.
+    </para>
+ 
+    <para>
+      Noter que l'opcode <emphasis>expsegb</emphasis> n'opère pas correctement au
+      taux audio s'il y a des segments inférieurs à une période-k. Dans ce cas,
+      essayez plutôt l'opcode
+      <link linkend="expsegba"><citetitle>expsegba</citetitle></link> opcode instead.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode expsegb. Il utilise le fichier
+      <ulink url="examples/expsegb.csd"><citetitle>expsegb.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode expsegb.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/expsegb.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="expon"><citetitle>expon</citetitle></link>,
+      <link linkend="expseg"><citetitle>expseg</citetitle></link>,
+      <link linkend="expsega"><citetitle>expsega</citetitle></link>,
+      <link linkend="expsegr"><citetitle>expsegr</citetitle></link>,
+      <link linkend="line"><citetitle>line</citetitle></link>,
+      <link linkend="linseg"><citetitle>linseg</citetitle></link>,
+      <link linkend="linsegr"><citetitle>linsegr</citetitle></link>
+      <link linkend="transeg"><citetitle>transeg</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Juin 2011 </member>
+      </simplelist>
+   </para>
+   <para>Nouveau dans la version 5.14</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,121 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="subinstr">
+<indexterm id="IndexSubinstr"><primary>subinstr</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Subinstrument Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>subinstr</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>subinstr</refname>
+    <refpurpose>
+      Crée et lance une instance d'un instrument numéroté.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Crée une instance d'un autre instrument qui est utilisé comme s'il était
+      un opcode.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>a1, [...] [, a8] <command>subinstr</command> instrnum [, p4] [, p5] [...]</synopsis>
+    <synopsis>a1, [...] [, a8] <command>subinstr</command> &quot;insname&quot; [, p4] [, p5] [...]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>instrnum</emphasis> -- Numéro de l'instrument à appeler.
+    </para>
+
+    <para>
+      <emphasis><quote>insname</quote></emphasis> -- Une chaîne de caractères
+      (entre guillements) représentant un instrument nommé.
+    </para>
+
+    <para>
+      Pour plus d'information sur la spécification des interfaces d'entrée et de
+      sortie, voir <link linkend="InstrSubinstrument"><citetitle>Appeler un
+      Instrument depuis un Instrument</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>a1, ..., a8</emphasis> -- La sortie audio de l'instrument appelé.
+      Elle est générée au moyen des opcodes de
+      <link linkend="SigioOutput"><citetitle>Sortie de Signal</citetitle></link>.
+    </para>
+
+    <para>
+      <emphasis>p4, p5, ...</emphasis> -- Valeurs d'entrée supplémentaires qui
+      sont affectées aux p-champs de l'instrument appelé, en commençant par
+      <emphasis>p4</emphasis>.
+    </para>
+
+    <para>
+      Les valeurs <emphasis>p2</emphasis> et <emphasis>p3</emphasis> de
+      l'instrument appelé seront indentiques aux valeurs de l'instrument hôte.
+      Alors que l'instrument hôte peut
+      <link linkend="ControlDurctl"><citetitle>contrôler sa propre
+      duréee</citetitle></link>, toute tentative similaire à l'intérieur de
+      l'instrument appelé n'aura très probablement aucun effet.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="InstrSubinstrument"><citetitle>Calling an Instrument within an Instrument</citetitle></link>,
+      <link linkend="event"><citetitle>event</citetitle></link>, 
+      <link linkend="schedule"><citetitle>schedule</citetitle></link>,
+      <link linkend="subinstrinit"><citetitle>subinstrinit</citetitle></link>
+     </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode subinstr. Il utilise le fichier
+      <ulink url="examples/subinstr.csd"><citetitle>subinstr.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode subinstr.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/subinstr.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+    <para>
+      Voici un exemple de l'opcode subinstr utilisant un instrument nommé. Il
+      utilise le fichier
+      <ulink url="examples/subinstr_named.csd"><citetitle>subinstr_named.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode subinstr utilisant un instrument nommé.</title>
+          <xi:include href="examples-xml/subinstr_named.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Nouveau dans la version 4.21</para>
+  </refsect1>
+</refentry>

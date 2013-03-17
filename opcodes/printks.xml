@@ -1,0 +1,233 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="printks">
+<indexterm id="IndexPrintks"><primary>printks</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Printing and Display</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>printks</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>printks</refname>
+    <refpurpose>
+      Imprime au taux-k avec une syntaxe à la printf().
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Imprime au taux-k avec une syntaxe à la <emphasis>printf()</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>printks</command> &quot;string&quot;, itime [, kval1] [, kval2] [...]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>&quot;string&quot;</emphasis> -- la chaîne de caractères à imprimer.
+      Peut contenir jusqu'à 8192 caractères et doit être entre guillemets.
+    </para>
+
+    <para>
+      <emphasis>itime</emphasis> -- intervalle en secondes entre les impressions.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kval1, kval2, ...</emphasis> (facultatif) -- Les valeurs de taux-k
+      à imprimer. Celles-ci sont spécifiées dans
+      <emphasis><quote>string</quote></emphasis> au moyen des indicateurs de valeur
+      du C standard (%f, %d, etc.) dans l'ordre donné.
+    </para>
+
+    <para>
+      A partir de la version 4.23 de Csound, on peut utiliser autant de variables
+      <emphasis>kval</emphasis> que l'on veut. Dans les versions antérieures à la
+      4.23, on doit donner 4 et seulement 4 kvals (mettant 0 pour les kvals non
+      utilisées).
+    </para>
+
+    <para>
+      <emphasis>printks</emphasis> affiche des nombres et du texte qui peuvent être
+      des valeurs de taux-i ou de taux-k. <emphasis>printks</emphasis> est
+      extrêmement flexible, et si on l'utilise avec des codes de positionnement du
+      curseur, il peut servir à écrire des valeurs spécifiques à certaines positions
+      de l'écran pendant l'exécution de Csound.
+    </para>
+
+    <para>
+      Un mode d'opération spécial permet à <emphasis>printks</emphasis> de
+      convertir le paramètre d'entrée <emphasis>kval1</emphasis> en valeur comprise
+      entre 0 et 255 et de l'utiliser comme le premier caractère à imprimer. Un
+      programme Csound peut ainsi envoyer des caractères arbitraires à la console.
+      Pour cela, il faut que le premier caractère de la chaîne soit un &num;
+      éventuellement suivi de texte normal et d'indicateurs de format.
+    </para>
+
+    <para>
+      Cet opcode peut être exécuté à chaque cycle-k de l'instrument auquel il
+      appartient. Pour cela, il faut mettre <emphasis>itime</emphasis> à 0.
+    </para>
+
+    <para>
+      Si <emphasis>itime</emphasis> est différent de 0, l'opcode imprime sur le
+      premier cycle-k lors de son appel, puis chaque fois qu'une durée
+      <emphasis>itime</emphasis> s'est écoulée. Le temps commence à s'écouler à
+      partir de l'initialisation de l'opcode, typiquement à l'initialisation
+      de l'instrument.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Formatage de l'Impression</title>
+    <para>
+      Tous les caractères de contrôle de <emphasis>printf()</emphasis> du langage
+      C standard peuvent être utilisés. Par exemple, si <emphasis>kval1</emphasis>
+      = 153.26789, voici quelques-unes des options de formatage habituelles :
+
+        <orderedlist>
+          <listitem><para>%f imprime avec toute la précision : 153.26789</para></listitem>
+          <listitem><para>%5.2f imprime : 153.26</para></listitem>
+          <listitem><para>%d n'imprime que la partie entière : 153</para></listitem>
+          <listitem><para>%c traite <emphasis>kval1</emphasis> comme le code ASCII
+          d'un caractère. </para></listitem>
+        </orderedlist>
+    </para>
+
+    <para>
+      En plus de tous les codes de <emphasis>printf()</emphasis>,
+      <emphasis>printks</emphasis> supporte ces codes de caractère utiles :
+
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <thead>
+            <row>
+              <entry>Code printks</entry>
+              <entry>Code de Caractère</entry>
+            </row>
+          </thead>
+
+         <tbody>
+            <row>
+              <entry>\\r, \\R, %r, or %R</entry>
+              <entry>retour chariot (\r)</entry>
+            </row>
+
+            <row>
+              <entry>\\n, \\N, %n, %N</entry>
+              <entry>caractère de nouvelle ligne (\n)</entry>
+            </row>
+
+            <row>
+              <entry>\\t, \\T, %t, or %T</entry>
+              <entry>tabulation (\t)</entry>
+            </row>
+
+            <row>
+              <entry>%!</entry>
+              <entry>point-virgule (;) C'est nécessaire car un <quote>;</quote>
+              est interprété comme un commentaire.</entry>
+            </row>
+
+            <row>
+              <entry>^</entry>
+              <entry>caractère d'échappement (0x1B)</entry>
+            </row>
+
+            <row>
+              <entry>^ ^</entry>
+              <entry>accent circonflexe (^)</entry>
+            </row>
+
+            <row>
+              <entry>&tilde;</entry>
+              <entry>ESC[ (escape+[ est la séquence d'échappement des consoles
+              ANSI)</entry>
+            </row>
+
+            <row>
+              <entry>&tilde;&tilde;</entry>
+              <entry>tilde (&tilde;)</entry>
+            </row>
+         </tbody>
+        </tgroup>
+      </informaltable>
+    </para>
+
+    <para>
+      Pour plus d'information sur le formatage à la <emphasis>printf()</emphasis>,
+      consulter une documentation sur le langage C.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        Avant la version 4.23, seul le code de format %f était supporté.
+      </para>
+    </note>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode printks. Il utilise le fichier
+      <ulink url="examples/printks.csd"><citetitle>printks.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode printks.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/printks.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie contiendra des lignes comme :
+
+      <screen>
+kup = 0.000000, kdown = 30.000000
+kup = 20.010843, kdown = 25.962524
+kup = 40.029991, kdown = 21.925049
+kup = 60.049141, kdown = 17.887573
+kup = 79.933266, kdown = 13.872493</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="printk2"><citetitle>printk2</citetitle></link> et
+      <link linkend="printk"><citetitle>printk</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Robin Whittle</member>
+        <member>Australie</member>
+        <member>Mai 1997</member>
+      </simplelist>
+    </para>
+    <para>Exemple écrit par &namekevin;.</para>
+
+    <para>Merci à &nameluis; pour avoir signalé une erreur concernant le
+    paramètre <emphasis>itime</emphasis>.</para>
+    <para>Merci à &namematt; pour la mise à jour de la documentation pour la
+    version 4.23.</para>
+  </refsect1>
+</refentry>

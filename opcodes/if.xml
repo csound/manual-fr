@@ -1,0 +1,181 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="if">
+<indexterm id="IndexIf"><primary>if</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Program Flow Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>if</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>if</refname>
+    <refpurpose>
+      Branchement conditionnel à l'initialisation ou durant l'exécution.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>if...igoto</emphasis> -- branchement conditionnel à l'initialisation,
+      dépendant de la valeur de vérité de l'expression logique
+      <emphasis>ia</emphasis> <emphasis>R</emphasis> <emphasis>ib</emphasis>. Le
+      branchement n'a lieu que si le résultat est vrai.
+    </para>
+
+    <para>
+      <emphasis>if...kgoto</emphasis> -- branchement conditionnel durant l'exécution,
+      dépendant de la valeur de vérité de l'expression logique
+      <emphasis>ka</emphasis> <emphasis>R</emphasis> <emphasis>kb</emphasis>. Le
+      branchement n'a lieu que si le résultat est vrai.
+    </para>
+
+    <para>
+      <emphasis>if...goto</emphasis> -- combinaison des deux versions ci-dessus. La
+      condition est testée à chaque passage.
+    </para>
+
+    <para>
+      <emphasis>if...then</emphasis> -- donne la possibilité de spécifier des blocs
+      conditionnels
+      <emphasis>if</emphasis>/<emphasis>else</emphasis>/<emphasis>endif</emphasis>.
+      Tous les blocs <emphasis>if...then</emphasis> doivent se terminer par une
+      instruction <emphasis>endif</emphasis>. Les instructions
+      <emphasis>elseif</emphasis> et <emphasis>else</emphasis> sont facultatives.
+      On peut utiliser n'importe quel nombre d'instructions <emphasis>elseif</emphasis>.
+      Il ne peut y avoir qu'une seule instruction <emphasis>else</emphasis> et elle
+      doit être la dernière instruction conditionnelle avant l'instruction
+      <emphasis>endif</emphasis>. Des blocs imbriqués de <emphasis>if...then</emphasis>
+      sont permis.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        Notez que si la condition utilise une variable de taux-k (par exemple,
+        <quote>if kval &gt; 0</quote>), l'instruction <emphasis>if...goto</emphasis> ou
+        <emphasis>if...then</emphasis> sera ignorée lors de la phase d'initialisation.
+        Cela permet une initialisation de l'opcode même si la variable de taux-k a déjà
+        reçu une valeur appropriée par une instruction init antérieure.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>if</command> ia R ib <command>igoto</command> label</synopsis>
+
+    <synopsis><command>if</command> ka R kb <command>kgoto</command> label</synopsis>
+
+    <synopsis><command>if</command> xa R xb <command>goto</command> label</synopsis>
+
+    <synopsis><command>if</command> xa R xb <command>then</command></synopsis>
+
+    <para>
+      où <emphasis>label</emphasis> est dans le même bloc d'instrument et n'est pas
+      une expression, et où <emphasis>R</emphasis> est un des opérateurs relationnels
+      (<emphasis>&lt;</emphasis>, <emphasis>=</emphasis>, <emphasis>&lt;=</emphasis>,
+      <emphasis>==</emphasis>, <emphasis>!=</emphasis>) (et <emphasis>=</emphasis>
+      par commodité, voir aussi
+      <link linkend="ControlConditional"><citetitle>Valeurs Conditionnelles</citetitle></link>).
+    </para>
+    <para>
+      Si l'on utilise <emphasis>goto</emphasis> ou <emphasis>then</emphasis> à la
+      place de <emphasis>kgoto</emphasis> ou <emphasis>igoto</emphasis>, le comportement
+      est déterminé par le type étant comparé. Si la comparaison utilise des variables
+      de taux-k, kgoto est utilisé et vice-versa.
+    </para>
+    <note>
+      <para>
+        Les instructions <emphasis>If/then/goto</emphasis> ne peuvent pas effectuer de
+        comparaisons de type audio. On ne peut pas mettre de variables de type-a dans
+        les expressions de comparaison pour ces opcodes. La raison en est que les
+        variables audio sont des vecteurs qui ne peuvent pas être comparés de la
+        même façon que des scalaires. Si l'on doit comparer des échantillons audio
+        individuellement il faut utiliser
+        <link linkend="kr"><citetitle>kr = 1</citetitle></link> ou 
+        <link linkend="SigmodCompaccum"><citetitle>Comparateurs et Accumulateurs</citetitle></link>
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici une exemple de la combinaison if ... igoto. Il utilise le fichier
+      <ulink url="examples/igoto.csd"><citetitle>igoto.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de la combinaison if ... igoto.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/igoto.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
+instr 1:  iparam = 0.000
+instr 1:  ifreq = 440.000
+instr 1:  iparam = 1.000
+instr 1:  ifreq = 880.000</screen>
+    </para>
+
+    <para>
+      Voici un exemple de la combinaison if ... kgoto. Il utilise le fichier
+      <ulink url="examples/kgoto.csd"><citetitle>kgoto.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de la combinaison if ... kgoto.</title>
+        <xi:include href="examples-xml/kgoto.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
+kval = 0.000000, kfreq = 440.000000
+kval = 0.999732, kfreq = 440.000000
+kval = 1.999639, kfreq = 880.000000</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de la combinaison if ... then. Il utilise le fichier
+      <ulink url="examples/ifthen.csd"><citetitle>ifthen.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de la combinaison if ... then.</title>
+        <xi:include href="examples-xml/ifthen.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="elseif"><citetitle>elseif</citetitle></link>,
+      <link linkend="else"><citetitle>else</citetitle></link>,
+      <link linkend="endif"><citetitle>endif</citetitle></link>,
+      <link linkend="goto"><citetitle>goto</citetitle></link>,
+      <link linkend="igoto"><citetitle>igoto</citetitle></link>,
+      <link linkend="kgoto"><citetitle>kgoto</citetitle></link>,
+      <link linkend="tigoto"><citetitle>tigoto</citetitle></link>,
+      <link linkend="timout"><citetitle>timout</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Exemples écrits par &namekevin;.</para>
+    <para>Note ajoutée par Jim Aikin.</para>
+    <para>Février 2004. Note ajoutée par &namematt;.</para>
+  </refsect1>
+</refentry>

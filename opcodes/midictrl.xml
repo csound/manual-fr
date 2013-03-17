@@ -1,0 +1,108 @@
+<!--translated=yes
+authors=Yannick St-Onge
+english cvs version=1.10
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="midictrl">
+<indexterm id="IndexMidictrl"><primary>midictrl</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Input</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>midictrl</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>midictrl</refname>
+
+    <refpurpose>
+      Donne la valeur actuelle (0-127) d'un contrôleur MIDI spécifié.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Donne la valeur actuelle (0-127) d'un contrôleur MIDI spécifié.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ival <command>midictrl</command> inum [, imin] [, imax]</synopsis>
+
+    <synopsis>kval <command>midictrl</command> inum [, imin] [, imax]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>inum</emphasis> -- numéro de contrôleur MIDI (0-127)
+    </para>
+
+    <para>
+      <emphasis>imin, imax</emphasis> -- Ajuste les limites minimale et maximales pour les valeurs obtenues.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Donne la valeur actuelle (0-127) d'un contrôleur MIDI spécifié.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Avertissement</title>
+    <para>
+      <emphasis>midictrl</emphasis> doit être utilisé seulement pour les notes déclenchées par MIDI,
+      permettant la disponibilité d'un numéro de canal associé. Pour les notes activée depuis la partition,
+      les évènements de ligne, ou l'orchestre, il faut utiliser l'opcode
+      <link linkend="ctrl7"><citetitle>ctrl7</citetitle></link> qui prend un numéro de canal explicite.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode midictrl. Il utilise le fichier
+      <ulink url="examples/midictrl.csd"><citetitle>midictrl.csd</citetitle></ulink>
+      <example>
+        <title>Exemple de l'opcode midictrl.</title>
+        <xi:include href="examples-xml/midictrl.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="aftouch"><citetitle>aftouch</citetitle></link>,
+      <link linkend="ampmidi"><citetitle>ampmidi</citetitle></link>,
+      <link linkend="cpsmidi"><citetitle>cpsmidi</citetitle></link>,
+      <link linkend="cpsmidib"><citetitle>cpsmidib</citetitle></link>,
+      <link linkend="notnum"><citetitle>notnum</citetitle></link>,
+      <link linkend="octmidi"><citetitle>octmidi</citetitle></link>,
+      <link linkend="octmidib"><citetitle>octmidib</citetitle></link>,
+      <link linkend="pchbend"><citetitle>pchbend</citetitle></link>,
+      <link linkend="pchmidi"><citetitle>pchmidi</citetitle></link>,
+      <link linkend="pchmidib"><citetitle>pchmidib</citetitle></link>,
+      <link linkend="veloc"><citetitle>veloc</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namebarry; - &namemike;</member>
+        <member>MIT - Mills</member>
+        <member>Mai 1997</member>
+      </simplelist>
+    </para>
+
+    <para>Merci à &namerasmus; pour avoir indiqué le bon intervalle pour le numéro de contrôleur.</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,100 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ksmps">
+<indexterm id="IndexKsmps"><primary>ksmps</primary></indexterm>
+  <refentryinfo><title>Orchestra Syntax:Header</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ksmps</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ksmps</refname>
+    <refpurpose>
+      Fixe le nombre d'échantillons dans une période de contrôle.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ces instructions sont des <link linkend="assign"><citetitle>affectations</citetitle></link> de
+      valeurs globales réalisées au début d'un orchestre, avant que tout bloc d'instrument ne soit
+      défini. Leur fonction est de fixer certaines
+      <link linkend="VariableTypes"><citetitle>variables</citetitle></link> dont le nom est un mot réservé
+      et qui sont nécessaires à l'exécution. Une fois fixés, ces mots réservés peuvent être utilisés dans
+      des expressions n'importe où dans l'orchestre.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>ksmps</command> = iarg</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ksmps</emphasis> = (facultatif) -- fixe le nombre d'échantillons dans une période de
+      contrôle. Cette valeur doit être égale à <emphasis>sr/kr</emphasis>. La valeur par défaut est 10.
+    </para>
+
+    <para>
+      De plus, toute <link linkend="GlobalVariables"><citetitle>variable globale</citetitle></link> peut
+      être initialisée par une <emphasis>instruction de la période d'initialisation</emphasis> n'importe
+      où avant la première <link linkend="instr"><citetitle>instruction instr</citetitle></link>. Toutes
+      les affectations ci-dessus sont exécutées dans l'instrument 0 (passe-i seulement) au début de
+      l'exécution réelle.
+    </para>
+
+    <para>
+      Depuis la version 3.46 de Csound, on peut omettre <emphasis>ksmps</emphasis>. Csound essaiera de
+      calculer la valeur omise à partir des valeurs spécifiées pour
+      <link linkend="sr"><citetitle>sr</citetitle></link> et
+      <link linkend="kr"><citetitle>kr</citetitle></link>, mais le résultat devra être un nombre entier.
+    </para>
+
+    <warning>
+      <title>Avertissement</title>
+      <para>
+        ksmps doit avoir une valeur entière.
+      </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      <informalexample>
+        <programlisting>
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 10000
+<emphasis role="ohdr">kr</emphasis> <emphasis role="op">=</emphasis> 500
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 20
+gi1 <emphasis role="op">=</emphasis> <emphasis role="ohdr">sr</emphasis><emphasis role="op">/</emphasis>2.
+ga <emphasis role="opc">init</emphasis> 0
+itranspose <emphasis role="op">=</emphasis> <emphasis role="opc">octpch</emphasis>(.0l)</programlisting>
+      </informalexample>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="kr"><citetitle>kr</citetitle></link>,
+      <link linkend="nchnls"><citetitle>nchnls</citetitle></link>,
+      <link linkend="nchnls_i"><citetitle>nchnls_i</citetitle></link>,
+      <link linkend="sr"><citetitle>sr</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Grâce à une note de &namegabriel;, un avertissement sur les valeurs entières a été ajouté.</para>
+  </refsect1>
+</refentry>

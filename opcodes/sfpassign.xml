@@ -1,0 +1,131 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="sfpassign">
+<indexterm id="IndexSfpassign"><primary>sfpassign</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Sample Playback</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>sfpassign</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>sfpassign</refname>
+    <refpurpose>
+      Associe tous les presets d'un fichier d'échantillons SoundFont2 (SF2) à une
+      suite croissante d'indices numériques.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Associe tous les presets d'un fichier d'échantillons SoundFont2 (SF2)
+      préalablement chargé en mémoire à une suite croissante d'indices numériques.
+      Ces opcodes permettent la gestion de la structure d'échantillon des fichiers
+      SF2. Afin de comprendre l'utilisation de ces opcodes, il faut connaître le
+      format SF2 dont on peut trouver une brève description dans l'annexe
+      <link linkend="MiscSf2"><citetitle>Format de Fichier SoundFont2</citetitle></link>.
+    </para>
+
+    <para>
+      <emphasis>sfpassign</emphasis> doit être placé dans le section d'en-tête d'un
+      orchestre de Csound.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>sfpassign</command> istartindex, ifilhandle[, imsgs]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>istartindex</emphasis> -- indice de départ de la séquence à associer
+      à l'ensemble des presets.
+    </para>
+
+    <para>
+      <emphasis>ifilhandle</emphasis> -- nombre unique généré par l'opcode
+      <emphasis>sfload</emphasis> à utiliser comme identificateur pour un fichier
+      SF2. On peut charger et activer plusieurs fichiers SF2 en même temps.
+    </para>
+
+    <para>
+      <emphasis>imsgs</emphasis> -- s'il est différent de zéro, les messages sont
+      supprimés.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>sfpassign</emphasis> associe tous les presets d'un fichier
+      d'échantillons SoundFont2 (SF2) préalablement chargé en mémoire à une suite
+      croissante d'indices numériques, à utiliser ensuite avec les opcodes
+      <link linkend="sfplay"><citetitle>sfplay</citetitle></link> et
+      <link linkend="sfplaym"><citetitle>sfplaym</citetitle></link>.
+      <emphasis>istartindex</emphasis> indique la valeur du premier indice. On peut
+      placer plusieurs instances de <emphasis>sfpassign</emphasis> dans la section
+      d'en-tête d'un orchestre, chacune associant une séquence d'indices aux presets
+      d'un fichier SF2 différent. L'utilisateur doit veiller à ce que les valeurs
+      d'indice des preset de fichiers SF2 différents soient disjointes.
+    </para>
+
+    <para>
+      Ces opcodes ne supportent que la structure d'échantillon des fichiers SF2. La
+      structure de modulateur du format SoundFormat2 n'est pas supportée dans Csound.
+      Tout traitement ou modulation des données échantillonnées est à la charge de
+      l'utilisateur de Csound, ce qui permet de s'affranchir de toutes les
+      restrictions imposées par le standard SF2.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode sfpassign. Il utilise le fichier
+      <ulink url="examples/sfpassign.csd"><citetitle>sfpassign.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode sfpassign.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/sfpassign.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="sfilist"><citetitle>sfilist</citetitle></link>,
+      <link linkend="sfinstr"><citetitle>sfinstr</citetitle></link>,
+      <link linkend="sfinstrm"><citetitle>sfinstrm</citetitle></link>,
+      <link linkend="sfload"><citetitle>sfload</citetitle></link>,
+      <link linkend="sfplay"><citetitle>sfplay</citetitle></link>,
+      <link linkend="sfplaym"><citetitle>sfplaym</citetitle></link>,
+      <link linkend="sfplist"><citetitle>sfplist</citetitle></link>,
+      <link linkend="sfpreset"><citetitle>sfpreset</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+        <member>Mai 2000</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 4.07 de Csound</para>
+  </refsect1>
+</refentry>

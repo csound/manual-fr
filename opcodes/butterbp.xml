@@ -1,0 +1,105 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.14
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="butterbp">
+<indexterm id="IndexButterbp"><primary>butterbp</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>butterbp</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>butterbp</refname>
+    <refpurpose>
+      Un filtre de Butterworth passe-bande.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Implémentation d'un filtre de Butterworth passe-bande du second ordre. Cet
+      opcode peut aussi être écrit comme
+      <link linkend="butbp"><citetitle>butbp</citetitle></link>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>butterbp</command> asig, kfreq, kband [, iskip]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iskip</emphasis> (facultatif, 0 par défaut) -- L'initialisation
+      est ignorée s'il est présent et non nul.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Ces filtres sont des filtres RII de Butterworth du second ordre. Ils sont
+      légèrement plus lents que les filtres originaux de Csound, mais ils offrent
+      une bande passante presque plate et une précision et une atténuation de
+      la bande bloquée très bonnes.
+    </para>
+
+    <para>
+      <emphasis>asig</emphasis> -- Signal d'entrée à filtrer.
+    </para>
+
+    <para>
+      <emphasis>kfreq</emphasis> -- Fréquence de coupure ou centrale pour chacun
+      des filtres.
+    </para>
+
+    <para>
+      <emphasis>kband</emphasis> -- Largeur de la bande passante ou de la bande
+      de réjection des filtres.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode butterbp. Il utilise le fichier
+      <ulink url="examples/butterbp.csd"><citetitle>butterbp.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode butterbp.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/butterbp.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="butterbr"><citetitle>butterbr</citetitle></link>, 
+      <link linkend="butterhp"><citetitle>butterhp</citetitle></link>, 
+      <link linkend="butterlp"><citetitle>butterlp</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameparis;</member>
+        <member>MIT, Cambridge</member>
+        <member>1995</member>
+      </simplelist>
+    </para>
+    <para>Existait dans la 3.30</para>
+  </refsect1>
+</refentry>

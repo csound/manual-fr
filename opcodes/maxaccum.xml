@@ -1,0 +1,120 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="maxaccum">
+<indexterm id="IndexMaxaccum"><primary>maxaccum</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Comparators and Accumulators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>maxaccum</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>maxaccum</refname>
+    <refpurpose>
+      Accumule la valeur maximale de signaux audio.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>maxaccum</emphasis> compare deux variables de taux-audio et écrit
+      la valeur maximale des deux dans la première.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>maxaccum</command> aAccumulator, aInput</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>aAccumulator</emphasis> -- variable audio dans laquelle la valeur
+      maximale est écrite.
+    </para>
+
+    <para>
+      <emphasis>aInput</emphasis> -- signal auquel <emphasis>aAccumulator</emphasis>
+      est comparé.
+    </para>
+
+    <para>
+      L'opcode <emphasis>maxaccum</emphasis> est conçu pour accumuler la valeur
+      maximale de plusieurs signaux audio qui peuvent provenir de plusieurs
+      instances de note, dans différents canaux, ou qui ne peuvent être comparés
+      en une fois au moyen de l'opcode <emphasis>max</emphasis>. Sa sémantique
+      est semblable à celle de <emphasis>vincr</emphasis> car
+      <emphasis>aAccumulator</emphasis> est utilisé à la fois comme variable
+      d'entrée et comme variable de sortie, sauf que <emphasis>maxaccum</emphasis>
+      garde la valeur maximale au lieu d'additionner les signaux ensemble.
+      <emphasis>maxaccum</emphasis> exécute l'opération suivante sur chaque
+      paire d'échantillons :
+    </para>
+
+    <para>
+      <literallayout>
+            if  (aInput > aAccumulator)  aAccumulator = aInput</literallayout>
+    </para>
+
+    <para>
+      <emphasis>aAccumulator</emphasis> sera habituellement une variable audio
+      globale. A la fin de chaque cycle de calcul (période-k), après que sa valeur
+      ait été lue et utilisée, la variable accumulateur doit être remise à zéro
+      (peut-être en utilisant l'opcode <emphasis>clear</emphasis>). Il faut faire
+      cependant attention si <emphasis>aInput</emphasis> est négatif en tout
+      point, auquel cas l'accumulateur doit être initialisé et réinitialisé à
+      une valeur négative suffisamment importante pour être toujours inférieure aux
+      signaux d'entrée auquels elle est comparé.
+    </para>
+  </refsect1>
+
+   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode maxaccum. Il utilise le fichier
+      <ulink url="examples/maxaccum.csd"><citetitle>maxaccum.csd</citetitle></ulink>.
+      <example>
+        <title>Eemple de l'opcode maxaccum.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/maxaccum.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="minaccum"><citetitle>minaccum</citetitle></link>, 
+      <link linkend="maxabsaccum"><citetitle>maxabsaccum</citetitle></link>, 
+      <link linkend="minabsaccum"><citetitle>minabsaccum</citetitle></link>, 
+      <link linkend="max"><citetitle>max</citetitle></link>, 
+      <link linkend="min"><citetitle>min</citetitle></link>, 
+      <link linkend="maxabs"><citetitle>maxabs</citetitle></link>, 
+      <link linkend="minabs"><citetitle>minabs</citetitle></link>, 
+      <link linkend="vincr"><citetitle>vincr</citetitle></link>,
+      <link linkend="clear"><citetitle>clear</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameanthony;</member>
+        <member>Mars 2006</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 5.01 de Csound.</para>
+  </refsect1>
+</refentry>

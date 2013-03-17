@@ -1,0 +1,130 @@
+<!--translated=yes
+authors=Yannick St-Onge
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ctrl14">
+<indexterm id="IndexCtrl14"><primary>ctrl14</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Input</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ctrl14</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>ctrl14</refname>
+
+    <refpurpose>
+      Permet un signal MIDI sur 14 bit en nombres décimaux selon une échelle entre des limites minimale et maximale.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Permet un signal MIDI sur 14 bit en nombres décimaux selon une échelle entre des limites minimale et maximale.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>idest <command>ctrl14</command> ichan, ictlno1, ictlno2, imin, imax [, ifn]</synopsis>
+
+    <synopsis>kdest <command>ctrl14</command> ichan, ictlno1, ictlno2, kmin, kmax [, ifn]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>idest</emphasis> -- signal de sortie
+    </para>
+
+    <para>
+      <emphasis>ichan</emphasis> -- numéro de canal MIDI (1-16)
+    </para>
+
+    <para>
+      <emphasis>ictln1o</emphasis> -- numéro de contrôleur pour l'octet de poids fort (0-127)
+    </para>
+
+    <para>
+      <emphasis>ictlno2</emphasis> -- numéro de contrôleur pour l'octet de poids faible (0-127)
+    </para>
+
+    <para>
+      <emphasis>imin</emphasis> -- la valeur décimale minimale de sortie définie par l'utilisateur
+    </para>
+
+    <para>
+      <emphasis>imax</emphasis> -- la valeur décimale maximale de sortie définie par l'utilisateur
+    </para>
+
+    <para>
+      <emphasis>ifn</emphasis> (facultatif) -- la table à lire lorsque l'indexation est requise.
+      La table doit être normalisée. La sortie est mise à l'échelle entre les valeurs
+      <emphasis>imax</emphasis> et <emphasis>imin</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kdest</emphasis> -- signal de sortie
+    </para>
+
+    <para>
+      <emphasis>kmin</emphasis> -- la valeur décimale minimale de sortie définie par l'utilisateur
+    </para>
+
+    <para>
+      <emphasis>kmax</emphasis> -- la valeur décimale maximale de sortie définie par l'utilisateur
+    </para>
+
+    <para>
+      <emphasis>ctrl14</emphasis> (contrôle MIDI sur 14 bit au taux-i et au taux-k) permet un signal
+      MIDI sur 14 bit en nombres décimaux mis à l'échelle entre des limites minimale et maximale.
+      Les valeurs minimale et maximale peuvent être variées au taux-k. Il peut utiliser en option
+      une indexation de table. Il nécessite deux contrôleurs MIDI en entrée.
+    </para>
+
+    <para>
+      <emphasis>ctrl14</emphasis> est différent de
+      <link linkend="midic14"><citetitle>midic14</citetitle></link> parce que il peut être inclu dans
+      des instruments prévus pour une partition sans que Csound ne plante. Il a besoin du paramètre
+      additionnel <emphasis>ichan</emphasis> contenant le canal MIDI du contrôleur. Le canal MIDI est
+      le même pour tous les contrôleurs utilisés dans un opcode <emphasis>ctrl14</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ctrl7"><citetitle>ctrl7</citetitle></link>,
+      <link linkend="ctrl21"><citetitle>ctrl21</citetitle></link>,
+      <link linkend="initc7"><citetitle>initc7</citetitle></link>,
+      <link linkend="initc14"><citetitle>initc14</citetitle></link>,
+      <link linkend="initc21"><citetitle>initc21</citetitle></link>,
+      <link linkend="midic7"><citetitle>midic7</citetitle></link>,
+      <link linkend="midic14"><citetitle>midic14</citetitle></link>,
+      <link linkend="midic21"><citetitle>midic21</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.47 de Csound</para>
+    <para>Merci à &namerasmus; pour avoir indiqué les bons intervalles pour le canal MIDI et le numéro de contrôleur.</para>
+  </refsect1>
+</refentry>

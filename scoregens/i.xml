@@ -1,0 +1,246 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="i">
+      <indexterm id="IndexIStatement"><primary>i statement</primary></indexterm>
+      <indexterm id="IndexInstrumentStatement"><primary>instrument statement</primary></indexterm>
+      <indexterm id="IndexNoteStatement"><primary>note statement</primary></indexterm>
+  <refmeta>
+    <refentrytitle>Instruction i (instruction d'instrument ou de note)</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>i</refname>
+    <refpurpose>
+      Active un instrument à une date précise et pour une certaine durée.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cette instruction est nécessaire pour activer un instrument à une date précise et pour une certaine
+      durée. Les valeurs des champs de paramètre sont passées à cet instrument avant son initialisation,
+      et demeurent valides durant toute son exécution.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>i</command>  p1  p2  p3  p4  ...</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>p1</emphasis> -- Numéro d'instrument, habituellement un nombre entier non négatif. 
+      Une partie décimale facultative permet d'ajouter une étiquette indiquant des liaisons entre des
+      notes particulières d'aggrégats consécutifs. Un p1 négatif (incluant une étiquette) peut être
+      utilisé pour faire cesser une note <quote>tenue</quote> particulière.
+    </para>
+
+    <para>
+      <emphasis>p2</emphasis> -- Date de début en unités arbitraires appelées pulsations.
+    </para>
+
+    <para>
+      <emphasis>p3</emphasis> -- Durée en pulsations (habituellement positive). Une valeur négative
+      démarre une note tenue (voir aussi <link linkend="ihold"><citetitle>ihold</citetitle></link>). On
+      peut aussi utiliser une valeur négative pour les instruments 'toujours actifs' comme la
+      réverbération. Ces notes ne sont pas terminées par des
+      <link linkend="s"><citetitle>instruction s</citetitle></link>. Une valeur nulle provoquera une passe
+      d'initialisation sans exécution (voir aussi <link linkend="instr"><citetitle>instr</citetitle></link>).
+    </para>
+
+    <para>
+      <emphasis>p4 ...</emphasis> -- Paramètres dont la signification est déterminée par l'instrument.      
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Une pulsation vaut une seconde, à moins qu'il n'y ait une
+      <link linkend="t"><citetitle>instruction t</citetitle></link> dans cette section de la partition ou une
+      <link linkend="FlagsMinusLowerT"><citetitle>option -t</citetitle></link> dans la ligne de commande.
+    </para>
+
+    <para>
+      Les dates de début ou d'action sont relatives au début d'une section (voir
+      l'<link linkend="s"><citetitle>instruction s</citetitle></link>), qui reçoit la date 0.
+    </para>
+
+    <para>
+      Dans une section, les instructions de note peuvent être placées dans n'importe quel ordre. Avant
+      d'être envoyées à l'orchestre, les instructions non triées de la partition doivent être traitées par
+      la fonction Sort, qui les ordonnera par valeurs de p2 croissantes. Les notes ayant la même valeur en
+      p2 seront triées par p1 croissants ; si elles ont le même p1, alors par p3 croissants.
+    </para>
+
+    <para>
+      Les notes peuvent être superposées, c'est-à-dire qu'un seul instrument peut jouer n'importe quel
+      nombre de notes simultanément. (Les copies nécessaires de l'espace de données de l'instrument seront
+      allouées dynamiquement par le chargeur de l'orchestre). Chaque note se termine normalement à la fin
+      de sa durée en p3, ou à la réception d'un signal MIDI noteoff. Un instrument peut modifier sa propre
+      durée en changeant la valeur de son p3 pendant l'initialisation de la note, ou en se prolongeant
+      lui-même par l'action d'une unité <link linkend="linenr"><citetitle>linenr</citetitle></link> ou
+      <link linkend="xtratim"><citetitle>xtratim</citetitle></link>.
+    </para>
+
+    <para>
+      Un instrument peut être activé et réglé pour une durée indéfinie soit en lui donnant un p3 négatif
+      soit en incluant un <emphasis>ihold</emphasis> dans le code de son temps-i. Si une note tenue est
+      active, une <emphasis>instruction i</emphasis> <emphasis>avec un p1 correspondant</emphasis> ne
+      provoquera pas une nouvelle allocation mais prendra l'espace de données de la note tenue. Les
+      nouveaux p-champs (y compris p3) seront maintenant effectifs, et une passe de temps-i sera exécutée
+      pendant laquelle les unités peuvent être soit initialisées à nouveau soit autorisées à continuer
+      comme requis pour une note liée (voir <link linkend="tigoto"><citetitle>tigoto</citetitle></link>).
+      Une note tenue peut être suivie soit par une autre note tenue soit par une note de durée finie. Une
+      note tenue continuera à être jouée au-delà des fins de section (voir
+      l'<link linkend="s"><citetitle>instruction s</citetitle></link>). Elle est arrêtée seulement par un
+      <link linkend="turnoff"><citetitle>turnoff</citetitle></link> ou par une 
+      <emphasis>instruction i</emphasis> avec un p1 négatif correspondant ou par une
+      <link linkend="e"><citetitle>instruction e</citetitle></link>.
+    </para>
+
+    <para>
+      Il est possible d'avoir plusieurs instances (habituellement, mais pas forcément, des notes de
+      hauteurs différentes) du même instrument, tenues simultanément, via des valeurs négatives de p3.
+      L'instrument peut ensuite recevoir de nouveaux paramètres de la partition. C'est utile pour éviter
+      de longs <emphasis>linseg</emphasis> codés en dur, et peut être accompli en ajoutant une partie
+      décimale au numéro de l'instrument.
+    </para>
+
+    <para>
+      Par exemple, pour tenir trois copies de l'instrument 10 dans un accord :
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">i</emphasis>10.1    0    -1    7.00
+<emphasis role="stamnt">i</emphasis>10.2    0    -1    7.04
+<emphasis role="stamnt">i</emphasis>10.3    0    -1    7.07</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      Les instructions <emphasis>i</emphasis> suivantes peuvent faire référence aux mêmes instances de
+      note active, et si la définition de l'instrument est faite proprement, les nouveaux p-champs peuvent
+      servir à changer le caractère des notes jouées. Par exemple, pour faire glisser l'accord précédent
+      d'une octave vers le haut et le laisser résonner :
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">i</emphasis>10.1    1    1    8.00
+<emphasis role="stamnt">i</emphasis>10.2    1    1    8.04
+<emphasis role="stamnt">i</emphasis>10.3    1    1    8.07</programlisting>
+      </informalexample>
+    </para>
+    <tip>
+      <para>Pour la terminaison des notes, il faut tenir compte du fait que
+      i 1.1 == i 1.10 et que i 1.1 != i 1.01. Le nombre maximum de positions décimales que l'on
+      peut utiliser dépend de la précision avec laquelle Csound a été compilé (Voir
+      <link linkend="MiscCsound64"><citetitle>Csound Double (64 bit) ou Float (32 bit)</citetitle></link>)</para>
+    </tip>
+
+    <para>
+      La définition de l'instrument doit prendre ceci en compte, cependant, spécialement si l'on veut
+      éviter les clics (voir l'exemple ci-dessous).
+    </para>
+
+    <para>
+      Noter que la notation décimale du numéro d'intrument ne peut pas être utilisée en conjonction avec le
+      MIDI en temps réel. Dans ce cas, l'instrument serait monodique tant qu'une note est tenue.
+    </para>
+
+    <para>
+      Les notes liées à des instances précédentes du même instrument, devraient éviter la plus grande
+      partie de l'initialisation au moyen de <link linkend="tigoto"><citetitle>tigoto</citetitle></link>,
+      sauf pour les valeurs entrées dans la partition. Par exemple, tous les opcodes de lecture de table
+      dans l'instrument, seront habituellement sautés en initialisation, car ils mémorisent en interne
+      leur phase. Si celle-ci est brutalement modifiée, on entendra des clics en sortie.
+    </para>
+
+    <para>
+      Noter que plusieurs opcodes (comme <emphasis>delay</emphasis> et <emphasis>reverb</emphasis>) sont
+      prévus pour une initialisation facultative. Pour utiliser cette possibilité,
+      l'<link linkend="tival"><citetitle>opcode tival</citetitle></link> est approprié. Ainsi, il n'y a
+      pas besoin de les escamoter par un saut <emphasis>tigoto</emphasis>.
+    </para>
+
+    <para>
+      A partir de la version 3.53 de Csound, les chaînes sont reconnues dans les p-champs des opcodes
+      qui les acceptent (<emphasis>convolve, adsyn, diskin,</emphasis> etc.). Il ne peut y avoir qu'une
+      seule chaîne par ligne de la partition.
+    </para>
+
+    <para>
+      On peut aussi terminer une note depuis la partition en utilisant un nombre
+      négatif pour l'instrument (p1). Cela équivaut à utiliser l'opcode
+      <link linkend="turnoff2"><citetitle>turnoff2</citetitle></link>. Lorsqu'une
+      note est terminée depuis la partition, elle peut avoir un relâchement (si
+      <link linkend="xtratim"><citetitle>xtratim</citetitle></link> ou des
+      opcodes avec une section de relâchement tels que
+      <link linkend="linenr"><citetitle>linenr</citetitle></link> sont utilisés)
+      et seules les notes ayant la même partie fractionnaire sont arrêtées. De
+      plus, seule la dernière instance de l'instrument est arrêtée, si bien
+      qu'il faut autant de numéros d'instrument négatifs que de numéros positifs
+      pour que toutes les notes soient arrêtées.
+
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">i</emphasis> 1.1    1    300    8.00
+<emphasis role="stamnt">i</emphasis> 1.2    1    300    8.04
+<emphasis role="stamnt">i</emphasis> 1.3    1    -300    8.07
+<emphasis role="stamnt">i</emphasis> 1.3    1    -300    8.09
+
+<emphasis role="comment">; noter que les p-champs suivant p2 sont ignorés</emphasis>
+<emphasis role="comment">; si le numéro d'instrument est négatif</emphasis>
+<emphasis role="stamnt">i</emphasis> -1.1    3    1    4.00
+<emphasis role="stamnt">i</emphasis> -1.2    4    51    4.04
+<emphasis role="stamnt">i</emphasis> -1.3    5    1    4.07
+<emphasis role="stamnt">i</emphasis> -1.3    6    10    4.09</programlisting>
+      </informalexample>
+    </para>
+
+    <refsect2>
+      <title>Considérations Spéciales</title>
+
+      <para>
+        Le numéro d'instrument maximum était de 200. Cela a changé et il n'est plus limité que par la
+        capacité mémoire (actuellement, il y a une limite logicielle de 200 ; celle-ci est étendue
+        automatiquement si nécessaire).
+      </para>
+    </refsect2>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'instruction i. Il utilise le fichier
+      <ulink url="examples/i_statement.csd"><citetitle>i_statement.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'instruction i.</title>
+        <xi:include href="examples-xml/i_statement.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      Texte supplémentaire (Version 4.07 de Csound) expliquant les notes liées, publié par
+      &namerasmus; d'après une note de David Kirsh, postée sur la liste de courrier électronique
+      de Csound. Instrument en exemple par &namerasmus;.
+    </para>
+
+    <para>
+      Mise à jour Août 2002 grâce à une note de &namerasmus;.  Il n'y a plus de limite codée en
+      dur à 200 instruments.
+    </para>
+  </refsect1>
+</refentry>
+

@@ -1,0 +1,252 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.14
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="sndwarp">
+<indexterm id="IndexSndwarp"><primary>sndwarp</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Granular Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>sndwarp</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>sndwarp</refname>
+    <refpurpose>
+      Lit un son mono échantillonné dans une table et lui applique une modification de durée
+      et/ou de hauteur.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>sndwarp</emphasis> lit des échantillons sonores dans une table et applique une
+      modification de durée et/ou de hauteur. Les modifications du temps et de la
+      fréquence sont indépendantes l'une de l'autre. Par exemple un son peut être ralenti en durée
+      tout en étant transposé dans l'aigu !
+    </para>
+
+    <para>
+      Les arguments de taille de fenêtre et de chevauchement influent grandement sur le résultat et
+      seront fixés par expérimentation. En général ils doivent être aussi petits que possible. Par
+      exemple, on peut commencer avec <emphasis>iwsize</emphasis>=<emphasis>sr</emphasis>/10 et
+      <emphasis>ioverlap</emphasis>=15. Essayer
+      <emphasis>irandw</emphasis>=<emphasis>iwsize</emphasis>*0,2.
+      Si l'on peut arriver à ses fins avec moins de chevauchements, le programme sera plus rapide.
+      Mais si ces dernières sont en nombre insuffisant, on peut entendre des fluctuations
+      d'amplitude. L'algorithme réagit différemment selon le son en entrée et il n'y a pas
+      de règle fixe adaptée à toutes les circonstances. Si l'on arrive à trouver les bons réglages,
+      on peut obtenir d'excellents résultats.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares [, ac] <command>sndwarp</command> xamp, xtimewarp, xresample, ifn1, ibeg, iwsize, \
+      irandw, ioverlap, ifn2, itimemode</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn1</emphasis> -- le numéro de la table contenant les échantillons qui seront
+      traités par <emphasis>sndwarp</emphasis>.
+      <link linkend="GEN01"><citetitle>GEN01</citetitle></link> est le générateur de fonction
+      approprié pour mémoriser les échantillons d'un fichier son pré-existant.
+    </para>
+
+    <para>
+      <emphasis>ibeg</emphasis> -- le temps en secondes à partir duquel commencera la lecture dans
+      la table. Lorsque <emphasis>itimemode</emphasis> est différent de zéro, la valeur de
+      <emphasis>xtimewarp</emphasis> est décalée de <emphasis>ibeg</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>iwsize</emphasis> -- la taille en échantillons de la fenêtre utilisée dans
+      l'algorithme de variation de la durée.
+    </para>
+
+    <para>
+      <emphasis>irandw</emphasis> -- la largeur de bande d'un générateur de nombres aléatoires. Les
+      nombres aléatoires seront ajoutés à <emphasis>iwsize</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>ioverlap</emphasis> -- détermine la densité de fenêtres se chevauchant.
+    </para>
+
+    <para>
+      <emphasis>ifn2</emphasis> -- une fonction qui fournit la forme de la fenêtre. On l'utilise
+      habituellement pour créer une sorte de rampe qui part de zéro au début et qui y retourne à la
+      fin de chaque fenêtre. Essayer d'utiliser une moitié de sinusoïde (c-à-d : f1 0 16384 9 .5 1 0)
+      qui fonctionne plutôt bien. On peut utiliser d'autres formes.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ares</emphasis> -- l'unique canal de sortie du générateur unitaire
+      <emphasis>sndwarp</emphasis>. <emphasis>sndwarp</emphasis> suppose que la table de fonction
+      contenant le signal échantillonné est monophonique. <emphasis>sndwarp</emphasis> indexera la
+      table avec un incrément d'un seul échantillon. Il faut ainsi remarquer que si l'on utilise
+      un signal stéréo avec <emphasis>sndwarp</emphasis>, la durée et la hauteur seront altérées
+      en conséquence.
+    </para>
+
+    <para>
+      <emphasis>ac</emphasis> (facultatif) -- une version mono-couche (pas de superpositions), et
+      non fenêtrée du signal modifié en durée et/ou en hauteur. Elle est fournie afin de permettre
+      de pondérer l'amplitude du signal de sortie, qui contient habituellement beaucoup de versions
+      se chevauchant et fenêtrées du signal, avec une version épurée du signal modifié en durée et en
+      hauteur. Le traitement de <emphasis>sndwarp</emphasis> peut causer des variations notables
+      en amplitude (en plus ou en moins), à cause de la différence de temps entre les superpositions
+      lorsque la variation de durée est appliquée. Si on l'utilise avec une unité
+      <link linkend="balance"><citetitle>balance</citetitle></link>, <emphasis>ac</emphasis> permet
+      d'améliorer grandement la qualité sonore.
+    </para>
+
+    <para>
+      <emphasis>xamp</emphasis> -- la valeur qui sert à pondérer l'amplitude (voir la note sur son
+      utilisation avec <emphasis>ac</emphasis>).
+    </para>
+
+    <para>
+      <emphasis>xtimewarp</emphasis> -- détermine comment la durée du signal en entrée sera allongée
+      ou raccourcie. Il y a deux manières d'utiliser cet argument selon la valeur donnée à
+      <emphasis>itimemode</emphasis>. Si la valeur de <emphasis>itimemode</emphasis> est 0,
+      <emphasis>xtimewarp</emphasis> changera l'échelle temporelle du son. Par exemple, une valeur
+      de 2 doublera la durée du son. Si <emphasis>itimemode</emphasis> a une valeur non nulle, alors
+      <emphasis>xtimewarp</emphasis> est utilisé comme un pointeur temporel de la même manière que
+      dans <link linkend="lpread"><citetitle>lpread</citetitle></link> et dans
+      <link linkend="pvoc"><citetitle>pvoc</citetitle></link>. Un des exemples ci-dessous illustre
+      cette possibilité. Dans les deux cas, la hauteur ne sera <emphasis>pas</emphasis> altérée par
+      le traitement. La transposition de hauteur est effectuée indépendamment au moyen de
+      <emphasis>xresample</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>xresample</emphasis> -- le facteur de changement de la hauteur du son. Par exemple,
+      une valeur de 2 produira un son une octave plus haut que l'original. La durée du son, quant à
+      elle, ne sera <emphasis>pas</emphasis> modifiée.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici en exemple de l'opcode sndwarp. Il utilise le fichier
+      <ulink url="examples/sndwarp.csd"><citetitle>sndwarp.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode sndwarp.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/sndwarp.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+    <title>Autres exemples</title>
+    <para>
+      L'exemple ci-dessous montre un ralentissement du son stocké dans la table
+      (<emphasis>ifn1</emphasis>). Pendant toute la durée de la note, le ralentissement
+      s'intensifiera depuis l'original jusqu'à un son dix fois plus <quote>lent</quote> que
+      l'original. Pendant ce temps, la hauteur montera progressivement d'une octave.
+      <informalexample>
+        <programlisting>
+iwindfun <emphasis role="op">=</emphasis> 1
+isampfun <emphasis role="op">=</emphasis> 2
+ibeg <emphasis role="op">=</emphasis> 0
+iwindsize <emphasis role="op">=</emphasis> 2000
+iwindrand <emphasis role="op">=</emphasis> 400
+ioverlap <emphasis role="op">=</emphasis> 10
+awarp   <emphasis role="opc">line</emphasis>    1, p3, 1
+aresamp <emphasis role="opc">line</emphasis>    1, p3, 2
+kenv    <emphasis role="opc">line</emphasis>    1, p3, .1
+asig    <emphasis role="opc">sndwarp</emphasis> kenv, awarp, aresamp, isampfun, ibeg, iwindsize, iwindrand, ioverlap, iwindfun, 0</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      Voici maintenant un exemple utilisant <emphasis>xtimewarp</emphasis> comme pointeur temporel
+      et la stéréophonie :
+      <informalexample>
+        <programlisting>
+itimemode     <emphasis role="op">=</emphasis>         1
+atime         <emphasis role="opc">line</emphasis>      0, p3, 10
+ar1, ar2      <emphasis role="opc">sndwarpst</emphasis> kenv, atime, aresamp, sampfun, ibeg, iwindsize, iwindrand, ioverlap, \
+                        iwindfun, itimemode</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      Ci-dessus, <emphasis>atime</emphasis> avance le pointeur temporel utilisé dans
+      <emphasis>sndwarpst</emphasis> de 0 à 10 sur toute la durée de la note. Si p3 vaut 20 alors le
+      son sera deux fois plus lent que l'original. Bien sûr, on peut utiliser une fonction plus
+      complexe qu'une simple ligne droite pour contrôler le facteur temporel.
+    </para>
+
+    <para>
+      Maintenant le même exemple que ci-dessus mais en utilisant la fonction
+      <emphasis>balance</emphasis> avec les sorties facultatives :
+      <informalexample>
+        <programlisting>
+asig, acmp  <emphasis role="opc">sndwarp</emphasis> 1, awarp, aresamp, isampfun, ibeg, iwindsize, iwindrand, ioverlap, iwindfun, itimemode
+abal        <emphasis role="opc">balance</emphasis> asig, acmp
+  
+asig1,asig2,acmp1,acmp2 <emphasis role="opc">sndwarpst</emphasis> 1, atime, aresamp, sampfun, ibeg, iwindsize, iwindrand, ioverlap, \
+                                  iwindfun, itimemode
+abal1       <emphasis role="opc">balance</emphasis> asig1, acmp1
+abal2       <emphasis role="opc">balance</emphasis> asig2, acmp2</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      Noter l'utilisation de l'unité <emphasis>balance</emphasis> dans les deux exemples ci-dessus.
+      La sortie de <emphasis>balance</emphasis> peut ensuite être pondérée, enveloppée, envoyée à
+      un <emphasis>out</emphasis> ou un <emphasis>outs</emphasis>, etc. Noter que les arguments
+      d'amplitude de <emphasis>sndwarp</emphasis> et de <emphasis>sndwarpst</emphasis> valent
+      <quote>1</quote> dans ces exemples. En pondérant le signal après son traitement par
+      <emphasis>sndwarp</emphasis>, <emphasis>abal</emphasis>, <emphasis>abal1</emphasis>,
+      et <emphasis>abal2</emphasis> contiendront des signaux ayant à peu près la même amplitude
+      que le signal original traité par <emphasis>sndwarp</emphasis>. Il est ainsi plus facile
+      de prédire les niveaux et d'éviter d'avoir des échantillons hors intervalle ou des valeurs
+      d'échantillon trop petites.
+    </para>
+
+    <note>
+      <title>Conseil Supplémentaire</title>
+      <para>
+        N'utilisez la version stéréo que si vous avez réellement besoin de traiter un fichier
+        stéréo. Elle est sensiblement plus lente que la version mono et si vous utilisez la
+        fonction <emphasis>balance</emphasis>, c'est encore plus lent. Il n'y a aucun inconvénient
+        à utiliser un <emphasis>sndwarp</emphasis> mono dans un orchestre stéréo puis d'envoyer le
+        résultat à un ou aux deux canaux de la sortie stéréo.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="sndwarpst"><citetitle>sndwarpst</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Richard Karpen</member>
+        <member>Seattle, WA USA</member>
+        <member>1997</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,94 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ins">
+<indexterm id="Indexins"><primary>ins</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Signal Input</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ins</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ins</refname>
+    <refpurpose>
+      Lit des données audio stéréo depuis un périphérique externe ou un flot.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Lit des données audio stéréo depuis un périphérique externe ou un flot.
+    </para>
+    <warning>
+      <title>Avertissement</title>
+      <para>
+        Cet opcode est prévu pour ne fonctionner qu'avec des orchestres qui
+        ont <emphasis>nchnls_i</emphasis>=2. Avec des orchestres dont
+        <emphasis>nchnls_i</emphasis> &gt; 2, la sortie audio ne sera pas
+        correcte.
+      </para>
+    </warning>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ar1, ar2 <command>ins</command></synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Lit des données audio stéréo depuis un périphérique externe ou un
+      flot. Si l'option de ligne de commande
+      <link linkend="FlagsMinusLowerI"><citetitle>-i</citetitle></link> est
+      positionnée, le son est lu en continu depuis le flot audio en entrée
+      (par exemple <emphasis>stdin</emphasis> ou un fichier son) dans un tampon
+      interne. N'importe quel nombre de ces opcodes peuvent lire librement
+      depuis ce tampon.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode ins. Il utilise le fichier
+      <ulink url="examples/ins.csd"><citetitle>ins.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode ins.</title>
+        <xi:include href="examples-xml/ins.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>      
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="diskin"><citetitle>diskin</citetitle></link>,
+      <link linkend="in"><citetitle>in</citetitle></link>,
+      <link linkend="inch"><citetitle>inh</citetitle></link>,
+      <link linkend="inh"><citetitle>inh</citetitle></link>,
+      <link linkend="ino"><citetitle>ino</citetitle></link>,
+      <link linkend="inq"><citetitle>inq</citetitle></link>,
+      <link linkend="soundin"><citetitle>soundin</citetitle></link>
+      <link linkend="mp3in"><citetitle>mp3in</citetitle></link>,
+     </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteurs : &namebarry;, &namematt;/&namemike;</member>
+        <member>MIT, Mills College</member>
+        <member>1993-1997</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

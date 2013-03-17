@@ -1,0 +1,139 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.6
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="GEN06">
+      <indexterm id="IndexGEN06"><primary>GEN06</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN06</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>GEN06</refname>
+    <refpurpose>
+      Génère une fonction composée de morceaux de polynômes cubiques.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ce sous-programme génèrera une fonction composée de morceaux de polynômes cubiques, couvrant les
+      points spécifiés trois par trois.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>f</command>  #   date   taille   6   a   n1   b   n2   c   n3   d ...</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>taille</emphasis> -- nombre de points dans la table. Doit être une puissance de 2 ou
+      une puissance-de-2 plus 1 (voir l'<link linkend="f"><citetitle>instruction f</citetitle></link>).
+    </para>
+
+    <para>
+      <emphasis>a, c, e, ...</emphasis> -- les maxima ou les minima locaux des morceaux successifs,
+      dépendant de la relation de ces points avec les inflexions adjacentes. Peuvent être positifs
+      ou négatifs.
+    </para>
+
+    <para>
+      <emphasis>b, d, f, ...</emphasis> -- ordonnées des points d'inflexion aux extrémités des segments
+      curvilignes successif. Peuvent être positifs ou négatifs.
+    </para>
+
+    <para>
+      <emphasis>n1, n2, n3 ...</emphasis> -- nombre de valeurs stockées entre les points spécifiés. Ne
+      peuvent pas être négatifs, mais un zéro est significatif pour spécifier des discontinuités. La
+      somme <emphasis>n1</emphasis> + <emphasis>n2</emphasis> + ... sera normalement égale à
+      <emphasis>taille</emphasis> pour les fonctions complètement spécifiées. (Pour des détails, voir
+      <link linkend="GEN05"><citetitle>GEN05</citetitle></link>).
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        <emphasis>GEN06</emphasis> construit une fonction stockée à partir de fonctions polynomiales
+        cubiques. Les morceaux groupent les valeurs d'ordonnée par groupes de 3 : point d'inflexion,
+        maximum/minimum, point d'inflexion. Le premier segment complet comprend <emphasis>b</emphasis>,
+        <emphasis>c</emphasis>, <emphasis>d</emphasis> et il a pour longueur <emphasis>n2</emphasis> +
+        <emphasis>n3</emphasis>, le suivant comprend <emphasis>d</emphasis>, <emphasis>e</emphasis>,
+        <emphasis>f</emphasis> et il a pour longueur <emphasis>n4</emphasis> + <emphasis>n5</emphasis>,
+        etc. Le premier morceau (<emphasis>a</emphasis>, <emphasis>b</emphasis> de longueur
+        <emphasis>n1</emphasis>) est incomplet avec seulement une inflexion ; le dernier morceau peut
+        être incomplet aussi. Bien que les points d'inflexion <emphasis>b</emphasis>,
+        <emphasis>d</emphasis>, <emphasis>f</emphasis> ... figurent chacun dans deux segments (un à gauche
+        et un à droite), les pentes des deux segments restent indépendantes à ce point commun (c'est-à-dire
+        que la dérivée première sera probablement discontinue). Quand <emphasis>a</emphasis>,
+        <emphasis>c</emphasis>, <emphasis>e</emphasis>... sont alternativement maximum et minimum, les
+        jointures des inflexions seront relativement douces ; pour des maxima successifs ou des minima
+        successifs les inflexions seront en peigne.
+      </para>
+    </note>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de la routine GEN06. Il utilise le fichier
+      <ulink url="examples/gen06.csd"><citetitle>gen06.csd</citetitle></ulink>.
+
+      <example>
+        <title>Un exemple de la routine GEN06.</title>
+        <xi:include href="examples-xml/gen06.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      
+      <textobject>
+        <phrase>Voici les diagrammes des formes d'onde des routines GEN06 utilisées
+        dans l'exemple :</phrase>
+      </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen06_1.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 2 0 513 6 1 128 -1 128 1 64 -.5 64 .5 16 -.5 8 1 16 -.5 8 1 16 -.5 84 1 16 -.5 8 .1 16 -.1 17 0 - une courbe pas trop lisse</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 2 0 513 6 1 128 -1 128 1 64 -.5 64 .5 16 -.5 8 1 16 -.5 8 1 16 -.5 84 1 16 -.5 8 .1 16 -.1 17 0 - une courbe pas trop lisse</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen06_2.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 3 0 513 6 0 128 0.5 128 1 128 0 129 -1 - une courbe allant de 0 à 1 puis à -1, avec respectivement un minimum, un maximum et un minimum à ces valeurs. Les points d'inflection sont à 0.5 et à 0 et sont relativement lisses</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 3 0 513 6 0 128 0.5 128 1 128 0 129 -1 - une courbe allant de 0 à 1 puis à -1, avec respectivement un minimum, un maximum et un minimum à ces valeurs. Les points d'inflection sont à 0.5 et à 0 et sont relativement lisses</para>
+        </caption>
+      </mediaobject>
+
+    </para>
+  </refsect1>
+
+  <refsect1>
+     <title>Voir aussi</title>
+     <para>
+       <link linkend="GEN05"><citetitle>GEN05</citetitle></link>,
+       <link linkend="GEN07"><citetitle>GEN07</citetitle></link> et
+       <link linkend="GEN08"><citetitle>GEN08</citetitle></link>
+     </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,58 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.3
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="remoteport">
+<indexterm id="IndexRemoteport"><primary>remoteport</primary></indexterm>
+  <refentryinfo><title>Network</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>remoteport</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>remoteport</refname>
+    <refpurpose>
+      Définit le port à utiliser sur le système distant.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Définit le port à utiliser avec les opcodes <emphasis>insremot</emphasis>, 
+      <emphasis>midremot</emphasis>, <emphasis>insglobal</emphasis> et
+      <emphasis>midglobal</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>remoteport</command> iportnum</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iportnum</emphasis> -- numéro du port à utiliser. S'il est nul
+      ou négatif, le port 40002 est sélectionné par défaut.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Université de Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>Novembre, 2006</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.05 de Csound.</para>
+  </refsect1>
+</refentry>

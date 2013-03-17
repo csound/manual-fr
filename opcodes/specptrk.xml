@@ -1,0 +1,161 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="specptrk">
+<indexterm id="IndexSpecptrk"><primary>specptrk</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Non-Standard</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>specptrk</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>spectrk</refname>
+    <refpurpose>
+      Estime la hauteur du ton complexe le plus proéminent dans le spectre.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Estime la hauteur du ton complexe le plus proéminent dans le spectre.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>koct, kamp <command>specptrk</command> wsig, kvar, ilo, ihi, istr, idbthresh, inptls, \
+      irolloff [, iodd] [, iconfs] [, interp] [, ifprd] [, iwtflg]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ilo, ihi, istr</emphasis> -- conditionneurs de l'intervalle des
+      hauteurs (grave, aigu et valeur de départ) exprimés sous le forme octave
+      point partie décimale.
+    </para>
+
+    <para>
+      <emphasis>idbthresh</emphasis> -- seuil d'énergie (en décibels) pour que
+      le suivi de hauteur ait lieu. Une fois commencé, le suivi continue jusqu'à
+      ce que l'énergie soit inférieure à la moitié du seuil (6 dB plus bas), et
+      ensuite les sorties <emphasis>koct</emphasis> et <emphasis>kamp</emphasis>
+      restent à zéro jusqu'à ce que le seuil soit à nouveau surpassé.
+      <emphasis>idbthresh</emphasis> est une valeur repère. A l'initialisation
+      il est d'abord converti au mode <emphasis>idbout</emphasis> du spectre
+      source (et le point 6 dB plus bas devient 0.5, 0.25, ou 1/(racine carrée
+      de 2) pour les modes 0, 2 et 3). Les valeurs sont ensuite pondérées
+      pour permettre la somme pondérée des partiels utilisée durant la
+      corrélation. Le seuillage effectif est réalisant en utilisant la valeur
+      interne pondérée et sommée <emphasis>kamp</emphasis> qui apparait comme
+      second paramètre de sortie.
+    </para>
+
+    <para>
+      <emphasis>inptls, irolloff</emphasis> -- nombre d'harmoniques utilisés
+      comme modèle pour la détection de hauteur basée sur le spectre, et pente
+      d'amplitude pour l'ensemble exprimée sous la forme d'une fraction par
+      octave (linéaire, donc ne pas descendre dans les valeurs négatives). Comme
+      les harmoniques et la pente peuvent affecter le suivi de
+      hauteur, il est utile d'expérimenter : essayer 4 ou 5 harmoniques avec une
+      pente de 0.6 comme réglages initiaux ; monter jusqu'à 10 ou 12 harmoniques
+      avec une pente de 0.75 pour des timbres complexes comme celui du basson
+      (faible fondamental). Le temps de calcul dépend du nombre d'harmoniques
+      cherchés. Le nombre maximum est 16.
+    </para>
+
+    <para>
+      <emphasis>iodd</emphasis> (facultatif) -- s'il est différent de zéro, seuls
+      les harmoniques impairs sont employés dans l'ensemble ci-dessus (par
+      exemple si <emphasis>inptls</emphasis> vaut 4, les harmoniques 1, 3, 5, 7
+      seront employés). Ceci améliore le suivi de certains instruments comme la
+      clarinette. La valeur par défaut est 0 (employer tous les harmoniques).
+    </para>
+
+    <para>
+      <emphasis>iconfs</emphasis> (facultatif) -- nombre de confirmations
+      requises pour que le suiveur de hauteur saute d'une octave, au prorata
+      de fractions d'une octave (ainsi la valeur 12 implique qu'un changement
+      d'un demi-ton nécessite 1 confirmation (deux succès) au
+      <emphasis>spectre</emphasis> générant <emphasis>iprd</emphasis>). Ce
+      paramètre limite les analyses de hauteur faussées tel que les erreurs
+      d'octave. Une valeur de 0 signifie qu'aucune confirmation n'est requise ;
+      la valeur par défaut est 10.
+    </para>
+
+    <para>
+      <emphasis>interp</emphasis> (facultatif) -- s'il est différent de zéro,
+      chaque signal de sortie (<emphasis>koct</emphasis>, <emphasis>kamp</emphasis>)
+      est interpolé entre les trames entrantes de <emphasis>wsig</emphasis>. La
+      valeur par défaut est 0 (répéter les valeurs du signal entre les trames).
+    </para>
+
+    <para>
+      <emphasis>ifprd</emphasis> (facultatif) -- s'il est différent de zéro, le
+      spectre calculé en interne des fondamentaux candidats est affiché. La
+      valeur par défaut est 0 (pas d'affichage).
+    </para>
+
+    <para>
+      <emphasis>iwtftg</emphasis> (facultatif) -- indicateur de pause. S'il est
+      différent de zéro, chaque affichage est maintenu jusqu'à ce que l'utilisateur
+      le libère. La valeur par défaut est 0 (pas de pause).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      A l'initialisation de la note, cette unité crée un modèle de
+      <emphasis>inptls</emphasis> harmoniques (harmoniques impairs si
+      <emphasis>iodd</emphasis> est différent de zéro) avec une pente d'amplitude
+      valant <emphasis>irolloff</emphasis> par octave. A chaque
+      nouvelle trame de <emphasis>wsig</emphasis>, le spectre est mis en
+      corrélation croisée avec ce modèle pour fournir un spectre en interne de
+      fondamentaux candidats (facultativement affichés). Une paire hauteur/amplitude
+      probable (<emphasis>koct</emphasis>, <emphasis>kamp</emphasis>, en octave
+      point partie décimale et en <emphasis>idbout</emphasis> additionnés) est
+      ensuite estimée. <emphasis>koct</emphasis> ne varie pas du
+      <emphasis>koct</emphasis> précédent de plus ou moins
+      <emphasis>kvar</emphasis> unités décimales d'octave. Il est aussi contraint
+      à rester dans l'intervalle <emphasis>ilo</emphasis> --
+      <emphasis>ihi</emphasis> (hauteur grave et hauteur aigue en octave point valeur
+      décimale ). <emphasis>kvar</emphasis> peut être dynamique, par exemple
+      les attaques dépendant des amplitudes. La résolution de hauteur utilise
+      <emphasis>ifrqs</emphasis> bins/octave du <emphasis>spectre</emphasis>
+      d'origine, avec interpolation parabolique entre bins adjacents. Les
+      réglages suivants, racine carrée de la magnitude,
+      <emphasis>ifrqs</emphasis> = 24, <emphasis>iq</emphasis> = 15 devraient
+      capturer toutes les inflexions intéressantes. Entre les trames, la sortie
+      est soit répétée soit interpolée au taux-k. (Voir
+      <link linkend="spectrum"><citetitle>spectrum</citetitle></link>.)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      <informalexample>
+        <programlisting>
+  a1, a2   <emphasis role="opc">ins</emphasis>                                                           <emphasis role="comment">; read a stereo clarinet input</emphasis>
+  krms     <emphasis role="opc">rms</emphasis>        a1, 20                                             <emphasis role="comment">; find a monaural rms value</emphasis>
+  kvar     <emphasis role="op">=</emphasis>          0.6 <emphasis role="op">+</emphasis> krms<emphasis role="op">/</emphasis>8000                                    <emphasis role="comment">; &amp; use to gate the pitch variance</emphasis>
+  wsig     <emphasis role="opc">spectrum</emphasis>   a1, 0.01, 7, 24, 15, 0, 3                          <emphasis role="comment">; get a 7-oct spectrum, 24 bibs/oct</emphasis>
+           <emphasis role="opc">specdisp</emphasis>   wsig, 0.2                                          <emphasis role="comment">; display this and now estimate</emphasis>
+  koct, ka <emphasis role="opc">spectrk</emphasis>    wsig, kvar, 7.0, 10, 9, 20, 4, 0.7, 1, 5, 1, 0.2   <emphasis role="comment">; the pch and amp</emphasis>
+  aosc     <emphasis role="opc">oscil</emphasis>      ka <emphasis role="op">*</emphasis> ka <emphasis role="op">*</emphasis> 10, cpsoct(koct), 2                      <emphasis role="comment">; &amp; generate \ new tone with these</emphasis>
+  koct     <emphasis role="op">=</emphasis>          (koct <emphasis role="op">&lt;</emphasis> 7.0 <emphasis role="op">?</emphasis> 7.0 <emphasis role="op">:</emphasis> koct)                          <emphasis role="comment">; replace non pitch with low C</emphasis>
+           <emphasis role="opc">display</emphasis>    koct <emphasis role="op">-</emphasis> 7.0, 0.25, 20                               <emphasis role="comment">; &amp; display the pitch track</emphasis>
+           <emphasis role="opc">display</emphasis>    ka, 0.25, 20                                       <emphasis role="comment">; plus the summed root mag</emphasis>
+           <emphasis role="opc">outs</emphasis>       a1, aosc                                           <emphasis role="comment">; output 1 original and 1 new track</emphasis></programlisting>
+      </informalexample>
+    </para>
+  </refsect1>
+</refentry>

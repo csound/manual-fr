@@ -1,0 +1,163 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.5
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="hrtfmove">
+<indexterm id="IndexHrtfmove"><primary>hrtfmove</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Panning and Spatialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>hrtfmove</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>hrtfmove</refname>
+    <refpurpose>
+      Génère un signal audio 3D binaural pour casque par magnitude interpolée et
+      phase tronquée.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode prend un signal source et le spatialise dans les trois dimensions
+      entourant l'auditeur en réalisant le produit de convolution de la source et
+      de filtres basés sur une fonction de transfert stockée en relation avec la
+      tête (HRTF).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aleft, aright <command>hrtfmove</command> asrc, kAz, kElev, ifilel, ifiler [, imode, ifade, isr]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifilel </emphasis> -- fichier des données spectrales HRTF de gauche.
+    </para>
+    <para>
+      <emphasis>ifiler </emphasis> -- fichier des données spectrales HRTF de droite.
+    </para>
+    <note>
+      <para>
+        Des fichiers de données spectrales (basés sur la base de donnée HTRF du MIT)
+        sont disponibles dans trois taux d'échantillonnage : 44.1, 48 et 96 kHz et
+        sont nommés en conséquense. Le <emphasis>sr</emphasis> d'entrée et de
+        traitement doit concorder avec celui du fichier de données. Les fichiers
+        doivent se trouver dans le répertoire courant ou le SADIR (voir
+        <link linkend="CommandEnvironment"><citetitle>Variables d'Environnement</citetitle></link>).
+      </para>
+    </note>
+    <note>
+      <para>
+        Les fichiers de données HRTF à utiliser avec 
+        <link linkend="hrtfmove"><citetitle>hrtfmove</citetitle></link>,
+        <link linkend="hrtfmove2"><citetitle>hrtfmove2</citetitle></link>,
+        <link linkend="hrtfstat"><citetitle>hrtfstat</citetitle></link>,
+        <link linkend="hrtfearly"><citetitle>hrtfearly</citetitle></link> et
+        <link linkend="hrtfreverb"><citetitle>hrtfreverb</citetitle></link>
+        ont été mis à jour pour les versions 5.15 et ultérieures de Csound (le
+        code a été mis à jour et il est plus efficace). Les anciens fichiers de
+        données sont maintenant obsolètes.
+      </para>
+    </note>
+    <para>
+      <emphasis>imode</emphasis> -- facultatif, 0, par défaut, pour une phase
+      tronquée, 1 pour une phase minimale.
+    </para>
+    <para>
+      <emphasis>ifade</emphasis> -- facultatif, nombre de tampons de traitement
+      pour le fondu-enchaîné du changement de phase (8 par défaut). L'intervalle
+      autorisé est 1-24. Une faible valeur est recommandée pour les sources
+      complexes (4 ou moins : une valeur plus élevée peut rendre audible le
+      fondu-enchaîné), une valeur plus élevée pour les sources à bande étroite
+      (8 ou plus : une valeur plus faible peut rendre audible l'incohérence due
+      aux changements de phase par le filtre). N'a aucun effet sur le traitement
+      de la phase minimale.
+    </para>
+    <note>
+      <para>
+        Les fondus peuvent parfois se chevaucher (si des trajectoires
+        artificiellement rapides/complexes sont demandées). Dans ce cas, un
+        avertissement est imprimé. Utiliser un fondu-enchaîné plus court ou
+        changer légèrement la trajectoire pour ne pas risquer l'apparition
+        d'incohérences.
+      </para>
+    </note>
+    <para>
+      <emphasis>isr</emphasis> - facultatif, 44.1 kHz par défaut : valeurs autorisées :
+      44100, 48000 et 96000.
+ </para>
+ <title>Exécution</title>
+    <para>
+      <emphasis>kAz</emphasis> -- valeur d'azimut en degrés. Les valeurs positives
+      représentent les positions sur la droite, les valeurs négatives les positions
+      sur la gauche.
+    </para>
+    <para>
+      <emphasis>kElev</emphasis> -- valeur d'élévation en degrés. Les valeurs
+      positives représentent les positions au-dessus de l'horizontale, les valeurs
+      négatives les positions sous l'horizontale (min -40).
+    </para>
+    <para>
+      Les trajectoires sans artefact définies par l'utilisateur sont rendues
+      possibles par un algorithme basé sur l'interpolation de magnitude spectrale
+      et la troncature de phase. Des fondus-enchaînés sont implémentés pour
+      minimiser/éliminer d'éventuelles incohérences causées par la mise à jour des
+      valeurs de phase. Ces fondus-enchaînés sont réalisés sur des tampons de
+      traitement convolutif dont le nombre peut être défini par l'utilisateur.
+      Les sources complexes peuvent ne nécessiter un fondu-enchaîné que sur un
+      tampon ; les sources à bande étroite peuvent en nécessiter plusieurs.
+      L'opcode offre aussi un traitement basé sur la phase minimale, une méthode
+      plus traditionnelle et complexe. Dans ce mode, les filtres hrtf utilisés
+      sont réduits à des représentation de phase minimale et l'interpolation
+      utilise ensuite la relation entre la magnitude de phase minimale et les
+      spectres de phase. Le délai interaural, qui est inhérent au procédé de phase
+      tronquée, est réintroduit dans le procédé de phase minimale au moyen de
+      lignes à retard variables.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode hrtfmove. Il utilise le fichier
+      <ulink url="examples/hrtfmove.csd"><citetitle>hrtfmove.csd</citetitle></ulink>. 
+    </para>
+    <example>
+      <title>Exemple de l'opcode hrtfmove.</title>
+      <xi:include href="examples-xml/hrtfmove.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </example>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="hrtfmove2"><citetitle>hrtfmove2</citetitle></link>,
+      <link linkend="hrtfstat"><citetitle>hrtfstat</citetitle></link>,
+      <link linkend="hrtfer"><citetitle>hrtfer</citetitle></link>.
+    </para>
+    <para>Plus d'information sur cet opcode :
+      <ulink url="http://www.csounds.com/journal/issue9/newHRTFOpcodes.html"><citetitle>http://www.csounds.com/journal/issue9/newHRTFOpcodes.html</citetitle></ulink>,
+      écrit par Brian Carty.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Brian Carty</member>
+        <member>Maynooth</member>
+        <member>2008</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

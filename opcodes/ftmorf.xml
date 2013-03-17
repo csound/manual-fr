@@ -1,0 +1,117 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ftmorf">
+<indexterm id="IndexFtmorf"><primary>ftmorf</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Convolution and Morphing</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ftmorf</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ftmorf</refname>
+    <refpurpose>
+      Fondu enchaîné entre plusieurs ftables données dans une liste.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Utilise un index dans une table de numéros de ftable pour faire un fondu enchaîné
+      entre les tables voisines dans la liste. La fonction résultante est écrite
+      dans la table référencée par <emphasis>iresfn</emphasis> à chaque cycle-k.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>ftmorf</command> kftndx, iftfn, iresfn</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iftfn</emphasis> -- la table contenant les numéros des tables
+      existantes qui sont utilisées pour le fondu enchaîné.
+    </para>
+
+    <para>
+      <emphasis>iresfn</emphasis> -- numéro de table de la fonction résultante.
+    </para>
+
+    <para>
+      Toutes les tables référencées dans <emphasis>iftfn</emphasis> doivent avoir
+      la même longueur que <emphasis>iresfn</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kftndx</emphasis> -- l'index dans la table <emphasis>iftfn</emphasis>.
+    </para>
+
+    <para>
+      Si <emphasis>iftfn</emphasis> contient (6, 4, 6, 8, 7, 4):
+
+      <itemizedlist>
+        <listitem>
+          <para>
+            <emphasis>kftndx=4</emphasis> écrira le contenu de f7 dans
+            <emphasis>iresfn</emphasis>.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            <emphasis>kftndx=4.5</emphasis> écrira la moyenne des contenus de f7
+            et de f4 dans <emphasis>iresfn</emphasis>.
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+    <note>
+      <para>
+        <emphasis>iresfn</emphasis> n'est mise à jour que si l'indice du fondu enchaîné
+        change de valeur. Si <emphasis>kftindx</emphasis> est statique, il n'y a
+        pas d'écriture dans <emphasis>iresfn</emphasis>.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode ftmorf. Il utilise le fichier
+      <ulink url="examples/ftmorf.csd"><citetitle>ftmorf.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode ftmorf.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/ftmorf.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Author : William <quote>Pete</quote> Moss</member>
+        <member>Université du Texas à Austin</member>
+        <member>Austin, Texas USA</member>
+        <member>Janvier 2002</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 4.18</para>
+  </refsect1>
+</refentry>

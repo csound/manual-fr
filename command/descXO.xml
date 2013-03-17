@@ -1,0 +1,79 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.1
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="CommandDesc">
+  <title>Description de la syntaxe de la commande</title>
+
+  <para>
+    La commande csound est suivie par un ensemble
+    d'<link linkend="CommandFlagsCategory"><citetitle>Options de Ligne de Commande</citetitle></link>
+    et par les noms des fichiers de l'orchestre (<link linkend="OrchTop"><citetitle>.orc</citetitle></link>)
+    et de la partition (<link linkend="ScoreTop"><citetitle>.sco</citetitle></link>) ou du
+    <link linkend="CommandUnifile"><citetitle>Fichier Unifié csd</citetitle></link> (contenant
+    à la fois l'orchestre et la partition) à traiter.
+    Les <link linkend="CommandFlagsCategory"><citetitle>Options de Ligne de Commande</citetitle></link>
+    pour contrôler la configuration d'entrée et de sortie peuvent apparaître n'importe où dans la
+    ligne de commande, séparées ou collées ensemble. Un drapeau nécessitant un Nom ou un Nombre le
+    trouvera dans l'argument lui-même ou dans celui qui le suit immédiatement. Les commandes suivantes
+    sont donc équivalentes :
+    <informalexample>
+       <programlisting>
+<command>csound</command> -nm3 nomorchestre -Sxxnomfichier nompartition
+<command>csound</command> -n -m 3 nomorchestre -x xnomfichier -S nompartition</programlisting>
+    </informalexample>
+  </para>
+
+  <para>
+    Tous les drapeaux et les noms sont optionnels. Les valeurs par défaut sont :
+    <informalexample>
+       <programlisting>
+<command>csound</command> -s -otest -b1024 -B1024 -m7 -P128 nomorchestre nompartition</programlisting>
+    </informalexample>
+  </para>
+
+  <para>
+    où <emphasis>nomorchestre</emphasis> est un fichier contenant le code de l'orchestre Csound, et
+    <emphasis>nompartition</emphasis> est un fichier de données de partition en format de partition
+    numérique standard, facultativement pré-trié et réajusté en temps. Si <emphasis>nompartition</emphasis>
+    est omis, il y a deux options par défaut :
+    <orderedlist>
+      <listitem>
+        <para> si l'on attend une entrée en temps réel (par exemple
+        <link linkend="FlagsCatMinusUpperL"><citetitle>-L</citetitle></link>,
+        <link linkend="FlagsCatMinusUpperM"><citetitle>-M</citetitle></link>,
+        <link linkend="FlagsCatMinusLowerIadc"><citetitle>-iadc</citetitle></link> ou
+        <link linkend="FlagsCatMinusUpperF"><citetitle>-F</citetitle></link>), un fichier partition
+        factice est utilisé, constitué de la seule instruction 'f 0 3600'
+        (c'est-à-dire écouter sur l'entrée TR pendant une heure)</para>
+      </listitem>
+
+      <listitem>
+	<para>sinon Csound utilise le dernier <emphasis>score.srt</emphasis> produit dans le répertoire courant.</para>
+      </listitem>
+    </orderedlist>
+  </para>
+
+  <para>
+    Csound rend compte des différentes étapes de traitement de la partition et de l'orchestre au fur et
+    à mesure, effectuant différents tests sur la syntaxe et d'éventuelles erreurs. Une fois l'exécution
+    commencée, les messages d'erreur proviennent soit du chargeur d'instrument soit des générateurs unitaires
+    eux-mêmes. Une commande Csound peut inclure toute combinaison d'options bien formée.
+  </para>
+  <bridgehead>Exécuter les exemples du manuel à partir de la ligne de commande</bridgehead>
+  <para>
+    La plupart des exemples du manuel sont prêts à l'emploi sans avoir besoin d'ajouter des options de
+    ligne de commande, car ces options sont fixées dans la balise &lt;CsOptions&gt; du fichier csd.
+    Ainsi, il suffit de taper une commande telle que :
+    <informalexample>
+       <programlisting>
+<command>csound</command> oscil.csd</programlisting>
+    </informalexample>
+    depuis le répertoire des exemples, et une sortie audio en temps réel sera générée.
+  </para>
+</section>

@@ -1,0 +1,232 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="spdist">
+<indexterm id="IndexSpdist"><primary>spdist</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Panning and Spatialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>spdist</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>spdist</refname>
+    <refpurpose>
+      Calcule les valeurs de distance à partir des coordonnées xy.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>spdist</emphasis> utilise les mêmes données xy que
+      <link linkend="space"><citetitle>space</citetitle></link>, depuis un fichier
+      texte lu par <link linkend="GEN28"><citetitle>Gen28</citetitle></link> ou
+      depuis les arguments x et y donnés directement dans l'unité. Cet opcode
+      à pour but de mettre à disposition les valeurs de distance calculées à
+      partir des coordonnées xy.
+    </para>
+
+    <para>
+       Dans le cas de <emphasis>space</emphasis>, les valeurs xy sont utilisées
+       pour déterminer une distance qui sert à atténuer le signal et à le préparer
+       pour son utilisation dans <link linkend="spsend"><citetitle>spsend</citetitle></link>.
+       Mais il est également utile d'avoir ces valeurs de distance pour pondérer
+       la fréquence du signal avant de l'envoyer à l'unité <emphasis>space</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>k1 <command>spdist</command> ifn, ktime, kx, ky</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn</emphasis> -- numéro de la fonction créée au moyen de
+      <link linkend="GEN28"><citetitle>Gen28</citetitle></link>. Ce générateur
+      de fonction lit un fichier texte qui contient des groupes de trois
+      valeurs représentant les coordonnées xy et un paramètre de temps indiquant
+      quand le signal doit être placé à cette position. Le fichier ressemblera
+      à ceci :
+      <literallayout>
+  0       -1       1
+  1        1       1
+  2        4       4
+  2.1     -4      -4
+  3       10     -10
+  5      -40       0</literallayout>
+    </para>
+
+    <para>
+      Avec un fichier nommé <quote>move</quote> l'appel à <emphasis>Gen28</emphasis>
+      dans la partition s'écrira :
+      <literallayout>
+  f1 0 0 28 &quot;move&quot;</literallayout>
+    </para>
+
+    <para>
+      <emphasis>Gen28</emphasis> prend pour taille 0 et alloue la mémoire
+      automatiquement. Il crée ses valeurs avec une résolution de 10 ms. Ainsi
+      dans ce cas, il y aura 500 valeurs créées en interpolant de X1 à X2 à X3
+      et ainsi de suite, et de Y1 à Y2 à Y3 et ainsi de suite, sur le nombre
+      approprié de valeurs stockées dans la table de fonction. Dans l'exemple
+      ci-dessus, le son démarre à l'avant-gauche, après une seconde il
+      atteind l'avant-droite, après une autre seconde il est plus éloigné mais
+      toujours à l'avant-droite, ensuite il bouge à l'arrière-gauche en moins
+      d'un dizième de seconde, un peu éloigné. Enfin, durant les neuf dixièmes
+      de seconde suivants le son bouge à l'arrière-droite, modérément distant,
+      puis il se fixe entre les deux haut-parleurs de gauche (plein ouest !),
+      assez éloigné. Comme les valeurs dans la table sont lues par l'unité
+      <emphasis>space</emphasis> au moyen d'un pointeur temporel, le temps
+      courant peut être réglé pour suivre exactement celui du fichier, ou bien
+      il peut être réglé pour aller plus vite ou plus lentement le long de la
+      même trajectoire. Si l'on a accès à l'interface graphique permettant de
+      dessiner et d'éditer les fichiers, il n'est pas nécessaire de créer les
+      fichiers texte manuellement. Mais dès lors que le fichier est en ASCII
+      dans le format ci-dessus, peu importe comment il a été créé !
+    </para>
+
+    <para>
+      IMPORTANT: Si <emphasis>ifn</emphasis> vaut 0, <emphasis>spdist</emphasis>
+      obtient les valeurs des coordonnées xy depuis <emphasis>kx</emphasis> et
+      <emphasis>ky</emphasis>.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      La configuration des coordonnées xy dans l'espace place le signal de la
+      manière suivante :
+      <itemizedlist>
+        <listitem>
+           <para>a1 est en (-1, 1)</para>
+        </listitem>
+
+        <listitem>
+           <para>a2 est en (1, 1)</para>
+        </listitem>
+
+        <listitem>
+           <para>a3 est en (-1, -1)</para>
+        </listitem>
+
+        <listitem>
+           <para>a4 est en (1, -1)</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      Ceci suppose une disposition des haut-parleurs où a1 est à l'avant-gauche,
+      a2 à l'avant-droit, a3 à l'arrière-gauche et a4 à l'arrière-droite. Les
+      valeurs supérieures à 1 donnent un son atténué, comme s'il était éloigné.
+      <emphasis>space</emphasis> considère que les haut-parleurs sont à une
+      distance de 1 ; on peut utiliser des valeurs de xy inférieures, mais
+      <emphasis>space</emphasis> n'amplifiera pas le signal dans ce cas. Il
+      équilibrera le signal cependant de manière à ce qu'il soit entendu comme
+      s'il se trouvait à l'intérieur de l'espace des quatre haut-parleurs.
+      x=0, y=1, place le signal entre les canaux avant gauche et droite, x=y=0
+      place le signal également entre les quatre canaux, et ainsi de suite.
+      Bien que <emphasis>space</emphasis> fournisse quatre signaux en sortie,
+      on peut l'utiliser dans un orchestre à deux canaux. Si les xy sont tels
+      que y reste &gt;= 1, il fonctionnera correctement pour faire des
+      panoramiques et des localisations fixes dans un champ stéréophonique.
+    </para>
+
+    <para>
+      <emphasis>ktime</emphasis> -- indice dans la table contenant les
+      coordonnées xy. S'il est utilisé comme ceci :
+      <literallayout>
+  ktime           <emphasis>line</emphasis>  0, 5, 5
+  a1, a2, a3, a4  <emphasis>space</emphasis> asig, 1, ktime, ...</literallayout>
+    </para>
+
+    <para>
+      avec le fichier <quote>move</quote> décrit ci-dessus, la vitesse du
+      mouvement du signal sera exactement celle qui est décrite dans ce fichier.
+      Cependant avec :
+      <literallayout>
+  ktime           <emphasis>line</emphasis>  0, 10, 5</literallayout>
+    </para>
+
+    <para>
+      le signal se déplacera deux fois moins vite qu'à la vitesse spécifiée. Ou
+      dans le cas de :
+      <literallayout>
+  ktime           <emphasis>line</emphasis>  5, 15, 0</literallayout>
+    </para>
+
+    <para>
+      le signal se déplacera dans la direction inverse et trois fois moins vite !
+      Enfin avec :
+      <literallayout>
+  ktime           <emphasis>line</emphasis>  2, 10, 3
+      </literallayout>
+    </para>
+
+    <para>
+      le signal ne se déplacera que depuis l'endroit spécifié à la ligne 3 du
+      fichier texte jusqu'à l'endroit spécifié à la ligne 5 du fichier texte,
+      et il lui faudra 10 secondes pour le faire.
+    </para>
+
+    <para>
+      <emphasis>kx, ky</emphasis> -- lorsque <emphasis>ifn</emphasis> vaut 0,
+      <emphasis>space</emphasis> et <emphasis>spdist</emphasis> utilisent ces
+      valeurs comme coordonnées xy pour positionner le signal.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode spdist. Il utilise le fichier
+      <ulink url="examples/spdist.csd"><citetitle>spdist.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode spdist.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/spdist.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+    <para>
+      Les mêmes fonction et valeurs temporelles sont utilisées pour
+      <emphasis>spdist</emphasis> et pour <emphasis>space</emphasis>. Grâce à
+      cela les valeurs de distance utilisées en interne par l'unité
+      <emphasis>space</emphasis> seront les mêmes que celles retournées par
+      <emphasis>spdist</emphasis> pour donner l'impression de l'effet Doppler !
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="space"><citetitle>space</citetitle></link>,
+      <link linkend="spsend"><citetitle>spsend</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Richard Karpen</member>
+        <member>Seattle, WA USA</member>
+        <member>1998</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.48 de Csound.</para>
+  </refsect1>
+</refentry>

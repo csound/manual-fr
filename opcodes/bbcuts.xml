@@ -1,0 +1,155 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="bbcuts">
+<indexterm id="IndexBbcuts"><primary>bbcuts</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Sample Playback</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>bbcuts</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>bbcuts</refname>
+    <refpurpose>
+      Extrait des segments dans le style breakbeat à partir d'un flux audio stéréo.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Le BreakBeat Cutter extrait automatiquement des segments à partir d'un flux audio
+      dans le style des manipulations du "drum and bass/jungle breakbeat". Il y a deux
+      versions, pour les sources mono (<emphasis>bbcutm</emphasis>) ou stéréo
+      (<emphasis>bbcuts</emphasis>). Bien que basé à l'origine sur les coupures
+      breakbeat, l'opcode peut être appliqué à n'importe quel type de source audio.
+    </para>
+
+    <para>
+      La séquence de coupure typique sur une mesure subdivisée en croches serait
+      <literallayout>
+3+ 3R + 2
+      </literallayout>
+      dans laquelle nous prenons un bloc de trois unités au début de la source, le
+      répétons, puis deux unités venant des 7èmes et 8èmes croches de la source.
+    </para>
+
+    <para>
+      Nous parlons de restituer des phrases (une séquence de coupures avant d'atteindre
+      une nouvelle phrase au début d'une mesure) et des unités (comme subdivisions
+      des notes).
+    </para>
+
+    <para>
+      L'opcode donne un rendu plus vivant lorsqu'on utilise simultanément plusieurs
+      versions synchronisées.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>a1,a2 <command>bbcuts</command> asource1, asource2, ibps, isubdiv, ibarlength, iphrasebars, \
+      inumrepeats [, istutterspeed] [, istutterchance] [, ienvchoice]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ibps</emphasis> -- Tempo pour les coupures, en pulsations par seconde.
+    </para>
+
+    <para>
+      <emphasis>isubdiv</emphasis> -- Unité de subdivision pour une mesure. Par exemple
+      8 désigne la croche (dans une mesure à 4/4).
+    </para>
+
+    <para>
+      <emphasis>ibarlength</emphasis> -- Nombre de pulsations par mesure. Il vaut 4
+      pour la mesure par défaut à 4/4.
+    </para>
+
+    <para>
+      <emphasis>iphrasebars</emphasis> -- Les coupures sont générées par phrases,
+      chaque phrase durant <emphasis>iphrasebars</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>inumrepeats</emphasis> -- Dans une utilisation normale, l'algorithme
+      permet une répétition supplémentaire d'une coupure donnée à la fois. Ce paramètre
+      permet de modifier ce comportement. La valeur 1 représente la norme d'une
+      répétition supplémentaire. 0 supprime la répétition et l'on obtient la source
+      originale excepté pour l'enveloppe et le stuttering.
+    </para>
+
+    <para>
+      <emphasis>istutterspeed</emphasis> -- (facultatif, par défaut=1) Le stutter
+      peut être un multiple entier de la vitesse de subdivision. Par exemple, si
+      <emphasis>isubdiv</emphasis> vaut 8 (croches) et <emphasis>istutterspeed</emphasis>
+      vaut 2, le stutter est en doubles croches (= subdiv de 16). La valeur par défaut
+      est 1.
+    </para>
+
+    <para>
+      <emphasis>istutterchance</emphasis> -- (facultatif, par défaut=0) La fin d'une
+      phrase a cette probabilité de devenir l'unité de répétition du stutter (0,0 à
+      1,0). La valeur par défaut est 0.
+    </para>
+
+    <para>
+      <emphasis>ienvchoice</emphasis> -- (facultatif, par défaut=1) Choisir 1 pour
+      l'activer (enveloppe exponentielle pour les grains de coupure) ou 0 pour le
+      désactiver. S'il est désactivé, on entendra des clics, mais ça peut donner de
+      bons résultats bruiteux, en particulier avec les sources percussives. La valeur
+      par défaut est 1, actif.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asource</emphasis> -- Le signal sonore à couper. Cette version
+      fonctionne en temps réel sans connaissance des évènements audio futurs.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode bbcuts. Il utilise le fichier
+      <ulink url="examples/bbcuts.csd"><citetitle>bbcuts.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode bbcuts.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/bbcuts.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="bbcutm"><citetitle>bbcutm</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Nick Collins</member>
+        <member>Londres</member>
+        <member>Août 2001</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 4.13</para>
+  </refsect1>
+</refentry>

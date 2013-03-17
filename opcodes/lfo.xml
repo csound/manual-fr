@@ -1,0 +1,119 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="lfo">
+<indexterm id="Indexlfo"><primary>lfo</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Basic Oscillators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lfo</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>lfo</refname>
+    <refpurpose>
+      Un oscillateur basse fréquence avec différentes formes d'onde.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Un oscillateur basse fréquence avec différentes formes d'onde.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kres <command>lfo</command> kamp, kcps [, itype]</synopsis>
+
+    <synopsis>ares <command>lfo</command> kamp, kcps [, itype]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>itype</emphasis> (facultatif, par défaut 0) -- détermine la forme d'onde de l'oscillateur.
+      La valeur par défaut est 0.
+      <itemizedlist>
+        <listitem>
+          <para><emphasis>itype</emphasis> = 0 - sinus</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis>itype</emphasis> = 1 - triangle</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis>itype</emphasis> = 2 - carrée (bipolaire)</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis>itype</emphasis> = 3 - carrée (unipolaire)</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis>itype</emphasis> = 4 - dent de scie</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis>itype</emphasis> = 5 - dent de scie (vers le bas)</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      L'onde sinus est implémentée comme une table de 4096 éléments avec interpolation linéaire. Les
+      autres sont calculées.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamp</emphasis> -- amplitude de la sortie
+    </para>
+
+    <para>
+      <emphasis>kcps</emphasis> -- fréquence de l'oscillateur
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode lfo. Il utilise le fichier
+      <ulink url="examples/lfo.csd"><citetitle>lfo.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode lfo.</title>
+
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation de la ligne de commande.</para>
+          <xi:include href="examples-xml/lfo.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>University of Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>Novembre 1998</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.491 de Csound</para>
+  </refsect1>
+</refentry>

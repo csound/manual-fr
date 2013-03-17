@@ -1,0 +1,72 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvsout">
+<indexterm id="Indexpvsout"><primary>pvsout</primary></indexterm>
+
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsout</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvsout</refname>
+    <refpurpose>
+      Ecrit un fsig sur le bus de sortie pvs.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode écrit un fsig sur un canal du bus de sortie pvs. Noter que le
+      bus de sortie pvs et le bus d'entrée pvs sont séparés et indépendants. Un
+      nouveau canal est crée si le canal spécifié n'existe pas.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>pvsout</command> fsig, kchan</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>fsig</emphasis> -- fsig en entrée.
+    </para>
+
+    <para>
+      <emphasis>kchan </emphasis> -- numéro de canal du bus de sortie pvs.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      <example>
+        <title>Exemples</title>
+        <programlisting>
+asig     <emphasis role="opc">in</emphasis>                                <emphasis role="comment">; input</emphasis>
+fsig     <emphasis role="opc">pvsanal</emphasis> asig, 1024, 256, 1024, 1  <emphasis role="comment">; analysis</emphasis>
+         <emphasis role="opc">pvsout</emphasis>  fsig, 0                   <emphasis role="comment">; write signal to pvs out bus channel 0</emphasis></programlisting>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Août 2006 </member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

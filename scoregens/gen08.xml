@@ -1,0 +1,136 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="GEN08">
+      <indexterm id="IndexGEN08"><primary>GEN08</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN08</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>GEN08</refname>
+    <refpurpose>
+      Génère une courbe spline cubique par morceaux.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ce sous-programme génèrera une courbe spline cubique par morceaux, la plus lisse possible le long
+      de tous les points spécifiés.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>f</command> # date taille 8 a n1 b n2 c n3 d ...</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>taille</emphasis> -- nombre de points dans la table. Doit être une puissance de 2 ou une
+      puissance-de-2 plus 1 (voir <link linkend="f"><citetitle>instruction f</citetitle></link>).
+    </para>
+
+    <para>
+      <emphasis>a, b, c,</emphasis> etc. -- valeurs d'ordonnée de la fonction.
+    </para>
+
+    <para>
+      <emphasis>n1, n2, n3 ... </emphasis> -- longueur de chaque segment mesurée en valeurs mémorisées. Ne
+      peuvent pas être nulles, mais peuvent être fractionnaires. Un segment particulier peut stocker ou
+      non des valeurs ; les valeurs stockées seront générées à des points entiers à partir de début de la
+      fonction. La somme <emphasis>n1</emphasis> + <emphasis>n2</emphasis> + ... sera normalement égale à
+      <emphasis>taille</emphasis> pour les fonctions complètement spécifiées.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              <emphasis>GEN08</emphasis> construit une table stockée à partir de morceaux d'une fonction
+              polynomiale cubique. Chaque segment s'étend entre deux points spécifiés mais dépend aussi
+              de leurs voisins de chaque côté. Les segments voisins coïncideront en valeur et en
+              pente à leur point commun. (La pente commune est celle d'une parabole passant par ce point
+              et ses deux voisins). La pente aux deux extrémités de la fonction est forcée à zéro (plate).
+            </para>
+          </listitem>
+
+          <listitem>
+            <para>
+              <emphasis>Conseil</emphasis> : pour créer une discontinuité de pente ou de valeur dans la
+              fonction stockée, disposer une série de points dans l'intervalle entre deux valeurs stockées ;
+              faire de même pour une pente non nulle à l'une des extrémités.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de la routine GEN08. Il utilise le fichier
+      <ulink url="examples/gen08.csd"><citetitle>gen08.csd</citetitle></ulink>.
+
+      <example>
+        <title>Un exemple de la routine GEN08.</title>
+        <xi:include href="examples-xml/gen08.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      <textobject>
+        <phrase>Voici les diagrammes des formes d'onde des routines GEN08 utilisées
+        dans l'exemple :</phrase>
+      </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen08_1.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 2 0 65 8 0 16 1 16 1 16 0 17 0 - une courbe avec une bosse régulière au milieu, brièvement négative sur les bords et plate aux extrémités</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 2 0 65 8 0 16 1 16 1 16 0 17 0 - une courbe avec une bosse régulière au milieu, brièvement négative sur les bords et plate aux extrémités</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen08_2.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 3 0 65 8 -1 32 1 2 0 14 0 17 0 - à partir d'une valeur négative, une courbe avec une bosse régulière, puis négative créant une petite bosse et enfin plate</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 3 0 65 8 -1 32 1 2 0 14 0 17 0 - à partir d'une valeur négative, une courbe avec une bosse régulière, puis négative créant une petite bosse et enfin plate</para>
+        </caption>
+      </mediaobject>
+
+    </para>
+  </refsect1>
+
+  <refsect1>
+     <title>Voir aussi</title>
+     <para>
+       <link linkend="GEN05"><citetitle>GEN05</citetitle></link>,
+       <link linkend="GEN06"><citetitle>GEN06</citetitle></link> et
+       <link linkend="GEN07"><citetitle>GEN07</citetitle></link>
+     </para>
+  </refsect1>
+</refentry>

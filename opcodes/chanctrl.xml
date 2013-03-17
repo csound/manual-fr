@@ -1,0 +1,81 @@
+<!--translated=yes
+authors=Yannick St-Onge
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="chanctrl">
+<indexterm id="IndexChanctrl"><primary>chanctrl</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Input</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>chanctrl</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>chanctrl</refname>
+    <refpurpose>
+      Prend la valeur actuelle d'un contrôleur d'un canal MIDI.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Prend la valeur actuelle d'un contrôleur et le configure optionnellement dans un intervalle spécifié.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ival <command>chanctrl</command> ichnl, ictlno [, ilow] [, ihigh]</synopsis>
+
+    <synopsis>kval <command>chanctrl</command> ichnl, ictlno [, ilow] [, ihigh]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ichnl</emphasis> -- le canal MIDI (1-16).
+    </para>
+
+    <para>
+      <emphasis>ictlno</emphasis> -- le numéro du contrôleur MIDI (0-127).
+    </para>
+
+    <para>
+      <emphasis>ilow</emphasis>, <emphasis>ihigh</emphasis> -- Limites inférieure et supérieure de la configuration
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode chanctrl. Il utilise le fichier
+      <ulink url="examples/chanctrl.csd"><citetitle>chanctrl.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode chanctrl.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/chanctrl.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namemike;</member>
+        <member>Collège Mills</member>
+        <member>Mai, 1997</member>
+      </simplelist>
+    </para>
+
+    <para>Merci à &namerasmus; pour avoir indiqué les bons intervalles pour le canal MIDI et le numéro de contrôleur.</para>
+  </refsect1>
+</refentry>

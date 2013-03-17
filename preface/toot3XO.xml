@@ -1,0 +1,53 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.2
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="PrefaceToot3">
+  <title>Toot 3</title>
+  <para>
+    Bien que dans le deuxième instrument nous pouvions contrôler et varier l'amplitude
+    globale de note en note, il serait plus musical de pouvoir modifier le contour
+    de l'intensité durant l'exécution de chaque note. Pour cela, nous aurons besoin
+    d'un opcode <link linkend="linen"><citetitle>linen</citetitle></link> supplémentaire,
+    que l'on utilise comme suit :
+    <programlisting>
+      kr <emphasis role="opc">linen</emphasis> kamp, irise, idur, idec
+
+      ar <emphasis role="opc">linen</emphasis> xamp, irise, idur, idec</programlisting>
+
+<!--    <link linkend="linen"><citetitle>linen</citetitle></link> is a signal modifier, capable of computing its output at either control or audio rates. Since we plan to use it to modify the amplitude envelope of the oscillator, we'll choose the latter version. Three of linen's arguments expect i-rate variables. The fourth expects in one instance a k-rate variable (or anything slower), and in the other an x-variable (meaning a-rate or anything slower). Our linen we will get its amp from <emphasis>p4</emphasis>.-->
+
+    <link linkend="linen"><citetitle>linen</citetitle></link> produit un ensemble de
+    valeurs qui vont linéairement de 0 à <emphasis>kamp</emphasis> pendant une durée
+    (en secondes) exprimée par <emphasis>irise</emphasis>. Il restera là pendant un
+    certain temps puis il retournera à 0 en <emphasis>idec</emphasis> secondes. La
+    sortie de <link linkend="linen"><citetitle>linen</citetitle></link> (k1) est
+    patchée dans l'argument <emphasis>kamp</emphasis> d'un
+    <link linkend="oscil"><citetitle>oscil</citetitle></link>. Ceci applique une
+    enveloppe à l'<link linkend="oscil"><citetitle>oscil</citetitle></link>.
+    Le csd se trouve dans le fichier <ulink url="examples/toot3.csd"><citetitle>toot3.csd</citetitle></ulink>.
+  </para>
+
+  <para>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/linen.jpg" format="JPG"/>
+      </imageobject>
+      <textobject>
+        <phrase>[Enveloppe générée par l'opcode linen]</phrase>
+      </textobject>
+      <caption>
+        <para>Enveloppe générée par l'opcode <emphasis>linen</emphasis></para>
+      </caption>
+    </mediaobject>
+  </para>
+
+  <para>
+<xi:include href="examples-xml/toot3.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </para>
+</section>

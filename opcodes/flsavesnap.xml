@@ -1,0 +1,196 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLsavesnap">
+<indexterm id="IndexFLsavesnap"><primary>FLsavesnap</primary></indexterm>
+  <refentryinfo><title>FLTK:Other</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLsavesnap</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLsavesnap</refname>
+    <refpurpose>
+      Sauvegarde dans un fichier tous les instantanés actuellement créés.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>FLsavesnap</emphasis> sauvegarde dans un fichier tous les
+      instantanés actuellement créés (c'est-à-dire la banque de mémoire en entier).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>FLsavesnap</command> &quot;filename&quot; [, igroup]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis><quote>filename</quote></emphasis> -- une chaîne de caractères
+      entre guillemets correspondant à un fichier dans lequel sauvegarder une
+      banque d'instantanés.
+    </para>
+    <para>
+      <emphasis>igroup</emphasis> -- (facultatif) un nombre entier faisant
+      référence à un groupe de widgets en relation avec un instantané. Cela
+      permet de lire/écrire, ou charger/sauvegarder l'état d'un sous-ensemble
+      de valuateurs. La valeur par défaut est zéro qui fait référence au premier
+      groupe. Le numéro de groupe est déterminé par l'opcode
+      <link linkend="FLsetSnapGroup"><citetitle>FLsetSnapGroup</citetitle></link>.
+    </para>
+    <note>
+      <para>
+        Le paramètre <emphasis>igroup</emphasis> n'a pas encore été complètement
+        implémenté dans la version actuelle de Csound. Prière de ne pas s'y fier.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>FLsavesnap</emphasis> sauvegarde tous les instantanés actuellement
+      créés (c'est-à-dire la banque de mémoire en entier) dans un fichier dont
+      le nom est <emphasis>filename</emphasis>. Comme le fichier est un fichier
+      texte, les valeurs des instantanés peuvent être modifiées manuellement dans
+      un éditeur de texte. Le format des données du fichier est le suivant (pour
+      le moment, ceci pouvant changer dans une prochaine version de Csound) :
+
+      <informalexample>
+        <programlisting>
+----------- 0 -----------
+FLvalue 0 0 1 0 ""
+FLvalue 0 0 1 0 ""
+FLvalue 0 0 1 0 ""
+FLslider 331.946 80 5000 -1 "frequency of the first oscillator"
+FLslider 385.923 80 5000 -1 "frequency of the second oscillator"
+FLslider 80 80 5000 -1 "frequency of the third oscillator"
+FLcount 0 0 10 0 "this index must point to the location number where snapshot is stored"
+FLbutton 0 0 1 0 "Store snapshot to current index"
+FLbutton 0 0 1 0 "Save snapshot bank to disk"
+FLbutton 0 0 1 0 "Load snapshot bank from disk"
+FLbox 0 0 1 0 ""
+----------- 1 -----------
+FLvalue 0 0 1 0 ""
+FLvalue 0 0 1 0 ""
+FLvalue 0 0 1 0 ""
+FLslider 819.72 80 5000 -1 "frequency of the first oscillator"
+FLslider 385.923 80 5000 -1 "frequency of the second oscillator"
+FLslider 80 80 5000 -1 "frequency of the third oscillator"
+FLcount 1 0 10 0 "this index must point to the location number where snapshot is stored"
+FLbutton 0 0 1 0 "Store snapshot to current index"
+FLbutton 0 0 1 0 "Save snapshot bank to disk"
+FLbutton 0 0 1 0 "Load snapshot bank from disk"
+FLbox 0 0 1 0 ""
+----------- 2 -----------
+..... etc...
+----------- 3 -----------
+..... etc...
+---------------------------</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      Comme on peut le voir, chaque instantané contient plusieurs lignes. Chaque
+      instantané est séparé du précédent et du suivant par une ligne de cette
+      sorte :
+
+      <literallayout>
+"----------- Num d'instantané -----------"
+      </literallayout>
+
+      Suivent plusieurs lignes contenant les données. Chacune de ces lignes
+      correspond à un widget.
+    </para>
+
+    <para>
+      Le premier champ de chaque ligne est une chaîne de caractères sans
+      guillemets contenant le nom de l'opcode correspondant au widget. Le second
+      champ est un nombre exprimant la valeur courante d'un instantané. Dans la
+      version actuelle, c'est le seul champ que l'on peut modifier manuellement.
+      Les troisième et quatrième champs montrent les valeurs minimale et
+      maximale pour ce valuateur. Le cinquième champ est un nombre spécial qui
+      indique si le valuateur est linéaire (valeur 0), exponentiel (valeur -1),
+      ou est indexé par une table avec interpolation des valeurs (numéro de
+      table négatif) ou sans interpolation (numéro de table positif). Le
+      dernier champ, une chaîne de caractères entre guillemets, contient
+      l'étiquette du widget. La dernière ligne du fichier est toujours
+
+    <literallayout>
+"---------------------------"
+    </literallayout>.
+    </para>
+    <para>
+      Noter que <link linkend="FLvalue"><citetitle>FLvalue</citetitle></link> et
+      <link linkend="FLbox"><citetitle>FLbox</citetitle></link> ne sont pas des
+      valuateurs et que leurs valeurs sont constantes, ne pouvant pas être
+      modifées.
+    </para>
+    <para>
+      Pour économiser la mémoire, les widgets peuvent être groupés afin que les
+      instantanés n'affectent qu'un groupe défini de widgets. L'opcode
+      <link linkend="FLsetSnapGroup"><citetitle>FLsetSnapGroup</citetitle></link>
+      est utilisé pour spécifier le groupe de tous les widgets déclarés après lui
+      jusqu'à la prochaine instruction
+      <link linkend="FLsetSnapGroup"><citetitle>FLsetSnapGroup</citetitle></link>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple simple de sauvegarde d'un instantané FLTK. Il utilise le fichier
+      <ulink url="examples/FLsavesnap_simple.csd"><citetitle>FLsavesnap_simple.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de sauvegarde d'un instantané FLTK.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/FLsavesnap_simple.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Voici un autre exemple de sauvegarde d'instantané FLTK utilisant des groupes
+      d'instantanés. Il utilise le fichier
+      <ulink url="examples/FLsavesnap.csd"><citetitle>FLsavesnap.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de sauvegarde d'instantané FLTK utilisant des groupes d'instantanés.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/FLsavesnap.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="FLgetsnap"><citetitle>FLgetsnap</citetitle></link>,
+      <link linkend="FLloadsnap"><citetitle>FLloadsnap</citetitle></link>,
+      <link linkend="FLsetSnapGroup"><citetitle>FLsetSnapGroup</citetitle></link>,
+      <link linkend="FLrun"><citetitle>FLrun</citetitle></link>,
+      <link linkend="FLsetsnap"><citetitle>FLsetsnap</citetitle></link>,
+      <link linkend="FLupdate"><citetitle>FLupdate</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.22</para>
+  </refsect1>
+</refentry>

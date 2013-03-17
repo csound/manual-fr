@@ -1,0 +1,72 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.10
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="opi">
+<indexterm id="IndexI"><primary>i</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Sample Level Operators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>i</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>i</refname>
+    <refpurpose>
+      Retourne un équivalent de taux-i d'un argument de taux-k, ou directement
+      un argument de taux-i.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne un équivalent de taux-i d'un argument de taux-k, ou directement
+      un argument de taux-i.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>i</command>(x) (argument de taux-k ou de taux-i)</synopsis>
+
+    <para>
+      Les convertisseurs de valeur effectuent une transformation arithmétique d'unités d'une sorte
+      en unités d'une autre sorte. Le résultat peut devenir ensuite un terme dans une autre
+      expression.
+      <note>
+        <title>Note</title>
+  <para>L'utilisation de i() avec un argument expression de taux-k n'est pas recommandée et peut
+    produire des résultats inattendus.</para>
+      </note>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="opa"><citetitle>a</citetitle></link>,
+      <link linkend="opk"><citetitle>k</citetitle></link>,
+      <link linkend="abs"><citetitle>abs</citetitle></link>,
+      <link linkend="exp"><citetitle>exp</citetitle></link>,
+      <link linkend="frac"><citetitle>frac</citetitle></link>,
+      <link linkend="int"><citetitle>int</citetitle></link>,
+      <link linkend="log"><citetitle>log</citetitle></link>,
+      <link linkend="log10"><citetitle>log10</citetitle></link>,
+      <link linkend="sqrt"><citetitle>sqrt</citetitle></link>
+    </para>
+    <para>Plus d'information sur cet opcode :
+    <ulink url="http://www.csounds.com/journal/issue10/CsoundRates.html"><citetitle>http://www.csounds.com/journal/issue10/CsoundRates.html</citetitle></ulink>,
+    écrit par Andrés Cabrera.</para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>La version de cette fonction prenant un argument de taux-i a été
+    ajoutée dans la version 5.14 de Csound.</para>
+  </refsect1>
+</refentry>

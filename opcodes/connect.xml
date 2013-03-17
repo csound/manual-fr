@@ -1,0 +1,103 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.6
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="connect">
+  <indexterm id="Indexconnect"><primary>connect</primary></indexterm>
+  <refentryinfo><title>Signal Flow Graph Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>connect</refentrytitle>
+  </refmeta>
+  
+  <refnamediv>
+    <refname>connect</refname>
+    <refpurpose>
+      Connecte un connecteur sortant d'une source à un connecteur entrant d'une
+      destination.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      L'opcode <emphasis>connect</emphasis>, valide seulement dans l'en-tête de
+      l'orchestre, envoie les signaux du connecteur sortant indiqué dans toutes
+      les instances de l'instrument source désigné vers le connecteur entrant
+      indiqué dans toutes les instances de l'instrument de destination désigné.
+      Chaque instance du connecteur entrant reçoit la somme des signaux provenant
+      de toutes les instances du connecteur sortant. Ainsi plusieurs instances
+      d'un connecteur sortant peuvent être distribuées sur plusieurs instances
+      d'un connecteur entrant.
+    </para>
+
+    <para>
+      Lorsque Csound crée une nouvelle instance d'un modèle d'intrument, de
+      nouvelles instances de ses connexions sont créées.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>connect </command>Tsource1, Soutlet1, Tsink1, Sinlet1</synopsis>
+  </refsect1>
+  
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>Tsource1</emphasis> -- Nom sous forme de chaîne de caractères de
+      la définition de l'instrument source.       
+    </para>
+    <para>
+      <emphasis>Soutlet1</emphasis> -- Nom sous forme de chaîne de caractères du
+      connecteur sortant utilisé dans l'instrument source.
+    </para>
+    <para>
+      <emphasis>Tsink1</emphasis> -- Nom sous forme de chaîne de caractères de
+      la définition de l'instrument de destination.       
+    </para>
+    <para>
+      <emphasis>Sinlet1</emphasis> -- Nom sous forme de chaîne de caractères du
+      connecteur entrant utilisé dans l'instrument de destination.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode connect. Il utilise le fichier
+      <ulink url="examples/connect.csd"><citetitle>connect.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode connect.</title>
+          <xi:include href="examples-xml/connect.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    </refsect1>
+  
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="outleta"><citetitle>outleta</citetitle></link>
+      <link linkend="outletk"><citetitle>outletk</citetitle></link>
+      <link linkend="outletf"><citetitle>outletf</citetitle></link>
+      <link linkend="inleta"><citetitle>inleta</citetitle></link>
+      <link linkend="inletk"><citetitle>inletk</citetitle></link>
+      <link linkend="inletf"><citetitle>inletf</citetitle></link>
+      <link linkend="alwayson"><citetitle>alwayson</citetitle></link>
+      <link linkend="ftgenonce"><citetitle>ftgenonce</citetitle></link>
+    </para>
+    <para>Plus d'information sur cet opcode :
+    <ulink url="http://www.csounds.com/journal/issue13/signalFlowGraphOpcodes.html"><citetitle>http://www.csounds.com/journal/issue13/signalFlowGraphOpcodes.html</citetitle></ulink>,
+    écrit par Michael Gogins </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par &namemichael;, 2009</para>
+  </refsect1>
+</refentry>

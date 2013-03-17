@@ -1,0 +1,170 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vbap">
+<indexterm id="IndexVbap"><primary>vbap</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Panning and Spatialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vbap</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vbap</refname>
+    <refpurpose>
+      Distribue un signal audio sur plusieurs canaux.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Distribue un signal audio sur plusieurs canaux, jusqu'à 64.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ar1[, ar2...] <command>vbap</command> asig, kazim \
+        kelev] [, kspread] [, ilayout]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ilayout</emphasis> -- indice de la disposition des haut-parleurs
+      dans l'intervalle 0-99, correspondant à un appel à
+      <emphasis>vbaplsinit</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- signal audio à traiter.
+    </para>
+    <para>
+      <emphasis>kazim</emphasis> -- angle d'azimut de la source virtuelle.
+    </para>
+
+    <para>
+      <emphasis>kelev</emphasis> (facultatif) -- angle d'élévation de la source
+      virtuelle.
+    </para>
+
+    <para>
+      <emphasis>kspread</emphasis> (facultatif) -- diffusion de la source virtuelle
+      (de 0 à 100). S'il vaut 0, on a un panoramique d'amplitude conventionnel.
+      Plus <emphasis>kspread</emphasis> augmente et plus le nombre de haut-parleurs
+      utilisés dans le panoramique augmente. S'il vaut 100, le son est appliqué à
+      tous les haut-parleurs.
+    </para>
+
+    <para>
+      <emphasis>vbap</emphasis> prend un signal en entrée, <emphasis>asig</emphasis>,
+      et le distribue sur les sorties en fonction des contrôles <emphasis>kazim</emphasis>
+      et <emphasis>kelev</emphasis>, et de la disposition des haut-parleurs. Si
+      <emphasis>idim</emphasis> = 2, <emphasis>kelev</emphasis> est mis à zéro.
+      La distribution est réalisée par Panoramique d'Amplitude sur une Base de
+      Vecteurs (VBAP - voir référence). VBAP distribue le signal en tenant compte
+      des données de haut-parleurs configurées avec <emphasis>vbaplsinit</emphasis>.
+      Le signal est appliqué au plus à deux haut-parleurs dans les configurations
+      2D et à trois haut-parleurs dans les configurations 3D. Si la source virtuelle
+      est distribuée en dehors de la région couverte par les haut-parleurs, les
+      haut-parleurs les plus proches sont utilisés dans le panoramique.
+    </para>
+    <warning>
+      <para>
+        Prière de noter que tous les opcodes de panoramique <emphasis>vbap</emphasis>
+        nécessitent une initialisation du système <emphasis>vbap</emphasis> avec
+        <link linkend="vbaplsinit"><citetitle>vbaplsinit</citetitle></link>.
+      </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voir l'entrée sur <link linkend="vbap8"><citetitle>vbap8</citetitle></link>
+      pour un exemple d'utilisation des opcodes <emphasis>vbap</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Référence</title>
+    <para>
+      Ville Pulkki : <quote>Virtual Sound Source Positioning Using Vector Base
+      Amplitude Panning</quote> <emphasis>Journal of the Audio Engineering Society</emphasis>,
+      juin 1997, Vol. 45/6, p. 456.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode vbap. Il utilise le fichier
+      <ulink url="examples/vbap.csd"><citetitle>vbap.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode vbap.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/vbap.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
+spread of source = 0
+spread of source = 8
+spread of source = 17
+spread of source = 25
+spread of source = 33
+spread of source = 42
+spread of source = 50
+spread of source = 58
+spread of source = 67
+spread of source = 75
+spread of source = 83
+spread of source = 92
+spread of source = 100</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="vbapmove"><citetitle>vbapmove</citetitle></link>,
+      <link linkend="vbap16"><citetitle>vbap16</citetitle></link>,
+      <link linkend="vbap16move"><citetitle>vbap16move</citetitle></link>,
+      <link linkend="vbap4"><citetitle>vbap4</citetitle></link>,
+      <link linkend="vbap4move"><citetitle>vbap4move</citetitle></link>,
+      <link linkend="vbap8"><citetitle>vbap8</citetitle></link>,
+      <link linkend="vbap8move"><citetitle>vbap8move</citetitle></link>,
+      <link linkend="vbaplsinit"><citetitle>vbaplsinit</citetitle></link>,
+      <link linkend="vbapz"><citetitle>vbapz</citetitle></link>,
+      <link linkend="vbapzmove"><citetitle>vbapzmove</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Ville Pulkki</member>
+        <member>Sibelius Academy Computer Music Studio</member>
+        <member>Laboratoire d'Acoustique et de Traitement du Signal Audio</member>
+        <member>Helsinki, Université de Technologie</member>
+        <member>Helsinki, Finlande</member>
+        <member>Mai 2000</member>
+        <member>Auteur : &namejohn;</member>
+        <member>Juillet 2012</member>
+       </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 5.17.13 de Csound. </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,116 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvread">
+<indexterm id="IndexPvread"><primary>pvread</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:STFT</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvread</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvread</refname>
+    <refpurpose>
+      Lit un fichier d'analyse par vocodeur de phase et retourne la fréquence et
+      l'amplitude d'un canal d'analyse ou bin.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>pvread</emphasis> lit depuis un fichier
+      <link linkend="pvoc"><citetitle>pvoc</citetitle></link> et retourne la
+      fréquence et l'amplitude d'un canal d'analyse ou bin. Les valeurs retournées
+      peuvent être utilisée à n'importe quel autre endroit de l'instrument de
+      Csound. Par exemple, on peut les utiliser comme arguments d'un oscillateur
+      pour synthétiser une composante d'un signal analysé ou on peut utiliser
+      une banque de <emphasis>pvreads</emphasis> pour resynthétiser le son analysé
+      en synthèse additive en passant les valeurs de fréquence et de magnitude à
+      un banc d'oscillateurs.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kfreq, kamp <command>pvread</command> ktimpnt, ifile, ibin</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifile</emphasis> -- le numéro <emphasis>pvoc</emphasis> (n dans
+      pvoc.n) ou le nom entre guillemets du fichier d'analyse créé avec
+      <emphasis>pvanal</emphasis>. (Voir
+      <link linkend="pvoc"><citetitle>pvoc</citetitle></link>.)
+    </para>
+
+    <para>
+      <emphasis>ibin</emphasis> -- le numéro du canal d'analyse duquel seront
+      retournées la fréquence en Hz et la magnitude.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kfreq, kamp</emphasis> -- sorties de l'unité <emphasis>pvread</emphasis>.
+      Ces valeurs, récupérées d'un fichier d'analyse par vocodeur de phase, représentent
+      les valeurs de fréquence et d'amplitude d'un canal d'analyse spécifié par
+      l'argument <emphasis>ibin</emphasis>. Une interpolation a lieu entre les
+      trames d'analyse avec une résolution au taux-k et elle dépent bien sûr de
+      la vitesse et de la direction de <emphasis>ktimpnt</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>ktimpnt</emphasis> -- l'écoulement du temps, en secondes, dans
+      ce fichier. <emphasis>ktimpnt</emphasis> doit toujours être positif, mais
+      il peut avancer ou reculer dans le temps, être stationnaire ou discontinu,
+      comme pointeur dans le fichier d'analyse.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      L'exemple ci-dessous montre l'utilisation de <emphasis>pvread</emphasis>
+      pour synthétiser un seul composant à la fois à partir d'un fichier
+      d'analyse de vocodeur de phase. Il faut noter que l'on peut utiliser les
+      sorties <emphasis>kfreq</emphasis> et <emphasis>kamp</emphasis> pour
+      n'importe quel type de synthèse, de filtrage, de traitement, etc.
+      <example>
+        <title>Exemple de l'opcode pvread.</title>
+          <xi:include href="examples-xml/pvread.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+     </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="pvbufread"><citetitle>pvbufread</citetitle></link>, 
+      <link linkend="pvcross"><citetitle>pvcross</citetitle></link>, 
+      <link linkend="pvinterp"><citetitle>pvinterp</citetitle></link>, 
+      <link linkend="tableseg"><citetitle>tableseg</citetitle></link>, 
+      <link linkend="tablexseg"><citetitle>tablexseg</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Richard Karpen</member>
+        <member>Seattle, Wash</member>
+        <member>1997</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 3.44</para>
+  </refsect1>
+</refentry>

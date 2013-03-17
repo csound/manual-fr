@@ -1,0 +1,80 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="turnoff">
+<indexterm id="IndexTurnoff"><primary>turnoff</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Duration Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>turnoff</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>turnoff</refname>
+    <refpurpose>
+      Permet à un instrument de s'arrêter lui-même.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Permet à un instrument de s'arrêter lui-même.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>turnoff</command></synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>turnoff</emphasis> -- cette instruction de la phase d'exécution permet
+      à un instrument de s'arrêter lui-même. Quelle soit de durée finie ou
+      <quote>tenue</quote>, la note en cours d'exécution par l'instrument est
+      immédiatement enlevée de la liste des notes actives. Aucune autre note n'est
+      affectée.
+    </para>
+    <note>
+      <para>
+        Il faut respecter le principe d'arrêter des instruments ayant un numéro
+        plus élevé que celui de l'instrument duquel <emphasis>turnoff</emphasis>
+        est appelé, sinon il peut y avoir des problèmes d'initialisation.
+      </para>
+    </note>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      L'exemple suivant utilise l'opcode turnoff. Il provoque la fin d'une note
+      lorsqu'un signal de contrôle dépasse un certain seuil (ici la fréquence de
+      Nyquist). Il utilise le fichier
+      <ulink url="examples/turnoff.csd"><citetitle>turnoff.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode turnoff.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/turnoff.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ihold"><citetitle>ihold</citetitle></link>
+      <link linkend="turnoff2"><citetitle>turnoff2</citetitle></link>,
+      <link linkend="turnon"><citetitle>turnon</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

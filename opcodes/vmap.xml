@@ -1,0 +1,123 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vmap">
+<indexterm id="IndexVmap"><primary>vmap</primary></indexterm>
+  <refentryinfo><title>Vectorial:Vectorial operations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vmap</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vmap</refname>
+    <refpurpose>
+      Permute les éléments d'un vecteur selon les indices contenus dans un
+      autre vecteur.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Transfert les éléments d'un vecteur vers un autre selon les indices
+      contenus dans ce dernier.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>vmap</command>  ifn1, ifn2, ielements [,idstoffset, isrcoffset]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn1</emphasis> - numéro de la table dans laquelle le signal
+      vectoriel sera copié et qui contient le vecteur d'indices.
+    </para>
+    <para>
+      <emphasis>ifn2</emphasis> - numéro de la table hébergeant le signal
+      vectoriel à copier.
+    </para>
+    <para>
+      <emphasis>ielements</emphasis> - nombre d'éléments à traiter.
+    </para>
+    <para>
+      <emphasis>idstoffset</emphasis> - décalage d'indexation pour la table de
+      destination <emphasis>ifn1</emphasis>.
+    </para>
+    <para>
+      <emphasis>isrcoffset</emphasis> - décalage d'indexation pour la table
+      source <emphasis>ifn2</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>vmap</emphasis> permute les éléments de <emphasis>ifn2</emphasis>
+      selon les valeurs de la table <emphasis>ifn1</emphasis>. Les éléments de
+      <emphasis>ifn1</emphasis> sont traités comme indices de la table
+      <emphasis>ifn2</emphasis>, si bien que les valeurs des éléments de
+      <emphasis>ifn1</emphasis> ne doivent pas dépasser la longueur de la table
+      <emphasis>ifn2</emphasis>, sinon Csound rapportera une erreur. Les éléments
+      de <emphasis>ifn1</emphasis> sont traités comme des entiers, chaque partie
+      décimale étant tronquée. Il n'y a aucune interpolation lors de cette
+      opération.
+    </para>
+    <para>
+      En pratique, les éléments de <emphasis>ifn1</emphasis> sont utilisés comme
+      indices pour <emphasis>ifn2</emphasis>, et sont ensuite remplacés par les
+      éléments correspondants de <emphasis>ifn2</emphasis>. <emphasis>ifn1</emphasis>
+      doit être différente de <emphasis>ifn2</emphasis>, sinon les résultats sont
+      imprévisibles. Csound générera une erreur d'initialisation si elles ne sont
+      pas différentes.
+    </para>
+    <para>
+      Tous ce opérateurs (<link linkend="vaddv"><citetitle>vaddv</citetitle></link>,
+      <link linkend="vsubv"><citetitle>vsubv</citetitle></link>,
+      <link linkend="vmultv"><citetitle>vmultv</citetitle></link>,
+      <link linkend="vdivv"><citetitle>vdivv</citetitle></link>,
+      <link linkend="vpowv"><citetitle>vpowv</citetitle></link>,
+      <link linkend="vexpv"><citetitle>vexpv</citetitle></link>,
+      <link linkend="vcopy"><citetitle>vcopy</citetitle></link> et
+      <link linkend="vmap"><citetitle>vmap</citetitle></link>) sont conçus pour
+      être utilisés avec d'autres opcodes qui opèrent sur des signaux vectoriels
+      tels que <emphasis>bmscan</emphasis>,
+      <link linkend="vcella"><citetitle>vcella</citetitle></link>,
+      <link linkend="adsynt"><citetitle>adsynt</citetitle></link>,
+      <link linkend="adsynt2"><citetitle>adsynt2</citetitle></link>, etc. 
+    </para>
+    <para>
+      <emphasis>Note</emphasis> : <emphasis>bmscan</emphasis> n'est pas encore
+      disponible dans la version canonique de Csound.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode vmap. Il utilise le fichier
+      <ulink url="examples/vmap.csd"><citetitle>vmap.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode vmap.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/vmap.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par Gabriel Maldonado.</para>
+    <para>Nouveau dans Csound 5 (Auparavant seulement disponible dans CsoundAV)</para>
+  </refsect1>
+</refentry>

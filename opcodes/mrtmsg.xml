@@ -1,0 +1,78 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="mrtmsg">
+<indexterm id="IndexMrtmsg"><primary>mrtmsg</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:System Realtime</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>mrtmsg</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>mrtmsg</refname>
+
+    <refpurpose>
+      Send system real-time messages to the MIDI OUT port.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Envoie des messages système MIDI  sur le port MIDI OUT.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>mrtmsg</command> imsgtype</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+     <emphasis>imsgtype</emphasis> -- type du message b:
+     <itemizedlist>
+	<listitem><para>1 envoie un message START (0xFA) ;</para></listitem>
+	<listitem><para>2 envoie un message CONTINUE (0xFB) ;</para></listitem>
+	<listitem><para>0 envoie un message STOP (0xFC) ;</para></listitem>
+	<listitem><para>-1 envoie un message SYSTEM RESET (0xFF) ;</para></listitem>
+	<listitem><para>-2 envoie un message ACTIVE SENSING (0xFE)</para></listitem>
+     </itemizedlist>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Envoie un message  unique, durant la phase d'initialisation de
+      l'instrument courant. Le paramètre <emphasis>imsgtype</emphasis> indique
+      le type du message.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="mclock"><citetitle>mclock</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.47 de Csound.</para>
+  </refsect1>
+</refentry>

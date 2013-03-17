@@ -1,0 +1,100 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="lineto">
+<indexterm id="IndexLineto"><primary>lineto</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lineto</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>lineto</refname>
+    <refpurpose>
+      Génère un glissando à partir d'un signal de contrôle.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère un glissando à partir d'un signal de contrôle.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kres <command>lineto</command> ksig, ktime</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kres</emphasis> -- Signal de sortie.
+    </para>
+
+    <para>
+      <emphasis>ksig</emphasis> -- Signal d'entrée.
+    </para>
+
+    <para>
+      <emphasis>ktime</emphasis> -- Durée du glissando en secondes.
+    </para>
+
+    <para>
+      <emphasis>lineto</emphasis> ajoute un glissando (c-à-d des segments de
+      droite) à un signal d'entrée en escalier (produit par exemple par
+      <link linkend="randh"><citetitle>randh</citetitle></link> ou par
+      <link linkend="lpshold"><citetitle>lpshold</citetitle></link>). Il génère
+      un segment de droite allant d'un degré à l'autre en
+      <emphasis>ktime</emphasis> secondes. Lorsque le degré suivant est atteint,
+      cette valeur est maintenue jusqu'à ce qu'un nouveau degré apparaisse. Il faut
+      s'assurer que la valeur de l'argument <emphasis>ktime</emphasis> est inférieure
+      à l'intervalle de temps entre deux degrés consécutifs du signal original,
+      sinon des discontinuités apparaitront dans le signal de sortie.
+    </para>
+
+    <para>
+      Lorsqu'on l'utilise avec la sortie de
+      <link linkend="lpshold"><citetitle>lpshold</citetitle></link>, on obtient
+      une simulation de l'effet de glissando des vieux synthétiseurs analogiques.
+    </para>
+    <note><para>Une nouvelle valeur de <emphasis>ksig</emphasis> ou de
+    <emphasis>ktime</emphasis> n'aura d'effet qu'après que la valeur précédente de
+    <emphasis>ktime</emphasis> se soit écoulée.</para></note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode lineto. Il utilise le fichier
+      <ulink url="examples/lineto.csd"><citetitle>lineto.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode lineto.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/lineto.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="tlineto"><citetitle>tlineto</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la Version 4.13</para>
+  </refsect1>
+</refentry>

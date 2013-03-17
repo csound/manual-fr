@@ -1,0 +1,99 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.6
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="dcblock2">
+<indexterm id="IndexDcblock2"><primary>dcblock2</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Specialized Filters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>dcblock2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>dcblock2</refname>
+    <refpurpose>
+      Un filtre bloqueur de composante continue.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Implémente un filtre bloqueur de composante continue avec une atténuation
+      améliorée de la composante continue.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>dcblock2</command> ain [, iorder] [, iskip]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iorder</emphasis> -- ordre du filtre, au minimum 4ème ordre, vaut par
+      défaut 128.
+    </para>
+    <para>
+      <emphasis>iskip</emphasis> -- s'il vaut 1, l'initialisation est ignorée (0 par
+      défaut).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ares</emphasis> -- signal audio filtré
+    </para>
+    <para>
+      <emphasis>ain</emphasis> -- signal audio en entrée
+    </para>
+    <note>
+      <para>
+        Avec l'utilisation d'une valeur inférieure à
+        <link linkend="ksmps"><citetitle>ksmps</citetitle></link> pour
+        <emphasis>iorder</emphasis>, la réduction du décalage dû à la composante
+        continue ne sera pas efficace.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      On peut voir le résultat dans un éditeur graphique de fichiers audio comme
+      <emphasis>audacity</emphasis>. <emphasis>audacity</emphasis> est disponible
+      pour Linux, Windows et Mac OS et on peut le télécharger depuis
+      <ulink url="http://audacity.sourceforge.net/"><citetitle>http://audacity.sourceforge.net</citetitle></ulink>.
+    </para>
+    <para>
+      Voici un exemple de l'opcode dcblock2. Il utilise les fichiers
+      <ulink url="examples/dcblock2.csd"><citetitle>dcblock2.csd</citetitle></ulink>
+      et <ulink url="examples/beats.wav"><citetitle>beats.wav</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode dcblock2.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/dcblock2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+     </para>  
+  </refsect1>
+  
+  <refsect1>
+    <title>Voir aussi</title>
+    <para><link linkend="dcblock"><citetitle>dcblock</citetitle></link></para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par &namevictor;</para>
+    <para>Nouveau dans la version 5.09 de Csound</para>
+  </refsect1>
+</refentry>

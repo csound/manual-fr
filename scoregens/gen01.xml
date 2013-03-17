@@ -1,0 +1,178 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="GEN01">
+      <indexterm id="IndexGEN01"><primary>GEN01</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN01</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>GEN01</refname>
+    <refpurpose>
+      Transfère des données d'un fichier son dans une table de fonction.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ce sous-programme transfère des données d'un fichier son dans une table de fonction.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>f</command>#  date  taille  1  codfic  decal  format  canal</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>taille</emphasis> -- nombre de points dans la table. Ordinairement une puissance de 2 ou
+      une puissance-de-2 plus 1 (voir l'<link linkend="f"><citetitle>instruction f</citetitle></link>) ;
+      la taille de table maximale est de 16777216 (2<superscript>24</superscript>) points. L'allocation de
+      mémoire pour la table peut être <emphasis>différée</emphasis> en mettant ce paramètre à 0 ; la taille
+      allouée est alors le nombre de points dans le fichier (probablement pas une puissance de 2), et la
+      table n'est pas utilisable par les oscillateurs normaux, mais par l'unité
+      <link linkend="loscil"><citetitle>loscil</citetitle></link>. Le fichier son peut aussi être mono ou
+      stéréo.
+    </para>
+
+    <para>
+      <emphasis>codfic</emphasis> -- entier ou chaîne de caractères dénotant le nom du fichier son source.
+      Un entier dénote le fichier <emphasis>soundin</emphasis>.<emphasis>codfic</emphasis> ; une chaîne de
+      caractères (entre apostrophes doubles, espaces autorisés) donne le nom du fichier lui-même,
+      optionnellement un nom de chemin complet. Si le chemin n'est pas complet, le fichier est d'abord
+      cherché dans le répertoire courant, ensuite dans celui qui est donné par la variable d'environnement
+      <link linkend="CommandEnvironment"><citetitle>SSDIR</citetitle></link> (si elle est définie)
+      enfin par <link linkend="CommandEnvironment"><citetitle>SFDIR</citetitle></link>. Voir aussi
+      <link linkend="soundin"><citetitle>soundin</citetitle></link>.
+    </para>
+
+    <para>
+      <emphasis>decal</emphasis> -- commence à lire à <emphasis>decal</emphasis> secondes dans le fichier.
+    </para>
+
+    <para>
+      <emphasis>canal</emphasis> -- numéro du canal à lire. 0 indique de lire tous les canaux.
+    </para>
+
+    <para>
+      <emphasis>format</emphasis> -- spécifie le format des données audio :
+        <literallayout>
+1 - 8-bit caractères signés    4 - 16-bit entiers courts 
+2 - 8-bit octets A-law         5 - 32-bit entiers longs
+3 - 8-bit octets U-law         6 - 32-bit flottants
+        </literallayout>
+    </para>
+
+    <para>
+      Si <emphasis>format</emphasis> = 0 le format des échantillons est lu dans l'en-tête du fichier son ou,
+      par défaut depuis l'option <link linkend="FlagsMinusLowerO"><citetitle>-o</citetitle></link> de la
+      ligne de commande de Csound.
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              La lecture s'arrête à la fin du fichier ou lorsque la table est pleine. Les cellules de la
+              table non remplies contiendront des zéros.
+            </para>
+          </listitem>
+
+          <listitem>
+            <para>
+              Si p4 est positif, la table sera post-normalisée (reproportionnée avec une valeur absolue
+              maximale de 1 après génération). Une valeur de p4 négative empêche cette opération.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              GEN01 fonctionne aussi avec les formats WAV et OGG ainsi que d'autres
+              formats ; ceux-ci dépendent de libsndfile. Voir
+              <ulink url="http://www.mega-nerd.com/libsndfile/"><citetitle>http://www.mega-nerd.com/libsndfile/</citetitle></ulink>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de la routine GEN01. Il utilise le fichier
+      <ulink url="examples/gen01.csd"><citetitle>gen01.csd</citetitle></ulink>
+      et plusieurs fichiers son.
+
+      <example>
+        <title>Un exemple de la routine GEN01.</title>
+        <xi:include href="examples-xml/gen01.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      <textobject>
+        <phrase>Voici les diagrammes des formes d'onde des routines GEN01 utilisées
+        dans l'exemple :</phrase>
+      </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen01_01.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 1 0 131072 1 "beats.wav" 0 0 0 - son non-différé.</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 1 0 131072 1 "beats.wav" 0 0 0 - son non-différé.</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen01_2.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 2 0 0 1 "flute.aiff" 0 0 0 - son différé</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 2 0 0 1 "flute.aiff" 0 0 0 - son différé</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen01_3.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 3 0 0 1 "beats.ogg" 0 0 0 - son différé</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 3 0 0 1 "beats.ogg" 0 0 0 - son différé</para>
+        </caption>
+      </mediaobject>
+
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Septembre 2003. Remerciements au Dr. Richard Boulanger pour avoir
+    signalé les références au format de fichier AIFF.</para>
+  </refsect1>
+</refentry>

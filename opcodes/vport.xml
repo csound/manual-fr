@@ -1,0 +1,71 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vport">
+<indexterm id="IndexVport"><primary>vport</primary></indexterm>
+  <refentryinfo><title>Vectorial:Delay Paths</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vport</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vport</refname>
+    <refpurpose>
+      Lignes à retard vectorielles au taux de contrôle.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère une sorte de portamento "vectoriel".
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>vport</command> ifn, khtime, ielements [, ifnInit]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn</emphasis> - numéro de la table contenant le vecteur de
+      sortie. 
+    </para>
+    <para>
+      <emphasis>ielements</emphasis> - nombre de composantes des deux vecteurs.
+    </para>
+    <para>
+      <emphasis>ifnInit</emphasis> (facultatif) - numéro de la table contenant
+      un vecteur dont les composantes sont les valeurs initiales du portamento.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>vport</emphasis> est semblable à
+      <link linkend="port"><citetitle>port</citetitle></link>, mais il opère
+      sur des signaux vectoriels au lieu de signaux scalaires. Chaque composante
+      du vecteur est traitée comme un signal de contrôle indépendant. Les vecteurs
+      d'entrée et de sortie sont placés dans la même table et le vecteur de
+      sortie écrase le vecteur d'entrée. Si l'on veut conserver le vecteur
+      d'entrée, il faut utiliser l'opcode
+      <link linkend="vcopy"><citetitle>vcopy</citetitle></link> pour le copier
+      dans une autre table.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par Gabriel Maldonado.</para>
+    <para>Nouveau dans Csound 5 (Auparavant seulement disponible dans CsoundAV)</para>
+  </refsect1>
+</refentry>

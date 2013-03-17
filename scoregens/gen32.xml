@@ -1,0 +1,81 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="GEN32">
+      <indexterm id="IndexGEN32"><primary>GEN32</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN32</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>GEN32</refname>
+    <refpurpose>
+      Mélange n'importe quelle forme d'onde, rééchantillonnée soit par TFR soit par interpolation linéaire.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cette routine est semblable à <link linkend="GEN31"><citetitle>GEN31</citetitle></link>, mais elle
+      permet la spécification d'une table source pour chaque partiel. Les tables peuvent être rééchantilonnées
+      soit par TFR soit par interpolation linéaire.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>f</command> # date taille  32  srca pna ampa phsa  srcb pnb ampb phsb  ...</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>srca, srcb</emphasis> -- numéro de table source. Une valeur négative peut être utilisée
+      pour lire une table avec interpolation linéaire (par défaut, la forme d'onde source est transposée
+      et déphasée par TFR) ; c'est moins précis, mais plus rapide, et cela permet des numéros de partiels non
+      entiers et négatifs.
+    </para>
+
+    <para>
+      <emphasis>pna, pnb, ...</emphasis> -- numéro de partiel, doit être un entier positif si le numéro de
+      la table source est positif (c'est-à-dire rééchantillonage par TFR).
+    </para>
+
+    <para>
+      <emphasis>ampa, ampb, ...</emphasis> -- échelle d'amplitude
+    </para>
+
+    <para>
+      <emphasis>phsa, phsb, ...</emphasis> -- phase initiale (0 à 1)
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de la routine GEN32. Il utilise le fichier
+      <ulink url="examples/gen32.csd"><citetitle>gen32.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de la routine GEN32.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/gen32.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namerasmus;</para>
+    <para>Programmeur : &nameistvan;</para>
+    <para>Nouveau dans la version 4.17</para>
+  </refsect1>
+</refentry>

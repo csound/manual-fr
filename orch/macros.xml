@@ -1,0 +1,41 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.3
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="OrchMacros">
+  <title>Macros</title>
+
+  <para>
+    Les macros de l'orchestre fonctionnent comme les macros du préprocesseur C, et remplacent le contenu
+    de la macro dans l'orchestre avant sa compilation. Les opcodes qui servent à créer, appeler, ou
+    annuler les macros de l'orchestre sont :
+    <itemizedlist>
+      <listitem><para><link linkend="define"><citetitle>&num;define</citetitle></link></para></listitem>
+      <listitem><para><link linkend="dollar"><citetitle>&dollar;NAME</citetitle></link></para></listitem>
+      <listitem><para><link linkend="ifdef"><citetitle>&num;ifdef</citetitle></link></para></listitem>
+      <listitem><para><link linkend="ifndef"><citetitle>&num;ifndef</citetitle></link></para></listitem>
+      <listitem><para><link linkend="ifdef"><citetitle>&num;end</citetitle></link></para></listitem>
+      <listitem><para><link linkend="ifdef"><citetitle>&num;else</citetitle></link></para></listitem>
+      <listitem><para><link linkend="include"><citetitle>&num;include</citetitle></link></para></listitem>
+      <listitem><para><link linkend="undef"><citetitle>&num;undef</citetitle></link></para></listitem>
+    </itemizedlist>
+  </para>
+  <para>
+    On peut aussi définir des macros de l'orchestre au moyen de l'option de la ligne de commande
+    <link linkend="FlagsCatMinusOmacro"><citetitle>--omacro:</citetitle></link>.
+  </para>
+  <para>
+    On peut trouver plus d'information et des exemples sur l'utilisation des macros de l'orchestre à
+    <link linkend="define"><citetitle>&num;define</citetitle></link>.
+  </para>
+  <para>
+    Ces opcodes font référence aux macros de l'orchestre ; pour les macros de la partition, voir
+    <link linkend="ScoreMacros"><citetitle>macros de partition</citetitle></link>. 
+  </para>
+
+</section>

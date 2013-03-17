@@ -1,0 +1,210 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="rnd31">
+<indexterm id="IndexRnd31"><primary>rnd31</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Random (Noise) Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>rnd31</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>rnd31</refname>
+    <refpurpose>
+      Opcodes aléatoires bipolaires sur 31 bit avec une distribution contrôlée.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Opcodes aléatoires bipolaires sur 31 bit avec une distribution contrôlée. Ces unités
+      sont portables, c-à-d qu'avec la même valeur de graine on obtiendra la même séquence
+      aléatoire sur tous les systèmes. La distribution des nombres aléatoires générés peut
+      être changée au taux-k.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ax <command>rnd31</command> kscl, krpow [, iseed]</synopsis>
+
+    <synopsis>ix <command>rnd31</command> iscl, irpow [, iseed]</synopsis>
+
+    <synopsis>kx <command>rnd31</command> kscl, krpow [, iseed]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ix</emphasis> -- valeur de sortie au taux-i.
+    </para>
+
+    <para>
+      <emphasis>iscl</emphasis> -- mise à l'échelle de la sortie. Les nombres aléatoires générés sont
+      compris entre -<emphasis>iscl</emphasis> et <emphasis>iscl</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>irpow</emphasis> -- contrôle la distribution des nombres aléatoires. Si
+      <emphasis>irpow</emphasis> est positif, la distribution aléatoire (x compris entre -1 et 1)
+      est <emphasis>abs(x)<superscript>((1 / irpow) - 1)</superscript></emphasis> ; pour
+      des valeurs négatives de <emphasis>irpow</emphasis>, elle vaut
+      <emphasis>(1 - abs(x))<superscript>((-1 / irpow) - 1)</superscript></emphasis>. En fixant
+      <emphasis>irpow</emphasis> à -1, 0 ou 1 on obtiendra une distribution uniforme
+      (c'est aussi plus rapide à calculer).  
+    </para>
+
+    <para>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/rnd31_rand.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>[Un graphique des distributions pour différentes valeurs de irpow.]</phrase>
+        </textobject>
+
+        <caption>
+          <para>Un graphique des distributions pour différentes valeurs de irpow.</para>
+        </caption>
+      </mediaobject>
+    </para>
+
+    <para>
+      <emphasis>iseed</emphasis> (facultatif, par défaut=0) -- valeur de la graine pour le
+      générateur de nombres aléatoires (nombre entier positif compris entre 1 et 2147483646
+      (2<superscript>31</superscript> - 2)). Avec une valeur nulle ou négative la graine
+      est prise à partir de l'horloge du système (c'est le comportement par défaut). Une graine
+      à partir de l'horloge du système nous garantit la génération de séquences aléatoires
+      différentes, même si plusieurs opcodes aléatoires sont appelés dans un temps très court.
+    </para>
+    
+    <para>
+      Dans les versions de taux-a et de taux-k la graine est fixée à l'initialisation de l'opcode.
+      Avec une sortie de taux-i, si la graine est nulle ou négative, elle sera prise à partir
+      de l'horloge du système lors du premier appel, puis retournera la valeur suivante de la
+      séquence aléatoire lors des appels successifs ; les valeurs positives de la graine sont fixées
+      à tous les appels de taux-i. La graine est locale pour les unités de taux-a et -k, et globale
+      pour les unités de taux-i.
+    </para>
+
+    <note>
+      <title>Notes</title>
+      <para>
+        <itemizedlist>
+          <listitem><para>bien que des valeurs de graines allant jusqu'à 2147483646 soient
+          permises, il est recommandé d'utiliser des nombres plus petits (&lt; 1000000) pour des
+          raisons de portabilité, car les grands nombres peuvent être arrondis à une valeur
+          différente si l'on utilise des nombres flottants sur 32 bit.</para></listitem>
+          <listitem><para><emphasis>rnd31</emphasis> au taux-i avec une graine positive
+          produira toujours la même valeur en sortie (ce n'est pas un bogue). Pour
+          obtenir des valeurs différentes, fixer la graine à 0 dans les appels successifs,
+          ce qui retournera la valeur suivante de la séquence aléatoire.</para></listitem>
+        </itemizedlist>
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exéution</title>
+    <para>
+      <emphasis>ax</emphasis> -- valeur de sortie au taux-a.
+    </para>
+
+    <para>
+      <emphasis>kx</emphasis> -- valeur de sortie au taux-k.
+    </para>
+
+    <para>
+      <emphasis>kscl</emphasis> -- mise à l'échelle de la sortie. Les nombres aléatoires
+      générés sont compris entre -<emphasis>kscl</emphasis> et <emphasis>kscl</emphasis>.
+      Semblable à <emphasis>iscl</emphasis>, mais il peut être modifié au taux-k.
+    </para>
+
+    <para>
+      <emphasis>krpow</emphasis> -- contrôle la distribution des nombres aléatoires.
+      Semblable à <emphasis>irpow</emphasis>, mais il peut être modifié au taux-k.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode rnd31. Il utilise le fichier
+      <ulink url="examples/rnd31.csd"><citetitle>rnd31.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode rnd31 au taux-a.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/rnd31.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Voici un exemple de l'opcode rnd31 au taux-k. Il utilise le fichier
+      <ulink url="examples/rnd31_krate.csd"><citetitle>rnd31_krate.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode rnd31 au taux-k.</title>
+
+          <xi:include href="examples-xml/rnd31_krate.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
+k1= 0.112106
+k1=-0.274665
+k1= 0.403933</screen>
+    </para>
+
+    <para>
+      Here is an example of the rnd31 opcode that uses the number 7 as a seed value. It uses the file <ulink url="examples/rnd31_seed7.csd"><citetitle>rnd31_seed7.csd</citetitle></ulink>.
+
+      <example>
+        <title>An example of the rnd31 opcode that uses the number 7 as a seed value.</title>
+
+          <xi:include href="examples-xml/rnd31_seed7.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
+instr 1:  i1 = -0.649
+instr 1:  i2 = -0.761
+instr 1:  i3 =  0.677</screen>
+    </para>
+
+    <para>
+      Voici un exemple de l'opcode rnd31 qui utilise l'horloge du système comme graine.
+      Il utilise le fichier
+      <ulink url="examples/rnd31_time.csd"><citetitle>rnd31_time.csd</citetitle></ulink>.
+
+      <example>
+        <title>Eexemple de l'opcode rnd31 qui utilise l'horloge du système comme graine.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/rnd31_time.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
+instr 1:  i1 = -0.691
+instr 1:  i2 = -0.686
+instr 1:  i3 = -0.358</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &nameistvan;</para>
+    <para>Nouveau dans la version 4.16</para>
+  </refsect1>
+</refentry>

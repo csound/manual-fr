@@ -1,0 +1,232 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="hrtfearly">
+<indexterm id="IndexHrtfearly"><primary>hrtfearly</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Panning and Spatialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>hrtfearly</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>hrtfearly</refname>
+    <refpurpose>
+      Génération audio binaurale 3D avec des premières réflexions haute-fidélité
+      dans une pièce paramétrique au moyen d'un algorithme de troncature de
+      phase.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode inclut essentiellement l'opcode
+      <link linkend="hrtfmove"><citetitle>hrtfmove</citetitle></link> dans la
+      modélisation d'une pièce en forme de boîte à chaussure définie par
+      l'utilisateur. On peut choisir une pièce par défaut ou l'on peut définir
+      des paramètres avancés de la pièce. Les surfaces de la pièce peuvent être
+      contrôlées avec les coefficients d'absorption hautes et basses fréquences
+      et avec les facteurs de gain d'un égaliseur à trois bandes.
+    </para>
+    <para>
+      Bien que valide comme opcode autonome, <emphasis>hrtfearly</emphasis> est
+      conçu pour fonctionner avec
+      <link linkend="hrtfreverb"><citetitle>hrtfreverb</citetitle></link> afin
+      de fournir une révervération binaurale dynamique spatialement fidèle.
+      Plusieurs sources peuvent être traitées dynamiquement en utilisant plusieurs
+      instances de <emphasis>hrtfearly</emphasis>. Toutes peuvent ensuite être
+      traitées avec une instance de
+      <link linkend="hrtfreverb"><citetitle>hrtfreverb</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aleft, aright, irt60low, irt60high, imfp <command>hrtfearly</command> asrc, ksrcx, ksrcy, ksrcz, klstnrx, klstnry, klstnrz, \
+      ifilel, ifiler, idefroom [,ifade, isr, iorder, ithreed, kheadrot, iroomx, iroomy, iroomz, iwallhigh, \
+      iwalllow, iwallgain1, iwallgain2, iwallgain3, ifloorhigh, ifloorlow, ifloorgain1, ifloorgain2, \
+      ifloorgain3, iceilinghigh, iceilinglow, iceilinggain1, iceilinggain2, iceilinggain3]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifilel</emphasis> - fichier des données spectrales HRTF de gauche.
+    </para>
+    <para>
+      <emphasis>ifiler</emphasis> - fichier des données spectrales HRTF de droite.
+    </para>
+    <note>
+      <para>
+        Des fichiers de données spectrales (basés sur la base de données HRTF du
+        MIT) sont disponibles sous trois différents taux d'échantillonnage :
+        44.1, 48 et 96 kHz et sont nommés en conséquence. Le
+        <emphasis>sr</emphasis> d'entrée et de traitement doit correspondre
+        au <emphasis>sr</emphasis> du fichier de données. Les fichiers doivent
+        se trouver dans le répertoire courant ou dans SADIR (voir
+        <link linkend="CommandEnvironment"><citetitle>Variables d'environnement</citetitle></link>).
+      </para>
+    </note>
+    <note>
+      <para>
+        Les fichiers de données HRTF à utiliser avec 
+        <link linkend="hrtfmove"><citetitle>hrtfmove</citetitle></link>,
+        <link linkend="hrtfmove2"><citetitle>hrtfmove2</citetitle></link>,
+        <link linkend="hrtfstat"><citetitle>hrtfstat</citetitle></link>,
+        <link linkend="hrtfearly"><citetitle>hrtfearly</citetitle></link> et
+        <link linkend="hrtfreverb"><citetitle>hrtfreverb</citetitle></link>
+        ont été mis à jour pour les versions 5.15 et ultérieures de Csound (le
+        code a été mis à jour et il est plus efficace). Les anciens fichiers de
+        données sont maintenant obsolètes.
+      </para>
+    </note>
+    <para>
+      <emphasis>idefroom</emphasis> - pièce par défaut, moyenne (1 : 10*10*3),
+      petite (2 : 3*4*3) ou grande (3 : 20*25*7). Détails des murs (coefficients
+      d'absorption hautes et basses fréquences, gain1, gain2, gain3) :
+      0.3, 0.1, 0.75, 0.95, 0.9. Plancher : 0.6, 0.1, 0.95, 0.6, 0.35. 
+      Plafond : 0.2, 0.1, 1, 1, 1. Si ce paramètre vaut 0, les paramètres de
+      pièce facultatifs seront lus.
+    </para>
+    <para>
+      <emphasis>ifade</emphasis> - facultatif, nombre de tampons de traitement
+      pour les fondus de changement de phase (8 par défaut). Compris entre 1 et
+      24. Voir <link linkend="hrtfmove"><citetitle>hrtfmove</citetitle></link>.
+    </para>
+    <para>
+      <emphasis>isr</emphasis> - facultatif, 44.1kHz par défaut. Valeurs acceptées :
+      44100, 48000 et 96000.
+    </para>
+    <para>
+      <emphasis>iorder</emphasis> - facultatif, ordre des images traitées : plus
+      il est élevé et plus il y a de premières réflexions. Vaut 1 par défaut.
+      Valeurs acceptées : 0 à 4.
+    </para>
+    <para>
+      <emphasis>ithreed</emphasis> - facultatif, les sources d'image sont traitées
+      en trois dimensions (1) ou en deux dimensions (0, par défaut).
+    </para>
+    <para>
+      <emphasis>iroomx</emphasis> - facultatif, taille x de la pièce en mètres.
+      Ce paramètre est lu si aucune pièce par défaut n'est choisie (tous les
+      paramètres ci-dessous se comportent de la même manière). La taille minimale
+      de la pièce est 2*2*2.
+    </para>
+    <para>
+      <emphasis>iroomy</emphasis> - facultatif, taille y de la pièce.
+    </para>
+    <para>
+      <emphasis>iroomz</emphasis> - facultatif, taille z de la pièce.
+    </para>
+    <para>
+      <emphasis>iwallhigh</emphasis> - facultatif, coefficient d'absorption
+      hautes fréquences des murs (les quatre murs sont supposés identiques).
+      Les coefficients d'absorption affectent la durée de la réverbération en
+      sortie.
+    </para>
+    <para>
+      <emphasis>iwalllow</emphasis> - facultatif, coefficient d'absorption
+      basses fréquences des murs.
+    </para>
+    <para>
+      <emphasis>iwallgain1</emphasis> - facultatif, gain du filtre centré sur
+      250 Hz (tous les filtres on un Q impliquant 4 octaves).
+    </para>
+    <para>
+      <emphasis>iwallgain2</emphasis> - facultatif, gain du filtre centré sur
+      1000 Hz.
+    </para>
+    <para>
+      <emphasis>iwallgain3</emphasis> - facultatif, gain du filtre centré sur
+      4000 Hz.
+    </para>
+    <para>
+      <emphasis>ifloorhigh, ifloorlow, ifloorgain1, ifloorgain2,
+      ifloorgain3</emphasis> - facultatif, comme ci-dessus, pour le plancher.
+    </para>
+    <para>
+      <emphasis>iceilinghigh, iceilinglow, iceilinggain1, iceilinggain2,
+      iceilinggain3</emphasis> - facultatif, comme ci-dessus, pour le plafond.
+    </para>
+  
+    <title>Exécution</title>
+    <para>
+      <emphasis>ksrcx</emphasis> position x de la source, au moins 10 cm à
+      l'intérieur de la pièce. De plus, les HRTF proches ne sont pas traités,
+      afin que la source ne soit pas modifiée spatialement dans un rayon de
+      45 cm autour de l'auditeur. Ces restrictions s'appliquent également aux
+      paramètres ci-dessous.
+    </para>
+    <para>
+      <emphasis>ksrcy</emphasis> position y de la source.
+    </para>
+    <para>
+      <emphasis>ksrcz</emphasis> position z de la source.
+    </para>
+    <para>
+      <emphasis>klstnrx, klstnry, klstnrz</emphasis> position de l'auditeur,
+      comme ci-dessus.
+    </para>
+    <para>
+      <emphasis>kheadrot</emphasis> - facultatif, angle de rotation de la tête. 
+    </para>
+    <para>
+      <emphasis>asrc</emphasis> - Signal source en entrée.
+    </para>
+    
+    <title>Sortie</title>
+    <para>
+      <emphasis>irt60low</emphasis> - durée de réverbération basses fréquences
+      suggérée pour une réverbération binaurale consécutive.
+    </para>
+     <para>
+      <emphasis>irt60high</emphasis> - comme ci-dessus, pour les hautes fréquences.
+    </para>
+     <para>
+      <emphasis>imfp</emphasis> - chemin libre moyen de la pièce, à utiliser
+      avec une réverbération consécutive.
+    </para>
+    
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple des opcodes hrtfearly et hrtfreverb. Il utilise le fichier
+      <ulink url="examples/hrtfearly.csd"><citetitle>hrtfearly.csd</citetitle></ulink>. 
+    </para>
+    <example>
+      <title>Exemple de l'opcode htrfearly.</title>
+      <xi:include href="examples-xml/hrtfearly.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </example>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="hrtfreverb"><citetitle>hrtfreverb</citetitle></link>
+      <link linkend="hrtfmove"><citetitle>hrtfmove</citetitle></link>,
+      <link linkend="hrtfmove2"><citetitle>hrtfmove2</citetitle></link>,
+      <link linkend="hrtfstat"><citetitle>hrtfstat</citetitle></link>,
+      <link linkend="hrtfer"><citetitle>hrtfer</citetitle></link>.
+    </para>
+          
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Brian Carty</member>
+        <member>Maynooth</member>
+        <member>2011</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

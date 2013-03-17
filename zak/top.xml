@@ -1,0 +1,68 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<chapter id="ZakTop">
+  <title>Système de Patch Zak</title>
+
+  <para>
+    Les opcodes zak sont utilisés pour créer un système de patch aux taux-i, -k et -a. On peut se
+    représenter le système zak comme un tableau global de variables. Ces opcodes sont utiles pour réaliser
+    de manière flexible des branchements et des routages d'un instrument à l'autre. Le système est
+    semblable à une matrice de branchement sur une console de mixage ou à une matrice de modulation sur
+    un synthétiseur. Il est aussi utile lorque l'on a besoin d'un tableau de variables.
+  </para>
+
+  <para>
+    Le système zak est initialisé par l'opcode
+    <link linkend="zakinit"><citetitle>zakinit</citetitle></link> qui est habituellement placé juste après
+    les autres initialisations globales : <emphasis>sr</emphasis>, <emphasis>kr</emphasis>,
+    <emphasis>ksmps</emphasis>, <emphasis>nchnls</emphasis>. L'opcode <emphasis>zakinit</emphasis> définit
+    deux plages de mémoire, une pour les patchs aux taux-i et -k, et l'autre pour les patchs au taux-a.
+    L'opcode <emphasis>zakinit</emphasis> ne peut être appelé qu'une fois. Après l'initialisation de
+    l'espace zak, on peut utiliser d'autres opcodes zak pour lire et écrire dans l'espace mémoire zak, ainsi
+    qu'exécuter d'autres tâches.
+  </para>
+  <para>
+    Les opcodes zak sont comptés à partir de 0, si bien que si l'on définit un canal,
+    le seul canal valide est le canal 0.
+  </para>
+  
+  <para>
+    Les opcodes pour le système de patch zak sont :
+    <itemizedlist>
+      <listitem>
+        <para>
+          Taux Audio : <link linkend="zacl"><citetitle>zacl</citetitle></link>,
+          <link linkend="zakinit"><citetitle>zakinit</citetitle></link>,
+          <link linkend="zamod"><citetitle>zamod</citetitle></link>,
+          <link linkend="zar"><citetitle>zar</citetitle></link>,
+          <link linkend="zarg"><citetitle>zarg</citetitle></link>,
+          <link linkend="zaw"><citetitle>zaw</citetitle></link> et
+          <link linkend="zawm"><citetitle>zawm</citetitle></link>.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Taux de Contrôle : <link linkend="zkcl"><citetitle>zkcl</citetitle></link>,
+          <link linkend="zkmod"><citetitle>zkmod</citetitle></link>,
+          <link linkend="zkr"><citetitle>zkr</citetitle></link>,
+          <link linkend="zkw"><citetitle>zkw</citetitle></link>, et
+          <link linkend="zkwm"><citetitle>zkwm</citetitle></link>.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          A l'initialisation : <link linkend="zir"><citetitle>zir</citetitle></link>,
+          <link linkend="ziw"><citetitle>ziw</citetitle></link> et
+          <link linkend="ziwm"><citetitle>ziwm</citetitle></link>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+</chapter>

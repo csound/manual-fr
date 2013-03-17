@@ -1,0 +1,25 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="ControlSubinstrument">
+  <title>Contrôle de sous-instrument</title>
+
+  <para>
+    Ces opcodes permettent la définition et l'utilisation d'un sous-instrument :
+    <itemizedlist>
+      <listitem><para><link linkend="subinstr"><citetitle>subinstr</citetitle></link></para></listitem>
+      <listitem><para><link linkend="subinstrinit"><citetitle>subinstrinit</citetitle></link></para></listitem>
+    </itemizedlist>
+  </para>
+  <para>Voir aussi les sections <link linkend="OrchUDO"><citetitle>UDO</citetitle></link> et
+    <link linkend="OrchMacros"><citetitle>Macros d'Orchestre</citetitle></link> pour des fonctionnalités
+    similaires.
+  </para>
+
+</section>

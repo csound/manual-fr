@@ -1,0 +1,390 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.15
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<chapter id="OviewFrontEnds">
+  <title>Frontaux</title>
+  <para>
+    Les frontaux sont des programmes fournissant une sorte d'interface utilisateur
+    pour Csound. Avec ces programmes, Csound est utilisé comme générateur de son,
+    et il faut donc avoir une certaine familiarité avec le code de Csound pour les
+    utiliser. Les frontaux apportent habituellement des facilités comme la
+    coloration syntaxique, des widgets graphiques, ou des outils de génération
+    algorithmique de partition, qui ne font pas partie de Csound lui-même.
+    La plupart de ces programmes sont créés par une seul personne, ce qui fait
+    que certains d'entre eux ne sont pas maintenus. Ci-dessous, une liste (sans
+    doute incomplète et pas forcément à jour) des frontaux disponibles pour Csound.
+  </para>
+  <para>
+    La plupart du temps, on téléchargera et on installera Csound lui-même avant
+    de télécharger et d'installer un frontal. Certains frontaux nécessitent des
+    versions particulières de Csound. Il est donc recommandé, si l'on veut utiliser
+    un frontal, de vérifier sa compatibilité avant d'installer Csound.
+  </para>
+  <bridgehead>QuteCsound</bridgehead>
+  <para>
+    QuteCsound est un programme GUI (interface utilisateur graphique) multi 
+    plates-formes aux fonctions variées qui est fourni avec la distribution
+    standard de Csound. Créé et maintenu par Andrés Cabrera, QuteCsound comprend
+    un éditeur à plusieurs onglets, des widgets graphiques pour le contrôle du
+    son en , et un système d'aide des opcodes qui pointe dans ce
+    manuel. A l'heure actuelle (2011), QuteCsound est dans une phase active de
+    développement, ce qui fait que la version installée sur votre système avec
+    Csound peut ne pas être la plus récente. On peut trouver la dernière version
+    à <ulink url="http://qutecsound.sourceforge.net/">http://qutecsound.sourceforge.net/</ulink>.
+  </para>
+  <bridgehead>Blue</bridgehead>
+  <para>
+    Frontal multi plates-formes orienté composition, écrit en Java par Steven Yi.
+    L'interface utilisateur fournit une structure de ligne temporelle comme
+    sur un multipiste numérique, mais en diffère en ce que les lignes temporelles
+    peuvent être intégrées dans d'autres lignes temporelles (polyObjects). Cela permet
+    une organisation compositionnelle dans le temps que beaucoup trouveront
+    intuitive, compréhensible et flexible. Chaque instrument et chaque section de
+    partition dans un projet blue ont leur propre fenêtre d'édition, ce qui
+    facilite l'organisation des projets de grande taille. On peut télécharger
+    Blue à la <ulink url="http://csounds.com/stevenyi/blue/">Blue Home Page</ulink>.
+  </para>
+  <bridgehead>Cecilia</bridgehead>
+  <para>
+    Utilise Csound et comprend aussi son propre langage de génération de partition.
+    Pas mis à jour depuis 2004, mais devrait fonctionner sur Mac OSX et Linux.
+    Disponible sur
+	  <ulink url="http://www.jeanpiche.com/software.htm">http://www.jeanpiche.com/software.htm</ulink>.
+  </para>
+  <bridgehead>MacCsound</bridgehead>
+  <para>
+    Frontal pour le Macintosh, MacCsound fournit un éditeur de texte, l'édition
+    graphique de signaux de contrôle et d'autres éléments. Disponible sur la
+    <ulink url="http://www.csounds.com/matt/MacCsound/">Page de MacCsound</ulink>.
+    MacCsound nécessite la version Universal de Csound, pas la version Intel, et
+    avec OS 10.6, il faut aussi Rosetta, qui se trouve sur le DVD d'installation
+    d'OSX pour 10.6, mais n'est pas installé par défaut.
+  </para>
+  <bridgehead>WinXound</bridgehead>
+  <para>
+    Un frontal commmode pour Windows avec coloration syntaxique. On peut
+    l'obtenir à <ulink url="http://winxound.codeplex.com/">WinXsound Front Page</ulink>.
+  </para>
+  <bridgehead>Cabel</bridgehead>
+  <para>
+    Cabel est une interface utilisateur graphique pour construire des instruments
+    Csound en interconnectant des modules comme on le fait dans les synthétiseurs
+    modulaires et dans les environnements de programmation graphique tels que Pd.
+    Multi plates-formes, écrit en Python. Bien qu'il semble (en 2011) que Cabel
+    n'ait pas été mis à jour depuis quatre ans, il fonctionne toujours avec les
+    versions actuelles de Csound. Disponible à
+    <ulink url="http://cabel.sourceforge.net/">http://cabel.sourceforge.net/</ulink>.
+  </para>
+  <bridgehead>Csound5GUI</bridgehead>
+  <para>
+    Csound5GUI est une interface utilisateur graphique (GUI) multi plates-formes.
+    Après avoir fait partie de la distribution standard de Csound, il est maintenant
+    disponible sous forme de code source et peut-être aussi téléchargeable comme
+    un .exe pour Windows. Il implémente la plupart des options de configuration
+    de Csound.
+  </para>
+  <bridgehead>CSDplayer</bridgehead>
+  <para>
+    C'est un simple programme java pour jouer des fichiers csd. Il est inclus
+    dans la distribution standard, et intéressera principalement les programmeurs
+    Java.
+  </para>
+  <bridgehead>Winsound</bridgehead>
+  <para>
+    Comme Csound5GUI, Winsound appartenait à la branche principale de Csound. Il
+    n'est plus maintenant disponible que sous forme de code source. Winsound est
+    un portage multi plates-formes en FLTK du frontal original de Barry Vercoe
+    pour Csound. Certains utilisateurs mal-voyants ou aveugles ont rapporté que
+    Winsound fonctionne bien avec des logiciels de traduction texte-parole.
+  </para>
+  <bridgehead>Csound Editor</bridgehead>
+  <para>
+    CsoundEditor n'est plus maintenu, mais il est toujours disponible à
+    <ulink url="http://flavio.tordini.org/csound-editor/">Flavio Tordini's Home
+    Page</ulink>. Pour systèmes Windows, comprend la coloration syntaxique.
+  </para>
+  <para>
+    En plus des principaux frontaux listés ci-dessus, voici quelques autres
+    programmes pouvant éventuellement être qualifiés de frontaux, selon vos
+    propres critères :
+    <informaltable frame='none'>
+      <tgroup cols='2'>
+		<tbody>
+          <row><entry>GeoMaestro:</entry><entry><ulink url="http://www.zogotounga.net/GM/eGM0.html">http://www.zogotounga.net/GM/eGM0.html</ulink></entry></row>
+          <row><entry>Csound-x:</entry><entry><ulink url="http://www.zogotounga.net/comp/csoundx.html">http://www.zogotounga.net/comp/csoundx.html</ulink></entry></row>
+		  <row><entry>AthenaCL:</entry><entry><ulink url="http://www.flexatone.net/athena.html">http://www.flexatone.net/athena.html</ulink></entry></row>
+          <row><entry>GRACE/Common Music:</entry><entry><ulink url="http://commonmusic.sourceforge.net/">http://commonmusic.sourceforge.net/</ulink></entry></row>
+          <row><entry>AlgoScore:</entry><entry><ulink url="http://kymatica.com/Software/AlgoScore">http://kymatica.com/Software/AlgoScore</ulink></entry></row>
+          <row><entry>nGen:</entry><entry><ulink url="http://mustec.bgsu.edu/~mkuehn/ngen/">http://mustec.bgsu.edu/~mkuehn/ngen/</ulink></entry></row>
+          <row><entry>ImproSculpt:</entry><entry><ulink url="http://improsculpt.sourceforge.net/pmwiki/pmwiki.php">http://improsculpt.sourceforge.net/pmwiki/pmwiki.php</ulink></entry></row>
+		</tbody>
+      </tgroup>
+    </informaltable>
+  </para>
+
+  <section id="CommandCsoundAC">
+
+    <title>CsoundAC</title>
+
+    <bridgehead>Programmation Python</bridgehead>
+
+      <para>Vous pouvez utiliser CsoundAC comme un module d'extension de Python.
+        Vous pouvez faire cela dans un interpréteur Python standard tel que la ligne
+        de commande Python ou le Idle Python GUI.</para>
+
+      <para>Pour utiliser CsoundAC dans un interpréteur Python standard,
+        importez CsoundAC.</para>
+
+      <programlisting>
+        import CsoundAC</programlisting>
+
+      <para>Le module CsoundAC crée automatiquement une instance de CppSound
+        nommée <application>csound</application>, qui fournit une interface
+        orientée objet à l'API de Csound. Dans un interpréteur Python standard,
+        vous pouvez charger un fichier Csound <filename>.csd</filename> et
+        l'exécuter de cette manière : </para>
+
+      <programlisting>
+  C:\Documents and Settings\mkg>python
+  Python 2.3.3 (#51, Dec 18 2003, 20:22:39) [MSC v.1200 32 bit (Intel)] on win32
+  Type "help", "copyright", "credits" or "license" for more information.
+  >>> import CsoundAC
+  >>> csound.load("c:/projects/csound5/examples/trapped.csd")
+  1
+  >>> csound.exportForPerformance()
+  1
+  >>> csound.perform()
+  BEGAN CppSound::perform(5, 988ee0)...
+  BEGAN CppSound::compile(5, 988ee0)...
+  Using default language
+  0dBFS level = 32767.0
+  Csound version 5.00 beta (float samples) Jun  7 2004
+  libsndfile-1.0.10pre6
+  orchname:  temp.orc
+  scorename: temp.sco
+  orch compiler:
+  398 lines read
+  instr   1
+  instr   2
+  instr   3
+  instr   4
+  instr   5
+  instr   6
+  instr   7
+  instr   8
+  instr   9
+  instr   10
+  instr   11
+  instr   12
+  instr   13
+  instr   98
+  instr   99
+  sorting score ...
+  ... done
+  Csound version 5.00 beta (float samples) Jun  6 2004
+  displays suppressed
+  0dBFS level = 32767.0
+  orch now loaded
+  audio buffered in 16384 sample-frame blocks
+  SFDIR undefined.  using current directory
+  writing 131072-byte blks of shorts to test.wav
+  WAV
+  SECTION 1:
+  ENDED CppSound::compile.
+  ftable 1:
+  ftable 2:
+  ftable 3:
+  ftable 4:
+  ftable 5:
+  ftable 6:
+  ftable 7:
+  ftable 8:
+  ftable 9:
+  ftable 10:
+  ftable 11:
+  ftable 12:
+  ftable 13:
+  ftable 14:
+  ftable 15:
+  ftable 16:
+  ftable 17:
+  ftable 18:
+  ftable 19:
+  ftable 20:
+  ftable 21:
+  ftable 22:
+  new alloc for instr 1:
+  B  0.000 ..  1.000 T  1.000 TT  1.000 M:     32.7      0.0
+  new alloc for instr 1:
+  B  1.000 ..  3.600 T  3.600 TT  3.600 M:    207.6      0.1
+
+  ...
+
+  B 93.940 .. 94.418 T 98.799 TT281.799 M:    477.6     85.0
+  B 94.418 ..100.000 T107.172 TT290.172 M:    118.9     11.5
+  end of section 4         sect peak amps:  25950.8  26877.4
+  inactive allocs returned to freespace
+  end of score.              overall amps:  32204.8  31469.6
+  overall samples out of range:        0        0
+  0 errors in performance
+  782 131072-byte soundblks of shorts written to test.wav WAV
+  Elapsed time = 13.469000 seconds.
+  ENDED CppSound::perform.
+  1
+  >>></programlisting>
+
+      <para>Le script <filename>koch.py</filename> montre comment utiliser Python
+        pour faire une composition algorithmique pour Csound. Vous pouvez utiliser
+        des chaînes de caractères litérales à triples guillemets pour incorporer
+        vos fichiers Csound directement dans votre script, et les assigner
+        à Csound : </para>
+
+      <programlisting>
+  csound.setOrchestra('''sr = 44100
+  kr = 441
+  ksmps = 100
+  nchnls = 2
+  0dbfs = .1
+  instr 1,2,3,4,5 ; FluidSynth General MID
+  I; INITIALIZATION
+  ; Channel, bank, and program determine the preset, that is, the actual sound.
+  ichannel		=			p1
+  iprogram		=			p6
+  ikey	 		= 			p4
+  ivelocity 		= 			p5 + 12
+  ijunk6 			= 			p6
+  ijunk7			=			p7
+  ; AUDIO
+  istatus			=			144;
+  print			iprogram, istatus, ichannel, ikey, ivelocityaleft, aright
+  fluid			"c:/projects/csound5/samples/VintageDreamsWaves-v2.sf2", \\
+  iprogram, istatus, ichannel, ikey, ivelocity, 1
+  outs 			aleft, arightendin''')
+  csound.setCommand("csound --opcode-lib=c:/projects/csound5/fluid.dll \\
+  -RWdfo ./koch.wav ./temp.orc ./temp.sco")
+  csound.exportForPerformance()
+  csound.perform()</programlisting>
+
+    </section>
+    <section id="CommandCsoundVST">
+
+      <title>CsoundVST</title>
+      <para>CsoundVST est un frontal multi-fonction pour Csound, basé sur l'API
+        de Csound. CsoundVST s'exécute comme une interface utilisateur
+        graphique autonome pour Csound, et il s'exécute aussi comme un instrument
+        VST ou un greffon d'effet dans des hôtes VST tels que Cubase avec la même
+        interface utilisateur. CsoundVST fait partie de l'arbre principal
+        des sources de Csound, mais il n'est pas inclus dans les distributions
+        standard à cause des limitations de la license du SDK VST de Steinberg.</para>
+
+      <bridgehead>Utilisation autonome</bridgehead>
+
+      <para>Pour lancer CsoundVST comme frontal autonome pour Csound, exécutez
+        <application>CsoundVST</application>. Au démarrage du programme, vous
+        verrez une interface graphique utilisateur avec une rangée de boutons
+        en haut. Cliquez sur le bouton <emphasis>Open...</emphasis> pour charger
+        un fichier <filename>.csd</filename>. Vous pouvez aussi cliquer sur le
+        bouton <emphasis>Open...</emphasis> et charger un fichier
+        <filename>.orc</filename>, cliquez ensuite sur le bouton
+        <emphasis>Import...</emphasis> pour ajouter un fichier
+        <filename>.sco</filename>. Vous pouvez éditer la commande de Csound, le
+        fichier orchestre, ou le fichier partition dans les onglets respectifs
+        de l'interface utilisateur. Quand tout est prêt, cliquez sur le bouton
+        <emphasis>Perform</emphasis> pour lancer Csound. Vous pouvez arrêter
+        une exécution à n'importe quel moment en cliquant sur le bouton
+        <emphasis>Stop</emphasis>.</para>
+
+    <bridgehead>Greffon VST</bridgehead>
+
+      <para>Les instructions suivantes sont pour Cubase 4.0. Des procédures à peu près
+        similaires seraient utilisées dans d'autres programmes hôtes.</para>
+
+      <para>Utilisez le menu <emphasis>Devices</emphasis>, la boîte de dialogue
+        <emphasis>Plug-In Information</emphasis>, l'onglet <emphasis>VST Plug-Ins</emphasis>,
+        la boîte de dialogue <emphasis>VST 2.x Plug-in Paths</emphasis>, le bouton
+        <emphasis>Add</emphasis> pour ajouter votre répertoire <filename>csound/bin</filename>
+        au chemin des greffons de Cubase. Vous pouvez avoir plusieurs répertoires séparés par
+        des points-virgules. Sélectionnez ensuite le chemin de CsoundVST et cliquez sur le
+        bouton <emphasis>Set as Shared Folder</emphasis></para>
+
+      <para>Quittez Cubase, et redémarrez-le.</para>
+
+      <para>Utilisez le menu <emphasis>File</emphasis>, la boîte de dialogue
+        <emphasis>New Project</emphasis> pour créer un nouveau morceau (song).</para>
+
+      <para>Utilisez le menu <emphasis>Project</emphasis>, le sous-menu
+        <emphasis>Add Track</emphasis>, pour ajouter une nouvelle piste MIDI.</para>
+
+      <para>Utilisez l'outil crayon pour dessiner un <emphasis>Part</emphasis> de
+        quelques mesures sur la piste. Ecrivez un peu de musique dans le
+        <emphasis>Part</emphasis> à l'aide de l'éditeur <emphasis>Event</emphasis>
+        ou de l'éditeur <emphasis>Score</emphasis>.</para>
+
+      <para>Utilisez le menu <emphasis>Devices</emphasis> (ou la touche F11) pour ouvrir
+        la boîte de dialogue <emphasis>VST Instruments</emphasis>.</para>
+        
+      <para>Cliquez sur une des étiquettes <emphasis>No VST Instrument</emphasis>, et
+        sélectionnez <emphasis>CsoundVST</emphasis> dans la liste qui apparaît.</para>
+        
+      <para>Cliquez sur le bouton <emphasis>e</emphasis> (pour edit) pour ouvrir la boîte
+        de dialogue de <emphasis>CsoundVST</emphasis>.</para>
+
+      <para>Sur la page des Réglages, cochez la case <emphasis>Instrument</emphasis>
+        dans le groupe VST Plugin, et la case <emphasis>Classic</emphasis> dans le
+        groupe <emphasis>Csound performance mode</emphasis>. Cliquez ensuite sur le bouton
+        <emphasis>Apply</emphasis>.</para>
+
+      <para>Cliquez sur le bouton <emphasis>Open</emphasis> pour faire apparaître
+        la boîte de dialogue de sélection de fichier. Naviguez vers un répertoire contenant
+        un fichier csd Csound adéquat pour une exécution MIDI, tel que
+        <filename>csound/examples/CsoundVST.csd</filename>. Cliquez sur le bouton OK
+        pour charger le fichier. Vous pouvez aussi ouvrir et importer des fichiers
+        <filename>.orc</filename> et <filename>.sco</filename> adéquats
+        comme décrit ci-dessus. </para>
+
+      <para>Dans tous les cas, la ligne de commande dans le champ texte
+        <emphasis>Classic Csound command line</emphasis> doit spécifier
+        <literal>-+rtmidi=null -M0</literal>, et devrait ressembler à ceci :</para>
+
+      <programlisting>
+        <command>csound</command> -f -h -+rtmidi=null -M0 -d -n -m7 --midi-key-oct=4 --midi-velocity=5 temp.orc temp.sco</programlisting>
+
+      <para>Cliquez sur le bouton on/off de la boîte de dialogue
+        <emphasis>VST Instruments</emphasis> pour l'allumer.
+        Ceci devrait compiler l'orchestre Csound.</para>
+
+      <para>Dans l'<emphasis>Inspecteur de Piste de Cubase</emphasis>, cliquez sur l'étiquette
+        <emphasis>out: Not Assigned</emphasis> et sélectionnez <emphasis>CsoundVST</emphasis>
+        dans la liste qui apparaît.</para>
+        
+      <para>Sur la règle en haut de la fenêtre <emphasis>Arrangement</emphasis>,
+        sélectionnez le point de fin de boucle et tirez-le jusqu'à la fin de votre part,
+        cliquez ensuite sur le bouton loop pour activer la mise en boucle. </para>
+
+      <para>Cliquez sur le bouton <emphasis>play</emphasis> de la barre de
+        <emphasis>Transport</emphasis>. Vous devriez entendre votre musique jouée
+        par CsoundVST. </para>
+
+      <para>Essayez d'assigner votre piste à différents canaux ; un instrument
+        Csound différent jouera chaque canal. </para>
+
+      <para>Quand vous sauvegardez votre song, votre orchestre Csound sera sauvegardé
+        comme une partie du song et rechargé quand vous rechargerez le song. </para>
+
+      <para>Vous pouvez cliquer sur l'onglet <emphasis>Orchestra</emphasis> et éditer
+        vos instruments Csound pendant que CsoundVST est en train de jouer. Pour
+        entendre vos changements, il suffit de cliquer sur le bouton CsoundVST
+        <emphasis>Perform</emphasis> pour recompiler l'orchestre. </para>
+
+      <para>Vous pouvez assigner jusqu'à 16 canaux à un seul greffon CsoundVST.</para>
+
+    </section>
+
+</chapter>
+

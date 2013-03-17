@@ -1,0 +1,128 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="printf">
+<indexterm id="Indexprintf_i"><primary>printf_i</primary></indexterm>
+
+<indexterm id="Indexprintf"><primary>printf</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Printing and Display</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>printf</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>printf</refname>
+    <refpurpose>
+      Sortie formatée à la façon printf.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <command>printf</command> et <command>printf_i</command> écrivent une
+      sortie formatée à la manière de la fonction C <emphasis>printf()</emphasis>.
+      <command>printf_i</command> ne s'exécute qu'au taux-i, tandis que
+      <command>printf</command> s'exécute à la fois à l'initialisation et pendant
+      l'exécution de la note. 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>printf_i</command> Sfmt, itrig, [iarg1[, iarg2[, ... ]]]</synopsis>
+    <synopsis><command>printf</command> Sfmt, ktrig, [xarg1[, xarg2[, ... ]]]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>Sfmt</emphasis> -- chaîne de formatage ayant la même structure que
+      dans <emphasis>printf</emphasis> et dans d'autres fonctions C similaires, sauf
+      que les modificateurs de longueur (l, ll, h, etc.) ne sont pas supportés. Les
+      indicateurs de conversion suivants sont permis :
+      <itemizedlist>
+        <listitem>
+	  <para>d, i, o, u, x, X, e, E, f, F, g, G, c, s</para>
+	</listitem>
+      </itemizedlist>
+    </para>
+    <para>
+      <emphasis>iarg1, iarg2, ...</emphasis> -- arguments d'entrée à formater
+      (30 au maximum). Les formats entiers tels que %d arrondissent les valeurs
+      d'entrée à l'entier le plus proche.
+    </para>
+    <para>
+      <emphasis>itrig</emphasis> -- s'il est supérieur à zéro, l'opcode effectue
+      l'affichage ; sinon c'est une opération nulle.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ktrig</emphasis> -- s'il est supérieur à zéro et différent de sa
+      valeur lors du cycle de contrôle précédent, l'opcode effectue l'affichage
+      demandé. La valeur précédente initiale est fixée à zéro.
+    </para>
+    <para>
+      <emphasis>xarg1, xarg2, ...</emphasis> -- arguments d'entrée à formater
+      (30 au maximum). Les formats entiers tels que %d arrondissent les valeurs
+      d'entrée à l'entier le plus proche. Noter que seuls les arguments de
+      taux-k et de taux-i sont valides (pas d'affichage au taux-a)
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode printf. Il utilise le fichier
+      <ulink url="examples/printf.csd"><citetitle>printf.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode printf.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/printf.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      L'exemple produit la sortie suivante :
+      <screen>
+Audiofile 'frox.wav' does not exist!</screen>
+    </para>
+    <para>
+      Voici un autre exemple de l'opcode printf. Il utilise le fichier
+      <ulink url="examples/printf.csd"><citetitle>printf-2.csd</citetitle></ulink>.
+      <example>
+        <title>Second exemple de l'opcode printf.</title>
+          <xi:include href="examples-xml/printf-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>Plus d'information sur <emphasis>printf</emphasis> :
+    <ulink url="http://www.cplusplus.com/reference/clibrary/cstdio/printf/">
+    <citetitle>http://www.cplusplus.com/reference/clibrary/cstdio/printf/</citetitle>
+    </ulink></para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Istvan Varga</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

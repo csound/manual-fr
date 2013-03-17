@@ -1,0 +1,149 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.14
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="hsboscil">
+<indexterm id="Indexhsboscil"><primary>hsboscil</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Additive Synthesis/Resynthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>hsboscil</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>hsboscil</refname>
+    <refpurpose>
+      Un oscillateur qui prend en arguments l'intonation et la brillance.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Un oscillateur qui prend en arguments l'intonation et la brillance, relativement à une fréquence de
+      base.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>hsboscil</command> kamp, ktone, kbrite, ibasfreq, iwfn, ioctfn \
+               [, ioctcnt] [, iphs]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ibasfreq</emphasis> -- fréquence de base par rapport à laquelle l'intonation et la
+      brillance sont relatives.
+    </para>
+
+    <para>
+      <emphasis>iwfn</emphasis> -- table de fonction de la forme d'onde, habituellement une sinus.
+    </para>
+
+    <para>
+      <emphasis>ioctfn</emphasis> -- table de fonction utilisée pour pondérer les octaves, habituellement
+      quelque chose comme
+      <literallayout><emphasis role="stamnt">f</emphasis>1 0  1024  -19  1  0.5  270  0.5</literallayout>
+    </para>
+
+    <para>
+      <emphasis>ioctcnt</emphasis> (facultatif) -- nombre d'octaves utilisées pour le mélange de brillance.
+      Doit valoir entre 2 et 10. Par défaut = 3.
+    </para>
+
+    <para>
+      <emphasis>iphs</emphasis> (facultatif, par défaut = 0) -- phase initiale de l'oscillateur. Si
+      <emphasis>iphs</emphasis> = -1, l'initialisation est ignorée.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamp</emphasis> -- amplitude de la note
+    </para>
+
+    <para>
+      <emphasis>ktone</emphasis> -- paramètre cyclique d'intonation cyclique relatif à <emphasis>ibasfreq</emphasis>
+      en octave logarithmique, entre 0 et 1, des valeurs &gt; 1 peuvent être utilisées, et sont réduites en
+      interne à <emphasis>frac</emphasis>(<emphasis>ktone</emphasis>).
+    </para>
+
+    <para>
+      <emphasis>kbrite</emphasis> -- paramètre de brillance relatif à <emphasis>ibasfreq</emphasis>, obtenue
+      en pondérant <emphasis>ioctcnt</emphasis> octaves. Il est échelonné de telle manière qu'une valeur de
+      0 correspond à la valeur originale de <emphasis>ibasfreq</emphasis>, 1 correspond à une octave
+      au-dessus de <emphasis>ibasfreq</emphasis>, -2 correspond à deux octaves sous <emphasis>ibasfreq</emphasis>,
+      etc. <emphasis>kbrite</emphasis> peut être fractionnaire.
+    </para>
+
+    <para>
+      <emphasis>hsboscil</emphasis> prend en arguments l'intonation et la brillance, relativement à une
+      fréquence de base (<emphasis>ibasfreq</emphasis>). L'intonation est un paramètre cyclique dans
+      l'octave logarithmique, la brillance est réalisée en mélangeant plusieurs octaves pondérées. Il est
+      utile lorsque l'espace d'intonation est appréhendé dans un concept de coordonnées polaires.
+    </para>
+
+    <para>
+      Si <emphasis>ktone</emphasis> est une droite et <emphasis>kbrite</emphasis> une constante, le résultat
+      produit est le glissando de Risset.
+    </para>
+
+    <para>
+      La table de l'oscillateur <emphasis>iwfn</emphasis> est toujours lue avec interpolation. Le temps
+      d'exécution est approximativement <emphasis>ioctcnt</emphasis> * <emphasis>oscili</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode hsboscil. Il utilise le fichier
+      <ulink url="examples/hsboscil.csd"><citetitle>hsboscil.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode hsboscil.</title>
+
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link>
+        pour plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/hsboscil.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+    <para>
+      Voici un exemple de l'opcode hsboscil dans un instrument MIDI. Il utilise le fichier
+      <ulink url="examples/hsboscil_midi.csd"><citetitle>hsboscil_midi.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode hsboscil dans un instrument MIDI.</title>
+
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link>
+        pour plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/hsboscil_midi.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Peter Neub&auml;cker</member>
+        <member>Munich, Allemagne</member>
+        <member>Août 1999</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.58 de Csound</para>
+  </refsect1>
+</refentry>

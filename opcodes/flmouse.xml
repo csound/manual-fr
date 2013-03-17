@@ -1,0 +1,100 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.2
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLmouse">
+<indexterm id="IndexFLmouse"><primary>FLmouse</primary></indexterm>
+  <refentryinfo><title>FLTK:Other</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLmouse</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLmouse</refname>
+    <refpurpose>
+      Retourne la position de la souris et l'état de ses trois boutons.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>FLmouse</emphasis> retourne les coordonnées de la position de la
+      souris dans un panneau FLTK et l'état de ses trois boutons.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kx, ky, kb1, kb2, kb3 <command>FLmouse</command> [imode]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>imode</emphasis> – (facultatif, 0 par défaut) Détermine la
+      façon de rapporter la position de la souris.
+    <itemizedlist>
+      <listitem><para>0 - Position absolue normalisée dans l'intervalle 0-1</para></listitem>
+      <listitem><para>1 - Position absolue en pixel brut</para></listitem>
+      <listitem><para>2 - Position en pixel brut, relative au panneau FLTK</para></listitem>
+    </itemizedlist>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kx, ky</emphasis> – les coordonnées de la souris, dont
+      l'intervalle dépend de l'argument <emphasis>imode</emphasis> (voir
+      ci-dessus).
+    </para>
+    <para><emphasis>kb1, kb2, kb3</emphasis> – les états des boutons de la
+      souris, 1 lorsque le bouton correspondant est enfoncé, 0 lorqu'il est
+      relaché.
+    </para>
+    <para>
+      <emphasis>FLmouse</emphasis> retourne les coordonnées de la position de
+      la souris dans un panneau FLTK et l'état de ses trois boutons. Les
+      coordonnées peuvent être récupérées selon trois modes dépendant de la
+      valeur de l'argument <emphasis>imode</emphasis> (voir ci-dessus). Les
+      modes 0 et 1 retournent la position de la souris par rapport à l'écran
+      complet (mode absolu), tandis que le mode 2 retourne la position en
+      pixels dans un panneau FLTK. Noter que <emphasis>FLmouse</emphasis> n'est
+      actif que lorsque le curseur de la souris se trouve sur une zone
+      <link linkend="FLpanel"><citetitle>FLpanel</citetitle></link>.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode FLmouse. Il utilise le fichier
+      <ulink url="examples/FLmouse.csd"><citetitle>FLmouse.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode FLmouse.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/FLmouse.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+<!--  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="FLgetsnap"><citetitle>FLgetsnap</citetitle></link>
+    </para>
+  </refsect1>-->
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 5.06</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,88 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="subinstrinit">
+<indexterm id="IndexSubinstrinit"><primary>subinstrinit</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Subinstrument Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>subinstrinit</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>subinstrinit</refname>
+    <refpurpose>
+      Crée et lance une instance d'un instrument numéroté à l'initialisation.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Identique à <link linkend="subinstr"><citetitle>subinstr</citetitle></link>,
+      mais seulement à l'initialisation et sans arguments de sortie.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>subinstrinit</command> instrnum [, p4] [, p5] [...]</synopsis>
+    <synopsis><command>subinstrinit</command> &quot;insname&quot; [, p4] [, p5] [...]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>instrnum</emphasis> -- Numéro de l'instrument à appeler.
+    </para>
+
+    <para>
+      <emphasis><quote>insname</quote></emphasis> -- Une chaîne de caractères
+      (entre guillements) représentant un instrument nommé.
+    </para>
+
+    <para>
+      Pour plus d'information sur la spécification des interfaces d'entrée et de
+      sortie, voir <link linkend="InstrSubinstrument"><citetitle>Appeler un
+      Instrument depuis un Instrument</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>p4, p5, ...</emphasis> -- Valeurs d'entrée supplémentaires qui
+      sont affectées aux p-champs de l'instrument appelé, en commençant par
+      <emphasis>p4</emphasis>.
+    </para>
+
+    <para>
+      Les valeurs <emphasis>p2</emphasis> et <emphasis>p3</emphasis> de
+      l'instrument appelé seront indentiques aux valeurs de l'instrument hôte.
+      Alors que l'instrument hôte peut
+      <link linkend="ControlDurctl"><citetitle>contrôler sa propre
+      durée</citetitle></link>, toute tentative similaire à l'intérieur de
+      l'instrument appelé n'aura très probablement aucun effet.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="InstrSubinstrument"><citetitle>Calling an Instrument within an Instrument</citetitle></link>,
+      <link linkend="event"><citetitle>event</citetitle></link>,
+      <link linkend="schedule"><citetitle>schedule</citetitle></link>,
+      <link linkend="subinstr"><citetitle>subinstr</citetitle></link>
+     </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Nouveau dans la version 4.23</para>
+  </refsect1>
+</refentry>

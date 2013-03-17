@@ -1,0 +1,47 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.6
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<chapter id="ScoreTop">
+  <title>La partition numérique standard</title>
+  <para>
+    La section de la partition contient des évènements qui démarrent des instances
+    d'instruments de l'orchestre. La partition propose diverses instructions qui
+    permettent l'élaboration de partitions complexes avec le langage de csound.
+  </para>
+  <para>
+    Actuellement, la longueur maximale de la partition est de 2<superscript>31</superscript>-1
+    périodes de contrôle. Par exemple, avec kr=1500, on peut exécuter une partition pendant
+    une période maximale de 16,5 jours avant l'apparition de problèmes provoqués par un
+    dépassement des variables entières signées sur 32 bit.
+  </para>
+  <para>
+    Il faut noter également que lorsque l'on utilise des nombres flottants en simple
+    précision (c-à-d les installeurs 'f' plutôt que les 'd'), la précision temporelle
+    se détériore après une longue durée d'exécution.
+  </para>
+  
+  &scorepreproc;
+  &scorestatemnt;
+  &scorenextp;
+  &scoreramp;
+  &scoremacros;
+  &scoremult;
+  &scoreeval;
+  &scorestrings;
+<!--  &scoresinegen;
+  &scoreseggen;
+  &scorefilegen;
+  &scorenumgen;
+  &scorewingen;
+  &scorerandgen;
+  &scorewavegen;
+  &scoreampgen;
+  &scoremixgen;-->
+
+</chapter>

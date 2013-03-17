@@ -1,0 +1,60 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="strcpy">
+<indexterm id="Indexstrcpy"><primary>strcpy</primary></indexterm>
+  <refentryinfo><title>Strings:Manipulation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>strcpy</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>strcpy</refname>
+    <refpurpose>
+      Affecte une valeur à une variable chaîne de caractères.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Affectation à une variable chaîne en copiant la source qui peut être une
+      constante ou une autre variable chaîne. <emphasis>strcpy</emphasis> et
+      <emphasis>=</emphasis> ne copient la chaîne que pendant l'initialisation.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>Sdst <command>strcpy</command> Ssrc</synopsis>
+    <synopsis>Sdst <command>=</command> Ssrc</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <programlisting>
+Sfoo    <emphasis role="opc">strcpy</emphasis> "Hello, world !"
+        <emphasis role="opc">puts</emphasis>   Sfoo, 1</programlisting>
+  </refsect1>
+  
+  <refsect1>
+	  <title>Voir aussi</title>
+	  <para><link linkend="strcpyk"><citetitle>strcpyk</citetitle></link></para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Istvan Varga</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,121 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vtablea">
+<indexterm id="IndexVtablea"><primary>vtablea</primary></indexterm>
+  <refentryinfo><title>Vectorial:Tables</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vtablea</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vtablea</refname>
+    <refpurpose>
+      Lit des vecteurs (à partir de tables, ou tableaux de vecteurs).
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode lit des vecteurs à partir de tables au taux-a.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>vtablea</command>  andx, kfn, kinterp, ixmode, aout1 [, aout2, aout3, .... , aoutN ]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ixmode</emphasis> - mode d'indexation. Vaut 0 par défaut.</para>
+    <para>            == 0 l'index est traité comme une position brute dans la table,</para>
+    <para>            == 1 l'index est normalisé (entre 0 et 1).</para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>andx</emphasis> - Index dans la f-table, soit un nombre positif
+      inférieur à la longueur de la table (<emphasis>ixmode</emphasis> = 0) soit un nombre
+      compris entre 0 et 1 (<emphasis>ixmode</emphasis> != 0).
+    </para>
+    <para> 
+      <emphasis>kfn</emphasis> - numéro de la table.
+    </para>
+    <para>
+      <emphasis>kinterp</emphasis> - bascule entre sortie interpolée ou
+      non-interpolée. 0 -&gt; pas d'interpolation,
+      différent de zéro -&gt; interpolation activée.
+    </para>
+    <para>
+      <emphasis>aout1...aoutN</emphasis> - composantes du vecteur de sortie.
+    </para>
+    <para>
+      Cet opcode est utile dans tous les cas où il faut accéder à des ensembles
+      de valeurs associés à des indices uniques (par exemple, des échantillons
+      multi-canaux, des trames de bin de TFCT, des formants spectraux, des
+      partitions basées sur des p-champs, etc). Le nombre de composantes de
+      chaque vecteur (longueur du vecteur) est déterminé par le nombre
+      d'arguments facultatifs à droite (<emphasis>aout1</emphasis>,
+      <emphasis>aout2</emphasis>, <emphasis>aout3</emphasis>, ...,
+      <emphasis>aoutN</emphasis>).
+    </para>
+    <para>
+      <emphasis>vtablea</emphasis> permet à l'utilisateur de basculer entre sortie
+      interpolée ou non-interpolée au taux-k au moyen de l'argument
+      <emphasis>kinterp</emphasis>.
+    </para>
+    <para>
+      <emphasis>vtablea</emphasis> permet aussi de changer le numéro de table au
+      taux-k (mais ceci n'est possible que si les trames de vecteur de chaque
+      table utilisée ont le même nombre d'éléments, sinon il peut y avoir des
+      résultats imprévisibles), ainsi que de choisir le style d'indexation
+      (brute ou normalisée, voir aussi l'argument <emphasis>ixmode</emphasis>
+      de l'opcode <emphasis>table</emphasis>).
+    </para>
+    <para>
+      Noter qu'aucun mode de repliement ou de limitation d'indexation n'est
+      implémenté. Si l'index tente d'accéder à une zone non allouée par la
+      table, il est probable que Csound plante. Cependant on peut facilement
+      éviter cet écueil en utilisant des opcodes de repliement ou de limitation
+      appliqués à l'index avant l'utilisation de <emphasis>vtablea</emphasis>,
+      afin de corriger d'éventuelles valeurs hors-limites.
+    </para>
+    <note>
+      <para>
+        Noter que les arguments de sortie de <emphasis>vtablea</emphasis> sont
+        placés à droite du nom de l'opcode, contrairement à l'habitude (ce style
+        est aussi utilisé dans d'autres opcodes utilisant des listes indéfinies
+        d'arguments de sortie comme
+        <link linkend="fin"><citetitle>fin</citetitle></link> ou
+        <link linkend="trigseq"><citetitle>trigseq</citetitle></link>).
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="vtablek"><citetitle>vtablek</citetitle></link>,
+      <link linkend="vtablei"><citetitle>vtablei</citetitle></link>,
+      <link linkend="vtaba"><citetitle>vtaba</citetitle></link>,
+      <link linkend="vtablewa"><citetitle>vtablewa</citetitle></link>,
+      <link linkend="vtabwa"><citetitle>vtabwa</citetitle></link>,
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par Gabriel Maldonado.</para>
+    <para>Nouveau dans Csound 5 (Auparavant seulement disponible dans CsoundAV)</para>
+  </refsect1>
+</refentry>

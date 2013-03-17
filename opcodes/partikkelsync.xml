@@ -1,0 +1,103 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.6
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="partikkelsync">
+<indexterm id="IndexPartikkelsync"><primary>partikkelsync</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Granular Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>partikkelsync</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>partikkelsync</refname>
+    <refpurpose>
+      Produit l'impulsion et la phase de l'horloge du distributeur de grain de
+      <emphasis>partikkel</emphasis> pour synchroniser plusieurs instances de l'opcode
+      <emphasis>partikkel</emphasis> à la même source d'horloge.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>partikkelsync</emphasis> est un opcode dont la tâche est de produire l'impulsion et
+      la phase de l'horloge du distributeur de grain de
+      <link linkend="partikkel"><citetitle>partikkel</citetitle></link>. On peut utiliser la sortie
+      de <emphasis>partikkelsync</emphasis> pour synchroniser d'autres instances de l'opcode
+      <link linkend="partikkel"><citetitle>partikkel</citetitle></link> à la même horloge.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>async [,aphase] <command>partikkelsync</command> iopcode_id</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+      <para>
+      <emphasis>iopcode_id</emphasis> -- identificateur de l'opcode, liant une instance de
+      <link linkend="partikkel"><citetitle>partikkel</citetitle></link> à une instance de
+      <emphasis>partikkelsync</emphasis>. 
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>async</emphasis> -- signal d'impulsion de déclenchement. Envoie des impulsions de
+      déclenchement synchronisées à l'horloge du distributeur de grain d'un opcode
+      <emphasis>partikkel</emphasis>. Une impulsion de déclenchement est générée pour le démarrage
+      de chaque grain dans l'opcode <emphasis>partikkel</emphasis> ayant le même
+      <emphasis>opcode_id</emphasis>. Dans une utilisation normale, on enverra ce signal à l'entrée
+      <emphasis>async</emphasis> d'un autre opcode <emphasis>partikkel</emphasis> pour synchroniser
+      plusieurs instances de <emphasis>partikkel</emphasis>.
+    </para>
+    <para>
+      <emphasis>aphase</emphasis> -- phase de l'horloge. Sort un signal de phase linéaire. On peut
+      l'utiliser par exemple pour une synchronisation légère, ou simplement comme un générateur de
+      phase à la <emphasis>phasor</emphasis>.
+    </para>
+
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode partikkelsync. Il utilise le fichier
+      <ulink url="examples/partikkelsync.csd"><citetitle>partikkelsync.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode partikkelsync.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/partikkelsync.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para><link linkend="partikkel"><citetitle>partikkel</citetitle></link>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Thom Johansen</member>
+        <member>Auteur : Torgeir Strand Henriksen</member>
+        <member>Auteur : &nameoeyvind;</member>
+        <member>Avril 2007</member>
+      </simplelist>
+    <para>Nouveau dans la version 5.06</para>
+    </para>
+  </refsect1>
+</refentry>
+

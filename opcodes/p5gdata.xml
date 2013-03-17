@@ -1,0 +1,158 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.1
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="p5gdata">
+<indexterm id="Indexp5gdata"><primary>p5gdata</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>p5gdata</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>p5gdata</refname>
+    <refpurpose>
+      Lit les champs de données d'un P5 Glove externe.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Lit les champs de données d'un P5 Glove externe.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kres <command>p5gdata</command> kcontrol</synopsis>
+  </refsect1>
+ 
+   <refsect1>
+    <title>Initialisation</title>
+    <para>
+      Cet opcode doit être utilisé en conjonction avec un opcode
+      <emphasis>p5gconnect</emphasis> actif.
+    </para>
+
+  </refsect1>
+
+ <refsect1>
+   <title>Exécution</title>
+   <para>
+     <emphasis>kcontrol</emphasis> -- le code du contrôle à lire
+   </para>
+   <para>
+     A chaque accès, un élément de données particulier du P5 Glove est lu. Les
+     contrôles actuellement implémentés sont donnés ci-dessous, avec le nom de
+     macro défini dans le fichier <emphasis>p5g_mac</emphasis> :
+   </para>
+   <para>
+     0 (P5G_BUTTONS) : retourne un motif de bit pour tous les boutons qui ont été
+     pressés.
+   </para>
+   <para>
+     1 (P5G_BUTTON_A) : retourne 1 si le bouton a été pressé, sinon 0.
+   </para>
+   <para>
+     2 (P5G_BUTTON_B) : comme ci-dessus.
+   </para>
+   <para>
+     4 (P5G_BUTTON_C) : comme ci-dessus.
+   </para>
+   <para>
+     8 (P5G_JUSTPUSH) : retourne un motif de bit pour tous les boutons qui viennent
+     juste d'être pressés.
+   </para>
+   <para>
+     9 (P5G_JUSTPU_A) : retourne 1 si le bouton A vient juste d'être pressé.
+   </para>
+   <para>
+     10 (P5G_JUSTPU_B) : comme ci-dessus.
+   </para>
+   <para>
+     12 (P5G_JUSTPU_C) : comme ci-dessus.
+   </para>
+   <para>
+     16 (P5G_RELEASED) : retourne un motif de bit pour tous les boutons qui
+     viennent d'être relachés.
+   </para>
+   <para>
+     17 (P5G_RELSED_A) : retourne 1 si le bouton A vient juste d'être relaché.  
+   </para>
+   <para>
+     18 (P5G_RELSED_B) : comme ci-dessus.
+   </para>
+   <para>
+     20 (P5G_RELSED_C) : comme ci-dessus.
+   </para>
+   <para>
+     32 (P5G_FINGER_INDEX) : retourne la valeur de repliement de l'index.
+   </para>
+   <para>
+     33 (P5G_FINGER_MIDDLE) : comme ci-dessus.
+   </para>
+   <para>
+     34 (P5G_FINGER_RING) : comme ci-dessus.
+   </para>
+   <para>
+     35 (P5G_FINGER_PINKY) : comme ci-dessus avec le petit doigth.
+   </para>
+   <para>
+     36 (P5G_FINGER_THUMB): comme ci-dessus.
+   </para>
+   <para>
+     37 (P5G_DELTA_X) : la position X du gant.  
+   </para>
+   <para>
+     38 (P5G_DELTA_Y) : la position Y du gant.   
+   </para>
+   <para>
+     39 (P5G_DELTA_Z) : la position Z du gant.  
+   </para>
+   <para>
+     40 (P5G_DELTA_XR) : le changement de l'axe des X (angle). 
+   </para>
+   <para>
+     41 (P5G_DELTA_YR) : comme ci-dessus.  
+   </para>
+   <para>
+     42 (P5G_DELTA_ZR) : comme ci-dessus.  
+   </para>
+   <para>
+     43 (P5G_ANGLES) : l'angle général.  
+   </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voir l'exemple de l'opcode
+      <link linkend="p5gconnect"><citetitle>p5gconnect</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="p5gconnect"><citetitle>p5gconnect</citetitle></link>,
+     </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Codemist Ltd</member>
+        <member>2009</member>
+      </simplelist>
+    </para>
+    <para>Nouveau version 5.12</para>
+  </refsect1>
+</refentry>

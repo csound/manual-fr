@@ -1,0 +1,102 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="zakinit">
+<indexterm id="IndexZakinit"><primary>zakinit</primary></indexterm>
+  <refentryinfo><title>Zak Patch System</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>zakinit</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>zakinit</refname>
+    <refpurpose>
+      Etablit l'espace zak.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Etablit l'espace zak. Ne doit être appelé qu'une seule fois.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>zakinit</command> isizea, isizek</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>isizea</emphasis> -- le nombre de positions de taux audio pour les
+      patch de taux-a. Chaque position est un tableau de longueur ksmps.
+    </para>
+
+    <para>
+      <emphasis>isizek</emphasis> -- le nombre de positions à réserver pour les nombres
+      en virgule flottante dans l'espace zk. On peut lire et écrire dans celles-ci au
+      taux-i et au taux-k.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Il y a au moins une position d'allouée pour chaque espace za et zk. Il peut y
+      avoir des milliers ou des dizaines de milliers de positions za et zk, mais la
+      plupart des pièces n'en nécessitent probablement que quelques douzaines pour
+      patcher les signaux. Ces positions de patch sont référencées par un numéro dans
+      les autres opcodes zak.
+    </para>
+
+    <para>
+      Pour n'exécuter <emphasis>zakinit</emphasis> qu'une seule fois, on le place en
+      dehors de toute définition d'instrument, dans l'en-tête de l'orchestre, après
+      <emphasis>sr</emphasis>, <emphasis>kr</emphasis>, <emphasis>ksmps</emphasis>, et
+      <emphasis>nchnls</emphasis>.
+    </para>
+    <note>
+      <para>
+        Les canaux zak se comptent à partir de 0, si bien que si l'on définit un canal,
+        le seul canal valide est le canal 0.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode zakinit. Il utilise le fichier
+      <ulink url="examples/zakinit.csd"><citetitle>zakinit.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode zakinit.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/zakinit.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Robin Whittle</member>
+        <member>Australie</member>
+        <member>Mai 1997</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 3.45</para>
+    <para>Exemple écrit par &namekevin;.</para>
+  </refsect1>
+</refentry>

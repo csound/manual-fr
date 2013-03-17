@@ -1,0 +1,128 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.10
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="lphasor">
+<indexterm id="IndexLphasor"><primary>lphasor</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Sample Playback</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lphasor</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>lphasor</refname>
+    <refpurpose>
+      Génère un indice de table pour la lecture d'échantillons.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode peut être utilisé pour générer un indice de table pour la lecture
+      d'échantillons (par exemple avec <link linkend="tablexkt">tablexkt</link>).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>lphasor</command> xtrns [, ilps] [, ilpe] [, imode] [, istrt] [, istor]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ilps</emphasis> -- début de la boucle.
+    </para>
+
+    <para>
+      <emphasis>ilpe</emphasis> -- fin de la boucle (doit être supérieur à
+      <emphasis>ilps</emphasis> pour que la boucle soit possible). La valeur par
+      défaut de <emphasis>ilps</emphasis> et de <emphasis>ilpe</emphasis> est zéro.
+    </para>
+
+    <para>
+      <emphasis>imode</emphasis> (facultatif : 0 par défaut) -- mode de boucle. Les
+      valeurs permises sont :
+      <itemizedlist>
+        <listitem>
+           <para><emphasis>0 :</emphasis> pas de boucle</para>
+        </listitem>
+
+        <listitem>
+           <para><emphasis>1 :</emphasis> boucle à l'endroit</para>
+        </listitem>
+
+        <listitem>
+           <para><emphasis>2 :</emphasis> boucle à l'envers</para>
+        </listitem>
+
+        <listitem>
+           <para><emphasis>3 :</emphasis> boucle à l'endroit et à l'envers</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>istrt</emphasis> (facultatif : 0 par défaut) -- La valeur de sortie
+      initiale (phase). Elle doit être inférieure à <emphasis>ilpe</emphasis> si la
+      boucle est active, mais elle peut être supérieure à <emphasis>ilps</emphasis>
+      (c-à-d que l'on peut démarrer la lecture au milieu de la boucle).
+    </para>
+
+    <para>
+      <emphasis>istor</emphasis> (facultatif : 0 par défaut) -- s'il a une valeur
+      différente de zéro l'initialisation est ignorée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ares</emphasis> -- un indice brut de table en échantillons (même unité
+      pour les points de boucle). Peut être utilisé comme indice de table avec les
+      opcodes de table.
+    </para>
+
+    <para>
+      <emphasis>xtrns</emphasis> -- facteur de transposition, exprimé comme un rapport
+      de pointeur de lecture. <emphasis>ares</emphasis> est incrémenté de cette valeur,
+      et répète les valeurs comprises entre les points de boucle. Par exemple, 1.5
+      signifie une quinte ascendante, 0.75 signifie une quarte descendante. Il ne peut
+      pas être négatif.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode lphasor. Il utilise le fichier
+      <ulink url="examples/lphasor.csd"><citetitle>lphasor.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode lphasor.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/lphasor.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameistvan;</member>
+        <member>Janvier 2002</member>
+        <member>Exemple écrit par Jonathan Murphy</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 4.18</para>
+    <para>Mise à jour en avril 2002 et en novembre 2002 par &nameistvan;</para>
+  </refsect1>
+</refentry>

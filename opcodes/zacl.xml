@@ -1,0 +1,95 @@
+<!--translated=yes
+authors=Yannick St-Onge
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="zacl">
+<indexterm id="IndexZacl"><primary>zacl</primary></indexterm>
+  <refentryinfo><title>Zak Patch System</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>zacl</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>zacl</refname>
+    <refpurpose>
+      Efface une ou plusieurs variables dans l'espace za.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Efface une ou plusieurs variables dans l'espace za.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>zacl</command> kfirst, klast</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kfirst</emphasis> -- Première position zk ou za de l'intervalle à effacer.
+    </para>
+
+    <para>
+      <emphasis>klast</emphasis> -- Dernière position zk ou za de l'intervalle à effacer.
+    </para>
+
+    <para>
+      <emphasis>zacl</emphasis> efface une ou plusieurs variables dans l'espace za. Ceci est utile
+      pour les variables utilisées comme accumulateur pour mélanger des signaux de taux-a à
+      chaque cycle, mais qui doivent être effacés avant le prochain groupe de calculs.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode zacl. Il utilise le fichier
+      <ulink url="examples/zacl.csd"><citetitle>zacl.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode zacl.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/zacl.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="zamod"><citetitle>zamod</citetitle></link>,
+      <link linkend="zar"><citetitle>zar</citetitle></link>,
+      <link linkend="zaw"><citetitle>zaw</citetitle></link>,
+      <link linkend="zawm"><citetitle>zawm</citetitle></link>,
+      <link linkend="zkcl"><citetitle>ziw</citetitle></link>,
+      <link linkend="zkmod"><citetitle>ziwm</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Robin Whittle</member>
+        <member>Australie</member>
+        <member>Mai 1997</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 3.45</para>
+    <para>Exemple écrit par &namekevin;.</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,63 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="opnonequiv">
+<indexterm id="IndexNonEquiv"><primary>#</primary></indexterm>
+  <refentryinfo><title>Mathematical Operations:Arithmetic and Logic Operations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>#</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>#</refname>
+
+    <refpurpose>
+      Opérateur NON-EQUIVALENCE binaire.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Les opérateurs binaires effectuent le ET binaire, le OU binaire, la négation binaire et la
+      non-équivalence binaire.
+    </para>
+
+    <para>
+      La priorité de ces opérateurs est inférieure à celle des opérateurs arithmétiques, mais supérieure
+      à celle des comparaisons.
+    </para>
+
+    <para>
+      On peut utiliser des parenthèses pour forcer des groupements particuliers.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>a <command>#</command> b  (NON-EQUIVALENCE binaire)</synopsis>
+
+    <para>
+      où les arguments <emphasis>a</emphasis> et <emphasis>b</emphasis> peuvent être des expressions.
+      Ils sont convertis dans la valeur entière la plus proche selon la précision de la machine et
+      l'opération est ensuite effectuée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+       <link linkend="opbitand"><citetitle>&amp;</citetitle></link>, 
+      <link linkend="opbitor"><citetitle>&verbar;</citetitle></link>
+      <link linkend="opbitnot"><citetitle>¬</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

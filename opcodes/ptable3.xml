@@ -1,0 +1,112 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ptable3">
+<indexterm id="IndexPtable3"><primary>ptable3</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Table Access</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ptable3</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ptable3</refname>
+    <refpurpose>
+      Accède aux valeurs d'une table par indexation directe avec interpolation
+      cubique.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Accède aux valeurs d'une table par indexation directe avec interpolation
+      cubique.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>ptable3</command> andx, ifn [, ixmode] [, ixoff] [, iwrap]</synopsis>
+
+    <synopsis>ires <command>ptable3</command> indx, ifn [, ixmode] [, ixoff] [, iwrap]</synopsis>
+
+    <synopsis>kres <command>ptable3</command> kndx, ifn [, ixmode] [, ixoff] [, iwrap]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn</emphasis> -- numéro de la table de fonction.
+    </para>
+
+    <para>
+      <emphasis>ixmode</emphasis> (facultatif) -- mode d'indexation. La valeur par
+      défaut est 0.
+      <itemizedlist>
+        <listitem><para>0 = indexation brute</para></listitem>
+        <listitem><para>1 = indexation normalisée (0 à 1)</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>ixoff</emphasis> (facultatif) -- décalage de l'index. Pour une
+      table dont l'origine est centrée, on utilise taille-de-la-table/2 (indexation
+      brute) ou 0.5 (indexation normalisée). La valeur par défaut est 0.
+    </para>
+
+    <para>
+      <emphasis>iwrap</emphasis> (facultatif) -- indicateur d'indexation cyclique.
+      La valeur par défaut est 0.
+      <itemizedlist>
+        <listitem>
+          <para>0 = pas d'enroulement (les index &lt; 0 sont considérés comme nuls ;
+          les index &gt; taille-de-la-table sont bloqués à index=taille-de-la-table)</para>
+        </listitem>
+
+        <listitem>
+          <para>1 = indexation cyclique.</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ptable3</emphasis> est identique à <link
+      linkend="table3"><citetitle>table3</citetitle></link>, sauf que l'on est
+      pas obligé d'utiliser une table dont la taille est une puissance de deux.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="table"><citetitle>table</citetitle></link>,
+      <link linkend="tablei"><citetitle>tablei</citetitle></link>,
+      <link linkend="table3"><citetitle>table3</citetitle></link>,
+      <link linkend="ptable"><citetitle>ptable</citetitle></link>,
+      <link linkend="ptablei"><citetitle>ptablei</citetitle></link>,
+      <link linkend="oscil1"><citetitle>oscil1</citetitle></link>,
+      <link linkend="oscil1i"><citetitle>oscil1i</citetitle></link>,
+      <link linkend="osciln"><citetitle>osciln</citetitle></link>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Janvier 2012</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.16 de Csound.</para>
+  </refsect1>
+</refentry>

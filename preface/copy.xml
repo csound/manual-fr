@@ -1,0 +1,123 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.10
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="PrefaceCopy">
+  <title>Mentions de copyright</title>
+
+  <para>
+    Cette version du manuel de Csound ("Le manuel canonique de Csound") est délivrée sous
+    la <ulink url="http://www.gnu.org/licenses/fdl.txt">GNU Free Documentation Licence</ulink>.
+    Les mentions de copyright antérieures et le crédit de leurs auteurs sont donnés ci-dessous,
+    pour des raisons historiques.
+  </para>
+  <simplesect id="ManualLicense">
+    <title>Mentions de copyright antérieures</title>
+    <para>
+      Copyright &#169; 1986, 1992 par le Massachusetts Institute of Technology. Tous droits réservés.
+    </para>
+    <para>
+      Développé par <emphasis>&namebarry;</emphasis> au Experimental Music Studio, Media Laboratory,
+      M.I.T., Cambridge, Massachusetts, avec le support partiel de la System Development Foundation et
+      du National Science Foundation Grant # IRI-8704665.
+    </para>
+  </simplesect>
+  <simplesect>
+    <title>Manuel</title>
+    <para>
+      Copyright &#169; 2003 by &namekevin; pour les modifications apportées au manuel de référence public de Csound.
+    </para>
+
+    <para>
+      Il est permis de copier, distribuer et/ou modifier ce document selon les termes de la GNU Free Documentation License,
+      Version 1.2 ou toute version ultérieure publiée par la Free Software Foundation ; sans aucune partie non modifiable,
+      aucun texte de première de couverture et aucun texte de quatrième de couverture. Une copie de cette licence
+      est disponible dans le <ulink url="examples/fdl.txt"> sous-répertoire des exemples</ulink> ou à :
+      <ulink url="http://www.gnu.org/licenses/fdl.txt">www.gnu.org/licenses/fdl.txt</ulink>.
+    </para>
+
+    <para>
+      La documentation du langage Csound de ce manuel est dérivée du <emphasis>manuel de référence alternatif de
+      Csound</emphasis> de Kevin Conder, qui est lui-même dérivé du <emphasis>manuel de référence public de
+      Csound</emphasis>.
+    </para>
+    <para>
+      Copyright &#169; 2004-2005 par Michael Gogins pour les modifications faites au
+      <emphasis>manuel de référence alternatif de Csound</emphasis>.
+    </para>
+    <para>
+      Cette mention légale provient du <emphasis>manuel de référence public de Csound</emphasis> :
+      <quote>L'édition hypertexte originale
+      du manuel de csound du MIT fut préparée pour le World Wide Web par <emphasis>Peter J. Nix</emphasis>
+      du Department of Music at the University of Leeds et <emphasis>Jean Piché</emphasis>
+      de la faculté de musique de l'université de Montréal. Une édition d'impression, en format Adobe Acrobat,
+      fut ensuite maintenue par <emphasis>&namedavid;</emphasis>. Les éditeurs reconnaissent entièrement
+      les droits des auteurs de la documentation et des programmes originaux, comme décrits ci-dessus,
+      et demandent en conséquence que cette mention soit citée chaque fois que ce matériel est utilisé.</quote>
+    </para>
+    <para>
+      La dernière url connue du manuel de référence public de Csound était
+      <ulink url="http://www.lakewoodsound.com/csound/hypertext/manual.htm">http://www.lakewoodsound.com/csound/hypertext/manual.htm</ulink>.
+    </para>
+    <para>
+      L'url du manuel de référence alternatif de Csound, pour les copies transparentes et les copies opaques,
+      est <ulink url="http://kevindumpscore.com/download.html#csound-manual">http://kevindumpscore.com/download.html#csound-manual</ulink>.
+    </para>
+    <para>
+      L'url du manuel de Csound et de CsoundAC est
+      <ulink url="http://sourceforge.net/projects/csound">http://sourceforge.net/projects/csound</ulink>.
+    </para>
+    <para>Traduction française du manuel par &namepinot;.</para>
+    <para>La traduction française du manuel est placée sous GNU Free Documentation License, Version 1.2 ou 
+    ultérieure, comme la version anglaise originale.</para>
+  </simplesect>
+  <simplesect>
+    <title>Csound et CsoundAC</title>
+    <para>
+      Csound est protégé par copyright de 1991 à 2008 par Barry Vercoe, John ffitch et les autres
+      développeurs.
+    </para>
+    <para>
+      CsoundAC est protégé par copyright de 2001 à 2008 par Michael Gogins.
+    </para>
+    <para>
+      Csound et CsoundAC (anciennement CsoundVST) sont des logiciels libres ; vous pouvez les
+      redistribuer et/ou les modifier selon les termes de la GNU Lesser General Public
+      License tels que publiés par la Free Software Foundation ; soit la version
+      2.1 de la License, soit (à votre choix) n'importe quelle version ultérieure.
+    </para>
+    <para>
+      Csound et CsoundAC sont distribués dans l'espoir qu'il seront utiles,
+      mais SANS AUCUNE GARANTIE ; sans même la garantie implicite de la
+      VALEUR COMMERCIALE ou de l'ADEQUATION A UNE UTILISATION SPECIALE. Consultez la GNU
+      Lesser General Public License pour plus de détails.
+    </para>
+    <para>
+      Vous devez avoir reçu une copie de la GNU Lesser General Public
+      License en même temps que Csound et CsoundAC ; si ce n'est pas le cas, écrivez à la
+      Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
+      02111-1307 USA.
+    </para>
+  </simplesect>
+  <simplesect id="VSTSDKLicense">
+    <title>Virtual Synthesis Technology</title>
+    <para>
+      Virtual Synthesis Technology (VST) PlugIn technologie d'interfaçage par
+      Steinberg Soft- und Hardware GmbH.
+    </para>
+<!--    <para>
+      Le code source de CsoundVST contient des versions modifiées de fichiers source
+      du VST SDK distribué par Steinberg. <emphasis>Ces fichiers ne doivent être
+      utilisés que pour la compilation de CsoundVST</emphasis>. Vous n'avez <emphasis>pas</emphasis>
+      le droit d'utiliser ces fichiers dans un autre but. Si vous créez un produit
+      dérivé basé sur CsoundVST ou la version modifiée des fichiers source VST ici inclus,
+      vous <emphasis>devez</emphasis> faire une demande auprès de Steinberg pour
+      obtenir votre propre licence d'utilisation du VST SDK.
+    </para>-->
+  </simplesect>
+</section>

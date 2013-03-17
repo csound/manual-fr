@@ -1,0 +1,142 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="foutk">
+<indexterm id="IndexFoutk"><primary>foutk</primary></indexterm>
+  <refentryinfo><title>Signal I/O:File I/O</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>foutk</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>foutk</refname>
+    <refpurpose>
+      Envoie des signaux de taux-k vers un nombre arbitraire de canaux dans un
+      fichier externe, en format brut (sans en-tête).
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>foutk</emphasis> envoie <emphasis>N</emphasis> signaux de taux-k
+      vers un fichier spécifié à <emphasis>N</emphasis> canaux.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>foutk</command> ifilename, iformat, kout1 [, kout2, kout3,....,koutN]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifilename</emphasis> -- le nom du fichier de sortie (entre guillements)
+    </para>
+
+    <para>
+      <emphasis>iformat</emphasis> -- un indicateur pour choisir le format du fichier
+      de sortie (note : il se peut que les versions de Csound antérieures à la 5.0
+      ne supportent que les formats 0 et 1) :
+      <itemizedlist>
+        <listitem>
+          <para>0 - échantillons en flottants sur 32 bit sans en-tête (fichier PCM
+          binaire multicanaux)</para>
+        </listitem>
+
+        <listitem>
+          <para>1 - entiers sur 16 bit sans en-tête (fichier PCM binaire multicanaux)</para>
+        </listitem>
+
+        <listitem>
+          <para>2 - entiers sur 16 bit sans en-tête (fichier PCM binaire multicanaux)</para>
+        </listitem>
+
+        <listitem>
+          <para>3 - échantillons u-law sans en-tête</para>
+        </listitem>
+
+        <listitem>
+          <para>4 - entiers sur 16 bit sans en-tête</para>
+        </listitem>
+
+        <listitem>
+          <para>5 - entiers sur 32 bit sans en-tête</para>
+        </listitem>
+
+        <listitem>
+          <para>6 - flottants sur 32 bit sans en-tête</para>
+        </listitem>
+
+        <listitem>
+          <para>7 - entiers non signés sur 8 bit sans en-tête</para>
+        </listitem>
+
+        <listitem>
+          <para>8 - entiers sur 24 bit sans en-tête</para>
+        </listitem>
+
+        <listitem>
+          <para>9 - flottants sur 64 bit sans en-tête</para>
+        </listitem>
+
+      </itemizedlist>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kout1,...koutN</emphasis> -- signaux au taux de contrôle à écrire dans
+      le fichier. L'étendue de l'amplitude des signaux est déterminée par le format
+      d'échantillon choisi.
+    </para>
+
+    <para>
+      <emphasis>foutk</emphasis> opère de la même maniière que
+      <link linkend="fout"><citetitle>fout</citetitle></link>, mais avec des signaux
+      de taux-k. <emphasis>iformat</emphasis> peut prendre une valeur entre 0 et 9,
+      ou 0 et 1 avec une ancienne version de Csound.
+    </para>
+
+    <para>
+      Noter que <link linkend="fout"><citetitle>fout</citetitle></link> et
+      <emphasis>foutk</emphasis> peuvent utiliser soit une chaîne de caractères
+      contenant un nom de chemin de fichier, soit un identificateur numérique généré par
+      <link linkend="fiopen"><citetitle>fiopen</citetitle></link>. Alors qu'avec
+      <link linkend="fouti"><citetitle>fouti</citetitle></link> et
+      <link linkend="foutir"><citetitle>foutir</citetitle></link>, le fichier
+      cible ne peut être spécifié que par un identificateur numérique.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="fiopen"><citetitle>fiopen</citetitle></link>,
+      <link linkend="fout"><citetitle>fout</citetitle></link>,
+      <link linkend="fouti"><citetitle>fouti</citetitle></link>,
+      <link linkend="foutir"><citetitle>foutir</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+        <member>1999</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.56 de Csound</para>
+  </refsect1>
+</refentry>

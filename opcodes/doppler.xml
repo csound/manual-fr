@@ -1,0 +1,118 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="doppler">
+<indexterm id="IndexDoppler"><primary>doppler</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>doppler</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>doppler</refname>
+    <refpurpose>
+      Une méthode rapide et robuste d'approximation de propagation du son,
+      produisant un effet Doppler convaincant sans résolution d'équations.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Une méthode rapide et robuste d'approximation de propagation du son,
+      produisant un effet Doppler convaincant sans résolution d'équations. La
+      méthode calcule des décalages de fréquence basés sur la lecture d'une
+      ligne à retard en entrée avec un retard calculé à partir de la distance
+      entre la source et le microphone, et de la vitesse du son. Il faut une
+      instance de l'opcode pour chaque dimension de l'espace dans lequel le son
+      évolue. Si la source sonore se déplace à vitesse constante depuis l'avant
+      du microphone jusqu'à l'arrière du microphone en passant par le microphone,
+      la sortie sera transposée en fréquence à une fréquence constante au-dessus
+      de la fréquence de la source durant l'approche de la source, puis basculera
+      de manière discontinue sous la fréquence de la source à une fréquence
+      constante comme la source s'éloigne du microphone. Si la source sonore
+      passe à vitesse constante en un point situé sur un côté du microphone,
+      la vitesse du changement de position ne sera pas constante et l'on entendra
+      le décalage en fréquence typique de l'effet Doppler familier d'une sirène
+      ou d'un moteur approchant et s'éloignant le long d'une route située sur
+      le côté de l'auditeur.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ashifted <command>doppler</command> asource, ksourceposition, kmicposition [, isoundspeed, ifiltercutoff]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>isoundspeed</emphasis> (facultatif, 340.29 par défaut) -- Vitesse
+      du son en mètres/seconde.
+    </para>
+    <para>
+      <emphasis>ifiltercutoff</emphasis> (facultatif, 6 par défaut) -- taux de
+      mise à jour du filtre de lissage de la position, en Hz.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asource</emphasis> -- Signal d'entrée de la source sonore.
+    </para>
+    <para>
+      <emphasis>ksourceposition</emphasis> -- Position de la source sonore en
+      mètres. La distance entre la source et le micro ne doit pas changer plus
+      vite qu'environ 3/4 de la vitesse du son.
+    </para>
+    <para>
+      <emphasis>kmicposition</emphasis> -- Position du microphone enregistreur
+      en mètres. 
+      of the recording microphone in meters. La distance entre la source et le
+      micro ne doit pas changer plus vite qu'environ 3/4 de la vitesse du son.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode doppler. Il utilise le fichier
+      <ulink url="examples/doppler.csd"><citetitle>doppler.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode doppler.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/doppler.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <!-- <refsect1> -->
+  <!--   <title>Voir aussi</title> -->
+  <!--   <para> -->
+  <!--     <link linkend="doppler2"><citetitle>doppler2</citetitle></link>, -->
+  <!--   </para> -->
+  <!-- </refsect1> -->
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur de l'algorithme : &namepeter;</member>
+	      <member>Auteur de l'opcode : &namemichael;</member>
+        <member>Janvier 2010</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 5.11 de Csound.</para>
+  </refsect1>
+</refentry>

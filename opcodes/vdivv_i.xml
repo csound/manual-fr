@@ -1,0 +1,127 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vdivv_i">
+<indexterm id="IndexVdivv_i"><primary>vdivv_i</primary></indexterm>
+  <refentryinfo><title>Vectorial:Vectorial operations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vdivv_i</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vdivv_i</refname>
+    <refpurpose>
+      Division entre deux signaux vectoriels de contrôle à l'initialisation.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Division entre deux signaux vectoriels de contrôle à l'initialisation.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>vdivv_i</command>  ifn1, ifn2, ielements [, idstoffset] [, isrcoffset]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn1</emphasis> - numéro de la table hébergeant le premier
+      vecteur à traiter.
+    </para>
+    <para>
+      <emphasis>ifn2</emphasis> - numéro de la table hébergeant le second
+      vecteur à traiter.
+    </para>
+    <para>
+      <emphasis>ielements</emphasis> - nombre de composantes des deux vecteurs.
+    </para>
+    <para>
+      <emphasis>idstoffset</emphasis> - décalage d'indexation pour la table de
+      destination <emphasis>ifn1</emphasis> (vaut 0 par défaut).
+    </para>
+    <para>
+      <emphasis>isrcoffset</emphasis> - décalage d'indexation pour la table
+      source <emphasis>ifn2</emphasis> (vaut 0 par défaut).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>vdivv_i</emphasis> divise deux signaux vectoriels de contrôle,
+      chaque composante de <emphasis>ifn1</emphasis> étant divisée par la
+      composante correspondante de <emphasis>ifn2</emphasis>. Chaque signal
+      vectoriel est hébergé dans une table (<emphasis>ifn1</emphasis> et
+      <emphasis>ifn2</emphasis>). Le nombre de composantes de chaque vecteur
+      doit être identique.
+    </para>
+    <para>
+      Le résultat est un nouveau signal vectoriel de contrôle qui écrase les
+      anciennes valeurs de <emphasis>ifn1</emphasis>. Si l'on veut garder l'ancien
+      vecteur <emphasis>ifn1</emphasis>, il faut utiliser l'opcode
+      <link linkend="vcopy_i"><citetitle>vcopy_i</citetitle></link> pour le copier
+      dans une autre table. On peut utiliser <emphasis>idstoffset</emphasis> et
+      <emphasis>isrcoffset</emphasis> pour spécifier des vecteurs à n'importe
+      quelle position dans les tables.
+    </para>
+    <para>
+      Des valeurs négatives pour <emphasis>idstoffset</emphasis> et
+      <emphasis>isrcoffset</emphasis> sont acceptables. Si
+      <emphasis>idstoffset</emphasis> est négatif, la partie du vecteur hors-limites
+      est ignorée. Si <emphasis>isrcoffset</emphasis> est négatif, les éléments
+      hors-limites seront supposés valoir 1 (c'est-à-dire que les éléments de
+      destination ne seront pas changés). Si des éléments pour le vecteur de
+      destination sont au-delà de la taille de la table (point de garde inclus),
+      ces éléments sont ignorés (les éléments ne sont pas repliés autour des
+      tables). Si des éléments pour le vecteur source sont au-delà de la longueur
+      de la table, ces éléments sont supposés valoir 1 (les éléments correspondants
+      du vecteur de destination ne seront pas changés).
+    </para>
+    <warning>
+      <para>
+      L'utilisation de la même table comme source et comme destination dans
+      les versions antérieures à la 5.04 peut induire un comportement
+      imprévu. A utiliser avec précaution.
+      </para>
+    </warning>
+    <para>
+      Cet opcode travaille à l'initialisation. Il y a une version de taux-k de
+      appelée <link linkend="vdivv"><citetitle>vdivv</citetitle></link>.
+    </para>
+    <para>
+      Tous ces opérateurs (<link linkend="vaddv_i"><citetitle>vaddv_i</citetitle></link>,
+      <link linkend="vsubv_i"><citetitle>vsubv_i</citetitle></link>,
+      <link linkend="vmultv_i"><citetitle>vmultv_i</citetitle></link>,
+      <link linkend="vdivv_i"><citetitle>vdivv_i</citetitle></link>,
+      <link linkend="vpowv_i"><citetitle>vpowv_i</citetitle></link>,
+      <link linkend="vexpv_i"><citetitle>vexpv_i</citetitle></link>,
+      <link linkend="vcopy"><citetitle>vcopy</citetitle></link> et
+      <link linkend="vmap"><citetitle>vmap</citetitle></link>) sont conçus pour
+      être utilisés avec d'autres opcodes qui opèrent sur des signaux vectoriels
+      tels que <emphasis>bmscan</emphasis>,
+      <link linkend="vcella"><citetitle>vcella</citetitle></link>,
+      <link linkend="adsynt"><citetitle>adsynt</citetitle></link>,
+      <link linkend="adsynt2"><citetitle>adsynt2</citetitle></link>, etc. 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      Ecrit par Gabriel Maldonado. Arguments facultatifs ajoutés par Andrés
+      Cabrera et Istvan Varga.
+    </para>
+    <para>Nouveau dans Csound 5 (Auparavant seulement disponible dans CsoundAV)</para>
+  </refsect1>
+</refentry>

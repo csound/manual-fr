@@ -1,0 +1,90 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="peak">
+<indexterm id="IndexPeak"><primary>peak</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>peak</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>peak</refname>
+    <refpurpose>
+      Maintient la sortie égale à la plus haute valeur absolue reçue.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ces opcodes maintiennent dans la variable de sortie de taux-k le niveau
+      de crête absolu reçu jusqu'à présent.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kres <command>peak</command> asig</synopsis>
+
+    <synopsis>kres <command>peak</command> ksig</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kres</emphasis> -- la sortie est égale à la plus haute valeur
+      absolue reçue jusqu'à présent. C'est également une entrée de l'opcode, car
+      ce dernier lit <emphasis>kres</emphasis> pour décider s'il y faut écrire
+      une valeur plus grande.
+    </para>
+
+    <para>
+      <emphasis>ksig </emphasis> -- signal de taux-k en entrée.
+    </para>
+
+    <para>
+      <emphasis>asig </emphasis> -- signal de taux-a en entrée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode peak. Il utilise les fichiers
+      <ulink url="examples/peak.csd"><citetitle>peak.csd</citetitle></ulink>
+      et <ulink url="examples/beats.wav"><citetitle>beats.wav</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode peak.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/peak.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie comprendra des lignes comme celles-ci :
+      <screen>
+ i   1 time     0.00002:  4835.00000
+ i   1 time     1.00002: 29312.00000
+ i   1 time     2.00002: 32767.00000</screen>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Robin Whittle</member>
+        <member>Australie</member>
+        <member>Mai 1997</member>
+      </simplelist>
+    </para>
+    <para>Exemple écrit par &namekevin;.</para>
+  </refsect1>
+</refentry>

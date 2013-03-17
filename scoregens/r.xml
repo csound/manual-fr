@@ -1,0 +1,92 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.6
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="r">
+      <indexterm id="IndexRStatement"><primary>r statement</primary></indexterm>
+      <indexterm id="IndexRepeatStatement"><primary>repeat statement</primary></indexterm>
+  <refmeta>
+    <refentrytitle>Instruction r (instruction répéter)</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>r</refname>
+    <refpurpose>
+      Débute une section répétée.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Débute une section répétée, qui dure jusqu'à la prochaine instruction <emphasis>s</emphasis>,
+      <emphasis>r</emphasis> ou <emphasis>e</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>r</command> p1 p2</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>p1</emphasis> -- Nombre de répétitions de la section demandé.
+    </para>
+
+    <para>
+      <emphasis>p2</emphasis> -- Macro(nom) pour indexer chaque répétition (facultatif).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Afin de rendre les sections plus souples qu'une simple édition, la macro nommée en p2 reçoit la
+      valeur 1 à la première boucle dans la section, 2 à la seconde, 3 à la troisième, etc. On peut
+      l'utiliser pour changer la valeur des p-champs, ou l'ignorer.
+    </para>
+
+    <warning>
+      <title>Avertissement</title>
+      <para>
+        A cause de sérieux problèmes d'interaction avec l'expansion de macro, les sections doivent
+        commencer et finir dans le même fichier, à l'extérieur de toute macro.
+      </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple d'instruction r. Il utilise le fichier <ulink url="examples/r.csd"><citetitle>r.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple d'instruction r.</title>
+
+        <xi:include href="examples-xml/r.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>University of Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>Avril 1998</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.48 de Csound</para>
+    <para>Exemple écrit par &namekevin;</para>
+  </refsect1>
+</refentry>

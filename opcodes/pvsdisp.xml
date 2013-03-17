@@ -1,0 +1,99 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvsdisp">
+<indexterm id="Indexpvsdisp"><primary>pvsdisp</primary></indexterm>
+
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsdisp</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvsdisp</refname>
+    <refpurpose>
+      Affiche le graphe amplitude/fréquence d'un signal PVS.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode affiche un signal PVS fsig. Il utilise X11 ou une fenêtre FLTK
+      si c'est possible, sinon (ou si l'option
+      <link linkend="FlagsMinusLowerG"><citetitle>-g</citetitle></link> est
+      positionnée) il affiche une approximation en caractères ASCII.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>pvsdisp</command> fsig[, ibins, iwtflg] </synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iprd</emphasis> -- la période de <emphasis>pvsdisp</emphasis> en
+      secondes.
+    </para>
+
+    <para>
+      <emphasis>ibins</emphasis> (facultatif, par défaut=tous les bins) -- affiche
+      seulement <emphasis>ibins</emphasis> bins. 
+	  </para>
+
+    <para>
+      <emphasis>iwtflg</emphasis> (facultatif, par défaut=0) -- indicateur de
+      pause. S'il est différent de zéro, chaque <emphasis>pvsdisp</emphasis> est
+      maintenu en attendant une validation de l'utilisateur. La valeur par défaut
+      est 0 (pas de pause).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>pvsdisp</emphasis> -- affiche le signal PVS trame par trame. 
+	</para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode pvsdisp. Il utilise le fichier
+      <ulink url="examples/pvsdisp.csd"><citetitle>pvsdisp.csd</citetitle></ulink>.
+      Cet exemple utilise une entrée temps réel, mais on peut aussi utiliser
+      un fichier son en entrée.
+      <example>
+        <title>Exemple de l'opcode pvsdisp</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/pvsdisp.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="pvsanal"><citetitle>pvsanal</citetitle></link>,
+      <link linkend="pvsynth"><citetitle>pvsynth</citetitle></link>,
+      <link linkend="dispfft"><citetitle>dispfft</citetitle></link>,
+      <link linkend="print"><citetitle>print</citetitle></link>,
+      <link linkend="pvsadsyn"><citetitle>pvsadsyn</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para> Auteur : &namevictor;, 2006 </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,39 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLtabs_end">
+<indexterm id="IndexFLtabs_end"><primary>FLtabs)end</primary></indexterm>
+  <refentryinfo><title>FLTK:Containers</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLtabs_end</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLtabs_end</refname>
+    <refpurpose>
+      Marque la fin d'une interface FLTK à onglets.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Marque la fin d'une interface FLTK à onglets.
+      C'est un autre nom pour <command>FLtabsEnd</command> fourni pour des
+      raisons de compatibilité. Voir
+      <link linkend="FLtabsEnd"><citetitle>FLtabsEnd</citetitle></link>
+   </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.22</para>
+  </refsect1>
+</refentry>

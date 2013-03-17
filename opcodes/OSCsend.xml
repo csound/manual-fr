@@ -1,0 +1,126 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.10
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="OSCsend">
+<indexterm id="IndexOSCsend"><primary>OSCsend</primary></indexterm>
+  <refentryinfo><title>OSC</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>OSCsend</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>OSCsend</refname>
+    <refpurpose>
+      Envoie des données à d'autres processus au moyen du protocole OSC.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Utilise le protocole OSC pour envoyer un message à d'autres processus
+      d'écoute OSC.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>OSCsend</command> kwhen, ihost, iport, idestination, itype [, kdata1, kdata2, ...]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ihost</emphasis> -- une chaîne de caractères donnant le nom
+      de domaine de l'ordinateur hôte destinataire. Une chaîne vide est
+      interprétée comme l'ordinateur courant.
+    </para>
+
+    <para>
+      <emphasis>iport</emphasis> -- le numéro du port utilisé pour la
+      communication.
+    </para>
+
+    <para>
+      <emphasis>idest</emphasis> -- une chaîne de caractères indiquant
+      l'adresse de destination. Elle prend la forme d'un nom de fichier avec
+      des répertoires. Csound ne fait que transmettre cette chaîne au code
+      brut envoyé sans faire d'interprétation.
+    </para>
+
+    <para>
+      <emphasis>itype</emphasis> -- une chaîne de caractères indiquant le
+      type des arguments facultatifs qui sont lus au taux-k. La chaîne peut
+      contenir les caractères "bcdfilmst" pour booléen, caractère, double,
+      flottant, entier sur 32 bit, entier sur 64 bit, MIDI, chaîne de
+      caractères et repère temporelle.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kwhen</emphasis> -- un message est envoyé chaque fois que cette
+      valeur change. Un message sera toujours envoyé au premier appel.
+    </para>
+
+    <para>
+      Les données proviennent des valeurs de taux-k qui suivent la chaîne de
+      formatage. De même que pour le format dans printf, la série de
+      caractères détermine l'interprétation des arguments. Noter qu'un
+      repère temporel prend deux arguments.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      L'exemple montre un simple instrument qui, lorsqu'il est appelé, envoie
+      un groupe de trois messages à un ordinateur nommé "xenakis", sur le port
+      7770, à lire par un processus dont l'adresse est /foo/bar.
+    </para>
+
+    <informalexample>
+      <programlisting>
+      <emphasis role="oblock">instr</emphasis>   1
+          <emphasis role="opc">OSCsend</emphasis>     1, &quot;xenakis.cs.bath.ac.uk&quot;,7770, &quot;/foo/bar&quot;, &quot;sis&quot;, &quot;FOO&quot;, 42, &quot;bar&quot;
+      <emphasis role="oblock">endin</emphasis></programlisting>
+    </informalexample>
+    <para>
+      Voir la notice d'<link linkend="OSClisten"><citetitle>OSClisten</citetitle></link>
+      pour un exemple d'envoi/réception en utilisant OSC.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+      <para>
+        <link linkend="OSClisten"><citetitle>OSClisten</citetitle></link>,
+        <link linkend="OSCinit"><citetitle>OSCinit</citetitle></link>
+      </para>
+    <para>
+      Plus d'information sur cet opcode :
+      <ulink url="http://www.youtube.com/watch?v=JX1C3TqP_9Y"><citetitle>http://www.youtube.com/watch?v=JX1C3TqP_9Y</citetitle></ulink>,
+      par Andrés Cabrera.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

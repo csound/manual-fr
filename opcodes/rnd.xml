@@ -1,0 +1,103 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.15
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="rnd">
+<indexterm id="IndexRnd"><primary>rnd</primary></indexterm>
+  <refentryinfo><title>Mathematical Operations:Random Functions</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>rnd</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>rnd</refname>
+    <refpurpose>
+      Retourne un nombre aléatoire dans un intervalle unipolaire au taux de l'argument.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne un nombre aléatoire dans un intervalle unipolaire au taux de l'argument.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>rnd</command>(x) (taux-i ou -k seulement)</synopsis>
+
+    <para>
+      Où l'argument entre parenthèses peut être une expression. Ces convertisseurs de valeur
+      échantillonnent une séquence aléatoire globale, mais sans référencer une
+      <emphasis>racine</emphasis>. Le résultat peut devenir un terme d'une expression ultérieure.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Retourne un nombre aléatoire dans l'intervalle unipolaire allant de 0 à <emphasis>x</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode rnd. Il utilise le fichier
+      <ulink url="examples/rnd.csd"><citetitle>rnd.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode rnd.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/rnd.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>SECTION 1:
+new alloc for instr 1:
+instr 1:  irand = 9.735
+new alloc for instr 1:
+instr 1:  irand = 1.394
+new alloc for instr 1:
+instr 1:  irand = 7.695
+midi channel 1 now using instr 1
+B  0.000 ..  2.000 T  2.000 TT  2.000 M:  0.00000
+new alloc for instr 2:
+ i   2 time     2.10000:     5.25005
+ i   2 time     2.20000:     6.22665
+ i   2 time     2.30000:     9.69511
+ i   2 time     2.40000:     7.16822
+ i   2 time     2.50000:     9.45134
+ i   2 time     2.60000:     1.34123
+ i   2 time     2.70000:     2.09879
+ i   2 time     2.80000:     2.36001
+ i   2 time     2.90000:     0.03553</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="birnd"><citetitle>birnd</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur: &namebarry;</member>
+        <member>MIT</member>
+        <member>Cambridge, Massachussetts</member>
+        <member>1997</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,112 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="repluck">
+<indexterm id="IndexRepluck"><primary>repluck</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Waveguide Physical Modeling</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>repluck</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>repluck</refname>
+    <refpurpose>
+      Modèle physique de corde pincée.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+       <emphasis>repluck</emphasis> est une implémentation du modèle physique de corde
+       pincée. On peut contrôler le point d'excitation, le point de lecture, le filtre,
+       et un signal audio additionnel, <emphasis>axcite</emphasis>. <emphasis>axcite</emphasis>
+       est utilisé pour exciter la "corde". Basé sur l'algorithme de Karplus-Strong.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>repluck</command> iplk, kamp, icps, kpick, krefl, axcite</synopsis>
+ </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iplk</emphasis> -- Le point d'excitation est <emphasis>iplk</emphasis>,
+      qui représente une fraction de la longueur de la corde (0 à 1). Un point
+      d'excitation de zéro signifie l'absence d'excitation initiale.
+    </para>
+
+    <para>
+      <emphasis>icps</emphasis> -- La corde produit une hauteur de <emphasis>icps</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamp</emphasis> -- Amplitude de la note.
+    </para>
+
+    <para>
+      <emphasis>kpick</emphasis> -- Fraction de la longueur de la corde où sera lue
+      la sortie.
+    </para>
+
+    <para>
+      <emphasis>krefl</emphasis> -- le coefficient de réflexion, indiquant l'amortissement
+      et le taux d'extinction. Il doit être strictement compris entre 0 et 1 (il
+      n'acceptera pas 0 ni 1).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>axcite</emphasis> -- Un signal d'excitation de la corde.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opdcode repluck. Il utilise le fichier
+      <ulink url="examples/repluck.csd"><citetitle>repluck.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opdcode repluck.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/repluck.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="wgpluck2"><citetitle>wgpluck2</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Université de Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>1997</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 3.47</para>
+  </refsect1>
+</refentry>

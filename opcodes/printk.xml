@@ -1,0 +1,123 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="printk">
+<indexterm id="IndexPrintk"><primary>printk</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Printing and Display</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>printk</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>printk</refname>
+    <refpurpose>
+      Affiche une valeur de taux-k à intervalles définis.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Affiche une valeur de taux-k à intervalles définis.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>printk</command> itime, kval [, ispace]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>itime</emphasis> -- intervalle en secondes entre les impressions.
+    </para>
+
+    <para>
+      <emphasis>ispace</emphasis> (facultatif, 0 par défaut) -- nombre d'espaces
+      à insérer avant l'impression. (0 par défaut, max : 130)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kval</emphasis> -- La valeur de taux-k à afficher. 
+    </para>
+
+    <para>
+      <emphasis>printk</emphasis> imprime une valeur de taux-k à chaque cycle-k,
+      à chaque seconde ou à intervalles définis. Le numéro d'instrument est
+      d'abord imprimé, puis le temps absolu en secondes, ensuite un nombre
+      donné d'espaces, enfin la valeur de <emphasis>kval</emphasis>. Le nombre
+      variable d'espaces permet de répartir différentes valeurs sur l'écran, de
+      manière plus visible.
+    </para>
+
+    <para>
+      Cet opcode peut être exécuté à chaque cycle-k de l'instrument auquel il
+      appartient. Pour cela, il faut mettre <emphasis>itime</emphasis> à 0.
+    </para>
+
+    <para>
+      Si <emphasis>itime</emphasis> est différent de 0, l'opcode imprime sur le
+      premier cycle-k lors de son appel, puis chaque fois qu'une durée
+      <emphasis>itime</emphasis> s'est écoulée. Le temps commence à s'écouler à
+      partir de l'initialisation de l'opcode, typiquement à l'initialisation
+      de l'instrument.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode printk. Il utilise le fichier
+      <ulink url="examples/printk.csd"><citetitle>printk.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode printk.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/printk.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie contiendra des lignes comme :
+      <screen>
+ i   1 time     0.00002:     0.00000
+ i   1 time     1.00002:    20.01084
+ i   1 time     2.00002:    40.02999
+ i   1 time     3.00002:    60.04914
+ i   1 time     4.00002:    79.93327</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="printk2"><citetitle>printk2</citetitle></link> and
+      <link linkend="printks"><citetitle>printks</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Robin Whittle</member>
+        <member>Australie</member>
+        <member>Mai 1997</member>
+      </simplelist>
+    </para>
+    <para>Exemple écrit par &namekevin;.</para>
+
+    <para>Merci à Luis Jure pour avoir signalé une erreur concernant le
+    paramètre <emphasis>itime</emphasis>.</para>
+  </refsect1>
+</refentry>

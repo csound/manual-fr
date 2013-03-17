@@ -1,0 +1,118 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvsmaska">
+<indexterm id="IndexPvsmaska"><primary>pvsmaska</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsmaska</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvsmaska</refname>
+    <refpurpose>
+      Modifie les amplitudes en utilisant une table de fonction, avec mise à
+      l'échelle dynamique.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Modifie les amplitudes de <emphasis>fsrc</emphasis> en utilisant une table
+      de fonction, avec mise à l'échelle dynamique.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>fsig <command>pvsmaska</command> fsrc, ifn, kdepth</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn</emphasis> -- La table-f à utiliser. Si le <emphasis>fsrc</emphasis>
+      donné a N bins d'analyse, la table <emphasis>ifn</emphasis> doit être de
+      taille supérieure ou égale à N. Il n'est pas nécessaire de normaliser la
+      table, mais ses valeurs doivent être comprises entre 0 et 1. Elle peut
+      provenir de la partition de la manière habituelle ou bien de l'orchestre
+      en utilisant <link linkend="pvsinfo"><citetitle>pvsinfo</citetitle></link>
+      pour trouver la taille de <emphasis>fsrc</emphasis>, (retournée par
+      <emphasis>pvsinfo</emphasis> dans <emphasis>inbins</emphasis>), qui peut
+      ensuite être passée à <emphasis>ftgen</emphasis> pour créer la table-f.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kdepth</emphasis> -- Contrôle le degré de modification appliqué
+      à <emphasis>fsrc</emphasis>, en utilisant une simple échelle linéaire. 0
+      laisse les amplitudes inchangées, 1 applique le profil complet de
+      <emphasis>ifn</emphasis>.
+    </para>
+
+    <para>
+      Noter que les tailles de TFR en puissances de deux sont particulièrement
+      adaptées au traitement basé sur des tables, car le nombre de bins d'analyse
+      (<emphasis>inbins</emphasis>) est alors une puissance de deux plus un, pour
+      lequel une table-f correspondant exactement peut être créée. Dans ce cas
+      il est important que la table-f soit créée avec un taille de
+      <emphasis>inbins</emphasis> au lieu d'une puissance de deux, car sinon la
+      première valeur de la table sera copiée dans le point de garde, ce qui ne
+      convient pas pour cet opcode.
+    </para>
+    
+    <warning>
+      <para>
+        Il est dangereux d'utiliser la même variable-f à la fois comme entrée et
+        comme sortie des opcodes pvs. Ceci peut produire un comportement indéfini
+        de certains de ces opcodes. Utilisez une variable différente à gauche et
+        à droite de l'opcode.
+      </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode pvsmaska. Il utilise le fichier
+      <ulink url="examples/pvsmaska.csd"><citetitle>pvsmaska.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode pvsmaska.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pvsmaska.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="pvsanal"><citetitle>pvsanal</citetitle></link>,
+      <link linkend="pvsynth"><citetitle>pvsynth</citetitle></link>,
+      <link linkend="pvsadsyn"><citetitle>pvsadsyn</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namerichard;</member>
+        <member>Août 2001 </member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 4.13</para>
+  </refsect1>
+</refentry>

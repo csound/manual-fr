@@ -1,0 +1,98 @@
+<!--translated=yes
+authors= Yannick St-Onge
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="zkcl">
+<indexterm id="IndexZkcl"><primary>zkcl</primary></indexterm>
+  <refentryinfo><title>Zak Patch System</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>zkcl</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>zkcl</refname>
+    <refpurpose>
+      Efface une ou plusieurs variable dans l'espace zk.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Efface une ou plusieurs variable dans l'espace zk.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>zkcl</command> kfirst, klast</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ksig</emphasis> -- Le signal d'entrée
+    </para>
+
+    <para>
+      <emphasis>kfirst</emphasis> -- Première position zk ou za de l'intervalle à effacer.
+    </para>
+
+    <para>
+      <emphasis>klast</emphasis> -- Dernière position zk ou za de l'intervalle à effacer.
+    </para>
+
+    <para>
+      <emphasis>zkcl</emphasis> efface une ou plusieurs variables dans l'espace zk. Ceci est utile
+      pour les variables utilisées comme accumulateur pour mélanger des signaux de taux-k à chaque
+      cycle, mais qui doivent être effacés avant le prochain groupe de calculs.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode zkcl. Il utilise le fichier
+      <ulink url="examples/zkcl.csd"><citetitle>zkcl.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode zkcl.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/zkcl.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="zacl"><citetitle>zacl</citetitle></link>,
+      <link linkend="zkwm"><citetitle>zkwm</citetitle></link>,
+      <link linkend="zkw"><citetitle>zkw</citetitle></link>,
+      <link linkend="zkmod"><citetitle>zkmod</citetitle></link>,
+      <link linkend="zkr"><citetitle>zkr</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Robin Whittle</member>
+        <member>Australie</member>
+        <member>Mai 1997</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 3.45</para>
+    <para>Exemple écrit par &namekevin;.</para>
+  </refsect1>
+</refentry>

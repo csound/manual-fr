@@ -1,0 +1,129 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="resony">
+<indexterm id="IndexResony"><primary>resony</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Resonant</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>resony</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>resony</refname>
+    <refpurpose>
+      Une banque de filtres passe-bande du second ordre, connectés en parallèle.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Une banque de filtres passe-bande du second ordre, connectés en parallèle.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>resony</command> asig, kbf, kbw, inum, ksep [, isepmode] [, iscl] [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>inum</emphasis> -- nombre de filtres
+    </para>
+
+    <para>
+      <emphasis>isepmode</emphasis> (facultatif, 0 par défaut) -- si
+      <emphasis>isepmode</emphasis> = 0, la séparation des fréquences centrales
+      de chaque filtre est générée logarithmiquement (en utilisant l'octave
+      comme unité de mesure). Si <emphasis>isepmode</emphasis> est différent de
+      0, la séparation des fréquences centrales de chaque filtre est généralement
+      linéaire (en Hz). La valeur par défaut est 0.
+    </para>
+
+    <para>
+      <emphasis>iscl</emphasis> (facultatif, 0 par défaut) -- facteur de pondération codé pour les
+      résonateurs. Une valeur de 1 signifie que la crête du facteur de réponse est 1, c-à-d. toutes les
+      fréquences autres que <emphasis>kcf</emphasis> sont atténuées selon la courbe de réponse
+      (normalisée). Une valeur de 2 élève le facteur de réponse de façon à ce que sa valeur efficace
+      globale soit égale à 1. Cette égalisation intentionnelle des puissances d'entrée et de sortie
+      suppose que toutes les fréquences sont présentes ; elle est ainsi plus appropriée au bruit blanc.
+      Une valeur de 0 signifie aucune pondération du signal, laissant cette tâche à un ajustement
+      ultérieur (voir <link linkend="balance"><citetitle>balance</citetitle></link>). La valeur par
+      défaut est 0.
+    </para>
+
+    <para>
+      <emphasis>iskip</emphasis> (facultatif, 0 par défaut) -- état initial de l'espace de données interne.
+      Comme le filtrage comprend une boucle de rétroaction sur la sortie précédente, l'état initial de
+      l'espace de stockage utilisé est significatif. Une valeur nulle provoquera l'effacement de cet
+      espace ; une valeur non nulle autorisera la persistance de l'information précédente. La valeur par
+      défaut est 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- signal d'entrée audio
+    </para>
+
+    <para>
+      <emphasis>kbf</emphasis> -- fréquence de base, c-à-d fréquence centrale en
+      Hz du filtre le plus bas
+    </para>
+
+    <para>
+      <emphasis>kbw</emphasis> -- largeur de bande en Hz
+    </para>
+
+    <para>
+      <emphasis>ksep</emphasis> -- séparation de la fréquence centrale des filtres
+      en octaves
+    </para>
+
+    <para>
+      <emphasis>resony</emphasis> est une banque de filtres passe-bande du second
+      ordre, avec séparation des fréquences, fréquence de base et largeur de bande
+      variables au taux-k, connectés en parallèle (le signal résultant est un
+      mélange de la sortie de chaque filtre). La fréquence centrale de chaque
+      filtre dépend des variables <emphasis>kbf</emphasis> et
+      <emphasis>ksep</emphasis>. Le nombre maximum de filtres est limité à 100.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode resony. Il utilise le fichier
+      <ulink url="examples/resony.csd"><citetitle>resony.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode resony.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/resony.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+        <member>1999</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.56 de Csound.</para>
+  </refsect1>
+</refentry>

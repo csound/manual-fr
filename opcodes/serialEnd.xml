@@ -1,0 +1,68 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="serialEnd">
+<indexterm
+    id="IndexSerialEnd"><primary>serialEnd</primary></indexterm>
+
+  <refentryinfo><title>Serial I/O:</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>serialEnd</refentrytitle>
+  </refmeta>
+
+   <refnamediv>
+    <refname>serialEnd</refname>
+    <refpurpose>
+      Ferme un port série.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ferme un port série pour arduino.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+      <synopsis> <command>serialEnd</command> iPort</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iPort</emphasis> -- numéro du port obtenu d'un opcode
+      <emphasis>serialBegin</emphasis>.
+    </para>
+ </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="serialBegin"><citetitle></citetitle>serialBegin</link>,
+      <link linkend="serialWrite_i"><citetitle></citetitle>serialWrite_i</link>,
+      <link linkend="serialWrite"><citetitle></citetitle>serialWrite</link>,
+      <link linkend="serialRead"><citetitle></citetitle>serialRead</link>,
+      <link linkend="serialPrint"><citetitle></citetitle>serialPrint</link>,
+      <link linkend="serialFlush"><citetitle></citetitle>serialFlush</link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namematt;</member>
+        <member>2011</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.14</para>
+  </refsect1>
+</refentry>

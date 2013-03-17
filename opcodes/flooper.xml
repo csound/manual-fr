@@ -1,0 +1,115 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="flooper">
+<indexterm id="Indexflooper"><primary>flooper</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Sample Playback</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>flooper</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>flooper</refname>
+    <refpurpose>
+      Lecture en boucle basée sur une table de fonction avec fondu enchainé.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode lit les données audio d'une table de fonction et les restitue dans
+      une boucle dont le début, la durée et l'étendue du fondu enchainé sont fixés par
+      l'utilisateur. On peut également contrôler la hauteur de la boucle ainsi que
+      sa lecture à l'envers. Il accepte des tables dont la longueur n'est pas une
+      puissance de deux, telles que celles de GEN01 avec allocation différée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>asig <command>flooper</command> kamp, kpitch, istart, idur, ifad, ifn</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+        <para>
+      <emphasis>istart </emphasis> -- début de la boucle en secondes
+    </para>
+    <para>
+      <emphasis>idur </emphasis> -- durée de la boucle en secondes
+    </para>
+        <para>
+      <emphasis>ifad </emphasis> -- étendue du fondu enchainé en secondes
+    </para>
+        <para>
+      <emphasis>ifn </emphasis> -- numéro de la table de function, généralement créée
+      au moyen de GEN01
+    </para>
+
+</refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- signal de sortie
+    </para>
+    <para>
+      <emphasis>kamp</emphasis> -- contrôle de l'amplitude </para>
+    <para>
+      <emphasis>kpitch</emphasis> -- contrôle de la hauteur (rapport de transposition) ;
+      avec des valeurs négatives, la boucle est lue à l'envers.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      <example>
+        <programlisting>
+aout <emphasis role="opc">flooper</emphasis> 16000, 1, 1, 4, 0.05, 1  <emphasis role="comment">; loop starts at 1 sec, for 4 secs, 0.05 crossfade</emphasis>
+     <emphasis role="opc">out</emphasis>     aout</programlisting>
+      </example>
+    </para>
+
+    <para>
+      L'exemple ci-dessus montre l'opération de base de <emphasis>flooper</emphasis>.
+      La hauteur peut être contrôlée au taux-k ainsi que l'amplitude. L'exemple
+      suppose que la table 1 contient au moins 5.05 secondes de données audio (boucle
+      durant 4 secondes, commençant 1 seconde après le début de la table, avec un
+      fondu enchainé de 0.05 secondes après la fin de la boucle).
+    </para>
+
+    <para>
+      Voici un autre exemple de l'opcode flooper. Il utilise les fichiers
+      <ulink url="examples/flooper.csd"><citetitle>flooper.csd</citetitle></ulink>
+      et <ulink url="examples/fox.wav"><citetitle>fox.wav</citetitle></ulink>.
+      <example>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/flooper.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Avril 2005 </member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau greffon dans la version 5</para>
+    <para>Avril 2005.</para>
+  </refsect1>
+</refentry>

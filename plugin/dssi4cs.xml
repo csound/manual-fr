@@ -1,0 +1,44 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.2
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="dssi4cs">
+  <title>DSSI et LADSPA pour Csound</title>
+  
+  <para><emphasis>dssi4cs</emphasis> permet l'utilisation des effets et des synthétiseurs greffon DSSI et
+    LADSPA dans Csound sur Linux. Les opcodes suivants sont disponibles :</para>
+  
+  <itemizedlist>
+    <listitem><para>
+      <link linkend="dssiinit"><citetitle>dssiinit</citetitle></link> - Charge un greffon.</para>
+    </listitem>
+    <listitem><para>
+      <link linkend="dssiactivate"><citetitle>dssiactivate</citetitle></link> - Active ou désactive un
+      greffon si celui-ci le permet.</para>
+    </listitem>
+    <listitem><para>
+      <link linkend="dssilist"><citetitle>dssilist</citetitle></link> - Liste tous les greffons disponibles
+      trouvés dans les variables globales LADSPA_PATH et DSSI_PATH.</para>
+    </listitem>
+    <listitem><para>
+      <link linkend="dssiaudio"><citetitle>dssiaudio</citetitle></link> - Traitement audio au moyen d'un
+      greffon.</para>
+    </listitem>
+    <listitem><para>
+      <link linkend="dssictls"><citetitle>dssictls</citetitle></link> - Envoie une information de contrôle
+      sur le port de contrôle d'un greffon.</para>
+    </listitem>
+  </itemizedlist>
+  <para>
+    Voir l'entrée pour <link linkend="dssiinit"><citetitle>dssiinit</citetitle></link> pour un exemple
+    d'utilisation. 
+  </para>
+  <note>
+    <para>Actuellement seuls les greffons LADSPA sont supportés, mais le support de DSSI est programmé.</para>
+  </note>
+</section>

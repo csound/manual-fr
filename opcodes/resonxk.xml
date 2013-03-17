@@ -1,0 +1,110 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="resonxk">
+<indexterm id="IndexResonxk"><primary>resonxk</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>resonxk</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>resonxk</refname>
+    <refpurpose>
+     Pile de filtres à résonance de signal de contrôle.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+	    <emphasis>resonxk</emphasis> est équivalent à un groupe de filtres
+      <emphasis>resonk</emphasis>, avec les mêmes arguments, connectés en série.
+      Plus le nombre de filtres est grand et plus raide est la coupure.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kres <command>resonxk</command> ksig, kcf, kbw[, inumlayer, iscl, istor]</synopsis>
+  </refsect1>
+  
+   <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>inumlayer</emphasis> - nombre d'éléments de la pile de filtres.
+      La valeur par défaut est 4. La valeur maximale est 10.
+    </para>
+    <para>
+      <emphasis>iscl</emphasis> (facultatif, 0 par défaut) -- facteur de pondération codé pour les
+      résonateurs. Une valeur de 1 signifie que la crête du facteur de réponse est 1, c-à-d. toutes les
+      fréquences autres que <emphasis>kcf</emphasis> sont atténuées selon la courbe de réponse
+      (normalisée). Une valeur de 2 élève le facteur de réponse de façon à ce que sa valeur efficace
+      globale soit égale à 1. (Cette égalisation intentionnelle des puissances d'entrée et de sortie
+      suppose que toutes les fréquences sont présentes ; elle est ainsi plus appropriée au bruit blanc.)
+      Une valeur de 0 signifie aucune pondération du signal, laissant cette tâche à un ajustement
+      ultérieur (voir <link linkend="balance"><citetitle>balance</citetitle></link>). La valeur par
+      défaut est 0.
+    </para>
+    <para>
+      <emphasis>istor</emphasis> (optional, default=0) -- (facultatif, 0 par défaut) -- état initial de l'espace de données interne.
+      Comme le filtrage comprend une boucle de rétroaction sur la sortie précédente, l'état initial de
+      l'espace de stockage utilisé est significatif. Une valeur nulle provoquera l'effacement de cet
+      espace ; une valeur non nulle autorisera la persistance de l'information précédente. La valeur par
+      défaut est 0.
+    </para>
+
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kres</emphasis> - signal de sortie.
+    </para>
+    <para>
+      <emphasis>ksig</emphasis> - signal d'entrée.
+    </para>
+    <para>
+      <emphasis>kcf</emphasis> -  la fréquence centrale du filtre, ou position
+      fréquentielle du pic de la réponse.
+    </para>
+    <para>
+      <emphasis>kbw</emphasis> - largeur de bande du filtre (la différence en Hz
+      entre les points haut et bas à mi-puissance).
+    </para>
+
+    <para><emphasis>resonxk</emphasis> est bien plus rapide que l'utilisation
+      d'instances individuelles de l'ancien opcode dans un orchestre de Csound,
+      parce que ne sont nécessaires qu'une seule initialisation et qu'un cycle k
+      à la fois, et que la boucle audio est entièrement contenue dans la mémoire
+      cache du processeur.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode resonxk. Il utilise le fichier
+      <ulink url="examples/resonxk.csd"><citetitle>resonxk.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode resonxk.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/resonxk.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+   
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par &namegabriel;.</para>
+    <para>Nouveau dans Csound 5. (Disponible auparavant seulement dans CsoundAV).</para>
+  </refsect1>
+</refentry>
+

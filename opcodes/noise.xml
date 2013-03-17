@@ -1,0 +1,114 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="noise">
+<indexterm id="IndexNoise"><primary>noise</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Random (Noise) Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>noise</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>noise</refname>
+    <refpurpose>
+      Un générateur de bruit blanc avec un filtre passe-bas à RII.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Un générateur de bruit blanc avec un filtre passe-bas à RII.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>noise</command> xamp, kbeta</synopsis>
+  </refsect1>
+ 
+<!--  <refsect1>
+    <title>Initialisation</title>
+  </refsect1>-->
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>xamp</emphasis> -- amplitude de la sortie finale
+    </para>
+
+    <para>
+      <emphasis>kbeta</emphasis> -- beta du filtre passe-bas. Doit être compris
+      entre -1 et 1, à l'exclusion des extrémités (intervalle ouvert).
+    </para>
+
+    <para>
+      L'équation du filtre est :
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/noise-filter.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>[Equation du filtre dans l'opcode noise.]</phrase>
+        </textobject>
+
+<!--        <caption>
+          <para>A diagram showing the Poisson distribution.</para>
+        </caption>-->
+      </mediaobject>
+
+     où <emphasis>x<subscript>n</subscript></emphasis> est le bruit blanc original et
+     <emphasis>y<subscript>n</subscript></emphasis> est le bruit filtré. Plus &beta; est élevé,
+     plus basse est la fréquence de coupure du filtre. La fréquence de coupure vaut
+     approximativement <emphasis>sr</emphasis> * ((1 - <emphasis>kbeta</emphasis>) / 2).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode noise. Il utilise le fichier
+      <ulink url="examples/noise.csd"><citetitle>noise.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode noise.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/noise.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Voici un exemple de l'opcode noise dans lequel on contrôle le paramètre <emphasis>kbeta</emphasis>
+      au moyen d'une interface graphique. Il utilise le fichier
+      <ulink url="examples/noise-2.csd"><citetitle>noise-2.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode noise contrôlé par une interface graphique.</title>
+
+          <xi:include href="examples-xml/noise-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Université de Bath, Codemist. Ltd.</member>
+        <member>Bath, UK</member>
+        <member>Décembre 2000</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 4.10 de Csound</para>
+  </refsect1>
+</refentry>

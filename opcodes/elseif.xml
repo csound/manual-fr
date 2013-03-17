@@ -1,0 +1,97 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="elseif">
+<indexterm id="IndexElseif"><primary>elseif</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Program Flow Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>elseif</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>elseif</refname>
+    <refpurpose>
+      Définit une autre condition &quot;if...then&quot; lorsqu'une condition
+      &quot;if...then&quot; est fausse.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Définit une autre condition &quot;if...then&quot; lorsqu'une condition
+      &quot;if...then&quot; est fausse.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>elseif</command> xa R xb <command>then</command></synopsis>
+
+    <para>
+      où <emphasis>R</emphasis> est un des opérateurs relationnels
+      (<emphasis>&lt;</emphasis>, <emphasis>=</emphasis>, <emphasis>&lt;=</emphasis>,
+      <emphasis>==</emphasis>, <emphasis>!=</emphasis>) (et <emphasis>=</emphasis> par
+      commodité, voir aussi <link linkend="ControlConditional"><citetitle>Valeurs
+      Conditionnelles</citetitle></link>).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>elseif</emphasis> est utilisé dans un bloc de code entre les opcodes
+      <link linkend="if"><citetitle>&quot;if...then&quot;</citetitle></link> et
+      <link linkend="endif"><citetitle>endif</citetitle></link>. Lorsqu'une condition
+      &quot;if...then&quot; est fausse, cela définit une autre condition
+      &quot;if...then&quot; à tester. On peut utiliser n'importe quel nombre
+      d'instructions <emphasis>elseif</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode elseif. Il utilise le fichier
+      <ulink url="examples/elseif.csd"><citetitle>elseif.csd</citetitle></ulink>.
+            <example>
+        <title>Exemple de l'opcode elseif.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/elseif.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="else"><citetitle>else</citetitle></link>,
+      <link linkend="endif"><citetitle>endif</citetitle></link>,
+      <link linkend="goto"><citetitle>goto</citetitle></link>,
+      <link linkend="if"><citetitle>if</citetitle></link>,
+      <link linkend="igoto"><citetitle>igoto</citetitle></link>,
+      <link linkend="kgoto"><citetitle>kgoto</citetitle></link>,
+      <link linkend="tigoto"><citetitle>tigoto</citetitle></link>,
+      <link linkend="timout"><citetitle>timout</citetitle></link>
+    </para>
+    
+    <para>
+      Plus d'information sur cet opcode :
+      <ulink url="http://www.csounds.com/journal/2006spring/controlFlow.html"><citetitle>http://www.csounds.com/journal/2006spring/controlFlow.html</citetitle></ulink>,
+      écrit par Steven Yi.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Nouveau dans la version 4.21</para>
+  </refsect1>
+</refentry>

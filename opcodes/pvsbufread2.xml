@@ -1,0 +1,135 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvsbufread2">
+<indexterm id="Indexpvsbufread2"><primary>pvsbufread2</primary></indexterm>
+
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsbufread2</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>pvsbufread2</refname>
+    <refpurpose>
+      Lit un tampon circulaire de signaux-f (signaux PV en flot), avec des retards
+      de bin additionnels.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode lit à partir d'un tampon circulaire de longueur
+      <emphasis>ilen</emphasis> (secondes), prenant un identificateur pour le
+      tampon et un pointeur temporel qui conserve la position de lecture
+      courante (aussi en secondes). Il est utilisé en conjonction avec un
+      opcode <emphasis>pvsbuffer</emphasis>. La lecture est circulaire avec
+      repliement à la fin du tampon. Des retards temporels supplémentaires
+      proviennent d'une table de fonction, chaque point définissant un retard
+      temporel en secondes affectant le bin correspondant.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>fsig <command>pvsbufread2</command>  ktime, khandle, ift1, ift2 </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ift1</emphasis> -- table de fonction d'au moins
+      (taille de TFR)/2+1 points dans laquelle les délais (en secondes) pour les
+      amplitudes de bin sont fixés (les positions dans la table de fonction sont
+      équivalentes aux numéros de bin).
+    </para>
+    <para>
+      <emphasis>ift2</emphasis> -- table de fonction d'au moins
+      (taille de TFR)/2+1 points dans laquelle les délais (en secondes) pour les
+      fréquences de bin sont fixés (les positions dans la table de fonction sont
+      équivalentes aux numéros de bin).
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>fsig</emphasis> -- flot pv en sortie.
+    </para>
+   <para>
+      <emphasis>ktime</emphasis> -- position temporelle du pointeur de lecture
+      (en secondes).
+    </para>
+    <para>
+      <emphasis>khandle</emphasis> -- identifiant du tampon à lire. Lorsque l'on
+      utilise des identifiants de taux-k, il est important d'initialiser la variable
+      de taux-k avec un identifiant existant. Lorsque l'on change de tampon, les
+      différents tampons de fsig doivent être compatibles (même format de fsig).
+    </para>
+    <para>
+      Avec cet opcode et <link linkend="pvsbuffer"><citetitle>pvsbuffer</citetitle></link>,
+      il est possible entre autres de:
+      <itemizedlist>
+        <listitem><simpara>étirer/compresser dans le temps un flot fsig, en le
+        lisant à différentes vitesses</simpara></listitem>
+        <listitem><simpara>retarder un fsig ou certaines de ses parties.</simpara></listitem>
+        <listitem><simpara>"brasser" deux ou plusieurs fsigs en alternant les
+        tampons, car les identifiants de lecture sont de taux-k. Noter que
+        lorsque l'on utilise des identifiants de taux-k, il est important
+        d'initialiser la variable de taux-k avec un identifiant donné (afin que
+        l'initialisation du fsig puisse avoir lieu) et on ne peut changer
+        d'identifiant qu'entre des tampons de fsig compatibles (avec les mêmes
+        taille de TFR et de recouvrement).</simpara></listitem>
+      </itemizedlist>
+    </para>
+    <note>
+      <para>
+        Il est important que la valeur de l'identifant passé à
+        <emphasis>pvsbufread2</emphasis> soit celle d'un identifiant valide créé par
+        <link linkend="pvsbuffer"><citetitle>pvsbuffer</citetitle></link>. Avec des
+        identifiants non valides, Csound plantera.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode pvsbufread2. Il utilise le fichier
+      <ulink url="examples/pvsbufread2.csd"><citetitle>pvsbufread2.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode pvsbufread2.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/pvsbufread2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="pvsanal"><citetitle>pvsanal</citetitle></link>,
+      <link linkend="pvsynth"><citetitle>pvsynth</citetitle></link>,
+      <link linkend="pvsbuffer"><citetitle>pvsbuffer</citetitle></link>,
+      <link linkend="pvsadsyn"><citetitle>pvsadsyn</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur: &namevictor;</member>
+        <member>Juillet 2011</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,53 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="strupper">
+<indexterm id="Indexstrupper"><primary>strupper</primary></indexterm>
+  <refentryinfo><title>Strings:Conversion</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>strupper</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>strupper</refname>
+    <refpurpose>
+      Convertit une chaîne de caractères en majuscules.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Convertit <emphasis>Ssrc</emphasis> en majuscules, et écrit le résultat
+      dans <emphasis>Sdst</emphasis>. <emphasis>strupper</emphasis> ne s'exécute
+      que pendant l'initialisation.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>Sdst <command>strupper</command> Ssrc</synopsis>
+  </refsect1>
+
+  <refsect1>
+	  <title>Voir aussi</title>
+	  <para><link linkend="strupperk"><citetitle>strupperk</citetitle></link></para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Istvan Varga</member>
+        <member>2006</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.02</para>
+  </refsect1>
+</refentry>

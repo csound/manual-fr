@@ -1,0 +1,117 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.3
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="bformdec1">
+<indexterm id="IndexBformdec1"><primary>bformdec1</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Panning and Spatialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>bformdec1</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>bformdec1</refname>
+    <refpurpose>
+      Décode un signal au format ambisonic B.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Décode un signal au format ambisonic B en signaux de haut-parleur spécifiques.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ao1, ao2 <command>bformdec1</command> isetup, aw, ax, ay, az [, ar, as, at, au, av \
+      [, abk, al, am, an, ao, ap, aq]]</synopsis>
+    <synopsis>ao1, ao2, ao3, ao4 <command>bformdec1</command> isetup, aw, ax, ay, az [, ar, as, at, \
+      au, av [, abk, al, am, an, ao, ap, aq]]</synopsis>
+    <synopsis>ao1, ao2, ao3, ao4, ao5 <command>bformdec1</command> isetup, aw, ax, ay, az [, ar, as, \
+      at, au, av [, abk, al, am, an, ao, ap, aq]]</synopsis>
+    <synopsis>ao1, ao2, ao3, ao4, ao5, ao6, ao7, ao8 <command>bformdec1</command> isetup, aw, ax, ay, az \
+      [, ar, as, at, au, av [, abk, al, am, an, ao, ap, aq]]]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+
+    <para>
+      Noter que les angles horizontaux sont mesurés dans le sens contraire des
+      aiguilles d'une montre dans cette description.
+    </para>
+    <para>
+      <emphasis>isetup</emphasis> –- réglage de haut-parleur. Cinq réglages sont
+      supportés : 
+      <itemizedlist>
+        <listitem>1.  Stéréo - L(90), R(-90) ; c'est un décodage stéréo dans le
+          style M+S.</listitem>
+        <listitem>2.	Quadraphonique - FL(45), BL(135), BR(-135), FR(-45). C'est
+          un décodage "en phase" du premier ordre.</listitem>
+        <listitem>3.	5.0 - L(30), R(-30), C(0), BL(110), BR(-110). Noter que
+          beaucoup de gens n'utilisent pas les angles ci-dessus pour leur grille
+          de haut-parleurs et on peut réaliser un bon décodage pour DVD, etc en
+          utilisant la configuration quadraphonique pour alimenter L, R, BL et BR
+          (laissant C silencieux).</listitem>
+        <listitem>4.	Octogone - FFL(22.5), FLL(67.5), BLL(112.5), BBL(157.5),
+          BBR(-157.5), BRR(-112.5), FRR(-67.5), FFR(-22.5). C'est un décodage
+          "en phase" de premier, deuxième ou troisième ordre en fonction du
+          nombre de canaux en entrée.</listitem>
+        <listitem>5.	Cube - FLD(45, -35.26), FLU(45, 35.26), BLD(135, -35.26),
+          BLU(135, 35.26), BRD(-135, -35.26), BRU(-135, 35.26), FRD(-45, -35.26),
+          FRU(-45, 35.26). C'est un décodage "en phase" du premier ordre.</listitem>
+      </itemizedlist>
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+  	<para><emphasis>aw, ax, ay, ... </emphasis> -- signal d'entrée au format B.</para>
+
+    <para><emphasis>ao1 .. ao8</emphasis> -– signaux de haut-parleur spécifiques en
+      sortie.</para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode bformdec1. Il utilise le fichier
+      <ulink url="examples/bformenc1.csd"><citetitle>bformenc1.csd</citetitle></ulink>.
+
+    <example>
+      <title>Exemple de l'opcode bformdec1.</title>
+      <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+      et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+      d'information sur l'utilisation des options de la ligne de commande.</para>
+      <xi:include href="examples-xml/bformenc1.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="bformenc1"><citetitle>bformenc1</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteurs : Richard Furse, Bruce Wiggins et Fons
+          Adriaensen, d'après le code de Samuel Groner</member>
+        <member>2008</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.09</para>
+  </refsect1>
+</refentry>

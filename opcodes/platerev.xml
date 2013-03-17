@@ -1,0 +1,124 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="platerev">
+<indexterm id="IndexPlaterev"><primary>platerev</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Reverberation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>platerev</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>platerev</refname>
+    <refpurpose>
+      Modélise la réverbération d'une plaque métallique.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Modélise la réverbération d'une plaque métallique rectangulaire avec des
+      caractéristiques physiques ajustables lorsqu'elle est excitée par des
+      signaux audios.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>a1[, a2, ...] <command>platerev</command> itabexcite. itabouts, kbndry, iaspect, istiff, idecay, iloss, aexcite1[, aexcite2, ...]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>itabexcite</emphasis> -- numéro d'une table contenant un triplet
+      pour chaque signal d'excitation (fréquence, rayon, phase initiale en
+      radians). Le rayon doit être inférieur à 1. Ceux-ci contrôlent l'endroit où
+      l'excitation se produit. Les valeurs dans la table pour la fréquence et le
+      rayon peuvent être changée durant l'exécution avec le risque de clics si
+      les changements sont trop importants.
+    </para>
+    
+    <para>
+      <emphasis>itabouts</emphasis> -- numéro d'une table contenant un triplet
+      pour chaque signal de sortie (fréquence, rayon, phase initiale en radians).
+      Voir la description de <emphasis>itabexcite</emphasis>.
+    </para>
+    
+    <para>
+      <emphasis>kbndry</emphasis> -- conditions aux limites de la plaque ;
+      0 = libre, 1 = fixée, 2 = pivotante. Les autres valeurs sont indéfinies.
+      Ce paramètre peut être changé au taux-k, au risque de l'apparition de
+      clics.
+    </para>
+    
+    <para>
+      <emphasis>iaspect</emphasis> -- rapport d'aspect de la plaque qui doit
+      être inférieur ou égal à 1.
+    </para>
+    
+    <para>
+      <emphasis>istiff</emphasis> -- paramètre de raideur de la plaque (fixé
+      autour de 1 ou à une valeur inférieure pour une réverbération de plaque).
+    </para>
+    
+    <para>
+      <emphasis>idecay</emphasis> -- temps de décroissance à 30 db. 
+    </para>
+    
+    <para>
+      <emphasis>iloss</emphasis> -- paramètre de perte des hautes fréquences
+      (une valeur d'environ 0.001 est recommandée).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Une plaque métallique est excitée par un signal stéréo et la réverbération
+      résultante est prélevée.
+    </para>
+    
+    <para>
+      <emphasis>aexcite</emphasis>n -- signaux d'excitation à injecter dans la
+      plaque.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode platerev. Il utilise le fichier
+      <ulink url="examples/plate.csd"><citetitle>plate.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode platerev.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/plate.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Stefan Bilbao </member>
+        <member>Université d'Edimbourg, UK</member>
+        <member>Auteur : &namejohn; </member>
+        <member>Université de Bath, Codemist Ltd.</member>
+        <member>Bath, UK</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 5.17.12 de Csound.</para>
+  </refsect1>
+</refentry>

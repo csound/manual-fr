@@ -1,0 +1,133 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.3
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="GENtanh">
+      <indexterm id="IndexGENtanh"><primary>GENtanh</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GENtanh</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>"tanh"</refname>
+    <refpurpose>
+      Génère une table avec les valeurs de la fonction tanh.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Crée une table avec les valeurs de la fonction tanh.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>f</command> # time size "tanh" start end rescale</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>size</emphasis> -- nombre de points dans la table. Doit être une
+      puissance de 2 ou une puissance-de-2 plus 1 (voir
+      l'<link linkend="f"><citetitle>instruction f</citetitle></link>).
+    </para>
+
+    <para>
+      <emphasis>start, end</emphasis> -- la première et la dernière valeur à
+      mémoriser ; le GEN dessine une courbe qui va de <emphasis>start</emphasis>
+      à <emphasis>end</emphasis> : <emphasis>tanh(start)</emphasis> ...
+      <emphasis>tanh(end)</emphasis>.
+      Les points mis en mémoire sont répartis uniformément entre ces
+      deux valeurs sur la longueur de la table.
+    </para>
+    <para>
+      <emphasis>rescale</emphasis> -- s'il est différent de zéro, la table n'est
+      pas normalisée.
+    </para>
+
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple simple de la routine GENtanh. Il utilise le fichier
+      <ulink url="examples/gentanh.csd"><citetitle>gentanh.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de la routine GENtanh.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/gentanh.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>  
+        <textobject>
+        <phrase>Voici les diagrammes des formes d'onde des routines GENtanh
+          utilisées dans l'exemple :</phrase>
+        </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gentanh_1.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>  f 2 0 8192 "tanh" -100 100 0 - beaucoup de distorsion</phrase>
+        </textobject>
+
+        <caption>
+          <para>  f 2 0 8192 "tanh" -100 100 0 - beaucoup de distorsion</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gentanh_2.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>  f 3 0 8192 "tanh" -10 10 0 - moins de distorsion que f2</phrase>
+        </textobject>
+
+        <caption>
+          <para>  f 3 0 8192 "tanh" -10 10 0 - moins de distorsion que f2</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gentanh_3.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>  f 4 0 8192 "tanh" -10 15 0</phrase>
+        </textobject>
+
+        <caption>
+          <para>  f 4 0 8192 "tanh" -10 15 0</para>
+        </caption>
+      </mediaobject>
+    </para>
+  </refsect1>
+
+  <refsect1>
+     <title>Voir aussi</title>
+     <para>
+       <link linkend="GENexp"><citetitle>GENexp</citetitle></link> and
+       <link linkend="GENsone"><citetitle>GENsone</citetitle></link>.
+       <para>Plus d'information sur cette routine :
+       <ulink url="http://www.csounds.com/journal/issue11/distortionSynthesis.html">
+       <citetitle>http://www.csounds.com/journal/issue11/distortionSynthesis</citetitle></ulink>, écrit par Victor Lazzarini</para>
+     </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par &namejohn;</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,91 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="imagesize">
+  <indexterm id="IndexImagesize"><primary>imagesize</primary></indexterm>
+  <refentryinfo><title>Image Processing Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>imagesize</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>imagesize</refname>
+    <refpurpose>
+      Retourne la largeur et la hauteur d'une image précédemment ouverte ou créée.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne la largeur et la hauteur d'une image précédemment ouverte ou créée.
+      On peut charger une image avec
+      <link linkend="imageload"><citetitle>imageload</citetitle></link>. On peut
+      créer un image vide avec
+      <link linkend="imagecreate"><citetitle>imagecreate</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>iwidth, iheight <command>imagesize</command> iimagenum</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iimagenum</emphasis> -- la référence de l'image. C'est une valeur
+      retournée par
+      <link linkend="imageload"><citetitle>imageload</citetitle></link> ou par
+      <link linkend="imagecreate"><citetitle>imagecreate</citetitle></link>.
+    </para>
+    <para>
+      <emphasis>iwidth</emphasis> -- largeur de l'image.
+    </para>
+    <para>
+      <emphasis>iheight</emphasis> -- hauteur de l'image.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode imagesize. Il utilise le fichier
+      <ulink url="examples/imageopcodes.csd"><citetitle>imageopcodes.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode imagesize.</title>
+        <xi:include href="examples-xml/imageopcodes.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Sa sortie contiendra une ligne comme celle-ci :
+      <screen>imagewidth = 180.000000 pixels, imageheigth = 135.000000 pixels</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="imageload"><citetitle>imageload</citetitle></link>,
+      <link linkend="imagecreate"><citetitle>imagecreate</citetitle></link>,
+      <link linkend="imagesave"><citetitle>imagesave</citetitle></link>,
+      <link linkend="imagegetpixel"><citetitle>imagegetpixel</citetitle></link>,
+      <link linkend="imagesetpixel"><citetitle>imagesetpixel</citetitle></link>,
+      <link linkend="imagefree"><citetitle>imagefree</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Cesare Marilungo</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.08</para>
+  </refsect1>
+</refentry>

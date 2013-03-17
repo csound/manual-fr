@@ -1,0 +1,209 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="hilbert">
+<indexterm id="IndexHilbert"><primary>hilbert</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Specialized Filters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>hilbert</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>hilbert</refname>
+    <refpurpose>
+      Une transformée de Hilbert.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Une implémentation RII de la transformée de Hilbert.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ar1, ar2 <command>hilbert</command> asig</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- signal d'entrée.
+    </para>
+
+    <para>
+      <emphasis>ar1</emphasis> -- sortie sinus de <emphasis>asig</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>ar2</emphasis> -- sortie cosinus de <emphasis>asig</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>hilbert</emphasis> est un filtre RII basé sur l'implémentation
+      d'un réseau déphaseur de 90 degrés à large bande. L'entrée de
+      <emphasis>hilbert</emphasis> est un signal audio dont la fréquence peut
+      aller de 15 Hz à 15 kHz. Les sorties de <emphasis>hilbert</emphasis> ont
+      la même réponse en fréquence que l'entrée (même sonorité), mais les deux
+      sorties ont un déphasage constant de 90 degrés, plus ou moins un petit
+      delta d'erreur, sur toute la gamme de fréquence. Les sorties sont en
+      quadrature de phase.
+    </para>
+
+    <para>
+      <emphasis>hilbert</emphasis> est utile dans l'implémentation de plusieurs
+      techniques de traitement numérique du signal en quadrature de phase.
+      <emphasis>ar1</emphasis> correspond à la sortie cosinus de
+      <emphasis>hilbert</emphasis>, tandis que <emphasis>ar2</emphasis> correspond
+      à la sortie sinus. Les deux sorties ont un déphasage constant sur tout
+      l'intervalle audio correspondant à la relation de phase entre une onde
+      cosinus et une onde sinus.
+    </para>
+
+    <para>
+      En interne, <emphasis>hilbert</emphasis> est basé sur deux filtres
+      passe-tout du sixième ordre en parallèle. Chaque filtre passe-tout
+      implémente un retard qui augmente avec la fréquence ; la différence entre
+      les retards de phase des filtres passe-tout en parallèle est approximativement
+      de 90 degrés en n'importe quel point.
+    </para>
+
+    <para>
+      Contrairement à une transformée de Hilbert à RIF, la sortie de
+      <emphasis>hilbert</emphasis> n'a pas une réponse en phase linéaire. Cependant,
+      la structure à RII utilisée dans <emphasis>hilbert</emphasis> est calculée
+      de manière bien plus efficace, et la réponse en phase non-linéaire peut
+      être utilisée pour créer des effets audio intéressants, comme dans le
+      deuxième exemple ci-dessous.
+    </para>
+  </refsect1>
+
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Le premier example implémente un décalage de fréquence, ou modulation
+      d'amplitude à bande latérale unique. Le décalage de fréquence est semblable
+      à la modulation en anneau, sauf que les bandes latérales supérieure et
+      inférieure sont séparées sur des sorties différentes. En n'utilisant qu'une
+      seule de ces sorties, le signal d'entrée peut être &quot;désaccordé&quot;
+      car le décalage des composants du signal détruit leur relation harmonique ;
+      par exemple, un signal d'harmoniques à 100, 200, 300, 400 et 500 Hz, décalé
+      vers le haut de 50 Hz, aura ses composants placés à 150, 250, 350, 450 et
+      550 Hz.
+    </para>
+
+    <para>
+      Premier exemple de l'opcode hilbert. Il utilise les fichiers
+      <ulink url="examples/hilbert.csd"><citetitle>hilbert.csd</citetitle></ulink>
+      et <ulink url="examples/beats.wav"><citetitle>beats.wav</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode hilbert implmentant le décalage de fréquence.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/hilbert.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+    <para>
+      Le second exemple est une variation du premier, mais avec réinjection de
+      la sortie dans l'entrée. Avec de très petits décalages (entre 0 et +-6 Hz),
+      le résultat est un son qui a été décrit comme un <quote>déphaseur en enseigne
+      de salon de coiffure américain</quote> ou comme un <quote>déphaseur en gamme
+      de Shepard</quote>. Plusieurs creux apparaissent dans le spectre et glissent
+      à vitesse constante dans la direction opposée au décalage, produisant un
+      effet de filtrage rappelant le <quote>glissando sans fin</quote> de Risset.
+    </para>
+
+    <para>
+      Second exemple de l'opcode hilbert. Il utilise le fichier
+      <ulink url="examples/hilbert_barberpole.csd"><citetitle>hilbert_barberpole.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode hilbert sonnant comme une <quote>enseigne de
+        coiffeur</quote>.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/hilbert_barberpole.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Historique Technique</title>
+    <para>
+      L'utilisation de réseaux déphaseurs dans le décalage de fréquence fut
+      initialisée par Harald Bode<superscript>1</superscript>. Bode et Bob Moog
+      donnent une excellente description de l'implémentation et de l'utilisation
+      du décalage de fréquence dans le domaine analogique dans <superscript>2</superscript> ;
+      c'est une source excellente pour une première exploration des possibilités
+      de la modulation à bande larérale unique. Bernie Hutchins donne plus
+      d'applications du décalage de fréquence ainsi qu'une analyse technique
+      détaillée <superscript>3</superscript>. Un papier récent de Scott
+      Wardle<superscript>4</superscript> décrit une implémentation numérique du
+      décalage de fréquence ainsi que quelques applications uniques.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Références</title>
+    <para>
+      <orderedlist>
+        <listitem>
+          <para>
+            H. Bode, &quot;Solid State Audio Frequency Spectrum Shifter.&quot;
+            AES Preprint No. 395 (1965).
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            H. Bode and R.A. Moog, &quot;A High-Accuracy Frequency Shfiter for
+            Professional Audio Applications.&quot; <emphasis>Journal of the Audio
+            Engineering Society</emphasis>, Juillet/Août 1972, vol. 20, no. 6, p. 453.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            B. Hutchins. <emphasis>Musical Engineer's Handbook</emphasis>
+            (Ithaca, NY: Electronotes, 1975), ch. 6a.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            S. Wardle, &quot;A Hilbert-Transformer Frequency Shifter for Audio&quot;.
+            Accessible en ligne à
+            <ulink url="http://www.iua.upf.es/dafx98/papers/"><citetitle>http://www.iua.upf.es/dafx98/papers/</citetitle></ulink>.
+          </para>
+        </listitem>
+      </orderedlist>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namesean;</member>
+        <member>Seattle, Washington</member>
+        <member>1999</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.55 de Csound.</para>
+    <para>Les exemples ont été mis à jour en avril 2002. L'exemple barberpole a été corrigé par &namesean;.</para>
+  </refsect1>
+</refentry>

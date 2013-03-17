@@ -1,0 +1,137 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vrandh">
+<indexterm id="IndexVrandh"><primary>vrandh</primary></indexterm>
+  <refentryinfo><title>Vectorial:Random</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vrandh</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vrandh</refname>
+    <refpurpose>
+      Génère un vecteur de nombre aléatoires stockés dans une table, en maintenant
+      les valeurs pendant une certaine durée.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère un vecteur de nombre aléatoires stockés dans une table, en maintenant
+      les valeurs pendant une certaine durée. Génère une sorte de "bruit vectoriel
+      à bande limitée".
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>vrandh</command>  ifn,  krange, kcps, ielements [, idstoffset] [, iseed] \
+      [, isize] [, ioffset]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn</emphasis> - numéro de la table dans laquelle le signal
+      vectoriel sera généré.
+    </para>
+    <para>
+      <emphasis>ielements</emphasis> - nombre de composantes du vecteur.
+    </para>
+    <para>
+      <emphasis>idstoffset</emphasis> - (facultatif, 0 par défaut) - décalage
+      d'indexation pour la table de destination.
+    </para>
+    <para>
+      <emphasis>iseed</emphasis> (facultatif, 0.5 par défaut) - valeur de la graine
+      pour la formule récursive des nombres pseudo-aléatoires. Une valeur entre
+      0 et +1 produira comme sortie initiale <emphasis>kamp</emphasis> *
+      <emphasis>iseed</emphasis>. Avec une valeur négative, la réinitialisation
+      de la graine sera ignorée. Avec une valeur supérieure à 1, la graine viendra
+      de l'horloge système, ceci étant la meilleure option pour générer une
+      séquence aléatoire différente à chaque exécution.
+    </para>
+    <para>
+      <emphasis>isize</emphasis> (facultatif, 0 par défaut) - s'il vaut zéro,
+      un nombre sur 16 bit est généré. S'il est différent de zéro, un nombre
+      aléatoire sur 31 bit est généré. Vaut 0 par défaut.
+    </para>
+    <para>
+      <emphasis>ioffset</emphasis> - (facultatif, 0 par défaut) - une valeur de
+      base ajoutée au résultat aléatoire.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+       <para>
+      <emphasis>krange</emphasis> - intervalle des éléments alétoires (entre
+      -<emphasis>krange</emphasis> et <emphasis>krange</emphasis>).
+    </para>
+    <para>
+      <emphasis>kcps</emphasis> - taux de génération des éléments en Hz.
+    </para>
+    <para>
+      Cet opcode est semblable à
+      <link linkend="randh"><citetitle>randh</citetitle></link>, mais il opère
+      sur des vecteurs au lieu de valeurs scalaires.
+    </para>
+    <para>
+      Bien que l'argument <emphasis>isize</emphasis> soit nul par défaut, ce qui
+      induit l'utilisation d'un générateur de nombres aléatoires sur 16 bit, il
+      est recommandé d'utiliser l'algorithme sur 31 bit plus récent car il
+      produit une séquence aléatoire avec une période plus longue (plus de
+      nombre aléatoires avant que la séquence ne se répète).
+    </para>
+    <para>
+      Le vecteur de sortie est contenu dans <emphasis>ifn</emphasis> (qui doit
+      avoir été allouée au préalable).
+    </para>
+    <para>
+      Tous ces opcodes sont conçus pour être utilisés avec d'autres opcodes
+      qui opèrent sur des vecteurs comme <emphasis>bmscan</emphasis>,
+      <link linkend="adsynt"><citetitle>adsynt</citetitle></link>, etc.
+    </para>
+    <para>
+      <emphasis>Note</emphasis> : <emphasis>bmscan</emphasis> n'est pas encore
+      disponible dans la version canonique de Csound.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode vrandh. Il utilise le fichier
+      <ulink url="examples/vrandh.csd"><citetitle>vrandh.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode vrandh.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/vrandh.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="vrandi"><citetitle>vrandi</citetitle></link>, 
+      <link linkend="randh"><citetitle>randh</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par Gabriel Maldonado.</para>
+    <para>Nouveau dans Csound 5 (Auparavant seulement disponible dans CsoundAV)</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,160 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="fog">
+<indexterm id="IndexFog"><primary>fog</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Granular Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>fog</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>fog</refname>
+    <refpurpose>
+      La sortie audio est une succession de grains obtenus à partir des données d'une table de
+      fonction.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      La sortie audio est une succession de grains obtenus à partir des données de la table de
+      fonction <emphasis>ifna</emphasis>. L'enveloppe locale de ces grains et leur distribution temporelle
+      sont basées sur le modèle de la synthèse <emphasis>fof</emphasis> et permettent un contrôle détaillé
+      de la synthèse granulaire.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>fog</command> xamp, xdens, xtrans, aspd, koct, kband, kris, kdur, kdec, \
+      iolaps, ifna, ifnb, itotdur [, iphs] [, itmode] [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iolaps</emphasis> -- quantité de mémoire préallouée nécessaire pour contenir les données
+      de chevauchement des grains. Les chevauchements dépendent de la densité, et l'espace requis dépend
+      de la valeur maximale de <emphasis>xdens * kdur</emphasis>. La surestimation de cet espace n'induit
+      pas de coût de calcul supplémentaire. Chaque <emphasis>iolap</emphasis> utilise moins de 50 octets
+      de mémoire.
+    </para>
+
+    <para>
+      <emphasis>ifna, ifnb</emphasis> -- numéros de table de deux fonctions. La première contient les
+      données utilisées pour la granulation, provenant habituellement d'un fichier son
+      (<link linkend="GEN01"><citetitle>GEN01</citetitle></link>). La seconde est une forme ascendante,
+      utilisée à l'endroit et à l'envers pour dessiner l'attaque et la chute des grains ; cette forme est
+      normalement une sigmoïde (<link linkend="GEN19"><citetitle>GEN19</citetitle></link>) mais elle peut
+      être aussi linéaire (<link linkend="GEN05"><citetitle>GEN05</citetitle></link>).
+    </para>
+
+    <para>
+      <emphasis>itotdur</emphasis> -- durée totale durant laquelle ce <emphasis>fog</emphasis> sera actif.
+      Fixée normalement à p3. Aucun nouveau grain n'est créé si son <emphasis>kdur</emphasis> n'est pas
+      contenu complètement dans le <emphasis>itotdur</emphasis> restant.
+    </para>
+
+    <para>
+      <emphasis>iphs</emphasis> (facultatif) -- phase initiale du fondamental, exprimée comme une fraction
+      d'une période (0 à 1). La valeur par défaut est 0.
+    </para>
+
+    <para>
+      <emphasis>itmode</emphasis> (facultatif) -- type de transposition. S'il est nul, chaque grain garde
+      la valeur <emphasis>xtrans</emphasis> avec laquelle il a été amorcé. Sinon, chaque grain est
+      influencé par <emphasis>xtrans</emphasis> de manière continue. La valeur par défaut est 0.
+    </para>
+
+    <para>
+      <emphasis>iskip</emphasis> (facultatif, par défaut 0) -- s'il est non nul, l'initialisation est
+      ignorée (ce qui permet l'utilisation du legato).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>xamp</emphasis> -- facteur d'amplitude. L'amplitude dépend également du nombre de grains
+      se chevauchant, de l'interaction de la forme montante (<emphasis>ifnb</emphasis>) et de la chute
+      exponentielle (<emphasis>kband</emphasis>), et des valeurs de la forme d'onde du grain
+      (<emphasis>ifna</emphasis>). L'amplitude réelle peut ainsi dépasser <emphasis>xamp</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>xdens</emphasis> -- densité. Nombre de grains par seconde.
+    </para>
+
+    <para>
+      <emphasis>xtrans</emphasis> -- facteur de transposition. Le taux de lecture des données de la table
+      de fonction <emphasis>ifna</emphasis> dans chaque grain. Il a pour effet de tranposer le matériel
+      original. Une valeur de 1 produit la hauteur originale. Les valeurs supérieures à 1 transposent vers
+      le haut tandis que les valeurs inférieures à 1 le font vers le bas. Les valeurs négatives provoquent
+      une lecture à l'envers de la table.
+    </para>
+
+    <para>
+      <emphasis>aspd</emphasis> -- indice de lecture initial. <emphasis>aspd</emphasis> est l'indice de
+      lecture normalisé (0 à 1) dans la table <emphasis>ifna</emphasis> qui détermine le mouvement d'un
+      pointeur à partir duquel commence la lecture dans chaque grain. (<emphasis>xtrans</emphasis>
+      détermine le taux de lecture des données à partir de ce pointeur.)
+    </para>
+
+    <para>
+      <emphasis>koct</emphasis> -- indice d'octaviation. Ce paramètre fonctionne de manière identique à
+      celui qui est décrit dans <link linkend="fof"><citetitle>fof</citetitle></link>.
+    </para>
+
+    <para>
+      <emphasis>kband</emphasis>, <emphasis>kris</emphasis>, <emphasis>kdur</emphasis>,
+      <emphasis>kdec</emphasis> -- forme de l'enveloppe du grain. Ces paramètres déterminent les temps de
+      décroissance exponentielle (<emphasis>kband</emphasis>), et d'attaque (<emphasis>kris</emphasis>),
+      la durée totale (<emphasis>kdur</emphasis>), et celle de la chute (<emphasis>kdec</emphasis>) de
+      l'enveloppe du grain. Leur mode opératoire est identique à celui des paramètres d'enveloppe locale
+      dans <emphasis>fof</emphasis>.
+    </para>
+
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode fog. Il utilise le fichier
+      <ulink url="examples/fog.csd"><citetitle>fog.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode fog.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/fog.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Michael Clark</member>
+        <member>Huddersfield</member>
+        <member>Mai 1997</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.46</para>
+    <para>
+      Le générateur <emphasis>fog</emphasis> de Csound a été écrit par Michael Clarke, comme suite à ses
+      travaux antérieurs basés sur l'algorithme FOF de l'IRCAM.
+    </para>
+    <para>Notes ajoutées par &namerasmus; en septembre 2002.</para>
+  </refsect1>
+</refentry>

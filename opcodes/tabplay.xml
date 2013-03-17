@@ -1,0 +1,88 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.5
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="tabplay">
+<indexterm id="IndexTabPlay"><primary>tabplay</primary></indexterm>
+  <refentryinfo><title>Table Control:Read/Write Opreations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tabplay</refentrytitle>
+  </refmeta>
+
+   <refnamediv>
+    <refname>tabplay</refname>
+    <refpurpose>
+      Restitution de signaux de contrôle.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Restitution de signaux au taux de contrôle sur la base d'une temporisation
+      à déclenchement.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>tabplay</command>  ktrig, knumtics, kfn, kout1 [,kout2,..., koutN]</synopsis>
+  </refsect1>
+<!--
+  <refsect1>
+    <title>Initialisation</title>
+  </refsect1>-->
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ktrig</emphasis> -- commence à jouer s'il est différent de zéro.
+    </para>
+    <para>
+      <emphasis>knumtics</emphasis> -- stoppe l'enregistrement ou réinitialise à
+      zéro le pointeur de lecture si le nombre de tics défini par cet arguement
+      est atteint.
+    </para>
+    <para>
+      <emphasis>kfn</emphasis> -- table dans laquelle les signaux de taux-k sont
+      enregistrés.
+    </para>
+    <para>
+      <emphasis>kout1,...,koutN</emphasis> -- signaux restitués en sortie.
+    </para>
+    <para>
+      Les opcodes <emphasis>tabplay</emphasis> et
+      <link linkend="tabrec"><citetitle>tabrec</citetitle></link> permettent
+      d'enregistrer/restituer des signaux de contrôle sur la base d'une
+      temporisation à déclenchement.
+    </para>
+   <para>
+      <emphasis>tabplay</emphasis> restitue un groupe de signaux de taux-k,
+      préalablement enregistrés par <emphasis>tabrec</emphasis> dans une table.
+      Chaque fois que l'argument <emphasis>ktrig</emphasis> est activé, un
+      compteur interne est augmenté d'une unité. Après que
+      <emphasis>knumtics</emphasis> impulsions de déclenchement aient été reçues
+      par l'argument <emphasis>ktrig</emphasis>, le compteur interne est mis à
+      zéro et la restitution recommence depuis le début, en boucle.
+   </para>
+   <para>
+     Ces opcodes peuvent être utilisés comme une sorte de mémoire à
+     &quot;moyen-terme&quot; qui se &quot;souvient&quot; des signaux générés.
+     Une telle mémoire peut être utilisée pour fournir à de la musique générative
+     une structure de composition itérative cohérente.
+   </para>
+  </refsect1>
+  <refsect1>
+    <title>Voir aussi</title>
+    <para><link linkend="tabrec"><citetitle>tabrec</citetitle></link></para>
+  </refsect1>
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par &namegabriel;.</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,104 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="maxalloc">
+<indexterm id="IndexMaxalloc"><primary>maxalloc</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Realtime Performance Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>maxalloc</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>maxalloc</refname>
+    <refpurpose>
+      Limite le nombre d'allocations pour un instrument.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Limite le nombre d'allocations pour un instrument.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>maxalloc</command> insnum, icount</synopsis>
+    <synopsis><command>maxalloc</command> Sinsname, icount</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>insnum</emphasis> -- numéro de l'instrument
+    </para>
+    <para>
+      <emphasis>Sinsname</emphasis> -- nom de l'instrument
+    </para>
+
+    <para>
+      <emphasis>icount</emphasis> -- nombre d'allocations de l'instrument
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>maxalloc</emphasis> limite le nombre d'instances simultanées
+      (notes) d'un instrument. Tout évènement de partition survenant après que
+      le maximum soit atteint est ignoré.
+    </para>
+    <para>
+      Toutes les instances de <emphasis>maxalloc</emphasis> doivent être définies dans
+      la section d'en-tête, pas dans le corps de l'instrument.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode maxalloc. Il utilise le fichier
+      <ulink url="examples/maxalloc.csd"><citetitle>maxalloc.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode maxalloc.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/maxalloc.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie contiendra des messages comme ceux-ci :
+      <screen>
+WARNING: cannot allocate last note because it exceeds instr maxalloc</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="cpuprc"><citetitle>cpuprc</citetitle></link>,
+      <link linkend="prealloc"><citetitle>prealloc</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+        <member>Juillet 1999</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.57 de Csound</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,84 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.1
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ftcps">
+<indexterm id="IndexFtcps"><primary>ftcps</primary></indexterm>
+  <refentryinfo><title>Table Control:Table Queries</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ftcps</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ftcps</refname>
+    <refpurpose>
+      Retourne la fréquence de base d'une table de fonction en Hz.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne la fréquence de base d'une table de fonction en Hz.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>ftcps</command>(x) (args de taux-i seulement)</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Retourne la fréquence de base de la table de fonction en mémoire, numéro
+      <emphasis>x</emphasis>. <emphasis>ftcps</emphasis> est conçu pour les
+      tables stockant des formes d'onde audio lues depuis des fichiers (voir
+      <link linkend="GEN01"><citetitle>GEN01</citetitle></link>). 
+    </para>
+    <para>
+      <emphasis>ftcps</emphasis> retourne -1 en cas d'erreur (aucune fréquence
+      de base n'est indiquée dans la table ou la table n'existe pas).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode ftcps.
+      <example>
+        <title>Exemple de l'opcode ftcps.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/ftcps.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ftchnls"><citetitle>ftchnls</citetitle></link>, 
+      <link linkend="ftlptim"><citetitle>ftlptim</citetitle></link>, 
+      <link linkend="ftsr"><citetitle>ftsr</citetitle></link>, 
+      <link linkend="nsamp"><citetitle>nsamp</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Victor Lazzarini</member>
+        <member>2010</member>
+      </simplelist>
+    </para>
+    <para>Exemple écrit par Victor Lazzarini</para>
+  </refsect1>
+</refentry>

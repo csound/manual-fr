@@ -1,0 +1,229 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.14
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLbox">
+<indexterm id="IndexFLbox"><primary>FLbox</primary></indexterm>
+  <refentryinfo><title>FLTK:Other</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLbox</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLbox</refname>
+    <refpurpose>
+      Un widget FLTK qui affiche du texte dans une boîte.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Un widget FLTK qui affiche du texte dans une boîte.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ihandle <command>FLbox</command> &quot;label&quot;, itype, ifont, isize, iwidth, iheight, ix, iy [, image]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ihandle</emphasis> -- un identifiant (un nombre entier) qui
+      référence de manière univoque le widget correspondant. Il est utilisé par
+      d'autres opcodes qui modifient les propriété du widget (voir
+      <link linkend="ControlFltkAppearance"><citetitle>Modifier l'Apparence des
+      Widgets FLTK</citetitle></link>). Il est automatiquement retourné par
+      <emphasis>FLbox</emphasis> et ne doit pas être fixé par l'étiquette de
+      l'utilisateur. (L'étiquette de l'utilisateur est une chaîne entre
+      guillemets contenant un texte fourni par l'utilisateur placé à côté du
+      widget.)
+    </para>
+    <para>
+      <emphasis><quote>label</quote></emphasis> -- une chaîne entre guillemets
+      contenant un texte fourni par l'utilisateur placé à côté du widget.
+    </para>
+
+    <para>
+      Noter qu'avec <emphasis>FLbox</emphasis> il n'est pas nécessaire d'appeler
+      l'opcode <link linkend="FLsetTextType"><citetitle>FLsetTextType</citetitle></link>
+      pour utiliser un symbole. Dans ce cas, il suffit d'utiliser une étiquette
+      commençant par <quote>@</quote> suivi de la chaîne de formatage correcte.
+    </para>
+
+    <para>
+      Les symboles suivants sont supportés :
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/symbols.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>Symboles d'étiquette FLTK supportés.</phrase>
+        </textobject>
+
+        <caption>
+          <para>Symboles d'étiquette FLTK supportés.</para>
+        </caption>
+      </mediaobject>
+    </para>
+
+    <para>
+      Le signe @ peut être suivi par les caractères de <quote>formatage</quote>
+      facultatifs suivants, dans cet ordre :
+
+      <orderedlist>
+        <listitem><para><quote>#</quote> force une image carrée sans
+        distortion de la forme du widget.</para></listitem>
+        <listitem><para>+[1-9] ou -[1-9] grossit ou diminue l'image.</para></listitem>
+        <listitem><para>[1-9] effectue une rotation d'un multiple de 45 degrés.
+        <quote>6</quote> ne fait rien, les autres valeurs pointent dans la
+        direction de cette touche sur un pavé numérique.</para></listitem>
+      </orderedlist>
+    </para>
+
+    <para>
+      <emphasis>itype</emphasis> -- un nombre entier dénotant l'apparence du
+      widget. Les valeurs suivantes sont acceptées :
+      <itemizedlist>
+        <listitem><para>1 - boîte sans relief</para></listitem>
+        <listitem><para>2 - boîte saillante</para></listitem>
+        <listitem><para>3 - boîte en creux</para></listitem>
+        <listitem><para>4 - boîte légèrement saillante</para></listitem>
+        <listitem><para>5 - boîte légèrement en creux</para></listitem>
+        <listitem><para>6 - boîte gravée</para></listitem>
+        <listitem><para>7 - boîte en relief</para></listitem>
+        <listitem><para>8 - boîte avec cadre</para></listitem>
+        <listitem><para>9 - boîte ombrée</para></listitem>
+        <listitem><para>10 - boîte arrondie</para></listitem>
+        <listitem><para>11 - boîte arrondie ombrée</para></listitem>
+        <listitem><para>12 - boîte arrondie sans relief</para></listitem>
+        <listitem><para>13 - boîte arrondie saillante</para></listitem>
+        <listitem><para>14 - boîte arrondie creuse</para></listitem>
+        <listitem><para>15 - boîte en losange saillante</para></listitem>
+        <listitem><para>16 - boîte en losange en creux</para></listitem>
+        <listitem><para>17 - boîte ovale</para></listitem>
+        <listitem><para>18 - boîte ovale ombrée</para></listitem>
+        <listitem><para>19 - boîte ovale sans relief</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>ifont</emphasis> -- un nombre entier dénotant le type de la
+      police de <emphasis>FLbox</emphasis>. Les valeurs suivantes sont
+      acceptées :
+      <itemizedlist>
+        <listitem><para>1 - helvetica (commes &quot;Arial&quot; sous Windows)</para></listitem>
+        <listitem><para>2 - helvetica gras</para></listitem>
+        <listitem><para>3 - helvetica italique</para></listitem>
+        <listitem><para>4 - helvetica gras italique</para></listitem>
+        <listitem><para>5 - courrier</para></listitem>
+        <listitem><para>6 - courrier gras</para></listitem>
+        <listitem><para>7 - courrier italique</para></listitem>
+        <listitem><para>8 - courrier gras italique</para></listitem>
+        <listitem><para>9 - times</para></listitem>
+        <listitem><para>10 - times gras</para></listitem>
+        <listitem><para>11 - times italique</para></listitem>
+        <listitem><para>12 - times gras italique</para></listitem>
+        <listitem><para>13 - symbol</para></listitem>
+        <listitem><para>14 - screen</para></listitem>
+        <listitem><para>15 - screen gras</para></listitem>
+        <listitem><para>16 - dingbats</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>isize</emphasis> -- taille de la police.
+    </para>
+
+    <para>
+      <emphasis>iwidth</emphasis> -- largeur du widget.
+    </para>
+
+    <para>
+      <emphasis>iheight</emphasis> -- hauteur du widget.
+    </para>
+
+    <para>
+      <emphasis>ix</emphasis> -- position horizontale du coin supérieur gauche
+      du widget, relative au coin supérieur gauche de la fenêtre correspondante
+      (exprimée en pixels).
+    </para>
+
+    <para>
+      <emphasis>iy</emphasis> -- position verticale du coin supérieur gauche
+      du widget, relative au coin supérieur gauche de la fenêtre correspondante
+      (exprimée en pixels).
+    </para>
+
+    <para>
+      <emphasis>image</emphasis> -- un identifiant faisant référence à une image
+      éventuellement  ouverte avec l'opcode <emphasis>bmopen</emphasis>. S'il est
+      utilisé, cela permet un skin pour ce widget.
+    </para>
+
+    <note>
+      <title>Note sur l'opcode <emphasis>bmopen</emphasis></title>
+      <para>
+        Bien qu'il soit mentionné, l'opcode <emphasis>bmopen</emphasis> n'a pas
+        été implémenté dans Csound 4.22.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>FLbox</emphasis> est utile pour montrer du texte dans une
+      fenêtre. Le texte est à l'intérieur d'une boîte dont l'aspect dépent de
+      l'argument <emphasis>itype</emphasis>.
+    </para>
+
+    <para>
+      Noter que <emphasis>FLbox</emphasis> n'est pas un valuateur et que sa
+      valeur est constante. Elle ne peut pas être modifiée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode FLbox. Il utilise le fichier
+      <ulink url="examples/FLbox.csd"><citetitle>FLbox.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode FLbox.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/FLbox.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="FLbutBank"><citetitle>FLbutBank</citetitle></link>,
+      <link linkend="FLbutton"><citetitle>FLbutton</citetitle></link>,
+      <link linkend="FLprintk"><citetitle>FLprintk</citetitle></link>,
+      <link linkend="FLprintk2"><citetitle>FLprintk2</citetitle></link>,
+      <link linkend="FLvalue"><citetitle>FLvalue</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.22</para>
+    <para>Exemple écrit par Iain McCurdy, édité par &namekevin;.</para>
+  </refsect1>
+</refentry>

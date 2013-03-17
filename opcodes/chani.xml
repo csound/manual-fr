@@ -1,0 +1,97 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="chani">
+<indexterm id="Indexchani"><primary>chani</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Software Bus</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>chani</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>chani</refname>
+    <refpurpose>
+      Lit des données depuis le bus logiciel.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Lit des données depuis un canal du bus logiciel entrant.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kval <command>chani</command> kchan</synopsis>
+
+    <synopsis>aval <command>chani</command> kchan</synopsis>
+  </refsect1>
+
+  <!--<refsect1>
+    <title>Initialisation</title>
+    <para>
+    </para>
+
+  </refsect1>-->
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kchan</emphasis> -- un entier positif indiquant quel canal
+      du bus logiciel lire.
+    </para>
+
+   <para>
+     Noter que les bus logiciels entrant et sortant sont indépendants et qu'ils
+     ne sont pas des bus mélangeurs. De plus, les bus au taux-k et au taux-a sont
+     indépendants. La dernière valeur reste disponible jusqu'à ce qu'une nouvelle
+     valeur soit écrite. Il n'y a pas de limite imposée au nombre de bus mais
+     comme ils consomment de la mémoire, il est préférable d'en utiliser un
+     petit nombre.
+  </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      L'exemple montre l'utilisation du bus logiciel comme signal de contrôle
+      asynchrone pour fixer la fréquence de coupure du filtre. On suppose qu'un
+      programme externe utilisant l'API fournit les valeurs.
+    </para>
+
+      <informalexample>
+        <programlisting>
+        <emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+        <emphasis role="ohdr">kr</emphasis> <emphasis role="op">=</emphasis> 100
+        <emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 1
+
+
+        <emphasis role="oblock">instr</emphasis>   1
+           kc   <emphasis role="opc">chani</emphasis>     1
+           a1   <emphasis role="opc">oscil</emphasis>     p4, p5, 100
+           a2   <emphasis role="opc">lowpass2</emphasis>  a1, kc, 200
+                <emphasis role="opc">out</emphasis>       a2
+        <emphasis role="oblock">endin</emphasis>
+        </programlisting>
+      </informalexample>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans Csound 5.00</para>
+  </refsect1>
+</refentry>

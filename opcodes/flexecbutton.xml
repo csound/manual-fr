@@ -1,0 +1,127 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.3
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLexecButton">
+<indexterm id="IndexFLexecButton"><primary>FLexecButton</primary></indexterm>
+  <refentryinfo><title>FLTK:Other</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLexecButton</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLexecButton</refname>
+    <refpurpose>
+      Un opcode de widget FLTK qui crée un bouton qui exécute une commande.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Un opcode de widget FLTK qui crée un bouton qui exécute une commande.
+      Utile pour ouvrir une documentation HTML comme un texte Au sujet de
+      ou pour démarrer un programme séparé depuis une interface de widgets
+      FLTK.
+    </para>
+
+    <warning>
+      <title>Avertissement</title>
+      <para>
+        Comme n'importe quelle commande peut être exécutée, il faut être très
+        prudent en utilisant cet opcode et en exécutant des orchestres d'autres
+        personnes utilisant cet opcode.
+      </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ihandle <command>FLexecButton</command> &quot;command&quot;, iwidth, iheight, ix, iy</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ihandle</emphasis> -- un identifiant (un nombre entier) qui
+      référence de manière univoque le widget correspondant. Il est utilisé par
+      d'autres opcodes qui modifient les propriété du widget (voir
+      <link linkend="ControlFltkAppearance"><citetitle>Modifier l'Apparence des
+      Widgets FLTK</citetitle></link>). Il est automatiquement retourné par
+      <emphasis>FLexecButton</emphasis>.
+    </para>
+
+    <para>
+      <emphasis><quote>command</quote></emphasis> -- une chaîne de caractères
+      entre guillemets contenant la commande à exécuter.
+    </para>
+
+    <para>
+      Noter qu'avec <emphasis>FLexecButton</emphasis>, le texte par défaut du
+      bouton est &quot;About&quot; et qu'il est nécessaire d'appeler l'opcode
+      <link linkend="FLsetText"><citetitle>FLsetText</citetitle></link> pour
+      changer le texte du bouton.
+    </para>
+
+    <para>
+      <emphasis>iwidth</emphasis> -- largeur du widget.
+    </para>
+
+    <para>
+      <emphasis>iheight</emphasis> -- hauteur du widget.
+    </para>
+
+    <para>
+      <emphasis>ix</emphasis> -- position horizontale du coin supérieur gauche
+      du widget, relative au coin supérieur gauche de la fenêtre correspondante
+      (exprimée en pixels).
+    </para>
+
+    <para>
+      <emphasis>iy</emphasis> -- position verticale du coin supérieur gauche
+      du widget, relative au coin supérieur gauche de la fenêtre correspondante
+      (exprimée en pixels).
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode FLexecButton. Il utilise le fichier
+      <ulink url="examples/FLexecButton.csd"><citetitle>FLexecButton.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode FLexecButton.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/FLexecButton.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="FLbutton"><citetitle>FLbutton</citetitle></link>,
+      <link linkend="FLbox"><citetitle>FLbox</citetitle></link>,
+      <link linkend="FLbutBank"><citetitle>FLbutBank</citetitle></link>,
+      <link linkend="FLprintk"><citetitle>FLprintk</citetitle></link>,
+      <link linkend="FLprintk2"><citetitle>FLprintk2</citetitle></link>,
+      <link linkend="FLvalue"><citetitle>FLvalue</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namesteven;</para>
+    <para>Exemple par Jonathan Murphy</para>
+    <para>Nouveau dans la version 5.05</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,101 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="fofilter">
+<indexterm id="IndexFofilter"><primary>fofilter</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Specialized Filters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>fofilter</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>fofilter</refname>
+    <refpurpose>
+      Filtre à formant.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Lorsqu'il reçoit un train d'impulsions, <emphasis>fofilter</emphasis>
+      génère un flux de grains sinusoïdaux se recouvrant. Chaque grain est la
+      réponse impulsionnelle d'une combinaison de deux filtres passe-bande. Les
+      grains sont définis par leur durée d'attaque (qui détermine la largeur de
+      jupe de la région formantique à -60dB) et leur durée de chute (largeur de
+      bande à -6dB). Le recouvrement se produit quand 1/freq &lt; decay, mais,
+      à la différence de FOF, il n'y a pas de limite supérieure au nombre de
+      recouvrements. L'idée originale de cet opcode est venue de la classe
+      formlet dans SuperCollider de J McCartney's, mais peut-être est-elle
+      implémentée différemment (?).
+  </para>
+  
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>asig <command>fofilter</command> ain, kcf, kris, kdec[, istor]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+      <para>
+      <emphasis>istor</emphasis> -- état initial de l'espace de données interne.
+      Comme le filtrage comprend une boucle de rétroaction sur la sortie précédente,
+      l'état initial de l'espace de stockage utilisé est significatif. Une valeur
+      nulle provoquera l'effacement de cet espace ; une valeur non nulle autorisera
+      la persistance de l'information précédente. La valeur par défaut est 0.
+    </para>
+	  
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- signal d'entrée.
+    </para>
+    <para>
+      <emphasis>kcf</emphasis> -- fréquence centrale du filtre.
+    </para>
+
+    <para>
+      <emphasis>kris</emphasis> -- durée d'attaque de la réponse impulsionnelle (secs). 
+    </para>
+  <para>
+      <emphasis>kdec</emphasis> -- durée de chute de la réponse impulsionnelle (secs). 
+    </para>
+	
+  </refsect1>
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode fofilter. Il utilise le fichier
+      <ulink url="examples/fofilter.csd"><citetitle>fofilter.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode fofilter.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/fofilter.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Janvier 2005</member>
+      </simplelist>
+    </para>
+    <para>Nouveau greffon dans la version 5</para>
+  </refsect1>
+</refentry>

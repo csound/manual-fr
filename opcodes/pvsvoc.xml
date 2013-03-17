@@ -1,0 +1,115 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvsvoc">
+<indexterm id="Indexpvsvoc"><primary>pvsvoc</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsvoc</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvsvoc</refname>
+    <refpurpose>
+      Combine l'enveloppe spectrale d'un fsig avec l'excitation (les fréquences)
+      d'un autre fsig.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode fournit un support pour la synthèse croisée des amplitudes et
+      des fréquences. Il prend les amplitudes d'un fsig en entrée et les combine
+      avec les fréquences d'un autre fsig. C'est une version spectrale du célèbre
+      vocodeur.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>fsig <command>pvsvoc</command> famp, fexc, kdepth, kgain [,kcoefs]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>fsig</emphasis> -- flot pv de sortie
+    </para>
+
+    <para>
+      <emphasis>famp</emphasis> -- flot pv d'entrée duquel sont extraites les
+      amplitudes
+    </para>
+   
+   <para>
+      <emphasis>fexc</emphasis> -- flot pv d'entrée duquel sont prises les
+      fréquences
+    </para>
+
+    <para>
+      <emphasis>kdepth</emphasis> -- importance de l'effet, affectant la
+      quantité de fréquences prélevées sur le second fsig : 0, la sortie est le
+      signal <emphasis>famp</emphasis>, 1 la sortie combine les amplitudes de
+      <emphasis>famp</emphasis> avec les fréquences de <emphasis>fexc</emphasis>. 
+    </para>
+
+    <para>
+      <emphasis>kgain</emphasis> -- gain de renforcement/atténuation appliqué à
+      la sortie.
+    </para>
+
+    <para>
+      <emphasis>kcoefs</emphasis> -- nombre de coefficients du cepstre utilisés
+      dans l'estimation de l'enveloppe spectrale (vaut 80 par défaut).
+    </para>
+    <warning>
+      <para>
+        Il est dangereux d'utiliser la même variable-f à la fois comme entrée et
+        comme sortie des opcodes pvs. Ceci peut produire un comportement indéfini
+        de certains de ces opcodes. Utilisez une variable différente à gauche et
+        à droite de l'opcode.
+      </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode pvsvoc. Il utilise le fichier
+      <ulink url="examples/pvsvoc.csd"><citetitle>pvsvoc.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode pvsvoc.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pvsvoc.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      L'exemple ci-dessus montre une opération typique de synthèse croisée. Le
+      signal d'entrée (disons un signal vocal) est utilisé pour son spectre
+      d'amplitude. Un oscillateur avec une forme d'onde complexe arbitraire
+      produit le signal d'excitation, donnant au son vocal sa hauteur.
+    </para>  
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Avril 2005 </member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau greffon dans la version 5</para>
+    <para>Avril 2005.</para>
+  </refsect1>
+</refentry>

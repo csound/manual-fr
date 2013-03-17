@@ -1,0 +1,88 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="scalet">
+<indexterm id="IndexScalet"><primary>scalet</primary></indexterm>
+  <refentryinfo><title>Mathematical Operations: Vectors</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>scalet</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>scalet</refname>
+    <refpurpose>
+      Mise à l'échelle des valeurs dans une partie d'un vecteur.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      L'opcode <emphasis>scalet</emphasis> met à l'échelle une sous-région d'un
+      vecteur entre un minimum et un maximum donnés.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>scalet</command> tab, kmin, kmax[, kleft, kright]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>tab</emphasis> -- table pour l'opération.
+    </para>
+    <para>
+      <emphasis>kmin, kmax</emphasis> -- valeurs du minimum et du maximum de la cible.
+    </para>
+    <para>
+      <emphasis>kleft, kright</emphasis> -- partie de la table à utiliser,
+      s'étendant par défaut de 0 à la taille du vecteur.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode scalet. Il utilise le fichier
+      <ulink url="examples/scalet.csd"><citetitle>scalet.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode scalet.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/scalet.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="plustab"><citetitle>plustab</citetitle></link>, 
+      <link linkend="multtab"><citetitle>multtab</citetitle></link>, 
+      <link linkend="maxtab"><citetitle>maxatab</citetitle></link>, 
+      <link linkend="mintab"><citetitle>mintab</citetitle></link>, 
+      <link linkend="sumtab"><citetitle>sumtab</citetitle></link>, 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Octobre 2011</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 5.14 de Csound.</para>
+  </refsect1>
+</refentry>

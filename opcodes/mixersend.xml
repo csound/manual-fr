@@ -1,0 +1,104 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="MixerSend">
+<indexterm id="IndexMixerSend"><primary>MixerSend</primary></indexterm>
+  <refentryinfo><title>Mixer Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>MixerSend</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>MixerSend</refname>
+    <refpurpose>
+      Mélange un signal de taux-a dans un canal d'un bus.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>MixerSend</command> asignal, isend, ibuss, ichannel</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Description</title> 
+    <para>Mélange un signal de taux-a dans un canal d'un bus.</para>  
+    </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+
+    <para><emphasis>isend</emphasis> -- Le numéro du départ, par exemple, le
+    numéro de l'instrument envoyant le signal. Le gain du départ est contrôlé par
+    l'opcode <link linkend="MixerSetLevel"><citetitle>MixerSetLevel</citetitle></link>.
+    Les départs sont numérotés pour pouvoir fixer différents niveaux pour différents
+    départs indépendamment du niveau courant des signaux.</para>
+
+    <para><emphasis>ibuss</emphasis> -- Le numéro du bus, par exemple, le
+    numéro de l'instrument recevant le signal.</para>
+
+    <para><emphasis>ichannel</emphasis> -- Le numéro du canal. Chaque bus a
+    <literal>nchnls</literal> canaux.</para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para><emphasis>asignal</emphasis> -- Le signal qui est mélangé dans le canal
+    indiqué du bus.</para>
+
+    <para>
+      L'utilisation du mélangeur nécessite que les instruments fixant les gains
+      aient des numéros inférieurs à ceux des instruments envoyant des signaux,
+      et que les intruments envoyant des signaux aient des numéros inférieurs
+      à ceux des instruments recevant ces signaux. Cependant, un instrument
+      peut avoir n'importe quel nombre de départs et de retours. Après la réception
+      du dernier signal, il faut invoquer
+      <link linkend="MixerClear"><citetitle>MixerClear</citetitle></link> pour
+      réinitialiser les bus à 0 avant le k-cycle suivant.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+
+<programlisting>
+<emphasis role="oblock">instr</emphasis> 100 <emphasis role="comment">; Fluidsynth output</emphasis>
+<emphasis role="comment">; INITIALIZATION</emphasis>
+<emphasis role="comment">; Normalize so iamplitude for p5 of 80 == ampdb(80).</emphasis>
+iamplitude     <emphasis role="op">=</emphasis>       <emphasis role="opc">ampdb</emphasis>(p5) <emphasis role="op">*</emphasis> 2.0
+<emphasis role="comment">; AUDIO</emphasis>
+aleft, aright     <emphasis role="opc">fluidAllOut</emphasis>    giFluidsynth
+asig1       <emphasis role="op">=</emphasis>       aleft <emphasis role="op">*</emphasis> iamplitude
+asig2       <emphasis role="op">=</emphasis>       aright <emphasis role="op">*</emphasis> iamplitude
+      <emphasis role="comment">; To the chorus.</emphasis>
+      <emphasis role="opc">MixerSend</emphasis>    asig1, 100, 200, 0
+      <emphasis role="opc">MixerSend</emphasis>    asig2, 100, 200, 1
+      <emphasis role="comment">; To the reverb.</emphasis>
+      <emphasis role="opc">MixerSend</emphasis>    asig1, 100, 210, 0
+      <emphasis role="opc">MixerSend</emphasis>    asig2, 100, 210, 1
+      <emphasis role="comment">; To the output.</emphasis>
+      <emphasis role="opc">MixerSend</emphasis>    asig1, 100, 220, 0
+      <emphasis role="opc">MixerSend</emphasis>    asig2, 100, 220, 1
+<emphasis role="oblock">endin</emphasis></programlisting>
+
+    <para>
+      Voici un exemple complet de l'opcode MixerSend. Il utilise le fichier
+      <ulink url="examples/Mixer.csd"><citetitle>Mixer.csd</citetitle></ulink>
+      <example>
+        <title>Exemple complet de l'opcode MixerSend.</title>
+        <xi:include href="examples-xml/Mixer.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Michael Gogins (gogins at pipeline dot com).</para>
+  </refsect1>
+</refentry>

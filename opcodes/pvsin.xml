@@ -1,0 +1,97 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvsin">
+<indexterm id="Indexpvsin"><primary>pvsin</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsin</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvsin</refname>
+    <refpurpose>
+      Récupère un fsig à partir de l'entrée d'un bus logiciel ; un équivalent
+      pvs à chani.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode récupère un fsig à partir du bus logiciel d'entrée pvs, que l'on
+      peut utiliser pour recevoir des données venant d'une source externe via
+      l'API de Csound 5. Un canal est créé s'il n'existe pas déjà. Dans ce cas,
+      le canal du fsig est initialisé avec les paramètres donnés. Il est important
+      de noter que les bus pvs d'entrée et de sortie sont indépendants et qu'ils
+      ne partagent pas leurs données.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>fsig <command>pvsin</command> kchan[, isize, iolap, iwinsize, iwintype, iformat]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>isize</emphasis> -- taille initiale de TFD, par défaut 1024.
+    </para>
+    <para>
+      <emphasis>iolap</emphasis> -- taille du recouvrement, par défaut
+      <emphasis>isize</emphasis>/4.
+    </para>
+   <para>
+      <emphasis>iwinsize</emphasis> -- taille de la fenêtre d'analyse, par défaut
+      <emphasis>isize</emphasis>.
+    </para>
+   <para>
+      <emphasis>iwintype</emphasis> -- type de la fenêtre, Hanning (1) par défaut
+      (voir <emphasis>pvsanal</emphasis>)
+    </para>
+   <para>
+      <emphasis>iformat</emphasis> -- format des données, 0 par défaut (PVS_AMP_FREQ).
+      Les autres valeurs possibles sont 1 (PVS_AMP_PHASE), 2  (PVS_COMPLEX) ou
+      3 (PVS_TRACKS).
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>fsig</emphasis> -- fsig récupéré.
+    </para>
+    <para>
+      <emphasis>kchan</emphasis> -- Numéro du canal. S'il n'existe pas, un canal
+      est créé.
+    </para>
+   </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      <example>
+        <title>Exemples</title>
+        <programlisting>
+          fsig  <emphasis role="opc">pvsin</emphasis>   0  <emphasis role="comment">; get data from pvs in bus channel 0</emphasis></programlisting>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Août 2006 </member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

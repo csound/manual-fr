@@ -1,0 +1,44 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="stringconvert">
+  <title>Opcodes de Conversion de Chaîne</title>
+  <para>Ces opcodes convertissent des variables chaînes (note : la plupart
+    des opcodes ne sont exécutés qu'au moment de l'initialisation, et ils ont une version
+    avec un suffixe "k" qui s'exécute au taux-i et au taux-k ;
+    les exceptions à cette règle comprennent <emphasis>puts</emphasis> et
+    <emphasis>strget</emphasis>) :</para>
+  <itemizedlist>
+    <listitem><para>
+        <link linkend="strtod"><citetitle>strtod</citetitle></link> et
+        <link linkend="strtodk"><citetitle>strtodk</citetitle></link> -
+        Convertit une valeur de chaîne en une valeur en virgule flottante.</para>
+    </listitem>
+    <listitem><para>
+        <link linkend="strtol"><citetitle>strtol</citetitle></link> et
+        <link linkend="strtolk"><citetitle>strtolk</citetitle></link> -
+        Convertit une valeur de chaîne en un entier signé.</para>
+    </listitem>
+    <listitem><para>
+        <link linkend="strchar"><citetitle>strchar</citetitle></link> et
+        <link linkend="strchark"><citetitle>strchark</citetitle></link> -
+        Retourne le code ASCII d'un caractère dans une chaîne.</para>
+    </listitem>
+    <listitem><para>
+        <link linkend="strlower"><citetitle>strlower</citetitle></link> et
+        <link linkend="strlowerk"><citetitle>strlowerk</citetitle></link> -
+        Convertit une chaîne en minuscules.</para>
+    </listitem>
+    <listitem><para>
+        <link linkend="strupper"><citetitle>strupper</citetitle></link> et
+        <link linkend="strupperk"><citetitle>strupperk</citetitle></link> -
+        Convertit une chaîne en majuscules.</para>
+    </listitem>
+  </itemizedlist>
+</section>

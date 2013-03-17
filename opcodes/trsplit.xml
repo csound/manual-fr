@@ -1,0 +1,102 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="trsplit">
+<indexterm id="Indextrsplit"><primary>trsplit</primary></indexterm>
+
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>trsplit</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>trsplit</refname>
+    <refpurpose>
+      Séparation en fréquence d'un flot de suivi de partiels.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      L'opcode <emphasis>trsplit</emphasis> prend en entrée un flot de signal
+      TRACKS pv (tel que généré, par exemple, par <emphasis>partials</emphasis>)
+      et le sépare en deux signaux selon un "point de séparation" en fréquence
+      variant au taux-k. La première sortie contiendra tous les canaux de 0 Hz
+      à la fréquence de séparation et la seconde sortie contiendra les canaux de
+      la fréquence de séparation à la fréquence de Nyquist. Il peut aussi,
+      facultativement, pondérer le gain des signaux de sortie par une quantité
+      de taux-k (1 par défaut). Le résultat est constitué de deux signaux ne
+      contenant chacun qu'une partie du spectre original.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>fsiglow, fsighi <command>trsplit</command> fin, ksplit [, kgainlow, kgainhigh]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>fsiglow</emphasis> -- flot pv de sortie au format TRACKS contenant
+      les canaux sous le point de séparation.
+    </para>
+    
+    <para>
+      <emphasis>fsighi</emphasis> -- flot pv de sortie au format TRACKS contenant
+      les canaux au-dessus de et incluant le point de séparation.
+    </para>
+  
+    <para>
+      <emphasis>fin</emphasis> -- flot pv d'entrée au format TRACKS.
+    </para>
+    
+    <para>
+      <emphasis>ksplit</emphasis> -- point de séparation des fréquences en Hz.
+    </para>
+    
+    <para>
+      <emphasis>kgainlow, kgainhig</emphasis> -- pondération d'amplitude de
+      chaque sortie (1 par défaut).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode trsplit. Il utilise le fichier
+      <ulink url="examples/trsplit.csd"><citetitle>trsplit.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode trsplit.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/trsplit.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    
+    <para>
+      L'exemple ci-dessus montre le suivi de partiels d'un signal d'analyse par
+      distribution de fréquence instantanée et la resynthèse additive linéaire
+      de la partie supérieure du spectre (à partir de 1500 Hz). 
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Février 2006 </member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans Csound 5.01</para>
+  </refsect1>
+</refentry>

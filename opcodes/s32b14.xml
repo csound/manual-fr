@@ -1,0 +1,145 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="s32b14">
+<indexterm id="IndexS32b14"><primary>s32b14</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Slider Banks</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>s32b14</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>s32b14</refname>
+
+    <refpurpose>
+      Crée une banque de 32 numéros différents de messages de contrôle MIDI sur 14-bit.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Crée une banque de 32 numéros différents de messages de contrôle MIDI sur 14-bit.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>i1,...,i32 <command>s32b14</command> ichan, ictlno_msb1, ictlno_lsb1, imin1, imax1, \
+      initvalue1, ifn1,..., ictlno_msb32, ictlno_lsb32, imin32, imax32, initvalue32, ifn32</synopsis>
+
+    <synopsis>k1,...,k32 <command>s32b14</command> ichan, ictlno_msb1, ictlno_lsb1, imin1, imax1, \
+      initvalue1, ifn1,..., ictlno_msb32, ictlno_lsb32, imin32, imax32, initvalue32, ifn32</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>i1 ... i64</emphasis> -- valeurs de sortie
+    </para>
+
+    <para>
+      <emphasis>ichan</emphasis> -- canal MIDI (1-16)
+    </para>
+
+    <para>
+      <emphasis>ictlno_msb1 .... ictlno_msb32</emphasis> -- numéro de contrôle MIDI,
+      octet de poids fort (0-127)
+    </para>
+
+    <para>
+      <emphasis>ictlno_lsb1 .... ictlno_lsb32</emphasis> -- numéro de contrôle MIDI,
+      octet de poids faible (0-127)
+    </para>
+
+    <para>
+      <emphasis>imin1 ... imin64</emphasis> -- valeurs minimales pour chaque contrôleur
+    </para>
+
+    <para>
+      <emphasis>imax1 ... imax64</emphasis> -- valeurs maximales pour chaque contrôleur
+    </para>
+
+    <para>
+      <emphasis>init1 ... init64</emphasis> -- valeur initiale pour chaque contrôleur
+    </para>
+
+    <para>
+      <emphasis>ifn1 ... ifn64</emphasis> -- table de fonction de conversion pour
+      chaque contrôleur
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>k1 ... k64</emphasis> -- valeurs de sortie
+    </para>
+
+    <para>
+      <emphasis>s32b14</emphasis> est une banque de contrôleurs MIDI, utile
+      lorsque l'on utilise un mélangeur MIDI comme le Kawai MM-16 ou autres pour
+      changer n'importe quel paramètre du son en . Les messages de
+      contrôle MIDI arrivant sur le port d'entrée sont convertis pour entrer
+      dans l'intervalle <emphasis>iminN</emphasis>, <emphasis>imaxN</emphasis>,
+      et une valeur initiale peut être fixée. On peut aussi utiliser de manière
+      facultative une table de fonction non interpolée avec une courbe de
+      traduction personnalisée pour obtenir, par exemple, des courbes de
+      réponse exponentielles.
+    </para>
+
+    <para>
+      Si l'on n'a pas besoin d'une table de traduction, on fixe la valeur de 
+      <emphasis>ifnN</emphasis> à 0, sinon, on donne à <emphasis>ifnN</emphasis>
+      un numéro de table de fonction valide. Lorsque l'on utilise une table de
+      traduction (si <emphasis>ifnN</emphasis> reçoit une valeur non nulle
+      faisant référence à une table de fonction déjà allouée), la valeur de
+      <emphasis>initN</emphasis> doit être égale à celle de <emphasis>iminN</emphasis>
+      ou à celle de <emphasis>imaxN</emphasis>, sinon la valeur de sortie initiale
+      sera différente de celle spécifiée dans l'argument <emphasis>initN</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>s32b14</emphasis> fournit une banque de 32 numéros différents de
+      messages de contrôle MIDI. Il utilise des valeurs sur 14 bit au lieu des
+      valeurs usuelles MIDI sur 7 bit.
+    </para>
+
+    <para>
+      Comme les arguments d'entrée et de sortie sont nombreux, on peut scinder la
+      ligne en utilisant le caractère '\' (slash inversé) (nouveau dans la version
+      3.47) pour améliorer la lisibilité. L'utilisation de ces opcodes est
+      considérablement plus efficace que celle de
+      (<link linkend="ctrl7"><citetitle>ctrl7</citetitle></link> et
+      <link linkend="tonek"><citetitle>tonek</citetitle></link>) séparés, lorsque
+      l'on a besoin de plus de contrôleurs.
+    </para>
+
+    <para>
+      Dans la version au taux-i de <emphasis>s32b14</emphasis>, il n'y a pas
+      d'argument de valeur d'entrée initiale. La sortie est prise directement
+      dans l'état courant du tableau interne de contrôleurs de Csound.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur: &namegabriel;</member>
+        <member>Italie</member>
+        <member>Décember 1998</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.50 de Csound.</para>
+    <para>Merci à &namerasmus; pour avoir indiqué les intervalles corrects pour
+    le canal MIDI et les numéros de contrôleur.</para>
+  </refsect1>
+</refentry>

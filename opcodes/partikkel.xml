@@ -1,0 +1,399 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="partikkel">
+<indexterm id="IndexPartikkel"><primary>partikkel</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Granular Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>partikkel</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>partikkel</refname>
+    <refpurpose>
+      Synthétiseur granulaire avec un contrôle "par grain" grâce à ses nombreux paramètres. Il
+      a une entrée sync pour synchroniser son horloge interne de distribution des grains avec une
+      horloge externe.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>partikkel</emphasis> a été conçu après la lecture du livre de Curtis Road
+      "Microsound", et le but était de créer un opcode capable de réaliser toutes les variétés
+      temporelles de synthèse granulaire décrites dans ce livre. L'idée étant que la plupart des
+      techniques ne diffèrent que par les valeurs des paramètres, et que si l'on a un opcode unique
+      qui peut produire toutes les variétés de synthèse granulaire, l'interpolation entre ces
+      techniques devient possible. La synthèse granulaire est parfois appelée synthèse par particules
+      et il m'a semblé approprié de nommer l'opcode <emphasis>partikkel</emphasis> afin de le
+      distinguer des autres opcodes granulaires.
+    </para>
+    <para>
+      Certains des paramètres d'entrée de <emphasis>partikkel</emphasis> sont des numéros de table,
+      pointant sur des tables dans lesquelles sont mémorisées des valeurs pour les changements de
+      paramètre "par grain". <emphasis>partikkel</emphasis> peut utiliser une période d'une forme
+      d'onde ou des formes d'onde complexes (par exemple un son échantillonné) comme source de
+      forme d'onde pour les grains. Chaque grain est constitué du mélange de 4 formes d'onde source.
+      On peut accorder séparément la fréquence de base de chacune des 4 formes d'onde source. La
+      modulation de fréquence à l'intérieur de chaque grain est activée via une entrée audio
+      auxiliaire (<emphasis>awavfm</emphasis>). La synthèse par trainlet (un trainlet est un bref
+      train d'impulsions) est possible, et les trainlets peuvent être mélangés avec des grains basés
+      sur des tables d'onde. On peut utiliser jusqu'à 8 sorties audio séparées.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>a1 [, a2, a3, a4, a5, a6, a7, a8] <command>partikkel</command> agrainfreq, \
+              kdistribution, idisttab, async, kenv2amt, ienv2tab, ienv_attack, \
+              ienv_decay, ksustain_amount, ka_d_ratio, kduration, kamp, igainmasks, \
+              kwavfreq, ksweepshape, iwavfreqstarttab, iwavfreqendtab, awavfm, \
+              ifmamptab, kfmenv, icosine, ktraincps, knumpartials, kchroma, \
+              ichannelmasks, krandommask, kwaveform1, kwaveform2, kwaveform3, \
+              kwaveform4, iwaveamptab, asamplepos1, asamplepos2, asamplepos3, \
+              asamplepos4, kwavekey1, kwavekey2, kwavekey3, kwavekey4, imax_grains \
+              [, iopcode_id]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>idisttab</emphasis> -- numéro d'une table de fonction, distribution des
+      déplacements aléatoires du grain dans le temps. Les valeurs de la table sont interprétées
+      comme la "quantité de déplacement" pondérée par 1/(rythme des grains). Cela signifie qu'une
+      valeur de 0,5 dans la table déplacera un grain de la moitié de la période du rythme des
+      grains. Les valeurs de la table sont lues aléatoirement, et pondérées par
+      <emphasis>kdistribution</emphasis>. Pour obtenir des résultats stochastiques réalistes, il
+      vaut mieux ne pas utiliser une taille de table trop petite, car cela limite le nombre des
+      valeurs de déplacement possibles. On peut l'exploiter à d'autres fins, par exemple utiliser
+      des valeurs de déplacement quantifiées pour travailler avec des décalages contrôlés à partir
+      de la période du rythme des grains. Si <emphasis>kdistribution</emphasis> est négatif, les
+      valeurs de la table seront lues séquentiellement. On peut sélectionner une table par défaut
+      au moyen du numéro de table -1, pour lequel <emphasis>idisttab</emphasis> fournit une
+      distribution nulle (pas de déplacement).
+    </para>
+    <para>
+      <emphasis>ienv_attack</emphasis> -- numéro d'une table de fonction, forme de l'attaque du
+      grain. Il faut un point de garde d'extension. On peut choisir une table par défaut en utilisant
+      -1 comme numéro de ftable, pour lequel <emphasis>ienv_attack</emphasis> fournit une fenêtre
+      rectangulaire (pas d'enveloppe).
+    </para>
+    <para>
+      <emphasis>ienv_decay</emphasis> -- numéro d'une table de fonction, forme de la chute du
+      grain. Il faut un point de garde d'extension. On peut choisir une table par défaut en utilisant
+      -1 comme numéro de ftable, pour lequel <emphasis>ienv_decay</emphasis> fournit une fenêtre
+      rectangulaire (pas d'enveloppe).
+    </para>
+    <para>
+      <emphasis>ienv2tab</emphasis> -- numéro d'une table de fonction, enveloppe additionnelle
+      appliquée au grain après les enveloppes d'attaque et de chute. On peut l'utiliser par exemple
+      pour la synthèse par formant fof. Il faut un point de garde d'extension. On peut choisir une
+      table par défaut en utilisant -1 comme numéro de ftable, pour lequel
+      <emphasis>ienv2tab</emphasis> fournit une fenêtre rectangulaire (pas d'enveloppe).
+    </para>
+    <para>
+      <emphasis>icosine</emphasis> -- numéro d'une table de fonction, devant contenir un cosinus,
+      utilisée pour les trainlets. La table doit avoir une taille d'au moins 2048 pour obtenir des
+      trainlets de bonne qualité.
+    </para>
+    <para>
+      <emphasis>igainmasks</emphasis> -- numéro d'une table de fonction, gain par grain. La suite
+      des valeurs dans la table a la signification suivante : la valeur d'indice 0 est le point de
+      début d'une boucle de lecture des valeurs, la valeur d'indice 1 étant le point de fin de
+      cette boucle. Les entrées aux autres indices contiennent les valeurs de gain (normalement
+      dans l'intervalle 0 - 1, mais d'autres valeurs sont permises, les valeurs négatives inversant
+      la phase de la forme d'onde du grain) pour une suite de grains ; ces valeurs sont lues au
+      rythme des grains, ce qui permet une correspondance exacte de "gain par grain". Les points du
+      début et de la fin de la boucle sont basés sur zéro avec une origine à l'indice 2, par
+      exemple une valeur de début de boucle de 0 et une valeur de fin de boucle de 3 provoqueront
+      la lecture des valeurs d'indice 2, 3, 4, 5 dans une boucle évoluant au rythme des grains. On
+      peut choisir une table par défaut en utilisant -1 comme numéro de ftable, pour lequel
+      <emphasis>igainmasks</emphasis> désactive le masquage du gain (tous les grains reçoivent un
+      masque de gain égal à 1).
+    </para>
+    <para>
+      <emphasis>ichannelmasks</emphasis> -- numéro d'une table de fonction, voir
+      <emphasis>igainmasks</emphasis> pour une description de la façon dont les valeurs sont lues
+      dans la table. L'intervalle des valeurs va de 0 à N, où N est le nombre de canaux de sortie
+      moins 1. Une valeur de zéro enverra le grain sur la sortie audio 1 de l'opcode. On peut
+      utiliser des valeurs non entières, par exemple 3,5 répartira le grain également entre les
+      sorties 4 et 5. L'utilisateur doit éviter les dépassements de niveau, aucun test n'étant
+      effectué. L'opcode plantera si des valeurs dépassent le niveau maximal. On peut choisir une
+      table par défaut en utilisant -1 comme numéro de ftable, pour lequel
+      <emphasis>ichannelmasks</emphasis> désactive le masquage des canaux (tous les grains reçoivent
+      un masque de canal de 0 et sont envoyés sur la sortie audio 1 de
+      <emphasis>partikkel</emphasis>). 
+    </para>
+    <para>
+      <emphasis>iwavfreqstarttab</emphasis> -- numéro d'une table de fonction, voir
+      <emphasis>igainmasks</emphasis> pour une description de la façon dont les valeurs sont lues
+      dans la table. Multiplicateur de la fréquence de départ de chaque grain. La hauteur glissera
+      de la fréquence de départ jusqu'à la fréquence de fin suivant une droite ou une courbe fixée
+      par <emphasis>ksweepshape</emphasis>. On peut choisir une table par défaut en utilisant -1
+      comme numéro de ftable, pour lequel <emphasis>iwavfreqstarttab</emphasis> fournit un
+      multiplicateur de 1, désactivant toute modification de la fréquence de départ.
+    </para>
+    <para>
+      <emphasis>iwavfreqendtab</emphasis> -- numéro d'une table de fonction, voir
+      <emphasis>iwavfreqstarttab</emphasis>. Multiplicateur de la fréquence de fin de chaque grain.
+      On peut choisir une table par défaut en utilisant -1 comme numéro de ftable, pour lequel 
+      <emphasis>iwavfreqendtab</emphasis> fournit un multiplicateur de 1, désactivant toute
+      modification de la fréquence de fin. 
+    </para>
+    <para>
+      <emphasis>ifmamptab</emphasis> -- numéro d'une table de fonction, voir
+      <emphasis>igainmasks</emphasis> pour une description de la façon dont les valeurs sont lues
+      dans la table. Indice de modulation de fréquence par grain. Le signal
+      <emphasis>awavfm</emphasis> sera multiplié par les valeurs lues dans cette table. On peut
+      choisir une table par défaut en utilisant -1 comme numéro de ftable, pour lequel
+      <emphasis>ifmamptab</emphasis> fournit 1 comme indice de modulation, activant la modulation
+      de fréquence pour tous les grains.
+    </para>
+    <para>
+      <emphasis>iwaveamptab</emphasis> -- numéro d'une table de fonction, les indices sont parcourus
+      de la même manière que pour <emphasis>igainmasks</emphasis>. La valeur d'indice 0 sert de
+      point de début de boucle et la valeur d'indice 1 de point de fin. Les autres indices sont lus
+      par groupes de 5, dans lesquels chaque valeur représente une valeur de gain pour chacune des
+      4 formes d'onde source, et la cinquième valeur représente l'amplitude de trainlet. On peut
+      choisir une table par défaut en utilisant -1 comme numéro de ftable, pour lequel
+      <emphasis>iwaveamptab</emphasis> fournit un mélange égal des 4 formes d'onde source (chacune
+      avec une amplitude de 0,5) et une amplitude de trainlet nulle.
+    </para>
+    <para>
+      Le calcul des trainlets étant très gourmand en ressources CPU, on peut éviter la
+      plupart des calculs de trainlet en fixant <emphasis>ktrainamp</emphasis> à zéro. Les trainlets
+      sont normalisés au niveau de crête (<emphasis>ktrainamp</emphasis>), en compensation des
+      variations d'amplitude causées par les variations de <emphasis>kpartials</emphasis> et de
+      <emphasis>kchroma</emphasis>. 
+    </para>
+    <para>
+      <emphasis>imax_grains</emphasis> -- nombre maximum de grains par k-periode. Une grande valeur
+      ne devrait pas affecter l'exécution, le dépassement de cette valeur conduira à l'effacement
+      des grains les "plus anciens".
+    </para>
+    <para>
+      <emphasis>iopcode_id</emphasis> -- identificateur de l'opcode, liant une instance de
+      <emphasis>partikkel</emphasis> à une instance de
+      <link linkend="partikkelsync"><citetitle>partikkelsync</citetitle></link>, laquelle fournira
+      en sortie des impulsions de déclenchement synchronisées pour le distributeur de grains de
+      <emphasis>partikkel</emphasis>. La valeur par défaut est zéro, ce qui signifie aucune
+      connexion à une instance de <emphasis>partikkelsync</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>xgrainfreq</emphasis> -- nombre de grains par seconde. On peut spécifier une valeur
+      nulle, ce qui déléguera la distribution des grains à l'entrée de synchronisation.
+    </para>
+   <para>
+      <emphasis>async</emphasis> -- entrée de synchronisation. Les valeurs entrées sont ajoutées à
+      la phase de l'horloge interne du distributeur de grains, ce qui permet une synchronisation de
+      tempo avec une horloge externe. Comme c'est un signal de taux-a, les entrées sont généralement
+      des impulsions de longueur 1/<emphasis>sr</emphasis>. A l'aide de telles impulsions on peut
+      "faire bouger" la phase interne en avant ou en arrière, ce qui permet une synchronisation
+      plus ou moins forte. Des valeurs d'entrée négatives décrémentent la phase interne, tandis que
+      des valeurs positives dans l'intervalle de 0 à 1 incrémentent la phase interne. Une valeur
+      d'entrée de 1 forcera toujours <emphasis>partikkel</emphasis> à générer un grain. Si la
+      valeur reste à 1, l'horloge interne du distributeur de grain marquera une pause mais tous les
+      grains en cours d'exécution continueront jusqu'à leur terme.
+    </para>
+    <para>
+      <emphasis>kdistribution</emphasis> -- distribution périodique ou stochastique des grains,
+      0 = périodique. Le déplacement stochastique de grain est de l'ordre de
+      <emphasis>kdistribution</emphasis>/<emphasis>grainrate</emphasis> secondes. Le
+      profil de la distribution stochastique (distribution aléatoire) peut être fixé
+      dans la table <emphasis>idisttab</emphasis>. Si <emphasis>kdistribution</emphasis>
+      est négatif, le résultat est un déplacement temporel déterministe comme décrit par
+      <emphasis>idisttab</emphasis> (lecture séquentielle des valeurs de déplacement). Le
+      déplacement de grain maximum est limité dans tous les cas à 10 secondes, et un grain
+      conservera les valeurs (durée, hauteur, etc) reçues lors de sa première génération
+      (avant le déplacement temporel). Comme le déplacement de grain dépend du taux de
+      grains, ce déplacement est indéfini pour un taux de grain de 0Hz et
+      <emphasis>kdistribution</emphasis> est complètement désactivé dans ce cas.
+    </para>
+    <para>
+      <emphasis>kenv2amt</emphasis> -- dosage de l'enveloppe secondaire dans l'enveloppe de
+      chaque grain. L'intervalle va de 0 à 1, où 0 signifie pas d'enveloppe secondaire (fenêtre
+      rectangulaire), 0,5 provoquera une interpolation entre une fenêtre rectangulaire et la
+      forme fixée par <emphasis>ienv2tab</emphasis>.
+    </para>
+    <para>
+      <emphasis>ksustain_amount</emphasis> -- durée d'entretien exprimée comme une fraction de la
+      durée du grain. C-à-d la proportion entre le temps d'enveloppe (attaque + chute) et le temps
+      d'entretien. Le niveau d'entretien est celui de la dernière valeur de la ftable
+      <emphasis>ienv_attack</emphasis>.
+    </para>
+    <para>
+      <emphasis>ka_d_ratio</emphasis> -- proportion entre le temps d'attaque et le temps de chute.
+      Par exemple, avec <emphasis>ksustain_amount</emphasis> à 0,5 et <emphasis>ka_d_ratio</emphasis>
+      à 0,5, l'eveloppe d'attaque de chaque grain prendra 25% de la durée du grain, l'amplitude
+      maximale (entretien) sera tenue pendant 50% de la durée du grain, et l'enveloppe de chute
+      prendra les 25% restants de la durée du grain.
+    </para>
+    <para>
+      <emphasis>kduration</emphasis> -- durée du grain en millisecondes.
+    </para>
+    <para>
+      <emphasis>kamp</emphasis> -- facteur de pondération de l'amplitude en sortie de l'opcode.
+      Multiplié par l'amplitude de chaque grain lue à partir de <emphasis>igainmasks</emphasis>.
+      La lecture de la forme d'onde source dans les grains peut consommer un nombre
+      significatif de cycles CPU, spécialement si la durée de grain est longue, de
+      nombreux grains se chevauchant. Si <emphasis>kamp</emphasis> vaut
+      zéro la lecture de la forme d'onde dans les grains n'aura pas lieu (et aucun son
+      ne sera évidemment généré). On peut utiliser cette possibilité comme une méthode
+      de court-circuit "logiciel" si l'on veut garder l'opcode actif mais silencieux
+      pendant un certain temps.
+    </para>
+    <para>
+      <emphasis>kwavfreq</emphasis> -- facteur de transposition. Multiplié par les valeurs de
+      transposition de départ et de fin lues à partir de <emphasis>iwavfreqstarttab</emphasis> et
+      de <emphasis>iwavfreqendtab</emphasis>.
+    </para>
+    <para>
+      <emphasis>ksweepshape</emphasis> -- forme de la progression de la transposition, contrôle la
+      courbure de la progression de la transposition. Dans l'intervalle de 0 à 1. Avec les valeurs
+      faibles, la transposition sera maintenue plus longtemps près de la valeur de départ
+      puis ira rapidement vers la valeur de fin, tandis qu'avec les valeurs fortes la
+      transposition ira tout de suite rapidement vers la valeur de fin. Une valeur de 0,5 donnera
+      une progression linéaire. La valeur 0 supprimera la progression et ne gardera que la
+      fréquence de départ, tandis que la valeur 1 supprimera la progression et ne gardera que la
+      fréquence de fin. Le générateur de la progression peut être légèrement imprécis lorsqu'il
+      atteint la fréquence finale si l'on utilise une courbe raide avec des grains très longs.
+    </para>
+    <para>
+      <emphasis>awavfm</emphasis> -- entrée audio pour la modulation de fréquence du grain.
+    </para>
+    <para>
+      <emphasis>kfmenv</emphasis> -- numéro d'une table de fonction, enveloppe du signal modulateur
+      de la modulation de fréquence provoquant un changement de l'indice de modulation sur toute la
+      durée du grain.
+    </para>
+    <para>
+      <emphasis>ktraincps</emphasis> -- fréquence fondamentale des trainlets.
+    </para>
+    <para>
+      <emphasis>knumpartials</emphasis> -- nombre de partiels dans les trainlets.
+    </para>
+    <para>
+      <emphasis>kchroma</emphasis> -- couleur spectrale des trainlets. Une valeur de 1 donne une
+      amplitude égale à chaque partiel, des valeurs plus grandes réduiront l'amplitude des partiels
+      inférieurs tout en renforçant l'amplitude des partiels supérieurs.
+    </para>
+    <para>
+      <emphasis>krandommask</emphasis> -- masquage aléatoire (escamotage) de grains individuels.
+      Dans l'intervalle de 0 à 1, où la valeur 0 signifie pas de masquage (tous les grains sont
+      joués), et la valeur 1 escamote tous les grains.
+    </para>
+    <para>
+      <emphasis>kwaveform1</emphasis> -- numéro de la table pour la forme d'onde source 1.
+     </para>
+    <para>
+      <emphasis>kwaveform2</emphasis> -- numéro de la table pour la forme d'onde source 2.
+    </para>
+    <para>
+      <emphasis>kwaveform3</emphasis> -- numéro de la table pour la forme d'onde source 3.
+    </para>
+    <para>
+      <emphasis>kwaveform4</emphasis> -- numéro de la table pour la forme d'onde source 4.
+    </para>
+    <para>
+      <emphasis>asamplepos1</emphasis> -- position de départ pour la lecture de la forme d'onde
+      source 1.
+    </para>
+    <para>
+      <emphasis>asamplepos2</emphasis> -- position de départ pour la lecture de la forme d'onde
+      source 2.
+    </para>
+    <para>
+      <emphasis>asamplepos3</emphasis> -- position de départ pour la lecture de la forme d'onde
+      source 3.
+    </para>
+    <para>
+      <emphasis>asamplepos4</emphasis> -- position de départ pour la lecture de la forme d'onde
+      source 4.
+    </para>
+    <para>
+      <emphasis>kwavekey1</emphasis> -- hauteur originale de la forme d'onde source 1. On peut
+      l'utiliser pour transposer chaque forme d'onde source indépendamment.
+    </para>
+    <para>
+      <emphasis>kwavekey2</emphasis> -- comme <emphasis>kwavekey1</emphasis>, mais pour la forme
+      d'onde source 2.
+    </para>
+    <para>
+      <emphasis>kwavekey3</emphasis> -- comme <emphasis>kwavekey1</emphasis>, mais pour la forme
+      d'onde source 3.
+    </para>
+    <para>
+      <emphasis>kwavekey4</emphasis> -- comme <emphasis>kwavekey1</emphasis>, mais pour la forme
+      d'onde source 4.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+
+    <para>
+      Voici un exemple de l'opcode partikkel. Il utilise le fichier
+      <ulink url="examples/partikkel.csd"><citetitle>partikkel.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode partikkel.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/partikkel.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+    <para>
+      Voici un autre exemple de l'opcode partikkel. Il utilise le fichier
+      <ulink url="examples/partikkel-2.csd"><citetitle>partikkel-2.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple 2 de l'opcode partikkel.</title>
+          <xi:include href="examples-xml/partikkel-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para><link linkend="fof"><citetitle>fof</citetitle></link>,
+      <link linkend="fof2"><citetitle>fof2</citetitle></link>,
+      <link linkend="fog"><citetitle>fog</citetitle></link>,
+      <link linkend="grain"><citetitle>grain</citetitle></link>,
+      <link linkend="grain2"><citetitle>grain2</citetitle></link>,
+      <link linkend="grain3"><citetitle>grain3</citetitle></link>,
+      <link linkend="granule"><citetitle>granule</citetitle></link>,
+      <link linkend="sndwarp"><citetitle>sndwarp</citetitle></link>,
+      <link linkend="sndwarpst"><citetitle>sndwarpst</citetitle></link>,
+      <link linkend="syncgrain"><citetitle>syncgrain</citetitle></link>,
+      <link linkend="syncloop"><citetitle>syncloop</citetitle></link>,
+      <link linkend="partikkelsync"><citetitle>partikkelsync</citetitle></link>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Thom Johansen</member>
+        <member>Auteur : Torgeir Strand Henriksen</member>
+        <member>Auteur : &nameoeyvind;</member>
+        <member>Avril 2007</member>
+      </simplelist>
+    <para>Exemples écrits par Joachim Heintz et &nameoeyvind;.</para>
+    <para>Nouveau dans la version 5.06</para>
+    </para>
+  </refsect1>
+</refentry>
+

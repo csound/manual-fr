@@ -1,0 +1,77 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.10
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="monitor">
+<indexterm id="IndexMonitor"><primary>monitor</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Signal Output</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>monitor</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>monitor</refname>
+    <refpurpose>
+      Retourne la trame audio de spout.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne la trame audio de spout (s'il est actif), sinon retourne zéro.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aout1 [,aout2 ... aoutX] <command>monitor</command></synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Cet opcode peut être utilisé pour surveiller le signal de sortie de Csound.
+      Il ne faut pas l'utiliser pour un traitement en aval du signal.
+    </para>
+    <para>
+      Voir l'article sur l'opcode
+      <link linkend="fout"><citetitle>fout</citetitle></link> pour un exemple
+      de l'utilisation de <emphasis>monitor</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode monitor. Il utilise le fichier
+      <ulink url="examples/monitor.csd"><citetitle>monitor.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode monitor.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/monitor.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="fout"><citetitle>fout</citetitle></link>, 
+      les <link linkend="MixerOpcodes"><citetitle>opcodes Mixer</citetitle></link>
+      et le <link linkend="ZakTop"><citetitle>Système de Patch Zak</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Istvan Varga 2006</para>
+  </refsect1>
+</refentry>

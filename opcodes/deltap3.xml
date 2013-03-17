@@ -1,0 +1,164 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.11
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="deltap3">
+<indexterm id="IndexDeltap3"><primary>deltape</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Delay</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>deltap3</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>deltap</refname>
+    <refpurpose>
+      Lit une ligne à retard avec des délais variables et interpolation cubique.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Lit une ligne à retard avec des délais variables et interpolation cubique.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>deltap3</command> xdlt</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>xdlt</emphasis> -- spécifie le délai de lecture en secondes.
+      Chaque valeur est comprise entre 1 période de contrôle et le délai
+      total de la paire lecture/écriture ; cependant, comme il n'y a pas
+      de vérification interne du respect de cet intervalle, l'utilisateur est
+      entièrement responsable. Chaque argument peut être une constante, une
+      variable ou un signal variant dans le temps ; l'argument
+      <emphasis>xdlt</emphasis> de <emphasis>deltap3</emphasis> implique qu'une
+      valeur de délai variant au taux audio est autorisée ici.
+    </para>
+
+    <para>
+      <emphasis>deltap3</emphasis> est expérimental, et utilise l'interpolation
+      cubique. (Nouveau dans la version 3.50 de Csound).
+    </para>
+
+    <para>
+      Cet opcode peut lire directement dans une paire
+      <link linkend="delayr"><citetitle>delayr</citetitle></link>/<link linkend="delayw"><citetitle>delayw</citetitle></link>
+      en extrayant les données audio retardées des <emphasis>idlt</emphasis> secondes
+      de son stocké. Il peut y avoir n'importe quel nombre d'unités
+      <emphasis>deltap</emphasis> et/ou
+      <link linkend="deltapi"><citetitle>deltapi</citetitle></link> entre une paire
+      lecture/écriture. Chacune reçoit un extrait audio sans changement de
+      l'amplitude originale.
+    </para>
+
+    <para>
+      Ces opcodes peuvent fournir de multiples lectures de délai pour des lignes à
+      retard arbitraires et des réseaux à rétroaction. Ils peuvent délivrer des
+      délais constants ou variables, et sont utiles pour construire des effets
+      de chorus, harmonizer et Doppler. Les délais constants (et
+      certains de ceux qui varient lentement) ne nécessitent pas d'interpolation ;
+      <emphasis>deltap</emphasis> leur convient très bien. Les délais variant à
+      moyenne vitesse ou rapidement nécessiteront cependant les services
+      supplémentaires de <emphasis>deltapi</emphasis>.
+    </para>
+
+    <para>
+      Les paires <emphasis>delayr</emphasis>/<emphasis>delayw</emphasis> peuvent
+      être entrelacées. Pour associer une unité de lecture de délai à une unité
+      <emphasis>delayr</emphasis>, elle doit non seulement être située entre ce
+      <emphasis>delayr</emphasis> et le <emphasis>delayw</emphasis> approprié,
+      mais aussi précéder tous les <emphasis>delayr</emphasis> suivants. Voir
+      l'exemple 2. (Cette possibilité fut ajoutée dans la version 3.57 de Csound
+      par Jens Groh et &namejohn;).
+    </para>
+
+    <para>
+      <emphasis>N.B.</emphasis> Les délais de taux-k ne sont pas interpolés en
+      interne, mais déroulent plutôt des décalages temporels d'échantillons
+      audios ; c'est adéquat pour des délais changeant lentement. Cependant,
+      pour les changements à vitesse moyenne ou rapides, il faut fournir en
+      entrée des valeurs de délai avec une plus grande résolution de taux
+      audio.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      <example>
+        <title>Exemple n°1 de deltap</title>
+        <programlisting>
+  asource  <emphasis role="opc">buzz</emphasis>      1, 440, 20, 1
+  atime    <emphasis role="opc">linseg</emphasis>    1, p3<emphasis role="op">/</emphasis>2,.01, p3<emphasis role="op">/</emphasis>2,1   <emphasis role="comment">; trace a distance in secs</emphasis>
+  ampfac   <emphasis role="op">=</emphasis>         1<emphasis role="op">/</emphasis>atime<emphasis role="op">/</emphasis>atime         <emphasis role="comment">; and calc an amp factor</emphasis>
+  adump    <emphasis role="opc">delayr</emphasis>    1                     <emphasis role="comment">; set maximum distance</emphasis>
+  amove    <emphasis role="opc">deltapi</emphasis>   atime                 <emphasis role="comment">; move sound source past</emphasis>
+           <emphasis role="opc">delayw</emphasis>    asource               <emphasis role="comment">; the listener</emphasis>
+           <emphasis role="opc">out</emphasis>       amove <emphasis role="op">*</emphasis> ampfac</programlisting>
+      </example>
+    </para>
+
+    <para>
+      <example>
+        <title>Exemple n°2 de deltap</title>
+        <programlisting>
+  ainput1 <emphasis role="op">=</emphasis>	..... 
+  ainput2 <emphasis role="op">=</emphasis>	..... 
+  kdlyt1  <emphasis role="op">=</emphasis>	..... 
+  kdlyt2  <emphasis role="op">=</emphasis>	..... 
+
+<emphasis role="comment">;Read delayed signal, first delayr instance:</emphasis>
+  adump   <emphasis role="opc">delayr</emphasis>  4.0 
+  adly1   <emphasis role="opc">deltap</emphasis>  kdlyt1       <emphasis role="comment">; associated with first delayr instance</emphasis>
+
+<emphasis role="comment">;Read delayed signal, second delayr instance:</emphasis>
+  adump   <emphasis role="opc">delayr</emphasis>  4.0 
+  adly2   <emphasis role="opc">deltap</emphasis>  kdlyt2       <emphasis role="comment">; associated with second delayr instance</emphasis>
+
+<emphasis role="comment">;Do some cross-coupled manipulation:</emphasis>
+  afdbk1  <emphasis role="op">=</emphasis>       0.7 <emphasis role="op">*</emphasis> adly1 <emphasis role="op">+</emphasis> 0.7 <emphasis role="op">*</emphasis> adly2 <emphasis role="op">+</emphasis> ainput1 
+  afdbk2  <emphasis role="op">=</emphasis>       -0.7 <emphasis role="op">*</emphasis> adly1 <emphasis role="op">+</emphasis> 0.7 <emphasis role="op">*</emphasis> adly2 <emphasis role="op">+</emphasis> ainput2 
+
+<emphasis role="comment">;Feed back signal, associated with first delayr instance:</emphasis>
+          <emphasis role="opc">delayw</emphasis>  afdbk1 
+
+<emphasis role="comment">;Feed back signal, associated with second delayr instance:</emphasis>
+          <emphasis role="opc">delayw</emphasis>  afdbk2
+          <emphasis role="opc">outs</emphasis>    adly1, adly2</programlisting>
+      </example>
+    </para>
+
+    <para>
+      Voici un autre exemple de l'opcode deltap3. Il utilise le fichier
+      <ulink url="examples/deltap3.csd"><citetitle>deltap3.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode deltap3.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/deltap3.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="deltap"><citetitle>deltap</citetitle></link>,
+      <link linkend="deltapi"><citetitle>deltapi</citetitle></link>,
+      <link linkend="deltapn"><citetitle>deltapn</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

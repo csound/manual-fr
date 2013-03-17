@@ -1,0 +1,147 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.1
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLxyin">
+<indexterm id="IndexFLxyin"><primary>FLxyin</primary></indexterm>
+  <refentryinfo><title>FLTK:Other</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLxyin</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLxyin</refname>
+    <refpurpose>
+      Détecte la position de curseur de la souris dans une zone définie à
+      l'intérieur d'un FLpanel.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Semblable à <link linkend="xyin"><citetitle>xyin</citetitle></link>,
+      détecte la position de curseur de la souris dans une zone définie à
+      l'intérieur d'un FLpanel.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>koutx, kouty, kinside  <command>FLxyin</command> ioutx_min, ioutx_max, iouty_min, iouty_max, \
+      iwindx_min, iwindx_max, iwindy_min, iwindy_max [, iexpx, iexpy, ioutx, iouty]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ioutx_min, ioutx_max</emphasis> - les valeurs limites de l'intervalle
+      de sortie (X ou axe horizontal).
+    </para>
+    <para>
+      <emphasis>iouty_min, iouty_max </emphasis> - les valeurs limites de l'intervalle
+      de sortie (Y ou axe vertical).
+    </para>
+    <para>
+      <emphasis>iwindx_min, iwindx_max</emphasis> - les coordonnées X des bords
+      horizontaux de la zone sensible, relatives au FLpanel, en pixels.
+    </para>
+    <para>
+      <emphasis>iwindy_min, iwindy_max</emphasis> - les coordonnées Y des bords
+      verticaux de la zone sensible, relatives au FLpanel, en pixels.
+    </para>
+    <para>
+      <emphasis>iexpx, iexpy</emphasis> - (facultatif) nombres entiers définissant
+      le comportement des sorties x ou y : 0 -> la sortie est linéaire ; 1 -> la
+      sortie est exponentielle ; tout autre nombre indique le numéro d'une table
+      existante utilisée pour l'indexation. Noter que dans les opérations normales,
+      la table doit être normalisée et unipolaire (tous les éléments de la table
+      doivent être compris entre zéro et un). Dans ce cas, tous les éléments de
+      la table seront mis à l'échelle en fonction de <emphasis>imin</emphasis>
+      et de <emphasis>imax</emphasis>. Il est tout de même possible d'utiliser
+      des tables non normalisées (créées avec un numéro de table négatif, qui
+      peuvent contenir des éléments de n'importe quelle valeur), afin d'accéder
+      aux valeurs courantes des éléments de la table, sans mise à l'échelle, en
+      affectant 0 à <emphasis>iout_min</emphasis> et 1 à <emphasis>iout_max</emphasis>.
+    </para>
+    <para>
+      <emphasis>ioutx, iouty</emphasis> – (facultatif) valeurs de sortie initiales.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>koutx, kouty</emphasis> - valeurs de sorties, mises à l'échelle
+      selon les choix de l'utilisateur.
+    </para>
+    <para>
+      <emphasis>kinside</emphasis> - un drapeau indiquant si le curseur de la
+      souris se trouve en dehors du rectangle de la zone définie. S'il est en
+      dehors de la zone, <emphasis>kinside</emphasis> vaut zéro.
+    </para>
+
+    <para>
+      <emphasis>FLxyin</emphasis> détecte la position du curseur de la souris dans
+      une zone définie à l'intérieur d'un
+      <link linkend="FLpanel"><citetitle>FLpanel</citetitle></link>. Quand
+      <emphasis>FLxyin</emphasis> est appelé, la position de la souris dans la
+      zone choisie est retournée au taux-k. Il est possible de définir la zone
+      sensible, ainsi que les valeurs minimale et maximale correspondant aux
+      positions minimale et maximale de la souris. Il n'est pas nécessaire que
+      les boutons de la souris soient appuyés pour que <emphasis>FLxyin</emphasis>
+      fonctionne. Il est capable d'opérer correctement même si d'autres widgets
+      (présents dans le <link linkend="FLpanel"><citetitle>FLpanel</citetitle></link>)
+      chevauchent la zone sensible.
+    </para>
+    <para>
+      A l'inverse de la plupart des autres opcodes FLTK, <emphasis>FLxyin</emphasis> 
+      ne peut pas être utilisé dans l'en-tête, car ce n'est pas un widget. Ce n'est
+      que la définition d'une zone de détection de la souris à l'intérieur d'un
+      panneau FLTK.
+    </para>
+
+  </refsect1>
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode FLxyin. Il utilise le fichier
+      <ulink url="examples/FLxyin.csd"><citetitle>FLxyin.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode FLxyin.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/FLxyin.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Voici une autre exemple de l'opcode FLxyin. Il utilise le fichier
+      <ulink url="examples/FLxyin-2.csd"><citetitle>FLxyin-2.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode FLxyin.</title>
+          <xi:include href="examples-xml/FLxyin-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="FLpanel"><citetitle>FLpanel</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 5.06</para>
+  </refsect1>
+</refentry>

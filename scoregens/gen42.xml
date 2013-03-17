@@ -1,0 +1,111 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.5
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="GEN42">
+      <indexterm id="IndexGEN42"><primary>GEN42</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN42</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>GEN42</refname>
+    <refpurpose>
+      Génère une distribution aléatoire d'intervalles discrets de valeurs.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère une fonction de distribution aléatoire d'intervalles discrets de valeurs en donnant une liste
+      de groupes de trois nombres.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>f</command> # date taille -42  min1 max1 prob1 min2 max2 prob2 min3 max3 prob3 ...  minN maxN probN</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Le premier nombre de chaque groupe est la valeur minimum de l'intervalle, le second est la valeur
+      maximum et le troisième est la probabilité qu'un élément appartenant à cet intervalle de valeurs soit
+      choisi par un algorithme aléatoire. La probabilité pour un intervalle doit être une
+      fraction de 1, et la somme des probabilités pour tous les intervalles doit être
+      égale à 1.
+    </para>
+
+    <para>
+      Ce sous-programme est prévu pour être utilisé avec les opcodes <emphasis>duserrnd</emphasis> et
+      <link linkend="urd"><citetitle>urd</citetitle></link> (voir 
+      <link linkend="duserrnd"><citetitle>duserrnd</citetitle></link> pour plus d'information). Comme ni
+      <emphasis>duserrnd</emphasis> ni <emphasis>urd</emphasis> n'utilisent l'interpolation, il est suggéré
+      de donner une taille raisonnablement grande.
+    </para>
+  </refsect1>
+
+    <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode GEN42. Il utilise le fichier
+      <ulink url="examples/gen42.csd"><citetitle>gen42.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode GEN42.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/gen42.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>     
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
+ i1   184.61538
+ i1   130.76923
+ i1   169.23077
+ i1    12.00000
+.......
+
+WARNING: Seeding from current time 3751086165
+
+ i2   138.46154
+ i2    12.00000
+ i2   123.07692
+ i2   161.53846
+ i2   123.07692
+ i2   153.84615
+......</screen>
+      
+      <textobject>
+        <phrase>Voici le diagramme de la forme d'onde de la routine GEN42 utilisée
+        dans l'exemple :</phrase>
+      </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen42.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>  f 1 0 -20 -42  10 20 .3 100 200 .7</phrase>
+        </textobject>
+
+        <caption>
+          <para>  f 1 0 -20 -42  10 20 .3 100 200 .7</para>
+        </caption>
+      </mediaobject>
+
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+  </refsect1>
+</refentry>

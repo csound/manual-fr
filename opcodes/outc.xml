@@ -1,0 +1,85 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="outc">
+<indexterm id="IndexOutc"><primary>outc</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Signal Output</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>outc</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>outc</refname>
+    <refpurpose>
+      Ecrit des données audio sur un nombre arbitraire de canaux vers un périphérique
+      externe ou un flot.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ecrit des données audio sur un nombre arbitraire de canaux vers un périphérique
+      externe ou un flot.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>outc</command> asig1 [, asig2] [...]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>outc</emphasis> écrit autant de canaux que de variables fournies. Tous
+      les canaux dépassant <link linkend="nchnls"><citetitle>nchnls</citetitle></link>
+      sont ignorés. Des zéros sont ajoutés si nécessaire.
+    </para>
+  </refsect1>
+
+   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode outc. Il utilise le fichier
+      <ulink url="examples/outc.csd"><citetitle>outc.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode outc.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/outc.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="out32"><citetitle>out32</citetitle></link>,
+      <link linkend="outch"><citetitle>outch</citetitle></link>,
+      <link linkend="outx"><citetitle>outx</citetitle></link>,
+      <link linkend="outz"><citetitle>outz</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Université de Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>Mai 2000</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 4.07 de Csound</para>
+  </refsect1>
+</refentry>

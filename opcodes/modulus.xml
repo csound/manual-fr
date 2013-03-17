@@ -1,0 +1,113 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="modulus">
+<indexterm id="IndexPercent"><primary>&percnt;</primary></indexterm>
+  <refentryinfo><title>Mathematical Operations:Arithmetic and Logic Operations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>&percnt;</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>&percnt;</refname>
+
+    <refpurpose>
+      Opérateur modulo.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Les opérateurs arithmétiques réalisent les opérations de changement de signe (négation), de signe
+      inchangé, ET logique, OU logique, addition, soustraction, multiplication et division. Notez qu'une
+      valeur ou une expression peut être placée entre deux de ces opérateurs, lesquels peuvent la prendre
+      comme opérande de gauche ou de droite, comme dans
+      <literallayout>a + b * c.</literallayout>
+    </para>
+
+    <para>
+      Trois règles s'appliquent dans de tels cas :
+    </para>
+
+    <para>
+      1. &ast; et <emphasis>&sol;</emphasis> s'appliquent à leurs voisins plus fortement que &plus; et
+      &minus;. Ainsi l'expression ci-dessus s'interprète comme <literallayout>a + (b * c)</literallayout>
+      avec &ast; prenant b et c puis &plus; prenant a et b &ast; c.
+    </para>
+
+    <para>
+      2. <emphasis>&plus;</emphasis> et <emphasis>&minus;</emphasis> sont prioritaires sur &amp;&amp;, qui
+      devance lui-même &verbar;&verbar; :
+      <literallayout>a &amp;&amp; b - c &verbar;&verbar; d</literallayout>
+      est interprété comme 
+      <literallayout>(a &amp;&amp; (b - c)) &verbar;&verbar; d</literallayout>
+    </para>
+
+    <para>
+      3. Quand deux opérateurs sont d'égale importance, les opérations ont lieu  de gauche à droite :
+      <literallayout>a - b - c</literallayout>
+      est interprété comme
+      <literallayout>(a - b) - c</literallayout>
+    </para>
+
+    <para>
+      On peut utiliser des parenthèses pour forcer un groupement particulier.
+    </para>
+
+    <para>
+      L'opérateur <emphasis>&percnt;</emphasis> retourne la valeur de la réduction de
+      <emphasis>a</emphasis> par <emphasis>b</emphasis>, de telle façon que le résultat, en valeur
+      absolue, est inférieur à la valeur absolue de <emphasis>b</emphasis>, par soustraction répétée.
+      C'est l'équivalent de la fonction modulo pour les entiers. Nouveau dans la version 3.50
+      de Csound.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>a <command>&percnt;</command> b  (pas de restriction de taux)</synopsis>
+
+    <para>
+      où les arguments <emphasis>a</emphasis> et <emphasis>b</emphasis> peuvent être des expressions.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opérateur &percnt;. Il utilise le fichier
+      <ulink url="examples/modulus.csd"><citetitle>modulus.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opérateur &percnt;.</title>
+
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/modulus.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="subtracts"><citetitle>-</citetitle></link>, 
+      <link linkend="adds"><citetitle>&plus;</citetitle></link>, 
+      <link linkend="opand"><citetitle>&amp;&amp;</citetitle></link>, 
+      <link linkend="opor"><citetitle>&verbar;&verbar;</citetitle></link>, 
+      <link linkend="multiplies"><citetitle>&ast;</citetitle></link>, 
+      <link linkend="divides"><citetitle>&sol;</citetitle></link>, 
+      <link linkend="raises"><citetitle>&circ;</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

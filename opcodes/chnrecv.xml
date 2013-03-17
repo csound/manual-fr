@@ -1,0 +1,100 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.2
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="chnrecv">
+<indexterm id="IndexChnrecv"><primary>chnrecv</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Software Bus</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>chnrecv</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>chnrecv</refname>
+    <refpurpose>
+      Reçoit des données du bus logiciel.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Reçoit des données depuis un canal du bus logiciel nommé en entrée.
+      Cela implique une déclaration du canal avec <emphasis>imod</emphasis>=1
+      (voir aussi <emphasis>chn_k</emphasis>, <emphasis>chn_a</emphasis> et
+      <emphasis>chn_S</emphasis>).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ival <command>chnrecv</command> Sname</synopsis>
+    <synopsis>kval <command>chnrecv</command> Sname</synopsis>
+    <synopsis>aval <command>chnrecv</command> Sname</synopsis>
+    <synopsis>Sval <command>chnrecv</command> Sname</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>Sname</emphasis> -- une chaîne de caractères identifiant un
+      canal du bus logiciel nommé à lire.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ival</emphasis> -- la valeur de contrôle lue au temps-i.
+    </para>
+    <para>
+      <emphasis>kval</emphasis> -- la valeur de contrôle lue pendant l'exécution.
+    </para>
+    <para>
+      <emphasis>aval</emphasis> -- le signal audio lu pendant l'exécution.
+    </para>
+    <para>
+      <emphasis>Sval</emphasis> -- la valeur chaîne de caractères lue au temps-i.
+    </para>
+    <note><para></para></note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      L'exemple montre l'utilisation du bus logiciel comme signal de contrôle
+      asynchrone pour fixer la fréquence de coupure d'un filtre. On
+      suppose qu'un programme externe ayant accès à l'API fournit les valeurs.
+    </para>
+
+    <informalexample>
+      <programlisting>
+        <emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+        <emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 100
+        <emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 1
+
+        <emphasis role="oblock">instr</emphasis>   1
+           kc   <emphasis role="opc">chnrecv</emphasis>    "cutoff"
+           a1   <emphasis role="opc">oscil</emphasis>     p4, p5, 100
+           a2   <emphasis role="opc">lowpass2</emphasis>  a1, kc, 200
+                <emphasis role="opc">out</emphasis>       a2
+        <emphasis role="oblock">endin</emphasis></programlisting>
+    </informalexample>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameistvan;</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,121 @@
+<refentry id="cell">
+<indexterm id="IndexCell"><primary>cell</primary></indexterm>
+  <refentryinfo><title>Vectorial:Cellular Automata</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>cell</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>cell</refname>
+    <refpurpose>
+      Automate cellulaire
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Automate cellulaire à une dimension. Cet opcode est une version modifiée
+      de <emphasis>vcella</emphasis> par Gabriel Maldonado.
+    </para>
+  </refsect1>
+
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>cell</command> ktrig, kreinit, ioutFunc, initStateFunc, iRuleFunc, ielements</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ioutFunc</emphasis> -- numéro de la table dans laquelle l'état
+      de chaque cellule est stocké.
+    </para>
+
+    <para>
+      <emphasis>initStateFunc</emphasis> -- numéro de la table contenant l'état
+      initial des cellules.
+    </para>
+
+    <para>
+      <emphasis>iRuleFunc</emphasis> -- numéro de la table contenant la règle
+      sur 8 bit.
+    </para>
+
+    <para>
+      <emphasis>ielements</emphasis> -- nombre total de cellules dans une ligne. 
+    </para>
+
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ktrig</emphasis> -- signal de déclenchement. Chaque fois qu'il est
+      différent de zéro, une nouvelle génération de cellules est évaluée.
+    </para>
+
+    <para>
+      <emphasis>kreinit</emphasis> -- signal de réinitialisation. Chaque fois
+      qu'il est différent de zéro, toutes les cellules sont mises dans l'état
+      correspondant de <emphasis>initStateFunc</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>cell</emphasis> modélise un automate cellulaire classique à une
+      dimension et stocke l'état de chaque cellule dans une table identifiée par
+      <emphasis>ioutFunc</emphasis>.
+    </para>
+    
+    <para>
+      <emphasis>initStateFunc</emphasis> est un vecteur d'entrée contenant l'état
+      initial de la ligne de cellules, tandis que <emphasis>iRuleFunc</emphasis>
+      est un vecteur d'entrée contenant la règle choisie dans sa forme binaire
+      (bit de moindre poids en premier). 
+    </para>
+    
+    <para>
+      Une nouvelle génération de cellules est évaluée chaque fois que
+      <emphasis>ktrig</emphasis> contient une valeur non nulle. On peut aussi
+      forcer l'état de toutes les cellules à l'état correspondant dans
+      <emphasis>initStateFunc</emphasis> chaque fois que
+      <emphasis>kreinit</emphasis> contient une valeur non nulle.
+    </para>
+    
+    <para>
+      Noter que l'on suppose que chaque cellule peut être dans un état
+      parmi deux (1="vivante", 0="morte"), bien que des valeurs fractionnaires
+      peuvent également fonctionner, car elles sont tronquées.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple simple de l'opcode cell. Il utilise le fichier
+      <ulink
+          url="examples/cell.csd"><citetitle>cell.csd</citetitle></ulink>. 
+      <example>
+        <title>Un exemple simple de l'opcode cell.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/cell.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Gleb Rogozinsky</member>
+        <member>Octobre 2011</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 5.16.6 de Csound.</para>
+  </refsect1>
+</refentry>
+

@@ -1,0 +1,101 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.6
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="max_k">
+<indexterm id="Indexmax_k"><primary>max_k</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Comparators and Accumulators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>max_k</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>max_k</refname>
+    <refpurpose>
+      Maximum (ou minimum) local d'un signal entrant de taux-a.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>max_k</emphasis> retourne le maximum (ou le minimum) local du
+      signal entrant <emphasis>asig</emphasis>, mesuré dans l'intervalle de temps
+      entre deux passages à true de <emphasis>ktrig</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>knumkout <command>max_k</command> asig, ktrig, itype</synopsis>
+  </refsect1>
+ 
+    <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>itype</emphasis> - détermine le comportement de <emphasis>max_k</emphasis>
+      (voir ci-dessous)
+    </para>
+
+  </refsect1>
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- signal entrée
+    </para>
+    <para>
+      <emphasis>ktrig</emphasis> -- signal de déclenchement
+    </para>
+    <para>
+      <emphasis>max_k</emphasis> retourne le maximum (ou le minimum) local du
+      signal entrant <emphasis>asig</emphasis>, mesuré dans l'intervalle de
+      temps entre deux passages à true de <emphasis>ktrig</emphasis>.
+      <emphasis>itype</emphasis> détermine le comportement de
+      <emphasis>max_k</emphasis> :</para>
+    <para>
+      1 - maximum absolu (les valeurs négatives sont changées en valeurs positives
+      avant l'évaluation)
+    </para>
+    <para>
+      2 - maximum courant
+    </para>
+    <para>
+      3 - minimum courant
+    </para>
+    <para>
+      4 - calcule la valeur moyenne de <emphasis>asig</emphasis> dans l'intervalle
+      de temps depuis le dernier déclenchement.
+    </para>
+    <para>
+      Cet opcode peut être utile dans plusieurs situations, par exemple pour
+      implémenter un vu-mètre.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode max_k. Il utilise le fichier
+      <ulink url="examples/max_k.csd"><citetitle>max_k.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode max_k.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/max_k.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Written by &namegabriel;.</para>
+    <para>Nouveau dans Csound 5. (N'était disponible auparavant que dans CsoundAV)</para>
+    <para>Modifié pour être conforme à la documentation dans la version 5.15.</para>
+  </refsect1>
+</refentry>

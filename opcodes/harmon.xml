@@ -1,0 +1,138 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.16
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="harmon">
+<indexterm id="IndexHarmon"><primary>harmon</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Special Effects</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>harmon</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>harmon</refname>
+    <refpurpose>
+      Analyse une entrée audio et génère des voix harmoniques synchrones.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Analyse une entrée audio et génère des voix harmoniques synchrones.
+   </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>harmon</command> asig, kestfrq, kmaxvar, kgenfreq1, kgenfreq2, imode, \
+      iminfrq, iprd</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>imode</emphasis> -- mode d'interprétation des entrées de génération
+      de fréquence <emphasis>kgenfreq1</emphasis>, <emphasis>kgenfreq2</emphasis>.
+      0 : les valeurs entrées sont des rapports de la fréquence analysée du signal
+      audio. 1 : les valeurs entrées sont les fréquences demandées en Hz.
+    </para>
+
+    <para>
+      <emphasis>iminfrq</emphasis> -- la fréquence la plus basse en Hz attendue dans
+      l'entrée audio. Ce paramètre détermine la quantité de signal en entrée qui
+      est enregistrée pour l'analyse courante et fixe une limite inférieure au
+      détecteur de hauteur interne.
+    </para>
+
+    <para>
+      <emphasis>iprd</emphasis> -- période d'analyse (en secondes). Comme l'analyse
+      de hauteur interne peut prendre du temps, l'entrée est typiquement analysée
+      seulement toutes les 20 à 50 ms.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kestfrq</emphasis> -- fréquence estimée de l'entrée.
+    </para>
+
+    <para>
+      <emphasis>kmaxvar</emphasis> -- variance maximale (valeur attendue entre 0 et 1).
+    </para>
+
+    <para>
+      <emphasis>kgenfreq1</emphasis> -- la première fréquence générée.
+    </para>
+
+    <para>
+      <emphasis>kgenfreq2</emphasis> -- la seconde fréquence générée.
+    </para>
+
+    <para>
+      Cette unité est un harmoniseur, capable d'ajouter jusqu'à deux voix
+      supplémentaires avec la même amplitude et le même spectre que l'entrée.
+      L'analyse de l'entrée est facilitée par deux éléments : une estimation de
+      la fréquence de l'entrée <emphasis>kestfrq</emphasis> (en Hz) et une
+      variance fractionnaire maximale <emphasis>kmaxvar</emphasis> autour de cette
+      estimation, qui sert à limiter la taille de la recherche. Une fois la
+      fréquence réelle de l'entrée déterminée, la forme de pulsation la plus
+      récente est utilisée pour générer les autres voix aux fréquences demandées.
+    </para>
+
+    <para>
+      Les trois entrées de fréquence peuvent être dérivées de diverses manières
+      depuis un fichier de partition ou depuis une source MIDI. La première est
+      la hauteur attendue, avec un paramètre de variance permettant les inflexions
+      ou les approximations ; si la hauteur attendue vaut zéro l'harmoniseur sera
+      silencieux. Les seconde et troisième hauteurs contrôlent les fréquences de
+      sortie ; si l'une d'elles vaut zéro, l'harmoniseur ne générera que la
+      fréquence demandée différente de zéro ; si les deux sont nulles, l'harmoniseur
+      sera silencieux. Lorsque la fréquence demandée est plus haute que l'entrée,
+      le procédé demande plus de calculs à cause de la superposition des pulsations
+      en sortie. Pour des raisons d'efficacité, ceci est actuellement limité, ce
+      qui a pour résultat de ne permettre à tout moment qu'une seule voix plus
+      haute que l'entrée.
+    </para>
+
+    <para>
+      Cette unité est utile pour fournir à la demande un effet de chorus en fond,
+      ou bien pour corriger la hauteur d'une voix un peu fausse en entrée. Il
+      n'y a pratiquement pas de délai entre l'entrée et la sortie. La sortie
+      ne comprend que les parties générées sans l'entrée.
+    </para>
+ </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode harmon. Il utilise le fichier
+      <ulink url="examples/harmon.csd"><citetitle>harmon.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode harmon.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/harmon.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namebarry;</member>
+        <member>M.I.T., Cambridge, Mass</member>
+        <member>1997</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 3.47</para>
+  </refsect1>
+</refentry>

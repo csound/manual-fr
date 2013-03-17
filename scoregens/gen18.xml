@@ -1,0 +1,152 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.5
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="GEN18">
+      <indexterm id="IndexGEN18"><primary>GEN18</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN18</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>GEN18</refname>
+    <refpurpose>
+      Ecrit des formes d'onde complexes construites à partir de formes d'ondes déjà existantes.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ecrit des formes d'onde complexes construites à partir de formes d'ondes déjà existantes. Chaque
+      forme d'onde utilisée nécessite 4 p-champs et peut se chevaucher avec les autres formes d'onde.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>f</command> # date taille 18 fna ampa debuta fina fnb ampb debutb finb ...</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>taille</emphasis> -- nombre de points dans la table. Doit être une puissance de deux
+      (voir l'<link linkend="f">instruction f</link>).
+    </para>
+
+    <para>
+      <emphasis>fna, fnb, etc.</emphasis> -- numéros des tables pré-existantes à écrire dans la table.
+    </para>
+
+    <para>
+      <emphasis>ampa, ampb, etc.</emphasis> -- amplitude des formes d'onde. Ces amplitudes sont relatives,
+      car la forme d'onde composée pourra être post-normalisée. Des valeurs négatives sont autorisées et
+      impliquent une opposition de phase.
+    </para>
+
+    <para>
+      <emphasis>debuta, debutb, etc.</emphasis> -- où commencer à écrire fn dans la table.
+    </para>
+
+    <para>
+      <emphasis>fina, finb, etc.</emphasis> -- où terminer l'écriture de fn dans la table.
+      La dernière position valable est la puissance de deux moins un.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+
+    <para>
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">f</emphasis> 1  0  4096  10  1
+<emphasis role="stamnt">f</emphasis> 2  0  1024  18  1  1  0  511  1  1  512  1023</programlisting>
+      </informalexample>
+
+      f2 est constitué de deux copies de f1 positionnées en 0-511 et 512-1023.
+    </para>
+    <para>
+      Voici un exemple de la routine GEN18. Il utilise le fichier
+      <ulink url="examples/gen18.csd"><citetitle>gen18.csd</citetitle></ulink>.
+      <example>
+        <title>Un exemple de la routine GEN18.</title>
+        <xi:include href="examples-xml/gen18.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      <textobject>
+        <phrase>Voici les diagrammes des formes d'onde générées par GEN18,
+          utilisées dans l'exemple :</phrase>
+      </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen18_1.png" format="PNG"/>
+        <textobject>
+          <phrase>f 11 0 8193 18 1 1 0 4096 2 1 4097 8192 - forme d'onde composite faite d'une sinus et d'une dent de scie</phrase>
+        </textobject>
+        </imageobject>
+
+        <caption>
+          <para>f 11 0 8193 18 1 1 0 4096 2 1 4097 8192 - forme d'onde composite faite d'une sinus et d'une dent de scie</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen18_2.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 12 0 8192  18 1 1 0 4096 3 1 4097 8192 - forme d'onde composite faite d'une sinus et d'une onde de partiels cosinus</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 12 0 8192  18 1 1 0 4096 3 1 4097 8192 - forme d'onde composite faite d'une sinus et d'une onde de partiels cosinus</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen18_3.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 13 0 1024  18 1 0.7 0 767 3 0.7 512 1023 - partiels sinus+cosinus se chevauchant, avec une table plus courte que f12</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 13 0 1024  18 1 0.7 0 767 3 0.7 512 1023 - partiels sinus+cosinus se chevauchant, avec une table plus courte que f12</para>
+        </caption>
+      </mediaobject>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Noms anciennement utilisés</title>
+    <para>
+      <emphasis>GEN18</emphasis> était appelé <emphasis>GEN22</emphasis> dans la version 4.18. Le nom fut
+      changé à cause d'un conflit avec DirectCsound.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : William <quote>Pete</quote> Moss</member>
+        <member>University of Texas at Austin</member>
+        <member>Austin, Texas USA</member>
+        <member>Janvier 2002</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 4.18, changé dans la version 4.19</para>
+  </refsect1>
+</refentry>

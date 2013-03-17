@@ -1,0 +1,104 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.15
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="bformdec">
+<indexterm id="IndexBformdec"><primary>bformdec</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Panning and Spatialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>bformdec</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>bformdec</refname>
+    <refpurpose>
+      Obsolète. Décode un signal au format ambisonic B.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Décode un signal au format ambisonic B en signaux de haut-parleur spécifiques.
+      Noter que cet opcode est obsolète et imprécis et qu'il est remplacé par
+      l'opcode <link linkend="bformdec1"><citetitle>bformdec1</citetitle></link>
+      bien meilleur qui reprend toutes les caractéristiques importantes.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ao1, ao2 <command>bformdec</command> isetup, aw, ax, ay, az [, ar, as, at, au, av \
+      [, abk, al, am, an, ao, ap, aq]]</synopsis>
+    <synopsis>ao1, ao2, ao3, ao4 <command>bformdec</command> isetup, aw, ax, ay, az [, ar, as, at, \
+      au, av [, abk, al, am, an, ao, ap, aq]]</synopsis>
+    <synopsis>ao1, ao2, ao3, ao4, ao5 <command>bformdec</command> isetup, aw, ax, ay, az [, ar, as, \
+      at, au, av [, abk, al, am, an, ao, ap, aq]]</synopsis>
+    <synopsis>ao1, ao2, ao3, ao4, ao5, ao6, ao7, ao8 <command>bformdec</command> isetup, aw, ax, ay, az \
+      [, ar, as, at, au, av [, abk, al, am, an, ao, ap, aq]]]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+
+	<para>
+	<emphasis>isetup</emphasis> –- réglage de haut-parleur. Il y a cinq réglages
+    possibles : 1 indique le réglage stéréo. Il doit y avoir deux cellules de
+    sortie avec les positions de haut-parleur <!--(angle d'azimut dans le sens
+    des aiguilles d'une montre/angle d'altitude)--> supposées valoir
+    (330/0, 30/0).</para>
+  <para>2 indique le réglage quadraphonique. Il doit y avoir quatre cellules de sortie.
+    Les positions de haut-parleur sont supposées valoir (45°/0), (135°/0),
+    (225/0), (315/0).</para>
+  <para>3 est un réglage surround 5.1. Il doit y avoir cinq cellules de sortie.
+    Le canal LFE n'est pas supporté. Les positions de haut-parleur sont supposées
+    valoir (330/0), (30/0), (0/0), (250/0), (110/0).</para> 
+  <para> 4 indique huit haut-parleurs en cercle. Il doit y avoir huit cellules de
+    sortie. Les positions de haut-parleur sont supposées valoir (22.5/0), (67.5/0),
+    (112.5/0), (157.5/0), (202.5/0), (247.5/0), (292.5/0), (337.5/0).</para> 
+  <para> 5 indique un réglage cubique de huit haut-parleurs. Il doit y avoir huit
+    cellules de sortie. Les positions de haut-parleur sont supposées valoir 
+    (45/0), (45/30), (135/0), (135/30), (225/0), (225/30), (315/0), (315/30).</para> 
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+	<para><emphasis>aw, ax, ay, ... </emphasis> -- signal d'entrée au format B.</para>
+
+  <para><emphasis>ao1 .. ao8</emphasis> -– signaux de haut-parleur spécifiques en
+    sortie.</para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode bformdec. Il utilise le fichier
+      <ulink url="examples/bformenc.csd"><citetitle>bformenc.csd</citetitle></ulink>.
+
+    <example>
+      <title>Exemple de l'opcode bformdec.</title>
+      <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+      et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+      d'information sur l'utilisation des options de la ligne de commande.</para>
+      <xi:include href="examples-xml/bformenc.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Samuel Groner</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.07. Obsolète dans la 5.09.</para>
+  </refsect1>
+</refentry>

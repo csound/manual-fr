@@ -1,0 +1,89 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="trmix">
+<indexterm id="Indextrmix"><primary>trmix</primary></indexterm>
+
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>trmix</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>trmix</refname>
+    <refpurpose>
+      Mixage de flots de suivi de partiels.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      L'opcode <emphasis>trmix</emphasis> prend deux entrées contenant des flots
+      de signal TRACKS pv (tels que générés, par exemple, par <emphasis>partials</emphasis>)
+      et les mixe en un flot TRACKS unique. Les canaux sont mixés dans l'espace
+      disponible (défini par le nombre original de bins de TFR dans les signaux
+      analysés). Si la somme des canaux en entrée dépasse cet espace, les canaux
+      d'ordre plus élevé dans la seconde entrée sont ignorés.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>fsig <command>trmix</command> fin1, fin2 </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>fsig</emphasis> -- flot pv de sortie au format TRACKS.
+    </para>
+
+    <para>
+      <emphasis>fin1</emphasis> -- premier flot pv d'entrée au format TRACKS.
+    </para>
+  
+    <para>
+      <emphasis>fin2</emphasis> -- second flot pv d'entrée au format TRACKS.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode trmix. Il utilise le fichier
+      <ulink url="examples/trmix.csd"><citetitle>trmix.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode trmix.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/trmix.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    
+    <para>
+      L'exemple ci-dessus montre le suivi de partiels d'un signal d'analyse
+      par distribution de fréquence instantanée, la séparation en fréquence et
+      la transposition de hauteur de la partie haute du spectre, suivies du
+      remixage des deux parties du spectre et de la resynthèse.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Février 2006 </member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans Csound 5.01</para>
+  </refsect1>
+</refentry>

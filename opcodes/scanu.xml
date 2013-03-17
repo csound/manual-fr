@@ -1,0 +1,166 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="scanu">
+<indexterm id="IndexScanu"><primary>scanu</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Scanned Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>scanu</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>scanu</refname>
+    <refpurpose>
+      Calcule la forme d'onde et la table d'onde à utiliser dans la synthèse par
+      balayage.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Calcule la forme d'onde et la table d'onde à utiliser dans la synthèse par
+      balayage.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>scanu</command> init, irate, ifnvel, ifnmass, ifnstif, ifncentr, ifndamp, kmass, \
+      kstif, kcentr, kdamp, ileft, iright, kpos, kstrngth, ain, idisp, id</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>init</emphasis> -- la position initiale des masses. Si c'est un
+      nombre négatif, alors la valeur absolue de <emphasis>init</emphasis> indique
+      la table à utiliser pour la forme du marteau. Si <emphasis>init</emphasis>
+      &gt; 0, il représente le nombre de masses attendu.
+    </para>
+
+    <para>
+      <emphasis>ifnvel</emphasis> -- ftable contenant la vitesse initiale de
+      chaque masse. Sa taille est le nombre de masses attendu.
+    </para>
+
+    <para>
+      <emphasis>ifnmass</emphasis> -- ftable contenant la valeur de chaque masse.
+      Sa taille est le nombre de masses attendu.
+    </para>
+
+    <para>
+      <emphasis>ifnstif</emphasis> -- ftable contenant la raideur du ressort de
+      chaque connexion. Sa taille est le carré du nombre de masses attendu. Ses
+      données sont ordonnées selon la succession des lignes de la matrice de
+      connexion du système.
+    </para>
+
+    <para>
+      <emphasis>ifncentr</emphasis> -- ftable contenant la force de centrage de chaque
+      masse. Sa taille est le nombre de masses attendu.
+    </para>
+
+    <para>
+      <emphasis>ifndamp</emphasis> -- ftable contenant le facteur d'amortissement de
+      chaque masse. Sa taille est le nombre de masses attendu.
+    </para>
+
+    <para>
+      <emphasis>ileft</emphasis> -- si <emphasis>init</emphasis> &lt; 0, position
+      du marteau de gauche (<emphasis>ileft</emphasis> = 0 frappe complètement
+      à gauche, <emphasis>ileft</emphasis> = 1 frappe complètement à droite).
+    </para>
+
+    <para>
+      <emphasis>iright</emphasis> -- si <emphasis>init</emphasis> &lt; 0, position
+      du marteau de droite (<emphasis>iright</emphasis> = 0 frappe complètement à
+      gauche, <emphasis>iright</emphasis> = 1 frappe complètement à droite).
+    </para>
+
+    <para>
+      <emphasis>idisp</emphasis> -- s'il vaut 0, il n'y a pas d'affichage des masses.
+    </para>
+
+    <para>
+      <emphasis>id</emphasis> -- s'il est positif, c'est l'ID de l'opcode. Il est
+      utilisé pour relier l'opcode de balayage au bon générateur de forme d'onde.
+      S'il est négatif, sa valeur absolue indique la table d'onde dans laquelle
+      sera écrite la forme d'onde. Cette forme d'onde peut être utilisée par la
+      suite par un autre opcode pour générer du son. Le contenu initial de cette
+      table sera écrasé.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kmass</emphasis> -- pondère les masses
+    </para>
+
+    <para>
+      <emphasis>kstif</emphasis> -- pondère la raideur des ressorts
+    </para>
+
+    <para>
+      <emphasis>kcentr</emphasis> -- pondère la force de centrage
+    </para>
+
+    <para>
+      <emphasis>kdamp</emphasis> -- pondère l'amortissement
+    </para>
+
+    <para>
+      <emphasis>kpos</emphasis> -- position d'un marteau actif le long de la corde
+      (<emphasis>kpos</emphasis> = 0 est complètement à gauche,
+      <emphasis>kpos</emphasis> = 1 est complètement à droite). La forme du marteau
+      est déterminée par <emphasis>init</emphasis> et sa puissance de percussion
+      est <emphasis>kstrngth</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>kstrngth</emphasis> -- puissance utilisée par le marteau actif
+    </para>
+
+    <para>
+      <emphasis>ain</emphasis> -- entrée audio qui s'ajoute à la vélocité des
+      masses. L'amplitude ne doit pas être trop grande.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Pour une exemple, voir la documentation de
+      <link linkend="scans"><citetitle>scans</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>Plus d'information sur cet opcode :
+    <ulink url="http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html">
+    <citetitle>http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html</citetitle>
+    </ulink>, écrit par Steven Yi.</para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameparis;</member>
+        <member>MIT Media Lab</member>
+        <member>Boston, Massachussetts USA</member>
+        <member>Mars 2000</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 4.05 de Csound</para>
+  </refsect1>
+</refentry>

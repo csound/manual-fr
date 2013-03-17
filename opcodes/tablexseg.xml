@@ -1,0 +1,96 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="tablexseg">
+<indexterm id="IndexTablexseg"><primary>tablexseg</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:STFT</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tablexseg</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>tablexseg</refname>
+    <refpurpose>
+      Crée une nouvelle table de fonction en faisant des segments d'exponentielle
+      entre les valeurs de tables de fonction en mémoire.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>tablexseg</emphasis> est comme
+      <link linkend="expseg"><citetitle>expseg</citetitle></link> mais il interpole
+      entre des valeurs stockées dans des tables de fonction. Le résultat est
+      une nouvelle table de fonction passée en interne à tout
+      <link linkend="vpvoc"><citetitle>vpvoc</citetitle></link> apparaissant
+      avant le <emphasis>tablexseg</emphasis> suivant (même fonctionnement que
+      pour les paires
+      <link linkend="lpread"><citetitle>lpread</citetitle></link>/<link linkend="lpreson"><citetitle>lpreson</citetitle></link>).
+      Les utilisations possibles sont décrites plus loin dans la notice de
+      <emphasis>vpvoc</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>tablexseg</command> ifn1, idur1, ifn2 [, idur2] [, ifn3] [...]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn1</emphasis>, <emphasis>ifn2</emphasis>, <emphasis>ifn3</emphasis>,
+      etc. -- numéros des tables de fonction. <emphasis>ifn1</emphasis>, <emphasis>ifn2</emphasis>,
+      et les suivantes, doivent avoir la même taille.
+    </para>
+
+    <para>
+      <emphasis>idur1</emphasis>, <emphasis>idur2</emphasis>, etc. -- durée de
+      l'interpolation d'une table à l'autre.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode tablexseg. Il utilise le fichier
+      <ulink url="examples/tablexseg.csd"><citetitle>tablexseg.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode tablexseg.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/tablexseg.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="pvbufread"><citetitle>pvbufread</citetitle></link>,
+      <link linkend="pvcross"><citetitle>pvcross</citetitle></link>,
+      <link linkend="pvinterp"><citetitle>pvinterp</citetitle></link>,
+      <link linkend="pvread"><citetitle>pvread</citetitle></link>,
+      <link linkend="tableseg"><citetitle>tableseg</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Richard Karpen</member>
+        <member>Seattle, WA USA</member>
+        <member>1997</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

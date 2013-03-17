@@ -1,0 +1,161 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.6
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="GEN51">
+      <indexterm id="IndexGEN51"><primary>GEN51</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN51</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>GEN51</refname>
+    <refpurpose>
+      Ce sous-programme remplit une table avec une échelle microtonale personnalisée, à la manière des
+      opcodes de Csound <emphasis>cpstun</emphasis>, <emphasis>cpstuni</emphasis> et
+      <emphasis>cpstmid</emphasis>.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ce sous-programme remplit une table avec une échelle microtonale personnalisée, à la manière des
+      opcodes de Csound <link linkend="cpstun"><citetitle>cpstun</citetitle></link>,
+      <link linkend="cpstuni"><citetitle>cpstuni</citetitle></link> et
+      <link linkend="cpstmid"><citetitle>cpstmid</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>f</command> # date taille -51 nbrdegres intervalle freqbase touchebase rapport1 rapport2  .... rapportN</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Les quatre premiers paramètres (c'est-à-dire p5, p6, p7 et p8) définissent les directives de
+      génération suivantes :</para>
+
+  <para>
+    <emphasis>p5 (nbrdegres)</emphasis> -- le nombre de degrés de l'échelle microtonale
+  </para>
+
+  <para>
+    <emphasis>p6 (intervalle)</emphasis> -- l'intervalle de fréquences couvert avant de répéter les
+    rapports des degrés, par exemple 2 pour une octave, 1,5 pour une quinte, etc.
+  </para>
+
+  <para>
+    <emphasis>p7 (freqbase)</emphasis> -- la fréquence de base de l'échelle en cps
+  </para>
+
+  <para>
+    <emphasis>p8 (touchebase)</emphasis> -- L'indice entier dans la table auquel assigner la fréquence de
+    base inchangée
+  </para>
+
+  <para>
+    Les autres paramètres définissent les rapports de l'échelle :
+  </para>
+
+  <para>
+    <emphasis>p9 ... pN (rapport1 ... etc.)</emphasis> -- les rapports des degrés de l'échelle
+  </para>
+
+  <para>
+    Par exemple, pour une échelle standard de 12 degrés avec une fréquence de base de 261 cps assignée à
+    la touche numéro 60, l'instruction f de la partition pour générer la table serait :</para>
+
+  <programlisting>
+<emphasis role="comment">;            nbrdegrés        fréqbase            rapports  (tempérament égal) .......</emphasis>
+<emphasis role="comment">;                    intervalle       touchebase</emphasis>
+<emphasis role="stamnt">f</emphasis>1 0 64 -51     12       2      261      60        1 1.059463 1.12246 1.18920 ..etc...</programlisting>
+
+  <para>
+    Après le calcul du gen, la table f1 est remplie avec 64 valeurs de fréquences différentes. Le 60ème
+    élément est rempli avec la valeur de fréquence 261, et tous les autres éléments de la table
+    (précédents et suivants) sont remplis selon les rapports des degrés.
+  </para>
+
+  <para>
+    Un autre exemple avec une échelle de 24 degrés, une fréquence de base de 440 cps assignée à la touche
+    numéro 48, et un intervalle de répétition de 1,5 :</para>
+
+  <programlisting>
+<emphasis role="comment">;            nbrdegrés        fréqbase            rapports  .......</emphasis>
+<emphasis role="comment">;                    intervalle       touchebase</emphasis>
+<emphasis role="stamnt">f</emphasis>1 0 64 -51     24      1.5     440      48        1   1.01  1.02  1.03  ..etc...</programlisting>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Voici un exemple de la routine GEN51. Il utilise le fichier
+      <ulink url="examples/gen51.csd"><citetitle>gen51.csd</citetitle></ulink>.
+      <example>
+        <title>Un exemple de la routine GEN51.</title>
+        <xi:include href="examples-xml/gen51.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      <textobject>
+        <phrase>Voici les diagrammes des formes d'onde des routines GEN51 utilisées
+        dans l'exemple :</phrase>
+      </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen51_1.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 1 0 128 -51 12 2 cpsoct(8) 60 1 2^(1/12) 2^(2/12) 2^(3/12) 2^(4/12) 2^(5/12) 2^(6/12) 2^(7/12) 2^(8/12) 2^(9/12) 2^(10/12) 2^(11/12) 2^(12/12)</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 1 0 128 -51 12 2 cpsoct(8) 60 1 2^(1/12) 2^(2/12) 2^(3/12) 2^(4/12) 2^(5/12) 2^(6/12) 2^(7/12) 2^(8/12) 2^(9/12) 2^(10/12) 2^(11/12) 2^(12/12)</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen51_2.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 2 0 128 -51 10 2 cpsoct(8) 60 1 2^(1/10) 2^(2/10) 2^(3/10) 2^(4/10) 2^(5/10) 2^(6/10) 2^(7/10) 2^(8/10) 2^(9/10) 2^(10/10)</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 2 0 128 -51 10 2 cpsoct(8) 60 1 2^(1/10) 2^(2/10) 2^(3/10) 2^(4/10) 2^(5/10) 2^(6/10) 2^(7/10) 2^(8/10) 2^(9/10) 2^(10/10)</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen51_3.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 3 0 128 -51 24 2 cpsoct(8) 60 1 2^(1/24) 2^(2/24) 2^(3/24) 2^(4/24) 2^(5/24) 2^(6/24) 2^(7/24) 2^(8/24) 2^(9/24) 2^(10/24) 2^(11/24) 2^(12/24) 2^(13/24) 2^(14/24) 2^(15/24) 2^(16/24) 2^(17/24) 2^(18/24) 2^(19/24) 2^(20/24) 2^(21/24) 2^(22/24) 2^(23/24) 2^(24/24)</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 3 0 128 -51 24 2 cpsoct(8) 60 1 2^(1/24) 2^(2/24) 2^(3/24) 2^(4/24) 2^(5/24) 2^(6/24) 2^(7/24) 2^(8/24) 2^(9/24) 2^(10/24) 2^(11/24) 2^(12/24) 2^(13/24) 2^(14/24) 2^(15/24) 2^(16/24) 2^(17/24) 2^(18/24) 2^(19/24) 2^(20/24) 2^(21/24) 2^(22/24) 2^(23/24) 2^(24/24)</para>
+        </caption>
+      </mediaobject>
+
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+  </refsect1>
+</refentry>

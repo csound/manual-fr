@@ -1,0 +1,55 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.3
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pv_import">
+  <refentryinfo><title>Utilities</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pv_import</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pv_import</refname>
+    <refpurpose>
+      Convertit un fichier texte à séparateur virgule en un fichier .pvx.
+      <indexterm id="IndexPvimport"><primary>pv_import</primary></indexterm>
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>pv_import</command> fichier_texte_csv fichier_pv</synopsis>
+    <synopsis>csound -U <command>pv_import</command> fichier_texte_csv fichier_pv</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>fichier_texte_csv</emphasis> - Nom du fichier texte à séparateur virgule en entrée.
+    </para>
+    <para>
+      <emphasis>fichier_pv</emphasis> - Nom du fichier .pvx de sortie.
+    </para>
+    <para>
+      L'utilitaire <emphasis>pv_import</emphasis> génère un fichier .pvx utilisable avec le
+      générateur <link linkend="pvoc"><citetitle>pvoc</citetitle></link>. Il peut être
+      utilisé en combinaison avec
+      <link linkend="pv_export "><citetitle>pv_export</citetitle></link> pour modifier une
+      analyse de son faite par l'utilitaire
+      <link linkend="pvanal"><citetitle>PVANAL</citetitle></link>.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : John ffitch</para>
+    <para>1995</para>
+  </refsect1>
+
+</refentry>

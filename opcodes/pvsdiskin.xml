@@ -1,0 +1,98 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvsdiskin">
+  <indexterm id="Indexpvsdiskin"><primary>pvsdiskin</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsdiskin</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvsdiskin</refname>
+    <refpurpose>
+      Lit un canal sélectionné d'un fichier d'analyse PVOC-EX.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Crée un flot fsig en lisant un canal sélectionné d'un fichier d'ananlyse
+      PVOC-EX, avec interpolation de trame.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>fsig <command>pvsdiskin</command> SFname, ktscal, kgain[, ioffset, ichan]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>Sfname</emphasis> -- Nom du fichier d'analyse. Il doit avoir
+      l'extension de fichier .pvx.
+    </para>
+
+    <para>
+      On peut générer un fichier PVOC-EX multi-canaux avec
+      l'<link linkend="pvanal"><citetitle>utilité pvanal</citetitle></link>
+      étendue.
+    </para>
+
+    <para>
+      <emphasis>ichan</emphasis> -- (facultatif) Le canal à lire (en comptant à
+      partir de 1). Vaut 1 par défaut.
+    </para>
+    <para>
+      <emphasis>ioffset</emphasis> -- (facultatif) Décalage à partir du début du
+      fichier (secondes). Vaut 0 par défaut.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ktscal</emphasis> -- échelle temporelle, c'est-à-dire la vitesse
+      du pointeur de lecture (1 pour la vitesse normale, valeurs négatives pour
+      une lecture à l'envers, 0 &lt; <emphasis>ktscal</emphasis> &lt; 1 pour une
+      lecture plus lente et <emphasis>ktscal</emphasis> &gt; 1 pour une lecture
+      plus rapide).</para>
+    <para>
+      <emphasis>kgain</emphasis> -- valeur du gain.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode pvsdiskin. Il utilise le fichier
+      <ulink url="examples/pvsdiskin.csd"><citetitle>pvsdiskin.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode pvsdiskin.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pvsdiskin.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Mai 2007 </member>
+      </simplelist>
+      Nouveau dans Csound 5.06
+    </para>
+  </refsect1>
+</refentry>

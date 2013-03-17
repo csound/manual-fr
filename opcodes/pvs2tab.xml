@@ -1,0 +1,93 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvs2tab">
+<indexterm id="IndexPvs2tab"><primary>pvs2tab</primary></indexterm>
+
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvs2tab</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvs2tab</refname>
+    <refpurpose>
+      Copie des donnée spectrales dans des variables-t.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Copie une trame pvs dans une variable-t. Pour le moment, seuls les
+      formats AMP+FREQ et AMP+PHASE sont autorisés. Cet opcode nécessite que
+      le type-t soit défini, si bien qu'il ne fonctionne qu'avec le nouveau
+      parseur basé sur bison/flex.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kframe <command>pvs2tab</command> tvar, fsig</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kframe</emphasis> -- numéro de la trame copiée. On peut l'utiliser
+      pour détecter quand une nouvelle trame a été copiée.
+    </para>
+
+    <para>
+      <emphasis>tvar</emphasis> -- variable-t contenant la sortie. Elle est
+      alimentée à chaque période-k, mais elle peut ne pas contenir une nouvelle
+      trame, les trames pvs étant produites selon leur propre rythme qui est
+      indépendant de <emphasis>kr</emphasis>. Généralement, ce vecteur doit
+      être suffisamment grand pour contenir les échantillons de la trame,
+      c'est-à-dire N+2 (N est la taille de la TFD). S'il n'est pas assez grand,
+      seule une portion de la trame sera copiée ; s'il est trop grand, des points
+      non utilisés se trouveront au indices plus élevés.
+    </para>
+
+    <para>
+      <emphasis>fsig</emphasis> -- fsig d'entrée à copier.
+    </para>
+    <para>
+      <emphasis>iwinsize</emphasis> -- taille de la fénêtre d'analyse valant
+      par défaut <emphasis>isize</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      <example>
+        <title>Exemple</title>
+        <programlisting>
+t1      <emphasis role="opc">init</emphasis>    1026
+a1      <emphasis role="opc">inch</emphasis>    1
+fsig1   <emphasis role="opc">pvsanal</emphasis> a1, 1024, 256, 1024, 1
+kframe  <emphasis role="opc">pvs2tab</emphasis> t1, fsig1</programlisting>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Octobre 2011 </member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau greffon dans la version 5.14</para>
+    <para>Octobre 2011.</para>
+  </refsect1>
+</refentry>

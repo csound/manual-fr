@@ -1,0 +1,145 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.2
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="tabmorphi">
+<indexterm id="IndexTabmorphi"><primary>tabmorphi</primary></indexterm>
+  <refentryinfo><title>Table Control:Read/Write Opreations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tabmorphi</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>tabmorphi</refname>
+    <refpurpose>
+      Permet le fondu enchaîné entre un ensemble de tables avec interpolation.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>tabmorphi</emphasis> permet le fondu enchaîné entre un ensemble
+      de tables de la même taille au moyen d'une moyenne pondérée entre deux
+      tables sélectionnées dans l'ensemble.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kout <command>tabmorphi</command> kindex, kweightpoint, ktabnum1, ktabnum2, \
+      ifn1, ifn2 [, ifn3, ifn4, ... ifnN]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn1, ifn2 [, ifn3, ifn4, ..., ifnN]</emphasis> -- numéros des tables
+      de fonction. C'est un ensemble de tables choisies par l'utilisateur pour
+      le fondu enchaîné. Toutes les tables doivent avoir la même longueur. Il faut
+      être conscient que seulement deux de ces tables peuvent être choisies en
+      même temps pour le fondu enchaîné. Comme il est possible d'utiliser des
+      nombres non-entiers pour les arguments <emphasis>ktabnum1</emphasis> et
+      <emphasis>ktabnum2</emphasis>, le fondu enchaîné est le résultat d'une
+      interpolation entre des tables adjacentes consécutives de l'ensemble.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kout</emphasis> -- la valeur retournée pour l'indice
+      <emphasis>kindex</emphasis>, résultant du fondu enchaîné de deux tables
+      (voir ci-dessous).
+    </para>
+    <para>
+      <emphasis>kindex</emphasis> -- indice principal de la table résultant du
+      fondu enchaîné. L'intervalle va de 0 à la longueur de la table (exclue).
+    </para>
+    <para>
+      <emphasis>kweightpoint</emphasis> -- le poids de l'influence d'une paire
+      de tables sélectionnées dans le fondu enchaîné. Cet argument est compris
+      entre 0 et 1. 0 provoque la sortie de la première table inchangée, 1
+      provoque la sortie de la seconde table de la paire inchangée. Toutes les
+      valeurs intermédiaires entre 0 et 1 déterminent la gradation du fondu
+      enchaîné entre les deux tables de la paire.
+    </para>
+    <para>
+      <emphasis>ktabnum1</emphasis> -- la première table choisie pour le fondu
+      enchaîné. Ce nombre n'exprime pas directement le numéro de la table mais
+      la position de celle-ci dans la séquence de l'ensemble (de 0 à N-1). Si
+      ce nombre est entier, la table correspondante est choisie inchangée. S'il
+      contient une partie fractionnaire, alors une interpolation avec la table
+      adjacente suivante a lieu.
+    </para>
+    <para>
+      <emphasis>ktabnum2</emphasis> -- la deuxième table choisie pour le fondu
+      enchaîné. Ce nombre n'exprime pas directement le numéro de la table mais
+      la position de celle-ci dans la séquence de l'ensemble (de 0 à N-1). Si
+      ce nombre est entier, la table correspondante est choisie inchangée. S'il
+      contient une partie fractionnaire, alors une interpolation avec la table
+      adjacente suivante a lieu.
+    </para>
+    <para>
+      La famille d'opcodes <emphasis>tabmorphi</emphasis> est semblable à la
+      famille <link linkend="table"><citetitle>table</citetitle></link>, mais
+      elle permet un fondu enchaîné entre deux tables choisies dans un ensemble
+      de tables. D'abord, l'utilisateur doit fournir un ensemble de tables
+      d'égale longueur (ifn1, ifn2 [, ifn3, ifn4, ..., ifnN]). Ensuite, il peut
+      choisir une paire de tables dans l'ensemble afin d'effectuer le fondu
+      enchaîné : <emphasis>ktabnum1</emphasis> et <emphasis>ktabnum2</emphasis>
+      reçoivent des nombres (0 représente la première table dans l'ensemble, 1
+      la seconde, 2 la troisième et ainsi de suite). Puis il détermine le fondu
+      enchaîné entre les deux tables choisies, avec le paramètre
+      <emphasis>kweightpoint</emphasis>. Après cela, la table résultante peut
+      être indéxée avec le paramètre <emphasis>kindex</emphasis> comme pour un
+      opcode <emphasis>table</emphasis> normal. Si la valeur de ce paramètre
+      dépasse la longueur de table (qui doit être la même pour toutes les tables),
+      elle est repliée cycliquement.
+    </para>
+    <para>
+      <emphasis>tabmorphi</emphasis> est identique à
+      <link linkend="tabmorph"><citetitle>tabmorph</citetitle></link>, mais il
+      effectue une interpolation linéaire pour les valeurs non entières de
+      <emphasis>kindex</emphasis>, à l'instar de
+      <link linkend="tablei"><citetitle>tablei</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode tabmorphi. Il utilise le fichier
+      <ulink url="examples/tabmorphi.csd"><citetitle>tabmorphi.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode tabmorphi.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/tabmorphi.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="table"><citetitle>table</citetitle></link>,
+      <link linkend="tabmorph"><citetitle>tabmorph</citetitle></link>,
+      <link linkend="tabmorpha"><citetitle>tabmorpha</citetitle></link>,
+      <link linkend="tabmorphak"><citetitle>tabmorphak</citetitle></link>,
+      <link linkend="ftmorf"><citetitle>ftmorf</citetitle></link>,
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans version 5.06</para>
+  </refsect1>
+</refentry>

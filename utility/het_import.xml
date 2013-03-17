@@ -1,0 +1,54 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.3
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="het_import">
+  <refentryinfo><title>Utilities</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>het_import</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>het_import</refname>
+    <refpurpose>
+      Convertit un fichier texte à séparateur virgule en un fichier .het
+      <indexterm id="IndexHetimport"><primary>het_import</primary></indexterm>
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>het_import</command> fichier_textecsv fichier_het</synopsis>
+    <synopsis>csound -U <command>het_import</command> fichier_textecsv fichier_het</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>fichier_textecsv</emphasis> - Nom du fichier texte à séparateur virgule.
+    </para>
+    <para>
+      <emphasis>fichier_het</emphasis> - Nom du fichier .het de sortie.
+    </para>
+    <para>
+      L'utilitaire <emphasis>het_import</emphasis> génère un fichier <emphasis>.het</emphasis> utilisable
+      avec le générateur <link linkend="adsyn"><citetitle>adsyn</citetitle></link>. Il peut être utilisé
+      en combinaison avec <link linkend="het_export "><citetitle>het_export</citetitle></link> pour
+      modifier l'analyse du son faite par l'utilitaire
+      <link linkend="hetro"><citetitle>HETRO</citetitle></link>.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : John ffitch</para>
+    <para>1995</para>
+  </refsect1>
+
+</refentry>

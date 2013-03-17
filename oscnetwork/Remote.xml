@@ -1,0 +1,42 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.3
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="Remote">
+  <title>Opcodes pour le Traitement à Distance</title>
+  <para>Les opcodes pour le Traitement à Distance permettent la transmission d'une partition ou d'évènements
+  MIDI à travers un réseau, pour un traitement par des instances distantes (ou une autre instance locale).
+  Les opcodes suivants sont disponibles :</para>
+  
+  <itemizedlist>
+    <listitem>
+      <para><link linkend="insglobal"><citetitle>insglobal</citetitle></link> - Utilisé pour implémenter un
+      orchestre distant.</para>
+    </listitem>
+    <listitem>
+      <para><link linkend="insremot"><citetitle>insremot</citetitle></link> - Utilisé pour implémenter un
+      orchestre distant.</para>
+    </listitem>
+    <listitem>
+      <para><link linkend="midglobal"><citetitle>midiglobal</citetitle></link> - Utilisé pour implémenter
+      un orchestre MIDI distant.</para>
+    </listitem>
+    <listitem>
+      <para><link linkend="midremot"><citetitle>midiremot</citetitle></link> - Utilisé pour implémenter
+      un orchestre MIDI distant.</para>
+    </listitem>
+    <listitem>
+      <para><link linkend="remoteport"><citetitle>remoteport</citetitle></link> - Définit le port à
+      utiliser avec le système distant.</para>
+    </listitem>
+  </itemizedlist>
+  
+<!--  <bridgehead>Crédits</bridgehead>
+  <para>Par Simon Schampijer. 2006</para>-->
+
+</section>

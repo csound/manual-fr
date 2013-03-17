@@ -1,0 +1,99 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.19
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="line">
+<indexterm id="IndexLine"><primary>line</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Linear and Exponential Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>line</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>line</refname>
+    <refpurpose>
+      Trace un segment de droite entre les points spécifiés.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Trace un segment de droite entre les points spécifiés.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>line</command> ia, idur, ib</synopsis>
+
+    <synopsis>kres <command>line</command> ia, idur, ib</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ia</emphasis> -- valeur initiale.
+    </para>
+
+    <para>
+      <emphasis>ib</emphasis> -- valeur après <emphasis>idur</emphasis> secondes.
+    </para>
+
+    <para>
+      <emphasis>idur</emphasis> -- durée en secondes du segment. Avec une valeur nulle ou négative
+      l'initialisation sera ignorée.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>line</emphasis> génère des signaux de contrôle ou des signaux audio dont les valeurs
+      évoluent linéairement depuis une valeur initiale jusqu'à une valeur finale.
+    </para>
+    <note>
+      <para>
+        Une erreur habituelle avec cet opcode est de croire que la valeur de <emphasis>ib</emphasis>
+        est tenue après la durée <emphasis>idur</emphasis>. <emphasis>line</emphasis> ne s'arrête
+        pas automatiquement à la fin de la durée donnée. Si la longueur de votre note dépasse
+	      <emphasis>idur</emphasis> secondes,	<emphasis>kres</emphasis> (ou <emphasis>ares</emphasis>)
+        ne s'arrêtera pas sur <emphasis>ib</emphasis>, mais au contraire il continuera à monter ou
+        à descendre à la même vitesse. Si l'on a besoin d'une pente ascendante (ou descendante)
+        suivie d'une tenue il faut utiliser l'opcode <emphasis>linseg</emphasis>.
+      </para>
+    </note>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode line. Il utilise le fichier
+      <ulink url="examples/line.csd"><citetitle>line.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode line.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/line.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="expon"><citetitle>expon</citetitle></link>, 
+      <link linkend="expseg"><citetitle>expseg</citetitle></link>, 
+      <link linkend="expsegr"><citetitle>expsegr</citetitle></link>, 
+      <link linkend="linseg"><citetitle>linseg</citetitle></link>, 
+      <link linkend="linsegr"><citetitle>linsegr</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

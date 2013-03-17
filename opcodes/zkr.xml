@@ -1,0 +1,94 @@
+<!--translated=yes
+authors=Yannick St-Onge
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="zkr">
+<indexterm id="IndexZkr"><primary>zkr</primary></indexterm>
+  <refentryinfo><title>Zak Patch System</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>zkr</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>zkr</refname>
+    <refpurpose>
+      Lecture à partir d'une position dans l'espace zk au taux-k.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Lecture à partir d'une position dans l'espace zk au taux-k.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kres <command>zkr</command> kndx</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>kndx</emphasis> -- pointe sur la position za à lire.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>zkr</emphasis> lit la suite de nombres décimaux à <emphasis>kndx</emphasis> dans
+      l'espace zk.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode zkr. Il utilise le fichier
+      <ulink url="examples/zkr.csd"><citetitle>zkr.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode zkr.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/zkr.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="zar"><citetitle>zar</citetitle></link>,
+      <link linkend="zarg"><citetitle>zarg</citetitle></link>,
+      <link linkend="zir"><citetitle>zir</citetitle></link>,
+      <link linkend="zkcl"><citetitle>zkcl</citetitle></link>,
+      <link linkend="zkmod"><citetitle>zkmod</citetitle></link>,
+      <link linkend="zkwm"><citetitle>zkwm</citetitle></link>,
+      <link linkend="zkw"><citetitle>zkw</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Robin Whittle</member>
+        <member>Australie</member>
+        <member>Mai 1997</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 3.45</para>
+    <para>Exemple écrit par &namekevin;.</para>
+  </refsect1>
+</refentry>

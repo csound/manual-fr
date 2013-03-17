@@ -1,0 +1,119 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.5
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vcella">
+<indexterm id="IndexVcella"><primary>vcella</primary></indexterm>
+  <refentryinfo><title>Vectorial:Cellular Automata</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vcella</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vcella</refname>
+    <refpurpose>
+    Automate Cellulaire
+      
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Automate Cellulaire unidimensionnel appliqué à des vecteurs de Csound.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>vcella</command> ktrig, kreinit, ioutFunc, initStateFunc, \
+       iRuleFunc, ielements, irulelen [, iradius]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+       <emphasis>ioutFunc</emphasis> - numéro de la table dans laquelle l'état de chaque cellule est stocké
+    </para>
+    <para>
+      <emphasis>initStateFunc</emphasis>  - numéro de la table contenant l'état initial de chaque cellule
+    </para>
+       <para>
+      <emphasis>iRuleFunc</emphasis> - numéro de la table de consultation contenant les règles
+      </para>
+      <para>
+      <emphasis>ielements</emphasis> - nombre total de cellules
+    </para>
+    <para>
+      <emphasis>irulelen</emphasis>  - nombre total de règles
+    </para>
+    <para>
+      <emphasis>iradius</emphasis> (facultatif) - rayon de l'Automate Cellulaire. Actuellement, le rayon de
+      l'AC peut valoir 1 ou 2 (la valeur par défaut est 1)
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+       <emphasis>ktrig</emphasis> - signal de déclenchement. Chaque fois qu'il est non nul, une nouvelle
+       génération de cellules est évaluée.
+    </para>
+    <para>
+      <emphasis>kreinit</emphasis> - signal de déclenchement. Chaque fois qu'il est non nul, l'état de
+      toutes les cellules est forcé à celui de <emphasis>initStateFunc</emphasis>.
+    </para>
+    <para>
+      <emphasis>vcella</emphasis> met en &oelig;uvre un automate cellulaire pour lequel l'état de chaque
+      cellule est stocké dans <emphasis>ioutFunc</emphasis>. Ainsi <emphasis>ioutFunc</emphasis> est un
+      vecteur contenant l'état courant de chaque cellule. Ce vecteur variable peut être utilisé avec
+      d'autres opcodes basés sur des vecteurs, tels que
+      <link linkend="adsynt"><citetitle>adsynt</citetitle></link>,
+      <link linkend="vmap"><citetitle>vmap</citetitle></link>,
+      <link linkend="vpowv"><citetitle>vpowv</citetitle></link> etc.
+	</para>
+	<para>
+    <emphasis>initStateFunc</emphasis> est un vecteur d'entrée contenant la valeur initiale de la rangée de
+    cellules, tandis que <emphasis>iRuleFunc</emphasis> est un vecteur d'entrée contenant les règles sous
+    la forme d'une table de consultation. Notez que <emphasis>initStateFunc</emphasis> et
+    <emphasis>iRuleFunc</emphasis> peuvent être modifiés pendant l'exécution au moyen d'autres opcodes
+    basés sur des vecteurs (par exemple <link linkend="vcopy"><citetitle>vcopy</citetitle></link>) afin de
+    forcer un changement de règle et d'état pendant l'exécution.
+	</para>
+	<para>
+    Une nouvelle génération de cellules est évaluée chaque fois que <emphasis>ktrig</emphasis> contient une
+    valeur non nulle. De plus, l'état de toutes les cellules peut être forcé à l'état correspondant dans
+    <emphasis>initStateFunc</emphasis> chaque fois que <emphasis>kreinit</emphasis> contient une valeur non
+    nulle.
+  </para>
+  <para>
+    Le rayon de l'algorithme d'AC peut valoir 1 ou 2 (argument facultatif <emphasis>iradius</emphasis>). 
+  </para>
+  </refsect1>
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode vcella. Il utilise le fichier
+      <ulink url="examples/vcella.csd"><citetitle>vcella.csd</citetitle></ulink>.</para>
+    <para>
+      L'exemple suivant utilise l'opcode <emphasis>vcella</emphasis>
+      <example>
+        <title>Exemple de l'opcode vcella.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+<xi:include href="examples-xml/vcella.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par : Gabriel Maldonado.</para>
+    <para>Nouveau dans Csound 5 (Disponible auparavant seulement dans CsoundAV)</para>
+    <para>Exemple par : Anthony Kozar</para>
+  </refsect1>
+</refentry>

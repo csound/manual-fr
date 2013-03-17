@@ -1,0 +1,85 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.5
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="imageload">
+  <indexterm id="IndexImageload"><primary>imageload</primary></indexterm>
+  <refentryinfo><title>Image Processing Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>imageload</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>imageload</refname>
+    <refpurpose>
+      Charge une image.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Charge une image et retourne une référence sur celle-ci. On peut ensuite
+      accéder aux valeurs d'un pixel avec
+      <link linkend="imagegetpixel"><citetitle>imagegetpixel</citetitle></link>.
+    </para>
+    <note><simpara>Les opcodes de traitement d'image ne peuvent charger que des
+    images png.</simpara></note>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>iimagenum <command>imageload</command> filename</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iimagenum</emphasis> -- numéro assigné à l'image chargée.
+    </para>
+    <para>
+      <emphasis>filename</emphasis> -- le nom de fichier de l'image à charger
+      (ce doit être un fichier d'image PNG valide).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode imageload. Il utilise le fichier
+	    <ulink url="examples/imageopcodes.csd"><citetitle>imageopcodes.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode imageload.</title>
+          <xi:include href="examples-xml/imageopcodes.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+	    <link linkend="imagecreate"><citetitle>imagecreate</citetitle></link>,
+	    <link linkend="imagesize"><citetitle>imagesize</citetitle></link>,
+	    <link linkend="imagesave"><citetitle>imagesave</citetitle></link>,
+	    <link linkend="imagegetpixel"><citetitle>imagegetpixel</citetitle></link>,
+	    <link linkend="imagesetpixel"><citetitle>imagesetpixel</citetitle></link>,
+   	<link linkend="imagefree"><citetitle>imagefree</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Cesare Marilungo</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 5.08</para>
+  </refsect1>
+</refentry>

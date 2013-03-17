@@ -1,0 +1,155 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vexp">
+<indexterm id="IndexVexp"><primary>vexp</primary></indexterm>
+  <refentryinfo><title>Vectorial:Scalar operations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vexp</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vexp</refname>
+    <refpurpose>
+      Elévation à une puissance entre un scalaire et un vecteur.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Elévation à une puissance entre un scalaire et un vecteur.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>vexp</command>  ifn, kval, kelements [, kdstoffset] [, kverbose]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn</emphasis> - numéro de la table hébergeant le signal
+      vectoriel à traiter.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kval</emphasis> - opérande scalaire à traiter.
+    </para>
+    <para>
+      <emphasis>kelements</emphasis> - nombre de composantes du vecteur.
+    </para>
+    <para>
+      <emphasis>kdstoffset</emphasis> - décalage d'indexation pour la table de
+      destination (facultatif, vaut 0 par défaut).
+    </para>
+    <para>
+      <emphasis>kverbose</emphasis> - Indique si les avertissements sont
+      affichés (vaut 0 par défaut).
+    </para>
+    <para>
+      <emphasis>vexp</emphasis> élève <emphasis>kval</emphasis> à la puissance
+      de chaque élément contenu dans un vecteur de la table
+      <emphasis>ifn</emphasis>, à partir de l'indice <emphasis>kdstoffset</emphasis>.
+      Cela permet de traiter une section particulière d'une table en spécifiant le
+      décalage et le nombre d'éléments à traiter. Le décalage est compté à partir de
+      0, si bien que si aucun décalage n'est spécifié (ou s'il est fixé à 0), la
+      table est modifiée depuis le début.
+    </para>
+    <para>
+      Noter que cet opcode est exécuté au taux-k si bien que la valeur de
+      <emphasis>kval</emphasis> est traitée à chaque période de contrôle. A
+      utiliser avec précaution si l'on ne veut pas finir avec des nombres très
+      grands ou très petits (ou utiliser
+      <link linkend="vexp_i"><citetitle>vexp_i</citetitle></link>).
+    </para>
+    <para>
+      Ces opcodes (<link linkend="vadd"><citetitle>vadd</citetitle></link>,
+      <link linkend="vmult"><citetitle>vmult</citetitle></link>,
+      <link linkend="vpow"><citetitle>vpow</citetitle></link> et
+      <link linkend="vexp"><citetitle>vexp</citetitle></link>) réalisent des
+      opérations numériques entre un signal vectoriel de contrôle (hébergé par
+      la table <emphasis>ifn</emphasis>), et un signal scalaire
+      (<emphasis>kval</emphasis>). Le résultat est un nouveau vecteur qui écrase
+      les anciennes valeurs de <emphasis>ifn</emphasis>. Tous ces opcodes
+      travaillent au taux-k.
+    </para>
+    <para>
+      Les valeurs négatives sont valides pour <emphasis>kdstoffset</emphasis>.
+      Les composantes du vecteur se trouvant en dehors de la table sont alors
+      ignorées, et elles ne sont pas repliées autour de la table.
+    </para>
+    <para>
+      Si l'argument facultatif <emphasis>kverbose</emphasis> est différent de 0,
+      l'opcode affichera des messages d'avertissement à chaque passe-k si les
+      longueurs de table sont dépassées.
+    </para>
+    <para>
+      Dans tous ces opcodes, les vecteurs résultants sont stockés dans
+      <emphasis>ifn</emphasis>, écrasant les vecteurs initiaux. Si l'on veut
+      garder le vecteur initial, il faut utiliser
+      <link linkend="vcopy"><citetitle>vcopy</citetitle></link> ou
+      <link linkend="vcopy_i"><citetitle>vcopy_i</citetitle></link> pour le
+      copier dans une autre table. Tous ces opérateurs sont conçus pour être
+      utilisés avec d'autres opcodes qui opèrent sur des signaux vectoriels tels
+      que <emphasis>bmscan</emphasis>,
+      <link linkend="vcella"><citetitle>vcella</citetitle></link>,
+      <link linkend="adsynt"><citetitle>adsynt</citetitle></link>,
+      <link linkend="adsynt2"><citetitle>adsynt2</citetitle></link>, etc.
+      Ils peuvent aussi être utiles en conjonction avec les opcodes spectraux
+      <link linkend="pvsftw"><citetitle>pvsftw</citetitle></link> et
+      <link linkend="pvsftr"><citetitle>pvsftr</citetitle></link>.
+    </para>
+    <note>
+      <para>
+        Prière de noter que l'argument <emphasis>elements</emphasis> a changé
+        dans la version 5.03 du taux-i au taux-k. Cela change le comportement
+        de l'opcode dans le cas inhabituel où la variable de taux-i
+        <emphasis>ielements</emphasis> est modifiée à l'intérieur de l'instrument,
+        par exemple dans :
+        <programlisting>
+    <emphasis role="oblock">instr</emphasis> 1
+ielements  <emphasis role="op">=</emphasis>        10
+           <emphasis role="opc">vadd</emphasis>     1, 1, ielements
+ielements  <emphasis role="op">=</emphasis>        20
+           <emphasis role="opc">vadd</emphasis>     2, 1, ielements
+           <emphasis role="opc">turnoff</emphasis>
+    <emphasis role="oblock">endin</emphasis></programlisting>
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode vexp. Il utilise le fichier
+      <ulink url="examples/vexp.csd"><citetitle>vexp.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode vexp.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/vexp.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      Ecrit par Gabriel Maldonado. Arguments facultatifs ajoutés par Andrés
+      Cabrera et Istvan Varga.
+    </para>
+    <para>Nouveau dans Csound 5 (Auparavant seulement disponible dans CsoundAV)</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,67 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.2
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<glossary id="MiscGlossary">
+  <title>Glossaire</title>
+
+<glossdiv><title>G</title>
+
+<glossentry id="glossaryGuardPoint">
+  <glossterm>Point de garde</glossterm>
+<glossdef>
+  <para>
+    Un point de garde est la dernière position d'une table de fonction. Si la longueur est, disons 1024,
+    la table aura 1024+1 (1025) points : le point supplémentaire est le point de garde.
+	</para>
+
+	<para>
+    Dans tous les cas, pour une table de 1024 points, le premier point aura l'index 0 et le dernier l'index
+    1023 (l'index 1024 n'est pas réellement utilisé).
+	</para>
+
+	<para>
+    Il y a un point de garde car certains opcodes lisent les valeurs de la table par interpolation ; dans
+    ce cas, si l'index de lecture est par exemple 1023,5, nous aurons besoin de la position 1024 pour
+    l'interpolation.
+	</para>
+
+	<para>
+    Il y a deux manières de remplir ce point (écrire sa valeur) :
+
+	<orderedlist>
+
+	<listitem>
+	  <para>
+		  La manière par défaut : en copiant la valeur du 1er point de la table
+	  </para>
+	</listitem>
+
+	<listitem>
+	  <para>
+      Le point de garde étendu : en prolongeant le contour de la table (en continuant le calcul pour un
+      point supplémentaire)
+	  </para>
+	</listitem>
+
+	</orderedlist>
+
+    En général le premier mode est utilisé pour les applications cycliques, comme un oscillateur (qui lit
+    la table en boucle continue). Le second usage est pour les lectures à passage unique, comme les
+    enveloppes, où il faut interpoler le dernier point correctement en suivant le contour de la table
+    (on ne boucle pas sur le début de la table).
+  </para>
+
+</glossdef>
+</glossentry>
+
+</glossdiv>
+
+<!-- ... -->
+
+</glossary>

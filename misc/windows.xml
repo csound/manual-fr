@@ -1,0 +1,222 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.3
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<appendix id="MiscWindows">
+  <title>Fonctions fenêtres</title>
+
+  <para>
+    Les fonctions fenêtres sont utilisées pour l'analyse, et comme enveloppes de forme d'onde,
+    particulièrement dans la synthèse granulaire. Les fonctions fenêtre sont intégrées à certains
+    opcodes, mais d'autres opcodes nécessitent une table de fonction pour générer la fenêtre.
+    <link linkend="GEN20"><citetitle>GEN20</citetitle></link> est utilisé à cet effet. Le diagramme de
+    chaque fenêtre ci-dessous est accompagné de l'instruction f utilisée pour la générer.
+  </para>
+
+
+  <formalpara>
+    <title>Hamming</title>
+    <para>
+      <example>
+        <title>Instruction pour la fonction fenêtre de Hamming</title>
+        <programlisting><emphasis role="stamnt">f</emphasis>81   0   8192   20   1   1</programlisting>
+      </example>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/image1.png" format="PNG"/>
+        </imageobject>
+ 
+        <textobject>
+          <phrase>Fonction Fenêtre de Hamming.</phrase>
+        </textobject>
+ 
+        <caption>
+          <para>Fonction Fenêtre de Hamming.</para>
+        </caption>
+      </mediaobject>
+    </para>
+  </formalpara>
+
+
+  <formalpara>
+    <title>Hanning</title>
+    <para>
+      <example>
+        <title>Instruction pour la fonction fenêtre de Hanning</title>
+        <programlisting><emphasis role="stamnt">f</emphasis>82   0   8192   20   2   1</programlisting>
+      </example>
+ 
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/image2.png" format="PNG"/>
+        </imageobject>
+ 
+        <textobject>
+          <phrase>Fonction Fenêtre de Hanning</phrase>
+        </textobject>
+ 
+        <caption>
+          <para>Fonction Fenêtre de Hanning</para>
+        </caption>
+      </mediaobject>
+    </para>
+  </formalpara>
+
+
+  <formalpara>
+    <title>Bartlett</title>
+    <para>
+      <example>
+        <title>Instruction pour la fonction fenêtre de Bartlett</title>
+        <programlisting><emphasis role="stamnt">f</emphasis>83   0   8192   20   3   1</programlisting>
+      </example>
+ 
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/image3.png" format="PNG"/>
+        </imageobject>
+ 
+        <textobject>
+          <phrase>Fonction Fenêtre de Bartlett</phrase>
+        </textobject>
+ 
+        <caption>
+          <para>Fonction Fenêtre de Bartlett</para>
+        </caption>
+      </mediaobject>
+    </para>
+  </formalpara>
+
+
+  <formalpara>
+    <title>Blackman</title>
+    <para>
+      <example>
+        <title>Instruction pour la fonction fenêtre de Blackman</title>
+        <programlisting><emphasis role="stamnt">f</emphasis>84   0   8192   20   4   1</programlisting>
+      </example>
+ 
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/image4.png" format="PNG"/>
+        </imageobject>
+ 
+        <textobject>
+          <phrase>Fonction Fenêtre de Blackman</phrase>
+        </textobject>
+ 
+        <caption>
+          <para>Fonction Fenêtre de Blackman</para>
+        </caption>
+      </mediaobject>
+    </para>
+  </formalpara>
+
+
+  <formalpara>
+    <title>Blackman-Harris</title>
+    <para>
+      <example>
+        <title>Instruction pour la fonction fenêtre de Blackman-Harris</title>
+        <programlisting><emphasis role="stamnt">f</emphasis>85   0   8192   20   5   1</programlisting>
+      </example>
+ 
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/image5.png" format="PNG"/>
+        </imageobject>
+ 
+        <textobject>
+          <phrase>Fonction Fenêtre de Blackman-Harris</phrase>
+        </textobject>
+ 
+        <caption>
+          <para>Fonction Fenêtre de Blackman-Harris</para>
+        </caption>
+      </mediaobject>
+    </para>
+  </formalpara>
+
+
+  <formalpara>
+    <title>Gaussienne</title>
+    <para>
+      <example>
+        <title>Instruction pour la fonction fenêtre Gaussienne</title>
+        <programlisting><emphasis role="stamnt">f</emphasis>86   0   8192   20   6   1</programlisting>
+      </example>
+ 
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/image6.png" format="PNG"/>
+        </imageobject>
+ 
+        <textobject>
+          <phrase>Fonction Fenêtre Gaussienne</phrase>
+        </textobject>
+ 
+        <caption>
+          <para>Fonction Fenêtre Gaussienne</para>
+        </caption>
+      </mediaobject>
+    </para>
+  </formalpara>
+
+
+  <formalpara>
+    <title>Rectangle</title>
+    <para>
+      <example>
+        <title>Instruction pour la fonction fenêtre Rectangle</title>
+        <programlisting><emphasis role="stamnt">f</emphasis>88   0   8192   -20   8   .1</programlisting>
+      </example>
+
+      <emphasis>Note</emphasis> : l'échelle verticale est exagérée dans ce diagramme.
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/image7.png" format="PNG"/>
+        </imageobject>
+ 
+        <textobject>
+          <phrase>Fonction Fenêtre Rectangle</phrase>
+        </textobject>
+ 
+        <caption>
+          <para>Fonction Fenêtre Rectangle</para>
+        </caption>
+      </mediaobject>
+    </para>
+  </formalpara>
+
+
+  <formalpara>
+    <title>Sync</title>
+    <para>
+      <example>
+        <title>Instruction pour la fonction fenêtre Sync</title>
+        <programlisting><emphasis role="stamnt">f</emphasis>89   0   4096   -20   9   .75</programlisting>
+      </example>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/image8.png" format="PNG"/>
+        </imageobject>
+ 
+        <textobject>
+          <phrase>Fonction Fenêtre Sync</phrase>
+        </textobject>
+ 
+        <caption>
+          <para>Fonction Fenêtre Sync</para>
+        </caption>
+      </mediaobject>
+    </para>
+  </formalpara>
+</appendix>

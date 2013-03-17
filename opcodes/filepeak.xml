@@ -1,0 +1,110 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="filepeak">
+<indexterm id="IndexFilepeak"><primary>filepeak</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Soundfile Queries</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>filepeak</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>filepeak</refname>
+    <refpurpose>
+      Retourne la valeur absolue de la crête d'un fichier son.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne la valeur absolue de la crête d'un fichier son.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ir <command>filepeak</command> ifilcod [, ichnl]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifilcod</emphasis> -- fichier son à interroger
+    </para>
+
+    <para>
+      <emphasis>ichnl</emphasis> (facultatif, 0 par défaut) -- canal sur lequel la
+      valeur de crête est calculée. La valeur par défaut est 0.
+      <itemizedlist>
+        <listitem>
+          <para><emphasis>ichnl</emphasis> = 0 retourne la valeur de crête de tous les
+          canaux</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis>ichnl</emphasis> &gt; 0 retourne la valeur de crête de
+          <emphasis>ichnl</emphasis></para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>filepeak</emphasis> retourne la valeur absolue de la crête du
+      fichier son <emphasis>ifilcod</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode filepeak. Il utilise les fichiers
+      <ulink url="examples/filepeak.csd"><citetitle>filepeak.csd</citetitle></ulink>
+      et <ulink url="examples/Church.wav"><citetitle>Church.wav</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode filepeak.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/filepeak.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      La sortie de <emphasis>filepeak</emphasis> contiendra des lignes comme celles-ci :
+      <screen>
+Peak value in file 'Church.wav' is 0.909363 (-0.825 dB).
+Peak value in file 'Church_norm.wav' is 0.501190 (-6.000 dB).</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="filelen"><citetitle>filelen</citetitle></link>,
+      <link linkend="filenchnls"><citetitle>filenchnls</citetitle></link>,
+      <link linkend="filesr"><citetitle>filesr</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namematt;</member>
+        <member>Juillet 1999</member>
+      </simplelist>
+    </para>
+    <para>Exemple écrit par &namekevin;.</para>
+
+    <para>Nouveau dans la version 3.57 de Csound</para>
+  </refsect1>
+</refentry>

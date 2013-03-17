@@ -1,0 +1,103 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvsfread">
+<indexterm id="IndexPvsfread"><primary>pvsfread</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsfread</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvsfread</refname>
+    <refpurpose>
+      Lit un canal sélectionné d'un fichier d'analyse PVOC-EX.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Crée un flot fsig en lisant un canal sélectionné d'un fichier d'analyse
+      PVOC-EX chargé en mémoire, avec interpolation de trame. Seuls les fichiers
+      au format 0 (amplitude + fréquence) sont actuellement supportés. L'opération
+      de cet opcode reflète celle de <emphasis>pvoc</emphasis>, mais en restituant
+      un fsig au lieu d'un signal resynthétisé.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>fsig <command>pvsfread</command> ktimpt, ifn [, ichan]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn</emphasis> -- Nom du fichier d'analyse. Il doit avoir
+      l'extension de fichier .pvx.
+    </para>
+
+    <para>
+      On peut générer un fichier PVOC-EX multi-canaux avec
+      l'<link linkend="pvanal"><citetitle>pvanal utility</citetitle></link>
+      étendue.
+    </para>
+
+    <para>
+      <emphasis>ichan</emphasis> -- (facultatif) Le canal à lire (en comptant à
+      partir de 0). Vaut 0 par défaut.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ktimpt</emphasis> -- pointeur temporel dans le fichier d'analyse,
+      en secondes. Voir la description du même paramètre de
+      <link linkend="pvoc"><citetitle>pvoc</citetitle></link> pour son utilisation.
+    </para>
+
+    <para>
+      Noter que les fichiers d'analyse peuvent être très grands, surtout s'ils
+      sont multi-canaux. La lecture de tels fichiers en mémoire provoquera
+      probablement des coupures audio durant une exécution en temps réel. Comme
+      le fichier n'est lu qu'une fois, étant ensuite disponible pour tous les
+      opcodes intéressés, il peut être opportun de disposer d'un intrument dédié
+      au préchargement de ces fichiers d'analyse au démarrage.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode pvsfread. Il utilise le fichier
+      <ulink url="examples/pvsfread.csd"><citetitle>pvsfread.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode pvsfread.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pvsfread.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namerichard;</member>
+        <member>Août 2001 </member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 4.13</para>
+  </refsect1>
+</refentry>

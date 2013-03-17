@@ -1,0 +1,113 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="GEN52">
+      <indexterm id="IndexGEN52"><primary>GEN52</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN52</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>GEN52</refname>
+    <refpurpose>
+      Crée une table à plusieurs canaux entrelacés à partir des tables source spécifiées, dans le
+      format attendu par l'opcode <emphasis>ftconv</emphasis>.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>GEN52</emphasis> crée une table à plusieurs canaux entrelacés à partir des tables source
+      spécifiées, dans le format attendu par l'opcode <link linkend="ftconv"><citetitle>ftconv</citetitle></link>.
+      Il peut aussi être utilisé pour extraire un canal d'une table multicanaux et le stocker dans une
+      table mono normale, copier des tables en omettant certains échantillons, ajouter un délai, ou stocker
+      en ordre inverse, etc.
+    </para>
+    <para>
+      Il faut donner trois paramètres pour chaque canal à traiter. <emphasis>fsrc</emphasis> déclare le
+      numéro de la f-table source. Le paramètre <emphasis>offset</emphasis> spécifie un décalage pour le
+      fichier source. S'il est différent de 0, le fichier source n'est pas lu depuis le début, un nombre
+      <emphasis>offset</emphasis> de valeurs étant ignorées. L'<emphasis>offset</emphasis> est utilisé
+      pour déterminer le numéro de canal à lire depuis les f-tables entrelacées, par exemple pour le
+      canal 2, <emphasis>offset</emphasis> doit valoir 1. Il peut aussi être utilisé pour fixer un
+      décalage de lecture sur la table source. Ce paramètre donne des valeurs absolues, si bien que si
+      l'on désire un décalage de 20 unités d'échantillonnage pour une f-table à deux canaux, 
+      <emphasis>offset</emphasis> doit valoir 40. Le paramètre <emphasis>srcchnls</emphasis> est utilisé
+      pour fixer le nombre de canaux dans la f-table source. Ce paramètre fixe la taille du pas de
+      progression lors de la lecture de la f-table source.
+    </para>
+    <para>
+      Quand il y a plus d'un canal (<emphasis>nchannels</emphasis> > 1), les f-tables source sont
+      entrelacées dans la table nouvellement créée.
+    </para>
+    <para>
+      Si la f-table source est finie avant que la f-table destination ne soit remplie, les valeurs
+      restantes sont fixées à 0.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>f</command> # date taille 52 ncanaux fsrc1 offset1 srcchnls1 [fsrc2 offset2 srcchnls2 ... fsrcN offsetN srcchnlsN]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+  <programlisting>
+<emphasis role="comment">; tables sources</emphasis>
+<emphasis role="stamnt">f</emphasis> 1 0 16384 10 1
+<emphasis role="stamnt">f</emphasis> 2 0 16384 10 0 1
+<emphasis role="comment">; crée une table avec 2 canaux entrelacés</emphasis>
+<emphasis role="stamnt">f</emphasis> 3 0 32768 -52 2 1 0 1 2 0 1
+<emphasis role="comment">; extrait le premier canal de la table 3</emphasis>
+<emphasis role="stamnt">f</emphasis> 4 0 16384 -52 1 3 0 2
+<emphasis role="comment">; extrait le second canal de la table 3</emphasis>
+<emphasis role="stamnt">f</emphasis> 5 0 16384 -52 1 3 1 2</programlisting>
+
+    <para>
+      Voici un exemple complet de la routine GEN52. Il utilise le fichier
+      <ulink url="examples/gen52.csd"><citetitle>gen52.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de la routine GEN52.</title>
+        <para>
+          Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+          et <link linkend="CommandFlags"><citetitle>Options de Ligne de Commande</citetitle></link> pour
+          plus d'information sur l'utilisation des options de la ligne de commande.
+        </para>
+        <xi:include href="examples-xml/gen52.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      
+      <textobject>
+        <phrase>Voici le diagramme de la forme d'onde de la routine GEN52 utilisée
+        dans l'exemple :</phrase>
+      </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen52.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 3 0 262144 -52 3 2 0 4 2 1 4 2 2 4</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 3 0 262144 -52 3 2 0 4 2 1 4 2 2 4</para>
+        </caption>
+      </mediaobject>
+   
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &nameistvan;</para>
+  </refsect1>
+</refentry>

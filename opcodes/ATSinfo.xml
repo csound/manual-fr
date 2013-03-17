@@ -1,0 +1,148 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ATSinfo">
+<indexterm id="IndexATSinfo"><primary>ATSinfo</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:ATS</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ATSinfo</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ATSinfo</refname>
+    <refpurpose> lit des données de l'en-tête d'un fichier ATS.
+    </refpurpose>
+  </refnamediv>
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>atsinfo</emphasis> lit des données de l'en-tête d'un fichier ATS.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>idata <command>ATSinfo</command> iatsfile, ilocation</synopsis>
+  </refsect1>
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iatsfile</emphasis> – le numéro ATS (n dans ats.n) ou le nom
+      entre guillemets du fichier d'analyse créé avec
+      <ulink url="http://www-ccrma.stanford.edu/~juan/ATS.html"><citetitle>ATS</citetitle></ulink>.
+    </para>
+    <para>
+      <emphasis>ilocation</emphasis> – indique quel champ de l'en-tête du fichier
+      retourner. Les données de l'en-tête donnent de l'information sur les données
+      contenues dans le reste du fichier ATS. Les valeurs possibles pour
+      <emphasis>ilocation</emphasis> sont données dans la liste suivante :
+    </para>
+    <para>  0 - Taux d'échantillonnage (Hz)</para>
+    <para>  1 - Taille de trame (en échantillons)</para>
+    <para>  2 - Taille de fenêtre (en échantillons)</para>
+    <para>  3 - Nombre de partiels</para>
+    <para>  4 - Nombre de trames</para>
+    <para>  5 - Amplitude maximale</para>
+    <para>  6 - Fréquence maximale (Hz)</para>
+    <para>  7 - Durée (secondes)</para>
+    <para>  8 - Type du fichier ATS</para>
+  </refsect1>
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Des macros peuvent améliorer la lisibilité de votre code Csound ;  je donne
+      mes définitions de macro ci-dessous :
+    </para>
+    <programlisting>
+            #define ATS_SAMP_RATE #0#
+            #define ATS_FRAME_SZ #1#
+            #define ATS_WIN_SZ #2#
+            #define ATS_N_PARTIALS #3#
+            #define ATS_N_FRAMES #4#
+            #define ATS_AMP_MAX #5#
+            #define ATS_FREQ_MAX #6#
+            #define ATS_DUR #7#
+            #define ATS_TYPE #8#</programlisting>
+    <para>
+      <emphasis>ATSinfo</emphasis> peut être utile pour écrire des instruments
+      génériques qui fonctionneront avec plusieurs fichiers ATS, même s'ils ont
+      différentes longueurs, différents nombres de partiels, etc. L'exemple 2
+      est une simple application de cela.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      voici un exemple de l'opcode ATSinfo. Il utilise le fichier
+      <ulink url="examples/ATSinfo.csd"><citetitle>ATSinfo.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode ATSinfo.</title>
+          <xi:include href="examples-xml/ATSinfo.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Dans l'exemple ci-desssus nous utilisons <emphasis>ATSinfo</emphasis> pour
+      trouver le nombre de partiels dans le fichier ATS.
+    </para>
+  </refsect1>
+    <refsect1>
+        <title>Autres exemples</title>
+    <orderedlist>
+      <listitem>
+        <programlisting>
+  imax_freq     <emphasis role="opc">ATSinfo</emphasis> "cl.ats", $ATS_FREQ_MAX</programlisting>
+        <para>
+          Dans l'exemple ci-dessus nous obtenons la valeur de la fréquence maximale
+          du fichier ATS "cl.ats" et nous la stockons dans imax_freq. Nous utilisons
+          la macro Csound $ATS_FREQ_MAX (définie ci-dessus), qui est équivalente au
+          nombre 6.
+        </para>
+      </listitem>
+      <listitem>
+        <programlisting>
+  i_npartials   <emphasis role="opc">ATSinfo</emphasis> p4, $ATS_N_PARTIALS
+  i_dur         <emphasis role="opc">ATSinfo</emphasis> p4, $ATS_DUR
+  ktimepnt      <emphasis role="opc">line</emphasis>    0, p3, i_dur
+  aout          <emphasis role="opc">ATSadd</emphasis>  ktimepnt, 1, p4, 1, i_npartials</programlisting>
+        <para>
+          Dans l'exemple ci-dessus nous utilisons <emphasis>ATSinfo</emphasis>
+          pour retrouver la durée et le nombre de partiels dans le fichier ATS
+          indiqué par p4. Avec cette information nous synthétisons les partiels
+          au moyen d'<emphasis>ATSadd</emphasis>. Comme la durée et le nombre de
+          partiels ne sont pas codés en dur, nous pouvons utiliser ce code avec
+          n'importe quel fichier ATS.
+        </para>
+      </listitem>
+    </orderedlist>
+  </refsect1>
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ATSread"><citetitle>ATSread</citetitle></link>, 
+      <link linkend="ATSreadnz"><citetitle>ATSreadnz</citetitle></link>, 
+      <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>, 
+      <link linkend="ATScross"><citetitle>ATScross</citetitle></link>, 
+      <link linkend="ATSinterpread"><citetitle>ATSinterpread</citetitle></link>, 
+      <link linkend="ATSpartialtap"><citetitle>ATSpartialtap</citetitle></link>, 
+      <link linkend="ATSadd"><citetitle>ATSadd</citetitle></link>, 
+      <link linkend="ATSaddnz"><citetitle>ATSaddnz</citetitle></link>, 
+      <link linkend="ATSsinnoi"><citetitle>ATSsinnoi</citetitle></link>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Alex Norman</member>
+        <member>Seattle,Washington</member>
+        <member>2004</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,105 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="expsega">
+<indexterm id="IndexExpsega"><primary>expsega</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Linear and Exponential Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>expsega</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>expsega</refname>
+    <refpurpose>
+      Un générateur de segments exponentiels opérant au taux-a.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Un générateur de segments exponentiels opérant au taux-a. Cette unité est pratiquement
+      identique à <link linkend="expseg"><citetitle>expseg</citetitle></link>, mais elle est plus
+      précise lorsque l'on définit des segments de courte durée (c-à-d., dans une phase d'attaque
+      percussive) au taux audio.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>expsega</command> ia, idur1, ib [, idur2] [, ic] [...]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialiation</title>
+    <para>
+      <emphasis>ia</emphasis> -- valeur initiale. Zéro est interdit.
+    </para>
+
+    <para>
+      <emphasis>ib</emphasis>, <emphasis>ic</emphasis>, etc. -- valeur après
+      <emphasis>idur1</emphasis> secondes, etc. Doivent être non nulles et de même signe que
+      <emphasis>ia</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>idur1</emphasis> -- durée en secondes du premier segment. Avec une valeur nulle ou 
+      négative l'initialisation sera ignorée.
+    </para>
+
+    <para>
+      <emphasis>idur2, idur3</emphasis>, etc. -- durée en secondes des segments suivants. Une valeur
+      nulle ou négative terminera la phase d'initialisation avec le point précédent, permettant
+      au dernier segment défini de continuer durant toute l'exécution. La valeur par défaut est zéro.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Cette unité génère des signaux audio dont les valeurs passent par 2 ou plus
+      points spécifiés. La somme des valeurs <emphasis>dur</emphasis> peut égaler ou non la durée
+      d'exécution de l'instrument : avec une exécution plus courte, la courbe sera tronquée alors
+      qu'avec une exécution plus longue, le dernier segment défini continuera dans la même direction.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici une exemple de l'opcode expsega. Il utilise le fichier
+      <ulink url="examples/expsega.csd"><citetitle>expsega.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode expsega.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/expsega.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="expseg"><citetitle>expseg</citetitle></link>, 
+      <link linkend="expsegr"><citetitle>expsegr</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Exemple écrit par &namekevin;.</para>
+    <para>Nouveau dans Csound 3.57</para>
+  </refsect1>
+</refentry>

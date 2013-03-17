@@ -1,0 +1,109 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="STKResonate">
+  <indexterm id="IndexStkresonate"><primary>STKResonate</primary></indexterm>
+  <refentryinfo><title>Signal Generators:STK Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>STKResonate</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>STKResonate</refname>
+    <refpurpose>
+      STKResonate est un filtre à formant piloté par du bruit.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>STKResonate</emphasis> est un filtre à formant piloté par du
+      bruit. Cet instrument contient une source de bruit qui excite un filtre
+      à résonance biquadratique, avec contrôle du volume par une enveloppe ADSR.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>asignal <command>STKResonate</command> ifrequency, iamplitude, [kfreq, kv1[, kpole, kv2[, knotch, kv3[, kzero, kv4[, kenv, kv5]]]]]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+        <para>
+      <emphasis>ifrequency</emphasis> -- Fréquence de la note jouée, en Hz.
+    </para>
+   
+    <para>
+      <emphasis>iamplitude</emphasis> -- Amplitude de la note jouée (entre 0 et 1).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+<para><emphasis>kfreq</emphasis> -- contrôleur 2, fréquence de résonance. kv1 compris entre 0 et 127.</para>
+<para><emphasis>kpole</emphasis> -- contrôleur 4, rayon des pôles. kv2 compris entre 0 et 127.</para>
+<para><emphasis>knotch</emphasis> -- contrôleur 11, fréquence d'encoche. kv3 compris entre 0 et 127.</para>
+<para><emphasis>kzero</emphasis> -- contrôleur 1, rayon des zéros. kv4 compris entre 0 et 127.</para>
+<para><emphasis>kenv</emphasis> -- contrôleur 128, gain de l'enveloppe. kv5 compris entre 0 et 127.</para>
+  </refsect1>
+ 
+  <refsect1>
+    <note>
+      <title>Notes</title>
+      <para>
+        Le code pour cet opcode vient directement de la classe
+        <emphasis>Resonate</emphasis> du Synthesis Toolkit en C++ par Perry R.
+        Cook et Gary P. Scavone. On peut en savoir plus sur les classes STK ici :
+        <ulink url="https://ccrma.stanford.edu/software/stk/classes.html">
+        <citetitle>https://ccrma.stanford.edu/software/stk/classes.html</citetitle>
+        </ulink>
+      </para>
+      <para>
+        <emphasis>kc1, kv1, kc2, kv2, kc3, kv3, kc4, kv4, kc5, kv5, kc6, kv6, kc7, kv7, kc8, kv8</emphasis> -- 
+        Jusqu'à 8 paires de contrôle facultatives au taux-k pour les opcodes STK.
+        Chaque paire de contrôle est constituée d'un numéro de contrôleur
+        (<emphasis>kc</emphasis>) suivi d'une valeur de contrôleur
+        (<emphasis>kv</emphasis>). Le numéro de contrôleur ainsi que la valeur
+        associée sont des variables de taux-k. Cependant, durant l'exécution,
+        les numéros de contrôleur sont habituellement constants tandis que les valeurs
+        correspondantes peuvent changer à tout moment. L'ordre des paires de
+        contrôle est arbitraire mais elles doivent apparaître après
+        <emphasis>iamplitude</emphasis>. Il n'est pas non plus nécessaire d'utiliser
+        toutes les paires.
+      </para>
+    </note>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode STKResonate. Il utilise le fichier
+      <ulink url="examples/STKResonate.csd"><citetitle>STKResonate.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode STKResonate.</title>
+        <xi:include href="examples-xml/STKResonate.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namemichael; (d'après &nameperry;)</member>
+        <member>Irreducible Productions</member>
+        <member>New York, NY</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.11 de Csound.</para>
+  </refsect1>
+</refentry>
+

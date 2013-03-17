@@ -1,0 +1,96 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.5
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+<refentry id="vaset">
+<indexterm id="IndexAvarSet"><primary>vaset</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Sample Level Operators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vaset</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vaset</refname>
+    <refpurpose>
+      Ecrit une valeur dans le tampon courant d'une variable de taux-a par indexation.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ecrit une valeur dans le tampon courant d'une variable de taux-a à la
+      position donnée. Utile pour effectuer des manipulations échantillon par
+      échantillon au taux-k sans recourir à <emphasis>setksmps</emphasis> 1.
+
+      <note>
+        <title>Note</title>
+        <para>
+          Comme cet opcode ne vérifie pas les limites d'indexation, il faut
+          faire attention à ne pas essayer d'écrire une valeur au-delà de
+          <emphasis>ksmps</emphasis> (la taille du tampon d'une variable de
+          taux-a) en utilisant des valeurs d'indice supérieures à
+          <emphasis>ksmps.</emphasis>
+        </para>
+      </note>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>vaset</command> kval, kndx, avar</synopsis>
+  </refsect1>
+
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kval</emphasis> - valeur à écrire dans <emphasis>avar</emphasis>
+    </para>
+    <para>
+      <emphasis>kndx</emphasis> - indice de l'échantillon à écrire dans le tampon
+      de la variable <emphasis>avar</emphasis> donnée
+    </para>
+    <para>
+      <emphasis>avar</emphasis> - variable de taux-a dans laquelle écrire
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode vaset. Il utilise le fichier
+      <ulink url="examples/vaset.csd"><citetitle>vaset.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode vaset.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/vaset.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="vaget"><citetitle>vaget</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Steven Yi</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 5.04</para>
+    <para>Septembre 2006.</para>
+  </refsect1>
+</refentry>

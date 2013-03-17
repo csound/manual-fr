@@ -1,0 +1,164 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id = "ScorePreproc">
+  <title>Prétraitement des partitions standard</title>
+
+  <para>
+    Une <emphasis>Partition</emphasis> (un ensemble d'instructions de partition) se divise en sections
+    ordonnées dans le temps par l'<link linkend="s"><citetitle>instruction s</citetitle></link>.
+    Avant sa lecture par l'orchestre, une partition est prétraitée section par section. Chaque section
+    est normalement traitée par trois routines :
+    <link linkend="ScoreCarry"><citetitle>Carry</citetitle></link> (report de valeur),
+    <link linkend="ScoreTempo"><citetitle>Tempo</citetitle></link>, et
+    <link linkend="ScoreSort"><citetitle>Sort</citetitle></link> (tri).
+  </para>
+
+  <section id="ScoreCarry">
+    <title>Carry</title>
+    <para>Dans un groupe d'<link linkend="i"><citetitle>instructions i</citetitle></link> consécutives
+      dont les nombres entiers p1 sont indentiques, tout p-champ non rempli prendra la même valeur que
+      celle du p-champ correspondant dans l'instruction précédente. Un p-champ vide peut-être marqué
+      par un point (.) entouré d'espaces. Il n'y a pas besoin de point après le dernier p-champ
+      non vide. La sortie du prétraitement Carry montre explicitement les valeurs reportées. La Fonction
+      Carry n'est pas affectée par les commentaires rencontrés ou les lignes blanches ; elle s'arrête
+      seulement lorsqu'elle rencontre une instruction autre que
+      l'<link linkend="i"><citetitle>instruction i</citetitle></link> ou une
+      <emphasis>instruction i</emphasis> avec un nombre entier p1 différent.
+      <indexterm id="IndexScoreCarry"><primary>score</primary><secondary>carry</secondary></indexterm>
+    </para>
+
+    <para>
+      Il y a trois fonctions supplémentaires, pour p2 seulement : +, ^+<emphasis>x</emphasis>, et
+      ^-<emphasis>x</emphasis>. Le symbole + en p2 recevra la valeur de p2 + p3 de l'instruction i
+      précédente. Cela permet de déterminer automatiquement l'instant du début d'une note à partir
+      de la somme des durées précédentes. Le symbole + peut lui-même être reporté. Il n'est autorisé
+      que dans p2. Par exemple : les instructions
+
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">i</emphasis>1   0    .5    100
+<emphasis role="stamnt">i</emphasis> .  +
+<emphasis role="stamnt">i</emphasis></programlisting>
+      </informalexample>
+
+      se transformeront en
+
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">i</emphasis>1   0    .5    100
+<emphasis role="stamnt">i</emphasis>1   .5   .5    100
+<emphasis role="stamnt">i</emphasis>1   1    .5    100</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      Les symboles ^+<emphasis>x</emphasis> et ^-<emphasis>x</emphasis> determinent la valeur de p2
+      en additionnant ou en soustrayant respectivement la valeur <emphasis>x</emphasis> du p2
+      précédent. Ils ne peuvent être utilisés qu'en p2 et ne sont <emphasis>pas</emphasis>
+      reportés comme le symbole +. Noter aussi qu'il ne doit pas y avoir d'espaces après la partie
+      ^, + ou - de ces symboles -- le nombre doit suivre directement comme dans ^+2.3. Si l'exemple
+      ci-dessus avait été
+
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">i</emphasis>1   0    .5        100
+<emphasis role="stamnt">i</emphasis> .  ^+1
+<emphasis role="stamnt">i</emphasis> .  ^+1</programlisting>
+      </informalexample>
+
+      le résultat aurait été
+
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">i</emphasis>1   0    .5        100
+<emphasis role="stamnt">i</emphasis>1   1    .5        100
+<emphasis role="stamnt">i</emphasis>1   2    .5        100</programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      On peut se servir largement de la fonction Carry. Son utilisation, spécialement dans les grandes
+      partitions, peut réduire grandement la frappe au clavier et elle simplifiera les
+      modifications ultérieures.
+    </para>
+    
+    <para>
+      Il y a des circonstances où l'on ne veut pas que les p-champs "manquants" après le dernier
+      qui a été entré soient implicitement reportés. Par exemple dans un instrument prévu pour
+      prendre un nombre variable de p-champs. A partir de Csound 5.08, on peut empêcher le report
+      implicite des p-champs à la fin d'une instruction i en utilisant le symbole ! (appelé le
+      "symbol de non-report"). Le ! doit apparaître à la fin d'une instruction i et il ne peut
+      pas être utilisé en p1, p2 ou p3, car ces p-champs sont obligatoires. Voici un exemple :
+
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">i</emphasis>1   0    .5        100
+<emphasis role="stamnt">i</emphasis> .  +
+<emphasis role="stamnt">i</emphasis> .  .    .         !
+<emphasis role="stamnt">i</emphasis></programlisting>
+      </informalexample>
+
+      Cette partition sera interprétée comme ceci
+
+      <informalexample>
+        <programlisting>
+<emphasis role="stamnt">i</emphasis>1   0    .5        100
+<emphasis role="stamnt">i</emphasis>1   .5   .5        100
+<emphasis role="stamnt">i</emphasis>1   1    .5               ; no p4
+<emphasis role="stamnt">i</emphasis>1   1.5  .5               ; only p1 to p3 are carried here</programlisting>
+      </informalexample>
+    </para>
+  </section>
+
+  <section id="ScoreTempo">
+    <title>Tempo</title>
+    <para>
+      Cette opération modifie l'information temporelle d'une section de partition selon les directives
+      de l'<link linkend="t"><citetitle>instruction t</citetitle></link>. L'opération tempo convertit
+      p2 (et pour les <link linkend="i"><citetitle>instructions i</citetitle></link>, p3) de la valeur
+      originale en pulsations vers des secondes réelles, celles-ci étant les unités temporelles requises
+      par l'orchestre. Après la modification temporelle, les fichiers partitions apparaîtront dans un
+      format lisible par l'orchestre comme ceci : <literallayout><emphasis>i</emphasis> p1 p2pulsations p2secondes p3pulsations p3secondes p4 p5 ...</literallayout>
+      <indexterm id="IndexScoreTempo"><primary>score</primary><secondary>tempo</secondary></indexterm>
+    </para>
+  </section>
+
+  <section id="ScoreSort">
+    <title>Sort</title>
+    <para>
+      Cette routine trie toutes les instructions d'action temporelle chronologiquement selon
+      la valeur de p2. Elle place aussi les évènements simultanés par ordre de priorité. Chaque
+      fois qu'une <link linkend="f"><citetitle>instruction f</citetitle></link> et une
+      <link linkend="i"><citetitle>instruction i</citetitle></link> ont la même valeur en p2,
+      l'<emphasis>instruction f</emphasis> sera placée en premier. Chaque fois que plusieurs
+      <emphasis>instructions i</emphasis> ont la même valeur en p2, elles seront triées par ordre
+      croissant de leur valeur en p1. Si elles ont aussi la même valeur en p1, elles seront triées
+      par ordre croissant de leur valeur en p3. Le tri de la partition est effectué par section (voir
+      l'<link linkend="s"><citetitle>instruction s</citetitle></link>). Ce tri automatique permet
+      d'écrire les instructions de partition dans n'importe quel ordre à l'intérieur d'une section.
+      <indexterm id="IndexScoreSort"><primary>score</primary><secondary>sort</secondary></indexterm>
+    </para>
+    <note>
+    <para>
+      Les opérations Carry, Tempo et Sort sont combinées dans une seule passe en trois phases
+      sur le fichier de partition, pour produire un nouveau fichier dans un format lisible par
+      l'orchestre (voir l'exemple de Tempo). Ce traitement peut être invoqué explicitement par la
+      commande <emphasis>Scsort</emphasis>, ou implicitement par Csound qui traite la partition
+      avant d'appeler l'orchestre. Les fichiers en format source et en format lisible par
+      l'orchestre sont encodés en caractères ASCII, et peuvent être consultés ou modifiés dans un
+      éditeur de texte standard. L'utilisateur peut écrire ses propres routines pour modifier les
+      fichiers de partition avant ou après le processus décrit ci-dessus, pourvu que le format final
+      lisible par l'orchestre soit respecté. Les sections de formats différents peuvent être traitées
+      séquentiellement par lots ; et les sections de même format peuvent être réunies pour le tri
+      automatique.
+    </para>
+    </note>
+  </section>
+</section>

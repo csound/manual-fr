@@ -1,0 +1,157 @@
+<!--translated=yes
+authors=Yannick St-Onge
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ctrl7">
+<indexterm id="IndexCtrl7"><primary>ctrl7</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Input</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ctrl7</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>ctrl7</refname>
+
+    <refpurpose>
+      Permet un signal MIDI sur 7 bit en nombres décimaux selon une échelle entre des limites minimale et maximale.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Permet un signal MIDI sur 7 bit en nombres décimaux selon une échelle entre des limites minimale et maximale.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>idest <command>ctrl7</command> ichan, ictlno, imin, imax [, ifn]</synopsis>
+    <synopsis>kdest <command>ctrl7</command> ichan, ictlno, kmin, kmax [, ifn]</synopsis>
+    <synopsis>adest <command>ctrl7</command> ichan, ictlno, kmin, kmax [, ifn] [, icutoff]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>idest</emphasis> -- signal de sortie
+    </para>
+
+    <para>
+      <emphasis>ichan</emphasis> -- canal MIDI (1-16)
+    </para>
+
+    <para>
+      <emphasis>ictlno</emphasis> -- numéro du contrôleur MIDI (0-127)
+    </para>
+
+    <para>
+      <emphasis>imin</emphasis> -- valeur décimale minimale de sortie définie par l'utilisateur
+    </para>
+
+    <para>
+      <emphasis>imax</emphasis> -- valeur décimale maximale de sortie définie par l'utilisateur
+    </para>
+
+    <para>
+      <emphasis>ifn</emphasis> (facultatif) -- la table à lire lorsque l'indexation est requise.
+      La table doit être normalisée. La sortie est mise à l'échelle entre les valeurs
+      <emphasis>iminx</emphasis> et <emphasis>imax</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>icutoff</emphasis> (facultatif) -- fréquence de coupure du filtre passe-bas
+      pour lisser la sortie au taux-a.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kdest, adest</emphasis> -- signal de sortie
+    </para>
+
+    <para>
+      <emphasis>kmin</emphasis> -- valeur décimale minimale de sortie définie par l'utilisateur
+    </para>
+
+    <para>
+      <emphasis>kmax</emphasis> -- valeur décimale maximale de sortie définie par l'utilisateur
+    </para>
+
+    <para>
+      <emphasis>ctrl7</emphasis> (contrôle MIDI sur 7 bit au taux-i et au taux-k) permet un signal
+      MIDI sur 7 bit en nombres décimaux mis à l'échelle entre des limites minimale et maximale.
+      Il permet également en option une indexation de table sans interpolation. Les valeurs minimale
+      et maximale peuvent varier au taux-k.
+    </para>
+
+    <para>
+      <emphasis>ctrl7</emphasis> diffère de <link linkend="midic7"><citetitle>midic7</citetitle></link>
+      parce que il peut être inclu dans des instruments prévus pour une partition sans que Csound ne plante.
+      Il a aussi besoin du paramètre additionnel <emphasis>ichan</emphasis> contenant le canal MIDI du contrôleur.
+    </para>
+    <para>
+      La version de <emphasis>ctrl7</emphasis> au taux-a fournit en sortie une variable de taux-a, qui
+      est passée par un filtre passe-bas (lissée). Il y a un paramètre facultatif
+      <emphasis>icutoff</emphasis>, pour établir la fréquence de coupure du filtre passe-bas. Sa valeur
+      par défaut est 5.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode ctrl7. Il utilise le fichier
+      <ulink url="examples/ctrl7.csd"><citetitle>ctrl7.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode ctrl7.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/ctrl7.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <note>
+    <emphasis>ctrl7</emphasis> ne retourne des k-valeurs qu'après le premier
+    mouvement du contrôleur. Pour fixer une k-valeur initiale, il faut appeler
+    <emphasis>initc7</emphasis>. <emphasis>ctrlinit</emphasis> ne sert à rien
+    dans ce cas.
+  </note>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ctrl14"><citetitle>ctrl14</citetitle></link>,
+      <link linkend="ctrl21"><citetitle>ctrl21</citetitle></link>,
+      <link linkend="initc7"><citetitle>initc7</citetitle></link>,
+      <link linkend="initc14"><citetitle>initc14</citetitle></link>,
+      <link linkend="initc21"><citetitle>initc21</citetitle></link>,
+      <link linkend="midic7"><citetitle>midic7</citetitle></link>,
+      <link linkend="midic14"><citetitle>midic14</citetitle></link>,
+      <link linkend="midic21"><citetitle>midic21</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.47 de Csound</para>
+    <para>Merci à &namerasmus; pour avoir indiqué les bons intervalles pour le canal MIDI et le numéro de contrôleur.
+    </para>
+    <para>La version de <emphasis>ctrl7</emphasis> au taux-a a été ajoutée dans la version 5.06</para>
+  </refsect1>
+</refentry>

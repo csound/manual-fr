@@ -1,0 +1,43 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="mkdb">
+  <refentryinfo><title>Utilities</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>mkdb</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>mkdb</refname>
+    <refpurpose>
+      Sort un cataloque des modules d'opcodes et de greffons.
+      <indexterm id="IndexMkdb"><primary>mkdb</primary></indexterm>
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Sort un cataloque des modules d'opcodes et de greffons, classés par nom
+      d'opcode ou par module.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>mkdb</command> [-m] [base_directory]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namejohn;</para>
+    <para>Août 2011</para>
+    <para>Nouveau dans la version 5.14</para>
+  </refsect1>
+</refentry>

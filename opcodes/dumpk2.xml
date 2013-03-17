@@ -1,0 +1,158 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="dumpk2">
+<indexterm id="IndexDumpk2"><primary>dumpk2</primary></indexterm>
+  <refentryinfo><title>Signal I/O:File I/O</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>dumpk2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>dumpk2</refname>
+    <refpurpose>
+      Ecrit périodiquement les valeurs de deux signaux de contrôle de l'orchestre dans un
+      fichier externe.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ecrit périodiquement les valeurs de deux signaux de contrôle de l'orchestre dans un
+      fichier externe, dans un format spécifique.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>dumpk2</command> ksig1, ksig2, ifilname, iformat, iprd</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifilname</emphasis> -- chaîne de caractères (entre guillemets,
+      espaces autorisés) contenant le nom du fichier externe. Peut être un nom
+      de chemin complet avec un répertoire cible ou un simple nom de fichier à
+      créer dans le répertoire courant.
+    </para>
+
+    <para>
+      <emphasis>iformat</emphasis> -- spécifie le format des données de sortie :
+      <itemizedlist>
+        <listitem>
+          <para>1 = caractères signés sur 8 bit (les 8 bit d'ordre supérieur d'un
+          entier sur 16 bit</para>
+        </listitem>
+
+        <listitem>
+          <para>4 = entiers courts sur 16 bit</para>
+        </listitem>
+
+        <listitem>
+          <para>5 = entiers longs sur 32 bit</para>
+        </listitem>
+
+        <listitem>
+          <para>6 = flottants sur 32 bit</para>
+        </listitem>
+
+        <listitem>
+          <para>7 = entiers longs en ASCII</para>
+        </listitem>
+
+        <listitem>
+          <para>8 = flottants en ASCII (2 positions décimales)</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      Noter que les sorties A-law et U-law ne sont pas disponibles, et que tous
+      les formats sauf les deux derniers sont binaires. Le fichier de sortie ne
+      contient pas d'information d'en-tête.
+    </para>
+
+    <para>
+      <emphasis>iprd</emphasis> -- la période de la sortie <emphasis>ksig</emphasis>
+      en secondes, arrondie à la période de contrôle de l'orchestre la plus proche.
+      Une valeur de 0 implique une période de contrôle (le minimum imposé), qui
+      créera un fichier de sortie échantillonné au taux de contrôle de l'orchestre.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ksig1, ksig2</emphasis> -- signaux au taux de contrôle.
+    </para>
+
+    <para>
+      Cet opcode permet de sauvegarder les valeurs de deux signaux générés au taux de
+      contrôle dans un fichier externe. Le fichier ne contient pas d'information
+      auto-descriptive en en-tête. Mais il contient une suite temporelle échantillonnée
+      régulièrement, appropriée pour une entrée ultérieure ou une analyse. Il peut y
+      avoir n'importe quel nombre d'opcodes <emphasis>dumpk2</emphasis> dans un
+      instrument ou dans un orchestre mais chacun doit écrire dans un fichier
+      différent.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode dumpk2. Il utilise le fichier
+      <ulink url="examples/dumpk2.csd"><citetitle>dumpk2.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode dumpk2.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/dumpk2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
+kfreq = 429.202551, kdb = -20.495694
+kfreq = 429.202551, kdb = -20.495694
+kfreq = 407.275258, kdb = -23.123776
+kfreq = 475.264472, kdb = -9.300846
+kfreq = 569.979181, kdb = -7.315527
+kfreq = 440.103457, kdb = -0.058331
+
+kfreq = 429.202600, kdb = -20.495700
+kfreq = 429.202600, kdb = -20.495700
+kfreq = 407.275300, kdb = -23.123800
+kfreq = 475.264500, kdb = -9.300800
+kfreq = 569.979200, kdb = -7.315500
+kfreq = 440.103500, kdb = -0.058300</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="dumpk"><citetitle>dumpk</citetitle></link>, 
+      <link linkend="dumpk3"><citetitle>dumpk3</citetitle></link>, 
+      <link linkend="dumpk4"><citetitle>dumpk4</citetitle></link>, 
+      <link linkend="readk"><citetitle>readk</citetitle></link>, 
+      <link linkend="readk2"><citetitle>readk2</citetitle></link>, 
+      <link linkend="readk3"><citetitle>readk3</citetitle></link>, 
+      <link linkend="readk4"><citetitle>readk4</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par : John ffitch et Barry Vercoe</para>
+    <para>1999 ou avant</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,70 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.2
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="PrefaceToot8">
+  <title>Toot 8</title>
+
+  <para>
+    Maintenant, au lieu de continuer à améliorer le même instrument, nous en dessinerons un autre
+    totalement différent. Dans celui-ci, nous jouerons un fichier son en provenance du disque dans
+    l'orchestre, lui appliquant une enveloppe d'amplitude, et en ajoutant un peu de reverbération.
+    Pour réaliser ceci, nous emploierons les générateurs de Csound
+    <link linkend="soundin"><citetitle>soundin</citetitle></link> et
+    <link linkend="reverb"><citetitle>reverb</citetitle></link>. Le premier est utilisé comme ceci :
+  </para>
+
+  <programlisting>a1 <emphasis role="opc">soundin</emphasis> ifilcod[, iskiptime[, iformat]]</programlisting>
+
+  <para>
+    <link linkend="soundin"><citetitle>soundin</citetitle></link> dérive son signal d'un fichier
+    pré-existant. <emphasis>ifilcod</emphasis> est soit le nom du fichier entre guillemets, soit
+    un suffixe entier (.n) au nom "soundin". Ainsi le fichier soundin.5 pourra être référencé par
+    son nom entre guillemets ou par l'entier 5. Pour commencer à lire à partir de 500ms dans le
+    fichier on peut écrire (c-à-d pour ignorer les 500 premières ms) :
+  </para>
+
+  <programlisting>a1 <emphasis role="opc">soundin</emphasis> "soundin.5", .5</programlisting>
+
+  <para>
+    Le générateur de Csound <link linkend="reverb"><citetitle>reverb</citetitle></link> est
+    actuellement composé de quatre filtres en peigne
+    (<link linkend="comb"><citetitle>comb</citetitle></link>) parallèles plus deux filtres passe-tout
+    (<link linkend="alpass"><citetitle>alpass</citetitle></link>) en série. Bien que nous puissions
+    dessiner notre propre variante à partir des mêmes primitives, la réverbération pré-construite
+    est adéquate et simule la réponse d'un espace naturel via les valeurs des paramètres internes.
+    Seulement deux arguments sont nécessaires, l'entrée (<emphasis>asig</emphasis>) et le temps de
+    réverbération (<emphasis>krvt</emphasis>).
+  </para>
+
+  <programlisting>ar <emphasis role="opc">reverb</emphasis> asig, krvt</programlisting>
+
+  <para>
+    Voici une représentation schématique de l'instrument.
+  </para>
+  <para>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/toot08.gif" format="GIF"/>
+      </imageobject>
+      <textobject>
+        <phrase>[Schéma de TOOT 8]</phrase>
+      </textobject>
+      <caption>
+        <para>Schéma de TOOT 8</para>
+      </caption>
+    </mediaobject>
+  </para>
+  <para>
+    L'instrument du fichier son avec enveloppe artificielle et une réverbération (directement
+    incluse) se présente comme suit :
+  </para>
+  <para>
+    <xi:include href="examples-xml/toot8.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </para>
+</section>

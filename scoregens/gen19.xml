@@ -1,0 +1,131 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="GEN19">
+      <indexterm id="IndexGEN19"><primary>GEN19</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN19</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>GEN19</refname>
+    <refpurpose>
+      Génère des formes d'ondes complexes obtenues par une somme pondérée de sinus.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ce sous-programme génère des formes d'ondes complexes obtenues par une somme pondérée de sinus. La
+      spécification de chaque partiel nécessite 4 p-champs dans <emphasis>GEN19</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>f</command> # date taille  19  pna  ampa  phsa  dcoa  pnb  ampb  phsb  dcob  ...</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>taille</emphasis> -- nombre de points dans la table. Doit être une puissance de 2 ou une
+      puissance-de-2 plus 1 (voir l'<link linkend="f">instruction f</link>).
+    </para>
+
+    <para>
+      <emphasis>pna, pnb</emphasis>, etc. -- numéro de partiel (relativement à un fondamental qui
+      occuperait <emphasis>taille</emphasis> positions par période) de sinus a, sinus b, etc. Doit être
+      positif, mais pas nécessairement un nombre entier, c'est-à-dire que des partiels non harmoniques
+      sont autorisés. Les partiels peuvent être dans n'importe quel ordre.
+    </para>
+
+    <para>
+      <emphasis>ampa, ampb</emphasis>, etc. -- amplitude des partiels <emphasis>pna, pnb</emphasis>, etc.
+      Ces amplitudes sont relatives, car la forme d'onde composée peut être normalisée plus tard. Des
+      valeurs négatives sont autorisées et impliquent une opposition de phase.
+    </para>
+
+    <para>
+      <emphasis>phsa, phsb</emphasis>, etc. -- phase initiale des partiels <emphasis>pna, pnb,</emphasis>
+      etc., exprimée en degrés.
+    </para>
+
+    <para>
+      <emphasis>dcoa, dcob</emphasis>, etc. -- Décalage CC (Composante Continue) des partiels
+      <emphasis>pna, pnb</emphasis>, etc. Il est appliqué <emphasis>après</emphasis> l'amplitude,
+      c'est-à-dire qu'une valeur de 2 montera une sinus d'amplitude 2 de l'intervalle [-2,2] à l'intervalle
+      [0,4] (avant la normalisation finale).
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Ces sous-programmes génèrent des fonctions stockées comme sommes de sinus de différentes
+              fréquences. Les deux restrictions majeures de <emphasis>GEN10</emphasis> qui sont des
+              partiels harmoniques et en phase ne s'appliquent pas à <emphasis>GEN09</emphasis> ou à
+              <emphasis>GEN19</emphasis>.
+            </para>
+          </listitem>
+
+          <listitem>
+            <para>
+              Dans chaque cas l'onde composée, une fois évaluée, est ensuite normalisée à l'unité si p4
+              est positif. Un p4 négatif empêchera cette opération.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </note>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de la routine GEN19. Il utilise le fichier
+      <ulink url="examples/gen19.csd"><citetitle>gen19.csd</citetitle></ulink>.
+      <example>
+        <title>Un exemple de la routine GEN19.</title>
+        <xi:include href="examples-xml/gen19.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+        <textobject>
+          <phrase>Voici le diagramme de la forme d'onde générée par GEN19,
+          utilisé dans l'exemple :</phrase>
+        </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gen19_1.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>f 2 0 1024 19 .5 .5 270 .5 - une sigmoïde montante</phrase>
+        </textobject>
+
+        <caption>
+          <para>f 2 0 1024 19 .5 .5 270 .5 - une sigmoïde montante</para>
+        </caption>
+      </mediaobject>
+
+    </para>
+  </refsect1>
+
+  <refsect1>
+     <title>Voir aussi</title>
+     <para>
+       <link linkend="GEN09"><citetitle>GEN09</citetitle></link> et
+       <link linkend="GEN10"><citetitle>GEN10</citetitle></link>
+     </para>
+  </refsect1>
+</refentry>

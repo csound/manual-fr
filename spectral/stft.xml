@@ -1,0 +1,53 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="SiggenStft">
+  <title>Resynthèse par Tranformée de Fourier à Court-Terme (STFT)</title>
+
+  <note>
+    <title>Utilisation des fichiers PVOC-EX avec les anciens opcodes pvoc de Csound</title>
+    <para>
+      Tous les opcodes pvoc originaux peuvent lire maintenant des fichiers PVOC-EX, aussi bien que le
+      format de fichier natif non portable. Comme un fichier PVOC-EX utilise une fenêtre d'analyse de
+      taille double, les utilisateurs trouveront sans doute que le résultat est utilement amélioré, pour
+      certains sons et certains traitements, malgré le fait que la resynthèse n'utilise pas la même taille
+      de fenêtre.
+    </para>
+
+    <para>
+      En dehors du paramètre de taille de fenêtre, la différence principale entre le format original .pv
+      et PVOC-EX est l'intervalle d'amplitude des trames d'analyse. Lorque la pondération est appliquée,
+      afin qu'il n'y ait pas de différences notables dans le niveau de sortie, quelque soit le format de
+      fichier utilisé, de légères pertes d'amplitude peuvent encore se produire, car l'utilisation d'une
+      fenêtre double modifie l'amplitude des trames, sans que le code de resynthèse en tienne compte. Noter
+      que tous les opcodes pvoc originaux attendent un fichier d'analyse mono, et que les fichiers PVOC-EX
+      multi-canaux seront ainsi réjetés.
+    </para>
+  </note>
+
+  <para>
+    Les opcodes qui implémentent la resynthèse STFT sont :
+    <itemizedlist>
+      <listitem><para><link linkend="mincer"><citetitle>mincer</citetitle></link></para></listitem>
+      <listitem><para><link linkend="temposcal"><citetitle>temposcal</citetitle></link></para></listitem>
+      <listitem><para><link linkend="tableseg"><citetitle>tableseg</citetitle></link></para></listitem>
+      <listitem><para><link linkend="pvadd"><citetitle>pvadd</citetitle></link></para></listitem>
+      <listitem><para><link linkend="pvbufread"><citetitle>pvbufread</citetitle></link></para></listitem>
+      <listitem><para><link linkend="pvcross"><citetitle>pvcross</citetitle></link></para></listitem>
+      <listitem><para><link linkend="pvinterp"><citetitle>pvinterp</citetitle></link></para></listitem>
+      <listitem><para><link linkend="pvoc"><citetitle>pvoc</citetitle></link></para></listitem>
+      <listitem><para><link linkend="pvread"><citetitle>pvread</citetitle></link></para></listitem>
+      <listitem><para><link linkend="tableseg"><citetitle>tableseg</citetitle></link></para></listitem>
+      <listitem><para><link linkend="tablexseg"><citetitle>tablexseg</citetitle></link></para></listitem>
+      <listitem><para><link linkend="vpvoc"><citetitle>vpvoc</citetitle></link></para></listitem>
+    </itemizedlist>
+  </para>
+  <para>L'utilitaire <link linkend="pvanal"><citetitle>PVANAL</citetitle></link> permet de générer les
+    fichiers d'analyse pv.</para>
+</section>

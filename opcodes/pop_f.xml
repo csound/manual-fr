@@ -1,0 +1,89 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.3
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pop_f">
+<indexterm id="Indexpop_f"><primary>pop_f</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Stacks</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pop_f</refentrytitle>
+  </refmeta>
+  
+  <refnamediv>
+    <refname>pop_f</refname>
+    <refpurpose>
+      Extrait une trame de f-sig de la pile globale.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Extrait une trame de f-sig de la pile globale.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>fsig <command>pop_f</command></synopsis>
+  </refsect1>
+<!--  
+  <refsect1>
+    <title>Initialisation</title>
+  </refsect1>-->
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>fsig </emphasis> -- f-signal à extraire de la pile.
+    </para>
+    <para>
+      Les valeurs sont extraites de la pile. La pile globale doit être initialisée
+      avant utilisation et sa taille doit être fixée. La pile globale fonctionne
+      en mode dernier entré, premier sorti : après plusieurs appels
+      <link linkend="push_f"><citetitle>push_f</citetitle></link>, il faut utiliser
+      <emphasis>pop_f</emphasis> dans l'ordre inverse.
+    </para>
+    <para>
+      <emphasis>push</emphasis>/<emphasis>pop</emphasis> pour les types a, k, i
+      et S copient les données par valeur. Au contraire,
+      <link linkend="push_f"><citetitle>push_f</citetitle></link> ne pousse qu'une
+      référence du f-signal et le <emphasis>pop_f</emphasis>
+      correspondant copiera directement depuis la variable originale dans le
+      signal de sortie. Pour cette raison, il n'est pas recommandé de changer le
+      f-signal source de <link linkend="push_f"><citetitle>push_f</citetitle></link>
+      avant l'appel à <emphasis>pop_f</emphasis>. De même, si l'instance
+      d'instrument possédant la variable passée à
+      <link linkend="push_f"><citetitle>push_f</citetitle></link> est désactivée
+      avant que <emphasis>pop_f</emphasis>
+      ne soit appelé, il peut en résulter un comportement indéfini.
+    </para>
+    <para>
+      <link linkend="push_f"><citetitle>push_f</citetitle></link> et
+      <emphasis>pop_f</emphasis> ne peuvent prendre qu'un seul argument et les
+      données sont passées à la fois à l'initialisation et pendant l'exécution.
+    </para>
+    <para>
+      Toutes les erreurs de pile (tentative de pousser des données alors qu'il
+      n'y a plus d'espace ou d'extraire des données d'une pile vide, nombre ou
+      types d'arguments inconsistants, etc) sont fatales et terminent l'exécution.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="stack"><citetitle>stack</citetitle></link>,
+      <link linkend="push"><citetitle>push</citetitle></link>,
+      <link linkend="pop"><citetitle>pop</citetitle></link> and 
+      <link linkend="push_f"><citetitle>push_f</citetitle></link>.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par &nameistvan;.</para>
+    <para>2006</para>
+  </refsect1>
+</refentry>

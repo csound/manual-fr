@@ -1,0 +1,74 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="UtilityOther">
+  <title>Autres utilitaires de Csound (CS, CSB64ENC, ENVEXT, EXTRACTOR, MAKECSD,
+  MIXER, SCALE, MKDB)</title>
+  <para>Les divers utilitaires suivants sont disponibles :
+    <itemizedlist>
+      <listitem>
+        <para>
+          <link linkend="cs"><citetitle>CS</citetitle></link> : démarre Csound avec un ensemble
+          d'options qui peuvent être contrôlées par des variables d'environnement, et des
+          fichiers d'entrée et de sortie déterminés par la racine de nom de fichier spécifiée.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <link linkend="csb64enc"><citetitle>CSB64ENC</citetitle></link> : convertit un
+          fichier binaire en un fichier texte encodé en Base64.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <link linkend="envext"><citetitle>ENVEXT</citetitle></link> : extrait l'enveloppe
+          d'un fichier vers une liste textuelle.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <link linkend="extractor"><citetitle>EXTRACTOR</citetitle></link> : extrait une
+          section audio d'un fichier audio.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <link linkend="makecsd"><citetitle>MAKECSD</citetitle></link> : crée un fichier
+          CSD à partir des fichiers d'entrée spécifiés.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <link linkend="mixer"><citetitle>MIXER</citetitle></link> : mélange ensemble
+          plusieurs fichiers son.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <link linkend="scaleutility"><citetitle>SCALE</citetitle></link> : calibre
+          l'amplitude d'un fichier son.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <link linkend="mkdb"><citetitle>MKDB</citetitle></link>:
+          crée un cataloque des opcodes greffons.
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+    &utilitycs;
+    &utilitycsb64enc;
+    &utilityenvext;
+    &utilityextractor;
+    &utilitymakecsd;
+    &utilitymixer;
+    &utilityscale;
+    &utilitymkdb;
+</section>

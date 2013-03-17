@@ -1,0 +1,51 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="SigioOutput">
+  <title>Sortie de Signal</title>
+
+  <para>
+    Les opcodes qui écrivent des signaux audio sont :
+    <itemizedlist>
+      <listitem><para>Sortie synchrone :
+        <link linkend="out"><citetitle>out</citetitle></link>,
+        <link linkend="out32"><citetitle>out32</citetitle></link>,
+        <link linkend="outc"><citetitle>outc</citetitle></link>,
+        <link linkend="outch"><citetitle>outch</citetitle></link>,
+        <link linkend="outh"><citetitle>outh</citetitle></link>,
+        <link linkend="outo"><citetitle>outo</citetitle></link>,
+        <link linkend="outrg"><citetitle>outrg</citetitle></link>,
+        <link linkend="outq"><citetitle>outq</citetitle></link>,
+        <link linkend="outq1"><citetitle>outq1</citetitle></link>,
+        <link linkend="outq2"><citetitle>outq2</citetitle></link>,
+        <link linkend="outq3"><citetitle>outq3</citetitle></link>,
+        <link linkend="outq4"><citetitle>outq4</citetitle></link>,
+        <link linkend="outs"><citetitle>outs</citetitle></link>,
+        <link linkend="outs1"><citetitle>outs1</citetitle></link>,
+        <link linkend="outs2"><citetitle>outs2</citetitle></link> et
+        <link linkend="outx"><citetitle>outx</citetitle></link></para></listitem>
+      <listitem><para>Flux de sortie :
+        <link linkend="soundout"><citetitle>soundout</citetitle></link> et
+        <link linkend="soundouts"><citetitle>soundouts</citetitle></link></para></listitem>
+      <listitem><para>Canal de sortie défini par l'utilisateur :
+        <link linkend="outvalue"><citetitle>outvalue</citetitle></link></para></listitem>
+      <listitem><para>Sortie directe depuis zak :
+        <link linkend="outz"><citetitle>outz</citetitle></link></para></listitem>
+    </itemizedlist>
+  </para>
+  <para>
+    L'opcode  <link linkend="monitor"><citetitle>monitor</citetitle></link> peut être utilisé pour
+    surveiller la sortie complète de csound (trame de sortie spout).
+  </para>
+  <para>
+    Voir la section <link linkend="SoftwareBus"><citetitle>Bus Logiciel</citetitle></link> pour les entrées
+    et les sorties au moyen de l'API.
+  </para>
+
+</section>

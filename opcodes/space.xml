@@ -1,0 +1,284 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="space">
+<indexterm id="IndexSpace"><primary>space</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Panning and Spatialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>space</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>space</refname>
+    <refpurpose>
+      Distribue un signal audio sur quatre canaux en utilisant des coordonnées
+      cartésiennes.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>space</emphasis> prend un signal en entrée et le distribue sur
+      quatre canaux en utilisant les coordonnées cartésiennes xy pour calculer
+      la balance des sorties. Les coordonnées xy peuvent être définies dans un
+      fichier texte séparé et récupérées par le biais d'une instruction de
+      fonction dans la partition en utilisant
+      <link linkend="GEN28"><citetitle>Gen28</citetitle></link>, ou bien on peut
+      les spécifier au moyen des arguments facultatifs <emphasis>kx, ky</emphasis>.
+      Les avantages de la première méthode sont :
+      <orderedlist>
+        <listitem>
+          <para>
+            On peut utiliser une interface graphique pour dessiner et éditer la
+            trajectoire dans le plan cartésien.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            Le format de fichier est de la forme temps1 X1 Y1 temps2 X2 Y2 temps3
+            X3 Y3 ce qui permet de définir une trajectoire paramétrée par le
+            temps.
+          </para>
+        </listitem>
+      </orderedlist>
+    </para>
+
+    <para>
+      <emphasis>space</emphasis> permet ainsi de définir un pointeur temporel
+      (du même type que ceux utilisés par
+      <link linkend="pvoc"><citetitle>pvoc</citetitle></link>,
+      <link linkend="lpread"><citetitle>lpread</citetitle></link> et quelques
+      autres unités) pour avoir un contrôle détaillé sur la vitesse résultante
+      du mouvement.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>a1, a2, a3, a4  <command>space</command> asig, ifn, ktime, kreverbsend, kx, ky</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn</emphasis> -- numéro de la fonction créée au moyen de
+      <link linkend="GEN28"><citetitle>Gen28</citetitle></link>. Ce générateur
+      de fonction lit un fichier texte qui contient des groupes de trois
+      valeurs représentant les coordonnées xy et un paramètre de temps indiquant
+      quand le signal doit être placé à cette position. Le fichier ressemblera
+      à ceci :
+      <literallayout>
+  0       -1       1
+  1        1       1
+  2        4       4
+  2.1     -4      -4
+  3       10     -10
+  5      -40       0</literallayout>
+    </para>
+
+    <para>
+      Avec un fichier nommé <quote>move</quote> l'appel à <emphasis>Gen28</emphasis>
+      dans la partition s'écrira :
+      <literallayout>
+  f1 0 0 28 &quot;move&quot;
+      </literallayout>
+    </para>
+
+    <para>
+      <emphasis>Gen28</emphasis> prend pour taille 0 et alloue la mémoire
+      automatiquement. Il crée ses valeurs avec une résolution de 10 ms. Ainsi
+      dans ce cas, il y aura 500 valeurs créées en interpolant de X1 à X2 à X3
+      et ainsi de suite, et de Y1 à Y2 à Y3 et ainsi de suite, sur le nombre
+      approprié de valeurs stockées dans la table de fonction. Dans l'exemple
+      ci-dessus, le son démarre à l'avant-gauche, après une seconde il
+      atteind l'avant-droite, après une autre seconde il est plus éloigné mais
+      toujours à l'avant-droite, ensuite il bouge à l'arrière-gauche en moins
+      d'un dizième de seconde, un peu éloigné. Enfin, durant les neuf dixièmes
+      de seconde suivants le son bouge à l'arrière-droite, modérément distant,
+      puis il se fixe entre les deux haut-parleurs de gauche (plein ouest !),
+      assez éloigné. Comme les valeurs dans la table sont lues par l'unité
+      <emphasis>space</emphasis> au moyen d'un pointeur temporel, le temps
+      courant peut être réglé pour suivre exactement celui du fichier, ou bien
+      il peut être réglé pour aller plus vite ou plus lentement le long de la
+      même trajectoire. Si l'on a accès à l'interface graphique permettant de
+      dessiner et d'éditer les fichiers, il n'est pas nécessaire de créer les
+      fichiers texte manuellement. Mais dès lors que le fichier est en ASCII
+      dans le format ci-dessus, peu importe comment il a été créé !
+    </para>
+
+    <note>
+      <title>Important</title>
+      <para>
+        Si <emphasis>ifn</emphasis> vaut 0, <emphasis>space</emphasis> obtient
+        les valeurs des coordonnées xy depuis <emphasis>kx</emphasis> et
+        <emphasis>ky</emphasis>.
+      </para>
+    </note>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      La configuration des coordonnées xy dans l'espace place le signal de la
+      manière suivante :
+      <itemizedlist>
+        <listitem>
+           <para>a1 est en (-1, 1)</para>
+        </listitem>
+
+        <listitem>
+           <para>a2 est en (1, 1)</para>
+        </listitem>
+
+        <listitem>
+           <para>a3 est en (-1, -1)</para>
+        </listitem>
+
+        <listitem>
+           <para>a4 est en (1, -1)</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      Ceci suppose une disposition des haut-parleurs où a1 est à l'avant-gauche,
+      a2 à l'avant-droit, a3 à l'arrière-gauche et a4 à l'arrière-droite. Les
+      valeurs supérieures à 1 donnent un son atténué, comme s'il était éloigné.
+      <emphasis>space</emphasis> considère que les haut-parleurs sont à une
+      distance de 1 ; on peut utiliser des valeurs de xy inférieures, mais
+      <emphasis>space</emphasis> n'amplifiera pas le signal dans ce cas. Il
+      équilibrera le signal cependant de manière à ce qu'il soit entendu comme
+      s'il se trouvait à l'intérieur de l'espace des quatre haut-parleurs.
+      x=0, y=1, place le signal entre les canaux avant gauche et droite, x=y=0
+      place le signal également entre les quatre canaux, et ainsi de suite.
+      Bien que <emphasis>space</emphasis> fournisse quatre signaux en sortie,
+      on peut l'utiliser dans un orchestre à deux canaux. Si les xy sont tels
+      que y reste &gt;= 1, il fonctionnera correctement pour faire des
+      panoramiques et des localisations fixes dans un champ stéréophonique.
+    </para>
+
+    <para>
+      <emphasis>asig</emphasis> -- signal audio en entrée.
+    </para>
+
+    <para>
+      <emphasis>ktime</emphasis> -- indice dans la table contenant les
+      coordonnées xy. S'il est utilisé comme ceci :
+      <literallayout>
+  ktime           <emphasis>line</emphasis>  0, 5, 5
+  a1, a2, a3, a4  <emphasis>space</emphasis> asig, 1, ktime, ...</literallayout>
+    </para>
+
+    <para>
+      avec le fichier <quote>move</quote> décrit ci-dessus, la vitesse du
+      mouvement du signal sera exactement celle qui est décrite dans ce fichier.
+      Cependant avec :
+      <literallayout>
+  ktime           <emphasis>line</emphasis>  0, 10, 5</literallayout>
+    </para>
+
+    <para>
+      le signal se déplacera deux fois moins vite qu'à la vitesse spécifiée. Ou
+      dans le cas de :
+      <literallayout>
+  ktime           <emphasis>line</emphasis>  5, 15, 0</literallayout>
+    </para>
+
+    <para>
+      le signal se déplacera dans la direction inverse et trois fois moins vite !
+      Enfin avec :
+      <literallayout>
+  ktime           <emphasis>line</emphasis>  2, 10, 3
+      </literallayout>
+    </para>
+
+    <para>
+      le signal ne se déplacera que depuis l'endroit spécifié à la ligne 3 du
+      fichier texte jusqu'à l'endroit spécifié à la ligne 5 du fichier texte,
+      et il lui faudra 10 secondes pour le faire.
+    </para>
+
+    <para>
+      <emphasis>kreverbsend</emphasis> -- le pourcentage du signal direct qui
+      sera combiné avec la distance déduite des coordonnées xy pour calculer la
+      quantité de signal qui sera envoyée à des unités de réverbération comme
+      <emphasis>reverb</emphasis> ou <emphasis>reverb2</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>kx, ky</emphasis> -- lorsque <emphasis>ifn</emphasis> vaut 0,
+      <emphasis>space</emphasis> et <emphasis>spdist</emphasis> utilisent ces
+      valeurs comme coordonnées xy pour positionner le signal.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode space. Il utilise le fichier
+      <ulink url="examples/space_quad.csd"><citetitle>space_quad.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode space.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/space_quad.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        Dans l'exemple ci-dessus, le signal <emphasis>asig</emphasis> est déplacé
+        selon les données dans la Fonction n°1 indéxée par <emphasis>ktime</emphasis>.
+        <emphasis>space</emphasis> envoie en interne la quantité appropriée du
+        signal à <emphasis>spsend</emphasis>. Les sorties de
+        <emphasis>spsend</emphasis> sont ajoutées à des accumulateurs globaux
+        selon la manière habituelle dans Csound et les signaux globaux servent
+        d'entrée aux unités de réverbération dans un instrument séparé.
+      </example>
+    </para>
+
+    <para>
+      <emphasis>space</emphasis> peut être utile pour une spatialisation quadro
+      ou stéréo ainsi que pour le positionnement fixe des sons n'importe où entre
+      deux haut-parleurs. Ci-dessous un exemple du positionnement fixe de sons
+      dans un champ stéréo en utilisant des valeurs xy provenant de la partition
+      au lieu d'une table de fonction. Il utilise le fichier
+      <ulink url="examples/space_stereo.csd"><citetitle>space_stereo.csd</citetitle></ulink>.
+      <example>
+        <title>Second exemple de l'opcode space.</title>
+          <xi:include href="examples-xml/space_stereo.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+    <para>
+      <link linkend="spdist"><citetitle>spdist</citetitle></link> montre un exemple
+      d'une simple utilisation intuitive des valeurs de distance pour simuler un
+      effet Doppler.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="spdist"><citetitle>spdist</citetitle></link>,
+      <link linkend="spsend"><citetitle>spsend</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Richard Karpen</member>
+        <member>Seattle, WA USA</member>
+        <member>1998</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.48 de Csound.</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,95 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="tab2pvs">
+<indexterm id="IndexTab2pvs"><primary>tab2pvs</primary></indexterm>
+
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tab2pvs</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>tab2pvs</refname>
+    <refpurpose>
+      Copie des donnée spectrales depuis des variables-t.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Copie une trame pvs depuis une variable-t. Pour le moment, seuls les
+      formats AMP+FREQ et AMP+PHASE sont produits. Cet opcode nécessite que
+      le type-t soit défini, si bien qu'il ne fonctionne qu'avec le nouveau
+      parseur basé sur bison/flex.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>fsig <command>tab2pvs</command> tvar [, ihopsize, iwinsize, iwintype]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>tvar</emphasis> -- variable-t contenant l'entrée. Elle est produite
+      à chaque période-k, mais peut ne pas contenir une nouvelle trame, les trames
+      pvs étant produites selon leur propre rythme qui est indépendant de
+      <emphasis>kr</emphasis>. La taille de ce vecteur détermine la taille de
+      TFR, N = taille - 2.
+    </para>
+
+    <para>
+      <emphasis>fsig</emphasis> -- fsig de sortie recevant la copie.
+    </para>
+    
+    <para>
+      <emphasis>iolap</emphasis> -- taille de recouvrement de l'analyse, par
+      défaut <emphasis>isize</emphasis>/4.
+    </para>
+    <para>
+      <emphasis>iwinsize</emphasis> -- taille de la fenêtre d'analyse, par défaut
+      <emphasis>isize</emphasis>.
+    </para>
+    
+    <para>
+      <emphasis>iwintype</emphasis> -- type de la fenêtre d'analyse, 1 par défaut,
+      Hanning.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      <example>
+        <title>Exemple</title>
+        <programlisting>
+t1     <emphasis role="opc">init</emphasis>    1026
+...
+fsig1  <emphasis role="opc">tab2pvs</emphasis> t1
+aout   <emphasis role="opc">pvsynth</emphasis> fsig1</programlisting>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Octobre 2011 </member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau greffon dans la version 5.14</para>
+    <para>Octobre 2011.</para>
+  </refsect1>
+</refentry>

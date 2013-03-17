@@ -1,0 +1,233 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.17
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="define">
+<indexterm id="IndexDefine"><primary>&num;define</primary></indexterm>
+  <indexterm id="IndexDefineOrch"><primary>&num;define</primary><secondary>orchestra</secondary></indexterm>
+  <indexterm id="IndexDefineMacros"><primary>macros</primary><secondary>orchestra</secondary></indexterm>
+  <refentryinfo><title>Orchestra Syntax:Macros</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>&num;define</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>&num;define</refname>
+    <refpurpose>
+      Définit une macro.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Les macros sont des substitutions de texte qui sont faites dans l'orchestre lors de sa lecture. Le
+      système de macro de Csound est très simple, et il utilise les caractères &num; et &dollar; pour
+      définir et appeler les macros. Il permet d'économiser de la frappe et peut
+      conduire à une structure cohérente dans un style consistant. Il est similaire, tout en étant
+      indépendant, au <link linkend="ScoreMacros"><citetitle>système de macros du langage de
+      partition</citetitle></link>.
+    </para>
+
+    <para>
+      <emphasis>&num;define NOM</emphasis> -- définit une macro simple. Le nom de la macro doit commencer
+      par une lettre et peut comprendre n'importe quelle combinaison de lettres et de chiffres. La casse
+      est significative. Cette forme est limitée dans le sens que les noms de variable sont fixes. On
+      peut obtenir plus de flexibilité en utilisant une macro avec arguments, décrite ci-dessous.
+    </para>
+
+    <para>
+      <emphasis>&num;define NOM</emphasis>(<emphasis>a&apos; b&apos; c&apos;</emphasis>) -- définit
+      une macro avec arguments. On peut l'utiliser dans des situations plus complexes. Le nom de la
+      macro doit commencer par une lettre et peut comprendre n'importe quelle combinaison de lettres
+      et de chiffres. Dans le texte de substitution, les arguments sont appelés sous la forme :
+      &dollar;A.  En fait, l'implémentation définit les arguments comme des macros simples. Il peut
+      y avoir jusqu'à 5 arguments, et les noms sont une combinaison quelconque de lettres. Souvenez-vous
+      que la casse est significative dans les noms de macro.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>&num;define</command> NOM &num; texte de substitution &num;</synopsis>
+
+    <synopsis><command>&num;define</command> NOM(a&apos; b&apos; c&apos;) &num; texte de substitution &num;</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>&num; texte de substitution &num;</emphasis> --  Le texte de substitution est une chaîne
+      de caractères (ne contenant pas de &num;) et peut s'étendre sur plusieurs lignes. Le texte de
+      substitution est entouré par des caractères &num;, ce qui garantit qu'aucun caractère supplémentaire
+      ne sera capturé par inadvertance.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Il faut prendre certaines précautions avec les macros de substitution de texte, car elles peuvent
+      parfois produire d'étranges résultats. Elles ne tiennent compte d'aucune valeur sémantique, et
+      ainsi les espaces sont significatifs. C'est pourquoi, au contraire du langage C, la définition
+      délimite le texte de substitution par des caractères &num;. Utilisé avec discernement, ce système
+      de macro est un concept puissant, mais il peut aussi être mal employé.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple simple de définition de macro. Il utilise le fichier
+      <ulink url="examples/define.csd"><citetitle>define.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple simple de définition de macro.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/define.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie présentera des lignes comme celles-ci :
+      <screen>
+Macro definition for VOLUME
+Macro definition for CPS
+Macro definition for TABLE</screen>
+    </para>
+
+    <para>
+      Voici un exemple simple de définition de macro avec arguments. Il utilise le fichier
+      <ulink url="examples/define_args.csd"><citetitle>define_args.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple simple de définition de macro avec arguments.</title>
+          <xi:include href="examples-xml/define_args.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie présentera des lignes comme celle-ci :
+      <screen>
+Macro definition for OSCMACRO</screen>
+    </para>
+  </refsect1>
+
+  <refsect1 id="opcodesDefineMathConstMacros">
+    <title>Macros Prédéfinies de Constantes Mathématiques</title>
+    <para>A partir de Csound 5.04 des Macros de Constantes Mathématiques sont prédéfinies. Les valeurs
+    définies sont celles que l'on trouve dans le fichier d'en-tête C math.h, et elles sont
+    automatiquement définies au démarrage de Csound et disponibles pour une utilisation dans les
+    orchestres.</para>
+
+    <informaltable frame="all">
+        <tgroup cols="3" colsep="1" rowsep="1">
+          <thead>
+            <row>
+              <entry>Macro</entry>
+              <entry>Valeur</entry>
+              <entry>Equivalent à</entry>
+            </row>
+          </thead>
+
+          <tbody>
+
+            <row>
+              <entry>$M_E</entry>
+              <entry>2.7182818284590452354</entry>
+              <entry>e</entry>
+            </row>
+            <row>
+              <entry>$M_LOG2E</entry>
+              <entry>1.4426950408889634074</entry>
+              <entry>log_2(e)</entry>
+            </row>
+            <row>
+              <entry>$M_LOG10E</entry>
+              <entry>0.43429448190325182765</entry>
+              <entry>log_10(e)</entry>
+            </row>
+            <row>
+              <entry>$M_LN2</entry>
+              <entry>0.69314718055994530942</entry>
+              <entry>log_e(2)</entry>
+            </row>
+            <row>
+              <entry>$M_LN10</entry>
+              <entry>2.30258509299404568402</entry>
+              <entry>log_e(10)</entry>
+            </row>
+            <row>
+              <entry>$M_PI</entry>
+              <entry>3.14159265358979323846</entry>
+              <entry>pi</entry>
+            </row>
+            <row>
+              <entry>$M_PI_2</entry>
+              <entry>1.57079632679489661923</entry>
+              <entry>pi/2</entry>
+            </row>
+            <row>
+              <entry>$M_PI_4</entry>
+              <entry>0.78539816339744830962</entry>
+              <entry>pi/4</entry>
+            </row>
+            <row>
+              <entry>$M_1_PI</entry>
+              <entry>0.31830988618379067154</entry>
+              <entry>1/pi</entry>
+            </row>
+            <row>
+              <entry>$M_2_PI</entry>
+              <entry>0.63661977236758134308</entry>
+              <entry>2/pi</entry>
+            </row>
+            <row>
+              <entry>$M_2_SQRTPI</entry>
+              <entry>1.12837916709551257390</entry>
+              <entry>2/sqrt(pi)</entry>
+            </row>
+            <row>
+              <entry>$M_SQRT2</entry>
+              <entry>1.41421356237309504880</entry>
+              <entry>sqrt(2)</entry>
+            </row>
+            <row>
+              <entry>$M_SQRT1_2</entry>
+              <entry>0.70710678118654752440</entry>
+              <entry>1/sqrt(2)</entry>
+            </row>
+
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="dollar"><citetitle>&dollar;NOM</citetitle></link>,
+      <link linkend="undef"><citetitle>&num;undef</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>University of Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>Avril 1998</member>
+      </simplelist>
+    </para>
+    <para>Exemples écrits par &namekevin;.</para>
+
+    <para>Nouveau dans la version 3.48 de Csound</para>
+  </refsect1>
+</refentry>

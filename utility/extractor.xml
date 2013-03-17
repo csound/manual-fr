@@ -1,0 +1,139 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="extractor">
+  <refentryinfo><title>Utilities</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>extractor</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>extractor</refname>
+    <refpurpose>
+      Extrait une section audio d'un fichier audio.
+      <indexterm id="IndexExtractor"><primary>extractor</primary></indexterm>
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Extrait une section audio, par temps ou échantillon, d'un fichier son existant.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>extractor</command> [OPTIONS ... ] fichierentree</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      Options :
+
+      <itemizedlist>
+        <listitem>
+          <para>
+              -<emphasis>S entier</emphasis> = Démarre l'extraction à l'échantillon dont le numéro est
+              donné.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+              -<emphasis>Z entier</emphasis> = Termine l'extraction à l'échantillon dont le numéro est
+              donné.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+              - <emphasis>Q entier</emphasis> = Extrait le nombre donné d'échantillons.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+              -<emphasis>T fpnum</emphasis> = Démarre l'extraction au temps donné en secondes.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+              -<emphasis>E fpnum</emphasis> = Termine l'extraction au temps donné en secondes.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+              -<emphasis>D fpnum</emphasis> = Extrait la durée donnée en secondes.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+              -<emphasis>R</emphasis> = Réécrit continuellement l'en-tête lors de l'écriture du fichier
+              son (WAV/AIFF). 
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+              -<emphasis>H entier</emphasis> = Montre une "pulsation" pour indiquer la progression, dans
+              le style 1, 2 ou 3.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+              -<emphasis>N</emphasis> = Signal d'alerte (habituellement la cloche système) à la fin.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+              -<emphasis>v</emphasis> = Mode verbeux.
+          </para>
+        </listitem>
+
+        <listitem>
+        	<para>
+        		-<emphasis>o nomfic</emphasis> = Nom du fichier de sortie (par défaut : test.wav)
+        	</para>
+        </listitem>
+      </itemizedlist>
+
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+  	<title>Exemples</title>
+  	<para>
+
+        Les valeurs par défaut sont :
+<programlisting><emphasis>extractor</emphasis> -S 0 -Z fin-du-fichier -o test</programlisting>
+
+    Par exemple
+<programlisting><emphasis>extractor</emphasis> -S 10234 -D 2.13 in.aiff -o out.wav</programlisting>
+
+      Cela crée un nouveau fichier son extrait à partie de l'échantillon 10234 et durant 2,13 secondes.
+  	</para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namejohn;</para>
+    <para>1994</para>
+  </refsect1>
+
+</refentry>

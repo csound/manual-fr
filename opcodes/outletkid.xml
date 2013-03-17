@@ -1,0 +1,98 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="outletkid">
+<indexterm id="Indexoutletkid"><primary>outletkid</primary></indexterm>
+  <refentryinfo><title>Signal Flow Graph Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>outletkid</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>outletkid</refname>
+    <refpurpose>
+      Envoie un signal de taux-k depuis un port nommé d'un instrument.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Envoie un signal de taux-k depuis un port nommé d'un instrument.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>outletkid </command>Sname, SinstanceID, ksignal</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>Sname</emphasis> -- Nom sous forme de chaîne de caractères du
+      port sortant. Le nom du connecteur sortant est qualifié implicitement par
+      le nom ou le numéro de l'instrument, si bien qu'il est permis d'utiliser
+      le même nom de connecteur sortant dans plus d'un instrument (mais par
+      contre on ne peut pas utiliser deux fois le même nom de connecteur
+      sortant dans un instrument).
+    </para>
+    <para>
+      <emphasis>SinstanceID</emphasis> -- Nom sous forme de chaîne de caractères
+      de l'ID de l'instance du port sortant. Cela permet au port entrant de
+      distinguer différentes instances du port sortant, par exemple une instance
+      du port sortant pourrait être créée par une note spécifiant un ID d'instance
+      et une autre instance pourrait être créée par une note spécifiant un autre
+      ID. On pourrait utiliser ceci pour situer différentes instances
+      d'un instrument à différents points d'un espace Ambisonic dans un processeur
+      d'effet de spatialisation.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ksignal</emphasis> -- signal de taux-k en sortie.
+    </para>
+
+    <para>
+      Durant l'exécution, le signal de taux-k passant par le connecteur sortant
+      est envoyé à chaque instance d'un instrument contenant un connecteur entrant
+      auquel ce connecteur sortant a été relié au moyen de l'opcode
+      <link linkend="connect">connect</link>. Les signaux de tous les connecteurs
+      sortants reliés à un connecteur entrant, mais seulement ceux qui ont un ID
+      d'instance qui correspond, sont additionnés dans le connecteur
+      entrant.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="outleta"><citetitle>outleta</citetitle></link>,
+      <link linkend="outletf"><citetitle>outletf</citetitle></link>,
+      <link linkend="inleta"><citetitle>inleta</citetitle></link>,
+      <link linkend="inletk"><citetitle>inletk</citetitle></link>,
+      <link linkend="inletkid"><citetitle>inletkid</citetitle></link>,
+      <link linkend="inletf"><citetitle>inletf</citetitle></link>,
+      <link linkend="connect"><citetitle>connect</citetitle></link>,
+      <link linkend="alwayson"><citetitle>alwayson</citetitle></link>,
+      <link linkend="ftgenonce"><citetitle>ftgenonce</citetitle></link>.
+    </para>
+    <para>Plus d'information sur cet opcode :
+    <ulink url="http://www.csounds.com/journal/issue13/signalFlowGraphOpcodes.html">
+    <citetitle>http://www.csounds.com/journal/issue13/signalFlowGraphOpcodes.html</citetitle></ulink>,
+    écrit par Michael Gogins.</para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par &namemichael;, 2009</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,99 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="mandel">
+<indexterm id="IndexMandel"><primary>mandel</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Models and Emulations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>mandel</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>mandel</refname>
+    <refpurpose>
+      Ensemble de Mandelbrot.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne le nombre d'itérations correspondant à un point donné du plan
+      complexe auquel on applique les formules de l'ensemble de Mandelbrot.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kiter, koutrig <command>mandel</command>  ktrig, kx, ky, kmaxIter</synopsis>
+  </refsect1>
+
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kiter</emphasis> - nombre d'itérations
+    </para>
+    <para>
+      <emphasis>koutrig</emphasis> - signal de déclenchement en sortie
+    </para>
+    <para>
+      <emphasis>ktrig</emphasis> - signal de déclenchement en entrée
+    </para>
+    <para>
+      <emphasis>kx, ky</emphasis> - coordonnées d'un point appartenant au plan complexe
+    </para>
+    <para>
+      <emphasis>kmaxIter</emphasis> - nombre maximum d'itérations autorisé
+    </para>
+
+     <para>
+     <emphasis>mandel</emphasis> est un opcode qui utilise les formules de l'ensemble de
+     Mandelbrot pour générer une sortie que l'on peut appliquer à n'importe quel paramètre
+     musical (ou non musical). Il comprend deux paramètres de sortie :
+     <emphasis>kiter</emphasis>, qui contient le nombre d'itérations d'un point donné, et
+     <emphasis>koutrig</emphasis>, qui génère un 'bang' de déclenchement chaque fois que
+     <emphasis>kiter</emphasis> change. L'évaluation d'un nouveau nombre d'itérations n'a
+     lieu que lorque <emphasis>ktrig</emphasis> prend une valeur non nulle. Les coordonnées
+     du plan complexe sont fixées dans <emphasis>kx</emphasis> et <emphasis>ky</emphasis>,
+     tandis que <emphasis>kmaxIter</emphasis> contient le nombre maximum d'itérations.
+     Les valeurs de sorties, qui sont des nombres entiers, peuvent être interprétées de
+     n'importe quelle manière par le compositeur.
+     </para>
+  </refsect1>
+
+   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode mandel. Il utilise le fichier
+      <ulink url="examples/mandel.csd"><citetitle>mandel.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode mandel.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/mandel.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+     </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      Pour plus d'information sur cet opcode :
+      <ulink url="http://mymbs.mbs.net/~pfisher/FOV2-0010016C/FOV2-0010016E/FOV2-001001A3/chapters/35evans/intro.html"><citetitle>Composing Fractal Music with Csound</citetitle></ulink>, par Brian Evans
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par &namegabriel;.</para>
+    <para>Nouveau dans Csound 5 (Seulement disponible auparavant dans CsoundAV)</para>
+  </refsect1>
+</refentry>
+

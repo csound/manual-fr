@@ -1,0 +1,142 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.10
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="deltapxw">
+<indexterm id="IndexDeltapxw"><primary>deltapxw</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Delay</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>deltapxw</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>deltapxw</refname>
+    <refpurpose>
+      Mélange le signal d'entrée dans une ligne à retard.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>deltapxw</emphasis> mélange le signal d'entrée dans une ligne à retard.
+      Cet opcode peut être utilisé avec les unités de lecture
+      (<link linkend="deltap"><citetitle>deltap</citetitle></link>,
+      <link linkend="deltapn"><citetitle>deltapn</citetitle></link>,
+      <link linkend="deltapi"><citetitle>deltapi</citetitle></link>,
+      <link linkend="deltap3"><citetitle>deltap3</citetitle></link> et
+      <link linkend="deltapx"><citetitle>deltapx</citetitle></link>) dans n'importe
+      quel ordre ; la durée du délai étant la différence entre les dates de lecture
+      et d'écriture. Cet opcode peut lire depuis et écrire dans une ligne à retard
+      <link linkend="delayr"><citetitle>delayr</citetitle></link>/<link linkend="delayw"><citetitle>delayw</citetitle></link>
+      avec interpolation. 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>deltapxw</command> ain, adel, iwsize</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iwsize</emphasis> -- taille de la fenêtre d'interpolation en
+      échantillons. Les valeurs permises sont des multiples entiers de 4 compris
+      entre 4 et 1024. <emphasis>iwsize</emphasis> = 4 utilise l'interpolation
+      cubique. Des valeurs croissantes de <emphasis>iwsize</emphasis> améliorent
+      la qualité sonore au prix d'une utilisation plus intensive du CPU, et d'une
+      durée de délai minimale.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ain</emphasis> -- Signal d'entrée.
+    </para>
+
+    <para>
+      <emphasis>adel</emphasis> -- Délai en secondes.
+    </para>
+
+    <para>
+      <informalexample>
+        <programlisting>
+a1      <emphasis role="opc">delayr</emphasis>   idlr
+        <emphasis role="opc">deltapxw</emphasis> a2, adl1, iws1
+a3      <emphasis role="opc">deltapx</emphasis>  adl2, iws2
+        <emphasis role="opc">deltapxw</emphasis> a4, adl3, iws3
+        <emphasis role="opc">delayw</emphasis>   a5</programlisting>
+      </informalexample>
+    </para>
+ 
+    <para>
+      Durées de délai minimales et maximales :
+
+      <informalexample>
+        <programlisting>
+idlr &gt;= 1/kr                                Longueur de la ligne à retard
+ 
+adl1 &gt;= (iws1/2)/sr                         Ecriture avant lecture
+adl1 &lt;= idlr - (1 + iws1/2)/sr              (permet des délais plus courts)
+ 
+adl2 &gt;= 1/kr + (iws2/2)/sr                  Temps de lecture
+adl2 &lt;= idlr - (1 + iws2/2)/sr
+adl2 &gt;= adl1 + (iws1 + iws2) / (2*sr)
+adl2 &gt;= 1/kr + adl3 + (iws2 + iws3) / (2*sr)
+ 
+adl3 &gt;= (iws3/2)/sr                         Ecriture après lecture
+adl3 &lt;= idlr - (1 + iws3/2)/sr              (permet une rétroaction)</programlisting>
+      </informalexample>
+    </para>
+
+    <note>
+      <title>Note</title>
+      <para>
+        Les tailles de fenêtres des autres opcodes que <emphasis>deltapx</emphasis>
+        sont : <emphasis>deltap</emphasis>, <emphasis>deltapn</emphasis> : 1,
+        <emphasis>deltapi</emphasis> : 2 (linéaire), <emphasis>deltap3</emphasis> : 4 (cubique).
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode deltapxw. Il utilise le fichier
+      <ulink url="examples/deltapxw.csd"><citetitle>deltapxw.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode deltapxw.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/deltapxw.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="deltapx"><citetitle>deltapx</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameistvan;</member>
+        <member>Août 2001</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 4.13</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,46 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.6
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="SigioFileIO">
+  <title>Entrées et Sorties Fichier</title>
+
+  <para>
+    Les opcodes pour les entrées et sorties fichier sont :
+    <itemizedlist>
+      <listitem><para>Ouverture/fermeture de fichier :
+        <link linkend="fiopen"><citetitle>fiopen</citetitle></link> et
+        <link linkend="ficlose"><citetitle>ficlose</citetitle></link>.</para></listitem>
+      <listitem><para>Sortie fichier :
+        <link linkend="dumpk"><citetitle>dumpk</citetitle></link>,
+        <link linkend="dumpk2"><citetitle>dumpk2</citetitle></link>,
+        <link linkend="dumpk3"><citetitle>dumpk3</citetitle></link>,
+        <link linkend="dumpk4"><citetitle>dumpk4</citetitle></link>,
+        <link linkend="fout"><citetitle>fout</citetitle></link>,
+        <link linkend="fouti"><citetitle>fouti</citetitle></link>,
+        <link linkend="foutir"><citetitle>foutir</citetitle></link> et
+        <link linkend="foutk"><citetitle>foutk</citetitle></link></para></listitem>
+      <listitem><para>Entrée fichier :
+        <link linkend="readk"><citetitle>readk</citetitle></link>,
+        <link linkend="readk2"><citetitle>readk2</citetitle></link>,
+        <link linkend="readk3"><citetitle>readk3</citetitle></link>,
+        <link linkend="readk4"><citetitle>readk4</citetitle></link>,
+        <link linkend="fin"><citetitle>fin</citetitle></link>,
+        <link linkend="fini"><citetitle>fini</citetitle></link> et
+        <link linkend="fink"><citetitle>fink</citetitle></link></para></listitem>
+      <listitem><para>Utilitaires à utiliser avec les opcodes fout :
+        <link linkend="clear"><citetitle>clear</citetitle></link>,
+        <link linkend="vincr"><citetitle>vincr</citetitle></link></para></listitem>
+      <listitem><para>Impression dans un fichier :
+        <link linkend="fprints"><citetitle>fprints</citetitle></link> et
+        <link linkend="fprintks"><citetitle>fprintks</citetitle></link></para>
+      </listitem>
+    </itemizedlist>
+  </para>
+
+</section>

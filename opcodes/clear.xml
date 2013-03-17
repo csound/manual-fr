@@ -1,0 +1,95 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.10
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="clear">
+<indexterm id="IndexClear"><primary>clear</primary></indexterm>
+  <refentryinfo><title>Mathematical Operations:Comparators and Accumulators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>clear</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>clear</refname>
+    <refpurpose>
+      Met à zéro une liste de signaux audio.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>clear</emphasis> met à zéro une liste de signaux audio.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>clear</command> avar1 [, avar2] [, avar3] [...]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>avar1, avar2, avar3,</emphasis> ... -- signals to be zeroed
+    </para>
+
+    <para>
+      <emphasis>clear</emphasis> met à zéro chaque échantillon de chacun des signaux
+      audio donnés lors de son exécution. C'est comme si l'on écrivait
+      <emphasis>avarN = 0</emphasis> dans l'orchestre pour chaque variable spécifiée.
+      Typiquement, <emphasis>clear</emphasis> est utilisé avec des variables
+      globales qui combinent plusieurs signaux venant de sources différentes et qui
+      sont changées à chaque passe au taux-k (boucle d'exécution) par toutes les
+      instances d'instrument actives. Après la dernière utilisation d'une de ces
+      variables et avant la passe de taux-k suivante, il faut l'effacer afin qu'elle
+      n'ajoute pas les signaux du cycle suivant au précédent résultat.
+      <emphasis>clear</emphasis> est particulièrement utile en combinaison avec
+      <link linkend="vincr"><citetitle>vincr</citetitle></link> (incrément de
+      variable) lors de leur utilisation conjointe avec des opcodes de sortie
+      dans un fichier comme <link linkend="fout"><citetitle>fout</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode clear. Il utilise le fichier
+      <ulink url="examples/clear.csd"><citetitle>clear.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode clear.</title>
+          <xi:include href="examples-xml/clear.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Voir l'opcode <link linkend="fout"><citetitle>fout</citetitle></link> pour
+      autre exemple.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="vincr"><citetitle>vincr</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+        <member>1999</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.56 de Csound</para>
+  </refsect1>
+</refentry>

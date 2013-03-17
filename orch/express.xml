@@ -1,0 +1,31 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.3
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="OrchExpress">
+  <title>Expressions</title>
+
+  <para>
+    On peut composer des expressions de n'importe quelle profondeur. Chaque partie d'une expression
+    est évaluée à son propre taux. Par exemple, si tous les termes d'une sous-expression changent
+    au taux de contrôle ou plus lentement, cette sous-expression ne sera évaluée qu'au taux de
+    contrôle ; le résultat peut alors être utilisé dans une évaluation au taux audio. Par exemple,
+    dans
+    <informalexample>
+      <programlisting>
+k1 <emphasis role="op">+</emphasis> <emphasis role="opc">abs</emphasis>(<emphasis role="opc">int</emphasis>(p5) <emphasis role="op">+</emphasis> <emphasis role="opc">frac</emphasis>(p5) <emphasis role="op">*</emphasis> 100<emphasis role="op">/</emphasis>12 + <emphasis role="opc">sqrt</emphasis>(k1))</programlisting>
+    </informalexample>
+  </para>
+
+  <para>
+    100/12 sera évalué à l'initialisation de l'orchestre, les expressions en p5 seront évaluées à
+    l'initialisation de la note, et le reste de l'expression à chaque période-k. Le tout pourrait
+    apparaître en position d'argument dans un générateur unitaire, ou bien faire partie d'une
+    instruction d'affectation.
+  </para>
+</section>

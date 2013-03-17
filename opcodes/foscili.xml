@@ -1,0 +1,113 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.15
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="foscili">
+<indexterm id="Indexfoscili"><primary>foscili</primary></indexterm>
+  <refentryinfo><title>Signal Generators:FM Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>foscili</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>foscili</refname>
+    <refpurpose>
+      Oscillateur élémentaire modulé en fréquence avec interpolation linéaire.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Oscillateur élémentaire modulé en fréquence avec interpolation linéaire.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>foscili</command> xamp, kcps, xcar, xmod, kndx, ifn [, iphs]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn</emphasis> -- numéro de la table de fonction. Nécessite un point de garde de lecture
+      cyclique.
+    </para>
+
+    <para>
+      <emphasis>iphs</emphasis> (faculatif, par défaut 0) -- phase initiale de la forme d'onde dans la
+      table <emphasis>ifn</emphasis>, exprimée comme une fraction d'une période (0 à 1). Avec une valeur
+      négative, l'initialisation de la phase sera ignorée. La valeur par défaut est 0.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>xamp</emphasis> -- l'amplitude du signal de sortie.
+    </para>
+
+    <para>
+      <emphasis>kcps</emphasis> -- un dénominateur commun, en cycles par seconde, pour les fréquences
+      porteuse et modulante.
+    </para>
+
+    <para>
+      <emphasis>xcar</emphasis> -- un facteur qui, lorsqu'il est multiplié par le paramètre
+      <emphasis>kcps</emphasis>, donne la fréquence de la porteuse.
+    </para>
+
+    <para>
+      <emphasis>xmod</emphasis> -- un facteur qui, lorsqu'il est multiplié par le paramètre
+      <emphasis>kcps</emphasis>, donne la fréquence de la modulante.
+    </para>
+
+    <para>
+      <emphasis>kndx</emphasis> -- l'indice de modulation.
+    </para>
+
+    <para>
+      <emphasis>foscili</emphasis> diffère de <link linkend="foscil"><citetitle>foscil</citetitle></link>
+      en ce que la procédure standard d'utilisation d'une phase tronquée comme index de lecture des
+      échantillons est remplacée ici par une interpolation entre deux lectures successives.
+      Les générateurs avec interpolation produiront un signal de sortie nettement plus propre, mais ils
+      peuvent prendre jusqu'à deux fois plus de temps de calcul. On peut obtenir également ce type de
+      précision sans le surcoût du calcul de l'interpolation en utilisant de grandes tables de fonction
+      stockées de 2K, 4K ou 8K points, si l'on dispose de cet espace mémoire.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode foscili. Il utilise le fichier
+      <ulink url="examples/foscili.csd"><citetitle>foscili.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode foscili.</title>
+
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/foscili.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>Plus d'information au sujet de la modulation de fréquence sur Wikipedia :
+    <ulink url="http://en.wikipedia.org/wiki/Frequency_modulation_synthesis"><citetitle>http://en.wikipedia.org/wiki/Frequency_modulation_synthesis</citetitle></ulink></para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>Exemple écrit par &namekevin;.</para>
+  </refsect1>
+</refentry>

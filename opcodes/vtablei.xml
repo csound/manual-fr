@@ -1,0 +1,125 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vtablei">
+<indexterm id="IndexVtablei"><primary>vtablei</primary></indexterm>
+  <refentryinfo><title>Vectorial:Tables</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vtablei</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vtablei</refname>
+    <refpurpose>
+      Lit des vecteurs (à partir de tables, ou tableaux de vecteurs).
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode lit des vecteurs à partir de tables.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>vtablei</command>  indx, ifn, interp, ixmode, iout1 [, iout2, iout3, .... , ioutN ]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>indx</emphasis> - Index dans la f-table, soit un nombre positif
+      inférieur à la longueur de la table (<emphasis>ixmode</emphasis> = 0) soit un nombre
+      compris entre 0 et 1 (<emphasis>ixmode</emphasis> != 0).
+    </para>
+    <para>
+      <emphasis>ifn</emphasis> - numéro de la table.
+    </para>
+    <para>
+      <emphasis>iout1...ioutN</emphasis> - composantes du vecteur de sortie.
+    </para>
+    <para>
+      <emphasis>ixmode</emphasis> - mode d'indexation. Vaut 0 par défaut.</para>
+    <para>            == 0 l'index est traité comme une position brute dans la table,</para>
+    <para>            == 1 l'index est normalisé (entre 0 et 1).</para>
+    <para>
+      <emphasis>interp</emphasis> - bascule entre sortie interpolée ou
+      non-interpolée. 0 -&gt; pas d'interpolation,
+      différent de zéro -&gt; interpolation activée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+     <para>
+      Cet opcode est utile dans tous les cas où il faut accéder à des ensembles
+      de valeurs associés à des indices uniques (par exemple, des échantillons
+      multi-canaux, des trames de bin de TFCT, des formants spectraux, des
+      partitions basées sur des p-champs, etc). Le nombre de composantes de
+      chaque vecteur (longueur du vecteur) est déterminé par le nombre
+      d'arguments facultatifs à droite (<emphasis>iout1</emphasis>,
+      <emphasis>iout2</emphasis>, <emphasis>iout3</emphasis>, ...,
+      <emphasis>ioutN</emphasis>).
+    </para>
+    <para>
+      La famille d'opcodes <emphasis>vtable</emphasis> (vector table) permet à
+      l'utilisateur de basculer entre sortie interpolée ou non-interpolée au
+      moyen de l'argument <emphasis>interp</emphasis>.
+    </para>
+    <para>
+      Noter qu'aucun mode de repliement ou de limitation d'indexation n'est
+      implémenté. Si l'index tente d'accéder à une zone non allouée par la
+      table, il est probable que Csound plante. Cependant on peut facilement
+      éviter cet écueil en utilisant des opcodes de repliement ou de limitation
+      appliqués à l'index avant l'utilisation de <emphasis>vtablei</emphasis>,
+      afin de corriger d'éventuelles valeurs hors-limites.
+    </para>
+    <note>
+      <para>
+        Noter que les arguments de sortie de <emphasis>vtablei</emphasis> sont
+        placés à droite du nom de l'opcode, contrairement à l'habitude (ce style
+        est aussi utilisé dans d'autres opcodes utilisant des listes indéfinies
+        d'arguments de sortie comme
+        <link linkend="fin"><citetitle>fin</citetitle></link> ou
+        <link linkend="trigseq"><citetitle>trigseq</citetitle></link>).
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode vtablei. Il utilise le fichier
+      <ulink url="examples/vtablei.csd"><citetitle>vtablei.csd</citetitle></ulink>
+      <example>
+        <title>Exemple de l'opcode vtablei.</title>
+        <xi:include href="examples-xml/vtablei.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="vtablea"><citetitle>vtablea</citetitle></link>,
+      <link linkend="vtablek"><citetitle>vtablek</citetitle></link>,
+      <link linkend="vtabi"><citetitle>vtabi</citetitle></link>,
+      <link linkend="vtablewi"><citetitle>vtablewi</citetitle></link>,
+      <link linkend="vtabwi"><citetitle>vtabwi</citetitle></link>,
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par Gabriel Maldonado.</para>
+    <para>Nouveau dans Csound 5 (Auparavant seulement disponible dans CsoundAV)</para>
+  </refsect1>
+</refentry>

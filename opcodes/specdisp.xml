@@ -1,0 +1,85 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="specdisp">
+<indexterm id="IndexSpecdisp"><primary>specdisp</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Non-Standard</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>specdisp</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>specdisp</refname>
+    <refpurpose>
+      Affiche les valeurs de magnitude du spectre.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Affiche les valeurs de magnitude du spectre.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>specdisp</command> wsig, iprd [, iwtflg]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iprd</emphasis> -- la période, en secondes, de chaque nouvel
+      affichage.
+    </para>
+
+    <para>
+      <emphasis>iwtflg</emphasis> (facultatif, 0 par défaut) -- indicateur de
+      pause. S'il est différent de zéro, chaque affichage est maintenu jusqu'à
+      ce que l'utilisateur le libère. La valeur par défaut est 0 (pas de pause).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>wsig</emphasis> -- le spectre d'entrée.
+    </para>
+
+    <para>
+      Affiche les valeurs de magnitude du spectre <emphasis>wsig</emphasis>
+      toutes les <emphasis>iprd</emphasis> secondes (arrondi à un multiple
+      entier du <emphasis>iprd</emphasis> original de <emphasis>wsig</emphasis>).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      <informalexample>
+        <programlisting>
+  ksum     <emphasis role="opc">specsum</emphasis>   wsig, 1              <emphasis role="comment">; sum the spec bins, and ksmooth</emphasis>
+           <emphasis role="octrl">if</emphasis> ksum <emphasis role="op">&lt;</emphasis> 2000 <emphasis role="octrl">kgoto</emphasis> <emphasis role="olabel">zero</emphasis>      <emphasis role="comment">; if sufficient amplitude</emphasis>
+  koct     <emphasis role="opc">specptrk</emphasis>  wsig                 <emphasis role="comment">;    pitch-track the signal</emphasis>
+           <emphasis role="octrl">kgoto</emphasis>     <emphasis role="olabel">contin</emphasis>
+<emphasis role="olabel">zero:</emphasis> 
+  koct     <emphasis role="op">=</emphasis>         0                    <emphasis role="comment">; else output zero</emphasis>
+<emphasis role="olabel">contin:</emphasis></programlisting>
+      </informalexample>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="specsum"><citetitle>specsum</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,82 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.1
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="rightbrace">
+      <indexterm id="IndexRightBraceStatement"><primary>} statement</primary></indexterm>
+  <refmeta>
+    <refentrytitle>Instruction }</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>}</refname>
+    <refpurpose>
+      Termine une boucle imbriquable, sans section.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      On peut utiliser les <emphasis>instructions {</emphasis> et <emphasis>}</emphasis> pour
+      répéter un groupe d'instructions de partition. Ces boucles ne constituent pas des sections
+      de partition indépendantes et peuvent ainsi répéter des évènements dans la même section.
+      Plusieurs boucles peuvent se chevaucher dans le temps ou être imbriquées.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>}</command></synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      Tous les p-champs sont ignorés.
+    </para>
+
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      L'<emphasis>instruction }</emphasis> est utilisée conjointement avec
+      l'<link linkend="leftbrace"><citetitle>instruction {</citetitle></link> pour définir des
+      groupes d'évènements de partition qui se répètent. Une boucle de partition commence par
+      l'<emphasis>instruction {</emphasis> qui définit le nombre de répétitions et un nom de
+      macro unique qui contiendra le compteur de boucle. Le corps d'une boucle peut contenir
+      n'importe quel nombre d'évènements (y compris des sauts de section) et il se termine par
+      une <emphasis>instruction }</emphasis> ayant sa propre ligne. L'<emphasis>instruction }</emphasis>
+      ne prend pas de paramètre.
+    </para>
+
+    <para>
+      Voir la documentation de
+      l'<link linkend="leftbrace"><citetitle>instruction {</citetitle></link> pour plus de details.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voir les exemples de l'article sur l'<link linkend="leftbrace"><citetitle>instruction {</citetitle></link>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.52 (?) de Csound.  (Fixé dans la version 5.08).</para>
+  </refsect1>
+</refentry>

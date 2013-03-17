@@ -1,0 +1,54 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.2
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="UtilityAnalysis">
+  <title>Génération d'un fichier d'analyse (<!--ATSA, -->CVANAL, HETRO, LPANAL, PVANAL)</title>
+  <para>Les utilitaires suivants existent pour l'analyse d'un fichier son :
+    <itemizedlist>
+<!--      <listitem>
+        <para>
+          <link linkend="UtilityAtsa"><citetitle>ATSA</citetitle></link>: ATS analysis for use with the Csound <link linkend="SpectralATS"><citetitle>ATS Resynthesis</citetitle></link> opcodes.
+        </para>
+      </listitem>-->
+      <listitem>
+        <para>
+          <link linkend="cvanal"><citetitle>CVANAL</citetitle></link>: analyse de Fourier d'une réponse
+          impulsionnelle pour l'opérateur <link linkend="convolve"><citetitle>convolve</citetitle></link>.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <link linkend="hetro"><citetitle>HETRO</citetitle></link> : analyse hétérodyne pour le générateur
+          de Csound <link linkend="adsyn"><citetitle>adsyn</citetitle></link>.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <link linkend="lpanal"><citetitle>LPANAL</citetitle></link> : analyse de codage prédictif linéaire
+          pour les opcodes de Csound de
+          <link linkend="SpectralLpcresyn"><citetitle>resynthèse par codage prédictif linéaire (LPC)</citetitle></link>.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <link linkend="pvanal"><citetitle>PVANAL</citetitle></link> : analyse par vocodeur de phase pour
+          le générateur de Csound <link linkend="pvoc"><citetitle>pvoc</citetitle></link>.
+        </para>
+      </listitem>
+    </itemizedlist>
+  
+  </para>
+<!--     &utilityatsa; -->
+    &utilitycvanal;
+    &utilityhetro;
+    &utilitylpanal;
+    &utilitypvanal;
+
+</section>
+

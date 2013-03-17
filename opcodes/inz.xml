@@ -1,0 +1,73 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="inz">
+<indexterm id="IndexInz"><primary>inz</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Signal Input</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>inz</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>inz</refname>
+    <refpurpose>
+      Lit des échantillons audio multi-canaux depuis un périphérique externe ou
+      un flot vers un tableau ZAK.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Lit des échantillons audio multi-canaux depuis un périphérique externe ou
+      un flot vers un tableau ZAK.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>inz</command> ksig1</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>inz</emphasis> lit des échantillons audio sur
+      <link linkend="nchnls"><citetitle>nchnls</citetitle></link> vers un tableau
+      ZAK commençant à <emphasis>ksig1</emphasis>. Si l'option de ligne de commande
+      <link linkend="FlagsMinusLowerI"><citetitle>-i</citetitle></link> est
+      positionnée, le son est lu en continu depuis le flot audio en entrée
+      (par exemple <emphasis>stdin</emphasis> ou un fichier son) dans un tampon
+      interne.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="in32"><citetitle>in32</citetitle></link>,
+      <link linkend="inch"><citetitle>inch</citetitle></link>,
+      <link linkend="inx"><citetitle>inx</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Université de Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>Mai 2000</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 4.07 de Csound</para>
+  </refsect1>
+</refentry>

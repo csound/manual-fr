@@ -1,0 +1,129 @@
+<!--translated=yes
+authors=Yannick St-Onge
+english cvs version=1.10
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="midic21">
+<indexterm id="IndexMidic21"><primary>midic21</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Input</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>midic21</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>midic21</refname>
+
+    <refpurpose>
+      Permet un signal MIDI sur 21 bit en nombres décimaux selon une échelle entre des limites minimale et maximale.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Permet un signal MIDI sur 21 bit en nombres décimaux selon une échelle entre des limites minimale et maximale.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>idest <command>midic21</command> ictlno1, ictlno2, ictlno3, imin, imax [, ifn]</synopsis>
+
+    <synopsis>kdest <command>midic21</command> ictlno1, ictlno2, ictlno3, kmin, kmax [, ifn]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>idest</emphasis> -- signal de sortie
+    </para>
+
+    <para>
+      <emphasis>ictln1o</emphasis> -- numéro de contrôleur pour l'octet de poids fort (0-127)
+    </para>
+
+    <para>
+      <emphasis>ictlno2</emphasis> -- numéro de contrôleur pour l'octet de poids moyen (0-127)
+    </para>
+
+    <para>
+      <emphasis>ictlno3</emphasis> -- numéro de contrôleur pour l'octet de poids faible (0-127)
+    </para>
+
+    <para>
+      <emphasis>imin</emphasis> -- valeur décimale minimale de sortie définie par l'utilisateur
+    </para>
+
+    <para>
+      <emphasis>imax</emphasis> -- valeur décimale maximale de sortie définie par l'utilisateur
+    </para>
+
+    <para>
+      <emphasis>ifn</emphasis> (facultatif) -- la table à lire lorsque l'indexation est requise.
+      La table doit être normalisée. La sortie est mise à l'échelle entre les valeurs
+      <emphasis>imax</emphasis> et <emphasis>imin</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kdest</emphasis> -- signal de sortie
+    </para>
+
+    <para>
+      <emphasis>kmin</emphasis> -- valeur décimale minimale de sortie définie par l'utilisateur
+    </para>
+
+    <para>
+      <emphasis>kmax</emphasis> -- valeur décimale maximale de sortie définie par l'utilisateur
+    </para>
+
+    <para>
+      <emphasis>midic21</emphasis> (contrôle MIDI sur 21 bit au taux-i et au taux-k) permet un signal
+      MIDI sur 21 bit en nombres décimaux mis à l'échelle entre des limites minimale et maximale.
+      Les valeurs minimale et maximale peuvent être variées au taux-k. Il peut utiliser en option
+      une indexation de table interpolée. Il nécessite trois contrôleurs MIDI en entrée.
+    </para>
+    <note>
+      <para>Veuillez noter que la famille des opcodes <emphasis>midic</emphasis> est prévue pour
+      des évènements MIDI déclenchés, et ne nécessite pas de numéro de canal car ils vont répondre
+      au même canal que celui qui a déclenché l'instrument (voir
+      <link linkend="massign"><citetitle>massign</citetitle></link>). Cependant ils vont planter s'ils
+      sont appelés depuis un évènement de partition.</para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ctrl7"><citetitle>ctrl7</citetitle></link>,
+      <link linkend="ctrl14"><citetitle>ctrl14</citetitle></link>,
+      <link linkend="ctrl21"><citetitle>ctrl21</citetitle></link>,
+      <link linkend="initc7"><citetitle>initc7</citetitle></link>,
+      <link linkend="initc14"><citetitle>initc14</citetitle></link>,
+      <link linkend="initc21"><citetitle>initc21</citetitle></link>,
+      <link linkend="midic7"><citetitle>midic7</citetitle></link>,
+      <link linkend="midic14"><citetitle>midic14</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.47 de Csound</para>
+    <para>Merci à &namerasmus; pour avoir indiqué le bon intervalle pour le numéro de contrôleur.</para>
+  </refsect1>
+</refentry>

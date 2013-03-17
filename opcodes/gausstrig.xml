@@ -1,0 +1,110 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="gausstrig">
+  <indexterm id="IndexGausstrig"><primary>gausstrig</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Random (Noise) Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>gausstrig</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>gausstrig</refname>
+    <refpurpose>
+      Impulsions aléatoires autour d'une fréquence donnée.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère des impulsions aléatoires autour d'une fréquence donnée.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>gausstrig</command> kamp, kcps, kdev [, imode]</synopsis>
+    <synopsis>kres <command>gausstrig</command> kamp, kcps, kdev [, imode]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>imode</emphasis> (facultatif, 0 par défaut) -- <emphasis>imode</emphasis> &gt; 0
+      signifie une meilleure modulation de fréquence. Si la fréquence change, le
+      délai avant l'impulsion suivante est recalculé. Avec le mode par défaut,
+      nous avons le comportement classique du générateur unitaire GaussTrig dans
+      SuperCollider, où la modulation de fréquence est ignorée durant le délai
+      précédant l'impulsion suivante.
+    </para>
+   </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamp</emphasis> -- amplitude.
+    </para>
+
+    <para>
+      <emphasis>kcps</emphasis> -- la fréquence moyenne autour de laquelle sont
+      distribuées les impulsions aléatoires.
+    </para>
+
+    <para>
+      <emphasis>kdev</emphasis> -- déviation aléatoire autour de la moyenne
+      (0 &lt;= dev &lt; 1).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode gausstrig. Il utilise le fichier
+      <ulink url="examples/gausstrig.csd"><citetitle>gausstrig.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode gausstrig.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/gausstrig.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+    <para>
+      Voici un exemple de l'opcode gausstrig avec imode = 1. Il utilise le fichier
+      <ulink url="examples/gausstrig-2.csd"><citetitle>gausstrig-2.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode gausstrig avec imode = 1.</title>
+          <xi:include href="examples-xml/gausstrig-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="dust"><citetitle>dust</citetitle></link>
+      <link linkend="dust2"><citetitle>dust2</citetitle></link>
+      <link linkend="mpulse"><citetitle>mpulse</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Basé sur le générateur unitaire GaussTrig de Bhob Rainey (SuperCollider)</member>
+        <member>Auteur : &nametito;</member>
+        <member>Janvier 2012</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.16 de Csound.</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,82 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="cggoto">
+<indexterm id="IndexCggoto"><primary>cggoto</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Program Flow Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>cggoto</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>cggoto</refname>
+    <refpurpose>
+      Transfert conditionnel du contrôle à chaque passage.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Transfère le contrôle vers <emphasis>label</emphasis> à chaque passage.
+      (Combinaison de <link linkend="cigoto"><citetitle>cigoto</citetitle></link> et
+      de <link linkend="ckgoto"><citetitle>ckgoto</citetitle></link>) 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>cggoto</command> condition, label</synopsis>
+
+    <para>
+      où <emphasis>label</emphasis> se trouve dans le même bloc d'instrument et n'est
+      pas une expression, et où <emphasis>condition</emphasis> utilise un des opérateurs
+      relationnels (<emphasis>&lt;</emphasis>, <emphasis>=</emphasis>,
+      <emphasis>&lt;=</emphasis>, <emphasis>==</emphasis>, <emphasis>!=</emphasis>)
+      (et <emphasis>=</emphasis> par commodité, voir aussi
+      <link linkend="ControlConditional"><citetitle>Valeurs Conditionnelles</citetitle></link>).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode cggoto. Il utilise le fichier
+      <ulink url="examples/cggoto.csd"><citetitle>cggoto.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode cggoto.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/cggoto.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="cigoto"><citetitle>cigoto</citetitle></link>, 
+      <link linkend="ckgoto"><citetitle>ckgoto</citetitle></link>, 
+      <link linkend="cngoto"><citetitle>cngoto</citetitle></link>, 
+      <link linkend="if"><citetitle>if</citetitle></link>, 
+      <link linkend="igoto"><citetitle>igoto</citetitle></link>, 
+      <link linkend="kgoto"><citetitle>kgoto</citetitle></link>, 
+      <link linkend="tigoto"><citetitle>tigoto</citetitle></link>, 
+      <link linkend="timout"><citetitle>timout</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+<!--    <para>Note ajoutée par Jim Aikin.</para>-->
+    <para>Exemple écrit par &namekevin;.</para>
+  </refsect1>
+</refentry>

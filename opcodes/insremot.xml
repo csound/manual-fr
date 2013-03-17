@@ -1,0 +1,137 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="insremot">
+<indexterm id="Indexinsremot"><primary>insremot</primary></indexterm>
+  <refentryinfo><title>Remote Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>insremot</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>insremot</refname>
+    <refpurpose>
+      Un opcode que l'on peut utiliser pour implémenter un orchestre distant. Cet
+      opcode envoie des évènements de note d'une machine source vers une machine
+      de destination.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Avec les opcodes <emphasis>insremot</emphasis> et <emphasis>insglobal</emphasis>,
+      il est possible d'exécuter des instruments sur des machines distantes et de
+      les contrôler depuis une machine maître. Les opcodes distants sont implémentés
+      suivant le modèle maître/client. Toutes les machines concernées contiennent
+      le même orchestre mais seule la machine maître possède l'information de la
+      partition. Durant l'exécution, la machine maître envoie les évènements de
+      note aux clients. L'opcode <emphasis>insremot</emphasis> envoie des évènements
+      d'une machine source à une machine de destination. Pour envoyer des évènements
+      à plusieurs destinations (diffusion), on utilise l'opcode
+      <emphasis>insglobal</emphasis>. Ces deux opcodes peuvent être utilisés en
+      combinaison.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>insremot</command> idestination, isource, instrnum [,instrnum...] </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>idestination</emphasis> -- une chaîne représentant l'ordinateur
+      client (par exemple 192.168.0.100). C'est l'hôte de destination qui
+      reçoit les évènements de l'instrument donné.
+    </para>
+
+    <para>
+      <emphasis>isource</emphasis> -- une chaîne représentant l'ordinateur serveur
+      (par exemple 192.168.0.100). C'est l'hôte source qui génère les évènements
+      pour l'instruments donné et les envoie à l'adresse donnée par
+      <emphasis>idestination</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>instrnum</emphasis> -- liste des numéros des intruments qui
+      seront joués sur la machines destinataire.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <note>
+      Il est essentiel que les ordinateurs qui utilisent cet opcode aient les
+      mêmes ordre des octets, taille des données (double ou float) et taille de
+      pointeur. On ne peut pas l'utiliser par exemple en mélangeant des
+      ordinateurs 32 bit et 64 bit.
+    </note>    
+    <note>
+      Cet opcode utilise en interne les fonctions <emphasis>gethostname</emphasis>
+      et <emphasis>gethostbyname</emphasis> pour déterminer les adresses IP du
+      client et du serveur afin de tester quels messages sont destinés à chaque
+      machine. Si un ordinateur a plus d'une adresse IP il n'y a aucun moyen de
+      contrôler quelle adresse IP est choisie.
+    </note>
+    <note>
+      L'opération à distance ne permet pas du tout l'envoi de chaînes de caractères.
+    </note>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode insremot. Il utilise les fichiers
+      <ulink url="examples/insremot.csd"><citetitle>insremot.csd</citetitle></ulink>
+      et <ulink url="examples/insremotM.csd"><citetitle>insremotM.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode insremot.</title>
+        <para>
+          L'exemple ci-dessous montre l'exemple <emphasis>barmodel</emphasis> joué sur une machine
+          distante. La machine maître et le client sont respectivement nommés
+          "192.168.1.100" et "192.168.1.101". Démarrer le client sur sa machine
+          (il attendra de recevoir des évènements de la machine maître), puis
+          démarrer le maître. Sur un système linux on démarre un client avec la
+          commande (csound -+rtaudio=alsa -odac -dm0 insremot.csd), tandis que
+          la commande sur la machine maître ressemble à ceci
+          (csound -+rtaudio=alsa -odac -dm0 insremotM.csd).
+        </para>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/insremot.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="examples-xml/insremotM.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="insglobal"><citetitle>insglobal</citetitle></link>, <link linkend="midglobal"><citetitle>midglobal</citetitle></link>, <link linkend="midremot"><citetitle>midremot</citetitle></link>, <link linkend="remoteport"><citetitle>remoteport</citetitle></link>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Simon Schampijer</member>
+        <member>2006</member>
+      </simplelist>
+    </para>
+    <para>
+      Nouveau dans la version 5.03
+    </para>
+  </refsect1>
+</refentry>

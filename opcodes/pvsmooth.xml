@@ -1,0 +1,129 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvsmooth">
+<indexterm id="Indexpvsmooth"><primary>pvsmooth</primary></indexterm>
+
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsmooth</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvsmooth</refname>
+    <refpurpose>
+      Lisse les fonctions temporelles d'amplitude et de fréquence d'un flot pv
+      en utilisant des filtres passe-bas RII du premier ordre en parallèle avec
+      une fréquence de coupure variable.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Lisse les fonctions temporelles d'amplitude et de fréquence d'un flot pv
+      en utilisant un filtre passe-bas RII du premier ordre avec une fréquence
+      de coupure variable. Cet opcode utilise le même filtre que l'opcode
+      <emphasis>tone</emphasis>, mais il agit séparément sur les fonctions
+      temporelles d'amplitude et de fréquence qui constituent le flot pv. La
+      fréquence de coupure est un paramètre au taux de contrôle, mais à la
+      différence de <emphasis>tone</emphasis> et de <emphasis>tonek</emphasis>,
+      elle n'est pas spécifiée en Hz, mais en fractions du 1/2 taux de trame
+      (actuellement le taux d'échantillonnage du flot pv), ce qui est plus
+      facile à comprendre. Cela signifie que la fréquence de coupure la plus
+      haute vaut 1 et que la plus basse vaut 0 ; plus la fréquence de coupure
+      est basse et plus les fonctions sont lisses ce qui donne un effet plus
+      prononcé.
+    </para>
+    <para>
+      Ce sont des filtres appliqués à des signaux de contrôle si bien que l'effet
+      est fondamentalement un floutage de l'évolution spectrale. Les effets
+      produits ressemblent plus ou moins à
+      ceux de <emphasis>pvsblur</emphasis>, mais avec deux différences
+      importantes : 1. le lissage des amplitudes et celui des fréquences
+      utilisent des ensembles séparés de filtres ; 2. le coût de calcul n'est
+      n'est pas plus élevé si l'on désire plus de "floutage" (lissage).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>fsig <command>pvsmooth</command> fsigin, kacf, kfcf</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>fsig</emphasis> -- flot pv de sortie
+    </para>
+
+    <para>
+      <emphasis>fsigin</emphasis> -- flot pv d'entrée
+    </para>
+
+    <para>
+      <emphasis>kacf</emphasis> -- valeur de la fréquence de coupure pour le
+      filtrage de la fonction d'amplitude, entre 0 et 1 en fractions du 1/2 taux
+      de trame.
+    </para>
+
+    <para>
+      <emphasis>kfcf</emphasis> -- valeur de la fréquence de coupure pour le
+      filtrage de la fonction de fréquence, entre 0 et 1 en fractions du 1/2 taux
+      de trame.
+    </para>
+    
+    <warning>
+      <para>
+        Il est dangereux d'utiliser la même variable-f à la fois comme entrée et
+        comme sortie des opcodes pvs. Ceci peut produire un comportement indéfini
+        de certains de ces opcodes. Utilisez une variable différente à gauche et
+        à droite de l'opcode.
+      </para>
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode pvsmooth. Il utilise le fichier
+      <ulink url="examples/pvsmooth.csd"><citetitle>pvsmooth.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode pvsmooth.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pvsmooth.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    
+    <para>
+      La formule du calcul de la fréquence de coupure du filtre étant :
+      (taux de trame) / (taille du saut) = (nouveaux départs de trame
+      par seconde) (en Hz), on en déduit le pourcentage du demi taux de
+      trame. Par exemple, pour la première note de l'exemple, le taux de trame
+      est 44100 / 256 = 172,265625 Hz (= 172 nouveaux départs de trame par
+      seconde). La moitié du taux de trame vaux 86 Hz, et un pour cent de ce taux
+      vaut 0.86 Hz.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Mai 2006 </member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau greffon dans la version 5</para>
+    <para>Mai 2006.</para>
+  </refsect1>
+</refentry>

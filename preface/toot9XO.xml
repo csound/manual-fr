@@ -1,0 +1,68 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.2
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="PrefaceToot9">
+  <title>Toot 9</title>
+
+  <para>
+    Dans l'exemple précédent, vous avez pu remarquer que la source
+    <link linkend="soundin"><citetitle>soundin</citetitle></link> était "coupée" à la fin des
+    notes, parce que la réverbération était à l'intérieur de l'instrument lui-même. Il vaut mieux
+    créer un intrument auxiliaire, un instrument de réverbération global, auquel on peut envoyer
+    le signal source. Rendons-le également stéréo (deux canaux).
+  </para>
+  <para>
+    Les variables sont des cellules nommées qui stockent des nombres. Dans Csound, elle peuvent
+    être locales ou globales, sont disponibles continuellement, et peuvent être mises à jour à l'un
+    des quatre taux - installation de l'orchestre, taux-i, taux-k ou taux-a.
+  </para>
+  <para>
+    Les variables locales (qui commencent avec les lettres p, i, k ou a) sont privées à un
+    instrument particulier. Elles ne peuvent pas être lues ou écrites par un autre instrument ou
+    par d'autres notes du même instrument.
+  </para>
+  <para>
+    Les variables globales sont des cellules qui sont accessibles par tous les instruments. Trois
+    des quatre types de variable sont supportés (i, k, et a), mais ces lettres sont précédées de
+    la lettre "g" pour les identifier comme "globale". Les variables globales sont utilisées pour
+    "diffuser" des valeurs générales, communiquer entre instruments et envoyer le son d'un
+    instrument à l'autre.
+  </para>
+  <para>
+    L'inst 99 de réverbération ci-dessous reçoit son entrée de l'instr 9 via la variable globale de
+    taux-a <emphasis>garvbsig</emphasis>. Comme l'instr 9 ajoute des valeurs dans cette variable
+    globale, plusieur copies de l'instr 9 peuvent le faire sans perte de données. L'addition
+    nécessite que <emphasis>garvbsig</emphasis> soit effacée avant chaque cycle de taux-k à travers
+    tous les instruments actifs. On accomplit ceci d'abord avec une instruction init dans l'en-tête
+    de l'orchestre, on donne à l'instrument de réverbération un numéro plus grand que celui des
+    autres instruments (les instruments sont exécutés dans l'ordre numérique), puis on efface
+    <emphasis>garvbsig</emphasis> dans l'instr 99 après que ses données ont été placées dans
+    l'unité reverb.
+  </para>
+  <para>
+    Dans la partition nous activons la réverbération globale au temps 0 et nous la laissons active
+    <emphasis>irvbtime</emphasis> après la dernière note.
+  </para>
+  <para>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/toot09.gif" format="GIF"/>
+      </imageobject>
+      <textobject>
+        <phrase>[Schéma de TOOT 9]</phrase>
+      </textobject>
+      <caption>
+        <para>Schéma de TOOT 9</para>
+      </caption>
+    </mediaobject>
+  </para>
+  <para>
+    <xi:include href="examples-xml/toot9.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </para>
+</section>

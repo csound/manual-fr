@@ -1,0 +1,239 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="tablewkt">
+<indexterm id="IndexTablewkt"><primary>tablewkt</primary></indexterm>
+  <refentryinfo><title>Table Control:Read/Write Opreations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tablewkt</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>tablewkt</refname>
+    <refpurpose>
+      Change le contenu de tables de fonction existantes.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode opère sur des tables de fonction existantes en changeant leur
+      contenu. <emphasis>tablewkt</emphasis> utilise une variable de taux-k pour
+      choisir le numéro de table. Les combinaisons valides des types de variable
+      sont données par la première lettre des noms de variable.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>tablewkt</command> asig, andx, kfn [, ixmode] [, ixoff] [, iwgmode]</synopsis>
+
+    <synopsis><command>tablewkt</command> ksig, kndx, kfn [, ixmode] [, ixoff] [, iwgmode]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>asig</emphasis>, <emphasis>ksig</emphasis> -- La valeur à écrire dans la table.
+    </para>
+
+    <para>
+      <emphasis>andx</emphasis>, <emphasis>kndx</emphasis> -- Indice dans la table,
+      un nombre positif compris entre 0 et la longueur de la table
+      (<emphasis>ixmode</emphasis> = 0) ou entre 0 et 1 (<emphasis>ixmode</emphasis>
+      différent de 0).
+    </para>
+
+    <para>
+      <emphasis>kfn</emphasis> -- Numéro de la table. Doit être &gt;= 1. Les
+      nombres flottants sont arrondis à l'entier inférieur. Si un numéro de
+      table ne pointe pas vers une table valide, ou si la table n'a pas encore
+      été chargée (<link linkend="GEN01"><citetitle>GEN01</citetitle></link>)
+      une erreur est générée et l'instrument est désactivé.
+    </para>
+
+    <para>
+      <emphasis>ixmode</emphasis> -- mode d'indexation. Zéro par défaut.
+      <itemizedlist>
+        <listitem>
+          <para>
+            0 = <emphasis>xndx</emphasis> et <emphasis>ixoff</emphasis> sont
+            compris entre 0 et la longueur de la table.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            Différent de 0 = <emphasis>xndx</emphasis> et <emphasis>ixoff</emphasis>
+            sont compris entre 0 et 1.
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>ixoff</emphasis> -- décalage de l'index. 0 par défaut.
+
+      <itemizedlist>
+        <listitem>
+           <para>
+             0 = l'indice résultant est contrôlé directement par
+             <emphasis>xndx</emphasis>, l'indexation commençant depuis le début
+             de la table.
+           </para>
+        </listitem>
+
+        <listitem>
+           <para>
+             Différent de 0 = l'indexation démarre dans la table. La valeur doit
+             être positive et inférieure à la longueur de la table
+             (<emphasis>ixmode</emphasis> = 0) ou inférieure à 1
+             (<emphasis>ixmode</emphasis> différent de  0).
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>iwgmode</emphasis> -- mode d'écriture dans la table. 0 par défaut.
+
+      <itemizedlist>
+        <listitem>
+           <para>
+             0 = mode limite.
+           </para>
+        </listitem>
+
+        <listitem>
+           <para>
+             1 = mode cyclique.
+           </para>
+        </listitem>
+
+        <listitem>
+           <para>
+             2 = ode point de garde.
+           </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+
+    <refsect2>
+      <title>Mode limite (0)</title>
+      <para>
+        Limite l'indice résultant (<emphasis>xndx</emphasis> + <emphasis>ixoff</emphasis>)
+        entre 0 et le point de garde. Pour une table de longueur 5, cela signigie
+        que les positions allant de 0 à 3 et la position 4 (le point de garde)
+        peuvent être écrites. Un indice résultant négatif provoque l'écriture
+        en position 0.
+      </para>
+    </refsect2>
+
+    <refsect2>
+      <title>Mode cyclique (1)</title>
+      <para>
+        Parcours cyclique de l'indice résultant dans les positions 0 à E, où E
+        vaut soit la longueur de la table moins un, soit le facteur de 2 qui est
+        égal à la longueur de la table moins un. Par exemple, un parcours cyclique
+        entre 0 et 3, si bien que l'indice 6 signifie une écriture dans la
+        position 2.
+      </para>
+    </refsect2>
+
+    <refsect2>
+      <title>Mode point de garde (2)</title>
+      <para>
+        Le point de garde est écrit en même temps que la position 0 avec la même
+        valeur.
+      </para>
+
+      <para>
+        Facilite l'écriture dans des tables prévues pour être lues avec
+        interpolation pour produire des formes d'onde cycliques sans discontinuité.
+        De plus, avant son utilisation, l'indice résultant est augmenté de la
+        moitié de la distance entre une position et la suivante, avant d'être
+        arrondi à l'adresse entière inférieure d'une position dans la table.
+      </para>
+
+      <para>
+        Normalement (<emphasis>iwgmode</emphasis> = 0 ou 1), pour une table de
+        longueur 5, qui comprend les positions 0 à 3 en partie principale et la
+        position 4 comme point de garde, un indice résultant compris entre 0 et
+        0.999 provoquera une écriture dans la position 0. (&quot;0.999&quot;
+        signifie juste inférieur à 1.0), entre 1.0 et 1.999, l'écriture se fera
+        dans la position 1, etc. La même interprétation a lieu pour les indices
+        résultants compris entre 0 et 4.999 (<emphasis>igwmode</emphasis> = 0)
+        ou 3.999 (<emphasis>igwmode</emphasis> = 1). <emphasis>igwmode</emphasis> = 0
+        permet l'écriture dans les positions 0 à 4, avec la possibilité d'avoir
+        dans le point de garde (4) une valeur différente de celle de la
+        position 0.
+      </para>
+
+      <para>
+        Avec une table de longueur 5 et <emphasis>iwgmode</emphasis> = 2, quand
+        l'indice résultant est compris entre 0 et 0.499, l'écriture se fera dans
+        les positions 0 et 4. S'il est compris entre 0.5 et 1.499, l'écriture se
+        fera dans la position 1, etc. S'il est compris entre 3.5 et 4.0, l'écriture
+        se fera également dans les positions 0 et 4.
+      </para>
+
+      <para>
+        Ainsi, l'écriture s'approche le plus possible des résultats de la lecture
+        avec interpolation. Le mode point de garde ne doit être utilisé qu'avec
+        des tables qui ont un point de garde.
+      </para>
+
+      <para>
+        Le mode point de garde se fait en ajoutant 0.5 à l'indice résultant,
+        en l'arrondissant à l'entier inférieur le plus proche, puis en le
+        réduisant modulo le facteur de deux égal à la longueur de la table
+        moins un, enfin en écrivant dans la table (positions 0 à 3 dans notre
+        exemple) et dans le point de garde si l'indice vaut 0.
+      </para>
+    </refsect2>
+
+    <refsect2>
+      <title>Avertissement pour les numéros de table de taux-k</title>
+      <para>
+        Au taux-k ou au taux-a, si l'on donne un numéro de table &lt; 1, ou si
+        le numéro de table pointe vers une table inexistante ou vers une table
+        de longueur nulle (qui doit être chargée depuis un fichier ultérieurement),
+        une erreur est générée et l'instrument est désactivé. Il faut initialiser
+        <emphasis>kfn</emphasis> et <emphasis>afn</emphasis> au taux approprié
+        en utilisant <link linkend="init"><citetitle>init</citetitle></link>.
+        Si l'on essaie de mettre une valeur de taux-i dans <emphasis>kfn</emphasis>
+        ou dans <emphasis>afn</emphasis> une erreur est générée.
+      </para>
+    </refsect2>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="tableiw"><citetitle>tableiw</citetitle></link>,
+      <link linkend="tablew"><citetitle>tablew</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Robin Whittle</member>
+        <member>Australie</member>
+        <member>Mai 1997</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

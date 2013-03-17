@@ -1,0 +1,119 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.8
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="spsend">
+<indexterm id="IndexSpsend"><primary>spsend</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Panning and Spatialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>spsend</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>spsend</refname>
+    <refpurpose>
+      Génère des signaux de sortie basés sur un opcode <emphasis>space</emphasis>
+      défini auparavant.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>spsend</emphasis> dépend de l'existence d'un
+      <link linkend="space"><citetitle>space</citetitle></link> défini antérieurement.
+      Les signaux de sortie de <emphasis>spsend</emphasis> sont dérivés des valeurs
+      de xy et de réverbération données dans le <emphasis>space</emphasis> et sont
+      prêts à être envoyés à des unités de réverbération locales ou globales
+      (voir l'exemple ci-dessous).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>a1, a2, a3, a4 <command>spsend</command></synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      La configuration des coordonnées xy dans l'espace place le signal de la
+      manière suivante :
+      <itemizedlist>
+        <listitem>
+           <para>a1 est en (-1, 1)</para>
+        </listitem>
+
+        <listitem>
+           <para>a2 est en (1, 1)</para>
+        </listitem>
+
+        <listitem>
+           <para>a3 est en (-1, -1)</para>
+        </listitem>
+
+        <listitem>
+           <para>a4 est en (1, -1)</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      Ceci suppose une disposition des haut-parleurs où a1 est à l'avant-gauche,
+      a2 à l'avant-droit, a3 à l'arrière-gauche et a4 à l'arrière-droite. Les
+      valeurs supérieures à 1 donnent un son atténué, comme s'il était éloigné.
+      <emphasis>space</emphasis> considère que les haut-parleurs sont à une
+      distance de 1 ; on peut utiliser des valeurs de xy inférieures, mais
+      <emphasis>space</emphasis> n'amplifiera pas le signal dans ce cas. Il
+      équilibrera le signal cependant de manière à ce qu'il soit entendu comme
+      s'il se trouvait à l'intérieur de l'espace des quatre haut-parleurs.
+      x=0, y=1, place le signal entre les canaux avant gauche et droite, x=y=0
+      place le signal également entre les quatre canaux, et ainsi de suite.
+      Bien que <emphasis>space</emphasis> fournisse quatre signaux en sortie,
+      on peut l'utiliser dans un orchestre à deux canaux. Si les xy sont tels
+      que y reste &gt;= 1, il fonctionnera correctement pour faire des
+      panoramiques et des localisations fixes dans un champ stéréophonique.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple stéréo de l'opcode spsend. Il utilise le fichier
+      <ulink url="examples/spsend.csd"><citetitle>spsend.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode spsend.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/spsend.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="space"><citetitle>space</citetitle></link>,
+      <link linkend="spdist"><citetitle>spdist</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Richard Karpen</member>
+        <member>Seattle, WA USA</member>
+        <member>1998</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.48 de Csound.</para>
+  </refsect1>
+</refentry>

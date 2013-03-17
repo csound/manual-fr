@@ -1,0 +1,121 @@
+<!--translated=yes
+authors=Yannick St-Onge
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="zawm">
+<indexterm id="IndexZawm"><primary>zawm</primary></indexterm>
+  <refentryinfo><title>Zak Patch System</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>zawm</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>zawm</refname>
+    <refpurpose>
+      Ecrit dans une variable za au taux-a avec mixage.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ecrit dans une variable za au taux-a avec mixage.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>zawm</command> asig, kndx [, imix]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>imix</emphasis> (facultatif, par defaut=1) -- indique si le mixage sera fait.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- valeur à écrire dans l'espace za.
+    </para>
+
+    <para>
+      <emphasis>kndx</emphasis> -- Pointe sur la position zk ou za vers laquelle écrire.
+    </para>
+
+    <para>
+      Ces opcodes sont rapides, et vérifient toujours que l'indexation est à l'intérieur des limites
+      des espaces zk ou za. Sinon, une erreur est rapportée, la valeur 0 est retournée et il n'y a
+      aucune écriture.
+    </para>
+
+    <para>
+      <emphasis>zawm</emphasis> est un opcode de mixage, il ajoute le signal à la valeur actuelle de
+      la variable. Si aucun <emphasis>imix</emphasis> n'est specifié, le mixage aura toujours
+      lieu. <emphasis>imix</emphasis> = 0 provoquera l'écrasement des données comme dans
+      <emphasis>ziw</emphasis>, <emphasis>zkw</emphasis>, et <emphasis>zaw</emphasis>. Toute autre
+      valeur entraînera un mixage.
+    </para>
+
+    <para>
+      <emphasis>Avertissement</emphasis> : lors de l'utilisation des opcodes de mixage
+      <emphasis>ziwm</emphasis>, <emphasis>zkwm</emphasis>, et <emphasis>zawm</emphasis>, il faut
+      faire attention à ce que les variables qui reçoivent le mixage soient remises à zéro à la
+      fin (ou au début) de chaque cycle-k ou -a. Leur ajouter indéfiniment des signaux
+      peut engendrer des valeurs astronomiques.
+    </para>
+
+    <para>
+      Une approche possible serait d'établir certains intervalles de variables zk ou za à utiliser
+      pour le mixage, puis d'utiliser ensuite <emphasis>zkcl</emphasis> ou <emphasis>zacl</emphasis>
+      pour effacer ces variables.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode zawm. Il utilise le fichier
+      <ulink url="examples/zawm.csd"><citetitle>zawm.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode zawm.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/zawm.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="zaw"><citetitle>zaw</citetitle></link>,
+      <link linkend="ziw"><citetitle>ziw</citetitle></link>,
+      <link linkend="ziwm"><citetitle>ziwm</citetitle></link>,
+      <link linkend="zkw"><citetitle>zkw</citetitle></link>,
+      <link linkend="zkwm"><citetitle>zkwm</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Robin Whittle</member>
+        <member>Australie</member>
+        <member>Mai 1997</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 3.45</para>
+    <para>Exemple écrit par &namekevin;.</para>
+  </refsect1>
+</refentry>

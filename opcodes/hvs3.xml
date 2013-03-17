@@ -1,0 +1,277 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="hvs3">
+<indexterm id="IndexHvs3"><primary>hvs3</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Hyper Vectorial Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>hvs3</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>hvs3</refname>
+    <refpurpose>
+      Synthèse Hyper Vectorielle (SHV) à trois dimensions contrôlée par des variables
+      de taux-k mises à jour en externe.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>hvs3</emphasis> permet la synthèse Hyper Vectorielle (SHV) à trois
+      dimensions contrôlée par des variables de taux-k mises à jour en externe.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>hvs3</command> kx, ky, kz, inumParms, inumPointsX, inumPointsY, inumPointsZ, iOutTab, iPositionsTab, iSnapTab [, iConfigTab]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>inumParms</emphasis> - nombre de paramètres contrôlés par la SHV.
+      Chaque instantané de la SHV est composé de <emphasis>inumParms</emphasis>
+      éléments.
+    </para>
+    <para>
+      <emphasis>inumPointsX</emphasis>, <emphasis>inumPointsY</emphasis>,
+      <emphasis>inumPointsZ</emphasis> - nombre de points dont est composée chaque
+      dimension du cube de la SHV (ou du carré dans le cas de la SHV à deux dimensions,
+      ou du segment de droite dans le cas de la SHV à une dimension).
+    </para>
+    <para>
+      <emphasis>iOutTab</emphasis> - numéro de la table recevant l'ensemble des
+      valeurs instantanées des paramètres de sortie de la SHV. Le nombre total de
+      paramètres est défini par l'argument <emphasis>inumParms</emphasis>.
+    </para>
+    <para>
+      <emphasis>iPositionsTab</emphasis> – une table remplie avec les positions
+      individuelles des instantanés dans la matrice de SHV (voir ci-dessous pour
+      plur d'information).
+    </para>
+    <para>
+      <emphasis>iSnapTab</emphasis> – une table remplie avec tous les instantanés.
+      Chaque instantané se compose d'un ensemble de valeurs des paramètres. Le
+      nombre d'éléments contenus dans chaque instantané est spécifié par l'argument
+      <emphasis>inumParms</emphasis>. L'ensemble des éléments de chaque instantané
+      suit (et est adjacent à) l'instantané précédent dans la table. Ainsi la
+      taille totale de cette table doit être &gt;= à <emphasis>inumParms</emphasis>
+      multiplié par le nombre d'instantanés que l'on veut mémoriser pour la SVH.
+    </para>
+    <para>
+      <emphasis>iConfigTab</emphasis> – (facultatif) une table contenant le
+      comportement de la SHV pour chaque paramètre. Si <emphasis>iConfigTab</emphasis>
+      vaut zéro (par défaut), cet argument est ignoré, ce qui signifie que chaque
+      paramètre est interpolé linéairement par la SHV. Si <emphasis>iConfigTab</emphasis>
+      est différent de zéro, il doit faire référence à une table existante dont
+      le contenu fait référence à son tour à un genre particulier d'interpolation.
+      Dans cette table, une valeur de -1 indique que le paramètre correspondant
+      reste inchangé (ignoré) par la SHV ; une valeur de zéro indique que le
+      paramètre correspondant est traité par interpolation linéaire ; tout autre
+      valeur doit être un nombre entier indiquant une table existante remplie
+      avec une forme qui détermine le genre d'interpolation spéciale à utiliser
+      (interpolation basée sur une table).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kx, ky, kz</emphasis> - ce sont des variables modifiées de l'extérieur,
+      qui contrôlent le mouvement du pointeur dans la matrice cubique de SHV
+      (ou carrée ou en ligne dans le cas où les matrices de SHV ont moins de
+      3 dimensions). Les valeurs de ces arguments d'entrée doivent être comprises
+      entre 0 et 1.
+    </para>
+    <para>
+      La Synthèse Hyper Vectorielle est une technique qui permet de contrôler un
+      ensemble immense de paramètres en utilisant une approche simple et globale.
+      Les concepts clé de la SHV sont :
+    </para>
+    <para>
+      L'ensemble des paramètres de SHV, dont le nombre est fixé et défini par
+      l'argument <emphasis>inumParms</emphasis>. Durant l'exécution de la SHV,
+      tous ces paramètres sont variables et peuvent être appliqués à n'importe
+      quelle technique de synthèse sonore, de même qu'à n'importe quel contrôle
+      global de composition algorithmique ou de tout autre niveau. L'utilisateur
+      doit définir au préalable plusieurs ensembles de valeurs fixes pour chaque
+      paramètre de la SHV, chaque ensemble correspondant à une configuration de
+      synthèse déterminée. Chaque ensemble de valeurs est appelé un instantané et
+      peut être considéré comme les coordonnées d'un saut dans un espace
+      multi-dimensionnel. La SHV consiste à faire évoluer un point dans cet
+      espace multi-dimensionnel (en utilisant un pointeur de mouvement spécial,
+      voie ci-dessous), selon les points et les limites définis par les instantanés.
+      On peut fixer le nombre de paramètres de la SHV (chaque paramètre suivant
+      une dimension de l'espace multi-dimensionnel), même un nombre très important,
+      la limite ne dépendant que de la puissance de calcul (et de la mémoire) de
+      votre ordinateur et de la complexité de la synthèse sonore utilisée.
+    </para>
+    <para>
+      Le cube de SHV (ou le carré ou le segment). C'est la matrice (à 3, 2 ou 1
+      dimensions, en fonction de l'opcode <emphasis>hvs</emphasis> utilisé) des
+      points d'appui ou pivots de la SHV. Le nombre total de points pivots dépend
+      de la valeur des arguments <emphasis>inumPointsX</emphasis>,
+      <emphasis>inumPointsY</emphasis> et <emphasis>inumPointsZ</emphasis>. Dans
+      le cas d'une matrice de SHV à 3 dimensions on peut définir, par exemple, 3
+      points pour la dimension X, 5 pour la dimension Y et 2 pour la dimension Z.
+      Dans ce cas le nombre total de points pivots est 3 * 5 * 2 = 30. Avec cet
+      ensemble de points pivots, le cube est divisé en zones cubiques plus petites,
+      chacune étant délimitée par huit points. Chaque point est numéroté. La
+      numérotation de ces points se fait de la manière suivante : numéro zéro pour
+      le premier point, numéro un pour le second, et ainsi de suite. En supposant
+      que l'on utilise un cube de SHV à 3 dimensions ayant le nombre de points
+      mentionné ci-dessus (c'est-à-dire 3, 5 et 2 respectivement pour les axes
+      X, Y et Z), le premier point (point zéro) est le coin supérieur gauche de
+      la face avant du cube, si l'on regarde le plan XY du cube. Le second point
+      est le centre de l'arête supérieure de la face avant du cube, ainsi de suite.
+      On peut se référer à la figure ci-dessous pour comprendre comment la
+      numérotation des points pivots est réalisée :
+    </para>
+    <para>
+      Pour la SHV à 2 dimensions, c'est la même chose, en omettant seulement la
+      face arrière du cube, si bien que chaque zone est délimitée par 4 points
+      pivots au lieu de 8. Pour la SHV à 1 dimension, tout devient plus simple
+      car il n'y a qu'un segment de droite sur lequel les points pivots sont
+      répartis de gauche à droite. Chaque point est couplé à un instantané.
+    </para>
+    <para>
+      L'ordre des instantanés, comme il est stocké dans la table <emphasis>iSnapTab</emphasis>,
+      peut suivre ou pas l'ordre des numéros des points pivots. En fait il est
+      possible de modifier cet ordre avec la table <emphasis>iPositionsTab</emphasis>,
+      qui repositionne chaque instantané en fonction des points pivots. La table
+      <emphasis>iPositionsTab</emphasis> est constituée des positions des instantanés
+      (contenus dans la table <emphasis>iSnapTab</emphasis>) sur la grille à deux
+      dimensions. Chaque élément successif est un pointeur représentant la position
+      dans la table <emphasis>iSnapTab</emphasis>. Par exemple, dans une matrice
+      de SHV à 2 dimensions comme la suivante (ayant dans ce cas
+      <emphasis>inumPointsX</emphasis> = 3 et <emphasis>inumPointsY</emphasis> = 5) :
+    </para>
+    <table frame="all" colsep="1">
+  <!--     <title></title> -->
+  
+      <tgroup cols="3">
+  <!--      <thead>
+          <row>
+            <entry></entry>
+          </row>
+        </thead>
+  -->
+        <tbody>
+          <row>
+            <entry>5</entry><entry>7</entry><entry>1</entry>
+          </row>
+          <row>
+            <entry>3</entry><entry>4</entry><entry>9</entry>
+          </row>
+          <row>
+            <entry>6</entry><entry>2</entry><entry>0</entry>
+          </row>
+          <row>
+            <entry>4</entry><entry>1</entry><entry>3</entry>
+          </row>
+          <row>
+            <entry>8</entry><entry>2</entry><entry>7</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+    <para>
+      Ces numéros (à stocker dans la table <emphasis>iSnapTab</emphasis> en utilisant,
+      par exemple, le générateur de fonction <emphasis>GEN02</emphasis>), représentent
+      la position des instantanés dans la grille (dans ce cas une matrice 3x5).
+      Ainsi, le premier élément 5 a l'indice zéro et représente le sixième
+      (l'élément zéro est le premier) instantané contenu dans la table
+      <emphasis>iSnapTab</emphasis>, le second élément 7 représente le huitième
+      élément de <emphasis>iSnapTab</emphasis>, ainsi de suite. En résumé, les
+      sommets de chaque zone (une zone cubique est délimitée par 8 sommets, une
+      zone carrée par 4 sommets et une zone linéaire par 2 points) sont liés à
+      un instantané donné, dont le numéro est transformé par la table
+      <emphasis>iSnapTab</emphasis>.
+    </para>
+    <para>
+      Les valeurs de sortie de la SHV sont influencées par le mouvement du pointeur,
+      un point dont la position dans le cube de SHV (ou le carré ou le segment)
+      est déterminée par les arguments <emphasis>kx</emphasis>, <emphasis>ky</emphasis>
+      et <emphasis>kz</emphasis>. Les valeurs de ces arguments, qui doivent être
+      comprises entre 0 et 1, sont fixées extérieurement par l'utilisateur. Les
+      valeurs de sortie, dont le nombre est égal à l'argument <emphasis>inumParms</emphasis>,
+      sont stockée dans la table <emphasis>iOutTab</emphasis>, laquelle doit avoir
+      été allouée auparavant par l'utilisateur et doit avoir une taille d'au moins
+      <emphasis>inumParms</emphasis>. De quelle manière le mouvement du pointeur
+      influence-t-il la sortie ? Lorsque le pointeur tombe dans une zone cubique
+      déterminée, délimitée par exemple par 8 sommets (ou points pivots), nous
+      supposons que chaque sommet est associé à un instantané différent (c'est-à-dire
+      un ensemble de <emphasis>inumParms</emphasis> valeurs), la sortie sera la
+      moyenne pondérée des 8 sommets, calculée en fonction de la distance du
+      pointeur à chacun des 8 sommets. Dans le comportement par défaut, lorsque
+      l'argument <emphasis>iConfigTab</emphasis> n'est pas défini, la sortie
+      exacte est calculée en utilisant une interpolation linéaire qui est appliquée
+      à chaque paramètre de la SHV. Cependant, il est possible de modifier ce
+      comportement en donnant à l'argument <emphasis>iConfigTab</emphasis> le
+      numéro d'une table dont le contenu peut affecter un ou plusieurs paramètres
+      de la SHV. Les éléments de la table <emphasis>iConfigTab</emphasis> sont
+      associés à chaque paramètre de SHV et leurs valeurs affectent la sortie de
+      la SHV de la manière suivante :
+      <itemizedlist>
+        <listitem>
+          <para>
+            Si <emphasis>iConfigTab</emphasis> vaut -1, la sortie correspondante
+            est ignorée, c'est-à-dire que l'élément n'est pas calculé, laissant
+            la valeur de l'élément correspondant dans la table
+            <emphasis>iOutTab</emphasis> inchangée ;
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Si <emphasis>iConfigTab</emphasis> est égal à zéro, la sortie de la
+            SHV normale est calculée (en utilisant la moyenne pondérée des sommets
+            les plus proches de la zone dans laquelle le pointeur mobile est
+            tombé) ;
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Si <emphasis>iConfigTab</emphasis> est égal à un nombre entier &gt;
+            zéro, le contenu d'une table ayant ce numéro est utilisé comme la
+            forme d'une interpolation basée sur cette table.
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </refsect1>
+<!--  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Here is an example of the hvs3 opcode. It uses the file <ulink url="examples/hvs3.csd"><citetitle>hvs3.csd</citetitle></ulink>.
+
+      <example>
+        <title>Example of the hvs3 opcode.</title>
+        <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para>
+          <xi:include href="examples-xml/hvs3.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>-->
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="hvs1"><citetitle>hvs1</citetitle></link>,
+      <link linkend="hvs2"><citetitle>hvs2</citetitle></link>,
+      <link linkend="vphaseseg"><citetitle>vphaseseg</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 5.06</para>
+  </refsect1>
+</refentry>

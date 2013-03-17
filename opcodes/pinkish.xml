@@ -1,0 +1,178 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.12
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pinkish">
+<indexterm id="IndexPinkish"><primary>pinkish</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Random (Noise) Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pinkish</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>pinkish</refname>
+    <refpurpose>
+      Génère une approximation d'un bruit rose.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère une approximation d'un bruit rose (réponse à -3dB/oct) par une de ces deux
+      méthodes :
+      <itemizedlist>
+        <listitem>
+          <para>un générateur de bruit à taux multiples d'après Moore, codé par Martin Gardner</para>
+        </listitem>
+
+        <listitem>
+          <para>un banc de filtres dessinés par Paul Kellet</para>
+        </listitem>
+      </itemizedlist>
+   </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>pinkish</command> xin [, imethod] [, inumbands] [, iseed] [, iskip]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>imethod</emphasis> (facultatif, par défaut=0) -- sélectionne la méthode de filtrage : 
+      <itemizedlist>
+        <listitem>
+          <para>0 = méthode de Gardner (par défaut).</para>
+        </listitem>
+
+        <listitem>
+          <para>1 = banc de filtres de Kellet.</para>
+        </listitem>
+
+        <listitem>
+          <para>2 = Un banc de filtres quelque peu plus rapides par Kellet, avec une réponse moins précise.</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>inumbands</emphasis> (facultatif) -- ne fonctionne qu'avec la méthode de Gardner. Nombre de
+      bandes de bruit à générer. Le maximum vaut 32 et le minimum vaut 4. Les valeurs plus élevées donnent
+      un spectre plus lisse, mais au-delà de 20 bandes il y aura des fluctuations lentes presque comme une
+      composante continue. La valeur par défaut est 20.
+    </para>
+
+    <para>
+      <emphasis>iseed</emphasis> (facultatif, par défaut=0) -- ne fonctionne qu'avec la méthode de Gardner.
+      s'il est non nul, sert de graine au générateur de nombres aléatoires. S'il est nul, le générateur sera
+      initialisé à partir de la valeur de l'horloge. Vaut 0 par défaut.
+    </para>
+
+    <para>
+      <emphasis>iskip</emphasis> (facultatif, par défaut=0) -- s'il est non nul, l'état interne n'est pas
+      (ré)initialisé (utile pour les notes liées). Vaut 0 par défaut.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>xin</emphasis> -- pour la méthode de Gardner : amplitude de taux-k ou -a. Pour les filtres de
+      Kellet : normalement un bruit de taux-a de distribution uniforme obtenu à partir de <emphasis>rand</emphasis>
+      (31-bit) ou de <emphasis>unirand</emphasis>, mais ça peut être n'importe quel signal de taux-a. La valeur
+      de crête de la sortie varie largement (&plusmn;15%) même sur de longues périodes, et sera habituellement
+      d'un niveau bien inférieur à celui de l'amplitude de l'entrée. Les valeurs de crête peuvent aussi dépasser
+      occasionnellement l'amplitude de l'entrée ou celle du bruit.
+    </para>
+
+    <para>
+      <emphasis>pinkish</emphasis> tente de générer un bruit rose (c-à-d un bruit avec la même énergie dans
+      chaque octave), par une des deux méthodes suivantes.
+    </para>
+
+    <para>
+      La première méthode, par Moore &amp; Gardner, ajoute plusieurs signaux de bruit blanc (jusqu'à 32),
+      générés à des taux en octave (<emphasis>sr</emphasis>, <emphasis>sr</emphasis>/2, <emphasis>sr</emphasis>/4,
+      etc). Les valeurs pseudo aléatoires sont obtenues à partir d'un générateur interne sur 32 bit. Ce générateur
+      est local à chaque instance de l'opcode et initialisable (comme pour <emphasis>rand</emphasis>).
+    </para>
+
+    <para>
+      La seconde méthode est un filtrage passe-bas avec une réponse d'environ -3dB/oct. Si l'entrée est un bruit
+      blanc uniforme, la sortie sera un bruit rose. Avec cette méthode, on peut utiliser n'importe quel signal
+      comme entrée. Le filtre de haute qualité est plus lent, mais il a moins d'ondulations et un intervalle de
+      fréquences opératoires légèrement plus large que les versions moins gourmandes en calcul. Avec les filtres
+      de Kellet, il n'y a pas de graine pour le générateur de nombres aléatoires.
+    </para>
+
+    <para>
+      La réponse en fréquence de la sortie dans la méthode de Gardner comporte quelques anomalies dans les
+      intervalles basse-moyenne et moyenne-haute fréquence. On peut générer plus d'énergie en basse fréquence
+      en augmentant le nombre de bandes. Cette méthode est aussi un peu plus rapide. Le filtre raffiné de
+      Kellet a un spectre très lisse, mais un intervalle efficace plus limité. Le niveau augmente légèrement
+      à l'extrémité haute du spectre.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode pinkish. Il utilise le fichier
+      <ulink url="examples/pinkish.csd"><citetitle>pinkish.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode pinkish.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pinkish.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Bruit filtré (Kellet) pour une note liée (<emphasis>iskip</emphasis> est non nul).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteurs : Phil Burk et &namejohn;</member>
+        <member>Université de Bath/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>Mai 2000</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 4.07 de Csound</para>
+
+    <para>
+      Adapté pour Csound par &namerasmus;
+    </para>
+
+    <para>
+      La méthode par bandes de bruit est dûe à F. R. Moore (ou R. F. Voss), et fut présentée par Martin Gardner
+      dans un article de Scientific American souvent cité. La présente version fut codée par Phil Burk après une
+      discussion sur la liste de diffusion de music-dsp, avec des optimisations significatives suggérées par
+      James McCartney.
+    </para>
+
+    <para>
+      Le banc de filtres a été dessiné par Paul Kellet, et posté sur la liste de diffusion de music-dsp.
+    </para>
+
+    <para>
+      La discusssion complète sur le bruit rose a été rassemblée sur une page HTML par Robin Whittle, qui est
+      actuellement consultable à
+      <ulink url="http://www.firstpr.com.au/dsp/pink-noise/"><citetitle>http://www.firstpr.com.au/dsp/pink-noise/</citetitle></ulink>.
+    </para>
+
+    <para>Notes ajoutées par &namerasmus; en Septembre 2002.</para>
+  </refsect1>
+</refentry>

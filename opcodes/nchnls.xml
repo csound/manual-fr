@@ -1,0 +1,81 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.7
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="nchnls">
+<indexterm id="IndexNchnls"><primary>nchnls</primary></indexterm>
+  <refentryinfo><title>Orchestra Syntax:Header</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>nchnls</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>nchnls</refname>
+    <refpurpose>
+      Fixe le nombre de canaux de la sortie audio.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ces instructions sont des <link linkend="assign"><citetitle>affectations</citetitle></link> de
+      valeurs globales réalisées au début d'un orchestre, avant que tout bloc d'instrument ne soit
+      défini. Leur fonction est de fixer certaines
+      <link linkend="VariableTypes"><citetitle>variables</citetitle></link> dont le nom est un mot réservé
+      et qui sont nécessaires à l'exécution. Une fois fixés, ces mots réservés peuvent être utilisés dans
+      des expressions n'importe où dans l'orchestre.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>nchnls</command> = iarg</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>nchnls</emphasis> = (facultatif) -- fixe le nombre de canaux de la sortie audio à
+      <emphasis>iarg</emphasis>. (1 = mono, 2 = stéréo, 4 = quadriphonique.) La valeur par défaut
+      est 1 (mono).
+    </para>
+
+    <para>
+      De plus, toute <link linkend="GlobalVariables"><citetitle>variable globale</citetitle></link> peut
+      être initialisée par une <emphasis>instruction de la période d'initialisation</emphasis> n'importe
+      où avant la première <link linkend="instr"><citetitle>instruction instr</citetitle></link>. Toutes
+      les affectations ci-dessus sont exécutées dans l'instrument 0 (passe-i seulement) au début de
+      l'exécution réelle.
+    </para>
+  </refsect1>
+
+   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode nchnls. Il utilise le fichier
+      <ulink url="examples/nchnls.csd"><citetitle>nchnls.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode nchnls.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/nchnls.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="kr"><citetitle>kr</citetitle></link>,
+      <link linkend="ksmps"><citetitle>ksmps</citetitle></link>,
+      <link linkend="sr"><citetitle>sr</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,141 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvsftr">
+<indexterm id="IndexPvsftr"><primary>pvsftr</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsftr</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvsftr</refname>
+    <refpurpose>
+      Lit les données d'amplitude et/ou de fréquence depuis des tables de
+      fonction.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Lit les données d'amplitude et/ou de fréquence depuis des tables de
+      fonction.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>pvsftr</command> fsrc, ifna [, ifnf]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifna</emphasis> -- Une table d'une taille d'au moins
+      <emphasis>inbins</emphasis> qui contient les données d'amplitude.
+      Ignorée si <emphasis>ifna</emphasis> = 0.
+    </para>
+
+    <para>
+      <emphasis>ifnf</emphasis> (facultatif) -- Une table d'une taille d'au
+      moins <emphasis>inbins</emphasis> qui contient les données de fréquence.
+      Ignorée si <emphasis>ifnf</emphasis> = 0.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>fsrc</emphasis> -- une source au format PVOC-EX.
+    </para>
+
+    <para>
+      Permet d'échanger le contenu de <emphasis>fsrc</emphasis> avec des tables
+      de fonction pour un traitement particulier. Sauf si le recouvrement de
+      trame est égal à <emphasis>ksmps</emphasis> (ce qui ne sera généralement
+      pas le cas), les données de trame ne sont pas mises à jour à chaque
+      période de contrôle. Il ne faut traiter les données contenues dans
+      <emphasis>ifna</emphasis>, <emphasis>ifnf</emphasis> que lorsque
+      <emphasis>kflag</emphasis> vaut 1. Pour ne traiter que les données de
+      fréquence, mettre <emphasis>ifna</emphasis> à zéro.
+    </para>
+
+    <para>
+      Comme les tables de fonction ne servent qu'à stocker des données venant
+      de <emphasis>fsrc</emphasis>, il n'y a aucun avantage à les définir dans
+      la partition et elles seront généralement créées dans l'instrument avec
+      <link linkend="ftgen"><citetitle>ftgen</citetitle></link>.
+    </para>
+
+    <para>
+      En exportant disons les données d'amplitude d'un fsig et en les important
+      dans un autre, on peut effectuer une synthèse croisée basique (comme dans
+      <link linkend="pvscross"><citetitle>pvscross</citetitle></link>), avec
+      l'option de modifier les données au passage en utilisant les opcodes de
+      manipulation de table.
+    </para>
+
+    <para>
+      Noter que le format des données dans le fsig source n'est pas écrit dans
+      les tables. Nous avons ainsi un moyen de transférer les données d'amplitude
+      et de fréquence entre des fsigs de format différent. Utilisés de cette
+      manière, ces opcodes deviennent potentiellement pathologiques et l'on peut
+      escompter qu'ils donneront des résultats inattendus. Dans ce cas, la
+      resynthèse avec
+      <link linkend="pvsadsyn"><citetitle>pvsadsyn</citetitle></link> sera
+      presque certainement requise.
+    </para>
+
+    <para>
+      Pour faire une copie directe d'un fsig à un autre de même format, on peut
+      utiliser la syntaxe d'affectation conventionnelle :
+
+      <literallayout> 
+fsig1 = fsig2
+      </literallayout> 
+ 
+      Il n'est pas nécessaire d'utiliser des tables de fonction dans ce cas.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode pvsftr. Il utilise le fichier
+      <ulink url="examples/pvsftr.csd"><citetitle>pvsftr.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode pvsftr.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pvsftr.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="pvsftw"><citetitle>pvsftw</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namerichard;</member>
+        <member>Août 2001 </member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 4.13</para>
+  </refsect1>
+</refentry>

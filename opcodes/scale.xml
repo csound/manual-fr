@@ -1,0 +1,89 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.5
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="scale">
+<indexterm id="IndexScale"><primary>scale</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Linear and Exponential Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>scale</refentrytitle>
+  </refmeta>
+  
+  
+  <refnamediv>
+    <refname>scale</refname>
+    <refpurpose>
+      Signal de pondération arbitraire.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Met les valeurs entrantes à l'échelle d'un intervalle défini par l'utilisateur. Semblable
+      à l'objet de pondération que l'on trouve dans les languages de flux de données les plus
+      connus.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kscl <command>scale</command> kinput, kmax, kmin</synopsis>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kin</emphasis> -- Valeur d'entrée. Elle peut provenir de n'importe quelle source
+      au taux-k pourvu que la sortie de cette dernière soit comprise entre 0 et 1.
+    </para>
+    <para>
+      <emphasis>kmin</emphasis> -- Valeur minimale de l'intervalle de pondération.
+    </para>
+    <para>
+      <emphasis>kmax</emphasis> -- Valeur maximale de l'intervalle de pondération.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode scale. Il utilise le fichier
+      <ulink url="examples/scale.csd"><citetitle>scale.csd</citetitle></ulink>.
+      
+      <example>
+        <title>Exemple de l'opcode scale.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/scale.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="gainslider"><citetitle>gainslider</citetitle></link>,
+      <link linkend="logcurve"><citetitle>logcurve</citetitle></link>,
+      <link linkend="expcurve"><citetitle>expcurve</citetitle></link>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : David Akbari</member>
+        <member>Octobre</member>
+        <member>2006</member>
+      </simplelist>
+    </para>
+  </refsect1>
+  
+</refentry>

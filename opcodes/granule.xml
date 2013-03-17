@@ -1,0 +1,281 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.15
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="granule">
+<indexterm id="IndexGranule"><primary>granule</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Granular Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>granule</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>granule</refname>
+    <refpurpose>
+      Un générateur de texture par synthèse granulaire plus complexe.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Le générateur unitaire <emphasis>granule</emphasis> est plus complexe que <emphasis>grain</emphasis>,
+      mais il ajoute de nouvelles possibilités.
+    </para>
+
+    <para>
+      <emphasis>granule</emphasis> est un générateur unitaire de Csound qui emploie une table d'onde en
+      entrée pour produire une sortie audio par synthèse granulaire. Les données de la table d'onde peuvent
+      être générées par n'importe laquelle des routines GEN telle que
+      <link linkend="GEN01"><citetitle>GEN01</citetitle></link> qui lit un fichier audio. On peut ainsi
+      utiliser un son échantillonné comme source pour les grains. L'implémentation interne comprend
+      jusqu'à 128 voix. Le nombre maximum de voix peut être augmenté en redéfinissant la variable
+      MAXVOICE dans le fichier grain4.h. <emphasis>granule</emphasis> possède son propre générateur de
+      nombres aléatoires pour produire toutes les fluctuations aléatoires des paramètres. Il comprend
+      aussi une fonction de seuil pour scanner la table de fonction source lors de la phase d'initialisation.
+      On peut ainsi facilement ignorer les passages de silence entre les phrases.
+    </para>
+
+    <para>
+      Les caractéristiques de la synthèse sont contrôlées par 22 paramètres. <emphasis>xamp</emphasis>
+      est l'amplitude de la sortie et elle peut varier aussi bien au taux audio qu'au taux de contrôle.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>granule</command> xamp, ivoice, iratio, imode, ithd, ifn, ipshift, igskip, \
+      igskip_os, ilength, kgap, igap_os, kgsize, igsize_os, iatt, idec \
+      [, iseed] [, ipitch1] [, ipitch2] [, ipitch3] [, ipitch4] [, ifnenv]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ivoice</emphasis> -- nombre de voix.
+    </para>
+
+    <para>
+      <emphasis>iratio</emphasis> -- rapport entre la vitesse du pointeur de lecture et le taux d'échantillonnage
+      de la sortie, par exemple 0,5 donnera une vitesse de lecture moitié de la vitesse originale.
+    </para>
+
+    <para>
+      <emphasis>imode</emphasis> -- +1, le pointeur de lecture progresse en avant (direction naturelle du
+      fichier source), -1, en arrière (direction opposée à la direction naturelle du fichier source), ou 0,
+      pour une direction aléatoire.
+    </para>
+
+    <para>
+      <emphasis>ithd</emphasis> -- seuil ; lorsque le signal échantillonné dans la table est plus petit
+      que <emphasis>ithd</emphasis>, il est ignoré.
+    </para>
+
+    <para>
+      <emphasis>ifn</emphasis> -- numéro de la table de fonction de la source sonore.
+    </para>
+
+    <para>
+      <emphasis>ipshift</emphasis> -- contrôle de la transposition. Si <emphasis>ipshift</emphasis>
+      vaut 0, la hauteur sera fixée aléatoirement dans un ambitus d'une octave de part et d'autre de
+      la hauteur de chaque grain. Si <emphasis>ipshift</emphasis> vaut 1, 2, 3 ou 4, on peut fixer
+      jusqu'à quatre hauteurs différentes pour le nombre de voix défini dans <emphasis>ivoice</emphasis>.
+      Les paramètres facultatifs <emphasis>ipitch1</emphasis>, <emphasis>ipitch2</emphasis>,
+      <emphasis>ipitch3</emphasis> et <emphasis>ipitch4</emphasis> servent à quantifier les transpositions.
+    </para>
+
+    <para>
+      <emphasis>igskip</emphasis> -- décalage initial depuis le début de la table de fonction en sec.
+    </para>
+
+    <para>
+      <emphasis>igskip_os</emphasis> -- fluctuation aléatoire du pointeur de lecture en sec, 0 signifiant
+      pas de décalage.
+    </para>
+
+    <para>
+      <emphasis>ilength</emphasis> -- longueur de la partie de la table à utiliser à partir de
+      <emphasis>igskip</emphasis> en sec.
+    </para>
+
+    <para>
+      <emphasis>igap_os</emphasis> -- fluctuation aléatoire de l'écart en % de la taille de l'écart,
+      0 signifiant pas de décalage.
+    </para>
+
+    <para>
+      <emphasis>igsize_os</emphasis> -- fluctuation aléatoire de la taille du grain en % de la taille
+      du grain, 0 signifiant pas de décalage.
+    </para>
+
+    <para>
+      <emphasis>iatt</emphasis> -- attaque de l'enveloppe du grain en % de la taille du grain.
+    </para>
+
+    <para>
+      <emphasis>idec</emphasis> -- chute de l'enveloppe du grain en % de la taille du grain.
+    </para>
+
+    <para>
+      <emphasis>iseed</emphasis> (facultatif, par défaut 0,5) -- graine pour le générateur de
+      nombre aléatoire.
+    </para>
+
+    <para>
+      <emphasis>ipitch1, ipitch2, ipitch3, ipitch4</emphasis> (facultatif, par défaut 1) --
+      paramètre de transposition, utilisé lorsque <emphasis>ipshift</emphasis> vaut 1, 2, 3 ou 4.
+      La transposition est réalisée par une technique de pondération temporelle avec interpolation
+      linéaire entre les points. La valeur par défaut de 1 signifie la hauteur originale.
+    </para>
+
+    <para>
+      <emphasis>ifnenv</emphasis> (facultatif, par défaut 0) -- numéro de la table de fonction
+      utilisée pour générer la forme de l'enveloppe.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>xamp</emphasis> -- amplitude.
+    </para>
+
+    <para>
+      <emphasis>kgap</emphasis> -- écart entre les grains en sec.
+    </para>
+
+    <para>
+      <emphasis>kgsize</emphasis> -- taille du grain en sec.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode granule. Il utilise les fichiers
+      <ulink url="examples/granule.csd"><citetitle>granule.csd</citetitle></ulink>, et
+      <ulink url="examples/mary.wav"><citetitle>mary.wav</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode granule.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/granule.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+   </para>
+
+   <para>
+     L'exemple ci-dessus lit un fichier son nommé <emphasis>mary.wav</emphasis> dans la table de
+     fonction numéro 1 en gardant 262 144 échantillons. Il génère 10 secondes de sortie stéréo à
+     partir de la table de fonction. Dans le fichier orchestre, tous les paramètres nécessaires au
+     contrôle de la synthèse proviennent du fichier partition. Un générateur de fonction
+     <emphasis>linseg</emphasis> est utilisé pour produire une enveloppe avec une attaque et une
+     chute linéaires de 0,5 secondes. On obtient un effet stéréo par l'utilisation de différentes
+     graines pour les deux appels de la fonction <emphasis>granule</emphasis>. Dans l'exemple, on
+     ajoute 0,17 à p20 avant de le passer au second appel de <emphasis>granule</emphasis> pour
+     s'assurer que toutes les fluctuations aléatoires seront différentes de celles du premier appel.
+   </para>
+
+   <para>
+     Voici la signification des paramètres dans le fichier partition :
+
+     <informaltable frame="all">
+       <tgroup cols="2" colsep="1" rowsep="1">
+         <thead>
+           <row>
+             <entry>Parameter</entry>
+             <entry>Interpreted As</entry>
+           </row>
+         </thead>
+
+         <tbody>
+           <row>
+             <entry>p5 (<emphasis>ivoice</emphasis>)</entry>
+             <entry>le nombre de voix est fixé à 64</entry>
+           </row>
+
+           <row>
+             <entry>p6 (<emphasis>iratio</emphasis>)</entry>
+             <entry>fixé à 0,5, on lit la table d'onde deux fois moins vite que le taux de la sortie
+             audio</entry>
+           </row>
+
+           <row>
+             <entry>p7 (<emphasis>imode</emphasis>)</entry>
+             <entry>fixé à 0, le pointeur du grain ne se déplace qu'en avant</entry>
+           </row>
+
+           <row>
+             <entry>p8 (<emphasis>ithd</emphasis>)</entry>
+             <entry>fixé à 0, pas de détection de seuil</entry>
+           </row>
+
+           <row>
+             <entry>p9 (<emphasis>ifn</emphasis>)</entry>
+             <entry>fixé à 1, on utilise la table de fonction numéro 1</entry>
+           </row>
+
+           <row>
+             <entry>p10 (<emphasis>ipshift</emphasis>)</entry>
+             <entry>fixé à 4, quatre hauteurs différentes seront générées</entry>
+           </row>
+
+           <row>
+             <entry>p11 (<emphasis>igskip</emphasis>)</entry>
+             <entry>fixé à 0 et p12 (<emphasis>igskip_os</emphasis>) est fixé à 0,005, pas de
+             décalage par rapport au début de table d'onde et on utilise une fluctuation aléatoire
+             de 5 ms</entry>
+           </row>
+
+           <row>
+             <entry>p13 (<emphasis>ilength</emphasis>)</entry>
+             <entry>fixé à 5, on n'utilise que 5 secondes de la table d'onde</entry>
+           </row>
+
+           <row>
+             <entry>p14 (<emphasis>kgap</emphasis>)</entry>
+             <entry>fixé à 0,01 et p15 (<emphasis>igap_os</emphasis>) est fixé à 50, on utilise un
+             écart de 10 ms avec une fluctuation aléatoire de 50%</entry>
+           </row>
+
+           <row>
+             <entry>p16 (<emphasis>kgsize</emphasis>)</entry>
+             <entry>fixé à 0,02 et p17 (<emphasis>igsize_os</emphasis>) est fixé à 50, la durée du
+             grain est de 20 ms avec une fluctation aléatoire de 50%</entry>
+           </row>
+
+           <row>
+             <entry>p18 (<emphasis>iatt</emphasis>) et p19 (<emphasis>idec</emphasis>)</entry>
+             <entry>fixés à 30, on applique une attaque et une chute linéaires de 30% au grain</entry>
+           </row>
+
+           <row>
+             <entry>p20 (<emphasis>iseed</emphasis>)</entry>
+             <entry>la graine pour le générateur de nombre aléatoire est fixée à 0,39</entry>
+           </row>
+
+           <row>
+             <entry>p21 - p24</entry>
+             <entry>les hauteurs sont fixées à 1, soit la hauteur originale, 1,42 soit une quinte
+             plus haut, 0,29 soit une septième plus bas et enfin 2 soit une octave plus haut.</entry>
+           </row>
+         </tbody>
+       </tgroup>
+     </informaltable>
+   </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : Allan Lee</para>
+    <para>Belfast</para>
+    <para>1996</para>
+    <para>Nouveau dans la version 3.35</para>
+  </refsect1>
+</refentry>

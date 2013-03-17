@@ -1,0 +1,89 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vstparamset">
+<indexterm id="IndexVstParamSet"><primary>vstparamset</primary></indexterm>
+  <refentryinfo><title>Plugin Hosting:VST</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vstparamset,vstparamget</refentrytitle>
+  </refmeta>
+  
+  <refnamediv>
+    <refname>vstparamset</refname>
+    <refpurpose>
+      Utilisé pour la communication de paramètres de et vers un greffon VST.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>vstparamset </command>instance, kparam, kvalue</synopsis>
+    <synopsis>kvalue <command>vstparamget </command>instance, kparam</synopsis>
+  </refsect1>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>vstparamset</emphasis> et <emphasis>vstparamget</emphasis> 
+      sont utilisés pour la communication de paramètres de et vers un greffon VST.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>instance</emphasis> - le numéro qui identifie le greffon, à
+      passer aux autres greffons de vst4cs.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para><emphasis>kparam</emphasis> - Le numéro du paramètre à fixer ou à lire.</para>
+    <para>
+      <emphasis>kvalue</emphasis> - la valeur à fixer ou la valeur retournée par
+      le greffon.
+    </para>
+    <para>
+      Les paramètres varient en fonction du greffon. Pour savoir quels sont les
+      paramètres disponibles, utiliser l'option <emphasis>iverbose</emphasis>
+      lorsque l'on charge le greffon avec <emphasis>vstinit</emphasis>. Noter que
+      le protocole de VST spécifie que toutes les valeurs de paramètre doivent
+      être comprises entre 0.0 et 1.0 inclus.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+      <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode vstparamset. Il utilise le fichier
+      <ulink url="examples/vst4cs.csd"><citetitle>vst4cs.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode vstparamset.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/vst4cs.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par &nameandres; et &namemichael;</para>
+    <para>
+      Utilise du code de VSTHost par Hermann Seib et de l'objet vst~ par Thomas
+      Grill.
+    </para>
+    <para>
+      VST est une marque déposée de Steinberg Media Technologies GmbH. 
+      Technologie de greffon VST par Steinberg.
+    </para>
+  </refsect1>
+</refentry>

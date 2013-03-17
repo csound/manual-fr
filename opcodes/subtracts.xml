@@ -1,0 +1,112 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="subtracts">
+<indexterm id="IndexMinus"><primary>-</primary></indexterm>
+  <refentryinfo><title>Mathematical Operations:Arithmetic and Logic Operations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>-</refentrytitle>
+  </refmeta>
+
+
+ 
+  <refnamediv>
+    <refname>-</refname>
+
+    <refpurpose>
+      Opérateur de soustraction.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Les opérateurs arithmétiques réalisent les opérations de changement de signe (négation), de
+      conservation de signe, le ET et le OU logiques, l'addition, la soustraction, la multiplication
+      et la division. A noter qu'une valeur ou une expression peut se trouver entre deux de ces
+      opérateurs, pour lesquels elle sera l'argument de gauche ou l'argument de droite comme dans
+      <literallayout>a + b * c.</literallayout>
+    </para>
+
+    <para>
+      Dans de tels cas trois règles s'appliquent :
+    </para>
+
+    <para>
+      1. &ast; et <emphasis>&sol;</emphasis> s'appliquent à leurs voisins plus fortement que &plus;
+      et &minus;. Ainsi l'expression ci-dessus est interprétée comme
+      <literallayout>a + (b * c)</literallayout>
+      avec &ast; s'appliquant à b et à c et ensuite &plus; s'appliquant à a et à b &ast; c.
+    </para>
+
+    <para>
+      2. <emphasis>&plus;</emphasis> et <emphasis>&minus;</emphasis> sont prioritaires par rapport à
+      &amp;&amp;, qui est lui-même prioritaire par rapport à &verbar;&verbar;:
+      <literallayout>a &amp;&amp; b - c &verbar;&verbar; d</literallayout>
+      est interprété comme
+      <literallayout>(a &amp;&amp; (b - c)) &verbar;&verbar; d</literallayout>
+    </para>
+
+    <para>
+      3. Lorsque deux opérateurs ont le même rang de priorité, les opérations s'enchaînent de gauche à
+      droite :
+      <literallayout>a - b - c</literallayout>
+      est interprété comme
+      <literallayout>(a - b) - c</literallayout>
+    </para>
+
+    <para>
+      On peut utiliser des parenthèses comme ci-dessus pour forcer un groupement particulier.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>&minus;</command>a  (pas de restriction de taux)</synopsis>
+    <synopsis>a <command>&minus;</command> b  (pas de restriction de taux)</synopsis>
+
+    <para>
+      où les arguments <emphasis>a</emphasis> and <emphasis>b</emphasis> peuvent être des expressions.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opérateur &minus;. Il utilise le fichier
+      <ulink url="examples/subtracts.csd"><citetitle>subtracts.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opérateur &minus;.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/subtracts.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>sutain time= note duration - attack - decay --> 3.0-0.1-0.2 = 2.7
+sutain time= note duration - attack - decay --> 3.0-0.5-1.5 = 1.0
+sutain time= note duration - attack - decay --> 5.0-4.0-0.5 = 0.5</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="adds"><citetitle>&plus;</citetitle></link>, 
+      <link linkend="opand"><citetitle>&amp;&amp;</citetitle></link>, 
+      <link linkend="opor"><citetitle>&verbar;&verbar;</citetitle></link>, 
+      <link linkend="multiplies"><citetitle>&ast;</citetitle></link>, 
+      <link linkend="divides"><citetitle>&sol;</citetitle></link>, 
+      <link linkend="raises"><citetitle>&circ;</citetitle></link>, 
+      <link linkend="modulus"><citetitle>&percnt;</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

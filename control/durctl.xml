@@ -1,0 +1,28 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.5
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="ControlDurctl">
+  <title>Instructions de contrôle de durée</title>
+
+  <para>
+    Les opcodes que l'on peut utiliser pour manipuler la durée d'une note sont :
+    <itemizedlist>
+      <listitem><para><link linkend="ihold"><citetitle>ihold</citetitle></link></para></listitem>
+      <listitem><para><link linkend="turnoff"><citetitle>turnoff</citetitle></link></para></listitem>
+      <listitem><para><link linkend="turnoff2"><citetitle>turnoff2</citetitle></link></para></listitem>
+      <listitem><para><link linkend="turnon"><citetitle>turnon</citetitle></link></para></listitem>
+    </itemizedlist>
+  </para>
+  <para>
+    Pour d'autres contrôles d'instrument en temps réel voir
+    <link linkend="ControlRealtime"><citetitle>Controle de l'Exécution en Temps Réel</citetitle></link> et
+    <link linkend="ControlInvocat"><citetitle>Appel d'Instrument</citetitle></link>.
+  </para>
+
+</section>

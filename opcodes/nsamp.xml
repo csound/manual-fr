@@ -1,0 +1,106 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.13
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="nsamp">
+<indexterm id="IndexNsamp"><primary>nsamp</primary></indexterm>
+  <refentryinfo><title>Table Control:Table Queries</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>nsamp</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>nsamp</refname>
+    <refpurpose>
+      Retourne le nombre d'échantillons chargés dans une table de fonction.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne le nombre d'échantillons chargés dans une table de fonction.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>nsamp</command>(x) (arg de taux-i seulement)</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Retourne le nombre d'échantillons chargés dans la table de fonction
+      numéro <emphasis>x</emphasis> par <emphasis>GEN01</emphasis>. Utile
+      lorsqu'un échantillon est plus court que la puissance de deux, taille de la
+      table de fonction qui le contient. Nouveau dans la version 3.49 de Csound.
+    </para>
+    <para>
+      A partir de la version 5.02 de Csound, <emphasis>nsamp</emphasis> travaille
+      avec les tables de fonction à longueur différée (voir
+      <link linkend="GEN01"><citetitle>GEN01</citetitle></link>).
+    </para>
+    <para>
+      <emphasis>nsamp</emphasis> diffère de <emphasis>ftlen</emphasis> en ce sens
+      que <emphasis>nsamp</emphasis> donne le nombre de trames d'échantillon
+      chargées, tandis que <emphasis>ftlen</emphasis> donne le nombre total
+      d'échantillons. Par exemple, avec un fichier son stéréo de 10000
+      échantillons, <emphasis>ftlen()</emphasis> retournera 19999 (c'est-à-dire
+      un total de 20000 échantillons mono, en excluant le point de garde), mais
+      <emphasis>nsamp()</emphasis> retournera 10000.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode nsamp. Il utilise les fichiers
+      <ulink url="examples/nsamp.csd"><citetitle>nsamp.csd</citetitle></ulink>
+      <ulink url="examples/kickroll.wav"><citetitle>kickroll.wav</citetitle></ulink>,
+      et <ulink url="examples/fox.wav"><citetitle>fox.wav</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode nsamp.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/nsamp.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+
+      Comme le fichier audio stéréo <quote>kickroll.wav</quote> a 37792 échantillons,
+      et que le fichier mono <quote>fox.wav</quote> a 121569 échantillons, sa
+      sortie comprendra des lignes comme celles-ci :
+      <screen>
+actual numbers of samples = 37792
+actual numbers of samples = 121569</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ftchnls"><citetitle>ftchnls</citetitle></link>,
+      <link linkend="ftlen"><citetitle>ftlen</citetitle></link>,
+      <link linkend="ftlptim"><citetitle>ftlptim</citetitle></link>,
+      <link linkend="ftsr"><citetitle>ftsr</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+        <member>Octobre 1998</member>
+      </simplelist>
+    </para>
+    <para>Exemple écrit par &namekevin;.</para>
+  </refsect1>
+</refentry>

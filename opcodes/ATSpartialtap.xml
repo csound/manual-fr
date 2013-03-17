@@ -1,0 +1,110 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.9
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ATSpartialtap">
+<indexterm id="IndexATSpartialtap"><primary>ATSpartialtap</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:ATS</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ATSpartialtap</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ATSpartialtap</refname>
+    <refpurpose> retourne une paire fréquence, amplitude à partir d'un opcode
+    <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>.
+    </refpurpose>
+  </refnamediv>
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>ATSpartialtap</emphasis> prend un numéro de partiel et retourne
+      une paire fréquence, amplitude. Les données de fréquence et d'amplitude
+      proviennent d'un opcode
+      <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kfrq, kamp <command>ATSpartialtap</command> ipartialnum</synopsis>
+  </refsect1>
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ipartialnum</emphasis> - indique le partiel que l'opcode
+      <emphasis>ATSpartialtap</emphasis> doit lire à partir d'un
+      <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>.
+    </para>
+  </refsect1>
+  <refsect1>
+      <title>Exécution</title>
+      <para>
+        <emphasis>kfrq</emphasis> - retourne la valeur de fréquence du partiel
+        demandé.
+      </para>
+      <para>
+        <emphasis>kamp</emphasis> - retourne la valeur d'amplitude du partiel
+        demandé.
+      </para>
+      <para>
+        <emphasis>ATSpartialtap</emphasis> prend un numéro de partiel et
+        retourne une paire fréquence, amplitude. Les données de fréquence et
+        d'amplitude proviennent d'un opcode
+        <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>
+        C'est une version restreinte
+        d'<link linkend="ATSread"><citetitle>ATSread</citetitle></link>, car
+        chaque opcode <link linkend="ATSread"><citetitle>ATSread</citetitle></link>
+        a son propre pointeur de temps indépendant et <emphasis>ATSpartialtap</emphasis>
+        est restreint aux données données par un
+        <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>.
+        Cette simplicité est son point fort.
+      </para>
+  </refsect1>
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode ATSpartialtap. Il utilise le fichier
+      <ulink url="examples/ATSpartialtap.csd"><citetitle>ATSpartialtap.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode ATSpartialtap.</title>
+          <xi:include href="examples-xml/ATSpartialtap.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Cet exemple utilise un <emphasis>ATSpartialtap</emphasis> et un
+      <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link> pour
+      lire les partiels 5, 20 et 30 de 'beats.ats'. On pourrait utiliser ces
+      amplitudes et ces fréquences pour resynthétiser ces partiels ou pour
+      faire quelque chose de tout à fait différent.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ATSread"><citetitle>ATSread</citetitle></link>, 
+      <link linkend="ATSreadnz"><citetitle>ATSreadnz</citetitle></link>, 
+      <link linkend="ATSinfo"><citetitle>ATSinfo</citetitle></link>, 
+      <link linkend="ATSsinnoi"><citetitle>ATSsinnoi</citetitle></link>, 
+      <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>, 
+      <link linkend="ATScross"><citetitle>ATScross</citetitle></link>, 
+      <link linkend="ATSinterpread"><citetitle>ATSinterpread</citetitle></link>, 
+      <link linkend="ATSadd"><citetitle>ATSadd</citetitle></link>, 
+      <link linkend="ATSaddnz"><citetitle>ATSaddnz</citetitle></link></para>
+  </refsect1>
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Alex Norman</member>
+        <member>Seattle,Washington</member>
+        <member>2004</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

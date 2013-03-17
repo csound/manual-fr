@@ -1,0 +1,87 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.4
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="dssictls">
+<indexterm id="IndexDssictls"><primary>dssictls</primary></indexterm>
+  <refentryinfo><title>Plugin Hosting:DSSI and LADSPA</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>dssictls</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>dssictls</refname>
+    <refpurpose>Envoie une information de contrôle à un greffon LADSPA ou DSSI.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>dssictls</command> ihandle, iport, kvalue, ktrigger </synopsis>
+  </refsect1>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>dssictls</emphasis> envoie des valeurs de contrôle sur le port
+      de contrôle d'un greffon.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Initialisation</title> 
+    <para>
+      <emphasis>ihandle</emphasis> - le numéro qui identifie le greffon,
+      généré par <link linkend="dssiinit"><citetitle>dssiinit</citetitle></link>.
+    </para>
+    <para>
+      <emphasis>iport</emphasis> - numéro du port de contrôle
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title> 
+    <para>
+      <emphasis>kvalue</emphasis> - valeur à assigner au port.
+    </para>
+    <para>
+      <emphasis>ktrigger</emphasis> - détermine si l'information de contrôle
+      doit être envoyée (<emphasis>ktrigger</emphasis> = 1) ou non. Utile pour
+      réduire l'information de contrôle, si l'on génère <emphasis>ktrigger</emphasis>
+      avec <link linkend="metro"><citetitle>metro</citetitle></link>.
+    </para>
+    <para>
+      <emphasis>dssictls</emphasis> envoie de l'information de contrôle sur le
+      port de contrôle d'un greffon LADSPA ou DSSI. Les ports de contrôle
+      valides et les valeurs autorisées sont donnés par
+      <link linkend="dssiinit"><citetitle>dssiinit</citetitle></link>. Si l'on
+      utilise des valeurs hors limite, il peut y avoir un comportement indéfini.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode dssictls. Il utilise le fichier
+      <ulink url="examples/dssictls.csd"><citetitle>dssictls.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode dssictls.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/dssictls.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>2005</para>  
+    <para>Par &nameandres;</para>
+    <para>Utilise du code provenant du sdk de LADSPA par Richard Furse.</para>
+  </refsect1>
+</refentry>

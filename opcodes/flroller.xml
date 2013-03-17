@@ -1,0 +1,202 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.14
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="FLroller">
+<indexterm id="IndexFLroller"><primary>FLroller</primary></indexterm>
+  <refentryinfo><title>FLTK:Valuators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>FLroller</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>FLroller</refname>
+    <refpurpose>
+      Un widget FLTK qui crée une molette.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>FLroller</emphasis> est une sorte de bouton rotatif, mais
+      disposé transversalement (une molette).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kout, ihandle <command>FLroller</command> &quot;label&quot;, imin, imax, istep, iexp, itype, idisp, \
+      iwidth, iheight, ix, iy</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ihandle</emphasis> -- un identifiant (un nombre entier) qui
+      référence de manière univoque le widget correspondant. Il est utilisé par
+      d'autres opcodes qui modifient les propriété du widget (voir
+      <link linkend="ControlFltkAppearance"><citetitle>Modifier l'Apparence des
+      Widgets FLTK</citetitle></link>). Il est automatiquement retourné par
+      <emphasis>FLroller</emphasis> et ne doit pas être fixé par l'étiquette de
+      l'utilisateur. (L'étiquette de l'utilisateur est une chaîne entre
+      guillemets contenant un texte fourni par l'utilisateur placé à côté du
+      widget.)
+    </para>
+
+    <para>
+      <emphasis><quote>label</quote></emphasis> -- une chaîne entre guillemets
+      contenant un texte fourni par l'utilisateur placé à côté du widget.
+    </para>
+
+    <para>
+      <emphasis>imin</emphasis> -- mvaleur minimale de l'intervalle de sortie.
+    </para>
+
+    <para>
+      <emphasis>imax</emphasis> -- valeur maximale de l'intervalle de sortie.
+    </para>
+
+    <para>
+      <emphasis>istep</emphasis> -- un nombre en virgule flottante indiquant
+      le pas d'incrémentation du valuateur à chaque clic de souris. L'argument
+      <emphasis>istep</emphasis> permet de ralentir le mouvement de la molette,
+      ce qui autorise une précision arbitraire.
+    </para>
+
+    <para>
+      <emphasis>iexp</emphasis> -- un nombre entier indiquant le comportement
+      du valuateur :
+      <itemizedlist>
+        <listitem><para>0 = la sortie est linéaire</para></listitem>
+        <listitem><para>-1 = la sortie est exponentielle</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      Tout autre nombre positif pour <emphasis>iexpx</emphasis> indique le
+      numéro d'une table existante lue par indexation avec interpolation
+      linéaire. Un numéro de table négatif supprime l'interpolation.
+    </para>
+
+    <warning>
+      <title>IMPORTANT !</title>
+      <para>
+        Noter que les tables utilisées par les valuateurs doivent être créées
+        avec l'opcode <link linkend="ftgen"><citetitle>ftgen</citetitle></link>
+        et placées dans l'orchestre avant le valuateur correspondant. On ne
+        peut pas les placer dans la partition. En fait, les tables placées
+        dans la partition sont créées après l'initialisation des opcodes
+        placés dans la section d'en-tête de l'orchestre.
+      </para>
+    </warning>
+
+    <para>
+      <emphasis>itype</emphasis> -- un nombre entier indiquant l'apparence du
+      valuateur.
+    </para>
+
+    <para>
+      L'argument <emphasis>itype</emphasis> accepte les valeurs suivantes :
+
+      <itemizedlist>
+        <listitem><para>1 - molette horizontale</para></listitem>
+        <listitem><para>2 - molette verticale</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>idisp</emphasis> -- un identifiant retourné par une instance
+      précédente de l'opcode
+      <link linkend="FLvalue"><citetitle>FLvalue</citetitle></link> pour afficher
+      la valeur courante du valuateur dans le widget <emphasis>FLvalue</emphasis>.
+      Si l'on ne veut pas utiliser cette possibilité d'affichage des valeurs
+      courantes, il faut donner à cet identifiant un nombre négatif.
+    </para>
+
+    <para>
+      <emphasis>iwidth</emphasis> -- largeur du widget.
+    </para>
+
+    <para>
+      <emphasis>iheight</emphasis> -- hauteur du widget.
+    </para>
+
+    <para>
+      <emphasis>ix</emphasis> -- position horizontale du coin supérieur gauche
+      du valuateur, relative au coin supérieur gauche de la fenêtre correspondante
+      (exprimée en pixels).
+    </para>
+
+    <para>
+      <emphasis>iy</emphasis> -- position verticale du coin supérieur gauche
+      du valuateur, relative au coin supérieur gauche de la fenêtre correspondante
+      (exprimée en pixels).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kout</emphasis> -- valeur en sortie.
+    </para>
+
+    <para>
+      <emphasis>FLroller</emphasis> est une sorte de bouton rotatif, mais disposé
+      transversalement (une molette) :
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/flroller.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>FLroller.</phrase>
+        </textobject>
+
+        <caption>
+          <para>FLroller.</para>
+        </caption>
+      </mediaobject>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode FLroller. Il utilise le fichier
+      <ulink url="examples/FLroller.csd"><citetitle>FLroller.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode FLroller.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/FLroller.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="FLcount"><citetitle>FLcount</citetitle></link>,
+      <link linkend="FLjoy"><citetitle>FLjoy</citetitle></link>,
+      <link linkend="FLknob"><citetitle>FLknob</citetitle></link>,
+      <link linkend="FLslider"><citetitle>FLslider</citetitle></link>,
+      <link linkend="FLtext"><citetitle>FLtext</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namegabriel;</para>
+    <para>Nouveau dans la version 4.22</para>
+    <para>Exemple écrit par Iain McCurdy, édité par &namekevin;.</para>
+  </refsect1>
+</refentry>
