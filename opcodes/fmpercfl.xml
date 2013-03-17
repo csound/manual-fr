@@ -32,8 +32,8 @@ english cvs version=1.15
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>ares <command>fmpercfl</command> kamp, kfreq, kc1, kc2, kvdepth, kvrate, ifn1, ifn2, \
-      ifn3, ifn4, ivfn</synopsis>
+    <synopsis>ares <command>fmpercfl</command> kamp, kfreq, kc1, kc2, kvdepth, kvrate[, ifn1, ifn2, \
+      ifn3, ifn4, ivfn]</synopsis>
   </refsect1>
  
   <refsect1>
@@ -120,7 +120,6 @@ english cvs version=1.15
         <member>Bath, UK</member>
       </simplelist>
     </para>
-
     <para>Nouveau dans la version 3.47 de Csound</para>
   </refsect1>
 </refentry>

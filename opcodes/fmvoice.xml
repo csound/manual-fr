@@ -14,8 +14,6 @@ english cvs version=1.14
     <refentrytitle>fmvoice</refentrytitle>
   </refmeta>
 
-
- 
   <refnamediv>
     <refname>fmvoice</refname>
     <refpurpose>
@@ -32,8 +30,8 @@ english cvs version=1.14
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>ares <command>fmvoice</command> kamp, kfreq, kvowel, ktilt, kvibamt, kvibrate, ifn1, \
-      ifn2, ifn3, ifn4, ivibfn</synopsis>
+    <synopsis>ares <command>fmvoice</command> kamp, kfreq, kvowel, ktilt, kvibamt, kvibrate[, ifn1, \
+      ifn2, ifn3, ifn4, ivibfn]</synopsis>
   </refsect1>
  
   <refsect1>

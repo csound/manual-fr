@@ -32,8 +32,8 @@ english cvs version=1.15
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>ares <command>fmbell</command> kamp, kfreq, kc1, kc2, kvdepth, kvrate, ifn1, ifn2, ifn3, \
-      ifn4, ivfn[, isus]</synopsis>
+    <synopsis>ares <command>fmbell</command> kamp, kfreq, kc1, kc2, kvdepth, kvrate[, ifn1, ifn2, ifn3, \
+      ifn4, ivfn, isus]</synopsis>
   </refsect1>
  
   <refsect1>
@@ -128,5 +128,6 @@ english cvs version=1.15
 
     <para>Nouveau dans la version 3.47 de Csound.</para>
     <para>Argument facultatif ajouté dans la version 5.16.</para>
+    <para>Plus d'arguments sont facultatifs depuis la version 6.0</para>
   </refsect1>
 </refentry>

@@ -32,8 +32,8 @@ english cvs version=1.15
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>ares <command>fmb3</command> kamp, kfreq, kc1, kc2, kvdepth, kvrate, ifn1, ifn2, ifn3, \
-      ifn4, ivfn</synopsis>
+    <synopsis>ares <command>fmb3</command> kamp, kfreq, kc1, kc2, kvdepth, kvrate[, ifn1, ifn2, ifn3, \
+      ifn4, ivfn]</synopsis>
   </refsect1>
  
   <refsect1>
@@ -91,7 +91,6 @@ english cvs version=1.15
 
       <example>
         <title>Exemple de l'opcode fmb3.</title>
-
         <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
         et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
         plus d'information sur l'utilisation des options de la ligne de commande.</para>
