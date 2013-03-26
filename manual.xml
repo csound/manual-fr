@@ -1043,6 +1043,7 @@ english cvs version=
 <!ENTITY opcodesreadk3 SYSTEM "opcodes/readk3.xml">
 <!ENTITY opcodesreadk4 SYSTEM "opcodes/readk4.xml">
 <!ENTITY opcodesreadk SYSTEM "opcodes/readk.xml">
+<!ENTITY opcodesreadscratch SYSTEM "opcodes/readscratch.xml">
 <!ENTITY opcodesreinit SYSTEM "opcodes/reinit.xml">
 <!ENTITY opcodesrelease SYSTEM "opcodes/release.xml">
 <!ENTITY opcodesremove SYSTEM "opcodes/remove.xml">
@@ -1444,6 +1445,7 @@ english cvs version=
 <!ENTITY opcodeswguide1 SYSTEM "opcodes/wguide1.xml">
 <!ENTITY opcodeswguide2 SYSTEM "opcodes/wguide2.xml">
 <!ENTITY opcodeswrap SYSTEM "opcodes/wrap.xml">
+<!ENTITY opcodeswritescratch SYSTEM "opcodes/writescratch.xml">
 <!ENTITY opcodeswterrain SYSTEM "opcodes/wterrain.xml">
 <!ENTITY opcodesxadsr SYSTEM "opcodes/xadsr.xml">
 <!ENTITY opcodesxin SYSTEM "opcodes/xin.xml">
@@ -1670,7 +1672,7 @@ english cvs version=
 
 <!ENTITY deprecated SYSTEM "deprecated/top.xml">
 
-<!ENTITY csoundversion "5.19.0">
+<!ENTITY csoundversion "6.0.0">
 ]>
 
 <book id="index" lang="fr">
