@@ -36,7 +36,7 @@ english cvs version=1.7
 
   <refsect1>
     <title>Syntaxe</title>
-      <synopsis> <command>chn_k</command> Sname, imode[, itype, idflt, imin, imax]</synopsis>
+      <synopsis> <command>chn_k</command> Sname, imode[, itype, idflt, imin, imax, ix, iy, iwidth, iheight, Sattributes]</synopsis>
       <synopsis> <command>chn_a</command> Sname, imode</synopsis>
       <synopsis> <command>chn_S</command> Sname, imode</synopsis>
   </refsect1>
@@ -93,7 +93,21 @@ english cvs version=1.7
       cas d'une échelle exponentielle, il doit également avoir le même signe que
       <emphasis>imin</emphasis>.
     </para>
-
+    <para>
+      <emphasis>ix</emphasis> -- position x suggérée pour le contrôleur.
+    </para>
+    <para>
+      <emphasis>iy</emphasis> -- position y suggérée pour le contrôleur.
+    </para>
+    <para>
+      <emphasis>iwidth</emphasis> -- position suggérée de la largeur pour le contrôleur.
+    </para>
+    <para>
+      <emphasis>iheight</emphasis> -- position suggérée de la hauteur pour le contrôleur.
+    </para>
+    <para>
+      <emphasis>Sattributes</emphasis> -- attributs pour le contrôleur.
+    </para>
   </refsect1>
 
   <refsect1>
@@ -150,7 +164,6 @@ english cvs version=1.7
         <emphasis role="oblock">endin</emphasis>
       </programlisting>
     </informalexample>
-
   </refsect1>
 
   <refsect1>
