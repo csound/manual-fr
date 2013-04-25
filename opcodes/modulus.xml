@@ -14,11 +14,8 @@ english cvs version=1.12
     <refentrytitle>&percnt;</refentrytitle>
   </refmeta>
 
-
- 
   <refnamediv>
     <refname>&percnt;</refname>
-
     <refpurpose>
       Opérateur modulo.
     </refpurpose>
@@ -82,6 +79,16 @@ english cvs version=1.12
   </refsect1>
 
   <refsect1>
+    <title>Arguments</title>
+    <para>
+      Les arguments de &percnt; peuvent être des valeurs scalaires ou des tableaux
+      (vecteurs) unidimensionnels de taux-k, ou n'importe quelle combinaison des
+      deux. Si l'un des arguments est un tableau, la valeur retournée le
+      sera également.
+    </para>
+  </refsect1>
+
+  <refsect1>
     <title>Exemples</title>
     <para>
       Voici un exemple de l'opérateur &percnt;. Il utilise le fichier
@@ -109,5 +116,10 @@ english cvs version=1.12
       <link linkend="divides"><citetitle>&sol;</citetitle></link>, 
       <link linkend="raises"><citetitle>&circ;</citetitle></link>
     </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>L'arithmétique sur les vecteurs est nouvelle dans le version 6.00</para>
   </refsect1>
 </refentry>

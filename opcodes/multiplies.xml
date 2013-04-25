@@ -73,6 +73,16 @@ english cvs version=1.13
   </refsect1>
 
   <refsect1>
+    <title>Arguments</title>
+    <para>
+      Les arguments de &ast; peuvent être des valeurs scalaires ou des tableaux
+      (vecteurs) unidimensionnels de taux-k, ou n'importe quelle combinaison des
+      deux. Si l'un des arguments est un tableau, la valeur retournée le
+      sera également.
+    </para>
+  </refsect1>
+
+  <refsect1>
     <title>Exemples</title>
     <para>
       Voici un exemple de l'opérateur &ast;. Il utilise le fichier
@@ -107,5 +117,10 @@ base amplitude * rising expon output = 0.8 * 0.998466</screen>
       <link linkend="raises"><citetitle>&circ;</citetitle></link>, 
       <link linkend="modulus"><citetitle>&percnt;</citetitle></link>
     </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>L'arithmétique sur les vecteurs est nouvelle dans le version 6.00</para>
   </refsect1>
 </refentry>

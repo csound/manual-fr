@@ -236,6 +236,7 @@ english cvs version=1.138
   &opcodesfilepeak;
   &opcodesfilesr;
   &opcodesfilevalid;
+  &opcodesfill;
   &opcodesfilter2;
   &opcodesfin;
   &opcodesfini;
@@ -457,6 +458,7 @@ english cvs version=1.138
   &opcodeskgoto;
   &opcodeskr;
   &opcodesksmps;
+  &opcodeslentab;
   &opcodeslfo;
   &opcodeslimit;
 <!--   &opcodeslinearalgebra; -->
@@ -582,7 +584,6 @@ english cvs version=1.138
   &opcodesOSCinit;
   &opcodesOSClisten;
   &opcodesOSCsend;
-  &opcodesmulttab;
   &opcodesmultitap;
   &opcodesmute;
   &opcodesmxadsr;
@@ -690,7 +691,6 @@ english cvs version=1.138
   &opcodesplaterev;
   &opcodesplltrack;
   &opcodespluck;
-  &opcodesplustab;
   &opcodespoisson;
   &opcodespolyaft;
   &opcodespolynomial;
@@ -985,6 +985,7 @@ english cvs version=1.138
   &opcodessystem;
   &opcodestb;
   &opcodestab;
+  &opcodestabgen;
   &opcodestabrec;
   &opcodestable;
   &opcodestable3;
@@ -1009,11 +1010,13 @@ english cvs version=1.138
   &opcodestablewkt;
   &opcodestablexkt;
   &opcodestablexseg;
+  &opcodestabmap
   &opcodestabmorph;
   &opcodestabmorpha;
   &opcodestabmorphak;
   &opcodestabmorphi;
   &opcodestabplay;
+  &opcodestabslice;
   &opcodestabsum;
   &opcodestab2pvs;
   &opcodestambourine;

@@ -94,18 +94,18 @@
 <para>
 <para/>
 <synopsis>a1, a2 <link linkend="crossfm">crossfm</link> xfrq1, xfrq2, xndx1, xndx2, kcps, ifn1, ifn2 [, iphs1] [, iphs2]</synopsis><synopsis>a1, a2 <link linkend="crossfm">crossfmi</link> xfrq1, xfrq2, xndx1, xndx2, kcps, ifn1, ifn2 [, iphs1] [, iphs2]</synopsis><synopsis>a1, a2 <link linkend="crossfm">crosspm</link> xfrq1, xfrq2, xndx1, xndx2, kcps, ifn1, ifn2 [, iphs1] [, iphs2]</synopsis><synopsis>a1, a2 <link linkend="crossfm">crosspmi</link> xfrq1, xfrq2, xndx1, xndx2, kcps, ifn1, ifn2 [, iphs1] [, iphs2]</synopsis><synopsis>a1, a2 <link linkend="crossfm">crossfmpm</link> xfrq1, xfrq2, xndx1, xndx2, kcps, ifn1, ifn2 [, iphs1] [, iphs2]</synopsis><synopsis>a1, a2 <link linkend="crossfm">crossfmpmi</link> xfrq1, xfrq2, xndx1, xndx2, kcps, ifn1, ifn2 [, iphs1] [, iphs2]</synopsis><para/>
-<synopsis>ares <link linkend="fmb3">fmb3</link> kamp, kfreq, kc1, kc2, kvdepth, kvrate, ifn1, ifn2, ifn3, \
-      ifn4, ivfn</synopsis><para/>
-<synopsis>ares <link linkend="fmbell">fmbell</link> kamp, kfreq, kc1, kc2, kvdepth, kvrate, ifn1, ifn2, ifn3, \
-      ifn4, ivfn[, isus]</synopsis><para/>
+<synopsis>ares <link linkend="fmb3">fmb3</link> kamp, kfreq, kc1, kc2, kvdepth, kvrate[, ifn1, ifn2, ifn3, \
+      ifn4, ivfn]</synopsis><para/>
+<synopsis>ares <link linkend="fmbell">fmbell</link> kamp, kfreq, kc1, kc2, kvdepth, kvrate[, ifn1, ifn2, ifn3, \
+      ifn4, ivfn, isus]</synopsis><para/>
 <synopsis>ares <link linkend="fmmetal">fmmetal</link> kamp, kfreq, kc1, kc2, kvdepth, kvrate, ifn1, ifn2, ifn3, \
       ifn4, ivfn</synopsis><para/>
-<synopsis>ares <link linkend="fmpercfl">fmpercfl</link> kamp, kfreq, kc1, kc2, kvdepth, kvrate, ifn1, ifn2, \
-      ifn3, ifn4, ivfn</synopsis><para/>
+<synopsis>ares <link linkend="fmpercfl">fmpercfl</link> kamp, kfreq, kc1, kc2, kvdepth, kvrate[, ifn1, ifn2, \
+      ifn3, ifn4, ivfn]</synopsis><para/>
 <synopsis>ares <link linkend="fmrhode">fmrhode</link> kamp, kfreq, kc1, kc2, kvdepth, kvrate, ifn1, ifn2, \
       ifn3, ifn4, ivfn</synopsis><para/>
-<synopsis>ares <link linkend="fmvoice">fmvoice</link> kamp, kfreq, kvowel, ktilt, kvibamt, kvibrate, ifn1, \
-      ifn2, ifn3, ifn4, ivibfn</synopsis><para/>
+<synopsis>ares <link linkend="fmvoice">fmvoice</link> kamp, kfreq, kvowel, ktilt, kvibamt, kvibrate[, ifn1, \
+      ifn2, ifn3, ifn4, ivibfn]</synopsis><para/>
 <synopsis>ares <link linkend="fmwurlie">fmwurlie</link> kamp, kfreq, kc1, kc2, kvdepth, kvrate, ifn1, ifn2, ifn3, \
       ifn4, ivfn</synopsis><para/>
 <synopsis>ares <link linkend="foscil">foscil</link> xamp, kcps, xcar, xmod, kndx, ifn [, iphs]</synopsis><para/>
@@ -381,33 +381,33 @@
 <title>Générateurs de signal : opcodes STK</title>
 <para>
 <para/>
-<synopsis>asignal <link linkend="STKBandedWG">STKBandedWG</link> ifrequency, iamplitude, [kc1, kv1[, kc2, kv2[, kc3, kv3[, kc4, kv4[, kc5, kv5[, kc6, kv6[, kc7, kv7]]]]]]]</synopsis><para/>
-<synopsis>asignal <link linkend="STKBeeThree">STKBeeThree</link> ifrequency, iamplitude, [kc1, kv1[, kc2, kv2[, kc3, kv3[, kc4, kv4[, kc5, kv5]]]]]</synopsis><para/>
-<synopsis>asignal <link linkend="STKBlowBotl">STKBlowBotl</link> ifrequency, iamplitude, [kc1, kv1[, kc2, kv2[, kc3, kv3[, kc4, kv4]]]]</synopsis><para/>
-<synopsis>asignal <link linkend="STKBlowHole">STKBlowHole</link> ifrequency, iamplitude, [kc1, kv1[, kc2, kv2[, kc3, kv3[, kc4, kv4[, kc5, kv5]]]]]</synopsis><para/>
-<synopsis>asignal <link linkend="STKBowed">STKBowed</link> ifrequency, iamplitude, [kc1, kv1[, kc2, kv2[, kc3, kv3[, kc4, kv4[, kc5, kv5]]]]]</synopsis><para/>
-<synopsis>asignal <link linkend="STKBrass">STKBrass</link> ifrequency, iamplitude, [kc1, kv1[, kc2, kv2[, kc3, kv3[, kc4, kv4[, kc5, kv5]]]]]</synopsis><para/>
-<synopsis>asignal <link linkend="STKClarinet">STKClarinet</link> ifrequency, iamplitude, [kc1, kv1[, kc2, kv2[, kc3, kv3[, kc4, kv4[, kc5, kv5]]]]]</synopsis><para/>
+<synopsis>asignal <link linkend="STKBandedWG">STKBandedWG</link> ifrequency, iamplitude, [kpress, kv1[, kmot, kv2[, klfo, kv3[, klfodepth, kv4[, kvel, kv5[, kstrk, kv6[, kinstr, kv7]]]]]]]</synopsis><para/>
+<synopsis>asignal <link linkend="STKBeeThree">STKBeeThree</link> ifrequency, iamplitude, [kop4, kv1[, kop3, kv2[, klfo, kv3[, klfodepth, kv4[, kadsr, kv5]]]]]</synopsis><para/>
+<synopsis>asignal <link linkend="STKBlowBotl">STKBlowBotl</link> ifrequency, iamplitude, [knoise, kv1[, klfo, kv2[, klfodepth, kv3[, kvol, kv4]]]]</synopsis><para/>
+<synopsis>asignal <link linkend="STKBlowHole">STKBlowHole</link> ifrequency, iamplitude, [kreed, kv1[, knoise, kv2[, khole, kv3[, kreg, kv4[, kbreath, kv5]]]]]</synopsis><para/>
+<synopsis>asignal <link linkend="STKBowed">STKBowed</link> ifrequency, iamplitude, [kpress, kv1[, kpos, kv2[, klfo, kv3[, klfodepth, kv4[, kvol, kv5]]]]]</synopsis><para/>
+<synopsis>asignal <link linkend="STKBrass">STKBrass</link> ifrequency, iamplitude, [klip, kv1[, kslide, kv2[, klfo, kv3[, klfodepth, kv4[, kvol, kv5]]]]]</synopsis><para/>
+<synopsis>asignal <link linkend="STKClarinet">STKClarinet</link> ifrequency, iamplitude, [kstiff, kv1[, knoise, kv2[, klfo, kv3[, klfodepth, kv4[, kbreath, kv5]]]]]</synopsis><para/>
 <synopsis>asignal <link linkend="STKDrummer">STKDrummer</link> ifrequency, iamplitude</synopsis><para/>
-<synopsis>asignal <link linkend="STKFMVoices">STKFMVoices</link> ifrequency, iamplitude, [kc1, kv1[, kc2, kv2[, kc3, kv3[, kc4, kv4[, kc5, kv5]]]]]</synopsis><para/>
-<synopsis>asignal <link linkend="STKFlute">STKFlute</link> ifrequency, iamplitude, [kc1, kv1[, kc2, kv2[, kc3, kv3[, kc4, kv4[, kc5, kv5]]]]]</synopsis><para/>
-<synopsis>asignal <link linkend="STKHevyMetl">STKHevyMetl</link> ifrequency, iamplitude, [kc1, kv1[, kc2, kv2[, kc3, kv3[, kc4, kv4[, kc5, kv5]]]]]</synopsis><para/>
-<synopsis>asignal <link linkend="STKMandolin">STKMandolin</link> ifrequency, iamplitude, [kc1, kv1[, kc2, kv2[, kc3, kv3[, kc4, kv4[, kc5, kv5]]]]]</synopsis><para/>
-<synopsis>asignal <link linkend="STKModalBar">STKModalBar</link> ifrequency, iamplitude, [kc1, kv1[, kc2, kv2[, kc3, kv3[, kc4, kv4[, kc5, kv5[, kc6, kv6[, kc7, kv7]]]]]]]</synopsis><para/>
-<synopsis>asignal <link linkend="STKMoog">STKMoog</link> ifrequency, iamplitude, [kc1, kv1[, kc2, kv2[, kc3, kv3[, kc4, kv4[, kc5, kv5]]]]]</synopsis><para/>
-<synopsis>asignal <link linkend="STKPercFlut">STKPercFlut</link> ifrequency, iamplitude, [kc1, kv1[, kc2, kv2[, kc3, kv3[, kc4, kv4[, kc5, kv5]]]]]</synopsis><para/>
+<synopsis>asignal <link linkend="STKFMVoices">STKFMVoices</link> ifrequency, iamplitude, [kvowel, kv1[, kspec, kv2[, klfo, kv3[, klfodepth, kv4[, kadsr, kv5]]]]]</synopsis><para/>
+<synopsis>asignal <link linkend="STKFlute">STKFlute</link> ifrequency, iamplitude, [kjet, kv1[, knoise, kv2[, klfo, kv3[, klfodepth, kv4[, kbreath, kv5]]]]]</synopsis><para/>
+<synopsis>asignal <link linkend="STKHevyMetl">STKHevyMetl</link> ifrequency, iamplitude, [kmod, kv1[, kcross, kv2[, klfo, kv3[, klfodepth, kv4[, kadsr, kv5]]]]]</synopsis><para/>
+<synopsis>asignal <link linkend="STKMandolin">STKMandolin</link> ifrequency, iamplitude, [kbody, kv1[, kpos, kv2[, ksus, kv3[, kdetune, kv4[, kmic, kv5]]]]]</synopsis><para/>
+<synopsis>asignal <link linkend="STKModalBar">STKModalBar</link> ifrequency, iamplitude, [khard, kv1[, kpos, kv2[, klfo, kv3[, klfodepth, kv4[, kmix, kv5[, kvol, kv6[, kinstr, kv7]]]]]]]</synopsis><para/>
+<synopsis>asignal <link linkend="STKMoog">STKMoog</link> ifrequency, iamplitude, [kq, kv1[, krate, kv2[, klfo, kv3[, klfodepth, kv4[, kvol, kv5]]]]]</synopsis><para/>
+<synopsis>asignal <link linkend="STKPercFlut">STKPercFlut</link> ifrequency, iamplitude, [kmod, kv1[, kcross, kv2[, klfo, kv3[, klfodepth, kv4[, kadsr, kv5]]]]]</synopsis><para/>
 <synopsis>asignal <link linkend="STKPlucked">STKPlucked</link> ifrequency, iamplitude</synopsis><para/>
-<synopsis>asignal <link linkend="STKResonate">STKResonate</link> ifrequency, iamplitude, [kc1, kv1[, kc2, kv2[, kc3, kv3[, kc4, kv4[, kc5, kv5]]]]]</synopsis><para/>
-<synopsis>asignal <link linkend="STKRhodey">STKRhodey</link> ifrequency, iamplitude, [kc1, kv1[, kc2, kv2[, kc3, kv3[, kc4, kv4[, kc5, kv5]]]]]</synopsis><para/>
-<synopsis>asignal <link linkend="STKSaxofony">STKSaxofony</link> ifrequency, iamplitude, [kc1, kv1[, kc2, kv2[, kc3, kv3[, kc4, kv4[, kc5, kv5[, kc6, kv6[, kc7, kv7]]]]]]]</synopsis><para/>
-<synopsis>asignal <link linkend="STKShakers">STKShakers</link> ifrequency, iamplitude, [kc1, kv1[, kc2, kv2[, kc3, kv3[, kc4, kv4[, kc5, kv5[, kc6, kv6]]]]]]</synopsis><para/>
-<synopsis>asignal <link linkend="STKSimple">STKSimple</link> ifrequency, iamplitude, [kc1, kv1[, kc2, kv2[, kc3, kv3[, kc4, kv4]]]]</synopsis><para/>
+<synopsis>asignal <link linkend="STKResonate">STKResonate</link> ifrequency, iamplitude, [kfreq, kv1[, kpole, kv2[, knotch, kv3[, kzero, kv4[, kenv, kv5]]]]]</synopsis><para/>
+<synopsis>asignal <link linkend="STKRhodey">STKRhodey</link> ifrequency, iamplitude, [kmod, kv1[, kcross, kv2[, klfo, kv3[, klfodepth, kv4[, kadsr, kv5]]]]]</synopsis><para/>
+<synopsis>asignal <link linkend="STKSaxofony">STKSaxofony</link> ifrequency, iamplitude, [kstiff, kv1[, kapert, kv2[, kblow, kv3[, knoise, kv4[, klfo, kv5[, klfodepth, kv6[, kbreath, kv7]]]]]]]</synopsis><para/>
+<synopsis>asignal <link linkend="STKShakers">STKShakers</link> ifrequency, iamplitude, [kenerg, kv1[, kdecay, kv2[, kshake, kv3[, knum, kv4[, kres, kv5[, kinstr, kv6]]]]]]</synopsis><para/>
+<synopsis>asignal <link linkend="STKSimple">STKSimple</link> ifrequency, iamplitude, [kpos, kv1[, kcross, kv2[, kenv, kv3[, kgain, kv4]]]]</synopsis><para/>
 <synopsis>asignal <link linkend="STKSitar">STKSitar</link> ifrequency, iamplitude</synopsis><para/>
-<synopsis>asignal <link linkend="STKStifKarp">STKStifKarp</link> ifrequency, iamplitude, [kc1, kv1[, kc2, kv2[, kc3, kv3]]]</synopsis><para/>
-<synopsis>asignal <link linkend="STKTubeBell">STKTubeBell</link> ifrequency, iamplitude, [kc1, kv1[, kc2, kv2[, kc3, kv3[, kc4, kv4[, kc5, kv5]]]]]</synopsis><para/>
-<synopsis>asignal <link linkend="STKVoicForm">STKVoicForm</link> ifrequency, iamplitude, [kc1, kv1[, kc2, kv2[, kc3, kv3[, kc4, kv4[, kc5, kv5]]]]]</synopsis><para/>
-<synopsis>asignal <link linkend="STKWhistle">STKWhistle</link> ifrequency, iamplitude, [kc1, kv1[, kc2, kv2[, kc3, kv3[, kc4, kv4[, kc5, kv5]]]]]</synopsis><para/>
-<synopsis>asignal <link linkend="STKWurley">STKWurley</link> ifrequency, iamplitude, [kc1, kv1[, kc2, kv2[, kc3, kv3[, kc4, kv4[, kc5, kv5]]]]]</synopsis><para/>
+<synopsis>asignal <link linkend="STKStifKarp">STKStifKarp</link> ifrequency, iamplitude, [kpos, kv1[, ksus, kv2[, kstretch, kv3]]]</synopsis><para/>
+<synopsis>asignal <link linkend="STKTubeBell">STKTubeBell</link> ifrequency, iamplitude, [kmod, kv1[, kcross, kv2[, klfo, kv3[, klfodepth, kv4[, kadsr, kv5]]]]]</synopsis><para/>
+<synopsis>asignal <link linkend="STKVoicForm">STKVoicForm</link> ifrequency, iamplitude, [kmix, kv1[, ksel, kv2[, klfo, kv3[, klfodepth, kv4[, kloud, kv5]]]]]</synopsis><para/>
+<synopsis>asignal <link linkend="STKWhistle">STKWhistle</link> ifrequency, iamplitude, [kmod, kv1[, knoise, kv2[, kfipfreq, kv3[, kfipgain, kv4[, kvol, kv5]]]]]</synopsis><para/>
+<synopsis>asignal <link linkend="STKWurley">STKWurley</link> ifrequency, iamplitude, [kmod, kv1[, kcross, kv2[, klfo, kv3[, klfodepth, kv4[, kadsr, kv5]]]]]</synopsis><para/>
 </para></formalpara>
 <para></para><para></para><formalpara>
 <title>Générateurs de signal : accès aux tables</title>
@@ -535,7 +535,7 @@
 <para/>
 <synopsis>kval <link linkend="chani">chani</link> kchan</synopsis><synopsis>aval <link linkend="chani">chani</link> kchan</synopsis><para/>
 <synopsis><link linkend="chano">chano</link> kval, kchan</synopsis><synopsis><link linkend="chano">chano</link> aval, kchan</synopsis><para/>
-<synopsis> <link linkend="chn">chn_k</link> Sname, imode[, itype, idflt, imin, imax]</synopsis><synopsis> <link linkend="chn">chn_a</link> Sname, imode</synopsis><synopsis> <link linkend="chn">chn_S</link> Sname, imode</synopsis><para/>
+<synopsis> <link linkend="chn">chn_k</link> Sname, imode[, itype, idflt, imin, imax, ix, iy, iwidth, iheight, Sattributes]</synopsis><synopsis> <link linkend="chn">chn_a</link> Sname, imode</synopsis><synopsis> <link linkend="chn">chn_S</link> Sname, imode</synopsis><para/>
 <synopsis><link linkend="chnclear">chnclear</link> Sname</synopsis><para/>
 <synopsis>gival <link linkend="chnexport">chnexport</link> Sname, imode[, itype, idflt, imin, imax]</synopsis><synopsis>gkval <link linkend="chnexport">chnexport</link> Sname, imode[, itype, idflt, imin, imax]</synopsis><synopsis>gaval <link linkend="chnexport">chnexport</link> Sname, imode</synopsis><synopsis>gSval <link linkend="chnexport">chnexport</link> Sname, imode</synopsis><para/>
 <synopsis>ival <link linkend="chnget">chnget</link> Sname</synopsis><synopsis>kval <link linkend="chnget">chnget</link> Sname</synopsis><synopsis>aval <link linkend="chnget">chnget</link> Sname</synopsis><synopsis>Sval <link linkend="chnget">chnget</link> Sname</synopsis><para/>
@@ -1064,13 +1064,17 @@
 <title>Contrôle des tables de fonction : requêtes sur une table</title>
 <para>
 <para/>
+<synopsis>karray[] <link linkend="fill">fill</link> ival1, ival2,.....ivaln</synopsis><para/>
 <synopsis><link linkend="ftchnls">ftchnls</link>(x) (arg de taux-i seulement)</synopsis><para/>
 <synopsis><link linkend="ftcps">ftcps</link>(x) (args de taux-i seulement)</synopsis><para/>
 <synopsis><link linkend="ftlen">ftlen</link>(x) (arg de taux-i seulement)</synopsis><para/>
 <synopsis><link linkend="ftlptim">ftlptim</link>(x) (arg de taux-i seulement)</synopsis><para/>
 <synopsis><link linkend="ftsr">ftsr</link>(x) (arg de taux-i seulement)</synopsis><para/>
+<synopsis>ir <link linkend="lentab">lentab</link> karray</synopsis><synopsis>kr <link linkend="lentab">lentab</link> karray</synopsis><para/>
 <synopsis><link linkend="nsamp">nsamp</link>(x) (arg de taux-i seulement)</synopsis><para/>
+<synopsis>karray <link linkend="tabgen">tabgen</link> istart, iend[, inc]</synopsis><para/>
 <synopsis>ires <link linkend="tableng">tableng</link> ifn</synopsis><synopsis>kres <link linkend="tableng">tableng</link> kfn</synopsis><para/>
+<synopsis>karray <link linkend="tabmap">tabmap</link> kinarray, String</synopsis><synopsis>karray <link linkend="tabmap">tabmap_i</link> kinarray, String</synopsis><para/>
 <synopsis>kr <link linkend="tabsum">tabsum</link> ifn[[, kmin] [, kmax]]</synopsis><para/>
 <synopsis><link linkend="tb">tb0_init</link> ifn</synopsis><synopsis><link linkend="tb">tb1_init</link> ifn</synopsis><synopsis><link linkend="tb">tb2_init</link> ifn</synopsis><synopsis><link linkend="tb">tb3_init</link> ifn</synopsis><synopsis><link linkend="tb">tb4_init</link> ifn</synopsis><synopsis><link linkend="tb">tb5_init</link> ifn</synopsis><synopsis><link linkend="tb">tb6_init</link> ifn</synopsis><synopsis><link linkend="tb">tb7_init</link> ifn</synopsis><synopsis><link linkend="tb">tb8_init</link> ifn</synopsis><synopsis><link linkend="tb">tb9_init</link> ifn</synopsis><synopsis><link linkend="tb">tb10_init</link> ifn</synopsis><synopsis><link linkend="tb">tb11_init</link> ifn</synopsis><synopsis><link linkend="tb">tb12_init</link> ifn</synopsis><synopsis><link linkend="tb">tb13_init</link> ifn</synopsis><synopsis><link linkend="tb">tb14_init</link> ifn</synopsis><synopsis><link linkend="tb">tb15_init</link> ifn</synopsis><synopsis>iout = <link linkend="tb">tb0</link>(iIndex)</synopsis><synopsis>kout = <link linkend="tb">tb0</link>(kIndex)</synopsis><synopsis>iout = <link linkend="tb">tb1</link>(iIndex)</synopsis><synopsis>kout = <link linkend="tb">tb1</link>(kIndex)</synopsis><synopsis>iout = <link linkend="tb">tb2</link>(iIndex)</synopsis><synopsis>kout = <link linkend="tb">tb2</link>(kIndex)</synopsis><synopsis>iout = <link linkend="tb">tb3</link>(iIndex)</synopsis><synopsis>kout = <link linkend="tb">tb3</link>(kIndex)</synopsis><synopsis>iout = <link linkend="tb">tb4</link>(iIndex)</synopsis><synopsis>kout = <link linkend="tb">tb4</link>(kIndex)</synopsis><synopsis>iout = <link linkend="tb">tb5</link>(iIndex)</synopsis><synopsis>kout = <link linkend="tb">tb5</link>(kIndex)</synopsis><synopsis>iout = <link linkend="tb">tb6</link>(iIndex)</synopsis><synopsis>kout = <link linkend="tb">tb6</link>(kIndex)</synopsis><synopsis>iout = <link linkend="tb">tb7</link>(iIndex)</synopsis><synopsis>kout = <link linkend="tb">tb7</link>(kIndex)</synopsis><synopsis>iout = <link linkend="tb">tb8</link>(iIndex)</synopsis><synopsis>kout = <link linkend="tb">tb8</link>(kIndex)</synopsis><synopsis>iout = <link linkend="tb">tb9</link>(iIndex)</synopsis><synopsis>kout = <link linkend="tb">tb9</link>(kIndex)</synopsis><synopsis>iout = <link linkend="tb">tb10</link>(iIndex)</synopsis><synopsis>kout = <link linkend="tb">tb10</link>(kIndex)</synopsis><synopsis>iout = <link linkend="tb">tb11</link>(iIndex)</synopsis><synopsis>kout = <link linkend="tb">tb11</link>(kIndex)</synopsis><synopsis>iout = <link linkend="tb">tb12</link>(iIndex)</synopsis><synopsis>kout = <link linkend="tb">tb12</link>(kIndex)</synopsis><synopsis>iout = <link linkend="tb">tb13</link>(iIndex)</synopsis><synopsis>kout = <link linkend="tb">tb13</link>(kIndex)</synopsis><synopsis>iout = <link linkend="tb">tb14</link>(iIndex)</synopsis><synopsis>kout = <link linkend="tb">tb14</link>(kIndex)</synopsis><synopsis>iout = <link linkend="tb">tb15</link>(iIndex)</synopsis><synopsis>kout = <link linkend="tb">tb15</link>(kIndex)</synopsis><para/>
 </para></formalpara>

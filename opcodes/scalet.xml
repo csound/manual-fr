@@ -17,27 +17,27 @@ english cvs version=
   <refnamediv>
     <refname>scalet</refname>
     <refpurpose>
-      Mise à l'échelle des valeurs dans une partie d'un vecteur.
+      Mise à l'échelle des valeurs dans une partie d'un vecteur (tableau unidimensionnel).
     </refpurpose>
   </refnamediv>
  
   <refsect1>
     <title>Description</title>
     <para>
-      L'opcode <emphasis>scalet</emphasis> met à l'échelle une sous-région d'un
+      L'opcode <emphasis>scalet</emphasis> met à l'échelle une partie d'un
       vecteur entre un minimum et un maximum donnés.
     </para>
   </refsect1>
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis><command>scalet</command> tab, kmin, kmax[, kleft, kright]</synopsis>
+    <synopsis><command>scalet</command> tarray, kmin, kmax[, kleft, kright]</synopsis>
   </refsect1>
  
   <refsect1>
     <title>Exécution</title>
     <para>
-      <emphasis>tab</emphasis> -- table pour l'opération.
+      <emphasis>karray</emphasis> -- tableau pour l'opération.
     </para>
     <para>
       <emphasis>kmin, kmax</emphasis> -- valeurs du minimum et du maximum de la cible.
@@ -66,8 +66,6 @@ english cvs version=
   <refsect1>
     <title>Voir aussi</title>
     <para>
-      <link linkend="plustab"><citetitle>plustab</citetitle></link>, 
-      <link linkend="multtab"><citetitle>multtab</citetitle></link>, 
       <link linkend="maxtab"><citetitle>maxatab</citetitle></link>, 
       <link linkend="mintab"><citetitle>mintab</citetitle></link>, 
       <link linkend="sumtab"><citetitle>sumtab</citetitle></link>, 

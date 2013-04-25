@@ -17,7 +17,7 @@ english cvs version=
   <refnamediv>
     <refname>sumtab</refname>
     <refpurpose>
-      Retourne la somme des éléments dans un vecteur.
+      Retourne la somme des éléments dans un tableau.
     </refpurpose>
   </refnamediv>
  
@@ -25,13 +25,13 @@ english cvs version=
     <title>Description</title>
     <para>
       L'opcode <emphasis>sumtab</emphasis> retourne la somme de tous les éléments
-      d'un vecteur.
+      d'un tableau de taux-k.
     </para>
   </refsect1>
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>ksum <command>sumtab</command> tab</synopsis>
+    <synopsis>ksum <command>sumtab</command> karray</synopsis>
   </refsect1>
  
   <refsect1>
@@ -40,7 +40,7 @@ english cvs version=
       <emphasis>ksum</emphasis> -- variable pour le résultat.
     </para>
     <para>
-      <emphasis>tab</emphasis> -- table à lire.
+      <emphasis>karray</emphasis> -- tableau à lire.
     </para>
   </refsect1>
 
@@ -62,8 +62,6 @@ english cvs version=
   <refsect1>
     <title>Voir aussi</title>
     <para>
-      <link linkend="plustab"><citetitle>plustab</citetitle></link>, 
-      <link linkend="multtab"><citetitle>multtab</citetitle></link>, 
       <link linkend="maxtab"><citetitle>mintab</citetitle></link>, 
       <link linkend="mintab"><citetitle>sumtab</citetitle></link>, 
       <link linkend="scalet"><citetitle>scalet</citetitle></link>, 
@@ -80,5 +78,6 @@ english cvs version=
     </para>
 
     <para>Nouveau dans la version 5.14 de Csound.</para>
+    <para>Révisé dans la version 6.00 de Csound pour fonctionner avec les tableau multidimensionnels.</para>
   </refsect1>
 </refentry>

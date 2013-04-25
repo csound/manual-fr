@@ -1,19 +1,33 @@
 <CsoundSynthesizer>
-
+<CsOptions>
+; Select audio/midi flags here according to platform
+-n
+</CsOptions>
 <CsInstruments>
 
-instr 1
-  t1 init 10,1
-  t1[3] = 42
-     scalet t1, 0, 1
-  k1 sumtab t1
-  printk2 k1
-endin
-</CsInstruments>
+sr = 44100
+ksmps = 32
+nchnls = 2
+0dbfs  = 1
 
+instr 1
+  kT[]    tabgen 0, 10
+          scalet kT, 0, 1
+  printk2 kT[0]
+  printk2 kT[1]
+  printk2 kT[2]
+  printk2 kT[3]
+  printk2 kT[4]
+  printk2 kT[5]
+  printk2 kT[6]
+  printk2 kT[7]
+  printk2 kT[8]
+  printk2 kT[9]
+endin
+
+</CsInstruments>
 <CsScore>
-i1 0 0.1
+i 1 0 0
 e
 </CsScore>
-
 </CsoundSynthesizer>
