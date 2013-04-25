@@ -1,0 +1,89 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="tabslice">
+<indexterm id="IndexTabslice"><primary>tabslice</primary></indexterm>
+
+  <refentryinfo><title>Table Control:Table Queries</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tabslice</refentrytitle>
+  </refmeta>
+
+   <refnamediv>
+    <refname>tabslice</refname>
+    <refpurpose>
+      Prend une partie d'un vecteur.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Prend une partie d'un vecteur (tableau unidimensionnel de taux-k).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>karray <command>tabslice</command> kinarray, istart, iend</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>kinarray</emphasis> -- tableau en entrée.
+    </para>
+    <para>
+      <emphasis>istart</emphasis> -- indice du premier élément à prélever.
+    </para>
+    <para>
+      <emphasis>iend</emphasis> -- indice du dernier élément à prélever.
+    </para>
+  </refsect1>
+
+   <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>karray</emphasis> -- tableau retourné.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode tabslice. Il utilise le fichier
+      <ulink url="examples/tabslice.csd"><citetitle>tabslice.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode tabslice.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/tabslice.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="vectorial"><citetitle></citetitle>Opcodes vectoriels</link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Codemist Ltd</member>
+        <member>2013</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 6.00</para>
+</refentry>
