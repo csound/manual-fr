@@ -7,15 +7,15 @@ english cvs version=
 // *** Please remember to keep this information up to date! ***
 -->
 
-<refentry id="mintab">
-<indexterm id="IndexMintab"><primary>mintab</primary></indexterm>
+<refentry id="minarray">
+<indexterm id="IndexMinarray"><primary>minarray</primary></indexterm>
   <refentryinfo><title>Mathematical Operations: Vectors</title></refentryinfo>
   <refmeta>
-    <refentrytitle>mintab</refentrytitle>
+    <refentrytitle>minarray</refentrytitle>
   </refmeta>
 
   <refnamediv>
-    <refname>mintab</refname>
+    <refname>minarray</refname>
     <refpurpose>
       Retourne la valeur minimale dans un tableau.
     </refpurpose>
@@ -24,14 +24,14 @@ english cvs version=
   <refsect1>
     <title>Description</title>
     <para>
-      L'opcode <emphasis>mintab</emphasis> retourne la valeur minimale dans un
+      L'opcode <emphasis>minarray</emphasis> retourne la valeur minimale dans un
       tableau de taux-k.
     </para>
   </refsect1>
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>kmin <command>mintab</command> karray</synopsis>
+    <synopsis>kmin <command>minarray</command> karray</synopsis>
   </refsect1>
  
   <refsect1>
@@ -47,10 +47,10 @@ english cvs version=
   <refsect1>
     <title>Exemples</title>
     <para>
-      Voici un exemple de l'opcode mintab. Il utilise le fichier
+      Voici un exemple de l'opcode minarray. Il utilise le fichier
       <ulink url="examples/minarray.csd"><citetitle>minarray.csd</citetitle></ulink>.
       <example>
-        <title>Exemple de l'opcode mintab.</title>
+        <title>Exemple de l'opcode minarray.</title>
         <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
         et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
         d'information sur l'utilisation des options de la ligne de commande.</para>
@@ -62,9 +62,9 @@ english cvs version=
   <refsect1>
     <title>Voir aussi</title>
     <para>
-      <link linkend="maxtab"><citetitle>mintab</citetitle></link>, 
-      <link linkend="sumtab"><citetitle>sumtab</citetitle></link>, 
-      <link linkend="scalet"><citetitle>scalet</citetitle></link>, 
+      <link linkend="maxarray"><citetitle>minarray</citetitle></link>, 
+      <link linkend="sumarray"><citetitle>sumarray</citetitle></link>, 
+      <link linkend="scalearray"><citetitle>scalearray</citetitle></link>, 
     </para>
   </refsect1>
 

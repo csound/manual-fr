@@ -7,16 +7,16 @@ english cvs version=
 // *** Please remember to keep this information up to date! ***
 -->
 
-<refentry id="tabslice">
-<indexterm id="IndexTabslice"><primary>tabslice</primary></indexterm>
+<refentry id="slicearray">
+<indexterm id="IndexSlicearray"><primary>slicearray</primary></indexterm>
 
   <refentryinfo><title>Table Control:Table Queries</title></refentryinfo>
   <refmeta>
-    <refentrytitle>tabslice</refentrytitle>
+    <refentrytitle>slicearray</refentrytitle>
   </refmeta>
 
    <refnamediv>
-    <refname>tabslice</refname>
+    <refname>slicearray</refname>
     <refpurpose>
       Prend une partie d'un vecteur.
     </refpurpose>
@@ -31,7 +31,7 @@ english cvs version=
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>karray <command>tabslice</command> kinarray, istart, iend</synopsis>
+    <synopsis>karray <command>slicearray</command> kinarray, istart, iend</synopsis>
   </refsect1>
 
   <refsect1>
@@ -57,10 +57,10 @@ english cvs version=
   <refsect1>
     <title>Exemples</title>
     <para>
-      Voici un exemple de l'opcode tabslice. Il utilise le fichier
+      Voici un exemple de l'opcode slicearray. Il utilise le fichier
       <ulink url="examples/slicearray.csd"><citetitle>slicearray.csd</citetitle></ulink>.
       <example>
-        <title>Exemple de l'opcode tabslice.</title>
+        <title>Exemple de l'opcode slicearray.</title>
         <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
         et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
         d'information sur l'utilisation des options de la ligne de commande.</para>

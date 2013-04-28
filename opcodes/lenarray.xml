@@ -7,16 +7,16 @@ english cvs version=
 // *** Please remember to keep this information up to date! ***
 -->
 
-<refentry id="lentab">
-<indexterm id="IndexLentab"><primary>lentab</primary></indexterm>
+<refentry id="lenarray">
+<indexterm id="IndexLenarray"><primary>lenarray</primary></indexterm>
 
   <refentryinfo><title>Table Control:Table Queries</title></refentryinfo>
   <refmeta>
-    <refentrytitle>lentab</refentrytitle>
+    <refentrytitle>lenarray</refentrytitle>
   </refmeta>
 
    <refnamediv>
-    <refname>lentab</refname>
+    <refname>lenarray</refname>
     <refpurpose>
       Calcul de la longueur d'un vecteur.
     </refpurpose>
@@ -31,8 +31,8 @@ english cvs version=
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>ir <command>lentab</command> karray</synopsis>
-    <synopsis>kr <command>lentab</command> karray</synopsis>
+    <synopsis>ir <command>lenarray</command> karray</synopsis>
+    <synopsis>kr <command>lenarray</command> karray</synopsis>
   </refsect1>
 
   <refsect1>
@@ -49,10 +49,10 @@ english cvs version=
  <refsect1>
     <title>Exemples</title>
     <para>
-      Voici un exemple de l'opcode lentab. Il utilise le fichier
+      Voici un exemple de l'opcode lenarray. Il utilise le fichier
       <ulink url="examples/lenarray.csd"><citetitle>lenarray.csd</citetitle></ulink>.
       <example>
-        <title>Exemple de l'opcode lentab.</title>
+        <title>Exemple de l'opcode lenarray.</title>
         <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
         et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
         d'information sur l'utilisation des options de la ligne de commande.</para>

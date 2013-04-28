@@ -104,6 +104,7 @@ english cvs version=
 <!ENTITY csbeats SYSTEM "csbeats/top.xml">
 <!ENTITY csbeatssyntax SYSTEM "csbeats/syntax.xml">
 <!ENTITY csbeatsexample SYSTEM "csbeats/example.xml">
+
 <!ENTITY math SYSTEM "math/top.xml">
 <!ENTITY mathamp SYSTEM "math/amp.xml">
 <!ENTITY mathartlogic SYSTEM "math/artlogic.xml">
@@ -1275,7 +1276,7 @@ english cvs version=
 <!ENTITY opcodestabmorphi SYSTEM "opcodes/tabmorphi.xml">
 <!ENTITY opcodestabplay SYSTEM "opcodes/tabplay.xml">
 <!ENTITY opcodesslicearray SYSTEM "opcodes/slicearray.xml">
-<!ENTITY opcodessumarray SYSTEM "opcodes/sumarray.xml">
+<!ENTITY opcodestabsum SYSTEM "opcodes/tabsum.xml">
 <!ENTITY opcodestabrec SYSTEM "opcodes/tabrec.xml">
 <!ENTITY opcodestab2pvs SYSTEM "opcodes/tab2pvs.xml">
 <!ENTITY opcodestb SYSTEM "opcodes/tb.xml">
@@ -1786,7 +1787,6 @@ english cvs version=
     &orch;
     &score;
     &oviewfrontends;
-    &tclcsound;
     &oviewbuilding;
     &oviewlinks;
 

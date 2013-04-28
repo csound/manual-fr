@@ -7,16 +7,16 @@ english cvs version=
 // *** Please remember to keep this information up to date! ***
 -->
 
-<refentry id="fill">
-<indexterm id="IndexFill"><primary>fill</primary></indexterm>
+<refentry id="fillarray">
+<indexterm id="IndexFillarray"><primary>fillarray</primary></indexterm>
 
   <refentryinfo><title>Table Control:Table Queries</title></refentryinfo>
   <refmeta>
-    <refentrytitle>fill</refentrytitle>
+    <refentrytitle>fillarray</refentrytitle>
   </refmeta>
 
    <refnamediv>
-    <refname>fill</refname>
+    <refname>fillarray</refname>
     <refpurpose>
       Crée un vecteur avec initialisation.
     </refpurpose>
@@ -31,7 +31,7 @@ english cvs version=
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>karray[] <command>fill</command> ival1, ival2,.....ivaln</synopsis>
+    <synopsis>karray[] <command>fillarray</command> ival1, ival2,.....ivaln</synopsis>
   </refsect1>
 
   <refsect1>
@@ -44,10 +44,10 @@ english cvs version=
  <refsect1>
     <title>Exemples</title>
     <para>
-      Voici un exemple de l'opcode fill. Il utilise le fichier
+      Voici un exemple de l'opcode fillarray. Il utilise le fichier
       <ulink url="examples/fillarray.csd"><citetitle>fillarray.csd</citetitle></ulink>.
       <example>
-        <title>Exemple de l'opcode fill.</title>
+        <title>Exemple de l'opcode fillarray.</title>
         <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
         et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
         d'information sur l'utilisation des options de la ligne de commande.</para>

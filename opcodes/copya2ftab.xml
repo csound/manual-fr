@@ -7,15 +7,15 @@ english cvs version=
 // *** Please remember to keep this information up to date! ***
 -->
 
-<refentry id="copy2ftab">
-<indexterm id="IndexCopy2ftab"><primary>copy2ftab</primary></indexterm>
+<refentry id="copya2ftab">
+<indexterm id="IndexCopya2ftab"><primary>copya2ftab</primary></indexterm>
   <refentryinfo><title>Mathematical Operations: Vectors</title></refentryinfo>
   <refmeta>
-    <refentrytitle>copy2ftab</refentrytitle>
+    <refentrytitle>copya2ftab</refentrytitle>
   </refmeta>
 
   <refnamediv>
-    <refname>copy2ftab</refname>
+    <refname>copya2ftab</refname>
 
     <refpurpose>
       Copie les données d'un vecteur dans une f-table.
@@ -25,14 +25,14 @@ english cvs version=
   <refsect1>
     <title>Description</title>
     <para>
-      L'opcode <emphasis>copy2ftab</emphasis> prend une variable t-var et en
+      L'opcode <emphasis>copya2ftab</emphasis> prend une variable t-var et en
       copie le contenu dans une f-table.
     </para>
   </refsect1>
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis><command>copy2ftab</command> tab, kftbl</synopsis>
+    <synopsis><command>copya2ftab</command> tab, kftbl</synopsis>
   </refsect1>
  
   <refsect1>
@@ -48,7 +48,7 @@ english cvs version=
   <refsect1>
     <title>Voir aussi</title>
     <para>
-      <link linkend="copy2ttab"><citetitle>copy2ttab</citetitle></link>
+      <link linkend="copyf2array"><citetitle>copyf2array</citetitle></link>
     </para>
   </refsect1>
 

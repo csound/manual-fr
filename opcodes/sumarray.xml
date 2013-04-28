@@ -7,15 +7,15 @@ english cvs version=
 // *** Please remember to keep this information up to date! ***
 -->
 
-<refentry id="sumtab">
-<indexterm id="IndexSumtab"><primary>sumtab</primary></indexterm>
+<refentry id="sumarray">
+<indexterm id="IndexSumarray"><primary>sumarray</primary></indexterm>
   <refentryinfo><title>Mathematical Operations: Vectors</title></refentryinfo>
   <refmeta>
-    <refentrytitle>sumtab</refentrytitle>
+    <refentrytitle>sumarray</refentrytitle>
   </refmeta>
 
   <refnamediv>
-    <refname>sumtab</refname>
+    <refname>sumarray</refname>
     <refpurpose>
       Retourne la somme des éléments dans un tableau.
     </refpurpose>
@@ -24,14 +24,14 @@ english cvs version=
   <refsect1>
     <title>Description</title>
     <para>
-      L'opcode <emphasis>sumtab</emphasis> retourne la somme de tous les éléments
+      L'opcode <emphasis>sumarray</emphasis> retourne la somme de tous les éléments
       d'un tableau de taux-k.
     </para>
   </refsect1>
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>ksum <command>sumtab</command> karray</synopsis>
+    <synopsis>ksum <command>sumarray</command> karray</synopsis>
   </refsect1>
  
   <refsect1>
@@ -47,10 +47,10 @@ english cvs version=
   <refsect1>
     <title>Exemples</title>
     <para>
-      Voici un exemple de l'opcode sumtab. Il utilise le fichier
+      Voici un exemple de l'opcode sumarray. Il utilise le fichier
       <ulink url="examples/sumarray.csd"><citetitle>sumarray.csd</citetitle></ulink>.
       <example>
-        <title>Exemple de l'opcode sumtab.</title>
+        <title>Exemple de l'opcode sumarray.</title>
         <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
         et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
         d'information sur l'utilisation des options de la ligne de commande.</para>
@@ -62,9 +62,9 @@ english cvs version=
   <refsect1>
     <title>Voir aussi</title>
     <para>
-      <link linkend="maxtab"><citetitle>mintab</citetitle></link>, 
-      <link linkend="mintab"><citetitle>sumtab</citetitle></link>, 
-      <link linkend="scalet"><citetitle>scalet</citetitle></link>, 
+      <link linkend="maxarray"><citetitle>minarray</citetitle></link>, 
+      <link linkend="minarray"><citetitle>sumarray</citetitle></link>, 
+      <link linkend="scalearray"><citetitle>scalearray</citetitle></link>, 
     </para>
   </refsect1>
 

@@ -7,16 +7,16 @@ english cvs version=
 // *** Please remember to keep this information up to date! ***
 -->
 
-<refentry id="tabmap">
-<indexterm id="IndexTabmap"><primary>tabmap</primary></indexterm>
+<refentry id="maparray">
+<indexterm id="IndexMaparray"><primary>maparray</primary></indexterm>
 
   <refentryinfo><title>Table Control:Table Queries</title></refentryinfo>
   <refmeta>
-    <refentrytitle>tabmap</refentrytitle>
+    <refentrytitle>maparray</refentrytitle>
   </refmeta>
 
    <refnamediv>
-    <refname>tabmap</refname>
+    <refname>maparray</refname>
     <refpurpose>
       Applique une fonction à chaque élément d'un vecteur.
     </refpurpose>
@@ -32,8 +32,8 @@ english cvs version=
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>karray <command>tabmap</command> kinarray, String</synopsis>
-    <synopsis>karray <command>tabmap_i</command> kinarray, String</synopsis>
+    <synopsis>karray <command>maparray</command> kinarray, String</synopsis>
+    <synopsis>karray <command>maparray_i</command> kinarray, String</synopsis>
  </refsect1>
 
   <refsect1>
@@ -58,10 +58,10 @@ english cvs version=
   <refsect1>
     <title>Exemples</title>
     <para>
-      Voici un exemple de l'opcode tabmap. Il utilise le fichier
+      Voici un exemple de l'opcode maparray. Il utilise le fichier
       <ulink url="examples/maparray.csd"><citetitle>maparray.csd</citetitle></ulink>.
       <example>
-        <title>Exxemple de l'opcode tabmap.</title>
+        <title>Exxemple de l'opcode maparray.</title>
         <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
         et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
         d'information sur l'utilisation des options de la ligne de commande.</para>

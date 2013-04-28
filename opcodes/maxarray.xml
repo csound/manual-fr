@@ -7,15 +7,15 @@ english cvs version=
 // *** Please remember to keep this information up to date! ***
 -->
 
-<refentry id="maxtab">
-<indexterm id="IndexMaxtab"><primary>maxtab</primary></indexterm>
+<refentry id="maxarray">
+<indexterm id="IndexMaxarray"><primary>maxarray</primary></indexterm>
   <refentryinfo><title>Mathematical Operations: Vectors</title></refentryinfo>
   <refmeta>
-    <refentrytitle>maxtab</refentrytitle>
+    <refentrytitle>maxarray</refentrytitle>
   </refmeta>
 
   <refnamediv>
-    <refname>maxtab</refname>
+    <refname>maxarray</refname>
     <refpurpose>
       Retourne la valeur maximale dans un tableau.
     </refpurpose>
@@ -24,14 +24,14 @@ english cvs version=
   <refsect1>
     <title>Description</title>
     <para>
-      L'opcode <emphasis>maxtab</emphasis> retourne la valeur maximale dans un
+      L'opcode <emphasis>maxarray</emphasis> retourne la valeur maximale dans un
       tableau de taux-k.
     </para>
   </refsect1>
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>kmax <command>maxtab</command> karray</synopsis>
+    <synopsis>kmax <command>maxarray</command> karray</synopsis>
   </refsect1>
  
   <refsect1>
@@ -47,10 +47,10 @@ english cvs version=
   <refsect1>
     <title>Exemples</title>
     <para>
-      Voici un exemple de l'opcode maxtab. Il utilise le fichier
+      Voici un exemple de l'opcode maxarray. Il utilise le fichier
       <ulink url="examples/maxarray.csd"><citetitle>maxarray.csd</citetitle></ulink>.
       <example>
-        <title>Exemple de l'opcode maxtab.</title>
+        <title>Exemple de l'opcode maxarray.</title>
         <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
         et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
         d'information sur l'utilisation des options de la ligne de commande.</para>
@@ -62,9 +62,9 @@ english cvs version=
   <refsect1>
     <title>Voir aussi</title>
     <para>
-      <link linkend="mintab"><citetitle>mintab</citetitle></link>, 
-      <link linkend="sumtab"><citetitle>sumtab</citetitle></link>, 
-      <link linkend="scalet"><citetitle>scalet</citetitle></link>, 
+      <link linkend="minarray"><citetitle>minarray</citetitle></link>, 
+      <link linkend="sumarray"><citetitle>sumarray</citetitle></link>, 
+      <link linkend="scalearray"><citetitle>scalearray</citetitle></link>, 
     </para>
   </refsect1>
 
