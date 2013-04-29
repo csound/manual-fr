@@ -30,23 +30,24 @@ english cvs version=1.17
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>ares <command>poscil3</command> aamp, acps, ifn [, iphs]</synopsis>
+    <synopsis>ares <command>poscil3</command> aamp, acps [, ifn, iphs]</synopsis>
 
-    <synopsis>ares <command>poscil3</command> aamp, kcps, ifn [, iphs]</synopsis>
+    <synopsis>ares <command>poscil3</command> aamp, kcps [, ifn, iphs]</synopsis>
 
-    <synopsis>ares <command>poscil3</command> kamp, acps, ifn [, iphs]</synopsis>
+    <synopsis>ares <command>poscil3</command> kamp, acps [, ifn, iphs]</synopsis>
 
-    <synopsis>ares <command>poscil3</command> kamp, kcps, ifn [, iphs]</synopsis>
+    <synopsis>ares <command>poscil3</command> kamp, kcps [, ifn, iphs]</synopsis>
 
-    <synopsis>ires <command>poscil3</command> kamp, kcps, ifn [, iphs]</synopsis>
+    <synopsis>ires <command>poscil3</command> kamp, kcps [, ifn, iphs]</synopsis>
 
-    <synopsis>kres <command>poscil3</command> kamp, kcps, ifn [, iphs]</synopsis>
+    <synopsis>kres <command>poscil3</command> kamp, kcps [, ifn, iphs]</synopsis>
   </refsect1>
  
   <refsect1>
     <title>Initialisation</title>
     <para>
-      <emphasis>ifn</emphasis> -- numéro de la table de fonction
+      <emphasis>ifn</emphasis> (facultatif) -- numéro de la table de fonction.
+      Vaut -1 par défaut ce qui indique une onde sinus.
     </para>
     <para>
       <emphasis>iphs</emphasis> (facultatif, par défaut 0) -- phase initiale (table normalisée, index 0-1)

@@ -30,27 +30,29 @@ english cvs version=1.14
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>ares <command>poscil</command> aamp, acps, ifn [, iphs]</synopsis>
+    <synopsis>ares <command>poscil</command> aamp, acps [, ifn, iphs]</synopsis>
 
-    <synopsis>ares <command>poscil</command> aamp, kcps, ifn [, iphs]</synopsis>
+    <synopsis>ares <command>poscil</command> aamp, kcps [, ifn, iphs]</synopsis>
 
-    <synopsis>ares <command>poscil</command> kamp, acps, ifn [, iphs]</synopsis>
+    <synopsis>ares <command>poscil</command> kamp, acps [, ifn, iphs]</synopsis>
 
-    <synopsis>ares <command>poscil</command> kamp, kcps, ifn [, iphs]</synopsis>
+    <synopsis>ares <command>poscil</command> kamp, kcps [, ifn, iphs]</synopsis>
 
-    <synopsis>ires <command>poscil</command> kamp, kcps, ifn [, iphs]</synopsis>
+    <synopsis>ires <command>poscil</command> kamp, kcps [, ifn, iphs]</synopsis>
 
-    <synopsis>kres <command>poscil</command> kamp, kcps, ifn [, iphs]</synopsis>
+    <synopsis>kres <command>poscil</command> kamp, kcps [, ifn, iphs]</synopsis>
   </refsect1>
  
   <refsect1>
     <title>Initialisation</title>
     <para>
-      <emphasis>ifn</emphasis> -- numéro de la table de fonction
+      <emphasis>ifn</emphasis> (facultatif) -- numéro de la table de fonction.
+      Vaut -1 par défaut ce qui indique une onde sinus.
     </para>
 
     <para>
-      <emphasis>iphs</emphasis> (facultatif, par défaut 0) -- phase initiale (table normalisée, index 0-1)
+      <emphasis>iphs</emphasis> (facultatif, par défaut 0) -- phase initiale
+      (table normalisée, index 0-1)
     </para>
   </refsect1>
  
@@ -60,11 +62,12 @@ english cvs version=1.14
       <emphasis>ares</emphasis> -- signal de sortie
     </para>
     <para>
-      <emphasis>kamp</emphasis>, <emphasis>aamp</emphasis> -- l'amplitude du signal de sortie.
+      <emphasis>kamp</emphasis>, <emphasis>aamp</emphasis> -- l'amplitude du
+      signal de sortie.
     </para>
     <para>
-      <emphasis>kcps</emphasis>, <emphasis>acps</emphasis> -- la fréquence du signal de sortie en cycles
-      par seconde.
+      <emphasis>kcps</emphasis>, <emphasis>acps</emphasis> -- la fréquence du
+      signal de sortie en Hz.
     </para>
     <para>
       <emphasis>poscil</emphasis> (oscillateur de précision) est identique à
@@ -76,7 +79,7 @@ english cvs version=1.14
     </para>
     <para>
       Depuis Csound 4.22, <emphasis>poscil</emphasis> accepte aussi des valeurs de fréquence négatives et
-      il peut utiliser des valeurs de taux-a aussi bien pour l'amplitude que pour la fréquece. Ainsi, cet
+      il peut utiliser des valeurs de taux-a aussi bien pour l'amplitude que pour la fréquence. Ainsi, cet
       opcode permet la modulation d'amplitude (MA) et la modulation de fréquence (MF).
     </para>
     <para>

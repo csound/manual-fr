@@ -32,14 +32,16 @@ english cvs version=1.17
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>ares <command>oscil</command> xamp, xcps, ifn [, iphs]</synopsis>
-    <synopsis>kres <command>oscil</command> kamp, kcps, ifn [, iphs]</synopsis>
+    <synopsis>ares <command>oscil</command> xamp, xcps [, ifn, iphs]</synopsis>
+    <synopsis>kres <command>oscil</command> kamp, kcps [, ifn, iphs]</synopsis>
   </refsect1>
  
   <refsect1>
     <title>Initialisation</title>
     <para>
-      <emphasis>ifn</emphasis> -- numéro de la table de fonction. Nécessite un point de garde pour la lecture cyclique.
+      <emphasis>ifn</emphasis> (facultatif) -- numéro de la table de fonction.
+      Nécessite un point de garde pour la lecture cyclique. Vaut -1 par défaut
+      ce qui indique une onde sinus.
     </para>
 
     <para>
