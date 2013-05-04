@@ -158,9 +158,9 @@ B  0.000 ..  2.000 T  2.000 TT  2.000 M:  10000.0  10000.0</programlisting>
     <para>
       Les options <link linkend="FlagsCatMinusLowerI"><citetitle>-i</citetitle></link> et
       <link linkend="FlagsCatMinusLowerO"><citetitle>-o</citetitle></link> sont utilisées
-      pour spécifier une sortie en  à la place de l'habituelle sortie différée
-      dans un fichier. On utilise <literal>-o dac</literal> pour la sortie en 
-      et <literal>-i adc</literal> pour l'entrée en . Naturellement, on peut
+      pour spécifier une sortie en temps réel à la place de l'habituelle sortie différée
+      dans un fichier. On utilise <literal>-o dac</literal> pour la sortie en temps réel
+      et <literal>-i adc</literal> pour l'entrée en temps réel. Naturellement, on peut
       utiliser l'un ou les deux selon les possibilités matérielles. On peut aussi spécifier
       le matériel à utiliser en ajoutant un numéro ou un nom de périphérique au drapeau
       (voir <link linkend="FlagsCatMinusLowerI"><citetitle>-i</citetitle></link> et
@@ -209,7 +209,7 @@ B  0.000 ..  2.000 T  2.000 TT  2.000 M:  10000.0  10000.0</programlisting>
       qualité, mais consommeront plus de ressources système. Il n'y a pas de règle
       absolue pour fixer ksmps - différents orchestres nécessiteront différentes
       cadences de contrôle. Un instrument à guide d'onde nécessitera une valeur
-      de ksmps de 1 (et pourra ne pas convenir au ), alors qu'une simple
+      de ksmps de 1 (et pourra ne pas convenir au temps réel), alors qu'une simple
       synthèse FM pourra fonctionner avec de plus grandes valeurs de ksmps sans
       dégradation notable du son. Si cette synthèse FM doit jouer une ligne de
       basse monodique, on peut utiliser une très faible valeur de ksmps, cependant

@@ -266,7 +266,8 @@ client 24: 'PCR' [type=kernel]
           -Qhw:2,0,0</screen>
   <bridgehead>Temps-partagé</bridgehead>
     <para>Si vous avez la possibilité d'exécuter Csound en tant qu'utilisateur root,
-      l'option "--sched" permet d'améliorer spectaculairement les performances
+      l'option "--sched" permet d'améliorer spectaculairement les performances en
+      temps réel
        avec ALSA, cependant vous pouvez bloquer le système si vous faites
       quelque chose de stupide. N'UTILISEZ PAS "--sched" si vous choisissez JACK
       pour la sortie audio. JACK contrôle le temps-partagé pour les applications audio
