@@ -17,7 +17,8 @@ english cvs version=1.8
   <refnamediv>
     <refname>k</refname>
     <refpurpose>
-      Convertit un paramètre de taux-i en une valeur de taux-k.
+      Convertit un paramètre de taux-i en une valeur de taux-k. Ou convertit
+      une valeur de taux-a en une valeur de taux-k par sous-échantillonnage.
     </refpurpose>
   </refnamediv>
 
@@ -34,14 +35,13 @@ english cvs version=1.8
   <refsect1>
     <title>Syntaxe</title>
     <synopsis><command>k</command>(x) (arguments de taux-i seulement)</synopsis>
-
+    <synopsis><command>k</command>(x) (arguments de taux-a seulement)</synopsis>
     <para>
       où l'argument entre parenthèses peut être une expression. Les convertisseurs de valeur
       effectuent une transformation arithmétique d'unités d'une sorte en unités d'une autre sorte.
       Le résultat peut devenir ensuite un terme dans une autre expression.
     </para>
   </refsect1>
-
 
   <refsect1>
     <title>Voir aussi</title>
@@ -55,7 +55,9 @@ english cvs version=1.8
 
   <refsect1>
     <title>Crédits</title>
-    <para>Auteur : Istvan Varga</para>
+    <para>Auteur : &nameistvan;</para>
     <para>Nouveau dans la version 5.00 de Csound</para>
+    <para>Auteur : &namejohn;</para>
+    <para>Conversion de taux-a en taux-k ajoutée dans la version 6.00 de Csound.</para>
   </refsect1>
 </refentry>
