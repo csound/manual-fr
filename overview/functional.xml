@@ -1,0 +1,63 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="functional">
+  <title>Syntaxe fonctionnelle dans Csound6</title>
+  <para>
+    Csound6 a introduit une nouvelle syntaxe alternative dans le code de
+    l'orchestre. C'est à l'origine une caractéristique expérimentale qui a
+    certaines limitations comme expliqué ci-dessous. Elle permettra aussi
+    l'introduction de certaines caractéristiques du language sans compatibilité
+    ascendante.
+  </para>
+  <bridgehead>Vue d'ensemble</bridgehead>
+  <para>
+    Le principal aspect de la nouvelle syntaxe est que certains opcodes peuvent
+    être appelés en tant que fonctions en ligne dans le code de l'orchestre. La
+    forme générale en est l'expression:
+  </para>
+  <literallayout>
+   var* = op(exprlist*)
+  </literallayout>
+  <para>
+    où * indique une option, <emphasis>var</emphasis> est une variable unique
+    d'un des types de Csound6 et <emphasis>exprlist</emphasis> est une liste
+    d'expressions séparées par des virgules (ou une expression unique ou une
+    variable). On peut placer ces expressions n'importe où dans un instrument
+    ou dans un bloc d'opcodes. Les opérations d'initialisation peuvent également
+    être placées hors des blocs d'instrument. La syntaxe fonctionnelle peut
+    être mélangée avec du code de Csound standard.
+    </para>
+ <para>
+   Voici un exemple de ces expressions : 
+ </para>
+  <literallayout>
+
+   a1 = oscil(p4,p5)
+   out(vco2(p4*linen(1, 0.1, p3, 0.1), p5)
+   outs(oscili(in(), p5), in())
+
+  </literallayout>
+  <bridgehead>Restrictions</bridgehead>
+  <para>
+    La principale restriction est que seuls les opcodes à sortie unique (ou
+    sans sortie) sont autorisés. De plus, l'analyse des opcodes à plusieurs sorties facultatives (comme <emphasis>diskin</emphasis>) échouera sous cette
+    forme. On peut contourner cela en les incluant dans des opcodes définis par
+    l'utilisateur ou juste en mélangeant la syntaxe de Csound standard avec ce
+    nouveau style.
+  </para>
+  <para>
+    Une autre restriction est que, en l'absence d'indications de type, la sortie
+    polymorphe des opcodes est "bloquée" dans les types donnés. Par exemple les
+    oscillateurs standard utilisés de cette manière auront par défaut une sortie
+    de taux-a, tandis que les générateurs d'enveloppe produiront une sortie de
+    taux-k, à moins qu'une entrée de taux-a ne soit utilisée. Lorsque les
+    annotations de type seront totalement disponibles, cette restriction disparaitra.
+  </para>
+</section>

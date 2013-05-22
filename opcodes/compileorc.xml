@@ -1,0 +1,79 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="compileorc">
+<indexterm id="Indexcompileorc"><primary>compileorc</primary></indexterm>
+  <refentryinfo><title>Instrument Control: Compilation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>compileorc</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>compileorc</refname>
+    <refpurpose>
+      Compile un nouvel orchestre à partir d'un fichier ASCII.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>:
+      <emphasis>compileorc</emphasis> compile un ou plusieurs instruments pendant
+      l'initialisation, qui seront ajoutés au moteur courant. Si des numéros ou
+      des noms d'instrument existent déjà, ceux-ci seront remplacés, mais toute
+      instance de l'ancienne définition des instruments encore active continuera
+      son exécution jusqu'à son terme.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>compileorc</command> Sfilename</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis><quote>Sin</quote></emphasis> -- une chaîne de caractères
+      indiquant le nom du fichier contenant l'orchestre.
+    </para>    
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode compileorc. Il utilise le fichier
+      <ulink url="examples/compileorc.csd"><citetitle>compileorc.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode compileorc.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/compileorc.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="event"><citetitle>event</citetitle></link>,
+      <link linkend="event_i"><citetitle>event_i</citetitle></link>,
+      <link linkend="schedule"><citetitle>schedule</citetitle></link>,
+      <link linkend="schedwhen"><citetitle>schedwhen</citetitle></link>,
+      <link linkend="schedkwhen"><citetitle>schedkwhen</citetitle></link>,
+      <link linkend="schedkwhennamed"><citetitle>schedkwhennamed</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namevictor;, 2013 </para>
+  </refsect1>
+</refentry>

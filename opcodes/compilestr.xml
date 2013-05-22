@@ -1,0 +1,81 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="compilestr">
+<indexterm id="Indexcompilestr"><primary>compilestr</primary></indexterm>
+  <refentryinfo><title>Instrument Control: Compilation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>compilestr</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>compilestr</refname>
+    <refpurpose>
+      Compile un nouvel orchestre passé dans une chaîne ASCII.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>compilestr</emphasis> compile un ou plusieurs instruments pendant
+      l'initialisation, qui seront ajoutés au moteur courant. Si des numéros ou
+      des noms d'instrument existent déjà, ceux-ci seront remplacés, mais toute
+      instance de l'ancienne définition des instruments encore active continuera
+      son exécution jusqu'à son terme. Seules les nouvelles instances utiliseront
+      la nouvelle définition. Les chaînes de caractères sur plusieurs lignes sont
+      acceptées ; elles sont délimitées par {{ }}.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>compilestr</command> Sorch</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis><quote>Sin</quote></emphasis> -- une chaîne de caractères entre
+      guillemets ou délimitée par {{ }} et contenant un ou plusieurs intruments.
+    </para>    
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode compilestr. Il utilise le fichier
+      <ulink url="examples/compilestr.csd"><citetitle>compilestr.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode compilestr.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/compilestr.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="event"><citetitle>event</citetitle></link>,
+      <link linkend="event_i"><citetitle>event_i</citetitle></link>,
+      <link linkend="schedule"><citetitle>schedule</citetitle></link>,
+      <link linkend="schedwhen"><citetitle>schedwhen</citetitle></link>,
+      <link linkend="schedkwhen"><citetitle>schedkwhen</citetitle></link>,
+      <link linkend="schedkwhennamed"><citetitle>schedkwhennamed</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namevictor;, 2013 </para>
+  </refsect1>
+</refentry>

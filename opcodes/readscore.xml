@@ -1,0 +1,90 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="readscore">
+  <indexterm id="Indexreadscore"><primary>readscore</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Invocation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>readscore</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>readscore</refname>
+    <refpurpose>
+      Lecture, prétraitement et planification d'une partition depuis une chaîne.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>readscore</emphasis> produit un ou plusieurs évènements de
+      partition. Il gère les chaînes de caractères dans les mêmes conditions
+      que la partition standard, y compris le prétraitement (report, tri, rampes,
+      etc). Les chaînes sur plusieurs lignes sont acceptées et elles sont
+      délimitées par {{ }}.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>readscore</command> Sin </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis><quote>Sin</quote></emphasis> -- une chaîne de caractères entre
+      guillemets ou délimitée par {{ }} et contenant un ou plusieurs évènements
+      de partition.
+    </para>    
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode readscore. Il utilise le fichier
+      <ulink url="examples/readscore.csd"><citetitle>readscore.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode readscore.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/readscore.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <para>
+      On peut utiliser des opcodes de chaîne de caractères comme
+      <link linkend="sprintfk"><citetitle>sprintfk</citetitle></link> pour générer
+      les chaînes à passer à <emphasis>readscore</emphasis> comme ceci :
+<programlisting>
+Sfil <emphasis role="op">=</emphasis> "/Volumes/Bla/file.aif"
+String  <emphasis role="opc">sprintfk</emphasis> {{i 2 0 %f "%s" %f %f %f %f}}, idur, Sfil, p5, p6, knorm, iskip
+<emphasis role="opc">readscore</emphasis> String
+ </programlisting>
+    </para>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="event"><citetitle>event</citetitle></link>,
+      <link linkend="event_i"><citetitle>event_i</citetitle></link>,
+      <link linkend="schedule"><citetitle>schedule</citetitle></link>,
+      <link linkend="schedwhen"><citetitle>schedwhen</citetitle></link>,
+      <link linkend="schedkwhen"><citetitle>schedkwhen</citetitle></link>,
+      <link linkend="schedkwhennamed"><citetitle>schedkwhennamed</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namevictor;, 2013 </para>
+  </refsect1>
+</refentry>
