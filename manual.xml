@@ -39,6 +39,7 @@ english cvs version=
 <!ENTITY oviewrealtimelinux SYSTEM "overview/realtimelinux.xml">
 <!ENTITY oviewrealtimewindows SYSTEM "overview/realtimewindows.xml">
 <!ENTITY oviewrealtimemac SYSTEM "overview/realtimemac.xml">
+<!ENTITY oviewfunctional SYSTEM "overview/functional.xml">
 
 <!-- CSOUND 5 -->
 <!--<!ENTITY csound5licenses SYSTEM "csound5/licenses.xml">-->
@@ -50,7 +51,6 @@ english cvs version=
 <!ENTITY mixer SYSTEM "csound5/opcodes/mixer.xml">
 <!ENTITY signalflowgraph SYSTEM "csound5/opcodes/signalflowgraph.xml">
 <!ENTITY jacko SYSTEM "csound5/opcodes/Jacko.xml">
-<!ENTITY tclcsound SYSTEM "csound5/tclcsound.xml">
 <!-- <!ENTITY csound5opcodesSection SYSTEM "overview/cs5opcodes.xml"> -->
 
 
@@ -277,6 +277,8 @@ english cvs version=
 <!ENTITY opcodescngoto SYSTEM "opcodes/cngoto.xml">
 <!ENTITY opcodescomb SYSTEM "opcodes/comb.xml">
 <!ENTITY opcodescombinv SYSTEM "opcodes/combinv.xml">
+<!ENTITY opcodescompileorc SYSTEM "opcodes/compileorc.xml">
+<!ENTITY opcodescompilestr SYSTEM "opcodes/compilestr.xml">
 <!ENTITY opcodescompress SYSTEM "opcodes/compress.xml">
 <!ENTITY opcodesconnect SYSTEM "opcodes/connect.xml">
 <!ENTITY opcodescontrol SYSTEM "opcodes/control.xml">
@@ -1044,6 +1046,7 @@ english cvs version=
 <!ENTITY opcodesreadk3 SYSTEM "opcodes/readk3.xml">
 <!ENTITY opcodesreadk4 SYSTEM "opcodes/readk4.xml">
 <!ENTITY opcodesreadk SYSTEM "opcodes/readk.xml">
+<!ENTITY opcodesreadscore SYSTEM "opcodes/readscore.xml">
 <!ENTITY opcodesreadscratch SYSTEM "opcodes/readscratch.xml">
 <!ENTITY opcodesreinit SYSTEM "opcodes/reinit.xml">
 <!ENTITY opcodesrelease SYSTEM "opcodes/release.xml">

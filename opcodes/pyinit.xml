@@ -28,19 +28,31 @@ english cvs version=1.7
   <refsect1>
     <title>Description</title>
     <para>
-      Dans la version en ligne de commande de Csound, il faut d'abord invoquer
+      Dans Csound, il faut d'abord invoquer
       l'opcode <emphasis>pyinit</emphasis> dans l'en-tête de l'orchestre pour
       initialiser l'interpréteur Python, avant d'utiliser n'importe quel autre
       des opcodes Python.
     </para>
     <para>
-      Mais si l'on utilise les opcodes Python dans la version CsoundAC de Csound,
-      il n'est pas nécessaire d'invoquer <emphasis>pyinit</emphasis>, car CsoundAC
-      initialise automatiquement l'interpréteur Python. De plus, CsoundAC crée
-      automatiquement une interface Python à l'API de Csound, sous la forme d'une
+      Mais si l'on utilise les opcodes Python dans la version CsoundAC de Csound
+      ou depuis un frontal en python utilisant le module csnd6,
+      il n'est pas nécessaire d'invoquer <emphasis>pyinit</emphasis>, car
+      l'interpréteur est déjà initialisé. Dans ce cas, CsoundAC (ou le module
+      python csnd6) crée automatiquement une interface Python à l'API de Csound.
+      Dans CsoundAC cela existe sous la forme d'une
       instance globale de la classe <literal>CsoundAC.CppSound</literal>, nommée
-      <literal>csound</literal>. Ainsi, le code Python écrit dans l'orchestre de
+      <literal>csound</literal>. Dans un frontal en python qui importe le module
+      csnd6, le nom de la variable contenant l'instance de Csound dépend du code
+      du frontal. Ainsi, le code Python écrit dans l'orchestre de
       Csound a accès à l'objet global <literal>csound</literal>.
+    </para>
+    <para>
+      L'instance courante de Csound dans laquelle <emphasis>pyinit</emphasis>
+      a été appelé est mémorisée dans une variable globale de python appelée
+      _CSOUND_. Celle-ci contient l'adresse mémoire de l'instance et l'on peut
+      l'utiliser avec le module csnd6 via l'appel csoundGetInstance(instance).
+      Cette fonction python retourne un objet que l'on peut utiliser avec toutes
+      les fonctions de l'API de Csound. 
     </para>
   </refsect1>
   
@@ -48,9 +60,8 @@ english cvs version=1.7
     <title>Crédits</title>
     <para>
       Copyright (c) 2002 Maurizio Umberto Puxeddu. Tous droits réservés.
-      Certaines parties, copyright (c) 2004 et 2005 Michael Gogins.
-      Ce document a été mis à jour le 25 juillet 2004 et le 1er février
-      2005 par &namemichael;.
+      Certaines parties, copyright (c) 2004 et 2005 Michael Gogins et (c)
+      2013, V. Lazzarini.
     </para>
   </refsect1>
 </refentry>
