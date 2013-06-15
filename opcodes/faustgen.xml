@@ -1,0 +1,79 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="faustgen">
+<indexterm id="Indexfaustgen"><primary>faustgen</primary></indexterm>
+  <refentryinfo><title>Faust Opcodes: instantiaion</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>faustgen</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>faustgen</refname>
+    <refpurpose>
+      Compile, instancie et exécute un programme Faust compilé.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>faustgen</emphasis> invoque le compilateur à la volée, instancie
+      et exécute un programme Faust.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>ihandle, a1 [,a2, ...] faustgen</command> SCode [,ain1, ...] </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis><quote>Scode</quote></emphasis> -- une chaîne de caractères
+      contenant un programme Faust.
+    </para>    
+    <para>
+      <emphasis><quote>ihandle</quote></emphasis> -- une référence à l'instance
+      DSP de Faust que l'on peut utiliser pour accéder à ses contrôles avec
+      <emphasis>faustctl</emphasis>. 
+    </para>  
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+   	<para>
+      <emphasis><quote>ain1, ...</quote></emphasis> -- signaux d'entrée
+    </para>
+	<para>
+      <emphasis><quote>a1, ...</quote></emphasis> -- signaux de sortie
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode faustgen, avec un programme simple qui
+      mélange deux entrées :
+      <example>
+        <para>   
+<programlisting>
+idsp,a1 <emphasis role="op">faustgen</emphasis> "process=+;",ain1,ain2
+ </programlisting>
+        </para>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namevictor;, 2013 </para>
+  </refsect1>
+</refentry>

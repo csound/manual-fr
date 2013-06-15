@@ -1,0 +1,80 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="faustctl">
+<indexterm id="Indexfaustctl"><primary>faustctl</primary></indexterm>
+  <refentryinfo><title>Faust Opcodes: control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>faustctl</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>faustctl</refname>
+    <refpurpose>
+      Ajuste un contrôle donné dans une instance DSP de Faust.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>faustctl</emphasis> fixe un contrôle donnée dans un programme
+      Faust actif.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>faustctl</command> idsp, Scontrol, kval </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis><quote>Scontrol</quote></emphasis> -- une chaîne de caractères
+      contenant le nom du contrôle.
+    </para>    
+    <para>
+      <emphasis><quote>idsp</quote></emphasis> -- une référence à une instance
+      DSP de Faust existante.
+    </para>  
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+   	<para>
+      <emphasis><quote>kval</quote></emphasis> -- valeur à laquelle le contrôle
+      est fixé.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode faustctl, avec un programme simple qui
+      ajuste le gain d'une entrée :
+      <example>
+        <para>   
+<programlisting>
+idsp, a1 <emphasis role="op">faustgen</emphasis> {{
+gain = hslider("vol", 1, 0, 1, 0.01);
+process = (_ * gain); 
+}}, ain1
+<emphasis role="op">faustctl</emphasis> idsp, "vol", 0.5
+</programlisting>
+        </para>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namevictor;, 2013 </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,71 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="faustcompile">
+<indexterm id="Indexfaustcompile"><primary>faustcompile</primary></indexterm>
+  <refentryinfo><title>Faust Opcodes: compilation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>faustcompile</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>faustcompile</refname>
+    <refpurpose>
+      Invoque le compilateur à la volée pour produire un processus DSP
+      instanciable depuis un programme Faust.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>faustcompile</emphasis> compile un programme Faust contenu dans
+      une chaîne de caractères, contrôlé par divers arguments. On peut utiliser
+      des chaînes sur plusieurs lignes, délimitées par {{  }}.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>ihandle faustcompile</command> Scode, Sargs </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis><quote>Scode</quote></emphasis> -- une chaîne de caractères
+      (entre guillemets ou délimitée par {{ }}) contenant un programme Faust.
+    </para>    
+    <para>
+      <emphasis><quote>Sargs</quote></emphasis> -- une chaîne de caractères
+      (entre guillemets ou délimitée par {{ }}) contenant les arguments du
+      compilateur Faust.
+    </para>  
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode faustcompile, avec un programme simple qui
+      mélange deux entrées :
+      <example>
+        <para>   
+<programlisting>
+ihandle <emphasis role="op">faustcompile</emphasis> "process=+;", "-vec -lv 1"
+</programlisting>
+        </para>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namevictor;, 2013 </para>
+  </refsect1>
+</refentry>
