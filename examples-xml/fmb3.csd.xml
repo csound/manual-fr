@@ -22,7 +22,7 @@ kc2 <emphasis role="op">=</emphasis> p5
 kvrate <emphasis role="op">=</emphasis> 6
 
 kvdpth <emphasis role="opc">line</emphasis> 0, p3, p6
-asig   <emphasis role="opc">fmb3</emphasis> .4, kfreq, kc1, kc2, kvdpth, kvrate, 1, 1, 1, 1, 1
+asig   <emphasis role="opc">fmb3</emphasis> .4, kfreq, kc1, kc2, kvdpth, kvrate
        <emphasis role="opc">outs</emphasis> asig, asig
 
 <emphasis role="oblock">endin</emphasis>

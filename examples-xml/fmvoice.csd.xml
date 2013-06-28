@@ -22,7 +22,7 @@ ktilt  <emphasis role="op">=</emphasis> p5
 kvibamt <emphasis role="op">=</emphasis> 0.005
 kvibrate <emphasis role="op">=</emphasis> 6
 
-asig <emphasis role="opc">fmvoice</emphasis> .5, kfreq, kvowel, ktilt, kvibamt, kvibrate, 1, 1, 1, 1, 1
+asig <emphasis role="opc">fmvoice</emphasis> .5, kfreq, kvowel, ktilt, kvibamt, kvibrate
 <emphasis role="opc">outs</emphasis> asig, asig
 
 <emphasis role="oblock">endin</emphasis>
