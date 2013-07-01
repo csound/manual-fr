@@ -47,17 +47,27 @@ english cvs version=
   <bridgehead>Restrictions</bridgehead>
   <para>
     La principale restriction est que seuls les opcodes à sortie unique (ou
-    sans sortie) sont autorisés. De plus, l'analyse des opcodes à plusieurs sorties facultatives (comme <emphasis>diskin</emphasis>) échouera sous cette
+    sans sortie) sont autorisés. De plus, l'analyse des opcodes à plusieurs
+    sorties facultatives échouera sous cette
     forme. On peut contourner cela en les incluant dans des opcodes définis par
     l'utilisateur ou juste en mélangeant la syntaxe de Csound standard avec ce
     nouveau style.
   </para>
   <para>
-    Une autre restriction est que, en l'absence d'indications de type, la sortie
-    polymorphe des opcodes est "bloquée" dans les types donnés. Par exemple les
-    oscillateurs standard utilisés de cette manière auront par défaut une sortie
-    de taux-a, tandis que les générateurs d'enveloppe produiront une sortie de
-    taux-k, à moins qu'une entrée de taux-a ne soit utilisée. Lorsque les
-    annotations de type seront totalement disponibles, cette restriction disparaitra.
+    Pour résoudre les ambiguités d'opcode, nous avons introduit les annotations
+    de type sous la forme op:type(exprlist). Par exemple le code :
+  </para>
+  <para>
+  <literallayout>
+ 
+   a1 = oscili(oscili:k(p4,p5), 440)
+
+  </literallayout>
+  </para>
+  <para>
+    choisit un opcode au taux de contrôle pour moduler l'amplitude de la
+    porteuse audio, au lieu d'un opcode au taux audio. Dans certains cas,
+    l'annotation de type est nécessaire si les arguments d'entrée ne permettent
+    pas de déterminer le type correct d'opcode à appliquer.
   </para>
 </section>
