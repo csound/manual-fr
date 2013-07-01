@@ -1,0 +1,66 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=1.19
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="evalstr">
+<indexterm id="Indexevalstr"><primary>evalstr</primary></indexterm>
+  <refentryinfo><title>Compilation Opcodes: evaluation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>evalstr</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>evalstr</refname>
+    <refpurpose>
+      evalstrs évalue une chaîne de caractères contenant du code Csound et
+      retourne une valeur.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>evalstr</emphasis> compile et exécute du code Csound et retourne
+      une valeur de l'espace global (instr 0). On peut utiliser cet opcode pour
+      compiler de nouveaux instruments (comme <emphasis>compilestr</emphasis>).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ires <command>evalstr</command> Scode </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis><quote>Scode</quote></emphasis> -- une chaîne de caractères à
+      compiler et à évaluer.
+    </para>    
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode evalstr en conjonction avec return :
+      <example>
+        <para>   
+<programlisting>
+ival <emphasis role="op">evalstr</emphasis> "return 2 + 2"
+<emphasis role="op">print</emphasis> ival
+</programlisting>
+        </para>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namevictor;, 2013 </para>
+  </refsect1>
+</refentry>
