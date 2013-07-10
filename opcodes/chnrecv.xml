@@ -29,6 +29,14 @@ english cvs version=1.2
       (voir aussi <emphasis>chn_k</emphasis>, <emphasis>chn_a</emphasis> et
       <emphasis>chn_S</emphasis>).
     </para>
+    <para>
+      Noter que <emphasis>chnsend/chnrecv</emphasis> (qui fonctionnent de
+      manière identique à <emphasis>invalue/outvalue</emphasis> dans Csound6)
+      sont habituellement utilisés pour la communication à base de fonction
+      de rappel entre Csound et un hôte externe. On utilise les opcodes
+      <emphasis>chnset/chnget</emphasis> pour envoyer et recevoir des données
+      dans Csound.
+    </para>
   </refsect1>
 
   <refsect1>
