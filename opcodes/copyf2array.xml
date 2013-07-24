@@ -45,6 +45,21 @@ english cvs version=
     </para>
   </refsect1>
 
+   <refsect1>
+    <title>Exemple</title>
+    <para>
+      Voici un exemple de l'opcode copyf2array. Il utilise le fichier
+      <ulink url="examples/copyf2array.csd"><citetitle>copyf2array.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode copyf2array.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/copyf2array.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
   <refsect1>
     <title>Voir aussi</title>
     <para>

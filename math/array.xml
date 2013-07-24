@@ -1,0 +1,351 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="arrayOpcodes">
+  <indexterm id="Indexarray">
+    <primary>Array opcodes</primary>
+  </indexterm>
+  <refentryinfo>
+    <title>Mathematical Operations</title>
+  </refentryinfo>
+  <refmeta>
+    <refentrytitle>Opcodes de tableaux</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>Opcodes de tableaux</refname>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Nom de variable</title>
+    <para>
+      Un tableau doit être créé (via <link linkend="init"><citetitle>init</citetitle></link>
+      ou <link linkend="fillarray"><citetitle>fillarray</citetitle></link>) sous
+      la forme kNomTableau <emphasis role="strong">suivi</emphasis> de crochets. Les
+      crochets déterminent les dimensions du tableau. Ainsi,
+      <informalexample>
+        <programlisting>
+kArr[] <emphasis role="opc">init</emphasis> 10</programlisting>
+      </informalexample>
+      crée un tableau unidimensionnel (un vecteur) de longueur 10, tandis que
+      <informalexample>
+        <programlisting>
+kArr[][] <emphasis role="opc">init</emphasis> 10, 10</programlisting>
+      </informalexample>
+      crée un tableau à deux dimensions avec 10 lignes et 10 colonnes.
+    </para>
+    
+    <para>
+      Après l'initialisation du tableau, on y fait référence comme un tout
+      <emphasis role="strong">sans</emphasis> les crochets. Les crochets
+      ne sont utilisés que pour indexer un élément :
+      <informalexample>
+        <programlisting>
+kArr[]   <emphasis role="opc">init</emphasis> 10             <emphasis role="comment">;with brackets because of initialization</emphasis>
+kLen     <emphasis role="op">=</emphasis> lenarray(kArr)    <emphasis role="comment">;without brackets</emphasis>
+kFirstEl <emphasis role="op">=</emphasis> kArr[0]           <emphasis role="comment">;indexing with brackets</emphasis></programlisting>
+      </informalexample>
+    </para>
+
+    <para>
+      On utilise la même syntaxe pour une simple copie via l'opérateur '=' :
+      <informalexample>
+        <programlisting>
+kArr1[] <emphasis role="opc">fillarray</emphasis> 1, 2, 3, 4, 5
+kArr2[] <emphasis role="op">=</emphasis> kArr1              <emphasis role="comment">;creates kArr2 as copy of kArr1</emphasis></programlisting>
+      </informalexample>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>k-rate</title>
+    <para>
+      Noter que la plupart des opérations sur les tableaux ne se font actuellement
+      qu'au taux-k. Ainsi, comme pour tout autre opcode de taux-k, une opération
+      sur les tableaux sera automatiquement répétée à chaque cycle-k. Par exemple,
+      le code suivant réécrit le tableau avec différentes valeurs aléatoires à
+      chaque cycle-k, tant que l'instrument est actif :
+      <informalexample>
+        <programlisting>
+kArr[] <emphasis role="opc">init</emphasis> 10
+kIndx  <emphasis role="op">=</emphasis> 0
+<emphasis role="octrl">until</emphasis> kIndx <emphasis role="op">==</emphasis> <emphasis role="opc">lenarray</emphasis>(kArr) <emphasis role="octrl">do</emphasis>
+  kArr[kIndx] <emphasis role="opc">rnd31</emphasis> 10, 0
+  kIndx <emphasis role="op">+=</emphasis> 1
+<emphasis role="octrl">od</emphasis></programlisting>
+      </informalexample>
+    </para>
+    
+    <para>
+      Pour éviter cela, on doit l'organiser de la manière habituelle, par
+      exemple en utilisant un déclencheur :
+      <informalexample>
+        <programlisting>
+kArr[] <emphasis role="opc">init</emphasis> 10
+kTrig <emphasis role="opc">metro</emphasis> 1
+<emphasis role="octrl">if</emphasis> kTrig <emphasis role="op">==</emphasis> 1 <emphasis role="octrl">then</emphasis> <emphasis role="comment">;do the following once a second</emphasis>
+  kIndx  <emphasis role="op">=</emphasis> 0
+  <emphasis role="octrl">until</emphasis> kIndx <emphasis role="op">==</emphasis> <emphasis role="opc">lenarray</emphasis>(kArr) <emphasis role="octrl">do</emphasis>
+    kArr[kIndx] <emphasis role="opc">rnd31</emphasis> 10, 0
+    kIndx <emphasis role="op">+=</emphasis> 1
+  <emphasis role="octrl">od</emphasis>
+<emphasis role="octrl">endif</emphasis></programlisting>
+      </informalexample>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Création/initialisation</title>
+    <para>
+      La manière habituelle de créer un tableau est d'utiliser <emphasis>init</emphasis> :
+      <informalexample>
+        <programlisting>
+kArr[]   <emphasis role="opc">init</emphasis> 10     <emphasis role="comment">;creates one-dimensional array with length 10</emphasis>
+kArr[][] <emphasis role="opc">init</emphasis> 10, 10 <emphasis role="comment">;creates two-dimensional array</emphasis></programlisting>
+      </informalexample>
+    </para>
+    <para>
+      On peut aussi créer un tableau unidimensionnel et le remplir de valeurs
+      distinctes au moyen de l'opcode <emphasis>fillarray</emphasis>. La ligne
+      suivante crée un vecteur de longueur 4 et le remplit avec les nombres
+      [1, 2, 3, 4]:
+    </para>
+      <informalexample>
+        <programlisting>
+kArr[] <emphasis role="opc">fillarray</emphasis> 1, 2, 3, 4</programlisting>
+      </informalexample>
+  </refsect1>
+  
+  <refsect1>
+    <title>Longueur</title>
+    <para>
+      La fonction <emphasis>lenarray(kArr)</emphasis> retourne la longueur d'un
+      tableau. Voir l'exemple pour la fonction
+      <link linkend="lenarray"><citetitle>lenarray</citetitle></link>.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Copie d'un tableau vers ou d'une table</title>
+    <para>
+      <informalexample>
+        <programlisting>
+<emphasis role="opc">copyf2array</emphasis> kArr, kfn</programlisting>
+      </informalexample>
+      copie les données d'une table de fonction dans un vecteur.
+    </para>
+    <para>
+      <informalexample>
+        <programlisting>
+<emphasis role="opc">copya2ftab</emphasis> kArr, kfn</programlisting>
+      </informalexample>
+      copie les données d'un vecteur dans une table de fonction.
+    </para>
+    <para>
+      Voir les exemples pour les opcodes
+      <link linkend="copyf2array"><citetitle>copyf2array</citetitle></link> and
+      <link linkend="copya2ftab"><citetitle>copya2ftab</citetitle></link>.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Opérations sur les tableaux : maths</title>
+    <refsect2>
+      <title>+, -, *, / avec un nombre</title>
+      <para>
+        Si les quatre opérateurs de base sont utilisés entre un tableau et un
+        nombre scalaire, l'opération est appliquée à chaque élément. La manière
+        la plus sûre de le faire est de stocker le résultat dans un nouveau
+        tableau :
+        <informalexample>
+          <programlisting>
+kArr1[] <emphasis role="opc">fillarray</emphasis> 1, 2, 3
+kArr2[] <emphasis role="op">=</emphasis> kArr1 <emphasis role="op">+</emphasis> 10    <emphasis role="comment">;(kArr2 is now [11, 12, 13])</emphasis></programlisting>
+        </informalexample>
+        Voici un exemple des opérations tableau/scalaire. Il utilise le fichier
+        <ulink url="examples/array_scalar_math.csd"><citetitle>array_scalar_math.csd</citetitle></ulink>.
+        <example>
+          <title>Exemple des opérations tableau/scalaire</title>
+          <xi:include href="examples-xml/array_scalar_math.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        </example>
+      </para>
+    </refsect2>
+    <refsect2>
+      <title>+, -, *, / avec un autre tableau</title>
+      <para>
+        Si les quatre opérateurs de base sont utilisés entre deux tableaux,
+        l'opération est appliquée élément à élément. Le résultat peut être
+        stocké directement dans un nouveau tableau :
+        <informalexample>
+          <programlisting>
+kArr1[] <emphasis role="opc">fillarray</emphasis> 1, 2, 3
+kArr2[] <emphasis role="opc">fillarray</emphasis> 10, 20, 30
+kArr3[] <emphasis role="op">=</emphasis> kArr1 <emphasis role="op">+</emphasis> kArr2    <emphasis role="comment">;(kArr3 is now [11, 22, 33])</emphasis></programlisting>
+        </informalexample>
+        Voici un exemple des opérations de tableau. Il utilise le fichier
+        <ulink url="examples/array_array_math.csd"><citetitle>array_array_math.csd</citetitle></ulink>.
+        <example>
+          <title>Exemple des opérations de tableau</title>
+          <xi:include href="examples-xml/array_array_math.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        </example>
+      </para>
+    </refsect2>
+  </refsect1>
+  
+  <refsect1>
+    <title>Application d'une fonction à un tableau</title>
+    <para>
+      <informalexample>
+        <programlisting>
+kArrRes <emphasis role="opc">maparray</emphasis> kArrSrc, "fun"</programlisting>
+      </informalexample>
+      applique la fonction de taux-k à un argument, définie dans la chaîne de
+      caractères, à chaque élément du vecteur.
+    </para>
+    <para>
+      Les fonctions utilisables sont par exemple <emphasis>abs, ceil, exp, floor,
+      frac, int, log, log10, round, sqrt</emphasis>. Voici un simple exemple :
+      <informalexample>
+        <programlisting>
+kArrSrc[] <emphasis role="opc">fillarray</emphasis> 1, 2, 3, 4, 5
+kArrRes[] <emphasis role="opc">init</emphasis>      5
+kArrRes   <emphasis role="opc">maparray</emphasis>  kArrSrc, "sqrt"</programlisting>
+      </informalexample>
+      Voir l'exemple pour l'opcode
+      <link linkend="maparray"><citetitle>maparray</citetitle></link>.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Opérations sur les tableaux : min, max, sum, scale, slice</title>
+    <refsect2>
+      <title>Minimum et maximum</title>
+      <para>
+        <informalexample>
+          <programlisting>
+  kMin [,kMinIndx] <emphasis role="opc">minarray</emphasis> kArr</programlisting>
+        </informalexample>
+        retourne la plus petite valeur d'un tableau et facultativement son indice.
+      </para>
+      <para>
+        <informalexample>
+          <programlisting>
+  kMax [,kMaxIndx] <emphasis role="opc">maxarray</emphasis> kArr</programlisting>
+        </informalexample>
+        retourne la plus grande valeur d'un tableau et facultativement son indice.
+        Voir les exemples pour les opcodes
+        <link linkend="minarray"><citetitle>minarray</citetitle></link> and
+        <link linkend="maxarray"><citetitle>maxarray</citetitle></link>.
+      </para>
+    </refsect2>
+    
+    <refsect2>
+      <title>Somme</title>
+      <para>
+        <informalexample>
+          <programlisting>
+  kSum <emphasis role="opc">sumarray</emphasis> kArr</programlisting>
+        </informalexample>
+        retourne la somme de toutes les valeurs dans <emphasis>kArr</emphasis>.
+        Voir l'exemple pour l'opcode
+        <link linkend="sumarray"><citetitle>sumarray</citetitle></link>.
+      </para>
+    </refsect2>
+    
+    <refsect2>
+      <title>Pondération</title>
+      <para>
+        <informalexample>
+          <programlisting>
+  <emphasis role="opc">scalearray</emphasis> kArr, kMin, kMax</programlisting>
+        </informalexample>
+        pondère toutes les valeurs dans <emphasis>kArr</emphasis> entre
+        <emphasis>kMin</emphasis> et <emphasis>kMax</emphasis>.
+      </para>
+      <para>
+        <informalexample>
+          <programlisting>
+  kArr[] <emphasis role="opc">fillarray</emphasis>  1, 3, 9, 5, 6
+         <emphasis role="opc">scalearray</emphasis> kArr, 1, 3</programlisting>
+        </informalexample>
+        change <emphasis>kArr</emphasis> en [1, 1.5, 3, 2, 2.25].
+        Voir l'exemple pour l'opcode
+        <link linkend="scalearray"><citetitle>scalearray</citetitle></link>.
+      </para>
+    </refsect2>
+    
+    <refsect2>
+      <title>Extrait</title>
+      <para>
+        <informalexample>
+          <programlisting>
+  <emphasis role="opc">slicearray</emphasis> kArr, iStart, iEnd</programlisting>
+        </informalexample>
+        retourne un extrait de <emphasis>kArr</emphasis> compris entre l'indice
+        <emphasis>iStart</emphasis> et l'indice <emphasis>iEnd</emphasis> (inclus).
+      </para>
+      <para>
+        Il faut créer le tableau de destination de l'extrait par avance :
+        <informalexample>
+          <programlisting>
+  kArr[]  <emphasis role="opc">fillarray</emphasis>  1, 2, 3, 4, 5, 6, 7, 8, 9
+  kArr1[] <emphasis role="opc">init</emphasis>       5
+  kArr2[] <emphasis role="opc">init</emphasis>       4
+  kArr1   <emphasis role="opc">slicearray</emphasis> kArr, 0, 4        <emphasis role="comment">;[1, 2, 3, 4, 5]</emphasis>
+  kArr2   <emphasis role="opc">slicearray</emphasis> kArr, 5, 8        <emphasis role="comment">;[6, 7, 8, 9]</emphasis></programlisting>
+        </informalexample>
+        Voir l'exemple pour l'opcode
+        <link linkend="slicearray"><citetitle>slicearray</citetitle></link>.
+      </para>
+    </refsect2>
+  </refsect1>
+  
+  <refsect1>
+    <title>Tableaux dans un UDO</title>
+    <para>
+      La dimension d'un tableau en entrée doit être déclarée en deux endroits :
+      <itemizedlist>
+        <listitem>
+          comme k[] ou k[][] dans la liste des types en entrée
+        </listitem>
+        <listitem>
+          comme kNom[], kNom[][] etc dans la liste <emphasis>xin</emphasis>.
+        </listitem>
+      </itemizedlist>
+      Par exemple :
+      <informalexample>
+        <programlisting>
+<emphasis role="oblock">opcode</emphasis> FirstEl, k, k[]
+<emphasis role="comment">;returns the first element of vector kArr</emphasis>
+kArr[] <emphasis role="opc">xin</emphasis>
+       <emphasis role="opc">xout</emphasis>   kArr[0]
+<emphasis role="oblock">endop</emphasis></programlisting>
+      </informalexample>
+      Voici un exemple d'un tableau dans un UDO. Il utilise le fichier
+      <ulink url="examples/array_udo.csd"><citetitle>array_udo.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple d'un tableau dans un UDO</title>
+        <xi:include href="examples-xml/array_udo.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Joachim Heintz</member>
+        <member>Juillet 2013</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans Csound 6.00</para>
+  </refsect1>
+</refentry>
+
+      
