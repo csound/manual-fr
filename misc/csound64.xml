@@ -82,9 +82,12 @@ english cvs version=1.4
       PVOC-EX et <link linkend="pvanal"><citetitle>pvanal</citetitle></link> générés pour Csound 32 bit
       (float) fonctionneront avec Csound 64 bit (double précision).</para></listitem>
       
-      <listitem><para>Les fichiers <link linkend="lpanal"><citetitle>lpanal</citetitle></link> et
-      <link linkend="cvanal"><citetitle>cvanal</citetitle></link> générés pour Csound ne fonctionneront
-      pas avec Csound64.</para></listitem>
+      <listitem><para>Tous les autres formats d'analyse peuvent être générés de
+      manière à être utilisés indifféremment entre les versions 32 et 64 bit et
+      les architectures big-endian et little-endian, si l'option
+      <emphasis>-X</emphasis> est utilisée pour la génération. L'ancien format
+      de Csound5 est toujours générable mais il n'est pas indépendant des
+      machines.</para></listitem>
      </orderedlist>
   </para>
 
