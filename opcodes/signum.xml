@@ -1,0 +1,63 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="signum">
+<indexterm id="IndexSignum"><primary>signum</primary></indexterm>
+  <refentryinfo><title>Mathematical Operations:Trigonometric Functions</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>signum</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>signum</refname>
+    <refpurpose>
+      Fonction signe.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne -1, 0 ou 1 selon le signe de <emphasis>x</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>signum</command>(x) (aucune restriction de taux)</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode signum. Il utilise le fichier
+      <ulink url="examples/signum.csd"><citetitle>signum.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode signum.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/signum.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Université de Bath, Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>Juillet 2013</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 6.01 de Csound</para>
+  </refsect1>
+</refentry>

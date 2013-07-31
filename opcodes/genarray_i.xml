@@ -7,16 +7,16 @@ english cvs version=
 // *** Please remember to keep this information up to date! ***
 -->
 
-<refentry id="genarray">
-<indexterm id="IndexGenarray"><primary>genarray</primary></indexterm>
+<refentry id="genarray_i">
+<indexterm id="IndexGenarray_i"><primary>genarray_i</primary></indexterm>
 
   <refentryinfo><title>Table Control:Table Queries</title></refentryinfo>
   <refmeta>
-    <refentrytitle>genarray</refentrytitle>
+    <refentrytitle>genarray_i</refentrytitle>
   </refmeta>
 
    <refnamediv>
-    <refname>genarray</refname>
+    <refname>genarray_i</refname>
     <refpurpose>
       Génère un vecteur à partir d'une suite arithmétique.
     </refpurpose>
@@ -25,15 +25,14 @@ english cvs version=
   <refsect1>
     <title>Description</title>
     <para>
-      Génère un vecteur (tableau unidimensionnel de taux-k ou de taux-i) à partir
-      d'une suite arithmétique.
+      Génère un vecteur (tableau unidimensionnel de taux-k) à partir
+      d'une suite arithmétique durant l'initialisation.
     </para>
   </refsect1>
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>karray <command>genarray</command> istart, iend[, inc]</synopsis>
-    <synopsis>iarray <command>genarray</command> istart, iens[, inc]</synopsis>
+      <synopsis>karray <command>genarray_i</command> istart, iens[, inc]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -52,14 +51,14 @@ english cvs version=
  <refsect1>
     <title>Exemples</title>
     <para>
-      Voici un exemple de l'opcode genarray. Il utilise le fichier
-      <ulink url="examples/genarray.csd"><citetitle>genarray.csd</citetitle></ulink>.
+      Voici un exemple de l'opcode genarray_i. Il utilise le fichier
+      <ulink url="examples/genarray_i.csd"><citetitle>genarray_i.csd</citetitle></ulink>.
       <example>
-        <title>Exemple de l'opcode genarray.</title>
+        <title>Exemple de l'opcode genarray_i.</title>
         <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
         et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
         d'information sur l'utilisation des options de la ligne de commande.</para>
-          <xi:include href="examples-xml/genarray.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+          <xi:include href="examples-xml/genarray_i.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
     </para>
   </refsect1>
@@ -68,7 +67,7 @@ english cvs version=
     <title>Voir aussi</title>
     <para>
       <link linkend="vectorial"><citetitle></citetitle>Opcodes vectoriels</link>
-    </para>
+</para>
   </refsect1>
 
   <refsect1>

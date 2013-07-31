@@ -8,7 +8,7 @@ english cvs version=1.20
 -->
 
 <section id="SpectralRealTime">
-  <title>Outils pour le Traitement Spectral en Temps Réel (opcodes pvs)</title>
+  <title>Outils pour le traitement spectral en temps réel (opcodes pvs)</title>
 
   <para>
     Avec ces opcodes, deux nouvelles facilités fondamentales sont ajoutées à Csound. Ils offrent une
@@ -101,7 +101,7 @@ english cvs version=1.20
     délai, ou latence, petit mais significatif déterminé par la taille de la fenêtre (max(ifftsize,iwinsize)).
     Il vaut typiquement 23ms. Dans cette première réalisation, le délai dépasse légèrement le minimum
     théorique, et l'on espère qu'il pourra être réduit, lorsque les opcodes seront optimisés pour le
-    transport par flot de données en .
+    transport par flot de données en temps réel.
   </para>
 
   <para>
