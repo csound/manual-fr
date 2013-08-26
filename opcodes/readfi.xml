@@ -31,7 +31,7 @@ english cvs version=
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>Sres <command>readfi</command> ifilname</synopsis>
+    <synopsis>Sres, iline <command>readfi</command> ifilname</synopsis>
   </refsect1>
 
   <refsect1>
@@ -43,6 +43,10 @@ english cvs version=
       peut être un nom de chemin complet avec un répertoire spécifié ou bien un
       simple nom de fichier. Dans ce dernier cas, le fichier est d'abord cherché
       dans le répertoire courant, puis dans SSDIR et finalement dans SFDIR.
+    </para>
+    <para>
+      <emphasis>iline</emphasis> -- numéro de la ligne lue ou -1 si la fin du
+      fichier est atteinte.
     </para>
 
     <para>

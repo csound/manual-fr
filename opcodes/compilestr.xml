@@ -36,14 +36,18 @@ english cvs version=
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis><command>compilestr</command> Sorch</synopsis>
+    <synopsis>ires <command>compilestr</command> Sorch</synopsis>
   </refsect1>
 
   <refsect1>
     <title>Initialisation</title>
     <para>
-      <emphasis><quote>Sin</quote></emphasis> -- une chaîne de caractères entre
+      <emphasis><quote>Sorch</quote></emphasis> -- une chaîne de caractères entre
       guillemets ou délimitée par {{ }} et contenant un ou plusieurs intruments.
+    </para>    
+    <para>
+      <emphasis><quote>ires</quote></emphasis> -- 0 si la compilation se fait
+      sans erreur, -1 sinon.
     </para>    
   </refsect1>
 

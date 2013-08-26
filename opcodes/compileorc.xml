@@ -34,14 +34,18 @@ english cvs version=
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis><command>compileorc</command> Sfilename</synopsis>
+    <synopsis>ires <command>compileorc</command> Sfilename</synopsis>
   </refsect1>
 
   <refsect1>
     <title>Initialisation</title>
     <para>
-      <emphasis><quote>Sin</quote></emphasis> -- une chaîne de caractères
+      <emphasis><quote>Sfilename</quote></emphasis> -- une chaîne de caractères
       indiquant le nom du fichier contenant l'orchestre.
+    </para>    
+    <para>
+      <emphasis><quote>ires</quote></emphasis> -- 0 si la compilation se fait
+      sans erreur, -1 sinon.
     </para>    
   </refsect1>
 

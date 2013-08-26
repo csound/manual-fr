@@ -30,7 +30,7 @@ english cvs version=
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>Sres <command>readf</command> ifilname</synopsis>
+    <synopsis>Sres, kline <command>readf</command> ifilname</synopsis>
   </refsect1>
 
   <refsect1>
@@ -50,6 +50,10 @@ english cvs version=
     <para>
       <emphasis>Sres</emphasis> -- variable contenant la ligne lue depuis
       <emphasis>ifilname</emphasis>. 
+    </para>
+    <para>
+      <emphasis>kline</emphasis> -- numéro de la ligne lue ou -1 si la fin du
+      fichier est atteinte.
     </para>
 
     <para>
