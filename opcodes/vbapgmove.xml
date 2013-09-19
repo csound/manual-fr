@@ -1,0 +1,164 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vbapgmove">
+<indexterm id="IndexVbapgmove"><primary>vbapgmove</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Panning and Spatialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vbapgmove</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vbapgmove</refname>
+    <refpurpose>
+      Calcule les gains pour positionner un son entre plusieurs canaux avec des
+      sources virtuelles en mouvement. 
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Calcule les gains pour positionner un son entre plusieurs canaux avec des
+      sources virtuelles en mouvement. 
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kr1[, kr2...] <command>vbapgmove</command> idur, ispread, ifldnum, ifld1 \
+      [, ifld2] [...]</synopsis>
+    <synopsis>karray[] <command>vbapgmove</command> idur, ispread, ifldnum, ifld1 \
+      [, ifld2] [...]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>idur</emphasis> -- durée pendant laquelle le mouvement a lieu.
+    </para>
+    <para>
+      <emphasis>ispread</emphasis> -- diffusion de la source virtuelle
+      (de 0 à 100). S'il vaut 0, on a un panoramique d'amplitude conventionnel.
+      Plus <emphasis>ispread</emphasis> augmente et plus le nombre de haut-parleurs
+      utilisés dans le panoramique augmente. S'il vaut 100, le son est appliqué à
+      tous les haut-parleurs.
+    </para>
+
+    <para>
+      <emphasis>ifldnum</emphasis> -- nombre de champs (sa valeur absolue doit
+      être supérieure ou égale à 2). Si <emphasis>ifldnum</emphasis> est positif,
+      le mouvement de la source virtuelle est une ligne brisée spécifiée par les
+      directions données. Chaque transition est exécutée durant un intervalle
+      de même durée. Si <emphasis>ifldnum</emphasis> est négatif, les vélocités
+      angulaires spécifiées sont appliquées à la source virtuelle durant les
+      intervalles de temps spécifiés correspondants (voir ci-dessous).
+    </para>
+
+    <para>
+      <emphasis>ifld1, ifld2, ...</emphasis> -- angles d'azimut ou vélocités
+      angulaires et durées correspondantes des phases du mouvement (voir ci-dessous).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+
+    <para>
+      <emphasis>vbapgmove</emphasis> permet l'utilisation de sources virtuelles
+      en mouvement. Si <emphasis>ifldnum</emphasis> est positif, les champs
+      représentent les directions de la source virtuelle durant des intervalles
+      de temps égaux, <emphasis>iazi1</emphasis>, [<emphasis>iele1</emphasis>,]
+      <emphasis>iazi2</emphasis>, [<emphasis>iele2</emphasis>,], etc. La position
+      de la source virtuelle est interpolée entre ces directions en partant de
+      la première direction et en terminant à la dernière. Chaque intervalle est
+      interpolé durant une fraction de la durée de l'évènement sonore égale à
+      durée_totale / nombre_intervalles.
+    </para>
+
+    <para>
+      Si <emphasis>ifldnum</emphasis> est négatif, les champs représentent les
+      vitesses angulaires à intervalles réguliers. Le premier champ est cependant
+      la direction de départ, <emphasis>iazi1</emphasis>, [<emphasis>iele1</emphasis>,]
+      <emphasis>iazi_vel1</emphasis>, [<emphasis>iele_vel1</emphasis>,]
+      <emphasis>iazi_vel2</emphasis>, [<emphasis>iele_vel2</emphasis>,] ...
+      Chaque vitesse est appliquée à la note qui occupe la fraction durée_totale /
+      nombre_de_vitesses de la durée de l'évènement sonore. Si l'élévation de
+      la source virtuelle dépasse 90 degrés ou devient inférieure à 0 degré, la
+      polarité de la vitesse angulaire change. Ainsi l'élévation angulaire
+      produit une source virtuelle qui monte et descend entre 0 et 90 degrés.
+    </para>
+    <warning>
+      <para>
+        Prière de noter que tous les opcodes de panoramique <emphasis>vbap</emphasis>
+        nécessitent une initialisation du système <emphasis>vbap</emphasis> avec
+        <link linkend="vbaplsinit"><citetitle>vbaplsinit</citetitle></link>.
+    </warning>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcoce vbapgmove. Il utilise le fichier
+      <ulink
+          url="examples/vbapgmove.csd"><citetitle>vbapgmove.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcoce vbapgmove.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        </para> 
+        <xi:include href="examples-xml/vbapgmove.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Référence</title>
+    <para>
+      Ville Pulkki: <quote>Virtual Sound Source Positioning Using Vector Base
+      Amplitude Panning</quote> <emphasis>Journal of the Audio Engineering Society</emphasis>,
+      juin 1997, Vol. 45/6, p. 456.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+     <link linkend="vbap"><citetitle>vbap</citetitle></link>,
+      <link linkend="vbap16"><citetitle>vbap16</citetitle></link>,
+      <link linkend="vbap16move"><citetitle>vbap16move</citetitle></link>,
+      <link linkend="vbap4"><citetitle>vbap4</citetitle></link>,
+      <link linkend="vbap4move"><citetitle>vbap4move</citetitle></link>,
+      <link linkend="vbap8"><citetitle>vbap8</citetitle></link>,
+      <link linkend="vbap8move"><citetitle>vbap8move</citetitle></link>,
+      <link linkend="vbaplsinit"><citetitle>vbaplsinit</citetitle></link>,
+      <link linkend="vbapz"><citetitle>vbapz</citetitle></link>,
+      <link linkend="vbapzmove"><citetitle>vbapzmove</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Ville Pulkki</member>
+        <member>Sibelius Academy Computer Music Studio</member>
+        <member>Laboratoire d'Acoustique et de Traitement du Signal Audio</member>
+        <member>Helsinki, Université de Technologie</member>
+        <member>Helsinki, Finlande</member>
+        <member>Mai 2000</member>
+        <member>Auteur : &namejohn;</member>
+        <member>Juillet 2012, septembre 2013</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 5.17.13 de Csound. </para>
+    <para>Sortie sur tableau ajoutée dans la version 6.01</para>
+  </refsect1>
+</refentry>
