@@ -34,6 +34,7 @@ english cvs version=1.4
     <synopsis>aw, ax, ay, az, ar, as, at, au, av <command>bformenc1</command> asig, kalpha, kbeta</synopsis>
     <synopsis>aw, ax, ay, az, ar, as, at, au, av, ak, al, am, an, ao, ap, aq <command>bformenc1</command> \
       asig, kalpha, kbeta</synopsis>
+    <synopsis>aarray[] <command>bformenc1</command> asig, kalpha, kbeta</synopsis>
   </refsect1>
 
   <!-- <refsect1>
@@ -48,6 +49,11 @@ english cvs version=1.4
 
     <para>
       <emphasis>aw, ax, ay, ... </emphasis> -- cellules de sortie au format B.
+    </para>
+
+    <para>
+      <emphasis>aarray</emphasis> -- tableau de sortie pour recevoir les
+      cellules au format B.
     </para>
 
     <para>
@@ -97,5 +103,6 @@ english cvs version=1.4
       </simplelist>
     </para>
     <para>Nouveau dans la version 5.09</para>
+    <para>Sortie sur tableau ajoutée dans la version 6.01</para>
   </refsect1>
 </refentry>

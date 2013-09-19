@@ -32,6 +32,7 @@ english cvs version=
   <refsect1>
     <title>Syntaxe</title>
     <synopsis>k1[, k2...] <command>vbapg</command> kazim [,kelev] [, kspread] [, ilayout]</synopsis>
+    <synopsis>karray[] <command>vbapg</command> kazim [,kelev] [, kspread] [, ilayout]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -158,10 +159,11 @@ spread of source = 100</screen>
         <member>Helsinki, Finlande</member>
         <member>Mai 2000</member>
         <member>Auteur : &namejohn;</member>
-        <member>Juillet 2012</member>
+        <member>Juillet 2012, septembre 2013</member>
        </simplelist>
     </para>
 
     <para>Nouveau dans la version 5.17.13 de Csound. </para>
+    <para>Variante pour tableau ajoutée dans la version 6.01</para>
   </refsect1>
 </refentry>

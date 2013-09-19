@@ -17,26 +17,28 @@ english cvs version=1.8
   <refnamediv>
     <refname>out</refname>
     <refpurpose>
-      Ecrit des données audio mono vers un périphérique externe ou un flot.
+      Ecrit des données audio vers un périphérique externe ou un flot.
     </refpurpose>
   </refnamediv>
  
   <refsect1>
     <title>Description</title>
     <para>
-      Ecrit des données audio mono vers un périphérique externe ou un flot.
+      Ecrit des données audio vers un périphérique externe ou un flot, soit
+      depuis des variables audio, soit depuis un tableau audio.
     </para>
   </refsect1>
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis><command>out</command> asig</synopsis>
+    <synopsis><command>out</command> asig1[, asig2,....]</synopsis>
+    <synopsis><command>out</command> aarray</synopsis>
   </refsect1>
  
   <refsect1>
     <title>Exécution</title>
     <para>
-      Envoie des échantillons audio mono dans un tampon accumulateur de sortie
+      Envoie des échantillons audio dans un tampon accumulateur de sortie
       (créé au début de l'exécution) qui sert à collecter la sortie de tous les
       instruments actifs avant que le son ne soit écrit sur disque. Il peut y
       avoir n'importe quel nombre de ces unités de sortie dans un instrument. 
@@ -89,8 +91,11 @@ english cvs version=1.8
         <member>Auteurs : &namebarry;, &namematt;/&namemike;</member>
         <member>MIT, Mills College</member>
         <member>1993-1997</member>
+        <member>Author: &namejohn;</member>
+        <member>NUIM, 2013</member>
       </simplelist>
     </para>
     <para>Original dans Csound v1</para>
+    <para>Variante pour tableau ajoutée dans la version 6.01</para>
   </refsect1>
 </refentry>

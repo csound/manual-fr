@@ -99,6 +99,7 @@ english cvs version=
         Prière de noter que tous les opcodes de panoramique <emphasis>vbap</emphasis>
         nécessitent une initialisation du système <emphasis>vbap</emphasis> avec
         <link linkend="vbaplsinit"><citetitle>vbaplsinit</citetitle></link>.
+      </para>
     </warning>
   </refsect1>
 
@@ -113,7 +114,6 @@ english cvs version=
         <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
         et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
         d'information sur l'utilisation des options de la ligne de commande.</para>
-        </para> 
         <xi:include href="examples-xml/vbapgmove.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
     </para>

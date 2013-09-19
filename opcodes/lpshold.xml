@@ -32,7 +32,7 @@ english cvs version=1.13
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>ksig <command>lpshold</command> kfreq, ktrig, iphase, ktime0, kvalue0  [, ktime1] [, kvalue1] [, ktime2] [, kvalue2] [...]</synopsis>
+    <synopsis>ksig <command>lpshold</command> kfreq, ktrig, iphase, ktime0, kvalue0  [, kvalue1] [, ktime1] [, kvalue2] [, ktime2] [...]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -52,17 +52,18 @@ english cvs version=1.13
     </para>
 
     <para>
-      <emphasis>iphase</emphasis> -- Une valeur comprise entre 0 et 1 pour indiquer
-      où commence la boucle. Zéro, la valeur la plus usuelle, indique le début du
-      signal.
+      <emphasis>kphase</emphasis> -- point de la séquence lue, exprimé comme
+      une fraction d'un cycle (entre 0 et 1).
     </para>
     
     <para>
-      <emphasis>ktime0...ktimeN</emphasis> -- Dates des points ; exprimées en fraction de cycle.
+      <emphasis>kvalue0...kvalueN</emphasis> -- Valeurs des points.
     </para>
 
     <para>
-      <emphasis>kvalue0...kvalueN</emphasis> -- Valeurs des points.
+      <emphasis>ktime0...ktimeN</emphasis> -- Durées entre les points ; exprimées
+      en fraction d'une période (voir ci-dessous). La dernière durée indique une
+      ligne entre la valeur finale et la première valeur.
     </para>
 
     <para>

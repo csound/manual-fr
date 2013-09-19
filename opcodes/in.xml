@@ -17,23 +17,27 @@ english cvs version=1.11
   <refnamediv>
     <refname>in</refname>
     <refpurpose>
-      Lit des données audio mono depuis un périphérique externe ou un flot.
+      Lit des données audio depuis un périphérique externe ou un flot.
     </refpurpose>
   </refnamediv>
 
   <refsect1>
     <title>Description</title>
     <para>
-      Lit des données audio mono depuis un périphérique externe ou un flot.
+      Lit des données audio depuis un périphérique externe ou un flot.
     </para>
 
     <warning>
       <title>Avertissement</title>
       <para>
-        Cet opcode est prévu pour ne fonctionner qu'avec des orchestres qui
-        ont <emphasis>nchnls</emphasis>=1. Avec des orchestres dont
-        <emphasis>nchnls</emphasis> &gt; 1, la sortie audio ne sera pas
+        Il y a deux versions de cet opcode. La première est conçue pour ne
+        fonctionner qu'avec des orchestres qui ont
+        <emphasis>inchnls</emphasis>=1. Avec des orchestres dont
+        <emphasis>inchnls</emphasis> &gt; 1, la sortie audio ne sera pas
         correcte.
+      </para>
+      <para>
+        La seconde forme lit des canaux multiples vers un tableau.
       </para>
     </warning>
   </refsect1>
@@ -41,18 +45,23 @@ english cvs version=1.11
   <refsect1>
     <title>Syntaxe</title>
     <synopsis>ar1 <command>in</command></synopsis>
+    <synopsis>aarray <command>in</command></synopsis>
   </refsect1>
 
   <refsect1>
     <title>Exécution</title>
     <para>
-      Lit des données audio mono depuis un périphérique externe ou un flot. Si
-      l'option de ligne de commande
+      La première forme lit des données audio mono depuis un périphérique externe
+      ou un flot. Si l'option de ligne de commande
       <link linkend="FlagsMinusLowerI"><citetitle>-i</citetitle></link> est
       positionnée, le son est lu en continu depuis le flot audio en entrée
       (par exemple <emphasis>stdin</emphasis> ou un fichier son) dans un tampon
       interne. N'importe quel nombre de ces opcodes peuvent lire librement
       depuis ce tampon.
+    </para>
+    <para>
+      Le second format lit jusqu'à <emphasis>ichnls</emphasis> audio dans un
+      tableau audio qui doit être initialisé.
     </para>
   </refsect1>
 
@@ -88,8 +97,11 @@ english cvs version=1.11
         <member>Auteurs : &namebarry;, &namematt;/&namemike;</member>
         <member>MIT, Mills College</member>
         <member>1993-1997</member>
+        <member>Authors: &namejohn;</member>
+        <member>NUIM, 2013</member>
       </simplelist>
     </para>
     <para>Déjà dans la version 3.30</para>
+    <para>Variante pour tableau ajoutée dans la version 6.01</para>
   </refsect1>
 </refentry>

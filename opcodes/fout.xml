@@ -33,6 +33,7 @@ english cvs version=1.18
   <refsect1>
     <title>Syntaxe</title>
     <synopsis><command>fout</command> ifilename, iformat, aout1 [, aout2, aout3,...,aoutN]</synopsis>
+    <synopsis><command>fout</command> ifilename, iformat, array[]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -198,10 +199,13 @@ english cvs version=1.18
         <member>Auteur : &namegabriel;</member>
         <member>Italie</member>
         <member>1999</member>
+        <member>Author: &namejohn;</member>
+        <member>NUIM, 2013</member>
       </simplelist>
     </para>
 
     <para>Nouveau dans la version 3.56 de Csound</para>
     <para>Octobre 2002. Note ajoutée par Richard Dobson.</para>
+    <para>Variante pour tableau ajoutée dans la version 6.01</para>
   </refsect1>
 </refentry>

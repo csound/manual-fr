@@ -31,6 +31,7 @@ english cvs version=1.13
   <refsect1>
     <title>Syntaxe</title>
     <synopsis><command>fin</command> ifilename, iskipframes, iformat, ain1 [, ain2] [, ain3] [,...]</synopsis>
+    <synopsis><command>fin</command> ifilename, iskipframes, iformat, arr[]</synopsis>
   </refsect1>
  
   <refsect1>
@@ -111,9 +112,12 @@ english cvs version=1.13
         <member>Auteur : &namegabriel;</member>
         <member>Italie</member>
         <member>1999</member>
+        <member>Author: &namejohn;</member>
+        <member>NUIM, 2013</member>
       </simplelist>
     </para>
 
     <para>Nouveau dans la version 3.56 de Csound</para>
+    <para>Variante pour tableau ajoutée dans la version 6.01</para>
   </refsect1>
 </refentry>

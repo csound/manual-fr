@@ -24,13 +24,16 @@ english cvs version=
   <refsect1>
     <title>Description</title>
     <para>
-      Distribue un signal audio sur plusieurs canaux, jusqu'à 64.
+      Distribue un signal audio sur plusieurs canaux, jusqu'à 64 dans la
+      première forme, en nombre arbitraire dans la seconde.
     </para>
   </refsect1>
 
   <refsect1>
     <title>Syntaxe</title>
     <synopsis>ar1[, ar2...] <command>vbap</command> asig, kazim \
+        kelev] [, kspread] [, ilayout]</synopsis>
+    <synopsis>array[] <command>vbap</command> asig, kazim [,
         kelev] [, kspread] [, ilayout]</synopsis>
   </refsect1>
 
@@ -161,10 +164,11 @@ spread of source = 100</screen>
         <member>Helsinki, Finlande</member>
         <member>Mai 2000</member>
         <member>Auteur : &namejohn;</member>
-        <member>Juillet 2012</member>
+        <member>Juillet 2012, septembre 2013</member>
        </simplelist>
     </para>
 
     <para>Nouveau dans la version 5.17.13 de Csound. </para>
+    <para>Variante pour tableau ajoutée dans la version 6.01</para>
   </refsect1>
 </refentry>

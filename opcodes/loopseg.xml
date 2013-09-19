@@ -37,6 +37,15 @@ english cvs version=1.14
       [, kvalue2] [, ktime2] [...]</synopsis>
   </refsect1>
 
+   <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iphase</emphasis> -- Une valeur comprise entre 0 et 1 pour indiquer
+      où commence la boucle. Zéro, la valeur la plus usuelle, indique le début du
+      signal.
+    </para>   
+  </refsect1>
+  
   <refsect1>
     <title>Exécution</title>
     <para>
@@ -54,18 +63,13 @@ english cvs version=1.14
     </para>
 
     <para>
-      <emphasis>iphase</emphasis> -- Une valeur comprise entre 0 et 1 pour indiquer
-      où commence la boucle. Zéro, la valeur la plus usuelle, indique le début du
-      signal.
-    </para>
-    
-    <para>
-      <emphasis>ktime0...ktimeN</emphasis> -- Dates des points ; exprimées en
-      fraction d'une période.
+      <emphasis>kvalue0...kvalueN</emphasis> -- Valeurs des points.
     </para>
 
     <para>
-      <emphasis>kvalue0...kvalueN</emphasis> -- Valeurs des points.
+      <emphasis>ktime0...ktimeN</emphasis> -- Durées entre les points ; exprimées
+      en fraction d'une période (voir ci-dessous). La dernière durée indique une
+      ligne entre la valeur finale et la première valeur.
     </para>
 
     <para>

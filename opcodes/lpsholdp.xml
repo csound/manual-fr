@@ -33,8 +33,8 @@ english cvs version=1.8
   </refsect1>
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>ksig <command>lpsholdp</command>  kphase, ktrig, ktime0, kvalue0  [, ktime1] [, kvalue1] \
-      [, ktime2] [, kvalue2] [...]</synopsis>
+    <synopsis>ksig <command>lpsholdp</command>  kphase, ktrig, ktime0, kvalue0 [, kvalue1] [, ktime1] \
+      [, kvalue2] [, ktime2] [...]</synopsis>
   </refsect1>
  
   <refsect1>
@@ -46,11 +46,12 @@ english cvs version=1.8
       <emphasis>kphase</emphasis> - 
     </para>
     <para>
-      <emphasis>kvalue0</emphasis> ...<emphasis>kvalueN</emphasis> - valeurs des points.
+      <emphasis>kvalue0...valueN</emphasis> - valeurs des points.
     </para>
     <para>
-      <emphasis>ktime0</emphasis> ...<emphasis>ktimeN</emphasis> - dates des points exprimées en
-      fractions d'un cycle.
+      <emphasis>ktime0...ktimeN</emphasis> -- Durées entre les points ; exprimées
+      en fraction d'une période (voir ci-dessous). La dernière durée indique une
+      ligne entre la valeur finale et la première valeur.
     </para>
     <para>
       L'opcode <emphasis>lpsholdp</emphasis> est semblable à

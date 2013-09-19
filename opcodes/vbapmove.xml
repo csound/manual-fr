@@ -34,6 +34,8 @@ english cvs version=
     <title>Syntaxe</title>
     <synopsis>ar1[, ar2...] <command>vbapmove</command> asig, idur, ispread, ifldnum, ifld1 \
       [, ifld2] [...]</synopsis>
+    <synopsis>aarray[] <command>vbapmove</command> asig, idur, ispread, ifldnum, ifld1 \
+      [, ifld2] [...]</synopsis>
   </refsect1>
  
   <refsect1>
@@ -152,7 +154,7 @@ english cvs version=
   </refsect1>
  
   <refsect1>
-    <title>Credits</title>
+    <title>Crédits</title>
     <para>
       <simplelist>
         <member>Auteur : Ville Pulkki</member>
@@ -162,10 +164,11 @@ english cvs version=
         <member>Helsinki, Finlande</member>
         <member>Mai 2000</member>
         <member>Auteur : &namejohn;</member>
-        <member>Juillet 2012</member>
+        <member>Juillet 2012, septembre 2013</member>
       </simplelist>
     </para>
 
     <para>Nouveau dans la version 5.17.13 de Csound. </para>
+    <para>Sortie sur tableau ajoutée dans la version 6.01</para>
   </refsect1>
 </refentry>

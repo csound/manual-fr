@@ -34,8 +34,17 @@ english cvs version=1.1
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>ksig <command>looptseg</command> kfreq, ktrig, ktime0, kvalue0, ktype0, [, ktime1] [,kvalue1] [, ktype1] \
-      [, ktime2] [, kvalue2] [,ktype2] [...][, ktimeN] [, kvalueN]</synopsis>
+    <synopsis>ksig <command>looptseg</command> kfreq, ktrig, iphase, kvalue0, ktype0, ktime0, [, kvalue1] [,ktype1] [, ktime1] \
+      [, kvalue2] [,ktype2] [, ktime2] [...] [, kvalueN] [,ktypeN] [, ktimeN]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iphase</emphasis> -- Une valeur comprise entre 0 et 1 pour indiquer
+      où commence la boucle. Zéro, la valeur la plus usuelle, indique le début du
+      signal.
+    </para>   
   </refsect1>
 
   <refsect1>
@@ -56,12 +65,13 @@ english cvs version=1.1
     </para>
 
     <para>
-      <emphasis>ktime0...ktimeN</emphasis> -- Dates des points ; exprimées en
-      fraction d'une période.
+      <emphasis>kvalue0...kvalueN</emphasis> -- Valeurs des points.
     </para>
 
     <para>
-      <emphasis>kvalue0...kvalueN</emphasis> -- Valeurs des points.
+      <emphasis>ktime0...ktimeN</emphasis> -- Durées entre les points ; exprimées
+      en fraction d'une période (voir ci-dessous). La dernière durée indique une
+      ligne entre la valeur finale et la première valeur.
     </para>
 
     <para>
