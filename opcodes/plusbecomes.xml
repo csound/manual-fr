@@ -1,0 +1,81 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="plusbecomes">
+<indexterm id="IndexPlusbecomes"><primary>=</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Initialization and Reinitialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>=</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>=</refname>
+    <refpurpose>
+      Addition et affectation.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>+=</command> xarg</synopsis>
+    <synopsis>ires <command>+=</command> iarg</synopsis>
+    <synopsis>kres <command>+=</command> karg</synopsis>
+    <synopsis>table [ kval] <command>+=</command> karg</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Description</title>
+    <para> 
+      Exécute une addition et son affectation.
+    </para> 
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para> 
+      <emphasis>+=</emphasis> - Ajoute la valeur de l'expression
+      <emphasis>iarg</emphasis> (<emphasis>karg, xarg</emphasis>) au résultat
+      nommé. On peut ainsi sauvegarder l'évaluation d'un résultat pour un
+      usage ultérieur.  
+    </para> 
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode plusbecomes. Il utilise le fichier
+      <ulink url="examples/plusbecomes.csd"><citetitle>plusbecomes.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode plusbecomes.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/reverb.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="assign"><citetitle>assign</citetitle></link>, 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Université de Bath et Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>2013</member>
+      </simplelist>
+      <para>Nouveau dans la version 6.00</para>
+  </refsect1>
+</refentry>
