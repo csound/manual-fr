@@ -189,6 +189,7 @@
       [, kvalue2] [,ktype2] [, ktime2] [...] [, kvalueN] [,ktypeN] [, ktimeN]</synopsis><para/>
 <synopsis>ksig <link linkend="loopxseg">loopxseg</link> kfreq, ktrig, iphase, ktime0, kvalue0 [, ktime1] [, kvalue1] \
       [, ktime2] [, kvalue2] [...]</synopsis><para/>
+<synopsis>ksig <link linkend="lpshold">lpshold</link> kfreq, ktrig, iphase, ktime0, kvalue0  [, kvalue1] [, ktime1] [, kvalue2] [, ktime2] [...]</synopsis><para/>
 <synopsis>ksig <link linkend="lpsholdp">lpsholdp</link>  kphase, ktrig, ktime0, kvalue0 [, kvalue1] [, ktime1] \
       [, kvalue2] [, ktime2] [...]</synopsis><para/>
 <synopsis>ares <link linkend="rspline">rspline</link> xrangeMin, xrangeMax, kcpsMin, kcpsMax</synopsis><synopsis>kres <link linkend="rspline">rspline</link> krangeMin, krangeMax, kcpsMin, kcpsMax</synopsis><para/>
@@ -677,6 +678,9 @@
 <synopsis>ar1, ..., ar8 <link linkend="vbap8move">vbap8move</link> asig, idur, ispread, ifldnum, ifld1 \
       [, ifld2] [...]</synopsis><para/>
 <synopsis>k1[, k2...] <link linkend="vbapg">vbapg</link> kazim [,kelev] [, kspread] [, ilayout]</synopsis><synopsis>karray[] <link linkend="vbapg">vbapg</link> kazim [,kelev] [, kspread] [, ilayout]</synopsis><para/>
+<synopsis>kr1[, kr2...] <link linkend="vbapgmove">vbapgmove</link> idur, ispread, ifldnum, ifld1 \
+      [, ifld2] [...]</synopsis><synopsis>karray[] <link linkend="vbapgmove">vbapgmove</link> idur, ispread, ifldnum, ifld1 \
+      [, ifld2] [...]</synopsis><para/>
 <synopsis><link linkend="vbaplsinit">vbaplsinit</link> idim, ilsnum [, idir1] [, idir2] [...] [, idir32]</synopsis><para/>
 <synopsis>ar1[, ar2...] <link linkend="vbapmove">vbapmove</link> asig, idur, ispread, ifldnum, ifld1 \
       [, ifld2] [...]</synopsis><synopsis>aarray[] <link linkend="vbapmove">vbapmove</link> asig, idur, ispread, ifldnum, ifld1 \
@@ -959,6 +963,7 @@
 <synopsis>ares <link linkend="init">init</link> iarg</synopsis><synopsis>ires <link linkend="init">init</link> iarg</synopsis><synopsis>kres <link linkend="init">init</link> iarg</synopsis><synopsis>ares, ...  <link linkend="init">init</link> iarg, ...</synopsis><synopsis>ires, ... <link linkend="init">init</link> iarg, ...</synopsis><synopsis>kres, ... <link linkend="init">init</link> iarg, ...</synopsis><synopsis>tab <link linkend="init">init</link> isize[, ival]</synopsis><para/>
 <synopsis>insno <link linkend="nstrnum">nstrnum</link> &quot;name&quot;</synopsis><para/>
 <synopsis><link linkend="p">p</link>(x) </synopsis><para/>
+<synopsis>ares <link linkend="plusbecomes">+=</link> xarg</synopsis><synopsis>ires <link linkend="plusbecomes">+=</link> iarg</synopsis><synopsis>kres <link linkend="plusbecomes">+=</link> karg</synopsis><synopsis>table [ kval] <link linkend="plusbecomes">+=</link> karg</synopsis><para/>
 <synopsis><link linkend="pset">pset</link> icon1 [, icon2] [...]</synopsis><para/>
 <synopsis><link linkend="reinit">reinit</link> label</synopsis><para/>
 <synopsis><link linkend="rigoto">rigoto</link> label</synopsis><para/>
