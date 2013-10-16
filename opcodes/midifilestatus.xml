@@ -1,0 +1,49 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="midifilestatus">
+<indexterm id="IndexMidifilestatus"><primary>midifilestatus</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>midifilestatus</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>midifilestatus</refname>
+
+    <refpurpose>
+      Retourne l'état de la restitution du fichier MIDI en entrée.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne l'état courant au taux-k de la restitution du fichier MIDI en
+      entrée, 1 si la restitution est en cours, 0 si la fin du fichier a été
+      atteinte.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ksig  <command>midifilestatus</command></synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Mars 2006</member>
+	      <member>Nouveau dans Csound6</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>
