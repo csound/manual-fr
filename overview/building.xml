@@ -18,9 +18,10 @@ english cvs version=1.26
     Cependant, la construction à partir des sources est sans doute la meilleure option sous GNU/Linux.
   </para>
   <para>
-    Cette section met l'accent sur le système principal de construction de Csound 5, qui utilise
-    <ulink url="http://www.scons.org">SCons</ulink>, un programme Python qui remplace
-    <emphasis>make</emphasis> pour la configuration et la construction multi plates-formes.
+    Cette section met l'accent sur le système principal de construction de Csound 6,
+    qui utilise <ulink url="http://www.cmake.org">cmake</ulink>, un système de
+    construction open source et multi plates-formes conçu pour construire, tester
+    et empaqueter des logiciels.
   </para>
   <para>
     Lorsque l'on construit Csound à partir des sources plutôt que d'utiliser un paquetage précompilé,
@@ -32,12 +33,13 @@ english cvs version=1.26
     Le code source de Csound le plus récent (potentiellement instable) est également disponible par
     GIT. La page d'acceuil GIT de Csound se trouve ici :
     <ulink url="http://csound.git.sourceforge.net/git/gitweb-index.cgi">http://csound.git.sourceforge.net/git/gitweb-index.cgi</ulink>.
-    L'utilisation de git pour télécharger et compiler Csound est assez facile. Installer GIT pour
-    votre plate-forme et utiliser la commande suivante pour cloner l'entrepôt git de Csound :
+    L'utilisation de git pour télécharger et compiler Csound est assez facile.
+    Installer GIT pour votre plate-forme et utiliser la commande suivante pour cloner l'entrepôt
+    git de Csound :
   </para>
-  <programlisting>git clone git://git.code.sf.net/p/csound/csound5-git</programlisting>
+  <programlisting>git clone git://git.code.sf.net/p/csound/csound6-git csound-csound6-git</programlisting>
   <para>
-    Cela téléchargera une version à lecture seule de l'entrepôt de Csound5 (cela signifie que
+    Cela téléchargera une version à lecture seule de l'entrepôt de Csound6 (cela signifie que
     l'on ne peut pas mettre à jour l'entrepôt central à partir de celui-ci). Pour une mise à
     jour de l'entrepôt téléchargé à partir de l'entrepôt central, utiliser :
   </para>
@@ -46,9 +48,9 @@ english cvs version=1.26
     On utilise le même procédé pour le manuel de Csound. Pour le cloner, utiliser cette
     commande :
   </para>
-  <programlisting>git clone git://git.code.sf.net/p/csound/manual-git</programlisting>
+  <programlisting>git clone git://git.code.sf.net/p/csound/csound6-git csound6-git</programlisting>
 
-  <bridgehead>Conditions nécessaires pour construire Csound 5 sur toutes les plates-formes</bridgehead>
+  <bridgehead>Conditions nécessaires pour construire Csound 6 sur toutes les plates-formes</bridgehead>
   <itemizedlist>
     <listitem>
       <simpara>
@@ -58,14 +60,9 @@ english cvs version=1.26
     </listitem>
     <listitem>
       <simpara>
-        Installer Python depuis <ulink url="http://www.python.org">www.python.org</ulink>.
-        Dans la plupart des cas il vaut mieux installer la version stable la plus récente.
-        Scons a besoin de Python pour fonctionner.
-      </simpara>
-    </listitem>
-    <listitem>
-      <simpara>
-        Installer le système de construction SCons depuis <ulink url="http://www.scons.org">www.scons.org</ulink>.
+        Installer le système de construction Cmake depuis <ulink
+        url="http://www.cmake.org">www.scons.org</ulink> ou depuis votre système
+        de paquetage.
       </simpara>
     </listitem>
   </itemizedlist>
@@ -86,7 +83,10 @@ english cvs version=1.26
         devel-19) depuis <ulink url="http://www.portaudio.com/usingcvs.html">www.portaudio.com/usingcvs.html</ulink>.
         A de noter que la version stable 18 ne fonctionnera pas. Csound peut aussi utiliser
         plusieurs APIS spécifiques aux plates-formes telles que ALSA, JACK, CoreAudio et la bibliothèque
-        multimedia de Windows. Voir les notes de chaque plate-forme pour les détails.
+        multimedia de Windows, voir les notes de chaque plate-forme pour les détails.
+        Sous Windows, on peut utiliser la version compilée de PortAudio disponible
+        à <ulink url="https://github.com/adfernandes/precompiled-portaudio-windows">
+        https://github.com/adfernandes/precompiled-portaudio-windows</ulink>
       </simpara>
     </listitem>
     <listitem>
@@ -106,6 +106,13 @@ english cvs version=1.26
       <simpara>
         Pour générer les interfaces Python et Java, installer le Software Interface and Wrapper
         Generator (SWIG) depuis <ulink url="http://www.swig.org">http://www.swig.org</ulink>.
+      </simpara>
+    </listitem>
+    <listitem>
+      <simpara>
+        Installer Python depuis<ulink
+        url="http://www.python.org">www.python.org</ulink>. Dans la plupart des
+        cas il vaut mieux installer la version 2.7 la plus récente.
       </simpara>
     </listitem>
     <listitem>
@@ -136,7 +143,7 @@ english cvs version=1.26
       <simpara>
         Les opcodes STK nécessitent le code source de STK depuis
         <ulink url="http://ccrma.stanford.edu/software/stk">http://ccrma.stanford.edu/software/stk</ulink>,
-        à copier dans <filename>csound5/Opcodes/stk</filename>.
+        à copier dans <filename>csound6/Opcodes/stk</filename>.
       </simpara>
     </listitem>
     <listitem>
@@ -152,19 +159,38 @@ english cvs version=1.26
 
   <bridgehead>Windows</bridgehead>
   <para>On a besoin des éléments suivants pour la construction sous Windows (on peut
-    trouver des instructions plus complètes pour la construction sous Windows dans le
-    document csound-build.tex (csound-build.pdf)) :</para>
+    trouver des instructions plus complètes pour la construction sous Windows dans
+    le document <filename>How_to_Build_Csound_on_Windows.doc</filename>) :</para>
   <itemizedlist>
     <listitem>
       <simpara>
-        Installer un compilateur comme gcc ou Microsoft Visual Studio (le compilateur C++ d'Intel est
-        également supporté). Si l'on utilise MinGW (gcc), installer l'ensemble de la distribution
-        actuelle de MinGW au moyen de l'installeur automatisé de MinGW depuis
-        <ulink url="http://www.mingw.org">www.mingw.org</ulink>, par exemple dans
-        <literal>c:/mingw</literal>. Ceci installera gcc, g++, GNU binutils, les runtime de MinGW et
-        l'API win32. Installer ensuite la version actuelle de MSys.
+        Installer un compilateur comme gcc ou Microsoft Visual Studio. Si l'on
+        utilise MinGW (gcc), télécharger l'installeur de MinGW pour architecture
+        32 bit, threads Posix, gestion d'exception dwarf2 depuis
+        <ulink
+        url="http://sourceforge.net/projects/mingwbuilds/files/latest/download?source=files">
+        http://sourceforge.net/projects/mingwbuilds/files/latest/download?source=files</ulink>
+        et l'exécuter. Installer dans un répertoire tel que
+        <filename>D:/mingw32-4.8.1</filename>.
       </simpara>
       <simpara>
+        Le construction de Csound et de ses dépendances nécessite d'autres outils
+        en plus du compilateur. Installer Msys depuis <ulink
+        url="http://sourceforge.net/projects/mingwbuilds/files/external-binary-packages/msys%2B7za%2Bwget%2Bsvn%2Bgit%2Bmercurial%2Bcvs-rev13.7z/download">
+        http://sourceforge.net/projects/mingwbuilds/files/external-binary-packages/msys%2B7za%2Bwget%2Bsvn%2Bgit%2Bmercurial%2Bcvs-rev13.7z/download</ulink>.
+        Cela inclut bison, flex, autotools et d'autres facilités. Editer le fichier
+        de MSys <filename>etc/fstab</filename> pour relier le répertoire de
+        MinGW à <filename>/mingw</filename>.
+      </simpara>
+      <simpara>
+        Les options pour le compilateur de MinGW doivent être
+        <literal>-g -O2 -fopenmp -march=nocona -mstackrealign -DNDEBUG -I/usr/local/include</literal>.
+      </simpara>
+      <simpara>
+        Les options pour le compilateur C++ de MinGW doivent être
+        <literal>-g -O2 -std=gnu++11 -fopenmp -march=nocona -mstackrealign -DNDEBUG -I/usr/local/include</literal>.
+      </simpara>
+      <!--<simpara>
         Sous Windows on peut utiliser Microsoft Visual C++ (sauf pour CsoundAC). L'Express Edition libre, depuis
         <ulink url="http://www.microsoft.com/express/vc/">http://www.microsoft.com/express/vc/</ulink>
         fonctionne très bien. Il vous faudra une copie du fichier d'en-tête de Windows
@@ -174,7 +200,7 @@ english cvs version=1.26
         Microsoft à déposer dans le répertoire <filename>lib</filename> de Visual C++. Ouvrir ensuite
         un shell pour compiler Csound (habituellement appelé Visual Studio Command Prompt command,
         depuis le menu du programme Visual C++).
-      </simpara>
+      </simpara>-->
     </listitem>
   </itemizedlist>
   <para>Les configurations optionnelles pour Windows comprennent :</para>
@@ -198,7 +224,7 @@ english cvs version=1.26
       <simpara>
         ALSA (<ulink url="http://www.alsa-project.org">www.alsa-project.org</ulink>) et
         JACK (<ulink url="http://www.jackaudio.org/">www.jackaudio.org/</ulink>) en plus de PortAudio,
-        pour l'audio en . Les distributions de linux fournissent habituellement
+        pour l'audio en temps réel. Les distributions de linux fournissent habituellement
         les paquetages de développement pour ces systèmes dans leurs entrepôts.
       </simpara>
     </listitem>
@@ -214,7 +240,7 @@ english cvs version=1.26
     <listitem>
       <simpara>
         CoreAudio (système audio natif d'OSX) et JACK, en plus de PortAudio, pour l'audio
-        en .
+        en temps réel.
       </simpara>
     </listitem>
     <listitem>
@@ -224,11 +250,13 @@ english cvs version=1.26
     </listitem>
   </itemizedlist>
 
-  <bridgehead>Construire Csound 5 avec SCons</bridgehead>
+  <bridgehead>Construire Csound 6 avec CMake</bridgehead>
   <para>
     Lorsque vous avez tous les paquetages requis et leur sources (ou les paquetages -dev)
-    pour besoins particuliers sur votre plate-forme, exécutez "scons -h" pour découvrir les
-    options de configuration.
+    pour supporter les besoins particuliers sur votre plate-forme, il vaut mieux
+    parcourir le fichier <emphasis>Custom.cmake.ex</emphasis> pour
+    découvrir les options courantes de configuration. Tous les changements et
+    particularisations sont à mettre dans <emphasis>Custom.cmake</emphasis>.
   </para>
   <para>
     La construction est considérablement facilitée si les bibliothèques et les en-têtes
@@ -237,45 +265,29 @@ english cvs version=1.26
     non-standard des dépendances de tierces parties pour lesquelles il faut
     trouver les en-têtes et les bibliothèques :
   </para>
-  <itemizedlist>
-    <listitem>
-      <simpara>
-        Sous Windows, si l'on utilise Microsoft Visual C++, modifier custom-msvc.py
-      </simpara>
-    </listitem>
-    <listitem>
-      <simpara>
-        Sous Windows, si l'on utilise MinGW/MSys, modifier custom-mingw.py
-      </simpara>
-    </listitem>
-    <listitem>
-      <simpara>
-        Sous Mac OSX éditer custom-osx.py et le renommer custom.py.
-      </simpara>
-    </listitem>
-        <listitem>
-      <simpara>
-        Sous Linux éditer custom-linux-jpff.py ou custom-linux-mkg.py et le
-        renommer custom.py.
-     </simpara>
-    </listitem>
-  </itemizedlist>
   <para>
-    Evitez de modifier le fichier SConstruct.
+    Eviter de modifier les fichiers CMakeList.txt.
   </para>
-  <para>Exécutez scons avec les variables pour les options que vous désirez. Par exemple :</para>
-  <programlisting>scons buildOSC=1 buildCsound5GUI=1 buildPythonOpcodes=1 useOSC=1 buildBeats=1</programlisting>
-
+  <para>
+    Avec CMake, la construction se fait habituellement dans un répertoire
+    différent de celui des sources. Créer un répertoire pour la construction,
+    se positionner dans ce répertoire et exécuter <emphasis>cmake
+    chemin-du-répertoire-des-sources</emphasis>. Si tout se passe bien,
+    les fichiers Makefiles nécessaires sont créés. On peut ensuire exécuter
+    "make" et "make install". Si les choses ne se passent pas correctement
+    il peut être nécessaire d'effacer le fichier
+    <emphasis>CMakeCache.txt</emphasis>.
+  </para>
   <note>
     <para>
-      Il est important de positionner la variable d'environnement <literal>OPCODEDIR</literal> sur le
+      Il est important de positionner la variable d'environnement <literal>OPCODE6DIR</literal> sur le
       répertoire dans lequel les bibliothèques de greffon se trouvent ; dans le cas d'une construction
-      en double précision, il faut plutôt positionner <literal>OPCODEDIR64</literal>. Les
+      en double précision, il faut plutôt positionner <literal>OPCODE6DIR64</literal>. Les
       installeurs s'occupent habituellement de ceci, mais Csound doit pouvoir trouver ses
       bilbliothèques de greffon lorsqu'on le construit à partir des sources.
     </para>
   </note>
-  <bridgehead>Options de construction</bridgehead>
+<!--  <bridgehead>Options de construction</bridgehead>
   <table frame="all" colsep="1">
     <title>Options de construction de SCons</title>
     <tgroup cols="2">
@@ -481,6 +493,6 @@ english cvs version=1.26
         </row>
       </tbody>
     </tgroup>
-  </table>
+  </table>-->
 </chapter>
 

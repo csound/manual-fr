@@ -34,6 +34,7 @@ english cvs version=1.19
   <refsect1>
     <title>Syntaxe</title>
     <synopsis>ires <command>evalstr</command> Scode </synopsis>
+    <synopsis>kres <command>evalstr</command> Scode, ktrig </synopsis>
   </refsect1>
 
   <refsect1>
@@ -42,6 +43,14 @@ english cvs version=1.19
       <emphasis><quote>Scode</quote></emphasis> -- une chaîne de caractères à
       compiler et à évaluer.
     </para>    
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+   	<para>
+      <emphasis><quote>ktrig</quote></emphasis> -- déclenche la
+      compilation/évaluation s'il est différent de zéro.
+    </para>
   </refsect1>
 
   <refsect1>

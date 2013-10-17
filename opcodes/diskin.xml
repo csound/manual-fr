@@ -36,6 +36,10 @@ english cvs version=1.24
       [, iwraparound] [, iformat] [, iskipinit]</synopsis>
     <para>Noter que N valait 24 dans les versions antérieures à la 5.14 et qu'il
       vaut maintenant 40.</para>
+
+    <synopsis>ar1[] <command>diskin2</command> ifilcod, kpitch[, iskiptim \
+      [, iwrap[, iformat [, iwsize[, ibufsize[, iskipinit]]]]]]</synopsis>
+    <para>(dans cette version, le nombre de canaux de sortie n'est pas limité.)</para>
   </refsect1>
 
   <refsect1>
@@ -125,9 +129,22 @@ english cvs version=1.24
 
   <refsect1>
     <title>Exécution</title>
-    <note><simpara><emphasis>diskin</emphasis> est obsolète car il plante facilement
-    dans certaines circonstances. Utiliser plutôt
-    <link linkend="diskin2"><citetitle>diskin2</citetitle></link>.</simpara></note>
+    <para>
+	    <emphasis>a1 ... a24</emphasis>	-- signaux de sortie, dans l'intervalle
+	    -0dbfs, 0dbfs. Tous les échantillons avant le début (position négative) et
+	    après la fin du fichier sont supposés nuls, à moins que
+      <emphasis>iwrap</emphasis> soit différent de zéro. Le nombre d'arguments
+      en sortie doit être le même que le nombre de canaux dans le fichier, que
+      l'on peut déterminer avec l'opcode
+      <link linkend="filenchnls"><citetitle>filenchnls</citetitle></link>,
+      sinon il y aura une erreur.
+    </para>
+
+	  <para>
+	    <emphasis>ar1[]</emphasis> --- signaux de sortie, dans un tableau de
+	    taux-a de taille N, où N est le nombre de canaux dans le fichier. Les
+	    tableaux sont automatiquement alloués avec la taille correcte.
+    </para>
     <para>
       <emphasis>kpitch</emphasis> -- N'importe quel nombre réel. Un nombre négatif
       signifie une restitution à l'envers. Ce nombre est un rapport de hauteur où :
@@ -140,12 +157,6 @@ english cvs version=1.24
         <listitem><para><emphasis>-1</emphasis> = hauteur normale à l'envers</para></listitem>
         <listitem><para><emphasis>-2</emphasis> = 1 octave plus haut à l'envers, etc.</para></listitem>
       </itemizedlist>
-    </para>
-
-    <para>
-      <emphasis>diskin</emphasis> est semblable à
-      <link linkend="soundin"><citetitle>soundin</citetitle></link> sauf qu'il peut
-      modifier la hauteur du son qui est lu, et qu'il peut boucler.
     </para>
 
     <caution>

@@ -32,9 +32,6 @@ english cvs version=1.15
       <emphasis>diskin2</emphasis> peut également lire des fichiers multicanaux
       dont le nombre de canaux est compris entre 1 et 24 pour les versions
       de Csound antérieures à la 5.14, et entre 1 et 40 pour les versions suivantes.
-      <emphasis>diskin2</emphasis> offre plus de contrôle et une meilleure
-      qualité de son que <emphasis>diskin</emphasis> mais au prix d'une
-      utilisation plus intensive des ressources CPU.
     </para>
 
 
@@ -44,7 +41,15 @@ english cvs version=1.15
     <title>Syntaxe</title>
     <synopsis>a1[, a2[, ... aN]] <command>diskin2</command> ifilcod, kpitch[, iskiptim \
       [, iwrap[, iformat [, iwsize[, ibufsize[, iskipinit]]]]]]</synopsis>
+      <emphasis>diskin2</emphasis> offre plus de contrôle et une meilleure
+      qualité de son que <emphasis>diskin</emphasis> mais au prix d'une
+      utilisation plus intensive des ressources CPU.
 
+    <synopsis>ar1[] <command>diskin2</command> ifilcod, kpitch[, iskiptim \
+      [, iwrap[, iformat [, iwsize[, ibufsize[, iskipinit]]]]]]</synopsis>
+
+    <para> (dans la version de la sortie dans un tableau, le nombre de canaux
+    de sortie n'a pas de limite supérieure.)</para>
   </refsect1>
 
   <refsect1>
@@ -223,12 +228,18 @@ english cvs version=1.15
     <link linkend="filenchnls"><citetitle>filenchnls</citetitle></link>, sinon il y aura
     une erreur d'initialisation.
 
-    <note>
+  <para>
+    <emphasis>ar1[]</emphasis> --- signaux de sortie, dans un tableau de
+	    taux-a de taille N, où N est le nombre de canaux dans le fichier. Les
+	    tableaux sont automatiquement alloués avec la taille correcte.
+  </para>
+
+  <note>
     <title>Note</title>
     <para>Il est plus efficace de lire un seul fichier avec plusieurs canaux, que
     plusieurs fichiers à un seul canal, spécialement avec de grandes valeurs de
     <emphasis>iwsize</emphasis>.
-	</para>
+	  </para>
 	</note>
 
 	</para>
