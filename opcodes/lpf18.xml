@@ -30,7 +30,7 @@ english cvs version=1.13
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>ares <command>lpf18</command> asig, kfco, kres, kdist [, iskip]</synopsis>
+    <synopsis>ares <command>lpf18</command> asig, xfco, xres, xdist [, iskip]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -44,12 +44,12 @@ english cvs version=1.13
   <refsect1>
     <title>Exécution</title>
     <para>
-      <emphasis>kfco</emphasis> -- fréquence de coupure du filtre en Hz. Doit
+      <emphasis>xfco</emphasis> -- fréquence de coupure du filtre en Hz. Doit
       être comprise entre 0 et <emphasis>sr</emphasis>/2.
     </para>
 
     <para>
-      <emphasis>kres</emphasis> -- quantité de résonance. Il y a des
+      <emphasis>xres</emphasis> -- quantité de résonance. Il y a des
       auto-oscillations lorsque <emphasis>kres</emphasis> est proche de 1. Doit
       être habituellement compris entre 0 et 1, mais des valeurs légèrement
       supérieures à 1 sont possibles pour obtenir des oscillations plus
@@ -57,7 +57,7 @@ english cvs version=1.13
     </para>
 
     <para>
-      <emphasis>kdist</emphasis> -- quantité de distortion. <emphasis>kdist</emphasis> = 0
+      <emphasis>xdist</emphasis> -- quantité de distortion. <emphasis>kdist</emphasis> = 0
       donne une sortie propre. <emphasis>kdist</emphasis> &gt; 0 ajoute une
       distorsion de type <emphasis>tanh</emphasis>() contrôlée par les paramètres
       du filtre, de façon à ce qu'une faible fréquence de coupure et qu'une résonance
@@ -111,5 +111,7 @@ english cvs version=1.13
     <para>Exemple écrit par &namekevin; avec l'aide de Iain Duncan. Merci à Iain
     pour son aide sur cet exemple.</para>
     <para>Nouveau dans la version 4.10 de Csound.</para>
+    <para>Paramètres de taux audio introduits dans la version 6.02</para>
+    <para>Octobre 2013.</para>
   </refsect1>
 </refentry>

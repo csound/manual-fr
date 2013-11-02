@@ -35,7 +35,7 @@ english cvs version=1.8
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>ahp, alp, abp, abr <command>statevar</command> ain, kcf, kq [, iosamps, istor]</synopsis>
+    <synopsis>ahp,alp,abp,abr <command>statevar</command> ain, xcf, xq [, iosamps, istor]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -76,11 +76,12 @@ english cvs version=1.8
       <emphasis>asig</emphasis> -- signal d'entrée.
     </para>
     <para>
-      <emphasis>kcf</emphasis> -- fréquence de coupure du filtre.
+      <emphasis>xcf</emphasis> -- fréquence de coupure du filtre (taux-k ou taux-a).
     </para>
 
     <para>
-      <emphasis>kq</emphasis> -- Q du filtre. Cette valeur est limitée en interne
+      <emphasis>xq</emphasis> -- Q du filtre (taux-k ou taux-a). Cette valeur est
+      limitée en interne
       en fonction de la fréquence et du nombre de fois que le sur-échantillonnage
       est utilisé durant le processus (sur-échantillonnage de 3 fois par défaut).
     </para>
@@ -112,5 +113,7 @@ english cvs version=1.8
 
     <para>Nouveau greffon dans la version 5</para>
     <para>Janvier 2005.</para>
+    <para>Paramètres de taux audio introduits dans la version 6.02</para>
+    <para>Octobre 2013.</para>
   </refsect1>
 </refentry>

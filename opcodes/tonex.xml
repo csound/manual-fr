@@ -38,6 +38,7 @@ english cvs version=1.8
   <refsect1>
     <title>Syntaxe</title>
     <synopsis>ares <command>tonex</command>  asig, khp [, inumlayer] [, iskip]</synopsis>
+    <synopsis>ares <command>tonex</command>  asig, ahp [, inumlayer] [, iskip]</synopsis>
   </refsect1>
  
   <refsect1>
@@ -63,7 +64,8 @@ english cvs version=1.8
     </para>
 
     <para>
-      <emphasis>khp</emphasis> -- le point à mi-puissance de la courbe de réponse, en Hertz. La
+      <emphasis>khp</emphasis>/<emphasis>ahp</emphasis> -- le point à mi-puissance
+      de la courbe de réponse. La
       mi-puissance est définie par puissance maximale / racine de 2.
     </para>
   </refsect1>
@@ -101,5 +103,7 @@ english cvs version=1.8
     </para>
 
     <para>Nouveau dans la version 3.49 de Csound</para>
+    <para>Paramètres de taux audio introduits dans la version 6.02</para>
+    <para>Octobre 2013.</para>
   </refsect1>
 </refentry>

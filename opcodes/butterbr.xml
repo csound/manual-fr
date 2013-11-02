@@ -32,7 +32,7 @@ english cvs version=1.13
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>ares <command>butterbr</command> asig, kfreq, kband [, iskip]</synopsis>
+    <synopsis>ares <command>butterbr</command> asig, xfreq, xband [, iskip]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -57,12 +57,12 @@ english cvs version=1.13
     </para>
 
     <para>
-      <emphasis>kfreq</emphasis> -- Fréquence de coupure ou centrale pour chacun
+      <emphasis>xfreq</emphasis> -- Fréquence de coupure ou centrale pour chacun
       des filtres.
     </para>
 
     <para>
-      <emphasis>kband</emphasis> -- Largeur de la bande passante ou de la bande
+      <emphasis>xband</emphasis> -- Largeur de la bande passante ou de la bande
       de réjection des filtres.
     </para>
   </refsect1>
@@ -100,6 +100,8 @@ english cvs version=1.13
         <member>1995</member>
       </simplelist>
     </para>
-    <para>Existait dans la 3.30</para>
+    <para>Existait dans la version 3.30</para>
+    <para>Paramètres de taux audio introduits dans la version 6.02</para>
+    <para>Octobre 2013.</para>
   </refsect1>
 </refentry>

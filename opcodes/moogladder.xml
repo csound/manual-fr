@@ -36,6 +36,9 @@ english cvs version=1.8
   <refsect1>
     <title>Syntaxe</title>
     <synopsis>asig <command>moogladder</command> ain, kcf, kres[, istor]</synopsis>
+    <synopsis>asig <command>moogladder</command> ain, acf, kres[, istor]</synopsis>
+    <synopsis>asig <command>moogladder</command> ain, kcf, ares[, istor]</synopsis>
+    <synopsis>asig <command>moogladder</command> ain, acf, ares[, istor]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -55,11 +58,12 @@ english cvs version=1.8
       <emphasis>asig</emphasis> -- signal d'entrée.
     </para>
     <para>
-      <emphasis>kcf</emphasis> -- fréquence de coupure du filtre
+      <emphasis>kcf</emphasis>/<emphasis>acf</emphasis> -- fréquence de coupure du filtre
     </para>
 
     <para>
-      <emphasis>kres</emphasis> -- résonance, généralement &lt; 1, mais pas
+      <emphasis>kres</emphasis>/<emphasis>ares</emphasis> -- résonance,
+      généralement &lt; 1, mais pas
       limitée à cette valeur. Les valeurs de résonance supérieures à 1 peuvent
       produire des bruits de repliement ; les synthétiseurs analogiques permettent
       généralement d'avoir des résonances supérieures à 1.
@@ -91,5 +95,7 @@ english cvs version=1.8
     </para>
     <para>Nouveau greffon dans la version 5</para>
     <para>Janvier 2005.</para>
+    <para>Paramètres de taux audio introduits dans la version 6.02</para>
+    <para>Octobre 2013.</para>
   </refsect1>
 </refentry>

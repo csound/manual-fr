@@ -14,8 +14,6 @@ english cvs version=1.12
     <refentrytitle>areson</refentrytitle>
   </refmeta>
 
-
- 
   <refnamediv>
     <refname>areson</refname>
     <refpurpose>
@@ -35,6 +33,9 @@ english cvs version=1.12
   <refsect1>
     <title>Syntaxe</title>
     <synopsis>ares <command>areson</command> asig, kcf, kbw [, iscl] [, iskip]</synopsis>
+    <synopsis>ares <command>areson</command> asig, acf, kbw [, iscl] [, iskip]</synopsis>
+    <synopsis>ares <command>areson</command> asig, kcf, abw [, iscl] [, iskip]</synopsis>
+    <synopsis>ares <command>areson</command> asig, acf, abw [, iscl] [, iskip]</synopsis>
   </refsect1>
  
   <refsect1>
@@ -42,7 +43,8 @@ english cvs version=1.12
     <para>
       <emphasis>iscl</emphasis> (facultatif, par défaut 0) -- facteur de pondération codé pour les
       résonateurs. Une valeur de 1 signifie que la crête du facteur de réponse est 1, c-à-d. toutes les
-      fréquences autres que <emphasis>kcf</emphasis> sont atténuées selon la courbe de réponse
+      fréquences autres que <emphasis>kcf</emphasis>/<emphasis>acf</emphasis>
+      sont atténuées selon la courbe de réponse
       (normalisée). Une valeur de 2 élève le facteur de réponse de façon à ce que sa valeur efficace
       globale soit égale à 1. (Cette égalisation intentionnelle des puissances d'entrée et de sortie
       suppose que toutes les fréquences sont présentes ; elle est ainsi plus appropriée au bruit blanc.)
@@ -71,13 +73,13 @@ english cvs version=1.12
     </para>
 
     <para>
-      <emphasis>kcf</emphasis> -- la fréquence centrale du filtre, ou position fréquentielle de la
-      crête de la réponse.
+      <emphasis>kcf</emphasis>/<emphasis>acf</emphasis> -- la fréquence centrale
+      du filtre, ou position fréquentielle de la crête de la réponse.
     </para>
 
     <para>
-      <emphasis>kbw</emphasis> -- largeur de bande du filtre (la différence en Hz entre les points haut
-      et bas à mi-puissance).
+      <emphasis>kbw</emphasis>/<emphasis>abw</emphasis> -- largeur de bande du
+      filtre (la différence en Hz entre les points haut et bas à mi-puissance).
     </para>
 
     <para>
@@ -85,7 +87,7 @@ english cvs version=1.12
       celles de <link linkend="reson"><citetitle>reson</citetitle></link>. Ainsi <emphasis>areson</emphasis>
       est un filtre réjecteur de bande variable (notch filter) dont les fonctions de transfert représentent
       les aspects <quote>filtrés</quote> de leurs compléments. Cependant, l'échelle de puissance n'est
-      pas normalisée dans <emphasis>areson</emphasis> mais reste le complément réel de l'unité correspondante.
+      pas normalisée dans <emphasis>areson</emphasis> mais reste le complément exact de l'unité correspondante.
       Ainsi les deux versions d'un signal audio filtré par des unités <emphasis>reson</emphasis> et
       <emphasis>areson</emphasis> correspondantes, redonneraient par addition le signal original.
     </para>
@@ -130,5 +132,11 @@ english cvs version=1.12
       <link linkend="tone"><citetitle>tone</citetitle></link>, 
       <link linkend="tonek"><citetitle>tonek</citetitle></link>
     </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Paramètres de taux audio introduits dans la version 6.02</para>
+    <para>Octobre 2013.</para>
   </refsect1>
 </refentry>

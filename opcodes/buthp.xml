@@ -18,7 +18,7 @@ english cvs version=1.8
     <refname>buthp</refname>
     <refpurpose>
       Identique à butterhp.
-          </refpurpose>
+    </refpurpose>
   </refnamediv>
   
   <refsect1>
@@ -31,5 +31,6 @@ english cvs version=1.8
   <refsect1>
     <title>Syntaxe</title>
     <synopsis>ares <command>buthp</command> asig, kfreq [, iskip]</synopsis>
+    <synopsis>ares <command>buthp</command> asig, afreq [, iskip]</synopsis>
   </refsect1>
 </refentry>
