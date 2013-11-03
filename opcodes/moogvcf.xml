@@ -78,8 +78,9 @@ english cvs version=1.17
 
     <warning>
       <para>
-        Ce filtre nécessite un signal d'entrée normalisé à un. On peut l'obtenir
-        facilement au moyen de <link linkend="Zerodbfs"><citetitle>0dbfs</citetitle></link>,
+        Avant la version 6.02, ce filtre nécessitait un signal d'entrée
+        normalisé à un. On peut l'obtenir facilement au moyen de
+        <link linkend="Zerodbfs"><citetitle>0dbfs</citetitle></link>,
         comme ceci :
         <literallayout>ares <command>moogvcf</command> asig, kfco, kres, 0dbfs</literallayout>
       </para>

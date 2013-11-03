@@ -40,7 +40,7 @@ english cvs version=1.9
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>asig <command>fofilter</command> ain, kcf, kris, kdec[, istor]</synopsis>
+    <synopsis>asig <command>fofilter</command> ain, xcf, xris, xdec[, istor]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -61,17 +61,17 @@ english cvs version=1.9
       <emphasis>asig</emphasis> -- signal d'entrée.
     </para>
     <para>
-      <emphasis>kcf</emphasis> -- fréquence centrale du filtre.
+      <emphasis>xcf</emphasis> -- fréquence centrale du filtre.
     </para>
 
     <para>
-      <emphasis>kris</emphasis> -- durée d'attaque de la réponse impulsionnelle (secs). 
+      <emphasis>xris</emphasis> -- durée d'attaque de la réponse impulsionnelle (secs). 
     </para>
   <para>
-      <emphasis>kdec</emphasis> -- durée de chute de la réponse impulsionnelle (secs). 
+      <emphasis>xdec</emphasis> -- durée de chute de la réponse impulsionnelle (secs). 
     </para>
-	
   </refsect1>
+  
   <refsect1>
     <title>Exemples</title>
     <para>
@@ -97,5 +97,7 @@ english cvs version=1.9
       </simplelist>
     </para>
     <para>Nouveau greffon dans la version 5</para>
+    <para>Paramètres de taux audio introduits dans la version 6.02</para>
+    <para>Octobre 2013.</para>
   </refsect1>
 </refentry>

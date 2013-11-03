@@ -31,7 +31,7 @@ english cvs version=1.8
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>ares <command>resonz</command> asig, kcf, kbw [, iscl] [, iskip]</synopsis>
+    <synopsis>ares <command>resonz</command> asig, xcf, xbw [, iscl] [, iskip]</synopsis>
   </refsect1>
  
   <refsect1>
@@ -100,12 +100,12 @@ english cvs version=1.8
     </para>
 
     <para>
-      <emphasis>kcf</emphasis> -- fréquence de coupure ou de résonance du filtre,
+      <emphasis>xcf</emphasis> -- fréquence de coupure ou de résonance du filtre,
       mesurée en Hz
     </para>
 
     <para>
-      <emphasis>kbw</emphasis> -- largeur de bande du filtre (la différence en Hz
+      <emphasis>xbw</emphasis> -- largeur de bande du filtre (la différence en Hz
       entre les points à mi-puissance inférieur et supérieur).
     </para>
  </refsect1>
@@ -210,5 +210,7 @@ english cvs version=1.8
     </para>
 
     <para>Nouveau dans la version 3.55 de Csound.</para>
+    <para>Paramètres de taux audio introduits dans la version 6.02</para>
+    <para>Octobre 2013.</para>
   </refsect1>
 </refentry>

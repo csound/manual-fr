@@ -30,7 +30,7 @@ english cvs version=1.12
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>ares <command>reson</command> asig, kcf, kbw [, iscl] [, iskip]</synopsis>
+    <synopsis>ares <command>reson</command> asig, xcf, xbw [, iscl] [, iskip]</synopsis>
   </refsect1>
  
   <refsect1>
@@ -67,12 +67,12 @@ english cvs version=1.12
     </para>
 
     <para>
-      <emphasis>kcf</emphasis> -- la fréquence centrale du filtre, ou position fréquentielle de la
+      <emphasis>xcf</emphasis> -- la fréquence centrale du filtre, ou position fréquentielle de la
       crête de la réponse.
     </para>
 
     <para>
-      <emphasis>kbw</emphasis> -- largeur de bande du filtre (la différence en Hz entre les points haut
+      <emphasis>xbw</emphasis> -- largeur de bande du filtre (la différence en Hz entre les points haut
       et bas à mi-puissance).
     </para>
 
@@ -113,5 +113,11 @@ english cvs version=1.12
       <link linkend="tone"><citetitle>tone</citetitle></link>,
       <link linkend="tonek"><citetitle>tonek</citetitle></link>
     </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>Paramètres de taux audio introduits dans la version 6.02</para>
+    <para>Octobre 2013.</para>
   </refsect1>
 </refentry>
