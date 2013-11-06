@@ -30,7 +30,7 @@ english cvs version=1.13
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>ares <command>alpass</command> asig, krvt, ilpt [, iskip] [, insmps]</synopsis>
+    <synopsis>ares <command>alpass</command> asig, xrvt, ilpt [, iskip] [, insmps]</synopsis>
   </refsect1>
  
   <refsect1>
@@ -65,7 +65,7 @@ english cvs version=1.13
   <refsect1>
     <title>Exécution</title>
     <para>
-      <emphasis>krvt</emphasis> -- la durée de réverbération (définie comme le
+      <emphasis>xrvt</emphasis> -- la durée de réverbération (définie comme le
       temps en secondes pris par un signal pour décroitre à 1/1000 ou 60 dB de
       son amplitude originale).
     </para>
@@ -73,7 +73,7 @@ english cvs version=1.13
     <para>
       Le filtre répète l'entrée avec une densité d'écho déterminée par la durée
       de boucle <emphasis>ilpt</emphasis>. Le taux d'atténuation est indépendant
-      et il est déterminé par <emphasis>krvt</emphasis>, la durée de réverbération
+      et il est déterminé par <emphasis>xrvt</emphasis>, la durée de réverbération
       (définie comme le temps en secondes pris par un signal pour décroitre à
       1/1000 ou 60 dB de son amplitude originale). La sortie apparait sans retard.
     </para>
@@ -107,13 +107,15 @@ english cvs version=1.13
 
   <refsect1>
     <title>Crédits</title>
-    <para>
+    <!--<para>
       <simplelist>
         <member>Auteur : William <quote>Pete</quote> Moss (<emphasis>vcomb</emphasis> et <emphasis>valpass</emphasis>)</member>
         <member>Université du Texas à Austin</member>
         <member>Austin, Texas USA</member>
         <member>Janvier 2002</member>
       </simplelist>
-    </para>
+    </para>-->
+    <para>Paramètres de taux audio introduits dans la version 6.02</para>
+    <para>Novembre 2013.</para>
   </refsect1>
 </refentry>

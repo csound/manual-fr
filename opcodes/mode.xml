@@ -34,7 +34,7 @@ english cvs version=1.6
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>aout <command>mode</command> ain, kfreq, kQ [, iskip]</synopsis>
+    <synopsis>aout <command>mode</command> ain, xfreq, xQ [, iskip]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -56,29 +56,29 @@ english cvs version=1.6
     </para>
 
     <para>
-      <emphasis>kfreq</emphasis> -- fréquence de résonance du filtre
+      <emphasis>xfreq</emphasis> -- fréquence de résonance du filtre
       <warning>
         <title>Avertissement</title>
         <para>
-          Ce filtre devient instable si <emphasis>sr</emphasis>/<emphasis>kfreq</emphasis>
-          &lt; pi (par exemple <emphasis>kfreq</emphasis> &gt; 14037 Hz à 44100 Hz).
+          Ce filtre devient instable si <emphasis>sr</emphasis>/<emphasis>xfreq</emphasis>
+          &lt; pi (par exemple <emphasis>xfreq</emphasis> &gt; 14037 Hz à 44100 Hz).
         </para>
         </warning>
     </para>
 
     <para>
-      <emphasis>kQ</emphasis> -- facteur de qualité du filtre
+      <emphasis>xQ</emphasis> -- facteur de qualité du filtre
     </para>
 
     <para>
       La durée de résonance est approximativement proportionnelle à
-      <emphasis>kQ</emphasis>/<emphasis>kfreq</emphasis>.
+      <emphasis>xQ</emphasis>/<emphasis>xfreq</emphasis>.
     </para>
 
     <para>
       Voir <link linkend="MiscModalFreq"><citetitle>Rapports de Fréquence Modale</citetitle></link>
       pour des rapports de fréquence d'instruments réels que l'on peut utiliser
-      pour déterminer les valeurs de <emphasis>kfreq</emphasis>.
+      pour déterminer les valeurs de <emphasis>xfreq</emphasis>.
     </para>
   </refsect1>
 
@@ -102,5 +102,7 @@ english cvs version=1.6
     <para>UDO original et documentation/exemple par François Blanc</para>
     <para>Traduction de l'opcode en code-C par Steven Yi</para>
     <para>Nouveau dans la version 5.04</para>
+    <para>Paramètres de taux audio introduits dans la version 6.02</para>
+    <para>Novembre 2013.</para>
   </refsect1>
 </refentry>
