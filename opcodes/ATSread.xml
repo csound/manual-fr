@@ -16,7 +16,7 @@ english cvs version=1.9
 
   <refnamediv>
     <refname>ATSread</refname>
-    <refpurpose> lit des données depuis un fichier ATS.</refpurpose>
+    <refpurpose>Lit des données depuis un fichier ATS.</refpurpose>
   </refnamediv>
   <refsect1>
     <title>Description</title>
@@ -80,7 +80,18 @@ english cvs version=1.9
       les utiliser pour toute autre opération qui accepte une entrée au taux-k,
       comme la largeur de bande et la résonnance d'un filtre, etc.
     </para>
+
+    <para>
+      Voici un autre exemple de l'opcode ATSread. Il utilise le fichier
+      <ulink url="examples/ATSread-2.csd"><citetitle>ATSread-2.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple 2 de l'opcode ATSread.</title>
+          <xi:include href="examples-xml/ATSread-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
   </refsect1>
+  
   <refsect1>
     <title>Voir aussi</title>
     <para>

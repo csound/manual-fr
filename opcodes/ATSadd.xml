@@ -17,7 +17,7 @@ english cvs version=1.12
   <refnamediv>
     <refname>ATSadd</refname>
     <refpurpose>
-      utilise les données d'un fichier d'analyse ATS pour réaliser une synthèse
+      Utilise les données d'un fichier d'analyse ATS pour réaliser une synthèse
       additive.
     </refpurpose>
   </refnamediv>
@@ -129,7 +129,7 @@ english cvs version=1.12
   <refsect1>
     <title>Exemples</title>
     <para>
-      Voici un autre exemple de l'opcode ATSadd. Il utilise le fichier
+      Voici un exemple complet de l'opcode ATSadd. Il utilise le fichier
       <ulink url="examples/ATSadd.csd"><citetitle>ATSadd.csd</citetitle></ulink>.
 
       <example>
@@ -144,7 +144,18 @@ english cvs version=1.12
       commençons avec le premier partiel et que nous synthétisons au total 20
       partiels, ignorant tous les partiels impairs (1, 3, 5, ...).
     </para>
+
+    <para>
+      Voici un autre exemple de l'opcode ATSadd. Il utilise le fichier
+      <ulink url="examples/ATSadd-2.csd"><citetitle>ATSadd-2.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple 2 de l'opcode ATSadd.</title>
+          <xi:include href="examples-xml/ATSadd-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
   </refsect1>
+  
   <refsect1>
     <title>Voir aussi</title>
     <para><link linkend="ATSread"><citetitle>ATSread</citetitle></link>, 

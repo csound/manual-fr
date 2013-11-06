@@ -17,7 +17,7 @@ english cvs version=1.13
   <refnamediv>
     <refname>ATSaddnz</refname>
     <refpurpose>
-        utilise les données d'un fichier d'analyse ATS pour réaliser une synthèse
+        Utilise les données d'un fichier d'analyse ATS pour réaliser une synthèse
         de bruit.
     </refpurpose>
   </refnamediv>
@@ -95,7 +95,7 @@ english cvs version=1.13
   <refsect1>
     <title>Exemples</title>
     <para>
-      Voici un autre exemple de l'opcode ATSaddnz. Il utilise le fichier
+      Voici un exemple complet de l'opcode ATSaddnz. Il utilise le fichier
       <ulink url="examples/ATSaddnz.csd"><citetitle>ATSaddnz.csd</citetitle></ulink>.
 
       <example>
@@ -107,7 +107,18 @@ english cvs version=1.13
       Ici nous ne resynthétisons que la 25ème bande de bruit (<emphasis>ibandoffset</emphasis>
       à 24 et <emphasis>ibands</emphasis> à 1).
     </para>
+        
+    <para>
+      Voici un autre exemple de l'opcode ATSaddnz. Il utilise le fichier
+      <ulink url="examples/ATSaddnz-2.csd"><citetitle>ATSaddnz-2.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple 2 de l'opcode ATSaddnz.</title>
+          <xi:include href="examples-xml/ATSaddnz-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+        
   </refsect1>
+  
   <refsect1>
     <title>Voir aussi</title>
     <para><link linkend="ATSread"><citetitle>ATSread</citetitle></link>, 

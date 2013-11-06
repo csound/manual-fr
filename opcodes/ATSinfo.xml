@@ -16,7 +16,7 @@ english cvs version=1.9
 
   <refnamediv>
     <refname>ATSinfo</refname>
-    <refpurpose> lit des données de l'en-tête d'un fichier ATS.
+    <refpurpose>Lit des données de l'en-tête d'un fichier ATS.
     </refpurpose>
   </refnamediv>
   <refsect1>
@@ -120,6 +120,16 @@ english cvs version=1.9
         </para>
       </listitem>
     </orderedlist>
+        
+    <para>
+      Voici un autre exemple de l'opcode ATSinfo. Il utilise le fichier
+      <ulink url="examples/ATSinfo-2.csd"><citetitle>ATSinfo-2.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple 2 de l'opcode ATSinfo.</title>
+          <xi:include href="examples-xml/ATSinfo-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
   </refsect1>
   <refsect1>
     <title>Voir aussi</title>

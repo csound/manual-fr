@@ -16,7 +16,7 @@ english cvs version=1.10
   <refnamediv>
     <refname>ATSsinnoi</refname>
     <refpurpose>
-      utilise les données d'un fichier d'analyse ATS pour réaliser une
+      Utilise les données d'un fichier d'analyse ATS pour réaliser une
       resynthèse.
     </refpurpose>
   </refnamediv>
@@ -134,7 +134,18 @@ english cvs version=1.10
       <link linkend="ATSadd"><citetitle>ATSadd</citetitle></link>, 
       <link linkend="ATSaddnz"><citetitle>ATSaddnz</citetitle></link>
     </para>
+
+    <para>
+      Voici un autre exemple de l'opcode ATSsinnoi. Il utilise le fichier
+      <ulink url="examples/ATSsinnoi-2.csd"><citetitle>ATSsinnoi-2.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple 2 de l'opcode ATSsinnoi.</title>
+          <xi:include href="examples-xml/ATSsinnoi-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
   </refsect1>
+  
   <refsect1>
     <title>Crédits</title>
     <para>
