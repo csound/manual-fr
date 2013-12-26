@@ -58,16 +58,16 @@ english cvs version=1.14
     </para>
 
     <para>
-      Cette unité est utile pour générer des chorus et des flangers. Le délai
-      doit être varié au taux-a en connectant <emphasis>adel</emphasis> à la
-      sortie d'un oscillateur. De plus, la rétroaction peut varier au taux-k.
+      Cette unité est utile pour générer des chorus et des flangers. Le retard
+      doit être varié au taux-a, par exemple en connectant <emphasis>adel</emphasis>
+      à la sortie d'un oscillateur. La rétroaction peut varier au taux-k.
       Cet opcode est implémenté de façon à ce que <emphasis>kr</emphasis> puisse
       être différent de <emphasis>sr</emphasis> (sinon le délai ne pourrait pas
       être inférieur à <emphasis>ksmps</emphasis>) ce qui facilite l'exécution en
       temps réel. Cette unité ressemble beaucoup à
       <link linkend="wguide1"><citetitle>wguide1</citetitle></link>, la seule
       différence étant que <emphasis>flanger</emphasis> n'a pas de filtre
-      passe-bas.
+      passe-bas ou le fait qu'on ne peut varier le retard qu'au taux-a.
     </para>
   </refsect1>
 
