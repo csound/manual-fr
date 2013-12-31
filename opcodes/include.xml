@@ -16,14 +16,12 @@ english cvs version=1.15
     <refentrytitle>&num;include</refentrytitle>
   </refmeta>
 
-
-
   <refnamediv>
     <refname>&num;include</refname>
 
     <refpurpose>
       Inclut un fichier externe pour traitement.
-                </refpurpose>
+    </refpurpose>
   </refnamediv>
 
   <refsect1>
@@ -84,6 +82,12 @@ $BASSOON(3)</programlisting>
       Il faut insister sur le fait que ces changements ont lieu au niveau littéral et n'ont donc aucune
       incidence sémantique.
     </para>
+    <para>
+      Si Csound a été construit avec la bibliothèque CURL le nom de fichier
+      dans une instruction <emphasis>&num;include</emphasis> peut être une URL,
+      reconnue en incluant la sous-chaîne "://" dans le nom. Cela incluera du
+      texte via des protocoles comme http, https et ftp.
+    </para>
   </refsect1>
 
   <refsect1>
@@ -119,5 +123,6 @@ $BASSOON(3)</programlisting>
     <para>Exemple écrit par &namekevin;.</para>
 
     <para>Nouveau dans la version 3.48 de Csound</para>
+    <para>Les URLs sont disponibles depuis Csound 6.02</para>
   </refsect1>
 </refentry>
