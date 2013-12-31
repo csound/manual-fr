@@ -1,0 +1,76 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="strfromurl">
+<indexterm id="Indexstrfromurl"><primary>strfromurl</primary></indexterm>
+  <refentryinfo><title>Strings:Definition</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>strfromurl</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>strfromurl</refname>
+    <refpurpose>
+      Donne à une variable chaîne de caractères une valeur lue depuis une URL.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>strfromurl</emphasis> donne à une variable chaîne de caractères
+      durant l'initialisation une valeur trouvée en lisant une URL.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>Sdst <command>strfromurl</command> StringURL</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>StringURL</emphasis> -- chaîne de caractères nommant une URL.
+    </para>
+
+    <para>
+      <emphasis>Sdst</emphasis> -- variable chaîne de caractères de destination.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode strfromurl. Il utilise le fichier
+      <ulink url="examples/strfromurl.csd"><citetitle>strfromurl.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode strfromurl.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/strfromurl.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para><link linkend="strset"><citetitle>strset</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namejohn;</para>
+    <para>2013</para>
+    <para>Les URLs sont disponibles à partir de Csound 6.02 s'il a été compilé
+    avec leur support.</para>
+  </refsect1>
+</refentry>

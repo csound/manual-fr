@@ -1,0 +1,154 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="instance">
+<indexterm id="IndexSchedule"><primary>instance</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Invocation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>instance</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>instance</refname>
+    <refpurpose>
+      Programme une nouvelle instance d'instrument et stocke le descripteur
+      de l'instance dans une variable.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Programme une nouvelle instance d'instrument et retourne un descripteur
+      utilisable ultérieurement pour faire référence directement à l'instance
+      courante. Cet opcode est semblable à <emphasis>schedule</emphasis> avec
+      cependant la possibilité supplémentaire de retrouver le descripteur de
+      l'instance.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>iHandle <command>instance</command> insnum, iwhen, idur [, ip4] [, ip5] [...]</synopsis>
+    <synopsis>iHandle <command>instance</command> &quot;insname&quot;, iwhen, idur [, ip4] [, ip5] [...]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iHandle</emphasis> -- cette variable reçoit un descripteur de
+      l'instance de l'évènement. On peut l'utiliser, par exemple, pour arrêter
+      l'instance de l'instrument donné via l'opcode <emphasis>kill</emphasis>.
+      Noter que le descripteur de l'instance n'est valide qu'une fois
+      l'instrument initialisé.
+    </para>
+    <para>
+      <emphasis>insnum</emphasis> -- numéro de l'instrument. Equivalent à p1
+      dans une <link linkend="i"><citetitle>instruction i</citetitle></link>
+      de partition. <emphasis>insnum</emphasis> doit être un nombre supérieur
+      au numéro de l'instrument appelant.
+    </para>
+
+    <para>
+      <emphasis><quote>insname</quote></emphasis> -- Une chaîne de caractères
+      (entre guillemets) représentant un instrument nommé.
+    </para>
+
+    <para>
+      <emphasis>iwhen</emphasis> -- date de début du nouvel évènement. Equivalent
+      à p2 dans une <link linkend="i"><citetitle>instruction i</citetitle></link>
+      de partition. <emphasis>iwhen</emphasis> ne doit pas être négatif.
+      Si <emphasis>iwhen</emphasis> vaut zéro, <emphasis>insum</emphasis> doit
+      être supérieur ou égal au p1 de l'instrument courant.
+    </para>
+
+    <para>
+      <emphasis>idur</emphasis> -- durée de l'évènement. Equivalent à p3 dans une
+      <link linkend="i"><citetitle>instruction i</citetitle></link>de partition.
+    </para>
+
+    <para>
+      <emphasis>ip4, ip5, ...</emphasis> -- Equivalent à p4, p5, etc., dans une
+      <link linkend="i"><citetitle>instruction i</citetitle></link>de partition.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>instance</emphasis> ajoute un nouvel évènement de partition. Les
+      arguments, options incluses, sont les mêmes que dans une partition. Le
+      temps <emphasis>iwhen</emphasis> (p2) est mesuré à partir de l'instant de
+      cet évènement.
+    </para>
+
+    <para>
+      Si la durée est nulle ou négative, le nouvel évènement est de type MIDI,
+      et il hérite le sous-évènement de relachement (release) de l'instruction
+      de programmation.
+    </para>
+    <note>
+      <para>Noter que l'opcode <emphasis>instance</emphasis> ne peut pas accepter
+      de p-champs chaîne de caractères. Si vous devez passer des chaînes de
+      caractères à l'instanciation d'un instrument, utilisez l'opcode
+      <link linkend="scoreline"><citetitle>scoreline</citetitle></link> ou
+      <link linkend="scoreline_i"><citetitle>scoreline_i</citetitle></link>.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode instance. Il utilise le fichier
+      <ulink url="examples/instance.csd"><citetitle>instance.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode instance.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/instance.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>See Also</title>
+    <para>
+      <link linkend="schedwhen"><citetitle>schedwhen</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para><link linkend="event"><citetitle>event</citetitle></link>,
+    <link linkend="event_i"><citetitle>event_i</citetitle></link>,
+    <link linkend="schedwhen"><citetitle>schedwhen</citetitle></link>,
+    <link linkend="schedkwhen"><citetitle>schedkwhen</citetitle></link>,
+    <link linkend="schedkwhennamed"><citetitle>schedkwhennamed</citetitle></link>,
+    <link linkend="scoreline"><citetitle>scoreline</citetitle></link>,
+    <link linkend="scoreline_i"><citetitle>scoreline_i</citetitle></link></para>
+    <para>Pour plus d'information sur cet opcode :
+    <ulink url="http://www.csounds.com/journal/issue15/phrase_loops.html"><citetitle>http://www.csounds.com/journal/issue15/phrase_loops.html</citetitle></ulink>, écrit par Jim Aikin. </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Novembre 2013</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 3.491 de Csound</para>
+    <para>Basé sur un travail de &namegabriel;</para>
+    <para>Merci à David Gladstein, pour avoir clarifié le paramètre <emphasis>iwhen</emphasis>.</para>
+  </refsect1>
+</refentry>
