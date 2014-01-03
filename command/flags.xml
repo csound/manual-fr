@@ -38,7 +38,7 @@ english cvs version=1.43
   <refsect1>
     <title>Options de la ligne de commande de Csound</title>
   <para>
-    Ci-dessous la liste par ordre alphabétique des options de ligne de commande disponibles dans Csound 5.
+    Ci-dessous la liste par ordre alphabétique des options de ligne de commande disponibles dans Csound 6.
     Les implémentations sur différentes plates-formes peuvent ne pas réagir de la même façon à certaines options !
     On peut consulter les options de ligne de commande par catégorie dans la section
     <link linkend="CommandFlagsCategory"><citetitle>Options de la Ligne de Commande (par Catégorie)</citetitle></link>.
@@ -1062,6 +1062,18 @@ csound5:output2             (reproduction droite)</screen>
       <listitem>
         <para>
           Utiliser des échantillons audio codés par des entiers courts.
+        </para>
+      </listitem>
+    </varlistentry>
+    
+    <varlistentry id="FlagsSampleAccurate">
+      <term>-s<indexterm id="IndexSampleAccurate"><primary>-sample-accurate</primary></indexterm>></term>
+      <listitem>
+        <para>
+          Démarre et arrête les instances d'instruments à l'échantillon le plus
+          proche de l'instant demandé. Ceci diffère du comportement traditionnel
+          de Csound qui arrondi le temps au cycle-k le plus proche. Noter que
+          cela ne fonctionne pas avec les notes liées.
         </para>
       </listitem>
     </varlistentry>

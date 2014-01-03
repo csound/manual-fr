@@ -950,14 +950,26 @@ csound5:output2             (reproduction droite)</screen>
       </listitem>
     </varlistentry>
 
+    <varlistentry id="FlagsCatSampleAccurate">
+      <term>-s<indexterm id="IndexCatSampleAccurate"><primary>-sample-accurate</primary></indexterm>></term>
+      <listitem>
+        <para>
+          Démarre et arrête les instances d'instruments à l'échantillon le plus
+          proche de l'instant demandé. Ceci diffère du comportement traditionnel
+          de Csound qui arrondi le temps au cycle-k le plus proche. Noter que
+          cela ne fonctionne pas avec les notes liées.
+        </para>
+      </listitem>
+    </varlistentry>
+
     <varlistentry id="FlagsCatMinusSched">
       <term>--sched<indexterm id="IndexCatMinusSched"><primary>--sched</primary></indexterm></term>
       <listitem>
         <para>
           <emphasis>Seulement dans linux.</emphasis> Utiliser la planification du temps réel et le verrouillage de la mémoire.
-          (nécessite également <link linkend="FlagsMinusLowerD"><citetitle>-d</citetitle></link> et
-          <link linkend="FlagsMinusLowerO"><citetitle>-o dac</citetitle></link> ou
-          <link linkend="FlagsMinusLowerO"><citetitle>-o devaudio</citetitle></link>).
+          (nécessite également <link linkend="FlagsCatMinusLowerD"><citetitle>-d</citetitle></link> et
+          <link linkend="FlagsCatMinusLowerO"><citetitle>-o dac</citetitle></link> ou
+          <link linkend="FlagsCatMinusLowerO"><citetitle>-o devaudio</citetitle></link>).
           Voir aussi --sched=N ci-dessous.
         </para>
       </listitem>
