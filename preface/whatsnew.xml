@@ -8,7 +8,7 @@ english cvs version=
 -->
 
 <section id="PrefaceWhatsNew"><title>Les nouveautés de Csound &csoundversion;</title>
-<!--     <bridgehead>Nouveautés dans la version 5.XX ()</bridgehead> --><!--  <para>
+<!--     <bridgehead>Notes de parution de Csound 6.XX ()</bridgehead> --><!--  <para>
     <itemizedlist>
       <listitem>
         <para>Nouveaux opcodes :
@@ -73,6 +73,337 @@ english cvs version=
       </listitem>
     </itemizedlist>
   </para>-->
+<bridgehead>Notes de parution de Csound 6.02</bridgehead>
+  <para>
+    Cette nouvelle version comporte de nombreuses corrections de bogues
+    (y compris la résolution générale de tous les tickets sur SourceForge).
+    Elle introduit aussi quelques nouvelles facilités telles qu'un serveur,
+    du code pour exécuter Csound dans un navigateur et une large généralisation
+    des opcodes de filtre pour les doter de paramètres modifiables au taux audio.
+  </para>
+  <para>
+    <itemizedlist>
+      <listitem>
+        <para>Nouveaux opcodes :
+          <itemizedlist>
+            <listitem>
+              <simpara>L'opcode <link linkend="instance"><citetitle>instance</citetitle></link>
+              produit une nouvelle instance d'un instrument et mémorise le descripteur
+              de cette instance.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>L'opcode <link linkend="kill"><citetitle>kill</citetitle></link>
+              arrête une instance d'un instrument donné.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara><link linkend="strfromurl"><citetitle>strfromurl</citetitle></link>
+              pour remplir une chaîne de caractères à partir d'une URL.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Orchestre :
+          <itemizedlist>
+            <listitem>
+              <simpara>Si la construction de Csound le permet, une chaîne intégrée
+              avec #include peut être une URL ou un fichier.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Il est à nouveau permis d'insérer un espace entre le nom
+              d'une fonction et la parenthèse ouvrante pour toutes les fonctions
+              valables dans Csound5 (mais pas en général).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>La commande Csound peut démarrer avec un CSD vide en mode
+              démon (--daemon): ne quitte pas si le CSD/orchestre n'est pas donné,
+              est vide ou ne compile pas).</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Partition :
+          <itemizedlist>
+            <listitem>
+              <simpara>Si la construction de Csound le permet, une chaîne intégrée
+              avec #include peut être une URL ou un fichier.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Opcodes et Gens modifiés :
+          <itemizedlist>
+            <listitem>
+              <simpara>Plusieurs filtres ont été modifiés pour accepter des
+              paramètres de taux-k ou de taux-a. En particulier, les filtres
+              suivants sont concernés :
+              <informaltable frame="none">
+                <tgroup cols="2">
+                <tbody>
+                  <row>
+                    <entry>areson</entry>
+                    <entry>atonex</entry>
+                  </row>
+                  <row>
+                    <entry>butterworth filters</entry>
+                    <entry>fofilter</entry>
+                  </row>
+                  <row>
+                    <entry>lowres</entry>
+                    <entry>lowresx</entry>
+                  </row>
+                  <row>
+                    <entry>lpf18</entry>
+                    <entry>mode</entry>
+                  </row>
+                  <row>
+                    <entry>moogladder</entry>
+                    <entry>moogvcf</entry>
+                  </row>
+                  <row>
+                    <entry>reson</entry>
+                    <entry>resonr</entry>
+                  </row>
+                  <row>
+                    <entry>resonx</entry>
+                    <entry>resonz</entry>
+                  </row>
+                  <row>
+                    <entry>statevar</entry>
+                    <entry>tonex</entry>
+                  </row>
+                </tbody>
+                </tgroup>
+              </informaltable>
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Le nombre maximum de presets dans sfont a été augmenté à 16384.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>cpsmidinn</emphasis> est désormais plus précis.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Le comportement de <emphasis>max_k</emphasis> suit
+              maintenant la documentation. Dans certains cas les résultats
+              étaient bizarres.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Les opcodes vst4cs ont été réécrits, avec suppression du
+              code FLTK et mise à jour du système de construction pour qu'il
+              fonctionne avec Csound 6.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Dans l'opcode <emphasis>alwayson</emphasis>, modifications
+              pour une meilleure gestion des p-champs et une insertion plus fiable
+              de l'instance d'instrument pour répéter ou redémarrer des sections
+              de partition.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>On a remplacé dans les opcodes de graphe de fluence la
+              bibliothèque multithread OpenMP par pthreads, ce qui permet une
+              initialisation en une passe des structures statiques.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Frontaux :
+          <itemizedlist>
+            <listitem>
+              <simpara>PNaCl est maintenant supporté comme plateforme, ce qui
+              permet d'exécuter Csound dans le navigateur Chrome sur tous les
+              systèmes d'exploitation qui l'acceptent.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Bogues corrigés :
+          <itemizedlist>
+            <listitem>
+              <simpara>Opcode <emphasis>adsynt2</emphasis>.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Opcode <emphasis>ftgentmp</emphasis>d.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Opcode <emphasis>dates</emphasis>.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Opcode <emphasis>pvsfilter</emphasis>.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Sortie stéréo de <emphasis>temposcal</emphasis> et de
+              <emphasis>mincer</emphasis>.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Opcode <emphasis>pan2</emphasis>.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Dépassement d'indice dans <emphasis>randh</emphasis> et
+              dans <emphasis>randi</emphasis>.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Plusieurs corrections dans CsoundVST ; initialisation,
+              gestion de la partition et initialisation du pilote MIDI fonctionnent
+              dans Csound 6.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>pycalln</emphasis> s'il n'y a pas d'entrée.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>correction/révision des réglages de <emphasis>ksmps</emphasis> et de
+              <emphasis>kr</emphasis> dans les UDOs.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>correction du problème d'envoi d'un message de partition
+              de max vers csound via csound~ (Ticket 58).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>lorsque <emphasis>itype</emphasis> dans
+              <emphasis>chn_k</emphasis> était fixé à 3 et que les valeurs
+              étaient inférieures à 1, Csound6 produisait une erreur INIT.
+              (Ticket 67).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Plusieurs erreurs de segmentation qui avaient été
+              rapportées ont été traitées.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>l'opcode <emphasis>xtratim</emphasis> utilisait une
+              valeur de <emphasis>ekr</emphasis> incorrecte venant de csound au
+              lieu d'une instance ; l'utilisation de cet opcode conjointement
+              avec <emphasis>setksmps</emphasis> donnait des notes avec
+              une valeur de <emphasis>xtratim</emphasis> très longue et ainsi
+              ces notes ne se terminaient jamais.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Changements système :
+          <itemizedlist>
+            <listitem>
+              <simpara>Il y a maintenant un mode serveur qui accepte des entrées
+              via UDP (avec l'option --port).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Un bogue très ancien dans <emphasis>extract</emphasis> a
+              été trouvé et corrigé. Cela laisse penser que cet utilitaire est
+              très peu utilisé !
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>La façon dont le générateur de partition externe était
+              écrit a changé de manière conséquente. En particulier, ceci devrait
+              corriger un bogue assez étrange sous Windows.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Correction d'un bogue de plantage dans la fonction de
+              rappel d'un canal <emphasis>invalue</emphasis> à cause de
+              l'extraction d'un mauvais objet de données depuis les données
+              d'hôte de csound.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Correction d'un bogue dans les UDOs sans
+              <emphasis>ksmps</emphasis> local lorsque
+              <emphasis>kcounter</emphasis> était utilisé de manière
+              incorrecte.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Meilleur contrôle dans les canaux.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>(Expérimental) Si la variable d'environnement
+              CS_UDO_DIR est définie, tous les fichiers du répertoire courant
+              avec une extension .udo sont automatiquement inclus au début de
+              l'orchestre. A vérifier pour voir si c'est ce qui était demandé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>(Expérimental) Il y a de nouveaux opcodes GPGPU cuda
+              (seulement le code source) : <emphasis>cudasynth</emphasis>
+              (3 versions pour la synthèse additive, la synthèse additive
+              de fsigs et la resynthèse par vocoder de phase) et
+              <emphasis>cudanal</emphasis> (une version GPGPU de pvsanal).
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Changements internes :
+          <itemizedlist>
+            <listitem>
+              <simpara>Plusieurs tentatives d'accélération du code.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Amélioration de l'inférence de type et du parseur.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>iOS:
+          <itemizedlist>
+            <listitem>
+              <simpara>Correction du plantage lorqu'aucun csoundSetHostImplementedMIDIIO
+              n'est utilisé sous iOS alors que la valeur de _RTMIDI est fixée.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>OSX:
+          <itemizedlist>
+            <listitem>
+              <simpara>Correction du nom du périphérique d'entrée pour auhal.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+
 <bridgehead>Notes de parution de Csound6</bridgehead>
 <para>
   Csound6 est une réécriture significative d'une grande partie du code. En
