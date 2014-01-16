@@ -8,14 +8,14 @@ english cvs version=
 -->
 
 <refentry id="instance">
-<indexterm id="IndexSchedule"><primary>instance</primary></indexterm>
+<indexterm id="IndexSchedule"><primary>nstance</primary></indexterm>
   <refentryinfo><title>Instrument Control:Invocation</title></refentryinfo>
   <refmeta>
-    <refentrytitle>instance</refentrytitle>
+    <refentrytitle>nstance</refentrytitle>
   </refmeta>
 
   <refnamediv>
-    <refname>instance</refname>
+    <refname>nstance</refname>
     <refpurpose>
       Programme une nouvelle instance d'instrument et stocke le descripteur
       de l'instance dans une variable.
@@ -35,8 +35,8 @@ english cvs version=
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>iHandle <command>instance</command> insnum, iwhen, idur [, ip4] [, ip5] [...]</synopsis>
-    <synopsis>iHandle <command>instance</command> &quot;insname&quot;, iwhen, idur [, ip4] [, ip5] [...]</synopsis>
+    <synopsis>iHandle <command>nstance</command> insnum, iwhen, idur [, ip4] [, ip5] [...]</synopsis>
+    <synopsis>iHandle <command>nstance</command> &quot;insname&quot;, iwhen, idur [, ip4] [, ip5] [...]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -44,7 +44,7 @@ english cvs version=
     <para>
       <emphasis>iHandle</emphasis> -- cette variable reçoit un descripteur de
       l'instance de l'évènement. On peut l'utiliser, par exemple, pour arrêter
-      l'instance de l'instrument donné via l'opcode <emphasis>kill</emphasis>.
+      l'instance de l'instrument donné via l'opcode <emphasis>turnoff</emphasis>.
       Noter que le descripteur de l'instance n'est valide qu'une fois
       l'instrument initialisé.
     </para>
@@ -82,7 +82,7 @@ english cvs version=
   <refsect1>
     <title>Exécution</title>
     <para>
-      <emphasis>instance</emphasis> ajoute un nouvel évènement de partition. Les
+      <emphasis>nstance</emphasis> ajoute un nouvel évènement de partition. Les
       arguments, options incluses, sont les mêmes que dans une partition. Le
       temps <emphasis>iwhen</emphasis> (p2) est mesuré à partir de l'instant de
       cet évènement.
@@ -106,10 +106,10 @@ english cvs version=
   <refsect1>
     <title>Exemples</title>
     <para>
-      Voici un exemple de l'opcode instance. Il utilise le fichier
+      Voici un exemple de l'opcode nstance. Il utilise le fichier
       <ulink url="examples/instance.csd"><citetitle>instance.csd</citetitle></ulink>.
       <example>
-        <title>Exemple de l'opcode instance.</title>
+        <title>Exemple de l'opcode nstance.</title>
         <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
         et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
         d'information sur l'utilisation des options de la ligne de commande.</para>
@@ -146,9 +146,5 @@ english cvs version=
         <member>Novembre 2013</member>
       </simplelist>
     </para>
-
-    <para>Nouveau dans la version 3.491 de Csound</para>
-    <para>Basé sur un travail de &namegabriel;</para>
-    <para>Merci à David Gladstein, pour avoir clarifié le paramètre <emphasis>iwhen</emphasis>.</para>
   </refsect1>
 </refentry>

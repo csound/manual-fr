@@ -899,6 +899,16 @@ csound5:output2             (reproduction droite)</screen>
       </listitem>
     </varlistentry>
 
+    <varlistentry id="FlagsCatDaemon">
+      <term>-d<indexterm id="IndexCatDaemon"><primary>--daemon</primary></indexterm></term>
+      <listitem>
+        <para>
+          Exécution en mode démon : ne se termine pas si aucun CSD/orchestra
+          n'est donné, ou s'il est vide ou s'il ne compile pas.
+        </para>
+      </listitem>
+    </varlistentry>
+
     <varlistentry id="FlagsCatMinusLowerK">
       <term>-k NUM<indexterm id="IndexCatMinusLowerK"><primary>-k</primary></indexterm>, --control-rate=NUM<indexterm id="IndexCatMinusControlrate"><primary>--control-rate</primary></indexterm></term>
       <listitem>
@@ -940,6 +950,15 @@ csound5:output2             (reproduction droite)</screen>
       </listitem>
     </varlistentry>
 
+    <varlistentry id="FlagsCatMinusPort">
+      <term>--port=N<indexterm id="IndexCatMinusPprt"><primary>--port</primary></indexterm></term>
+      <listitem>
+        <para>
+          Détermine un port UDP pour recevoir du code d'instruments ou
+          d'orchestre (implique --daemon) 
+        </para>
+      </listitem>
+    </varlistentry>
 
     <varlistentry id="FlagsCatMinusLowerR">
       <term>-r NUM<indexterm id="IndexCatMinusLowerR"><primary>-r</primary></indexterm>, --sample-rate=NUM<indexterm id="IndexCatMinusSamplerate"><primary>--sample-rate</primary></indexterm></term>

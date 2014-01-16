@@ -584,8 +584,8 @@ htmlhelp-package:
 	mv /tmp/$(BASENAME)$(VERSION)_manual-fr_winhelp_chm.zip ./
 
 src-package:
-	cvs -z3 -d:pserver:anonymous@csound.cvs.sourceforge.net:/cvsroot/csound export -rCsound-5_08 manual
-	tar -czf manual.tar.gz manual/
+	git clone git://git.code.sf.net/p/csound/manual6-fr-git manual6-fr
+	tar -czf manual-fr_src.tgz manual6-fr/
 
 text-package: clean $(TEXT_FILE)
 	mkdir -p /tmp/csound-$(VERSION)/manual

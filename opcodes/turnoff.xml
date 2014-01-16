@@ -24,31 +24,40 @@ english cvs version=1.12
   <refsect1>
     <title>Description</title>
     <para>
-      Permet à un instrument de s'arrêter lui-même.
+      Permet à un instrument de s'arrêter lui-même ou d'arrêter une instance
+      d'un autre instrument.
     </para>
   </refsect1>
 
   <refsect1>
     <title>Syntaxe</title>
     <synopsis><command>turnoff</command></synopsis>
+    <synopsis><command>turnoff</command> inst</synopsis>
+    <synopsis><command>turnoff</command> knst</synopsis>
+  </refsect1>
+
+   <refsect1>
+     <title>Initialisation</title>
+    <para>
+      <emphasis>inst</emphasis> -- descripteur d'instance d'un instrument à
+      arrêter (obtenu d'un opcode <emphasis>nstance</emphasis>).
+    </para>
   </refsect1>
 
   <refsect1>
     <title>Exécution</title>
     <para>
-      <emphasis>turnoff</emphasis> -- cette instruction de la phase d'exécution permet
-      à un instrument de s'arrêter lui-même. Quelle soit de durée finie ou
+      <emphasis>turnoff</emphasis> -- sans paramètre cette instruction de la
+      phase d'exécution permet à un instrument de s'arrêter lui-même.
+      Quelle soit de durée finie ou
       <quote>tenue</quote>, la note en cours d'exécution par l'instrument est
       immédiatement enlevée de la liste des notes actives. Aucune autre note n'est
       affectée.
     </para>
-    <note>
-      <para>
-        Il faut respecter le principe d'arrêter des instruments ayant un numéro
-        plus élevé que celui de l'instrument duquel <emphasis>turnoff</emphasis>
-        est appelé, sinon il peut y avoir des problèmes d'initialisation.
-      </para>
-    </note>
+    <para>
+      <emphasis>kinst</emphasis> -- descripteur d'instance d'un instrument à
+      arrêter (obtenu d'un opcode <emphasis>nstance</emphasis>).
+    </para>
   </refsect1>
  
   <refsect1>

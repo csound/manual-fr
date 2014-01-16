@@ -87,14 +87,14 @@ english cvs version=
         <para>Nouveaux opcodes :
           <itemizedlist>
             <listitem>
-              <simpara>L'opcode <link linkend="instance"><citetitle>instance</citetitle></link>
+              <simpara>L'opcode <link linkend="nstance"><citetitle>nstance</citetitle></link>
               produit une nouvelle instance d'un instrument et mémorise le descripteur
               de cette instance.
               </simpara>
             </listitem>
             <listitem>
-              <simpara>L'opcode <link linkend="kill"><citetitle>kill</citetitle></link>
-              arrête une instance d'un instrument donné.
+              <simpara>L'opcode <link linkend="turnof"><citetitle>turnof</citetitle></link>
+              nouvelle variante pour arrêter une instance d'un instrument donné.
               </simpara>
             </listitem>
             <listitem>
@@ -200,15 +200,15 @@ english cvs version=
               </simpara>
             </listitem>
             <listitem>
-              <simpara>Les opcodes vst4cs ont été réécrits, avec suppression du
-              code FLTK et mise à jour du système de construction pour qu'il
-              fonctionne avec Csound 6.
+              <simpara>Les opcodes vst4cs ont été réécrits. Le code FLTK a été
+              encapsulé. Le système de construction a été mis à jour pour
+              Csound 6.
               </simpara>
             </listitem>
             <listitem>
               <simpara>Dans l'opcode <emphasis>alwayson</emphasis>, modifications
               pour une meilleure gestion des p-champs et une insertion plus fiable
-              de l'instance d'instrument pour répéter ou redémarrer des sections
+              d'une instance d'instrument pour répéter ou redémarrer des sections
               de partition.
               </simpara>
             </listitem>
@@ -267,9 +267,9 @@ english cvs version=
               </simpara>
             </listitem>
             <listitem>
-              <simpara>Plusieurs corrections dans CsoundVST ; initialisation,
-              gestion de la partition et initialisation du pilote MIDI fonctionnent
-              dans Csound 6.
+              <simpara>Plusieurs corrections dans CsoundVST : initialisation,
+              gestion de la partition et initialisation du pilote MIDI, ce qui
+              le rend fonctionnel dans Csound 6.
               </simpara>
             </listitem>
             <listitem>
