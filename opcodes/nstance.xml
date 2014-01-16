@@ -7,7 +7,7 @@ english cvs version=
 // *** Please remember to keep this information up to date! ***
 -->
 
-<refentry id="instance">
+<refentry id="nstance">
 <indexterm id="IndexSchedule"><primary>nstance</primary></indexterm>
   <refentryinfo><title>Instrument Control:Invocation</title></refentryinfo>
   <refmeta>
@@ -107,13 +107,13 @@ english cvs version=
     <title>Exemples</title>
     <para>
       Voici un exemple de l'opcode nstance. Il utilise le fichier
-      <ulink url="examples/instance.csd"><citetitle>instance.csd</citetitle></ulink>.
+      <ulink url="examples/nstance.csd"><citetitle>nstance.csd</citetitle></ulink>.
       <example>
         <title>Exemple de l'opcode nstance.</title>
         <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
         et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
         d'information sur l'utilisation des options de la ligne de commande.</para>
-          <xi:include href="examples-xml/instance.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+          <xi:include href="examples-xml/nstance.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
     </para>
   </refsect1>
