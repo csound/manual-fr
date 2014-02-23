@@ -34,7 +34,7 @@ english cvs version=1.14
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis><command>dispfft</command> xsig, iprd, iwsiz [, iwtyp] [, idbout] [, iwtflg]</synopsis>
+    <synopsis><command>dispfft</command> xsig, iprd, iwsiz [, iwtyp] [, idbout] [, iwtflg] [,imin] [,imax]</synopsis>
   </refsect1>
  
   <refsect1>
@@ -67,6 +67,16 @@ english cvs version=1.14
       <emphasis>iwtflg</emphasis> (facultatif, 0 par défaut) -- indicateur de
       maintien. S'il est différent de zéro, chaque affichage est maintenu jusqu'à
       ce que l'utilisateur le libère. La valeur par défaut est 0 (pas de maintien).
+    </para>
+
+    <para>
+      <emphasis>imin</emphasis> (facultatif, 0 par défaut) -- bin minimum de la
+      FFT à afficher.
+    </para>
+    
+    <para>
+      <emphasis>imax</emphasis> (facultatif, winsize/2 par défaut) -- bin
+      maximum de la FFT à afficher.
     </para>
   </refsect1>
  
