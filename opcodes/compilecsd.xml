@@ -1,0 +1,86 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="compilecsd">
+<indexterm id="Indexcompilecsd"><primary>compilecsd</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Compilation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>compilecsd</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>compilecsd</refname>
+    <refpurpose>
+      Compile un nouvel orchestre à partir d'un fichier ASCII.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>compilecsd</emphasis> lit un fichier CSD et compile un ou
+      plusieurs instruments durant l'initialisation, qui sont ajoutés à la
+      machine courante. Si des numéros ou des noms d'instrument existent déjà
+      ils sont remplacés, mais chaque instance de l'ancienne définition
+      d'instrument toujours active s'exécute jusqu'à son terme. De plus, la
+      partition contenue dans le fichier CSD (si elle  existe) est lue et
+      ajoutée à la liste des évènements exécutés par Csound. L'opcode ignore
+      toute section du fichier CSD qui n'est ni un orchestre ni une partition.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ires <command>compilecsd</command> Sfilename</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis><quote>Sfilename</quote></emphasis> -- une chaîne de caractères
+      indiquant le nom du fichier contenant l'orchestre.
+    </para>    
+    <para>
+      <emphasis><quote>ires</quote></emphasis> -- retourne 0 si la compilation
+      a réussi, sinon -1.
+    </para>    
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode compilecsd. Il utilise le fichier
+      <ulink url="examples/compilecsd.csd"><citetitle>compilecsd.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode compilecsd.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/compilecsd.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="event"><citetitle>event</citetitle></link>,
+      <link linkend="event_i"><citetitle>event_i</citetitle></link>,
+      <link linkend="schedule"><citetitle>schedule</citetitle></link>,
+      <link linkend="schedwhen"><citetitle>schedwhen</citetitle></link>,
+      <link linkend="schedkwhen"><citetitle>schedkwhen</citetitle></link>,
+      <link linkend="schedkwhennamed"><citetitle>schedkwhennamed</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur: &namevictor;, 2013 </para>
+  </refsect1>
+</refentry>
