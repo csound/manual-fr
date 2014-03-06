@@ -556,7 +556,7 @@
 <title>E/S de signal : impression et affichage</title>
 <para>
 <para/>
-<synopsis><link linkend="dispfft">dispfft</link> xsig, iprd, iwsiz [, iwtyp] [, idbout] [, iwtflg]</synopsis><para/>
+<synopsis><link linkend="dispfft">dispfft</link> xsig, iprd, iwsiz [, iwtyp] [, idbout] [, iwtflg] [,imin] [,imax]</synopsis><para/>
 <synopsis><link linkend="display">display</link> xsig, iprd [, inprds] [, iwtflg]</synopsis><para/>
 <synopsis><link linkend="flashtxt">flashtxt</link>  iwhich, String</synopsis><para/>
 <synopsis><link linkend="print">print</link> iarg [, iarg1] [, iarg2] [...]</synopsis><para/>
@@ -564,6 +564,7 @@
 <synopsis><link linkend="printk">printk</link> itime, kval [, ispace]</synopsis><para/>
 <synopsis><link linkend="printk2">printk2</link> kvar [, inumspaces]</synopsis><para/>
 <synopsis><link linkend="printks">printks</link> &quot;string&quot;, itime [, kval1] [, kval2] [...]</synopsis><para/>
+<synopsis><link linkend="printks2">printks2</link> &quot;string&quot;, kval</synopsis><para/>
 <synopsis><link linkend="prints">prints</link> &quot;string&quot; [, kval1] [, kval2] [...]</synopsis><para/>
 </para></formalpara>
 <para></para><para></para><formalpara>
@@ -887,6 +888,7 @@
 <title>Contrôle d'instrument : compilation</title>
 <para>
 <para/>
+<synopsis>ires <link linkend="compilecsd">compilecsd</link> Sfilename</synopsis><para/>
 <synopsis>ires <link linkend="compileorc">compileorc</link> Sfilename</synopsis><para/>
 <synopsis>ires <link linkend="compilestr">compilestr</link> Sorch</synopsis><para/>
 <synopsis>ires <link linkend="evalstr">evalstr</link> Scode </synopsis><synopsis>kres <link linkend="evalstr">evalstr</link> Scode, ktrig </synopsis><para/>

@@ -227,6 +227,16 @@ english cvs version=1.31
       </listitem>
     </varlistentry>
 
+    <varlistentry id="FlagsCatMinusMinusVBR">
+      <term>--vbr-quality=X<indexterm id="IndexCatMinusMinusVBR"><primary>--vbr-quality=X</primary></indexterm></term>
+      <listitem>
+        <para>
+          Fixe une qualité de débit binaire variable pour la sortie ogg.
+          (Csound 6.03 et ultérieur).
+        </para>
+      </listitem>
+    </varlistentry>
+
     <varlistentry id="FlagsCatMinusUpperR">
       <term>-R<indexterm id="IndexCatMinusUpperR"><primary>-R</primary></indexterm>, --rewrite<indexterm id="IndexCatMinusRewrite"><primary>--rewrite</primary></indexterm></term>
       <listitem>
@@ -939,7 +949,6 @@ csound5:output2             (reproduction droite)</screen>
         </note>
       </listitem>
     </varlistentry>
-
 
     <varlistentry id="FlagsCatMinusOmacro">
       <term>--omacro:XXX=YYY<indexterm id="IndexCatMinusOmacro"><primary>--omacro</primary></indexterm></term>

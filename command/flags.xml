@@ -1232,6 +1232,16 @@ csound5:output2             (reproduction droite)</screen>
       </listitem>
     </varlistentry>
 
+    <varlistentry id="FlagsMinusMinusVBR">
+      <term>--vbr-quality=X<indexterm id="IndexMinusMinusVBR"><primary>--vbr-quality=X</primary></indexterm></term>
+      <listitem>
+        <para>
+          Fixe une qualité de débit binaire variable pour la sortie ogg.
+          (Csound 6.03 et ultérieur).
+        </para>
+      </listitem>
+    </varlistentry>
+
     <varlistentry id="FlagsMinusLowerV">
       <term>-v<indexterm id="IndexMinusLowerV"><primary>-v</primary></indexterm>, --verbose<indexterm id="IndexMinusVerbose"><primary>--verbose</primary></indexterm></term>
       <listitem>
