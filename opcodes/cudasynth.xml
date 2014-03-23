@@ -1,0 +1,95 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="cudasynth">
+<indexterm id="IndexCudasynth"><primary>cudasynth</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>cudasynth</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>cudasynth</refname>
+    <refpurpose>
+      Synthèse par synthèse additive et TFR inverse.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Synthèse par synthèse additive et TFR inverse.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>asig <command>cudasynth</command> kamp, kfreq, itab, iftab, iatab[, inum]</synopsis>
+    <synopsis>asig <command>cudasynth</command> fsig, kamp, kfreq[, inum]</synopsis>
+    <synopsis>asig <command>cudasynth</command> fsig</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>itab</emphasis> -- 
+    </para>
+    <para>
+      <emphasis>iftab</emphasis> -- 
+    </para>
+    <para>
+      <emphasis>iatab</emphasis> -- 
+    </para>
+    <para>
+      <emphasis>inum</emphasis> -- (facultatif)
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamp</emphasis> -- 
+    </para>
+    <para>
+      <emphasis>kfreq</emphasis> -- 
+    </para>
+    <para>
+      <emphasis>fsig</emphasis> -- 
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode cudasynth. Il utilise le fichier
+      <ulink url="examples/cudasynth.csd"><citetitle>cudasynth.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode cudasynth.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/cudasynth.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>2013</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 6.02</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,20 @@
+
+<chapter id="ExperimentalTop">
+  <title>Opcodes de l'orchestre expérimentaux et routines GEN</title>
+
+  <section id="ExperimentalOpcodesRef">
+    <title>Opcodes de l'orchestre expérimentaux</title>
+    <para>
+      Les opcodes suivants nécessitent la présence d'un GPU de nVidia. Ils
+      sont distribués dans l'espoir qu'ils seront utiles et pour encourager
+      l'utilisation du parallélisme pour le traitement audio. Certains de ces
+      opcodes produisent le même traitement que des opcodes conventionnels
+      existants tandis que d'autres sont nouveaux.
+    </para>
+  </section>
+  
+  &opcodescudanal;
+  <!-- &opcodescudasynth; -->
+  &opcodescudasliding;
+  
+</chapter>

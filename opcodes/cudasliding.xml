@@ -1,0 +1,83 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="cudasliding">
+<indexterm id="IndexCudasliding"><primary>cudasliding</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>cudasliding</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>cudasliding</refname>
+    <refpurpose>
+      Exécute un  algorithme de vocodeur de phase glissant avec transformation
+      FM simplifiée en utilisant un GPU.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Exécute un  algorithme de vocodeur de phase glissant avec transformation
+      FM simplifiée en utilisant un GPU.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>asig <command>cudasliding</command> ain, amod, iwinsize</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iwinsize</emphasis> -- La taille de la TFR en échantillons. Ne
+      doit pas forcément être une puissance de deux. <emphasis>ifftsize</emphasis>
+      détermine le nombre de bins d'analyse utilisés.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ain</emphasis> -- signal d'entrée à transformer.
+    </para>
+    <para>
+      <emphasis>amod</emphasis> -- signal modulant le signal analysé.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode cudasliding. Il utilise le fichier
+      <ulink url="examples/cudasliding.csd"><citetitle>cudasliding.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode cudasliding.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/cudasliding.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Russell Bradford</member>
+        <member>Mars 2014 </member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 6.03</para>
+  </refsect1>
+</refentry>
