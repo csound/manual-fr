@@ -1,179 +1,193 @@
-[ABOUT THE MANUAL]--------------------------------------------------------------
+# Au sujet du manuel 
 
-The Csound Reference Manual is written in Docbook-XML. More information about
-Docbook-XML can be found at the following links:
+Le manual de référence de Csound est écrit en Docbook-XML. On peut trouver plus
+d'information sur Docbook-XML en consultant les liens suivants :
 
 http://docbook.org/
 http://www.sagehill.net/book-description.html
 
-If you find problems or have suggestions, please report them on the csound
-developer mailing list.
+Si vous rencontrez des problèmes ou si vous avez des suggestions, rapportez les
+sur la liste de messagerie des développeurs de Csound.
 
-[BUILDING THE MANUAL]-----------------------------------------------------------
 
-To build the manual, a number of different tools are required, depending on 
-what target output is desired. All targets require xsltproc and the Docbook
-XML DTDs to be installed and findable by xsltproc. The Docbook XSL stylesheets
-have to be installed too. The location of the stylesheets can be noted via the
-XSL_BASE_PATH variable:
+# Construire le manuel
 
-$ make XSL_BASE_PATH=path/to/xsl/installation <target>
+Pour construire le manuel, différents outils sont nécessaires selon le format
+de la cible désirée. Toutes les cibles nécessitent xsltproc et il faut que les
+DTD de Docbook XML soient installées et trouvables par xsltproc. Les feuilles
+de style de Docbook XSL doivent aussi être installées. L'endroit où se trouvent
+les feuilles de style peut être indiqué via la variable XSL_BASE_PATH :
 
-The default is /usr/share/xml/docbook/stylesheet/nwalsh/
+    $ make XSL_BASE_PATH=chemin/vers/installation/xsl <cible>
 
-On Linux, most distributions include these programs, or are available on 
-packaging repositories for the respective distribution.
+Le chemin par défaut est /usr/share/xml/docbook/stylesheet/nwalsh/
 
-For Windows, xsltproc can be found as part of the Cygwin environment
-(http://www.cywgin.com). A natively compiled version for windows can be found
-at:
+Sous Linux, la plupart des distributions incluent ces programmes ou les rendent
+disponibles dans des entrepôts de paquets pour les distributions respectives.
+
+Sous Windows, on peut trouver xsltproc dans l'environnement Cygwin
+(http://www.cywgin.com). Une version compilée nativement pour Windows est
+disponible ici :
 
 http://zlatkovic.com/libxml.en.html
 
-Mac OS 10.5 (leopard) includes xsltproc.
+Mac OS 10.5 (leopard) inclue xsltproc.
 
-(NOTE: If someone works on OSX or OS9 and finds xsltproc for these platforms 
-or another suitable XSLT processor, please update this documentation.)
+(NOTE : Si vous travaillez sous OSX ou OS9 et si vous trouvez xsltproc pour ces
+plateformes ou un autre processeur XSLT convenant, mettez à jour cette
+documentation SVP.)
 
+Le manuel est réalisé en utilisant make avec le Makefile inclus. Par exemple
+pour faire la version html (canonique), la seule commande nécessaire est :
 
-The manual is made using make with the included Makefile. For example to make 
-the html (canonical) version:
-$ make html
+    $ make html
 
-is all that is needed.
+Pour démarrer une nouvelle construction, utiliser
 
-To begin a new build, use
-$ make clean
+    $ make clean
 
-Other targets include pdf, pdfA4 and htmlXO. See the makefile for distribution
-and other targets.
-
-
-[HTML]
-
-Use:
-$ make html
-
-Requires: Python (to generate the frames version, and to update the Quick
-          Reference)
+Les autres cibles comprennent pdf, pdfA4 et htmlXO. Consulter le Makefile pour
+la distribution et les autres cibles.
 
 
-[PDF]
+## HTML 
 
-Use:
-$ make pdf
-or
-$ make pdfA4
+Utiliser :
 
-Requires: Apache FOP (http://xml.apache.org/fop/)
-          Java Advanced Imaging Library 
-              (https://jai.dev.java.net/binary-builds.html)
-          A Java Runtime Environment to run the above
+    $ make html
 
-FOP can require a lot of memory, so it is recommended to edit the fop.sh file 
-and add "-Xmx384m" to the last line, so it reads as such:
-
-$JAVACMD -Xmx384m -classpath "$LOCALCLASSPATH" $FOP_OPTS org.apache.fop.apps.Fop "$@"
-
-This increases the max ram the VM can use to 384megs, which you'll need 
-for FOP to run as the manual is fairly large.
+Nécessite : Python (pour générer la version avec cadres et mettre à jour la
+            référence rapide)
 
 
-[HTMLHELP]
+## PDF 
 
-Use:
-$ make htmlhelp
+Utiliser :
 
-Requires: Microsoft HTML Help Workshop
+    $ make pdf
+
+ou
+
+    $ make pdfA4
+
+Nécessite : 
+
+* Apache FOP (http://xml.apache.org/fop/)
+* Java Advanced Imaging Library (https://jai.dev.java.net/binary-builds.html)
+* Un environnement Java Runtime pour exécuter les éléments ci-dessus.
+
+FOP peut avoir besoin de beaucoup de mémoire, il est donc recommandé d'éditer le
+fichier fop.sh et d'ajouter "-Xmx384m" à la dernière ligne, ce qui donne :
+
+    $ JAVACMD -Xmx384m -classpath "$LOCALCLASSPATH" $FOP_OPTS org.apache.fop.apps.Fop "$@"
+
+Cela augmente la quantité de mémoire maximale que la VM peut utiliser à 384 Moctets,
+qui seront nécessaires pour que FOP puisse s'exécuter, car le manuel est conséquent.
+
+
+## HTMLHELP 
+
+Utiliser :
+
+    $ make htmlhelp
+
+Nécessite : Microsoft HTML Help Workshop
               (http://msdn.microsoft.com/library/default.asp?url=/library/en-us/htmlhelp/html/hwMicrosoftHTMLHelpDownloads.asp)
 
-This target compiles a Windows .chm file, a format that replaced WinHelp.
+Cette cible compile un fichier .chm de Windows, un format qui a remplacé WinHelp.
 
 
-[EDITING THE MANUAL]------------------------------------------------------------
+# Editer le manuel
 
-[MODIFYING AN ENTRY]
+## Modifier une entrée
 
-In general, be careful to be mindful that these files are XML and must be valid.
-All tags that are openned must be closed, i.e. <para>My Information</para>.
+En général gardez en tête le fait que ces fichiers sont du XML et doivent être
+valides. Toutes les balises ouvertes doivent être fermées, comme
+<para>Mon information</para>.
 
-Also, Docbook-XML has a DTD that describes what is well-formed for the document,
-meaning that certain tags only allow other tags within it.  For more information
-on valid Docbook tags, see "Docbook: The Definitive Guide" by Norm Walsh, 
-available at http://docbook.org/.
+De plus la DTD de Docbook-XML décrit ce qui est bien formé pour le document, ce
+qui veut dire que certaines balises ne sont permises qu'à l'intérieur d'autres
+balises. Pour plus d'information sur les balises valides de Docbook, consulter
+"Docbook: The Definitive Guide" par Norm Walsh, disponible sur
+http://docbook.org/.
 
 
-[ADDING AN OPCODE ENTRY]
+## Ajouter une entrée pour un opcode 
 
-First, the best place to start is to take an existing entry and use that as a 
-template. All opcode entries are organized in the opcodes folder.
-You can base your entry on an existing entry, or use Opcodes/templates.xml.
+La meilleure façon de commencer est de prendre une entrée existante et de
+l'utiliser comme canevas. Toutes les entrées d'opcode sont rangées dans le
+répertoire opcodes. Vous pouvez baser votre entrée sur une entrée existante
+ou utiliser opcodes/templates.xml.
 
-To incorporate a new entry into the manual, a few things are required.
+Pour incorporer une nouvelle entrée dans le manuel, quelques éléments sont
+nécessaires.
 
-1)Add the entry as an entity in manual.xml.  For example, if you put 
-the myOpcodeEntry.xml in the opcodes directory, then this entry should be 
-the one to add in manual.xml:
+1. Ajouter l'entrée comme une entité dans manual.xml. Par exemple, si vous
+mettez le fichier myOpcodeEntry.xml dans le répertoire opcodes, vous devez
+ajouter cette ligne dans manual.xml:
 
-<!ENTITY opcodesmyopcodeentry SYSTEM "opcodes/myOpcodeEntry.xml">
+    <!ENTITY opcodesmyopcodeentry SYSTEM "opcodes/myOpcodeEntry.xml">
 
-2)Add the entry to opcodes/top.xml by using the entity.  This will actually add 
-the entry to the reference manual.  The entries are alphabetically ordered, so 
-just find where your opcode should be in the list and add:
+2. Ajouter l'entrée dans opcodes/top.xml en utilisant l'entité. C'est ce qui
+ajoutera l'entrée dans le manuel de référence. Les entrées sont classées par
+ordre alphabétique. Il faut donc trouver la place de votre opcode dans la
+liste et l'y insérer :
 
-&opcodesmyopcodeentry;
+    &opcodesmyopcodeentry;
 
-The above uses the entity that was defined in the manual.xml file (think of it 
-like an #include).
+La ligne ci-dessus utilise l'entité définie dans le fichier manual.xml
+(pensez-y comme une directive #include).
 
-3)After that, you'll probably want to find the section headers where the 
-opcode should be cross-referenced from.  For example, if myOpcodeEntry should 
-be categorized with other pvs opcodes in spectral/realtime.xml, it would be
-added in that file as:
+3. Après cela, il vous faudra sans doute trouver la section d'entête depuis
+laquelle l'opcode doit être référencé. Par exemple, si myOpcodeEntry doit se
+trouver dans la même catégorie que les opcodes pvs dans spectral/realtime.xml,
+il sera ajouté dans ce fichier comme :
+    
+    <link linkend="myOpcodeEntry"><citetitle>My Opcode Entry</citetitle></link>
 
-<link linkend="myOpcodeEntry"><citetitle>My Opcode Entry</citetitle></link>
+L'attribut linkend ci-dessus pointe vers un ID docbook. L'ID "myOpcodeEntry"
+doit être défini dans myOpcodeEntry.xml, probablement au niveau supérieur sous
+la forme :
 
-The linkend attribute above points to a docbook ID.  The "myOpcodeEntry" ID 
-should be defined in the myOpcodeEntry.xml, probably to be done at the top 
-level like this:
+    <refentry id="myOpcodeEntry">
 
-<refentry id="myOpcodeEntry">
+Répétez l'étape 3 pour chaque section dans laquelle vous pensez que l'opcode
+doit être rangé.
 
-Repeat step 3 for any sections you think this opcode should be 
-categorized in.
+4. Ajouter la balise info appropriée afin que l'opcode soit correctement rangé
+dans la référence rapide. S'il n'y a pas de balise info l'opcode apparaitra sous
+la rubrique "Divers". Consultez les catégories disponibles dans quickref-fr.py.
 
-4) Add the appropriate info tag so the opcode will be properly categorized in
-the Quick Reference. If no info tag is provided the opcode will appear in 
-'Miscellaneous'. Consult available categories in quickref.py.
+5. Si possible référencer l'opcode dans la section adéquate de la partie II du
+manuel, et ajouter les références croisées nécessaires.
 
-5) If possible reference the opcode in the appropriate section in Section II of
-the manual, and add the necessary cross references.
+6. Pour transformer le fichier de l'exemple myOpcodeEntry.csd en
+myOpcodeEntry.csd.xml (dans examples-xml), utiliser le script csd2docbook.py ou
+csd2docbook2.py. Le premier utilise l'API de Csound pour contruire une liste
+des opcodes tandis que le second utilise le fichier opcode_list.txt (qui contient
+une liste similaire au résultat de la commande 'csound -z'). Par exemple :
+$ python csd2docbook2.py -f genarray_i.csd crée le fichier genarray_i.csd.xml
+à partir de genarray_i.csd pour référence dans l'entrée de l'opcode genarray_i.
 
-6) For transforming the myOpcodeEntry.csd example file to myOpcodeEntry.csd.xml
-(in examples-xml), use the csd2docbook.py or csd2docbook2.py script. The former
-uses the Csound API for an opcode list, while the latter uses a file 
-opcode_list.txt (which is similar to the result of the command 'csound -z').
-For instance: $ python csd2docbook2.py -f genarray_i.csd will create the file
-genarray_i.csd.xml from genarray_i.csd for use in the genarray_i opcode entry.
 
-[FOR MAINTAINERS]---------------------------------------------------------------
-There are several targets that prepare files for release. It is important to
-remember to change the version number so that files and content are generated 
-with that number. It must be changed both in manual.xml and the Makefile.
-It is also a good idea to update the What's new section for each release.
+# Pour la publication
 
-[GENERAL XML EDITING TIPS]------------------------------------------------------
+Il y a plusieurs cibles préparant les fichiers d'une distribution. Il ne faut
+pas oublier de changer le numéro de version afin que les fichiers et les
+contenus soient générés avec ce numéro. On doit le changer à la fois dans
+manual.xml et dans le Makefile. Il est aussi utile de mettre à jour la section
+"Les nouveautés de Csound x.xx" pour chaque distribution.
 
-The "<" and ">" symbol, when used as text within XML tags, need to be escaped.  
-The corresponding entities to use are "&lt;" and "&gt;".
+## Conseils pour l'édition XML
 
-The refsect1 tag ends with the number 1, not the letter l.
+* Il faut échapper les symboles "<" et ">" lorsqu'on les utilisent dans du texte
+à l'intérieur de balises XML. Les entités correspondantes sont "&lt;" et "&gt;".
+* La balise refsect1 se termine par le chiffre 1, pas la lettre l.
+* On peut tester un fichier XML en l'ouvrant dans un navigateur web (comme
+Firefox, Mozilla, Internet Explorer, etc.). La plupart des navigateurs affichent
+le fichier XML s'il est correct ou bien donnent un message d'erreur si le fichier
+XML n'est pas valide, en précisant où se trouve l'erreur.
 
-You can test your XML file by opening it in a web browser (i.e. Firefox, 
-Mozilla, Internet Explorer, etc.).  Most browsers will display the XML file if
-it is correct or will give you an error message if it the XML file is not valid,
-as well as give you information on where it is in error.
-
-Using a dedicated XML editor takes some of the pain out of editing the manual.
-Something like emacs in sgml mode or Kate in XML mode are very helpful.
+L'utilisaion d'un éditeur dédié à XML facilite l'édition du manuel. Emacs en mode
+sgml ou Kate en mode XML ou jEdit en mode XML aident beaucoup.
 
