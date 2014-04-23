@@ -31,13 +31,14 @@ english cvs version=1.8
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis><command>exitnow</command></synopsis>
+    <synopsis><command>exitnow</command> [ivalue]</synopsis>
   </refsect1>
  
   <refsect1>
     <title>Exécution</title>
     <para>
-      Arrête Csound lors du cycle d'initialisation.
+      Arrête Csound lors du cycle d'initialisation et retourne
+      <emphasis>ivalue</emphasis> qui vaut zéro par défaut.
     </para>
   </refsect1>
 

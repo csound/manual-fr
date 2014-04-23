@@ -53,7 +53,11 @@ english cvs version=1.6
           <link linkend="x"><citetitle>x</citetitle></link> - Ignore le reste de la section courante
         </para></listitem>
       <listitem><para>
-          <link linkend="leftbrace"><citetitle>{</citetitle></link> - Commence une boucle imbricable ne délimitant pas de section
+         <link linkend="y"><citetitle>y</citetitle></link> - Fixe la "graine" pour les nombres aléatoires, soit la valeur de p1,
+         soit la valeur de l'horloge système si p1 est omis.
+         </para></listitem>
+      <listitem><para>
+         <link linkend="leftbrace"><citetitle>{</citetitle></link> - Commence une boucle imbricable ne délimitant pas de section
         </para></listitem>
       <listitem><para>
           <link linkend="rightbrace"><citetitle>}</citetitle></link> - Termine une boucle imbricable ne délimitant pas de section
