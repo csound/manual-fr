@@ -21,6 +21,7 @@ english cvs version=1.15
       <indexterm id="IndexCSD"><primary>.csd</primary></indexterm>
       <indexterm id="IndexCsoundrcUnifile"><primary>.csoundrc</primary></indexterm>
       <indexterm id="IndexCsFileB"><primary>&lt;CsFileB&gt;</primary></indexterm>
+      <indexterm id="IndexCsFile"><primary>&lt;CsFile&gt;</primary></indexterm>
       <indexterm id="IndexCsInstruments"><primary>&lt;CsInstruments&gt;</primary></indexterm>
       <indexterm id="IndexCsMidifileB"><primary>&lt;CsMidifileB&gt;</primary></indexterm>
       <indexterm id="IndexCsOptions"><primary>&lt;CsOptions&gt;</primary></indexterm>
@@ -111,6 +112,18 @@ english cvs version=1.15
       4.07 de Csound. Note : il n'est pas recommandé d'utiliser cette balise ; il vaut mieux utiliser
       <emphasis>&lt;CsFileB&gt;</emphasis>.
     </para>
+
+    <bridgehead>Included Unencoded Files (&lt;CsFile&gt;)</bridgehead>
+      <para>
+        On peut inclure des fichiers non encodés avec la balise
+        <emphasis>&lt;CsFile filename=</emphasis><emphasis>nomfichier</emphasis><emphasis>&gt;</emphasis>,
+        où <emphasis>nomfichier</emphasis> est le nom du fichier à inclure. Les
+        données doivent être suivies de la balise fermante
+        <emphasis>&lt;/CsFile&gt;</emphasis> seule sur sur ligne. Le fichier est
+        extrait dans le répertoire courant et effacé à la fin de l'exécution. Si
+        un fichier du même nom existe déjà, il n'est pas écrasé et il se produit
+        une erreur.
+      </para>
 
     <bridgehead>Limitation de version (&lt;CsVersion&gt;)</bridgehead>
       <para>

@@ -224,6 +224,14 @@ english cvs version=1.43
       </listitem>
     </varlistentry>
 
+    <varlistentry id="FlagsMinusMinusDevice">
+      <term>--devices<indexterm id="IndexMinusMinusDevice"><primary>--devices[=in|out]</primary></indexterm></term>
+      <listitem>
+        <para>Donne une liste des périphériques audio disponibles puis termine l'application.
+        </para>
+      </listitem>
+    </varlistentry>            
+
     <varlistentry id="FlagsMinusDisplays">
       <term>--displays<indexterm id="IndexMinusDisplays"><primary>--displays</primary></indexterm></term>
       <listitem>
@@ -277,7 +285,8 @@ english cvs version=1.43
       <term>--expression-opt<indexterm id="IndexMinusExpressionOpt"><primary>--expression-opt</primary></indexterm></term>
       <listitem>
         <para>
-          <emphasis>A partir de Csound 5.</emphasis>
+          <emphasis>Noter que cette option n'a aucun effet dans Csound 6.
+          Seulement dans Csound 5.</emphasis>
           Activer certaines optimisations dans les expressions :
           <itemizedlist>
             <listitem><para>Les affectations redondantes sont éliminées chaque
@@ -391,6 +400,15 @@ english cvs version=1.43
       <listitem>
         <para>
           Supprimer les graphiques, une sortie pseudo-graphique ASCII est produite à la place.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsMinusMinusGetSR">
+      <term>--get-system-sr<indexterm id="IndexMinusMinusGetSR"><primary>--get-system-sr</primary></indexterm></term>
+      <listitem>
+        <para>
+           Obtenir le taux d'échantillonnage de la machine.
         </para>
       </listitem>
     </varlistentry>

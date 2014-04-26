@@ -1139,7 +1139,8 @@ csound5:output2             (reproduction droite)</screen>
       <term>--expression-opt<indexterm id="IndexCatMinusExpressionOpt"><primary>--expression-opt</primary></indexterm></term>
       <listitem>
         <para>
-          <emphasis>A partir de Csound 5.</emphasis>
+          <emphasis>Noter que cette option n'a aucun effet dans Csound 6.
+          Seulement dans Csound 5.</emphasis>
           Activer certaines optimisations dans les expressions :
           <itemizedlist>
             <listitem><para>Les affectations redondantes sont éliminées chaque
@@ -1202,16 +1203,23 @@ csound5:output2             (reproduction droite)</screen>
 
        </itemizedlist>
 
-           <warning>
-      <title>Avertissement</title>
-      <para>
-        Lorsque --expression-opt est activé, il est interdit d'utiliser la fonction i()
-        avec un argument expression, et il n'est pas prudent de compter au temps i sur la
-        valeur de k-expressions.
-      </para>
-    </warning>
+        <warning>
+        <title>Avertissement</title>
+        <para>
+          Lorsque --expression-opt est activé, il est interdit d'utiliser la fonction i()
+          avec un argument expression, et il n'est pas prudent de compter au temps i sur la
+          valeur de k-expressions.
+        </para>
+        </warning>
+        </para>
+      </listitem>
+    </varlistentry>
 
-
+    <varlistentry id="CatFlagsMinusMinusGetSR">
+      <term>--get-system-sr<indexterm id="IndexCatMinusMinusGetSR"><primary>--get-system-sr</primary></indexterm></term>
+      <listitem>
+        <para>
+           Obtenir le taux d'échantillonnage de la machine.
         </para>
       </listitem>
     </varlistentry>
@@ -1224,6 +1232,14 @@ csound5:output2             (reproduction droite)</screen>
         </para>
       </listitem>
     </varlistentry>
+
+    <varlistentry id="CatFlagsMinusMinusDevice">
+      <term>--devices<indexterm id="IndexCatMinusMinusDevice"><primary>--devices[=in|out]</primary></indexterm></term>
+      <listitem>
+        <para>Donne une liste des périphériques audio disponibles puis termine l'application.
+        </para>
+      </listitem>
+    </varlistentry>            
 
     <varlistentry id="FlagsCatMinusUpperI">
       <term>-I<indexterm id="IndexCatMinusUpperI"><primary>-I</primary></indexterm>, --i-only<indexterm id="IndexCatMinusIonly"><primary>--i-only</primary></indexterm></term>
