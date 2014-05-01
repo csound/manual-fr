@@ -8,7 +8,8 @@ english cvs version=
 -->
 
 <section id="PrefaceWhatsNew"><title>Les nouveautés de Csound &csoundversion;</title>
-<!--     <bridgehead>Notes de parution de Csound 6.XX ()</bridgehead> --><!--  <para>
+<!--     <bridgehead>Notes de parution de Csound 6.XX ()</bridgehead>
+  <para>
     <itemizedlist>
       <listitem>
         <para>Nouveaux opcodes :
@@ -73,6 +74,343 @@ english cvs version=
       </listitem>
     </itemizedlist>
   </para>-->
+<bridgehead>Notes de parution de Csound 6.03 (mai 2014)</bridgehead>
+  <para>
+    Cette nouvelle version corrige de nombreux bogues, comprenant la résolution
+    de tickets sur SourceForge et sur GitHub. Elle apporte également des
+    changements internes pour améliorer l'exécution.
+    <itemizedlist>
+      <listitem>
+        <para>Nouveaux opcodes :
+          <itemizedlist>
+            <listitem>
+              <simpara><link linkend="printks2"><citetitle></citetitle>prinks2</link></simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>mp3sr</emphasis>, <emphasis>mp3bitrate</emphasis>
+              et <emphasis>mp3nchnls</emphasis> pour obtenir de l'information sur
+              les fichiers mp3</simpara>
+            </listitem>
+            <listitem>
+              <simpara>EXPERIMENTAL : les opcodes CUDA pour la convolution partitionnée,
+              la convolution directe et le vocodeur de phase : opcode OpenCl pour
+              la synthèse additive
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara><link linkend="compilecsd"><citetitle></citetitle>compilecsd</link></simpara>
+              pour compiler des instruments à partir d'un fichier CSD standard
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Orchestre :
+          <itemizedlist>
+            <listitem>
+              <simpara>i() attendait comme argument une variable pas une expression.
+              C'est maintenant la norme. (bug #90)
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Options :
+          <itemizedlist>
+            <listitem>
+              <simpara>Il y avait un bogue dans CsOptions ; il manquait le
+                dernier argument (issue #296)
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Opcodes et Gens modifiés :
+          <itemizedlist>
+            <listitem>
+              <simpara>Il est possible de spécifier pour la sortie ogg une
+              qualité VBR (taux de bloc variable)
+              </simpara>
+            </listitem>Le code de <emphasis>dssi4cs</emphasis> a été entièrement
+              retravaillé pour éviter de potentielles fautes de mémoire
+            <listitem>
+              <simpara>Plusieurs opérations de tableaux sont désormais disponibles
+                au taux-i ainsi qu'au taux-k
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>fillarray</emphasis> fonctionne avec les tableaux
+              de chaînes de caractères
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>L'affichage des TFR (via <emphasis>dispfft</emphasis>) a été
+              amélioré avec des options de mise à l'échelle et de zoom
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Les opcodes de graphe de fluence fonctionnent maintenant
+              avec des signaux tableaux de taux-a
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Dans le code alsa TR, le taux d'échantillonnage provient
+              du périphérique
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Le système d'opcodes Faust a été mis à jour par rapport à
+              la dernière API de Faust
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Utilitaires :
+          <itemizedlist>
+            <listitem>
+              <simpara>Bogue corrigé dans lpanal
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          csound~ :
+          <itemizedlist>
+            <listitem>
+              <simpara>OSX - correctif pour l'exécution avec une architecture à
+              cpu 32 bit
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Windows - csound~ est maintenant disponible sous Windows
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Emscripten :
+          <itemizedlist>
+            <listitem>
+              <simpara>Intégré désormais dans la base de code
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Utilisation générale :
+          <itemizedlist>
+            <listitem>
+              <simpara>--displays active maintenant le mode graphique comme prévu
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Nouvelle option de ligne de commande --get-system-sr pour
+                obtenir le taux d'échantillonnage de la machine
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Nouvelle option de ligne de commande --devices[=in|out]
+                qui donne une liste des périphériques audio disponibles puis
+                termine le programme
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Bogues corrigés :
+          <itemizedlist>
+            <listitem>
+              <simpara>Lorsqu'une table était remplacée sa taille ne changeait pas
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Plusieurs bogues dans --sample-accurate ont été repérés et
+                corrigés. Cela concerne en particulier les opcodes <emphasis>out</emphasis>,
+                <emphasis>outn</emphasis> et <emphasis>line</emphasis>
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Plusieurs bogues dans <emphasis>grain3</emphasis> ont été
+                corrigés
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Un bogue de str_chaned pouvait provoquer un plantage
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Petit défaut dans rtjack
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Une erreur dans l'opcode resize a été corrigée
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Un bogue aléatoire a été corrigé dans atsa
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Problème de pause dans rtauhal corrigé
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Plusieurs bogues/maladresses corrigés dans GEN23
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Test des bornes des tableaux corrigé
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Les canaux de chaînes de caractères n'étaient pas
+                correctement réglés pour les chaînes de taille variable
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>L'allocation mémoire pour le formatage de chaîne dans
+                <emphasis>printfsk</emphasis> a été corrigée, supprimant ainsi
+                le troncage de chaîne
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>strcat</emphasis> protégé contre la surcapacité
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>une erreur dans la compilation des tableaux a été corrigée
+              (problème #293)
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Changements système :
+          <itemizedlist>
+            <listitem>
+              <simpara>L'opcode <emphasis>turnoff</emphasis> vérifie maintenant
+              que l'instrument affecé est actif
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>lenarray</emphasis> accepte n'importe quel
+              type de tableau
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>la manière d'arrondir un numéro de table a été modifiée
+                pour un comportement plus prévisible
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>on peut avoir une nouvelle section dans un fichier csd
+              nommée &lt;CsFile...&gt; qui est semblable à csFileB mais avec
+              un texte en unicode
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>La compilation des UDO utilise maintenant le système de
+                types. Les UDOs peuvent ainsi utiliser n'importe quel type de
+                tableau
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Changements internes :
+          <itemizedlist>
+            <listitem>
+              <simpara>Tout le système a été testé avec l'outil d'analyse statique
+              Coverity qui a identifié plusieur problèmes (mineurs pour la plupart).
+              Ceux-ci ont été traités et vérifiés. En particulier, une meilleure
+              utilisation de l'impression et de la copie de chaîne devrait permettre
+              d'éviter les dépassements de capacité
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Le système de types et de variables a été entièrement réécrit ;
+                cela a permis un meilleur support des tableaux et des UDOs
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>L'alignement des variables est maintenant correct dans tous
+                les cas
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>La copie de tableau utilise maintenant le système de types
+                pour copier les valeurs ; cela règle les problèmes de copie des
+                tableaux de chaînes de caractères, de f-sigs, etc
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Csound est réinitialisé lorsqu'il s'arrête restant ainsi
+                dans un état propre ; ce n'était pas le cas lors d'une erreur
+                de compilation si bien que le démarrage suivant ce faisait avec
+                un moteur de Csound invalide (problème #305)
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          API :
+          <itemizedlist>
+            <listitem>
+              <simpara>Tous les opcodes, etc, utilisent maintenant les opérations
+              d'allocation de mémoire de l'API, ce qui permet de remplacer
+              complétement l'allocateur de mémoire
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>csoundCompileCsd</emphasis> a été ajouté à l'API
+                et associé avec le nouvel opcode <emphasis>compilecsd</emphasis>
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>csoundGetStringChannel</emphasis> est protégé
+              contre les chaînes courtes ou nulles et un test de la longueur de
+              chaîne a été ajouté
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Windows:
+          <itemizedlist>
+            <listitem>
+              <simpara>Soundfonts dans Windows avait un problème d'alignement
+                interne qui a été corrigé
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+
 <bridgehead>Notes de parution de Csound 6.02</bridgehead>
   <para>
     Cette nouvelle version comporte de nombreuses corrections de bogues
