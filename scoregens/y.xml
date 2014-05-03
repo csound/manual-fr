@@ -1,0 +1,80 @@
+<!--translated=yes
+authors=Francois Pinot
+english cvs version=
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// Add the version number of the file you are translating from the english version number on cvs
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="y">
+      <indexterm id="IndexYStatement"><primary>y statement</primary></indexterm> 
+      <indexterm id="IndexSeedStatement"><primary>seed statement</primary></indexterm> 
+  <refmeta>
+    <refentrytitle>y Statement (or Seed Statement)</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>a</refname>
+    <refpurpose>
+      Fixe la "graine" pour les nombres aléatoires.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Fixe la "graine" pour les nombres aléatoires, soit la valeur de p1,
+      soit la valeur de l'horloge système si p1 est omis.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>y</command> [p1]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>p1</emphasis> -- Un entier compris entre 0 et 2<superscript>32</superscript>
+      utilisé comme nouvelle graine pour les nombres aléatoires. S'il est omis,
+      la valeur de l'horloge système est utilisée.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      On peut utiliser le symbole tilde &tilde; dans une expression chaque fois
+      qu'un nombre est permis. Chaque &tilde; sera remplacé par un nombre aléatoire
+      compris entre zéro (0) et un (1). S'il n'y a pas d'instruction y dans la
+      partition, le générateur de nombres pseudo-aléatoires fournira les mêmes
+      nombres à chaque exécution. Si une graine fixe est donnée, une suite
+      prévisible de nombres pseudo-aléatoires sera générée à partir de cette
+      graine. S'il y a une instruction y sans p1, l'horloge système sera utilisée
+      comme graine, fournissant une suite de nombres pseudo-aléatoires différente
+      à chaque exécution.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'instruction y. Il utilise le fichier
+      <ulink url="examples/y_statement.csd"><citetitle>y_statement.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'instruction y.</title>
+        <xi:include href="examples-xml/y_statement.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      A chaque exécution de cette exemple, différentes valeurs comprises entre
+      1 et 10 seront affichées. La graine utilisée est également affichée.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namejohn;, 2014</para>
+    <para>Nouveau dans la version 6.03</para>
+  </refsect1>
+</refentry>
