@@ -156,8 +156,12 @@ english cvs version=
               <simpara>Il est possible de spécifier pour la sortie ogg une
               qualité VBR (taux de bloc variable)
               </simpara>
-            </listitem>Le code de <emphasis>dssi4cs</emphasis> a été entièrement
-              retravaillé pour éviter de potentielles fautes de mémoire
+            </listitem>
+            <listitem>
+              <simpara>Le code de <emphasis>dssi4cs</emphasis> a été entièrement
+                retravaillé pour éviter de potentielles fautes de mémoire
+              </simpara>
+            </listitem>
             <listitem>
               <simpara>Plusieurs opérations de tableaux sont désormais disponibles
                 au taux-i ainsi qu'au taux-k
@@ -315,6 +319,11 @@ english cvs version=
             <listitem>
               <simpara>une erreur dans la compilation des tableaux a été corrigée
               (problème #293)
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Correction de <emphasis>GetPvsChannel</emphasis> contre
+              un plantage
               </simpara>
             </listitem>
           </itemizedlist>
