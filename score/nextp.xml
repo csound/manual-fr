@@ -65,6 +65,7 @@ english cvs version=1.4
     immédiatement adjacent ou non). A noter que bien que la fonction
     <link linkend="ScoreCarry"><citetitle>Carry</citetitle></link> propage <emphasis>np</emphasis>
     et <emphasis>pp</emphasis> vers des instructions non triées, l'opération d'interprétation de ces
-    symboles se fait sur une version de la partition résolue temporellement et complètement triée.
+    symboles se fait sur une version de la partition complètement triée. L'opération de tempo
+    est appliquée après le traitement de <emphasis>np</emphasis> et/ou de <emphasis>pp</emphasis>.
   </para>
 </section>
