@@ -51,7 +51,8 @@ english cvs version=1.6
       <emphasis>n1</emphasis> + <emphasis>n2</emphasis> + .... sera normalement égale à
       <emphasis>taille</emphasis> pour les fonctions complètement spécifiées. Si la somme est inférieure,
       les positions de la fonction non comprises seront mises à zéro ; si la somme est supérieure, seules
-      les premières <emphasis>taille</emphasis> positions seront stockées.
+      les premières <emphasis>taille</emphasis> positions seront stockées. Noter que les
+      valeurs sont arrondies en nombres entiers avant leur utilisation.
     </para>
 
     <note>
