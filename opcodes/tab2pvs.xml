@@ -18,14 +18,16 @@ english cvs version=
   <refnamediv>
     <refname>tab2pvs</refname>
     <refpurpose>
-      Copie des donnée spectrales depuis des variables-t.
+      Copie des donnée spectrales depuis des tableaux de taux-k (ou variables-t).
+      Aussi appelé pvsfromarray.
     </refpurpose>
   </refnamediv>
 
   <refsect1>
     <title>Description</title>
     <para>
-      Copie une trame pvs depuis une variable-t. Pour le moment, seuls les
+      Copie une trame pvs depuis une variable-t ou un tableau de taux-k.
+      Pour le moment, seuls les
       formats AMP+FREQ et AMP+PHASE sont produits. Cet opcode nécessite que
       le type-t soit défini, si bien qu'il ne fonctionne qu'avec le nouveau
       parseur basé sur bison/flex.
@@ -34,13 +36,14 @@ english cvs version=
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>fsig <command>tab2pvs</command> tvar [, ihopsize, iwinsize, iwintype]</synopsis>
+    <synopsis>fsig <command>tab2pvs</command> tvar|karr[][,ihopsize, iwinsize, iwintype]</synopsis>
   </refsect1>
 
   <refsect1>
     <title>Exécution</title>
     <para>
-      <emphasis>tvar</emphasis> -- variable-t contenant l'entrée. Elle est produite
+      <emphasis>tvar</emphasis> -- tableau de taux-k (ou variable-t)
+      contenant l'entrée. Elle est produite
       à chaque période-k, mais peut ne pas contenir une nouvelle trame, les trames
       pvs étant produites selon leur propre rythme qui est indépendant de
       <emphasis>kr</emphasis>. La taille de ce vecteur détermine la taille de
@@ -72,9 +75,9 @@ english cvs version=
       <example>
         <title>Exemple</title>
         <programlisting>
-t1     <emphasis role="opc">init</emphasis>    1026
+karr[] <emphasis role="opc">init</emphasis>    1026
 ...
-fsig1  <emphasis role="opc">tab2pvs</emphasis> t1
+fsig1  <emphasis role="opc">tab2pvs</emphasis> karr
 aout   <emphasis role="opc">pvsynth</emphasis> fsig1</programlisting>
       </example>
     </para>

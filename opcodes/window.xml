@@ -5,7 +5,7 @@ authors=Francois Pinot
 <refentry id="window">
 <indexterm id="IndexWindow"><primary>window</primary></indexterm>
 
-  <refentryinfo><title>Array operations: windowing</title></refentryinfo>
+  <refentryinfo><title>Array operations: Fast Fourier Transform</title></refentryinfo>
   <refmeta>
     <refentrytitle>window</refentrytitle>
   </refmeta>
@@ -26,16 +26,16 @@ authors=Francois Pinot
   </refsect1>
 
   <refsect1>
+    <title>Syntaxe</title>
+      <synopsis>kout[] <command>window</command> kin[][, itype]</synopsis>
+  </refsect1>
+
+  <refsect1>
     <title>Initialisation</title>
     <para>
       <emphasis>itype</emphasis> -- type de la fenêtre (facultatif) :
       0 = Hamming, 1 = Hanning (von Hann) (vaut 1 par défaut).
     </para>
-  </refsect1>
-
-  <refsect1>
-    <title>Syntaxe</title>
-      <synopsis>kout[] <command>window</command>kin[][,itype]</synopsis>
   </refsect1>
 
   <refsect1>

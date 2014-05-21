@@ -9,23 +9,25 @@ english cvs version=1.12
 
 <refentry id="log">
 <indexterm id="IndexLog"><primary>log</primary></indexterm>
-  <refentryinfo><title>Mathematical Operations:Mathematical Functions</title></refentryinfo>
+  <refentryinfo><title>Mathematical Operations: Mathematical Functions</title></refentryinfo>
   <refmeta>
     <refentrytitle>log</refentrytitle>
   </refmeta>
  
   <refnamediv>
     <refname>log</refname>
-
     <refpurpose>
-      Retourne un logarithme naturel.
+      Retourne le logarithme naturel d'un nombre, ou d'un tableau (avec
+      facultativement une base arbitraire).
     </refpurpose>
   </refnamediv>
  
   <refsect1>
     <title>Description</title>
     <para>
-      Retourne le logarithme naturel de <emphasis>x</emphasis> (<emphasis>x</emphasis> strictement positif).
+      Retourne le logarithme naturel de <emphasis>x</emphasis> (<emphasis>x</emphasis>
+      strictement positif). Dans le cas d'un tableau en entrée, l'opération
+      peut avoir facultativement une base arbitraire.
     </para>
 
     <para>
@@ -38,12 +40,17 @@ english cvs version=1.12
   <refsect1>
     <title>Syntaxe</title>
     <synopsis><command>log</command>(x) (pas de restriction de taux)</synopsis>
+    <synopsis>kout[]<command>log</command> kin[][,ibas]</synopsis>
 
     <para>
       où l'argument entre parenthèses peut être une expression. Les convertisseurs de valeur
       effectuent une transformation arithmétique d'unités d'une sorte en unités d'une autre sorte.
       Le résultat peut devenir ensuite un terme dans une autre expression.
+      Dans le cas d'un tableau en entrée, <emphasis>ibas</emphasis> est la base
+      arbitraire facultative, qui vaut par défaut e (base des logarithmes
+      naturels.
     </para>
+    
   </refsect1>
 
   <refsect1>

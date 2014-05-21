@@ -18,7 +18,8 @@ english cvs version=
   <refnamediv>
     <refname>pvs2tab</refname>
     <refpurpose>
-      Copie des donnée spectrales dans des variables-t.
+      Copie des donnée spectrales dans des tableaus de taux-k (ou variables-t).
+      Appelé aussi pvs2array.
     </refpurpose>
   </refnamediv>
 
@@ -26,15 +27,16 @@ english cvs version=
     <title>Description</title>
     <para>
       Copie une trame pvs dans une variable-t. Pour le moment, seuls les
-      formats AMP+FREQ et AMP+PHASE sont autorisés. Cet opcode nécessite que
-      le type-t soit défini, si bien qu'il ne fonctionne qu'avec le nouveau
-      parseur basé sur bison/flex.
+      formats AMP+FREQ et AMP+PHASE sont autorisés. Les variables-t étant une
+      version antérieure des tableaux de taux-k, l'opcode fonctionne aussi
+      avec celles-ci. L'opcode <emphasis>pvs2array</emphasis> est un alias de
+      celui-ci.
     </para>
   </refsect1>
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>kframe <command>pvs2tab</command> tvar, fsig</synopsis>
+    <synopsis>kframe <command>pvs2tab</command> tvar|kvar[], fsig</synopsis>
   </refsect1>
 
   <refsect1>
@@ -45,7 +47,8 @@ english cvs version=
     </para>
 
     <para>
-      <emphasis>tvar</emphasis> -- variable-t contenant la sortie. Elle est
+      <emphasis>tvar|kvar[]</emphasis> -- variable-t ou tableau de taux-k
+      contenant la sortie. Elle est
       alimentée à chaque période-k, mais elle peut ne pas contenir une nouvelle
       trame, les trames pvs étant produites selon leur propre rythme qui est
       indépendant de <emphasis>kr</emphasis>. Généralement, ce vecteur doit
@@ -70,10 +73,10 @@ english cvs version=
       <example>
         <title>Exemple</title>
         <programlisting>
-t1      <emphasis role="opc">init</emphasis>    1026
+karr[]  <emphasis role="opc">init</emphasis>    1026
 a1      <emphasis role="opc">inch</emphasis>    1
 fsig1   <emphasis role="opc">pvsanal</emphasis> a1, 1024, 256, 1024, 1
-kframe  <emphasis role="opc">pvs2tab</emphasis> t1, fsig1</programlisting>
+kframe  <emphasis role="opc">pvs2tab</emphasis> karr, fsig1</programlisting>
       </example>
     </para>
   </refsect1>

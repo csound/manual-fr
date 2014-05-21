@@ -29,7 +29,9 @@ english cvs version=
 <!-- OVERVIEW ENTITIES GO HERE -->
 <!ENTITY oviewusersguide SYSTEM "overview/usersguide.xml">
 <!ENTITY oviewintroduction SYSTEM "overview/introduction.xml">
+<!--
 <!ENTITY oviewrecentdev SYSTEM "overview/recentdev.xml">
+-->
 <!ENTITY oviewconfiguring SYSTEM "overview/configuring.xml">
 <!ENTITY oviewusing SYSTEM "overview/using.xml">
 <!ENTITY oviewdesign SYSTEM "overview/design.xml">
@@ -805,6 +807,19 @@ english cvs version=
 <!ENTITY opcodesmincer SYSTEM "opcodes/mincer.xml">
 <!ENTITY opcodesminarray SYSTEM "opcodes/minarray.xml">
 <!ENTITY opcodesmirror SYSTEM "opcodes/mirror.xml">
+
+<!ENTITY opcodesfft SYSTEM "opcodes/fft.xml">
+<!ENTITY opcodesifft SYSTEM "opcodes/ifft.xml">
+<!ENTITY opcodesrfft SYSTEM "opcodes/rfft.xml">
+<!ENTITY opcodesirfft SYSTEM "opcodes/irfft.xml">
+<!ENTITY opcodescmplxprod SYSTEM "opcodes/cmplxprod.xml">
+<!ENTITY opcodesrect2pol SYSTEM "opcodes/rect2pol.xml">
+<!ENTITY opcodespol2rect SYSTEM "opcodes/pol2rect.xml">
+<!ENTITY opcodeswindow SYSTEM "opcodes/window.xml">
+<!ENTITY opcodesr2c SYSTEM "opcodes/r2c.xml">
+<!ENTITY opcodesc2r SYSTEM "opcodes/c2r.xml">
+<!ENTITY opcodesmags SYSTEM "opcodes/mags.xml">
+<!ENTITY opcodesphs SYSTEM "opcodes/phs.xml">
 
 <!ENTITY opcodesmixersetlevel SYSTEM "opcodes/mixersetlevel.xml">
 <!ENTITY opcodesmixersetleveli SYSTEM "opcodes/mixersetlevel_i.xml">
@@ -1658,6 +1673,7 @@ english cvs version=
 <!ENTITY spectralrealtime SYSTEM "spectral/realtime.xml">
 <!ENTITY spectralATS SYSTEM "spectral/ATS.xml">
 <!ENTITY spectralloris SYSTEM "spectral/loris.xml">
+<!ENTITY spectralarray SYSTEM "spectral/arrays.xml">
 
 <!ENTITY strings SYSTEM "strings/top.xml">
 <!ENTITY stringsmanipulate SYSTEM "strings/manipulate.xml">
@@ -1813,7 +1829,7 @@ english cvs version=
   <part id="PartOverview">
     <title>Vue d'ensemble</title>
     &oviewintroduction;
-    &oviewrecentdev;
+<!--    &oviewrecentdev;-->
 
     &command;
     &oviewusing;

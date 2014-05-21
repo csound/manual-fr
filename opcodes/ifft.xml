@@ -5,7 +5,7 @@ authors=Francois Pinot
 <refentry id="ifft">
 <indexterm id="IndexIfft"><primary>ifft</primary></indexterm>
 
-  <refentryinfo><title>Array operations: Inverse Fast Fourier Transform</title></refentryinfo>
+  <refentryinfo><title>Array operations: Fast Fourier Transform</title></refentryinfo>
   <refmeta>
     <refentrytitle>ifft</refentrytitle>
   </refmeta>
@@ -33,7 +33,7 @@ authors=Francois Pinot
 
   <refsect1>
     <title>Syntaxe</title>
-      <synopsis>kout[] <command>ifft</command>kin[]</synopsis>
+      <synopsis>kout[] <command>ifft</command> kin[]</synopsis>
   </refsect1>
 
   <refsect1>

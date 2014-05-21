@@ -11,13 +11,15 @@ english cvs version=1.11
   <title>La commande Csound</title>
 
   <para>
-    <emphasis>Csound</emphasis> est une commande pour générer une sortie son à partir d'un fichier
+    La commande <emphasis>csound</emphasis> est un frontal de base au système
+    que l'on peut utiliser pour générer une sortie son à partir d'un fichier
     <link linkend="OrchTop"><citetitle>orchestre</citetitle></link> et d'un fichier
     <link linkend="ScoreTop"><citetitle>partition</citetitle></link> (ou d'un
     <link linkend="CommandUnifile"><citetitle>fichier csd</citetitle></link> unifié).
-    Il a été conçu pour être appelé depuis un terminal ou une fenêtre DOS, mais on peut l'appeler
-    depuis un <link linkend="OviewFrontEnds"><citetitle>frontal</citetitle></link> plus facile à
-    utiliser. Le fichier partition peut être codé dans un des différents formats, au choix de
+    Elle est conçue pour être appelée depuis un terminal ou une fenêtre DOS.
+    En plus de celle-ci, il y a d'autres
+    <link linkend="OviewFrontEnds"><citetitle>frontaux</citetitle></link>, peut-être plus faciles à
+    utiliser. Le fichier partition peut être codé dans différents formats, au choix de
     l'utilisateur. La traduction, le tri et le formatage de la partition dans un texte numérique
     lisible par l'orchestre sont effectués par différents préprocesseurs ; tout ou partie de la
     partition est ensuite envoyé à l'orchestre. L'exécution de l'orchestre est influencée par des

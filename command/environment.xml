@@ -24,9 +24,9 @@ english cvs version=1.20
 	  <listitem><simpara>INCDIR : Répertoire des fichiers à inclure. Spécifie l'endroit où se trouvent les fichiers
       utilisés par les instructions
       <link linkend="include"><citetitle>#include</citetitle></link>.</simpara></listitem> 
-	  <listitem><simpara>OPCODEDIR : Définit l'endroit où se trouvent les greffons d'opcode en version simple
+	  <listitem><simpara>OPCODE6DIR : Définit l'endroit où se trouvent les greffons d'opcode en version simple
       précision (32 bit).</simpara></listitem>
-	  <listitem><simpara>OPCODEDIR64 : Définit l'endroit où se trouvent les greffons d'opcode en version double
+	  <listitem><simpara>OPCODE6DIR64 : Définit l'endroit où se trouvent les greffons d'opcode en version double
       précision (64 bit).</simpara></listitem>
 	  <listitem><simpara>SNAPDIR : Utilisée par les opcodes de contrôle graphique FLTK pour charger et sauvegarder les
       instantanés.</simpara></listitem>
@@ -55,11 +55,11 @@ english cvs version=1.20
   <link linkend="OrchDirFiles"><citetitle>Répertoires et Fichiers</citetitle></link>.
   </para>
   <para>
-    Les seules variables d'environnement obligatoires sont OPCODEDIR et OPCODEDIR64. Il est très important de
+    Les seules variables d'environnement obligatoires sont OPCODE6DIR et OPCODE6DIR64. Il est très important de
     les remplir correctement, sinon la plupart des opcodes ne seront pas disponibles. Assurez-vous de fixer
     le chemin correctement en fonction de la précision de votre exécutable. Si vous lancez csound en ligne
-    de commande sans aucun argument vous devriez voir un texte ressemblant à : Csound version 5.01.0 beta
-    (float samples) Mar 23 2006. Ce texte fait référence à la version simple précision.
+    de commande sans aucun argument vous devriez voir un texte ressemblant à : Csound version 6.03.1
+    (double samples) May 10 2014. Ce texte fait référence à la version double précision.
   </para>
   <para>
     CSSTRNGS et CS_LANG sont actuellement peu utiles car Csound n'a pas encore été complètement traduit dans
@@ -94,7 +94,7 @@ english cvs version=1.20
       <para>Prière de noter que cette méthode ne fonctionnera pas pour les variables d'environnement qui
       sont lues avant les arguments de la ligne de commande. Pour SADIR, SSDIR, SFDIR, INCDIR, SNAPDIR, RAWWAVE_PATH,
       CSNOSTOP, SFOUTYP cela devrait marcher, mais les variables d'environnement suivantes doivent être fixées
-      dans le système avant de lancer csound : OPCODEDIR, OPCODEDIR64, CSSTRINGS, et CS_LANG. Actuellement (v. 5.02)
+      dans le système avant de lancer csound : OPCODE6DIR, OPCODE6DIR64, CSSTRINGS, et CS_LANG. Actuellement (v. 5.02)
       CSOUNDRC peut être fixée par --env, mais cette possibilité n'est pas garantie dans les versions futures.</para>
     </note>
     <bridgehead>Windows</bridgehead>
@@ -108,16 +108,9 @@ english cvs version=1.20
     <para>Il y a plusieurs manières de fixer les variables d'environnement sur linux. On peut les initialiser
     avec la commande de shell <emphasis>export</emphasis>, dans le fichier .bashrc ou des fichiers similaires
     ou en les ajoutant au fichier /etc/profile.</para>
+
     <bridgehead>Mac</bridgehead>
-    <para>Si l'on a un Mac avec une version d'OS X inférieure à la 10.3 (y compris 10.2 et 10.1) il est alors
-    possible que le shell par défaut soit le Tenex C-shell (tcsh). Si c'est le cas, il faut alors taper :</para>
-    <screen>~% setenv OPCODEDIR "/Users/you/your/Csound5/build"</screen>
-    <para>ou changer votre fichier /etc/profile et/ou modifier votre fichier .tcshrc.</para>
-    
-    <para>Si l'on a un Mac avec OS X 10.3 ou 10.4 alors il y a certainement un shell C "Bourne-again" (bash) par
-    défaut. Si c'est le cas, alors il faut taper quelque chose comme ça :</para>
-    
-    <screen>~$ export OPCODEDIR=/Users/you/your/Csound5/build</screen>
+    <screen>~$ export OPCODE6DIR64=/Users/you/your/Csound6/build</screen>
     <para>De plus si l'on a un bash shell par défaut, alors il est plus facile de modifier le fichier .bashrc
       ou le fichier /etc/profile.</para>
     

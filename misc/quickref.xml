@@ -1294,7 +1294,6 @@
 <synopsis><link linkend="floor">floor</link>(x) (argument au taux d'initialisation, de contrôle ou audio)</synopsis><para/>
 <synopsis><link linkend="frac">frac</link>(x) (arguments de taux-i ou de taux-k ; fonctionne aussi au taux-a dans Csound5)</synopsis><para/>
 <synopsis><link linkend="int">int</link>(x)  (taux-i ou taux-k ; fonctionne aussi au taux-a dans Csound5)</synopsis><para/>
-<synopsis><link linkend="log">log</link>(x) (pas de restriction de taux)</synopsis><para/>
 <synopsis><link linkend="log10">log10</link>(x) (pas de restriction de taux)</synopsis><para/>
 <synopsis><link linkend="log2">log2</link>(x) (pas de restriction de taux)</synopsis><para/>
 <synopsis><link linkend="logbtwo">logbtwo</link>(x)  (argument au taux d'initialisation ou de contrôle seulement)</synopsis><para/>
@@ -1599,7 +1598,7 @@
 <synopsis>asig <link linkend="cudasliding">cudasliding</link> ain, amod, iwinsize</synopsis><para/>
 <synopsis>asig <link linkend="cudasynth">cudasynth</link> kamp, kfreq, itab, iftab, iatab[, inum]</synopsis><synopsis>asig <link linkend="cudasynth">cudasynth</link> fsig, kamp, kfreq[, inum]</synopsis><synopsis>asig <link linkend="cudasynth">cudasynth</link> fsig</synopsis><para/>
 <synopsis>ftrks <link linkend="partials">partials</link> ffr, fphs, kthresh, kminpts, kmaxgap, imaxtracks</synopsis><para/>
-<synopsis>kframe <link linkend="pvs2tab">pvs2tab</link> tvar, fsig</synopsis><para/>
+<synopsis>kframe <link linkend="pvs2tab">pvs2tab</link> tvar|kvar[], fsig</synopsis><para/>
 <synopsis>ares <link linkend="pvsadsyn">pvsadsyn</link> fsrc, inoscs, kfmod [, ibinoffset] [, ibinincr] [, iinit]</synopsis><para/>
 <synopsis>fsig <link linkend="pvsanal">pvsanal</link> ain, ifftsize, ioverlap, iwinsize, iwintype [, iformat] [, iinit]</synopsis><para/>
 <synopsis>fsig <link linkend="pvsarp">pvsarp</link> fsigin, kbin, kdepth, kgain</synopsis><para/>
@@ -1646,7 +1645,7 @@
 <synopsis>ares <link linkend="pvsynth">pvsynth</link> fsrc, [iinit]</synopsis><para/>
 <synopsis>asig <link linkend="resyn">resyn</link> fin, kscal, kpitch, kmaxtracks, ifn</synopsis><para/>
 <synopsis>asig <link linkend="sinsyn">sinsyn</link> fin, kscal, kmaxtracks, ifn</synopsis><para/>
-<synopsis>fsig <link linkend="tab2pvs">tab2pvs</link> tvar [, ihopsize, iwinsize, iwintype]</synopsis><para/>
+<synopsis>fsig <link linkend="tab2pvs">tab2pvs</link> tvar|karr[][,ihopsize, iwinsize, iwintype]</synopsis><para/>
 <synopsis>asig <link linkend="tradsyn">tradsyn</link> fin, kscal, kpitch, kmaxtracks, ifn</synopsis><para/>
 <synopsis>fsig <link linkend="trcross">trcross</link> fin1, fin2, ksearch, kdepth [, kmode] </synopsis><para/>
 <synopsis>fsig <link linkend="trfilter">trfilter</link> fin, kamnt, ifn</synopsis><para/>
