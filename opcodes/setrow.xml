@@ -1,0 +1,75 @@
+<!--translated=yes
+authors=Francois Pinot
+-->
+
+<refentry id="setrow">
+<indexterm id="IndexSetrow"><primary>setrow</primary></indexterm>
+
+  <refentryinfo><title>Array opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>setrow</refentrytitle>
+  </refmeta>
+
+   <refnamediv>
+    <refname>setrow</refname>
+    <refpurpose>
+      Remplit une ligne donnée d'un tableau bidimensionnel à partir d'un vecteur.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Remplit une ligne donnée d'un tableau bidimensionnel. La sortie est un
+      tableau bidimensionnel avec le contenu de la ligne concernée égal aux
+      valeurs du tableau d'entrée (unidimensionnel ; si ce dernier est
+      bidimensionnel, sa première ligne est utilisée).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+      <synopsis>kout[] <command>setrow</command>kin[],krow</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kout[]</emphasis> -- tableau de sortie contenant la ligne
+      fixée. Créé s'il n'existe pas.
+     </para>
+     <para>
+      <emphasis>kin[]</emphasis> -- tableau d'entrée.
+    </para>
+        <para>
+    <emphasis>krow</emphasis> -- ligne à fixer.
+    </para>
+  </refsect1>
+
+ <refsect1>
+    <title>Exemples</title>
+    <para>
+     TODO.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="vectorial"><citetitle></citetitle>Vectorial opcodes</link>
+      <link linkend="array"><citetitle></citetitle>array</link>
+</para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>NUI Maynooth</member>
+        <member>2014</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 6.04</para>
+  </refsect1>
+</refentry>

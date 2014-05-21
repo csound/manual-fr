@@ -1,0 +1,76 @@
+<!--translated=yes
+authors=Francois Pinot
+-->
+
+<refentry id="shiftin">
+<indexterm id="IndexShiftin"><primary>shiftin</primary></indexterm>
+
+  <refentryinfo><title>Array opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>shiftin</refentrytitle>
+  </refmeta>
+
+   <refnamediv>
+    <refname>shiftin</refname>
+    <refpurpose>
+      Transfère le contenu d'une variable audio dans un tableau unidimensionnel.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      On peut utiliser cet opcode pour transférer les données d'une variable
+      audio dans un tableau unidimensionnel. Le tableau doit avoir une longueur
+      d'au moins <emphasis>ksmps</emphasis> nombres, mais il peut être plus grand.
+      Les données sont stockées circulairement, la position d'écriture avançant
+      de <emphasis>ksmps</emphasis> à chaque cycle-k. Lorsque le tableau est plein,
+      la position d'écriture se replace au début du tableau (écrasant les anciennes
+      positions). Avec l'opcode <emphasis>shiftout</emphasis>, cet opcode peut
+      former une file FIFO.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+      <synopsis>kout[] <command>shiftin</command>asig</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kout[]</emphasis> -- tableau de sortie. Doit avoir une longueur
+      d'au moins <emphasis>ksmps</emphasis> nombres.
+    </para>
+    <para>
+      <emphasis>asig</emphasis> -- entrée audio
+    </para>
+  </refsect1>
+
+ <refsect1>
+    <title>Exemples</title>
+    <para>
+     TODO.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="vectorial"><citetitle></citetitle>Vectorial opcodes</link>
+      <link linkend="array"><citetitle></citetitle>array</link>
+</para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>NUI Maynooth</member>
+        <member>2014</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 6.04</para>
+  </refsect1>
+</refentry>

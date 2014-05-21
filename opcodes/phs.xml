@@ -1,0 +1,71 @@
+<!--translated=yes
+authors=Francois Pinot
+-->
+
+<refentry id="phs">
+<indexterm id="IndexPhs"><primary>phs</primary></indexterm>
+
+  <refentryinfo><title>Array operations: complex phases </title></refentryinfo>
+  <refmeta>
+    <refentrytitle>phs</refentrytitle>
+  </refmeta>
+
+   <refnamediv>
+    <refname>phs</refname>
+    <refpurpose>
+      Retourne les arguments d'un tableau de nombres complexes.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode retourne les arguments d'un tableau de nombres complexes dans un
+      tableau de réels dont la taille est la moitié de celle du tableau d'entrée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+      <synopsis>kout[] <command>phs</command>kin[]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kout[]</emphasis> -- tableau contenant les arguments. Créé s'il
+      n'existe pas.
+    </para>
+    <para>
+      <emphasis>kin[]</emphasis> -- tableau contenant les valeurs complexes
+      réelles-imaginaires d'entrée.
+    </para>
+  </refsect1>
+
+ <refsect1>
+    <title>Exemples</title>
+    <para>
+     TODO.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="vectorial"><citetitle></citetitle>Vectorial opcodes</link>
+      <link linkend="array"><citetitle></citetitle>array</link>
+</para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>NUI Maynooth</member>
+        <member>2014</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 6.04</para>
+  </refsect1>
+</refentry>

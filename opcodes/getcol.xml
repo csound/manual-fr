@@ -1,0 +1,73 @@
+<!--translated=yes
+authors=Francois Pinot
+-->
+
+<refentry id="getcol">
+<indexterm id="IndexGetcol"><primary>getcol</primary></indexterm>
+
+  <refentryinfo><title>Array opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>getcol</refentrytitle>
+  </refmeta>
+
+   <refnamediv>
+    <refname>getcol</refname>
+    <refpurpose>
+      Retourne une colonne donnée d'un tableau bidimensionnel comme un vecteur.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne une colonne donnée d'un tableau bidimensionnel. La sortie est
+      un tableau unidimensionnel contenant la colonne requise.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+      <synopsis>kout[] <command>getcol</command>kin[],kcol</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kout[]</emphasis> -- tableau de sortie contenant la colonne
+      extraite. Créé s'il n'existe pas.
+    </para>
+    <para>
+      <emphasis>kin[]</emphasis> -- tableau bidimensionnel en entrée.
+    </para>
+    <para>
+      <emphasis>kcol</emphasis> -- colonne à extraire.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+     TODO.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="vectorial"><citetitle></citetitle>Vectorial opcodes</link>
+      <link linkend="array"><citetitle></citetitle>array</link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>NUI Maynooth</member>
+        <member>2014</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 6.04</para>
+  </refsect1>
+</refentry>

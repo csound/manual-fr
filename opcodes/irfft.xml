@@ -1,0 +1,75 @@
+<!--translated=yes
+authors=Francois Pinot
+-->
+
+<refentry id="irfft">
+<indexterm id="IndexIrfft"><primary>irfft</primary></indexterm>
+
+  <refentryinfo><title>Array operations: Inverse Fast Fourier Transform</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>irfft</refentrytitle>
+  </refmeta>
+
+   <refnamediv>
+    <refname>irfft</refname>
+    <refpurpose>
+      Transformée de Fourier rapide inverse complexe vers réel.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Applique une transformée de Fourier rapide inverse à un tableau
+      unidimensionnel de valeurs complexes produisant une sortie réelle.
+      Cette sortie est un autre tableau contenant les valeurs réelles du
+      signal. Si le tableau d'entrée a pour taille une puissance de deux,
+      la taille du tableau de sortie sera égale à celle du tableau d'entrée.
+      Sinon, la sortie aura deux valeurs de moins (taille d'entrée - 2).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+      <synopsis>kout[] <command>irfft</command>kin[]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kout[]</emphasis> -- tableau contenant les valeurs
+      réelles de sortie. Créé s'il n'existe pas.
+    </para>
+    <para>
+      <emphasis>kin[]</emphasis> -- tableau contenant les valeurs
+      complexes d'entrée.
+    </para>
+  </refsect1>
+
+ <refsect1>
+    <title>Exemples</title>
+    <para>
+     TODO.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="vectorial"><citetitle></citetitle>Vectorial opcodes</link>
+      <link linkend="array"><citetitle></citetitle>array</link>
+</para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>NUI Maynooth</member>
+        <member>2014</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 6.04</para>
+  </refsect1>
+</refentry>

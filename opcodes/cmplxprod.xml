@@ -1,0 +1,71 @@
+<!--translated=yes
+authors=Francois Pinot
+-->
+
+<refentry id="cmplxprod">
+<indexterm id="IndexCmplxprod"><primary>cmplxprod</primary></indexterm>
+
+  <refentryinfo><title>Array operations: Complex Product</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>cmplxprod</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>cmplxprod</refname>
+    <refpurpose>
+      Multiplication complexe de deux tableaux.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Calcule le produit complexe de deux tableaux de la même taille et en
+      format réel-imaginaire entrelacé.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+      <synopsis>kout[] <command>cmplxprod</command>kin1[], kin2[]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kout[]</emphasis> -- tableau de sortie contenant le produit.
+      Créé s'il n'existe pas.
+    </para>
+    <para>
+      <emphasis>kin1[],kin2[]</emphasis> -- tableaux contenant les entrées
+      complexes.
+    </para>
+  </refsect1>
+
+ <refsect1>
+    <title>Exemples</title>
+    <para>
+     TODO.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="vectorial"><citetitle></citetitle>Vectorial opcodes</link>
+      <link linkend="array"><citetitle></citetitle>array</link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>NUI Maynooth</member>
+        <member>2014</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 6.04</para>
+  </refsect1>
+</refentry>

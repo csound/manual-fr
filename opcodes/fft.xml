@@ -1,0 +1,77 @@
+<!--translated=yes
+authors=Francois Pinot
+-->
+
+<refentry id="fft">
+<indexterm id="IndexFft"><primary>fft</primary></indexterm>
+
+  <refentryinfo><title>Array operations: Fast Fourier Transform</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>fft</refentrytitle>
+  </refmeta>
+
+   <refnamediv>
+    <refname>fft</refname>
+    <refpurpose>
+      Transformée de Fourier rapide dans le domaine complexe.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Applique une transformée de Fourier rapide directe à un tableau
+      unidimensionnel de valeurs complexes produisant une sortie complexe.
+      Cette sortie est un autre tableau contenant les valeurs complexes du
+      signal, et les deux tableaux sont au format réel-imaginaire entrelacé.
+      Le tableau de sortie a la même taille que le tableau d'entrée et la
+      taille de la transformée est équivalente à la moitié de la longueur du
+      tableau. Les transformées non puissance de deux sont restreintes à des
+      tailles paires avec un nombre pas trop élevé de facteurs.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+      <synopsis>kout[] <command>fft</command>kin[]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kout[]</emphasis> -- tableau contenant les valeurs
+      complexes de sortie. Créé s'il n'existe pas.
+    </para>
+    <para>
+      <emphasis>kin[]</emphasis> -- tableau contenant les valeurs
+      complexes d'entrée.
+    </para>
+  </refsect1>
+
+ <refsect1>
+    <title>Exemples</title>
+    <para>
+     TODO.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="vectorial"><citetitle></citetitle>Vectorial opcodes</link>
+      <link linkend="array"><citetitle></citetitle>array</link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>NUI Maynooth</member>
+        <member>2014</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 6.04</para>
+  </refsect1>
+</refentry>

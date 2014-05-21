@@ -1,0 +1,78 @@
+<!--translated=yes
+authors=Francois Pinot
+-->
+
+<refentry id="window">
+<indexterm id="IndexWindow"><primary>window</primary></indexterm>
+
+  <refentryinfo><title>Array operations: windowing</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>window</refentrytitle>
+  </refmeta>
+
+   <refnamediv>
+    <refname>window</refname>
+    <refpurpose>
+      Applique une fenêtre à un tableau.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Applique une forme de fenêtre donnée à un vecteur stocké dans un tableau.
+      La sortie est un tableau contenant le vecteur fenêtré.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>itype</emphasis> -- type de la fenêtre (facultatif) :
+      0 = Hamming, 1 = Hanning (von Hann) (vaut 1 par défaut).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+      <synopsis>kout[] <command>window</command>kin[][,itype]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kout[]</emphasis> -- tableau contenant la sortie fenêtrée. Créé
+      s'il n'existe pas.
+         </para>
+       <para>
+      <emphasis>kin[]</emphasis> -- tableau contenant le vecteur d'entrée.
+    </para>
+  </refsect1>
+
+ <refsect1>
+    <title>Exemples</title>
+    <para>
+     TODO.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="vectorial"><citetitle></citetitle>Vectorial opcodes</link>
+      <link linkend="array"><citetitle></citetitle>array</link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>NUI Maynooth</member>
+        <member>2014</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 6.04</para>
+  </refsect1>
+</refentry>
