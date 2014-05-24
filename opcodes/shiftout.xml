@@ -32,7 +32,15 @@ authors=Francois Pinot
 
   <refsect1>
     <title>Syntaxe</title>
-      <synopsis>asig <command>shiftout</command> kIn[]</synopsis>
+      <synopsis>asig <command>shiftout</command>kIn[][, ioff]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ioff</emphasis> -- décalage initial de la position de lecture
+      (facultatif, 0 par défaut).
+    </para>
   </refsect1>
 
   <refsect1>
@@ -46,17 +54,25 @@ authors=Francois Pinot
     </para>
   </refsect1>
 
- <refsect1>
+  <refsect1>
     <title>Exemples</title>
     <para>
-     TODO.
+      Voici un exemple de l'opcode shiftout. Il utilise le fichier
+      <ulink url="examples/shiftout.csd"><citetitle>shiftout.csd</citetitle></ulink>.
     </para>
+    <example>
+      <title>Exemple de l'opcode shiftout.</title>
+      <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+      et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+      d'information sur l'utilisation des options de la ligne de commande.</para>
+      <xi:include href="examples-xml/shiftout.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </example>
   </refsect1>
 
   <refsect1>
     <title>Voir aussi</title>
     <para>
-      <link linkend="vectorial"><citetitle></citetitle>Vectorial opcodes</link>
+      <link linkend="vectorial"><citetitle></citetitle>Opcodes vectoriels</link>,
       <link linkend="array"><citetitle></citetitle>array</link>
     </para>
   </refsect1>

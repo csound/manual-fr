@@ -27,6 +27,7 @@ authors=Francois Pinot
   <refsect1>
     <title>Syntaxe</title>
       <synopsis>kout[] <command>pol2rect</command> kin[]</synopsis>
+      <synopsis>kout[] <command>pol2rect</command> kmags[], kphs[]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -39,21 +40,37 @@ authors=Francois Pinot
       <emphasis>kin[]</emphasis> -- tableau contenant les valeurs complexes
       modules-arguments d'entrée.
     </para>
+    <para>
+      <emphasis>kmags[]</emphasis> -- tableau contenant les valeurs réelles des
+      modules en entrée.
+    </para>
+    <para>
+      <emphasis>kphs[]</emphasis> -- tableau contenant les valeurs réelles des
+      arguments en entrée.
+    </para>
   </refsect1>
 
- <refsect1>
+  <refsect1>
     <title>Exemples</title>
     <para>
-     TODO.
+      Voici un exemple de l'opcode pol2rect. Il utilise le fichier
+      <ulink url="examples/pol2rect.csd"><citetitle>pol2rect.csd</citetitle></ulink>.
     </para>
+    <example>
+      <title>Exemple de l'opcode pol2rect.</title>
+      <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+      et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+      d'information sur l'utilisation des options de la ligne de commande.</para>
+      <xi:include href="examples-xml/pol2rect.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </example>
   </refsect1>
 
   <refsect1>
     <title>Voir aussi</title>
     <para>
-      <link linkend="vectorial"><citetitle></citetitle>Vectorial opcodes</link>
+      <link linkend="vectorial"><citetitle></citetitle>Opcodes vectoriels</link>,
       <link linkend="array"><citetitle></citetitle>array</link>
-</para>
+    </para>
   </refsect1>
 
   <refsect1>

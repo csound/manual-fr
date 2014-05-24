@@ -21,7 +21,10 @@ authors=Francois Pinot
     <title>Description</title>
     <para>
       Cet opcode retourne les arguments d'un tableau de nombres complexes dans un
-      tableau de réels dont la taille est la moitié de celle du tableau d'entrée.
+      tableau de réels dont la taille est la moitié de celle du tableau d'entrée
+      plus un. Ce point supplémentaire est là pour que la taille du tableau soit
+      équivalente à celle de la sortie de l'opcode <emphasis>mags</emphasis> (qui
+      est souvent utilisé conjointement avec celui-ci).
     </para>
   </refsect1>
 
@@ -45,16 +48,24 @@ authors=Francois Pinot
  <refsect1>
     <title>Exemples</title>
     <para>
-     TODO.
+      Voici un exemple de l'opcode phs. Il utilise le fichier
+      <ulink url="examples/phs.csd"><citetitle>phs.csd</citetitle></ulink>.
     </para>
+    <example>
+      <title>Exemple de l'opcode phs.</title>
+      <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+      et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+      d'information sur l'utilisation des options de la ligne de commande.</para>
+      <xi:include href="examples-xml/phs.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </example>
   </refsect1>
 
   <refsect1>
     <title>Voir aussi</title>
     <para>
-      <link linkend="vectorial"><citetitle></citetitle>Vectorial opcodes</link>
+      <link linkend="vectorial"><citetitle></citetitle>Opcodes vectoriels</link>,
       <link linkend="array"><citetitle></citetitle>array</link>
-</para>
+    </para>
   </refsect1>
 
   <refsect1>
