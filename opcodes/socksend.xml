@@ -36,6 +36,7 @@ english cvs version=1.5
   <refsect1>
     <title>Syntaxe</title>
     <synopsis><command>socksend</command> asig, Sipaddr, iport, ilength</synopsis>
+    <synopsis><command>socksend</command> ksig, Sipaddr, iport, ilength</synopsis>
     <synopsis><command>socksends</command> asigl, asigr, Sipaddr, iport,
     ilength</synopsis>
     <synopsis><command>stsend</command> asig, Sipaddr, iport</synopsis>
@@ -63,7 +64,7 @@ english cvs version=1.5
   <refsect1>
     <title>Exécution</title>
     <para>
-      <emphasis>asig, asigl, asigr</emphasis> -- données audio à transmettre.
+      <emphasis>asig, ksig, asigl, asigr</emphasis> -- données à transmettre.
     </para>
 
   </refsect1>
