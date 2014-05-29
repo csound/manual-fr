@@ -76,11 +76,15 @@ english cvs version=1.8
       ordinateurs 32 bit et 64 bit.
     </note>    
     <note>
-      Cet opcode utilise en interne les fonctions <emphasis>gethostname</emphasis>
+      Cet opcode peut utiliser en interne les fonctions <emphasis>gethostname</emphasis>
       et <emphasis>gethostbyname</emphasis> pour déterminer les adresses IP du
-      client et du serveur afin de tester quels messages sont destinés à chaque
-      machine. Si un ordinateur a plus d'une adresse IP il n'y a aucun moyen de
-      contrôler quelle adresse IP est choisie.
+      client et du serveur afin de tester quels messages sont destinés à quelle
+      machine, ou d'autres techniques sur les systèmes différents de Windows.
+      Si un ordinateur a plus d'une adresse IP il n'y a aucun moyen de
+      contrôler quelle adresse IP est choisie (mais voir ci-dessous). Sur les
+      systèmes différents de Windows, l'interface réseau par défaut est eth0 ou
+      en0, et si cela échoue wlan0. Depuis la version 6.05, on peut indiquer
+      l'interface réseau à utiliser avec la variable d'environnement CS_ETHER.
     </note>
     <note>
       L'opération à distance ne permet pas du tout l'envoi de chaînes de caractères.
