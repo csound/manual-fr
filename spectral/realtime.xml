@@ -52,14 +52,14 @@ english cvs version=1.20
        <emphasis>ksmps</emphasis> &lt;= <emphasis>overlap</emphasis>, où <emphasis>overlap</emphasis> est
        la distance en échantillons entre deux trames d'analyse, comme spécifié pour
        <emphasis>pvsanal</emphasis>. Comme <emphasis>overlap</emphasis> vaut typiquement au moins 128, et
-       plus souvent 256, ce n'est pas une restriction coûteuse en pratique. L'opcode
+       le plus souvent 256, ce n'est pas une restriction coûteuse en pratique. L'opcode
        <emphasis>pvsinfo</emphasis> peut être utilisé au moment de l'initialisation pour acquérir les
        propriétés d'un fsig.</para>
 
        <para>Le fsig permet la séparation nominale entre les étapes d'analyse et de resynthèse du
          vocodeur de phase pour une mise à disposition du programmeur Csound, ce qui permet non seulement
          d'employer des alternatives pour l'une ou les deux de ces étapes (pas seulement la resynthèse par
-         banc d'oscillateur, mais aussi la génération synthétique de flots de données fsig), mais aussi les opcodes
+         banc d'oscillateur, mais aussi la génération synthétique de flots de données fsig), mais les opcodes
          opérant sur le flot fsig peuvent être eux-mêmes plus élémentaires. Ainsi le fsig permet la
          création d'un véritable environnement de greffon de flots de données pour les signaux du domaine fréquentiel.
          Avec les vieux opcodes pvoc, chaque opcode doit pouvoir agir comme un resynthétiseur, si bien que
@@ -118,7 +118,8 @@ english cvs version=1.20
   </para>
 
   <para>
-    De plus il y a un certain nombre d'opcodes disponibles sous forme de greffons dans Csound 5. Ce sont
+    De plus il y a un certain nombre d'opcodes disponibles sous forme de
+    greffons dans Csound 5, et dans le noyau de Csound6. Ce sont
     <link linkend="pvstanal"><citetitle>pvstanal</citetitle></link>,
     <link linkend="pvsdiskin"><citetitle>pvsdiskin</citetitle></link>,
     <link linkend="pvscent"><citetitle>pvscent</citetitle></link>,
