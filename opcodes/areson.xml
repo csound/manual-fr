@@ -98,8 +98,13 @@ english cvs version=1.12
       réponse complexes comme celles qui présentent plusieurs valeurs maximales, en utilisant une banque
       de filtres adéquats en série. (La réponse résultante est le produit des différentes réponses.)
       Dans une telle situation, les atténuations combinées peuvent conduire à une sérieuse perte de
-      puissance du signal, mais celle-ci peut être restaurée au moyen de
+      puissance du signal, mais celle-ci peut être compensée au moyen de
       <link linkend="balance"><citetitle>balance</citetitle></link>.
+    </para>
+    <para>
+      <warning>Lorsqu'on l'utilise avec <emphasis>iscl</emphasis> cet opcode
+      n'est pas un filtre réjecteur de bande mais se comporte comme
+      <link linkend="reson"><citetitle>reson</citetitle></link>.
     </para>
   </refsect1>
 
