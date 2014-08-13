@@ -18,21 +18,34 @@ english cvs version=
    <refnamediv>
     <refname>lenarray</refname>
     <refpurpose>
-      Calcul de la longueur d'un vecteur.
+      Evalue la taille ou le nombre de dimensions d'un tableau.
     </refpurpose>
   </refnamediv>
  
   <refsect1>
     <title>Description</title>
     <para>
-      Calcul de la longueur d'un vecteur (tableau unidimensionnel de taux_k).
+      Evalue la taille ou le nombre de dimensions d'un tableau.
     </para>
   </refsect1>
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>ir <command>lenarray</command> karray</synopsis>
-    <synopsis>kr <command>lenarray</command> karray</synopsis>
+    <synopsis>ir <command>lenarray</command> karray[, iwhich]</synopsis>
+    <synopsis>kr <command>lenarray</command> karray[, iwhich]</synopsis>
+  </refsect1>
+
+ <refsect1>
+   <title>Initialisation</title>
+    <para>
+      <emphasis>karray</emphasis> -- tableau à interroger. Peut avoir n'importe
+      quelle dimension.
+    </para>
+    <para>
+      <emphasis>iwhich</emphasis> -- sélectionne la dimension dont on veut
+      évaluer la taille. S'il est inférieur ou égal à zéro, le nombre de
+      dimensions est retourné. Vaut 1 par défaut, comme pour un vecteur.
+    </para>
   </refsect1>
 
   <refsect1>
@@ -42,7 +55,10 @@ english cvs version=
     </para>
     <para>
       <emphasis>karray</emphasis> -- tableau à interroger.
-
+    </para>
+    <para>
+      Si la dimension interrogée dépasse celles du tableau ou si le tableau
+      n'est pas initialisé, la valeur -1 est retournée.
     </para>
   </refsect1>
 
@@ -78,5 +94,6 @@ english cvs version=
       </simplelist>
     </para>
     <para>Nouveau dans la version 6.00</para>
+    <para>Extension multi-dimensionnelle dans la version 6.04</para>
   </refsect1>
 </refentry>
