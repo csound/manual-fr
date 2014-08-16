@@ -34,10 +34,10 @@ english cvs version=1.4
   <refsect1>
     <title>Syntaxe</title>
     <synopsis>ares <command>prepiano</command> ifreq, iNS, iD, iK, \
-    iT30, iB, kbcl, kbcr, imass, ifreq, iinit, ipos, ivel, isfreq, \
+    iT30, iB, kbcl, kbcr, imass, ihvfreq, iinit, ipos, ivel, isfreq, \
     isspread[, irattles, irubbers]</synopsis>
     <synopsis>al,ar <command>prepiano</command> ifreq, iNS, iD, iK, \
-    iT30, iB, kbcl, kbcr, imass, ifreq, iinit, ipos, ivel, isfreq, \
+    iT30, iB, kbcl, kbcr, imass, ihvfreq, iinit, ipos, ivel, isfreq, \
     isspread[, irattles, irubbers]</synopsis>
   </refsect1>
  
@@ -45,7 +45,8 @@ english cvs version=1.4
     <title>Initialisation</title>
 
     <para>
-    <emphasis>ifreq</emphasis> -- la fréquence de base de la corde.
+    <emphasis>ihvfreq</emphasis> -- la fréquence de vibration naturelle du
+    marteau.
     </para>
 
     <para>
