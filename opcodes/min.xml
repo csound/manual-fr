@@ -26,7 +26,7 @@ english cvs version=1.6
     <title>Description</title>
     <para>
       L'opcode <emphasis>min</emphasis> prend en entrée n'importe quel nombre de
-      signaux de taux-a ou de taux-k (tous au même taux), et retourne un signal
+      signaux de taux-a, de taux-k ou de taux-i (tous au même taux), et retourne un signal
       du même taux qui est le minimum de toutes les entrées. Pour les signaux de
       taux-a, les entrées sont comparées échantillon par échantillon (c-à-d que
       <emphasis>min</emphasis> n'examine pas une période <emphasis>ksmps</emphasis>
@@ -39,6 +39,7 @@ english cvs version=1.6
     <title>Syntaxe</title>
     <synopsis>amin <command>min</command> ain1, ain2 [, ain3] [, ain4] [...]</synopsis>
     <synopsis>kmin <command>min</command> kin1, kin2 [, kin3] [, kin4] [...]</synopsis>
+    <synopsis>imin <command>min</command> iin1, iin2 [, iin3] [, iin4] [...]</synopsis>
   </refsect1>
  
   <refsect1>
@@ -49,6 +50,10 @@ english cvs version=1.6
 
     <para>
       <emphasis>kin1, kin2, ...</emphasis> -- signaux de taux-k à comparer.
+    </para>
+
+    <para>
+      <emphasis>iin1, iin2, ...</emphasis> -- signaux de taux-i à comparer.
     </para>
   </refsect1>
  
@@ -90,6 +95,6 @@ english cvs version=1.6
       </simplelist>
     </para>
 
-    <para>Nouveau dans la version 5.01 de Csound.</para>
+    <para>Nouveau dans la version 5.01 de Csound ; taux-i ajouté dans la version 6.04</para>
   </refsect1>
 </refentry>

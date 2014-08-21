@@ -243,9 +243,9 @@
 <synopsis>ax, ay, az <link linkend="planet">planet</link> kmass1, kmass2, ksep, ix, iy, iz, ivx, ivy, ivz, idelta \
       [, ifriction] [, iskip]</synopsis><para/>
 <synopsis>ares <link linkend="prepiano">prepiano</link> ifreq, iNS, iD, iK, \
-    iT30, iB, kbcl, kbcr, imass, ifreq, iinit, ipos, ivel, isfreq, \
+    iT30, iB, kbcl, kbcr, imass, ihvfreq, iinit, ipos, ivel, isfreq, \
     isspread[, irattles, irubbers]</synopsis><synopsis>al,ar <link linkend="prepiano">prepiano</link> ifreq, iNS, iD, iK, \
-    iT30, iB, kbcl, kbcr, imass, ifreq, iinit, ipos, ivel, isfreq, \
+    iT30, iB, kbcl, kbcr, imass, ihvfreq, iinit, ipos, ivel, isfreq, \
     isspread[, irattles, irubbers]</synopsis><para/>
 <synopsis>ares <link linkend="sandpaper">sandpaper</link> iamp, idettack [, inum] [, idamp] [, imaxshake]</synopsis><para/>
 <synopsis>ares <link linkend="sekere">sekere</link> iamp, idettack [, inum] [, idamp] [, imaxshake]</synopsis><para/>
@@ -857,12 +857,12 @@
 <title>Modificateurs de signal : comparateurs et accumulateurs</title>
 <para>
 <para/>
-<synopsis>amax <link linkend="max">max</link> ain1, ain2 [, ain3] [, ain4] [...]</synopsis><synopsis>kmax <link linkend="max">max</link> kin1, kin2 [, kin3] [, kin4] [...]</synopsis><para/>
+<synopsis>amax <link linkend="max">max</link> ain1, ain2 [, ain3] [, ain4] [...]</synopsis><synopsis>kmax <link linkend="max">max</link> kin1, kin2 [, kin3] [, kin4] [...]</synopsis><synopsis>imax <link linkend="max">max</link> iin1, iin2 [, iin3] [, iin4] [...]</synopsis><para/>
 <synopsis>knumkout <link linkend="max_k">max_k</link> asig, ktrig, itype</synopsis><para/>
 <synopsis>amax <link linkend="maxabs">maxabs</link> ain1, ain2 [, ain3] [, ain4] [...]</synopsis><synopsis>kmax <link linkend="maxabs">maxabs</link> kin1, kin2 [, kin3] [, kin4] [...]</synopsis><para/>
 <synopsis><link linkend="maxabsaccum">maxabsaccum</link> aAccumulator, aInput</synopsis><para/>
 <synopsis><link linkend="maxaccum">maxaccum</link> aAccumulator, aInput</synopsis><para/>
-<synopsis>amin <link linkend="min">min</link> ain1, ain2 [, ain3] [, ain4] [...]</synopsis><synopsis>kmin <link linkend="min">min</link> kin1, kin2 [, kin3] [, kin4] [...]</synopsis><para/>
+<synopsis>amin <link linkend="min">min</link> ain1, ain2 [, ain3] [, ain4] [...]</synopsis><synopsis>kmin <link linkend="min">min</link> kin1, kin2 [, kin3] [, kin4] [...]</synopsis><synopsis>imin <link linkend="min">min</link> iin1, iin2 [, iin3] [, iin4] [...]</synopsis><para/>
 <synopsis>amin <link linkend="minabs">minabs</link> ain1, ain2 [, ain3] [, ain4] [...]</synopsis><synopsis>kmin <link linkend="minabs">minabs</link> kin1, kin2 [, kin3] [, kin4] [...]</synopsis><para/>
 <synopsis><link linkend="minabsaccum">minabsaccum</link> aAccumulator, aInput</synopsis><para/>
 <synopsis><link linkend="minaccum">minaccum</link> aAccumulator, aInput</synopsis><para/>
@@ -1104,7 +1104,7 @@
 <synopsis><link linkend="ftsr">ftsr</link>(x) (arg de taux-i seulement)</synopsis><para/>
 <synopsis>karray <link linkend="genarray">genarray</link> kstart, kend[, inc]</synopsis><synopsis>iarray <link linkend="genarray">genarray</link> istart, iens[, inc]</synopsis><para/>
 <synopsis>karray <link linkend="genarray_i">genarray_i</link> istart, iend[, inc]</synopsis><para/>
-<synopsis>ir <link linkend="lenarray">lenarray</link> karray</synopsis><synopsis>kr <link linkend="lenarray">lenarray</link> karray</synopsis><para/>
+<synopsis>ir <link linkend="lenarray">lenarray</link> karray[, iwhich]</synopsis><synopsis>kr <link linkend="lenarray">lenarray</link> karray[, iwhich]</synopsis><para/>
 <synopsis>karray <link linkend="maparray">maparray</link> kinarray, String</synopsis><synopsis>karray <link linkend="maparray">maparray_i</link> kinarray, String</synopsis><para/>
 <synopsis><link linkend="nsamp">nsamp</link>(x) (arg de taux-i seulement)</synopsis><para/>
 <synopsis>karray <link linkend="slicearray">slicearray</link> kinarray, istart, iend</synopsis><para/>
