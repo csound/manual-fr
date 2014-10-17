@@ -52,7 +52,8 @@ english cvs version=1.4
     <note>
       <title>Note</title>
       <para>
-        Tous les caractères suivant un ';' ou un '#' (commentaire) sont ignorés jusqu'à
+        Tous les caractères suivant un ';', un '#' (commentaire) ou un '&lt;'
+        (balise XML depuis la version 6.04) sont ignorés jusqu'à
         la ligne suivante (les nombres aussi).
       </para>
     </note>
