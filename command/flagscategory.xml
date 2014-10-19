@@ -678,6 +678,11 @@ csound5:output2             (reproduction droite)</screen>
         <para>
           Supprimer tous les affichages. Voir <link linkend="FlagsCatMinusUpperO"><citetitle>-O</citetitle></link>
           si vous souhaitez enregistrer le compte-rendu dans un fichier.
+          <note>Cette option ne fonctionne que depuis la ligne de commande et
+          pas depuis .csound6rc ou depuis une section <emphasis>CsOptions</emphasis>
+          d'un fichier csd. Elle nécessite une prise en compte avant que le
+          son proprement dit ne commence. Elle est ignorée dans .csound6rc et
+          dans <emphasis>CsOptions</emphasis>.</note>
         </para>
       </listitem>
     </varlistentry>
@@ -1322,6 +1327,11 @@ csound5:output2             (reproduction droite)</screen>
           Compte-rendu dans le fichier <emphasis>FICHIER</emphasis>. Si <emphasis>FICHIER</emphasis>
           est null (c-à-d. <emphasis>-O null</emphasis> ou <emphasis>--logfile=null</emphasis>)
           toutes les impressions de message sur la console sont désactivées.
+          <note>Cette option ne fonctionne que depuis la ligne de commande et
+          pas depuis .csound6rc ou depuis une section <emphasis>CsOptions</emphasis>
+          d'un fichier csd. Elle nécessite une prise en compte avant que le
+          son proprement dit ne commence. Elle est ignorée dans .csound6rc et
+          dans <emphasis>CsOptions</emphasis>.</note>
         </para>
       </listitem>
     </varlistentry>
