@@ -1,0 +1,84 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vactrol">
+<indexterm id="IndexVactrol"><primary>vactrol</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vactrol</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vactrol</refname>
+    <refpurpose>
+      Générateur unitaire suiveur d'enveloppe.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Générateur unitaire suiveur d'enveloppe simulant un Vactrole
+      Perkin Elmer VTL5C3/2.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>vactrol</command> asig [iup, idown]</synopsis>
+  </refsect1>
+
+  <refsect1>
+     <title>Initialisation</title>
+     <para>
+       <emphasis>iup</emphasis> -- Le temps de montée du filtre qui vaut
+       20 par défaut.
+     </para>
+     <para>
+       <emphasis>idown</emphasis> -- Le temps de chute du filtre qui vaut
+       3000 par défaut.
+     </para>
+  </refsect1>
+   
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- Le signal dont on extrait l'enveloppe.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode vactrol. Il utilise le fichier
+      <ulink url="examples/vactrol.csd"><citetitle>vactrol.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode vactrol.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/vactrol.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+    <para>
+      Cet opcode peut réduire le bruit de frottement produit par l'extraction
+      d'une enveloppe complexe, car il adoucit les transitions.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>D'après Julian Parker</member>
+        <member>Nouveau dans la version 6.04</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>
