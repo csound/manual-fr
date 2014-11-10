@@ -1,0 +1,92 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="hdf5read">
+<indexterm id="IndexHdf5read"><primary>hdf5read</primary></indexterm>
+  <refentryinfo><title>Signal I/O:File I/O</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>hdf5read</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>hdf5read</refname>
+    <refpurpose>
+      Lit des signaux et des tableaux depuis un fichier hdf5.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>hdf5read</emphasis> lit <emphasis>N</emphasis> signaux et
+      tableaux depuis un fichier hdf5 spécifié.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>xout1[, xout2, xout3, ..., xoutN] <command>hdf5read</command> ifilename, ivariablename1[, ivariablename2, ivariablename3, ..., ivariablenameN]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifilename</emphasis> -- le nom du fichier hdf5 ( entre guillemets).
+    </para>
+    <para>
+      <emphasis>ivariablename1[, ivariablename2, ivariablename3, ...,
+      ivariablenameN]</emphasis> -- les noms des ensembles de données (entre
+      guillemets) à lire depuis le fichier hdf5.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>xout1, ...,xoutN</emphasis> -- les variables typées dans
+      lesquelles les ensembles de données hdf5 sont lus. Les ensembles de
+      données de rang supérieur à 1 doivent être lus dans des tableaux, les
+      signaux de taux-i doivent être lus également dans des signaux de taux-i.
+      En dehors de ces restrictions, les ensembles de données peuvent être lus
+      dans n'importe quel type de tableau ou de signal. Lorsque la lecture
+      atteint le fin d'un ensemble de données, celui-ci cesse de fournir de
+      nouvelles valeurs.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode hdf5read. Il utilise le fichier
+      <ulink url="examples/hdf5read.csd"><citetitle>hdf5read.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode hdf5read.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/hdf5read.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="hdf5write"><citetitle>hdf5write</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Edward Costello;</member>
+        <member>NUIM, 2014</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

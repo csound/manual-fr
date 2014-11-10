@@ -1,0 +1,87 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="hdf5write">
+<indexterm id="IndexHdf5write"><primary>hdf5write</primary></indexterm>
+  <refentryinfo><title>Signal I/O:File I/O</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>hdf5write</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>hdf5write</refname>
+    <refpurpose>
+      Ecrit des signaux et des tableaux dans un fichier hdf5.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>hdf5write</emphasis> writes <emphasis>N</emphasis> signals and arrays to a specified hdf5 file.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>hdf5write</command> ifilename, xout1[, xout2, xout3, ..., xoutN]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifilename</emphasis> -- le nom du fichier hdf5 ( entre guillemets).
+      Si le fichier n'existe pas, il est créé.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>xout1, ...,xoutN</emphasis> -- signaux ou tableaux à écrire dans
+      le fichier hdf5. Cet opcode accepte des signaux de taux-i, taux-k, taux-a
+      ou des tableaux de taux-i, taux-k, taux-a, de n'importe quelle dimension.
+      Ces signaux ou ces tableaux sont écrits dans un ensemble de données du
+      fichier hdf5 utilisant le même nom de variable que dans Csound. Par exemple,
+      si la variable Csound s'appelle 'ksignal', le nom de l'ensemble de données
+      hdf5 sera 'ksignal'. N'importe quel nombre d'ensemble de données de différents
+      types peuvent être écrits à chaque appel de cet opcode.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode hdf5write. Il utilise le fichier
+      <ulink url="examples/hdf5write.csd"><citetitle>hdf5write.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode hdf5write.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/hdf5write.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="hdf5read"><citetitle>hdf5read</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Edward Costello;</member>
+        <member>NUIM, 2014</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>
