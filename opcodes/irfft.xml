@@ -2,16 +2,16 @@
 authors=Francois Pinot
 -->
 
-<refentry id="irfft">
-<indexterm id="IndexIrfft"><primary>irfft</primary></indexterm>
+<refentry id="rifft">
+<indexterm id="IndexIrfft"><primary>rifft</primary></indexterm>
 
   <refentryinfo><title>Array operations: Fast Fourier Transform</title></refentryinfo>
   <refmeta>
-    <refentrytitle>irfft</refentrytitle>
+    <refentrytitle>rifft</refentrytitle>
   </refmeta>
 
    <refnamediv>
-    <refname>irfft</refname>
+    <refname>rifft</refname>
     <refpurpose>
       Transformée de Fourier rapide inverse complexe vers réel.
     </refpurpose>
@@ -31,7 +31,7 @@ authors=Francois Pinot
 
   <refsect1>
     <title>Syntaxe</title>
-      <synopsis>kout[] <command>irfft</command> kin[]</synopsis>
+      <synopsis>kout[] <command>rifft</command> kin[]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -49,11 +49,11 @@ authors=Francois Pinot
   <refsect1>
     <title>Exemples</title>
     <para>
-      Voici un exemple de l'opcode irfft. Il utilise le fichier
+      Voici un exemple de l'opcode rifft. Il utilise le fichier
       <ulink url="examples/irfft.csd"><citetitle>irfft.csd</citetitle></ulink>.
     </para>
     <example>
-      <title>Exemple de l'opcode irfft.</title>
+      <title>Exemple de l'opcode rifft.</title>
       <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
       et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
       d'information sur l'utilisation des options de la ligne de commande.</para>
