@@ -74,6 +74,362 @@ english cvs version=
       </listitem>
     </itemizedlist>
   </para>-->
+
+<bridgehead>Notes de parution de Csound 6.04 (novembre 2014)</bridgehead>
+  <para>Cette nouvelle version comprend de nombreuses extensions et corrections ;
+  de nouveaux opcodes et un nombre important de réorganisations internes. Il y a
+  un nouveau frontal et les versions iOS et Android présentent de nombreuses
+  améliorations.</para>
+  <para>Nous suivons les bogues et les demandes d'amélioration via le système
+  de signalement de github. Des propositions pour la parution suivante sont déjà
+  faites, mais la quantité de changements impose une parution dès maintenant.</para>
+  <para>
+    <itemizedlist>
+      <listitem>
+        <para>Nouveaux opcodes :
+          <itemizedlist>
+            <listitem>
+              <simpara><link linkend="pinker"><citetitle>pinker</citetitle></link>
+              génère du bruit rose de grande qualité.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>L'opcode power ^ fonctionne maintenant avec des arguments de
+              type tableau.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>L'opcode <link linkend="exciter"><citetitle>exciter</citetitle></link>
+              est calqué sur le greffon calf.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>L'opcode <link linkend="vactrol"><citetitle>vactrol</citetitle></link>
+              simule un suiveur d'enveloppe analogique.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Famille d'opcodes hdf5 pour gérer le format de fichiers hdf5.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>(expérimental non documenté) l'opcode buchla modélise le
+              filtre lowgate de Buchla.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>De nouveaux opcodes de taux-k agissant sur les tableaux :
+              <itemizedlist>
+                <listitem>transformées: rfft, rifft, fft, fftinv</listitem>
+                <listitem>produit complexe : complxprod</listitem>
+                <listitem>conversion polaire - rectangulaire : rect2pol, pol2rect, mags, phs</listitem> 
+                <listitem>reél - complexe: r2c, c2r</listitem>
+                <listitem>fenêtrage : window</listitem>
+                <listitem>cepstrum : pvscpes, iceps, ceps</listitem>
+                <listitem>accès colonne / ligne : getrow, getcol, setrow, setcol</listitem>
+                <listitem>copie données de taux-a - tableau de taux-k : shiftin, shiftout</listitem>
+                <listitem>déroulement de phase : unwrap</listitem>
+              </itemizedlist>
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Nouveaux Gens et Macros :
+          <itemizedlist>
+            <listitem>
+              <simpara>Numéros de ligne corrigés dans les instructions d'instr.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Nouvelle opération de contrôle, la boucle while.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Un bogue ancien sur les macros qui utilisaient le même nom
+              pour un argument a été corrigé.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>La redéfinition d'un instrument lors d'un appel unique au
+              compilateur est signalé comme une erreur.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Le saut de l'en-tête ID3 des fichiers mp3 est maintenant
+              correctement impléménté.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Les erreurs dues à la non-définition de l'endroit où se
+              trouvent les fichiers d'onde bruts de STK ont été supprimées.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Un bogue qui empêchait les UDO de lire une chaîne de
+              caractères dans un p-champ a été corrigé.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Opcodes et Gens modifiés :
+          <itemizedlist>
+            <listitem>
+              <simpara>Les opcodes de manipulation de pile sont obsolètes.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>lenarray étendu pour la gestion des tableaux multi-dimentisonnels.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>ftgenonce accepte correctement les arguments chaîne de
+              caractères.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>max et min ont maintenant une version de taux-i.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>gen23 amélioré au vu des commentaires et des problèmes rapportés.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Dans OSCsend le port est maintenant une valeur de taux-k.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>socksend travaille maintenant au taux-k.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Plusieurs opcodes générateurs d'enveloppe sont maintenant
+              corrects en mode de précision à l'échantillon.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>La compilation faust est maintenant protégée par un verrou.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>mp3 a été modifié pour permettre son utilisation avec reinit.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Dans les opcodes de contrôle à distance, la nom du réseau
+              peut être fixé via la variable d'environnement CS_NETWORK. Vaut par
+              défaut en0 (OSX) ou eth0.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Frontaux :
+          <itemizedlist>
+            <listitem>
+              <simpara>icsound :
+                le nouveau frontal icsound est maintenant prêt pour tout usage.
+                icsound est une interface Python pour un usage interactif avec
+                le notebook ipython.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>csdebugger :
+                plusieurs changements et amélorations ont été faits, comme un
+                parcours pas à pas des instruments actifs, une meilleure utlisation
+                des numéros de ligne.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Usage général :
+          <itemizedlist>
+            <listitem>
+              <simpara>Le module Jack ne stoppe plus Csound en cas d'échec de la
+              connexion automatique.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Bogues corrigés :
+          <itemizedlist>
+            <listitem>
+              <simpara>atsinnoi corrigé.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>ftsavek corrigé.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>sprintf corrigé.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Correction de gen27, en particulier avec de nombreux arguments,
+              ainsi que de nombreuses erreurs dans les arguments de partition
+              en grand nombre.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Les opcodes Physem (guiro cabasa, sekere) corrigés pour
+              qu'un second appel fonctionne.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>flooper corrigé dans le mode 2.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>OSCsend, plusieurs corrections.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>UDO corrigé pour le cas d'un ksmps local égal à 1.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>D'autres changements et corrections au code dssi.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>xscanu et scanu corrigés.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>temposcal et mincer corrigés.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Le plantage dans ftload a été corrigé.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Changements système :
+          <itemizedlist>
+            <listitem>
+              <simpara>En mode serveur la sortie se fait maintenant proprement.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Corrections dans le module rtalsa.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Corrections dans le module temps réel de pulseaudio.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Correction pour enlever les entrées de fluidEngine d'une
+              instance de Csound (empêche le plantage dans moduleDestroy).</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Les opcodes appelés en tant que fonction qui retournaient
+              des tableaux ne synthétisaient pas correctement les arguments en types
+              tableau parce qu'ils ne convertissaient pas le spécificateur de
+              l'argument au format interne.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Correction du plantage durant la phase d'initialisation de
+              notes liées à cause du code sauté par le goto.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Correction de l'initialisation erronée des p-champs lorqu'ils
+              étaient moins nombreux que ce que l'instrument attendait (décalage
+              d'un p-champ).</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Changements internes :
+          <itemizedlist>
+            <listitem>
+              <simpara>Ajout de l'identification de type à l'exécution pour les
+              variables d'instrument ; on utilise plus XINCODE/XOUTCO.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Correction de l'analyse des nombres négatifs pour la taille
+              de malloc et gestion améliorée des nombres négatifs.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>L'écriture dans circularBuffer est maintenant atomique.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Plusieurs fuites de mémoire et des codes potentiellement
+              dangereux ont été corrigés.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>L'inférence de type a été considérablement retravaillée ainsi
+              que certaines zones du parseur.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          API :
+          <itemizedlist>
+            <listitem>
+              <simpara>Nouvelle fonction de l'API pour retrouver les paramètres
+              GEN utilisés lors de la création d'une table.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Changement sur les plates-formes :
+          <itemizedlist>
+            <listitem>
+              <simpara>iOS :</simpara>
+              <itemizedlist>
+                <listitem>
+                  <simpara>API refactorisée pour avoir des noms de méthode et
+                  d'abstraction plus clairs (par exemple CsoundBinding au lieu de
+                  CsoundValueCacheable).</simpara>
+                </listitem>
+                <listitem>
+                  <simpara>Nettoyage du code obsolète.</simpara>
+                </listitem>
+                <listitem>
+                  <simpara>Le code a été significativement retravaillé.</simpara>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+            <listitem>
+              <simpara>Android :</simpara>
+              <itemizedlist>
+                <listitem>
+                  <simpara>API refactorisée pour avoir des noms de méthode et
+                  d'abstraction plus clairs (par exemple CsoundBinding au lieu de
+                  CsoundValueCacheable).</simpara>
+                </listitem>
+                <listitem>
+                  <simpara>Changements pour permettre d'avoir HTML 5 avec JavaScript,
+                  et WebGL si possible, dans l'app Android Csound6.</simpara>
+                </listitem>
+                <listitem>
+                  <simpara>Changement d'orientation de l'écran dans l'app Csound6
+                  sans avoir à redémarrer l'app.</simpara>
+                </listitem>
+                <listitem>
+                  <simpara>Stockage local (utile pour sauvegarder et restaurer
+                  les valeurs des widgets, etc.)</simpara>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+            <listitem>
+              <simpara>Windows :</simpara>
+              <itemizedlist>
+                <listitem>
+                  <simpara>Correction de l'arithmétique des pointeurs qui causait
+                  un plantage sous Windows.</simpara>
+                </listitem>
+                <listitem>
+                  <simpara>pyexec a été modifié pour utiliser les fontions d'ouverture
+                  de fichier de Python afin d'éviter un plantage sous Windows.</simpara>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+            <listitem>
+              <simpara>OSX :</simpara>
+              <itemizedlist>
+                <listitem>
+                  <simpara>CsoundAC est compilé maintenant.</simpara>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+            <listitem>
+              <simpara>Linux :</simpara>
+              <itemizedlist>
+                <listitem>
+                  <simpara>Bogues de threadlocks corrigés sous linux.</simpara>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+
 <bridgehead>Notes de parution de Csound 6.03 (mai 2014)</bridgehead>
   <para>
     Cette nouvelle version corrige de nombreux bogues, comprenant la résolution

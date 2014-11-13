@@ -44,7 +44,9 @@ english cvs version=1.9
         <listitem>
           <para>1 : la longueur maximale des variables chaîne, en caractères ;
           vaut au moins la valeur de l'option -+max_str_len de la ligne de
-          commande - 1</para>
+          commande - 1. <note>Dans Csound6 il n'y a pas de longueur maximale
+          pour les chaînes de caractères, ce qui ôte toute signification à
+          la valeur retournée.</note></para>
         </listitem>
 
         <listitem>
