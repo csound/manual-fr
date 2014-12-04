@@ -17,21 +17,22 @@ english cvs version=1.8
   <refnamediv>
     <refname>outvalue</refname>
     <refpurpose>
-      Envoie un signal de taux-k ou une chaîne de caractères vers un canal défini
-      par l'utilisateur.
+      Envoie un signal de taux-k ou de taux-i ou une chaîne de caractères vers
+      un canal défini par l'utilisateur.
     </refpurpose>
   </refnamediv>
   
   <refsect1>
     <title>Description</title>
     <para>
-      Envoie un signal de taux-k ou une chaîne de caractères vers un canal défini
-      par l'utilisateur.
+      Envoie un signal de taux-k ou de taux-i ou une chaîne de caractères vers
+      un canal défini par l'utilisateur.
     </para>
   </refsect1>
 
   <refsect1>
     <title>Syntaxe</title>
+    <synopsis><command>outvalue</command> &quot;channel name&quot;, ivalue</synopsis>
     <synopsis><command>outvalue</command> &quot;channel name&quot;, kvalue</synopsis>
     <synopsis><command>outvalue</command> &quot;channel name&quot;, &quot;string&quot;</synopsis>
   </refsect1>
@@ -44,7 +45,7 @@ english cvs version=1.8
     </para>
 
     <para>
-      <emphasis>kvalue</emphasis> -- La valeur de taux-k envoyée vers le canal.
+      <emphasis>ivalue, kvalue</emphasis> -- La valeur envoyée vers le canal.
     </para>
 
     <para>
@@ -82,5 +83,6 @@ english cvs version=1.8
         <member>Auteur : Matt Ingalls</member>
       </simplelist>
     </para>
+    <para>Version de taux-i ajoutée dans Csound 6.04</para>
   </refsect1>
 </refentry>

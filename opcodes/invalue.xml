@@ -17,20 +17,22 @@ english cvs version=1.8
   <refnamediv>
     <refname>invalue</refname>
     <refpurpose>
-      Lit un signal de taux-k depuis un canal défini par l'utilisateur.
+      Lit un signal de taux-k ou de taux-i ou une chaîne de caractères depuis
+      un canal défini par l'utilisateur.
     </refpurpose>
   </refnamediv>
   
   <refsect1>
     <title>Description</title>
     <para>
-      Lit un signal de taux-k ou une chaîne de caractères depuis un canal défini
-      par l'utilisateur.
+      Lit un signal de taux-k ou de taux-i ou une chaîne de caractères depuis
+      un canal défini par l'utilisateur.
     </para>
   </refsect1>
 
   <refsect1>
     <title>Syntaxe</title>
+    <synopsis>ivalue <command>invalue</command> &quot;channel name&quot;</synopsis>
     <synopsis>kvalue <command>invalue</command> &quot;channel name&quot;</synopsis>
     <synopsis>Sname <command>invalue</command> &quot;channel name&quot;</synopsis>
   </refsect1>
@@ -38,7 +40,7 @@ english cvs version=1.8
   <refsect1>
     <title>Exécution</title>
     <para>
-      <emphasis>kvalue</emphasis> -- La valeur de taux-k lue depuis le canal.
+      <emphasis>ivalue, kvalue</emphasis> -- La valeur lue depuis le canal.
     </para>
 
     <para>
@@ -82,5 +84,6 @@ english cvs version=1.8
         <member>Auteur : Matt Ingalls</member>
       </simplelist>
     </para>
+    <para>Version de taux-i ajoutée dans Csound 6.04</para>
   </refsect1>
 </refentry>
