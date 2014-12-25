@@ -119,6 +119,12 @@ english cvs version=1.4
       Cet opcode est une variation sur l'opcode
       <link linkend="syncgrain"><citetitle>syncgrain</citetitle></link>.
     </para>
+    <para>
+    <note><emphasis>diskgrain</emphasis> n'effectue aucun ré-échantillonage, ce
+    qui produira une transposition de hauteur si le taux d'échantillonage du
+    fichier source est différent de celui de Csound.
+    </note>
+  </para>
   </refsect1>
   <refsect1>
     <title>Exemples</title>
