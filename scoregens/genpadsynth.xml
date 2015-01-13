@@ -1,0 +1,89 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="GENpadsynth">
+  <indexterm id="IndexGENpadsynth"><primary>GENpadsynth</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GENpadsynth</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>"padsynth"</refname>
+    <refpurpose>
+      Génère une table d'échantillons au moyen de l'algorithme padsynth.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Crée une ftable pour utilisation dans un oscillateur, avec des valeurs
+      générées par l'algorithme padsynth.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>f</command> # time size "padsynth" fundamentalFrq
+    partialBW partial_Scale harmonicStretch hampl1, hampl2, ...</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>size</emphasis> -- nombre de points dans la table. Doit être
+      une puissance de 2 plus 1 (voir <link
+      linkend="f"><citetitle>Instruction f</citetitle></link>).
+    </para>
+    <para>
+      <emphasis>fundamentalFrq</emphasis> -- fréquence fondamentale pour la
+      table générée.
+    </para>
+    <para>
+      <emphasis>partialBW</emphasis> -- largeur de bande pour chaque partiel
+      en cents.
+    </para>
+    <para>
+      <emphasis>partialScale</emphasis> -- taux d'augmentation de la bande
+      passante en fonction du numéro d'harmonique.
+    </para>
+    <para>
+      <emphasis>harmonicStretchScale</emphasis> -- taux d'expension des
+      harmoniques.
+    </para>
+    <para>
+      <emphasis>hamp1, hamp2, ...</emphasis> -- amplitudes relatives des
+      partiels.
+    </para>
+    <para>
+      La table est remplie d'échantillons pour utilisation dans un oscillateur.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de la routine GENpadsynth. Il utilise le fichier
+      <ulink url="examples/padsynth_gen.csd"><citetitle>padsynth_gen.csd</citetitle></ulink>.
+      <example>
+        <title>Un exemple de la routine GENpadsynth.</title>
+        <xi:include href="examples-xml/padsynth_gen.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>Plus d'information sur padsynth :
+    <ulink url="www.paulnasca.com/algorithms-created-by-me"><citetitle>www.paulnasca.com/algorithms-created-by-me</citetitle></ulink></para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par &namemichael;</para>
+    <para>Nouveau dans la version 6.05</para>
+  </refsect1>
+</refentry>
