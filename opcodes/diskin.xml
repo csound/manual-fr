@@ -17,7 +17,7 @@ english cvs version=1.24
   <refnamediv>
     <refname>diskin</refname>
     <refpurpose>
-      Obsolète. Lit des données audio d'un périphérique ou d'un flot externe et
+      Lit des données audio d'un périphérique ou d'un flot externe et
       peut altérer leur hauteur.
     </refpurpose>
   </refnamediv>
@@ -25,7 +25,7 @@ english cvs version=1.24
   <refsect1>
     <title>Description</title>
     <para>
-      Obsolète. Lit des données audio d'un périphérique ou d'un flot externe et
+      Lit des données audio d'un périphérique ou d'un flot externe et
       peut altérer leur hauteur.
     </para>
   </refsect1>
@@ -37,8 +37,8 @@ english cvs version=1.24
     <para>Noter que N valait 24 dans les versions antérieures à la 5.14 et qu'il
       vaut maintenant 40.</para>
 
-    <synopsis>ar1[] <command>diskin2</command> ifilcod, kpitch[, iskiptim \
-      [, iwrap[, iformat [, iwsize[, ibufsize[, iskipinit]]]]]]</synopsis>
+    <synopsis>ar1[] <command>diskin</command> ifilcod, kpitch[, iskiptim \
+      [, iwraparound] [, iformat] [, iskipinit]</synopsis>
     <para>(dans cette version, le nombre de canaux de sortie n'est pas limité.)</para>
   </refsect1>
 
