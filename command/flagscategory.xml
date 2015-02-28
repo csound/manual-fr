@@ -330,6 +330,26 @@ english cvs version=1.31
       </listitem>
     </varlistentry>
 
+    <varlistentry id="FlagsCatMinusPlusIdSCopyright">
+      <term>-+id_scopyright=integer<indexterm id="IndexMinusPlusIdSCopyright"><primary>-+id_scopyright</primary></indexterm></term>
+      <listitem>
+        <para>
+          (Depuis la version 6.05) Copyright/licence encodé par un entier dont
+          la signification est :
+          <simplelist>
+            <member>0 : "Tous droits réservés" (valeur par défaut)</member>
+            <member>1 : "Creative Commons Attribution-NonCommercial-NoDerivatives (CC BY-NC-ND)"</member>
+            <member>2 : "Creative Commons Attribution-NonCommercial-ShareAlike (CC BY-NC-SA)"</member>
+            <member>3 : "Creative Commons Attribution-NonCommercial (CC BY-NC)"</member>
+            <member>4 : "Creative Commons Attribution-NoDerivatives (CC BY-ND)"</member>
+            <member>5 : "Creative Commons Attribution-ShareAlike (CC BY-SA)"</member>
+            <member>6 : "Creative Commons Attribution-ShareAlike (CC BY)"</member>
+            <member>7 : "Sous licence BSD"</member>
+          </simplelist>
+        </para>
+      </listitem>
+    </varlistentry>
+
     <varlistentry id="FlagsCatMinusPlusIdDate">
       <term>-+id_date=chaîne<indexterm id="IndexCatMinusPlusIdDate"><primary>-+id_date</primary></indexterm></term>
       <listitem>

@@ -30,6 +30,7 @@ english cvs version=1.15
       <indexterm id="IndexCsoundSynthesizer"><primary>&lt;CsoundSynthesizer&gt;</primary></indexterm>
       <indexterm id="IndexCsVersion"><primary>&lt;CsVersion&gt;</primary></indexterm>
       <indexterm id="IndexCsLicense"><primary>&lt;CsLicense&gt;</primary></indexterm>
+      <indexterm id="IndexCsShortLicense"><primary>&lt;CsShortLicense&gt;</primary></indexterm>
     </para>
 
     <para>
@@ -150,7 +151,7 @@ english cvs version=1.15
         Ceci a été ajouté dans le version 4.09 de Csound.
       </para>
 
-    <bridgehead>Information de licence (&lt;CsLicence&gt; or &lt;CsLicense&gt;)</bridgehead>
+    <bridgehead>Information de licence (&lt;CsLicence&gt; ou &lt;CsLicense&gt;)</bridgehead>
       <para>
         Des détails de licence peuvent être inclus entre la balise ouvrante
         <emphasis>&lt;CsLicence&gt;</emphasis> et la balise fermante
@@ -158,9 +159,30 @@ english cvs version=1.15
         n'importe quel texte est acceptable. Ce texte sera imprimé par Csound sur la console
         lorsque le CSD sera exécuté.
       </para>
-      </section>
 
-      <section id="CommandUnifileExample">
+    <bridgehead>Information de licence (&lt;CsShortLicence&gt; ou &lt;CsShortLicense&gt;)</bridgehead>
+      <para>
+        Depuis la version 6.05 on peut aussi inclure des détails de licence entre la
+        balise ouvrante <emphasis>&lt;CsShortLicence&gt;</emphasis> et la balise
+        fermante <emphasis>&lt;/CsShortLicence&gt;</emphasis>. Cet option concerne
+        sept licences bien connues, encodée par un entier.
+      </para>
+      <para>
+        <simplelist>
+          <member>0 : "Tous droits réservés" (valeur par défaut)</member>
+          <member>1 : "Creative Commons Attribution-NonCommercial-NoDerivatives (CC BY-NC-ND)"</member>
+          <member>2 : "Creative Commons Attribution-NonCommercial-ShareAlike (CC BY-NC-SA)"</member>
+          <member>3 : "Creative Commons Attribution-NonCommercial (CC BY-NC)"</member>
+          <member>4 : "Creative Commons Attribution-NoDerivatives (CC BY-ND)"</member>
+          <member>5 : "Creative Commons Attribution-ShareAlike (CC BY-SA)"</member>
+          <member>6 : "Creative Commons Attribution-ShareAlike (CC BY)"</member>
+          <member>7 : "Sous licence BSD"</member>
+        </simplelist>
+      </para>
+
+    </section>
+
+    <section id="CommandUnifileExample">
         <title>Exemple</title>
 	<para>
     Ci-dessous un fichier exemple, test.csd, qui produit un fichier .wav échantillonné à 44,1 kHz contenant
