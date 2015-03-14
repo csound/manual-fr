@@ -30,8 +30,8 @@ english cvs version=
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>ares <command>gausstrig</command> kamp, kcps, kdev [, imode]</synopsis>
-    <synopsis>kres <command>gausstrig</command> kamp, kcps, kdev [, imode]</synopsis>
+    <synopsis>ares <command>gausstrig</command> kamp, kcps, kdev [, imode] [, ifrst1]</synopsis>
+    <synopsis>kres <command>gausstrig</command> kamp, kcps, kdev [, imode] [, ifrst1]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -44,7 +44,16 @@ english cvs version=
       SuperCollider, où la modulation de fréquence est ignorée durant le délai
       précédant l'impulsion suivante.
     </para>
-   </refsect1>
+    
+    <para>
+      <emphasis>ifrst1</emphasis> (facultatif, 0 par défaut) -- 
+      <emphasis>ifrst1</emphasis> &gt; 0 change le comportement original du
+      générateur unitaire GaussTrig. Par défaut, celui-ci génère toujours une
+      impulsion au tout début. Ici, l'apparition de la première impulsion
+      est aléatoire et dépend des paramètres <emphasis>kcps</emphasis> et
+      <emphasis>kdev</emphasis> parameters.
+    </para>
+  </refsect1>
 
   <refsect1>
     <title>Exécution</title>
@@ -103,6 +112,8 @@ english cvs version=
         <member>Basé sur le générateur unitaire GaussTrig de Bhob Rainey (SuperCollider)</member>
         <member>Auteur : &nametito;</member>
         <member>Janvier 2012</member>
+        <member>Modification : Gleb Rogozinsky</member>
+        <member>Mars 2015</member>
       </simplelist>
     </para>
     <para>Nouveau dans la version 5.16 de Csound.</para>
