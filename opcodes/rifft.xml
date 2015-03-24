@@ -1,0 +1,83 @@
+<!--translated=yes
+authors=Francois Pinot
+-->
+
+<refentry id="rifft">
+<indexterm id="IndexIrfft"><primary>rifft</primary></indexterm>
+
+  <refentryinfo><title>Array operations: Fast Fourier Transform</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>rifft</refentrytitle>
+  </refmeta>
+
+   <refnamediv>
+    <refname>rifft</refname>
+    <refpurpose>
+      Transformée de Fourier rapide inverse complexe vers réel.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Applique une transformée de Fourier rapide inverse à un tableau
+      unidimensionnel de valeurs complexes produisant une sortie réelle.
+      Cette sortie est un autre tableau contenant les valeurs réelles du
+      signal. Si le tableau d'entrée a pour taille une puissance de deux,
+      la taille du tableau de sortie sera égale à celle du tableau d'entrée.
+      Sinon, la sortie aura deux valeurs de moins (taille d'entrée - 2).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+      <synopsis>kout[] <command>rifft</command> kin[]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kout[]</emphasis> -- tableau contenant les valeurs
+      réelles de sortie. Créé s'il n'existe pas.
+    </para>
+    <para>
+      <emphasis>kin[]</emphasis> -- tableau contenant les valeurs
+      complexes d'entrée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode rifft. Il utilise le fichier
+      <ulink url="examples/irfft.csd"><citetitle>irfft.csd</citetitle></ulink>.
+    </para>
+    <example>
+      <title>Exemple de l'opcode rifft.</title>
+      <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+      et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+      d'information sur l'utilisation des options de la ligne de commande.</para>
+      <xi:include href="examples-xml/irfft.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </example>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="vectorial"><citetitle></citetitle>Opcodes vectoriels</link>,
+      <link linkend="array"><citetitle></citetitle>array</link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>NUI Maynooth</member>
+        <member>2014</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 6.04</para>
+  </refsect1>
+</refentry>
