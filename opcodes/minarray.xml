@@ -25,19 +25,23 @@ english cvs version=
     <title>Description</title>
     <para>
       L'opcode <emphasis>minarray</emphasis> retourne la valeur minimale dans un
-      tableau de taux-k.
+      tableau de taux-k, et éventuellement son indice.
     </para>
   </refsect1>
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>kmin <command>minarray</command> karray</synopsis>
+    <synopsis>kmin [,kindx] <command>minarray</command> karray</synopsis>
   </refsect1>
  
   <refsect1>
     <title>Exécution</title>
     <para>
       <emphasis>kmin</emphasis> -- variable pour le résultat.
+    </para>
+    <para>
+      <emphasis>kindx</emphasis> -- position (indice) du résultat dans le
+      tableau.
     </para>
     <para>
       <emphasis>tab</emphasis> -- tableau à lire.

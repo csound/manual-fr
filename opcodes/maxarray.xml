@@ -25,19 +25,23 @@ english cvs version=
     <title>Description</title>
     <para>
       L'opcode <emphasis>maxarray</emphasis> retourne la valeur maximale dans un
-      tableau de taux-k.
+      tableau de taux-k, et éventuellement son indice.
     </para>
   </refsect1>
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>kmax <command>maxarray</command> karray</synopsis>
+    <synopsis>kmax [,kindx] <command>maxarray</command> karray</synopsis>
   </refsect1>
  
   <refsect1>
     <title>Exécution</title>
     <para>
       <emphasis>kmax</emphasis> -- variable pour le résultat.
+    </para>
+    <para>
+      <emphasis>kindx</emphasis> -- position (indice) du résultat dans le
+      tableau.
     </para>
     <para>
       <emphasis>karray</emphasis> -- tableau à lire.
