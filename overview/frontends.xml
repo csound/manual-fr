@@ -50,82 +50,41 @@ english cvs version=1.15
     facilite l'organisation des projets de grande taille. On peut télécharger
     Blue à la <ulink url="http://csounds.com/stevenyi/blue/">Blue Home Page</ulink>.
   </para>
-  <bridgehead>Cecilia</bridgehead>
+  <bridgehead>Cabbage</bridgehead>
   <para>
-    Utilise Csound et comprend aussi son propre langage de génération de partition.
-    Pas mis à jour depuis 2004, mais devrait fonctionner sur Mac OSX et Linux.
-    Disponible sur
-	  <ulink url="http://www.jeanpiche.com/software.htm">http://www.jeanpiche.com/software.htm</ulink>.
-  </para>
-  <bridgehead>MacCsound</bridgehead>
-  <para>
-    Frontal pour le Macintosh, MacCsound fournit un éditeur de texte, l'édition
-    graphique de signaux de contrôle et d'autres éléments. Disponible sur la
-    <ulink url="http://www.csounds.com/matt/MacCsound/">Page de MacCsound</ulink>.
-    MacCsound nécessite la version Universal de Csound, pas la version Intel, et
-    avec OS 10.6, il faut aussi Rosetta, qui se trouve sur le DVD d'installation
-    d'OSX pour 10.6, mais n'est pas installé par défaut.
+   Cabbage est un frontal de Csound qui permet de développer des greffons audio
+   et des logiciels autonomes sur les trois principaux systèmes d'exploitation.
+   Bien que Cabbage utilise des technologies sous-jacentes de greffon telles que
+   le SDK VST de Steinberg, ASIO, etc, Csound est utilisé pour traiter les flux
+   audio entrant et sortant. Cabbage fournit aussi une collection croissante de
+   contrôles graphiques allant de la simple réglette aux surfaces XY programmables.
+   Tous les contrôles graphiques dans un greffon de Cabbage peuvent être contrôlés
+   via des automatismes de l'hôte du greffon, fournissant ainsi un moyen rapide
+   et efficace d'automatiser les paramètres d'instrument de Csound dans des
+   station audionumériques commerciales ou non. On peut télécharger Cabbage sur la
+   <ulink url="https://github.com/cabbageaudio/cabbage/releases">page d'accueil de
+   Cabbage</ulink>.
   </para>
   <bridgehead>WinXound</bridgehead>
   <para>
     Un frontal commmode pour Windows avec coloration syntaxique. On peut
     l'obtenir à <ulink url="http://winxound.codeplex.com/">WinXsound Front Page</ulink>.
   </para>
-  <bridgehead>Cabel</bridgehead>
+  <bridgehead>WinXound</bridgehead>
   <para>
-    Cabel est une interface utilisateur graphique pour construire des instruments
-    Csound en interconnectant des modules comme on le fait dans les synthétiseurs
-    modulaires et dans les environnements de programmation graphique tels que Pd.
-    Multi plates-formes, écrit en Python. Bien qu'il semble (en 2011) que Cabel
-    n'ait pas été mis à jour depuis quatre ans, il fonctionne toujours avec les
-    versions actuelles de Csound. Disponible à
-    <ulink url="http://cabel.sourceforge.net/">http://cabel.sourceforge.net/</ulink>.
-  </para>
-  <bridgehead>Csound5GUI</bridgehead>
-  <para>
-    Csound5GUI est une interface utilisateur graphique (GUI) multi plates-formes.
-    Après avoir fait partie de la distribution standard de Csound, il est maintenant
-    disponible sous forme de code source et peut-être aussi téléchargeable comme
-    un .exe pour Windows. Il implémente la plupart des options de configuration
-    de Csound.
-  </para>
-  <bridgehead>CSDplayer</bridgehead>
-  <para>
-    C'est un simple programme java pour jouer des fichiers csd. Il est inclus
-    dans la distribution standard, et intéressera principalement les programmeurs
-    Java.
+    WinXound est un éditeur graphique frontal libre et open-source avec
+    coloration syntaxique pour Csound6, CSoundAV, CSoundAC, avec le support de
+    Python et de Lua. Il est développé par Stefano Bonetti. Il fonctionne sous
+    Windows de Microsoft, Mac OsX d'Apple et Linux. On peut le télécharger sur la
+    <ulink url="http://winxound.codeplex.com/">page principale de WinXsound</ulink>.
   </para>
   <bridgehead>Winsound</bridgehead>
   <para>
-    Comme Csound5GUI, Winsound appartenait à la branche principale de Csound. Il
+    Winsound appartenait à la branche principale de Csound. Il
     n'est plus maintenant disponible que sous forme de code source. Winsound est
     un portage multi plates-formes en FLTK du frontal original de Barry Vercoe
     pour Csound. Certains utilisateurs mal-voyants ou aveugles ont rapporté que
     Winsound fonctionne bien avec des logiciels de traduction texte-parole.
-  </para>
-  <bridgehead>Csound Editor</bridgehead>
-  <para>
-    CsoundEditor n'est plus maintenu, mais il est toujours disponible à
-    <ulink url="http://flavio.tordini.org/csound-editor/">Flavio Tordini's Home
-    Page</ulink>. Pour systèmes Windows, comprend la coloration syntaxique.
-  </para>
-  <para>
-    En plus des principaux frontaux listés ci-dessus, voici quelques autres
-    programmes pouvant éventuellement être qualifiés de frontaux, selon vos
-    propres critères :
-    <informaltable frame='none'>
-      <tgroup cols='2'>
-		<tbody>
-          <row><entry>GeoMaestro:</entry><entry><ulink url="http://www.zogotounga.net/GM/eGM0.html">http://www.zogotounga.net/GM/eGM0.html</ulink></entry></row>
-          <row><entry>Csound-x:</entry><entry><ulink url="http://www.zogotounga.net/comp/csoundx.html">http://www.zogotounga.net/comp/csoundx.html</ulink></entry></row>
-		  <row><entry>AthenaCL:</entry><entry><ulink url="http://www.flexatone.net/athena.html">http://www.flexatone.net/athena.html</ulink></entry></row>
-          <row><entry>GRACE/Common Music:</entry><entry><ulink url="http://commonmusic.sourceforge.net/">http://commonmusic.sourceforge.net/</ulink></entry></row>
-          <row><entry>AlgoScore:</entry><entry><ulink url="http://kymatica.com/Software/AlgoScore">http://kymatica.com/Software/AlgoScore</ulink></entry></row>
-          <row><entry>nGen:</entry><entry><ulink url="http://mustec.bgsu.edu/~mkuehn/ngen/">http://mustec.bgsu.edu/~mkuehn/ngen/</ulink></entry></row>
-          <row><entry>ImproSculpt:</entry><entry><ulink url="http://improsculpt.sourceforge.net/pmwiki/pmwiki.php">http://improsculpt.sourceforge.net/pmwiki/pmwiki.php</ulink></entry></row>
-		</tbody>
-      </tgroup>
-    </informaltable>
   </para>
 
   <section id="CommandCsoundAC">
