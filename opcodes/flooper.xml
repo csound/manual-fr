@@ -28,13 +28,14 @@ english cvs version=1.11
       une boucle dont le début, la durée et l'étendue du fondu enchainé sont fixés par
       l'utilisateur. On peut également contrôler la hauteur de la boucle ainsi que
       sa lecture à l'envers. Il accepte des tables dont la longueur n'est pas une
-      puissance de deux, telles que celles de GEN01 avec allocation différée.
+      puissance de deux, telles que celles de GEN01 à allocation différée, avec
+      un ou deux canaux.
     </para>
   </refsect1>
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>asig <command>flooper</command> kamp, kpitch, istart, idur, ifad, ifn</synopsis>
+    <synopsis>asig1[, asig2] <command>flooper</command> kamp, kpitch, istart, idur, ifad, ifn</synopsis>
   </refsect1>
 
   <refsect1>
@@ -58,7 +59,7 @@ english cvs version=1.11
   <refsect1>
     <title>Exécution</title>
     <para>
-      <emphasis>asig</emphasis> -- signal de sortie
+      <emphasis>asig1[, asig2]</emphasis> -- signal de sortie (mono ou stéréo).
     </para>
     <para>
       <emphasis>kamp</emphasis> -- contrôle de l'amplitude </para>

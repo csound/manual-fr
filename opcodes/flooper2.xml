@@ -28,13 +28,13 @@ english cvs version=1.9
       paramètres variables, trois modes de boucle, et une utilisation facultative
       d'une table pour la forme du fondu enchainé. Il accepte comme source audio
       des tables dont la longueur n'est pas une puissance de deux, telles que celles
-      de GEN01 avec allocation différée.
+      de GEN01 à allocation différée, avec un ou deux canaux.
     </para>
   </refsect1>
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>asig <command>flooper2</command> kamp, kpitch, kloopstart, kloopend, kcrossfade, ifn \
+    <synopsis>asig1[,asig2] <command>flooper2</command> kamp, kpitch, kloopstart, kloopend, kcrossfade, ifn \
       [, istart, imode, ifenv, iskip]</synopsis>
   </refsect1>
 
@@ -68,7 +68,7 @@ english cvs version=1.9
   <refsect1>
     <title>Exécution</title>
     <para>
-      <emphasis>asig</emphasis> -- signal de sortie
+      <emphasis>asig1[,asig2]</emphasis> -- signal de sortie (mono ou stéréo).
     </para>
     <para>
       <emphasis>kamp</emphasis> -- contrôle de l'amplitude </para>

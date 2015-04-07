@@ -423,6 +423,26 @@ english cvs version=1.31
       </listitem>
     </varlistentry>
 
+    <varlistentry id="FlagsCatMinusRealtime">
+      <term>--realtime<indexterm
+      id="IndexCatMinusRealtime"><primary>--realtime</primary></indexterm></term>
+      <listitem>
+        <para>
+          Le mode temps réel prioritaire est activé avec les effets suivants :
+          <orderedlist>
+            <listitem>
+              <simpara>tout opcode de lecture/écriture audio dans un fichier est
+              géré de manière asynchrone par un fil d'exécution séparé.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>toutes les opérations d'initialisation sont aussi exécutées
+              de manière asynchrone.</simpara>
+            </listitem>
+          </orderedlist>
+        </para>
+      </listitem>
+    </varlistentry>
+
     <varlistentry id="FlagsCatMinusPlusServer">
       <term>-+server=chaîne<indexterm id="IndexCatMinusPlusServer"><primary>-+server</primary></indexterm></term>
       <listitem>

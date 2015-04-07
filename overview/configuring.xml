@@ -16,8 +16,10 @@ english cvs version=1.7
   </para>
   <para>Sur toutes les plates-formes il faut s'assurer que le ou les répertoires contenant les
     bibliothèques des greffons de Csound sont indiqués dans une variable d'environnement
-    <literal>OPCODEDIR</literal> ou <literal>OPCODEDIR64</literal> en fonction de la précision
+    <literal>OPCODE6DIR</literal> ou <literal>OPCODE6DIR64</literal> en fonction de la précision
     utilisée par les binaires compilés.
+    (Noter que pour Csound5 ces variables d'environnement étaient
+    <literal>OPCODEDIR</literal> et <literal>OPCODEDIR64</literal>).
   </para>
   <para>Les opérateurs Python nécessitent actuellement au moins Python 2.4 que l'on peut télécharger à
     <ulink url="http://www.python.org">www.python.org</ulink> s'il n'est pas déjà installé sur votre
@@ -29,13 +31,13 @@ english cvs version=1.7
     <filename>C:\Program Files\Csound</filename>) contenant le répertoire des exécutables de Csound est dans votre
     variable <literal>PATH</literal>, ou bien copiez tous les fichiers exécutables dans le
     répertoire <literal>system32</literal> de Windows. En fonction de votre méthode d'installation,
-    il peut être aussi nécessaire de fixer les variables d'environnement <literal>OPCODEDIR</literal>
-    et <literal>OPCODEDIR64</literal>. En supposant que Csound est installé dans le
+    il peut être aussi nécessaire de fixer les variables d'environnement <literal>OPCODE6DIR</literal>
+    et <literal>OPCODE6DIR64</literal>. En supposant que Csound est installé dans le
     répertoire par défaut <filename>C:\Program Files\Csound</filename> vous pouvez
     utiliser (sinon fixez les chemins en conséquence) :
     </para>
-  <screen>set OPCODEDIR=C:\Program Files\Csound\greffons
-set OPCODEDIR64=C:\Program Files\Csound\greffons64
+  <screen>set OPCODE6DIR=C:\Program Files\Csound\greffons
+set OPCODE6DIR64=C:\Program Files\Csound\greffons64
 set PATH=%PATH%;C:\Program Files\Csound\bin</screen>
 
   <note>
@@ -51,7 +53,7 @@ set PATH=%PATH%;C:\Program Files\Csound\bin</screen>
     du système, normalement <filename>/usr/local/bin</filename>, et les bibliothèques partagées de Csound
     et des greffons dans des endroits comme <filename>/usr/local/lib/csound/greffons</filename> ou
     <filename>/usr/local/lib/csound/greffons64</filename> et assurez-vous que les variables d'environnement
-    <literal>OPCODEDIR</literal> et <literal>OPCODEDIR64</literal> sont remplies correctement.
+    <literal>OPCODE6DIR</literal> et <literal>OPCODE6DIR64</literal> sont remplies correctement.
   </para>
 
   <bridgehead>CsoundAC</bridgehead>

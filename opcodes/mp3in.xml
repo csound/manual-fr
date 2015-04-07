@@ -17,20 +17,21 @@ english cvs version=1.5
   <refnamediv>
     <refname>mp3in</refname>
     <refpurpose>
-      Lit des données audio stéréo depuis un fichier MP3 externe.
+      Lit des données audio mono ou stéréo depuis un fichier MP3 externe.
     </refpurpose>
   </refnamediv>
 
   <refsect1>
     <title>Description</title>
     <para>
-      Lit des données audio stéréo depuis un fichier MP3 externe.
+      Lit des données audio mono ou stéréo depuis un fichier MP3 externe.
     </para>
   </refsect1>
 
   <refsect1>
     <title>Syntaxe</title>
     <synopsis>ar1, ar2 <command>mp3in</command> ifilcod[, iskptim, iformat, iskipinit, ibufsize]</synopsis>
+    <synopsis>ar1 <command>mp3in</command> ifilcod[, iskptim, iformat, iskipinit, ibufsize]</synopsis>
   </refsect1>
 
    <refsect1>
@@ -72,7 +73,7 @@ english cvs version=1.5
  <refsect1>
     <title>Exécution</title>
     <para>
-      Lit des données audio stéréo depuis un fichier MP3 externe.
+      Lit des données audio depuis un fichier MP3 externe.
     </para>
   </refsect1>
 
@@ -117,5 +118,6 @@ english cvs version=1.5
       </simplelist>
     </para>
     <para>Nouveau dans la version 5.11</para>
+    <para>Mono ajouté dans la version 6.05</para>
   </refsect1>
 </refentry>
