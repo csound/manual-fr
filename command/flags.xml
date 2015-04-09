@@ -237,6 +237,17 @@ english cvs version=1.43
       </listitem>
     </varlistentry>            
 
+    <varlistentry id="FlagsMinusMinusDevices">
+      <term>--devices[=x]<indexterm id="IndexMinusMinusDevices"><primary>--devices</primary></indexterm></term>
+      <listitem>
+        <para>
+          Donne une liste des périphériques audio (x=out, seulement les
+          périphériques en sorties ; x=in, en entrée; sinon en entrée et en
+          sortie), puis termine l'application.
+        </para>
+      </listitem>
+    </varlistentry>
+
     <varlistentry id="FlagsMinusDisplays">
       <term>--displays<indexterm id="IndexMinusDisplays"><primary>--displays</primary></indexterm></term>
       <listitem>
@@ -409,11 +420,11 @@ english cvs version=1.43
       </listitem>
     </varlistentry>
 
-    <varlistentry id="FlagsMinusMinusGetSR">
-      <term>--get-system-sr<indexterm id="IndexMinusMinusGetSR"><primary>--get-system-sr</primary></indexterm></term>
+    <varlistentry id="FlagsMinusMinusgetsr">
+      <term>--get-system-sr<indexterm id="IndexMinusMinusgetsr"><primary>--get-system-sr</primary></indexterm></term>
       <listitem>
         <para>
-           Obtenir le taux d'échantillonnage de la machine.
+          Affiche le sr du système et termine l'application ; nécessite -o dac.
         </para>
       </listitem>
     </varlistentry>
@@ -828,6 +839,17 @@ csound5:output2             (reproduction droite)</screen>
       </listitem>
     </varlistentry>
 
+    <varlistentry id="FlagsMinusMinusMidiDevices">
+      <term>--midi-devices[=x]<indexterm id="IndexMinusMinusMidiDevices"><primary>--midi-devices</primary></indexterm></term>
+      <listitem>
+        <para>
+          Donne une liste des périphériques midi (x=out, seulement les
+          périphériques en sortie ; x=in, en entrée ; sinon en entrée et en
+          sortie), puis termine l'application.
+        </para>
+      </listitem>
+    </varlistentry>
+
     <varlistentry id="FlagsMidiKey">
       <term>--midi-key=N<indexterm id="IndexMidiKey"><primary>--midi-key=N</primary></indexterm></term>
       <listitem>
@@ -1027,6 +1049,15 @@ csound5:output2             (reproduction droite)</screen>
 	    </listitem>
     </varlistentry>
       
+    <varlistentry id="FlagsMinusMinusKsmps">
+      <term>--ksmps=N<indexterm id="IndexMinusMinusKsmps"><primary>--ksmps</primary></indexterm></term>
+      <listitem>
+        <para>
+          Force ksmps à N (versions 6.05 et supérieures).
+        </para>
+      </listitem>
+    </varlistentry>
+
     <varlistentry id="FlagsMinusPlusOutputStream">
       <term>-+output_stream=chaîne<indexterm id="IndexMinusPlusOutputStream"><primary>-+output_stream</primary></indexterm></term>
       <listitem>
