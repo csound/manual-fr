@@ -32,7 +32,7 @@ english cvs version=1.1
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>ihandle <command>FLhvsBox</command> inumlinesX, inumlinesY, iwidth, iheight, ix, iy [, image]</synopsis>
+    <synopsis>ihandle <command>FLhvsBox</command> inumlinesX, inumlinesY, iwidth, iheight, ix, iy</synopsis>
   </refsect1>
 
   <refsect1>
@@ -50,11 +50,6 @@ english cvs version=1.1
     </para>
     <para>
       <emphasis>ix, iy</emphasis> - position de la boîte HVS.
-    </para>
-    <para>
-      <emphasis>image</emphasis> – (facultatif, 0 par défaut) un nombre entier
-      dénotant un image RVB ouverte avec l'opcode <emphasis>bmopen</emphasis>.
-      Un zéro indique pas d'image.
     </para>
   </refsect1>
 
@@ -76,13 +71,13 @@ english cvs version=1.1
       est utilisé pour fixer la position du curseur d'un widget
       <emphasis>FLhvsBox</emphasis>.
     </para>
-    <note>
+<!--    <note>
       <para>
         L'opcode <emphasis>bmscan</emphasis> n'a pas encore été implémenté, si
         bien que le paramètre <emphasis>image</emphasis> n'a actuellement pas
         d'effet.
       </para>
-    </note>
+    </note>-->
   </refsect1>
 <!--
   <refsect1>
