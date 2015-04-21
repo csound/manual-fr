@@ -17,31 +17,139 @@ english cvs version=1.4
   <refnamediv>
     <refname>loscilx</refname>
     <refpurpose>
-      Oscillateur de boucle.
+      Lit un son échantillonné multi-canaux depuis une table.
     </refpurpose>
   </refnamediv>
   
   <refsect1>
     <title>Description</title>
     <para>
-      Cette notice reste à écrire, mais la syntaxe de l'opcode est correcte.
+      Lit un son échantillonné (jusqu'à 216 canaux) depuis une table, avec
+      avec bouclage d'entretien et de relâchement facultatif.
     </para>
   </refsect1>
   <refsect1>
     <title>Syntaxe</title>
     <synopsis>ar1 [, ar2, ar3, ar4, ar5, ar6, ar7, ar8, ar9, ar10, ar11, ar12, ar13, ar14, \
       ar15, ar16] <command>loscilx</command> xamp, kcps, ifn \
-      [, iwsize, ibas, istrt, imod1, ibeg1, iend1]</synopsis>
+      [, iwsize, ibas, istrt, imod, ibeg, iend]</synopsis>
   </refsect1>
  
-<!--  <refsect1>
+  <refsect1>
     <title>Initialisation</title>
-  </refsect1>-->
+    <para>
+      <emphasis>ifn</emphasis> -- numéro de table de fonction, désignant
+      typiquement un segment de son échantillonné avec prescription de points
+      de bouclage au moyen de <link
+      linkend="GEN01"><citetitle>GEN01</citetitle></link>. Le fichier source
+      peut avoir jusqu'à 16 canaux.
+    </para>
+
+    <para>
+      <emphasis>iwsize</emphasis> (facultatif) -- taille de la fenêtre utilisée
+      dans l'interpolation.
+    </para>
+
+    <para>
+      <emphasis>ibas</emphasis> (facultatif) -- fréquence de base en
+      <emphasis>Hz</emphasis> du son enregistré. Permet de redéfinir la
+      fréquence donnée dans le fichier audio, mais est requis si le fichier
+      n'en contient pas. La valeur par défaut est 261.626 Hz, le do médian.
+      (Nouveau dans Csound 4.03). Si la valeur est inconnue ou absente, utiliser
+      1 ici et dans <emphasis>kcps</emphasis>.
+    </para>
+
+    <para><emphasis>istrt</emphasis> (facultatif, 0 par défaut) -- Trame du
+    début de la lecture des données. Si ce n'est pas un nombre entier, les
+    données sont interpolées (voir <emphasis>iwsize</emphasis>).
+    </para>
+
+    <para><emphasis>imod</emphasis> (facultatif, -1 par défaut) -- mode de jeu
+    des boucles d'entretien et de relâchement. 1 signifie un bouclage normal,
+    2 un bouclage à l'endroit et à l'envers, 0 pas de boucle. La valeur par
+    défaut (-1) choisit le mode et les points de bouclage donnés dans le fichier
+    source. Il ne faut pas oublier de choisir un mode approprié si le fichier
+    ne contient pas cette information.
+    </para>
+
+    <para><emphasis>ibeg, iend</emphasis> (facultatif, dépendant
+    d'<emphasis>imod</emphasis>) -- points de début et de fin des boucles
+    d'entretien et de relâchement. Ils sont mesurés en <emphasis>trames
+    d'échantillon</emphasis> depuis le début du fichier. Si aucun point de
+    boucle n'est spécifié alors qu'un mode de bouclage
+    (<emphasis>imod</emphasis>) est donné, le fichier sera bouclé sur toute sa
+    longueur.
+    </para>
+  </refsect1>
  
   <refsect1>
+    <title>Exécution</title>
+
+    <para>
+      <emphasis>ar1, ar2, ...</emphasis> -- la sortie au taux audio. Le nombre
+      de sorties doit correspondre au nombres de canaux dans le fichier
+      échantillonné.
+    </para>
+
+    <para>
+      <emphasis>xamp</emphasis> -- l'amplitude du signal de sortie.
+    </para>
+
+    <para>
+      <emphasis>kcps</emphasis> -- le facteur de lecture du fichier. Par
+      exemple, une valeur de 1 ne provoque pas de transposition, 1.5
+      transpose d'une quinte vers le haut et 2 d'une octave.
+    </para>
+    
+    <para>
+      <emphasis>loscilx</emphasis> échantillonne la ftable audio au taux
+      déterminé par <emphasis>kcps</emphasis>, puis multiplie le résultat par
+      <emphasis>xamp</emphasis>. L'incrément d'échantillonnage pour
+      <emphasis>kcps</emphasis> dépend de la fréquence de la note de base de
+      la table <emphasis>ibas</emphasis>, et est automatiquement ajusté si
+      la valeur du <emphasis>sr</emphasis> de l'orchestre diffère de celle
+      utilisée lors de l'enregistrement de la source. Dans cette unité la
+      ftable est toujours échantillonnée avec interpolation.
+    </para>
+    
+    <para>
+      Si l'échantillonnage atteint le point final de la <emphasis>boucle
+      d'entretien</emphasis> et que le bouclage est actif, le point
+      d'échantillonnage est modifié et <emphasis>loscil</emphasis> continue
+      sa lecture depuis ce segment de boucle. Si l'instrument reçoit un signal
+      <emphasis>turnoff</emphasis> (depuis la partition ou depuis un
+      évènement MIDI noteoff), le prochain point final d'entretien est ignoré
+      et l'échantilllonnage continue vers le point final de la <emphasis>boucle
+      de relâchement</emphasis> ou vers le dernier échantillon (des valeurs
+      nulles).
+    </para>
+
+    <para>
+      Si l'on veut boucler sur tout le fichier, spécifier un mode de bouclage dans
+      <emphasis>imod</emphasis> et n'entrer aucune valeur dans
+      <emphasis>ibeg</emphasis> et dans <emphasis>iend</emphasis>.
+    </para>
+
+   </refsect1>
+   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode loscilx. Il utilise les fichiers
+      <ulink url="examples/loscil.csd"><citetitle>loscil.csd</citetitle></ulink>
+      et <ulink url="examples/kickroll.wav"><citetitle>kickroll.wav</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode loscilx.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/loscilx.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
     <title>Voir aussi</title>
-    <para><link linkend="sndload"><citetitle>sndload</citetitle></link></para>
-    <para><link linkend="loscil"><citetitle>loscil</citetitle></link></para>
+    <para><link linkend="loscil"><citetitile>loscil</citetitle></link></para>
   </refsect1>
   <refsect1>
     <title>Crédits</title>

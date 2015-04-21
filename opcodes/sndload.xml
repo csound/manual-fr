@@ -28,6 +28,8 @@ english cvs version=1.4
       <emphasis>sndload</emphasis> charge un fichier son en mémoire pour être
       utilisé par <link linkend="loscilx"><citetitle>loscilx</citetitle></link>.
     </para>
+    <note>Cet opcode charge le fichier en mémoire mais il n'est plus disponible
+    pour un usage ultérieure. C'est juste une perte de mémoire.</note>
   </refsect1>
   <refsect1>
     <title>Syntaxe</title>
