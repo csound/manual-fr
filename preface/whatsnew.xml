@@ -75,6 +75,275 @@ english cvs version=
     </itemizedlist>
   </para>-->
 
+  <bridgehead>Notes de parution de Csound 6.05 (Avril 2015)</bridgehead>
+  <para>Comme toujours il y a de nouvelles facilités et de nombreuses
+  corrections de bogues. Une grande partie de cette livraison consiste en la
+  suppression de nombreuses fuites et de saturation de mémoire. Naturellement
+  ces changements ne sont pas très visibles à part une empreinte mémoire
+  moindre.
+  
+  Noter que nous traitons les bogues et les demandes d'amélioration via le
+  system de questions de github, et celles-ci ont grandement affecté cette
+  parution.</para>
+  
+  <para>
+    <itemizedlist>
+      <listitem>
+        <para>Nouveaux Gens et Macros :
+          <itemizedlist>
+            <listitem>
+              <simpara>L'algorithme padsynth de Paul Octavian Nasca a été
+              implanté sous la forme d'un gen.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Partition :
+          <itemizedlist>
+            <listitem>
+              <simpara>Le bogue du calcul de la position d'une chaîne de
+              caractères lors du traitement des lignes d'une partition a été
+              corrigé [fixes #443]</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Options :
+          <itemizedlist>
+            <listitem>
+              <simpara>Une option de copyright au format court est disponible
+              avec un nombre fixe de licences connues (CC, etc)</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Nouvelle option de ligne de commande pour rapporter les
+              périphériques MIDI dans un format simple.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Nouvelle option de ligne de commande pour fixer ksmps.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Opcodes et Gens modifiés :
+          <itemizedlist>
+            <listitem>
+              <simpara><emphasis>adsynt</emphasis> gère mieux les changements
+              d'amplitude.</simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>sfont</emphasis> détecte mieux les défauts.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Meilleure vérification des fréquences hors-limites dans
+              les modèles physiques.</simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>ftgenonce</emphasis> et d'autres acceptent les
+              paramètres chaînes de caractères.</simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>gausstrig</emphasis> a été retravaillé et
+              étendu avec de nouvelles caractétistiques.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>La fonction <emphasis>p()</emphasis> ne donne plus
+              d'avertissement de dépassement de pcnt.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Correction de <emphasis>midirecv</emphasis></simpara>
+            </listitem>
+            <listitem>
+              <simpara>Le nettoyage de fin d'utilisation d'<emphasis>OSCsend</emphasis>
+              a été amélioré.</simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>fillarray</emphasis> est limité à des tableaux
+              à 1 ou 2 dimensions ; en fait, auparavant, il échouait silencieusement
+              pour les dimensions supérieures ou égales à 3.</simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>oscbnk</emphasis> fonctionne maintenant lorsque
+              l'égaliseur est utilisé.</simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>mp3in</emphasis> fonctionne maintenant avec des
+              fichiers mono et stéréo.</simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>flooper</emphasis> &amp; <emphasis>flooper2</emphasis>
+              acceptent maintenant les tables stéréo.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>La phase de relâchement d'<emphasis>expsegr</emphasis>
+              a été corrigée.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Les f-tables crées avec un grand nombre d'arguments pouvaient
+              saturer la mémoire ; c'est corrigé maintenant.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>L'exécution de <emphasis>plltrack</emphasis> a été
+              améliorée.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>L'initialisation des tableaux a été clarifiée et testée.</simpara>
+            </listitem>
+            <listitem>
+              <simpara><emphasis>gen23</emphasis> a été corrigé pour stopper une
+              boucle infinie.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Frontaux :
+          <itemizedlist>
+            <listitem>
+              <simpara>pnacl</simpara>
+              <itemizedlist>
+                <listitem>
+                  <simpara>Ajout d'une interface permettant l'utilisation du
+                  système d'entrée MIDI de Csound.</simpara>
+                </listitem>
+                <listitem>
+                  <simpara>L'entrée audio est conforme à la dernière spécification
+                  de l'API Pepper.</simpara>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Bogues corrigés :
+          <itemizedlist>
+            <listitem>
+              <simpara>Bogues corrigés dans fastabi,oscktp, phasorbnk, adsr, xadsr, hrtfer.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Bogues corrigés dans harmon. harmon2, harmon3 et harmon4.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Csound pouvait planter après une erreur d'analyse ; ce cas
+              est maintenant supprimé.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Le plantage de l'opcode alwayson lors de son utilisation
+              dans CsoundVST a été corrigé.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Changements système :
+          <itemizedlist>
+            <listitem>
+              <simpara>Il y a de nouveaux tests sur la concordance des types
+              de xin/xout avec leur définition dans un UDO.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Jack a maintenant un timeout.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Changements internes :
+          <itemizedlist>
+            <listitem>
+              <simpara>Plusieurs défauts trouvés par coverity ont été corrigés
+              ou le code changé. Cela devrait renforcer Csound dans les cas
+              limites.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Des changements du parser simplifient l'allocation des
+              variables temporaires, avec de nouvelles optimisations.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Le code du rendu multi-thread a été amélioré et stabilisé
+              quant à la redéfinition des instruments.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Changement sur les plates-formes :
+          <itemizedlist>
+            <listitem>
+              <simpara>iOS.</simpara>
+              <itemizedlist>
+                <listitem>
+                  <simpara>La fonction de rappel audio a été corrigée pour
+                  fonctionner correctement avec la sortie lumineuse et la TV
+                  Apple.</simpara>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+            <listitem>
+              <simpara>Android.</simpara>
+              <itemizedlist>
+                <listitem>
+                  <simpara>Nouveau mode d'E/S audio expérimental :
+                  csoundPerformKsmps() est appelée depuis la fonction de rappel
+                  de l'E/S OpenSL. On peut activer ce mode facultativement en
+                  passant une valeur "false" au second paramètre du nouveau
+                  constructeur de CsoundObj (bool isAsync). Le constructeur par
+                  défaut et celui à un paramètre fixent cette valeur à "true"
+                  (ce qui permet une compatibilité ascendante avec le code
+                  existant).</simpara>
+                </listitem>
+                <listitem>
+                  <simpara>App Android</simpara>
+                  <itemizedlist>
+                    <listitem>
+                      <simpara>Inclue maintenant les opcodes OSC.</simpara>
+                    </listitem>
+                    <listitem>
+                      <simpara>Il y a de nouvelles boîtes de dialogue pour
+                      l'ouverture et la sauvegarde de fichier qui permettent
+                      d'accéder à une carte SD, si l'appareil en est équipé, en
+                      plus du stockage interne.</simpara>
+                    </listitem>
+                    <listitem>
+                      <simpara>Un nouveau bouton "Save as..." permettant de
+                      sauvegarder le csd comme un nouveau fichier avec un nouveau
+                      nom.</simpara>
+                    </listitem>
+                    <listitem>
+                      <simpara>De nombreux exemples de l'archive Android sont
+                      maintenant construits dans l'application et peuvent être
+                      lancés depuis le menu.</simpara>
+                    </listitem>
+                    <listitem>
+                      <simpara>Include maintenant l'opcode exciter.</simpara>
+                    </listitem>
+                  </itemizedlist>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+            <listitem>
+              <simpara>Linux.</simpara>
+              <itemizedlist>
+                <listitem>
+                  <simpara>La version Linux est maintenant construite sans les
+                  threads FLTK. Cela supprime les gels du système et est conforme
+                  aux autres distributions.</simpara>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+
 <bridgehead>Notes de parution de Csound 6.04 (novembre 2014)</bridgehead>
   <para>Cette nouvelle version comprend de nombreuses extensions et corrections ;
   de nouveaux opcodes et un nombre important de réorganisations internes. Il y a
