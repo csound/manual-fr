@@ -89,6 +89,15 @@ english cvs version=
   <para>
     <itemizedlist>
       <listitem>
+        <para>Opcodes :
+          <itemizedlist>
+            <listitem>
+              <simpara>L'opcode sndload est maintenant obsolète.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
         <para>Nouveaux Gens et Macros :
           <itemizedlist>
             <listitem>
@@ -196,6 +205,32 @@ english cvs version=
               <simpara><emphasis>gen23</emphasis> a été corrigé pour stopper une
               boucle infinie.</simpara>
             </listitem>
+            <listitem>
+              <simpara>alwayson démarre maintenant depuis le décalage de la
+               partition ; cela fait partie de la correction d'un problème
+               ancien avec alwayson dans CsoundVST</simpara>
+            </listitem>
+            <listitem>
+              <simpara>invalue teste dorénavant la taille de chaîne de caractères
+              en sortie et réalloue de la mémoire si elle est inférieure à la
+              taille par défaut (fixée à 256 octets pour une compatibité
+              ascendante)</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Utilitaires :
+          <itemizedlist>
+            <listitem>
+              <simpara>L'utilitaire srconv a été amélioré mais il ne fonctionne
+              pas très bien, avec des passages bruiteux dans une sortie correcte.
+              Nous recommandons l'utilisation du code Secret Rabbit de Erik de
+              Castro Lopo (libsamplerate) qui produit une conversion du taux
+              d'échantillonnage de grande qualité. srconv sera supprimé
+              prochainement pour un remplacement possible par un utilitaire
+              basé sur SRC.</simpara>
+            </listitem>
           </itemizedlist>
         </para>
       </listitem>
@@ -230,10 +265,6 @@ english cvs version=
             <listitem>
               <simpara>Csound pouvait planter après une erreur d'analyse ; ce cas
               est maintenant supprimé.</simpara>
-            </listitem>
-            <listitem>
-              <simpara>Le plantage de l'opcode alwayson lors de son utilisation
-              dans CsoundVST a été corrigé.</simpara>
             </listitem>
           </itemizedlist>
         </para>
@@ -300,11 +331,11 @@ english cvs version=
                   existant).</simpara>
                 </listitem>
                 <listitem>
+                  <simpara>The OSC opcodes are included in distribution.</simpara>
+                </listitem>
+                <listitem>
                   <simpara>App Android</simpara>
                   <itemizedlist>
-                    <listitem>
-                      <simpara>Inclue maintenant les opcodes OSC.</simpara>
-                    </listitem>
                     <listitem>
                       <simpara>Il y a de nouvelles boîtes de dialogue pour
                       l'ouverture et la sauvegarde de fichier qui permettent
@@ -325,6 +356,15 @@ english cvs version=
                       <simpara>Inclue maintenant l'opcode exciter.</simpara>
                     </listitem>
                   </itemizedlist>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+             <listitem>
+              <simpara>OSX.</simpara>
+              <itemizedlist>
+                <listitem>
+                  <simpara>L'installation place maintenant csladspa.so au lieu
+                  de csladspa.dylib sur le disque.</simpara>
                 </listitem>
               </itemizedlist>
             </listitem>
