@@ -28,6 +28,8 @@ english cvs version=1.7
       <emphasis>Rout</emphasis>. Optionnellement le rapport (<emphasis>Rin</emphasis> /
       <emphasis>Rout</emphasis> peut varier linéairement dans le temps selon un ensemble de paires
       (temps, rapport) dans un fichier auxiliaire.
+      <note>Cet utilitaire est suspect. Il vaut mieux utiliser libsamplerate.
+      <emphasis>srconv</emphasis> sera supprimé et remplacé prochainement.</note>
     </para>
   </refsect1>
  
