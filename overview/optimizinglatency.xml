@@ -1,0 +1,108 @@
+<section id="UsingOptimizing">
+  <title>Optimisation de la latence audio en E/S</title>
+<!--    Written by Jonathan Murphy-->
+  <para>
+    Pour atteindre la latence la plus basse possible sans interruptions audio, il faut régler une
+    combinaison de variables. Les valeurs retenues dépendront de la plate-forme et du système, et
+    aussi de la complexité des calculs audio mis en &oelig;uvre. Il faut ajuster
+    <link linkend="ksmps"><citetitle>ksmps</citetitle></link> dans l'orchestre, ainsi que la taille
+    du tampon logiciel (<link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link>) et
+    celle du tampon matériel (<link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link>).
+  </para>
+  <para>
+    Habituellement la solution la plus simple est la suivante :
+  </para>
+    <orderedlist>
+      <listitem>
+        <para>Fixer <link linkend="ksmps"><citetitle>ksmps</citetitle></link> à une valeur de
+        compromis entre qualité et performance, sans ajuster
+        <link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link> du tout.</para>
+      </listitem>
+      <listitem>
+        <para>Fixer <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> à une
+        puissance de deux négative.</para>
+        <para>
+          Pour obtenir les valeurs optimales, commencer avec une valeur qui vous semble trop petite,
+          c'est-à-dire -1, et continuer ensuite en "augmentant", -2, -4, etc., jusqu'à ne plus
+          avoir de défauts dans le son. La valeur réelle de
+          <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> sera la valeur
+          absolue de <emphasis>-b * ksmps</emphasis>.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Réduire le tampon matériel
+          (<link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link>). Partir de la
+          valeur par défaut (1024 sur Linux, 4096 sur Max OS X, 16384 sur Windows), et la réduire
+          de moitié à chaque fois, jusqu'à entendre à nouveau des défauts. La remonter alors
+          jusqu'à ce que l'exécution soit continue.
+        </para>
+      </listitem>
+    </orderedlist>
+  <para>
+    Cette procédure s'applique aux cartes 16 bit. Si vous avez une carte son 24 bit, alors
+    <link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link> doit valoir 3/2, ou
+    3 fois <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link>, plutôt que
+    2 ou 4 fois. Csound travaille avec des nombres en virgule flottante en 32 bit ou 64 bit alors que la
+    plupart des cartes son utilisent des entiers en 16 ou 24 bit.
+    <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> est le tampon interne,
+    c'est pourquoi il traite de la partie 32 ou 64 bit, tandis que
+    <link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link> est le tampon matériel,
+    et il traite ainsi de la partie 16 ou 24 bit. Le réglage par défaut de csound pour les réels
+    est <emphasis>-B = 4 * -b</emphasis>. C'est une valeur sûre pour une carte 16 bit. On peut s'en
+    sortie avec <emphasis>-B = 2 * -b</emphasis>, mais c'est le minimum absolu. Par exemple,
+    si votre réglage est <emphasis>-b1024 -B2048</emphasis>, csound vous dira ceci :
+    <screen>audio buffered in 1024 sample-frame blocks writing 4096-byte blocks to dac</screen>
+  </para>
+  <para>
+    4096 octets font 32768 bits. 32768/32 = 1024, notre taille de bloc de trames d'échantillons,
+    1024 * 32/16 = 2048, notre taille de tampon. Si nous réduisons la valeur de
+    <link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link>, il faudra réduire
+    la valeur de <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> d'un
+    montant proportionnel afin de continuer à écrire des entiers en 16 bit sur le CNA. La
+    taille minimale de <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> est
+    <emphasis>(-B * bitrate)/32</emphasis>. Cela veut dire que le rapport minimum de
+    <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> à
+    <link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link> doit être :
+    <itemizedlist>
+      <listitem>
+        <simpara>1/2 en 16 bit</simpara>
+      </listitem>
+      <listitem>
+        <simpara>2/3 en 24 bit</simpara>
+      </listitem>
+      <listitem>
+        <simpara>1/1 en 32 bit</simpara>
+      </listitem>
+    </itemizedlist>
+  </para>
+  <para>
+    Bien qu'il n'y ait théoriquement pas de rapport maximum, il n'y a aucun sens à avoir un rapport
+    très élévé ici, car le tampon logiciel doit remplir le tampon matériel avant de retourner. Si
+    le rapport est élevé, cela prendra plus de temps, annulant le bénéfice de mettre une petite valeur
+    pour <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link>.
+  </para>
+  <para>
+    Il faudra varier la valeur de
+    <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> en fonction de la
+    complexité de l'instrument sur lequel vous travaillez, mais comme elle est intimement liée à celle
+    de ksmps, il vaut mieux la synchroniser avec
+    <link linkend="ksmps"><citetitle>ksmps</citetitle></link> et partir de là. Une manière de faire
+    est de décider quelle sera la longueur optimale de la chute de vos enveloppes
+    (pour l'effet désiré), de fixer toutes les enveloppes au maximum, de donner vous-même une valeur
+    généreuse à <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link>, et de jouer.
+    S'il y a des interruptions, doubler ksmps, et répéter le processus jusqu'à obtenir la fluidité,
+    descendre ensuite la valeur de <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link>
+    aussi bas que possible.
+  </para>
+  <para>
+    La valeur de <link linkend="FlagsCatMinusUpperB"><citetitle>-B</citetitle></link> est d'abord
+    déterminée par le système d'explotation et la carte son. Essayez de trouver (par la méthode
+    ci-dessus) jusqu'où vous pouvez descendre, et utilisez cette valeur (ou une valeur supérieure
+    par sécurité). Si vous rencontrez des problèmes ce sera probablement à cause d'une valeur de
+    ksmps inappropriée, d'une valeur de
+    <link linkend="FlagsCatMinusLowerB"><citetitle>-b</citetitle></link> trop faible, ou
+    de nombres hors-norme (voir <link linkend="denorm"><citetitle>denorm</citetitle></link>).
+  </para>
+</section>
+
