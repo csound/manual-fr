@@ -199,7 +199,7 @@ pcm.!default {
       ailleurs, voir le <ulink url="http://www.midi-howto.com/">Linux MIDI
       how-to</ulink> ou parcourez la documentation de votre distribution ou la
       documentation ALSA à la recherche d'instructions pour intaller et
-      configurer VirMidi ou MIDIThru (seéquenceur factice). Une fois ceci
+      configurer VirMidi ou MIDIThru (séquenceur factice). Une fois ceci
       réalisé, la commande :
     </para>
     <screen>
@@ -300,7 +300,7 @@ client 24: 'PCR' [type=kernel]
       avantages :
     <itemizedlist>
       <listitem>
-        <simpara>Accès concurents multiples.</simpara>
+        <simpara>Accès concurrents multiples.</simpara>
       </listitem>
       <listitem>
         <simpara>Partages par files d'attente prioritaires.</simpara>
