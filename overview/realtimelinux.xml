@@ -20,6 +20,7 @@ english cvs version=1.11
   </para>
   <para><ulink url="http://jackaudio.org/faq">http://jackaudio.org/faq</ulink>
   </para>
+  
   <bridgehead>Utilisation d'ALSA</bridgehead>
   <para>
     Le plus haut niveau de contrôle et la plus faible latence possible sont
@@ -40,6 +41,20 @@ english cvs version=1.11
   <para>
     <ulink url="ftp://ftp.alsa-project.org/pub/utils/">ftp://ftp.alsa-project.org/pub/utils/</ulink>
   </para>
+  
+  <note>
+    A chaque démarrage de l'ordinateur, la carte son peut avoir un numéro d'ordre
+    matériel différent, surtout s'il y a plusieurs cartes son dans le système.
+    Ceci peut être gênant car il faut chaque fois redonner le bon numéro. On
+    peut affecter un ordre fixe en ajoutant quelques lignes à
+    /etc/modprobe.d/alsa-base-conf, par exemple pour une carte avec le circuit
+    intégré ice1712 :
+  <literallayout> 
+    # ALSA module ordering for soundcard
+    options snd slots=snd_ice1712
+  </literallayout>
+  </note>
+
   <bridgehead>Sortie audio</bridgehead>
   <para>En tapant la commande suivante :</para>
   <screen>
@@ -162,16 +177,30 @@ pcm.!default {
     </para>
     <screen>
           -+rtaudio=alsa -i adc:hw:0,0 -o dac:hw:1,1</screen>
-  <bridgehead>Entrée MIDI</bridgehead>
-    <para>Csound ne crée pas automatiquement son propre port de séquenceur ALSA. Il
-      crée un port midi direct ALSA à chaque lancement. Afin de permettre à votre
-      orchestre de recevoir une entrée MIDI vous pouvez utiliser VirMIDI ou MIDIThru,
-      selon vos préférences. La configuration de ces ports MIDI virtuels a été
-      largement couverte ailleurs, voir le
-      <ulink url="http://www.midi-howto.com/">Linux MIDI how-to</ulink> ou parcourez
-      la documentation de votre distribution ou la documentation
-      ALSA à la recherche d'instructions pour intaller et configurer VirMidi
-      ou MIDIThru. Une fois ceci réalisé, la commande :
+
+    <bridgehead>MIDI</bridgehead>
+    <para>2 pilotes Midi sont disponibles :
+      <itemizedlist>
+        <listitem>
+          <simpara>Midi brut.</simpara>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <simpara>Séquenceur Alsa (depuis la version 5.18).</simpara>
+        </listitem>
+      </itemizedlist>
+    </para>
+    
+    <bridgehead>Entrée MIDI Input (Pilote Midi brut)</bridgehead>
+    <para>Afin de permettre à votre orchestre de recevoir une entrée MIDI vous
+      pouvez utiliser VirMIDI ou MIDIThru, selon vos préférences. La
+      configuration de ces ports MIDI virtuels a été largement couverte
+      ailleurs, voir le <ulink url="http://www.midi-howto.com/">Linux MIDI
+      how-to</ulink> ou parcourez la documentation de votre distribution ou la
+      documentation ALSA à la recherche d'instructions pour intaller et
+      configurer VirMidi ou MIDIThru (seéquenceur factice). Une fois ceci
+      réalisé, la commande :
     </para>
     <screen>
           amidi -l</screen>
@@ -256,7 +285,8 @@ client 24: 'PCR' [type=kernel]
     ainsi, il faut se connecter à un périphérique virtuel (comme 'virtual raw MIDI' ou
     'MIDI through') pour des connexions persistantes, ou se connecter directement
     à la destination en utilisant les options de ligne de commande.</para>
-  <bridgehead>Sortie MIDI</bridgehead>
+
+  <bridgehead>Sortie MIDI (pilote MIDI brut)</bridgehead>
     <para>On peut connecter Csound à n'importe quel périphérique qui apparaît
       dans la liste des ports de sortie du séquenceur ALSA, que l'on obtient
       par "amidi -l" comme ci-dessus. Afin de connecter un synthétiseur
@@ -264,6 +294,59 @@ client 24: 'PCR' [type=kernel]
       suivante :</para>
     <screen>
           -Qhw:2,0,0</screen>
+
+  <bridgehead>Entrée et sortie MIDI (Pilote du séquenceur Midi)</bridgehead>
+    <para>Ce pilote est préférable au pilote MIDI brut. Il présente ces
+      avantages :
+    <itemizedlist>
+      <listitem>
+        <simpara>Accès concurents multiples.</simpara>
+      </listitem>
+      <listitem>
+        <simpara>Partages par files d'attente prioritaires.</simpara>
+      </listitem>
+      <listitem>
+        <simpara>Envoi d'évènements en temps réel, le rôle du séquenceur MIDI
+        étant de délivrer des évènements au bon moment (séquence) et au bon
+        destinataire (périphérique).</simpara>
+      </listitem>
+    </itemizedlist>
+    </para>
+    
+    <para>La commande suivante appelle le séquenceur MIDI. Ici, il écoute sur
+    le port 20. Le port de sortie MIDI est aussi le 20 :
+    </para>
+    <screen>
+          -+rtmidi=alsaseq -M20 -Q20  </screen>
+
+    <para>Csound créé automatiquement son propre port de séquenceur ALSA. La
+    commande suivante donne une liste des périphériques disponibles :</para>
+    <screen>
+          aconnect -i -o </screen>
+    <para>Elle retourne une sortie ressemblant à ceci :</para>
+    <literallayout>    client 0: 'System' [type=kernel]
+    0 'Timer           '
+    1 'Announce        '
+client 14: 'Midi Through' [type=kernel]
+    0 'Midi Through Port-0'
+client 20: 'M Audio Delta 1010' [type=kernel]
+    0 'M Audio Delta 1010 MIDI'
+client 130: 'Csound' [type=user]
+    0 'Csound </literallayout>
+    <para>La sortie de Csound contiendra des lignes comme :</para>
+    <literallayout>
+...........
+ALSASEQ: opened MIDI output sequencer
+ALSASEQ: created output port 'Csound' 130:0
+ALSASEQ: connected to 20:0
+.............. 
+...........
+ALSASEQ: opened MIDI input sequencer
+ALSASEQ: created input port 'Csound' 130:0
+ALSASEQ: connected from 20:0
+.............. 
+    </literallayout>
+    
   <bridgehead>Temps-partagé</bridgehead>
     <para>Si vous avez la possibilité d'exécuter Csound en tant qu'utilisateur root,
       l'option "--sched" permet d'améliorer spectaculairement les performances en
