@@ -48,6 +48,26 @@ english cvs version=1.4
     <para>
       <emphasis>iwsize</emphasis> (facultatif) -- taille de la fenêtre utilisée
       dans l'interpolation.
+      iwsize (facultatif, zéro par défaut) -- taille de la fenêtre d'interpolation
+      en échantillons. Peut prendre une des valeurs suivantes :
+      <itemizedlist>
+        <listitem>
+          <para>1 : arrondi à l'échantillon le plus proche (pas d'interpolation,
+          pour <emphasis>kpitch</emphasis>=1)</para>
+        </listitem>
+        <listitem>
+          <para>2 : interpolation linéaire</para>
+        </listitem>
+        <listitem>
+          <para>4 : interpolation cubique</para>
+        </listitem>
+        <listitem>
+          <para>&gt;=8 : <emphasis>iwsize</emphasis> interpolation sinc par point
+          avec anti-repliement (lente)</para>
+        </listitem>
+      </itemizedlist>
+      Zéro ou des valeurs négatives sélectionnent l'action par défaut qui est
+      l'interpolation cubique.
     </para>
 
     <para>
