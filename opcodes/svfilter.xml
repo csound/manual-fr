@@ -32,7 +32,7 @@ english cvs version=1.11
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>alow, ahigh, aband <command>svfilter</command>  asig, kcf, kq [, iscl]</synopsis>
+    <synopsis>alow, ahigh, aband <command>svfilter</command>  asig, kcf, kq [, iscl][, iskip]</synopsis>
   </refsect1>
  
   <refsect1>
@@ -46,6 +46,13 @@ english cvs version=1.11
       pondération du signal, laissant cette tâche à un ajustement ultérieur (voir
       <link linkend="balance"><citetitle>balance</citetitle></link>). La valeur
       par défaut est 0.
+    </para>
+    <para>
+      <emphasis>iskip</emphasis> (facultatif, 0 par défaut) -- disposition
+      initiale de l'espace de données internes. Comme le filtrage comprend une
+      boucle de rétroaction, l'état initial de l'espace de stockage est
+      significatif. La valeur zéro efface l'espace ; une valeur non nulle
+      maintient l'information antérieure. La valeur par défaut est 0.
     </para>
   </refsect1>
  

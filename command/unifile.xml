@@ -180,6 +180,54 @@ english cvs version=1.15
         </simplelist>
       </para>
 
+    <bridgehead>HTML imbriqué (&lt;html&gt;)</bridgehead>
+      <para>
+        Tout code HTML valide peut être imbriqué dans un fichier CSD. Ce code
+        doit être structuré exactement comme dans une page Web ordinaire. Il
+        peut contenir tout code HTML, Javascript, Cascading Style Sheet, WebGL,
+        etc., valide.
+      </para>
+      <para>
+        Dans certains frontaux et environnements de programmation, comprenant
+        au moins CsoundQt ou Csound pour Android, cette page sera analysée, exécutée et
+        affichée dans un navigateur Web embarqué dans l'environnement. Le code
+        Javascript de cette page aura accès à un objet <emphasis>csound</emphasis>
+        global qui implémente les fonctions suivantes qui forment un sous-ensemble
+        de l'API de Csound. Les noms, les types de données et l'utilisation de
+        ces fonctions sont exactement les mêmes que ceux qui sont détaillés dans
+        le manuel de référence de l'API de Csound.
+      </para>
+      <para>
+            <programlisting>
+[int] getVersion ();
+compileOrc (orchestra_text);
+[double] evalCode (orchestra_expression);
+readScore (score_text);
+setControlChannel (channel_name, numeric_value);
+[double] getControlChannel (channel_name);
+message (message_string);
+[int] getSr ();
+[int] getKsmps ();
+[int] getNchnls ();
+// Ne fait pas partie de l'API de Csound -- appelé par l'environnement pour
+// détecter si Csound est en cours d'exécution.
+[int] isPlaying ();
+            </programlisting>
+      </para>
+
+      <para>
+        Les éléments HTML du fichier CSD peuvent être utilisés pour créer des
+        interfaces utilisateur personnalisées pour la pièce, pour générer des
+        évènements de partition et même du code d'orchestre en utilisant
+        Javascript, pour stocker des préréglages des contrôleurs graphiques et
+        pour bien d'autres fonctions. Les exemples
+        <ulink url="examples/GameOfLife3D.csd"><citetitle>GameOfLife3D.csd</citetitle></ulink>
+        et
+        <ulink url="examples/LindenmayerCanvas.csd"><citetitle>LindenmayerCanvas.csd</citetitle></ulink>
+        démontrent ces utilisations (testés dans CsoundQt ; l'exécution de ces
+        exemples nécessitent des ressources supplémentaires que l'on trouve dans
+        le répertoire des exemples de Csound dans GIT).
+      </para>
     </section>
 
     <section id="CommandUnifileExample">

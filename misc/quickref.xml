@@ -332,6 +332,9 @@
       [, imod2] [, ibeg2] [, iend2]</synopsis><para/>
 <synopsis>ar1 [,ar2] <link linkend="loscil3">loscil3</link> xamp, kcps, ifn [, ibas] [, imod1] [, ibeg1] [, iend1] \
       [, imod2] [, ibeg2] [, iend2]</synopsis><para/>
+<synopsis>ar1 [, ar2, ar3, ar4, ar5, ar6, ar7, ar8, ar9, ar10, ar11, ar12, ar13, ar14, \
+      ar15, ar16] <link linkend="loscilx">loscilx</link> xamp, kcps, ifn \
+      [, iwsize, ibas, istrt, imod, ibeg, iend]</synopsis><para/>
 <synopsis>ares <link linkend="lphasor">lphasor</link> xtrns [, ilps] [, ilpe] [, imode] [, istrt] [, istor]</synopsis><para/>
 <synopsis>ares <link linkend="lposcil">lposcil</link> kamp, kfreqratio, kloop, kend, ifn [, iphs]</synopsis><para/>
 <synopsis>ares <link linkend="lposcil3">lposcil3</link> kamp, kfreqratio, kloop, kend, ifn [, iphs]</synopsis><para/>
@@ -799,7 +802,7 @@
 <synopsis>ares <link linkend="resonz">resonz</link> asig, xcf, xbw [, iscl] [, iskip]</synopsis><para/>
 <synopsis>ares <link linkend="rezzy">rezzy</link> asig, xfco, xres [, imode, iskip]</synopsis><para/>
 <synopsis>ahp,alp,abp,abr <link linkend="statevar">statevar</link> ain, xcf, xq [, iosamps, istor]</synopsis><para/>
-<synopsis>alow, ahigh, aband <link linkend="svfilter">svfilter</link>  asig, kcf, kq [, iscl]</synopsis><para/>
+<synopsis>alow, ahigh, aband <link linkend="svfilter">svfilter</link>  asig, kcf, kq [, iscl][, iskip]</synopsis><para/>
 <synopsis>ares <link linkend="tbvcf">tbvcf</link> asig, xfco, xres, kdist, kasym [, iskip]</synopsis><para/>
 <synopsis>ares <link linkend="vlowres">vlowres</link> asig, kfco, kres, iord, ksep</synopsis><para/>
 </para></formalpara>
