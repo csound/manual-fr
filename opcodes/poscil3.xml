@@ -50,7 +50,9 @@ english cvs version=1.17
       Vaut -1 par défaut ce qui indique une onde sinus.
     </para>
     <para>
-      <emphasis>iphs</emphasis> (facultatif, par défaut 0) -- phase initiale (table normalisée, index 0-1)
+      <emphasis>iphs</emphasis> (facultatif, par défaut 0) -- phase initiale
+      (table normalisée, index 0-1). Si une valeur négative est donnée,
+      l'initialisation de la phase est ignorée.
     </para>
   </refsect1>
  
@@ -116,5 +118,7 @@ english cvs version=1.17
     <para>Nouveau dans la version 3.52 de Csound</para>
     <para>Les variantes avec fréquence ou amplitude de taux-a sont nouvelles
     dans la version 5.16</para>
+    <para>La table de fonction est facultative depuis la version 6.0 de Csound.</para>
+    <para>La possibilité d'ignorer l'initialisation a été ajoutée dans la version 6.06.</para>
   </refsect1>
 </refentry>

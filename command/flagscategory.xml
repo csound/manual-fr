@@ -1120,6 +1120,21 @@ csound5:output2             (reproduction droite)</screen>
       </listitem>
     </varlistentry>
 
+    <varlistentry id="FlagsCatMinusLowerJ">
+      <term>-j NUM<indexterm
+      id="IndexCatMinusLowerJ"><primary>-j</primary></indexterm>,
+      --num-threads=NUM<indexterm id="IndexCatMinusNumthread"><primary>--num-threads=NUM</primary></indexterm></term>
+      <listitem>
+        <para>
+          <emphasis>NUM</emphasis> processus sont rendus disponibles pour
+          l'exécution. Ce n'est avantageux que si le nombre de processeurs
+          de l'ordinateur est supérieur au nombre de processus demandés. Ca
+          peut aussi ralentir l'exécution si <emphasis>ksmps</emphasis> est
+          trop petit. 
+        </para>
+      </listitem>
+    </varlistentry>
+    
   </variablelist>
 
   <variablelist>
@@ -1331,19 +1346,6 @@ csound5:output2             (reproduction droite)</screen>
       </listitem>
     </varlistentry>
     
-<!--    <varlistentry id="FlagsCatMinusLowerJ">
-      <term>-j FICHIER<indexterm id="IndexCatMinusLowerJ"><primary>-j</primary></indexterm></term>
-      <listitem>
-        <para>
-          <emphasis>Actuellement désactivé.</emphasis> Utiliser la base de données <emphasis>FICHIER</emphasis>
-          pour les messages à imprimer sur la console durant l'exécution. A partir de Csound 5.00, la
-          localisation des messages est contrôlée par deux variables d'environnement, toutes les deux
-          optionnelles. CSSTRNGS pointe vers un répertoire contenant des fichiers .xmg, et CS_LANG sélectionne
-          une langue.
-        </para>
-      </listitem>
-    </varlistentry>-->
-
     <varlistentry id="FlagsCatMinusMinusKsmps">
       <term>--ksmps=N<indexterm id="IndexCatMinusMinusKsmps"><primary>--ksmps</primary></indexterm></term>
       <listitem>

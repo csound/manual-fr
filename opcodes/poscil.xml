@@ -52,7 +52,8 @@ english cvs version=1.14
 
     <para>
       <emphasis>iphs</emphasis> (facultatif, par défaut 0) -- phase initiale
-      (table normalisée, index 0-1)
+      (table normalisée, index 0-1). Si une valeur négative est donnée,
+      l'initialisation de la phase est ignorée.
     </para>
   </refsect1>
  
@@ -123,6 +124,8 @@ english cvs version=1.14
 
     <para>Novembre 2002. Ajout d'une note sur les changements dans la version 4.22 de Csound, merci à 
     &namerasmus;.</para>
-    <para>Nouveau dans la version 3.52 de Csound</para>
+    <para>Nouveau dans la version 3.52 de Csound.</para>
+    <para>La table de fonction est facultative depuis la version 6.0 de Csound.</para>
+    <para>La possibilité d'ignorer l'initialisation a été ajoutée dans la version 6.06.</para>
   </refsect1>
 </refentry>

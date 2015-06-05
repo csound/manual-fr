@@ -606,18 +606,18 @@ english cvs version=1.43
       </listitem>
     </varlistentry>
 
-<!--    <varlistentry id="FlagsMinusLowerJ">
-      <term>-j FICHIER<indexterm id="IndexMinusLowerJ"><primary>-j</primary></indexterm></term>
+    <varlistentry id="FlagsMinusLowerJ">
+      <term>-j NUM<indexterm id="IndexMinusLowerJ"><primary>-j NUM</primary></indexterm></term>
       <listitem>
         <para>
-          <emphasis>Actuellement désactivé.</emphasis> Utiliser la base de données <emphasis>FICHIER</emphasis>
-          pour les messages à imprimer sur la console durant l'exécution. A partir de Csound 5.00, la
-          localisation des messages est contrôlée par deux variables d'environnement, toutes les deux
-          optionnelles. CSSTRNGS pointe vers un répertoire contenant des fichiers .xmg, et CS_LANG sélectionne
-          une langue.
+          <emphasis>NUM</emphasis> processus sont rendus disponibles pour
+          l'exécution. Ce n'est avantageux que si le nombre de processeurs
+          de l'ordinateur est supérieur au nombre de processus demandés. Ca
+          peut aussi ralentir l'exécution si <emphasis>ksmps</emphasis> est
+          trop petit. 
         </para>
       </listitem>
-    </varlistentry>-->
+    </varlistentry>
 
     <varlistentry id="FlagsMinusPlusJackClient">
       <term>-+jack_client=[nom_client]<indexterm id="IndexMinusPlusJackClient"><primary>-+jack_client</primary></indexterm></term>
@@ -950,6 +950,19 @@ csound5:output2             (reproduction droite)</screen>
         <para>
           Pas de son. Faire tous les traitements, mais ne pas écrire de son sur le disque. Cette option ne change
           rien d'autre dans l'exécution.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsMinusNumthread">
+      <term>--num-threads=NUM<indexterm id="IndexMinusNumthread"><primary>--num-thread=NUM</primary></indexterm></term>
+      <listitem>
+        <para>
+          <emphasis>NUM</emphasis> processus sont rendus disponibles pour
+          l'exécution. Ce n'est avantageux que si le nombre de processeurs
+          de l'ordinateur est supérieur au nombre de processus demandés. Ca
+          peut aussi ralentir l'exécution si <emphasis>ksmps</emphasis> est
+          trop petit. 
         </para>
       </listitem>
     </varlistentry>
