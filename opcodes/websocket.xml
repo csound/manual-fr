@@ -1,0 +1,112 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="websocket">
+<indexterm id="IndexWebsocket"><primary>websocket</primary></indexterm>
+  <refentryinfo><title>Signal I/O</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>websocket</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>websocket</refname>
+    <refpurpose>
+      Lit et écrit des signaux et des tableaux en utilisant une connexion WebSocket.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>websocket</emphasis> lit et écrit <emphasis>N</emphasis> signaux
+      et tableaux en utilisant une connexion WebSocket.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>xout1[, xout2, xout3, ..., xoutN] <command>websocket</command> iport, xin1[, xin2, xin3, ..., xinN]</synopsis>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iport</emphasis> -- Le port web local où lire/écrire les données.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>xout1,... xoutN</emphasis> -- Les variables en sortie contenant
+      les données reçues du WebSocket. Côté Web, le WebSocket doit envoyer les
+      données en utilisant un nom de protocole qui correspond au nom de la variable
+      de sortie, par exemple "ksignal" pour une variable de taux-k. Si un tableau
+      est attendu il doit d'abord être initialisé avant d'être utilisé comme
+      sortie de l'opcode. Sinon l'opcode ne connaît pas la taille des données
+      attendues du WebSocket. Lorque l'on envoie des données à un WebSocket depuis
+      la page Web, elles doivent être envoyées sous la forme d'un tableau de
+      nombres 32 ou 64 bit en fonction de la version de Csound utilisée. 
+    </para>
+    <para>
+      <emphasis>xin1,... xinN</emphasis> -- Les variables d'entrée qui contiennent
+      les données envoyées au WebSocket. Côté Web, le WebSocket reçoit les
+      données en utilisant un nom de protocole qui correspond au nom de la
+      variable d'entrée, par exemple "ksignal" pour une variable de taux-k.
+      Lorsque l'on reçoit des données d'un WebSocket sur la page Web, il faut
+      les lire comme tableau de nombres 32 ou 64 bit en fonction de la version
+      de Csound utilisée. <note>Le nombre total d'arguments d'entrée et de
+      sortie est limité à 20.</note>
+    </para>
+
+    <title>Format des données</title>
+    <para>
+      Les variables de taux-a doivent être envoyées et reçues sous la forme de
+      tableaux contenant <emphasis>ksmps</emphasis> échantillons. Les tableaux
+      de taux-a sont de même envoyés et reçus comme <emphasis>ksmps</emphasis>
+      éléments dans le tableau. Les variables de taux-k sont envoyées et reçues
+      comme un tableau à un seul élément. Les tableaux de taux-k sont envoyés
+      et reçus comme des tableaux ayant le même nombre d'éléments.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple simple de l'opcode websocket. Il utilise les fichiers
+      <ulink url="examples/websocket.csd"><citetitle>websocket.csd</citetitle></ulink>
+      et <ulink url="examples/websocket.html"><citetitle>websocket.html</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode websocket.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/websocket.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="OSClisten"><citetitle>OSClisten</citetitle></link>
+      <link linkend="OSCsend"><citetitle>OSCsend</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Edward Costello;</member>
+        <member>NUIM, 2015</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 6.06</para>
+  </refsect1>
+</refentry>

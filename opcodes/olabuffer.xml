@@ -1,0 +1,97 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="olabuffer">
+<indexterm id="IndexOlabuffer"><primary>olabuffer</primary></indexterm>
+  <refentryinfo><title>Array operations: Fast Fourier Transform</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>olabuffer</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>olabuffer</refname>
+    <refpurpose>
+      Additionne les trames audio tuilées dans des tableaux de taux-k et
+      retourne un signal audio.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>olabuffer</emphasis> prend des tableaux unidimensionnels de
+      taux-k qui contiennent des trames audio séquentielles et les additionne
+      sur la base d'un facteur de superposition, produisant un signal audio en
+      sortie. C'est utile pour un traitement audio basé sur des trames comme
+      l'analyse/resynthèse spectrale.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aout <command>olabuffer</command> kin, ioverlap</synopsis>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ioverlap</emphasis> -- Le facteur de superposition par taille
+      d'échantillons de trame dans le tableau de taux-k en entrée. Par exemple
+      pour une taille de fenêtre de 1024 en entrée et une taille de saut de 256,
+      le facteur de superposition vaut 4. Le facteur de superposition doit être
+      supérieur ou égal à <emphasis>ksmps</emphasis> et doit aussi être un
+      multiple entier du nombre d'échantillons dans le tableau de taux-k en
+      entrée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>aout</emphasis> -- Le signal audio résultant de l'addition des
+      trames en entrée.
+      <emphasis>kin</emphasis> -- Un tableau de taux-k contenant les trames
+      audio séquentielles.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple simple de l'opcode olabuffer. Il utilise le fichier
+      <ulink url="examples/framebuffer.csd"><citetitle>framebuffer.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode olabuffer.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/framebuffer.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="olabuffer"><citetitle>olabuffer</citetitle></link>
+      <link linkend="shiftin"><citetitle>shiftin</citetitle></link>
+      <link linkend="shiftout"><citetitle>shiftout</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Edward Costello;</member>
+        <member>NUIM, 2015</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 6.06</para>
+  </refsect1>
+</refentry>

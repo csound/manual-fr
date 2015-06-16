@@ -1,0 +1,102 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="framebuffer">
+<indexterm id="IndexFramebuffer"><primary>framebuffer</primary></indexterm>
+  <refentryinfo><title>Array operations: Fast Fourier Transform</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>framebuffer</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>framebuffer</refname>
+    <refpurpose>
+       Lit des signaux audio dans des tableaux unidimensionnels de taux-k et
+       vice versa avec une taille de tampon donnée.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+        <emphasis>framebuffer</emphasis> convertit des signaux audio dans un
+        tableau unidimensionnel de taux-k de taille donnée. La taille du tableau
+        de taux-k doit être supérieure à <emphasis>ksmps</emphasis>. Il convertit
+        aussi les tableaux unidimensionnels de taux-k en signaux audio, les
+        tableaux de taux-k ne doivent pas être initialisés et avoir une taille
+        supérieure à ksmps. Le tampon est circulaire et peut être utilisé pour
+        du traitement audio à base de trames comme l'analyse/resynthèse spectrale
+        ou comme une simple ligne à retard.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kout[] <command>framebuffer</command> ain, isize</synopsis>
+  </refsect1>
+  <refsect1>
+    <synopsis>aout <command>framebuffer</command> kin, isize</synopsis>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>isize</emphasis> -- La quantité d'échantillons contenus dans le
+      tampon.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kout[]</emphasis> -- Le tableau de taux-k en sortie.
+      <emphasis>ain</emphasis> -- Le signal audio en entrée.
+    </para>
+
+    <para>
+      <emphasis>aout</emphasis> -- Le signal audio en sortie.
+      <emphasis>kin</emphasis> -- Le tableau de taux-k en entrée.
+    </para>
+
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple simple de l'opcode frambuffer. Il utilise le fichier
+      <ulink url="examples/framebuffer.csd"><citetitle>framebuffer.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode frambuffer.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/framebuffer.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="olabuffer"><citetitle>olabuffer</citetitle></link>
+      <link linkend="shiftin"><citetitle>shiftin</citetitle></link>
+      <link linkend="shiftout"><citetitle>shiftout</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Edward Costello;</member>
+        <member>NUIM, 2015</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 6.06</para>
+  </refsect1>
+</refentry>
