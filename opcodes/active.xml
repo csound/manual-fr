@@ -30,9 +30,9 @@ english cvs version=1.17
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>ir <command>active</command> insnum [,iopt]</synopsis>
-    <synopsis>ir <command>active</command> Sinsname [,iopt]</synopsis>
-    <synopsis>kres <command>active</command> kinsnum [,iopt]</synopsis>
+    <synopsis>ir <command>active</command> insnum [,iopt [,inorel]]</synopsis>
+    <synopsis>ir <command>active</command> Sinsname [,iopt [,inorel]]</synopsis>
+    <synopsis>kres <command>active</command> kinsnum [,iopt [,inorel]]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -48,6 +48,10 @@ english cvs version=1.17
       l'opcode retourne le nombre d'instances couramment actives. Si ce paramètre
       est différent de zéro, l'opcode retourne le nombre d'instances activées
       depuis le début de l'exécution.
+    </para>
+    <para>
+      <emphasis>inorel</emphasis> -- s'il est différent de zéro, les instruments
+      en phase de relachement son ignorés (vaut zéro par défaut).
     </para>
   </refsect1>
  
@@ -133,5 +137,6 @@ instr 2:  icount = 2.000</screen>
     la version 5.13</para>
     <para>Nouvelle option pour toutes les instances activées dans la version 5.13</para>
     <para>Le compte de tous les instruments est nouveau dans la version 5.17</para>
+    <para>Option <emphasis>no release</emphasis> ajoutée dans la version 5.19</para>
   </refsect1>
 </refentry>
