@@ -2,7 +2,7 @@
   <title>Opcodes STK</title>
   <note>
     <para>
-      Ces opcodes sont un composant facultatif de Csound5. On peut tester s'ils
+      Ces opcodes sont un composant facultatif de Csound6. On peut tester s'ils
       sont installés avec la commande "csound -z" qui donne la liste de tous les
       opcodes disponibles.
     </para>
@@ -12,29 +12,6 @@
     On peut compiler les opcodes STK de différentes manières. Si l'on compile
     tout Csound, il suffit de suivre les instructions au début du fichier
     Opcodes/stk/stkOpcodes.cpp.
-  </para>
-  <para>
-    Si l'on ne veut pas compiler la totalité de Csound, on peut compiler les
-    opcodes STK comme un greffon d'opcode (bibliothèque partagée). On peut
-    adapter l'exemple du répertoire pluginSDK de l'entrepôt GIT de Csound.
-    Remplacer le fichier pluginSDK/examplePlugin.c par le fichier
-    opcodes/stk/stkOpcodes.cpp et changer le nom de ce fichier dans le fichier
-    SConstruct. Utiliser ensuite scons pour compiler les opcodes. Il faut faire
-    attention à utiliser l'option de ligne de commande de scons useDouble=0 si
-    Csound est en simple précision (32 bit), et useDouble=1 si Csound est en
-    double précision (64 bit).
-  </para>
-  <para>
-    Il faut aussi ajouter le chemin de tous les fichiers sources STK et des
-    fichiers à inclure dans le fichier SConstruct, ou bien ajouter le chemin
-    d'une bibliothèque STK déjà compilée et des fichiers d'inclusion dans le
-    fichier SConstruct. Les fichiers sources STK seront renseignés vers la
-    ligne 296 du fichier SConstruct :
-
-<programlisting>makePlugin(pluginEnvironment, 'stkOpcodes', Split('''
-    stkOpcodes.cpp
-    ... STK source files ...
-'''))</programlisting>
   </para>
 
   <para>La famille des opcodes STK comprend :
