@@ -24,7 +24,8 @@ english cvs version=1.17
   <refsect1>
     <title>Description</title>
     <para>
-      Retourne le nombre d'instances actives d'un instrument.
+      Retourne le nombre d'instances actives d'un instrument, avec une option
+      pour ignorer les instances en phase de relâchement.
     </para>
   </refsect1>
 
@@ -51,7 +52,8 @@ english cvs version=1.17
     </para>
     <para>
       <emphasis>inorel</emphasis> -- s'il est différent de zéro, les instruments
-      en phase de relachement son ignorés (vaut zéro par défaut).
+      en phase de relâchement son ignorés (vaut zéro par défaut). N'est valide
+      que si <emphasis>iopts</emphasis> vaut zéro.
     </para>
   </refsect1>
  
