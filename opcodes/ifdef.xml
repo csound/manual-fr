@@ -63,7 +63,7 @@ english cvs version=1.11
         <title>Exemple simple de la forme &num;ifdef.</title>
 
         <programlisting>
-<emphasis role="omacro">#define</emphasis> debug
+<emphasis role="omacro">#define</emphasis> debug ##
      <emphasis role="oblock">instr</emphasis> 1
 <emphasis role="omacro">#ifdef</emphasis> debug
      <emphasis role="opc">print</emphasis> "calling oscil"
