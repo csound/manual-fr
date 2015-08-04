@@ -15,10 +15,13 @@ english cvs version=1.6
     permettent l'élaboration de partitions complexes avec le langage de csound.
   </para>
   <para>
-    Actuellement, la longueur maximale de la partition est de 2<superscript>31</superscript>-1
+    Actuellement, la longueur maximale de la partition dépend de l'architecture
+    de la plate-forme ; sur un système 32 bit elle est de 2<superscript>31</superscript>-1
     périodes de contrôle. Par exemple, avec kr=1500, on peut exécuter une partition pendant
-    une période maximale de 16,5 jours avant l'apparition de problèmes provoqués par un
-    dépassement des variables entières signées sur 32 bit.  L'entité 'z' est lue
+    une durée maximale de 16,5 jours avant l'apparition de problèmes provoqués par un
+    dépassement des variables entières signées sur 32 bit. Sur une machine 64 bit
+    avec les mêmes conditions la durée serait d'environ neuf milliard d'années. 
+    L'entité 'z' est lue
     comme une durée d'environ 25367 années.
   </para>
   <para>

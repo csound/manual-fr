@@ -35,10 +35,11 @@ english cvs version=1.8
   </refsect1>
  
   <refsect1>
-    <title>Exécution</title>
+    <title>Initialisation</title>
     <para>
       Arrête Csound lors du cycle d'initialisation et retourne
-      <emphasis>ivalue</emphasis> qui vaut zéro par défaut.
+      <emphasis>ivalue</emphasis> qui vaut zéro par défaut. A noter qu'il est
+      habituel de trouver cet opcode seul dans un instrument.
     </para>
   </refsect1>
 
