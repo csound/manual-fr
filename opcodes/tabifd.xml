@@ -1,0 +1,121 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="tabifd">
+<indexterm id="Indextabifd"><primary>tabifd</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tabifd</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>tabifd</refname>
+    <refpurpose>
+      Distribution de fréquence instantanée, analyse d'amplitude et de phase.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      L'opcode <emphasis>tabifd</emphasis> prend en entrée une table de fonction
+      et fait une analyse de fréquence instantanée, amplitude et phase, au
+      moyen de la TFCT et tabifd (distribution de fréquence instantanée) comme
+      décrit dans Lazzarini et al, "Time-stretching using the Instantaneous
+      Frequency Distribution and Partial Tracking", Proc.of ICMC05, Barcelone.
+      Il génère deux signaus de flot PV, l'un contenant les amplitudes et les
+      fréquences (une sortie similaire à celle de <emphasis>pvsanal</emphasis>)
+      et l'autre contenant les amplitudes et les phases non repliées. 
+	  </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ffr,fphs <command>tabifd</command> ktimpt, kamp, kpitch, ifftsize, ihopsize, iwintype,ifn</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifftsize</emphasis> -- taille d'analyse de la TFR, doit être
+      une puissance de deux et un multiple entier de la taille du saut.
+    </para>
+    
+    <para>
+      <emphasis>ihopsize</emphasis> -- taille du saut en échantillons.
+    </para>
+
+    <para>
+      <emphasis>iwintype</emphasis> -- type de la fenêtre (O : Hamming,
+      1 : Hanning).
+    </para>
+
+    <para>
+      <emphasis>ifn</emphasis> -- table de fonction source.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ffr</emphasis> -- flot PV en sortie au format AMP_FREQ.
+    </para>
+
+    <para>
+      <emphasis>fphs</emphasis> -- flot PV en sortie au format AMP_PHASE.
+    </para>
+
+    <para>
+      <emphasis>ktimpt</emphasis> -- point (en secondes) où commence la
+      lecture dans la table (s'il est inférieur à zéro ou supérieur à la
+      longueur de la table, il est ramené dans les limites par une opération
+      de modulo).
+	  </para>
+
+	  <para>
+      <emphasis>kamp</emphasis> -- mise à l'échelle de l'amplitude.
+	  </para>
+
+	  <para>
+      <emphasis>kpitch</emphasis> -- mise à l'échelle de la hauteur
+      (transposition).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode tabifd. Il utilise le fichier
+      <ulink url="examples/tabifd.csd"><citetitle>tabifd.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode tabifd.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/tabifd.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      L'exemple ci-dessus montre l'analyse <emphasis>tabifd</emphasis>
+      alimentant une resynthèse additive avec transposition de hauteur par
+      poursuite de partiel et phase cubique.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Août 2015</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau greffon dans la version 6</para>
+    <para>Août 2015</para>
+  </refsect1>
+</refentry>
