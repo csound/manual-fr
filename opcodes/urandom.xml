@@ -25,7 +25,7 @@ english cvs version=1.1
     <title>Description</title>
     <para>
       Opcodes de nombres vraiment aléatoires dans un intervalle contrôlable. Ces
-      unités ne fonctionnent que sous linux et utilisent /dev/urandom pour
+      unités ne fonctionnent que sous système de type Unix et utilisent /dev/urandom pour
       construire les valeurs aléatoires de Csound.
     </para>
   </refsect1>
@@ -60,7 +60,7 @@ english cvs version=1.1
       <para>
         L'algorithme produit 2<superscript>64</superscript> valeurs possibles
         différentes qui sont mises à l'échelle pour s'inscrire dans l'intervalle
-        demandé. Le hasard vient de la méthode usuelle /dev/urandom de Linux. Il
+        demandé. Le hasard vient de la méthode usuelle /dev/urandom de Linux/OSX. Il
         n'y a aucune garantie que ce soit vraiment aléatoire, mais il y a de
         grandes chances. Il ne produit pas de valeurs cycliques.
       </para>

@@ -61,58 +61,6 @@ english cvs version=1.17
   </refsect1>
 
   <refsect1>
-    <title>Exécution</title>
-    <refsect2 id="InstrSubinstrument">
-      <title>Appeler un Instrument depuis un Instrument</title>
-      <warning><para>
-        Ce comportement n'est pas complètement disponible dans Csound 5. Dans
-        Csound 5, il faut utiliser l'opcode
-        <link linkend="subinstr"><citetitle>subinstr</citetitle></link>.
-      </para></warning>
-      <para>
-        On peut appeler un instrument depuis un instrument comme si c'était un opcode soit au moyen de
-        l'opcode <link linkend="subinstr"><citetitle>subinstr</citetitle></link> soit en spécifiant un
-        instrument avec un nom textuel :
-
-        <informalexample>
-          <programlisting>
-<emphasis role="oblock">instr</emphasis> <command>MonOscil</command>
-...
-<emphasis role="oblock">endin</emphasis></programlisting>
-        </informalexample>
-      </para>
-
-      <para>
-        Par défaut, tous les paramètres de sortie correspondent aux sorties de l'instrument exprimées par
-        des opcodes de <link linkend="SigioOutput"><citetitle>sortie de signal</citetitle></link>.
-        Tous les paramètres d'entrée sont affectés aux p-champs de l'instrument appelé en commençant par
-        le quatrième, p4. Les valeurs des deuxième et troisième p-champs de l'instrument appelé, p2 et p3,
-        sont automatiquement fixés à la même valeur que ceux de l'instrument appelant.
-      </para>
-
-      <para>
-        Un instrument nommé doit être défini avant les instrument qui l'appellent.
-      </para>
-
-      <note>
-        <title>Conseils</title>
-        <para>
-          Si vous utiliser l'opcode <link linkend="outc"><citetitle>outc</citetitle></link>, vous pouvez
-          créer un instrument qui pourra être compilé et fontionner dans des orchestres avec n'importe quel
-          nombre de canaux plus grand au égal ou nombre de canaux de sortie de cet instrument.
-        </para>
-
-        <para>
-          Il est intéressant d'utiliser la fonctionnalité
-          <link linkend="include"><citetitle>&num;include</citetitle></link> avec les instruments nommés.
-          Vous pouvez définir vos instruments nommés dans des fichiers séparés, et utiliser &num;include lorsque
-          vous en avez besoin.
-        </para>
-      </note>
-    </refsect2>
-  </refsect1>
-
-  <refsect1>
     <title>Exemples</title>
     <para>
       Voici un exemple de l'opcode <emphasis>instr</emphasis>. Il utilise le fichier
@@ -120,7 +68,6 @@ english cvs version=1.17
 
       <example>
         <title>Exemple de l'opcode <emphasis>instr</emphasis>.</title>
-
         <para>Voir les sections
           <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
           <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour

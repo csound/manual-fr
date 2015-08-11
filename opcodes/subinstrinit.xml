@@ -47,15 +47,6 @@ english cvs version=1.7
     </para>
 
     <para>
-      Pour plus d'information sur la spécification des interfaces d'entrée et de
-      sortie, voir <link linkend="InstrSubinstrument"><citetitle>Appeler un
-      Instrument depuis un Instrument</citetitle></link>.
-    </para>
-  </refsect1>
-
-  <refsect1>
-    <title>Exécution</title>
-    <para>
       <emphasis>p4, p5, ...</emphasis> -- Valeurs d'entrée supplémentaires qui
       sont affectées aux p-champs de l'instrument appelé, en commençant par
       <emphasis>p4</emphasis>.
@@ -74,7 +65,6 @@ english cvs version=1.7
   <refsect1>
     <title>Voir aussi</title>
     <para>
-      <link linkend="InstrSubinstrument"><citetitle>Calling an Instrument within an Instrument</citetitle></link>,
       <link linkend="event"><citetitle>event</citetitle></link>,
       <link linkend="schedule"><citetitle>schedule</citetitle></link>,
       <link linkend="subinstr"><citetitle>subinstr</citetitle></link>
