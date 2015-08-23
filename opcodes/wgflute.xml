@@ -31,8 +31,8 @@ english cvs version=1.13
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>ares <command>wgflute</command> kamp, kfreq, kjet, iatt, idetk, kngain, kvibf, kvamp, ifn \
-      [, iminfreq] [, ijetrf] [, iendrf]</synopsis>
+    <synopsis>ares <command>wgflute</command> kamp, kfreq, kjet, iatt,
+    idetk, kngain, kvibf, kvamp [, ifn] [, iminfreq] [, ijetrf] [, iendrf]</synopsis>
   </refsect1>
  
   <refsect1>
@@ -48,8 +48,8 @@ english cvs version=1.13
     </para>
 
     <para>
-      <emphasis>ifn</emphasis> -- table contenant la forme du vibrato, habituellement
-      une table de sinusoïde, créée par une fonction
+      <emphasis>ifn</emphasis> -- table facultative contenant la forme du
+      vibrato, par défaut une table de sinus.
     </para>
 
     <para>
@@ -131,5 +131,6 @@ english cvs version=1.13
     </para>
 
     <para>Nouveau dans la version 3.47 de Csound</para>
+    <para><emphasis>ifn</emphasis> est devenu facultatif dans la version 6.06</para>
   </refsect1>
 </refentry>

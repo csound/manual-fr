@@ -64,6 +64,7 @@ english cvs version=1.12
     <para>
       <emphasis>ip4, ip5, ...</emphasis> -- Equivalent à p4, p5, etc., dans une
       <link linkend="i"><citetitle>instruction i</citetitle></link> de partition.
+      L'opcode accepte aussi des chaînes de caractères en p4-pN
     </para>
   </refsect1>
 
@@ -80,15 +81,7 @@ english cvs version=1.12
       Si la durée est nulle ou négative, le nouvel évènement est de type MIDI, et il
       hérite le sous-évènement de relachement (release) de l'instruction schedule.
     </para>
-    <note>
-      <para> Noter que l'opcode <emphasis>schedule</emphasis> ne peut pas accepter de
-      p-champs chaîne de caractère. Si vous devez passer des chaînes de caractère à
-      l'instanciation d'un instrument, utilisez l'opcode
-      <link linkend="scoreline"><citetitle>scoreline</citetitle></link> ou
-      <link linkend="scoreline_i"><citetitle>scoreline_i</citetitle></link>.</para>
-    </note>
   </refsect1>
-
 
   <refsect1>
     <title>Exemples</title>
