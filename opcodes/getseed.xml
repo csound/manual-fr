@@ -1,0 +1,58 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="getseed">
+  <indexterm id="IndexGetseed"><primary>getseed</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Random (Noise) Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>getseed</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>getseed</refname>
+
+    <refpurpose>
+      Lit la valeur globale de la graine.
+    </refpurpose> 
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne la valeur globale de la graine utilisée pour tous les
+      <emphasis>générateurs de bruit de classe x</emphasis. 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ians<command>getseed</command></synopsis>
+    <synopsis>kans<command>getseed</command></synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Lit la valeur globale de la graine du générateur interne de nombres
+      pseudo aléatoires.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Université de Bath/NUIM/Codemist Ltd.</member>
+        <member>Bath, UK</member>
+        <member>Août 2015</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans Csound6.06</para>
+  </refsect1>
+</refentry>
