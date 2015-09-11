@@ -61,9 +61,12 @@ english cvs version=
     </para>
 
     <para>
-      <emphasis>kthresh</emphasis> -- seuil d'analyse. Les pistes de niveau
-      inférieur à <emphasis>ktresh*max_magnitude</emphasis> seront ignorées
-      (1 &gt; <emphasis>ktresh</emphasis> &gt;= 0).
+      <emphasis>kthresh</emphasis> -- seuil d'analyse, compris entre -1 et 1.
+      S'il n'est pas négatif, le seuil d'analyse est relatif à la magnitude
+      maximale dans chaque trame d'analyse (<emphasis>ktresh *
+      max_magnitude</emphasis>). S'il est négatif, la valeur de seuil maximale
+      est relative à 0dbfs (<emphasis>ktresh * 0dbfs)</emphasis>. Les
+      pistes de niveau inférieur au seuil sont ignorées.
     </para>
 
     <para>
