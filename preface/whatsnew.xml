@@ -75,6 +75,252 @@ english cvs version=
     </itemizedlist>
   </para>-->
 
+  <bridgehead>Notes de parution de Csound 6.06 (septembre 2015)</bridgehead>
+  <para>
+    <itemizedlist>
+      <listitem>
+        <para>Nouveau opcodes :
+          <itemizedlist>
+            <listitem>
+              <simpara>getseed lit l'état du générateur PRN à l'opposé de
+              l'opcode seed.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>tabifd — Distribution de Fréquence Instantanée, analyse
+              en phase et magnitude.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>websocket — Lecture et écriture de signaux et de tableaux
+              au moyen d'une connexion websocket.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>framebuffer — Lit des signaux audio dans des tableaux
+              unidimensionnels de taux-k et vice-versa avec une taille de
+              tampon spécifiée.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>olabuffer — additionne des trames audio tuilées dans
+              des tableaux de taux-k et retourne un signal audio.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Orchestre :
+          <itemizedlist>
+            <listitem>
+              <simpara>Les étiquettent sont permises dans l'instrument 0.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Partition :
+          <itemizedlist>
+            <listitem>
+              <simpara>La taille maximale des chaînes de caractères dans les
+              partitions a été augmentée à 1024.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Opcodes et Gens modifiés :
+          <itemizedlist>
+            <listitem>
+              <simpara>La version tableau de diskin2 utilise la taille du tableau
+              pour donner le nombre de canaux dans le format de fichier brut.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>La f-table de vibrato dans wgflute et dans wgcar est
+              facultative, étant définie par défaut sur une onde sinus.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>schedule accepte maintenant les arguments chaîne de
+              caractères.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>urandom est maintenant disponible sur les plates-formes
+              OSX.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>GEN18 avait un problème de délimitations ; réécriture importante.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Dans la famille des opcodes poscil il est possible de passer
+              la phase d'initialisation.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>svfilter peut maintenant passer l'initialisation.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Lors de l'ouverture d'un fichier d'entrée, nchncls_i est
+              utilisé à la place de nchnls.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Le module rtjack rapporte maintenant le taux d'échantillonnage.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Les opcodes rfft, rifft, fft, fftinv, r2c et c2r ont
+              maintenant des versions de taux-i.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Nouveau paramètre facultatif de seuil dans les opcodes tradsyn,
+              sinsyn et resyn.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Nouvelle option de seuil pour partials.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Utilités :
+          <itemizedlist>
+            <listitem>
+              <simpara>L'extraction a été corrigée.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>src_conv a été amélioré et intégré dans les options -U.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Corrections dans atsa et heti.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Frontaux :
+          <itemizedlist>
+            <listitem>
+              <simpara>pnacl :</simpara>
+              <itemizedlist>
+                <listitem>
+                  <simpara>Support du taux d'échantillonnage fixe de 48000 Hz.</simpara>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+            <listitem>
+              <simpara>csound~ :</simpara>
+              <itemizedlist>
+                <listitem>
+                  <simpara>Changements dans le système de processus légers.
+                  L'initialisation du canal de chaînes de caractères a été
+                  corrigée. D'autres bogues ont également été corrigés.</simpara>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+            <listitem>
+              <simpara>Emscripten :</simpara>
+              <itemizedlist>
+                <listitem>
+                  <simpara>L'objet Javascript Csound peut maintenant recevoir
+                  des données de l'opcode outvalue.</simpara>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+            <listitem>
+              <simpara>HTML5 :</simpara>
+              <itemizedlist>
+                <listitem>
+                  <simpara>Integration d'HTML, de JavaScript et d'autres éléments
+                  d'HTML5 dans Csound, soit en insérant une page web comme élément
+                  &lt;html&gt; dans un fichier CSD pour CsoundQt ou Csound
+                  pour Android, soit en intégrant Csound dans le contexte JavaScript
+                  d'un navigateur web autonome (Emscripten, PNaCl) ou embarqué
+                  (csound.node).</simpara>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Utilisation générale :
+          <itemizedlist>
+            <listitem>
+              <simpara>Les macros malformées dans un orchestre sont maintenant
+              interceptées.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Bogues corrigés :
+          <itemizedlist>
+            <listitem>
+              <simpara>L'utilisation de variables d'environnement dans le style
+              de Windows pour INCDIR, etc, fonctionnent maintenant avec les
+              numéros de périphériques.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Opcode vibrato corrigé.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Les clics en cas d'échantillonnage de précision en temps
+              réels ont été corrigés.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>La copie de chaînes de caractères est maintenant correcte ;
+              il y avait parfois des erreurs mémoire.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Boque dans pvstanal a été corrigé.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Erreur d'arrondi dans cpspch corrigée.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Plus de plantage lors de la recompilation d'un instrument
+              nommé.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Correction du bogue d'interpolation dans tablexkt.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Correction dans plltrack lorsque ksmps vaut 1.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Changements système :
+          <itemizedlist>
+            <listitem>
+              <simpara>Le message d'erreur du greffon STK est maintenant un
+              avertissement.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>API :
+          <itemizedlist>
+            <listitem>
+              <simpara>Correction de la redéfinition des opcodes et des UDOs.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Changements sur les plates-formes :
+          <itemizedlist>
+            <listitem>
+              <simpara>OSX.</simpara>
+              <itemizedlist>
+                <listitem>
+                  <simpara>csnd6.jar a été ajouté à l'installeur.</simpara>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+
   <bridgehead>Notes de parution de Csound 6.05 (Avril 2015)</bridgehead>
   <para>Comme toujours il y a de nouvelles facilités et de nombreuses
   corrections de bogues. Une grande partie de cette livraison consiste en la
@@ -305,7 +551,7 @@ english cvs version=
       </listitem>
       <listitem>
         <para>
-          Changement sur les plates-formes :
+          Changements sur les plates-formes :
           <itemizedlist>
             <listitem>
               <simpara>iOS.</simpara>
