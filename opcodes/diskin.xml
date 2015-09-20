@@ -32,13 +32,13 @@ english cvs version=1.24
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>ar1 [, ar2 [, ar3 [, ... arN]]] <command>diskin</command> ifilcod, kpitch [, iskiptim] \
-      [, iwraparound] [, iformat] [, iskipinit]</synopsis>
+    <synopsis>ar1 [, ar2 [, ar3 [, ... arN]]] <command>diskin</command> ifilcod[, kpitch[, iskiptim \
+      [, iwraparound[, iformat[, iskipinit]]]]]</synopsis>
     <para>Noter que N valait 24 dans les versions antérieures à la 5.14 et qu'il
       vaut maintenant 40.</para>
 
-    <synopsis>ar1[] <command>diskin</command> ifilcod, kpitch[, iskiptim \
-      [, iwraparound] [, iformat] [, iskipinit]</synopsis>
+    <synopsis>ar1[] <command>diskin</command> ifilcod[, kpitch[, iskiptim] \
+      [, iwraparound[, iformat[, iskipinit]]]]]</synopsis>
     <para>(dans cette version, le nombre de canaux de sortie n'est pas limité.)</para>
   </refsect1>
 
@@ -149,7 +149,7 @@ english cvs version=1.24
       <emphasis>kpitch</emphasis> -- N'importe quel nombre réel. Un nombre négatif
       signifie une restitution à l'envers. Ce nombre est un rapport de hauteur où :
       <itemizedlist>
-        <listitem><para><emphasis>1</emphasis> = hauteur normale</para></listitem>
+        <listitem><para><emphasis>1</emphasis> = hauteur normale (par défaut)</para></listitem>
         <listitem><para><emphasis>2</emphasis> = 1 octave plus haut</para></listitem>
         <listitem><para><emphasis>3</emphasis> = 12ème plus haut, etc.</para></listitem>
         <listitem><para><emphasis>.5</emphasis> = 1 octave plus bas</para></listitem>

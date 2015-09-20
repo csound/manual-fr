@@ -39,14 +39,14 @@ english cvs version=1.15
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>a1[, a2[, ... aN]] <command>diskin2</command> ifilcod, kpitch[, iskiptim \
-      [, iwrap[, iformat [, iwsize[, ibufsize[, iskipinit]]]]]]</synopsis>
+    <synopsis>a1[, a2[, ... aN]] <command>diskin2</command> ifilcod[, kpitch[, iskiptim \
+      [, iwrap[, iformat[, iwsize[, ibufsize[, iskipinit]]]]]]]</synopsis>
       <emphasis>diskin2</emphasis> offre plus de contrôle et une meilleure
       qualité de son que <emphasis>diskin</emphasis> mais au prix d'une
       utilisation plus intensive des ressources CPU.
 
-    <synopsis>ar1[] <command>diskin2</command> ifilcod, kpitch[, iskiptim \
-      [, iwrap[, iformat [, iwsize[, ibufsize[, iskipinit]]]]]]</synopsis>
+    <synopsis>ar1[] <command>diskin2</command> ifilcod[, kpitch[, iskiptim \
+      [, iwrap[, iformat[, iwsize[, ibufsize[, iskipinit]]]]]]]</synopsis>
 
     <para> (dans la version de la sortie dans un tableau, le nombre de canaux
     de sortie n'a pas de limite supérieure.)</para>
@@ -247,7 +247,8 @@ english cvs version=1.15
 	<para>
 	<emphasis>kpitch</emphasis> -- transpose la hauteur du son en entrée par ce facteur
     (par exemple 0.5 signifie une octave plus bas, 2 une octave plus haut, et 1
-    la hauteur originale). Des valeurs fractionnaires et négatives sont permises
+    la hauteur originale, qui est la valeur par défaut). Des valeurs fractionnaires
+    et négatives sont permises
     (les dernières provoquant une lecture à l'envers, cependant, dans ce cas,
     <emphasis>iskiptim</emphasis> doit prendre une valeur positive, par exemple
     la longueur du fichier, ou bien <emphasis>iwrap</emphasis> doit être non nul,
