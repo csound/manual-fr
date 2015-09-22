@@ -135,6 +135,10 @@ english cvs version=
               pour donner le nombre de canaux dans le format de fichier brut.</simpara>
             </listitem>
             <listitem>
+              <simpara>Le paramètre kpitch de diskin2 vaut 1 par défaut pour
+              les utilisations simples.</simpara>
+            </listitem>
+            <listitem>
               <simpara>La f-table de vibrato dans wgflute et dans wgcar est
               facultative, étant définie par défaut sur une onde sinus.</simpara>
             </listitem>
@@ -158,7 +162,8 @@ english cvs version=
             </listitem>
             <listitem>
               <simpara>Lors de l'ouverture d'un fichier d'entrée, nchncls_i est
-              utilisé à la place de nchnls.</simpara>
+              utilisé à la place de nchnls. C'est un changement qui aurait du
+              suivre l'existence de nchnls_i.</simpara>
             </listitem>
             <listitem>
               <simpara>Le module rtjack rapporte maintenant le taux d'échantillonnage.</simpara>
@@ -313,7 +318,13 @@ english cvs version=
               <simpara>OSX.</simpara>
               <itemizedlist>
                 <listitem>
-                  <simpara>csnd6.jar a été ajouté à l'installeur.</simpara>
+                  <simpara>Le lien sur csnd6.jar a été installé au bon endroit.</simpara>
+                </listitem>
+                <listitem>
+                  <simpara>Les problèmes de liaison avec Java JNI sont résolus.</simpara>
+                </listitem>
+                <listitem>
+                  <simpara>Le nom du lien pour libpng dans libfltk_image a été corrigé.</simpara>
                 </listitem>
               </itemizedlist>
             </listitem>
