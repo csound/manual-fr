@@ -4,10 +4,8 @@
 
 <!--translated=yes
 authors=Francois Pinot
-english cvs version=
 // translated field can be yes, no or partially
 // Add your name to the existing list of authors
-// Add the version number of the file you are translating from the english version number on cvs
 // *** Please remember to keep this information up to date! ***
 -->
 
@@ -267,8 +265,8 @@ english cvs version=
 <!ENTITY opcodeschnexport SYSTEM "opcodes/chnexport.xml">
 <!ENTITY opcodeschnget SYSTEM "opcodes/chnget.xml">
 <!ENTITY opcodeschnparams SYSTEM "opcodes/chnparams.xml">
-<!ENTITY opcodeschnrecv SYSTEM "opcodes/chnrecv.xml">
-<!ENTITY opcodeschnsend SYSTEM "opcodes/chnsend.xml">
+<!--<!ENTITY opcodeschnrecv SYSTEM "opcodes/chnrecv.xml">
+<!ENTITY opcodeschnsend SYSTEM "opcodes/chnsend.xml">-->
 <!ENTITY opcodeschnset SYSTEM "opcodes/chnset.xml">
 <!ENTITY opcodeschnmix SYSTEM "opcodes/chnmix.xml">
 <!ENTITY opcodeschnclear SYSTEM "opcodes/chnclear.xml">
