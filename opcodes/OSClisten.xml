@@ -52,10 +52,12 @@ english cvs version=1.10
     <para>
       <emphasis>itype</emphasis> -- une chaîne de caractères indiquant le type
       des arguments optionnels à lire. La chaîne peut contenir les caractères
-      "cdfhis" qui signifient caractère, double, flottant, entier sur 64 bit,
-      entier sur 32 bit et chaîne de caractères. Tous les types sauf 's'
-      nécessitent une variable de taux-k, tandis que 's' nécessite une variable
-      chaîne de caractères.
+      "acdfhisAG" qui signifient audio, caractère, double, flottant, entier sur
+      64 bit, entier sur 32 bit, chaîne de caractères, tableau scalaire et
+      f-table. Tous les types sauf 'asA' nécessitent une variable de taux-k ;
+      's' nécessite une variable chaîne de caractères, 'a' une variable audio et
+      'A' un tableau de taux-i ou de taux-k. Pour le type 'G' on peut utiliser
+      une variable ou une constante.
     </para>
 
     <para>
@@ -81,7 +83,8 @@ english cvs version=1.10
       recoivent les valeurs en entrée, selon l'interpétration du
       paramètre <emphasis>itype</emphasis>. Noter que bien que les variables
       <emphasis>xdata</emphasis> soient situées à droite de l'opérateur, ce
-      sont des sorties, et elles doivent donc être des variables k, gk, S ou gS,
+      sont des sorties, et elles doivent donc être des variables de type a, ga,
+      k, gk, S, gS, k[] ou gk[]
       et peut-être nécessiter une déclaration avec <emphasis>init</emphasis>
       ou = dans le cas des variables chaîne de caractères, avant l'appel à
       <emphasis>OSClisten</emphasis>.
@@ -171,5 +174,6 @@ ex:
         <member>Exemples par David Akbari, &nameandres; et Jonathan Murphy 2007</member>
       </simplelist>
     </para>
+    <para>Les types aAG sont nouveaux dans in Csound 6.07</para>
   </refsect1>
 </refentry>

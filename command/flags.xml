@@ -1415,6 +1415,11 @@ csound5:output2             (reproduction droite)</screen>
             <listitem><para>pas de NUM, montrer seulement les noms</para></listitem>
             <listitem><para>NUM = 0, montrer seulement les noms</para></listitem>
             <listitem><para>NUM = 1, montrer les arguments de chaque opcode dans le format &lt;nomop&gt; &lt;argssortie&gt; &lt;argsentrée&gt;</para></listitem>
+            <listitem><para>NUM = 2, montrer les noms y compris ceux qui sont
+              obsolètes</para></listitem>
+            <listitem><para>NUM = 3, montrer les arguments pour chaque opcode,
+              y compris pour ceux qui sont obsolètes, en utilisant le format
+              &lt;opname&gt; &lt;outargs&gt; &lt;inargs&gt;</para></listitem>
           </itemizedlist>
         </para>
       </listitem>

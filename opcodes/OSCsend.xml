@@ -31,7 +31,7 @@ english cvs version=1.10
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis><command>OSCsend</command> kwhen, ihost, iport, idestination, itype [, kdata1, kdata2, ...]</synopsis>
+    <synopsis><command>OSCsend</command> kwhen, ihost, iport, idestination, itype [, xdata1, xdata2, ...]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -57,9 +57,9 @@ english cvs version=1.10
     <para>
       <emphasis>itype</emphasis> -- une chaîne de caractères indiquant le
       type des arguments facultatifs qui sont lus au taux-k. La chaîne peut
-      contenir les caractères "bcdfilmst" pour booléen, caractère, double,
-      flottant, entier sur 32 bit, entier sur 64 bit, MIDI, chaîne de
-      caractères et repère temporelle.
+      contenir les caractères "abcdfilmstAG" pour audio, booléen, caractère,
+      double, flottant, entier sur 32 bit, entier sur 64 bit, MIDI, chaîne de
+      caractères, repère temporel, tableau de taux-k et f-table.
     </para>
 
   </refsect1>
@@ -72,8 +72,8 @@ english cvs version=1.10
     </para>
 
     <para>
-      Les données proviennent des valeurs de taux-k qui suivent la chaîne de
-      formatage. De même que pour le format dans printf, la série de
+      Les données proviennent des valeurs de taux-k ou de taux-a qui suivent la
+      chaîne de formatage. De même que pour le format dans printf, la série de
       caractères détermine l'interprétation des arguments. Noter qu'un
       repère temporel prend deux arguments.
     </para>
@@ -122,5 +122,8 @@ english cvs version=1.10
         <member>2005</member>
       </simplelist>
     </para>
+    <para>Les types de données a, A et G ont été ajoutés dans la version 6.07 ;
+    ils envoient les données via des blobs et ne sont réellement utiles qu'aux
+    autres instances de Csound ou à des écouteurs particuliers.</para>
   </refsect1>
 </refentry>

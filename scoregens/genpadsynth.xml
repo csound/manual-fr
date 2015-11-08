@@ -21,45 +21,102 @@ authors=Francois Pinot
   <refsect1>
     <title>Description</title>
     <para>
-      Crée une ftable pour utilisation dans un oscillateur, avec des valeurs
-      générées par l'algorithme padsynth.
+      L'algorithme "padsynth" de Paul Octavian Nasca ajoute une largeur de bande
+      à chaque partiel d'une forme d'onde périodique. Cette largeur de bande est
+      entendue comme couleur, mouvement et enrichissement du son.
     </para>
+    <para>
+      D'abord la forme d'onde est définie par l'utilisateur comme une série
+      d'harmoniques. Puis une largeur de bande est ajoutée en étalant
+      indépendamment chaque partiel de la forme d'onde originale depuis une
+      fréquence vers ses voisines en suivant une fonction "profil" : une courbe
+      gaussienne, une fonction carrée ou une exponentielle croissante puis
+      décroissante.
+    </para>
+    <para>
+      On peut considérer les partiels de la forme d'onde originale comme des
+      échantillons dans une transformée de Fourier discrète de la forme d'onde.
+      Normalement il n'y a pas de correspondance exacte point à point entre les
+      fréquences des échantillons (bins de fréquence) de la transformée de
+      Fourier discrète et les fréquences des harmoniques de la forme d'onde
+      originale, car toute fréquence dans l'inverse de la transformée de
+      Fourier discrète pourrait être synthétisée par interférence entre
+      n'importe quel nombre de bins. Cependant, l'algorithme padsynth utilise
+      une petite astuce pour créer cette correspondance. La transformée de
+      Fourier discrète est simplement rendue si grande que la fréquence de
+      chaque harmonique de la forme d'onde originale sera très proche de la
+      fréquence du bin correspondant dans la transformée de Fourier. Une fois
+      cette correspondance créée, le profil de largeur de bande peut être
+      appliqué en le centrant sur le bin de fréquence de l'harmonique original,
+      en pondérant le profil par la largeur de bande et en multipliant
+      simplement l'harmonique original par chaque échantillon du progil et en
+      ajoutant le produit au bin correspondant de la transformée de Fourier.
+    </para>
+    <para>
+      Plus les fréquences des harmoniques augmentent, plus leur largeur de
+      bande peut augmenter de manière facultative ou (moins souvent) diminuer.
+    </para>
+    <para>
+      Une fois les harmoniques étalés de cette manière, la transformée de
+      Fourier discrète peut recevoir des phases aléatoires et est ensuite
+      simplement inversée pour synthétiser la forme d'onde désirée, que l'on
+      peut utiliser comme table d'onde d'un oscillateur numérique.
+    </para>
+    <para>
+      Nota bene : la taille de la table de fonction ne reflète pas nécessairement
+      une période de la forme d'onde qu'elle contient. La fréquence fondamentale
+      doit être utilisée pour générer la hauteur désirée par un oscillateur
+      utilisant la table de fonction, par exemple
+    </para>
+    <code>
+    oscillator_hz = desired_hz * (sr / padsynth_size / fundamental_hz)
+    </code>
   </refsect1>
+
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis><command>f</command> # time size "padsynth" fundamentalFrq
-    partialBW partial_Scale harmonicStretch hampl1, hampl2, ...</synopsis>
+    <synopsis><command>f</command> # score_time table_size "padsynth" fundamental_frequency
+    partial_bandwidth partial_scale harmonic_stretch profile_shape profile_shape_parameter
+    partial1_amplitude [partial2_amplitude ...]</synopsis>
   </refsect1>
- 
+
   <refsect1>
     <title>Initialisation</title>
     <para>
-      <emphasis>size</emphasis> -- nombre de points dans la table. Doit être
-      une puissance de 2 plus 1 (voir <link
-      linkend="f"><citetitle>Instruction f</citetitle></link>).
+      <emphasis>table_size</emphasis> -- Taille de la table de fonction. Doit
+      être grande, par exemple 2<superscript>18</superscript> == 262144. Doit
+      être une puissance de 2 ou une puissance de 2 plus 1 (voir
+      l'<link linkend="f"><citetitle>instruction f</citetitle></link>).
     </para>
     <para>
-      <emphasis>fundamentalFrq</emphasis> -- fréquence fondamentale pour la
-      table générée.
+      <emphasis>fundamental_frequency</emphasis> -- fréquence fondamentale pour
+      la table générée.
     </para>
     <para>
-      <emphasis>partialBW</emphasis> -- largeur de bande pour chaque partiel
-      en cents.
+      <emphasis>partial_bandwidth</emphasis> -- largeur de bande de chaque
+      partiel en cents.
     </para>
     <para>
-      <emphasis>partialScale</emphasis> -- taux d'augmentation de la bande
-      passante en fonction du numéro d'harmonique.
+      <emphasis>partial_scale</emphasis> -- facteur de pondération pour la
+      largeur de bande de chaque partiel (log de l'augmentation/diminution
+      avec la fréquence d'harmonique, 0 signifiant pas d'étirement ni de
+      compression).
     </para>
     <para>
-      <emphasis>harmonicStretchScale</emphasis> -- taux d'expension des
-      harmoniques.
+      <emphasis>harmonic_stretch</emphasis> -- Etirement/compression harmonique
+      pour tous les partiels (1 est harmonique).
     </para>
     <para>
-      <emphasis>hamp1, hamp2, ...</emphasis> -- amplitudes relatives des
-      partiels.
+      <emphasis>profile_shape</emphasis> -- Nombre indiquant la forme du profil
+      de largeur de bande : 1 = gaussien, 2 = carré et 3 = exponentiel.
     </para>
     <para>
-      La table est remplie d'échantillons pour utilisation dans un oscillateur.
+      <emphasis>profile_shape_parameter</emphasis> -- Paramètre passé à la
+      fonction générant la forme du profil, par exemple un exposant.
+    </para>
+    <para>
+      <emphasis>partial1_amplitude, partial2_amplitude, ...</emphasis> -- 
+      Amplitudes pour chaque harmonique (peut valoir zéro).
     </para>
   </refsect1>
 
