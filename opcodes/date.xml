@@ -28,21 +28,35 @@ english cvs version=1.3
       l'horloge du système d'exploitation. La base est le 1<superscript>er</superscript>
       janvier 1970 pour la version de Csound utilisant des nombres flottants en
       double précision et le 1<superscript>er</superscript> janvier 2010 pour les
-      versions utilisant des nombres flottants en simple précision. 
+      versions utilisant des nombres flottants en simple précision.
+      Sur les systèmes d'exploitation ayant une résolution suffisante, la
+      date comprend les fractions de secondes.
     </para>
   </refsect1>
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>ir <command>date</command></synopsis>
+    <synopsis>ir[, inano] <command>date</command></synopsis>
+    <synopsis>kr[, knano] <command>date</command></synopsis>
   </refsect1>
 
   <refsect1>
-    <title>Initialisation</title>
-
+    <title>Initialisation et exécution</title>
     <para>
       <emphasis>ir</emphasis> -- valeur en secondes à l'initialisation de la note,
       de l'horloge système depuis le début de l'epoch.
+    </para>
+    <para>
+      <emphasis>kr</emphasis> -- valeur en secondes durant une période de
+      contrôle, de l'horloge système depuis le début de l'epoch.
+    </para>
+    <para>
+      <emphasis>inano</emphasis> -- valeur en nanosecondes à l'initialisation
+      depuis la dernière seconde.
+    </para>
+    <para>
+      <emphasis>knano</emphasis> -- valeur en nanosecondes durant une
+      période de contrôle depuis la dernière seconde.
     </para>
   </refsect1>
 
@@ -51,6 +65,10 @@ english cvs version=1.3
       Noter que la date de base était à l'origine 1970, mais depuis la version
       5.14 elle a été changée pour les nombres flottants en simple précision car
       ceux-ci sont insuffisants pour indiquer les changements.
+    </para>
+    <para>
+      La réponse facultative avec une résolution comprenant les fractions
+      de seconde a été introduite dans la version 6.07.
     </para>
   </refsect1>
 
@@ -67,9 +85,10 @@ english cvs version=1.3
 
       Sa sortie contiendra des lignes comme celles-ci :
       <screen>
-instr 1:  ii = 1165665152.000
-Sat Dec  9 11:52:32 2006
-Sat Dec  9 11:51:46 2006
+instr 1:  ii = 1447337826.778
+instr 1:  ij = 778279830.000
+Thu Nov 12 14:17:07 2015
+Thu Nov 12 14:17:06 2015
 Thu Jan  1 01:00:01 1970</screen>
     </para>
   </refsect1>
