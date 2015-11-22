@@ -18,32 +18,37 @@ english cvs version=1.2
  <ulink url="http://csounds.com">http://csounds.com</ulink>.</para>
  
   <para>Le code source de Csound est maintenu par John ffitch et d'autres à
-    <ulink url="http://www.sourceforge.net/projects/csound">http://www.sourceforge.net/projects/csound</ulink>.
+    <ulink url="https://github.com/csound">https://github.com/csound</ulink>.
     Les versions les plus récentes et les paquetages précompilés pour la plupart des plates-formes peuvent
     être téléchargés <ulink url="http://sourceforge.net/project/showfiles.php?group_id=81968">ici</ulink>.
   </para>
 
-  <para>Il existe une liste de diffusion Csound pour discuter de Csound. Elle est animée par John ffitch
-    de Bath University, UK. Pour vous inscrire sur cette liste de diffusion envoyez un message vide à :
-    <ulink url="mailto:csound-subscribe@lists.bath.ac.uk">csound-subscribe@lists.bath.ac.uk</ulink>.
-    Vous pouvez aussi souscrire à la version condensée (1 message par jour) en envoyant un message vide à :
-    <ulink url="mailto:csound-digest-subscribe@lists.bath.ac.uk">csound-digest-subscribe@lists.bath.ac.uk</ulink>.
-    Les messages envoyés à <ulink url="mailto:csound@lists.bath.ac.uk">csound@lists.bath.ac.uk</ulink>
-    sont distribués à tous les membres de la liste. On peut parcourir les archives de la liste de
+  <para>Il existe une liste de diffusion pour discuter de Csound. Elle est animée par John ffitch
+    et Victor Lazzarini de l'université de Maynooth en Irlande. Pour vous inscrire sur cette liste de diffusion envoyez un mél à :
+    <ulink url="mailto:listserv@listserv.heanet.ie">listserv@heanet.ie</ulink> avec "subscribe csound"
+    dans le corps du message.
+    Vous pouvez aussi souscrire à la version condensée (1 message par jour) en envoyant un message à :
+    <ulink url="mailto:listserv@listserv.heanet.ie">listserv@listserv.heanet.ie</ulink> avec 
+    "subscribe csound set digest" dans le corps du message.
+    Les messages envoyés à <ulink url="mailto:csound@listserv.eanet.ie">csound@listserv.heanet.ie</ulink>
+    sont distribués à tous les membres de la liste.
+    <!--On peut parcourir les archives de la liste de
     diffusion de Csound <ulink url="http://agentcities.cs.bath.ac.uk/%7ebwillkie/list_arch.php">ici</ulink>.
+    -->
   </para>
 
   <para>De même, la liste de diffusion <literal>Csound-devel</literal> existe pour discuter du développement
     de Csound. Pour plus d'information sur cette liste, aller à
-    <ulink url="http://lists.sourceforge.net/lists/listinfo/csound-devel">http://lists.sourceforge.net/lists/listinfo/csound-devel</ulink>.
+    <ulink url="http://listserv.heanet.ie/">http://listserv.heanet.ie</ulink> et suivez le
+    lien vers csound-dev.
     Les messages envoyés à
-    <ulink url="mailto:csound-devel@lists.sourceforge.net">csound-devel@lists.sourceforge.net</ulink>
+    <ulink url="mailto:csound-dev@listserv.heanet.ie">csound-dev@listserv.heanet.ie</ulink>
     vont à tous les membres de la liste.
   </para>
 
-<!--  <para>Les suspicions de bogues dans le code peuvent être soumises par le biais du syst&egrave;me de tra&ccedil;age de
-    bogues au
-    <ulink url="http://sourceforge.net/tracker/?group_id=81968&amp;atid=564599">Sourceforge bug tracker</ulink>.
-  </para>-->
+  <para>Les suspicions de bogues dans le code peuvent être soumises par le biais du système de traçage de
+    bogues sur
+    <ulink url="https://github.com/csound/csound/issues">github</ulink>.
+  </para>
 
 </chapter>
