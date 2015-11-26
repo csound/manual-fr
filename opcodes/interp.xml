@@ -30,16 +30,15 @@ english cvs version=1.12
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>ares <command>interp</command> ksig [, iskip] [, imode]</synopsis>
+    <synopsis>ares <command>interp</command> ksig [, iskip] [, imode] [, ivalue]</synopsis>
   </refsect1>
  
   <refsect1>
     <title>Initialisation</title>
     <para>
-      <emphasis>iskip</emphasis> (facultatif) -- état initial de l'espace
-      mémoire interne (voir
-      <link linkend="reson"><citetitle>reson</citetitle></link>). La valeur par
-      défaut est 0.
+      <emphasis>iskip</emphasis> (facultatif, 0 par défaut) -- s'il n'est pas nul, l'initialisation
+      de l'espace mémoire interne est ignorée (voir
+      <link linkend="reson"><citetitle>reson</citetitle></link>).
     </para>
 
     <para>
@@ -88,6 +87,11 @@ english cvs version=1.12
  |
         </literallayout>
       </example>
+    </para>
+    <para>
+      <emphasis>ivalue</emphasis> (facultatif, 0 par défaut) -- valeur initiale
+      si à la fois <emphasis>imode</emphasis> et <emphasis>iskip</emphasis>
+      valent zéro.
     </para>
   </refsect1>
  
