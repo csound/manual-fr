@@ -26,13 +26,14 @@ english cvs version=
     <title>Description</title>
     <para>
       Crée un vecteur (tableau unidimensionnel de taux-k) à partir d'une suite
-      de nombres.
+      de valeurs numériques ou alphanumériques.
     </para>
   </refsect1>
 
   <refsect1>
     <title>Syntaxe</title>
     <synopsis>karray[] <command>fillarray</command> ival1, ival2,.....ivaln</synopsis>
+    <synopsis>karray <command>fillarray</command> ival1, ival2,.....ivaln</synopsis>
   </refsect1>
 
   <refsect1>
@@ -40,6 +41,9 @@ english cvs version=
     <para>
       <emphasis>ival1,...ivaln</emphasis> -- valeurs à placer dans le vecteur.
     </para>
+    <para>
+      Sous la secondes forme, le tableau retourné doit être prédéclaré et ça
+      peut être un tableau multidimensionnel qui sera rempli ligne par ligne.
   </refsect1>
 
  <refsect1>
