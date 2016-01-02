@@ -44,7 +44,13 @@ english cvs version=1.8
       <emphasis>kvar1 [, kvar2,..., kvarN]</emphasis> - variables de taux-k dont
       les changements sont surveillés.
     </para> 
-
+    <para>
+      <note>
+        Si chaque kvar est différente de zéro lors du premier cycle-k de l'appel
+        de <emphasis>changed</emphasis>, un changement sera rapporté. Pour un
+        comportement plus cohérent, utiliser <emphasis>changed2</emphasis>.
+      </note>
+    </para>
   </refsect1>
 
   <refsect1>
