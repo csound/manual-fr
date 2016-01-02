@@ -1,0 +1,106 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="changed2">
+<indexterm id="IndexChanged2"><primary>changed2</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>changed2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>changed2</refname>
+    <refpurpose>
+      Détecteur de changement d'un signal de taux-k.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode renvoie un signal de déclenchement indiquant tout changement
+      d'un de ses arguments de taux-k ou d'une valeur dans un tableau. Utile
+      avec les widgets valuateurs ou les contrôleurs MIDI.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ktrig <command>changed2</command> kvar1 [, kvar2,..., kvarN]</synopsis>
+    <synopsis>ktrig <command>changed2</command> karr[]</synopsis>
+    <synopsis>ktrig <command>changed2</command> aarr[]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ktrig</emphasis> - Renvoie la valeur 1 lorsqu'un des signaux de
+      taux-k ou qu'une valeur du tableau a changé, sinon renvoie la valeur 0.
+    </para>
+    <para>
+      <emphasis>kvar1 [, kvar2,..., kvarN]</emphasis> - variables de taux-k dont
+      les changements sont surveillés.
+    </para>
+
+    <para>
+      <emphasis>xarray</emphasis> - n'importe quel type de tableau.
+    </para>
+    <para>
+      Au contraire de l'opcode <emphasis>changed</emphasis> cet opcode ne rapporte
+      jamais le premier cycle comme un changement.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode changed2. Il utilise le fichier
+      <ulink url="examples/changed2.csd"><citetitle>changed2.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode changed2.</title>
+        <xi:include href="examples-xml/changed2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Sa sortie contiendra des lignes comme celles-ci:
+      <screen>
+ i   1 time     0.00267:     0.00000
+ i1     0.00000
+ i1     1.00000
+ i1     0.00000
+ i   1 time     0.20267:     1.00000
+ i   1 time     0.40267:     1.00000
+ i1     1.00000
+ i1     0.00000
+ i   1 time     0.60267:     1.00000
+ i   1 time     0.80267:     1.00000
+ i1     1.00000
+ i1     0.00000
+ i   1 time     1.00000:     0.00000
+ i1     1.00000
+ i1     0.00000
+ i   1 time     1.20267:    -1.00000
+ i   1 time     1.40267:    -1.00000
+ i1     1.00000
+ i1     0.00000
+ i   1 time     1.60267:    -1.00000
+ i   1 time     1.80000:    -1.00000
+ i1     1.00000
+ i1     0.00000
+ i   1 time     2.00000:    -0.00000
+ i1     1.00000
+ i1     0.00000
+ .........</screen>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par &namegabriel;.</para>
+    <para>Exemple écrit par &nameandres;.</para>
+    <para>Nouveau dans Csound 5. (N'était disponible auparavant que dans CsoundAV)</para>
+  </refsect1>
+</refentry>
+

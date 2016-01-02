@@ -1,0 +1,117 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ftsamplebank">
+<indexterm id="Indexftsamplebank"><primary>chnget</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Software Bus</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ftsamplebank</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ftsamplebank</refname>
+    <refpurpose>
+      Lit les fichiers son d'un répertoire.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Lit les fichiers son d'un répertoire et les charge dans une série de
+      table de fonction GEN01. 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>iNumberOfFile <command>ftsamplebank</command> SDirectory, iFirstTableNumber, iTrigger, iSkipTime, iFormat, iChannel,</synopsis>
+    <synopsis>kNumberOfFile <command>ftsamplebank</command> SDirectory, kFirstTableNumber, kTrigger, kSkipTime, kFormat, kChannel,</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>SDirectory</emphasis> -- une chaîne de caractères identifiant
+      le répertoire à parcourir.
+    </para>
+    <para>
+      <emphasis>FirstTableNumber</emphasis> -- fixe le numéro de la première
+      table dans laquelle un fichier son sera chargé.
+    </para>
+    <para>
+      <emphasis>Trigger</emphasis> -- les tables sont mises à jour lorsqu'il
+      vaut 1.
+    </para>
+    <para>
+      <emphasis>SkipTime</emphasis> -- la lecture commence à
+      <emphasis>skiptime</emphasis> secondes dans le fichier.
+    </para>
+    <para>
+      <emphasis>Format</emphasis> -- indique le format des données du fichier
+      audio :
+        <literallayout>
+1 - caractères signés sur 8 bit       4 - entiers courts sur 16 bit
+2 - octets A-law                      5 - entiers longs sur 32 bit 
+3 - octets U-law                      6 - flottants sur 32 bit
+        </literallayout>
+    </para>
+    <para>
+      <emphasis>Channel</emphasis> -- numéro du canal à lire. 0 signifie tous
+      les canaux.
+    </para>
+    <para>
+      Si <emphasis>Format</emphasis> = 0 le format des échantillons est déduit
+      de l'en-tête du fichier ou, par défaut, de l'option de ligne de commande
+      <link linkend="FlagsMinusLowerO"><citetitle>-o</citetitle></link> de
+      Csound.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>iNumberOfFile</emphasis> -- le nombre de tables créées.
+    </para>
+    <para>
+      <emphasis>kNumberOfFile</emphasis> -- le nombre de tables créées.
+    </para>
+  </refsect1>
+
+  <note>
+      <title>Note</title>
+      <para>
+        Le chargement au taux-k d'un grand nombre de fichiers dans des tables
+        de fonction peut causer des interruptions dans le flux audio.   
+      </para>
+  </note>
+
+  <refsect1>
+    <title>Exemple</title>
+    <para>
+      Cet exemple montre ftsamplebank cherchant des échantillons à un endroit
+      donné. Il charge tous les échantillons qu'il trouve dans des tables de
+      fonction GEN01 et les joue ensuite en séquence, un par seconde. Il utilise
+      le fichier
+      <ulink url="examples/ftsamplebank.csd"><citetitle>ftsamplebank.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode ftsamplebank.</title>
+        <xi:include href="examples-xml/ftsamplebank.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Rory Walsh</member>
+        <member>2015</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>
