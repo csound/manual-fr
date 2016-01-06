@@ -1,0 +1,56 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="nchnls_hw">
+<indexterm id="Indexnchnls_hw"><primary>nchnls_hw</primary></indexterm>
+  <refentryinfo><title>Hardware audio channels</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>nchnls_hw</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>nchnls_hw</refname>
+    <refpurpose>
+      Retourne le nombre de canaux audio du matériel utilisé.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne le nombre maximum de canaux audio du matériel utilisé. Ca
+      ne correspond pas forcément au nombre de canaux utilisés par Csound
+      (fixé par <emphasis>nchnls</emphasis> et <emphasis>nchnls_i</emphasis>).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>idacc, iadcc <command>nchnls_hw</command></synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      Lors de l'initialisation, <emphasis>idacc</emphasis> contiendra le
+      nombre de canaux du périphérique de sortie et <emphasis>iadcc</emphasis>
+      le nombre de canaux d'entrée. Ca correspond aux périphériques matériels
+      sélectionnés/utilisés.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>2016</member>
+      </simplelist>
+    </para>
+    <para>Dans la version 6.07</para>
+  </refsect1>
+</refentry>

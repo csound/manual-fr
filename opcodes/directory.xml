@@ -1,0 +1,89 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="directory">
+<indexterm id="Indexdirectory"><primary>directory</primary></indexterm>
+  <refentryinfo><title>Miscellaneous</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>directory</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>directory</refname>
+    <refpurpose>
+      Lit un répertoire et restitue la liste des noms de fichiers dans un tableau.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Lit un répertoire pour les noms de fichiers et les passe dans un tableau
+      de chaînes de caractères. On peut choisir le type de fichier en passant
+      une extension de nom de fichier sous forme de chaîne de caractères.  
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>SFiles[] <command>directory</command> SDirectory[, SExtention]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>SDirectory</emphasis> -- une chaîne de caractères identifiant
+      le répertoire dont on veut lister les fichiers.
+    </para>
+    <para>
+      <emphasis>SExtention</emphasis> -- Facultatif. Fixe le type de fichier
+      désiré. S'il n'est pas utilisé, tous les noms de fichiers sont listés.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>SFiles[]</emphasis> -- Un tableau de chaînes de caractères
+      contenant les noms de tous les fichers d'un type donné trouvés dans le
+      répertoire.
+    </para>
+  </refsect1>
+
+  <note>
+    <title>Note</title>
+    <para>
+      Ne fonctionne qu'au taux-i et ne tient pas compte des changements
+      effectués dans le répertoire après le début de l'exécution.
+    </para>
+  </note>
+
+  <refsect1>
+    <title>Exemple</title>
+    <para>
+      Cet exemple montre comment on peut utiliser <emphasis>directory</emphasis>
+      pour lister les fichiers .wav à un endroit donné.
+      <emphasis>printf_i</emphasis> est ensuite utilisé pour afficher les noms
+      des fichiers. Il utilise le fichier
+      <ulink url="examples/directory.csd"><citetitle>directory.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode directory.</title>
+        <xi:include href="examples-xml/directory.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Rory Walsh</member>
+        <member>2016</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>
