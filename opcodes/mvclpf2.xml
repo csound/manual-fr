@@ -1,0 +1,97 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="mvclpf2">
+<indexterm id="IndexMvclpf2"><primary>mvclpf2</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Resonant</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>mvclpf2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>mvclpf2</refname>
+    <refpurpose>
+      Emulation d'un filtre passe-bas de Moog contrôlé en tension.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>mvclpf2</emphasis> est une implémentation numérique du filtre
+      en échelle de Moog du 4ème ordre (24 dB/oct) écrite à l'origine par Fons
+      Andriaensen. Selon l'auteur, <emphasis>mvclpf2</emphasis> "utilise cinq
+      éléments non-linéaires en entrée et dans les quatre sections du filtre.
+      Il utilise la dérivée de la non-linéarité (pour laquelle 1 / (1 + x * x)
+      est une approximation raisonnable). Le principal avantage de ceci est
+      qu'une seule évaluation de la fonction non-linéaire est requise par
+      section".
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>asig <command>mvclpf2</command> ain, kcf, kres[, istor]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialization</title>
+      <para>
+      <emphasis>istor</emphasis> -- état initial de l'espace de données interne.
+      Comme le filtrage comprend une boucle de rétroaction sur la sortie
+      précédente, l'état initial de l'espace de stockage utilisé est
+      significatif. Une valeur nulle provoquera l'effacement de cet espace ;
+      une valeur non nulle autorisera la persistance de l'information
+      précédente. La valeur par défaut est 0.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ain</emphasis> -- signal d'entrée.
+    </para>
+    <para>
+      <emphasis>kcf</emphasis>/<emphasis>acf</emphasis> -- fréquence de
+      coupure du filtre. L'intervalle utile est d'environ six octaves autour du
+      do médian (pch 8.00).
+    </para>
+
+    <para>
+      <emphasis>kres</emphasis>/<emphasis>ares</emphasis> -- résonance, limitée
+      à l'intervalle [0, 1].
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode mvclpf2. Il utilise le ficheir
+      <ulink url="examples/mvclpf2.csd"><citetitle>mvclpf2.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode mvclpf2.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/mvclpf2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Fons Andriaensen, </member>
+	    <member>Porté dans Csound par &namevictor;</member>
+        <member>Janvier 2016</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 6.07</para>
+    <para>Janvier 2016.</para>
+  </refsect1>
+</refentry> 

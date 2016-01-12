@@ -1,0 +1,106 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="mvclpf4">
+<indexterm id="IndexMvclpf4"><primary>mvclpf4</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Resonant</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>mvclpf4</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>mvclpf4</refname>
+    <refpurpose>
+      Emulation d'un filtre passe-bas de Moog contrôlé en tension.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>mvclpf4</emphasis> est une implémentation numérique du filtre
+      en échelle de Moog du 4ème ordre (24 dB/oct) écrite à l'origine par Fons
+      Andriaensen. C'est une version de l'opcode <emphasis>mvclpf3</emphasis>
+      avec quatre sorties pour les réponses en fréquence à 6dB, 12 dB, 18 dB et
+      24 dB/octave.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>asig1, asig2, asig3, asig4 <command>mvclpf4</command> ain, kcf, kres[, istor]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+      <para>
+      <emphasis>istor</emphasis> -- état initial de l'espace de données interne.
+      Comme le filtrage comprend une boucle de rétroaction sur la sortie
+      précédente, l'état initial de l'espace de stockage utilisé est
+      significatif. Une valeur nulle provoquera l'effacement de cet espace ;
+      une valeur non nulle autorisera la persistance de l'information
+      précédente. La valeur par défaut est 0.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig1</emphasis> -- sortie de la réponse passe-bas à 6 dB/oct.
+    </para>
+    <para>
+      <emphasis>asig2</emphasis> -- sortie de la réponse passe-bas à 12 dB/oct.
+	</para>
+	<para>
+      <emphasis>asig3</emphasis> -- sortie de la réponse passe-bas à 18 dB/oct.
+	</para>
+	<para>
+      <emphasis>asig4</emphasis> -- sortie de la réponse passe-bas à 24 dB/oct.
+    </para>
+    <para>
+      <emphasis>ain</emphasis> -- signal d'entrée.
+    </para>
+    <para>
+      <emphasis>kcf</emphasis>/<emphasis>acf</emphasis> -- fréquence de
+      coupure du filtre. L'intervalle utile est d'environ six octaves autour du
+      do médian (pch 8.00).
+    </para>
+
+    <para>
+      <emphasis>kres</emphasis>/<emphasis>ares</emphasis> -- résonance, limitée
+      à l'intervalle [0, 1].
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode mvclpf4. Il utilise le ficheir
+      <ulink url="examples/mvclpf4.csd"><citetitle>mvclpf4.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode mvclpf4.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/mvclpf4.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Fons Andriaensen, </member>
+	    <member>Porté dans Csound par &namevictor;</member>
+        <member>Janvier 2016</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 6.07</para>
+    <para>Janvier 2016.</para>
+  </refsect1>
+</refentry> 
