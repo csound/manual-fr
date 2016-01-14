@@ -35,7 +35,7 @@ authors=Francois Pinot
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>asig <command>mvclpf2</command> ain, kcf, kres[, istor]</synopsis>
+    <synopsis>asig <command>mvclpf2</command> ain, xcf, xres[, istor]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -56,13 +56,13 @@ authors=Francois Pinot
       <emphasis>ain</emphasis> -- signal d'entrée.
     </para>
     <para>
-      <emphasis>kcf</emphasis>/<emphasis>acf</emphasis> -- fréquence de
+      <emphasis>xcf</emphasis> -- fréquence de
       coupure du filtre. L'intervalle utile est d'environ six octaves autour du
       do médian (pch 8.00).
     </para>
 
     <para>
-      <emphasis>kres</emphasis>/<emphasis>ares</emphasis> -- résonance, limitée
+      <emphasis>xres</emphasis> -- résonance, limitée
       à l'intervalle [0, 1].
     </para>
   </refsect1>
