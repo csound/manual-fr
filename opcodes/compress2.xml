@@ -1,0 +1,137 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="compress2">
+<indexterm id="IndexCompress2"><primary>compress2</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Amplitude Modifiers</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>compress2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>compress2</refname>
+    <refpurpose>
+      Compresse, limite, dilate, atténue ou impose un seuil à un signal audio.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title> 
+    <para> Cette unité fonctionne comme un compresseur audio, un limiteur, un
+    expander ou un noise gate, avec un coude arrondi ou non et des caractéristiques
+    d'exécution variant dynamiquement. Il prend deux signaux audio en entrée,
+    <emphasis>aasig</emphasis> et <emphasis>acsig</emphasis>, le premier étant
+    modifié par l'analyse courante du second. Les deux signaux peuvent être le
+    même signal, ou le premier peut être modifié par un signal de contrôle
+    différent.
+    </para>
+    <para>
+    <command>compress2</command> examine d'abord le signal de contrôle
+    <emphasis>acsig</emphasis> en faisant une détection d'enveloppe. Celle-ci
+    est déterminée par deux valeurs de contrôle <emphasis>katt</emphasis> et
+    <emphasis>krel</emphasis>, définissant les constantes d'attaque et de
+    relachement (en secondes) du détecteur. Le détecteur suit les crêtes (pas
+    la valeur efficace) du signal de contrôle. Les valeurs typiques sont 0.01
+    et 0.1, la dernière étant habituellement du même ordre que
+    <emphasis>ilook</emphasis>.
+    </para>
+    <para>
+    L'enveloppe courante est alors convertie en décibels puis passe par une
+    fonction de sélection pour déterminer quelle action du compresseur (s'il y
+    en a une) doit être appliquée. La fonction de sélection est définie par
+    quatre valeurs de contrôle en décibels. Elles sont données sous forme de
+    valeurs positives, où 0 dB correspond à une amplitude de 0dbfs. 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ar <command>compress2</command> aasig, acsig, kthresh, kloknee, khiknee, kratio, katt, krel, ilook</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+    <emphasis>ilook</emphasis> -- temps de prospection en secondes, pendant
+    lequel un déclenchement d'enveloppe interne peut détecter ce qui se passe.
+    Cela induit un délai entre l'entrée et la sortie, mais une petite durée
+    de prospection améliore les performances du détecteur d'enveloppe. 0.05
+    secondes est une valeur typique, suffisante pour détecter les crêtes
+    de la fréquence la plus basse dans <emphasis>acsig</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kthresh</emphasis> -- fixe le niveau le plus bas en décibels qui
+      sera autorisé à traverser le module. Normalement -90 ou moins, mais si le
+      seuil est plus élevé, les signaux de basse énergie tel que le bruit de
+      fond commenceront à être enlevés.
+    </para>
+    <para>
+      <emphasis>kloknee</emphasis>, <emphasis>khiknee</emphasis> -- coude de la
+      courbe en décibels indiquant où commencent la compression ou l'expansion.
+      Cela fixe les limites d'un coude arrondi joignant la ligne 1:1 des basses
+      amplitudes et la ligne du rapport de compression des fortes amplitudes.
+      -52 et -30 dB sont des valeurs typiques. Si les deux points sont égaux, le
+      coude est anguleux.
+    </para>
+    <para>
+      <emphasis>kratio</emphasis> -- rapport de compression lorsque le signal
+      est au-delà du coude. La valeur 2 renforce la sortie d'un décibel pour
+      chaque doublement du gain en entrée ; 3 renforce de un pour trois ; 20
+      de un pour vingt, etc. Les rapports inverses provoquent une expansion du
+      signal : 0.5 donne deux pour un, 0.25 quatre pour un, etc. La valeur 1
+      ne provoque aucun changement.
+    </para>
+    <para>
+      Les actions de <emphasis>compress2</emphasis> dépendent du réglage des
+      paramètres. Un compresseur-limiteur à coude anguleux, par exemple, est
+      obtenu avec une attaque proche de zéro, des limites de coude égales, et
+      un rapport très élevé (disons 100). Un noise-gate plus expander est
+      obtenu avec un seuil positif et un rapport fractionnaire au-delà du coude.
+      Un compresseur de musique déclenché par la voix (ducker) est obtenu en
+      affectant la musique à <emphasis>aasig</emphasis> et la voix à
+      <emphasis>acsig</emphasis>. Un de-esser de voix est obtenu en affectant
+      la voix aux deux, avec un filtre passe-bande précédant l'entrée
+      <emphasis>acsig</emphasis> pour renforcer les sifflantes. Il est
+      nécessaire d'expérimenter chaque application pour trouver les meilleurs
+      réglages des paramètres ; ceux-ci sont de taux-k pour faciliter cette
+      expérimentation.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode compress2. Il utilise le fichier
+      <ulink url="examples/compress2.csd"><citetitle>compress2.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode compress2.</title>
+          <xi:include href="examples-xml/compress2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="dam"><citetitle>dam</citetitle></link>
+    </para>
+   <para>
+      <link linkend="compress"><citetitle>compress</citetitle></link>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par &namejohn; d'après &namebarry; pour Extended Csound mais
+    avec des valeurs en dB plus communes ; nouveau dans la version 6.07.
+    </para>
+  </refsect1>
+</refentry>
