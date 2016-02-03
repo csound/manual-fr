@@ -46,8 +46,8 @@ english cvs version=1.11
     fonction de sélection pour déterminer quelle action du compresseur (s'il y
     en a une) doit être appliquée. La fonction de sélection est définie par
     quatre valeurs de contrôle en décibels. Elles sont données sous forme de
-    valeurs positives, où 0 dB correspond à une amplitude de 1, et 90 dB
-    correspond à une amplitude de 32768. 
+    valeurs positives, où 0 dB correspond à une amplitude de 0dbfs/32768, et 90 dB
+    correspond à une amplitude de 0dbfs. 
     </para>
   </refsect1>
 
@@ -59,14 +59,12 @@ english cvs version=1.11
   <refsect1>
     <title>Initialisation</title>
     <para>
-
     <emphasis>ilook</emphasis> -- temps de prospection en secondes, pendant
     lequel un déclenchement d'enveloppe interne peut détecter ce qui se passe.
     Cela induit un délai entre l'entrée et la sortie, mais une petite durée
     de prospection améliore les performances du détecteur d'enveloppe. 0.05
     secondes est une valeur typique, suffisante pour détecter les crêtes
     de la fréquence la plus basse dans <emphasis>acsig</emphasis>.
-
     </para>
   </refsect1>
 
@@ -103,13 +101,12 @@ english cvs version=1.11
       Un compresseur de musique déclenché par la voix (ducker) est obtenu en
       affectant la musique à <emphasis>aasig</emphasis> et la voix à
       <emphasis>acsig</emphasis>. Un de-esser de voix est obtenu en affectant
-      la voix au deux, avec un filtre passe-bande précédant l'entrée
+      la voix aux deux, avec un filtre passe-bande précédant l'entrée
       <emphasis>acsig</emphasis> pour renforcer les sifflantes. Il est
       nécessaire d'expérimenter chaque application pour trouver les meilleurs
       réglages des paramètres ; ceux-ci sont de taux-k pour faciliter cette
       expérimentation.
     </para>
-
   </refsect1>
 
   <refsect1>
@@ -117,7 +114,6 @@ english cvs version=1.11
     <para>
       Voici un exemple de l'opcode compress. Il utilise le fichier
       <ulink url="examples/compress.csd"><citetitle>compress.csd</citetitle></ulink>.
-
       <example>
         <title>Exemple de l'opcode compress.</title>
           <xi:include href="examples-xml/compress.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
@@ -129,6 +125,9 @@ english cvs version=1.11
     <title>Voir aussi</title>
     <para>
       <link linkend="dam"><citetitle>dam</citetitle></link>
+    </para>
+    <para>
+      <link linkend="compress2"><citetitle>compress2</citetitle></link>
     </para>
   </refsect1>
   
