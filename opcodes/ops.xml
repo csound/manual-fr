@@ -1,0 +1,54 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ops">
+<indexterm id="IndexS"><primary>i</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Sample Level Operators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>i</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>S</refname>
+    <refpurpose>
+      Retourne l'équivalent de type-S d'un argument de taux-i ou de taux-k.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne une chaîne de caractères contenant la valeur numérique de son
+      argument.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>S</command>(x) (control-rate or init-rate arg)</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="opa"><citetitle>a</citetitle></link>,
+      <link linkend="opk"><citetitle>k</citetitle></link>,
+      <link linkend="abs"><citetitle>abs</citetitle></link>,
+      <link linkend="exp"><citetitle>exp</citetitle></link>,
+      <link linkend="frac"><citetitle>frac</citetitle></link>,
+      <link linkend="int"><citetitle>int</citetitle></link>,
+      <link linkend="log"><citetitle>log</citetitle></link>,
+      <link linkend="log10"><citetitle>log10</citetitle></link>,
+      <link linkend="sqrt"><citetitle>sqrt</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Victor Lazzarini, 2016. Nouveau dans la version 6.07</para>
+  </refsect1>
+</refentry>
