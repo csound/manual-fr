@@ -123,14 +123,16 @@ english cvs version=
   </refsect1>
 
   <refsect1>  
-    <title>Exemple</title>
+    <title>Exemples</title>
     <para>
-      Voir la page du manuel <link linkend="hrtfearly"><citetitle>hrtfearly</citetitle></link>
-      pour un exemple simple des opcodes
-      <link linkend="hrtfearly"><citetitle>hrtfearly</citetitle></link> et
-      <emphasis>hrtfreverb</emphasis>.
+      Voici un exemple des opcodes hrtfearly et hrtfreverb. Il utilise le fichier
+      <ulink url="examples/hrtfearly.csd"><citetitle>hrtfearly.csd</citetitle></ulink>.
     </para>
-   </refsect1>
+    <example>
+      <title>Exemple de l'opcode htrfearly.</title>
+      <xi:include href="examples-xml/hrtfearly.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </example>
+  </refsect1>
 
   <refsect1>
     <title>Voir aussi</title>
