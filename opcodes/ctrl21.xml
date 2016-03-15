@@ -13,12 +13,9 @@ english cvs version=1.8
   <refmeta>
     <refentrytitle>ctrl21</refentrytitle>
   </refmeta>
-
-
  
   <refnamediv>
     <refname>ctrl21</refname>
-
     <refpurpose>
       Permet un signal MIDI sur 21 bit en nombres décimaux selon une échelle entre des limites minimale et maximale.
     </refpurpose>
@@ -101,6 +98,21 @@ english cvs version=1.8
       parce qu'il peut être inclu dans des instruments prévus pour une partition sans que Csound ne plante.
       Il a besoin du paramètre additionnel <emphasis>ichan</emphasis> contenant le canal MIDI du contrôleur.
       Le canal MIDI est le même pour tous les contrôleurs utilisés dans un opcode <emphasis>ctrl21</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode ctrl21. Il utilise le fichier
+      <ulink url="examples/ctrl21.csd"><citetitle>ctrl21.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode ctrl21.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/ctrl21.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
     </para>
   </refsect1>
 
