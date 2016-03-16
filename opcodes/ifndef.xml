@@ -54,6 +54,25 @@ english cvs version=1.10
     </para>
   </refsect1>
 
+   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple simple de ce code conditionnel.
+      <example>
+        <title>Exemple simple de la forme #ifndef.</title>
+        <programlisting>
+          <emphasis role="omacro">#define</emphasis> final ##
+          <emphasis role="oblock">instr</emphasis> 1
+          <emphasis role="omacro">#ifndef</emphasis> final
+          <emphasis role="opc">print</emphasis> "calling oscil"
+          <emphasis role="omacro">#end</emphasis>
+          a1   <emphasis role="opc">oscil</emphasis> 32000,440,1
+          out  <emphasis role="opc">a1</emphasis>
+        <emphasis role="oblock">endin</emphasis></programlisting>
+      </example>
+    </para>
+  </refsect1>
+  
   <refsect1>
     <title>Voir aussi</title>
     <para>
