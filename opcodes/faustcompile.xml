@@ -52,14 +52,14 @@ english cvs version=
   <refsect1>
     <title>Exemples</title>
     <para>
-      Voici un exemple de l'opcode faustcompile, avec un programme simple qui
-      mélange deux entrées :
+      Voici un exemple de l'opcode faustcompile. Il utilise le fichier
+      <ulink url="examples/faustcompile.csd"><citetitle>faustcompile.csd</citetitle></ulink>.
       <example>
-        <para>   
-<programlisting>
-ihandle <emphasis role="op">faustcompile</emphasis> "process=+;", "-vec -lv 1"
-</programlisting>
-        </para>
+        <title>Exemple de l'opcode faustcompile.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/faustcompile.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
     </para>
   </refsect1>

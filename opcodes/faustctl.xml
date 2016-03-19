@@ -57,18 +57,14 @@ english cvs version=
   <refsect1>
     <title>Exemples</title>
     <para>
-      Voici un exemple de l'opcode faustctl, avec un programme simple qui
-      ajuste le gain d'une entrée :
+      Voici un exemple de l'opcode faustctl.Il utilise le fichier
+      <ulink url="examples/faustctl.csd"><citetitle>faustctl.csd</citetitle></ulink>.
       <example>
-        <para>   
-<programlisting>
-idsp, a1 <emphasis role="op">faustgen</emphasis> {{
-gain = hslider("vol", 1, 0, 1, 0.01);
-process = (_ * gain); 
-}}, ain1
-<emphasis role="op">faustctl</emphasis> idsp, "vol", 0.5
-</programlisting>
-        </para>
+        <title>Example of the faustctl opcode.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/faustctl.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
     </para>
   </refsect1>

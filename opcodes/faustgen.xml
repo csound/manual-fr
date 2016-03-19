@@ -60,14 +60,14 @@ english cvs version=
   <refsect1>
     <title>Exemples</title>
     <para>
-      Voici un exemple de l'opcode faustgen, avec un programme simple qui
-      mélange deux entrées :
+      Voici un exemple de l'opcode faustgen. Il utilise le fichier
+      <ulink url="examples/faustgen.csd"><citetitle>faustgen.csd</citetitle></ulink>.
       <example>
-        <para>   
-<programlisting>
-idsp,a1 <emphasis role="op">faustgen</emphasis> "process=+;",ain1,ain2
- </programlisting>
-        </para>
+        <title>Exemple de l'opcode faustgen.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/faustgen.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
     </para>
   </refsect1>
