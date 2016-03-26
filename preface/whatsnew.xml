@@ -72,8 +72,573 @@ english cvs version=
           </itemizedlist>
         </para>
       </listitem>
+      <listitem>
+        <para>
+          Changements sur les plates-formes :
+          <itemizedlist>
+            <listitem>
+              <simpara>Windows.</simpara>
+              <itemizedlist>
+                <listitem>
+                  <simpara>The Windows installer now provides Csound and all of its components, interfaces, plugins,
+                  utilities, and front ends compiled for 64 bit CPU architecture,
+                  using the MSYS2/Mingw64-w64 toolchain. CsoundQt and csound.node are built using MSVC 2013.</simpara>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
     </itemizedlist>
   </para>-->
+
+  <bridgehead>Notes de parution de Csound 6.07 (mars 2016)</bridgehead>
+  <para>
+    De nombreux bogues corrigés, dont certains importants, des éléments internes
+    sont inclus, ainsi que de nouvelles fonctionnalités et extensions. Comme
+    d'habitude, il y a aussi des améliotations du code.
+  </para>
+  <para>
+    <itemizedlist>
+      <listitem>
+        <para>Nouveaux opcodes :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                <link linkend="compress2"><citetitle>compress2</citetitle></link>:
+                comme compress mais faisant un usage plus normal des dB (0.0
+                à pleine échelle).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                (Expérimental, seulement dans le code source), nouveaux opcodes
+                cuda : cudasynth2 et cudanal2.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="directory"><citetitle>directory</citetitle></link> :
+                lit un répertoire et restitue une liste des noms de fichier
+                dans un tableau de chaînes de caractères.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="ftsamplebank"><citetitle>ftsamplebank</citetitle></link> :
+                pour charger une bibliothèque d'échantillons depuis un
+                répertoire.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="mvclpf1"><citetitle>mvclpf1</citetitle></link>,
+                <link linkend="mvclpf2"><citetitle>mvclpf2</citetitle></link>,
+                <link linkend="mvclpf3"><citetitle>mvclpf3</citetitle></link>,
+                <link linkend="mvclpf4"><citetitle>mvclpf4</citetitle></link>,
+                <link linkend="mvchpf"><citetitle>mvchpf</citetitle></link> :
+                simulation de filtres de Moog contrôlés en fréquence d'après
+                Fons Andriaensen.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="ops"><citetitle>S()</citetitle></link>,
+                convertit un nombre de taux-k ou de taux-i en une chaîne de
+                caractères.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Orchestre :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                La construction booléenne ? .. : .. peut maintenant avoir un
+                résultat de type chaîne de caractères, alors qu'auparavant
+                elle n'autorisait que les nombres.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Le numéro de ligne rapporté lors de la détection d'une erreur à
+                la fin d'une ligne est maintenant correct. Egalement des
+                améliorations dans les numéros de ligne pour une syntaxe
+                complexe.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Boucle <link linkend="while"><citetitle>while</citetitle></link>
+                améliorée/corrigée.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Lecture des commentaires meilleure et consistante.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Lignes de continuation mieux gérées, spécialement par le respect
+                des numéros de ligne.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                opcode : <link linkend="ops"><citetitle>S(.)</citetitle></link>
+                syntaxe maintenant permise.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Partition :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                La liste des points de tempo dans l'opcode de partition
+                <link linkend="t"><citetitle>t</citetitle></link> est
+                maintenant arbitrairement longue.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Une incohérence dans les opcodes
+                <link linkend="r"><citetitle>r</citetitle></link>
+                et <link linkend="leftbrace"><citetitle>{</citetitle></link>
+                a été corrigée.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Options :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                L'option <link
+                linkend="FlagsCatMinusLowerZ"><citetitle>-z</citetitle></link>
+                supprime maintenant les opcodes obsolètes, sauf si on lui
+                donne comme argument 2 ou 3.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Opcodes et Gens modifiés :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Dans les opcodes <link
+                linkend="OSC"><citetitle>OSC</citetitle></link> on peut
+                maintenant envoyer et recevoir des tableaux, des tables et
+                de l'audio.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Meilleur diagnostic si
+                <link linkend="diskin2"><citetitle>diskin2</citetitle></link>
+                échoue.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="rezzy"><citetitle>rezzy</citetitle></link>
+                détecte maintenant une instabilité du filtre et le modifie vers
+                une version stable.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="adsr"><citetitle>adsr</citetitle></link> a été
+                réécrit pour lever une erreur si la longueur des segments
+                dépasse p3.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                L'utilisation de <link
+                linkend="diskin"><citetitle>diskin</citetitle></link> vers un
+                tableau redimensionne le tableau de sortie si nécessaire.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="chnget"><citetitle>chnget</citetitle></link>
+                teste maintenant un changement de nom de canal comme de type de
+                données.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="interp"><citetitle>interp</citetitle></link> peut
+                prendre un argument facultatif supplémentaire pour donner une
+                valeur initiale.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="oscilikts"><citetitle>oscilikts</citetitle></link>
+                utilise une lecture de table plus permissive.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                L'opcode <link linkend="in"><citetitle>in</citetitle></link>
+                peut lire en mono ou en stéréo, évitant ainsi la distinction
+                <link linkend="in"><citetitle>in</citetitle></link>/<link
+                linkend="ins"><citetitle>ins</citetitle></link>.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="sensekey"><citetitle>sensekey</citetitle></link>
+                a été réécrit pour fournir de meilleurs diagnostics et
+                corriger un bogue mineur.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Correction d'un cas de définition de macro avec des arguments.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="sockrecv"><citetitle>sockrecv</citetitle></link>
+                now works at a and k rate.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="GEN49"><citetitle>GEN49</citetitle></link>
+                travaille maintenant depuis un appel de
+                <link linkend="ftgen"><citetitle>ftgen</citetitle></link>.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="GEN34"><citetitle>GEN34</citetitle></link> est
+                plus tolérant dans les tables qu'il accepte.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="chnget"><citetitle>chnget</citetitle></link>
+                autorise maintenant le changement des noms de canal pendant
+                l'exécution.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Frontaux :
+          <itemizedlist>
+            <listitem>
+              <simpara>csdebugger :</simpara>
+              <itemizedlist>
+                <listitem>
+                  <simpara>Quelques problèmes de mémoire réglés.</simpara>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+            <listitem>
+              <simpara>HTML5 :</simpara>
+              <itemizedlist>
+                <listitem>
+                  <simpara>
+                    CsoundQT a maintenant ses propres notes à
+                    <ulink url="https://github.com/CsoundQt/CsoundQt/blob/master/release_notes/Release%20notes%200.9.2.md">
+                    <citetitle>https://github.com/CsoundQt/CsoundQt/blob/master/release_notes/Release notes 0.9.2.md</citetitle></ulink>.
+                  </simpara>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Usage général :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Les options multicoeur ont été améliorées.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Lors du remplacement d'instruments, la nouvelle version hérite
+                de <link linkend="maxalloc"><citetitle>maxalloc</citetitle></link>
+                et des options actives.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Le code multicoeur fonctionne maintenant avec des instruments
+                MIDI.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Les opérations MIDI sont maintenant disponibles via le module
+                jack rtmidi (-+rtmidi=jack).
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Bogues corrigés :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Correction de <link
+                linkend="trigseq"><citetitle>trigseq</citetitle></link>.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Une erreur majeure dans <link
+                linkend="rezzy"><citetitle>rezzy</citetitle></link> a été
+                corrigée.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="p"><citetitle>p()</citetitle></link> a été
+                corrigé pour un grand nombres de p-arguments.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="p"><citetitle>p()</citetitle></link> fonctionne
+                maintenant avec les évènements MIDI.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Le générateur de nombres aléatoire de 31 bit pouvait produire
+                une boucle très courte s'il était initialisé avec zéro ;
+                corrigé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Les macros dans les fichiers .orc fonctionnent maintenant.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Un bogue très ancien dans l'affichage de graphes a été corrigé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Corrections dans les opcodes d'enveloppe
+                <link linkend="linen"><citetitle></citetitle>linen</link>,
+                <link linkend="expsegr"><citetitle></citetitle>expsegr</link>,
+                <link linkend="linsegr"><citetitle></citetitle>linsegr</link>,
+                <link linkend="cossegr"><citetitle></citetitle>cossegr</link>,
+                <link linkend="transegr"><citetitle></citetitle>transegr</link>.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                De nombreuses corrections dans les opcodes de chaîne de caractères
+                (<link linkend="strsub"><citetitle></citetitle>strsub</link>,
+                <link linkend="strcpy"><citetitle></citetitle>strcpy</link> 
+                et d'autres).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Bogues corrigés dans les formats d'impression
+                (<link linkend="sprintf"><citetitle></citetitle>sprintf</link>,
+                <link linkend="printf"><citetitle></citetitle>printf</link>,
+                <link linkend="prints"><citetitle></citetitle>prints</link>).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Il manquait une initialisation à
+                <link linkend="pvsmooth"><citetitle></citetitle>pvsmooth</link>.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                L'initialisation des tableaux est maintenant plus robuste.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Bogue corrigé dans <link
+                linkend="copya2ftab"><citetitle></citetitle>copya2ftab</link>.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Correction dans cudapvsanal (EXPERIMENTAL).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="partikkel"><citetitle>partikkel</citetitle></link>
+                corrigé pour le placement de grain de sous-échantillon.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Les opcodes nécessitant un nombre impair d'arguments sont
+                maintenant testés proprement.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                pvswrite tient maintenant compte correctement de 0dbfs.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="GEN34"><citetitle>GEN34</citetitle></link>
+                autorise maintenant les tables sources de longueur différente
+                d'une puissance de deux.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                vst2cs fonctionne maintenant sur architecture 64 bit.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="strcat"><citetitle>strcat</citetitle></link>
+                réparé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="nstance"><citetitle>nstance</citetitle></link>
+                réparé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Petits défauts corrigés dans le module rtauhal.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Changements système :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Utilisation intensive de fichiers en mémoire. Les fichiers .orc
+                et .sco sont toujours traités ainsi, de même que .csound6rc.
+                Cela simplifie grandement le fonctionnement interne.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Les longjmps imbriqués ont été corrigés, ce qui affectait
+                certaines utilisations de l'API.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Si un fichier .csd qui n'existe pas est présenté, Csound ne
+                plante plus.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                La valeur kcounter est maintenant une valeur consistante
+                non-signée sur 64 bit, ce qui permet de longues exécutions.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>API :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                L'appel de fonction csound->GetKcounter(csound) retourne
+                maintenant un entier non-signé sur 64 bit. Auparavant, il
+                retournait un entier long ce qui n'était pas clair.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Changements sur les plates-formes :
+          <itemizedlist>
+            <listitem>
+              <simpara>Android.</simpara>
+              <itemizedlist>
+                <listitem>
+                  <simpara>
+                    csoundCompileCsdText : nouvelle fonction pour compiler des
+                    chaînes de caractères.
+                  </simpara>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+            <listitem>
+              <simpara>Windows.</simpara>
+              <itemizedlist>
+                <listitem>
+                  <simpara>
+                    L'installeur pour Windows fournit maintenant Csound et tous
+                    ses composants, interfaces, greffons, utilitaires et frontaux
+                    pour une architecture de CPU sur 64 bit, compilés en
+                    utilisant la suite MSYS2/Mingw64-w64. CsoundQt et
+                    csound.node sont construits avec MSVC 2013.
+                  </simpara>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+            <listitem>
+              <simpara>OSX.</simpara>
+              <itemizedlist>
+                <listitem>
+                  <simpara>
+                    Installeur corrigé pour les noms de liens pour _csnd6 et
+                    _CsoundAC.
+                  </simpara>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+            <listitem>
+              <simpara>GNU/Linux.</simpara>
+              <itemizedlist>
+                <listitem>
+                  <simpara>
+                    L'opcode <link linkend="date"><citetitle>date</citetitle></link>
+                    est plus précis.</simpara>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
 
   <bridgehead>Notes de parution de Csound 6.06 (septembre 2015)</bridgehead>
   <para>De nombreux bogues, certains assez importants, ont été corrigés et de
