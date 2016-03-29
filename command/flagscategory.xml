@@ -1133,8 +1133,8 @@ csound5:output2             (reproduction droite)</screen>
         <para>
           <emphasis>NUM</emphasis> processus sont rendus disponibles pour
           l'exécution. Ce n'est avantageux que si le nombre de processeurs
-          de l'ordinateur est supérieur au nombre de processus demandés. Ca
-          peut aussi ralentir l'exécution si <emphasis>ksmps</emphasis> est
+          de l'ordinateur est supérieur ou égal au nombre de processus demandés.
+          Ca peut aussi ralentir l'exécution si <emphasis>ksmps</emphasis> est
           trop petit. 
         </para>
       </listitem>

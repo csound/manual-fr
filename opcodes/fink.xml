@@ -77,6 +77,23 @@ english cvs version=1.11
   </refsect1>
 
   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode fink. Il utilise le fichier
+      <ulink url="examples/fink.csd"><citetitle>fink.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode fink.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <para>Noter que cet exemple nécessite la création du fichier test.txt,
+        par exemple par <emphasis>fouti</emphasis></para>
+          <xi:include href="examples-xml/fink.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
     <title>Voir aussi</title>
     <para>
       <link linkend="fin"><citetitle>fin</citetitle></link>,
