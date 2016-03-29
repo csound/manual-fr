@@ -1,0 +1,90 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ceps">
+<indexterm id="IndexCeps"><primary>ceps</primary></indexterm>
+  <refentryinfo><title>Arrays: Cepstrum</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ceps</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ceps</refname>
+    <refpurpose>
+      Calcule le cepstre d'un tableau en entrée, avec coefficients de
+      liftrage facultatifs.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>keps[] <command>ceps</command> kmags[][, icoefs]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>icoefs</emphasis> -- le nombre de coefficients retenus dans
+      le cepstre en sortie. Par défaut, aucun coefficient n'est liftré.
+    </para>
+  </refsect1>
+  
+   <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>keps[]</emphasis> -- le cepstre en sortie, un tableau de
+      taille N+1, où N est une puissance de deux.
+    </para>
+    <para>
+      <emphasis>kmags[]</emphasis> -- un tableau en entrée contenant N+1
+      amplitudes.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple d'utilisation de l'opcode <emphasis>ceps</emphasis>.
+      Il utilise le fichier
+      <ulink url="examples/ceps.csd"><citetitle>ceps.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode <emphasis>ceps</emphasis>.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/ceps.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="pvsanal"><citetitle>pvsanal</citetitle></link>,
+      <link linkend="pvsynth"><citetitle>pvsynth</citetitle></link>,
+      <link linkend="pvsadsyn"><citetitle>pvsadsyn</citetitle></link>,
+      <link linkend="pvspitch"><citetitle>pvspitch</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Victor Lazzarini</member>
+        <member>2014</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

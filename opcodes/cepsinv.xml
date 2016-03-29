@@ -1,0 +1,71 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="cepsinv">
+<indexterm id="IndexCepsinv"><primary>cepsinv</primary></indexterm>
+  <refentryinfo><title>Arrays: Cepstrum</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>cepsinv</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>cepsinv</refname>
+    <refpurpose>
+      Calcule l'inverse du cepstre dans un tableau.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kenv <command>cepsinv</command> keps[]</synopsis>
+  </refsect1>
+
+   <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>keps[]</emphasis> -- le cepstre en entrée, un tableau de taille
+      N+1, où N est une puissance de deux, contenant les coefficients cepstraux.
+    </para>
+    <para>
+      <emphasis>kenv</emphasis> -- l'inverse du cepstre (enveloppe spectrale),
+      un tableau de N+1 amplitudes.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple d'utilisation de l'opcode <emphasis>cepsinv</emphasis>.
+      Il utilise le fichier
+      <ulink url="examples/cepsinv.csd"><citetitle>cepsinv.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode <emphasis>cepsinv</emphasis>.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/cepsinv.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Victor Lazzarini</member>
+        <member>2014</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>
