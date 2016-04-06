@@ -57,18 +57,18 @@ english cvs version=
   
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis><command>JackoInit </command>SclientName, ServerName</synopsis>
+    <synopsis><command>JackoInit </command>ServerName, SclientName</synopsis>
   </refsect1>
   
   <refsect1>
     <title>Initialisation</title>
-    <para>
+    <!--<para>
       <emphasis>Sname</emphasis> -- Chaîne de caractères, nom du port entrant.
       Le nom du port entrant est implicitement qualifié par le nom ou le
       numéro de l'instrument, si bien qu'il est permis d'utiliser le même nom de
       port entrant dans plus d'un instrument (par contre, on ne peut pas utiliser
       deux fois le même nom de port entrant dans un seul instrument).
-    </para>
+    </para>-->
 
     <para>
       <emphasis>SclientName</emphasis> -- Le nom du client de Jack ; doit être
