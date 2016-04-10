@@ -1705,7 +1705,11 @@
 <para>
 <para/>
 <synopsis>kcent <link linkend="centroid">centroid</link> asig, ktrig, ifftsize</synopsis><para/>
+<synopsis>asig[, asig2] <link linkend="filescal">filescal</link> ktimescal, kamp, kpitch, Sfile, klock [,ifftsize, idecim, ithresh]
+      </synopsis><para/>
 <synopsis>asig <link linkend="mincer">mincer</link> atimpt, kamp, kpitch, ktab, klock[,ifftsize,idecim]
+      </synopsis><para/>
+<synopsis>asig, asig2 <link linkend="mp3scal">mp3scal</link> Sfile, ktimescal, kpitch, kamp [,iskip, ifftsize, idecim, ilock]
       </synopsis><para/>
 </para></formalpara>
 <para></para><para></para><formalpara>
