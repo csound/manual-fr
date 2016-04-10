@@ -1,0 +1,112 @@
+﻿<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="mp3scal">
+<indexterm id="IndexMp3scal"><primary>mp3scal</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Other</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>mp3scal</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>mp3scal</refname>
+    <refpurpose>
+      Traitement vocoder à verrouillage de phase avec détection/traitement
+      d'attaque, 'pondération du tempo'.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>mp3scal</emphasis> implémente un traitement vocoder à
+      verrouillage de phase à partir de fichiers mp3 sur disque, avec
+      reéchantillonnage si nécessaire.
+    </para>
+    <para>
+      Cet opcode permet une pondération indépendante du temps et de la
+      fréquence. Le temps progresse en interne. La qualité de l'effet est
+      généralement améliorée lorsque le verrouillage de phase est actif.
+    </para>
+    <para>
+      <emphasis>mp3scal</emphasis> pondère également la hauteur, indépendamment
+      de la fréquence, avec un facteur de transposition de taux-k.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>asig, asig2 <command>mp3scal</command> Sfile, ktimescal, kpitch, kamp [,iskip, ifftsize, idecim, ilock]
+      </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+      <para>
+      <emphasis>Sfile</emphasis> -- fichier son source, mp3 stéréo.
+    </para>
+    <para>
+      <emphasis>ifftsize</emphasis> -- taille de TFR (puissance de deux), 2048
+      par défaut.
+    </para>
+    <para>
+      <emphasis>idecim</emphasis> -- décimation, 4 par défaut (ce qui signifie
+      hopsize = fftsize/4).
+    </para>
+    <para>
+      <emphasis>iskip</emphasis> -- temps de décalage en secondes, 1 par défaut.
+    </para>
+        <para>
+      <emphasis>ilock</emphasis> -- 0 ou 1, pour désactiver ou activer le
+      verrouillage de phase, 1 par défaut.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ktimescal</emphasis> -- rapport de pondération temporelle,
+      &lt; 1 étirement, &gt; 1 contraction. Nombres non-négatifs seulement.
+    </para>
+    <para>
+      <emphasis>kamp</emphasis> -- pondération de l'amplitude.
+    </para>
+    <para>
+      <emphasis>kpitch</emphasis> -- pondération de la hauteur des grains
+      (1 = hauteur normale, &lt; 1 inférieure, &gt; 1 supérieure ;
+      négative, lecture inversée).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode mp3scal. Il utilise le fichier
+      <ulink url="examples/mp3scal.csd"><citetitle>mp3scal.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode mp3scal.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/mp3scal.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Avril 2016</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 6.07</para>
+    <para>Avril 2016.</para>
+  </refsect1>
+</refentry>
+
