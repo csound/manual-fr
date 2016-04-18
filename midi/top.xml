@@ -81,9 +81,10 @@ english cvs version=1.7
   </para>
   <itemizedlist>
     <listitem><para><emphasis>alsa</emphasis> - Pour utiliser le système midi ALSA (seulement sur
-      Linux)</para></listitem>
+      Linux).</para></listitem>
+    <listitem><para><emphasis>jack</emphasis> - Pour utiliser le système midi Jack.</para></listitem>
     <listitem><para><emphasis>winmme</emphasis> - Pour utiliser le système windows MME (seulement sur
-      Windows)</para></listitem>
+      Windows).</para></listitem>
     <listitem><para><emphasis>portmidi</emphasis> - Pour utiliser le système portmidi (sur toutes les
       plates-formes). C'est le réglage par défaut.</para></listitem>
     <listitem><para><emphasis>virtual</emphasis> - Pour utiliser un clavier virtuel graphique (voir ci-dessous)
