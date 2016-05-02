@@ -1,0 +1,81 @@
+﻿<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="paulstretch">
+<indexterm id="IndexPaulStretch"><primary>paulstretch</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Other</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>paulstretch</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>paulstretch</refname>
+    <refpurpose>
+      Algorithme d'étirement temporel extrème par Paul Nasca Octavian.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      L'opcode <emphasis>paulstretch</emphasis> est une mise en oeuvre légère de
+      l'algorithme d'étirement temporel PaulStretch par Paul Nasca Octavian. Il
+      est idéal pour allonger la durée d'un signal dans de grandes proportions.
+    </para>
+    <para>
+      L'algorithme Paulstretch fonctionne de manière très semblable aux autres
+      méthodes d'étirement temporel basées sur la TFCT, en utilisant le
+      chevauchement et l'ajout avec une fenêtre de Hanning. L'utilisation du
+      mélange de phase et de tailles de fenêtres très grandes (spécifiées en
+      secondes) sont propres à paulstretch.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>asig <command>paulstretch</command> istretch, iwindowsize, ift
+    </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>istretch</emphasis> -- Facteur d'étirement.
+    </para>
+    <para>
+      <emphasis>iwindowsize</emphasis> -- Taille de la fenêtre, en secondes.
+    </para>
+    <para>
+      <emphasis>ift</emphasis> -- table de fonction du signal source. Les tables
+      à allocation différée (voir
+      <link linkend="GEN01"><citetitle>GEN01</citetitle></link>) sont acceptées,
+      mais l'opcode attend une source mono.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode paulstretch. Il utilise le fichier
+      <ulink url="examples/paulstretch.csd"><citetitle>paulstretch.csd</citetitle></ulink>
+      <example>
+        <title>Exemple de l'opcode paulstretch.</title>
+        <xi:include href="examples-xml/paulstretch.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namepaul;</member>
+        <member>Mai 2016</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>
