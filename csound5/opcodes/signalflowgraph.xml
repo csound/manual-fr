@@ -15,7 +15,8 @@ english cvs version=1.1
     flots de données asynchrones) dans des orchestres de Csound. Les signaux
     s'écoulent depuis les prises de sortie (outlets) des instruments émetteurs et
     sont additionnés dans les prises d'entrée (inlets) des instruments récepteurs.
-    Les signaux peuvent être de taux-k, de taux-a ou de taux-f. On peut connecter
+    Les signaux peuvent être de taux-k, de taux-a, de taux-f ou des tableaux de
+    taux-a. On peut connecter
     n'importe quel nombre d'outlets à n'importe quel nombre d'inlets. Lorqu'une
     nouvelle instance d'un intrument est créée pendant l'exécution, les connexions
     déclarées sont automatiquement instanciées.
@@ -24,7 +25,7 @@ english cvs version=1.1
   <para>
     Les graphes de fluence simplifient la construction de mélangeurs complexes, de
     chaînes de traitement du signal, etc. Ils simplifient également la réutilisation
-    de définitions d'intrument "plug and play" et même de sous-orchestres entiers,
+    de définitions d'instrument "plug and play" et même de sous-orchestres entiers,
     qui peuvent être simplement insérés (#include) et ainsi "branchés" dans des
     orchestres existants.
   </para>
@@ -59,6 +60,9 @@ english cvs version=1.1
 
     <link linkend="outletf"><citetitle>outletf</citetitle></link>, pour envoyer un
     signal de taux-f depuis n'importe quel instrument par un port nommé.
+
+    <link linkend="outletv"><citetitle>outletv</citetitle></link>, pour envoyer un
+    signal, tableau de taux-a, depuis n'importe quel instrument par un port nommé.
     
     <link linkend="inleta"><citetitle>inleta</citetitle></link>, pour recevoir un
     signal de taux-a à travers un port nommé.
@@ -72,6 +76,9 @@ english cvs version=1.1
 
     <link linkend="inletf"><citetitle>inletf</citetitle></link>, pour recevoir un
     signal de taux-f à travers un port nommé.
+    
+    <link linkend="inletv"><citetitle>inletv</citetitle></link>, pour recevoir un
+    signal, tableau de taux-a, à travers un port nommé.
     
     <link linkend="connect"><citetitle>connect</citetitle></link>, pour acheminer
     le signal depuis un outlet nommé dans un instrument émetteur vers un inlet
