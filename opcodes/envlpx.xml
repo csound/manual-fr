@@ -110,8 +110,9 @@ english cvs version=1.14
       <emphasis>irise</emphasis> secondes, et celles de la chute à partir de
       <emphasis>idur - idec</emphasis>. Si ces périodes sont séparées dans le temps il y aura
       un entretien au cours duquel <emphasis>amp</emphasis> sera modifié selon le schéma
-      exponentiel décrit. Si l'attaque et la chute se chevauchent alors les deux
-      modifications agiront simultanément durant cette période commune. Si la durée globale
+      exponentiel décrit. <!--Si l'attaque et la chute se chevauchent alors les deux
+      modifications agiront simultanément durant cette période commune.-->
+      Si la durée globale
       <emphasis>idur</emphasis> est dépassée pendant l'exécution, la chute
       continuera dans la même direction, en tendant asymtotiquement vers zéro.
     </para>

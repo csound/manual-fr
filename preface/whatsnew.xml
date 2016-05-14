@@ -148,6 +148,42 @@ english cvs version=
                 caractères.
               </simpara>
             </listitem>
+            <listitem>
+              <simpara>
+                Opcode <link linkend="cepsinv"><citetitle>cepsinv</citetitle></link>
+                pour calculer le cepstre inverse d'un tableau.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="moogladder2"><citetitle>moogladder2</citetitle></link>
+                est plus rapide et moins précis que moogladder.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                L'opcode <link linkend="paulstretch"><citetitle>paulstretch</citetitle></link>
+                est une mise en oeuvre légère de l'algorithme d'étirement
+                temporel PaulStretch par Nasca Octavian Paul. Il est idéal pour
+                allonger la durée d'un signal dans de grandes proportions.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="mp3scal"><citetitle>mp3scal</citetitle></link>
+                implémente un traitement vocoder à verrouillage de phase à
+                partir de fichiers mp3 sur disque, avec reéchantillonnage si
+                nécessaire.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="filescal"><citetitle>filescal</citetitle></link>
+                implémente un traitement vocoder à verrouillage de phase à
+                partir de fichiers sur disque, avec reéchantillonnage si
+                nécessaire.
+              </simpara>
+            </listitem>
           </itemizedlist>
         </para>
       </listitem>
@@ -227,6 +263,12 @@ english cvs version=
                 linkend="FlagsCatMinusLowerZ"><citetitle>-z</citetitle></link>
                 supprime maintenant les opcodes obsolètes, sauf si on lui
                 donne comme argument 2 ou 3.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                La nouvelle option --fftlib détermine la bibliothèque de TFR
+                réelle à utiliser en interne (FFTLIB = 0, PFFFT = 1, vDSP = 2).
               </simpara>
             </listitem>
           </itemizedlist>
@@ -338,6 +380,22 @@ english cvs version=
                 l'exécution.
               </simpara>
             </listitem>
+            <listitem>
+              <simpara>
+                iceps renommé cepsinv pour éviter les conflits.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Support du mp3 amélioré sur plusieur petits détails.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Petite correction pour autoriser le rechargement d'un greffon
+                lapsda par l'hôte.
+              </simpara>
+            </listitem>
           </itemizedlist>
         </para>
       </listitem>
@@ -359,8 +417,8 @@ english cvs version=
                 <listitem>
                   <simpara>
                     CsoundQT a maintenant ses propres notes à
-                    <ulink url="https://github.com/CsoundQt/CsoundQt/blob/master/release_notes/Release%20notes%200.9.2.md">
-                    <citetitle>https://github.com/CsoundQt/CsoundQt/blob/master/release_notes/Release notes 0.9.2.md</citetitle></ulink>.
+                    <ulink url="https://github.com/CsoundQt/CsoundQt/blob/develop/release_notes/Release%20Notes%200.9.2.1.md">
+                    <citetitle>https://github.com/CsoundQt/CsoundQt/blob/develop/release_notes/Release%20Notes%200.9.2.1.md</citetitle></ulink>.
                   </simpara>
                 </listitem>
               </itemizedlist>
@@ -450,7 +508,9 @@ english cvs version=
                 <link linkend="expsegr"><citetitle></citetitle>expsegr</link>,
                 <link linkend="linsegr"><citetitle></citetitle>linsegr</link>,
                 <link linkend="cossegr"><citetitle></citetitle>cossegr</link>,
-                <link linkend="transegr"><citetitle></citetitle>transegr</link>.
+                <link linkend="transegr"><citetitle></citetitle>transegr</link>,
+                <link linkend="envlpx"><citetitle></citetitle>envlpx</link>,
+                comprenant de nouveaux avertissements.
               </simpara>
             </listitem>
             <listitem>
@@ -517,7 +577,7 @@ english cvs version=
             </listitem>
             <listitem>
               <simpara>
-                vst2cs fonctionne maintenant sur architecture 64 bit.
+                vst4cs fonctionne maintenant sur architecture 64 bit.
               </simpara>
             </listitem>
             <listitem>
@@ -535,6 +595,46 @@ english cvs version=
             <listitem>
               <simpara>
                 Petits défauts corrigés dans le module rtauhal.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                L'installeur pour Windows sur architecture CPU 64 bit fixe
+                maintenant correctement les variables d'environnement au
+                niveau système comme il se doit.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                transeg au taux-k avec itype différent de zéro avait un retard
+                initial d'un cycle.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Fonction log pour les tableaux corrigée.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Pondération des GENs nommés corrigée.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Une erreur de terminaison dans la lecture des fichiers ATS
+                était supposée corrigée ; elle générait de fausses erreurs
+                indiquant trop tôt la fin de fichier.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Erreur d'initialisation dans pvbandp corrigée.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Allocation de chaîne de caractères dans readfi corrigée.
               </simpara>
             </listitem>
           </itemizedlist>
@@ -576,6 +676,12 @@ english cvs version=
           <itemizedlist>
             <listitem>
               <simpara>
+                csoundCompileCsdText : nouvelle fonction pour compiler un CSD
+                depuis un texte sous forme de chaîne de caractères.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
                 L'appel de fonction csound->GetKcounter(csound) retourne
                 maintenant un entier non-signé sur 64 bit. Auparavant, il
                 retournait un entier long ce qui n'était pas clair.
@@ -583,8 +689,13 @@ english cvs version=
             </listitem>
             <listitem>
               <simpara>
-                Nouveau module de liaison pour Python 2.x and Python 3.x basé
-                sur ctypes: ctcsound.
+                ctcsound.py est un nouveau fichier de liaison entre le langage
+                Python et l'API de Csound. C'est un fichier en pure Python qui
+                utilise le module FFI (Foreign Function Interface) ctypes. Il ne
+                dépend pas de Swig, et il fonctionne aussi bien avec Python2
+                qu'avec Python3. Il utilise numpy pour ses structures de données,
+                numpy était le paquet fondamental du calcul scientifique avec
+                Python.
               </simpara>
             </listitem>
           </itemizedlist>
@@ -595,19 +706,47 @@ english cvs version=
           Changements sur les plates-formes :
           <itemizedlist>
             <listitem>
-              <simpara>Android.</simpara>
+              <simpara>Windows.</simpara>
               <itemizedlist>
                 <listitem>
                   <simpara>
-                    csoundCompileCsdText : nouvelle fonction pour compiler des
-                    chaînes de caractères.
+                    L'installeur de Csound pour Windows contient maintenant tous
+                    les exécutables construits pour une architecture CPU 64 bit.
                   </simpara>
                 </listitem>
-              </itemizedlist>
-            </listitem>
-            <listitem>
-              <simpara>Windows.</simpara>
-              <itemizedlist>
+                <listitem>
+                  <simpara>
+                    L'installeur pour Windows sur architecture CPU 64 bit fournit
+                    maintenant un NW.js fonctionnel. Il exécute toutes les
+                    fonctionnalités de Csound ainsi que celles d'HTML5 dans
+                    un runtime semblable à un navigateur avec le langage
+                    JavaScript, et il comprend un éditeur Csound implémenté en
+                    HTML. L'éditeur exécute des pièces sous forme de fichiers
+                    .csd incluant une balise &lt;html&gt; ou sous forme de
+                    fichiers .html appelant l'objet csound, et il fournit des
+                    fonctions de débogage de JavaScript.
+                  </simpara>
+                </listitem>
+                <listitem>
+                  <simpara>
+                    Un nouveau système simplifié se trouve dans le répertoire
+                    csound/mingw64 pour construire Csound à l'aide de la suite
+                    d'outils MSYS2/mingw64.
+                  </simpara>
+                </listitem>
+                <listitem>
+                  <simpara>
+                    Le lien avec pthreads et d'autres bibliothèques est
+                    maintenant statique.
+                  </simpara>
+                </listitem>
+                <listitem>
+                  <simpara>
+                    Support limité des caractères non ASCII dans les noms de
+                    fichier.
+                  </simpara>
+                </listitem>
+              
                 <listitem>
                   <simpara>
                     L'installeur pour Windows fournit maintenant Csound et tous
