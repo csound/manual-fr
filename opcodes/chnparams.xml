@@ -31,7 +31,7 @@ english cvs version=1.8
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>itype, imode, ictltype, idflt, imin, imax <command>chnparams</command></synopsis>
+    <synopsis>itype, imode, ictltype, idflt, imin, imax <command>chnparams</command> Sname</synopsis>
   </refsect1>
 
   <refsect1>
@@ -60,7 +60,9 @@ english cvs version=1.8
       <emphasis>imax</emphasis> -- paramètre spécial seulement pour les canaux de
       contrôle ; s'il n'est pas disponible, il est mis à zéro. 
     </para>
-
+    <para>
+      <emphasis>Sname</emphasis> -- chaîne de caractères identifiant le canal.
+    </para>
   </refsect1>
 
   <!--<refsect1>
