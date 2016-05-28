@@ -1,0 +1,95 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="dctinv">
+<indexterm id="IndexDctinv"><primary>dctinv</primary></indexterm>
+
+  <refentryinfo><title>Array operations: Inverse Discrete Cosine Transform</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>dctinv</refentrytitle>
+  </refmeta>
+
+   <refnamediv>
+    <refname>dctinv</refname>
+    <refpurpose>
+      Transformée en cosinus discrète inverse d'un tableau d'échantillons (DCT-III).
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Applique une transformée en cosinus discrète inverse à un tableau
+      unidimensionnel produisant un tableau de même taille qui contient la
+      transformée. Pour le moment seules les tailles puissance de deux sont
+      implémentées. Disponible en versions de taux-i et de taux-k.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kout[] <command>dctinv</command> kin[]</synopsis>
+    <synopsis>iout[] <command>dctinv</command> iin[]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iout[]</emphasis> -- tableau de sortie contenant la IDCT. Il
+      est créé s'il n'existait pas.
+    </para>
+    <para>
+      <emphasis>iin[]</emphasis> -- tableau d'entrée.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kout[]</emphasis> -- tableau de sortie contenant la IDCT. Il
+      est créé s'il n'existait pas.
+         </para>
+       <para>
+      <emphasis>kin[]</emphasis> -- tableau d'entrée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode dctinv. Il utilise le fichier
+      <ulink url="examples/dctinv.csd"><citetitle>dctinv.csd</citetitle></ulink>.
+    </para>
+    <example>
+      <title>Exemple de l'opcode dctinv.</title>
+      <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+      et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+      d'information sur l'utilisation des options de la ligne de commande.</para>
+      <xi:include href="examples-xml/dctinv.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </example>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="vectorial"><citetitle></citetitle>Vectorial opcodes</link>,
+      <link linkend="array"><citetitle></citetitle>array</link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>NUI Maynooth</member>
+        <member>2014</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 6.04</para>
+  </refsect1>
+</refentry>

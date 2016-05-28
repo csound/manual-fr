@@ -1,0 +1,95 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="dct">
+<indexterm id="IndexDct"><primary>dct</primary></indexterm>
+
+  <refentryinfo><title>Array operations: Discrete Cosine Transform</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>dct</refentrytitle>
+  </refmeta>
+
+   <refnamediv>
+    <refname>dct</refname>
+    <refpurpose>
+      Transformée en cosinus discrète d'un tableau d'échantillons (DCT-II).
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Applique une transformée en cosinus discrète à un tableau unidimensionnel
+      produisant un tableau de même taille qui contient la transformée. Pour le
+      moment seules les tailles puissance de deux sont implémentées. Disponible
+      en versions de taux-i et de taux-k.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kout[] <command>dct</command> kin[]</synopsis>
+    <synopsis>iout[] <command>dct</command> iin[]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iout[]</emphasis> -- tableau de sortie contenant la DCT. Il
+      est créé s'il n'existait pas.
+    </para>
+    <para>
+      <emphasis>iin[]</emphasis> -- tableau d'entrée.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kout[]</emphasis> -- tableau de sortie contenant la DCT. Il
+      est créé s'il n'existait pas.
+    </para>
+    <para>
+      <emphasis>kin[]</emphasis> -- tableau d'entrée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode dct. Il utilise le fichier
+      <ulink url="examples/dct.csd"><citetitle>dct.csd</citetitle></ulink>.
+    </para>
+    <example>
+      <title>Exemple de l'opcode dct.</title>
+      <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+      et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+      d'information sur l'utilisation des options de la ligne de commande.</para>
+      <xi:include href="examples-xml/dct.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </example>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="vectorial"><citetitle></citetitle>Vectorial opcodes</link>,
+      <link linkend="array"><citetitle></citetitle>array</link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>NUI Maynooth</member>
+        <member>2014</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 6.04</para>
+  </refsect1>
+</refentry>
