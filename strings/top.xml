@@ -11,12 +11,10 @@ english cvs version=1.7
   <title>Chaînes de caractères</title>
   <para>
     Les variables chaîne de caractères sont des variables dont le nom commence par S ou par
-    gS (pour les variables chaîne locales ou globales, respectivement), et elle peuvent
-    mémoriser n'importe quelle chaîne avec une longueur maximale définie par l'option de
-    ligne de commande <emphasis>-+max_str_len</emphasis> (255 caractères par défaut). On
+    gS (pour les variables chaîne locales ou globales, respectivement). On
     peut utiliser ces variables comme argument d'entrée de n'importe quel opcode qui
     attend une chaîne constante entre apostrophes, et on peut les manipuler durant les
-    périodes d'initilasation ou d'exécution avec les opcodes dont la liste suit.
+    périodes d'initialisation ou d'exécution avec les opcodes dont la liste suit.
   </para>
   <para>
     Il est également possible d'utiliser des chaînes dans les p-champs. Un p-champ chaîne
@@ -49,8 +47,7 @@ a1    <emphasis role="opc">diskin2</emphasis> Snom, 1</programlisting>
   <para>
     Csound 5 a aussi amélioré l'analyse des constantes chaîne. Il est possible de spécifier
     une chaîne multi-lignes en l'entourant avec {{ et }} à la place des habituelles doubles
-    apostrophes (noter que la longueur des constantes chaîne n'est pas limitée, et n'est pas
-    affectée par l'option <emphasis>-+max_str_len</emphasis>), et les séquences d'échappement
+    apostrophes, et les séquences d'échappement
     suivantes sont automatiquement converties :
     <itemizedlist>
       <listitem>

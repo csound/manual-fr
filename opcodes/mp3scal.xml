@@ -40,7 +40,7 @@ authors=Francois Pinot
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>asig, asig2 <command>mp3scal</command> Sfile, ktimescal, kpitch, kamp [,iskip, ifftsize, idecim, ilock]
+    <synopsis>asig, asig2, ktime <command>mp3scal</command> Sfile, ktimescal, kpitch, kamp [,iskip, ifftsize, idecim, ilock]
       </synopsis>
   </refsect1>
 
@@ -79,6 +79,13 @@ authors=Francois Pinot
       <emphasis>kpitch</emphasis> -- pondération de la hauteur des grains
       (1 = hauteur normale, &lt; 1 inférieure, &gt; 1 supérieure ;
       négative, lecture inversée).
+    </para>
+    <para>
+      <emphasis>ktime</emphasis> -- marque temporelle.
+    </para>
+    <para>
+      <emphasis>asig</emphasis, <emphasis>asig2</emphasis> -- signal de sortie
+      stéréo.
     </para>
   </refsect1>
  
