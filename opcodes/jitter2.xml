@@ -30,9 +30,19 @@ english cvs version=1.11
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>kout <command>jitter2</command> ktotamp, kamp1, kcps1, kamp2, kcps2, kamp3, kcps3</synopsis>
+    <synopsis>kout <command>jitter2</command> ktotamp, kamp1, kcps1, kamp2, kcps2, kamp3, kcps3[ ,iopt]</synopsis>
   </refsect1>
 
+   <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iopt</emphasis> -- Facultatif, contrôle la date de début des
+      effets. S'il est nul (valeur par défaut) la sortie est nulle jusqu'à la
+      fin de la valeur de <emphasis>kcps</emphasis> la plus courte. S'il est
+      différent de zéro l'effet démarre immédiatement.
+    </para>
+  </refsect1>
+  
   <refsect1>
     <title>Exécution</title>
     <para>
@@ -110,7 +120,8 @@ english cvs version=1.11
 
   <refsect1>
     <title>Crédits</title>
-    <para>Auteur : &namegabriel;</para>
+    <para>Auteur : &namegabriel;, &namejohn;</para>
     <para>Nouveau dans la version 4.15</para>
+    <para>iopt ajouté dans la version 6.08</para>
   </refsect1>
 </refentry>
