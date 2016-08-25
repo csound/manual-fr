@@ -32,6 +32,7 @@ english cvs version=1.3
   <refsect1>
     <title>Syntaxe</title>
     <synopsis><command>FLslidBnk2</command> &quot;names&quot;, inumsliders, ioutable, iconfigtable [,iwidth, iheight, ix, iy, istart_index] </synopsis>
+    <synopsis><command>FLslidBnk2</command> istring, inumsliders, ioutable, iconfigtable [,iwidth, iheight, ix, iy, istart_index] </synopsis>
   </refsect1>
 
   <refsect1>
@@ -44,6 +45,12 @@ english cvs version=1.3
       Il est possible de ne fournir aucun nom en donnant un seul espace
       <quote> </quote>. Dans ce cas, l'opcode affectera automatiquement un
       numéro en progression ascendante comme étiquette pour chaque réglette.
+    </para>
+
+    <para>
+      <emphasis>istring</emphasis> -- un entier associé à une chaîne de
+      caractères par <emphasis>strset</emphasis>, qui est utilisée comme
+      <emphasis><quote>names</quote></emphasis> ci-dessus.
     </para>
 
     <para>
