@@ -52,8 +52,9 @@ english cvs version=1.12
     <para>
       <emphasis>iorder</emphasis> (facultatif, 0 par défaut) -- ordre de
       l'interpolation utilisée en interne. Peut prendre n'importe quelle valeur
-      comprise entre 1 et 4, et vaut 4 par défaut, qui est l'interpolation
-      quartique. 2 est l'interpolation quadratique et 1 l'interpolation linéaire.
+      comprise entre 1 et 4, et vaut 4 par défaut si la valeur donnée est en
+      dehors de cet interval. 4 est l'interpolation quartique, 3 est l'interpolation
+      cubique, 2 est l'interpolation quadratique et 1 l'interpolation linéaire.
       Les nombres les plus élevés donnent un traitement plus lent, mais pas
       nécessairement meilleur.
     </para>
