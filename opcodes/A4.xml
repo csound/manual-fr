@@ -1,0 +1,92 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="A4">
+<indexterm id="IndexA4"><primary>A4</primary></indexterm>
+  <refentryinfo><title>Orchestra Syntax:Header</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>A4</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>A4</refname>
+    <refpurpose>
+      Fixe la fréquence de base pour le la du diapasion.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ces instructions sont des <link linkend="assign"><citetitle>affectations</citetitle></link> de
+      valeurs globales réalisées au début d'un orchestre, avant que tout bloc d'instrument ne soit
+      défini. Leur fonction est de fixer certaines
+      <link linkend="VariableTypes"><citetitle>variables</citetitle></link> dont le nom est un mot réservé
+      et qui sont nécessaires à l'exécution. Une fois fixés, ces mots réservés peuvent être utilisés dans
+      des expressions n'importe où dans l'orchestre.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>A4</command> = iarg</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>A4</emphasis>  = (facultatif) -- fixe la fréquence de référence
+      pour la hauteur A4 (la du diapason) à <emphasis>iarg</emphasis> Hz. La
+      valeur par défaut est 440.
+    </para>
+
+    <para>
+      De plus, toute <link linkend="GlobalVariables"><citetitle>variable globale</citetitle></link> peut
+      être initialisée par une <emphasis>instruction de la période d'initialisation</emphasis> n'importe
+      où avant la première <link linkend="instr"><citetitle>instruction instr</citetitle></link>. Toutes
+      les affectations ci-dessus sont exécutées dans l'instrument 0 (passe-i seulement) au début de
+      l'exécution réelle.
+    </para>
+
+    <para>
+      A partie de la version 6.08 de Csound version 6.08, <emphasis>A4</emphasis>
+      peut être utilisée. Elle affecte le comportement des opcodes
+      <emphasis>cpspch</emphasis>, <emphasis>cpsoct</emphasis>,
+      <emphasis>cps2pch</emphasis>, <emphasis>cpsxpch</emphasis> et
+      <emphasis>cpsmidinn</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="sr"><citetitle>sr</citetitle></link>,
+      <link linkend="kr"><citetitle>kr</citetitle></link>,
+      <link linkend="ksmps"><citetitle>ksmps</citetitle></link>,
+      <link linkend="nchnls"><citetitle>nchnls</citetitle></link>,
+      <link linkend="nchnls_i"><citetitle>nchnls_i</citetitle></link>,
+      <link linkend="Zerodbfs"><citetitle>0dbfs</citetitle></link>,
+      <link linkend="cpspch"><citetitle>cpspch</citetitle></link>,
+      <link linkend="cpsoct"><citetitle>cpsoct</citetitle></link>,
+      <link linkend="cpsmidinn"><citetitle>cpsmidinn</citetitle></link>,
+      <link linkend="cps2pch"><citetitle>cps2pch</citetitle></link>,
+      <link linkend="cpsxpch"><citetitle>cpsxpch</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Septembre 2016</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 6.08 de Csound.</para>
+  </refsect1>
+</refentry>
+
