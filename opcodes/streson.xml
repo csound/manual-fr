@@ -31,18 +31,7 @@ english cvs version=1.14
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>ares <command>streson</command> asig, kfrq, ifdbgain</synopsis>
-  </refsect1>
- 
-  <refsect1>
-    <title>Initialisation</title>
-    <para>
-      <emphasis>ifdbgain</emphasis> -- gain de rétroaction, entre 0 et 1, de la ligne
-      à retard interne. Une valeur proche de 1 crée une décroissance plus lente et une
-      résonance plus prononcée. Avec de petites valeurs, le signal d'entrée peut ne
-      pas être affecté. Dépend de la fréquence du filtre, les valeurs typiques étant
-      &gt; 0.9.
-    </para>
+    <synopsis>ares <command>streson</command> asig, kfr, kfdbgain</synopsis>
   </refsect1>
  
   <refsect1>
@@ -55,6 +44,14 @@ english cvs version=1.14
       <emphasis>kfrq</emphasis> -- la fréquence fondamentale de la corde.
     </para>
 
+    <para>
+      <emphasis>kfdbgain</emphasis> -- gain de rétroaction, entre 0 et 1, de la ligne
+      à retard interne. Une valeur proche de 1 crée une décroissance plus lente et une
+      résonance plus prononcée. Avec de petites valeurs, le signal d'entrée peut ne
+      pas être affecté. Dépend de la fréquence du filtre, les valeurs typiques étant
+      &gt; 0.9. Les valeurs jusqu'à 1 sont aussi utiles.
+    </para>
+    
     <para>
       <emphasis>streson</emphasis> fait passer l'entrée <emphasis>asig</emphasis>
       à travers un réseau composé de filtres en peigne, passe-bas et passe-tout,

@@ -440,7 +440,7 @@
 <para/>
 <synopsis>ares <link linkend="pluck">pluck</link> kamp, kcps, icps, ifn, imeth [, iparm1] [, iparm2]</synopsis><para/>
 <synopsis>ares <link linkend="repluck">repluck</link> iplk, kamp, icps, kpick, krefl, axcite</synopsis><para/>
-<synopsis>ares <link linkend="streson">streson</link> asig, kfrq, ifdbgain</synopsis><para/>
+<synopsis>ares <link linkend="streson">streson</link> asig, kfr, kfdbgain</synopsis><para/>
 <synopsis>ares <link linkend="wgbow">wgbow</link> kamp, kfreq, kpres, krat, kvibf, kvamp \
     [, ifn] [, iminfreq]</synopsis><para/>
 <synopsis>ares <link linkend="wgbowedbar">wgbowedbar</link> kamp, kfreq, kpos, kbowpres, kgain [, iconst] [, itvel] \
@@ -1713,6 +1713,8 @@
 <synopsis>asig[, asig2] <link linkend="filescal">filescal</link> ktimescal, kamp, kpitch, Sfile, klock [,ifftsize, idecim, ithresh]
       </synopsis><para/>
 <synopsis>asig <link linkend="mincer">mincer</link> atimpt, kamp, kpitch, ktab, klock[,ifftsize,idecim]
+      </synopsis><para/>
+<synopsis>asig, asig2, ktime <link linkend="mp3scal">mp3scal</link> Sfile, ktimescal, kpitch, kamp [,iskip, ifftsize, idecim, ilock]
       </synopsis><para/>
 <synopsis>asig <link linkend="paulstretch">paulstretch</link> istretch, iwindowsize, ift
     </synopsis><para/>
