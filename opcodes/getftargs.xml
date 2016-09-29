@@ -1,0 +1,92 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="getftargs">
+<indexterm id="Indexgetftargs"><primary>getftargs</primary></indexterm>
+  <refentryinfo><title>Table Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>getftargs</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>getftargs</refname>
+    <refpurpose>
+      Remplit une variable chaîne de caractères avec les arguments donnés à
+      la création d'une table de fonction au taux-k.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>getftargs</emphasis> écrit les arguments donnés à la création
+      d'une table de fonction dans une variable chaîne de caractères.
+      <emphasis>getftargs</emphasis> fonctionne durant l'initialisation ainsi
+      que pendant l'exécution.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>Sdst <command>getftargs</command> iftno, ktrig</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifno</emphasis> -- Numéro de la table dont les arguments vont
+      être utilisés.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>Sdst</emphasis> -- variable chaîne de caractères en sortie.
+    </para>
+    <para>
+      <emphasis>ktrig</emphasis> -- signal de déclenchement, doit être valide
+      au temps-i. La variable chaîne de caractères en sortie est remplie à
+      l'initialisation si <emphasis>ktrig</emphasis> est positif, et pendant
+      l'exécution, chaque fois que <emphasis>ktrig</emphasis> est positif et
+      différent de la valeur précédente. Utiliser la constante 1 pour n'imprimer
+      qu'une fois à l'initialisation de la note.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode getftargs. Il utilise le fichier
+      <ulink url="examples/getftargs.csd"><citetitle>getftargs.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode getftargs.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/getftargs.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Sa sortie devrait contenir cette ligne :
+      <screen> 0 0 0.5 200 0.8 450 0.33 600 0.1 800 0.4 1024 0</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ftgen"><citetitle>ftgen</citetitle></link>,
+      <link linkend="ftlen"><citetitle>ftlen</citetitle></link> et
+      <link linkend="sprintf"><citetitle>sprintf</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par Guillermo Senna</para>
+    <para>2016</para>
+  </refsect1>
+</refentry>

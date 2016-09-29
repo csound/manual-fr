@@ -1,0 +1,125 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="GENquadbezier">
+  <indexterm id="IndexGENquadbezier"><primary>GENquadbezier</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GENquadbezier</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>"quadbezier"</refname>
+    <refpurpose>
+      Génère une table avec les valeurs d'une fonction de Bézier quadratique.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cette routine crée une ftable de segments construits par les chemins
+      tracés par le fonction de Bézier quadratique.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>f</command> # time size "quadbezier" y1 cx1 cy1 x2 y2 [cx2 cy2 x3 y3 ...]
+</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>x2, x3,</emphasis> etc. -- Positions dans la table auxquelles
+      la valeur y suivante sera atteinte. Doivent être en ordre croissant.
+      On suppose que x1 vaut 0. Si la dernière valeur est inférieure à la taille,
+      les positions restantes seront mises à zéro. Ne doivent pas être négatives. 
+    </para>
+    <para>
+      <emphasis>y1, y2, y3,</emphasis> etc. -- Valeurs charnière atteintes à la
+      position spécifiée par la valeur x précédente. 
+    </para>
+    <para>
+      <emphasis>cx1, cx2, cx3,</emphasis> etc. -- Coordonnées x virtuelles pour
+      les différents points de contrôle. cx[n] peut être égal ou supérieur à
+      x[n] et égal ou inférieur à x[n+1]. Ne doivent pas être négatives mais
+      peuvent être nulles.
+    </para>
+    <para>
+      <emphasis>cy1, cy2, cy3,</emphasis> etc. -- Coordonnées y virtuelles pour
+      les différents points de contrôle. 
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exrmples</title>
+    <para>
+      Voici un exemple de la routine GENquadbezier. Il utilise le fichier
+      <ulink url="examples/genquadbezier.csd"><citetitle>genquadbezier.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de la routine GENquadbezier.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/genquadbezier.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>  
+      <textobject>
+        <phrase>Voici les diagrammes des enveloppes dessinées par la routine
+        GENquadbezier dans l'exemple ci-dessus :</phrase>
+      </textobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/genquadbezier_1.png" format="PNG"/>
+        </imageobject>
+        <textobject>
+          <phrase>  f 2 0 1024 "quadbezier" 0 140 0.61 324 0.53 338 0.27 449 0.32 571 0.08 675 0.5 873 0.47 1024 0</phrase>
+        </textobject>
+        <caption>
+          <para>  f 2 0 1024 "quadbezier" 0 140 0.61 324 0.53 338 0.27 449 0.32 571 0.08 675 0.5 873 0.47 1024 0</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/genquadbezier_2.png" format="PNG"/>
+        </imageobject>
+        <textobject>
+          <phrase>  f 3 0 1024 "quadbezier" 0 92 0.04 94 0.25 177 0.58 373 0.39 537 0.15 675 0.5 910 0.68 1024 0</phrase>
+        </textobject>
+        <caption>
+          <para>  f 3 0 1024 "quadbezier" 0 92 0.04 94 0.25 177 0.58 373 0.39 537 0.15 675 0.5 910 0.68 1024 0</para>
+        </caption>
+      </mediaobject>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/genquadbezier_3.png" format="PNG"/>
+        </imageobject>
+        <textobject>
+          <phrase>  f 4 0 1024 "quadbezier" 0 196 0.68 537 0.71 873 0.7 1024 0</phrase>
+        </textobject>
+        <caption>
+          <para>  f 4 0 1024 "quadbezier" 0 196 0.68 537 0.71 873 0.7 1024 0</para>
+        </caption>
+      </mediaobject>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para> Pour les références, consulter les commentaires dans le
+    <ulink url="https://github.com/csound/csound/blob/develop/Opcodes/quadbezier.c">
+    <citetitle>code source</citetitle></ulink>.</para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par Guillermo Senna</para>
+    <para>2016</para>
+  </refsect1>
+</refentry>
