@@ -268,10 +268,12 @@ english cvs version=1.19
       Routines GEN nommées
     </bridgehead>
     <para>
-      On peut ajouter des routines GEN à Csound au moyen de greffons de fonction GEN. Il y a actuellement un seul greffon GEN
-      qui fournit les fonctions exponentielle et tangente hyperbolique, ainsi que la fonction de sonie. Il y a aussi un
-      générateur appelé farey pour les opérations sur les suites de Farey. Ces fonctions GEN ne sont pas appelées par un
-      numéro, mais par un nom.
+      On peut ajouter des routines GEN à Csound au moyen de greffons de fonction
+      GEN. Il y a actuellement un seul greffon GEN qui fournit les fonctions
+      exponentielle et tangente hyperbolique, ainsi que la fonction de sonie.
+      Il y a aussi un générateur appelé farey pour les opérations sur les suites
+      de Farey et un générateur de courbes de Bézier. Ces fonctions GEN ne sont
+      pas appelées par un numéro, mais par un nom.
     </para>
     <itemizedlist>
       <listitem>
@@ -289,6 +291,10 @@ english cvs version=1.19
       <listitem>
         <simpara><link linkend="GENfarey"><citetitle>"farey"</citetitle></link> -
         remplit une table à partir d'une suite de Farey.</simpara>
+      </listitem>
+       <listitem>
+        <simpara><link linkend="GENquadbezier"><citetitle>"quadbezier"</citetitle></link> -
+        remplit une table avec une courbe de Bézier quadratique.</simpara>
       </listitem>
       <listitem>
         <simpara><link linkend="GENwave"><citetitle>"wave"</citetitle></link> -
