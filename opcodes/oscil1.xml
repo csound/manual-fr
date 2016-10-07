@@ -42,8 +42,8 @@ english cvs version=1.9
 
     <para>
       <emphasis>idur</emphasis> -- durée en secondes de l'unique passe d'échantillonnage
-      dans la table d'<emphasis>oscil1</emphasis>. Avec une valeur nulle ou négative,
-      l'initialisation sera ignorée.
+      dans la table d'<emphasis>oscil1</emphasis>. Une valeur négative provoque
+      une lecture de la table de la fin vers le début.
     </para>
 
     <para>
