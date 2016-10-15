@@ -137,10 +137,12 @@ english cvs version=1.18
 
     <para>
       Noter que <emphasis>fout</emphasis> et 
-      <link linkend="foutk"><citetitle>foutk</citetitle></link> peuvent utiliser
-      soit une chaîne de caractères contenant un nom de chemin de fichier, soit un
+      <link linkend="foutk"><citetitle>foutk</citetitle></link> utilisent
+      une chaîne de caractères contenant un nom de chemin de fichier.
+      <!--, soit un
       identificateur numérique généré par
-      <link linkend="fiopen"><citetitle>fiopen</citetitle></link>. Alors qu'avec
+      <link linkend="fiopen"><citetitle>fiopen</citetitle></link>. -->
+      Alors qu'avec
       <link linkend="fouti"><citetitle>fouti</citetitle></link> et
       <link linkend="foutir"><citetitle>foutir</citetitle></link>, le fichier
       cible ne peut être spécifié que par un identificateur numérique.
