@@ -1,0 +1,67 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="C">
+      <indexterm id="IndexCStatement"><primary>C statement</primary></indexterm>
+  <refmeta>
+    <refentrytitle>Instruction C</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>C Statement</refname>
+    <refpurpose>
+      Cette instruction active ou désactive la fonction automatique de report
+      des arguments (carry).
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cette instruction active ou désactive la fonction automatique de report
+      (carry) des arguments manquants.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>C</command> p1</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>p1</emphasis> -- Specifie s'il faut déactiver (valeur 0) ou
+      activer (valeur non nulle).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'instruction C. Il utilise le fichier
+      <ulink url="examples/b.csd"><citetitle>C.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'instruction C.</title>
+        <xi:include href="examples-xml/C.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Alta Sounds</member>
+        <member>Bath, UK</member>
+        <member>2016</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 6.08</para>
+  </refsect1>
+</refentry>
