@@ -115,6 +115,12 @@ english cvs version=1.8
 <emphasis role="stamnt">i</emphasis>1   1.5  .5               ; only p1 to p3 are carried here</programlisting>
       </informalexample>
     </para>
+
+    <para>
+      Alternativement à l'utilisation de !, on peut désactiver le report automatique
+      en dehors de p1, p2 et p3. Ceci est réalisé par l'instruction de partition
+      "C 0", et peut être réactivé avec "C 1".
+    </para>
   </section>
 
   <section id="ScoreTempo">

@@ -20,6 +20,9 @@ english cvs version=1.6
           <link linkend="b"><citetitle>b</citetitle></link> - Réinitialise l'horloge
         </para></listitem>
       <listitem><para>
+          <link linkend="C"><citetitle>C</citetitle></link> - Bascule la fonction de report automatique
+        </para></listitem>
+      <listitem><para>
           <link linkend="e"><citetitle>e</citetitle></link> - Marque la fin de la dernière section de la partition
         </para></listitem>
       <listitem><para>
@@ -65,4 +68,9 @@ english cvs version=1.6
     </itemizedlist>
   </para>
 
+  <para>
+    Les commentaires sont dénotés par un point-virgule (;), un double slash (//)
+    ou le caractère c et durent jusqu'à la fin de la ligne. Les commentaires
+    dans le style du langage C /* ... */ sont également permis.
+  </para>
 </section>

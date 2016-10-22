@@ -57,7 +57,7 @@ a2  <emphasis role="opc">oscbnk</emphasis> kcps, 1.0, kfmd1, 0.0, 40, 203, 0.1, 
   <para>
      Les commentaires sont facultatifs et ils ont pour but de permettre à l'utilisateur
      de commenter le code de son orchestre. Les commentaires commencent par un point-virgule
-     (;) et s'étendent jusqu'à la fin de la ligne. Les commentaires peuvent optionnellement
+     (;) ou // et s'étendent jusqu'à la fin de la ligne. Les commentaires peuvent optionnellement
      être écrits en style C, s'étendant sur plusieurs lignes comme ceci :
      <programlisting>
 <emphasis role="comment">/* Tout ce qui se trouve ici --------

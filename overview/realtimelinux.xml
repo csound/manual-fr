@@ -11,14 +11,12 @@ english cvs version=1.11
   <title>Entrées/sorties en temps réel sous Linux</title>
 <!--  Most of this file was contributed by Jonathan Murphy on July 2006-->
   <para>
-    Sous linux, les réglages PortAudio/PortMidi par défaut provoquent une
-    latence plus longue que celle que l'on obtiendrait avec ALSA et/ou JACK.
-    Les greffons PortMusic sont des serveurs audio et MIDI, qui fournissent
+    Sous linux, les réglages portaudio/portmidi par défaut provoquent une
+    latence plus longue que celle que l'on obtiendrait avec ALSA et/ou JACK
+    (voir la section séparée de manuel sur le sujet).
+    Les greffons portaudio/portmidi sont des serveurs audio et MIDI, qui fournissent
     une interface aux pilotes ALSA, tout comme le fait JACK, mais d'une
-    manière fondamentalement différente. Pour une comparaison plus détaillée
-    prière de se référer à :
-  </para>
-  <para><ulink url="http://jackaudio.org/faq">http://jackaudio.org/faq</ulink>
+    manière fondamentalement différente.
   </para>
   
   <bridgehead>Utilisation d'ALSA</bridgehead>
@@ -359,91 +357,6 @@ ALSASEQ: connected from 20:0
       en compétition au lieu de coopérer, ce qui aura pour résultat de piètres
       performances. </para>
 
-  <bridgehead>Utiliser JACK</bridgehead>
-        <para>La manière la plus simple d'activer les entrées-sorties avec le greffon JACK est :
-        <screen>
-          -+rtaudio=jack -i adc -o dac</screen>
-        En outre, il y a quelques options de ligne de commande spécifiques à JACK :
-        <variablelist>
-          <title>Options de ligne de commande de JACK</title>
-          <varlistentry>
-            <term>-+jack_client=[nom_de_client]</term>
-            <listitem>
-              <para>Le nom de client par défaut de Csound est 'csound5'.
-                Si plusieurs instances de Csound se connectent au serveur
-                JACK, il faut utiliser des noms de client différents pour
-                éviter les conflits de noms.
-              </para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>-+jack_inportname=[préfixe du nom de port d'entrée], -+jack_outportname=[préfixe du nom de port de sortie]
-            </term>
-            <listitem>
-              <para>
-                Le préfixe du nom des ports d'entrée/sortie JACK de Csound ;
-                la valeur par défaut est 'input' et 'ouput'. Le nom complet
-                d'un port est obtenu en ajoutant le numéro du canal au préfixe.
-                Exemple : avec les réglages par défaut, un orchestre stéréo créera
-                les ports suivants en mode d'opération full duplex :
-                <screen>
-csound5:input1              (enregistrement gauche)
-csound5:input2              (enregistrement droite)
-csound5:output1             (reproduction gauche)
-csound5:output2             (reproduction droite)</screen>
-              </para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>-+jack_sleep_time=[temps de repos en microsecondes]</term>
-            <listitem>
-              <para>
-                Depuis Csound version 5.01, cette option est dépréciée et
-                ignorée.
-              </para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </para>
-      <bridgehead>Connecter Csound à d'autres clients JACK</bridgehead>
-      <para>
-        Il n'y a par défaut aucune connection (on doit utiliser jack_connect,
-        qjackctl, ou un utilitaire semblable) ; cependant, on peut connecter
-        le greffon à des ports spécifiés par '-iadx:portname_prefix' ou
-        '-odac:portname_prefix', où portname_prefix est le nom d'un port
-        sans le numéro de canal, tel que 'alsa_pcm:capture_' (pour
-        -i adc), ou 'alsa_pcm:playback_' (pour -o dac).
-      </para>
-      <bridgehead>Notes sur les tailles de tampon</bridgehead>
-      <para>
-        Les données audio sont reçues de et envoyées vers le serveur JACK
-        par Csound au moyen d'un tampon circulaire qui est contrôlé par
-        les options -b et -B. -B est la taille totale du tampon, tandis
-        que -b est la taille d'une période. Ces valeurs sont arrondies de
-        façon à ce que la taille totale soit un multiple entier de la
-        taille de la période et supérieure à cette dernière.
-        La différence de taille entre le tampon de Csound et la période
-        doit être supérieure ou égale à la taille de la période de JACK.
-      </para>
-      <para>
-        Si l'on utilise en même temps -iadc et -odac, l'option -b
-        doit être fixée à une valeur multiple de ksmps.
-      </para>
-      <para>
-  Exemple de réglage de tampon pour obtenir une faible latence sur un système rapide :
-	<screen>
-	  jackd -d alsa -P -r 48000 -p 64 -n 4 -zt &amp;
-	  csound -+rtaudio=jack -b 64 -B 256 [...]</screen>
-  avec temps-partagé pour le  (en tant que root) :
-	<screen>
-	  jackd -R -P 90 -d alsa -P -r 48000 -p 64 -n 2 -zt &amp;
-	  csound --sched=80,90,10 -d -+rtaudio=jack -b 64 -B 192 [...]</screen>
-  Pour améliorer les performances, utiliser des valeurs de ksmps comme 32 ou 64.
-      </para>
-      <para>
-  Le taux d'échantillonnage de l'orchestre doit être le même que celui
-  du serveur JACK.
-  </para>
   <bridgehead>Utilisation de pulseaudio</bridgehead>
   <para>Le support de <ulink url="http://www.pulseaudio.org/">Pulseaudio</ulink> a été
     ajouté dans Csound 5.09. Vous pouvez spécifier les réglages suivants :</para>
@@ -468,6 +381,5 @@ csound5:output2             (reproduction droite)</screen>
   </orderedlist>
   <para>Voici un exemple de ligne de commande :</para>
   <literallayout>csound -odac:1 examples/trapped.csd -+rtaudio=pulse -+server=unix:/tmp/pulse-victor/native -+output_stream=trapped</literallayout>
-
 </section>
 

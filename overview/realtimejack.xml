@@ -67,10 +67,10 @@ csound6:output2             (playback right)</screen>
 
   <para>
     Par des noms : le préfixe du nom de port est utilisé, par exemple
-	  "system:playback_", "system:capture_", "alsa_pcm:playback_" ou
-	  "alsa_pcm:capture_" ce qui donne -odac:system:playback_ (pour la sortie audio),
-	  -iadc:system:capture_ (pour l'entrée audio). Le préfixe du nom de port
-	  exclut les noms de canal. 
+    "system:playback_", "system:capture_", "alsa_pcm:playback_" ou
+    "alsa_pcm:capture_" ce qui donne -odac:system:playback_ (pour la sortie audio),
+    -iadc:system:capture_ (pour l'entrée audio). Le préfixe du nom de port
+    exclut les noms de canal. 
   </para>
 
   <para>
@@ -107,11 +107,11 @@ csound6:output2             (playback right)</screen>
   <para>
     Exemple de réglages du tampon pour une faible latence sur un système linux
     rapide :
-	<screen>
+  <screen>
           jackd -d alsa -P -r 48000 -p 64 -n 4 -zt &amp;
           csound -+rtaudio=jack -b 64 -B 256 [...]</screen>
-	  avec ordonnancement temps réel (en tant que root) :
-	<screen>
+    avec ordonnancement temps réel (en tant que root) :
+  <screen>
           jackd -R -P 90 -d alsa -P -r 48000 -p 64 -n 2 -zt &amp;
           csound --sched=80,90,10 -d -+rtaudio=jack -b 64 -B 192 [...]</screen>
     Pour améliorer l'exécution, utiliser des valeurs de ksmps comme 32 et 64.
