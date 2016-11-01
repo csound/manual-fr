@@ -1291,8 +1291,17 @@ csound5:output2             (reproduction droite)</screen>
       </listitem>
     </varlistentry>
 
-    <varlistentry id="FlagsCatMinusMinusgetsr">
-      <term>--get-system-sr<indexterm id="IndexCatMinusMinusgetsr"><primary>--get-system-sr</primary></indexterm></term>
+    <varlistentry id="FlagsCatMinusVersion">
+      <term>--version<indexterm id="IndexCatMinusVersion"><primary>--version</primary></indexterm></term>
+      <listitem>
+        <para>
+          Afficher les informations de version.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusMinusGetSR">
+      <term>--get-system-sr<indexterm id="IndexCatMinusMinusGetSR"><primary>--get-system-sr</primary></indexterm></term>
       <listitem>
         <para>
           Affiche le sr du système et termine l'application ; nécessite -o dac.
