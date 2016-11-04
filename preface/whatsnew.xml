@@ -92,6 +92,468 @@ english cvs version=
     </itemizedlist>
   </para>-->
 
+  <bridgehead>Notes de parution de Csound 6.08 (novembre 2016)</bridgehead>
+  <para>
+    Comme d'habitude, il y a un certain nombre de corrections et d'améliorations
+    des opcodes, mais les changements les plus importants apparaissent dans les
+    structures du langage. Tout d'abord, dans le langage de partition, la gestion
+    des macros et le prétraitement ont été entièrement rénovés, pour s'aligner
+    sur les mêmes fonctionnalités de l'orchestre. L'analyse de l'orchestre a
+    reçu un certain nombre de corrections décrites ci-dessous.
+  </para>
+  <para>
+    Un changement majeur et pas complètement compatible a été opéré dans la
+    lecture et l'écriture des éléments de tableau. Maintenant, le taux de
+    l'indice détermine souvent le taux de traitement ; voir l'entrée
+    <emphasis>Orchestre</emphasis> ci-dessous. Ceci simplifie pas mal de code et
+    semble répondre aux attentes des utilisateurs ; le code précédent comportait
+    plusieurs anomalies.
+  </para>
+  <para>
+    Il y a également de nouveaux opcodes, des corrections internes de fuites
+    de mémoire et un code plus robuste.
+  </para>
+  <para>
+    <itemizedlist>
+      <listitem>
+        <para>Nouveaux opcodes :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                <link linkend="dct"><citetitle>dct</citetitle></link>:
+                Transformée en cosinus discrète d'un tableau d'échantillons
+                (DCT-II)
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="getftargs"><citetitle>getftargs</citetitle></link>:
+                copie des arguments d'un gen dans une variable-S.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara><link linkend="mfb"><citetitle>mfb</citetitle></link>:
+                implante un banc de filtres mel-fréquence pour un tableau de
+                magnitudes en entrée.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Nouveaux GEN et macros :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                <link linkend="GENquadbezier"><citetitle>quadbezier</citetitle></link>:
+                génération de courbes de Bézier dans une table de fonction.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Orchestre :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Le caractère ¬ est maintenant traité correctement comme variante
+                de ~ pour la négation binaire.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Correction d'un bogue d'analyse lexicale qui pouvait altérer les
+                chaînes de caractères.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Absence du symbole de nouvelle ligne garantie dans l'analyse
+                lexicale.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Petite amélioration du report des numéros de ligne.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Vérification améliorée de la syntaxe des macros.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Analyse améliorée de l'affectation des étiquettes.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Prise en compte des erreurs de crochets non appairés dans la
+                spécification des arguments pour les UDO.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Vérification qu'un fichier #included n'est pas un répertoire.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Meilleure gestion des appels de macros imbriqués sur plusieurs
+                niveaux.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Pendant des années Csound fixait la fréquence du la médian à
+                440 Hz. Maintenant, cette fréquence peut être fixée dans
+                l'en-tête par la nouvelle variable-r A4 et lue avec cette
+                même variable.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                L'exposant des valeurs en virgule flottante peut être écrit
+                e ou E.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                La sémantique de l'accès aux tableaux a été clarifiée :
+                <itemizedlist>
+                  <listitem>
+                    <simpara>
+                      i[i] => lecture à l'initialisation et pendant l'exécution,
+                      écriture seulement à l'initialisation.
+                    </simpara>
+                  </listitem>
+                  <listitem>
+                    <simpara>
+                      i[k] => lecture pendant l'exécution, l'écriture génère
+                      une erreur d'exécution.
+                    </simpara>
+                  </listitem>
+                  <listitem>
+                    <simpara>
+                      k[i], k[k] => lecture et écriture pendant l'exécution.
+                    </simpara>
+                  </listitem>
+                  <listitem>
+                    <simpara>
+                      a[i], a[k] => lecture et écriture pendant l'exécution.
+                    </simpara>
+                  </listitem>
+                  <listitem>
+                    <simpara>
+                      autres cas (S[], f[]) => lecture et écriture en fonction
+                      du type de l'indice (i,k).
+                    </simpara>
+                  </listitem>
+                </itemizedlist>
+                En particulier, i(k[i]) ne fonctionne toujours pas, mais le
+                nouvel opérateur i(k[],i) prend en charge ce cas.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                la validation de xout n'échoue plus lorsqu'une constante est
+                fournie.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Partition :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Nouveau code pour gérer les macros et les autres commandes de
+                prétraitement. Aligne cette gestion sur le code de l'orchestre.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Nouvelle instruction de partition C introduite pour basculer
+                du report inactif (C 0) au report actif (C 1, par défaut).
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Options :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Le tempo peut être fixé maintenant par une valeur en virgule
+                flottante (auparavant, on ne pouvait utiliser que des valeurs
+                entières).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Nouvelle option --version, affiche l'information de version et
+                termine le programme.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Opcodes et Gens modifiés :
+          <itemizedlist>
+            <listitem>
+              <simpara>Problèmes dans centroid corrigés.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Meilleur traitement de l'arrondi dans printks.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>OSC étendu pour inclure la multidiffusion.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Les opcodes faust ont été mis à jour.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>oscil1 et oscili peuvent prendre une durée négative.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>la documentation de l'opcode fout a été clarifée.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>La durée de relâchement de mxadsr a été corrigée.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                L'opcode centroid accepte également un tableau en entrée.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Les opcodes ptable sont maintenant identiques à ceux de la
+                famille table.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>ftgen prend maintenant un tableau d'entrée en option.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                subinstr peut maintenant avoir des arguments chaîne de caractères.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Le format i() peut maintenant aussi travailler sur des tableaux
+                de taux-k, le premier argument étant un tableau, suivi par des
+                indices.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Utilités :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                pvlook affiche maintenant explicitement le nom de la fenêtre
+                d'analyse.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Frontaux :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                HTML5
+                <itemizedlist>
+                  <listitem>
+                    <simpara>
+                      csound.node : implanté pour linux, correction mineure de l'API.
+                    </simpara>
+                  </listitem>
+                  <listitem>
+                    <simpara>
+                      pnacl : méthode compileCsdText ajoutée à l'objet csound.
+                    </simpara>
+                  </listitem>
+                </itemizedlist>
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Usage général :
+          <itemizedlist>
+            <listitem>
+              <simpara>Test de la validité des noms de macro amélioré.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>#undef corrigé.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Bogues corrigés :
+          <itemizedlist>
+            <listitem>
+              <simpara>Corrections dans l'utilisation du format pour prints.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>jitter2 retravaillé pour être plus conforme au manuel.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                oscbank a reçu plusieurs corrections et fonctionne maintenant
+                selon sa description.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>bformdec1 avec tableaux et type 4 corrigé.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Bogues dans pvsceps corrigés.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Dans différents opcodes print, des caractères aléatoires étaient
+                parfois ajoutés -- corrigé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                l'affectation de variables avec --sample-accurate pouvait donner
+                des résultats inattendus ; il semble que ce soit corrigé
+                maintenant.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                La forme carrée du profil de padsynth a été corrigée et
+                l'opcode est moins dépendant du niveau d'avertissements.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>gen31 corrigé.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>gen41 corrigé.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Bogue dans sensekey corrigé.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Plusieurs problèmes dans centroid corrigés.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Changements système :
+          <itemizedlist>
+            <listitem>
+              <simpara>Nouvelle analyse lexicale et prétraitement de la partition.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Les fins de ligne dans le style MAC refonctionnent.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Les messages d'information système (taux d'échantillonnage, etc)
+                sont maintenant dirigés sur stdout.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                rtjack retravaillé pour la gestion des noms et des nombres.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                L'affichage de la version comprend maintenant l'information de
+                commit afin que les développeurs sachent quels patchs ont été
+                appliqués.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>API :
+          <itemizedlist>
+            <listitem>
+              <simpara>La version de l'API est maintenant 4.0.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Les gens nommés sont maintenant supportés.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>fterror est maintenant dans l'API.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Les fonctions SetOutput et GetOutputFormat ont été corrigées.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                De nombreuses fonctions de l'API utilisent maintenant const si
+                c'est approprié.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Les messages peuvent maintenant être redirigés depuis l'API vers
+                stdout en utilisant l'attiribut CSOUNDMSG_STDOUT.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Nouvelles interfaces Lisp CFFI et FFI testées avec Steel Bank
+                Common Lisp (architecture CPU 64 bit), exécutées dans un thread
+                séparé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                ctcsound.py, une nouvelle interface FFI pour Python avait été
+                introduite dans la version 6.07. C'est maintenant l'interface
+                recommandée pour Python, csnd6.py étant obsolète.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Changements sur les plates-formes :
+          <itemizedlist>
+            <listitem>
+              <simpara>Android.</simpara>
+              <itemizedlist>
+                <listitem>
+                  <simpara>les entrées et les sorties multicanaux sont permises.</simpara>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+            <listitem>
+              <simpara>Windows.</simpara>
+              <itemizedlist>
+                <listitem>
+                  <simpara>
+                    La bibliothèque d'importation csound64.lib a été ajoutée à l'installeur.
+                  </simpara>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+
   <bridgehead>Notes de parution de Csound 6.07 (mars 2016)</bridgehead>
   <para>
     De nombreux bogues corrigés, dont certains importants, des éléments internes

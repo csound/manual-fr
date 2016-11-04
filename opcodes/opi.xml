@@ -25,14 +25,15 @@ english cvs version=1.10
   <refsect1>
     <title>Description</title>
     <para>
-      Retourne un équivalent de taux-i d'un argument de taux-k, ou directement
-      un argument de taux-i.
+      Retourne un équivalent de taux-i d'un argument de taux-k ou d'un élément
+      de tableau, ou directement un argument de taux-i.
     </para>
   </refsect1>
 
   <refsect1>
     <title>Syntaxe</title>
     <synopsis><command>i</command>(x) (argument de taux-k ou de taux-i)</synopsis>
+    <synopsis><command>i</command>(karray,index1, ...) (k-array with indices)</synopsis>
 
     <para>
       Les convertisseurs de valeur effectuent une transformation arithmétique d'unités d'une sorte
@@ -40,8 +41,14 @@ english cvs version=1.10
       expression.
       <note>
         <title>Note</title>
-  <para>L'utilisation de i() avec un argument expression de taux-k n'est pas recommandée et peut
-    produire des résultats inattendus.</para>
+        <para>
+          L'utilisation de i() avec en argument une expression de taux-k n'est
+          pas recommandée et peut produire des résultats inattendus.
+        </para>
+        <para>
+          Pour obtenir de manière fiable une valeur à partir d'un élément de
+          tableau il faut utiliser la seconde forme.
+        </para>
       </note>
     </para>
   </refsect1>
@@ -68,5 +75,6 @@ english cvs version=1.10
     <title>Crédits</title>
     <para>La version de cette fonction prenant un argument de taux-i a été
     ajoutée dans la version 5.14 de Csound.</para>
+    <para>Le format pour tableau a été ajouté dans la version 6.08.</para>
   </refsect1>
 </refentry>
