@@ -72,6 +72,26 @@ a1    <emphasis role="opc">diskin2</emphasis> Snom, 1</programlisting>
         <para>\nnn : le caractère ayant le code ASCII (en octal) nnn</para>
       </listitem>
     </itemizedlist>
+    <note>
+      <title>Note</title>
+      <para>
+        Si l'on veut éviter qu'une séquence d'échappement soit automatiquement
+        convertie, il faut l'échapper avec un caractère '\' supplémentaire afin
+        que Csound sache qu'il ne doit pas l'interpréter. Par exemple la chaîne
+        de caractères <code>"Retour à la ligne\nnon échappé"</code> sera convertie en
+        <programlisting>
+        "Retour à la ligne
+         non échappé"
+        </programlisting>
+        avant d'être utilisée, tandis que le chaîne de caractères
+        <code>"Retour à la ligne\\nnon échappé"</code> sera convertie en
+        <programlisting>
+        "Retour à la ligne\nnon échappé"
+        </programlisting>
+        avant d'être utilisée.
+      </para>
+    </note>
+
     Les chaînes peuvent être utilement employées avec l'opcode
     <link linkend="system"><citetitle>system</citetitle></link> :
     <programlisting>
