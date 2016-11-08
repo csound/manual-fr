@@ -84,9 +84,9 @@ a1    <emphasis role="opc">diskin2</emphasis> Snom, 1</programlisting>
          non échappé"
         </programlisting>
         avant d'être utilisée, tandis que le chaîne de caractères
-        <code>"Retour à la ligne\\nnon échappé"</code> sera convertie en
+        <code>"Retour à la ligne\\néchappé"</code> sera convertie en
         <programlisting>
-        "Retour à la ligne\nnon échappé"
+        "Retour à la ligne\néchappé"
         </programlisting>
         avant d'être utilisée.
       </para>
