@@ -31,10 +31,14 @@ english cvs version=1.10
   <refsect1>
     <title>Syntaxe</title>
     <synopsis>aout1 [,aout2 ... aoutX] <command>monitor</command></synopsis>
+    <synopsis>aarra <command>monitor</command></synopsis>
   </refsect1>
 
   <refsect1>
     <title>Exécution</title>
+    <para>
+      Dans sa forme tableau, il lit tous les canaux vers un tableau unidimensionnel.
+    </para>
     <para>
       Cet opcode peut être utilisé pour surveiller le signal de sortie de Csound.
       Il ne faut pas l'utiliser pour un traitement en aval du signal.
@@ -73,5 +77,6 @@ english cvs version=1.10
   <refsect1>
     <title>Crédits</title>
     <para>Istvan Varga 2006</para>
+    <para>&namejohn; 2016, pour la forme tableau, nouveau dans la version 6.08</para>
   </refsect1>
 </refentry>
