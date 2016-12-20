@@ -1,0 +1,93 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<!--Change refentry id and indexterm id-->
+<refentry id="select">
+<indexterm id="Indexselect"><primary>select</primary></indexterm>
+<!--Make sure the category below is a valid one! See categories.py-->
+  <refentryinfo><title>Miscellaneous</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>select</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>select</refname>
+    <refpurpose>
+      Choisit un échantillon sur la base de comparaisons au taux audio.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Choisit un échantillon parmi trois valeurs sur la base de comparaisons au
+      taux audio.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+<!--    Please keep this below ~70 characters by using backslashes to avoid overflow in the pdf version-->
+    <synopsis>aout <command>select</command> a1, a2, aless, aequal, amore</synopsis>
+  </refsect1>
+
+  <!-- <refsect1> -->
+  <!--   <title>Initialization</title> -->
+  <!--   <para> -->
+  <!--     <emphasis>ivar</emphasis> -\- i-time variable -->
+  <!--   </para> -->
+  <!-- </refsect1> -->
+
+  <refsect1>
+    <title>Exécution</title>
+<!--    First list all input and output performance parameters-->
+    <para>
+      <emphasis>a1, a2</emphasis> -- signaux audio qui sont comparés.
+    </para>
+    <para>
+      <emphasis>aless</emphasis> -- signal audio choisi si a1[n]&lt;a2[n]
+    </para>
+    <para>
+      <emphasis>aequal</emphasis> -- signal audio choisi si a1[n]=a2[n]
+    </para>
+    <para>
+      <emphasis>asig</emphasis> -- signal audio choisi si a1[n]&gt;a2[n]
+    </para>
+    <para>
+      La comparaison est faite échantillon par échantillon.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode select. Il utilise le fichier
+      <ulink url="examples/select.csd"><citetitle>select.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode select.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/select.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+<!--    it's always good to include a good See Also list  -->
+    <para>
+      <link linkend="deltap"><citetitle>deltap</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par : &namejohn; 2016</para>
+    <para>Nouveau dans la version 6.09.</para>
+  </refsect1>
+</refentry>
