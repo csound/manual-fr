@@ -29,8 +29,7 @@ authors=Francois Pinot
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>xout1[, xout2, xout3, ..., xoutN] <command>websocket</command> iport, xin1[, xin2, xin3, ..., xinN]</synopsis>
-
+    <synopsis>xout1[, xout2, xout3, ..., xoutN] <command>websocket</command> iport, xin</synopsis>
   </refsect1>
 
   <refsect1>
@@ -54,8 +53,8 @@ authors=Francois Pinot
       nombres 32 ou 64 bit en fonction de la version de Csound utilisée. 
     </para>
     <para>
-      <emphasis>xin1,... xinN</emphasis> -- Les variables d'entrée qui contiennent
-      les données envoyées au WebSocket. Côté Web, le WebSocket reçoit les
+      <emphasis>xin1</emphasis> -- La variable d'entrée qui contient
+      les données à envoyer au WebSocket. Côté Web, le WebSocket reçoit les
       données en utilisant un nom de protocole qui correspond au nom de la
       variable d'entrée, par exemple "ksignal" pour une variable de taux-k.
       Lorsque l'on reçoit des données d'un WebSocket sur la page Web, il faut

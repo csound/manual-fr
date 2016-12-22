@@ -38,9 +38,11 @@ authors=Francois Pinot
       <emphasis>ifilename</emphasis> -- le nom du fichier hdf5 ( entre guillemets).
     </para>
     <para>
-      <emphasis>ivariablename1[, ivariablename2, ivariablename3, ...,
-      ivariablenameN]</emphasis> -- les noms des ensembles de données (entre
-      guillemets) à lire depuis le fichier hdf5.
+      <emphasis>ivariablename1[, ivariablename2, ivariablename3, ..., ivariablenameN]</emphasis> --
+      les noms des ensembles de données (entre guillemets) à lire depuis le
+      fichier hdf5 ; si le nom d'un ensemble de données est suffixé avec un
+      astérisque, par exemple "monEnsembleDeDonnées*", tout l'ensemble de données
+      est copié dans le tableau quelque soit le type du tableau.
     </para>
   </refsect1>
 

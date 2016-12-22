@@ -37,6 +37,7 @@ english cvs version=
   <refsect1>
     <title>Syntaxe</title>
     <synopsis>kframe <command>pvs2tab</command> tvar|kvar[], fsig</synopsis>
+    <synopsis>kframe <command>pvs2tab</command> kmags[], kfreqs[], fsig</synopsis>
   </refsect1>
 
   <refsect1>
@@ -58,6 +59,15 @@ english cvs version=
       non utilisés se trouveront au indices plus élevés.
     </para>
 
+    <para>
+      <emphasis>kmags[], kfreqs[]</emphasis> -- tableaux de taux-k contenant les
+      valeurs de magnitude et de fréquence. Généralement ces tableaux doivent
+      avoir une taille de N/2 + 1, où N est la taille d'une trame de TFD. S'ils
+      sont plus petits, seule une partie de la trame de TFD sera copiée ; s'ils
+      sont plus grands, il y aura des points inutilisés aux indices les plus
+      hauts.
+    </para>
+    
     <para>
       <emphasis>fsig</emphasis> -- fsig d'entrée à copier.
     </para>

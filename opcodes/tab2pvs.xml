@@ -37,6 +37,7 @@ english cvs version=
   <refsect1>
     <title>Syntaxe</title>
     <synopsis>fsig <command>tab2pvs</command> tvar|karr[][,ihopsize, iwinsize, iwintype]</synopsis>
+    <synopsis>fsig <command>tab2pvs</command> kmags[], kfreqs[][,ihopsize, iwinsize, iwintype]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -48,6 +49,15 @@ english cvs version=
       pvs étant produites selon leur propre rythme qui est indépendant de
       <emphasis>kr</emphasis>. La taille de ce vecteur détermine la taille de
       TFR, N = taille - 2.
+    </para>
+
+    </para>
+      <emphasis>kmags[], kfreqs[]</emphasis> -- tableaux de taux-k contenant les
+      valeurs de magnitude et de fréquence en entrée. La sortie est générée à
+      chaque période-k, mais elle peut ne pas contenir de nouvelle trame, les
+      trames de pvs étant produites selon leur propre taux qui est indépendant
+      de kr. Ces vecteurs doivent avoir la même taille qui détermine la taille
+      de TFR, N = taille - 2.
     </para>
 
     <para>
