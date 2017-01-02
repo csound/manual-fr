@@ -1,0 +1,100 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="midiarp">
+<indexterm id="Indexmidiarp"><primary>midiarp</primary></indexterm>
+  <refentryinfo><title>MIDI</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>midiarp</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>midiarp</refname>
+    <refpurpose>
+      Génère des arpèges basés sur les notes MIDI tenues.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>midiarp</emphasis> construit des arpèges basés sur les notes MIDI
+      tenues. L'opcode produit des notes sous la forme de numéros de note MIDI,
+      et un signal métronomique qui peut être utilisé pour séquencer les notes.
+      On peut choisir la vitesse à laquelle les notes sont générées et aussi
+      choisir parmi un ensemble de modèles d'arpèges.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kMidiNoteNum, kCounter<command>midiarp</command> kRate[, kMode]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>kRate</emphasis> -- fixe la vitesse à laquelle les nouvelles notes
+      sont générées et contrôle la fréquence du signal d'impulsions métronomiques.
+    </para>
+    <para>
+      <emphasis>kMode</emphasis> -- Facultatif. Fixe le type d'arpège. 0 pour
+      ascendant et descendant, 1 pour ascendant, 2 pour descendant, 3 pour
+      aléatoire. 0 est la valeur par défaut.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kMideNoteNum</emphasis> -- le numéro de note MIDI courant dans
+      l'arpège.
+    </para>
+    <para>
+      <emphasis>kCounter</emphasis> -- une impulsion métronomique qui peut être
+      utilisée pour déclencher l'exécution des notes de l'arpège. Ce signal 
+      produit un 1 suivi de 0 à chaque cycle. La fréquence est fixée par le
+      paramètre <emphasis>kRate</emphasis> en entrée.   
+    </para>
+  </refsect1>
+
+  <note>
+    <title>Note</title>
+    <para>
+      Il est important que l'instrument contenant l'opcode <emphasis>midiarp</emphasis>
+      ne soit pas activé en continu à chaque nouvelle note MIDI. Pour éviter
+      ceci, il faut utiliser l'opcode <emphasis>massign</emphasis> comme dans
+      l'exemple ci-dessous. 
+    </para>
+  </note>
+
+  <refsect1>
+    <title>Exemple</title>
+    <para>
+      Cet exemple montre l'utilisation de midiarp pour déclencher des arpèges
+      réalisés sur un second instrument. L'instrument 100 reçoit des notes MIDI
+      en entrée et déclenche l'action de l'instrument 200. <emphasis>massign</emphasis>
+      est utilisé pour éviter que l'instrument 100 ne soit activé chaque fois
+      qu'une nouvelle note MIDI est fournie. Cet exemple utilise le fichier
+      <ulink url="examples/midiarp.csd"><citetitle>midiarp.csd</citetitle></ulink>.
+      <example>
+        <title>Example de l'opcode midiarp</title>
+        <xi:include href="examples-xml/midiarp.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Rory Walsh</member>
+        <member>2017</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>
