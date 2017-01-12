@@ -1,0 +1,86 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="fmanal">
+<indexterm id="IndexFmanal"><primary>fmanal</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Specialized Filters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>fmanal</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>fmanal</refname>
+    <refpurpose>
+      Analyse MA/MF d'un signal en quadrature.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode tente d'extraire les signaux MA et MF d'un signal en
+      quadrature (par exemple d'une transformée de Hilbert).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>am, af <command>fmanal</command> are, aim</synopsis>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>are</emphasis> -- signal réel en entrée (phase cosinus)
+    </para>
+
+    <para>
+      <emphasis>aim</emphasis> -- signal imaginaire en entrée (phase sinus)
+    </para>
+
+    <para>
+      <emphasis>am</emphasis> -- enveloppe de la modulation d'amplitude.
+    </para>
+
+    <para>
+      <emphasis>af</emphasis> -- enveloppe de la modulation de fréquence.
+    </para>
+
+    <para>
+      <emphasis>fmanal</emphasis> prend un signal en quadrature (parties réelles
+      et imaginaires) et restitue les signaux de MA et de MF estimés. Le premier
+      est le module de chaque paire en entrée (|re + j*im|) et le second est la
+      dérivée d'arg(re + j*im). Chaque échantillon en sortie est l'amplitude et
+      la fréquence instantanées estimées du signal d'entrée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemple</title>
+    <para>
+      Voici un exemple de l'opcode fmanal. Il utilise le fichier
+      <ulink url="examples/fmanal.csd"><citetitle>fmanal.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode fmanal.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/fmanal.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Victor Lazzarini</member>
+        <member>2017</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>
