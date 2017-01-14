@@ -1,0 +1,87 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<!--Change refentry id and indexterm id-->
+<refentry id="opcodeslinkcreate">
+<indexterm id="IndexLinkCreate"><primary>link_beat_get</primary></indexterm>
+<!--Make sure the category below is a valid one! See categories.py-->
+  <refentryinfo><title>Ableton Link Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>link_create</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>link_create</refname>
+    <refpurpose>
+      Crée un pair dans une session réseau Ableton Link.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Crée un pair dans une session réseau Ableton Link. Le premier membre dans
+      une session détermine le tempo initial de la session. La valeur retournée
+      doit être passée comme premier paramètre à chaque appel consécutif d'un
+      opcode Ableton Link pour ce pair.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+<!--    Please keep this below ~70 characters by using backslashes to avoid overflow in the pdf version-->
+    <synopsis>i_peer <command>link_create</command> [i_bpm]</synopsis>
+  </refsect1>
+
+  <refsect1>
+<!--  If applicable list i-time arguments-->
+    <title>Initialisation</title>
+    <para>
+      <emphasis>i_bpm</emphasis> -- Tempo initial de la session, en pulsations
+      par minute. N'a aucun effet sauf si c'est le premier pair de la session.
+      La valeur par défaut est 60.
+    </para>
+   <para>
+      <emphasis>i_peer</emphasis> -- L'objet pair Ableton Link retourné pour
+      être utilisé par les autres opcodes Ableton Link.
+    </para>
+   </refsect1>
+ 
+   <refsect1>
+<!--To add examples, create the csd file in the examples directory, then run:-->
+<!--python csd2docbook.py -f newopcodename.csd-->
+<!--to generate the xml highlighted version used below-->
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode link_create. Il utilise le fichier
+      <ulink url="examples/ableton_link.csd"><citetitle>ableton_link.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode link_create.</title>
+        <xi:include href="examples-xml/ableton_link.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+<!--    it's always good to include a good See Also list  -->
+    <para>Voir la section <link linkend="AbletonLink"><citetitle>Ableton Link
+      Opcodes</citetitle></link> pour plus d'information.
+    </para>
+  </refsect1>
+
+  <refsect1>
+<!--  And put your name and other relevant information here-->
+    <title>Crédits</title>
+    <para>Par : &namemichael; 2017</para>
+  </refsect1>
+
+<!--Now remember to add a link from the appropriate category in the Opcode Overview.-->
+<!--Add the entity to manual.xml-->
+<!--Add the entity reference in the appropriate place in opcodes/top.xml-->
+<!--And you're set! Maybe delete the comments as well...-->
+</refentry>

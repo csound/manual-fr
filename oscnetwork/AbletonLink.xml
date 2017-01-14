@@ -1,0 +1,82 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="AbletonLink">
+  <title>Opcodes Ableton Link</title>
+  <para>
+    Le but d'Ableton Link est de synchroniser le temps, la pulsation et la phase
+    entre des applications musicales s'exécutant en temps réel depuis différents
+    programmes, processus et adresses de réseau. C'est utile, par exemple pour
+    des orchestres d'ordinateurs portables.
+  </para>
+  <para>
+    Ableton Live n'est pas nécessaire pour utiliser le protocole Ableton Link,
+    car c'est un protocole de pair à pair. Il y a une session Link sur le réseau
+    local qui maintient un temps, un tempo et une pulsation globaux. Chaque pair
+    peut fixer le tempo et ensuite, tous les pairs dans la session partagent ce
+    tempo. Un processus peut avoir n'importe quel nombre de pairs (c'est-à-dire
+    n'importe quel nombre d'objets Link). Chaque pair peut aussi définir sa
+    propre "quantification", un multiple de la pulsation, par exemple une
+    quantification de 4 peut impliquer une pulsation à chaque mesure en 4/4. La
+    phase du temps est définie en fonction de la quantification, par exemple une
+    phase de 0,5 d'une quantification de 4 sera la seconde pulsation de la
+    mesure. Les pairs peuvent lire et écrire des lignes de temps avec un temps,
+    une pulsation et une phase locaux, en comptant à partir du moment où le
+    pair est activé, mais le tempo et la pulsation de toutes les lignes de
+    temps pour tous les pairs dans la session coïncideront.
+  </para>
+  <para>
+    Le premier pair dans une session détermine le tempo initial. Après cela, le
+    tempo n'est changé que si un pair appelle explicitement la fonction de
+    fixation du tempo (link_tempo_set, dans Csound).
+  </para>
+  <para>
+    Le tempo de Link est indépendant du tempo de la partition de Csound. Les
+    exécutions qui nécessitent la synchronisation du tempo de la partition avec
+    le tempo de Link peuvent utiliser l'opcode tempo pour caler le tempo de la
+    partition sur celui de Link ; ou inversement, fixer le tempo de Link sur
+    celui de la partition au moyen de l'opcode tempoval.
+  </para>
+  <para>
+    Noter que la phase et la pulsation obtenus ou fix"s par ces opcodes n'a que
+    la précision permise par la durée de la période-k de Csound, le pilote audio
+    utilisé par Csound, la latence et la stabilité du réseau et l'horloge la
+    plus précise du système.
+  </para>
+  <itemizedlist>
+    <listitem>
+      <para><link linkend="opcodeslinkcreate"><citetitle>link_create</citetitle></link> - Crée un objet pair Ableton Link.</para>
+    </listitem>
+    <listitem>
+      <para><link linkend="opcodeslinkenable"><citetitle>link_enable</citetitle></link> - Active/désactive la synchronisation avec le tempo et la pulsation de la session sur le réseau Ableton Link.</para>
+    </listitem>
+    <listitem>
+      <para><link linkend="opcodeslinkisenabled"><citetitle>link_is_enabled</citetitle></link> - Indique si ce pair Ableton Link s'est joint à la session du réseau.</para>
+    </listitem>
+    <listitem>
+      <para><link linkend="opcodeslinktemposet"><citetitle>link_tempo_set</citetitle></link> - Fixe le tempo pour la session du réseau Ableton Link.</para>
+    </listitem>
+    <listitem>
+      <para><link linkend="opcodeslinktempoget"><citetitle>link_tempo_set</citetitle></link> - Retourne le tempo de la session du réseau Ableton Link.</para>
+    </listitem>
+    <listitem>
+      <para><link linkend="opcodeslinkbeatget"><citetitle>link_beat_get</citetitle></link> - Retourne la pulsation, la phase et le temps courant d'Ableton Link pour cette session pour une quantification donnée.</para>
+    </listitem>
+    <listitem>
+      <para><link linkend="opcodeslinkmetro"><citetitle>link_metro</citetitle></link> - Retourne un déclencheur qui vaut 1 sur la pulsation et 0 ailleurs, ainsi que la pulsation, la phase et temps courant d'Abelton Link pour cette session pour une quantification donnée.</para>
+    </listitem>
+    <listitem>
+      <para><link linkend="opcodeslinkbeatrequest"><citetitle>link_beat_request</citetitle></link> - Demande une pulsation avec un nombre spécifique à un temps spécifique et une quantification donnée.</para>
+    </listitem>
+    <listitem>
+      <para><link linkend="opcodeslinkbeatforce"><citetitle>link_beat_force</citetitle></link> - Force la session du réseau Ableton Link à adopter une pulsation avec un nombre spécifique à un temps spécifique et une quantification donnée.</para>
+    </listitem>
+   <listitem>
+      <para><link linkend="opcodeslinkpeers"><citetitle>link_peers</citetitle></link> - Retourne le nombre de pairs actuellement joints à la session dans le réseau Ableton Link.</para>
+    </listitem>
+  </itemizedlist>
+</section>

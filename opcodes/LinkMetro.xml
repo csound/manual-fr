@@ -1,0 +1,117 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<!--Change refentry id and indexterm id-->
+<refentry id="opcodeslinkimetro">
+<indexterm id="IndexLinkMetro"><primary>link_metro</primary></indexterm>
+<!--Make sure the category below is a valid one! See categories.py-->
+  <refentryinfo><title>Ableton Link Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>link_metro</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>link_metro</refname>
+    <refpurpose>
+      Retourne un déclencheur valant 1 sur la pulsation et 0 sinon, ainsi que
+      la pulsation, la phase et le temps d'Ableton Link pour cette session.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne un déclencheur valant 1 sur la pulsation et 0 sinon, ainsi que
+      la pulsation, la phase et le temps d'Ableton Link pour cette session pour
+      une quantification donnée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+<!--    Please keep this below ~70 characters by using backslashes to avoid overflow in the pdf version
+        k_trigger, k_beat, k_phase, k_current_time_seconds link_metro i_peer [, P_quantum = 1]
+-->
+    <synopsis>k_trigger, k_beat, k_phase, k_current_time_seconds <command>link_metro</command> i_peer [, k_quantum]</synopsis>
+  </refsect1>
+
+  <refsect1>
+<!--  If applicable list i-time arguments-->
+    <title>Initialisation</title>
+   <para>
+      <emphasis>i_peer</emphasis> -- L'objet pair Ableton Link.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>k_trigger</emphasis> -- Déclencheur, 1 sur la première pulsation
+      dans chaque quantification locale de la pulsation et 0 sinon.
+    </para>
+    <para>
+      <emphasis>k_beat</emphasis> -- Le nombre de pulsations compté depuis que
+      ce pair est activé.
+    </para>
+    <para>
+      <emphasis>k_phase</emphasis> -- La phase de cette pulsation en fonction
+      de la quantification.
+    </para>
+    <para>
+      <emphasis>k_current_time_seconds</emphasis> -- Le temps de la pulsation
+      compté dupuis que ce pair est activé.
+    </para>
+   <para>
+      <emphasis>k_quantum</emphasis> -- La quantification locale de la pulsation,
+      qui peut être un multiple ou une fraction de la pulsation. La valeur par
+      défaut est 1.
+    </para>
+
+    <para>
+      Cet opcode permet l'utilisation d'une session Ableton Link pour déclencher
+      des évènements dans Csound. On peut aussi l'utiliser pour obtenir la
+      pulsation et le temps de la session ainsi que la phase en fonction de la
+      quantification locale de la pulsation. Par exemple, une quantification de
+      4 peut impliquer une mesure à 4/4, tandis qu'une quantification de 0,25
+      divisera la pulsation par 4.
+   </para>
+  </refsect1>
+
+   <refsect1>
+<!--To add examples, create the csd file in the examples directory, then run:-->
+<!--python csd2docbook.py -f newopcodename.csd-->
+<!--to generate the xml highlighted version used below-->
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode link_metro. Il utilise le fichier
+      <ulink url="examples/ableton_link.csd"><citetitle>ableton_link.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode link_metro.</title>
+          <xi:include href="examples-xml/ableton_link.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+<!--    it's always good to include a good See Also list  -->
+    <para>Voir la section <link linkend="AbletonLink"><citetitle>Ableton Link
+      Opcodes</citetitle></link> pour plus d'information.
+    </para>
+  </refsect1>
+
+  <refsect1>
+<!--  And put your name and other relevant information here-->
+    <title>Crédits</title>
+    <para>Par : &namemichael; 2017</para>
+  </refsect1>
+
+<!--Now remember to add a link from the appropriate category in the Opcode Overview.-->
+<!--Add the entity to manual.xml-->
+<!--Add the entity reference in the appropriate place in opcodes/top.xml-->
+<!--And you're set! Maybe delete the comments as well...-->
+</refentry>

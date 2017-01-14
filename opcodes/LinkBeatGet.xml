@@ -1,0 +1,91 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<!--Change refentry id and indexterm id-->
+<refentry id="opcodeslinkbeatget">
+<indexterm id="IndexLinkBeatGet"><primary>link_beat_get</primary></indexterm>
+<!--Make sure the category below is a valid one! See categories.py-->
+  <refentryinfo><title>Ableton Link Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>link_beat_get</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>link_beat_get</refname>
+    <refpurpose>
+      Retourne la pulsation, la phase en fonction de la quantification locale et
+      le temps courant de la session.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne la pulsation, la phase en fonction de la quantification locale et
+      le temps courant de la session du réseau global Ableton Link.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+<!--    Please keep this below ~70 characters by using backslashes to avoid overflow in the pdf version
+        k_beat_number, k_phase, k_current_time_seconds link_beat_get i_peer [, P_quantum = 1] -->
+    <synopsis>k_beat_number, k_phase, k_current_time_seconds <command>link_beat_get</command> i_peer [, k_quantum]</synopsis>
+  </refsect1>
+
+  <refsect1>
+<!--  If applicable list i-time arguments-->
+    <title>Initialisation</title>
+   <para>
+      <emphasis>i_peer</emphasis> -- L'objet pair Ableton Link.
+    </para>
+   </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+<!--    First list all input and output performance parameters-->
+    <para>
+      <emphasis>k_quantum</emphasis> -- La quantification locale de la pulsation ;
+      la valeur par défaut est 1.
+    </para>
+    <para>
+      <emphasis>k_beat_number</emphasis> -- Le numéro de la pulsation courante.
+    </para>
+    <para>
+      <emphasis>k_phase</emphasis> -- La phase courante de la pulsation en
+      fonction de la quantification locale de la pulsation.
+    </para>
+    <para>
+      <emphasis>k_current_time_seconds</emphasis> -- Le temps courant en fonction
+      du moment où ce pair a été activé.
+    </para>
+
+    <para>
+      Penser à utiliser <emphasis>link_metro</emphasis> si l'on a besoin d'un
+      déclencheur périodique piloté par la pulsation de la session.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+<!--    it's always good to include a good See Also list  -->
+    <para>
+     <link linkend="AbletonLink"><citetitle>Ableton Link Opcodes</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+<!--  And put your name and other relevant information here-->
+    <title>Crédits</title>
+    <para>Par : &namemichael; 2017</para>
+  </refsect1>
+
+<!--Now remember to add a link from the appropriate category in the Opcode Overview.-->
+<!--Add the entity to manual.xml-->
+<!--Add the entity reference in the appropriate place in opcodes/top.xml-->
+<!--And you're set! Maybe delete the comments as well...-->
+</refentry>
