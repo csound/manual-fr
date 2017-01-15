@@ -1,5 +1,7 @@
 # Au sujet du manuel 
 
+[![Build status](https://travis-ci.org/csound/manual-fr.svg?branch=master)](https://travis-ci.org/csound/manual-fr)
+
 Le manual de référence de Csound est écrit en Docbook-XML. On peut trouver plus
 d'information sur Docbook-XML en consultant les liens suivants :
 
@@ -190,4 +192,5 @@ XML n'est pas valide, en précisant où se trouve l'erreur.
 
 L'utilisaion d'un éditeur dédié à XML facilite l'édition du manuel. Emacs en mode
 sgml ou Kate en mode XML ou jEdit en mode XML aident beaucoup.
+
 
