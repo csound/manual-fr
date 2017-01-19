@@ -1,196 +1,216 @@
-# Au sujet du manuel 
+# Le manuel de référence canonique de Csound
 
-[![Build status](https://travis-ci.org/csound/manual-fr.svg?branch=master)](https://travis-ci.org/csound/manual-fr)
+[![Build status](https://travis-ci.org/csound/manual.svg?branch=master)]
+(https://travis-ci.org/csound/manual)
 
-Le manual de référence de Csound est écrit en Docbook-XML. On peut trouver plus
-d'information sur Docbook-XML en consultant les liens suivants :
+Le manual de référence de Csound est écrit en [DocBook]
+(http://tdg.docbook.org/tdg/4.5/docbook.html) v4. Pour apprendre à utiliser
+Docbook aller sur [docbook.org](http://docbook.org).
 
-http://docbook.org/
-http://www.sagehill.net/book-description.html
-
-Si vous rencontrez des problèmes ou si vous avez des suggestions, rapportez les
-sur la liste de messagerie des développeurs de Csound.
-
-
-# Construire le manuel
-
-Pour construire le manuel, différents outils sont nécessaires selon le format
-de la cible désirée. Toutes les cibles nécessitent xsltproc et il faut que les
-DTD de Docbook XML soient installées et trouvables par xsltproc. Les feuilles
-de style de Docbook XSL doivent aussi être installées. L'endroit où se trouvent
-les feuilles de style peut être indiqué via la variable XSL_BASE_PATH :
-
-    $ make XSL_BASE_PATH=chemin/vers/installation/xsl <cible>
-
-Le chemin par défaut est /usr/share/xml/docbook/stylesheet/nwalsh/
-
-Sous Linux, la plupart des distributions incluent ces programmes ou les rendent
-disponibles dans des entrepôts de paquets pour les distributions respectives.
-
-Sous Windows, on peut trouver xsltproc dans l'environnement Cygwin
-(http://www.cywgin.com). Une version compilée nativement pour Windows est
-disponible ici :
-
-http://zlatkovic.com/libxml.en.html
-
-Mac OS 10.5 (leopard) inclue xsltproc.
-
-(NOTE : Si vous travaillez sous OSX ou OS9 et si vous trouvez xsltproc pour ces
-plateformes ou un autre processeur XSLT convenant, mettez à jour cette
-documentation SVP.)
-
-Le manuel est réalisé en utilisant make avec le Makefile inclus. Par exemple
-pour faire la version html (canonique), la seule commande nécessaire est :
-
-    $ make html
-
-Pour démarrer une nouvelle construction, utiliser
-
-    $ make clean
-
-Les autres cibles comprennent pdf, pdfA4 et htmlXO. Consulter le Makefile pour
-la distribution et les autres cibles.
+Si vous rencontrez des problèmes ou si vous avez des suggestions, ouvrez
+[un ticket](https://github.com/csound/manual/issues), ou faites
+[un fork de cet entrepôt et un pull request](https://guides.github.com/activities/forking/).
 
 
-## HTML 
+## Outils nécessaires
 
-Utiliser :
+En plus d'autres outils spécifiques à ce qu'on construit, on a besoin de
+Docbook, [Python](https://www.python.org) avec [Pygments](http://pygments.org);
+et [xsltproc](http://xmlsoft.org/XSLT/xsltproc2.html).
 
-    $ make html
+### Linux
 
-Nécessite : Python (pour générer la version avec cadres et mettre à jour la
-            référence rapide)
+Pour installer DocBook et xsltproc, exécuter
 
+```sh
+sudo apt-get install -y docbook xsltproc
+```
 
-## PDF 
+Python et Pygments sont préinstallés sur la plupart des distributions Linux. Si
+l'on a pas Python, aller sur https://docs.python.org/2/using/unix.html pour
+apprendre comment installer Python ou le construire à partir des sources.
 
-Utiliser :
+Aller sur http://pygments.org/download/ pour apprendre comment installer Pygments.
 
-    $ make pdf
+### MacOS
 
-ou
+La manière la plus simple d'installer DocBook est sans doute via [Homebrew]
+(http://brew.sh). Pour installer Homebrew, suivre les instructions sur [brew.sh]
+(http://brew.sh). Puis taper `brew install docbook` dans un terminal.
 
-    $ make pdfA4
+Pour installer Pygments, taper dans un terminal `sudo easy_install pygments`.
 
-Nécessite : 
+Python et xsltproc sont préinstallés sur macOS.
 
-* Apache FOP (http://xmlgraphics.apache.org/fop/)
-* Java Advanced Imaging Library (https://jai.dev.java.net/binary-builds.html)
-* Un environnement Java Runtime pour exécuter les éléments ci-dessus.
+### Windows
 
-FOP peut avoir besoin de beaucoup de mémoire, il est donc recommandé d'éditer le
-fichier fop.sh et d'ajouter "-Xmx384m" à la dernière ligne, ce qui donne :
+La manière la plus simple d'installer DocBook est sans doute via [Cygwin]
+(https://www.cygwin.com). Pour installer Cygwin aller sur https://www.cygwin.com
+et télécharger et exécuter un installeur pour la dernière version de Cygwin.
 
-    $ JAVACMD -Xmx384m -classpath "$LOCALCLASSPATH" $FOP_OPTS org.apache.fop.apps.Fop "$@"
+Pour installer Python, aller sur https://www.python.org/downloads/windows/ et
+télécharger et exécuter un installeur de Python 2.7. Ne pas oublier d'ajouter
+python.exe dans le path de Windows.
 
-Cela augmente la quantité de mémoire maximale que la VM peut utiliser à 384 Moctets,
-qui seront nécessaires pour que FOP puisse s'exécuter, car le manuel est conséquent.
-
-
-## HTMLHELP 
-
-Utiliser :
-
-    $ make htmlhelp
-
-Nécessite : Microsoft HTML Help Workshop
-              (http://msdn.microsoft.com/library/default.asp?url=/library/en-us/htmlhelp/html/hwMicrosoftHTMLHelpDownloads.asp)
-
-Cette cible compile un fichier .chm de Windows, un format qui a remplacé WinHelp.
+Aller sur http://pygments.org/download/ pour apprendre comment installer Pygments.
 
 
-# Editer le manuel
+## Construire le manuel
 
-## Modifier une entrée
+Exécuter `make ⟨cible⟩` pour construire une `⟨cible⟩`. Par exemple, pour
+construire une collection de pages HTML, exécuter `make html`.
 
-En général gardez en tête le fait que ces fichiers sont du XML et doivent être
-valides. Toutes les balises ouvertes doivent être fermées, comme
-<para>Mon information</para>.
+Si DocBook est installé de manière non conventionnelle, on peut voir cette
+erreur : “La variable XSL_BASE_PATH doit renseigner le répertoire d'installation
+des feuilles de style XSL.” Pour indiquer à `make` où trouver DocBook, exécuter
 
-De plus la DTD de Docbook-XML décrit ce qui est bien formé pour le document, ce
-qui veut dire que certaines balises ne sont permises qu'à l'intérieur d'autres
-balises. Pour plus d'information sur les balises valides de Docbook, consulter
-"Docbook: The Definitive Guide" par Norm Walsh, disponible sur
-http://docbook.org/.
+```sh
+make XSL_BASE_PATH=path/to/docbook/stylesheets ⟨cible⟩
+```
+
+au lieu de `make ⟨cible⟩`.
 
 
-## Ajouter une entrée pour un opcode 
+### HTML
 
-La meilleure façon de commencer est de prendre une entrée existante et de
-l'utiliser comme canevas. Toutes les entrées d'opcode sont rangées dans le
-répertoire opcodes. Vous pouvez baser votre entrée sur une entrée existante
-ou utiliser opcodes/templates.xml.
+Exécuter `make html` (ou seulement `make`) pour créer un répertoire nommé html
+contenant une collection de fichiers HTML.
 
-Pour incorporer une nouvelle entrée dans le manuel, quelques éléments sont
-nécessaires.
 
-1. Ajouter l'entrée comme une entité dans manual.xml. Par exemple, si vous
-mettez le fichier myOpcodeEntry.xml dans le répertoire opcodes, vous devez
-ajouter cette ligne dans manual.xml:
+### PDF
 
-    <!ENTITY opcodesmyopcodeentry SYSTEM "opcodes/myOpcodeEntry.xml">
+En plus des [outils nécessaires](#outils-nécessaires), la construction des
+fichiers PDF nécessitent [FOP d'Apache](https://xmlgraphics.apache.org/fop/). Il
+peut être aussi nécessaire de télécharger et d'installer un [Java Runtime Environment]
+(http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html).
 
-2. Ajouter l'entrée dans opcodes/top.xml en utilisant l'entité. C'est ce qui
-ajoutera l'entrée dans le manuel de référence. Les entrées sont classées par
-ordre alphabétique. Il faut donc trouver la place de votre opcode dans la
-liste et l'y insérer :
+Pour installer FOP sur Linux, exécuter
 
-    &opcodesmyopcodeentry;
 
-La ligne ci-dessus utilise l'entité définie dans le fichier manual.xml
-(pensez-y comme une directive #include).
+```sh
+sudo apt-get install -y fop
+```
 
-3. Après cela, il vous faudra sans doute trouver la section d'entête depuis
-laquelle l'opcode doit être référencé. Par exemple, si myOpcodeEntry doit se
-trouver dans la même catégorie que les opcodes pvs dans spectral/realtime.xml,
-il sera ajouté dans ce fichier comme :
+Pour installer FOP sur macOS avec [Homebrew](http://brew.sh), exécuter
+
+```sh
+brew install fop
+```
+
+Exécuter `make pdf` pour créer un fichier PDF adapté à l'impression sur du
+[papier letter](https://en.wikipedia.org/wiki/Letter_(paper_size)).
+
+Exécuter `make pdfA4` pour créer un fichier PDF adapté à l'impression sur du
+[papier A4](https://en.wikipedia.org/wiki/ISO_216#A_series).
+
+
+### Aide HTML compilée
+
+On peut construire une [aide HTML compilée]
+(https://en.wikipedia.org/wiki/Microsoft_Compiled_HTML_Help) sur Windows. En plus
+des [outils nécessaires](#outils-nécessaires) il faut utiliser le HTML Help
+Workshop. Pour installer le HTML Help Workshop, aller sur
+https://go.microsoft.com/fwlink/?LinkId=14188 pour télécharger htmlhelp.exe et
+double-cliquer ensuite sur htmlhelp.exe.
+
+Exécuter `make htmlhelp` pour créer un fichier d'aide HTML compilée (.chm).
+
+
+## Editer le manuel
+
+DocBook est en [XML](https://en.wikipedia.org/wiki/XML). Lorsque l'on écrit du
+XML, il ne faut pas oublier de fermer les balises. Voici du XML valide :
+
+```xml
+<para>texte</para>
+```
+
+alors que celui-ci ne l'est pas :
+
+```xml
+<para>texte</ERROR>
+```
+
+DocBook v4 a une [définition de type de document (DTD)]
+(http://docbook.org/xml/4.5/) qui décrit les éléments valides de DocBook et
+leurs attributs. Voir [_DocBook: The Definitive Guide_]
+(http://tdg.docbook.org/tdg/4.5/docbook.html) pour en savoir plus.
+
+
+### Ajouter une entrée d'opcode
+
+En général, une entrée pour un nouvel opcode nommé `newopcodename` sera un
+fichier XML nommé newopcodename.xml contenant
+
+```xml
+<refentry id="newopcodename">
+    <!-- More mark-up… -->
+</refentry>
+```
+
+On peut commencer à documenter un opcode en prenant une entrée existante comme
+modèle. Toutes les entrées des opcodes sont dans le [répertoire opcodes]
+(https://github.com/csound/manual/tree/master/opcodes). On peut aussi utiliser
+[opcodes/templates.xml]
+(https://github.com/csound/manual/blob/master/opcodes/template.xml) comme point
+de départ.
+
+Pour incorporer une nouvelle entrée dans le manuel :
+
+1. Ajouter l'entrée comme une entité dans 
+[manual.xml]
+(https://github.com/csound/manual/blob/master/manual.xml). Par exemple, si l'on
+dépose newopcodename.xml dans le répertoire opcodes, il faut ajouter cette entité
+dans manual.xml :
+
+    ```xml
+    <!ENTITY opcodesnewopcodename SYSTEM "opcodes/newopcodename.xml">
+    ```
     
-    <link linkend="myOpcodeEntry"><citetitle>My Opcode Entry</citetitle></link>
+2. Utiliser l'entité pour ajouter l'entrée de l'opcode à [opcodes/top.xml]
+(https://github.com/csound/manual/blob/master/opcodes/top.xml). Les entrées
+des opcodes y étant rangées par ordre alphabétique, trouver où insérer l'opcode
+dans la liste et ajouter :
 
-L'attribut linkend ci-dessus pointe vers un ID docbook. L'ID "myOpcodeEntry"
-doit être défini dans myOpcodeEntry.xml, probablement au niveau supérieur sous
-la forme :
+    ```xml
+    &opcodesnewopcodename;
+    ```
 
-    <refentry id="myOpcodeEntry">
+3. Faire un lien vers cet opcode depuis une section appropriée du manuel. Par
+exemple, si `newopcodename` doit être inclus avec les opcodes de traitement
+spectral en temps réel, ajouter un
+[élément `link`](http://tdg.docbook.org/tdg/4.5/link.html) à
+[spectral/realtime.xml]
+(https://github.com/csound/manual/blob/master/spectral/realtime.xml), like this:
 
-Répétez l'étape 3 pour chaque section dans laquelle vous pensez que l'opcode
-doit être rangé.
+    ```xml
+    <link linkend="newopcodename"><citetitle>newopcodename</citetitle></link>
+    ```
+Répéter cette étape pour chaque section dans laquelle votre opcode devrait être
+inclus.
 
-4. Ajouter la balise info appropriée afin que l'opcode soit correctement rangé
-dans la référence rapide. S'il n'y a pas de balise info l'opcode apparaitra sous
-la rubrique "Divers". Consultez les catégories disponibles dans quickref-fr.py.
+4. On peut aussi utiliser un [élément `refentryinfo`]
+(https://github.com/csound/manual/search?q=refentryinfo+path%3Aopcodes+filename%3Atemplate.xml)
+pour que l'opcode soit correctement référencé dans la [référence rapide]
+(http://csound.github.io/docs/manual/MiscQuickref.html). Utiliser une des
+catégories dans [categories.py]
+(https://github.com/csound/manual/blob/master/categories.py). Si l'on omet
+l'élément `refentryinfo`, l'opcode sera référencé dans la catégorie [Divers]
+(https://github.com/csound/manual/search?q=Miscellaneous+filename%3Acategories.py).)
 
-5. Si possible référencer l'opcode dans la section adéquate de la partie II du
-manuel, et ajouter les références croisées nécessaires.
-
-6. Pour transformer le fichier de l'exemple myOpcodeEntry.csd en
-myOpcodeEntry.csd.xml (dans examples-xml), utiliser le script csd2docbook.py ou
-csd2docbook2.py. Le premier utilise l'API de Csound pour contruire une liste
-des opcodes tandis que le second utilise le fichier opcode_list.txt (qui contient
-une liste similaire au résultat de la commande 'csound -z'). Par exemple :
-$ python csd2docbook2.py -f genarray_i.csd crée le fichier genarray_i.csd.xml
-à partir de genarray_i.csd pour référence dans l'entrée de l'opcode genarray_i.
-
-
-# Pour la publication
-
-Il y a plusieurs cibles préparant les fichiers d'une distribution. Il ne faut
-pas oublier de changer le numéro de version afin que les fichiers et les
-contenus soient générés avec ce numéro. On doit le changer à la fois dans
-manual.xml et dans le Makefile. Il est aussi utile de mettre à jour la section
-"Les nouveautés de Csound x.xx" pour chaque distribution.
-
-## Conseils pour l'édition XML
-
-* Il faut échapper les symboles "<" et ">" lorsqu'on les utilisent dans du texte
-à l'intérieur de balises XML. Les entités correspondantes sont "&lt;" et "&gt;".
-* La balise refsect1 se termine par le chiffre 1, pas la lettre l.
-* On peut tester un fichier XML en l'ouvrant dans un navigateur web (comme
-Firefox, Mozilla, Internet Explorer, etc.). La plupart des navigateurs affichent
-le fichier XML s'il est correct ou bien donnent un message d'erreur si le fichier
-XML n'est pas valide, en précisant où se trouve l'erreur.
-
-L'utilisaion d'un éditeur dédié à XML facilite l'édition du manuel. Emacs en mode
-sgml ou Kate en mode XML ou jEdit en mode XML aident beaucoup.
+5.Si possible, ajouter un [élément `link`](http://tdg.docbook.org/tdg/4.5/link.html)
+à l'opcode dans la section appropriée de [Opcodes Overview]
+(http://csound.github.io/docs/manual/PartOpcodesOverview.html).
 
 
+## Maintenance
+
+Il y a plusieurs cibles pour préparer les fichiers d'une distribution. Bien
+mettre à jour le numéro de version dans [manual.xml]
+(https://github.com/csound/manual/search?q=csoundversion+filename%3Amanual.xml)
+et dans [Makefile]
+(https://github.com/csound/manual/search?q=VERSION+filename%3AMakefile) afin que
+les fichiers soient générés avec ce numéro. Il est aussi utile de mettre à jour
+la section [Les nouveautés …]
+(https://github.com/csound/manual/blob/master/preface/whatsnew.xml) pour chaque
+distribution.
