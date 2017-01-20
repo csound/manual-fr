@@ -760,6 +760,7 @@ htmlhelp: ${XSL_HTMLHELP} manual.xml $(SRCS)
 	cp images -R ${HTMLHELP_DIR}/
 	cp examples -R ${HTMLHELP_DIR}/
 	cp csound.css ${HTMLHELP_DIR}/
+	cp syntax-highlighting.css ${HTML_DIR}/
 	rm -rf ${HTMLHELP_DIR}/images/CVS
 	rm -rf ${HTMLHELP_DIR}/images/callouts/CVS
 	rm -rf ${HTMLHELP_DIR}/examples/CVS
