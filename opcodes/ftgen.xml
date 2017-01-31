@@ -29,6 +29,7 @@ english cvs version=1.16
   <refsect1>
     <title>Syntaxe</title>
     <synopsis>gir <command>ftgen</command> ifn, itime, isize, igen, iarga [, iargb ] [...]</synopsis>
+    <synopsis>gir <command>ftgen</command> ifn, itime, isize, igen, iarray</synopsis>
   </refsect1>
 
   <refsect1>
@@ -65,6 +66,12 @@ english cvs version=1.16
       <emphasis>iarga, iargb, ...</emphasis> -- arguments de la table de fonction.
       Correspondent de p5 à p<emphasis>n</emphasis> de
       l'<emphasis>instruction f</emphasis> de partition.
+    </para>
+    
+    <para>
+      <emphasis>iarray</emphasis> -- un tableau unidimensionnel contenant les
+      arguments de la table de fonction. Correspond de p5 à p<emphasis>n</emphasis>
+      de l'<emphasis>instruction f</emphasis> de la partition.
     </para>
   </refsect1>
 
