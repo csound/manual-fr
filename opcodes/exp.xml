@@ -32,7 +32,8 @@ english cvs version=1.14
   <refsect1>
     <title>Syntaxe</title>
     <synopsis><command>exp</command>(x) (pas de restriction de taux)</synopsis>
-
+    <synopsis><command>exp</command>(k/i[]) (k- ou i-tableau)</synopsis>
+    
     <para>
       où l'argument entre parenthèses peut être une expression. Les convertisseurs de valeur
       effectuent une transformation arithmétique d'unités d'une sorte en unités d'une autre sorte.

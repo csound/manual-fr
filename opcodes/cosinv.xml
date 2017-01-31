@@ -14,11 +14,8 @@ english cvs version=1.14
     <refentrytitle>cosinv</refentrytitle>
   </refmeta>
 
-
- 
   <refnamediv>
     <refname>cosinv</refname>
-
     <refpurpose>
       Calcule une fonction arccosinus.
     </refpurpose>
@@ -34,6 +31,7 @@ english cvs version=1.14
   <refsect1>
     <title>Syntaxe</title>
     <synopsis><command>cosinv</command>(x) (pas de restriction de taux)</synopsis>
+    <synopsis><command>cosinv</command>(k/i[]) (k- ou i-tableau)</synopsis>
   </refsect1>
 
   <refsect1>

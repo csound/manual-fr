@@ -7,7 +7,6 @@ authors=Francois Pinot
 
 <chapter id="OpcodesTop">
   <title>Opcodes et opérateurs de l'orchestre</title>
-
   &opcodesnotequal;
   &opcodesdefine;
   &opcodesinclude;
@@ -21,6 +20,7 @@ authors=Francois Pinot
   &opcodesgreaterequal;
   &opcodeslessthan;
   &opcodeslessequal;
+  &opcodeslinlin;
   &opcodesmultiplies;
   &opcodesadds;
   &opcodessubtracts;
@@ -81,6 +81,7 @@ authors=Francois Pinot
   &opcodesbiquad;
   &opcodesbiquada;
   &opcodesbirnd;
+  &opcodesbpf;
   &opcodesbqrez;
   &opcodesbutbp;
   &opcodesbutbr;
@@ -127,6 +128,7 @@ authors=Francois Pinot
   &opcodesclip;
   &opcodesclockoff;
   &opcodesclockon;
+  &opcodescmp;
   &opcodescmplxprod;
   &opcodescngoto;
   &opcodescomb;
@@ -388,6 +390,7 @@ authors=Francois Pinot
   &opcodesftloadk;
   &opcodesftlptim;
   &opcodesftmorf;
+  &opcodesftom;
   &opcodesftsamplebank;
   &opcodesftsave;
   &opcodesftsavek;
@@ -635,6 +638,8 @@ authors=Francois Pinot
   &opcodesmp3scal;
   &opcodesmpulse;
   &opcodesmrtmsg;
+  &opcodesmtof;
+  &opcodesmton;
   &opcodesmultitap;
   &opcodesmute;
   &opcodesmvchpf;
@@ -659,6 +664,7 @@ authors=Francois Pinot
   &opcodesnrpn;
   &opcodesnsamp;
   &opcodesnstance;
+  &opcodesntom;
   &opcodesnstrnum;
   &opcodesntrpol;
   &opcodesoctave;
@@ -736,6 +742,7 @@ authors=Francois Pinot
   &opcodespchmidib;
   &opcodespchmidinn;
   &opcodespchoct;
+  &opcodespchtom;
   &opcodespconvolve;
   &opcodespcount;
   &opcodespdclip;
@@ -831,6 +838,7 @@ authors=Francois Pinot
   &opcodespvspitch;
   &opcodespvstanal;
   &opcodespvstencil;
+  &opcodespvstrace;
   &opcodespvsvoc;
   &opcodespvsynth;
   &opcodespvswarp;
@@ -908,6 +916,10 @@ authors=Francois Pinot
   &opcodesschedwhen;
   &opcodesscoreline;
   &opcodesscoreline_i;
+  &opcodessc_lag;
+  &opcodessc_lagud;
+  &opcodessc_phasor;
+  &opcodessc_trig;
   &opcodesseed;
   &opcodessekere;
   &opcodesselect;
@@ -1271,6 +1283,7 @@ authors=Francois Pinot
   &opcodesxscanu;
   &opcodesxtratim;
   &opcodesxyin;
+  &opcodesxyscale;
   &opcodeszacl;
   &opcodeszakinit;
   &opcodeszamod;

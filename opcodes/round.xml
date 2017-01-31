@@ -33,6 +33,8 @@ english cvs version=1.7
   <refsect1>
     <title>Syntaxe</title>
     <synopsis><command>round</command>(x) (des arguments de taux-i, -k ou -a sont permis)</synopsis>
+    <synopsis><command>round</command>(k/i[]) (k- ou i-tableau)</synopsis>
+    
     <para>
       où l'argument entre parenthèses peut être une expression. Les convertisseurs de valeur réalisent
       une transformation arithmétique d'unités d'une sorte en unités d'une autre sorte. Le résultat peut

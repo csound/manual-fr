@@ -34,6 +34,7 @@ english cvs version=1.12
   <refsect1>
     <title>Syntaxe</title>
     <synopsis><command>frac</command>(x) (arguments de taux-i ou de taux-k ; fonctionne aussi au taux-a dans Csound5)</synopsis>
+    <synopsis><command>frac</command>(k/i[]) (k- ou i-tableau)</synopsis>
 
     <para>
       où l'argument entre parenthèses peut être une expression. Les convertisseurs de valeur

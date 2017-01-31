@@ -14,11 +14,8 @@ english cvs version=1.13
     <refentrytitle>tan</refentrytitle>
   </refmeta>
 
-
- 
   <refnamediv>
     <refname>tan</refname>
-
     <refpurpose>
       Calcule une fonction tangente.
     </refpurpose>
@@ -34,6 +31,7 @@ english cvs version=1.13
   <refsect1>
     <title>Syntaxe</title>
     <synopsis><command>tan</command>(x) (pas de restriction de taux)</synopsis>
+    <synopsis><command>tan</command>(k/i[]) (k- ou i-tableau)</synopsis>
   </refsect1>
 
   <refsect1>

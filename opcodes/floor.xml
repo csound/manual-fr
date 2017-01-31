@@ -31,6 +31,7 @@ english cvs version=1.7
   <refsect1>
     <title>Syntaxe</title>
     <synopsis><command>floor</command>(x) (argument au taux d'initialisation, de contrôle ou audio)</synopsis>
+    <synopsis><command>floor</command>(k/i[]) (k- ou i-tableau)</synopsis>
 
     <para>
       où l'argument entre parenthèses peut être une expression. Les convertisseurs de valeur
