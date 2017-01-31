@@ -1,0 +1,90 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pchtom">
+  <indexterm id="IndexPchtom"><primary>pchtom</primary></indexterm>
+  <refentryinfo><title>Pitch Converters:Functions</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pchtom</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pchtom</refname>
+    <refpurpose>
+      Conversion d'un pch en numéro de note MIDI.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Convertit un pch en numéro de note MIDI. La représentation <emphasis
+      role="strong">pch</emphasis> est de la forme octave.classe_de_hauteur où
+      classe_de_hauteur est un nombre entre 00 et 12.
+
+      <programlisting>
+        pch        midi    nom de note
+        ------------------------------
+        8.09       69      4A
+        8.00       60      4C
+      </programlisting>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>imidi <command>pchtom</command> ipch</synopsis>
+    <synopsis>kmidi <command>pchtom</command> kpch</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kpch</emphasis> / <emphasis>ipch</emphasis> -- Hauteur
+      représentée en octave.classe_de_hauteur.
+    </para>
+    <para>
+      <emphasis>kmidi</emphasis> / <emphasis>imidi</emphasis> -- Numéro de note
+      MIDI.
+    </para>
+    <note>
+      <para>
+        Utiliser <link
+        linkend="pchmidinn"><citetitle>pchmidinn</citetitle></link> pour faire
+        l'opération inverse.
+      </para>
+    </note>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode pchtom. Il utilise le fichier
+      <ulink url="examples/pchtom.csd"><citetitle>pchtom.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode pchtom.</title>
+        <xi:include href="examples-xml/pchtom.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="pchoct"><citetitle>pchoct</citetitle></link>,
+      <link linkend="pchmidinn"><citetitle>pchmidinn</citetitle></link>,
+      <link linkend="cpsmidinn"><citetitle>cpsmidinn</citetitle></link>, 
+      <link linkend="ftom"><citetitle>ftom</citetitle></link>,
+      <link linkend="mton"><citetitle>mton</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par : &nameeduardo; 2017</para>
+  </refsect1>
+</refentry>

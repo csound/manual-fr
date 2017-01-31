@@ -1,0 +1,90 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="cmp">
+  <indexterm id="IndexCmp"><primary>cmp</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Comparators and Accumulators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>cmp</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>cmp</refname>
+    <refpurpose>
+      Compare deux signaux audio.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Compare deux signaux audio avec les opérateurs mathématiques habituels.
+
+      <programlisting>
+        aout cmp aL, ">", aR
+      </programlisting>
+      
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aout <command>cmp</command> aL, S_operator, aR</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>S_operator</emphasis> -- un opérateur mathématique parmi ">",
+      ">=", "&lt;", "&lt;=", "=="
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>aL</emphasis> -- Signal à gauche de l'opérateur.
+    </para>
+    <para>
+      <emphasis>aR</emphasis> -- Signal à droite de l'opérateur.
+    </para>
+    <para>
+      <programlisting>
+        aout cmp aL, ">", aR     ; aout = aL > aR pour chaque échantillon
+        aout cmp aL, ">=", aR
+        aout cmp aL, "`&lt;", aR
+        aout cmp aL, "`&lt;=", aR
+        aout cmp aL, "==", aR
+      </programlisting>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode cmp. Il utilise le fichier
+      <ulink url="examples/cmp.csd"><citetitle>cmp.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode cmp.</title>
+        <xi:include href="examples-xml/cmp.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="max"><citetitle>max</citetitle></link>, 
+      <link linkend="min"><citetitle>min</citetitle></link>, 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par : &nameeduardo; 2017</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,93 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvstrace">
+<indexterm id="IndexPvstrace"><primary>pvstrace</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvstrace</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvstrace</refname>
+    <refpurpose>
+      Ne retient que les N bins les plus forts.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Traite un flot PV en ne retenant que les N bins avec la plus grande
+      amplitude, annulant les autres.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>fsig <command>pvstrace</command> fsigin, kn </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>fsig</emphasis> -- Flot PV en sortie.
+    </para>
+    <para>
+      <emphasis>fsigin</emphasis> -- Flot PV en entrée.
+    </para>
+    <para>
+      <emphasis>kn</emphasis> -- Nombre de bins à retenir.
+    </para>
+    <warning>
+      <para>
+        Il est dangereux d'utiliser la même variable-f à la fois comme entrée et
+        comme sortie des opcodes pvs. Ceci peut produire un comportement indéfini
+        de certains de ces opcodes. Utilisez une variable différente à gauche et
+        à droite de l'opcode.
+      </para>
+   </warning>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'utilisation de l'opcode <emphasis>pvstrace</emphasis>.
+      Il utilise le fichier
+      <ulink url="examples/pvstrace.csd"><citetitle>pvstrace.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode <emphasis>pvstrace</emphasis>.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pvstrace.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="pvsanal"><citetitle>pvsanal</citetitle></link>,
+      <link linkend="pvsynth"><citetitle>pvsynth</citetitle></link>,
+      <link linkend="pvsadsyn"><citetitle>pvsadsyn</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>2017 </member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau greffon dans la version 6</para>
+    <para>2017</para>
+  </refsect1>
+</refentry>

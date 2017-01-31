@@ -1,0 +1,95 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="sc_lagud">
+  <indexterm id="IndexSc_lagud"><primary>sc_lagud</primary></indexterm>
+  <!--Make sure the category below is a valid one! See categories.py-->
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>sc_lagud</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>sc_lagud</refname>
+    <refpurpose>
+      Lag exponentiel.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Lag exponentiel avec différentes durées de lissage pour le signal montant
+      et atténué. Adapté du LagUD de Supercollider.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aout <command>sc_lagud</command> ain, klagup, klagdown</synopsis>
+    <synopsis>kout <command>sc_lagud</command> kin, klagup, klagdown</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>initialvalue</emphasis>  -- Si elle est fournie, fixe l'état
+      interne. 0 par défaut.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ain</emphasis> -- Signal en entrée.
+    </para>
+    <para>
+      <emphasis>klagup</emphasis> -- Durée de latence à 60 dB en secondes pour le
+      signal montant.
+    </para>
+    <para>
+      <emphasis>klagdown</emphasis> -- Durée de latence à 60 dB en secondes pour
+      le signal atténué.
+    </para>
+    
+    <para>
+      C'est semblable à sc_lag sauf que l'on peut donner des durées de latence à
+      60 dB différentes pour le signal montant et pour le signal atténué. Utile
+      pour lisser des signaux de contrôle pour lesquels le fondu doit être
+      différent de l'atténuation.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode sc_lagud. Il utilise le fichier
+      <ulink url="examples/sc_lagud.csd"><citetitle>sc_lagud.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode sc_lagud.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/sc_lagud.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="sc_lag"><citetitle>sc_lag</citetitle></link>, 
+      <link linkend="port"><citetitle>port</citetitle></link>, 
+      <link linkend="portk"><citetitle>portk</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par : &nameeduardo; 2017</para>
+  </refsect1>
+</refentry>

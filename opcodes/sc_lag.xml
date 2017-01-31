@@ -1,0 +1,92 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="sc_lag">
+  <indexterm id="IndexSc_lag"><primary>sc_lag</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>sc_lag</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>sc_lag</refname>
+    <refpurpose>
+      Lag exponentiel.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Lag exponentiel avec durée de latence à 60 dB. Adapté du Lag
+      de Supercollider.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aout <command>sc_lag</command> ain, klagtime [, initialvalue=0]</synopsis>
+    <synopsis>kout <command>sc_lag</command> kin, klagtime [, initialvalue=0]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>initialvalue</emphasis> -- Si elle est fournie, fixe l'état
+      interne. 0 par défaut.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ain</emphasis> -- Signal en entrée.
+    </para>
+    <para>
+      <emphasis>klagtime</emphasis> -- Durée de latence à 60 dB en secondes.
+    </para>
+    <para>
+      <emphasis>kladown</emphasis> -- Durée de latence à 60 dB en secondes pour
+      le signal atténué.
+    </para>
+    <para>
+      C'est essentiellement un filtre à un pôle sauf qu'au lieu de fournir
+      le coefficient directement, celui-ci est calculé en fonction d'un temps de
+      latence à 60 dB. C'est le temps nécessaire pour que le filtre converge à
+      0.01% d'une valeur. Utile pour lisser un signal de contrôle.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode sc_lag. Il utilise le fichier
+      <ulink url="examples/sc_lag.csd.csd"><citetitle>sc_lag.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode sc_lag.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/sc_lag.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="sc_lagud"><citetitle>sc_lagud</citetitle></link>, 
+      <link linkend="port"><citetitle>port</citetitle></link>, 
+      <link linkend="portk"><citetitle>portk</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par : &nameeduardo; 2017</para>
+  </refsect1>
+</refentry>

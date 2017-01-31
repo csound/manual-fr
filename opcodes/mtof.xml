@@ -1,0 +1,74 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="mtof">
+  <indexterm id="IndexMtof"><primary>mtof</primary></indexterm>
+  <refentryinfo><title>Pitch Converters:Functions</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>mtof</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>mtof</refname>
+    <refpurpose>
+      Conversion MIDI-fréquence.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Convertit un numéro de note MIDI en fréquence en tenant compte de la
+      valeur globale du la3 (A4).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ifreq <command>mtof</command> imidi</synopsis>
+    <synopsis>kfreq <command>mtof</command> kmidi</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kmidi</emphasis> / <emphasis>imidi</emphasis> -- Numéro de note
+      MIDI.
+    </para>
+    <para>
+      <emphasis>kfreq</emphasis> / <emphasis>ifreq</emphasis> -- Fréquence
+      correspondant à la valeur de note MIDI.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode mtof. Il utilise le fichier
+      <ulink url="examples/mtof-ftom.csd"><citetitle>mtof-ftom.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode mtof.</title>
+        <xi:include href="examples-xml/mtof-ftom.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="cpsmidinn"><citetitle>cpsmidinn</citetitle></link>, 
+      <link linkend="ftom"><citetitle>ftom</citetitle></link>,
+      <link linkend="mton"><citetitle>mton</citetitle></link>,
+      <link linkend="ntom"><citetitle>ntom</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par : &nameeduardo; 2017</para>
+  </refsect1>
+</refentry>

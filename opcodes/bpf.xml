@@ -1,0 +1,95 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="bpf">
+  <indexterm id="IndexBpf"><primary>bpf</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Linear and Exponential Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>bpf</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>bpf</refname>
+    <refpurpose>
+      Fonction à points charnière avec interpolation linéaire.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Fonction à points charnière avec interpolation linéaire. Utile lorsque la
+      définition d'une table avec GEN27 et la mise à l'échelle de la valeur
+      consommerait trop de ressoures.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ky <command>bpf</command> kx, kx1, ky1, kx2, ..., kxn, kyn</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis role="strong">kx</emphasis> -- Valeur d'entrée.
+    </para>
+    <para>
+      <emphasis role="strong">kxn, kyn</emphasis> -- Définit un point charnière.
+      Peut changer au taux-k, mais tous les <emphasis>kx</emphasis>s doivent
+      être ordonnés.
+    </para>
+    <para>
+      Les points (kx1, ky1), (kx2, ky2), etc, définissent une fonction
+      interpolée linéairement. Cette fonction est évaluée au point
+      <emphasis>kx</emphasis>. Cette fonction s'étend à la fois ver -inf
+      et +inf, si bien que si kx &lt; kx1 alors ky = ky1 et pareillement à
+      l'autre extrémité.
+    </para>
+    <para>Les lignes suivantes sont équivalentes :</para>
+    <programlisting>
+      ky bpf kx, 0, 0, 0.5, 10, 1.02, 200
+
+      itab ftgenonce 0, 0, -27, 0, 0, 50, 10, 102, 200
+      ky = tablei(limit(kx, 0, 1.02)*100, itab)
+    </programlisting>
+
+    <note>
+      <para>
+        Les valeurs x doivent être ordonnées. Les valeurs x et y peuvent changer
+        mais les valeurs x doivent rester ordonnées.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode bpf. Il utilise le fichier
+      <ulink url="examples/bpf.csd"><citetitle>bpf.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode bpf.</title>
+        <xi:include href="examples-xml/bpf.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="scale"><citetitle>scale</citetitle></link>, 
+      <link linkend="ntrpol"><citetitle>ntrpol</citetitle></link>, 
+      <link linkend="xyscale"><citetitle>xyscale</citetitle></link>, 
+      <link linkend="linlin"><citetitle>linlin</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par : &nameeduardo; 2017</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,95 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="xyscale">
+  <indexterm id="IndexXyscale"><primary>xyscale</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Linear and Exponential Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>xyscale</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>xyscale</refname>
+    <refpurpose>
+      Interpolation linéaire 2D.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Interpolation linéaire 2D entre quatre points à (0,0), (1,0), (0,1) et
+      (1,1)
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kout <command>xyscale</command> kx, ky, k00, k10, k01, k11</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kx</emphasis>, <emphasis>ky</emphasis> -- Coordonnées pour
+      évaluer l'interpolation. Valeurs entre 0 et 1, où :
+    </para>
+    <para>
+      <emphasis>k00</emphasis> -- valeur du point de coordonnées (x=0, y=0)
+    </para>
+    <para>
+      <emphasis>k10</emphasis> -- valeur du point de coordonnées (x=1, y=0)
+    </para>
+    
+    <para>
+      <emphasis>k01</emphasis> -- valeur du point de coordonnées (x=0, y=1)
+    </para>
+    <para>
+      <emphasis>k11</emphasis> -- valeur du point de coordonnées (x=1, y=1)
+    </para>
+    <programlisting>
+
+      (0,1)      (1,1)
+
+      
+      (0,0)      (1,0)
+         
+              
+    </programlisting>
+    <para>
+      Etant données quatre valeurs placées aux sommets d'un carré, la valeur
+      interpolée au point (x, y) est trouvée, où x et y sont compris entre 0
+      et 1. 
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Voici un exemple de l'opcode xyscale. Il utilise le fichier
+      <ulink url="examples/xyscale.csd"><citetitle>xyscale.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode xyscale.</title>
+        <xi:include href="examples-xml/xyscale.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="scale"><citetitle>scale</citetitle></link>, 
+      <link linkend="ntrpol"><citetitle>ntrpol</citetitle></link>, 
+      <link linkend="linlin"><citetitle>linlin</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par : &nameeduardo; 2017</para>
+  </refsect1>
+</refentry>

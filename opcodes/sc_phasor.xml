@@ -1,0 +1,86 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="sc_phasor">
+  <indexterm id="IndexSc_phasor"><primary>sc_phasor</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Phasors</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>sc_phasor</refentrytitle>
+  </refmeta>
+  
+  <refnamediv>
+    <refname>sc_phasor</refname>
+    <refpurpose>
+      Une rampe linéaire réinitialisable entre deux niveaux.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Une rampe linéaire réinitialisable entre deux niveaux. Adapté du Phasor de
+      Supercollider.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aindex <command>sc_phasor</command> xtrig, xrate, kstart, kend [, kresetPos] </synopsis>
+    <synopsis>kindex <command>sc_phasor</command> xtrig, xrate, kstart, kend [, kresetPos] </synopsis>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      sc_phasor produit une rampe linéaire entre les valeurs de
+      <emphasis>kstart</emphasis> et de <emphasis>kend</emphasis>. Quand son
+      entrée de déclenchement passe de valeurs non positives à des valeurs
+      positives, la sortie de sc_phasor saute à sa position de reset (ou à
+      <emphasis>kstart</emphasis> si aucune valeur de reset n'a été donnée).
+      Lorsqu'il atteint la fin de sa rampe, sc_phasor recommence au début. 
+    </para>
+    <para>
+      Si <emphasis>kresetPos</emphasis> est spécifié, cette valeur sera utilisée
+      après un déclenchement. Sinon, un déclenchement ramènera à la position de
+      <emphasis>kstart</emphasis>.
+    </para>
+    <para>
+      Si l'on veut que sc_phasor produise un signal de fréquence
+      <emphasis>freq</emphasis> oscillant entre <emphasis>start</emphasis> et
+      <emphasis>end</emphasis>, la valeur de <emphasis>rate</emphasis> doit
+      être :
+      <synopsis>(end - start) * freq / sr</synopsis>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode sc_phasor. Il utilise le fichier
+      <ulink url="examples/sc_phasor.csd"><citetitle>sc_phasor.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode sc_phasor.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/sc_phasor.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="phasor"><citetitle>phasor</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par : &nameeduardo; 2017</para>
+  </refsect1>
+</refentry>

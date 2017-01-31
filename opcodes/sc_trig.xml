@@ -1,0 +1,81 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="sc_trig">
+  <indexterm id="IndexSc_trig"><primary>sc_trig</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>sc_trig</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>sc_trig</refname>
+    <refpurpose>
+      Déclencheur mesuré.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Déclencheur mesuré. Adapté de Trig de Supercollider.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aout <command>sc_trig</command> ain, kdur</synopsis>
+    <synopsis>kout <command>sc_trig</command> kin, kdur</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ain</emphasis> -- Déclencheur, pouvant être n'importe quel
+      signal. Un déclenchement a lieu quand le signal passe d'une valeur
+      non-positive à une valeur positive. 
+    </para>
+    <para>
+      <emphasis>kdur</emphasis> -- Durée du déclenchement en secondes.
+    </para>
+    <para>
+      Quand une transition d'une valeur non-positive à une valeur positive a
+      lieu en entrée, sc_trig restitue le niveau du signal déclencheur pendant
+      la durée spécifiée, sinon la sortie vaut zéro.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode sc_trig. Il utilise le fichier
+      <ulink url="examples/sc_trig.csd"><citetitle>sc_trig.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode sc_trig.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/sc_trig.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="sc_lag"><citetitle>sc_lag</citetitle></link>, 
+      <link linkend="metro"><citetitle>metro</citetitle></link>, 
+      <link linkend="mpulse"><citetitle>mpulse</citetitle></link>
+      <link linkend="trigger"><citetitle>trigger</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par : &nameeduardo; 2017</para>
+  </refsect1>
+</refentry>

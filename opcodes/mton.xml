@@ -1,0 +1,88 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="mton">
+  <indexterm id="IndexMton"><primary>mton</primary></indexterm>
+  <refentryinfo><title>Pitch Converters:Functions</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>mton</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>mton</refname>
+    <refpurpose>
+      Conversion d'un numéro de note MIDI en nom de note.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Convertit un numéro de note MIDI en nom de note, avec une précision d'un
+      cent.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>Snote <command>mton</command> kmidi</synopsis>
+    <synopsis>Snote <command>mton</command> imidi</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kmidi</emphasis> / <emphasis>imidi</emphasis> -- Numéro de note
+      MIDI.
+    </para>
+    <para>
+      <emphasis>Snote</emphasis> -- Nom de la note.
+    </para>
+    <para>
+      Exemple de noms de note :
+
+      <programlisting>
+        midi    nom de note
+        -------------------
+        60      4C
+        60.4    4C+40
+        60.5    4C+
+        60.9    4Db-10
+        61      4C#
+        61.5    4D-
+      </programlisting>
+
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode mton. Il utilise le fichier
+      <ulink url="examples/mton-ntom.csd"><citetitle>mton-ntom.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode mton.</title>
+        <xi:include href="examples-xml/mton-ntom.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="cpsmidinn"><citetitle>cpsmidinn</citetitle></link>, 
+      <link linkend="mtof"><citetitle>mtof</citetitle></link>,
+      <link linkend="ftom"><citetitle>ftom</citetitle></link>,
+      <link linkend="ntom"><citetitle>ntom</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par : &nameeduardo; 2017</para>
+  </refsect1>
+</refentry>
