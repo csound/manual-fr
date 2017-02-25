@@ -45,6 +45,12 @@ english cvs version=1.8
     </para>
 
     <para>
+      Dans le cas d'un tableau, chaque élément du tableau est envoyé sur le
+      canal correspondant. C'est un moyen d'utiliser de nombreux canaux. La
+      version sans tableau est limitée à 1999.
+    </para>
+    
+    <para>
       Le type (mono, stéréo, quadra, hexa ou octo) doit concorder avec
       <link linkend="nchnls"><citetitle>nchnls</citetitle></link>. Mais à
       partir de la version 3.50, Csound essaiera de changer un opcode incorrect
