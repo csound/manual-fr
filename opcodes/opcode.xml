@@ -49,7 +49,7 @@ english cvs version=1.17
       Cependant, certains paramètres sont copiés automatiquement à l'initialisation :
 
       <itemizedlist>
-        <listitem><para>tous les p-champs (<emphasis>p1</emphasis> inclus)</para></listitem>
+        <listitem><para>tous les p-champs (<emphasis>p1</emphasis> inclus) définis dans l'instrument appelant</para></listitem>
         <listitem><para>le temps supplémentaire (voir aussi <link linkend="xtratim"><citetitle>xtratim</citetitle></link>,
         <link linkend="linsegr"><citetitle>linsegr</citetitle></link>, et les opcodes correspondants). Ceci
         peut affecter le fonctionnement de
@@ -82,7 +82,7 @@ english cvs version=1.17
 
     <para>
       Les opcodes <link linkend="xin"><citetitle>xin</citetitle></link> et
-      <link linkend="xout"><citetitle>xout</citetitle></link> copient des variables vers et depuis la
+      <link linkend="xout"><citetitle>xout</citetitle></link> copient les variables vers et depuis la
       définition de l'opcode, permettant la communication avec l'instrument appelant.
     </para>
 
@@ -90,7 +90,7 @@ english cvs version=1.17
       Les types des variables d'entrée et de sortie sont définis par les paramètres
       <emphasis>intypes</emphasis> et <emphasis>outtypes</emphasis>.
       <tip><para>
-        On peut créer des UDOs sans entrée ou sans sortie en remplaçant la chaîne
+        On peut créer des UDOs sans entrée ou sans sortie en remplaçant la chaîne de
         caractères correspondante par 0.
       </para></tip>
     </para>
@@ -124,7 +124,7 @@ english cvs version=1.17
     <para>
       <emphasis>nom</emphasis> -- nom de l'opcode. Il est constitué de n'importe quelle combinaison de
       lettres, chiffres et traits de soulignement mais il ne doit pas commencer par un chiffre. Si un
-      opcode du même nom existe déjà, il est redéfini (un avertissement est imprimé dans ce cas). Certains
+      opcode du même nom existe déjà, il est redéfini (un avertissement est affiché dans ce cas). Certains
       mots réservés (comme <emphasis>instr</emphasis> et <emphasis>endin</emphasis>) ne peuvent pas être
       redéfinis.
     </para>
