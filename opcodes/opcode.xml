@@ -49,7 +49,8 @@ english cvs version=1.17
       Cependant, certains paramètres sont copiés automatiquement à l'initialisation :
 
       <itemizedlist>
-        <listitem><para>tous les p-champs (<emphasis>p1</emphasis> inclus) définis dans l'instrument appelant</para></listitem>
+        <listitem><para>tous les p-champs jusqu'à celui de numéro le plus élevé
+        inclus, référencés dans l'instrument appelant</para></listitem>
         <listitem><para>le temps supplémentaire (voir aussi <link linkend="xtratim"><citetitle>xtratim</citetitle></link>,
         <link linkend="linsegr"><citetitle>linsegr</citetitle></link>, et les opcodes correspondants). Ceci
         peut affecter le fonctionnement de
