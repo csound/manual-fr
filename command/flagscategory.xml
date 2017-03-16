@@ -1304,7 +1304,8 @@ csound5:output2             (reproduction droite)</screen>
       <term>--get-system-sr<indexterm id="IndexCatMinusMinusGetSR"><primary>--get-system-sr</primary></indexterm></term>
       <listitem>
         <para>
-          Affiche le sr du système et termine l'application ; nécessite -o dac.
+          Affiche le sr du système et termine l'application, nécessite au préalable -o dac.
+          Si l'audio ne supporte pas cette requête, -1 est retourné.
         </para>
       </listitem>
     </varlistentry>

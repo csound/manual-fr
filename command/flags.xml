@@ -424,7 +424,8 @@ english cvs version=1.43
       <term>--get-system-sr<indexterm id="IndexMinusMinusgetsr"><primary>--get-system-sr</primary></indexterm></term>
       <listitem>
         <para>
-          Affiche le sr du système et termine l'application ; nécessite -o dac.
+          Affiche le sr du système et termine l'application, nécessite au préalable -o dac.
+          Si l'audio ne supporte pas cette requête, -1 est retourné.
         </para>
       </listitem>
     </varlistentry>
