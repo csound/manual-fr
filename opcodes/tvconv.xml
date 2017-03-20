@@ -1,0 +1,117 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="tvconv">
+<indexterm id="IndexTvconv"><primary>tvconv</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Convolution and Morphing</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tvconv</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>tvconv</refname>
+    <refpurpose>
+      Un opcode de convolution dynamique (filtre RIF).
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Un opcode prenant deux signaux en entrée et interprétant l'un deux comme
+      les coefficients à variation temporelle linéaire d'un filtre à réponse
+      impulsionnelle finie. Réalisé via une convolution directe (pour des tailles
+      de partition d'un échantillon) ou par une convolution partitionnée basée
+      sur la TFD. Les signaux peuvent être "gelés" (les coefficients du filtre
+      sont maintenus constants) à n'importe quel moment, au taux-a ou au taux-k.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>tvconv</command> asig1, asig2, xfreez1,
+    xfreez2, iparts, ifils</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iparts</emphasis> -- taille de partition, pour des tailles
+      &gt; 1, une convolution partitionnée basée sur la TFD est utilisée. Sinon
+      une ligne à retard à RIF est réalisée dans le domaine temporel. Les
+      tailles de partition &gt; 1 sont arrondies à la puissance de deux la plus
+      proche.
+    </para>
+
+    <para>
+      <emphasis>ifils</emphasis> -- taille du filtre. Pour des tailles de
+      partition &gt; 1, la taille du filtre est arrondie à la puissance de deux
+      la plus proche. Lorsque le taille de partition vaut 1, comme une
+      convolution directe est utilisée, les filtres peuvent avoir n'importe
+      quelle taille.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ares</emphasis> -- sortie audio.
+    </para>
+
+    <para>
+      <emphasis>asig1, asig2</emphasis> -- entrées audio.
+    </para>
+
+    <para>
+      <emphasis>xfreez1</emphasis> -- indicateur de gel de <emphasis>asig1</emphasis>.
+      Les coefficients ne sont mis à jour (le signal passe dans la convolution)
+      que si <emphasis>xfreez1</emphasis> &gt; 0. Cette entrée peut prendre un
+      signal audio ou de taux-k, ou une constante.
+    </para>
+
+    <para>
+      <emphasis>xfreez2</emphasis> -- indicateur de gel de <emphasis>asig2</emphasis>.
+      Fonctionne comme <emphasis>xfreez1</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode tvconv. Il utilise le fichier
+      <ulink url="examples/tvconv.csd"><citetitle>tvconv.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode tvconv.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/tvconv.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="pconvolve"><citetitle>pconvolve</citetitle></link>,
+      <link linkend="convolve"><citetitle>convolve</citetitle></link>,
+      <link linkend="ftconv"><citetitle>ftconv</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Victor Lazzarini </member>
+        <member>2017</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 6.09</para>
+  </refsect1>
+</refentry>
