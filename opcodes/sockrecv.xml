@@ -38,6 +38,7 @@ english cvs version=1.4
     <synopsis>asig <command>sockrecv</command> iport, ilength</synopsis>
     <synopsis>ksig <command>sockrecv</command> iport, ilength</synopsis>
     <synopsis>asigl, asigr <command>sockrecvs</command> iport, ilength</synopsis>
+    <synopsis>String <command>sockrecv</command> iport, ilength</synopsis>
     <synopsis>asig <command>strecv</command> Sipaddr, iport</synopsis>
   </refsect1>
 
@@ -67,6 +68,7 @@ english cvs version=1.4
     <para>
       <emphasis>asig, asigl, asigr</emphasis> -- donnéees audio à recevoir.
       <emphasis>ksig</emphasis> -- donnéees de contrôle à recevoir.
+      <emphasis>String</emphasis> -- données chaîne de caractères à recevoir.
     </para>
   </refsect1>
 

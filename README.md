@@ -32,6 +32,11 @@ apprendre comment installer Python ou le construire à partir des sources.
 
 Aller sur http://pygments.org/download/ pour apprendre comment installer Pygments.
 
+Pour installer Pygments, taper dans un terminal `sudo pip install pygments`. Si
+une ancienne version de Pygments est déjà installée, il peut y avoir un message
+d'erreur indiquant que CsoundDocumentLexer est introuvable. Si c'est le cas, on
+peut mettre à jour cette version de Pygments avec `sudo pip install pygments --upgrade`.
+
 ### MacOS
 
 La manière la plus simple d'installer DocBook est sans doute via [Homebrew]
