@@ -1,0 +1,87 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="OSCraw">
+<indexterm id="IndexOSCraw"><primary>OSCraw</primary></indexterm>
+  <refentryinfo><title>OSC</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>OSCraw</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>OSCraw</refname>
+    <refpurpose>
+      Ecoute tous les messages OSC sur un port donné.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      A chaque cycle-k cherche si un message OSC a été reçu sur un port donné.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>Smess[],klen <command>OSCraw</command> iport</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iport</emphasis> -- port sur lequel les messages seront reçus.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>Smess[]</emphasis> -- un tableau de chaînes de caractères contenant
+      les composantes du messages : adresse, types et éléments de données. Si le tableau
+      n'existe pas (c'est-à-dire n'a pas été initialisé), il est créé avec 32
+      éléments. Les tableaux ne peuvent grossir avec la taille du message, si
+      bien que si un message de plus de 32 éléments (c'est-à-dire 30 éléments de
+      données séparés) est attendu, un tableau plus grand doit être initialisé
+      avant utilisation. Si un message a plus d'éléments que le tableau ne peut
+      en contenir, il est tronqué.
+    </para>
+    <para>
+      <emphasis>klen</emphasis> -- nombre d'éléments placés dans le tableau de
+      sortie. Vaut 0 si aucun message n'a été reçu et au moins 2 si un message
+      a été reçu (adresse et types sont les éléments minimaux).
+    </para>
+  </refsect1>
+
+  <refsect1>    
+      <example>
+        <title>Exemple.</title>
+        <para>Le fichier CSD suivant montre comment un message est reçu par OSCraw :</para>
+          <xi:include href="examples-xml/OSCraw.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+      <para>
+        <link linkend="OSCsend"><citetitle>OSCsend</citetitle></link>,
+        <link linkend="OSCinit"><citetitle>OSCinit</citetitle></link>
+      </para>
+      <para>Plus d'information sur cet opcode: <ulink url="http://www.youtube.com/watch?v=JX1C3TqP_9Y"><citetitle>http://www.youtube.com/watch?v=JX1C3TqP_9Y</citetitle></ulink>, par Andrés Cabrera </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteurs: Oeyvind Brandtsegg, Victor Lazzarini</member>
+        <member>2017</member>
+      </simplelist>
+    </para>
+    <para>Les types aAG sont nouveaux dans Csound 6.07</para>
+    </refsect1>
+</refentry>
