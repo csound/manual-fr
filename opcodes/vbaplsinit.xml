@@ -31,6 +31,7 @@ english cvs version=1.9
   <refsect1>
     <title>Syntaxe</title>
     <synopsis><command>vbaplsinit</command> idim, ilsnum [, idir1] [, idir2] [...] [, idir32]</synopsis>
+    <synopsis><command>vbaplsinit</command> idim, ilsnum, ilsarray</synopsis>
   </refsect1>
 
   <refsect1>
@@ -58,6 +59,10 @@ english cvs version=1.9
       d'azimut et d'élévation de chaque haut-parleur (<emphasis>azi1</emphasis>,
       <emphasis>ele1</emphasis>, <emphasis>azi2</emphasis>, <emphasis>ele2</emphasis>,
       etc.).
+    </para>
+     <para>
+      <emphasis>ilsarray</emphasis> -- tableau unidimensionnel de données comme
+      celles décrites ci-dessus.
     </para>
     <para>
       <note>
