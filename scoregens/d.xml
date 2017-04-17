@@ -1,0 +1,94 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="d">
+      <indexterm id="IndexDStatement"><primary>d statement</primary></indexterm>
+      <indexterm id="IndexDenoteStatement"><primary>denote statement</primary></indexterm>
+  <refmeta>
+    <refentrytitle>Instruction d (instruction de note)</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>d</refname>
+    <refpurpose>
+      Supprime un instrument actif à une date précise.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cette instruction provoque la suppression d'un instrument tenu à une date
+      spécifique. 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>i</command>  p1  p2  p3  p4</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>p1</emphasis> -- Numéro d'instrument. Une partie décimale
+      facultative permet d'ajouter une étiquette indiquant des liaisons entre
+      des notes particulières d'aggrégats consécutifs
+    </para>
+
+    <para>
+      <emphasis>p2</emphasis> -- Date de début en unités arbitraires appelées pulsations.
+    </para>
+
+    <para>
+      <emphasis>p3</emphasis> -- Ignoré mais nécessaire. Habituellement zéro.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Une pulsation vaut une seconde, à moins qu'il n'y ait une
+      <link linkend="t"><citetitle>instruction t</citetitle></link> dans cette section de la partition ou une
+      <link linkend="FlagsMinusLowerT"><citetitle>option -t</citetitle></link> dans la ligne de commande.
+    </para>
+
+    <para>
+      Les dates d'action sont relatives au début d'une section (voir
+      l'<link linkend="s"><citetitle>instruction s</citetitle></link>), qui reçoit la date 0.
+    </para>
+
+    <para>
+      Dans une section, les instructions de note peuvent être placées dans
+      n'importe quel ordre. Avant d'être envoyées à l'orchestre, les instructions
+      non triées de la partition doivent être traitées par la fonction Sort, qui
+      les ordonnera par valeurs de p2 croissantes. Les notes ayant la même valeur
+      en p2 seront triées par p1 croissants ; si elles ont le même p1, alors
+      par p3 croissants.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'instruction d. Il utilise le fichier
+      <ulink url="examples/d_statement.csd"><citetitle>d_statement.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'instruction d.</title>
+        <xi:include href="examples-xml/d_statement.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      Auteur : John ffitch, nouveau dans la version 6.09.
+    </para>
+  </refsect1>
+</refentry>
+
