@@ -42,7 +42,9 @@ english cvs version=1.7
       <emphasis>p1</emphasis> -- Numéro d'instrument, habituellement un nombre entier non négatif. 
       Une partie décimale facultative permet d'ajouter une étiquette indiquant des liaisons entre des
       notes particulières d'aggrégats consécutifs. Un p1 négatif (incluant une étiquette) peut être
-      utilisé pour faire cesser une note <quote>tenue</quote> particulière.
+      utilisé pour faire cesser une note <quote>tenue</quote> particulière. Dans
+      le cas d'un instrument nommé, on peut obtenir le même effet en ayant un '-'
+      comme premier caractère du nom.
     </para>
 
     <para>
