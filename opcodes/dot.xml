@@ -1,0 +1,63 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="dot">
+<indexterm id="IndexDot"><primary>dot</primary></indexterm>
+  <refentryinfo><title>Array Operations: dot product </title></refentryinfo>
+  <refmeta>
+    <refentrytitle>dot</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>dot</refname>
+
+    <refpurpose>
+      Calcule le produit scalaire de deux tableaux.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Prend deux tableaux numériques (taux-k ou i) et calcule le produit
+      scalaire.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kres/ires<command>dot</command> karr1[]/iarr1[], karr2[]/iarr2[]   (k- or i-arrays )</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode dot. Il utilise le fichier
+      <ulink url="examples/dot.csd"><citetitle>dota.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode dot.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/dot.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="sumarray"><citetitle>sumarray</citetitle></link>
+      <link linkend="productarray"><citetitle>product</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : Victor Lazzarini</para>
+    <para>Nouveau dans la version 6.09</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,61 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="sortd">
+<indexterm id="IndexSortd"><primary>sortd</primary></indexterm>
+  <refentryinfo><title>Array Operations: sorting</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>sortd</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>sortd</refname>
+    <refpurpose>
+      Trie un tableau en ordre descendant.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Prend un tableau numérique (taux-k ou i) et le retourne trié en ordre
+      descendant.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>k/i[]<command>sortd</command> k/i[]  (k- or i-arrays )</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode sortd. Il utilise le fichier
+      <ulink url="examples/sortd.csd"><citetitle>sortd.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode sortd.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/sortd.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="sorta"><citetitle>sorta</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : Victor Lazzarini</para>
+    <para>Nouveau dans la version 6.09</para>
+  </refsect1>
+</refentry>
