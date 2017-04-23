@@ -1,0 +1,131 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="zdf_2pole">
+<indexterm id="IndexZdf_2pole"><primary>zdf_2pole</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>zdf_2pole</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>zdf_2pole</refname>
+    <refpurpose>
+      Implémentation d'un filtre à 2 pôles avec rétroaction sans retard.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Implémentation d'un filtre à 2 pôles avec rétroaction sans retard (12 dB/oct).
+      Propose les modes passe-bas (par défaut), passe-haut et passe-tout.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>asig <command>zdf_2pole</command> ain, xcf, Q [, kmode, istor]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+      <para>
+      <emphasis>istor</emphasis> --état initial de l'espace de données interne.
+      Comme le filtrage comprend une boucle de rétroaction sur la sortie
+      précédente, l'état initial de l'espace de stockage utilisé est
+      significatif. Une valeur nulle provoquera l'effacement de cet espace ;
+      une valeur non nulle autorisera la persistance de l'information
+      précédente. La valeur par défaut est 0. 
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+      <para>
+      <emphasis>asig</emphasis> -- signal de sortie.
+    </para>
+    <para>
+      <emphasis>asig</emphasis> -- signal d'entrée.
+    </para>
+    <para>
+      <emphasis>xcf</emphasis> -- fréquence de coupure du filtre (taux-i-, k ou a).
+    </para>
+    <para>
+      <emphasis>Q</emphasis> -- valeur Q du filtre (taux-i-, k ou a). Dans
+      l'intervalle 0.5-25.0.
+    </para>
+    <para>
+      <emphasis>kmode</emphasis> -- type de sortie du filtre. La valeur par
+      défaut est 0. Le mode de sortie peut être :
+
+      <itemizedlist>
+        <listitem><para>0 - passe-bas</para></listitem>
+        <listitem><para>1 - passe-haut</para></listitem>
+        <listitem><para>2 - passe-bande</para></listitem>
+        <listitem><para>3 - passe-bande à gain unitaire</para></listitem>
+        <listitem><para>4 - coupe-bande</para></listitem>
+        <listitem><para>5 - passe-tout</para></listitem>
+        <listitem><para>6 - écrêteur</para></listitem>
+      </itemizedlist>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode zdf_2pole. Il utilise le fichier
+      <ulink url="examples/zdf_2pole.csd"><citetitle>zdf_2pole.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode zdf_2pole.</title>
+          <xi:include href="examples-xml/zdf_2pole.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Références</title>
+    <para>
+      Ce filtre est basé sur les travaux de Will Pirkle qui emploie le travail
+      de Vadim Zavalishin pour créer des implémentation de filtres analogiques
+      à transformation préservant la topologie (TPT), avec des transformées
+      bilinéaires.
+    </para>
+
+    <para>
+      <orderedlist>
+        <listitem>
+          <para>
+            Pirkle, Will. Designing Software Synthesizer Plug-ins in C++: For 
+            RackAFX, VST3, and Audio Units. CRC Press, 2014.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Pirkle, Will. AN-4: Virtual Analog (VA) Filter Implementation. 2013.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+          Zavalishin, Vadim. "The Art of VA filter design." Native Instruments, 2012.
+          </para>
+        </listitem>
+      </orderedlist>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namesteven;</member>
+        <member>Avril 2017</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans Csound 6.09.0</para>
+  </refsect1>
+</refentry>
