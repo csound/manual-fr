@@ -29,12 +29,12 @@ authors=Francois Pinot
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>asig <command>zdf_2pole</command> ain, xcf, Q [, kmode, istor]</synopsis>
+    <synopsis>asig <command>zdf_2pole</command> ain, xcf, xQ [, kmode, istor]</synopsis>
   </refsect1>
 
   <refsect1>
     <title>Initialisation</title>
-      <para>
+    <para>
       <emphasis>istor</emphasis> --état initial de l'espace de données interne.
       Comme le filtrage comprend une boucle de rétroaction sur la sortie
       précédente, l'état initial de l'espace de stockage utilisé est
@@ -50,13 +50,13 @@ authors=Francois Pinot
       <emphasis>asig</emphasis> -- signal de sortie.
     </para>
     <para>
-      <emphasis>asig</emphasis> -- signal d'entrée.
+      <emphasis>ain</emphasis> -- signal d'entrée.
     </para>
     <para>
       <emphasis>xcf</emphasis> -- fréquence de coupure du filtre (taux-i-, k ou a).
     </para>
     <para>
-      <emphasis>Q</emphasis> -- valeur Q du filtre (taux-i-, k ou a). Dans
+      <emphasis>xQ</emphasis> -- valeur Q du filtre (taux-i-, k ou a). Dans
       l'intervalle 0.5-25.0.
     </para>
     <para>
