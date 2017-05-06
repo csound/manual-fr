@@ -1,0 +1,131 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="k35_hpf">
+<indexterm id="IndexK35_hpf"><primary>k35_hpf</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>k35_hpf</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>k35_hpf</refname>
+    <refpurpose>
+      Implémentation du filtre passe-haut résonant du Korg35 avec rétroaction
+      sans retard.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Implémentation du filtre passe-haut résonant du Korg35 avec rétroaction
+      sans retard. On trouve ce type de filtre sur les Korg MS10 et les premiers
+      MS20. 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>asig <command>k35_hpf</command> ain, xcf, xQ [, inlp, isaturation, istor]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+      <para>
+      <emphasis>istor</emphasis> --état initial de l'espace de données interne.
+      Comme le filtrage comprend une boucle de rétroaction sur la sortie
+      précédente, l'état initial de l'espace de stockage utilisé est
+      significatif. Une valeur nulle provoquera l'effacement de cet espace ;
+      une valeur non nulle autorisera la persistance de l'information
+      précédente. La valeur par défaut est 0. 
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+      <para>
+      <emphasis>asig</emphasis> -- signal de sortie.
+    </para>
+    <para>
+      <emphasis>ain</emphasis> -- signal d'entrée.
+    </para>
+    <para>
+      <emphasis>xcf</emphasis> -- fréquence de coupure du filtre (taux-i-, k ou a).
+    </para>
+    <para>
+      <emphasis>xQ</emphasis> -- Q du filtre (taux-i-, k ou a). Dans l'intervalle
+      1.0-10.0 (lié à l'opcode). L'auto-oscillation survient à 10.0.
+    </para>
+    <para>
+      <emphasis>knlp</emphasis>  (facultatif, 0 par défaut) -- méthode de traitement
+      non linéaire. 0 = pas de traitement, 1 = traitement non linéaire. La
+      méthode 1 utilise tanh(ksaturation * input). L'activation du TNL peut
+      pousser la sortie globale du filtre au-delà de l'unité et doit être
+      compensée pour l'environnement externe du filtre.
+    </para>
+    <para>
+      <emphasis>ksaturation</emphasis> (facultatif, 1 par défaut) -- quantité de
+      saturation à utiliser pour le traitement non linéaire. Les valeurs &gt; 1
+      augmentent la pente de la courbe de TNL.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode k35_hpf. Il utilise le fichier
+      <ulink url="examples/k35.csd"><citetitle>k35.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode k35_hpf.</title>
+          <xi:include href="examples-xml/k35.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Références</title>
+    <para>
+      Ce filtre est basé sur les travaux de Will Pirkle qui emploie le travail
+      de Vadim Zavalishin pour créer des implémentation de filtres analogiques
+      à transformation préservant la topologie (TPT), avec des transformées
+      bilinéaires.
+    </para>
+
+    <para>
+      <orderedlist>
+        <listitem>
+          <para>
+            Pirkle, Will. Designing Software Synthesizer Plug-ins in C++: For 
+            RackAFX, VST3, and Audio Units. CRC Press, 2014.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Pirkle, Will. AN-7A: Virtual Analog (VA) Korg35 Highpass Filter v2.0 Simplified. 2013.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+          Zavalishin, Vadim. "The Art of VA filter design." Native Instruments, 2012.
+          </para>
+        </listitem>
+      </orderedlist>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namesteven;</member>
+        <member>Avril 2017</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans Csound 6.09.0</para>
+  </refsect1>
+</refentry>

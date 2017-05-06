@@ -1,0 +1,134 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="diode_ladder">
+<indexterm id="IndexDiode_ladder"><primary>diode_ladder</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>diode_ladder</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>diode_ladder</refname>
+    <refpurpose>
+      Implémentation d'un filtre en échelle à diodes à 4 pôles avec rétroaction
+      sans retard.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Implémentation d'un filtre passe-bas à diodes à 4 pôles (24 dB/oct) avec
+      rétroaction sans retard. Ce type de filtre fut utilisé à l'origine dans
+      l'EMS VCS3 et il fut le filtre résonnant du Roland TB-303. 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>asig <command>diode_ladder</command> ain, xcf, xk [, inlp, isaturation, istor]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>istor</emphasis> --état initial de l'espace de données interne.
+      Comme le filtrage comprend une boucle de rétroaction sur la sortie
+      précédente, l'état initial de l'espace de stockage utilisé est
+      significatif. Une valeur nulle provoquera l'effacement de cet espace ;
+      une valeur non nulle autorisera la persistance de l'information
+      précédente. La valeur par défaut est 0. 
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+      <para>
+      <emphasis>asig</emphasis> -- signal de sortie passe-bas.
+    </para>
+    <para>
+      <emphasis>ain</emphasis> -- signal d'entrée.
+    </para>
+    <para>
+      <emphasis>xcf</emphasis> -- fréquence de coupure du filtre (taux-i-, k ou a).
+    </para>
+    <para>
+      <emphasis>xk</emphasis> -- valeur de rétroaction du filtre (taux-i-, k ou a)
+      qui contrôle la résonance. Dans l'intervalle 0.0-17.0. L'auto-oscillation
+      survient à 17.0.
+    </para>
+    <para>
+      <emphasis>knlp</emphasis> (facultatif, 0 par défaut) -- méthode de traitement
+      non linéaire. 0 = pas de traitement, 1 = TNL de grande qualité, 2 = TNL
+      de faible qualité (plus rapide). La méthode 1 utilise
+      (1.0 / tanh(ksaturation)) * tanh(ksaturation * input). La méthode 2 utilise
+      tanh(ksaturation * input). L'activation du TNL peut pousser la sortie
+      globale du filtre au-delà de l'unité et doit être compensée pour
+      l'environnement externe du filtre.
+    </para>
+    <para>
+      <emphasis>ksaturation</emphasis> (facultatif, 1 par défaut) -- quantité de
+      saturation à utiliser pour le traitement non linéaire. Les valeurs &gt; 1
+      augmentent la pente de la courbe de TNL.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode diode_ladder. Il utilise le fichier
+      <ulink url="examples/diode_ladder.csd"><citetitle>diode_ladder.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode diode_ladder.</title>
+          <xi:include href="examples-xml/diode_ladder.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Références</title>
+    <para>
+      Ce filtre est basé sur les travaux de Will Pirkle qui emploie le travail
+      de Vadim Zavalishin pour créer des implémentation de filtres analogiques
+      à transformation préservant la topologie (TPT), avec des transformées
+      bilinéaires.
+    </para>
+
+    <para>
+      <orderedlist>
+        <listitem>
+          <para>
+            Pirkle, Will. Designing Software Synthesizer Plug-ins in C++: For 
+            RackAFX, VST3, and Audio Units. CRC Press, 2014.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Pirkle, Will. AN-6: Virtual Analog (VA) DiodeLadder Filter. 2013.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+          Zavalishin, Vadim. "The Art of VA filter design." Native Instruments, 2012.
+          </para>
+        </listitem>
+      </orderedlist>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namesteven;</member>
+        <member>Avril 2017</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans Csound 6.09.0</para>
+  </refsect1>
+</refentry>
