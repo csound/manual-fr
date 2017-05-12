@@ -6,14 +6,14 @@ authors=Francois Pinot
 -->
 
 <refentry id="k35_hpf">
-<indexterm id="IndexK35_hpf"><primary>k35_hpf</primary></indexterm>
+<indexterm id="IndexK35_hpf"><primary>K35_hpf</primary></indexterm>
   <refentryinfo><title>Signal Modifiers:Standard Filters</title></refentryinfo>
   <refmeta>
-    <refentrytitle>k35_hpf</refentrytitle>
+    <refentrytitle>K35_hpf</refentrytitle>
   </refmeta>
 
   <refnamediv>
-    <refname>k35_hpf</refname>
+    <refname>K35_hpf</refname>
     <refpurpose>
       Implémentation du filtre passe-haut résonant du Korg35 avec rétroaction
       sans retard.
@@ -31,7 +31,7 @@ authors=Francois Pinot
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>asig <command>k35_hpf</command> ain, xcf, xQ [, inlp, isaturation, istor]</synopsis>
+    <synopsis>asig <command>K35_hpf</command> ain, xcf, xQ [, inlp, isaturation, istor]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -78,10 +78,10 @@ authors=Francois Pinot
   <refsect1>
     <title>Exemples</title>
     <para>
-      Voici un exemple de l'opcode k35_hpf. Il utilise le fichier
+      Voici un exemple de l'opcode K35_hpf. Il utilise le fichier
       <ulink url="examples/k35.csd"><citetitle>k35.csd</citetitle></ulink>.
       <example>
-        <title>Exemple de l'opcode k35_hpf.</title>
+        <title>Exemple de l'opcode K35_hpf.</title>
           <xi:include href="examples-xml/k35.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
     </para>

@@ -17,26 +17,33 @@ english cvs version=1.8
   <refnamediv>
     <refname>sum</refname>
     <refpurpose>
-      Somme de n'importe quel nombre de signaux de taux-a.
+      Somme de n'importe quel nombre de signaux de taux-a ou des éléments
+      d'un tableau.
     </refpurpose>
   </refnamediv>
  
   <refsect1>
     <title>Description</title>
     <para>
-      Somme de n'importe quel nombre de signaux de taux-a.
+      Somme de n'importe quel nombre de signaux de taux-a ou des éléments
+      d'un tableau.
     </para>
   </refsect1>
  
   <refsect1>
     <title>Syntaxe</title>
     <synopsis>ares <command>sum</command> asig1 [, asig2] [, asig3] [...]</synopsis>
+    <synopsis>kres <command>sum</command> karr</synopsis>
+    <synopsis>ires <command>sum</command> iarr</synopsis>
   </refsect1>
  
   <refsect1>
     <title>Exécution</title>
     <para>
       <emphasis>asig1, asig2, ...</emphasis> --  signaux de taux-a à additionner (à mélanger).
+    </para>
+    <para>
+      <emphasis>karr, iarr</emphasis> -- tableaux unidimensionnels.
     </para>
   </refsect1>
 
@@ -66,5 +73,6 @@ english cvs version=1.8
     </para>
 
     <para>Nouveau dans le version 3.54 de Csound</para>
+    <para>Ajouts pour les tableaux dans la version 6.09</para>
   </refsect1>
 </refentry>

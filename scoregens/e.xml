@@ -29,13 +29,13 @@ english cvs version=1.5
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis><command>e</command> [temps]</synopsis>
+    <synopsis><command>e</command> [0 temps]</synopsis>
   </refsect1>
  
   <refsect1>
     <title>Exécution</title>
     <para>
-      Le premier p-champ <emphasis>temps</emphasis> est facultatif et s'il est présent, il
+      Le second p-champ <emphasis>temps</emphasis> est facultatif et s'il est présent, il
       détermine la date de fin (en pulsations) de la dernière section de la partition. Cette date
       doit être après le dernier évènement sinon elle n'aura pas d'effet. Les instruments "actifs
       en permanence" se termineront à cette date. Cette manière d'allonger la section est utile
