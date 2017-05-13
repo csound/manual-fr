@@ -1,0 +1,76 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="cbrt">
+<indexterm id="IndexCbrt"><primary>cbrt</primary></indexterm>
+  <refentryinfo><title>Mathematical Operations: arrays </title></refentryinfo>
+  <refmeta>
+    <refentrytitle>cbrt</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>cbrt</refname>
+    <refpurpose>
+      Fonction racine cubique.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne la valeur de la racine cubique de son argument.
+    </para>
+
+    <para>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ires[] <command>cbrt</command> iarg</synopsis>
+    <synopsis>kres[] <command>cbrt</command> karg</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iarg[] </emphasis> -- l'argument.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>karg[] </emphasis> -- l'argument.
+    </para>
+  </refsect1>
+ 
+ <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode cbrt. Il utilise le fichier
+      <ulink url="examples/cbrt.csd"><citetitle>cbrt.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode cbrt.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/cbrt.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Victor Lazzarini</member>
+        <member>2017</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

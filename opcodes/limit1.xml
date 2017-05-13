@@ -1,0 +1,73 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="limit1">
+<indexterm id="IndexLimit1"><primary>limit1</primary></indexterm>
+  <refentryinfo><title>Mathematical Operations: arrays </title></refentryinfo>
+  <refmeta>
+    <refentrytitle>limit1</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>limit1</refname>
+    <refpurpose>
+      Fonction limiteur.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Limite la valeur de son argument à l'intervalle [0, 1].
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ires[] <command>limit1</command> iarg</synopsis>
+    <synopsis>kres[] <command>limit1</command> karg</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iarg[] </emphasis> -- l'argument.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>karg[] </emphasis> -- l'argument.
+    </para>
+  </refsect1>
+ 
+ <refsect1>
+    <title>Exmples</title>
+    <para>
+      Voici un exemple de l'opcode limit1. Il utilise le fichier
+      <ulink url="examples/limit1.csd"><citetitle>limit1.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode limit1.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/limit1.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Victor Lazzarini</member>
+        <member>2017</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

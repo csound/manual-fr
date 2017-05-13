@@ -1,0 +1,75 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="fmod">
+<indexterm id="IndexFmod"><primary>fmod</primary></indexterm>
+  <refentryinfo><title>Mathematical Operations: arrays </title></refentryinfo>
+  <refmeta>
+    <refentrytitle>fmod</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>fmod</refname>
+    <refpurpose>
+      Calcule le reste d'une division en virgule flottante.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Calcule le reste de la division de son premier argument par le second.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ires[] <command>fmod</command> iarg1[], iarg2[] </synopsis>
+    <synopsis>kres[] <command>fmod</command> karg1[], karg2[]</synopsis>
+    <synopsis>ires[] <command>fmod</command> iarg1[], iarg2 </synopsis>
+    <synopsis>kres[] <command>fmod</command> karg[], karg2 </synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iarg[]1/2, iarg2</emphasis> -- les opérandes.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>karg[]1/2, karg2</emphasis> -- les opérandes.
+    </para>
+  </refsect1>
+ 
+ <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode fmod. Il utilise le fichier
+      <ulink url="examples/fmod.csd"><citetitle>fmod.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode fmod.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/fmod.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Victor Lazzarini</member>
+        <member>2017</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

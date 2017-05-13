@@ -1,0 +1,73 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="hypot">
+<indexterm id="IndexHypot"><primary>hypot</primary></indexterm>
+  <refentryinfo><title>Mathematical Operations: arrays </title></refentryinfo>
+  <refmeta>
+    <refentrytitle>hypot</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>hypot</refname>
+    <refpurpose>
+      Fonction distance euclidienne.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne la valeur de sqrt(arg1*arg1 + arg2*arg2).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ires[] <command>hypot</command> iarg1[], iarg2[] </synopsis>
+    <synopsis>kres[] <command>hypot</command> karg1[], karg2[]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iarg[]1/2 </emphasis> -- les opérandes.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>karg[]1/2 </emphasis> -- les opérandes.
+    </para>
+  </refsect1>
+ 
+ <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode hypot. Il utilise le fichier
+      <ulink url="examples/hypot.csd"><citetitle>hypot.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode hypot.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/hypot.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Victor Lazzarini</member>
+        <member>2017</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>
