@@ -35,10 +35,12 @@ english cvs version=1.13
   <refsect1>
     <title>Syntaxe</title>
     <synopsis>ares <command>pow</command> aarg, kpow [, inorm]</synopsis>
-
     <synopsis>ires <command>pow</command> iarg, ipow [, inorm]</synopsis>
-
     <synopsis>kres <command>pow</command> karg, kpow [, inorm]</synopsis>
+    <synopsis>ires[] <command>pow</command> iarg[], ipow[] </synopsis>
+    <synopsis>kres[] <command>pow</command> karg[], kpow[]</synopsis>
+    <synopsis>ires[] <command>pow</command> iarg[], ipow</synopsis>
+    <synopsis>kres[] <command>pow</command> karg[], kpow</synopsis>
   </refsect1>
  
   <refsect1>
