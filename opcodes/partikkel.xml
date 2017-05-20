@@ -46,6 +46,9 @@ english cvs version=1.12
       auxiliaire (<emphasis>awavfm</emphasis>). La synthèse par trainlet (un trainlet est un bref
       train d'impulsions) est possible, et les trainlets peuvent être mélangés avec des grains basés
       sur des tables d'onde. On peut utiliser jusqu'à 8 sorties audio séparées.
+      Des valeurs de sortie fractionnaires distribuent un grain entre deux sorties
+      et une table de "loi de panoramique" peut être conçue pour la répartition
+      de l'amplitude entre une paire de sorties.
     </para>
   </refsect1>
 
@@ -59,7 +62,7 @@ english cvs version=1.12
               ichannelmasks, krandommask, kwaveform1, kwaveform2, kwaveform3, \
               kwaveform4, iwaveamptab, asamplepos1, asamplepos2, asamplepos3, \
               asamplepos4, kwavekey1, kwavekey2, kwavekey3, kwavekey4, imax_grains \
-              [, iopcode_id]</synopsis>
+              [, iopcode_id, ipanlaws]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -121,11 +124,15 @@ english cvs version=1.12
     <para>
       <emphasis>ichannelmasks</emphasis> -- numéro d'une table de fonction, voir
       <emphasis>igainmasks</emphasis> pour une description de la façon dont les valeurs sont lues
-      dans la table. L'intervalle des valeurs va de 0 à N, où N est le nombre de canaux de sortie
-      moins 1. Une valeur de zéro enverra le grain sur la sortie audio 1 de l'opcode. On peut
+      dans la table. L'intervalle des valeurs va de 0 à N, où N est le nombre de canaux de sortie.
+      Une valeur de zéro enverra le grain sur la sortie audio 1 de l'opcode. On peut
       utiliser des valeurs non entières, par exemple 3,5 répartira le grain également entre les
-      sorties 4 et 5. L'utilisateur doit éviter les dépassements de niveau, aucun test n'étant
-      effectué. L'opcode plantera si des valeurs dépassent le niveau maximal. On peut choisir une
+      sorties 4 et 5. La valeur de channelmask boucle entre la dernière et la première sorties,
+      si bien qu'une valeur de N-0,5 mélange le grain également entre la dernière
+      et la première sortie. Si l'on désire une autre loi de panoramique entre
+      les sorties, on peut la décrire dans la table <emphasis>ipanlaws</emphasis>.
+      L'utilisateur doit éviter les dépassements de niveau. L'opcode plantera si
+      des valeurs dépassent le niveau maximal. On peut choisir une
       table par défaut en utilisant -1 comme numéro de ftable, pour lequel
       <emphasis>ichannelmasks</emphasis> désactive le masquage des canaux (tous les grains reçoivent
       un masque de canal de 0 et sont envoyés sur la sortie audio 1 de
@@ -185,6 +192,33 @@ english cvs version=1.12
       en sortie des impulsions de déclenchement synchronisées pour le distributeur de grains de
       <emphasis>partikkel</emphasis>. La valeur par défaut est zéro, ce qui signifie aucune
       connexion à une instance de <emphasis>partikkelsync</emphasis>.
+    </para>
+    <para> 
+      <emphasis>ipanlaws</emphasis> -- numéro de table de fonction. La table décrit
+      la courbe de panoramique utilisée pour des valeurs fractionnaires de
+      channelmask. Les valeurs fractionnaires de channelmask mélangent un grain
+      sur deux sorties voisines, avec le gain relatif fixé par la valeur fractionnaire.
+      Par défaut (si aucune table <emphasis>ipanlaws</emphasis> n'est décrite),
+      une répartition linéaire du gain est utilisée, si bien qu'une valeur de
+      channelmask de par exemple 1,5 distribue le grain avec un gain de 0,5 sur
+      la sortie 2 et un gain de 0,5 sur la sortie 3. La table <emphasis>ipanlaws</emphasis>
+      peut être utilisée pour décrire d'autres courbes de contrôle du gain (lois
+      de panoramique). La table doit contenir huit courbes de contrôle de gain,
+      chacune contrôlant le panoramique entre deux sorties voisines. Les courbes
+      doivent apparaître l'un après l'autre dans la table, de manière concaténée.
+      On peut utiliser GEN18 pour créer cette table à partir de tables de courbe
+      de panoramique séparées (voir l'exemple ci-dessous). La première courbe
+      décrit la loi de panoramique entre les sorties 1 et 2, la suivante entre
+      les sorties 2 et 3, et ainsi de suite. La dernière courbe décrit la loi de
+      panoramique entre la dernière et la première sortie. La table est indéxée
+      par la valeur de channelmadk de façon à ce qu'une des sorties d'une paire
+      gouvernée par la loi de panoramique utilise l'index (tablesize/8*channelmask)
+      tandis que l'autre sortie lit les valeurs à l'index
+      (tablesize/8*(int(channelmask+1)-frac(channelmask))). Cela signifie que si
+      la valeur de la loi de panoramique à mi-chemin entre ces deux masques de
+      canal vaut par exemple 0,7 (ce qui donnerait approximativement une répartition
+      égale de puissance), alors chacune de ces deux sorties utilisera 0,7 comme
+      valeur du gain.    
     </para>
   </refsect1>
  
@@ -345,7 +379,6 @@ english cvs version=1.12
     <para>
       Voici un exemple de l'opcode partikkel. Il utilise le fichier
       <ulink url="examples/partikkel.csd"><citetitle>partikkel.csd</citetitle></ulink>.
-
       <example>
         <title>Exemple de l'opcode partikkel.</title>
         <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
@@ -358,9 +391,18 @@ english cvs version=1.12
     <para>
       Voici un autre exemple de l'opcode partikkel. Il utilise le fichier
       <ulink url="examples/partikkel-2.csd"><citetitle>partikkel-2.csd</citetitle></ulink>.
-
       <example>
         <title>Exemple 2 de l'opcode partikkel.</title>
+          <xi:include href="examples-xml/partikkel-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    
+    <para>
+      Voici un exemple utilisant des lois de panoramique avec channelmasks dans
+      partikkel. Il utilise le fichier
+      <ulink url="examples/partikkel-panlaws.csd"><citetitle>partikkel-panlaws.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple avec des lois de panoramique avec des masques de canaux.</title>
           <xi:include href="examples-xml/partikkel-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
     </para>
@@ -379,6 +421,8 @@ english cvs version=1.12
       <link linkend="sndwarpst"><citetitle>sndwarpst</citetitle></link>,
       <link linkend="syncgrain"><citetitle>syncgrain</citetitle></link>,
       <link linkend="syncloop"><citetitle>syncloop</citetitle></link>,
+      <link linkend="partikkelget"><citetitle>partikkelget</citetitle></link>
+      <link linkend="partikkelset"><citetitle>partikkelset</citetitle></link>
       <link linkend="partikkelsync"><citetitle>partikkelsync</citetitle></link>
     </para>
   </refsect1>
