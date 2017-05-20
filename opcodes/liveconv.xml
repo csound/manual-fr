@@ -1,0 +1,138 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="liveconv">
+<indexterm id="IndexLiveconv"><primary>liveconv</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Convolution and Morphing</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>liveconv</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>liveconv</refname>
+    <refpurpose>
+      Convolution partitionnée avec réponse impulsionnelle rechargeable
+      dynamiquement.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Convolution partitionnée, calculée efficacement, utilisant une table de
+      fonction comme source de réponse impulsionnelle (RI), semblable à l'opcode
+      <link linkend="ftconv"><citetitle>ftconv</citetitle></link>. L'opcode
+      <emphasis>liveconv</emphasis> permet de recharger dynamiquement les
+      données de RI à n'importe quel moment durant la convolution a lieu,
+      contrôlé par le paramètre <emphasis>kupdate</emphasis>. Grâce à la façon
+      dont la RI est mise à jour, l'opération se fait sans artéfact audio
+      dans la sortie de la convolution.
+    </para>
+  
+    <para>
+      La table de RI est lue partition par partition après le signalement d'une
+      mise à jour. Les premiers <emphasis>ksmps</emphasis> échantillons doivent
+      être disponibles quand l'indicateur de mise à jour est positionné. Le
+      reste de la table peut être rempli en continu lors des passages suivants.
+      Il peut y avoir une nouvelle mise à jour pour chaque partition, permettant
+      jusqu'à <emphasis>ftlen/iplen</emphasis> mises à jour simultanées
+      (<emphasis>ftlen</emphasis> est la longueur de la table de RI).
+      </para>
+
+    <para>
+      Le comportement dynamique à faible latence de <emphasis>liveconv</emphasis>
+      le rend idéal pour la convolution avec des réponses impulsionnelles
+      échantillonnées en direct, et/ou les transformations et les modifications
+      en temps réel de la réponse impulsionnelle.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>liveconv</command> ain, ift, iplen, kupdate, kclear</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ift</emphasis> -- numéro de la table de stockage de la réponse
+      impulsionnelle (RI) pour la convolution. La table peut être remplie avec
+      de nouvelles données à n'importe quel moment durant la convolution.
+     </para>
+
+    <para>
+      <emphasis>iplen</emphasis> -- longueur en échantillons de la partition de
+      la réponse impulsionnelle ; doit être une puissance entière de deux. Les
+      faibles valeurs donnent un délai plus court en sortie au prix d'une
+      utilisation plus intensive du CPU.
+      </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ain</emphasis> -- signal d'entrée.
+    </para>
+
+    <para>
+      <emphasis>ares</emphasis> -- signal de sortie.
+    </para>
+
+    <para>
+      <emphasis>kupdate</emphasis> -- indicateur de mise à jour de la table de RI.
+      Si <emphasis>kupdate</emphasis>=1 la table de RI <emphasis>ift</emphasis>
+      est chargée partition par partition, en commençant par la prochaine
+      partition.
+      Si <emphasis>kupdate</emphasis>=-1 la table de RI <emphasis>ift</emphasis>
+      est déchargée (mise à zéro) partition par partition, en commençant par la
+      prochaine partition.
+      Les autres valeurs n'ont aucun effet.
+    </para>
+
+    <para>
+      <emphasis>kclear</emphasis> -- indicateur pour effacer tous les tampons
+      internes. Si <emphasis>kclear</emphasis> prend n'importe quelle valeur
+      différente de zéro, les tampons internes sont effacés immédiatement.
+      L'opération n'est pas sans artéfacts.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemple</title>
+    <para>
+      Voici un exemple de l'opcode liveconv. Il utilise le fichier
+      <ulink url="examples/liveconv.csd"><citetitle>liveconv.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode liveconv.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+       <xi:include href="examples-xml/liveconv.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ftconv"><citetitle>ftconv</citetitle></link>
+      <link linkend="tvconv"><citetitle>tvconv</citetitle></link>
+      <link linkend="pconvolve"><citetitle>pconvolve</citetitle></link>,
+      <link linkend="convolve"><citetitle>convolve</citetitle></link>,
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Sigurd Saue, Oeyvind Brandtsegg</member>
+        <member>2017</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,110 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="partikkelget">
+<indexterm id="IndexPartikkelget"><primary>partikkelget</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Granular Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>partikkelget</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>partikkelget</refname>
+    <refpurpose>
+      Retourne un index de masque pour un paramètre de masque spécifique d'une
+      instance courante de <emphasis>partikkel</emphasis>.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <emphasis>partikkelget</emphasis> est un opcode pour obtenir un index de
+      masque de <link linkend="partikkel"><citetitle>partikkel</citetitle></link>
+      pour un paramètre spécifique. Utilisé de concert avec
+      <emphasis>partikkelset</emphasis>, il permet de synchroniser le masquage
+      de <emphasis>partikkel</emphasis> entre différentes instances courantes de
+      l'opcode <emphasis> partikkel</emphasis>. On peut aussi l'utiliser pour
+      contrôler d'autres processus basés sur un index de masque interne, par
+      exemple pour créer des modèles de masquage plus complexes que ceux
+      disponibles dans le système régulier de masquage de grain.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kindex <command>partikkelget</command> kparameterindex, iopcode_id</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+      <para>
+      <emphasis>iopcode_id</emphasis> -- l'id de l'opcode, liant une instance
+      de <link linkend="partikkel"><citetitle>partikkel</citetitle></link> à une
+      instance de <emphasis>partikkelsync</emphasis>. 
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kindex</emphasis> -- index de masque en sortie. Retourne l'index
+      de masque courant pour le paramètre spécifié par
+      <emphasis>kparameterindex</emphasis> dans l'instance de
+      <emphasis>partikkel</emphasis> identifiée par <emphasis>iopcode_id</emphasis>.
+    </para>
+    
+    <para>
+      <emphasis>kparameterindex</emphasis> -- paramètre de masque. Séléction du
+      paramètre de masquage pour lequel sera fourni l'index de masque courant.
+      Les différents paramètres sont identifiés par :
+      <itemizedlist>
+        <listitem><para>0 : masque du gain</para></listitem>
+        <listitem><para>1 : masque du début de balayage de hauteur</para></listitem>
+        <listitem><para>2 : masque de la fin de balayage de hauteur</para></listitem>
+        <listitem><para>3 : masque de l'indice de modulation mf</para></listitem>
+        <listitem><para>4 : masque de canal</para></listitem>
+        <listitem><para>5 : masque de mélange de forme d'onde</para></listitem>
+      </itemizedlist>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemple</title>
+    <para>
+      Voici un exemple des opcodes partikkelget et partikkelset. Il utilise le fichier
+      <ulink url="examples/partikkelgetset.csd"><citetitle>partikkelgetset.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de manipulation de l'index de masque interne de partikkel,
+        basé sur la valeur d'autres index de masque dans la même intance de
+        partikkel.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/partikkelgetset.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para><link linkend="partikkel"><citetitle>partikkel</citetitle></link>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Thom Johansen</member>
+        <member>Auteur : &nameoeyvind;</member>
+        <member>Mai 2017</member>
+      </simplelist>
+    <para>Nouveau dans la version 6.09</para>
+    </para>
+  </refsect1>
+</refentry>
