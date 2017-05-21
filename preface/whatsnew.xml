@@ -92,6 +92,495 @@ english cvs version=
     </itemizedlist>
   </para>-->
 
+  <bridgehead>Notes de parution de Csound 6.09 (mai 2017)</bridgehead>
+  <para>De nouveaux opcodes et plusieurs corrections et améliorations.</para>
+  <para>
+    Il y a comme d'habitude un certain nombres de changement internes, y compris
+    plusieurs corrections de fuites de mémoire et un code plus robuste.
+  </para>
+  <para>
+    <itemizedlist>
+      <listitem>
+        <para>Nouveau opcodes :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                <link linkend="select"><citetitle>select</citetitle></link> --
+                comparaison échantillon par échantillon sélectionnant la sortie
+                audio.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="midiarp"><citetitle>midiarp</citetitle></link> --
+                génération d'arpèges basés sur les notes MIDI actuellement tenues.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="hilbert2"><citetitle>hilbert2</citetitle></link> --
+                une implémentation de la transformée de Hilbert basée sur la
+                TFD.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Opcodes de liaison avec Ableton -- pour synchroniser le tempo
+                et la pulsation sur des réseaux locaux.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="pvstrace"><citetitle>pvstrace</citetitle></link> --
+                ne retient que les N bins les plus forts.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Plusieurs nouveaux opcodes/fonctions unaires pour les tableaux
+                numériques de taux-k et de taux-i : ceil, floor, round, int, frac, powoftwo, abs, log2, log10,
+                log, exp, sqrt, cos, sin, tan, acos, asin, atan, sinh, cosh, tanh,
+                cbrt, limit1.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Plusieurs nouveaux opcodes/fonctions binaires pour les tableaux
+                numériques de taux-k et de taux-i : atan2, pow,hypot, fmod, fmax, fmin.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="limit"><citetitle>limit</citetitle></link> --
+                limitation numérique dans un intervalle donné (pour les tableaux).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="tvconv"><citetitle>tvconv</citetitle></link> --
+                un opcode de convolution variant dans le temps (filtre RIF).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="liveconv"><citetitle>liveconv</citetitle></link> --
+                convolution partitionnée avec réponse impulsionnelle rechargeable
+                dynamiquement.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="bpf"><citetitle>bpf</citetitle></link>,
+                <link linkend="xyscale"><citetitle>xyscale</citetitle></link>,
+                <link linkend="ntom"><citetitle>ntom</citetitle></link>,
+                <link linkend="mton"><citetitle>mton</citetitle></link> --
+                (de SuperCollider ?).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <emphasis>OSCsendA</emphasis> -- version asynchrone de OSCsend.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="OSCsend"><citetitle>OSCsend</citetitle></link> --
+                maintenant implémenté directement au moyen des sockets système.
+                L'ancienne version utilisant liblo a été gardée sous le nom de
+                OSCsend_lo.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <emphasis>OSCraw</emphasis> -- pour écouter tous les messages
+                OSC sur un port donné.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="sorta"><citetitle>sorta</citetitle></link> et 
+                <link linkend="sortd"><citetitle>sortd</citetitle></link> --
+                trient les éléments d'un tableau.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="dot"><citetitle>dot</citetitle></link> --
+                calcule le produit scalaire de deux tableaux.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Filtres sans retard -- 
+                <link linkend="zdf_1pole_mode"><citetitle>zdf_1pole_mode</citetitle></link>,
+                <link linkend="zdf_2pole_mode"><citetitle>zdf_2pole_mode</citetitle></link>,
+                <link linkend="zdf_ladder"><citetitle>zdf_ladder</citetitle></link>,
+                <link linkend="zdf_1pole"><citetitle></citetitle>zdf_1pole</link> et
+                <link linkend="zdf_2pole"><citetitle></citetitle>zdf_2pole</link>,
+                <link linkend="diode_ladder"><citetitle></citetitle>diode_ladder</link>,
+                <link linkend="k35_hpf"><citetitle>K35_hpf</citetitle></link> et
+                <link linkend="k35_lpf"><citetitle>K35_lpf</citetitle></link>.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="product"><citetitle>product</citetitle></link> --
+                prend un tableau numérique (de taux-k ou i) et calcule son
+                produit.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Générateurs unitaires de supercollider -- 
+                <link linkend="sc_phasor"><citetitle>sc_phasor</citetitle></link>,
+                <link linkend="sc_lag"><citetitle>sc_lag</citetitle></link>,
+                <link linkend="sc_lagud"><citetitle>sc_lagud</citetitle></link>,
+                <link linkend="sc_trig"><citetitle>sc_trig</citetitle></link>.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Orchestre :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                L'inclusion d'un répertoire de fichiers UDO n'échoue plus s'il
+                y a plus de vingt entrées.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                kr, sr et ksmps pouvaient être inconsistants dans un cas
+                particulier ; c'est corrigé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Les noms de macro sont mieux contrôlés et appariés avec des
+                crochets.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Des valeurs octales sous la forme \000 peuvent apparaître dans
+                des chaînes de caractères.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Partition :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Report du numéro de ligne amélioré dans l'opcode r et lors de
+                l'implémentation de macro.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>opcodes m et n corrigés.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>développement de [...] corrigé et amélioré.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Amélioration des chaînes de caractères dans les partitions.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                On peut utiliser le caractère ) dans un argument de macro s'il
+                est échappé par \.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                L'utilisation des caractères e ou s pouvait produire des erreurs ;
+                c'est corrigé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Les noms de macro sont mieux contrôlés et appariés avec des
+                crochets.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                p2 et p3 ont maintenant une meilleure précision qui n'est plus
+                limitée à six positions décimales.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Nouvel opcode d pour interrompre des notes infinies (denote) ;
+                agit comme i avec un p1 négatif.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Les instruments nommés peuvent être interrompus avec i si un -
+                suit le ".
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Options :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Le module midi jack peut maintenant rapporter les périphériques
+                disponibles sous --midi-devices.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Opcodes et Gens modifiés :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Traitement des arguments chaîne de caractères amélioré dans
+                ftgentmp.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                L'opcode hdf5read lit maintenant des ensembles de donnés complets
+                lorsque le nom de l'ensemble de données est suffixé avec un
+                astérisque.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                L'utilisation de longueurs différentes d'une puissance de deux
+                est maintenant acceptable là où elle était auparavant
+                inconsistante.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>ampmidid peut tenir compte de 0dbfs en option.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                dust et dust2 au taux-k sont maintenant conformes au manuel
+                (NOTE : ceci est une modification incompatible).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Dans prints le format %% affiche maintenant un %.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>OSClisten peut maintenant être utilisé sans sortie de données.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>GEN18 a été corrigé pour écrire dans l'intervalle requis.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>sockrev peut maintenant lire des chaînes de caractères.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Le système vbap peut autoriser dans certains cas un nombre
+                arbitraire de haut-parleurs via des tableaux (chantier en cours).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Le serveur websocket ne peut accepter qu'un seul protocole en
+                sortie, limitant ainsi le type en entrée à un seul argument.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>L'opcode sum additionne aussi les élements d'un tableau.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                pvs2tab et tab2pvs surchargés peuvent maintenant créer et utiliser
+                des tableaux de magnitude et de phase séparés.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Utilités :
+          <itemizedlist>
+            <listitem>
+              <simpara>dnoise a été corrigé.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Frontaux :
+          <itemizedlist>
+            <listitem>
+              <simpara>Retrait de l'éditeur HTML5 de Csound qui ne fonctionne plus.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Emscripten : Emscripten Csound (asm.js) nécessite maintenant les
+                sources CsoundObj.js et FileList.js séparément de libcsound.js.
+                Ceci pour permettre l'utilisation de la même API JS avec les
+                backends asm.js ou wasm
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                CsoundQT : CsoundQt 0.9.4 est annoncé :
+                <ulink url="https://github.com/CsoundQt/CsoundQt/blob/develop/release_notes/Release%20notes%200.9.4.md">
+                <citetitle>https://github.com/CsoundQt/CsoundQt/blob/develop/release_notes/Release notes 0.9.4.md</citetitle></ulink>.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>L'installer Windows inclue PythonQt avec CsoundQt.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Bogues corrigés :
+          <itemizedlist>
+            <listitem>
+              <simpara>pwd fonctionne sur OSX.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Erreur de fencepost dans sensLine corrigée.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>OSCsend corrigé pour mettre en cache le nom de l'hôte.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Bogue dans les opcodes push/pop corrigé (ces opcodes sont
+                maintenant un greffon qui est obsolète).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Bogue dans sprintf supprimé.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Bogue dans soundin supprimé.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>losci/losci3 corrigés dans le cas des tables de grande taille.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>inrg n'a plus fonctionné pendant un certain temps.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Les lois de panoramique channelmask de partikkel présentaient
+                une erreur d'indexation qui a été corrigée.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Le module audio de jack autorise maintenant des nombres de 
+                canaux d'entrée indépendants de ceux des canaux de sortie.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Bogue corrigé dans la copie de chaînes de caractères.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Il y avait un bogue dans hdf5read lorsque deux opcodes hdf5read
+                étaient placés en série dans un instrument. Les noms d'argument
+                de l'instance du deuxième opcode étaient incorrects à cause du
+                changement direct de la dernière chaîne de caractères du premier
+                lors de la lecture d'un ensemble de données complet.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Changements système :
+          <itemizedlist>
+            <listitem>
+              <simpara>soundin utilise maintenant le code de diskin2.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                La famille d'opcodes out a été retravaillée pour réduire le coût
+                de l'entrelacement et pour tenir compte correctement de la valeur
+                de nchnls.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>API :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Nouvelles facilités présentes seulement dans l'entête
+                csound_threaded.hpp, supprimant l'utilisation de
+                csPerfThread.cpp dans certains projets.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Ajout de la fonction GetA4.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Nouveau cadre pour le développement d'opcode dans un greffon
+                en C++ avec l'utilisation des allocateurs de Csound.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Ajout de la fonction StrDup.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Dépendances à boost supprimées des interfaces de Csound, de
+                CsoundAC et CsoundVST.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Changements sur les plates-formes :
+          <itemizedlist>
+            <listitem>
+              <simpara>iOS.</simpara>
+              <itemizedlist>
+                <listitem>
+                  <simpara>
+                    Correction + animation de iPad portrait SplitView,
+                    redimensionnement de info popover, correction du bouton
+                    stop dans Soundfile Pitch Shifter.
+                  </simpara>
+                </listitem>
+                <listitem>
+                  <simpara>
+                    Mises à jour de l'ApI de Csound-iOS ; exemples nettoyés,
+                    améliorés/étendus et réorganisés. Manuel révisé, étendu et
+                    mis à jour. L'API et les exemples supportent iOS 10 et
+                    Xcode 8.
+                  </simpara>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+
   <bridgehead>Notes de parution de Csound 6.08 (novembre 2016)</bridgehead>
   <para>
     Comme d'habitude, il y a un certain nombre de corrections et d'améliorations
