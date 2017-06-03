@@ -29,7 +29,7 @@ authors=Francois Pinot
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>iNumberOfFile <command>ftsamplebank</command> SDirectory, iFirstTableNumber, iTrigger, iSkipTime, iFormat, iChannel,</synopsis>
+    <synopsis>iNumberOfFile <command>ftsamplebank</command> SDirectory, iFirstTableNumber, iSkipTime, iFormat, iChannel,</synopsis>
     <synopsis>kNumberOfFile <command>ftsamplebank</command> SDirectory, kFirstTableNumber, kTrigger, kSkipTime, kFormat, kChannel,</synopsis>
   </refsect1>
 
@@ -44,8 +44,8 @@ authors=Francois Pinot
       table dans laquelle un fichier son sera chargé.
     </para>
     <para>
-      <emphasis>Trigger</emphasis> -- les tables sont mises à jour lorsqu'il
-      vaut 1.
+      <emphasis>kTrigger</emphasis> -- les tables sont mises à jour lorsqu'il
+      vaut 1, ne s'applique qu'à la version de taux-k.
     </para>
     <para>
       <emphasis>SkipTime</emphasis> -- la lecture commence à
