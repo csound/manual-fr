@@ -269,6 +269,13 @@ english cvs version=
                 des chaînes de caractères.
               </simpara>
             </listitem>
+            <listitem>
+              <simpara>
+                (à partir de la 6.09.1) Dans un UDO, l'opcode out* fonctionne
+                maintenant alors qu'auparavant il ne fonctionnait
+                qu'épisodiquement.
+              </simpara>
+            </listitem>
           </itemizedlist>
         </para>
       </listitem>
@@ -328,6 +335,12 @@ english cvs version=
                 suit le ".
               </simpara>
             </listitem>
+            <listitem>
+              <simpara>
+                (à partir de la 6.09.1) Lorsqu'une section d'opcode-r se terminait
+                par un opcode-e, elle s'arrêtait trop tôt.
+              </simpara>
+            </listitem>
           </itemizedlist>
         </para>
       </listitem>
@@ -339,6 +352,18 @@ english cvs version=
               <simpara>
                 Le module midi jack peut maintenant rapporter les périphériques
                 disponibles sous --midi-devices.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                (à partir de la 6.09.1) La définition de smacros et de omacros
+                sur la ligne de commande n'a lieu qu'une fois.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                (à partir de la 6.09.1) La définition de smacros sur la ligne de
+                commande fonctionne maintenant.
               </simpara>
             </listitem>
           </itemizedlist>
@@ -502,6 +527,11 @@ english cvs version=
                 lors de la lecture d'un ensemble de données complet.
               </simpara>
             </listitem>
+            <listitem>
+              <simpara>
+                Fuites de mémoire corrigées dans certains opcodes de greffon.
+              </simpara>
+            </listitem>
           </itemizedlist>
         </para>
       </listitem>
@@ -516,6 +546,12 @@ english cvs version=
                 La famille d'opcodes out a été retravaillée pour réduire le coût
                 de l'entrelacement et pour tenir compte correctement de la valeur
                 de nchnls.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                (à partir de la 6.09.1) Un plantage sous Linux i386 a été supprimé
+                en relation avec le mode serveur.
               </simpara>
             </listitem>
           </itemizedlist>
@@ -549,6 +585,12 @@ english cvs version=
                 CsoundAC et CsoundVST.
               </simpara>
             </listitem>
+            <listitem>
+              <simpara>
+                (à partir de la 6.09.1) Deux nouvelles fonctions de l'API,
+                csoundSetSpinSample et csoundClearSpin.
+              </simpara>
+            </listitem>
           </itemizedlist>
         </para>
       </listitem>
@@ -556,7 +598,7 @@ english cvs version=
         <para>Changements sur les plates-formes :
           <itemizedlist>
             <listitem>
-              <simpara>iOS.</simpara>
+              <simpara>iOS</simpara>
               <itemizedlist>
                 <listitem>
                   <simpara>
@@ -571,6 +613,27 @@ english cvs version=
                     améliorés/étendus et réorganisés. Manuel révisé, étendu et
                     mis à jour. L'API et les exemples supportent iOS 10 et
                     Xcode 8.
+                  </simpara>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+            <listitem>
+              <simpara>Android</simpara>
+              <itemizedlist>
+                <listitem>
+                  <simpara>
+                    Entrée et sortie multi-canaux permises.
+                  </simpara>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+            <listitem>
+              <simpara>Windows</simpara>
+              <itemizedlist>
+                <listitem>
+                  <simpara>
+                    Bibliothèque d'importation csound64.lib ajoutée à l'installeur
+                    Windows.
                   </simpara>
                 </listitem>
               </itemizedlist>
