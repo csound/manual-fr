@@ -1,0 +1,93 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="midiout_i">
+<indexterm id="IndexMidiout_I"><primary>midiout_i</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Generic I/O</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>midiout_i</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>midiout_i</refname>
+    <refpurpose>
+      Envoie un message générique MIDI sur le port MIDI OUT.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Envoie un message générique MIDI sur le port MIDI OUT.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>midiout_i</command> istatus, ichan, idata1, idata2</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>istatus</emphasis> -- le type du message MIDI. Peut être :
+      <itemizedlist>
+  <listitem><para>128 (note off)</para></listitem>
+  <listitem><para>144 (note on)</para></listitem>
+  <listitem><para>160 (aftertouch polyphonique)</para></listitem>
+  <listitem><para>176 (changement de contrôle)</para></listitem>
+  <listitem><para>192 (changement de programme)</para></listitem>
+  <listitem><para>208 (aftertouch de canal)</para></listitem>
+  <listitem><para>224 (pitch bend)</para></listitem>
+  <listitem><para>0 si aucun message MIDI ne doit être envoyé au port MIDI OUT</para></listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      <emphasis>ichan</emphasis> -- canal MIDI (1-16)
+    </para>
+
+    <para>
+      <emphasis>idata1, idata2</emphasis> -- données dépendant du message
+    </para>
+
+    <para>
+      <emphasis>midiout_i</emphasis> n'a pas d'arguments de sortie, car il envoie
+      implicitement un message sur le port MIDI OUT. Il travaille au taux-i. Il
+      n'envoie un message MIDI que lorsque <emphasis>istatus</emphasis> est
+      différent de zéro.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode midiout_i. Il utilise le fichier
+      <ulink url="examples/midiout_i.csd"><citetitle>midiout_i.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode midiout_i.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/midiout_i.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namegabriel;</member>
+        <member>Italie</member>
+        <member>1998</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans le version 6.10 de Csound.</para>
+  </refsect1>
+</refentry>
