@@ -47,6 +47,11 @@ english cvs version=1.18
       de sortie (note : il se peut que les versions de Csound antérieures à la 5.0
       ne supportent que les formats 0, 1 et 2) :
       <itemizedlist>
+       <listitem>
+          <para>-1 - formatage identique à celui des options globales de sortie de
+          Csound (-A, -W, --format=..., etc).</para>
+        </listitem>
+
         <listitem>
           <para>0 - échantillons en flottants sur 32 bit sans en-tête (fichier PCM
           binaire multicanaux)</para>
@@ -92,6 +97,9 @@ english cvs version=1.18
           <para>9 - flottants sur 64 bit avec un en-tête (voir iformat=2).</para>
         </listitem>
 
+    	 <listitem>
+          <para> 50 - format ogg-vorbis.</para>
+        </listitem>
       </itemizedlist>
       De plus, les versions de Csound à partir de la 5.0 permettent de choisir
       explicitement un type d'en-tête particulier en spécifiant le format comme
