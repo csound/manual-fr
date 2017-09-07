@@ -1,0 +1,79 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="GEN53">
+  <indexterm id="IndexGEN53"><primary>GEN53</primary></indexterm>
+  <refmeta>
+    <refentrytitle>GEN53</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>GEN53</refname>
+    <refpurpose>
+      Crée une table de réponse impulsionnelle à phase linéaire ou minimale à
+      partir d'une table source contenant une réponse en fréquence ou une
+      réponse impulsionnelle.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      GEN53 crée une table de réponse impulsionnelle avec soit une phase linéaire
+      soit une phase minimale. La source peut soit être une réponse fréquentielle
+      soit une réponse impulsionnelle, stockée dans une table existante.
+      Une autre table de fonction peut être utilisée facultativement comme
+      fenêtre sur le signal en entrée et/ou en sortie.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>f</command> # time size 53 fsrc [mode fwin]</synopsis>
+
+    <para>
+      fsrc - table de fonction source. Si c'est une réponse impulsionnelle, sa taille
+      doit correspondre à celle de la table de fonction créée. Si c'est une réponse
+      fréquentielle, la taille de la fonction créée doit être deux fois plus grande
+      que celle de la source. Les tailles doivent être des puissances de deux.
+    </para>
+
+      <para>
+        mode - facultatif, le mode opératoire, somme de (a) l'entrée, réponse en
+        fréquence (0) ou réponse impulsionnelle (1), (b) la sortie, phase linéaire (0)
+        ou phase minimale (2), (c) fenêtrage, aucun (0), entrée (4), et/ou sortie (8).
+        Le mode par défaut (0) est réponse en fréquence en entrée, sortie à phase
+        linéaire, pas de fenêtrage.
+      </para>
+
+     <para>
+       fwin - table de fonction de la fenêtre, dont la taille doit être une
+       puissance de deux mais pas forcément égale à la taille de la table de
+       fonction créée.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemple</title>
+    <para>
+      Voici un exemple complet du générateur GEN53. Il utilise le fichier
+      <ulink url="examples/gen53.csd"><citetitle>gen53.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple du générateur GEN53.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/gen53.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>    
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &nameistvan;</para>
+  </refsect1>
+</refentry>
