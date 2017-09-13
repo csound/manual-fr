@@ -31,7 +31,7 @@ english cvs version=
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>karray <command>slicearray</command> kinarray, istart, iend</synopsis>
+    <synopsis>karray <command>slicearray</command> kinarray, istart, iend [,istride]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -44,6 +44,9 @@ english cvs version=
     </para>
     <para>
       <emphasis>iend</emphasis> -- indice du dernier élément à prélever.
+    </para>
+    <para>
+      <emphasis>istride</emphasis> -- incrément pour les éléments source (facultatif), 1 par défaut.
     </para>
   </refsect1>
 
@@ -86,5 +89,6 @@ english cvs version=
       </simplelist>
     </para>
     <para>Nouveau dans la version 6.00</para>
+    <para>Argument istride ajouté dans la version 6.10</para>
   </refsect1>
 </refentry>
