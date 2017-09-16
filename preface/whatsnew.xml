@@ -92,6 +92,202 @@ english cvs version=
     </itemizedlist>
   </para>-->
 
+  <bridgehead>Notes de parution de Csound 6.10 (septembre 2017)</bridgehead>
+  <para>
+    C'est principalement une distribution de correction de bogues, incluant un
+    bogue important introduit récemment dans loscil. Il y a aussi de nouveaux
+    opcodes améliorés, ainsi qu'un GEN (53) longtemps ignoré et plusieurs
+    amélorations internes.
+  </para>
+  <para>
+    <itemizedlist>
+      <listitem>
+        <para>Nouveau opcodes :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                <link linkend="midiout_i"><citetitle>midiout_i</citetitle></link>
+                semblable à midiout mais travaille au taux-i.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Nouveaux Gens et macros :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                <link linkend="GEN53"><citetitle>GEN53</citetitle></link> qui
+                était présent dans le code depuis plusieurs années mais pas
+                documenté) est maintenant reconnu. Il crée une réponse
+                impulsionnelle à phase linéaire ou à phase minimale à partir
+                d'une table contenant une réponse fréquentielle ou une réponse
+                impulsionnelle.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Orchestre :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                L'usage incorrect du if..then.. de taux-k dans l'instrument 0
+                est maintenant traité au taux-i.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                L'usage incorrect des opérations de taux-k dans l'instrument 0
+                n'est plus traité comme une erreur mais comme un avertissement.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Les balises mises en commentaire dans un fichier csd étaient
+                parfois interprétées, ce qui produisait un orchestre tronqué.
+                C'est corrigé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                On peut assigner des tableaux de taux-i et de taux-k vers le
+                taux-k et le taux-i ; auparavant, les taux devaient se
+                correspondre.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Partition :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Les balises mises en commentaire dans un fichier csd étaient
+                parfois interprétées, ce qui produisait une partition tronquée.
+                C'est corrigé.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Options :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                L'option --tempo (ou -t) peut désormais être fractionnaire ; elle
+                était auparavant limitée aux entiers.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Opcodes et Gens modifiés :
+          <itemizedlist>
+            <listitem>
+              <simpara>loscil/loscil3 accepent un incrément en virgule flottante.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>OSCraw ferme le socket après usage.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                fout peut maintenant générer le format ogg, et également accepter
+                -1 ce qui signifie l'utilisation du même format que celui de
+                l'option -o.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                bitwise et l'opcode (&amp;) au taux-a ont été corrigés pour le
+                mode de précision à l'échantillon (--sample-accurate).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                slicearray à un argument supplémentaire facultatif pour fixer le
+                pas d'incrément de la partie.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Frontaux :
+          <itemizedlist>
+            <listitem>
+              <simpara>HTML5 : désormais disponible dans CsoundQt.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Emscripten: compilé comme WebAssembly (s'exécute dans les
+                principaux navigateurs). L'API est maintenant plus conforme
+                aux autres APIs pour HTML5.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>CsoundQT : construit en incluant le support d'HTML5.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Bogues corrigés :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Le caractère facultatif du dernier argument dans sc_phasor est
+                maintenant traité correctement.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Le blocage dans dconv a été corrigé.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                looptseg ne plante plus si on ne lui présente pas assez d'argments.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>API :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                CompileCsdText retourne maintenant une valeur indiquant le
+                succès ou l'échec.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Changements sur les plates-formes :
+          <itemizedlist>
+            <listitem>
+              <simpara>Windows</simpara>
+              <itemizedlist>
+                <listitem>
+                  <simpara>Désormais compilé avec MSVC.</simpara>
+                </listitem>
+                <listitem>
+                  <simpara>Intégration continue pour Windows avec AppVeyor.</simpara>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+
   <bridgehead>Notes de parution de Csound 6.09 (mai 2017)</bridgehead>
   <para>De nouveaux opcodes et plusieurs corrections et améliorations.</para>
   <para>

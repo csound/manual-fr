@@ -49,34 +49,34 @@ authors=Francois Pinot
   </para>
   <itemizedlist>
     <listitem>
-      <para><link linkend="opcodeslinkcreate"><citetitle>link_create</citetitle></link> - Crée un objet pair Ableton Link.</para>
+      <para><link linkend="link_create"><citetitle>link_create</citetitle></link> - Crée un objet pair Ableton Link.</para>
     </listitem>
     <listitem>
-      <para><link linkend="opcodeslinkenable"><citetitle>link_enable</citetitle></link> - Active/désactive la synchronisation avec le tempo et la pulsation de la session sur le réseau Ableton Link.</para>
+      <para><link linkend="link_enable"><citetitle>link_enable</citetitle></link> - Active/désactive la synchronisation avec le tempo et la pulsation de la session sur le réseau Ableton Link.</para>
     </listitem>
     <listitem>
-      <para><link linkend="opcodeslinkisenabled"><citetitle>link_is_enabled</citetitle></link> - Indique si ce pair Ableton Link s'est joint à la session du réseau.</para>
+      <para><link linkend="link_is_enabled"><citetitle>link_is_enabled</citetitle></link> - Indique si ce pair Ableton Link s'est joint à la session du réseau.</para>
     </listitem>
     <listitem>
-      <para><link linkend="opcodeslinktemposet"><citetitle>link_tempo_set</citetitle></link> - Fixe le tempo pour la session du réseau Ableton Link.</para>
+      <para><link linkend="link_tempo_set"><citetitle>link_tempo_set</citetitle></link> - Fixe le tempo pour la session du réseau Ableton Link.</para>
     </listitem>
     <listitem>
-      <para><link linkend="opcodeslinktempoget"><citetitle>link_tempo_set</citetitle></link> - Retourne le tempo de la session du réseau Ableton Link.</para>
+      <para><link linkend="link_tempo_get"><citetitle>link_tempo_get</citetitle></link> - Retourne le tempo de la session du réseau Ableton Link.</para>
     </listitem>
     <listitem>
-      <para><link linkend="opcodeslinkbeatget"><citetitle>link_beat_get</citetitle></link> - Retourne la pulsation, la phase et le temps courant d'Ableton Link pour cette session pour une quantification donnée.</para>
+      <para><link linkend="link_beat_get"><citetitle>link_beat_get</citetitle></link> - Retourne la pulsation, la phase et le temps courant d'Ableton Link pour cette session pour une quantification donnée.</para>
     </listitem>
     <listitem>
-      <para><link linkend="opcodeslinkmetro"><citetitle>link_metro</citetitle></link> - Retourne un déclencheur qui vaut 1 sur la pulsation et 0 ailleurs, ainsi que la pulsation, la phase et temps courant d'Abelton Link pour cette session pour une quantification donnée.</para>
+      <para><link linkend="link_metro"><citetitle>link_metro</citetitle></link> - Retourne un déclencheur qui vaut 1 sur la pulsation et 0 ailleurs, ainsi que la pulsation, la phase et temps courant d'Abelton Link pour cette session pour une quantification donnée.</para>
     </listitem>
     <listitem>
-      <para><link linkend="opcodeslinkbeatrequest"><citetitle>link_beat_request</citetitle></link> - Demande une pulsation avec un nombre spécifique à un temps spécifique et une quantification donnée.</para>
+      <para><link linkend="link_beat_request"><citetitle>link_beat_request</citetitle></link> - Demande une pulsation avec un nombre spécifique à un temps spécifique et une quantification donnée.</para>
     </listitem>
     <listitem>
-      <para><link linkend="opcodeslinkbeatforce"><citetitle>link_beat_force</citetitle></link> - Force la session du réseau Ableton Link à adopter une pulsation avec un nombre spécifique à un temps spécifique et une quantification donnée.</para>
+      <para><link linkend="link_beat_force"><citetitle>link_beat_force</citetitle></link> - Force la session du réseau Ableton Link à adopter une pulsation avec un nombre spécifique à un temps spécifique et une quantification donnée.</para>
     </listitem>
    <listitem>
-      <para><link linkend="opcodeslinkpeers"><citetitle>link_peers</citetitle></link> - Retourne le nombre de pairs actuellement joints à la session dans le réseau Ableton Link.</para>
+      <para><link linkend="link_peers"><citetitle>link_peers</citetitle></link> - Retourne le nombre de pairs actuellement joints à la session dans le réseau Ableton Link.</para>
     </listitem>
   </itemizedlist>
 </section>
