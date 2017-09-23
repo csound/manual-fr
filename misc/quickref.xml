@@ -269,7 +269,7 @@
 <para/>
 <synopsis>ares <link linkend="phasor">phasor</link> xcps [, iphs]</synopsis><synopsis>kres <link linkend="phasor">phasor</link> kcps [, iphs]</synopsis><para/>
 <synopsis>ares <link linkend="phasorbnk">phasorbnk</link> xcps, kndx, icnt [, iphs]</synopsis><synopsis>kres <link linkend="phasorbnk">phasorbnk</link> kcps, kndx, icnt [, iphs]</synopsis><para/>
-<synopsis>aindex <link linkend="sc_phasor">sc_phasor</link> xtrig, xrate, kstart, kend [, kresetPos] </synopsis><synopsis>kindex <link linkend="sc_phasor">sc_phasor</link> xtrig, xrate, kstart, kend [, kresetPos] </synopsis><synopsis>(end - start) * freq / sr</synopsis><para/>
+<synopsis>aindex <link linkend="sc_phasor">sc_phasor</link> xtrig, xrate, kstart, kend [, kresetPos] </synopsis><synopsis>kindex <link linkend="sc_phasor">sc_phasor</link> xtrig, xrate, kstart, kend [, kresetPos] </synopsis><para/>
 <synopsis>aphase, asyncout <link linkend="syncphasor">syncphasor</link> xcps, asyncin, [, iphs]</synopsis><para/>
 </para></formalpara>
 <para></para><para></para><formalpara>
@@ -2158,6 +2158,7 @@ inum_parm, kupdate</synopsis><para/>
 <synopsis><link linkend="scaleutility">scale</link> [OPTIONS ... ] fichier</synopsis><para/>
 <synopsis><link linkend="sdif2ad">sdif2ad</link> [options] fichier_entree fichier_sortie</synopsis><para/>
 <synopsis><link linkend="sndinfo">csound -U sndinfo</link> [options] fichierson ...</synopsis><synopsis><link linkend="sndinfo">sndinfo</link> [options] fichierson ...</synopsis><para/>
+<synopsis><link linkend="src_conv">src_conv</link> [options] fichier_entree</synopsis><para/>
 <synopsis><link linkend="srconv">srconv</link> [options] fichier_entree</synopsis><para/>
 </para></formalpara>
 <para></para></chapter></part>
