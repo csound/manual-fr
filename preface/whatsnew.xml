@@ -107,7 +107,7 @@ english cvs version=
             <listitem>
               <simpara>
                 <link linkend="midiout_i"><citetitle>midiout_i</citetitle></link>
-                semblable à midiout mais travaille au taux-i.
+                semblable à midiout, mais travaille au taux-i.
               </simpara>
             </listitem>
           </itemizedlist>
@@ -221,9 +221,6 @@ english cvs version=
         <para>Frontaux :
           <itemizedlist>
             <listitem>
-              <simpara>HTML5 : désormais disponible dans CsoundQt.</simpara>
-            </listitem>
-            <listitem>
               <simpara>
                 Emscripten: compilé comme WebAssembly (s'exécute dans les
                 principaux navigateurs). L'API est maintenant plus conforme
@@ -279,6 +276,17 @@ english cvs version=
                 </listitem>
                 <listitem>
                   <simpara>Intégration continue pour Windows avec AppVeyor.</simpara>
+                </listitem>
+                <listitem>
+                  <simpara>
+                    Le constructeur et installeur AppVeyor comprend maintenant
+                    les opcodes CsoundVST et vst4cs ce qui permet le chargement
+                    de greffons VST dans Csound. La licence LGPL v2.1 pour ce
+                    code a été modifiée, avec la permission de Hermann Seib
+                    l'auteur à l'origine du code VSTHost, pour permettre son
+                    utilisation avec le VST2 SDK de Steinberg téléchargé
+                    séparément.
+                  </simpara>
                 </listitem>
               </itemizedlist>
             </listitem>

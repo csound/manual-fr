@@ -66,6 +66,12 @@ english cvs version=1.11
           d'un fichier audio.
         </para>
       </listitem>
+      <listitem>
+        <para>
+          <link linkend="src_conv"><citetitle>SRC_CONV</citetitle></link>: convertit le taux d'échantillonnage
+          d'un fichier audio.
+        </para>
+      </listitem>
     </itemizedlist>
   </para>
 
@@ -77,4 +83,5 @@ english cvs version=1.11
   &utilitypv_import;
   &utilitysdif2ad;
   &utilitysrconv;
+  &utilitysrc_conv;
 </section>
