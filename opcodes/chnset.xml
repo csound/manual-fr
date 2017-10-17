@@ -36,6 +36,7 @@ english cvs version=1.9
     <synopsis><command>chnset</command> kval, Sname</synopsis>
     <synopsis><command>chnset</command> aval, Sname</synopsis>
     <synopsis><command>chnset</command> Sval, Sname</synopsis>
+    <synopsis><command>chnsetks</command> Sval, Sname</synopsis>
   </refsect1>
 
   <refsect1>
@@ -60,7 +61,14 @@ english cvs version=1.9
     <para>
       <emphasis>aval</emphasis> -- le signal audio écrit pendant l'exécution.
     </para>
-
+    <para>
+      <emphasis>Sval</emphasis> -- la chaîne de caractères à écrire au taux-k.
+      L'opcode <emphasis>chnset</emphasis> avec des chaînes de caractères 
+      fonctionne au temps-i et durant l'exécution, tandis que
+      <emphasis>chnsetks</emphasis> ne fonctionne que pendant l'exécution. Le
+      contenu du canal n'est mis à jour que si la variable chaîne de caractères
+      est modifiée.
+    </para>
   </refsect1>
 
   <refsect1>

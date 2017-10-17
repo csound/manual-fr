@@ -36,6 +36,7 @@ english cvs version=1.9
     <synopsis>kval <command>chnget</command> Sname</synopsis>
     <synopsis>aval <command>chnget</command> Sname</synopsis>
     <synopsis>Sval <command>chnget</command> Sname</synopsis>
+    <synopsis>Sval <command>chngetks</command> Sname</synopsis>
   </refsect1>
 
   <refsect1>
@@ -59,6 +60,13 @@ english cvs version=1.9
     </para>
     <para>
       <emphasis>aval</emphasis> -- le signal audio lu pendant l'exécution.
+    </para>
+    <para>
+      <emphasis>Sval</emphasis> -- la chaîne de caractères lue au taux-k.
+      L'opcode <emphasis>chnget</emphasis> fonctionne au temps-i et durant
+      l'exécution, tandis que <emphasis>chngetks</emphasis> ne fonctionne que
+      pendant l'exécution. Les variables chaîne de caractères ne sont mises à
+      jour que si le canal a changé.
     </para>
   </refsect1>
 
