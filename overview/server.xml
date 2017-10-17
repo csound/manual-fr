@@ -1,0 +1,97 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="udpserver">
+  <title>UDP Server</title>
+  <para>
+    Csound 6 comprend un serveur UDP pleinement fonctionnel, qui peut accepter
+    un ensemble de commandes et/ou d'orchestres.
+  </para>
+  <bridgehead>Vue d'ensemble</bridgehead>
+  <para>
+    On peut démarrer le serveur UDP avec l'option suivante :
+  </para>
+  <literallayout>
+   --port=N
+  </literallayout>
+  <para>
+    où N indique un numéro de port pour écouter les messages UDP. Il n'est pas
+    nécessaire de donner à Csound un CSD ou un orchestre, mais on peut aussi le
+    faire.
+  </para>
+  <bridgehead>Commandes</bridgehead>
+  <para>
+    Les commandes sont formées d'un opcode suivi d'un ou de plusieurs arguments.
+    Le serveur accepte les commandes suivantes :
+  </para>
+  <literallayout>
+   &amp;[line event]
+  </literallayout>
+  <para>
+    Envoie une ligne de texte représentant un évènement de partition [live event].
+    On peut envoyer plusieurs évènements sur plusieurs lignes. Utiliser cette
+    commande pour des évènements simples ou multiples qui ne nécessitent pas de
+    prétraitement.
+  </para>
+  <literallayout>
+   $[score]
+  </literallayout>
+  <para>
+    Envoie une partition [score], pour laquelle la majeure partie du prétraitement
+    (à l'exception du tempo) peut être appliquée. Utiliser cette option pour des
+    blocs d'évènements de partition plus importants.
+  </para>
+  <literallayout>
+   @[channel_name] [value]
+  </literallayout>
+  <para>
+    Donne la valeur [value] au canal de contrôle [channel_name].
+  </para>
+  <literallayout>
+   %[channel_name] [string]
+  </literallayout>
+  <para>
+    Donne la chaîne de caractères [string] au canal de contrôle [channel_name].
+  </para>
+  <literallayout>
+   :@[channel_name] [address] [port]
+  </literallayout>
+  <para>
+    Demande que la valeur du canal de contrôle [channel_name] soit envoyée sous
+    forme de chaîne de caractères via UDP à l'addresse [address] sur le port
+    [port]. La chaîne de caractères contiendra le nom du canal suivi de deux
+    double-points (::) et de sa valeur courante.
+  </para>
+  <literallayout>
+   :%[channel_name] [address] [port]
+  </literallayout>
+  <para>
+    Demande que le contenu du canal de chaîne de caractères [channel_name] soit
+    envoyé sous forme de chaîne de caractères via UDP à l'addresse [address] sur
+    le port [port]. La chaîne de caractères contiendra le nom du canal suivi de
+    deux double-points (::) et de sa valeur courante.
+  </para>
+  <bridgehead>Code d'orchestre</bridgehead>
+  <para>
+    En plus des commandes ci-dessus, le serveur UDP accepte aussi une chaîne de
+    caractères contenant le code d'un orchestre, qui est compilé immédiatement.
+    Cette chaîne de caractères n'est préfixée par aucun opcode de commande spécial.
+  </para>
+  <bridgehead>Fermeture du serveur</bridgehead>
+  <para>
+    On peut fermer le serveur (et Csound) avec une des commandes suivantes :
+  </para>
+  <literallayout>
+    ##close##
+  </literallayout>
+  <para>
+  ou
+  </para>
+  <literallayout>
+   !!close!!
+  </literallayout>
+</section>
