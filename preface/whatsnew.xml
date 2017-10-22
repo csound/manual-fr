@@ -110,6 +110,15 @@ english cvs version=
                 semblable à midiout, mais travaille au taux-i.
               </simpara>
             </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="chnget"><citetitle>chngetks</citetitle></link> et
+                <link linkend="chnset"><citetitle>chnsetks</citetitle></link> --
+                version de <emphasis>chnget</emphasis> et <emphasis>chnset</emphasis>
+                pour canaux de chaînes de caractères qui ne sont actifs que
+                pendant l'exécution.
+              </simpara>
+            </listitem>
           </itemizedlist>
         </para>
       </listitem>
@@ -158,6 +167,13 @@ english cvs version=
                 correspondre.
               </simpara>
             </listitem>
+            <listitem>
+              <simpara>
+                L'utilisation de ! comme opération booléenne (signifiant la négation)
+                est maintenant supportée, alors qu'avant le parseur l'acceptait
+                mais sans l'utiliser.
+              </simpara>
+            </listitem>
           </itemizedlist>
         </para>
       </listitem>
@@ -169,6 +185,20 @@ english cvs version=
                 Les balises mises en commentaire dans un fichier csd étaient
                 parfois interprétées, ce qui produisait une partition tronquée.
                 C'est corrigé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>La forme d'évaluation [..] peut maintenant être imbriquée.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                L'option d'extraction (-x sur la ligne de commande) fonctionne dorénavant.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                L'utilisation de l'opcode de partition x pouvait générer de faux
+                messages d'erreur qui ont été supprimés.
               </simpara>
             </listitem>
           </itemizedlist>
@@ -214,6 +244,16 @@ english cvs version=
                 pas d'incrément de la partie.
               </simpara>
             </listitem>
+            <listitem>
+              <simpara>chnset peut maintenant avoir des variables noms de canal.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Les tableaux de taux-a peuvent être additionnés, soustraits,
+                multipliés et mis à l'échelle. C'est le début d'une arithmétique
+                de taux-a sur les tableaux.
+              </simpara>
+            </listitem>
           </itemizedlist>
         </para>
       </listitem>
@@ -250,7 +290,66 @@ english cvs version=
                 looptseg ne plante plus si on ne lui présente pas assez d'argments.
               </simpara>
             </listitem>
+            <listitem>
+              <simpara>
+                schedule etc fonctionnent maintenant correctement avec des chaînes
+                de caractères entre guillemets à l'intérieur de chaînes entre
+                {{ }}.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Le problème de la gestion d'interruption du frontal CLI est corrigé.
+              </simpara>
+            </listitem>
           </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Changements système :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                La licence GNU Lesser General Public, version 2.1, pour CsoundVST
+                et les opcodes vst4cs a été modifiée pour garantir une exception
+                pour compiler et lier le code avec le SDK VST2, qui est disponible
+                à <ulink url="https://github.com/steinbergmedia/vst3sdk">https://github.com/steinbergmedia/vst3sdk</ulink>.
+                Pour plus d'information, voir <ulink
+                url="https://github.com/csound/csound/blob/develop/Opcodes/vst4cs/licensing_considerations_for_csoundvst_and_vst4cs.md">https://github.com/csound/csound/blob/develop/Opcodes/vst4cs/licensing_considerations_for_csoundvst_and_vst4cs.md</ulink>.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Le serveur UDP accepte maintenant de nouvelles commandes qui sont
+                préfixées par un opcode. Cela comprend le support des évènements
+                (&amp;) et des partitions ($) ; l'affectation des canaux de contrôle
+                (@ ); l'affectation des canaux de chaîne de caractères (% ) ;
+                la réception des valeurs d'un canal de contrôle via UDP (:@ ) et
+                du contenu d'un canal de chaîne de caractères (:% ).
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Traductions :
+          <itemizedlist>
+            <listitem>
+              <simpara>La traduction française est complète comme d'habitude.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                La traduction italienne des messages s'est grandement améliorée ;
+                près de la moitié des messages d'erreur et d'avertissement sont
+                maintenant traduits.
+              </simpara>
+            </listitem>
+             <listitem>
+              <simpara>
+                Quelques progrès ont été faits pour la traduction allemande.
+              </simpara>
+            </listitem>
+           </itemizedlist>
         </para>
       </listitem>
       <listitem>
@@ -260,6 +359,16 @@ english cvs version=
               <simpara>
                 CompileCsdText retourne maintenant une valeur indiquant le
                 succès ou l'échec.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Huit nouvelles versions asynchrones de fonctions de l'API sont
+                maintenant disponibles : csoundCompileTreeAsync(),
+                csoundCompileOrcAsync(), csoundReadScoreAsync(),
+                csoundInputMessageAsync(), csoundScoreEventAsync(),
+                csoundScoreEventAbsoluteAsync(), csoundTableCopyOutAsync() et
+                csoundTableCopyInAsync().
               </simpara>
             </listitem>
           </itemizedlist>
@@ -286,6 +395,17 @@ english cvs version=
                     l'auteur à l'origine du code VSTHost, pour permettre son
                     utilisation avec le VST2 SDK de Steinberg téléchargé
                     séparément.
+                  </simpara>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+            <listitem>
+              <simpara>GNU/Linux</simpara>
+              <itemizedlist>
+                <listitem>
+                  <simpara>
+                    Le back-end ALSA MIDI de GNU/Linux ignore maintenant certains
+                    faux codes d'erreur ENOENT.
                   </simpara>
                 </listitem>
               </itemizedlist>
