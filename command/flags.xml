@@ -1092,6 +1092,17 @@ csound5:output2             (reproduction droite)</screen>
       </listitem>
     </varlistentry>
 
+    <varlistentry id="FlagsMinusUdpEcho">
+      <term>--udp-echo<indexterm id="IndexMinusUdpEcho"><primary>--udp-echo</primary></indexterm></term> 
+      <listitem>
+        <para>
+          Active l'affichage  des commandes UDP sur le terminal. Tout message
+          reçu par le serveur UDP est affiché en écho (que ce soit une commande
+          valide ou non).
+        </para>
+      </listitem>
+    </varlistentry>
+
     <varlistentry id="FlagsMinusUpperQ">
       <term>-Q PERIPHERIQUE<indexterm id="IndexMinusUpperQ"><primary>-Q</primary></indexterm></term>
       <listitem>

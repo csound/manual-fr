@@ -79,7 +79,16 @@ authors=Francois Pinot
   <para>
     En plus des commandes ci-dessus, le serveur UDP accepte aussi une chaîne de
     caractères contenant le code d'un orchestre, qui est compilé immédiatement.
-    Cette chaîne de caractères n'est préfixée par aucun opcode de commande spécial.
+    Cette chaîne de caractères n'est préfixée par aucun opcode de commande
+    spécial. Cette chaîne de caractères doit être envoyée en un seul message UDP.
+  </para>
+  <para>
+    Si le code de l'orchestre dépasse le nombre de caractères que peut contenir
+    un message unique, on peut le scinder en messages séparés. Pour que ça
+    fonctionne, le code complet de l'orchestre doit être encadré par des
+    accolades ({ }). L'accolade ouvrante ({) commence l'enregistrement du code
+    par le serveur et l'accolade fermante (}) envoie le code pour compilation.
+    De cette manière, le code peut être envoyé en plusieurs messages.
   </para>
   <bridgehead>Fermeture du serveur</bridgehead>
   <para>
