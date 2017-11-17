@@ -1,5 +1,11 @@
 <CsoundSynthesizer>
-
+<CsOptions>
+; Select audio/midi flags here according to platform
+-odac      ;;;realtime audio out
+;-iadc    ;;;uncomment -iadc if realtime audio input is needed too
+; For Non-realtime ouput leave only the line below:
+; -o sqrt.wav -W ;;; for file output any platform
+</CsOptions>
 <CsInstruments>
 
 ;#################################################
@@ -8,8 +14,8 @@ nchnls = 2
 ksmps = 100
 
 ; aSyncin, FMod for instr 2
-gafmod = 0
-gasync = 0
+gafmod init 0
+gasync init 0
 
 ; Modulator squinewave
 instr 1
