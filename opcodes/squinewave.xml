@@ -141,6 +141,14 @@ authors=Francois Pinot
       48 kHz et 32 à 96 kHz, etc. <emphasis>iMinSweep</emphasis> est compté en
       nombres entiers bien que ce ne soit pas strictement nécessaire.
     </para>
+    <para>
+      Si plusieurs unités de <emphasis>squinewave</emphasis> sont jouées à
+      l'unisson, il est recommandé d'utiliser différentes valeurs de
+      <emphasis>iMinSweep</emphasis>. La valeur minimale de transition crée
+      des zones plus calmes dans la série des harmoniques. En utilisant des
+      valeurs minimales de transition légèrement différentes, le spectre est
+      rempli plutôt que de souligner le contour spectral.
+    </para>
   </refsect1>
 
   <refsect1>
@@ -152,6 +160,13 @@ authors=Francois Pinot
       signifie que la synchronisation forcée se produit quand la forme d'onde
       atteint une crête, juste avant d'entamer sa pente descendante. (Une
       synchronisation forcée sinusoîdale se produirait au passage à zéro).
+    </para>
+
+    <emphasis>Conseil</emphasis>
+    <para>
+      La durée des transitions de synchronisation forcée permet d'enchainer la
+      synchronisation de plusiers unités de <emphasis>squinewave</emphasis> ce
+      qui crée des impulsions à synchronisation forcée décalées.
     </para>
 
     <emphasis>Stabilité des hauteurs</emphasis>
@@ -185,19 +200,6 @@ authors=Francois Pinot
       Si <emphasis>iphase</emphasis> &lt; 0 (ignoré) à la première utilisation,
       la phase initiale est fixée à 1.25, c'est-à-dire au passage à zéro de la
       pente ascendante. La sortie ressemble alors à une onde sinusoïdale.
-    </para>
-
-    <emphasis>Conseils</emphasis>
-    <para>
-      Si plusieurs unités de <emphasis>squinewave</emphasis> sont jouées à
-      l'unisson, il est recommandé d'utiliser différentes valeurs de
-      <emphasis>iMinSweep</emphasis>. La valeur minimale de transition crée
-      des zones plus calmes dans la série des harmoniques. En utilisant des
-      valeurs minimales de transition légèrement différentes, le spectre est
-      rempli plutôt que de souligner le contour spectral. La durée des
-      transitions de synchronisation forcée permet d'enchainer la synchronisation
-      de plusiers unités de <emphasis>squinewave</emphasis> ce qui crée des
-      impulsions à synchronisation forcée décalées.
     </para>
   </refsect1>
  
