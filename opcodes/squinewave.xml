@@ -1,0 +1,229 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="squinewave">
+<indexterm id="IndexSquinewave"><primary>squinewave</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Dynamic Spectrum Oscillators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>squinewave</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>squinewave</refname>
+    <refpurpose>
+      Un oscillateur d'onde carrée-pulsation-dent de scie-sinus à bande limitée et variation de forme 
+      avec synchro forcée.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet oscillateur génère une forme d'onde variable qui peut évoluer librement
+      entre les formes classiques de sinus, carrée, pulsation et dent de scie.
+      La forme est contrôlée par deux valeurs interactives : clip (rectitude) et
+      skew (symétrie). Toutes les formes utilisent un nombre minimum d'échantillons
+      par transition (par exemple, la fin abrupte d'une dent de scie ou d'une
+      pulsation utilise un minimum de N échantillons), ce qui produit une sortie
+      à bande limitée. Aux plus hautes fréquences, le taux de transition minimal
+      prédomine, ce qui fait qu'au delà d'une certaine hauteur toutes les formes
+      se "dégradent" en sinus. Le taux de transition minimal est configuré au temps-i.
+      La synchronisation forcée (une transition très rapide à la phase nulle) est
+      supporté, et un signal de synchro est produit une fois par cycle.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aout [, asyncout] <command>squinewave</command> acps, aClip, aSkew [, asyncin] [, iMinSweep] [, iphase]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iMinSweep</emphasis> (facultatif) -- Supérieur ou égal à 4. Durée
+      en échantillons des transitions les plus courtes des formes carrées/pulsation.
+      Par défaut sr/3000 (pratiquement sans repliement).
+    </para>
+    <para>
+      <emphasis>iphase</emphasis> (facultatif, -1 par défaut) -- phase initiale,
+      entre 0 et 2, proportionnelle aux segments de la forme d'onde (voir notes).
+      Si une valeur négative est donnée, l'initialisation de la phase est ignorée.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>aout</emphasis> -- sortie audio normalisée à +/-1.
+    </para>
+    <para>
+      <emphasis>asyncout</emphasis> -- (facultatif) -- signal de synchro : vaut 1
+      à la fin de chaque cycle, sinon 0.
+    </para>
+    <para>
+      <emphasis>acps</emphasis> -- fréquence. A partir de 0. Les fréquences négatives
+      ne sont pas traitées.
+    </para>
+    <para>
+      <emphasis>aClip</emphasis> -- "rectitude" de la forme d'onde. Entre 0 et 1.
+      0 pour une sinus (ou une dent de scie), 1 pour une onde carrée (ou une
+      pulsation).
+    </para>
+    <para>
+      <emphasis>aSkew</emphasis> -- symétrie de la forme d'onde.Entre -1 et +1.
+      0 pour une forme symétrique comme une sinus ou une onde carrée. +1 ou -1
+      pour une dent de scie ou une pulsations orientée à droite ou à gauche.
+    </para>
+    <para>
+      <emphasis>asyncin</emphasis> -- (facultatif, ignoré s'il n'est pas de taux-a) --
+      lorsqu'il est &gt;= 1, la forme d'onde glisse rapidement vers la phase nulle.
+      La durée de la transition varie entre 0 et 1.5*iMinSweep échantillons en
+      fonction de la phase courante.
+    </para>
+
+    <para>
+      L'opcode <emphasis>squinewave</emphasis> est un oscillateur à forme d'onde
+      variable générée en interne. La forme d'onde a deux parties :
+      <orderedlist>
+        <listitem><para>pente de cosinus descendante suivie d'une partie plate à -1</para></listitem>
+        <listitem><para>pente de cosinus ascendante suivie d'une partie plate à +1</para></listitem>
+      </orderedlist>
+      A la fin de (2) un signal de synchro est produit.
+      <informaltable frame="none" colsep="0">
+        <tgroup cols="2">
+          <tbody>
+            <row>
+              <entry>Clip (0-1)</entry>
+              <entry>contrôle la proportion entre la partie plate et la transition dans chaque segment.</entry>
+            </row>
+            <row>
+              <entry>Skew (-1 to +1)</entry>
+              <entry>contrôle la proportions des segments (1) et (2) dans le cycle de la forme d'onde.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+      Si skew &lt; 0, la partie (1) est plus courte, if skew &gt; 0, (1) est plus longue que (2)
+    </para>
+    <para>
+    Les formes d'onde classiques ont des valeurs simples :
+      <itemizedlist>
+        <listitem><para>sinus : clip=0, skew=0</para></listitem>
+        <listitem><para>dent de scie : clip=0, skew=+1 or -1 (orientation à gauche ou à droite)</para></listitem>
+        <listitem><para>carrée : clip=1, skew=0</para></listitem>
+        <listitem><para>pulsation: clip=1, skew=+1 or -1</para></listitem>
+      </itemizedlist>
+      Les valeurs fractionnaires produisent des formes d'onde intermédiares.
+    </para>
+
+    <emphasis>asyncin</emphasis>
+    <para>
+      L'entrée de synchronisation forcée (asyncin &gt;=1) fait glisser rapidement
+      la forme d'onde vers sa fin en élévant la fréquence à 2 * sr/iMinSweep.
+      Les pulsations de synchro sont ainsi plus raides que la forme d'onde
+      pulsation.
+    </para>
+
+    <emphasis>iMinSweep</emphasis>
+    <para>
+      la forme d'onde est à bande limitée grâce à l'utilisation d'un nombre minimal
+      d'échantillons pour les transition de cosinus même si clip/skew ont des
+      valeurs extrêmes. Ceci est contrôlé par <emphasis>iMinSweep</emphasis>.
+      Comme <emphasis>iMinSweep</emphasis> est compté en échantillons, la forme
+      d'onde produite dépend du taux d'échantillonnage, mais le spectre sera
+      très proche d'un spectre indépendant de sr. La valeur par défaut sr/3000
+      est plutôt "douce", les valeurs étant de 14 échantillons à 44.1 kHz, 16 à
+      48 kHz et 32 à 96 kHz, etc. <emphasis>iMinSweep</emphasis> est compté en
+      nombres entiers bien que ce ne soit pas strictement nécessaire.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Notes</title>
+    <para>
+      <emphasis>squinewave</emphasis> est basé sur des cosinus plutôt que sur
+      des sinus pour générer la forme d'onde. (Ceci simplifie la logique de
+      contrôle). La différence est que cos(0) = 1, alors que sin(0) = 0. Cela
+      signifie que la synchronisation forcée se produit quand la forme d'onde
+      atteint une crête, juste avant d'entamer sa pente descendante. (Une
+      synchronisation forcée sinusoîdale se produirait au passage à zéro).
+    </para>
+
+    <emphasis>Stabilité des hauteurs</emphasis>
+    <para>
+      Noter que <emphasis>iMinSweep</emphasis> limite la possibilité de
+      squinewave d'atteindre une fréquence exacte. Quand skew ou clip sont actifs,
+      et qu'une MF est appliquée, la forme d'onde de squinewave sera plus longue
+      ou plus courte que la période exacte. Cependant, les différences se
+      compensent, si bien qu'ave une MF symétrique, squinewave dévie en approchant
+      une fréquence moyenne. Un signal sinusoïdal non mis en forme (clip=skew=0)
+      correspond à la sortie de poscil sur 7 à 8 chiffres significatifs (également
+      sous MF).
+    </para>
+
+    <emphasis>Phase initiale</emphasis>
+    <para>
+      Il est utile de fixer la phase initiale si squinewave est utilisé comme
+      un LFO formé. La phase initiale est divisée en quatre segments
+      avec des valeurs symboliques comprises entre 0 et 2, et elle démarrera
+      ainsi à l'endroit attendu indépendamment des valeurs de skew/clip. 0-1
+      représente  la première partie, 1-2 la seconde. Voici quelques valeurs
+      de <emphasis>iphase</emphasis> intéressantes :
+      <itemizedlist>
+        <listitem><para>0 - début de la première pente descendante.</para></listitem>
+        <listitem><para>0.5 - fin de la pente descendante (début de la section plate "basse").</para></listitem>
+        <listitem><para>1 - point médian, fin de la première section plate, début de la seconde pente ascendante.</para></listitem>
+        <listitem><para>1.5 - fin de la pente ascendante (début de la section plate "haute").</para></listitem>
+        <listitem><para>0.25 et 1.25 sont les passages à zéro au milieu des sections de pente descendante/ascendante.</para></listitem>
+        <listitem><para>0.75 et 1.75 sont au milieu des sections plates basse/haute.</para></listitem>
+      </itemizedlist>
+      Si <emphasis>iphase</emphasis> &lt; 0 (ignoré) à la première utilisation,
+      la phase initiale est fixée à 1.25, c'est-à-dire au passage à zéro de la
+      pente ascendante. La sortie ressemble alors à une onde sinusoïdale.
+    </para>
+
+    <emphasis>Conseils</emphasis>
+    <para>
+      Si plusieurs unités de <emphasis>squinewave</emphasis> sont jouées à
+      l'unisson, il est recommandé d'utiliser différentes valeurs de
+      <emphasis>iMinSweep</emphasis>. La valeur minimale de transition crée
+      des zones plus calmes dans la série des harmoniques. En utilisant des
+      valeurs minimales de transition légèrement différentes, le spectre est
+      rempli plutôt que de souligner le contour spectral. La durée des
+      transitions de synchronisation forcée permet d'enchainer la synchronisation
+      de plusiers unités de <emphasis>squinewave</emphasis> ce qui crée des
+      impulsions à synchronisation forcée décalées.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode squinewave. Il utilise le fichier
+      <ulink url="examples/squinewave.csd"><citetitle>squinewave.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode squinewave.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/squinewave.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namerasmus;</member>
+        <member>Novembre 2017</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 6.10</para>
+  </refsect1>
+</refentry>
