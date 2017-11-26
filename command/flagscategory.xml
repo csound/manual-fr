@@ -1041,6 +1041,28 @@ csound5:output2             (reproduction droite)</screen>
       </listitem>
     </varlistentry>
 
+    <varlistentry id="FlagsCatMinusUdpConsole">
+      <term>--udp-console=address:port<indexterm
+        id="IndexCatMinusUdpConsole"><primary>--udp-console</primary></indexterm></term> 
+      <listitem>
+        <para>
+          Redirige les messages de la console vers une adresse:port distante
+          via UDP.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusUdpMirrorConsole">
+      <term>--udp-mirror-console=address:port<indexterm
+        id="IndexCatMinusUdpMirrorConsole"><primary>--udp-mirror-console</primary></indexterm></term> 
+      <listitem>
+        <para>
+          Recopie les messages de la console vers une adresse:port distante
+          via UDP.
+        </para>
+      </listitem>
+    </varlistentry>
+       
     <varlistentry id="FlagsCatMinusLowerR">
       <term>-r NUM<indexterm id="IndexCatMinusLowerR"><primary>-r</primary></indexterm>, --sample-rate=NUM<indexterm id="IndexCatMinusSamplerate"><primary>--sample-rate</primary></indexterm></term>
       <listitem>
@@ -1445,13 +1467,13 @@ csound5:output2             (reproduction droite)</screen>
     </varlistentry>
 
     <varlistentry id="FlagCatMinuMinusOrc">
-	    <term>--orc nomorc<indexterm id="IndexCatMinusMinusOrc"><primary>--orc</primary></indexterm></term>
-	    <listitem>
-	      <para>
-	        L'argument est le fichier d'orchestre. Utilisé lorsque l'on a pas besoin
-	        de partition. (Csound 5.18 et ultérieur).
-	      </para>
-	    </listitem>
+      <term>--orc nomorc<indexterm id="IndexCatMinusMinusOrc"><primary>--orc</primary></indexterm></term>
+      <listitem>
+        <para>
+          L'argument est le fichier d'orchestre. Utilisé lorsque l'on a pas besoin
+          de partition. (Csound 5.18 et ultérieur).
+        </para>
+      </listitem>
     </varlistentry>
       
     <varlistentry id="FlagsCatMinusSyntaxCheckOnly">

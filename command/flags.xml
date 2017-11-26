@@ -1103,6 +1103,28 @@ csound5:output2             (reproduction droite)</screen>
       </listitem>
     </varlistentry>
 
+    <varlistentry id="FlagsMinusUdpConsole">
+      <term>--udp-console=address:port<indexterm
+        id="IndexFlagsMinusUdpConsole"><primary>--udp-console</primary></indexterm></term> 
+      <listitem>
+        <para>
+          Redirige les messages de la console vers une adresse:port distante
+          via UDP.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsMinusUdpMirrorConsole">
+      <term>--udp-mirror-console=address:port<indexterm
+        id="IndexFlagsMinusUdpMirrorConsole"><primary>--udp-mirror-console</primary></indexterm></term> 
+      <listitem>
+        <para>
+          Recopie les messages de la console vers une adresse:port distante
+          via UDP.
+        </para>
+      </listitem>
+    </varlistentry>
+       
     <varlistentry id="FlagsMinusUpperQ">
       <term>-Q PERIPHERIQUE<indexterm id="IndexMinusUpperQ"><primary>-Q</primary></indexterm></term>
       <listitem>
