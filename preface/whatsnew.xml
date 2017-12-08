@@ -92,12 +92,13 @@ english cvs version=
     </itemizedlist>
   </para>-->
 
-  <bridgehead>Notes de parution de Csound 6.10 (septembre 2017)</bridgehead>
+  <bridgehead>Notes de parution de Csound 6.10 (décembre 2017)</bridgehead>
   <para>
     C'est principalement une distribution de correction de bogues, incluant un
     bogue important introduit récemment dans loscil. Il y a aussi de nouveaux
     opcodes et des améliorations d'opcode, ainsi qu'un GEN (53) longtemps
-    ignoré et plusieurs petites améliorations internes.
+    ignoré et plusieurs petites améliorations internes. Les changements internes
+    ont supprimé un certain nombres de fuites de mémoire.
   </para>
   <para>
     <itemizedlist>
@@ -180,6 +181,24 @@ english cvs version=
                 est maintenant supportée, alors qu'avant le parseur l'acceptait
                 mais sans l'utiliser.
               </simpara>
+            <listitem>
+              <simpara>
+                L'optimisation par résolution des constantes est maintenant
+                largement utilisée dans les calculs arithmétiques.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Si on essaie d'utiliser une macro non définie, une erreur de
+                syntaxe est maintenant générée.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                L'oubli de " (ou de tout autre caractère terminal) dans #include
+                est notifié et le #include est ignoré.
+              </simpara>
+            </listitem>
             </listitem>
           </itemizedlist>
         </para>
@@ -208,6 +227,24 @@ english cvs version=
                 messages d'erreur qui ont été supprimés.
               </simpara>
             </listitem>
+            <listitem>
+              <simpara>
+                Après l'appel d'une macro non définie le reste de la ligne est
+                ignoré.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Une paire de bogues dans les sections répétées (opcode r) ont
+                été supprimés.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                L'oubli de " (ou de tout autre caractère terminal) dans #include
+                est notifié et le #include est ignoré.
+              </simpara>
+            </listitem>
           </itemizedlist>
         </para>
       </listitem>
@@ -218,6 +255,24 @@ english cvs version=
               <simpara>
                 L'option --tempo (ou -t) peut désormais être fractionnaire ; elle
                 était auparavant limitée aux entiers.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                nouvelle option : --udp-console=address:port redirige la
+                console vers une adresse:port distante.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                nouvelle option : --udp-mirror-console=address:port recopie la
+                console sur une adresse:port distante.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                nouvelle option : --udp-echo affiche en écho les messages
+                envoyésau serveur UDP.
               </simpara>
             </listitem>
           </itemizedlist>
@@ -247,7 +302,7 @@ english cvs version=
             </listitem>
             <listitem>
               <simpara>
-                slicearray à un argument supplémentaire facultatif pour fixer le
+                slicearray a un argument supplémentaire facultatif pour fixer le
                 pas d'incrément de la partie.
               </simpara>
             </listitem>
@@ -259,6 +314,21 @@ english cvs version=
                 Les tableaux de taux-a peuvent être additionnés, soustraits,
                 multipliés et mis à l'échelle. C'est le début d'une arithmétique
                 de taux-a sur les tableaux.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                dssiinit a été amélioré par la suppression de certains plantages.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                partials a été amélioré pour supprimer un problème de limite.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                vco2ift a été corrigé pour l'utilisation d'une table existante.
               </simpara>
             </listitem>
           </itemizedlist>
@@ -275,7 +345,10 @@ english cvs version=
               </simpara>
             </listitem>
             <listitem>
-              <simpara>CsoundQT : construit en incluant le support d'HTML5.</simpara>
+              <simpara>
+                CsoundQT est construit maintenant depuis la branche principale
+                pour une stabilité accrue.
+              </simpara>
             </listitem>
           </itemizedlist>
         </para>
@@ -307,6 +380,32 @@ english cvs version=
             <listitem>
               <simpara>
                 Le problème de la gestion d'interruption du frontal CLI est corrigé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                outs2 était défectueux (il écrivait toujours sur le canal 1
+                comme outs1).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Diverses erreurs dans le système DSSI/ladspa ont été corrigées.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                vbap était défectueux dans tous les cas excepté à 4 haut-parleurs.
+                C'est corrigé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                L'évaluation d'un code d'orchestre de Csound en direct pouvait
+                produire des erreurs étranges et difficiles à diagnostiquer
+                (par exemple des plantages, des divisions par zéro, NaNs). Cela
+                était dû à un bogue lors de la fusion dans la zone des constantes
+                globales de nouvelles constantes trouvées dans le code.
               </simpara>
             </listitem>
           </itemizedlist>
@@ -378,7 +477,13 @@ english cvs version=
                 csoundTableCopyInAsync().
               </simpara>
             </listitem>
-          </itemizedlist>
+            <listitem>
+              <simpara>
+                Pour l'utilisation en serveur, trois nouvelles fonctions de l'API :
+                csoundUDPServerStart, csoundUDPServerStatus et csoundUDPServerClose.
+              </simpara>
+            </listitem>
+        </itemizedlist>
         </para>
       </listitem>
       <listitem>
@@ -388,7 +493,10 @@ english cvs version=
               <simpara>Windows</simpara>
               <itemizedlist>
                 <listitem>
-                  <simpara>Désormais compilé avec MSVC.</simpara>
+                  <simpara>
+                    Désormais compilé avec Microsoft Visual Studio 2017 ou
+                    ultérieur.
+                  </simpara>
                 </listitem>
                 <listitem>
                   <simpara>Intégration continue pour Windows avec AppVeyor.</simpara>
