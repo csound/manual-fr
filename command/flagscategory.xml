@@ -506,6 +506,15 @@ csound5:output2             (reproduction droite)</screen>
   <variablelist>
     <title>Entrée/sortie par fichier MIDI</title>
 
+    <varlistentry id="FlagsCatMinusAftzero">
+      <term>--aft-zero<indexterm id="IndexCatMinusAftzero"><primary>--aft-zero>/primary></indexterm></term>
+      <listitem>
+        <para>
+          Utilise zéro comme valeur initiale de l'aftertouch.
+        </para>
+      </listitem>
+    </varlistentry>
+
     <varlistentry id="FlagsCatMinusUpperF">
       <term>-F FICHIER<indexterm id="IndexCatMinusUpperF"><primary>-F</primary></indexterm>, --midifile=FICHIER<indexterm id="IndexCatMinusMidifile"><primary>--midifile</primary></indexterm></term>
       <listitem>
@@ -1351,14 +1360,6 @@ csound5:output2             (reproduction droite)</screen>
         </para>
       </listitem>
     </varlistentry>
-
-    <varlistentry id="FlagsCatMinusMinusDevice">
-      <term>--devices<indexterm id="IndexCatMinusMinusDevice"><primary>--devices[=in|out]</primary></indexterm></term>
-      <listitem>
-        <para>Donne une liste des périphériques audio disponibles puis termine l'application.
-        </para>
-      </listitem>
-    </varlistentry>            
 
     <varlistentry id="FlagsCatMinusMinusDevices">
       <term>--devices[=x]<indexterm id="IndexCatMinusMinusDevices"><primary>--devices</primary></indexterm></term>

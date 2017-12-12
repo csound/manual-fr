@@ -121,6 +121,15 @@ english cvs version=1.43
       </listitem>
     </varlistentry>
 
+    <varlistentry id="FlagsMinusAftzero">
+      <term>--aft-zero<indexterm id="IndexMinusAftzero"><primary>--aft-zero>/primary></indexterm></term>
+      <listitem>
+        <para>
+          Utilise zéro comme valeur initiale de l'aftertouch.
+        </para>
+      </listitem>
+    </varlistentry>
+
     <varlistentry id="FlagsMinusUpperB">
       <term>-B NUM<indexterm id="IndexMinusUpperB"><primary>-B</primary></indexterm>, --hardwarebufsamps=NUM<indexterm id="IndexMinusHardwarebufsamps"><primary>--hardwarebufsamps</primary></indexterm></term>
       <listitem>
@@ -228,14 +237,6 @@ english cvs version=1.43
         </para>
       </listitem>
     </varlistentry>
-
-    <varlistentry id="FlagsMinusMinusDevice">
-      <term>--devices<indexterm id="IndexMinusMinusDevice"><primary>--devices[=in|out]</primary></indexterm></term>
-      <listitem>
-        <para>Donne une liste des périphériques audio disponibles puis termine l'application.
-        </para>
-      </listitem>
-    </varlistentry>            
 
     <varlistentry id="FlagsMinusMinusDevices">
       <term>--devices[=x]<indexterm id="IndexMinusMinusDevices"><primary>--devices</primary></indexterm></term>
