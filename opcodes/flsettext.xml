@@ -32,6 +32,7 @@ english cvs version=1.11
   <refsect1>
     <title>Syntaxe</title>
     <synopsis><command>FLsetText</command> &quot;itext&quot;, ihandle</synopsis>
+    <synopsis><command>FLsetText</command> istr, ihandle</synopsis>
   </refsect1>
 
   <refsect1>
@@ -40,7 +41,11 @@ english cvs version=1.11
       <emphasis><quote>itext</quote></emphasis> -- une chaîne de caractères entre
       guillemets contenant le texte de l'étiquette du widget.
     </para>
-
+    <para>
+      <emphasis>istr</emphasis> -- une valeur de taux-i qui dénote une chaîne de
+      caractères via <emphasis>strset</emphasis> désignant le texte de
+      l'étiquette du widget.
+    </para>
     <para>
       <emphasis>ihandle</emphasis> -- un nombre entier (utilisé comme
       identifiant unique) pris de la sortie d'un opcode de widget déjà en

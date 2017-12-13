@@ -1232,7 +1232,7 @@
 <title>FLTK : autres</title>
 <para>
 <para/>
-<synopsis>ihandle <link linkend="FLbox">FLbox</link> &quot;label&quot;, itype, ifont, isize, iwidth, iheight, ix, iy [, image]</synopsis><para/>
+<synopsis>ihandle <link linkend="FLbox">FLbox</link> &quot;label&quot;, itype, ifont, isize, iwidth, iheight, ix, iy [, image]</synopsis><synopsis>ihandle <link linkend="FLbox">FLbox</link> istr, itype, ifont, isize, iwidth, iheight, ix, iy [, image]</synopsis><para/>
 <synopsis>kout, ihandle <link linkend="FLbutBank">FLbutBank</link> itype, inumx, inumy, iwidth, iheight, ix, iy, \
       iopcode [, kp1] [, kp2] [, kp3] [, kp4] [, kp5] [....] [, kpN]</synopsis><para/>
 <synopsis>kout, ihandle <link linkend="FLbutton">FLbutton</link> &quot;label&quot;, ion, ioff, itype, iwidth, iheight, ix, \
@@ -1287,7 +1287,7 @@
 <synopsis><link linkend="FLsetFont">FLsetFont</link> ifont, ihandle</synopsis><para/>
 <synopsis><link linkend="FLsetPosition">FLsetPosition</link> ix, iy, ihandle</synopsis><para/>
 <synopsis><link linkend="FLsetSize">FLsetSize</link> iwidth, iheight, ihandle</synopsis><para/>
-<synopsis><link linkend="FLsetText">FLsetText</link> &quot;itext&quot;, ihandle</synopsis><para/>
+<synopsis><link linkend="FLsetText">FLsetText</link> &quot;itext&quot;, ihandle</synopsis><synopsis><link linkend="FLsetText">FLsetText</link> istr, ihandle</synopsis><para/>
 <synopsis><link linkend="FLsetTextColor">FLsetTextColor</link> ired, iblue, igreen, ihandle</synopsis><para/>
 <synopsis><link linkend="FLsetTextSize">FLsetTextSize</link> isize, ihandle</synopsis><para/>
 <synopsis><link linkend="FLsetTextType">FLsetTextType</link> itype, ihandle</synopsis><para/>
