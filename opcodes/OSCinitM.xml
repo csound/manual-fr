@@ -1,0 +1,108 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="OSCinitM">
+<indexterm id="IndexOSCinitM"><primary>OSCinitM</primary></indexterm>
+  <refentryinfo><title>OSC</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>OSCinitM</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>OSCinitM</refname>
+    <refpurpose>
+      Démarre l'écoute des messages OSC multidiffusés sur un port particulier.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Démarre un processus d'écoute de multidiffusion qui peut être utilisé par
+      <link linkend="OSClisten"><citetitle>OSClisten</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ihandle <command>OSCinitM</command> Sgroup, iport</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>Sgroup</emphasis> -- chaîne de caratères donnant l'adresse IP
+      du groupe de multidiffusion.
+    </para>
+    <para>
+      <emphasis>ihandle</emphasis> -- identifiant retourné que l'on peut
+      passer à n'importe quel nombre d'opcodes <emphasis>OSClisten</emphasis>
+      pour recevoir des messages sur ce port.
+    </para>
+    <para>
+      <emphasis>iport</emphasis> -- le port sur lequel on écoute.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Le module d'écoute fonctionne en tâche de fond. Voir
+      <link linkend="OSClisten"><citetitle>OSClisten</citetitle></link> pour
+      les détails.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemple</title>
+    <para>
+      Cet exemple montre une paire de nombres en virgule flottante reçus sur
+      le port 7770.
+    </para>
+
+      <informalexample>
+        <programlisting>
+<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 100
+<emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+
+gihandle <emphasis role="opc">OSCinitM</emphasis> "225.0.0.1", 7770
+
+  <emphasis role="oblock">instr</emphasis>   1
+    kf1 <emphasis role="opc">init</emphasis> 0
+    kf2 <emphasis role="opc">init</emphasis> 0
+<emphasis role="olabel">nxtmsg</emphasis>:
+    kk  <emphasis role="opc">OSClisten</emphasis> gihandle, &quot;/foo/bar&quot;, &quot;ff&quot;, kf1, kf2
+<emphasis role="octrl">if</emphasis> (kk <emphasis role="op">==</emphasis> 0) <emphasis role="octrl">goto</emphasis> <emphasis role="olabel">ex</emphasis>
+    <emphasis role="opc">printk</emphasis> 0,kf1
+    <emphasis role="opc">printk</emphasis> 0,kf2
+    <emphasis role="opc">kgoto</emphasis> <emphasis role="olabel">nxtmsg</emphasis>
+<emphasis role="olabel">ex</emphasis>:
+  <emphasis role="oblock">endin</emphasis>
+        </programlisting>
+      </informalexample>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+      <para>
+        <link linkend="OSClisten"><citetitle>OSClisten</citetitle></link>,
+        <link linkend="OSCsend"><citetitle>OSCsend</citetitle></link>
+        <link linkend="OSCinit"><citetitle>OSCinit</citetitle></link>
+      </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>2016</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>
