@@ -29,19 +29,19 @@ english cvs version=1.7
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis><command>ftload</command> &quot;filename&quot;, iflag, ifn1 [, ifn2] [...]</synopsis>
+    <synopsis><command>ftload</command> Sfilename, iflag, ifn1 [, ifn2] [...]</synopsis>
   </refsect1>
 
   <refsect1>
     <title>Initialisation</title>
     <para>
-      <emphasis>&quot;filename&quot;</emphasis> -- Une chaîne de caractères entre
-      guillemets contenant le nom du fichier à charger.
+      <emphasis>Sfilename</emphasis> -- Une chaîne de caractères contenant le
+      nom du fichier à charger.
     </para>
 
     <para>
-      <emphasis>iflag</emphasis> -- Type du fichier à charger (0 = binaire,
-      différent de 0 = fichier texte).
+      <emphasis>iflag</emphasis> -- Type du fichier à charger (0 = fichier
+      binaire, différent de 0 = fichier texte).
     </para>
 
     <para>
