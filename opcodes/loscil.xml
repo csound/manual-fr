@@ -25,7 +25,9 @@ english cvs version=1.20
     <title>Description</title>
     <para>
       Lit un son échantillonné (mono ou stéréo) depuis une table, avec des boucles
-      facultatives d'entretien et de relâchement.
+      facultatives d'entretien et de relâchement. Une version donnant la position
+      exacte dans la table (phase) correspondant à l'échantillon en sortie est
+      fournie comme opcode alternatif.
     </para>
   </refsect1>
 
@@ -33,6 +35,8 @@ english cvs version=1.20
     <title>Syntaxe</title>
     <synopsis>ar1 [,ar2] <command>loscil</command> xamp, kcps, ifn [, ibas] [, imod1] [, ibeg1] [, iend1] \
       [, imod2] [, ibeg2] [, iend2]</synopsis>
+    <synopsis>aph, ar1 [,ar2] <command>loscilphs</command> xamp, kcps, ifn [, ibas] [, imod1] [, ibeg1] [, iend1] \
+       [, imod2] [, ibeg2] [, iend2]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -75,6 +79,10 @@ english cvs version=1.20
 
   <refsect1>
     <title>Exécution</title>
+    <para>
+      <emphasis>aph</emphasis> -- la position normalisée dans la table correspondant
+      à l'échantillon en sortie (seulement pour loscilphs).
+    </para>
 
     <para>
       <emphasis>ar1, ar2</emphasis> -- la sortie de taux audio. Il n'y a que
