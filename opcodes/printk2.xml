@@ -30,7 +30,7 @@ english cvs version=1.11
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis><command>printk2</command> kvar [, inumspaces]</synopsis>
+    <synopsis><command>printk2</command> kvar [, inumspaces] [, inamed]</synopsis>
   </refsect1>
  
   <refsect1>
@@ -38,6 +38,10 @@ english cvs version=1.11
     <para>
       <emphasis>inumspaces</emphasis> (facultatif, 0 par défaut) -- nombre d'espaces
       imprimés avant la valeur de <emphasis>kvar</emphasis>
+    </para>
+    <para>
+      <emphasis>inamed</emphasis> (facultatif, 0 par défaut) -- s'il est non nul,
+      affiche le nom de la <emphasis>kvar</emphasis> ainsi que sa valeur.
     </para>
   </refsect1>
  
@@ -109,5 +113,6 @@ english cvs version=1.11
     </para>
 
     <para>Nouveau dans la version 3.48 de Csound</para>
+    <para>Option du nom ajoutée dans la 6.11</para>
   </refsect1>
 </refentry>

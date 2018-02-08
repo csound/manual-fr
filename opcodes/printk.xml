@@ -30,7 +30,7 @@ english cvs version=1.11
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis><command>printk</command> itime, kval [, ispace]</synopsis>
+    <synopsis><command>printk</command> itime, kval [, ispace] [, inamed]</synopsis>
   </refsect1>
  
   <refsect1>
@@ -42,6 +42,11 @@ english cvs version=1.11
     <para>
       <emphasis>ispace</emphasis> (facultatif, 0 par défaut) -- nombre d'espaces
       à insérer avant l'impression. (0 par défaut, max : 130)
+    </para>
+
+    <para>
+      <emphasis>inamed</emphasis> (facultatif, 0 par défaut) -- s'il est non nul,
+      affiche le nom de la <emphasis>kvar</emphasis> ainsi que sa valeur.
     </para>
   </refsect1>
  
@@ -115,6 +120,7 @@ english cvs version=1.11
         <member>Mai 1997</member>
       </simplelist>
     </para>
+    <para>Option du nom ajoutée dans la 6.11</para>
     <para>Exemple écrit par &namekevin;.</para>
 
     <para>Merci à Luis Jure pour avoir signalé une erreur concernant le
