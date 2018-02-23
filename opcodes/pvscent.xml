@@ -32,12 +32,16 @@ english cvs version=1.9
   <refsect1>
     <title>Syntaxe</title>
     <synopsis>kcent <command>pvscent</command> fsig</synopsis>
+    <synopsis>acent <command>pvscent</command> fsig</synopsis>
   </refsect1>
 
   <refsect1>
     <title>Exécution</title>
     <para>
       <emphasis>kcent</emphasis> -- le centroïde spectral
+    </para>
+    <para>
+      <emphasis>acent</emphasis> -- le centroïde spectral
     </para>
     <para>
       <emphasis>fsig</emphasis> -- un flot pv en entrée
