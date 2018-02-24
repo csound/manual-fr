@@ -1,21 +1,29 @@
 <!--translated=yes
 authors=Francois Pinot
-english cvs version=
 // translated field can be yes, no or partially
 // Add your name to the existing list of authors
-// Add the version number of the file you are translating from the english version number on cvs
 // *** Please remember to keep this information up to date! ***
 -->
 
 <section id="Orchtab">
-  <title>Vecteurs de taux-k</title>
+  <title>Vecteurs et tableaux</title>
   <para>
-    Csound permet de déclarer et de déployer des vecteurs à une dimension ou
+    On peut utiliser des vecteurs et des tableaux valeurs de taux-i, de
+    taux-k ou de taux-a dans de nombreux cas. Il sont créés par l'opcode <link
+    linkend="init"><citetitle>init</citetitle></link> et par d'autres, et l'on
+    peut les utiliser dans la plupart des opérations arithmétiques ou comme
+    opcodes de tableaux spécifiques.
+  </para>
+  <para>
+    Pendant une courte période Csound avait un schéma plus limité de vecteurs
+    unidimensionnels au taux-k, mais ces derniers ont été intégrés dans les
+    tableaux et les variables-t sont maintenant obsolètes.
+    <!--Csound permet de déclarer et de déployer des vecteurs à une dimension ou
     tables. Ils sont locaux à un instrument et il faut déclarer leur taille
     (avec l'opcode <link linkend="init"><citetitle>init</citetitle></link>).
     Leurs composantes sont obtenues par toute partie d'expression avec des
     crochets pour donner un index au taux-k. Les composantes peuvent être
     affectées et il y a plusieurs opcodes pour interroger et modifier ces
-    tables.
+    tables.-->
   </para>
 </section>

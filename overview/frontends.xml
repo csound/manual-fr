@@ -77,9 +77,9 @@ english cvs version=1.15
   <para>
     Winsound appartenait à la branche principale de Csound. Il
     n'est plus maintenant disponible que sous forme de code source. Winsound est
-    un portage multi plates-formes en FLTK du frontal original de Barry Vercoe
-    pour Csound. Certains utilisateurs mal-voyants ou aveugles ont rapporté que
-    Winsound fonctionne bien avec des logiciels de traduction texte-parole.
+    un portage multi plates-formes en FLTK d'un frontal antérieur pour Windows.
+    Certains utilisateurs mal-voyants ou aveugles ont rapporté que
+    Winsound fonctionne bien avec les logiciels de traduction texte-parole.
   </para>
 
   <section id="CommandCsoundAC">
@@ -208,18 +208,18 @@ english cvs version=1.15
   instr 1,2,3,4,5 ; FluidSynth General MID
   I; INITIALIZATION
   ; Channel, bank, and program determine the preset, that is, the actual sound.
-  ichannel		=			p1
-  iprogram		=			p6
-  ikey	 		= 			p4
-  ivelocity 		= 			p5 + 12
-  ijunk6 			= 			p6
-  ijunk7			=			p7
+  ichannel    =      p1
+  iprogram    =      p6
+  ikey       =       p4
+  ivelocity     =       p5 + 12
+  ijunk6       =       p6
+  ijunk7      =      p7
   ; AUDIO
-  istatus			=			144;
-  print			iprogram, istatus, ichannel, ikey, ivelocityaleft, aright
-  fluid			"c:/projects/csound5/samples/VintageDreamsWaves-v2.sf2", \\
+  istatus      =      144;
+  print      iprogram, istatus, ichannel, ikey, ivelocityaleft, aright
+  fluid      "c:/projects/csound5/samples/VintageDreamsWaves-v2.sf2", \\
   iprogram, istatus, ichannel, ikey, ivelocity, 1
-  outs 			aleft, arightendin''')
+  outs       aleft, arightendin''')
   csound.setCommand("csound --opcode-lib=c:/projects/csound5/fluid.dll \\
   -RWdfo ./koch.wav ./temp.orc ./temp.sco")
   csound.exportForPerformance()
