@@ -268,6 +268,7 @@
 <title>Générateurs de signal : phaseurs</title>
 <para>
 <para/>
+<synopsis>aexp,aph<link linkend="ephasor">ephasor</link> kfreq, kR</synopsis><para/>
 <synopsis>ares <link linkend="phasor">phasor</link> xcps [, iphs]</synopsis><synopsis>kres <link linkend="phasor">phasor</link> kcps [, iphs]</synopsis><para/>
 <synopsis>ares <link linkend="phasorbnk">phasorbnk</link> xcps, kndx, icnt [, iphs]</synopsis><synopsis>kres <link linkend="phasorbnk">phasorbnk</link> kcps, kndx, icnt [, iphs]</synopsis><para/>
 <synopsis>aindex <link linkend="sc_phasor">sc_phasor</link> xtrig, xrate, kstart, kend [, kresetPos] </synopsis><synopsis>kindex <link linkend="sc_phasor">sc_phasor</link> xtrig, xrate, kstart, kend [, kresetPos] </synopsis><para/>
@@ -490,6 +491,7 @@
 <synopsis>kr1, kr2 <link linkend="readk2">readk2</link> ifilname, iformat, iprd</synopsis><para/>
 <synopsis>kr1, kr2, kr3 <link linkend="readk3">readk3</link> ifilname, iformat, iprd</synopsis><para/>
 <synopsis>kr1, kr2, kr3, kr4 <link linkend="readk4">readk4</link> ifilname, iformat, iprd</synopsis><para/>
+<synopsis>xout1[, xout2, xout3, ..., xoutN] <link linkend="websocket">websocket</link> iport, xin</synopsis><para/>
 </para></formalpara>
 <para></para><para></para><formalpara>
 <title>E/S de signal : entrée de signal</title>
@@ -861,6 +863,7 @@
 <synopsis>ares <link linkend="dcblock">dcblock</link> ain [, igain]</synopsis><para/>
 <synopsis>ares <link linkend="dcblock2">dcblock2</link> ain [, iorder] [, iskip]</synopsis><para/>
 <synopsis>asig <link linkend="eqfil">eqfil</link> ain, kcf, kbw, kgain[, istor]</synopsis><para/>
+<synopsis>ares <link linkend="exciter">exciter</link> asig, kfreq, kceil, kharmonics, kblend</synopsis><para/>
 <synopsis>ares <link linkend="filter2">filter2</link> asig, iM, iN, ib0, ib1, ..., ibM, ia1, ia2, ..., iaN</synopsis><synopsis>kres <link linkend="filter2">filter2</link> ksig, iM, iN, ib0, ib1, ..., ibM, ia1, ia2, ..., iaN</synopsis><para/>
 <synopsis>am, af <link linkend="fmanal">fmanal</link> are, aim</synopsis><para/>
 <synopsis>asig <link linkend="fofilter">fofilter</link> ain, xcf, xris, xdec[, istor]</synopsis><para/>
@@ -1296,7 +1299,7 @@
 <synopsis><link linkend="FLshow">FLshow</link> ihandle</synopsis><para/>
 </para></formalpara>
 <para></para><para></para><formalpara>
-<title>Opérations mathématiques : comparateurs et accumulateurs</title>
+<title>Opérations mathématiques : opérations arithmétiques et logiques</title>
 <para>
 <para/>
 <synopsis>a <link linkend="adds">&plus;</link> b  (no rate restriction)</synopsis>
@@ -1324,7 +1327,7 @@
 <para/>
 </para></formalpara>
 <para></para><para></para><formalpara>
-<title>Opérations mathématiques : opérations arithmétiques et logiques</title>
+<title>Opérations mathématiques : comparateurs et accumulateurs</title>
 <para>
 <para/>
 <synopsis><link linkend="clear">clear</link> avar1 [, avar2] [, avar3] [...]</synopsis><para/>
@@ -1340,6 +1343,7 @@
 <synopsis><link linkend="floor">floor</link>(x) (argument au taux d'initialisation, de contrôle ou audio)</synopsis><synopsis><link linkend="floor">floor</link>(k/i[]) (k- ou i-tableau)</synopsis><para/>
 <synopsis><link linkend="frac">frac</link>(x) (arguments de taux-i ou de taux-k ; fonctionne aussi au taux-a dans Csound5)</synopsis><synopsis><link linkend="frac">frac</link>(k/i[]) (k- ou i-tableau)</synopsis><para/>
 <synopsis><link linkend="int">int</link>(x)  (taux-i ou taux-k ; fonctionne aussi au taux-a dans Csound5)</synopsis><para/>
+<synopsis><link linkend="log">log</link>(x) (pas de restriction de taux)</synopsis><synopsis><link linkend="log">log</link>(k/i[]) (k- ou i-tableau)</synopsis><synopsis>kout[]<link linkend="log">log</link> kin[][,ibas]</synopsis><para/>
 <synopsis><link linkend="log10">log10</link>(x) (pas de restriction de taux)</synopsis><synopsis><link linkend="log10">log10</link>(k/i[]) (k- ou i-tableau)</synopsis><para/>
 <synopsis><link linkend="log2">log2</link>(x) (pas de restriction de taux)</synopsis><synopsis><link linkend="log2">log2</link>(k/i[]) (k- ou i-tableau)</synopsis><para/>
 <synopsis><link linkend="logbtwo">logbtwo</link>(x)  (argument au taux d'initialisation ou de contrôle seulement)</synopsis><para/>
@@ -1500,6 +1504,7 @@
 <title>MIDI en temps réel : sortie de note</title>
 <para>
 <para/>
+<synopsis>kMidiNoteNum, kCounter<link linkend="midiarp">midiarp</link> kRate[, kMode]</synopsis><para/>
 <synopsis><link linkend="midion">midion</link> kchn, knum, kvel</synopsis><para/>
 <synopsis><link linkend="midion2">midion2</link> kchn, knum, kvel, ktrig</synopsis><para/>
 <synopsis><link linkend="moscil">moscil</link> kchn, knum, kvel, kdur, kpause</synopsis><para/>
@@ -2023,15 +2028,78 @@
 <synopsis>iwidth, iheight <link linkend="imagesize">imagesize</link> iimagenum</synopsis><para/>
 </para></formalpara>
 <para></para><para></para><formalpara>
+<title>Tableaux : cepstre</title>
+<para>
+<para/>
+<synopsis>keps[] <link linkend="ceps">ceps</link> kmags[][, icoefs]</synopsis><para/>
+<synopsis>kenv <link linkend="cepsinv">cepsinv</link> keps[]</synopsis><para/>
+</para></formalpara>
+<para></para><para></para><formalpara>
 <title>Opcodes de tableaux</title>
 <para>
 <para/>
 <synopsis><link linkend="copya2ftab">copya2ftab</link> kftbl, tab</synopsis><para/>
 <synopsis><link linkend="copyf2array">copyf2array</link> tab, kftbl</synopsis><para/>
+<synopsis>kout[] <link linkend="getcol">getcol</link> kin[], kcol</synopsis><para/>
+<synopsis>kout[] <link linkend="getrow">getrow</link> kin[], krow</synopsis><para/>
 <synopsis>kmax [,kindx] <link linkend="maxarray">maxarray</link> karray</synopsis><para/>
 <synopsis>kmin [,kindx] <link linkend="minarray">minarray</link> karray</synopsis><para/>
+<synopsis>kres/ires<link linkend="productarray">product</link> karr[]/iarr[]  (k- or i-arrays )</synopsis><para/>
 <synopsis><link linkend="scalearray">scalearray</link> tarray, kmin, kmax[, kleft, kright]</synopsis><para/>
+<synopsis>kout[] <link linkend="setcol">setcol</link> kin[], kcol</synopsis><para/>
+<synopsis>kout[] <link linkend="setrow">setrow</link> kin[], krow</synopsis><para/>
+<synopsis>kout[] <link linkend="shiftin">shiftin</link> asig</synopsis><para/>
+<synopsis>asig <link linkend="shiftout">shiftout</link>kIn[][, ioff]</synopsis><para/>
 <synopsis>ksum <link linkend="sumarray">sumarray</link> karray</synopsis><para/>
+</para></formalpara>
+<para></para><para></para><formalpara>
+<title>Opérations de tableau : transformée de Fourier rapide</title>
+<para>
+<para/>
+<synopsis>kout[] <link linkend="fft">fft</link> kin[]</synopsis><para/>
+<synopsis>kout[] <link linkend="fftinv">fftinv</link> kin[]</synopsis><para/>
+<synopsis>kout[] <link linkend="rfft">rfft</link> kin[]</synopsis><para/>
+<synopsis>kout[] <link linkend="rifft">rifft</link> kin[]</synopsis><para/>
+<synopsis>kout[] <link linkend="unwrap">unwrap</link> kin[] </synopsis><para/>
+<synopsis>kout[] <link linkend="window">window</link> kin[][,koff, itype]</synopsis><para/>
+</para></formalpara>
+<para></para><para></para><formalpara>
+<title>Opérations de tableau : nombres complexes</title>
+<para>
+<para/>
+<synopsis>kout[] <link linkend="c2r">c2r</link> kin[]</synopsis><para/>
+<synopsis>kout[] <link linkend="cmplxprod">cmplxprod</link> kin1[], kin2[]</synopsis><para/>
+<synopsis>kout[] <link linkend="mags">mags</link> kin[]</synopsis><para/>
+<synopsis>kout[] <link linkend="phs">phs</link> kin[]</synopsis><para/>
+<synopsis>kout[] <link linkend="pol2rect">pol2rect</link> kin[]</synopsis><synopsis>kout[] <link linkend="pol2rect">pol2rect</link> kmags[], kphs[]</synopsis><para/>
+<synopsis>kout[] <link linkend="r2c">r2c</link> kin[]</synopsis><para/>
+<synopsis>kout[] <link linkend="rect2pol">rect2pol</link> kin[]</synopsis><para/>
+</para></formalpara>
+<para></para><para></para><formalpara>
+<title>Opérations de tableau : transformée cosinus discrète</title>
+<para>
+<para/>
+<synopsis>kout[] <link linkend="dct">dct</link> kin[]</synopsis><synopsis>iout[] <link linkend="dct">dct</link> iin[]</synopsis><para/>
+<synopsis>kout[] <link linkend="dctinv">dctinv</link> kin[]</synopsis><synopsis>iout[] <link linkend="dctinv">dctinv</link> iin[]</synopsis><para/>
+</para></formalpara>
+<para></para><para></para><formalpara>
+<title>Opérations de tableau : produit scalaire</title>
+<para>
+<para/>
+<synopsis>kres/ires<link linkend="dot">dot</link> karr1[]/iarr1[], karr2[]/iarr2[]   (k- or i-arrays )</synopsis><para/>
+</para></formalpara>
+<para></para><para></para><formalpara>
+<title>Opérations de tableau : banc de filtres à échelle de Mel</title>
+<para>
+<para/>
+<synopsis>kout[] <link linkend="mfb">mfb</link> kin[], klow, khigh, ibands</synopsis><para/>
+</para></formalpara>
+<para></para><para></para><formalpara>
+<title>Opérations de tableau : tri</title>
+<para>
+<para/>
+<synopsis>k/i[]<link linkend="sorta">sorta</link> k/i[]  (k- or i-arrays )</synopsis><para/>
+<synopsis>k/i[]<link linkend="sortd">sortd</link> k/i[]  (k- or i-arrays )</synopsis><para/>
 </para></formalpara>
 <para></para><para></para><formalpara>
 <title>Divers</title>
@@ -2060,6 +2128,7 @@
 
 
 
+<synopsis>kout[] <link linkend="framebuffer">framebuffer</link> ain, isize</synopsis><synopsis>aout <link linkend="framebuffer">framebuffer</link> kin, isize</synopsis><para/>
 
 
 
@@ -2130,6 +2199,8 @@
 
 <synopsis><link linkend="modmatrix">modmatrix</link> iresfn, isrcmodfn, isrcparmfn, imodscale, inum_mod, \\
 inum_parm, kupdate</synopsis><para/>
+<synopsis>idacc, iadcc <link linkend="nchnls_hw">nchnls_hw</link>&#160;</synopsis><para/>
+<synopsis>aout <link linkend="olabuffer">olabuffer</link> kin, ioverlap</synopsis><para/>
 
 
 <synopsis>Sres <link linkend="pwd">pwd</link>&#160;</synopsis><para/>
