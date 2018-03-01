@@ -29,7 +29,21 @@ authors=Francois Pinot
 
   <refsect1>
     <title>Syntaxe</title>
-      <synopsis>kout[] <command>setcol</command> kin[], kcol</synopsis>
+    <synopsis>i/kout[] <command>setcol</command>i/kin[],i/kcol</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iout[]</emphasis> -- tableau de sortie contenant la colonne
+      fixée. Créé s'il n'existe pas.
+    </para>
+    <para>
+      <emphasis>iin[]</emphasis> -- tableau d'entrée.
+    </para>
+    <para>
+      <emphasis>icol</emphasis> -- colonne à fixer.
+    </para>
   </refsect1>
 
   <refsect1>

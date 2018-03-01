@@ -1608,7 +1608,6 @@
 <title>Traitement spectral : STFT</title>
 <para>
 <para/>
-<synopsis><link linkend="ktableseg">ktableseg</link> ifn1, idur1, ifn2 [, idur2] [, ifn3] [...]</synopsis><para/>
 <synopsis>ares <link linkend="pvadd">pvadd</link> ktimpnt, kfmod, ifilcod, ifn, ibins [, ibinoffset] \
       [, ibinincr] [, iextractmode] [, ifreqlim] [, igatefn]</synopsis><para/>
 <synopsis><link linkend="pvbufread">pvbufread</link> ktimpnt, ifile</synopsis><para/>
@@ -2028,26 +2027,19 @@
 <synopsis>iwidth, iheight <link linkend="imagesize">imagesize</link> iimagenum</synopsis><para/>
 </para></formalpara>
 <para></para><para></para><formalpara>
-<title>Tableaux : cepstre</title>
-<para>
-<para/>
-<synopsis>keps[] <link linkend="ceps">ceps</link> kmags[][, icoefs]</synopsis><para/>
-<synopsis>kenv <link linkend="cepsinv">cepsinv</link> keps[]</synopsis><para/>
-</para></formalpara>
-<para></para><para></para><formalpara>
 <title>Opcodes de tableaux</title>
 <para>
 <para/>
 <synopsis><link linkend="copya2ftab">copya2ftab</link> kftbl, tab</synopsis><para/>
 <synopsis><link linkend="copyf2array">copyf2array</link> tab, kftbl</synopsis><para/>
-<synopsis>kout[] <link linkend="getcol">getcol</link> kin[], kcol</synopsis><para/>
-<synopsis>kout[] <link linkend="getrow">getrow</link> kin[], krow</synopsis><para/>
+<synopsis>i/kout[] <link linkend="getcol">getcol</link>i/kin[], i/kcol</synopsis><para/>
+<synopsis>i/kout[] <link linkend="getrow">getrow</link>i/kin[],i/krow</synopsis><para/>
 <synopsis>kmax [,kindx] <link linkend="maxarray">maxarray</link> karray</synopsis><para/>
 <synopsis>kmin [,kindx] <link linkend="minarray">minarray</link> karray</synopsis><para/>
 <synopsis>kres/ires<link linkend="productarray">product</link> karr[]/iarr[]  (k- or i-arrays )</synopsis><para/>
 <synopsis><link linkend="scalearray">scalearray</link> tarray, kmin, kmax[, kleft, kright]</synopsis><para/>
-<synopsis>kout[] <link linkend="setcol">setcol</link> kin[], kcol</synopsis><para/>
-<synopsis>kout[] <link linkend="setrow">setrow</link> kin[], krow</synopsis><para/>
+<synopsis>i/kout[] <link linkend="setcol">setcol</link>i/kin[],i/kcol</synopsis><para/>
+<synopsis>i/kout[] <link linkend="setrow">setrow</link>i/kin[],i/krow</synopsis><para/>
 <synopsis>kout[] <link linkend="shiftin">shiftin</link> asig</synopsis><para/>
 <synopsis>asig <link linkend="shiftout">shiftout</link>kIn[][, ioff]</synopsis><para/>
 <synopsis>ksum <link linkend="sumarray">sumarray</link> karray</synopsis><para/>
@@ -2100,6 +2092,19 @@
 <para/>
 <synopsis>k/i[]<link linkend="sorta">sorta</link> k/i[]  (k- or i-arrays )</synopsis><para/>
 <synopsis>k/i[]<link linkend="sortd">sortd</link> k/i[]  (k- or i-arrays )</synopsis><para/>
+</para></formalpara>
+<para></para><para></para><formalpara>
+<title>Opérations de tableau : cepstre</title>
+<para>
+<para/>
+<synopsis>keps[] <link linkend="ceps">ceps</link> kmags[][, icoefs]</synopsis><para/>
+<synopsis>kenv <link linkend="cepsinv">cepsinv</link> keps[]</synopsis><para/>
+</para></formalpara>
+<para></para><para></para><formalpara>
+<title>Opérations de tableau : obsolète</title>
+<para>
+<para/>
+<synopsis><link linkend="ktableseg">ktableseg</link> ifn1, idur1, ifn2 [, idur2] [, ifn3] [...]</synopsis><para/>
 </para></formalpara>
 <para></para><para></para><formalpara>
 <title>Divers</title>

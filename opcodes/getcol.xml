@@ -30,7 +30,21 @@ authors=Francois Pinot
 
   <refsect1>
     <title>Syntaxe</title>
-      <synopsis>kout[] <command>getcol</command> kin[], kcol</synopsis>
+      <synopsis>i/kout[] <command>getcol</command>i/kin[], i/kcol</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iout[]</emphasis> -- tableau de sortie contenant la colonne
+      extraite. Créé s'il n'existe pas.
+    </para>
+    <para>
+      <emphasis>iin[]</emphasis> -- tableau bidimensionnel en entrée.
+    </para>
+    <para>
+      <emphasis>icol</emphasis> -- colonne à extraire.
+    </para>
   </refsect1>
 
   <refsect1>

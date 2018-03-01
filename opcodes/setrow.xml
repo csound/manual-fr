@@ -29,7 +29,21 @@ authors=Francois Pinot
 
   <refsect1>
     <title>Syntaxe</title>
-      <synopsis>kout[] <command>setrow</command> kin[], krow</synopsis>
+    <synopsis>i/kout[] <command>setrow</command>i/kin[],i/krow</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iout[]</emphasis> -- tableau de sortie contenant la ligne
+      fixée. Créé s'il n'existe pas.
+    </para>
+    <para>
+      <emphasis>iin[]</emphasis> -- tableau d'entrée.
+    </para>
+    <para>
+      <emphasis>irow</emphasis> -- ligne à fixer.
+    </para>
   </refsect1>
 
   <refsect1>

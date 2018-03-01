@@ -27,7 +27,21 @@ authors=Francois Pinot
 
   <refsect1>
     <title>Syntaxe</title>
-      <synopsis>kout[] <command>getrow</command> kin[], krow</synopsis>
+      <synopsis>i/kout[] <command>getrow</command>i/kin[],i/krow</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iout[]</emphasis> -- tableau de sortie contenant la ligne
+      extraite. Créé s'il n'existe pas.
+    </para>
+    <para>
+      <emphasis>iin[]</emphasis> -- tableau bidimensionnel en entrée.
+    </para>
+    <para>
+      <emphasis>irow</emphasis> -- ligne à extraire.
+    </para>
   </refsect1>
 
   <refsect1>
