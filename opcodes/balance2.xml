@@ -1,0 +1,113 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="balance2">
+<indexterm id="IndexBalance2"><primary>balance2</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Amplitude Modifiers</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>balance2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>balance2</refname>
+    <refpurpose>
+      Ajuste un signal audio selon les valeurs d'un autre.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      La valeur efficace de <emphasis>asig</emphasis> peut être interrogée, fixée
+      ou ajustée pour s'adapter à celle d'un signal de comparaison.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>balance2</command> asig, acomp [, ihp] [, iskip]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ihp</emphasis> (facultatif) -- point à mi-puissance (en Hz) d'un
+      filtre passe-bas interne spécial. La valeur par défaut est 10.
+    </para>
+
+    <para>
+      <emphasis>iskip</emphasis> (facultatif, 0 par défaut) -- disposition
+      initiale de l'espace de données interne (voir
+      <link linkend="reson"><citetitle>reson</citetitle></link>). La valeur
+      par défaut est 0.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- signal audio en entrée
+    </para>
+
+    <para>
+      <emphasis>acomp</emphasis> -- le signal de comparaison
+    </para>
+
+    <para>
+      <emphasis>balance2</emphasis> restitue une version de <emphasis>asig</emphasis>,
+      dont l'amplitude a été modifiée de façon à ce que sa valeur efficace soit
+      égale à celle d'un signal de comparaison <emphasis>acomp</emphasis>. Ainsi
+      un signal qui a subi une perte de puissance (par exemple en traversant un
+      banc de filtres) peut être restauré en l'ajustant, par exemple, à sa propre
+      source. Il faut noter que
+      <link linkend="gain"><citetitle>gain</citetitle></link> et
+      <emphasis>balance2</emphasis> n'effectuent que des modifications d'amplitude,
+      les signaux de sortie ne subissant aucune autre altération.
+    </para>
+    <para>
+      Noter que <emphasis>balance2</emphasis> est semblable à
+      <emphasis>balance</emphasis> sauf que le gain est recalculé pour chaque
+      échantillon plutôt que d'interpoler des valeurs de taux-k.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode balance2. Il utilise le fichier
+      <ulink url="examples/balance2.csd"><citetitle>balance2.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode balance2.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/balance2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="balance"><citetitle>balance</citetitle></link>,
+      <link linkend="gain"><citetitle>gain</citetitle></link>,
+      <link linkend="rms"><citetitle>rms</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;;</member>
+        <member>Mars 2018</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans Csound version 6.11</para>
+  </refsect1>
+</refentry>
