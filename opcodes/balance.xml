@@ -38,7 +38,7 @@ english cvs version=1.12
     <title>Initialisation</title>
     <para>
       <emphasis>ihp</emphasis> (facultatif) -- point à mi-puissance (en Hz) d'un
-      d'un filtre passe-bas interne spécial. La valeur par défaut est 10.
+      filtre passe-bas interne spécial. La valeur par défaut est 10.
     </para>
 
     <para>
@@ -91,6 +91,7 @@ english cvs version=1.12
   <refsect1>
     <title>Voir aussi</title>
     <para>
+      <link linkend="balance2"><citetitle>balance2</citetitle></link>,
       <link linkend="gain"><citetitle>gain</citetitle></link>,
       <link linkend="rms"><citetitle>rms</citetitle></link>
     </para>
