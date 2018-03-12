@@ -30,7 +30,7 @@ english cvs version=1.13
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>ares <command>lowres</command> asig, kcutoff, kresonance [, iskip]</synopsis>
+    <synopsis>ares <command>lowres</command> asig, xcutoff, xresonance [, iskip]</synopsis>
   </refsect1>
  
   <refsect1>
@@ -49,11 +49,11 @@ english cvs version=1.13
     </para>
 
     <para>
-      <emphasis>kcutoff</emphasis> -- fréquence de coupure du filtre
+      <emphasis>xcutoff</emphasis> -- fréquence de coupure du filtre
     </para>
 
     <para>
-      <emphasis>kresonance</emphasis> -- quantité de résonance
+      <emphasis>xresonance</emphasis> -- quantité de résonance
     </para>
 
     <para>
@@ -61,7 +61,7 @@ english cvs version=1.13
       orchestre écrit par &namehans;. Cette implémentation est bien plus rapide
       que celle écrite dans le langage de Csound, et elle permet d'avoir un
       <emphasis>kr</emphasis> inférieur à <emphasis>sr</emphasis>.
-      <emphasis>kcutoff</emphasis> n'étant pas en Hz et <emphasis>kresonance</emphasis>
+      <emphasis>xcutoff</emphasis> n'étant pas en Hz et <emphasis>xresonance</emphasis>
       pas en dB, il faut expérimenter pour obtenir les meilleurs résultats.
     </para>
   </refsect1>
