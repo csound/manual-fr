@@ -55,8 +55,8 @@ english cvs version=1.15
   <refsect1>
     <title>Initialisation</title>
 
-	<para>
-	<emphasis>ifilcod</emphasis> -- entier ou chaîne de caractères donnant le nom
+  <para>
+  <emphasis>ifilcod</emphasis> -- entier ou chaîne de caractères donnant le nom
       du fichier son source. Un entier indique le fichier soundin.filcod ; une chaîne
       de caractères (entre guillemets, espaces autorisés) donne le nom de fichier
       lui-même, éventuellement un nom de chemin complet. Si ce n'est pas un nom de
@@ -70,10 +70,10 @@ english cvs version=1.15
       trames d'échantillons ne soient pas joués correctement sur les plates-formes
       32 bit ; cela donne une longueur maximale d'environ trois heures avec un
       taux d'échantillonnage de 192000 Hz.
-   	</para>
+     </para>
 
-   	<para>
-   	<emphasis>iskiptim</emphasis> (facultatif, zéro par défaut) -- portion du son
+     <para>
+     <emphasis>iskiptim</emphasis> (facultatif, zéro par défaut) -- portion du son
     en entrée à ignorer, exprimée en secondes, en supposant que
     <emphasis>kpitch</emphasis>=1. Peut être négatif, pour ajouter
     -<emphasis>iskiptim</emphasis>/<emphasis>kpitch</emphasis> secondes de délai
@@ -85,105 +85,105 @@ english cvs version=1.15
     est utilisée. Au lieu de cela, la lecture commencera du même décalage avant
     la fin du fichier.</para>
     </note>
-   	</para>
+     </para>
 
-	<para>
-	<emphasis>iwrap</emphasis> (facultatif, zéro par défaut) -- s'il a n'importe
+  <para>
+  <emphasis>iwrap</emphasis> (facultatif, zéro par défaut) -- s'il a n'importe
     quelle valeur non nulle, les positions de lecture négatives ou au-delà de la
     fin du fichier sont ramenées à l'intérieur de la durée du fichier son au
     lieu d'être remplacées par des échantillons nuls. Pratique pour jouer un
     fichier en boucle.
 
-   	<note>
-   	<title>Note</title>
-   	<para>
+     <note>
+     <title>Note</title>
+     <para>
       Si <emphasis>iwrap</emphasis> est activé, la longueur du fichier ne doit
       pas être inférieure à la taille de la fenêtre d'interpolation (voir ci-dessous),
       sinon il pourra y avoir des craquements dans le son de sortie.
-   	</para>
-   	</note>
+     </para>
+     </note>
 
-   	</para>
+     </para>
 
-   	<para>
-   	<emphasis>iformat</emphasis> (facultatif, zéro par défaut) -- format d'échantillon,
+     <para>
+     <emphasis>iformat</emphasis> (facultatif, zéro par défaut) -- format d'échantillon,
       seulement pour les fichiers bruts (sans en-tête). Ce paramètre est ignoré si
       le fichier a un en-tête. Les valeurs admises sont :
 
-	<itemizedlist>
+  <itemizedlist>
         <listitem>
-          <para>0 : entiers courts sur 16 bit</para>
+          <para>1 : entiers courts sur 16 bit</para>
         </listitem>
 
         <listitem>
-          <para>1 : caractères signés sur 8 bit (les 8 bit de poids fort d'un entier
+          <para>2 : caractères signés sur 8 bit (les 8 bit de poids fort d'un entier
           sur 16 bit)</para>
         </listitem>
 
         <listitem>
-          <para>2 : octets sur 8 bit A-law</para>
+          <para>3 : octets sur 8 bit A-law</para>
         </listitem>
 
         <listitem>
-          <para>3 : octets sur 8 bit U-law</para>
+          <para>4 : octets sur 8 bit U-law</para>
         </listitem>
 
         <listitem>
-          <para>4 : entiers courts sur 16 bit</para>
+          <para>5 : entiers courts sur 16 bit</para>
         </listitem>
 
         <listitem>
-          <para>5 : entiers longs sur 32 bit</para>
+          <para>6 : entiers longs sur 32 bit</para>
         </listitem>
 
         <listitem>
-          <para>6 : flottants sur 32 bit</para>
+          <para>7 : flottants sur 32 bit</para>
         </listitem>
 
         <listitem>
-          <para>7 : entiers non signés sur 8 bit</para>
+          <para>8 : entiers non signés sur 8 bit</para>
         </listitem>
 
         <listitem>
-          <para>8 : entiers sur 24 bit</para>
+          <para>9 : entiers sur 24 bit</para>
         </listitem>
 
         <listitem>
-          <para>9 : doubles sur 64 bit</para>
+          <para>10 : doubles sur 64 bit</para>
         </listitem>
     </itemizedlist>
 
-	</para>
+  </para>
 
-	<para>
-	<emphasis>iwsize</emphasis> (facultatif, zéro par défaut) -- taille de la
+  <para>
+  <emphasis>iwsize</emphasis> (facultatif, zéro par défaut) -- taille de la
     fenêtre d'interpolation, en échantillons. Peut prendre une de ces valeurs :
 
- 	<itemizedlist>
-		<listitem>
-			<para>1 : arrondi à l'échantillon le plus proche (pas d'interpolation, pour
+   <itemizedlist>
+    <listitem>
+      <para>1 : arrondi à l'échantillon le plus proche (pas d'interpolation, pour
       <emphasis>kpitch</emphasis>=1)</para>
-		</listitem>
+    </listitem>
 
-		<listitem>
-			<para>2 : interpolation linéaire</para>
-		</listitem>
+    <listitem>
+      <para>2 : interpolation linéaire</para>
+    </listitem>
 
-		<listitem>
-			<para>4 : interpolation cubique</para>
-		</listitem>
+    <listitem>
+      <para>4 : interpolation cubique</para>
+    </listitem>
 
-		<listitem>
-			<para>>= 8 : interpolation par sinc de <emphasis>iwsize</emphasis> points
+    <listitem>
+      <para>>= 8 : interpolation par sinc de <emphasis>iwsize</emphasis> points
       avec anti-aliasing (lent)</para>
-		</listitem>
-	</itemizedlist>
+    </listitem>
+  </itemizedlist>
   Zéro ou des valeurs négatives sélectionnent la valeur par défaut, qui est
   l'interpolation cubique.
 
-  	<note>
-  	<title>Note</title>
-  	<para>S'il y a interpolation, <emphasis>kpitch</emphasis> est automatiquement
+    <note>
+    <title>Note</title>
+    <para>S'il y a interpolation, <emphasis>kpitch</emphasis> est automatiquement
     mis à l'échelle par le rapport des taux d'échantillonnage du fichier et de
     l'orchestre, afin que le fichier soit toujours joué à la hauteur originale si
     <emphasis>kpitch</emphasis> vaut 1. Cependant, la conversion du taux
@@ -194,7 +194,7 @@ english cvs version=1.15
     </para>
 
     <para>
-	<emphasis>ibufsize</emphasis> (facultatif, zéro par défaut) -- taille du tampon
+  <emphasis>ibufsize</emphasis> (facultatif, zéro par défaut) -- taille du tampon
     en échantillons mono (pas en trames d'échantillons). Ce n'est que la valeur
     suggérée, la valeur retenue étant arrondie afin que le nombre de trames
     d'échantillons soit une puissance entière de deux et soit comprise entre
@@ -218,8 +218,8 @@ english cvs version=1.15
   <refsect1>
     <title>Exécution</title>
 
-	<para>
-	<emphasis>a1 ... a24</emphasis> -- signaux de sortie, dans l'intervalle allant
+  <para>
+  <emphasis>a1 ... a24</emphasis> -- signaux de sortie, dans l'intervalle allant
     de -0dbfs à 0dbfs. Tous les échantillons avant le début du fichier (positions
     négatives) et après la fin du fichier prennent la valeur zéro, à moins que
     <emphasis>iwrap</emphasis> soit non nul. Le nombre d'arguments de sortie
@@ -230,8 +230,8 @@ english cvs version=1.15
 
   <para>
     <emphasis>ar1[]</emphasis> --- signaux de sortie, dans un tableau de
-	    taux-a de taille N, où N est le nombre de canaux dans le fichier. Les
-	    tableaux sont automatiquement alloués avec la taille correcte.
+      taux-a de taille N, où N est le nombre de canaux dans le fichier. Les
+      tableaux sont automatiquement alloués avec la taille correcte.
   </para>
 
   <note>
@@ -239,13 +239,13 @@ english cvs version=1.15
     <para>Il est plus efficace de lire un seul fichier avec plusieurs canaux, que
     plusieurs fichiers à un seul canal, spécialement avec de grandes valeurs de
     <emphasis>iwsize</emphasis>.
-	  </para>
-	</note>
+    </para>
+  </note>
 
-	</para>
+  </para>
 
-	<para>
-	<emphasis>kpitch</emphasis> -- transpose la hauteur du son en entrée par ce facteur
+  <para>
+  <emphasis>kpitch</emphasis> -- transpose la hauteur du son en entrée par ce facteur
     (par exemple 0.5 signifie une octave plus bas, 2 une octave plus haut, et 1
     la hauteur originale, qui est la valeur par défaut). Des valeurs fractionnaires
     et négatives sont permises
@@ -285,7 +285,7 @@ english cvs version=1.15
       <link linkend="ino"><citetitle>ino</citetitle></link>,
       <link linkend="inq"><citetitle>inq</citetitle></link>,
       <link linkend="ins"><citetitle>ins</citetitle></link>,
-      <link linkend="soundin"><citetitle>soundin</citetitle></link> and 
+      <link linkend="soundin"><citetitle>soundin</citetitle></link> et 
       <link linkend="diskin"><citetitle>diskin</citetitle></link>
     </para>
   </refsect1>
