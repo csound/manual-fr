@@ -106,9 +106,10 @@ english cvs version=1.15
      </para>
 
      <para>
-     <emphasis>iformat</emphasis> (facultatif, zéro par défaut) -- format d'échantillon,
-      seulement pour les fichiers bruts (sans en-tête). Ce paramètre est ignoré si
-      le fichier a un en-tête. Les valeurs admises sont :
+     <emphasis>iformat</emphasis> (facultatif, zéro par défaut) -- fixe le
+     format d'échantillon pour les fichiers bruts (sans en-tête). Ce paramètre
+     doit être nul si le fichier a un en-tête. Les valeurs admises pour les
+     fichiers bruts sont :
 
   <itemizedlist>
         <listitem>
