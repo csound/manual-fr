@@ -44,9 +44,10 @@ english cvs version=1.10
     </para>
     <para>
       <emphasis>idest</emphasis> -- une chaîne de caractères représentant
-      l'adresse de destination. Elle est formatée comme un nom de fichier avec
-      des répertoires. Csound utilise cette adresse pour décider si les
-      messages sont destinés à Csound.
+      l'adresse de destination. Elle est formatée comme un chemin préfixé par
+      une barre oblique, avec d'éventuels sous-répertoires séparés par des
+      barres obliques. Csound traite les messages entrants qui correspondent à
+      cette adresse.
     </para>
 
     <para>
