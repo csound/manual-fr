@@ -82,6 +82,22 @@ english cvs version=1.11
      une structure de composition itérative cohérente.
     </para>
   </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      voici un exemple de l'opcode tabrec. Il utilise le fichier
+      <ulink url="examples/tabrec.csd"><citetitle>oscil.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode tabrec.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/tabrec.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
   <refsect1>
     <title>Voir aussi</title>
     <para><link linkend="tabplay"><citetitle>tabplay</citetitle></link></para>
@@ -90,5 +106,6 @@ english cvs version=1.11
   <refsect1>
     <title>Crédits</title>
     <para>Ecrit par &namegabriel;.</para>
+    <para>Exemple écrit par Iain McCurdy</para>
   </refsect1>
 </refentry>
