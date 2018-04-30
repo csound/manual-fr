@@ -56,9 +56,11 @@ english cvs version=1.9
   <refsect1>
     <title>Description</title>
     <para>
+      <note>Ces opcodes sont généralement remplacés par le forme fonctionnelle
+      de l'opcode tab.</note>
       Permet de lire des tables de manière fonctionnelle, à utiliser dans des
       expressions.
-      Actuellement, Csound ne supporte que les fonctions avec un seul argument
+      Anciennement, Csound ne supportait que les fonctions avec un seul argument
       en entrée. Cependant, pour accéder aux éléments d'une table, on doit
       fournir deux nombres : le numéro de la table et l'indice de l'élément.
       Donc, afin de pouvoir accéder à un élément d'une table par une fonction,

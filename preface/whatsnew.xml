@@ -92,6 +92,211 @@ english cvs version=
     </itemizedlist>
   </para>-->
 
+  <bridgehead>Notes de parution de Csound 6.11 (mai 2018)</bridgehead>
+  <para>
+    Il y a eu une importante réoganisation en interne qui ne devrait pas affecter
+    la plupart des utilisateurs. Certains composants sont maintenant gérés
+    indépendamment et seront éventuellement installables via un nouveau gestionnaire
+    de paquets. L'option temps réel est considérée comme stable et son étiquette
+    "expérimental" a été supprimée. L'intégration des opérations arithmétiques
+    impliquant des tableaux-a a bien avancé.
+    <note>Noter que les changements dans GEN01 et dans diskin2 peuvent ne pas
+    être rétrocompatibles si une valeur non nulle est donnée pour le format.</note>
+  </para>
+  <para>
+    <itemizedlist>
+      <listitem>
+        <para>Nouveaux opcodes :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                loscilphs, loscil3phs sont comme loscil mais ils retournent la
+                phase en plus de la sortie audio.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Plus d'arithmétique entre les tableaux de taux-a et les valeurs
+                de taux-a ; cela complète l'arithmétique lorsqu'un ou plusieurs
+                arguments sont des tableaux audio.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                balance2 est comme balance mais il pondère la sortie au taux-a
+                plutôt qu'au taux-k.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Partition :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Les caractères suivant un \ dans une chaîne de caractères de la
+                partition sont échappés. Ainsi \n représente un retour à la
+                ligne plutôt que deux caractères. Les caractères a, b, f, n, r,
+                t et v peuvent être échappés. Les autres caractères suivant un \
+                ne sont pas échappés.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Opcodes et Gens modifiés :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                print, printk2 prennent maintenant un argument supplémentaire
+                facultatif qui, s'il est non nul, provoque l'affichage du nom
+                de la variable de taux-k en plus de sa valeur.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                getrow, setrow, getcol et setcol peuvent désormais agir sur les
+                tableaux de taux-i.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                diskin2 était incorrectement décrit dans le manual quant au
+                paramètre iformat. Maintenant si iformat est nul le fichier est
+                supposé avoir un en-tête audio ; s'il est compris entre 1 et 10
+                (au lieu de 0 et 9 comme précédemment), le fichier est ouvert
+                comme fichier brut avec le format d'échantillon spécifié. CECI
+                PEUT ETRE INCOMPATIBLE. Pour la plupart des utilisateurs la
+                valeur zéro sera correcte.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                GEN01 utilise maintenant le format 0 pour lire le type du fichier
+                dans son en-tête ; tout autre valeur indique un fichier brut.
+                CECI PEUT ETRE INCOMPATIBLE. Pour la plupart des utilisateurs la
+                valeur zéro sera correcte.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                GEN01 n'était pas correctement documenté quant à l'argument du
+                format. Il y a 9 formats brut alors que le manuel n'en renseignait
+                que 6 auparavant.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Un petit changement dans slicearray devrait permettre son
+                utilisation sous forme fonctionnelle dans la plupart des cas.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                La famille d'opcodes tb0 à tb15 et ses opcodes d'initialisation
+                tb0_init à tb15_init sont obsolètes car les fonctions à arguments
+                multiples sont permises.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Bogues corrigés :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                linen a été retravaillé pour permettre les longues durées et les
+                recouvrements.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                La réinitialisation de Csound provoquait un plantage si les
+                opdodes Lua étaient utilisés ; c'est corrigé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                La famille d'opcodes poscil donnait des résultats incorrects
+                s'ils étaient utilisés dans des orchestres multicoeurs ET qu'un
+                autre instrument changeait la table-f. C'est maintenant corrigé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                L'utilisation de out avec un tableau audio ne testait pas si la
+                dimension du tableau était supérieure au nombre de canaux, ce
+                qui provoquait un plantage. La dimension est maintenant testée
+                et tronquée si elle est trop grande, avec un message d'avertissement.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Un bogue dans les versions stéréo de loscil provoquait une
+                distortion ; c'est corrigé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Erreur d'intervalle dans phs corrigée.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                gen49 effaçait la mémoire si le fichier n'était pas trouvé ;
+                corrigé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Le chargement de greffons LADSPA, lorsqu'il reposait sur des
+                chemins de recherche, était défectueux et abrégeait les noms ;
+                c'est corrigé.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Changements système :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                OPCODE6DIR{64} peut contenir maintenant une liste de répertoires
+                séparés par des double-points.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                La distinction quelque peu curieuse entre les temps d'exécution
+                de taux-k et de taux-a a été supprimée du débit, si bien que
+                seuls les threads 1, 2 et 3 sont utilisés, la sortie de type-s
+                n'est pas utilisée et certaines entrées de type-x ont été changées
+                pour un polymorphisme explicite. Ceci ne compte que pour les
+                auteurs d'opcodes car les codes s et x et les threads 4, 5, 6 et
+                7 seront bientôt supprimés.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Traductions :
+          <itemizedlist>
+            <listitem>
+              <simpara>La traduction française est complète comme d'habitude.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+
   <bridgehead>Notes de parution de Csound 6.10 (décembre 2017)</bridgehead>
   <para>
     C'est principalement une distribution de correction de bogues, incluant un
@@ -103,7 +308,7 @@ english cvs version=
   <para>
     <itemizedlist>
       <listitem>
-        <para>Nouveau opcodes :
+        <para>Nouveaux opcodes :
           <itemizedlist>
             <listitem>
               <simpara>
