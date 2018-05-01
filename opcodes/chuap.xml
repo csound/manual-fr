@@ -123,7 +123,7 @@ english cvs version=1.7
       si l'on développe un projet avec <emphasis>sr</emphasis>=48000Hz et si l'on veut
       produire un CD audio de ce projet, il faut enregistrer un fichier avec
       <emphasis>sr</emphasis>=48000Hz, puis sous-échantillonner ce fichier à 44100Hz avec
-      l'utilitaire <link linkend="srconv"><citetitle>srconv</citetitle></link>.</para> 
+      l'utilitaire <link linkend="src_conv"><citetitle>src_conv</citetitle></link>.</para> 
     </note>
     <warning>
       Attention ! Certains jeux de paramètres produiront des pics d'amplitude ou une rétroaction positive
@@ -147,7 +147,7 @@ english cvs version=1.7
     <title>Crédits</title>
     <para>
       <simplelist>
-	<member>Inventeur de l'oscillateur de Chua : <ulink url="http://www.eecs.berkeley.edu/~chua"><citetitle>Leon O. Chua</citetitle></ulink></member>
+  <member>Inventeur de l'oscillateur de Chua : <ulink url="http://www.eecs.berkeley.edu/~chua"><citetitle>Leon O. Chua</citetitle></ulink></member>
         <member>Auteur de la simulation dans MATLAB : James Patrick McEvoy <ulink url="http://www.mathworks.com/matlabcentral/fileexchange/loadFile.do?objectId=3541"><citetitle>MATLAB Adventures in Bifurcations and Chaos (ABC++)</citetitle></ulink></member>
         <member>Auteur du portage dans Csound : Michael Gogins</member>
     </simplelist>
