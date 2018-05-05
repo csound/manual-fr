@@ -60,8 +60,13 @@ english cvs version=1.6
       <warning>
         <title>Avertissement</title>
         <para>
-          Ce filtre devient instable si <emphasis>sr</emphasis>/<emphasis>xfreq</emphasis>
-          &lt; pi (par exemple <emphasis>xfreq</emphasis> &gt; 14037 Hz à 44100 Hz).
+          Comme ce filtre devient instable si <emphasis>sr</emphasis>/<emphasis>xfreq</emphasis>
+          &lt; pi, la valeur de <emphasis>xfreq</emphasis> est limitée en interne à
+          <emphasis>sr</emphasis>/<emphasis>pi</emphasis>-<emphasis>sr</emphasis>/100
+          &gt; (par exemple <emphasis>xfreq</emphasis> &gt; 13595 Hz à 44.1 kHz).
+          Le terme <emphasis>sr</emphasis>/100 est dû au fait que le filtre, bien
+          que mathématiquemet stable, a une très forte amplification lorsque l'on
+          s'approche de la région instable.
         </para>
         </warning>
     </para>
