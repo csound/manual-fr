@@ -204,6 +204,20 @@ english cvs version=
                 multiples sont permises.
               </simpara>
             </listitem>
+            <listitem>
+              <simpara>
+                Le filtre mode n'accepte plus une fréquence dans la région
+                instable.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Dans scanu et xscanu la valeur de kpos était supposée être dans
+                l'intervalle [0, 1]. C'est maintenant consolidé en traitant
+                toutes les valeurs négatives comme 0 et toutes les valeurs
+                supérieures à 1 comme 1.
+              </simpara>
+            </listitem>
           </itemizedlist>
         </para>
       </listitem>
