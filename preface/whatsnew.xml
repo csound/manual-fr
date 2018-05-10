@@ -110,8 +110,10 @@ english cvs version=
           <itemizedlist>
             <listitem>
               <simpara>
-                loscilphs, loscil3phs sont comme loscil mais ils retournent la
-                phase en plus de la sortie audio.
+                <link linkend="loscil"><citetitle>loscilphs</citetitle></link>,
+                <link linkend="loscil3"><citetitle>loscil3phs</citetitle></link>,
+                sont comme loscil mais ils retournent la phase en plus de la
+                sortie audio.
               </simpara>
             </listitem>
           </itemizedlist>
@@ -127,7 +129,8 @@ english cvs version=
           <itemizedlist>
             <listitem>
               <simpara>
-                balance2 est comme balance mais il pondère la sortie au taux-a
+                <link linkend="balance2"><citetitle>balance2</citetitle></link>
+                est comme balance mais il pondère la sortie au taux-a
                 plutôt qu'au taux-k.
               </simpara>
             </listitem>
@@ -143,7 +146,7 @@ english cvs version=
                 partition sont échappés. Ainsi \n représente un retour à la
                 ligne plutôt que deux caractères. Les caractères a, b, f, n, r,
                 t et v peuvent être échappés. Les autres caractères suivant un \
-                ne sont pas échappés.
+                ignorent la barre inversée.
               </simpara>
             </listitem>
           </itemizedlist>
