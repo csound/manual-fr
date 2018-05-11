@@ -98,7 +98,8 @@ english cvs version=
     la plupart des utilisateurs. Certains composants sont maintenant gérés
     indépendamment et seront éventuellement installables via un nouveau gestionnaire
     de paquets. L'option temps réel est considérée comme stable et son étiquette
-    "expérimental" a été supprimée. L'intégration des opérations arithmétiques
+    "expérimental" a été supprimée. Un support spécial pour la plate-forme Bela a
+    été introduit. L'intégration des opérations arithmétiques
     impliquant des tableaux-a a bien avancé.
     <note>Noter que les changements dans GEN01 et dans diskin2 peuvent ne pas
     être rétrocompatibles si une valeur non nulle est donnée pour le format.</note>
@@ -225,6 +226,29 @@ english cvs version=
         </para>
       </listitem>
       <listitem>
+        <para>Utilités :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                src_conv est maintenant disponible sous Windows et sous MacOS.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Frontaux :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Belacsound : un nouveau frontal spécifique pour la plate-forme
+                Bela est introduit dans cette version.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
         <para>Bogues corrigés :
           <itemizedlist>
             <listitem>
@@ -307,6 +331,35 @@ english cvs version=
           <itemizedlist>
             <listitem>
               <simpara>La traduction française est complète comme d'habitude.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>API :
+          <itemizedlist>
+            <listitem>
+              <simpara>Pas de changement dans l'API.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Changements sur les plates-formes :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                WebAudio : à partir de cette distribution, le portage de Csound
+                vers les plates-formes web a été unifié dans un seul paquet
+                nommé désormais "WebAudio Csound". Cela a provoqué beaucoup de
+                changements en interne, l'interface AudioWorklet étant employée
+                partout où elle est supportée, avec l'alternative de
+                ScriptProcessorNode dans les autres cas. Csound est aussi
+                disponible sous formes de Nodes indépendants, en plus de l'API
+                originale CsoundObj. Le frontal csound.js, conçu à l'origine
+                pour PNaCl Csound, a été aussi porté dans WebAudio Csound,
+                suite à l'obsolescence de ce portage de Csound.
+              </simpara>
             </listitem>
           </itemizedlist>
         </para>
@@ -3923,7 +3976,7 @@ void csoundDebugFreeVariables(CSOUND *csound, debug_variable_t *varHead);</progr
         <para>Frontaux :
           <itemizedlist>
             <listitem>
-              <simpara>PNaCl est maintenant supporté comme plateforme, ce qui
+              <simpara>PNaCl est maintenant supporté comme plate-forme, ce qui
               permet d'exécuter Csound dans le navigateur Chrome sur tous les
               systèmes d'exploitation qui l'acceptent.
               </simpara>
@@ -4392,7 +4445,7 @@ void csoundDebugFreeVariables(CSOUND *csound, debug_variable_t *varHead);</progr
       </para>
     </listitem>
     <listitem>
-      <para>Changements de plateforme</para>
+      <para>Changements de plate-forme</para>
     </listitem>
     <listitem>
       <para>API
