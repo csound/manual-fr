@@ -65,17 +65,18 @@ english cvs version=1.8
     </para>
 
     <para>
-      <emphasis>format</emphasis> -- pour les fichiers bruts, spécifie le format des données audio :
+      <emphasis>format</emphasis> -- s'il est positif, il est ignoré, mais s'il
+      est négatif, il spécifie le format audio d'un fichier brut :
         <literallayout>
-          1 - 8-bit caractères signés
-          2 - 8-bit octets A-law
-          3 - 8-bit octets U-law
-          4 - 16-bit entiers courts
-          5 - 32-bit entiers longs
-          6 - 32-bit flottants
-          7 - 8-bit caractères non signés
-          8 - 24-bit entiers
-          9 - 64-bit doubles</literallayout>
+          -1 - 8-bit caractères signés
+          -2 - 8-bit octets A-law
+          -3 - 8-bit octets U-law
+          -4 - 16-bit entiers courts
+          -5 - 32-bit entiers longs
+          -6 - 32-bit flottants
+          -7 - 8-bit caractères non signés
+          -8 - 24-bit entiers
+          -9 - 64-bit doubles</literallayout>
     </para>
     <note><para>
       Cette liste n'est pas la même que celle qui est dans
@@ -181,7 +182,8 @@ english cvs version=1.8
     <title>Crédits</title>
     <para>Septembre 2003. Remerciements au Dr. Richard Boulanger pour avoir
     signalé les références au format de fichier AIFF.</para>
-    <para>Revisé dans la v6.11 pour clarifier le statut des en-têtes et des
-    fichiers bruts et pour ajouter trois formats d'échantillons.</para>
+    <para>Revisé dans la v6.11 et dans la v6.12 pour clarifier le statut des
+    en-têtes et des fichiers bruts et pour ajouter trois formats
+    d'échantillons.</para>
   </refsect1>
 </refentry>

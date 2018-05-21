@@ -63,46 +63,47 @@ english cvs version=1.24
     </para>
 
     <para>
-      <emphasis>iformat</emphasis> (facultatif) -- spécifie le format des données
-      audio du fichier :
+      <emphasis>iformat</emphasis> (facultatif) -- ignoré s'il est positif, mais
+      s'il est négatif il spécifie le format des données audio d'un fichier
+      brut :
       <itemizedlist>
         <listitem>
-          <para>1 = caractères signés sur 8 bit (les 8 bit de poids fort d'un entier
+          <para>-1 = caractères signés sur 8 bit (les 8 bit de poids fort d'un entier
           sur 16 bit)</para>
         </listitem>
 
         <listitem>
-          <para>2 = octets sur 8 bit A-law</para>
+          <para>-2 = octets sur 8 bit A-law</para>
         </listitem>
 
         <listitem>
-          <para>3 = octets sur 8 bit U-law</para>
+          <para>-3 = octets sur 8 bit U-law</para>
         </listitem>
 
         <listitem>
-          <para>4 = entiers courts sur 16 bit</para>
+          <para>-4 = entiers courts sur 16 bit</para>
         </listitem>
 
         <listitem>
-          <para>5 = entiers longs sur 32 bit</para>
+          <para>-5 = entiers longs sur 32 bit</para>
         </listitem>
 
         <listitem>
-          <para>6 = flottants sur 32 bit</para>
+          <para>-6 = flottants sur 32 bit</para>
         </listitem>
 
         <listitem>
-          <para>7 = entiers non signés sur 8 bit (non disponible dans les versions
+          <para>-7 = entiers non signés sur 8 bit (non disponible dans les versions
           de Csound antérieures à la 5.00)</para>
         </listitem>
 
         <listitem>
-          <para>8 = entiers sur 24 bit (non disponible dans les versions de Csound
+          <para>-8 = entiers sur 24 bit (non disponible dans les versions de Csound
           antérieures à la 5.00)</para>
         </listitem>
 
         <listitem>
-          <para>9 = doubles sur 64 bit (non disponible dans les versions
+          <para>-9 = doubles sur 64 bit (non disponible dans les versions
           de Csound antérieures à la 5.00)</para>
         </listitem>
       </itemizedlist>
@@ -130,9 +131,9 @@ english cvs version=1.24
   <refsect1>
     <title>Exécution</title>
     <para>
-	    <emphasis>a1 ... a24</emphasis>	-- signaux de sortie, dans l'intervalle
-	    -0dbfs, 0dbfs. Tous les échantillons avant le début (position négative) et
-	    après la fin du fichier sont supposés nuls, à moins que
+      <emphasis>a1 ... a24</emphasis>  -- signaux de sortie, dans l'intervalle
+      -0dbfs, 0dbfs. Tous les échantillons avant le début (position négative) et
+      après la fin du fichier sont supposés nuls, à moins que
       <emphasis>iwrap</emphasis> soit différent de zéro. Le nombre d'arguments
       en sortie doit être le même que le nombre de canaux dans le fichier, que
       l'on peut déterminer avec l'opcode
@@ -140,10 +141,10 @@ english cvs version=1.24
       sinon il y aura une erreur.
     </para>
 
-	  <para>
-	    <emphasis>ar1[]</emphasis> --- signaux de sortie, dans un tableau de
-	    taux-a de taille N, où N est le nombre de canaux dans le fichier. Les
-	    tableaux sont automatiquement alloués avec la taille correcte.
+    <para>
+      <emphasis>ar1[]</emphasis> --- signaux de sortie, dans un tableau de
+      taux-a de taille N, où N est le nombre de canaux dans le fichier. Les
+      tableaux sont automatiquement alloués avec la taille correcte.
     </para>
     <para>
       <emphasis>kpitch</emphasis> -- N'importe quel nombre réel. Un nombre négatif
