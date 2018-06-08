@@ -1,0 +1,169 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ftaudio">
+<indexterm id="IndexFtaudio"><primary>ftaudio</primary></indexterm>
+  <refentryinfo><title>Table Control:Read/Write Opreations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ftaudio</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ftaudio</refname>
+    <refpurpose>
+      Ecrit une table pré-allouée dans un fichier audio.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ecrit une table pré-allouée dans un fichier audio sous différents formats.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ians <command>ftaudio</command> ifn, &quot;filename&quot;, iformat</synopsis>
+    <synopsis>kans <command>ftaudio</command> ktrig, kfn, &quot;filename&quot;, kformat [, isync]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn, kfn</emphasis> -- Numéro de la table à écrire.
+    </para>
+    <para>
+      <emphasis>&quot;filename&quot;</emphasis> -- Une chaîne de caractères entre
+      guillemets contenant le nom du fichier à sauvegarder.
+    </para>
+
+    <para>
+      <emphasis>iformat, kformat</emphasis> -- Format du fichier à sauvegarder.
+      <itemizedlist>
+       <listitem>
+          <para>-1 - le même format que celui fixé par l'indicateur du format
+          de sortie globale de Csound (-A, -W, --format=..., etc).</para>
+        </listitem>
+  
+        <listitem>
+          <para>0 - échantillons 32 bit en virgule flottante sans en-tête
+          (fichier binaire PCM multicanal).</para>
+        </listitem>
+
+        <listitem>
+          <para>1 - entiers 16 bit sans en-tête (fichier binaire PCM
+          multicanal).</para>
+        </listitem>
+
+        <listitem>
+          <para>2 - entiers 16 bit avec en-tête. Le type de l'en-tête dépend du
+          format de rendu (-o). Par exemple, si l'utilisateur choisit le format
+          AIFF (en utilisant l'<un 
+          linkend="FlagsMinusUpperA"><citetitle>indicateur -A</citetitle></link>),
+          le type du format de l'en-tête sera AIFF.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>3 - échantillons u-law avec un en-tête (voir iformat=2).</para>
+        </listitem>
+
+        <listitem>
+          <para>4 - entiers 16 bit avec un en-tête (voir iformat=2).</para>
+        </listitem>
+
+        <listitem>
+          <para>5 - entiers 32 bit avec un en-tête (voir iformat=2).</para>
+        </listitem>
+
+        <listitem>
+          <para>6 - nombres en virgule flottante 32 bit avec un en-tête
+          (voir iformat=2).</para>
+        </listitem>
+
+        <listitem>
+          <para>7 - entiers 8 bit non signés avec un en-tête (voir iformat=2).
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>8 - entiers 24 bit avec un en-tête (voir iformat=2).</para>
+        </listitem>
+
+        <listitem>
+          <para>9 - nombre en virgule flottante 64 bit avec un en-tête (voir
+          iformat=2).</para>
+        </listitem>
+
+        <listitem>
+          <para> 50 - format ogg-vorbis.</para>
+        </listitem>
+      </itemizedlist>
+      De plus Csound permet de choisir explicitement un type d'en-tête
+      particulier en spécifiant le format par la formule
+      10 * fileType + sampleFormat, où fileType vaut 1 pour WAV, 2 pour AIFF,
+      3 pour raw (sans en-tête) et 4 pour IRCAM ; sampleFormat prend une des
+      valeurs ci-dessus comprise entre 0 et 9, sauf que le format
+      d'échantillon 0 est celui de la ligne de commande (-o), le format 1 est
+      entiers 8 bit signés et le format 2 est a-law. Ainsi, par exemple,
+      iformat=25 signifie entiers 32 bit avec un en-tête AIFF.
+    </para>
+
+    <para>
+      <emphasis>isync</emphasis> -- s'il vaut zéro la version de taux-k attend
+      la fin de l'écriture. S'il est non nul (par défaut) l'écriture des
+      données est déléguée à un fil d'exécution séparé ce qui permet à Csound
+      de continuer l'exécution.
+    </para>
+
+    <para>
+      <emphasis>ians, kans</emphasis> -- retourne 0 en cas d'échec, 1 sinon.
+      Dans le mode asynchrone c'est mis à jour à la fin de l'écriture, jusqu'à
+      ce qu'il est la valeur -1.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ktrig</emphasis> -- la version de taux-k n'est active dans un
+      k-cycle que lorsque ktrig est non nul.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode ftaudio. Il utilise le fichier
+      <ulink url="examples/ftaudio.csd"><citetitle>ftaudio.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode ftaudio.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/ftaudio.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ftloadk"><citetitle>ftloadk</citetitle></link>,
+      <link linkend="ftload"><citetitle>ftload</citetitle></link>,
+      <link linkend="ftsave"><citetitle>ftsave</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namejohn;</para>
+    <para>Exemple écrit par &namejohn;.</para>
+    <para>Nouveau dans la version 6.12</para>
+  </refsect1>
+</refentry>
