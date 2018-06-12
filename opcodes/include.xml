@@ -33,11 +33,17 @@ english cvs version=1.15
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis><command>&num;include</command> &quot;nomfichier&quot;</synopsis>
+    <synopsis><command>&num;include</command> <quote>nomfichier</quote></synopsis>
+    <synopsis><command>&num;includestr</command> <quote>nomfichier</quote></synopsis>
   </refsect1>
 
   <refsect1>
     <title>Exécution</title>
+    <para>
+      &num;includestr est semblable à &num;include sauf que le nom du fichier
+      doit être délimité par une apostrophe double et que ce nom de fichier peut subir
+      un développement de macro.
+    </para>
     <para>
       Il est parfois commode d'organiser un orchestre sur plusieurs fichiers, par exemple avec chaque
       instrument dans un fichier séparé. Ce style est supporté par la fonctionnalité
@@ -48,9 +54,10 @@ english cvs version=1.15
 <emphasis role="omacro">#include</emphasis> "nomfichier"</programlisting>
       </informalexample>
 
-      où le caractère &quot; peut être remplacé par n'importe quel caractère approprié. Pour la plupart
-      des utilisations le symbole de l'apostrophe double sera probablement le plus commode. Le nom de fichier
-      peut inclure un chemin complet.
+      où le caractère &quot; peut être remplacé par n'importe quel caractère approprié
+      dans &num;include (mais pas dans &num;includestr). Pour la plupart
+      des utilisations le symbole de l'apostrophe double sera probablement le plus commode.
+      Le nom de fichier peut inclure un chemin complet.
     </para>
 
     <para>
@@ -82,12 +89,15 @@ $BASSOON(3)</programlisting>
       Il faut insister sur le fait que ces changements ont lieu au niveau littéral et n'ont donc aucune
       incidence sémantique.
     </para>
-    <para>
+    <para>
+
       Si Csound a été construit avec la bibliothèque CURL le nom de fichier
       dans une instruction <emphasis>&num;include</emphasis> peut être une URL,
       reconnue en incluant la sous-chaîne "://" dans le nom. Cela incluera du
-      texte via des protocoles comme http, https et ftp.
-    </para>
+      texte via des protocoles comme http, https et ftp.
+
+    </para>
+
   </refsect1>
 
   <refsect1>
@@ -119,6 +129,7 @@ $BASSOON(3)</programlisting>
         <member>Bath, UK</member>
         <member>Avril 1998</member>
       </simplelist>
+      <para> &num;includestr nouveau dans la version 6.12</para>
     </para>
     <para>Exemple écrit par &namekevin;.</para>
 

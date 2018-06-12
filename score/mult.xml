@@ -20,6 +20,7 @@ english cvs version=1.6
   <simplesect>
     <title>Syntaxe</title>
     <synopsis><command>&num;include</command> &quot;nomfichier&quot;</synopsis>
+    <synopsis><command>&num;includestr</command> &quot;filename&quot;</synopsis>
   </simplesect>
 
   <simplesect>
@@ -70,12 +71,20 @@ english cvs version=1.6
   </simplesect>
 
   <simplesect>
+    <para>
+      La forme <emphasis>&num;includestr</emphasis> est semblable à &num;include
+      sauf que le délimiteur doit être une double apostrophe et que le nom de
+      fichier peut contenir des appels de macro.
+    </para>
+  </simplesect>
+  
+  <simplesect>
     <title>Crédits</title>
     <para>Auteur : &namejohn;</para>
     <para>University of Bath/Codemist Ltd.</para>
     <para>Bath, UK</para>
     <para>Avril 1998 (Nouveau dans la version 3.48 de Csound)</para>
-    <para>Merci à &nameluis; d'avoir relevé la syntaxe incorrecte dans l'instruction d'inclusion de
-      fichiers.</para>
+    <para>Merci à &nameluis; d'avoir relevé la syntaxe incorrecte dans
+    l'instruction d'inclusion de fichiers multiples.</para>
   </simplesect>
 </section>

@@ -17,14 +17,14 @@ english cvs version=1.4
   <refnamediv>
     <refname>filevalid</refname>
     <refpurpose>
-      Teste si un fichier peut être utilisé.
+      Teste si un fichier peut être lu.
     </refpurpose>
   </refnamediv>
  
   <refsect1>
     <title>Description</title>
     <para>
-      Retourne 1 si le fichier son est valide, 0 sinon.
+      Retourne 1 si le fichier son existe et s'il est lisible, 0 sinon.
     </para>
   </refsect1>
  
@@ -44,7 +44,7 @@ english cvs version=1.4
     <title>Exécution</title>
     <para>
       <emphasis>filevalid</emphasis> retourne 1 si le fichier son
-      <emphasis>ifilcod</emphasis> peut être utilisé.
+      <emphasis>ifilcod</emphasis> peut être lu.
     </para>
   </refsect1>
 
