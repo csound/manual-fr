@@ -16,7 +16,7 @@ english cvs version=1.5
     <itemizedlist>
       <listitem>
         <para>
-          Convertisseurs de numéros de note MIDI en fréquence :
+          Convertisseurs de numéro de note MIDI en fréquence :
           <link linkend="cpsmidi"><citetitle>cpsmidi</citetitle></link>,
           <link linkend="cpsmidib"><citetitle>cpsmidib</citetitle></link>,
           <link linkend="cpstmid"><citetitle>cpstmid</citetitle></link>,
@@ -24,6 +24,13 @@ english cvs version=1.5
           <link linkend="octmidib"><citetitle>octmidib</citetitle></link>,
           <link linkend="pchmidi"><citetitle>pchmidi</citetitle></link> et
           <link linkend="pchmidib"><citetitle>pchmidib</citetitle></link>.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Convertisseurs de hauteur/fréquence en numéro de note MIDI :
+          <link linkend="ftom"><citetitle>ftom</citetitle></link>,
+          <link linkend="pchtom"><citetitle>pchtome</citetitle></link>.
         </para>
       </listitem>
       <listitem>

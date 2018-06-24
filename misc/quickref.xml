@@ -1408,7 +1408,7 @@
 <synopsis><link linkend="cpsmidinn">cpsmidinn</link> (MidiNoteNumber)  (arguments de taux-i ou -k seulement)</synopsis><para/>
 <synopsis><link linkend="cpsoct">cpsoct</link> (oct)  (pas de restriction de taux)</synopsis><para/>
 <synopsis><link linkend="cpspch">cpspch</link> (pch)  (arguments de taux-i ou -k seulement)</synopsis><para/>
-<synopsis>imidi <link linkend="ftom">ftom</link> ifreq</synopsis><synopsis>kmidi <link linkend="ftom">ftom</link> kfreq</synopsis><para/>
+<synopsis>imidi <link linkend="ftom">ftom</link> ifreq [,irnd]</synopsis><synopsis>kmidi <link linkend="ftom">ftom</link> kfreq [,irnd]</synopsis><para/>
 <synopsis>ifreq <link linkend="mtof">mtof</link> imidi</synopsis><synopsis>kfreq <link linkend="mtof">mtof</link> kmidi</synopsis><para/>
 <synopsis>Snote <link linkend="mton">mton</link> kmidi</synopsis><synopsis>Snote <link linkend="mton">mton</link> imidi</synopsis><para/>
 <synopsis>kmidi <link linkend="ntom">ntom</link> Snote</synopsis><synopsis>imidi <link linkend="ntom">ntom</link> Snote</synopsis><para/>

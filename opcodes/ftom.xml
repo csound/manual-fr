@@ -29,8 +29,8 @@ authors=Francois Pinot
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>imidi <command>ftom</command> ifreq</synopsis>
-    <synopsis>kmidi <command>ftom</command> kfreq</synopsis>
+    <synopsis>imidi <command>ftom</command> ifreq [,irnd]</synopsis>
+    <synopsis>kmidi <command>ftom</command> kfreq [,irnd]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -39,7 +39,11 @@ authors=Francois Pinot
       <emphasis>kfreq</emphasis> / <emphasis>ifreq</emphasis> -- Fréquence.
     </para>
     <para>
-      <emphasis>kfmidi</emphasis> / <emphasis>imidi</emphasis> -- Numéro de note
+      <emphasis>irnd</emphasis> -- Facultatif, s'il est différent de zéro le
+      résultat est arrondi à l'entier le plus proche (zéro par défaut).
+    </para>
+    <para>
+      <emphasis>kmidi</emphasis> / <emphasis>imidi</emphasis> -- Numéro de note
       MIDI correspondant.
     </para>
     <note>
@@ -74,5 +78,6 @@ authors=Francois Pinot
     <title>Crédits</title>
     <para>Par : &nameeduardo; 2017</para>
     <para>Nouveau dans la version 6.09</para>
+    <para>Option d'arrondi ajoutée dans la 6.12</para>
   </refsect1>
 </refentry>
