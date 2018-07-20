@@ -30,9 +30,9 @@ english cvs version=1.20
       précision (64 bit).</simpara></listitem>
 	  <listitem><simpara>SNAPDIR : Utilisée par les opcodes de contrôle graphique FLTK pour charger et sauvegarder les
       instantanés.</simpara></listitem>
-	  <listitem><simpara>CSOUNDRC : Définit le fichier de ressource (ou de configuration) de csound. Un chemin
+	  <listitem><simpara>CSOUND6RC : Définit le fichier de ressource (ou de configuration) de csound. Un chemin
       complet avec le nom d'un fichier contenant des options de csound doit être donné. Cette variable vaut
-      .csoundrc par défaut.</simpara></listitem>
+      .csound6rc par défaut.</simpara></listitem>
 	  <listitem><simpara>CSSTRNGS : A partir de Csound 5.00, la localisation des messages est contrôlée par les deux
       variables d'environnement CSSTRNGS et CS_LANG, qui sont toutes deux optionnelles. CSSTRNGS pointe vers un
       répertoire contenant des fichiers .xmg.</simpara></listitem>
@@ -69,10 +69,10 @@ english cvs version=1.20
   <itemizedlist>
 	  <listitem><simpara><emphasis>PATH</emphasis> : Le répertoire contenant les exécutables de csound devrait être
       listé dans cette variable.</simpara></listitem>
-	  <listitem><simpara><emphasis>PYTHONPATH</emphasis> : Si vous avez l'intention d'utiliser CsoundVST et
+	  <!--<listitem><simpara><emphasis>PYTHONPATH</emphasis> : Si vous avez l'intention d'utiliser CsoundVST et
     python, le répertoire contenant la bibliothèque partagée _CsoundVST et le fichier CsoundVST.py doit être
     dans votre variable d'environnement <emphasis>PYTHONPATH</emphasis> (ou le chemin de recherche par défaut
-    de python), afin que l'interpréteur Python sache comment charger ces fichiers.</simpara></listitem>
+    de python), afin que l'interpréteur Python sache comment charger ces fichiers.</simpara></listitem>-->
 	  <listitem><simpara><emphasis>LADSPA_PATH et DSSI_PATH</emphasis> : Ces variables d'environnement sont
     nécessaires si vous utilisez les opcodes du greffon <emphasis>dssi4cs</emphasis>
     (hôtes LADSPA et DSSI).</simpara></listitem>

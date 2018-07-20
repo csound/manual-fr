@@ -19,7 +19,7 @@ english cvs version=1.15
       Ce format fut introduit à l'origine par Michael Gogins dans AXCsound.
 
       <indexterm id="IndexCSD"><primary>.csd</primary></indexterm>
-      <indexterm id="IndexCsoundrcUnifile"><primary>.csoundrc</primary></indexterm>
+      <indexterm id="IndexCsoundrcUnifile"><primary>.csound6rc</primary></indexterm>
       <indexterm id="IndexCsFileB"><primary>&lt;CsFileB&gt;</primary></indexterm>
       <indexterm id="IndexCsFile"><primary>&lt;CsFile&gt;</primary></indexterm>
       <indexterm id="IndexCsInstruments"><primary>&lt;CsInstruments&gt;</primary></indexterm>
@@ -278,19 +278,19 @@ message (message_string);
 
 </section>
 <section id="CommandUnifileParFile">
-  <title>Fichier de paramètres de ligne de commande (.csoundrc)</title>
+  <title>Fichier de paramètres de ligne de commande (.csound6rc)</title>
   <para>
-    Si le fichier <emphasis>.csoundrc</emphasis> existe, il sera utilisé pour fixer les paramètres de la
+    Si le fichier <emphasis>.csound6rc</emphasis> existe, il sera utilisé pour fixer les paramètres de la
     ligne de commande. Ceux-ci peuvent être redéfinis. Csound 5.00 et les versions ultérieures lisent ce
     fichier d'abord depuis le répertoire HOME (ou le chemin complet défini par la
-    <link linkend="CommandEnvironment"><citetitle>variable d'environnement</citetitle></link> CSOUNDRC),
-    et ensuite depuis le répertoire courant. Si les deux existent, les options de .csoundrc du répertoire
+    <link linkend="CommandEnvironment"><citetitle>variable d'environnement</citetitle></link> CSOUND6RC),
+    et ensuite depuis le répertoire courant. Si les deux existent, les options de .csound6rc du répertoire
     courant seront prioritaires. Ce fichier a la même forme qu'un fichier <emphasis>.csd</emphasis>, mais
     sans les balises. Les lignes commençant par <emphasis>#</emphasis> ou <emphasis>;</emphasis> sont
     traitées comme des commentaires.
   </para>
   <para>
-    Un fichier <emphasis>.csoundrc</emphasis> peut contenir des éléments comme ceux-ci :
+    Un fichier <emphasis>.csound6rc</emphasis> peut contenir des éléments comme ceux-ci :
   </para>
   <literallayout>-+rtaudio=portaudio -odac2 -iadc2 -+rtmidi=winmme -M1 -Q1 -m0  </literallayout>
   <para>

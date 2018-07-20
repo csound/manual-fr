@@ -776,7 +776,7 @@ english cvs version=
                 <listitem>
                   <simpara>Intégration continue pour Windows avec AppVeyor.</simpara>
                 </listitem>
-                <listitem>
+                <!--<listitem>
                   <simpara>
                     Le constructeur et installeur AppVeyor comprend maintenant
                     les opcodes CsoundVST et vst4cs ce qui permet le chargement
@@ -786,7 +786,7 @@ english cvs version=
                     utilisation avec le VST2 SDK de Steinberg téléchargé
                     séparément.
                   </simpara>
-                </listitem>
+                </listitem>-->
               </itemizedlist>
             </listitem>
             <listitem>
@@ -1290,8 +1290,8 @@ english cvs version=
             </listitem>
             <listitem>
               <simpara>
-                Dépendances à boost supprimées des interfaces de Csound, de
-                CsoundAC et CsoundVST.
+                Dépendances à boost supprimées des interfaces de Csound et de
+                CsoundAC.
               </simpara>
             </listitem>
             <listitem>
@@ -2298,11 +2298,11 @@ english cvs version=
                 d'une puissance de deux.
               </simpara>
             </listitem>
-            <listitem>
+            <!--<listitem>
               <simpara>
                 vst4cs fonctionne maintenant sur architecture 64 bit.
               </simpara>
-            </listitem>
+            </listitem>-->
             <listitem>
               <simpara>
                 <link linkend="strcat"><citetitle>strcat</citetitle></link>
@@ -2899,8 +2899,9 @@ english cvs version=
             </listitem>
             <listitem>
               <simpara>alwayson démarre maintenant depuis le décalage de la
-               partition ; cela fait partie de la correction d'un problème
-               ancien avec alwayson dans CsoundVST</simpara>
+                partition.<!-- ; cela fait partie de la correction d'un problème
+                ancien avec alwayson dans CsoundVST-->
+              </simpara>
             </listitem>
             <listitem>
               <simpara>invalue teste dorénavant la taille de chaîne de caractères
@@ -3950,12 +3951,12 @@ void csoundDebugFreeVariables(CSOUND *csound, debug_variable_t *varHead);</progr
               étaient bizarres.
               </simpara>
             </listitem>
-            <listitem>
+            <!--<listitem>
               <simpara>Les opcodes vst4cs ont été réécrits. Le code FLTK a été
               encapsulé. Le système de construction a été mis à jour pour
               Csound 6.
               </simpara>
-            </listitem>
+            </listitem>-->
             <listitem>
               <simpara>Dans l'opcode <emphasis>alwayson</emphasis>, modifications
               pour une meilleure gestion des p-champs et une insertion plus fiable
@@ -4017,12 +4018,12 @@ void csoundDebugFreeVariables(CSOUND *csound, debug_variable_t *varHead);</progr
               dans <emphasis>randi</emphasis>.
               </simpara>
             </listitem>
-            <listitem>
+            <!--<listitem>
               <simpara>Plusieurs corrections dans CsoundVST : initialisation,
               gestion de la partition et initialisation du pilote MIDI, ce qui
               le rend fonctionnel dans Csound 6.
               </simpara>
-            </listitem>
+            </listitem>-->
             <listitem>
               <simpara><emphasis>pycalln</emphasis> s'il n'y a pas d'entrée.
               </simpara>
