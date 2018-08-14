@@ -307,7 +307,7 @@ english cvs version=1.15
         <literal>-+rtmidi=null -M0</literal>, et devrait ressembler à ceci :</para>
 
       <programlisting>
-        <command>csound</command> -f -h -+rtmidi=null -M0 -d -n -m7 --midi-key-oct=4 --midi-velocity=5 temp.orc temp.sco</programlisting>
+        <command>csound</command> -f -h -+rtmidi=null -M0 -d -n -m7 &#45;&#45;midi-key-oct=4 &#45;&#45;midi-velocity=5 temp.orc temp.sco</programlisting>
 
       <para>Cliquez sur le bouton on/off de la boîte de dialogue
         <emphasis>VST Instruments</emphasis> pour l'allumer.

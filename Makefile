@@ -620,7 +620,7 @@ OTHER =         STKopcodes/top.xml \
         overview/realtimelinux.xml \
         plugin/dssi4cs.xml \
         plugin/top.xml \
-        plugin/vst4cs.xml \
+#        plugin/vst4cs.xml \
         preface/gettingstarted.xml \
         preface/gettingstartedXO.xml \
         preface/history.xml \
