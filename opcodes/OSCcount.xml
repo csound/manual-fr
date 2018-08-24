@@ -1,0 +1,101 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="OSCcount">
+<indexterm id="IndexOSCcount"><primary>OSCcount</primary></indexterm>
+  <refentryinfo><title>OSC</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>OSCcount</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>OSCcount</refname>
+    <refpurpose>
+      Donne le nombre de messages OSC pas encore lus.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Donne le nombre de messages OSC pas encore lus mais reçus par les
+      récepteurs courants.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kans <command>OSCcount</command></synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kans</emphasis> -- contient le nombre de messages acceptés
+      par Csound sur n'importe quelle adresse mais pas encore présentés à
+      un appel à OSClisten.
+    </para>
+
+    <para>
+      On peut utiliser cet opcode lorqu'il y a plusieurs récepteurs et que
+      l'on décide de les tester pour savoir s'il y a des messages.
+    </para>
+  </refsect1> 
+
+  <refsect1>
+    <title>Example</title>
+    <para>
+      Cet exemple montre une paire de nombres en virgule flottante reçus
+      sur le port 7770.
+    </para>
+
+      <informalexample>
+        <programlisting>
+  <emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 44100
+  <emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 100
+  <emphasis role="ohdr">nchnls</emphasis> <emphasis role="op">=</emphasis> 2
+
+  gihandle <emphasis role="opc">OSCinit</emphasis> 7770
+
+  <emphasis role="oblock">instr</emphasis>   1
+    kf1 <emphasis role="opc">init</emphasis> 0
+    kf2 <emphasis role="opc">init</emphasis> 0
+    kk  <emphasis role="opc">OSCcount</emphasis>
+nxtmsg:
+
+if (kk <emphasis role="opc">==</emphasis> 0) goto ex
+  kr  <emphasis role="opc">OSClisten</emphasis> gihandle, &quot;/foo/bar&quot;, &quot;ff&quot;, kf1, kf2
+    <emphasis role="opc">printk</emphasis> 0,kf1
+    <emphasis role="opc">printk</emphasis> 0,kf2
+    kk -= 1
+    <emphasis role="opc">kgoto</emphasis> nxtmsg
+ex:
+  <emphasis role="oblock">endin</emphasis>
+        </programlisting>
+      </informalexample>
+  </refsect1>
+  
+  <refsect1>
+    <title>Voir aussi</title>
+      <para>
+        <link linkend="OSCsend"><citetitle>OSCsend</citetitle></link>,
+        <link linkend="OSCinit"><citetitle>OSCinit</citetitle></link>
+        <link linkend="OSClisten"><citetitle>OSClisten</citetitle></link>
+      </para>
+               <para>Pour plus d'information sur cet opcode : <ulink url="http://www.youtube.com/watch?v=JX1C3TqP_9Y"><citetitle>http://www.youtube.com/watch?v=JX1C3TqP_9Y</citetitle></ulink>, par Andrés Cabrera </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>2018 nouveau dans Csound 6.12</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>
