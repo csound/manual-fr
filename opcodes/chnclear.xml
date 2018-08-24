@@ -17,14 +17,14 @@ english cvs version=1.8
   <refnamediv>
     <refname>chnclear</refname>
     <refpurpose>
-      Efface un canal de sortie audio du bus logiciel nommé.
+      Efface des canaux de sortie audio du bus logiciel nommé.
     </refpurpose>
   </refnamediv>
 
   <refsect1>
     <title>Description</title>
     <para>
-      Met à zéro un canal de sortie audio du bus logiciel nommé. Cela implique
+      Met à zéro une liste de canaux de sortie audio du bus logiciel nommé. Cela implique
       une déclaration du canal avec <emphasis>imode</emphasis>=2 (voir aussi
       <link linkend="chn"><citetitle>chn_a</citetitle></link>).
     </para>
@@ -32,13 +32,13 @@ english cvs version=1.8
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis><command>chnclear</command> Sname</synopsis>
+    <synopsis><command>chnclear</command> Sname1[, Sname2, ...]</synopsis>
   </refsect1>
 
   <refsect1>
     <title>Initialisation</title>
     <para>
-      <emphasis>Sname</emphasis> -- une chaîne de caractères indiquant quel canal
+      <emphasis>Sname*</emphasis> -- une chaîne de caractères indiquant quel canal
       du bus logiciel effacer.
     </para>
   </refsect1>
