@@ -14,8 +14,6 @@ english cvs version=1.12
     <refentrytitle>zkw</refentrytitle>
   </refmeta>
 
-
- 
   <refnamediv>
     <refname>zkw</refname>
     <refpurpose>
@@ -32,21 +30,21 @@ english cvs version=1.12
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis><command>zkw</command> ksig, kndx</synopsis>
+    <synopsis><command>zkw</command> kval, kndx</synopsis>
  </refsect1>
  
   <refsect1>
     <title>Exécution</title>
     <para>
-      <emphasis>ksig</emphasis> -- valeur à écrire dans la position zk.
+      <emphasis>kval</emphasis> -- valeur à écrire dans la position zk.
     </para>
 
     <para>
-      <emphasis>kndx</emphasis> -- pointe sur la position zk ou za vers laquelle écrire.
+      <emphasis>kndx</emphasis> -- pointe sur la position zk vers laquelle écrire.
     </para>
 
     <para>
-      <emphasis>zkw</emphasis> écrit <emphasis>ksig</emphasis> dans la variable zk spécifiée par
+      <emphasis>zkw</emphasis> écrit <emphasis>kval</emphasis> dans la variable zk spécifiée par
       <emphasis>kndx</emphasis>.
     </para>
   </refsect1>

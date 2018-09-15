@@ -30,7 +30,7 @@ english cvs version=1.11
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis><command>printks</command> &quot;string&quot;, itime [, kval1] [, kval2] [...]</synopsis>
+    <synopsis><command>printks</command> &quot;string&quot;, itime [, xval1] [, xval2] [...]</synopsis>
   </refsect1>
  
   <refsect1>
@@ -48,7 +48,7 @@ english cvs version=1.11
   <refsect1>
     <title>Exécution</title>
     <para>
-      <emphasis>kval1, kval2, ...</emphasis> (facultatif) -- Les valeurs de taux-k
+      <emphasis>xval1, xval2, ...</emphasis> (facultatif) -- Les valeurs de taux-k
       à imprimer. Celles-ci sont spécifiées dans
       <emphasis><quote>string</quote></emphasis> au moyen des indicateurs de valeur
       du C standard (%f, %d, etc.) dans l'ordre donné.
