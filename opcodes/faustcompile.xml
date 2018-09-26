@@ -24,6 +24,7 @@ english cvs version=
 
   <refsect1>
     <title>Description</title>
+    <para>Opcode de greffon dans faustcsound.</para>
     <para>
       <emphasis>faustcompile</emphasis> compile un programme Faust contenu dans
       une chaîne de caractères, contrôlé par divers arguments. On peut utiliser
@@ -33,7 +34,7 @@ english cvs version=
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis><command>ihandle faustcompile</command> Scode, Sargs </synopsis>
+    <synopsis><command>ihandle faustcompile</command> Scode, Sargs[, iasync, istacksize]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -46,7 +47,16 @@ english cvs version=
       <emphasis><quote>Sargs</quote></emphasis> -- une chaîne de caractères
       (entre guillemets ou délimitée par {{ }}) contenant les arguments du
       compilateur Faust.
-    </para>  
+    </para>
+    <para>
+      <emphasis><quote>iasync</quote></emphasis> -- exécute le code de manière
+      asynchrone, non bloquante, (iasync=1), ou en mode bloquant (iasync=0).
+      Vaut 1 par défaut. 
+    </para>    
+    <para>
+      <emphasis><quote>istacksize</quote></emphasis> -- taille de la pile du
+      fil d'exécution du compilateur en MO (vaut 1 par défaut).
+    </para>
   </refsect1>
 
   <refsect1>

@@ -35,15 +35,18 @@ english cvs version=1.7
   <refsect1>
     <title>Initialisation</title>
     <para>
-      <emphasis>taille</emphasis> -- nombre de points dans la table. Doit être une puissance de 2 ou une
-      puissance-de-2 plus 1 (voir l'<link linkend="f"><citetitle>instruction f</citetitle></link>). La
+      <emphasis>taille</emphasis> -- nombre de points dans la table. <!--Doit être une puissance de 2 ou une
+      puissance-de-2 plus 1 (voir l'<link linkend="f"><citetitle>instruction f</citetitle></link>).--> La
       taille de table maximale est de 16777216 (2<superscript>24</superscript>) points.
+      On peut donner une taille de zéro ; dans ce cas le nombre de valeurs fixe
+      la longueur de la table.
     </para>
 
     <para>
-      <emphasis>v1, v2, v3,</emphasis> etc. -- valeurs à copier directement dans l'espace de la table. Le
+      <emphasis>v1, v2, v3,</emphasis> etc. -- valeurs à copier directement dans l'espace de la table.
+      <!--Le
       nombre de valeurs est limité par la variable de compilation <emphasis>PMAX</emphasis>, qui contrôle
-      le nombre maximum de p-champs (actuellement 1000). Les valeurs copiées peuvent comprendre le point
+      le nombre maximum de p-champs (actuellement 1000).--> Les valeurs copiées peuvent comprendre le point
       de garde de la table ; les cellules de la table non remplies contiendront des zéros.
     </para>
 
@@ -133,5 +136,6 @@ english cvs version=1.7
     <title>Crédits</title>
     <para>Décembre 2002. Merci à &namerasmus;, pour avoir corrigé la limite de la variable
       <emphasis>PMAX</emphasis>.</para>
+    <para>L'utilisation d'une taille nulle est nouvelle dans la version 6.12</para>
   </refsect1>
 </refentry>

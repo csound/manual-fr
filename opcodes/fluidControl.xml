@@ -14,14 +14,13 @@ english cvs version=1.12
     <refentrytitle>fluidControl</refentrytitle>
   </refmeta>
 
-
-
   <refnamediv>
     <refname>fluidControl</refname>
     <refpurpose>
       Envoie un note on, un note off, et d'autres messages MIDI à un preset SoundFont.
     </refpurpose>
-</refnamediv>
+  </refnamediv>
+
   <refsect1>
     <title>Syntaxe</title>
     <synopsis><command>fluidControl</command> ienginenum, kstatus, kchannel, kdata1, kdata2</synopsis>
@@ -29,6 +28,7 @@ english cvs version=1.12
 
   <refsect1>
     <title>Description</title> 
+    <para>Opcode de greffon dans fluidOpcodes.</para>
     <para>Les opcodes fluid fournissent une intégration simple dans des opcodes de Csound du synthétiseur
       Fluidsynth SoundFont2 de Peter Hanappe. Cette implémentation accepte les messages MIDI de note on,
       note off, de contrôleur, de pitch bend ou de changement de programme au taux-k. La polyphonie

@@ -28,6 +28,7 @@ english cvs version=1.18
 
   <refsect1>
     <title>Description</title> 
+    <para>Opcode de greffon dans fluidOpcodes.</para>
     <para>Crée une instance de moteur fluidsynth, et retourne <emphasis>ienginenum</emphasis> pour identifier le moteur.
     <emphasis>ienginenum</emphasis> est passé à d'autres opcodes pour charger et jouer
     des SoundFonts et pour assembler le son généré.

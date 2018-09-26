@@ -21,13 +21,12 @@ authors=Francois Pinot
   
   <refsect1>
     <title>Description</title>
+    <para>Opcode de greffon dans emugens.</para>
     <para>
       Compare deux signaux audio avec les opérateurs mathématiques habituels.
-
       <programlisting>
         aout cmp aL, ">", aR
       </programlisting>
-      
     </para>
   </refsect1>
 

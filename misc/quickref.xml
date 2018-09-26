@@ -1944,9 +1944,11 @@
 <para>
 <para/>
 <synopsis><link linkend="faustaudio">ihandle, a1 [,a2, ...] faustaudio</link> ifac [,ain1, ...] </synopsis><para/>
-<synopsis><link linkend="faustcompile">ihandle faustcompile</link> Scode, Sargs </synopsis><para/>
+<synopsis><link linkend="faustcompile">ihandle faustcompile</link> Scode, Sargs[, iasync, istacksize]</synopsis><para/>
 <synopsis><link linkend="faustctl">faustctl</link> idsp, Scontrol, kval </synopsis><para/>
+<synopsis><link linkend="faustdsp">ihandle faustdsp</link> ifac</synopsis><para/>
 <synopsis><link linkend="faustgen">ihandle, a1 [,a2, ...] faustgen</link> SCode [,ain1, ...] </synopsis><para/>
+<synopsis><link linkend="faustplay">a1[, a2,...] faustplay</link> ihandle[, ain1,...]</synopsis><para/>
 </para></formalpara>
 <para></para><para></para><formalpara>
 <title>Réseau</title>

@@ -35,9 +35,9 @@ english cvs version=1.9
       <link linkend="tablew"><citetitle>tablew</citetitle></link> parce qu'ils
       fonctionnent sans indexation cyclique et sans limite et qu'ils ne testent
       pas la validité des index. Ils ont été implémentés pour fournir un accès
-      rapide aux tableaux. Ils supportent les tables dont la longueur n'est pas
+      rapide aux tableaux. <!--Ils supportent les tables dont la longueur n'est pas
       une puissance de deux (pouvant être générées par n'importe quelle
-      fonction GEN en lui donnant une valeur de longueur négative).
+      fonction GEN en lui donnant une valeur de longueur négative).-->
     </para>
   </refsect1>
 
@@ -58,9 +58,9 @@ english cvs version=1.9
     </para>
     <para>
       <emphasis>ixmode</emphasis> -- zéro par défaut. S'il est nul, l'intervalle
-      de variation de <emphasis>xndx</emphasis> et de <emphasis>ixoff</emphasis>
+      de variation de <emphasis>xndx</emphasis> 
       est la longueur de la table ; s'il est non nul, <emphasis>xndx</emphasis>
-      et <emphasis>ixoff</emphasis> varient entre 0 et 1. 
+      varie entre 0 et 1. 
     </para>
     <para>
       <emphasis>isig</emphasis> -- valeur d'entrée à écrire.
@@ -84,11 +84,11 @@ english cvs version=1.9
       mais ils sont plus rapides et supportent des tables dont la longueur n'est
       une puissance de deux.
     </para>
-    <para>
+    <!--<para>
       Il faut apporter une attention spéciale aux valeurs de l'index. Des valeurs
       d'index en dehors de l'espace alloué pour la table provoqueront un
       plantage de Csound.
-    </para>
+    </para>-->
   </refsect1>
 
    <refsect1>
