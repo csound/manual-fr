@@ -1,0 +1,117 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="OSCbundle">
+<indexterm id="IndexOSCbundle"><primary>OSCbundle</primary></indexterm>
+  <refentryinfo><title>OSC</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>OSCbundle</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>OSCbundle</refname>
+    <refpurpose>
+      Envoie des données à d'autres processus en utilisant le protocole
+      OSC en assemblant les messages dans un paquet.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Utilise le protocole OSC pour envoyer un ou plusieurs messages à d'autres
+      processus OSC à l'écoute, dans un paquet unique. Contrairement à OSCsend
+      il peut être utilisé pour envoyer plusieurs messages en même temps, mais
+      seuls les types numériques standard d'OSC sont permis.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>OSCbundle</command> kwhen, ihost, iport, \
+                                           Sdest[], Stype[],kArgs[][]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ihost</emphasis>
+      -- a string that is the intended host computer domain name.  An
+    empty string is interpreted as the current computer.
+    </para>
+
+    <para>
+      <emphasis>iport</emphasis> -- le numéro du port utilisé pour la
+      communication.
+    </para>
+
+    <para>
+      <emphasis> Sdest[]</emphasis> -- un tableau de chaînes de caractères
+      contenant l'adresse de destination pour chaque message. Sa longueur
+      doit être conforme à celle de Stype[].
+    </para>
+
+    <para>
+      <emphasis>Stype[]</emphasis> -- un tableau de chaînes de caractères
+      contenant les types de chaque message. Seuls les types numériques
+      ('i' pour entiers et 'f' pour flottants) sont supportés.
+      Sa longueur doit être conforme à celle de  Sdest[].
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kwhen</emphasis> -- un paquet de messages est envoyé chaque fois
+      que cette valeur change. Un message sera toujours envoyé lors du premier
+      appel.
+    </para>
+
+    <para>
+      <emphasis>kArg[][]</emphasis> -- un tableau bidimensionnel contenant les
+      arguments pour chaque message. Sa dimension l (nombre de lignes) doit
+      correspondre à celles de Sdest[] et de Stype[]. Chaque ligne doit
+      contenir les arguments pour les types de chaque message. Si une ligne
+      contient moins d'arguments, les places des données restantes sont remplies
+      avec des zéros. Les arguments en sus de ceux que chaque chaîne de
+      caractères demande sont ignorés.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemple</title>
+      <para>
+      Voici un exemple de l'opcode OSCBundle. Il utilise le fichier
+      <ulink url="examples/oscbundle.csd"><citetitle>oscbundle.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode OSCBundle.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/oscbundle.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+      <para>
+        <link linkend="OSClisten"><citetitle>OSClisten</citetitle></link>,
+        <link linkend="OSCinit"><citetitle>OSCinit</citetitle></link>
+      </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>2018</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>
