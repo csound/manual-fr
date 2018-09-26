@@ -1,0 +1,67 @@
+﻿<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="faustdsp">
+<indexterm id="Indexfaustdsp"><primary>faustdsp</primary></indexterm>
+  <refentryinfo><title>Faust Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>faustdsp</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>faustdsp</refname>
+    <refpurpose>
+      Instancie un programme Faust.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>Opcode de greffon dans faustcsound.</para>
+    <para>
+      Faustdsp instancie un programme Faust compilé avec faustcompile.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>ihandle faustdsp</command> ifac</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis><quote>ifac</quote></emphasis> -- identifiant d'un programme
+      Faust compilé, produit par faustcompile.
+    </para>    
+    <para>
+      <emphasis><quote>ihandle</quote></emphasis> -- identifiant d'une instance
+      Faust DSP qui peut être utilisé pour exécuter un programme avec faustplay
+      et pour accéder à ses contrôles avec faustctl.
+    </para>  
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode faustdsp. Il utilise le fichier
+      <ulink url="examples/faustdsp.csd"><citetitle>faustdsp.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode faustdsp.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/faustdsp.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namevictor;, 2018 </para>
+  </refsect1>
+</refentry>
