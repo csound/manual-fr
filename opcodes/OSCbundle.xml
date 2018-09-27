@@ -33,7 +33,7 @@ authors=Francois Pinot
   <refsect1>
     <title>Syntaxe</title>
     <synopsis><command>OSCbundle</command> kwhen, ihost, iport, \
-                                           Sdest[], Stype[],kArgs[][]</synopsis>
+       Sdest[], Stype[],kArgs[][][, isize]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -50,6 +50,20 @@ authors=Francois Pinot
     </para>
 
     <para>
+      <emphasis>isize</emphasis> -- taille maximale de paquet en octets,
+      65536 par défaut.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kwhen</emphasis> -- un paquet de messages est envoyé chaque fois
+      que cette valeur change. Un message sera toujours envoyé lors du premier
+      appel.
+    </para>
+
+    <para>
       <emphasis> Sdest[]</emphasis> -- un tableau de chaînes de caractères
       contenant l'adresse de destination pour chaque message. Sa longueur
       doit être conforme à celle de Stype[].
@@ -60,15 +74,6 @@ authors=Francois Pinot
       contenant les types de chaque message. Seuls les types numériques
       ('i' pour entiers et 'f' pour flottants) sont supportés.
       Sa longueur doit être conforme à celle de  Sdest[].
-    </para>
-  </refsect1>
-
-  <refsect1>
-    <title>Exécution</title>
-    <para>
-      <emphasis>kwhen</emphasis> -- un paquet de messages est envoyé chaque fois
-      que cette valeur change. Un message sera toujours envoyé lors du premier
-      appel.
     </para>
 
     <para>
