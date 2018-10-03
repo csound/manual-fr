@@ -30,12 +30,27 @@ authors=Francois Pinot
   <refsect1>
     <title>Syntaxe</title>
     <synopsis>fsig <command>pvstrace</command> fsigin, kn </synopsis>
+    <synopsis>fsig, kBins[] <command>pvstrace</command> fsigin, kn[, isort] </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation </title>
+    <para>
+      <emphasis>isort</emphasis> -- s'il est non nul, les bins reportés dans
+      kBins sont triés par amplitude décroissante. Facultatif, vaut 0 par défaut.
+    </para>
   </refsect1>
 
   <refsect1>
     <title>Exécution</title>
     <para>
       <emphasis>fsig</emphasis> -- Flot PV en sortie.
+    </para>
+    <para>
+      <emphasis>kBins[]</emphasis> -- un tableau contenant tailleTFR/2 + 1
+      valeurs, dont les N premières valeurs reportent les kn numéros de bin
+      retenus par pvstrace. Les autres positions sont mises à zéro. Il peut
+      être trié en option.
     </para>
     <para>
       <emphasis>fsigin</emphasis> -- Flot PV en entrée.
@@ -87,8 +102,6 @@ authors=Francois Pinot
       </simplelist>
     </para>
 
-    <para>Nouveau greffon dans la version 6</para>
-    <para>2017</para>
-    <para>Nouveau dans la version 6.09</para>
+    <para>Nouveau greffon dans la version 6.09</para>
   </refsect1>
 </refentry>
