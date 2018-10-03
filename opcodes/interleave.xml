@@ -1,0 +1,82 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="interleave">
+<indexterm id="IndexInterleave"><primary>interleave</primary></indexterm>
+
+  <refentryinfo><title>Array Operations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>interleave</refentrytitle>
+  </refmeta>
+
+   <refnamediv>
+    <refname>interleave</refname>
+    <refpurpose>
+      Entrelace des tableaux dans un tableau unique en plaçant les données dans
+      des positions alternées.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Prend des tableaux en entrée et entrelace leurs données (en plaçant les
+      valeurs dans des positions alternées).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+      <synopsis>kout[] <command>interleave</command> kin1[], kin2[]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kout[]</emphasis> -- tableau en sortie contenant les données
+      entrelacées. Il est créé s'il n'existe pas.
+    </para>
+    <para>
+      <emphasis>kin1[], kin2[]</emphasis> -- tableaux en entrée contenant les
+      valeurs à entrelacer.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode interleave. Il utilise le fichier
+      <ulink url="examples/interleave.csd"><citetitle>interleave.csd</citetitle></ulink>.</para>
+      <example>
+        <title>Exemple de l'opcode interleave.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/interleave.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="vectorial"><citetitle></citetitle>Vectorial opcodes</link>,
+      <link linkend="arrayOpcodes"><citetitle></citetitle>array opcodes</link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>NUI Maynooth</member>
+        <member>2018</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 6.12</para>
+  </refsect1>
+</refentry>
