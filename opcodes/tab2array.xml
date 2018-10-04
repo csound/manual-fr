@@ -1,0 +1,89 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="tab2array">
+  <indexterm id="IndexTab2array"><primary>tab2array</primary></indexterm>
+  <!--Make sure the category below is a valid one! See categories.py-->
+  <refentryinfo><title>Array Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tab2array</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>tab2array</refname>
+    <refpurpose>
+      Copie un bout d'une ftable dans un tableau.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>Opcode de greffon dans emugens.</para>
+    <para>
+      L'opcode <emphasis>tab2array</emphasis> prend une ftable et en copie un
+      bout dans un tableau, en l'allouant ou en changeant sa taille si
+      nécessaire.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kout[] <command>tab2array</command> ifn [, kstart, kend, kstep ]</synopsis>
+    <synopsis>iout[] <command>tab2array</command> ifn [, istart, iend, istep ]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn</emphasis> -- Le numéro de la table source.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kstart / istart</emphasis> -- La position à partir de laquelle
+      copier. 0 par défaut.
+    </para>
+    <para>
+      <emphasis>kend / iend</emphasis> -- La position à partir de laquelle la
+      copie est stoppée. Elle n'est PAS inclusive. 0 indique de copier jusqu'à
+      la fin de la table. Par défaut = la fin de la table.
+    </para>
+    <para>
+      <emphasis>kstep / istep</emphasis> -- Le nombre d'éléments à ignorer.
+      1 par défaut.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici une exemple de l'opcode tab2array. Il utilise le fichier
+      <ulink url="examples/tab2array.csd"><citetitle>tab2array.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode tab2array.</title>
+        <xi:include href="examples-xml/tab2array.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="copyf2array"><citetitle>copyf2array</citetitle></link>, 
+      <link linkend="ftslice"><citetitle>ftslice</citetitle></link>
+      <link linkend="slicearray"><citetitle>slicearray</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &nameeduardo; 2018</para>
+    <para>Nouveau greffon dans la version 6.12</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,84 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="printarray">
+  <indexterm id="IndexPrintarray"><primary>printarray</primary></indexterm>
+  <refentryinfo><title>Array Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>printarray</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>printarray</refname>
+    <refpurpose>
+      Affiche le contenu d'un tableau.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>Opcode de greffon dans emugens.</para>
+    <para>
+      Affiche le contenu d'un tableau.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>printarray</command> ixs[] [, Smft, Slabel ]</synopsis>
+    <synopsis><command>printarray</command> kxs[] [, ktrig, Sfmt, Slabel ]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>Sfmt</emphasis> -- S'il est présent, il est passé à printf pour
+      chaque élément du tableau. Sinon un format par défaut est utilisé.
+    </para>
+    <para>
+      <emphasis>Slabel</emphasis> -- S'il est présent, il est affiché avant le
+      contenu du tableau, pour identifier facilement les données.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ktrig</emphasis> -- Le tableau est affiché chaque fois que cette
+      valeur change de 0 à un nombre positif. On peut l'utiliser avec
+      <emphasis>metro</emphasis> pour afficher à intervalle donné. Une valeur de
+      -1 indique d'afficher à chaque cycle-k (1 par défaut).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exmples</title>
+    <para>
+      Voici un exemple de l'opcode printarray. Il utilise le fichier
+      <ulink url="examples/printarray.csd"><citetitle>printarray.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode printarray.</title>
+        <xi:include href="examples-xml/printarray.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ftprint"><citetitle>ftprint</citetitle></link>,
+      <link linkend="metro"><citetitle>metro</citetitle></link>
+      <link linkend="printf"><citetitle>printf</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &nameeduardo; 2018</para>
+    <para>Nouveau greffon dans la version 6.12</para>
+  </refsect1>
+</refentry>

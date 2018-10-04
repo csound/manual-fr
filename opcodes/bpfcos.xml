@@ -1,0 +1,97 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="bpfcos">
+  <indexterm id="IndexBpfcos"><primary>bpfcos</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Linear and Exponential Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>bpfcos</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>bpfcos</refname>
+    <refpurpose>
+      Fonction à points charnière avec interpolation par cosinus (transitions
+      douces).
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>Opcode de greffon dans emugens.</para>
+    <para>
+      Fonction à points charnière avec interpolation par cosinus. Etant données
+      une valeur x et une série de paires (x, y), elle retourne la valeur de y
+      correspondante dans la courbe du demi-cosinus définie par les paires.
+      Fonctionne au taux-i ainsi qu'au taux-k.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ky <command>bpfcos</command> kx, kx1, ky1, kx2, ..., kxn, kyn</synopsis>
+    <synopsis>kys[] <command>bpfcos</command> kxs[], kx1, ky1, kx2, ..., kxn, kyn</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis role="strong">kx</emphasis> -- Valeur en entrée. Peut également
+      être un tableau.
+    </para>
+    <para>
+      <emphasis role="strong">kxn, kyn</emphasis> -- Définit un point charnière.
+      Peut changer au taux-k, mais tous les <emphasis>kx</emphasis>s doivent
+      être ordonnés.
+    </para>
+    <para>
+      Les points (kx1, ky1), (kx2, ky2), etc, définissent une fonction
+      interpolée par cosinus. Cette fonction est évaluée au point
+      <emphasis>kx</emphasis>. Cette fonction s'étend à la fois ver -inf
+      et +inf, si bien que si kx &lt; kx1 alors ky = ky1 et pareillement à
+      l'autre extrémité.
+    </para>
+
+    <note>
+      <para>
+        Les valeurs x doivent être triées. Les valeurs x et les valeurs y
+        peuvent changer mais les valeurs x doivent rester triées.
+     </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode bpfcos. Il utilise le fichier
+      <ulink url="examples/bpfcos.csd"><citetitle>bpfcos.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode bpfcos.</title>
+        <xi:include href="examples-xml/bpfcos.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="bpf"><citetitle>bpf</citetitle></link>, 
+      <link linkend="lincos"><citetitle>lincos</citetitle></link>,
+      <link linkend="cosseg"><citetitle>cosseg</citetitle></link>
+      <link linkend="linlin"><citetitle>linlin</citetitle></link>,
+      <link linkend="scale"><citetitle>scale</citetitle></link>, 
+      <link linkend="ntrpol"><citetitle>ntrpol</citetitle></link>, 
+      <link linkend="xyscale"><citetitle>xyscale</citetitle></link> 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &nameeduardo; 2018</para>
+    <para>Nouveau greffon dans la version 6.12</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,81 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="reshapearray">
+  <indexterm id="IndexReshapearray"><primary>reshapearray</primary></indexterm>
+  <!--Make sure the category below is a valid one! See categories.py-->
+  <refentryinfo><title>Array Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>reshapearray</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>reshapearray</refname>
+    <refpurpose>
+      Reformate un tableau en gardant sa capacité.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>Opcode de greffon dans emugens.</para>
+    <para>
+      L'opcode <emphasis>reshapearray</emphasis> change le format d'un tableau,
+      à condition que cette opération ne modifie pas sa capacité. On peut
+      l'utiliser pour convertir un tableau 1D en tableau 2D ou vice-versa, ou
+      simplement pour modifier la taille de ses dimensions, tant que leur
+      produit reste constant.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>reshapearray</command> array[], isize0 [, isize1 ]</synopsis>  
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>array[]</emphasis> -- Le tableau à reformater (l'opération se
+      fait sans réaffectation).
+    </para>
+    <para>
+      <emphasis>isize0</emphasis> -- La taille de la première dimension.
+    </para>
+    <para>
+      <emphasis>isize1</emphasis> -- La taille de la seconde dimension (0 pour
+      les tableaux 1D). Vaut 0 par défaut.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exmples</title>
+    <para>
+      Voici un exemple de l'opcode reshapearray. Il utilise le fichier
+      <ulink url="examples/reshapearray.csd"><citetitle>reshapearray.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode reshapearray.</title>
+        <xi:include href="examples-xml/reshapearray.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="printarray"><citetitle>printarray</citetitle></link>,
+      <link linkend="getrow"><citetitle>getrow</citetitle></link>,
+      <link linkend="slicearray"><citetitle>slicearray</citetitle></link>,
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &nameeduardo; 2018</para>
+    <para>Nouveau greffon dans la version 6.12</para>
+  </refsect1>
+</refentry>

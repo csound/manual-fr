@@ -1,0 +1,93 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ftprint">
+  <indexterm id="IndexFtprint"><primary>ftprint</primary></indexterm>
+  <refentryinfo><title>Table Control:Read/Write Operations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ftprint</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ftprint</refname>
+    <refpurpose>
+      Affiche le contenu d'une table de fonction (pour débogage).
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>Opcode de greffon dans emugens.</para>
+    <para>
+      Affiche le contenu d'une table de fonction (pour débogage). Fonctionne au
+      taux-k, un déclencheur contrôlant quand afficher (utiliser ktrig=1, qui
+      est la valeur par défaut, pour n'afficher qu'à l'initialisation).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>ftprint</command> ifn [, ktrig, kstart, kend, kstep, inumcols ]</synopsis>
+  </refsect1>
+
+  <refsect1>
+  <title>Initialisation</title>
+  <para>
+    <emphasis>ifn</emphasis> -- La table à afficher.
+  </para>
+    <para>
+      <emphasis>inumcols</emphasis> -- Le nombre d'éléments à afficher dans une
+      colonne (10 par défaut).
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ktrig</emphasis> -- La table sera affichée chaque fois que cette
+      valeur change de 0 à un nombre positif. On peut l'utiliser avec
+      <emphasis>metro</emphasis> pour afficher à intervalle donné. Une valeur de
+      -1 indique d'afficher à chaque cycle-k (vaut 1 par défaut).
+    </para>
+    <para>
+      <emphasis>kstart</emphasis> -- La première position à afficher (0 par défaut).
+    </para>
+    <para>
+      <emphasis>kend</emphasis> -- La dernière postion à afficher (non incluse).
+      (Par défaut = la longueur de la table).
+    </para>
+    <para>
+      <emphasis>kstep</emphasis> -- Le nombre d'élements à ignorer (1 par défaut)
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode ftprint. Il utilise le fichier
+      <ulink url="examples/ftprint.csd"><citetitle>ftprint.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode ftprint.</title>
+        <xi:include href="examples-xml/ftprint.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="printarray"><citetitle>printarray</citetitle></link>,
+      <link linkend="printf"><citetitle>printf</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &nameeduardo; 2018</para>
+    <para>Nouveau greffon dans la version 6.12</para>
+  </refsect1>
+</refentry>

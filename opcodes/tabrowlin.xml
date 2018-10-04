@@ -1,0 +1,113 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="tabrowlin">
+  <indexterm id="IndexTabrowlin"><primary>tabrowlin</primary></indexterm>
+  <refentryinfo><title>>Table Control:Read/Write Operations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tabrowlin</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>tabrowlin</refname>
+    <refpurpose>
+      Copie une ligne d'une ftable dans une autre avec interpolation entre
+      les lignes.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>Opcode de greffon dans beosc.</para>
+    <para>
+      Cette opcode suppose l'utilisation d'une ftable, qui est un simple
+      tableau 1D, contenant une matrice 2D avec une longeur de ligne donnée.
+      En supposant qu'une telle matrice 2D contient plusieurs lignes de flots
+      échantillonnés (par exemple les amplitudes d'un ensemble d'oscillateurs
+      échantillonnées à intervalles réguliers), cet opcode extrait une ligne
+      (ou un bout d'une ligne) de ces données avec interpolation linéaire
+      entre lignes adjacentes (si la ligne n'est pas un nombre rond) et place
+      le résultat dans une autre ftable.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>tabrowlin</command> krow, ifnsrc, ifndest, inumcols [, ioffset, istart, iend, istep ]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifnsrc</emphasis> -- Le numéro de la table source.
+    </para>
+    <para>
+      <emphasis>ifndest</emphasis> -- Le numéro de la table de destination.
+      Cette table doit pouvoir contenir une ligne de données.
+    </para>
+    <para>
+      <emphasis>inumcols</emphasis> -- Le nombre de colonnes croisées par une
+      ligne dans la table source.
+    </para>
+    <para>
+      <emphasis>ioffset</emphasis> -- Le décalage de la position à laquelle
+      commencent les données 2D (utilisé pour ignorer un possible en-tête).
+      0 par défaut.
+    </para>
+    <para>
+      <emphasis>istart</emphasis> -- La position du début de la lecture (par
+      rapport à la ligne). 0 par défaut.
+    </para>
+    <para>
+      <emphasis>iend</emphasis> -- La position (non inclusive) de la fin de la
+      lecture (ne doit pas dépasser <emphasis>inumcols</emphasis>).
+    </para>
+    <para>
+      <emphasis>istep</emphasis> -- Pas de lecture dans la ligne (1 par défaut).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>krow</emphasis> -- La ligne à lire (peut être un nombre
+      fractionnaire, auquel cas il y aura interpolation linéaire avec la ligne
+      suivante).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode tabrowlin. Il utilise le fichier
+      <ulink url="examples/tabrowlin.csd"><citetitle>tabrowlin.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode tabrowlin.</title>
+        <xi:include href="examples-xml/tabrowlin.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="slicearray"><citetitle>getrowlin</citetitle></link>,
+      <link linkend="slicearray"><citetitle>ftslice</citetitle></link>,
+      <link linkend="slicearray"><citetitle>slicearray</citetitle></link>,
+      <link linkend="copyf2array"><citetitle>copyf2array</citetitle></link>,
+      <link linkend="tab2array"><citetitle>tab2array</citetitle></link>,
+      <link linkend="tablecopy"><citetitle>tablecopy</citetitle></link>,
+      <link linkend="tableicopy"><citetitle>tableicopy</citetitle></link>,
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &nameeduardo; 2018</para>
+    <para>Nouveau greffon dans la version 6.12</para>
+  </refsect1>
+</refentry>
