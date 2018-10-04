@@ -4343,7 +4343,7 @@ void csoundDebugFreeVariables(CSOUND *csound, debug_variable_t *varHead);</progr
  ktab2 <emphasis role="opc">maparray_i</emphasis> ktab1, "sin" <emphasis role="comment">applique le fonction de taux-i à 1 arg</emphasis>
                           <emphasis role="comment">dans la chaîne, à chaque élément du vecteur</emphasis>
  ktab2 <emphasis role="opc">slicearray</emphasis> ktab1, istart, iend
-                          <emphasis role="comment">retourne une tranche de ktab1 allant de ktab1[istart]</emphasis>
+                          <emphasis role="comment">retourne un bout de ktab1 allant de ktab1[istart]</emphasis>
                           <emphasis role="comment">à ktab1[iend]</emphasis>
  <emphasis role="opc">copyf2array</emphasis> ktab, kfn    <emphasis role="comment">copie les données d'une ftable dans un vecteur</emphasis>
  <emphasis role="opc">copya2ftab</emphasis>  ktab, kfn    <emphasis role="comment">copie les données d'un vecteur dans une ftable</emphasis></programlisting>
