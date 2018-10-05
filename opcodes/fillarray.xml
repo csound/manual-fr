@@ -34,6 +34,7 @@ english cvs version=
     <title>Syntaxe</title>
     <synopsis>karray[] <command>fillarray</command> ival1, ival2,.....ivaln</synopsis>
     <synopsis>karray <command>fillarray</command> ival1, ival2,.....ivaln</synopsis>
+    <synopsis>karray <command>fillarray</command> kval1, kval2,.....kvaln</synopsis>
   </refsect1>
 
   <refsect1>
@@ -47,7 +48,15 @@ english cvs version=
     </para>
   </refsect1>
 
- <refsect1>
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Dans la troisième forme le vecteur est régénéré au taux-k avec les
+      valeurs <emphasis>kval1,..., kvaln</emphasis>.
+    </para>
+  </refsect1>
+  
+  <refsect1>
     <title>Exemples</title>
     <para>
       Voici un exemple de l'opcode fillarray. Il utilise le fichier
@@ -80,5 +89,6 @@ english cvs version=
       </simplelist>
     </para>
     <para>Nouveau dans la version 6.00</para>
+    <para>Troisième forme de taux-k dans la version 6.12</para>
   </refsect1>
 </refentry>

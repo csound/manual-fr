@@ -302,6 +302,15 @@ kArrRes   <emphasis role="opc">maparray</emphasis>  kArrSrc, "sqrt"</programlist
         <link linkend="slicearray"><citetitle>slicearray</citetitle></link>.
       </para>
     </refsect2>
+    <refsect2>
+      <title>Reformatage</title>
+      <para>
+        utiliser <emphasis>reshapearray</emphasis> pour changer le format d'un
+        tableau sans modifier sa capacité (changer 1D en 2D et vice-versa).
+        Voir l'exemple de l'opcode
+        <link linkend="reshapearray"><citetitle>reshapearray</citetitle></link>.
+      </para>        
+    </refsect2>    
   </refsect1>
   
   <refsect1>

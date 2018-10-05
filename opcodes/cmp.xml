@@ -15,7 +15,7 @@ authors=Francois Pinot
   <refnamediv>
     <refname>cmp</refname>
     <refpurpose>
-      Compare deux signaux audio.
+      Compare des signaux audio ou des tableaux.
     </refpurpose>
   </refnamediv>
   
@@ -23,16 +23,37 @@ authors=Francois Pinot
     <title>Description</title>
     <para>Opcode de greffon dans emugens.</para>
     <para>
-      Compare deux signaux audio avec les opérateurs mathématiques habituels.
+      Compare des signaux audio ou des tableaux, échantillon par échantillon ou
+      valeur par valeur. Toutes les comparaisons sont possibles : `&lt; `&lt;=,
+      &gt;, &gt;=, ==, !=.
+    </para>
+    <para>
+      Un signal audio peut être comparé à un autre signal audio, ou à un
+      scalaire (valeur de taux-i ou -k).
       <programlisting>
         aout cmp aL, ">", aR
+        aOut cmp aIn, ">=", 0.5
+        aOut cmp aIn, "`&lt;=", kthreshold
+      </programlisting>
+    </para>
+    <para>
+      Un tableau peut être comparé à un autre tableau, à un scalaire, ou testé
+      s'il appartient à un intervalle entre deux scalaires. Toutes ces
+      opérations sont valables pour les tableaux-i et -k.
+      <programlisting>
+        kOut[] cmp kIn[], ">=", kx
+        kOut[] cmp kA[], "==", kB[]
+        kOut[] cmp 0.5, "`&lt;", kIn[], "`&lt;=", 1
       </programlisting>
     </para>
   </refsect1>
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>aout <command>cmp</command> aL, S_operator, aR</synopsis>
+    <synopsis>aout <command>cmp</command> a1, S_operator, a2</synopsis>
+    <synopsis>aout <command>cmp</command> a1, S_operator, kx</synopsis>
+    <synopsis>kOut[] <command>cmp</command> kA, S_operator, kB</synopsis>
+    <synopsis>kOut[] <command>cmp</command> k1, S_operator1, kIn[], S_operator2, k2</synopsis>
   </refsect1>
 
   <refsect1>
@@ -46,10 +67,10 @@ authors=Francois Pinot
   <refsect1>
     <title>Exécution</title>
     <para>
-      <emphasis>aL</emphasis> -- Signal à gauche de l'opérateur.
+      <emphasis>a1</emphasis> -- Signal à gauche de l'opérateur.
     </para>
     <para>
-      <emphasis>aR</emphasis> -- Signal à droite de l'opérateur.
+      <emphasis>a2</emphasis> -- Signal à droite de l'opérateur.
     </para>
     <para>
       <programlisting>

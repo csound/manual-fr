@@ -23,15 +23,16 @@ authors=Francois Pinot
     <title>Description</title>
     <para>Opcode de greffon dans emugens.</para>
     <para>
-      Fonction à points charnière avec interpolation linéaire. Utile lorsque la
-      définition d'une table avec GEN27 et la mise à l'échelle de la valeur
-      consommerait trop de ressoures.
+      Fonction à points charnière avec interpolation linéaire.
     </para>
   </refsect1>
 
   <refsect1>
     <title>Syntaxe</title>
     <synopsis>ky <command>bpf</command> kx, kx1, ky1, kx2, ..., kxn, kyn</synopsis>
+    <synopsis>iy <command>bpf</command> ix, ix1, iy1, ix2, ..., ixn, iyn</synopsis>
+    <synopsis>kys[] <command>bpf</command> kxs[], kx1, ky1, kx2, ..., kxn, kyn</synopsis>
+    <synopsis>iys[] <command>bpf</command> ixs[], ix1, iy1, ix2, ..., ixn, iyn</synopsis>
   </refsect1>
 
   <refsect1>
@@ -47,7 +48,7 @@ authors=Francois Pinot
     <para>
       Les points (kx1, ky1), (kx2, ky2), etc, définissent une fonction
       interpolée linéairement. Cette fonction est évaluée au point
-      <emphasis>kx</emphasis>. Cette fonction s'étend à la fois ver -inf
+      <emphasis>kx</emphasis>. Cette fonction s'étend à la fois vers -inf
       et +inf, si bien que si kx &lt; kx1 alors ky = ky1 et pareillement à
       l'autre extrémité.
     </para>
@@ -82,10 +83,11 @@ authors=Francois Pinot
   <refsect1>
     <title>Voir aussi</title>
     <para>
+      <link linkend="bpfcos"><citetitle>bpfcos</citetitle></link>, 
+      <link linkend="linlin"><citetitle>linlin</citetitle></link>
+      <link linkend="xyscale"><citetitle>xyscale</citetitle></link>, 
       <link linkend="scale"><citetitle>scale</citetitle></link>, 
       <link linkend="ntrpol"><citetitle>ntrpol</citetitle></link>, 
-      <link linkend="xyscale"><citetitle>xyscale</citetitle></link>, 
-      <link linkend="linlin"><citetitle>linlin</citetitle></link>
     </para>
   </refsect1>
 

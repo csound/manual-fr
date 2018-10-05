@@ -24,34 +24,43 @@ authors=Francois Pinot
     <para>Opcode de greffon dans emugens.</para>
     <para>
       Envoie un intervalle linéaires de valeurs vers un autre intervalle linéaire.
+      Supporte les scalaires ainsi que les tableaux, aux taux-i et -k.
     </para>
   </refsect1>
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>kout <command>linlin</command> kin, ksrclo, ksrchi, kdstlo, kdsthi</synopsis>
+    <synopsis>ky <command>linlin</command> kx, ky0, ky1 [, kx0, kx1 ]</synopsis>
+    <synopsis>iy <command>linlin</command> ix, iy0, iy1 [, ix0, ix1 ]</synopsis>
+    <synopsis>kys[] <command>linlin</command> kxs[], ky0, ky1 [, kx0, kx1 ]</synopsis>
+    <synopsis>iys[] <command>linlin</command> ixs[], ky0, ky1, [ kx0, kx1 ]</synopsis>
+    <synopsis>kC[] <command>linlin</command> kx, kA[], kB[] [, kx0, kx1 ]</synopsis>
   </refsect1>
 
   <refsect1>
     <title>Exécution</title>
     <para>
-      <emphasis>kin</emphasis> -- Signal en entrée.
+      <emphasis role="strong">kx</emphasis> -- Signal en entrée.
     </para>
     <para>
-      <emphasis>ksrclo</emphasis> -- Limite inférieure de l'intervalle d'entrée.
+      <emphasis role="strong">kx0</emphasis> -- Limite inférieure de
+      l'intervalle d'entrée. 0 par défaut.
     </para>
     <para>
-      <emphasis>ksrchi</emphasis> -- Limite supérieure de l'intervalle d'entrée.
+      <emphasis role="strong">kx1</emphasis> -- Limite supérieure de
+      l'intervalle d'entrée. 1 par défaut.
     </para>
     <para>
-      <emphasis>kdstlo</emphasis> -- Limite inférieure de l'intervalle de sortie.
+      <emphasis role="strong">ky0</emphasis> -- Limite inférieure de
+      l'intervalle de sortie.
     </para>
     <para>
-      <emphasis>kdsthi</emphasis> -- imite supérieure de l'intervalle de sortie.
+      <emphasis role="strong">ky1</emphasis> -- imite supérieure de
+      l'intervalle de sortie.
     </para>
     <para>
       <programlisting>
-out = (in - srclo) / (srchi - srclo) * (dsthi - dstlo) + dstlo
+y = (x - x0) / (x1 - x0) * (y1 - y0) + y0
       </programlisting>
     </para>
   </refsect1>
@@ -71,15 +80,17 @@ out = (in - srclo) / (srchi - srclo) * (dsthi - dstlo) + dstlo
   <refsect1>
     <title>Voir aussi</title>
     <para>
+      <link linkend="lincos"><citetitle>lincos</citetitle></link>, 
+      <link linkend="bpf"><citetitle>bpf</citetitle></link>
+      <link linkend="bpfcos"><citetitle>bpfcos</citetitle></link>
       <link linkend="scale"><citetitle>scale</citetitle></link>, 
       <link linkend="ntrpol"><citetitle>ntrpol</citetitle></link>, 
-      <link linkend="bpf"><citetitle>bpf</citetitle></link>
     </para>
   </refsect1>
 
   <refsect1>
     <title>Crédits</title>
     <para>Par : &nameeduardo; 2017</para>
-    <para>Nouveau dans la version 6.09</para>
+    <para>Nouveau greffon dans la version 6.11</para>
   </refsect1>
 </refentry>

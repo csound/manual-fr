@@ -74,6 +74,8 @@ authors=Francois Pinot
   &opcodesbarmodel;
   &opcodesbbcutm;
   &opcodesbbcuts;
+  &opcodesbeadsynt;
+  &opcodesbeosc;
   &opcodesbetarand;
   &opcodesbexprnd;
   &opcodesbformenc1;
@@ -83,6 +85,7 @@ authors=Francois Pinot
   &opcodesbiquada;
   &opcodesbirnd;
   &opcodesbpf;
+  &opcodesbpfcos;
   &opcodesbqrez;
   &opcodesbutbp;
   &opcodesbutbr;
@@ -403,9 +406,11 @@ authors=Francois Pinot
   &opcodesftlptim;
   &opcodesftmorf;
   &opcodesftom;
+  &opcodesftprint;
   &opcodesftsamplebank;
   &opcodesftsave;
   &opcodesftsavek;
+  &opcodesftslice;
   &opcodesftsr;
   &opcodesgain;
   &opcodesgainslider;
@@ -422,6 +427,7 @@ authors=Francois Pinot
   &opcodesgetcol;
   &opcodesgetftargs;
   &opcodesgetrow;
+  &opcodesgetrowlin;
   &opcodesgetseed;
   &opcodesgogobel;
   &opcodesgoto;
@@ -521,7 +527,7 @@ authors=Francois Pinot
   &opcodeslinenr;
   &opcodeslineto;
   &opcodeslinlin;
-  
+  &opcodeslincos;
   &opcodeslinkbeatforce;
   &opcodeslinkbeatget;
   &opcodeslinkbeatrequest;
@@ -811,6 +817,7 @@ authors=Francois Pinot
   &opcodesprintks;
   &opcodesprintks2;
   &opcodesprints;
+  &opcodesprintarray;
   &opcodesproduct;
   &opcodesproductarray;
   &opcodespset;
@@ -903,6 +910,7 @@ authors=Francois Pinot
   &opcodesremoteport;
   &opcodesremove;
   &opcodesrepluck;
+  &opcodesreshapearray;
   &opcodesreson;
   &opcodesresonk;
   &opcodesresonr;
@@ -1135,7 +1143,9 @@ authors=Francois Pinot
   &opcodestabmorphi;
   &opcodestabplay;
   &opcodestabrec;
+  &opcodestabrowlin;
   &opcodestabsum;
+  &opcodestab2array;
   &opcodestab2pvs;
   &opcodestambourine;
   &opcodestan;
