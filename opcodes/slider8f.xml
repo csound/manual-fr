@@ -18,7 +18,7 @@ english cvs version=1.9
     <refname>slider8f</refname>
 
     <refpurpose>
-      Crée une banque de 8 numéros différents de messages de contrôle MIDI, filtrés
+      Crée un banc de 8 numéros différents de messages de contrôle MIDI, filtrés
       avant la sortie.
     </refpurpose>
   </refnamediv>
@@ -26,7 +26,7 @@ english cvs version=1.9
   <refsect1>
     <title>Description</title>
     <para>
-      Crée une banque de 8 numéros différents de messages de contrôle MIDI, filtrés
+      Crée un banc de 8 numéros différents de messages de contrôle MIDI, filtrés
       avant la sortie.
     </para>
   </refsect1>
@@ -77,7 +77,7 @@ english cvs version=1.9
     </para>
 
     <para>
-      <emphasis>slider8f</emphasis> est une banque de contrôleurs MIDI, utile
+      <emphasis>slider8f</emphasis> est un banc de contrôleurs MIDI, utile
       lorsque l'on utilise un mélangeur MIDI comme le Kawai MM-16 ou autres pour
       changer n'importe quel paramètre du son en . Les messages de
       contrôle MIDI arrivant sur le port d'entrée sont convertis pour entrer
@@ -100,7 +100,7 @@ english cvs version=1.9
     </para>
 
     <para>
-      <emphasis>slider8f</emphasis> fournit une banque de 8 numéros différents de
+      <emphasis>slider8f</emphasis> fournit un banc de 8 numéros différents de
       messages de contrôle MIDI. Il filtre le signal avant la sortie. Cela
       élimine les discontinuités dues à la basse résolution du MIDI (7 bit).
       La fréquence de coupure peut être réglée séparément pour chaque contrôleur

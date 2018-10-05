@@ -29,7 +29,7 @@ english cvs version=
       L'opcode <emphasis>resyn</emphasis> prend en entrée un flot de signal PV
       TRACKS (tel que généré par l'opcode <emphasis>partials</emphasis> par
       exemple). Il resynthétise le signal avec interpolation linéaire de
-      l'amplitude et interpolation cubique de la phase pour piloter une banque
+      l'amplitude et interpolation cubique de la phase pour piloter un banc
       d'oscillateurs interpolants avec pondération de l'amplitude et de la hauteur.
       <emphasis>resyn</emphasis> est une version modifiée de<emphasis>sinsyn</emphasis>,
       qui permet la resynthèse de données avec modification de la hauteur et de

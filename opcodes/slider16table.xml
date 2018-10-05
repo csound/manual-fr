@@ -18,14 +18,14 @@ english cvs version=1.3
     <refname>slider16table</refname>
 
     <refpurpose>
-      Enregistre une banque de 16 messages de contrôle MIDI différents dans une table.
+      Enregistre un banc de 16 messages de contrôle MIDI différents dans une table.
     </refpurpose>
   </refnamediv>
 
   <refsect1>
     <title>Description</title>
     <para>
-      Enregistre une banque de 16 messages de contrôle MIDI différents dans une table.
+      Enregistre un banc de 16 messages de contrôle MIDI différents dans une table.
     </para>
   </refsect1>
 
@@ -79,12 +79,12 @@ english cvs version=1.3
     <title>Exécution</title>
     <para>
       <emphasis>kflag</emphasis> -- un indicateur qui informe si un message de
-      changement de contrôle dans la banque a été reçu. Dans ce cas,
+      changement de contrôle dans le banc a été reçu. Dans ce cas,
       <emphasis>kflag</emphasis> est fixé à 1. Sinon il est fixé à 0.
     </para>
 
     <para>
-      <emphasis>slider16table</emphasis> est une banque de contrôleurs MIDI, utile
+      <emphasis>slider16table</emphasis> est un banc de contrôleurs MIDI, utile
       lorsque l'on utilise un mélangeur MIDI comme le Kawai MM-16 ou autres pour
       changer n'importe quel paramètre du son en . Les messages de
       contrôle MIDI arrivant sur le port d'entrée sont convertis pour entrer
@@ -107,7 +107,7 @@ english cvs version=1.3
     </para>
 
     <para>
-      <emphasis>slider16table</emphasis> fournit une banque de 16 numéros différents de
+      <emphasis>slider16table</emphasis> fournit un banc de 16 numéros différents de
       messages de contrôle MIDI.
     </para>
 

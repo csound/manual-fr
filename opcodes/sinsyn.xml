@@ -28,7 +28,7 @@ english cvs version=
       L'opcode <emphasis>sinsyn</emphasis> prend en entrée un flot de signal PV
       TRACKS (tel que généré par l'opcode <emphasis>partials</emphasis> par
       exemple). Il resynthétise le signal avec interpolation linéaire de
-      l'amplitude et interpolation cubique de la phase pour piloter une banque
+      l'amplitude et interpolation cubique de la phase pour piloter un banc
       d'oscillateurs interpolants avec pondération de l'amplitude.
       <emphasis>sinsyn</emphasis> tente de préserver la phase des partiels du
       signal original et ainsi il ne permet pas de modifier la hauteur ou
