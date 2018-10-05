@@ -29,7 +29,7 @@ english cvs version=1.3
     <link linkend="wrap"><citetitle>wrap</citetitle></link> et
     <link linkend="mirror"><citetitle>mirror</citetitle></link>, mais ils opèrent sur
     un signal vectoriel à la place d'un signal scalaire. Les résultats remplacent les
-    anciennes valeurs du vecteur contenues dans une f-table si celles-ci sont en dehors
+    anciennes valeurs du vecteur contenues dans une ftable si celles-ci sont en dehors
     de l'intervalle min/max. Si l'on veut conserver le vecteur d'entrée, il faut utiliser
     l'opcode <link linkend="vcopy"><citetitle>vcopy</citetitle></link> pour le copier dans
     une autre table.

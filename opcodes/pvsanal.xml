@@ -131,7 +131,7 @@ english cvs version=
       (voir <link linkend="pvsinfo"><citetitle>pvsinfo</citetitle></link>). D'autres
       types pourront être implémentés dans le futur ; si la valeur de
       <emphasis>iwintype</emphasis> est strictement négative, sa valeur absolue
-      est utilisée comme le numéro d'une f-table existante. Le problème
+      est utilisée comme le numéro d'une ftable existante. Le problème
       ici est la contrainte de taille en puissance de deux des tables de fonction, ce
       qui en fait une solution incomplète. La plupart des utilisateurs jugeront que
       la fenêtre de Hamming est suffisante pour les besoins courants et qu'elle

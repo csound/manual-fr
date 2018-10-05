@@ -57,7 +57,7 @@ english cvs version=1.10
       des arguments optionnels à lire. La chaîne peut contenir les caractères
       "acdfhisAG" qui signifient audio, caractère, double, flottant, entier sur
       64 bit, entier sur 32 bit, chaîne de caractères, tableau scalaire et
-      f-table. Tous les types sauf 'asA' nécessitent une variable de taux-k ;
+      ftable. Tous les types sauf 'asA' nécessitent une variable de taux-k ;
       's' nécessite une variable chaîne de caractères, 'a' une variable audio et
       'A' un tableau de taux-i ou de taux-k. Pour le type 'G' on peut utiliser
       une variable ou une constante.

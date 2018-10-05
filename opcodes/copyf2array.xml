@@ -18,14 +18,14 @@ english cvs version=
     <refname>copyf2array</refname>
 
     <refpurpose>
-      Copie les données d'une f-table dans un vecteur.
+      Copie les données d'une ftable dans un vecteur.
     </refpurpose>
   </refnamediv>
  
   <refsect1>
     <title>Description</title>
     <para>
-      L'opcode <emphasis>copyf2array</emphasis> prend une f-table et en
+      L'opcode <emphasis>copyf2array</emphasis> prend une ftable et en
       copie le contenu dans une t-var.
     </para>
   </refsect1>
@@ -41,7 +41,7 @@ english cvs version=
       <emphasis>tab</emphasis> -- table pour la destination.
     </para>
     <para>
-      <emphasis>kftbl</emphasis> -- f-table pour la source.
+      <emphasis>kftbl</emphasis> -- ftable pour la source.
     </para>
   </refsect1>
 

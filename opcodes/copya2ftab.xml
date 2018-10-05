@@ -17,7 +17,7 @@ english cvs version=
   <refnamediv>
     <refname>copya2ftab</refname>
     <refpurpose>
-      Copie les données d'un vecteur dans une f-table.
+      Copie les données d'un vecteur dans une ftable.
     </refpurpose>
   </refnamediv>
  
@@ -25,7 +25,7 @@ english cvs version=
     <title>Description</title>
     <para>
       L'opcode <emphasis>copya2ftab</emphasis> prend une variable k-tableau et en
-      copie le contenu dans une f-table.
+      copie le contenu dans une ftable.
     </para>
   </refsect1>
  
@@ -40,7 +40,7 @@ english cvs version=
       <emphasis>kftbl</emphasis> -- tableau unidimensionnel pour la source.
     </para>
     <para>
-      <emphasis>tab</emphasis> -- f-table pour la destination.
+      <emphasis>tab</emphasis> -- ftable pour la destination.
     </para>
   </refsect1>
 

@@ -56,7 +56,7 @@ english cvs version=
         <title>Exemple (utilisant une table-f provenant de la partition, en
         supposant un fsig avec <emphasis>fftsize = 1024</emphasis>)</title>
         <programlisting>
-<emphasis role="comment">; score f-table using cubic spline to define shaped peaks</emphasis>
+<emphasis role="comment">; score ftable using cubic spline to define shaped peaks</emphasis>
 <emphasis role="stamnt">f</emphasis>1 0 513 8 0 2 1 3 0 4 1 6 0 10 1 12 0 16 1 32 0 1 0 436 0
 
 asig    <emphasis role="opc">buzz</emphasis>     20000, 199, 50, 1         <emphasis role="comment">; pulsewave source</emphasis>
