@@ -92,6 +92,415 @@ english cvs version=
     </itemizedlist>
   </para>-->
 
+  <bridgehead>Notes de parution de Csound 6.12 ()</bridgehead>
+  <para>
+    De nombreux changements comprenant la suppression de la fonctionnalité
+    vst2cs à cause d'un problème de copyright.
+  </para>
+  <para>
+    Les changements apportés dans la version 6.11 à la lecture en format raw ont
+    été modfifiés afin que gen1 et diskin ignorent les formats de fichiers
+    exprimés par un nombre positif et utilisent à la place l'en-tête du fichier,
+    à moins que le format soit exprimé par un nombre négatif dont la valeur
+    absolue est alors utilisée pour le format d'un fichier audio raw. Cela
+    devrait régler la plupart des problèmes de compatibilité.
+  </para>
+  <para>
+    Il y a plusieurs nouveaux opcodes et améliorations d'opcodes, de nouvelles
+    facilités dans les partitions et plusieurs corrections de bogues.
+  </para>
+  <para>
+    <itemizedlist>
+      <listitem>
+        <para>Nouveaux opcodes :
+          <itemizedlist>
+            <listitem>
+              <simpara><link
+              linkend="fluidInfo"><citetitle>fluidInfo</citetitle></link>
+              </simpara> retrouve l'information de programme dans un soundfont
+              chargé.
+            </listitem>
+          </itemizedlist>
+          <itemizedlist>
+            <listitem>
+              Le nouvel opcode <simpara><link
+              linkend="ftaudio"><citetitle>ftaudio</citetitle></link></simpara>
+              écrit une ftable dans un fichier audio ; il existe des versions
+              au taux-i et déclenchée au taux-k et la version de taux-k
+              supporte l'écriture synchrone ou asynchrone.
+            </listitem>
+          </itemizedlist>
+          <itemizedlist>
+            <listitem>
+              Une version de <simpara><link
+              linkend="OSClisten"><citetitle>OSClisten</citetitle></link>
+              </simpara> qui écrit les données dans un tableau de taux-k.
+            </listitem>
+          </itemizedlist>
+          <itemizedlist>
+            <listitem>
+              <simpara><link linkend="OSCcount"><citetitle>OSCcount</citetitle>
+              </link></simpara> retourne le nombre restant de messages OSC
+              entrants.
+            </listitem>
+          </itemizedlist>
+          <itemizedlist>
+            <listitem>
+              <simpara><link
+              linkend="faustplay"><citetitle>faustplay</citetitle></link>
+              </simpara> et <simpara><link linkend="faustdsp">
+              <citetitle>faustdsp</citetitle></link></simpara> sont de nouveaux
+              opcodes séparant l'instanciation du TNS faust et son exécution.
+            </listitem>
+          </itemizedlist>
+          <itemizedlist>
+            <listitem>
+              <simpara><link
+              linkend="OSCbundle"><citetitle>OSCbundle</citetitle></link>
+              </simpara> envoit une collection de messages OSC similaires sous
+              forme d'un paquet unique pour plus d'efficacité.
+            </listitem>
+          </itemizedlist>
+          <itemizedlist>
+            <listitem>
+              <simpara><link linkend="beosc"><citetitle>beosc</citetitle></link>
+              </simpara> et <simpara><link linkend="beadsynt">
+              <citetitle>beadsynt</citetitle></link></simpara> sont un
+              oscillateur et un banc d'oscillateurs à bande améliorée.
+              <simpara><link
+              linkend="bpfcos"><citetitle>bpfcos</citetitle></link></simpara>
+              sert pour des fonctions à points charnière avec interpolation.
+              De même <simpara>
+              <link linkend="lincos"><citetitle>lincos</citetitle></link>
+              </simpara> ajoute une interpolation par cosinus à <simpara><link
+              linkend="linlin"><citetitle>linlin</citetitle></link></simpara>.
+            </listitem>
+          </itemizedlist>
+          <itemizedlist>
+            <listitem>
+              <simpara><link
+              linkend="printarray"><citetitle>printarray</citetitle></link>
+              </simpara> et <simpara><link linkend="reshapearray">
+              <citetitle>reshapearray</citetitle></link></simpara> agissent sur
+              les tableaux.
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Orchestre :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Nouvelle option du préprocesseut #includestr. Comme
+                #include avec en plus développement de macro de la chaîne de
+                caractères délimitées par doubles apostrophes.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Utilisation des notes liées dans subinstr corrigée.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Les appels de macro imbriqués plus de 10 fois provoquaient un
+                plantage ; maintenant l'imbrication n'est plus limitée.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Un message d'erreur d'exécution comprend maintenant
+                (habituellement) un numéro de ligne et une trace de
+                fichier/macro.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Les affectations multiples telles que ka, kb = 1, 2 sont à
+                nouveau supportées par le parseur ; cette possibilité avait été
+                annulée par erreur.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                L'utilisation problématique de i() directement avec un élément
+                de tableau est maintenant indiquée comme une erreur.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Si un nom de fichier inclu contient un "/", alors toute
+                inclusion imbriquée est relative à ce répertoire. (Issue n°973).
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Partition :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Nouvelle option du préprocesseut #includestr. Comme
+                #include avec en plus développement de macro de la chaîne de
+                caractères délimitées par doubles apostrophes.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Opcode de partition 'd' pour exécution en temps réel. C'était
+                l'issue n°966.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Bogue dans l'opération np corrigé.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                L'utilisation de la syntaxe [] dans une partition pouvait
+                entraîner une perte de précision pour les nombres supérieurs à
+                1 million ; l'ancienne version a été restaurée.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Les appels de macro imbriqués plus de 10 fois provoquaient un
+                plantage ; maintenant l'imbrication n'est plus limitée.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Les formes pour fins de sections retardées (e 5 ou s 5)
+                fonctionnent maintenant avec des retards fractionnaires ;
+                auparavant seule la partie entière était lue.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Si un nom de fichier inclu contient un "/", alors toute
+                inclusion imbriquée est relative à ce répertoire. (Issue n°973).
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Opcodes et Gens modifiés :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Argument facultatif ajouté à ftom pour arrondir la réponse à
+                un entier.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                flooper2 et syncgrain etc permettent maintenant le
+                reéchantillonnage.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                chnclear peut prendre maintenant une liste de canaux à effacer
+                au lieu d'un seul.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                printf et printf_i now sont maintenant conformes au manuel :
+                tous les arguments au-delà de format et de trigger sont
+                facultatifs.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                prints et printks peuvent recevoir des arguments chaîne de
+                caractères affichés avec %s.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                GEN2 peut prendre maintenant une taille nulle, qui est
+                interprétée comme la taille suffisante pour le nombre de valeurs
+                fournies.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                faustcompile comprend maintenant un nouveau paramètre
+                facultatif pour permettre l'exécution en mode bloqué. Par
+                défaut (comme précédemment) il est en mode non-bloqué.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                fillarray peut être exécuté au taux-k si n'importe lequel de
+                ses arguments/valeurs est au taux-k.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Bogues corrigés :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Une erreur de typographie dans p5glove signifiait que la
+                commande pour lire l'état du bouton comme un bitmap ne
+                retournait que l'état du bouton A.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                diskin vers tableau corrigé et également l'utilsation avec de
+                petites valeurs de ksmps.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                loscil échouait parfois à traiter l'argument ibas ; le
+                traitement est correct maintenant.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                madsr pouvait provoquer un dépassement sur un compteur interne
+                lorqu'un p3 négatif était donné.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                La correspondance entre threads et lua_States a été corrigée
+                (issue n°959).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Le temps de calcul dans flooper2, flooper et syncgrain a été
+                corrigé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Rééchantillonnage et hauteur corrigés dans pvstanal.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                De rares cas de saturation de tampon ont été corrigés dans
+                faust.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                pvsftw avait un contrôle de format de TFR incorrect qui
+                produisait un message d'erreur de format ; c'est corrigé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Si ksmps valait 1, l'opcode linenr au taux-a ne fonctionnait
+                pas ; c'est corrigé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Opcode window corrigé.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Le contrôle de compatibilité des sous-types de f-valeurs dans
+                plusieurs opcodes pvs était défectueux, provoquant de faux
+                messages d'erreur.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                cosseg était inopérant pour plus d'un segment. Corrigé
+                maintenant.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                L'opcode monitor ne fonctionnait pas correctement lors de
+                l'utilisation de plusieurs processus ; c'est corrigé.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Changements système :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                La recompilation des instruments nommés a été totalement
+                repensée pour éviter les erreurs et les fuites de mémoire.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                L'allocation des noms d'instrument à des numéros internes a été
+                réécrite et devrait rester stable lors des remplacements en
+                codage en temps réel.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                L'affichage du numéro alloué à un instrument nommé s'effectue
+                maintenant normalement, pas seulement en mode débogage.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Si la version 0.29 de liblo est disponible, csound peut être
+                construit pour l'utiliser (avec l'option de compilation LIBLO29)
+                et cela corrige certains bogues liés à une utilisation
+                lourde/complexe de OSClisten. Malheureusement l'ancienne version
+                0.28 version est toujours distribuée sur certaines versions de
+                linux.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Le compilateur d'orchestre a plusieurs nouvelles optimisations
+                évitant des affectations inutiles et réalisant un peu plus
+                d'optimisation d'expressions.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>API:
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                csound->ReadScore a été modifié pour avoir le même comportement
+                qu'avec un fichier csd ou sco. Avant cela, il pouvait donner ou
+                pas une partition infinie de manière inattendue.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Changements sur les plates-formes :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Bela : autorise les E/S analogiques avec différents numéros de
+                canaux.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+
   <bridgehead>Notes de parution de Csound 6.11 (mai 2018)</bridgehead>
   <para>
     Il y a eu une importante réoganisation en interne qui ne devrait pas affecter
