@@ -120,8 +120,6 @@ english cvs version=
               </simpara> retrouve l'information de programme dans un soundfont
               chargé.
             </listitem>
-          </itemizedlist>
-          <itemizedlist>
             <listitem>
               Le nouvel opcode <simpara><link
               linkend="ftaudio"><citetitle>ftaudio</citetitle></link></simpara>
@@ -129,22 +127,16 @@ english cvs version=
               au taux-i et déclenchée au taux-k et la version de taux-k
               supporte l'écriture synchrone ou asynchrone.
             </listitem>
-          </itemizedlist>
-          <itemizedlist>
             <listitem>
               Une version de <simpara><link
               linkend="OSClisten"><citetitle>OSClisten</citetitle></link>
               </simpara> qui écrit les données dans un tableau de taux-k.
             </listitem>
-          </itemizedlist>
-          <itemizedlist>
             <listitem>
               <simpara><link linkend="OSCcount"><citetitle>OSCcount</citetitle>
               </link></simpara> retourne le nombre restant de messages OSC
               entrants.
             </listitem>
-          </itemizedlist>
-          <itemizedlist>
             <listitem>
               <simpara><link
               linkend="faustplay"><citetitle>faustplay</citetitle></link>
@@ -152,16 +144,12 @@ english cvs version=
               <citetitle>faustdsp</citetitle></link></simpara> sont de nouveaux
               opcodes séparant l'instanciation du TNS faust et son exécution.
             </listitem>
-          </itemizedlist>
-          <itemizedlist>
             <listitem>
               <simpara><link
               linkend="OSCbundle"><citetitle>OSCbundle</citetitle></link>
               </simpara> envoit une collection de messages OSC similaires sous
               forme d'un paquet unique pour plus d'efficacité.
             </listitem>
-          </itemizedlist>
-          <itemizedlist>
             <listitem>
               <simpara><link linkend="beosc"><citetitle>beosc</citetitle></link>
               </simpara> et <simpara><link linkend="beadsynt">
@@ -175,14 +163,21 @@ english cvs version=
               </simpara> ajoute une interpolation par cosinus à <simpara><link
               linkend="linlin"><citetitle>linlin</citetitle></link></simpara>.
             </listitem>
-          </itemizedlist>
-          <itemizedlist>
             <listitem>
               <simpara><link
               linkend="printarray"><citetitle>printarray</citetitle></link>
               </simpara> et <simpara><link linkend="reshapearray">
               <citetitle>reshapearray</citetitle></link></simpara> agissent sur
               les tableaux.
+            </listitem>
+           <listitem>
+              <simpara><link
+              linkend="trim"><citetitle>trim</citetitle></link>
+              </simpara> et <simpara><link linkend="trim_i">
+              <citetitle>trim_i</citetitle></link></simpara> ajustent la taille
+              d'un tableau unidimensionnel soit en l'augmentant soit en la
+              diminuant, en préservant les données et/ou en complétant avec des
+              zéros.
             </listitem>
           </itemizedlist>
         </para>
@@ -233,6 +228,17 @@ english cvs version=
               <simpara>
                 Si un nom de fichier inclu contient un "/", alors toute
                 inclusion imbriquée est relative à ce répertoire. (Issue n°973).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Redéfinition des UDOs avec aucun argument en sortie corrigée.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Un bogue très obscur dans les sous-instrumenst, qui a été
+                présent pendant presqu'un an, a été corrigé.
               </simpara>
             </listitem>
           </itemizedlist>
@@ -340,6 +346,30 @@ english cvs version=
                 ses arguments/valeurs est au taux-k.
               </simpara>
             </listitem>
+            <listitem>
+              <simpara>
+                slicearray pour les tableaux autres que ceux de taux-i ne
+                s'exécute qu'au taux-k.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                pvstrace a maintenant l'option de retourner aussi un tableau
+                contenant les numéros de bin.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Utilités :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Une erreur de codage dans mixer a été corrigée. L'opcode était
+                très abimé.
+              </simpara>
+            </listitem>
           </itemizedlist>
         </para>
       </listitem>
@@ -428,12 +458,27 @@ english cvs version=
                 l'utilisation de plusieurs processus ; c'est corrigé.
               </simpara>
             </listitem>
+            <listitem>
+              <simpara>
+                Dans l'opcode linenr si la chute commençait avant la fin
+                de l'attaque la valeur de sortie sautait à la valeur finale
+                et ensuite diminuait, provoquant une discontinuité. C'est
+                corrigé (n°1048).
+              </simpara>
+            </listitem>
           </itemizedlist>
         </para>
       </listitem>
       <listitem>
         <para>Changements système :
           <itemizedlist>
+            <listitem>
+              <simpara>
+                Les différentes options -zN rapportent maintenant le nombre
+                d'opcodes pour la demande et diffèrent ainsi sur les opcodes
+                obsolètes et les opcodes polymorphes.
+              </simpara>
+            </listitem>
             <listitem>
               <simpara>
                 La recompilation des instruments nommés a été totalement
