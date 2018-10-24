@@ -1,0 +1,80 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="trim">
+<indexterm id="IndexTrim"><primary>trim</primary></indexterm>
+  <refentryinfo><title>Array Opcodes</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>trim</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>trim</refname>
+    <refpurpose>
+      Ajuste la taille d'un tableau unidimensionnel.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+     <para>
+      Augmente ou réduit un tableau  unidimensionnel.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>trim_i</command> iarray, ilen</synopsis>
+    <synopsis><command>trim</command> xarray, klen</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>iarray</emphasis> -- un tableau unidimensionnel de taux-i
+    </para>
+    <para>
+      <emphasis>xarray</emphasis> -- un tableau unidimensionnel
+    </para>
+    <para>
+      <emphasis>klen</emphasis> -- la taille désirée
+    </para>
+
+    <para>
+      Donne au tableau la taille désirée soit en le tronquant soit en le
+      complétant avec des valeurs nulles.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode trim. Il utilise le fichier
+      <ulink url="examples/trim.csd"><citetitle>trim.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode trim.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/trim.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="slicearray"><citetitle>slicearray</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namejohn; 2018</para>
+    <para>Nouveau dans la version 6.12</para>
+  </refsect1>
+</refentry>
