@@ -26,13 +26,16 @@ english cvs version=1.7
   <refsect1>
     <title>Description</title>
     <para>
-      Affecte un ensemble de p-champs à des variables de taux i.
+      Affecte un ensemble de p-champs à des variables de taux i, ou à des
+      tableaux de taux i ou k.
     </para>
   </refsect1>
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis> ivar1, ... <command>passign</command> [istart]</synopsis>
+    <synopsis> ivar1, ... <command>passign</command> [istart][, iend</synopsis>
+    <synopsis> iarray <command>passign</command> [istart][, iend</synopsis>
+    <synopsis> karray <command>passign</command> [istart][, iend</synopsis>
   </refsect1>
 
   <refsect1>
@@ -43,10 +46,14 @@ english cvs version=1.7
       numéro d'instrument.
     </para>
     <para>
+      L'argument facultatif <emphasis>iend</emphasis> donne l'indice du dernier
+      p-champ à affecter. La valeur par défaut est 0, ce qui correspond à tous.
+    </para>
+    <para>
       Une des variables peut être une variable chaîne de caractères, à laquelle
       sera affecté dans ce cas le seul paramètre de type chaîne de caractères,
       s'il y en a un, sinon une erreur.
-  </para>
+    </para>
   </refsect1>
 
   <refsect1>
@@ -57,12 +64,17 @@ english cvs version=1.7
       l'argument <emphasis>istart</emphasis>. Il ne doit pas y avoir plus de
       variables que de p-champs, mais il peut y en avoir moins.
     </para>
+    <para>
+      <emphasis>passign</emphasis> peut transférer les p-champs de l'instrument
+      dans un tableau unidimensionnel de taux-i ou de taux-k.
+    </para>
   </refsect1>
 
   <refsect1>
     <title>Voir aussi</title>
     <para>
       <link linkend="assign"><citetitle>assign</citetitle></link>,
+      <link linkend="pcount"><citetitle>pcount</citetitle></link>,
     </para>
   </refsect1>
 
@@ -87,7 +99,10 @@ english cvs version=1.7
         <member>Bath, UK</member>
         <member>Décembre 2009</member>
       </simplelist>
-    <para>Nouveau dans la version 5.12</para>
+      <para>
+        Nouveau dans la version 5.12 ; point final et version avec tableau
+        après la 5.12
+      </para>
     </para>
   </refsect1>
 </refentry>

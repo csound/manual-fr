@@ -36,9 +36,12 @@ english cvs version=1.10
   <refsect1>
     <title>Exécution</title>
     <para>
-      <emphasis>avar1, avar2, avar3,</emphasis> ... -- signals to be zeroed
+      <emphasis>avar1, avar2, avar3,</emphasis> ... -- signaux à mettre à zéro.
     </para>
-
+    <para><note>
+      Avant la version 6.13 cet opcode n'était pas compatible avec les opérations
+      multi-coeurs s'il était utilisé avec une variable globale.
+    </note></para>
     <para>
       <emphasis>clear</emphasis> met à zéro chaque échantillon de chacun des signaux
       audio donnés lors de son exécution. C'est comme si l'on écrivait
