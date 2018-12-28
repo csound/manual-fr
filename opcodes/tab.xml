@@ -81,8 +81,7 @@ english cvs version=1.9
     <para>
       Les opcodes <emphasis>tab</emphasis> et <emphasis>tabw</emphasis> sont
       semblables à <emphasis>table</emphasis> et à <emphasis>tablew</emphasis>,
-      mais ils sont plus rapides et supportent des tables dont la longueur n'est
-      une puissance de deux.
+      mais ils sont plus rapides et ils utilisent une indexation avec arrondi.
     </para>
     <!--<para>
       Il faut apporter une attention spéciale aux valeurs de l'index. Des valeurs
