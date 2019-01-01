@@ -1,6 +1,6 @@
 # Le manuel de référence canonique de Csound
 
-[![Build status](https://travis-ci.org/csound/manual.svg?branch=master)](https://travis-ci.org/csound/manual)
+[![Build status](https://travis-ci.org/csound/manual.svg?branch=master)](https://travis-ci.org/csound/manual-fr)
 
 Le manual de référence de Csound est écrit en [DocBook](http://tdg.docbook.org/tdg/4.5/docbook.html) v4.
 Pour apprendre à utiliser Docbook aller sur [docbook.org](http://docbook.org).
@@ -14,7 +14,7 @@ Si vous rencontrez des problèmes ou si vous avez des suggestions, ouvrez
 
 En plus d'autres outils spécifiques à ce qu'on construit, on a besoin de
 Docbook, [Python](https://www.python.org) avec [Pygments](http://pygments.org)
-v2.1 ou ultérieure ;
+v2.3 ou ultérieure ;
 et [xsltproc](http://xmlsoft.org/XSLT/xsltproc2.html).
 
 ### Linux
@@ -30,31 +30,29 @@ Python est préinstallé sur la plupart des distributions Linux. Si
 l'on a pas Python, aller sur https://docs.python.org/2/using/unix.html pour
 apprendre comment installer Python ou le construire à partir des sources.
 
-Pour installer Pygments v2.1 ou ultérieure, exécuter
+Pour installer Pygments v2.3 ou ultérieure, exécuter
 
 ```sh
-sudo pip install 'pygments>=2.1'
+sudo pip install 'pygments>=2.3'
 ```
 
 ou si l'on a pas [pip](https://pip.pypa.io/),
 
 ```sh
-sudo easy_install 'pygments>=2.1'
+sudo easy_install 'pygments>=2.3'
 ```
 
 ### MacOS
 
 La manière la plus simple d'installer DocBook est sans doute via [Homebrew](http://brew.sh).
 Pour installer Homebrew, suivre les instructions sur
-https://brew.sh). Puis taper `brew install docbook` dans un terminal, suivi de
-`brew install docbook-xsl`, pour installer les feuilles de style XSL de
-DocBook.
+https://brew.sh). Puis taper `brew install docbook docbook-xsl` dans un terminal.
 
-Pour installer Pygments v2.1 ou ultérieure, taper dans un terminal
+Pour installer Pygments v2.3 ou ultérieure, taper dans un terminal
 
 
 ```sh
-sudo easy_install 'pygments>=2.1'
+sudo easy_install 'pygments>=2.3'
 ```
 
 Python et xsltproc sont préinstallés sur macOS.
@@ -92,7 +90,7 @@ au lieu de `make ⟨cible⟩`.
 Si un message d'erreur indiquant que `CsoundDocumentLexer` est introuvable
 pour construire une `⟨cible⟩`, c'est que vous utilisez probablement Pygments
 v2.0.2 ou antérieure, et vous avez besoin de
-[Pygments v2.1 ou ultérieure](#Outils nécessaires).
+[Pygments v2.3 ou ultérieure](#Outils nécessaires).
 
 ### HTML
 
