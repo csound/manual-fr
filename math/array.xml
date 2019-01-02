@@ -19,6 +19,68 @@ authors=Francois Pinot
   <refnamediv>
     <refname>Opcodes de tableaux</refname>
   </refnamediv>
+
+  <para>
+    Liste des opcodes de tableaux (6.12) : 
+    <itemizedlist>
+      <listitem><para><link linkend="init"><citetitle>init</citetitle></link> initialise un tableau
+      </para></listitem>
+      <listitem><para><link linkend="fillarray"><citetitle>fillarray</citetitle></link> remplit un tableau avec des valeurs
+      </para></listitem>
+      <listitem><para><link linkend="genarray"><citetitle>genarray</citetitle></link> crée un tableau à partir d'une suite arithmétique
+      </para></listitem>
+      <listitem><para><link linkend="assign"><citetitle>=</citetitle></link> crée ou réinitialise un tableau à partir d'un autre tableau
+      </para></listitem>
+      <listitem><para><link linkend="slicearray"><citetitle>slicearray</citetitle></link> prend une partie d'un tableau
+      </para></listitem>
+      <listitem><para><link linkend="maparray"><citetitle>maparray</citetitle></link> applique une fonction à un tableau
+      </para></listitem>
+      <listitem><para><link linkend="scalearray"><citetitle>scalearray</citetitle></link> pondère les valeurs d'un tableau
+      </para></listitem>
+      <listitem><para><link linkend="sorta"><citetitle>sorta</citetitle></link> tri un tableau par ordre ascendant
+      </para></listitem>
+      <listitem><para><link linkend="sortd"><citetitle>sortd</citetitle></link> tri un tableau par ordre descendant
+      </para></listitem>
+      <listitem><para><link linkend="reshapearray"><citetitle>reshapearray</citetitle></link> change les dimensions d'un tableau
+      </para></listitem>
+      <listitem><para><link linkend="trim"><citetitle>trim</citetitle></link> ajuste la taille d'un tableau unidimensionnel
+      </para></listitem>
+      <listitem><para><link linkend="copya2ftab"><citetitle>copya2ftab</citetitle></link> copie un tableau dans une table de fonction
+      </para></listitem>
+      <listitem><para><link linkend="copyf2array"><citetitle>copyf2array</citetitle></link> copie une table de fonction dans un tableau
+      </para></listitem>
+      <listitem><para><link linkend="dot"><citetitle>dot</citetitle></link> calcule le produit scalaire de deux tableaux
+      </para></listitem>
+      <listitem><para><link linkend="interleave"><citetitle>interleave</citetitle></link> entrelace deux tableaux dans un seul
+      </para></listitem>
+      <listitem><para><link linkend="deinterleave"><citetitle>deinterleave</citetitle></link> désentrelace un tableau dans deux tableaux
+      </para></listitem>
+      <listitem><para><link linkend="getrow"><citetitle>getrow</citetitle></link> retourne une ligne d'un tableau bidimensionnel
+      </para></listitem>
+      <listitem><para><link linkend="getcol"><citetitle>getcol</citetitle></link> retourne une colonne d'un tableau bidimensionnel
+      </para></listitem>
+      <listitem><para><link linkend="setrow"><citetitle>setrow</citetitle></link> remplit une ligne d'un tableau bidimensionnel
+      </para></listitem>
+      <listitem><para><link linkend="setcol"><citetitle>setcol</citetitle></link> remplit une colonne d'un tableau bidimensionnel
+      </para></listitem>
+      <listitem><para><link linkend="lenarray"><citetitle>lenarray</citetitle></link> retourne la longueur d'un tableau
+      </para></listitem>
+      <listitem><para><link linkend="minarray"><citetitle>minarray</citetitle></link> retourne la valeur minimale d'un tableau
+      </para></listitem>
+      <listitem><para><link linkend="maxarray"><citetitle>maxarray</citetitle></link> retourne la valeur maximale d'un tableau
+      </para></listitem>
+      <listitem><para><link linkend="sumarray"><citetitle>sumarray</citetitle></link> retourne la somme des valeurs d'un tableau
+      </para></listitem>
+      <listitem><para><link linkend="printarray"><citetitle>printarray</citetitle></link> affiche un tableau
+      </para></listitem>
+    </itemizedlist>
+  </para>
+
+  <para>
+    Certaines instructions pour travailler avec des tableaux dans Csound (voir
+    aussi le
+    <ulink url="http://write.flossmanuals.net/csound/e-arrays/"><citetitle>chapître array dans le Csound FLOSS Manual:</citetitle></ulink>)
+  </para>
   
   <refsect1>
     <title>Nom de variable</title>
