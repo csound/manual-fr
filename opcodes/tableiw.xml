@@ -9,7 +9,7 @@ english cvs version=1.9
 
 <refentry id="tableiw">
 <indexterm id="IndexTableiw"><primary>tableiw</primary></indexterm>
-  <refentryinfo><title>Table Control:Read/Write Operations</title></refentryinfo>
+  <refentryinfo><title>Deprecated</title></refentryinfo>
   <refmeta>
     <refentrytitle>tableiw</refentrytitle>
   </refmeta>
@@ -17,19 +17,21 @@ english cvs version=1.9
   <refnamediv>
     <refname>tableiw</refname>
     <refpurpose>
-      Change le contenu de tables de fonction existantes.
+      Obsolète.
     </refpurpose>
   </refnamediv>
  
   <refsect1>
     <title>Description</title>
     <para>
-      Cet opcode opère sur des tables de fonction existantes en changeant leur
+      Obsolète depuis la version 3.49. Utiliser plutôt l'opcode
+      <link linkend="tablew"><citetitle>tablew</citetitle></link>.
+      <!--Cet opcode opère sur des tables de fonction existantes en changeant leur
       contenu. <emphasis>tableiw</emphasis> est utilisé quand toutes les entrées
       sont des variables de taux-i ou des constantes et que l'on veut seulement
       l'exécuter à l'initialisation de l'instrument. Les combinaisons valides
       des types de variable sont indiquées par la première lettre des noms de
-      variable.
+      variable.-->
     </para>
   </refsect1>
  
