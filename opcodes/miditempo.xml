@@ -26,7 +26,7 @@ english cvs version=1.6
     <title>Description</title>
     <para>
       Retourne le tempo courant au taux-k du fichier MIDI (s'il y en a un) ou de
-      la partition.
+      la partition (si l'option -t est utilisée).
     </para>
   </refsect1>
  
@@ -49,7 +49,7 @@ english cvs version=1.6
       </example>
         Sa sortie contiendra des lignes comme celle-ci :
         <screen>
-	      miditempo = 96</screen>
+        miditempo = 96</screen>
     </para>
   </refsect1>
 
@@ -59,7 +59,7 @@ english cvs version=1.6
       <simplelist>
         <member>Auteur : &nameistvan;</member>
         <member>Mars 2005</member>
-	      <member>Nouveau dans Csound5</member>
+        <member>Nouveau dans Csound5</member>
       </simplelist>
     </para>
   </refsect1>

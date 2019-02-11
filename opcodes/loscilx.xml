@@ -33,6 +33,8 @@ english cvs version=1.4
     <synopsis>ar1 [, ar2, ar3, ar4, ar5, ar6, ar7, ar8, ar9, ar10, ar11, ar12, ar13, ar14, \
       ar15, ar16] <command>loscilx</command> xamp, kcps, ifn \
       [, iwsize, ibas, istrt, imod, ibeg, iend]</synopsis>
+    <synopsis>ar[] <command>loscilx</command> xamp, kcps, ifn \
+      [, iwsize, ibas, istrt, imod, ibeg, iend]</synopsis>
   </refsect1>
  
   <refsect1>
@@ -106,7 +108,7 @@ english cvs version=1.4
     <title>Exécution</title>
 
     <para>
-      <emphasis>ar1, ar2, ...</emphasis> -- la sortie au taux audio. Le nombre
+      <emphasis>ar1, ar2, ... ar[]</emphasis> -- la sortie au taux audio. Le nombre
       de sorties doit correspondre au nombres de canaux dans le fichier
       échantillonné.
     </para>
@@ -176,5 +178,6 @@ english cvs version=1.4
     <para>Ecrit par &nameistvan;.</para>
     <para>2006</para>
     <para>Nouveau dans Csound 5.03</para>
+    <para>Nouvelle version avec tableau dans Csound 6.13 (Février 2019)</para>
   </refsect1>
 </refentry>
