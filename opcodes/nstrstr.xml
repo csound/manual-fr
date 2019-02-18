@@ -1,0 +1,69 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="nstrstr">
+<indexterm id="IndexNstrstr"><primary>nstrstr</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Initialization and Reinitialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>nstrstr</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>nstrstr</refname>
+    <refpurpose>
+      Retourne le nom d'un instrument nommé à partie de son numéro.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retourne le nom d'un instrument nommé à partie de son numéro ou une chaîne
+      de caractères vide si une telle association n'existe pas.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>Sname <command>nstrstr</command>insno</synopsis>
+    <synopsis>Sname <command>nstrstr</command>knsno</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>insno</emphasis> -- le numéro d'instrument de l'instrument
+      nommé.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>knsno</emphasis> -- le numéro de l'instrument nommé.
+    </para>
+    <para>
+      <emphasis>Sname</emphasis> -- le nom de l'instrument nommé.
+    </para>
+
+    <para>
+      Si aucun instrument existant ne porte le nom spécifié, une chaîne de
+      caractères vide est retournée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Nouveau dans la version 6.13</member>
+        <member>Ecrit en 2019.</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>
