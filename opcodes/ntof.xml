@@ -1,0 +1,85 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ntof">
+  <indexterm id="IndexNtof"><primary>ntof</primary></indexterm>
+  <refentryinfo><title>Pitch Converters:Functions</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ntof</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ntof</refname>
+    <refpurpose>
+      Convertit un nom de note en fréquence.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>Opcode de greffon dans emugens.</para>
+    <para>
+      Convertit un nom de note en fréquence (Hz). Permet d'inclure dans le
+      nom de la note des microtons ou une déviation en cents.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kfreq <command>ntof</command> Snote</synopsis>
+    <synopsis>ifreq <command>ntof</command> Snote</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>Snote</emphasis> -- Nom de note
+    </para>
+    <para>
+      <emphasis>kfreq</emphasis> -- Fréquence
+    </para>
+    <note>
+      <para>
+        La fréquence retournée dépend de la valeur de la variable globale A4.
+      </para>
+    </note>
+    <note>
+      <para>
+        4C est le do médiant du piano.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode ntof. Il utilise le fichier
+      <ulink url="examples/ntof.csd"><citetitle>ntof.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode ntof.</title>
+        <xi:include href="examples-xml/ntof.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="cpsfreqnn"><citetitle>cpsfreqnn</citetitle></link>, 
+      <link linkend="mtof"><citetitle>mtof</citetitle></link>,
+      <link linkend="ftom"><citetitle>ftom</citetitle></link>,
+      <link linkend="mton"><citetitle>mton</citetitle></link>
+      <link linkend="ntom"><citetitle>mton</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par : &nameeduardo; 2019</para>
+    <para>Nouveau dans la 6.13</para>
+  </refsect1>
+</refentry>
