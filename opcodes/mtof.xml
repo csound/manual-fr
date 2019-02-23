@@ -32,17 +32,20 @@ authors=Francois Pinot
     <title>Syntaxe</title>
     <synopsis>ifreq <command>mtof</command> imidi</synopsis>
     <synopsis>kfreq <command>mtof</command> kmidi</synopsis>
+    <synopsis>ifreqs[] <command>mtof</command> imidis[]</synopsis>
+    <synopsis>kfreqs[] <command>mtof</command> kmidis[]</synopsis>
   </refsect1>
 
   <refsect1>
     <title>Exécution</title>
     <para>
       <emphasis>kmidi</emphasis> / <emphasis>imidi</emphasis> -- Numéro de note
-      MIDI.
+      MIDI (également comme tableau).
     </para>
     <para>
       <emphasis>kfreq</emphasis> / <emphasis>ifreq</emphasis> -- Fréquence
-      correspondant à la valeur de note MIDI.
+      correspondant à la valeur de note MIDI. Un tableau est retourné si
+      l'entrée est un tableau.
     </para>
   </refsect1>
   
@@ -72,5 +75,6 @@ authors=Francois Pinot
     <title>Crédits</title>
     <para>Par : &nameeduardo; 2017</para>
     <para>Nouveau greffon dans la version 6.11</para>
+    <para>Version tableau ajoutée dans la 6.13</para>
   </refsect1>
 </refentry>

@@ -32,6 +32,8 @@ authors=Francois Pinot
     <title>Syntaxe</title>
     <synopsis>imidi <command>ftom</command> ifreq [,irnd]</synopsis>
     <synopsis>kmidi <command>ftom</command> kfreq [,irnd]</synopsis>
+    <synopsis>imidis[] <command>ftom</command> ifreqs[] [,irnd]</synopsis>
+    <synopsis>kmidis[] <command>ftom</command> kfreqs[] [,irnd]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -80,5 +82,6 @@ authors=Francois Pinot
     <para>Par : &nameeduardo; 2017</para>
     <para>Nouveau dans la version 6.09</para>
     <para>Option d'arrondi ajoutée dans la 6.12</para>
+    <para>Version tableau ajoutée dans la 6.13</para>
   </refsect1>
 </refentry>
