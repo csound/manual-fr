@@ -29,7 +29,8 @@ authors=Francois Pinot
   <refsect1>
     <title>Syntaxe</title>
     <synopsis>ians <command>ftaudio</command> ifn, &quot;filename&quot;, iformat</synopsis>
-    <synopsis>kans <command>ftaudio</command> ktrig, kfn, &quot;filename&quot;, kformat [, isync]</synopsis>
+    <synopsis>kans <command>ftaudio</command> ktrig, kfn, &quot;filename&quot;, \
+                                              kformat [, isync, kbeg, kend]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -122,6 +123,13 @@ authors=Francois Pinot
     </para>
 
     <para>
+      <emphasis>ibeg</emphasis>, <emphasis>iend</emphasis>,
+      <emphasis>kbeg</emphasis>,<emphasis>kenf</emphasis> -- donnent le début et
+      la fin de la section de la table où écrire. La valeur par défaut de zéro
+      signifie du début à la fin de la table.
+    </para>
+
+    <para>
       <emphasis>ians, kans</emphasis> -- retourne 0 en cas d'échec, 1 sinon.
       Dans le mode asynchrone c'est mis à jour à la fin de l'écriture, jusqu'à
       ce qu'il est la valeur -1.
@@ -165,5 +173,6 @@ authors=Francois Pinot
     <para>Auteur : &namejohn;</para>
     <para>Exemple écrit par &namejohn;.</para>
     <para>Nouveau dans la version 6.12</para>
+    <para>Limite à un intervalle ajoutée dans la 6.13</para>
   </refsect1>
 </refentry>
