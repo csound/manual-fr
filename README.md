@@ -48,10 +48,6 @@ La manière la plus simple d'installer DocBook est sans doute via [Homebrew](htt
 Pour installer Homebrew, suivre les instructions sur
 https://brew.sh). Puis taper `brew install docbook docbook-xsl` dans un terminal.
 
-Noter le répertoire d'installation de XSL car il pourrait être nécessaire de le passer à make
-pour la construction (à partir de macOS 10.14.3, brew installe XSL dans
-`/usr/local/Cellar/docbook-xsl/1.79.1/docbook-xsl`).
-
 Pour installer Pygments v2.3 ou ultérieure, taper dans un terminal
 
 
@@ -80,16 +76,19 @@ Aller sur http://pygments.org/download/ pour apprendre comment installer Pygment
 Exécuter `make ⟨cible⟩` pour construire une `⟨cible⟩`. Par exemple, pour
 construire une collection de pages HTML, exécuter `make html`.
 
-On peut voir cette
-erreur : “La variable XSL_BASE_PATH doit renseigner le répertoire d'installation
-des feuilles de style XSL.” Pour indiquer à `make` où trouver les feuilles de
+On peut voir cette erreur : “The XSL_BASE_PATH variable must be set to the XSL
+stylesheets installation directory.” Pour indiquer à `make` où trouver les feuilles de
 style XSL de DocBook, exécuter
 
 ```sh
 make XSL_BASE_PATH=path/to/docbook/stylesheets ⟨cible⟩
 ```
 
-au lieu de `make ⟨cible⟩`.
+au lieu de `make ⟨cible⟩`. Par exemple, sur macOS exécuter
+
+```sh
+make XSL_BASE_PATH="$(brew --prefix docbook-xsl)/docbook-xsl" ⟨target⟩
+```
 
 Si un message d'erreur indiquant que `CsoundDocumentLexer` est introuvable
 pour construire une `⟨cible⟩`, c'est que vous utilisez probablement Pygments
