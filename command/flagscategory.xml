@@ -423,6 +423,16 @@ english cvs version=1.31
       </listitem>
     </varlistentry>
 
+    <varlistentry id="FlagsCatMinusMinussetsr">
+      <term>--set-system-sr<indexterm id="IndexCatMinusMinussetsr"><primary>--get-system-sr</primary></indexterm></term>
+      <listitem>
+        <para>
+          Fixe sr au sr du système, nécessite au préalable -o dac. Si l'audio ne
+          supporte pas cette demande -1 est retourné.
+        </para>
+      </listitem>
+    </varlistentry>
+
     <varlistentry id="FlagsCatMinusRealtime">
       <term>--realtime<indexterm
       id="IndexCatMinusRealtime"><primary>--realtime</primary></indexterm></term>

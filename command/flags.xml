@@ -431,6 +431,16 @@ english cvs version=1.43
       </listitem>
     </varlistentry>
 
+    <varlistentry id="FlagsMinusMinussetsr">
+      <term>--set-system-sr<indexterm id="IndexMinusMinussetsr"><primary>--get-system-sr</primary></indexterm></term>
+      <listitem>
+        <para>
+          Fixe sr au sr du système, nécessite au préalable -o dac. Si l'audio ne
+          supporte pas cette demande -1 est retourné.
+        </para>
+      </listitem>
+    </varlistentry>
+
     <varlistentry id="FlagsMinusUpperH">
       <term>-H#<indexterm id="IndexMinusUpperH"><primary>-H</primary></indexterm>, --heartbeat=NUM<indexterm id="IndexMinusHeartbeat"><primary>--heartbeat</primary></indexterm></term>
       <listitem>
