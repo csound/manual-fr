@@ -84,6 +84,15 @@ english cvs version=1.10
       <link linkend="tablei"><citetitle>tablei</citetitle></link>, sauf qu'il utilise
       l'interpolation cubique. (Nouveau dans la version 3.50 de Csound).
     </para>
+    <para>
+      <warning>
+        La lecture de tables contenant une information stéréo ou multicanaux
+        causera probablement du bruit non désiré car l'opcode interpole entre
+        des positions successives de la table sans tenir compte de l'origine de
+        son contenu. Habituellement seul le contenu d'un canal est attendu. Il
+        faut plutôt considérer l'utilisation de <emphasis>loscilx</emphasis>.
+      </warning>
+    </para>
   </refsect1>
 
   <refsect1>
@@ -93,7 +102,8 @@ english cvs version=1.10
       <link linkend="tablei"><citetitle>tablei</citetitle></link>,
       <link linkend="oscil1"><citetitle>oscil1</citetitle></link>,
       <link linkend="oscil1i"><citetitle>oscil1i</citetitle></link>,
-      <link linkend="osciln"><citetitle>osciln</citetitle></link>
+      <link linkend="osciln"><citetitle>osciln</citetitle></link>,
+      <link linkend="loscilx"><citetitle>loscilx</citetitle></link>
     </para>
   </refsect1>
 </refentry>

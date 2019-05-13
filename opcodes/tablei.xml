@@ -94,6 +94,15 @@ english cvs version=1.9
       l'<link linkend="f"><citetitle>instruction f</citetitle></link> de la
       partition).
     </para>
+    <para>
+      <warning>
+        La lecture de tables contenant une information stéréo ou multicanaux
+        causera probablement du bruit non désiré car l'opcode interpole entre
+        des positions successives de la table sans tenir compte de l'origine de
+        son contenu. Habituellement seul le contenu d'un canal est attendu. Il
+        faut plutôt considérer l'utilisation de <emphasis>loscilx</emphasis>.
+      </warning>
+    </para>
   </refsect1>
 
   <refsect1>
