@@ -1,0 +1,134 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ampmidicurve">
+<indexterm id="Indexampmidicurve"><primary>ampmidicurve</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Converters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ampmidicurve</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ampmidicurve</refname>
+    <refpurpose>
+      Associe à une vélocité MIDI en entrée un facteur de gain en sortie de
+      valeur maximale 1, en modifiant ce gain de sortie par un intervalle
+      dynamique et un exposant de mise en forme.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>Opcode de greffon dans ampmidid.</para>
+    <para>
+      Associe à une vélocité MIDI en entrée un facteur de gain en sortie de
+      valeur maximale 1, en modifiant ce gain de sortie par un intervalle
+      dynamique et un exposant de mise en forme. Le gain minimum en sortie
+      vaut 1 moins l'intervalle dynamique. Un exposant de mise en forme valant
+      1 donne une réponse linéaire ; une augmentation de l'exposant produit
+      un coude décroissant progressivement dans la courbe de réponse du gain.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>igain <command>ampmidicurve</command> ivelocity, idynamicrange, iexponent</synopsis>
+    <synopsis>kgain <command>ampmidicurve</command> kvelocity, kdynamicrange, kexponent</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>imidivelocity </emphasis> -- Vélocité MIDI, comprise entre 0 et 127.
+    </para>
+
+    <para>
+      <emphasis>idynamicrange</emphasis> -- Intervalle dynamique désiré du gain,
+      entre 0 et 1.
+    </para>
+
+    <para>
+      <emphasis>iexponent</emphasis> -- Exposant appliqué pour mettre en forme
+      la courbe de réponse du gain, 1 ou plus.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kmidivelocity </emphasis> -- Vélocité MIDI, comprise entre 0 et 127.
+    </para>
+
+    <para>
+      <emphasis>kdynamicrange</emphasis> -- Intervalle dynamique désiré du gain,
+      entre 0 et 1.
+    </para>
+
+    <para>
+      <emphasis>kexponent</emphasis> -- Exposant appliqué pour mettre en forme
+      la courbe de réponse du gain, 1 ou plus.
+    </para>
+
+    <para>
+      Associe à une vélocité MIDI en entrée un facteur de gain en sortie de
+      valeur maximale 1, en modifiant ce gain de sortie par un intervalle
+      dynamique et un exposant de mise en forme. Le gain minimum en sortie
+      vaut 1 moins l'intervalle dynamique. Un exposant de mise en forme valant
+      1 donne une réponse linéaire ; une augmentation de l'exposant produit
+      un coude décroissant progressivement dans la courbe de réponse du gain,
+      selon l'équation :
+        y = d * (x/127)^h + 1 - d,
+        où y = le gain,
+        x = la vélocité MIDI en entrée (de 0 à 127),
+        d = l'intervalle dynamique (de p à 1), et
+        h = l'exposant de mise en forme (1 ou plus).
+        Cet opcode a été suggéré par Mauro Giubileo.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode ampmidicurve. Il utilise le fichier
+      <ulink url="examples/ampmidicurve.csd"><citetitle>ampmidicurve.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode ampmidicurve.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/ampmidicurve.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="aftouch"><citetitle>aftouch</citetitle></link>,
+      <link linkend="cpsmidi"><citetitle>cpsmidi</citetitle></link>,
+      <link linkend="cpsmidib"><citetitle>cpsmidib</citetitle></link>,
+      <link linkend="midictrl"><citetitle>midictrl</citetitle></link>,
+      <link linkend="notnum"><citetitle>notnum</citetitle></link>,
+      <link linkend="octmidi"><citetitle>octmidi</citetitle></link>,
+      <link linkend="octmidib"><citetitle>octmidib</citetitle></link>,
+      <link linkend="pchbend"><citetitle>pchbend</citetitle></link>,
+      <link linkend="pchmidi"><citetitle>pchmidi</citetitle></link>,
+      <link linkend="pchmidib"><citetitle>pchmidib</citetitle></link>,
+      <link linkend="veloc"><citetitle>veloc</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namemichael;</member>
+        <member>2019</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>
