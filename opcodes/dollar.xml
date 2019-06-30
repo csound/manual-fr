@@ -40,12 +40,15 @@ english cvs version=1.14
     </para>
 
     <para>
-      <emphasis>&dollar;NOM</emphasis> --  appelle une macro définie. Pour appeler une macro, on utilise
-      son nom précédé du caractère &dollar;. La fin du nom est marquée par le premier caractère qui n'est
-      ni une lettre ni un chiffre. S'il est nécessaire que ce caractère ne soit pas un espace, on peut
-      utiliser un point, qui sera ignoré, pour terminer le nom. La chaîne, <emphasis>&dollar;NOM</emphasis>.,
-      est remplacée par le texte de substitution de la définition. Le texte de substitution peut lui-même
-      comprendre des appels de macro.
+      <emphasis>&dollar;NOM</emphasis>
+      <emphasis>&dollar;NOM.</emphasis> -- appelle une macro définie. Pour
+      appeler une macro, on utilise son nom précédé du caractère &dollar;. La
+      fin du nom est marquée par le premier caractère qui n'est ni une lettre
+      ni un chiffre. S'il est nécessaire que le nom soit suivi d'une lettre ou
+      d'un chiffre, un point, qui sera ignoré, peut être utilisé pour terminer
+      le nom. La chaîne, <emphasis>&dollar;NOM</emphasis>., est remplacée par
+      le texte de substitution de la définition. Le texte de substitution peut
+      lui-même comprendre des appels de macro.
     </para>
   </refsect1>
  
