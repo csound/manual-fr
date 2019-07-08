@@ -92,7 +92,395 @@ english cvs version=
     </itemizedlist>
   </para>-->
 
-  <bridgehead>Notes de parution de Csound 6.12 ()</bridgehead>
+  <bridgehead>Notes de parution de Csound 6.13 (juillet 2019)</bridgehead>
+  <para>
+    Peu de nouveaux opcodes, mais un nombre significatif d'opcodes ont été
+    étendus pour utiliser les tableaux de différentes manières, élargissant les
+    options pour les utilisateurs. Il y a eu de nombreuses corrections du code
+    de base ainsi que des opcodes.
+  </para>
+  <para>
+    <itemizedlist>
+      <listitem>
+        <para>Nouveaux opcodes :
+          <itemizedlist>
+            <listitem>
+              <simpara><emphasis>string2array</emphasis> est une variante de
+                fillarray avec des données provenant d'une chaîne de caractères
+                contenant des valeurs séparées par des espcaces.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara><link linkend="nstrstr"><citetitle>nstrstr</citetitle></link>
+                retourne le nom d'un instrument numéroté ou une chaîne de
+                caractères vide si le numéro ne fait pas référence à un
+                instrument nommé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara><link linkend="ntof"><citetitle>ntof</citetitle></link>
+                convertit un nom de note en fréquence aux taux-i et -k.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="ampmidicurve"><citetitle>ampmidicurve</citetitle></link>
+                est un nouvel opcode qui fait correspondre à une vélocité MIDI
+                un facteur de gain avec une valeur maximale de 1, modifiant le
+                gain de sortie par un intervalle dynamique et un exposant de
+                mise en forme.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Orchestre :
+          <itemizedlist>
+            <listitem>
+              <simpara>La consistence entre kr, sr et ksmps a été revue pour le
+                cas spécial où il y a dépassement.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Correction de l'usage par défaut de 0bdfs.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>la résolution du chemin des fichiers pour #include a été
+              revue de manière plus libérale.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>La lecture et l'écriture dans les tableaux multidimensionnels
+                étaient erronées. C'est corrigé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Meilleure vérification des tableaux de type inconnu
+                (issue #1124).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Dans toutes les opérations de tableau la taille d'un
+                tableau est déterminée à l'initialisation et aucune allocation
+                n'a lieu pendant l'exécution.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>L'arithmétique des tableaux respecte dorénavant
+                --sample-accurate.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Partition :
+          <itemizedlist>
+            <listitem>
+              <simpara>Les caractères n et m pouvaient être ignorés de manière
+                erronée dans les partitions.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>la résolution du chemin des fichiers pour #include a été
+              revue de manière plus libérale.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Après une erreur, le traçage des fichiers et des macros
+                lisait de manière erronée l'information pour l'orchestre plutôt
+                que pour les partitions. C'est corrigé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>La fin d'une section r (répétition) n'était pas toujours
+                correcte.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Les partie {} imbriquées d'une partition pouvaient
+                conduire à des erreurs.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Après une instruction s une nouvelle ligne était
+                nécessaire ; ce n'est plus le cas.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Les boucles de partition {} ont été modifiées pour
+                permettre les macros et les expressions dans le compteur de
+                boucle.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Options :
+          <itemizedlist>
+            <listitem>
+              <simpara>La nouvelle option --use-system-sr fixe le taux
+                d'échantillonnage à la valeur du matériel/système.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Opcodes et Gens modifiés :
+          <itemizedlist>
+            <listitem>
+              <simpara>Un échec de l'envoi dans OSC provoque maintenant un
+                avertissement plutôt qu'une erreur.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>passign peut maintenant avoir un tableau pour cible.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Des versions de bpf/bpfcos permettant la définition des
+                points par des tableaux ont eté ajoutées.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>grain peut maintenant utiliser des tables de n'importe
+                quelle taille, pas seulement des puissances de 2.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Le changement de couleur dans les widgets FL fonctionne
+                (la couleur n'était pas rafraichie précédemment).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>fillarray peut lire des valeurs dans un fichier ce qui
+                permet de dépasser la limite du nombre d'arguments.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>sumarray fonctionne maintenant aussi bien avec des
+                tableaux audio qu'avec des valeurs scalaires.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>L'affectation d'une valeur audio à un tableau audio
+                fonctionne maintenant.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>monitor ne fonctionnait pas dans le mode tableau.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>gendyc respecte maintenant le mode sample-accurate.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>mtof et ftom ont maintenant une version tableau.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+              </simpara>sc_lag et sc_lagud utilisent maintenant la première
+                entrée de taux-k ou -a lorsqu'aucune valeur initiale n'est donnée.
+            </listitem>
+            <listitem>
+              <simpara>printarray fonctionne maintenant avec les tableaux de
+                chaînes de caractères.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>changed2 fonctionne maintenant avec les chaînes de
+                caractères.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>diskgrain, syncgrain et syncloop peuvent maintenant
+                pondérer le taux d'échantillonnage.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>GEN01 lit correctement les fichiers audio bruts quand
+                c'est nécessaire.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>ftaudio peut maintenant prendre deux arguments optionnels
+                pour le début et la fin de la table de données à écrire dans un
+                fichier.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>sensekey a été réécrit dans le mode 'key down'.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>loscilx peut retourner un tableau audio.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>schedule rapporte les instruments indéfinis dans tous les
+                cas.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>event_i accepte maintenant les numéros d'instrument
+                étiquetés.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>printarray traite %d correctement.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>beadsynt travaille maintenant avec les tableaux i ainsi
+                que les tableaux k comme indiqué dans le manuel.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Utilités :
+          <itemizedlist>
+            <listitem>
+              <simpara>hetro a reçu plusieurs corrections et améliorations.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Usage général :
+          <itemizedlist>
+            <listitem>
+              <simpara>Il y a eu un certain nombre d'améliorations dans la
+                sémantique du multicoeur ; la plupart de celles-ci sont des
+                corrections avec quelques gains en efficatité.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Il y a un nombre maximum d'arguments pour un opcode qui
+                n'avait jamais été explicite ni contrôlé. Les tentatives
+                d'utilisation de trop d'arguments génèrent maintenant une erreur
+                de syntaxe.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Bogues corrigés :
+          <itemizedlist>
+            <listitem>
+              <simpara>FLgetsnap corrigé.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>directory corrigé pour les extensions de fichier.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>FLsetText réutilisait une chaîne de caractères de
+                manière incorrecte ce qui conduisait à des valeurs erronées.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>fmb3 n'arrivait pas à initialiser le taux du lfo dans
+                certains cas.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>ftaudio au taux-i était complètement inopérant.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Après un reinit printks pouvait être ignoré ; corrigé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>printks corrigé pour afficher à des dates correctes.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>tabrowlin et getrowlin pouvaient calculer une taille
+                erronée sous certaines conditions.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>changements système :
+          <itemizedlist>
+            <listitem>
+              <simpara>L'implantation des tables de hachage a été modifiée pour
+                permettre de meilleures performances en charge quand le
+                dictionnaire contient un grand nombre d'entrées.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Les fonctions de greffon GEN peuvent avoir une longueur
+                nulle, mais le code doit tester cela et agir en conséquence.
+                Cela permet les allocations différées.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>schedule rapporte les numéros/noms d'instruments
+                indéfinis et continue plutôt que de causer une erreur.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Les appels multiples aux contrôles midi en sortie sont
+                permis.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>API:
+          <itemizedlist>
+            <listitem>
+              <simpara>find_opcode_new et find_opcode_exact sont maintenant
+                exposés dans l'API.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Après un reset un indicateur de fontion de rappel de
+                message chaîne de caractères est configuré par défaut.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>La nouvelle fonction csoundSystemSra été ajoutée à l'API
+                pour lire le taux d'échantillonnage imposé par le matériel.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Changements sur les plates-formes :
+          <itemizedlist>
+            <listitem>
+              <simpara>WebAudio : libsndfile est maintenant compilée avec le
+                support de FLAC et d'OGG.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Dans l'orchestre et la partition, le traçage du chemin
+                dans #include suppose un séparateur \.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Le portage sur Haiku est maintenant disponible.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Les entrées et sorties analogiques avec différents
+                numéros de canaux  sont permises.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+
+  <bridgehead>Notes de parution de Csound 6.12 (novembre 2018)</bridgehead>
   <para>
     De nombreux changements comprenant la suppression de la fonctionnalité
     vst2cs à cause d'un problème de copyright.
@@ -6249,7 +6637,7 @@ int perf_myopcode(CSOUND *csound, MYOPCODE *p)
               <simpara>opcodes <link linkend="serialBegin"><citetitle>serial</citetitle></link>.</simpara>
             </listitem>
             <listitem>
-              <simpara>opcodes <link linkend="lua"><citetitle>lua</citetitle></link>.</simpara>
+              <simpara>opcodes lua.</simpara>
             </listitem>
             <listitem>
               <simpara>opcode plustab.</simpara>

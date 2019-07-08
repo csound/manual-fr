@@ -51,7 +51,7 @@ english cvs version=1.14
       <para>
         L'opcode <emphasis>print</emphasis> tronque des positions décimales et peut
         ainsi ne pas montrer la valeur complète. La précision de Csound varie selon
-        la <link linkend="MiscCsound64"><citetitle>version</citetitle></link>
+        la <!--<link linkend="MiscCsound64"><citetitle>-->version<!--</citetitle></link>-->
         float (32 bit) ou double (64 bit), car la plupart des calculs internes
         utilisent un de ces formats. Si l'on désire une sortie console avec plus
         de résolution, on peut essayer
