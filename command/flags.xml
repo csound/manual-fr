@@ -1293,6 +1293,16 @@ csound5:output2             (reproduction droite)</screen>
       </listitem>
     </varlistentry>
 
+    <varlistentry id="FlagsSimpleScore">
+      <term>--simple-sorted-score<indexterm id="IndexMinusSimplesortedscore"><primary>--keep-sorted-score</primary></indexterm></term>
+      <listitem>
+        <para>
+          Conserve le fichier de partition trié score.srt dans un format simple
+          et lisible lors de la sortie. (Nouveau dans la version 6.14).
+        </para>
+      </listitem>
+    </varlistentry>
+
     <varlistentry id="FlagsMinusPlusSkipSeconds">
       <term>-+skip_seconds=float<indexterm id="IndexMinusSkipSecons"><primary>-+skip_seconds</primary></indexterm></term>
       <listitem>

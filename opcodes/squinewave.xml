@@ -39,7 +39,8 @@ authors=Francois Pinot
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>aout [, asyncout] <command>squinewave</command> acps, aClip, aSkew [, asyncin] [, iMinSweep] [, iphase]</synopsis>
+    <synopsis>aout [, asyncout] <command>squinewave</command> acps, aClip, aSkew, asyncin [, iMinSweep] [, iphase]</synopsis>
+    <synopsis>aout [, asyncout] <command>squinewave</command> acps, aClip, aSkew [, ksyncin] [, iMinSweep] [, iphase]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -80,10 +81,10 @@ authors=Francois Pinot
       pour une dent de scie ou une pulsations orientée à droite ou à gauche.
     </para>
     <para>
-      <emphasis>asyncin</emphasis> -- (facultatif, ignoré s'il n'est pas de taux-a) --
-      lorsqu'il est &gt;= 1, la forme d'onde glisse rapidement vers la phase nulle.
-      La durée de la transition varie entre 0 et 1.5*iMinSweep échantillons en
-      fonction de la phase courante.
+      <emphasis>asyncin</emphasis>/<emphasis>ksyncin</emphasis> -- (facultatif,
+      ignoré s'il n'est pas de taux-a) - lorsqu'il est &gt;= 1, la forme d'onde
+      glisse rapidement vers la phase nulle. La durée de la transition varie
+      entre 0 et 1.5*iMinSweep échantillons en fonction de la phase courante.
     </para>
 
     <para>
