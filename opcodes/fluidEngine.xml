@@ -23,7 +23,7 @@ english cvs version=1.18
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>ienginenum <command>fluidEngine</command> [iReverbEnabled] [, iChorusEnabled] [,iNumChannels] [, iPolyphony] </synopsis>
+    <synopsis>ienginenum <command>fluidEngine</command> [iChorusEnabled] [, iReverbEnabled] [, iNumChannels] [, iPolyphony] </synopsis>
   </refsect1>
 
   <refsect1>
@@ -38,10 +38,10 @@ english cvs version=1.18
   <refsect1>
     <title>Initialisation</title>
 <para><emphasis>ienginenum </emphasis> -- numéro du moteur affecté par fluidEngine</para>
-<para><emphasis>iReverbEnabled </emphasis> -- fixé de manière facultative à 0 pour désactiver
-  d'éventuels effets de réverbération dans les SoundFonts chargés.</para>
 <para><emphasis>iChorusEnabled </emphasis> -- fixé de manière facultative à 0 pour désactiver
   d'éventuels effets de chorus dans les SoundFonts chargés.</para>
+<para><emphasis>iReverbEnabled </emphasis> -- fixé de manière facultative à 0 pour désactiver
+  d'éventuels effets de réverbération dans les SoundFonts chargés.</para>
 <para><emphasis>iNumChannels </emphasis> -- nombre de canaux à utiliser ; de 16 à 256, la valeur par
   défaut de Csound est 256 (la valeur par défaut de Fluidsynth est 16).</para>
 <para><emphasis>iPolyphony </emphasis> -- nombre de voix à jouer en parallèle ; de 16 à 4096, la valeur
@@ -79,5 +79,6 @@ english cvs version=1.18
     Merci à Peter Hanappe pour Fluidsynth.</para>
     <para>Les paramètres facultatifs <emphasis>iNumChannels</emphasis> et
     <emphasis>iPolyphony</emphasis> ont été ajoutés dans la version 5.07</para>
+    <para>L'ordre des arguments a été corrigé dans le manuel en août 2019.</para>
   </refsect1>
 </refentry>

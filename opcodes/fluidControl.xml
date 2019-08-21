@@ -23,7 +23,8 @@ english cvs version=1.12
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis><command>fluidControl</command> ienginenum, kstatus, kchannel, kdata1, kdata2</synopsis>
+    <synopsis><command>fluidControl</command> ienginenum, kstatus, kchannel, \
+     kdata1, kdata2 [,imgs]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -39,39 +40,41 @@ english cvs version=1.12
 
   <refsect1>
     <title>Initialisation</title>
-    
-<para><emphasis>ienginenum </emphasis> -- numéro du moteur affecté par fluidEngine</para>
+    <para><emphasis>ienginenum </emphasis> -- numéro du moteur affecté par fluidEngine</para>
+    <para><emphasis>imsgs</emphasis> -- s'il est nul, suppression de l'affichage
+      des messages à l'arrivée des commandes. Vaut 1 par défaut.</para>
 
-</refsect1>
 
-<refsect1>
+  </refsect1>
 
-<title>Exécution</title>
-
-<para><emphasis>kstatus </emphasis> -- octet d'état du message de canal MIDI : 128 pour note off, 144 
-  pour note on, 176 pour control change, 192 for program change, ou 224 pour pitch bend.
-  <!-- Note off messages need not be specified, as one is
-  automatically generated when each Csound note expires or is released. --> </para>
-
-<para><emphasis>kchannel </emphasis> -- numéro du canal MIDI auquel le programme Fluidsynth est
-  affecté : de 0 à 255. Les canaux MIDI dont le numéro est supérieur ou égal à 16 sont des canaux
-  virtuels.</para>
-
-<para><emphasis>kdata1 </emphasis> -- Pour note on, numéro de touche MIDI : de 0 (le plus bas) à 127 (le
-  plus haut), où 60 est le do médian. Pour les messages de contrôleur continu, le numéro du contrôleur.</para>
-
-<para><emphasis>kdata2 </emphasis> -- Pour note on, la vélocité de touche MIDI : de 0 (pas de son) à 127
-  (le plus fort). Pour les messages de contrôleur continu, la valeur du contrôleur.</para>
+  <refsect1>
+  <title>Exécution</title>
   
-<para>Appelez fluidControl dans les définitions d'instrument qui jouent réellement des notes et qui envoient
-  des messages de contrôle. Chaque définition d'instrument doit utiliser de manière cohérente un canal
-  MIDI qui a été affecté à un programme Fluidsynth au moyen de fluidLoad.</para>
-
-<para>Dans cette implémentation, les effets SoundFont tels que chorus ou réverbération sont utilisés
-  si et seulement s'ils sont présents par défaut pour le preset. Il n'y a aucun moyen d'activer ou
-  d'arrêter de tels effets, ou de changer leurs paramètres, depuis Csound.</para>
-
-</refsect1>
+  <para><emphasis>kstatus </emphasis> -- octet d'état du message de canal MIDI : 128 pour note off, 144 
+    pour note on, 176 pour control change, 192 for program change, ou 224 pour pitch bend.
+    <!-- Note off messages need not be specified, as one is
+    automatically generated when each Csound note expires or is released. --> </para>
+  
+  <para><emphasis>kchannel </emphasis> -- numéro du canal MIDI auquel le programme Fluidsynth est
+    affecté : de 0 à 255. Les canaux MIDI dont le numéro est supérieur ou égal à 16 sont des canaux
+    virtuels.</para>
+  
+  <para><emphasis>kdata1 </emphasis> -- Pour note on, numéro de touche MIDI : de 0 (le plus bas) à 127 (le
+    plus haut), où 60 est le do médian. Pour les messages de contrôleur continu, le numéro du contrôleur.</para>
+  
+  <para><emphasis>kdata2 </emphasis> -- Pour note on, la vélocité de touche MIDI : de 0 (pas de son) à 127
+    (le plus fort). Pour les messages de contrôleur continu, la valeur du contrôleur.</para>
+    
+  <para>Appelez fluidControl dans les définitions d'instrument qui jouent réellement des notes et qui envoient
+    des messages de contrôle. Chaque définition d'instrument doit utiliser de manière cohérente un canal
+    MIDI qui a été affecté à un programme Fluidsynth au moyen de fluidLoad.</para>
+  
+  <para>Dans cette implémentation, les effets SoundFont tels que chorus ou réverbération sont utilisés
+    si et seulement s'ils sont présents par défaut pour le preset. Il y a quelques moyens d'activer ou
+    d'arrêter les effets de chorus et de réverbération en utilisant fluidEngine, et de changer certains
+    de leurs paramètres avec fluidCCi et fluidCCk.</para>
+  
+  </refsect1>
 
   <refsect1>
     <title>Exemples</title>
@@ -101,5 +104,6 @@ english cvs version=1.12
     Steven Yi pour avoir réalisé qu'il était nécessaire de diviser Fluidsynth en plusieurs opcodes
     Csound différents.</para>
     <para>Nouveau dans Csound5.00</para>
+    <para>Le paramètre facultatif imsgs a été introduit dans la version 6.14.</para>
   </refsect1>
 </refentry>
