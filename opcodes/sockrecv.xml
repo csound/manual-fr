@@ -39,7 +39,7 @@ english cvs version=1.4
     <synopsis>ksig <command>sockrecv</command> iport, ilength</synopsis>
     <synopsis>asigl, asigr <command>sockrecvs</command> iport, ilength</synopsis>
     <synopsis>String <command>sockrecv</command> iport, ilength</synopsis>
-    <synopsis>asig <command>strecv</command> Sipaddr, iport</synopsis>
+    <synopsis>asig[,kstate] <command>strecv</command> Sipaddr, iport</synopsis>
   </refsect1>
 
   <refsect1>
@@ -67,8 +67,17 @@ english cvs version=1.4
     <title>Exécution</title>
     <para>
       <emphasis>asig, asigl, asigr</emphasis> -- donnéees audio à recevoir.
+    </para>
+    <para>
       <emphasis>ksig</emphasis> -- donnéees de contrôle à recevoir.
+    </para>
+    <para>
       <emphasis>String</emphasis> -- données chaîne de caractères à recevoir.
+    </para>
+    <para>
+      <emphasis>kstate</emphasis> -- sortie facultative pour donner l'état de
+      la réception. Donne le nombre d'octets transférés dans le cycle
+      d'exécution courant ou -1 si l'émetteur a cessé d'écrire.
     </para>
   </refsect1>
 
@@ -99,5 +108,6 @@ english cvs version=1.4
         <member>2006</member>
       </simplelist>
     </para>
+    <para>La sortie facultative kstate est nouvelle dans la version 6.14</para>
   </refsect1>
 </refentry>
