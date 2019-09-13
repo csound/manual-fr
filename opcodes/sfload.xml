@@ -69,7 +69,11 @@ english cvs version=1.10
       d'en-tête d'un orchestre, ce qui permet d'utiliser plusieurs fichiers SF2 dans
       un seul orchestre.
     </para>
-
+    <para>
+      Si l'on tente de charger deux fois le même fichier, le fichier déjà chargé
+      est utilisé accompagné d'un message d'avertissement (à partir de la
+      version 6.14).
+    </para>
     <para>
       Ces opcodes ne supportent que la structure d'échantillon des fichiers SF2. La
       structure de modulateur du format SoundFormat2 n'est pas supportée dans Csound.
