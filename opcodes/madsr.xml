@@ -67,8 +67,10 @@ english cvs version=1.16
     </para>
 
     <para>
-      Noter que la durée du relâchement ne peut pas dépasser
-      32767/<link linkend="kr"><citetitle>kr</citetitle></link> secondes.
+      Noter que la durée du relâchement ne pouvait pas dépasser
+      32767/<link linkend="kr"><citetitle>kr</citetitle></link> secondes dans
+      versions antérieures à la 5.00 ; depuis la limite a été étendue à
+      2<superscript>31</superscript>/kr secondes.
     </para>
   </refsect1>
  
