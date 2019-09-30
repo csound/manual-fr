@@ -740,6 +740,7 @@ csound5:output2             (reproduction droite)</screen>
             <listitem><para>2 = message d'échantillons hors intervalle</para></listitem>
             <listitem><para>4 = messages d'avertissement</para></listitem>
             <listitem><para>128 = impression d'information de tests de référence</para></listitem>
+            <listitem><para>1024 = suppression des messages d'obsolescence</para></listitem>
           </itemizedlist>
 
           Et exactement un de ceux-ci pour choisir le format de l'amplitude des notes :
@@ -755,7 +756,8 @@ csound5:output2             (reproduction droite)</screen>
 
           La valeur par défaut est 135 (128+4+2+1), ce qui signifie tous les messages, valeurs d'amplitude
           brutes, et impression du temps écoulé à la fin de l'exécution. La mise en couleur des amplitudes
-          brutes fut introduite dans la version 5.04.
+          brutes fut introduite dans la version 5.04. La suppression des messages
+          d'obsolescence a été ajoutée dans la version 6.14.
 
         </para>
 
