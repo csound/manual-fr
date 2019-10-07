@@ -6,7 +6,7 @@ authors=Francois Pinot
 -->
 
 <section id="udpserver">
-  <title>UDP Server</title>
+  <title>Serveur UDP</title>
   <para>
     Csound 6 comprend un serveur UDP pleinement fonctionnel, qui peut accepter
     un ensemble de commandes et/ou d'orchestres.
@@ -50,6 +50,8 @@ authors=Francois Pinot
   </literallayout>
   <para>
     Donne la valeur [value] au canal de contrôle [channel_name].
+    Exemple : si le csd contient la ligne ' chn_k "freq", 440' alors
+    '@freq 330' fixe "freq" à 330.
   </para>
   <literallayout>
    %[channel_name] [string]
@@ -81,6 +83,7 @@ authors=Francois Pinot
     caractères contenant le code d'un orchestre, qui est compilé immédiatement.
     Cette chaîne de caractères n'est préfixée par aucun opcode de commande
     spécial. Cette chaîne de caractères doit être envoyée en un seul message UDP.
+    Par exemple : scoreline_i "i 2 0 1 550 60"
   </para>
   <para>
     Si le code de l'orchestre dépasse le nombre de caractères que peut contenir
