@@ -36,7 +36,7 @@ endin
 </CsInstruments>
 <CsScore>
 i 1 0 2.757 0 ; frequencies from fox.wav, amplitudes moving from wave to fox
-i 1 3 2.757 1 ; frequencies from marmstk1.wav, amplitudes moving from fox to wave
+i 1 3 2.757 1 ; frequencies from wav.wav, amplitudes moving from fox to wave
 e
 </CsScore>
 </CsoundSynthesizer>
