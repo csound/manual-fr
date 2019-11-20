@@ -35,6 +35,10 @@ authors=Francois Pinot
     <title>Syntaxe</title>
     <synopsis>ky <command>bpfcos</command> kx, kx1, ky1, kx2, ..., kxn, kyn</synopsis>
     <synopsis>kys[] <command>bpfcos</command> kxs[], kx1, ky1, kx2, ..., kxn, kyn</synopsis>
+    <synopsis>ky <command>bpfcos</command> kx, kxs[], kys[]</synopsis>
+    <synopsis>ky <command>bpfcos</command> kx, ixs[], iys[]</synopsis>
+    <synopsis>ky, kz <command>bpfcos</command> kx, kxs[], kys[], kzs[] </synopsis>
+    <synopsis>ky, kz <command>bpfcos</command> kx, ixs[], iys[], izs[] </synopsis>
   </refsect1>
 
   <refsect1>
@@ -55,6 +59,32 @@ authors=Francois Pinot
       et +inf, si bien que si kx &lt; kx1 alors ky = ky1 et pareillement à
       l'autre extrémité.
     </para>
+
+    <refsect2>
+      <title>Variantes avec tableaux</title>
+      <para>
+        <synopsis>kys[] <command>bpfcos</command> kxs[], kx1, ky1, kx2, ..., kxn, kyn</synopsis>
+      </para>
+      <para>
+        Pour chaque x dans kxs, la valeur y définié par les points (kx1, ky1),
+        ... (kxn, kyn) est calculée.
+      </para>
+      <para>
+        <synopsis>ky <command>bpfcos</command> kx, ixs[], iys[]</synopsis>
+      </para>
+      <para>
+        Dans cette variante les points sont définis par des tableaux. ixs contient
+        toutes les valeurs de x, iys contient toutes les valeurs de y.
+      </para>
+      <para>
+        <synopsis>ky, kz <command>bpfcos</command> kx, kxs[], kys[], kzs[] </synopsis>
+      </para>
+      <para>
+        Semblable à la variante ci-dessus, mais pour des points multidimensionnels.
+        Etant données deux courbes partageant les mêmes points x, calcule la valeur
+        pour x dans les deux dimensions simultanément. (Voir exemple)
+      </para>
+    </refsect2>
 
     <note>
       <para>
@@ -93,5 +123,6 @@ authors=Francois Pinot
     <title>Crédits</title>
     <para>Auteur : &nameeduardo; 2018</para>
     <para>Nouveau greffon dans la version 6.12</para>
+    <para>Variantes avec tableaux dans la version 6.14</para>
   </refsect1>
 </refentry>
