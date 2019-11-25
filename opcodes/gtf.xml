@@ -1,0 +1,159 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<!--Change refentry id and indexterm id-->
+<refentry id="gtf">
+<indexterm id="IndexgGtf"><primary>gtf</primary></indexterm>
+<!--Make sure the category below is a valid one! See categories.py-->
+  <refentryinfo><title>Signal Modifiers:Specialized Filters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>gtf</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>gtf</refname>
+    <refpurpose>
+      Applique un filtre gammatone à un signal audio.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+     <para>
+      Applique un filtre gammatone de différents ordres à un signal audio.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aout <command>gtf</command> ain, kfreq, idecay[, iorder, iphase]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>idecay</emphasis> -- taux de chute
+    </para>
+    <para>
+      <emphasis>iorder</emphasis> -- (facultatif) Ordre du filtre compris
+      entre 1 et 10 (valeurs entières). Vaut 4 par défaut.
+    </para>
+    <para>
+      <emphasis>iphase</emphasis> -- (facultatif) Phase en sortie, zéro par
+      défaut.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- Signal audio à filtrer.
+    </para>
+    <para>
+      <emphasis>kfreq</emphasis> -- Fréquence centrale du filtre en Hz.
+    </para>
+
+    <para>
+      Le filtre gammatone est habituellement utilisé dans des modèles du
+      système auditif. L'algorithme est basé sur les travaux présentés dans
+      la thèse de doctorat de Martin Cooke (Cooke, 1993) qui utilisent la
+      transformation invariante d'impulsion en bande de base. Voir<ulink
+      url="http://staffwww.dcs.shef.ac.uk/people/N.Ma/resources/gammatone/">http://staffwww.dcs.shef.ac.uk/people/N.Ma/resources/gammatone/</ulink>
+    </para>
+
+  <!--   <para>Use for internal manual links: <link linkend="delayr"><citetitle>delayr</citetitle></link> and this for external hyperlinks: <ulink url="examples/gtf.csd"><citetitle>gtf.csd</citetitle></ulink> or for the internet: <ulink url="http://www.csounds.com"><citetitle>Csounds.com page</citetitle></ulink>. -->
+  <!--   </para> -->
+
+  <!--   <para> -->
+  <!--     You can also emphasize <emphasis>words</emphasis>. -->
+  <!--   </para> -->
+
+  <!--   <note> -->
+  <!--     <title>Title of the note (optional)</title> -->
+  <!--     <para> -->
+  <!--       An important note. You can also use "tip" or "warning" instead of note. -->
+  <!--     </para> -->
+  <!--   </note> -->
+
+  <!--   <para> -->
+  <!--     You can also do lists. -->
+  <!--     <itemizedlist> -->
+  <!--       <listitem><para>First item</para></listitem> -->
+  <!--       <listitem><para>Second item</para></listitem> -->
+  <!--     </itemizedlist> -->
+  <!--   </para> -->
+
+  <!--   <para> -->
+  <!--     You can also do numbered lists. -->
+  <!--     <orderedlist> -->
+  <!--       <listitem><para>First item</para></listitem> -->
+  <!--       <listitem><para>Second item</para></listitem> -->
+  <!--     </orderedlist> -->
+  <!--   </para> -->
+
+  <!--   <para> -->
+  <!--     Put inline program lines like this: -->
+  <!--     <programlisting>aout oscil 10000, 440, 1</programlisting> -->
+  <!--     And Csound output like this: -->
+  <!--     <literallayout>Output text</literallayout> -->
+  <!--   </para> -->
+
+  <!--   <para> -->
+  <!--     You can put images like this: -->
+  <!--     <mediaobject> -->
+  <!--       <imageobject> -->
+  <!--         <imagedata fileref="images/grain3_2.png" format="PNG"/> -->
+  <!--       </imageobject> -->
+
+  <!--       <textobject> -->
+  <!--         <phrase>[A diagram showing grains with a start time less than zero in red.]</phrase> -->
+  <!--       </textobject> -->
+
+  <!--       <caption> -->
+  <!--         <para>A diagram showing grains with a start time less than zero in red.</para> -->
+  <!--       </caption> -->
+  <!--     </mediaobject> -->
+  <!--   </para> -->
+    
+  </refsect1>
+
+ 
+  <refsect1>
+<!--To add examples, create the csd file in the examples directory, then run:-->
+<!--python csd2docbook.py -f gtf.csd-->
+<!--to generate the xml highlighted version used below-->
+<!--     <title>Examples</title> -->
+<!--     <para> -->
+<!--       Here is an example of the delay opcode. It uses the file <ulink url="examples/gtf.csd"><citetitle>gtf.csd</citetitle></ulink>. -->
+<!--       <example> -->
+<!--         <title>Example of the gtf opcode.</title> -->
+<!--         <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para> -->
+<!--           <xi:include href="examples-xml/gtf.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/> -->
+<!--       </example> -->
+<!--     </para> -->
+<!--   </refsect1> -->
+
+<!--   <refsect1> -->
+<!--     <title>See Also</title> -->
+<!-- <!-\-    it's always good to include a good See Also list  -\-> -->
+<!--     <para> -->
+<!--       <link linkend="deltap"><citetitle>deltap</citetitle></link> -->
+<!--     </para> -->
+  </refsect1>
+
+  <refsect1>
+<!--  And put your name and other relevant information here-->
+    <title>Crédits</title>
+    <para>Par : &namejohn; 2019</para>
+  </refsect1>
+
+<!--Now remember to add a link from the appropriate category in the Opcode Overview.-->
+<!--Add the entity to manual.xml-->
+<!--Add the entity reference in the appropriate place in opcodes/top.xml-->
+<!--And you're set! Maybe delete the comments as well...-->
+
+</refentry>
