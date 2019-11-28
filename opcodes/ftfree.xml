@@ -42,6 +42,10 @@ english cvs version=1.8
     <emphasis>iwhen</emphasis> -- s'il vaut zéro, la table est effacée pendant
     la période d'initialisation ; sinon le numéro de table est enregistré pour
     que celle-ci soit effacée lors de la désactivation de la note.
+    <note>Si la table est effacée durant une initialisation, il est possible
+    qu'un opcode antérieur utilisant la table échoue ou se plante pendant un
+    cycle d'exécution. Il est de la responsabilité de l'utilisateur d'éviter
+    cette erreur.</note>
     </para>
   </refsect1>
   
@@ -63,7 +67,7 @@ B  0.000 ..  3.000 T  3.000 TT  3.000 M:  0.50000  0.50000
 INIT ERROR in instr 1: Invalid ftable no. 101.000000
 instr 1:  gitempTable = 101.000
 Error deleting ftable 101
-	  B  3.000 - note deleted.  i1 had 1 init errors
+    B  3.000 - note deleted.  i1 had 1 init errors
 B  3.000 ..  5.000 T  5.000 TT  5.000 M:  0.00000  0.00000</screen>
     </para>
   </refsect1>
