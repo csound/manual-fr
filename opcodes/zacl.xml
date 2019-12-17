@@ -14,8 +14,6 @@ english cvs version=1.12
     <refentrytitle>zacl</refentrytitle>
   </refmeta>
 
-
- 
   <refnamediv>
     <refname>zacl</refname>
     <refpurpose>
@@ -32,7 +30,7 @@ english cvs version=1.12
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis><command>zacl</command> kfirst, klast</synopsis>
+    <synopsis><command>zacl</command> kfirst [, klast]</synopsis>
   </refsect1>
  
   <refsect1>
@@ -42,7 +40,9 @@ english cvs version=1.12
     </para>
 
     <para>
-      <emphasis>klast</emphasis> -- Dernière position za de l'intervalle à effacer.
+      <emphasis>klast</emphasis> -- Dernière position za de l'intervalle à
+      effacer. Si elle n'est pas donnée, seule la position
+      <emphasis>kfirst</emphasis> est effacée.
     </para>
 
     <para>
