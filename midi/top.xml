@@ -13,26 +13,28 @@ english cvs version=1.7
     Csound supporte les entrées et les sorties MIDI en temps réel, ainsi que les entrées depuis les fichiers
     MIDI. L'entrée MIDI en temps réel est activée au moyen de l'option de ligne de commande
     <link linkend="FlagsCatMinusUpperM"><citetitle>-M</citetitle></link>
-    (ou <emphasis>--midi-device</emphasis>=PERIPHERIQUE). Vous devez spécifier le numéro ou le nom de
-    périphérique après le <emphasis>-M</emphasis>. Par exemple, pour utiliser le périphérique numéro 2,
-    vous utiliserez quelque chose comme :
+    (ou <emphasis>--midi-device</emphasis>=PERIPHERIQUE). Pour une entrée sur un seul port,
+    il faut spécifier le numéro ou le nom de périphérique après le <emphasis>-M</emphasis>.
+    Pour une entrée sur plusieurs ports (actuellement seulement avec le module PortMidi),
+    il faut utiliser 'a' ou 'm'. Par exemple, pour utiliser le périphérique numéro 2,
+    on utilisera quelque chose comme :
   </para>
   <literallayout>csound -M2 monmiditr.csd</literallayout>
   <para>
-    Vous pouvez trouver les périphériques disponibles en utilisant un numéro trop grand :
+    On peut trouver les périphériques disponibles en lançant Csound avec l'option --midi-devices :
   </para>
-  <literallayout>csound -M99 monmiditr.csd</literallayout>
-  <note>
-    <para>
-      Ceci ne fonctionnera que si le module MIDI peut être atteint par numéro de périphérique. Pour alsa,
-      il faut d'abord trouver le nom du périphérique en utilisant :
-    </para>
-    <literallayout>cat /proc/asound/cards</literallayout>
-    <para>
-      Il faut alors taper quelque chose comme :
-    </para>
-    <literallayout>csound -+rtmidi=alsa -M hw:3 monmiditr.csd</literallayout>
-  </note>
+  <literallayout>csound --midi-devices</literallayout>
+  <para>
+    A partir de la version 6.14, le module PortMidi (voir ci-dessous pour une
+    liste de tous les modules) permet d'associer des ports multiples à des
+    canaux d'ordre plus élevé. En utilisant le nom de périphérique 'm', Csound
+    prend ses entrées des périphériques MIDI existants dans le système et les
+    associera à (N+1)*canal, où N est le numéro de périphérique dans la liste de
+    PortMidi et canal est le canal d'entrée d'origine du périphérique.
+    Alternativement, le nom de périphérique 'a' écoute sur toutes les entrées
+    mais ne fait pas d'association avec des canaux d'ordre plus élevé.
+  </para>
+
   <para>
     La sortie MIDI en temps réel est activée au moyen de
     <link linkend="FlagsCatMinusUpperQ"><citetitle>-Q</citetitle></link>, avec un numéro ou un nom de
@@ -59,7 +61,7 @@ english cvs version=1.7
     instruments numérotés de 1 à 16, alors par défaut instr 1 -> canal 1, instr 2
     -> canal 2, à moins que l'on change la répartition (voir <link linkend="massign"><citetitle>massign</citetitle></link> et
     <link linkend="pgmassign"><citetitle>pgmassign</citetitle></link> pour changer
-    ce comportement). Si l'on a plusieurs instruments, mais que instr N manque
+    ce comportement). Pour un sel port en entrée, si l'on a plusieurs instruments, mais que instr N manque
     entre 1 et 16, canal N sera dirigé par défaut sur l'instrument ayant le numéro
     le plus bas.
   </para>
@@ -80,13 +82,14 @@ english cvs version=1.7
     Actuellement les modules midi disponibles sont :
   </para>
   <itemizedlist>
+    <listitem><para><emphasis>portmidi</emphasis> - Pour utiliser le système portmidi (sur toutes les
+      plates-formes). C'est le réglage par défaut et il permet les entrées multi-ports
+      (avec 'm' ou 'a' comme nom de périphérique.</para></listitem>
     <listitem><para><emphasis>alsa</emphasis> - Pour utiliser le système midi ALSA (seulement sur
       Linux).</para></listitem>
     <listitem><para><emphasis>jack</emphasis> - Pour utiliser le système midi Jack.</para></listitem>
     <listitem><para><emphasis>winmme</emphasis> - Pour utiliser le système windows MME (seulement sur
       Windows).</para></listitem>
-    <listitem><para><emphasis>portmidi</emphasis> - Pour utiliser le système portmidi (sur toutes les
-      plates-formes). C'est le réglage par défaut.</para></listitem>
     <listitem><para><emphasis>virtual</emphasis> - Pour utiliser un clavier virtuel graphique (voir ci-dessous)
       comme entrée MIDI (sur toutes les plates-formes)</para></listitem>
   </itemizedlist>

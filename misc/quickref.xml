@@ -974,6 +974,7 @@
 <synopsis><link linkend="schedkwhennamed">schedkwhennamed</link> ktrigger, kmintim, kmaxnum, &quot;name&quot;, kwhen, kdur \
       [, ip4] [, ip5] [...]</synopsis><para/>
 <synopsis><link linkend="schedule">schedule</link> insnum, iwhen, idur [, ip4] [, ip5] [...]</synopsis><synopsis><link linkend="schedule">schedule</link> &quot;insname&quot;, iwhen, idur [, ip4] [, ip5] [...]</synopsis><para/>
+<synopsis><link linkend="schedulek">schedulek</link> knsnum, kwhen, kdur [, kp4] [, kp5] [...]</synopsis><synopsis><link linkend="schedulek">schedulek</link> &quot;insname&quot;, kwhen, kdur [, kp4] [, kp5] [...]</synopsis><para/>
 <synopsis><link linkend="schedwhen">schedwhen</link> ktrigger, kinsnum, kwhen, kdur [, ip4] [, ip5] [...]</synopsis><synopsis><link linkend="schedwhen">schedwhen</link> ktrigger, &quot;insname&quot;, kwhen, kdur [, ip4] [, ip5] [...]</synopsis><para/>
 <synopsis><link linkend="scoreline">scoreline</link> Sin, ktrig</synopsis><para/>
 <synopsis><link linkend="scoreline_i">scoreline_i</link> Sin</synopsis><para/>
@@ -1909,7 +1910,7 @@
 <title>Système de patch zak</title>
 <para>
 <para/>
-<synopsis><link linkend="zacl">zacl</link> kfirst, klast</synopsis><para/>
+<synopsis><link linkend="zacl">zacl</link> kfirst [, klast]</synopsis><para/>
 <synopsis><link linkend="zakinit">zakinit</link> isizea, isizek</synopsis><para/>
 <synopsis>ares <link linkend="zamod">zamod</link> asig, kzamod</synopsis><para/>
 <synopsis>ares <link linkend="zar">zar</link> kndx</synopsis><para/>

@@ -608,13 +608,14 @@ csound5:output2             (reproduction droite)</screen>
       <listitem>
         <para>
           Lire les évènements MIDI à partir du périphérique <emphasis>PERIPHERIQUE</emphasis>. Si l'on utilise
-          ALSA MIDI (<link linkend="FlagsCatMinusPlusRtmidi"><citetitle>-+rtmidi</citetitle></link>=alsa),
-          les périphériques sont sélectionnés par leur nom et pas par un numéro. Ainsi,
-          il faut utiliser une option comme -M hw:CARTE,PERIPHERIQUE où CARTE et PERIPHERIQUE sont les numéros de
-          la carte et du périphérique (par exemple -M hw:1,0). Dans le cas de PortMidi et de MME, PERIPHERIQUE
+          ALSA MIDI (-+rtmidi=alsa), les périphériques sont sélectionnés par leur nom et pas par un numéro. Ainsi,
+          il faut utiliser une option comme -M&nbsp;hw:CARTE,PERIPHERIQUE où CARTE et PERIPHERIQUE sont les numéros de
+          la carte et du périphérique (par exemple -M&nbsp;hw:1,0). Dans le cas de CoreMidi et de MME, PERIPHERIQUE
           doit être un nombre, et s'il est en-dehors de l'intervalle permis, une erreur est levée et les numéros
-          de périphérique valides sont imprimés. Avec PortMidi, on peut utiliser '-Ma' pour
-          activer tous les périphériques. Cela marche aussi lorsqu'il n'y a pas de périphérique
+          de périphérique valides sont imprimés. Avec PortMidi, PERIPHERIQUE est soit un nombre pour une entrée sur
+          un seul port, soit 'a' pour écouter sur tous les ports, ou bien 'm' pour associer les ports à des canaux
+          MIDI au-delà de 16. Dans ce cas, le périphérique 0 utilise 1-16, le périphérique 1 utilise 17-32, ...
+          Les options 'a' et 'm' conviennent aussi lorsqu'il n'y a pas de périphérique
           car aucune erreur n'est générée.
         </para>
       </listitem>
