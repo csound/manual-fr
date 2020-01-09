@@ -96,10 +96,11 @@ english cvs version=1.7
 
   <tip>
     <para>Lors de son exécution, Csound traite la partition puis se termine. S'il n'y a pas
-      d'évènements dans la partition, Csound se termine immédiatement. Si l'on désire n'utiliser
-      que des évèments MIDI au lieu des évènements de partition, il faut demander à Csound
-      de s'exécuter pendant un certain temps au moyen d'une
-      <link linkend="f"><citetitle>instruction f</citetitle></link> comme "f 0 3600".
+      d'évènements dans la partition, Csound s'exécute indéfiniment. Si l'on désire n'utiliser
+      que des évèments MIDI au lieu des évènements de partition et que l'on connaît la durée
+      d'exécution désirée, il faut demander à Csound
+      de s'exécuter pendant cette durée au moyen d'une
+      <link linkend="f"><citetitle>instruction f</citetitle></link> comme "f 0 360".
     </para>
   </tip>
 

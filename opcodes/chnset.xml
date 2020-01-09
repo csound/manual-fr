@@ -37,6 +37,10 @@ english cvs version=1.9
     <synopsis><command>chnset</command> aval, Sname</synopsis>
     <synopsis><command>chnset</command> Sval, Sname</synopsis>
     <synopsis><command>chnsetks</command> Sval, Sname</synopsis>
+    <synopsis><command>chnseti</command> ival[], []Sname</synopsis>
+    <synopsis><command>chnsetk</command> kval[], []Sname</synopsis>
+    <synopsis><command>chnseta</command> aval[], []Sname</synopsis>
+    <synopsis><command>chnsets</command> Sval[], []Sname</synopsis>
   </refsect1>
 
   <refsect1>
@@ -46,11 +50,23 @@ english cvs version=1.9
       nommé du bus logiciel sur lequel écrire.
    </para>
     <para>
+      <emphasis>Sname[]</emphasis> -- un tableau de chaînes de caractères
+      indiquant sur quels canaux nommés du bus logiciel écrire.
+    </para>
+    <para>
       <emphasis>ival</emphasis> -- la valeur de contrôle écrite à l'initialisation.
+    </para>
+    <para>
+      <emphasis>ival[]</emphasis> -- un tableau de valeurs de contrôle à écrire
+      à l'initialisation.
     </para>
     <para>
       <emphasis>Sval</emphasis> -- la chaîne de caractères écrite à l'initialisation.
     </para>
+    <para>
+      <emphasis>Sval[]</emphasis> -- un tableau de chaînes de caractères à écrire
+      à l'initialisation.
+    </para>    
   </refsect1>
 
   <refsect1>
@@ -69,8 +85,24 @@ english cvs version=1.9
       contenu du canal n'est mis à jour que si la variable chaîne de caractères
       est modifiée.
     </para>
+    <para>
+      <emphasis>kval[]</emphasis> -- un tableau de valeurs de contrôle à écrire
+      pendant l'exécution.
+    </para>
+    <para>
+      <emphasis>aval[]</emphasis> -- un tableau de vecteurs audio à écrire
+      pendant l'exécution.
+    </para>
   </refsect1>
 
+  <note>
+    <para>
+      Bien qu'il soit possible de boucler sur les noms de canaux d'un tableau
+      avec <emphasis>chnget</emphasis> et <emphasis>chnset</emphasis>, l'utilisation
+      de la variante basée sur des tableaux est plus efficace.        
+    </para> 
+  </note>
+  
   <refsect1>
     <title>Exemples</title>
     <para>
@@ -107,6 +139,7 @@ english cvs version=1.9
       <simplelist>
         <member>Auteur : &nameistvan;</member>
         <member>2005</member>
+        <member>Opcodes de canaux basés sur des tableaux ajoutés dans la version 6.14 - Rory Walsh</member>
       </simplelist>
     </para>
   </refsect1>

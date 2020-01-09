@@ -36,7 +36,11 @@ english cvs version=1.9
     <synopsis>kval <command>chnget</command> Sname</synopsis>
     <synopsis>aval <command>chnget</command> Sname</synopsis>
     <synopsis>Sval <command>chnget</command> Sname</synopsis>
-    <synopsis>Sval <command>chngetks</command> Sname</synopsis>
+     <synopsis>Sval <command>chngetks</command> Sname</synopsis>
+    <synopsis>ival[] <command>chngeti</command> Sname[]</synopsis>
+    <synopsis>kval[] <command>chngetk</command> Sname[]</synopsis>
+    <synopsis>aval[] <command>chngeta</command> Sname[]</synopsis>
+    <synopsis>Sval[] <command>chngets</command> Sname[]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -46,10 +50,22 @@ english cvs version=1.9
       canal du bus logiciel nommé à lire.
     </para>
     <para>
+      <emphasis>Sname[]</emphasis> -- un tableau de canaux du bus logiciel nommés
+      à interroger.
+    </para>
+    <para>
       <emphasis>ival</emphasis> -- la valeur de contrôle lue à l'initialisation.
     </para>
     <para>
       <emphasis>Sval</emphasis> -- la chaîne de caractères lue à l'initialisation.
+    </para>
+    <para>
+      <emphasis>ival[]</emphasis> -- un tableau de valeurs de contrôle lues à
+      l'initialisation.
+    </para>
+    <para>
+      <emphasis>Sval{}</emphasis> -- un tableau de chaînes de caractères lues à
+      l'initialisation.
     </para>
   </refsect1>
 
@@ -59,7 +75,15 @@ english cvs version=1.9
       <emphasis>kval</emphasis> -- la valeur de contrôle lue pendant l'exécution.
     </para>
     <para>
+      <emphasis>kval[]</emphasis> -- un tableau de valeurs de contrôle lues
+      pendant l'exécution.
+    </para>
+    <para>
       <emphasis>aval</emphasis> -- le signal audio lu pendant l'exécution.
+    </para>
+    <para>
+      <emphasis>aval[]</emphasis> -- le tableau de vecteurs audio lus pendant
+      l'exécution.
     </para>
     <para>
       <emphasis>Sval</emphasis> -- la chaîne de caractères lue au taux-k.
@@ -70,6 +94,14 @@ english cvs version=1.9
     </para>
   </refsect1>
 
+  <note>
+    <para>
+      Bien qu'il soit possible de boucler sur les noms de canaux d'un tableau
+      avec <emphasis>chnget</emphasis> et <emphasis>chnset</emphasis>, l'utilisation
+      de la variante basée sur des tableaux est plus efficace.        
+    </para> 
+  </note>
+  
   <refsect1>
     <title>Exemples</title>
     <para>
@@ -108,6 +140,7 @@ english cvs version=1.9
       <simplelist>
         <member>Auteur : &nameistvan;</member>
         <member>2005</member>
+        <member>Opcodes de canaux basés sur des tableaux ajoutés dans la version 6.14 - Rory Walsh</member>
       </simplelist>
     </para>
   </refsect1>
