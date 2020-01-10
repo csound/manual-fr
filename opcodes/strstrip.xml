@@ -1,0 +1,85 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<!--Change refentry id and indexterm id-->
+<refentry id="strstrip">
+  <indexterm id="IndexStrstrip"><primary>strstrip</primary></indexterm>
+  <!--Make sure the category below is a valid one! See categories.py-->
+  <refentryinfo><title>Strings:Manipulation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>strstrip</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>strstrip</refname>
+    <refpurpose>
+      Enlève des espaces d'une chaîne de caractères.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>Opcode du greffon emugens.</para>
+    <para>
+      Enlève des espaces d'une chaîne de caractères. Les espaces peuvent être
+      supprimés à gauche, à droite ou des deux côtés. Fonctionne à l'initialisation.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <!--    Please keep this below ~70 characters by using backslashes to avoid overflow in the pdf version-->
+    <synopsis>Sout <command>strstrip</command> Sin [, Smode]</synopsis>
+    
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis role="strong">Sin</emphasis> -- Chaîne en entrée.
+    </para>
+    <para>
+      <emphasis role="strong">Smode</emphasis> -- S'il est absent, les espaces
+      sont supprimés des deux côtés. S'il vaut "l", les espaces à gauche sont
+      supprimés. S'il vaut "r", les espaces à droite sont supprimés.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <!--To add examples, create the csd file in the examples directory, then run:-->
+    <!--python csd2docbook.py -f newopcodename.csd-->
+    <!--to generate the xml highlighted version used below-->
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode strstrip. Il utilise le fichier
+      <ulink url="examples/strstrip.csd"><citetitle>strstrip.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode strstrip.</title>
+        <xi:include href="examples-xml/strstrip.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <!--    it's always good to include a good See Also list  -->
+    <para>
+      <link linkend="strcat"><citetitle>strcat</citetitle></link>, 
+      <link linkend="strsub"><citetitle>strsub</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <!--  And put your name and other relevant information here-->
+    <title>Crédits</title>
+    <para>Par : &nameeduardo; 2020</para>
+  </refsect1>
+  <!--Now remember to add a link from the appropriate category in the Opcode Overview.-->
+  <!--Add the entity to manual.xml-->
+  <!--Add the entity reference in the appropriate place in opcodes/top.xml-->
+  <!--And you're set! Maybe delete the comments as well...-->
+</refentry>

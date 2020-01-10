@@ -1,0 +1,82 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="lastcycle">
+  <indexterm id="IndexLastcycle"><primary>lastcycle</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Event Extenders</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lastcycle</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>lastcycle</refname>
+    <refpurpose>
+      Indique si un évènement est dans son dernier cycle d'exécution.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Fournit un moyen de savoir si un évènement est dans son dernier cycle
+      d'exécution. Qu'un évènement ait une durée finie (p3 > 0) ou qu'une note
+      soit rallongée via un opcode de prolongement de la durée (comme
+      <quote>linsegr</quote> ou <quote>xtratim</quote>), cet opcode retourne 1
+      si l'évènement est dans son dernier cycle-k. La seule situation dans
+      laquelle <quote>lastcycle</quote> ne détecte pas qu'un évènement ne
+      continuera pas durant un autre cycle est lorsque la note est arrêtée par
+      un autre évènement (en utilisant <quote>turnoff2</quote>) sans avoir la
+      possibilité de passer par l'étape de relâchement (en utilisant
+      <quote>turnoff2 instrnum, imode, 0</quote>).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kflag <command>lastcycle</command></synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kflag</emphasis> -- indique si la note est dans son
+      <quote>dernier cycle</quote>. (1 si c'est le dernier cycle, 0 sinon)
+    </para>
+    <para>
+      Cet opcode est utile pour faire des actions de nettoyage, en signalant aux
+      autres évènements que cet évènement se termine, etc. Il ne fonctionne que
+      durant l'exécution.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode lastcycle. Il utilise le fichier
+      <ulink url="examples/lastcycle.csd"><citetitle>lastcycle.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode lastcycle.</title>
+        <xi:include href="examples-xml/lastcycle.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="xtratim"><citetitle>xtratim</citetitle></link>, 
+      <link linkend="release"><citetitle>release</citetitle></link>, 
+      <link linkend="linsegr"><citetitle>linsegr</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par : &nameeduardo; 2020</para>
+    <para>Nouveau dans la version 6.14 de Csound (2020).</para>
+  </refsect1>
+</refentry>
