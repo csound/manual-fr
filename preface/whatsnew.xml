@@ -92,6 +92,350 @@ english cvs version=
     </itemizedlist>
   </para>-->
 
+  <bridgehead>Notes de parution de Csound 6.14 (janvier 2020)</bridgehead>
+  <para>
+    Un certain nombre de corrections de bogues et d'améliorations, mais aussi
+    des changements potentiellement significatifs ont été ajoutés.
+  </para>
+  <para>
+    Pour les codeurs en direct, les macros d'orchestre sont conservées entre les
+    appels à compilerstr. Ca ne change pas le comportement des orchestres
+    actuellement valides mais pourra être utile pour le codage en direct.
+  </para>
+  <para>
+    Les périphériques MIDI incluent maintenant l'association de périphériques
+    multiples à des canaux de numéros supérieurs. Les détails sont dans la
+    section MIDI du manuel.  
+  </para>
+  <para>
+    <itemizedlist>
+      <listitem>
+        <para>Nouveaux opcodes :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                randc est comme randi mais il utilise une interpolation cubique.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                mp3out est une implémentation expérimentale d'écriture d'un
+                fichier mp3. Il pourra être remplacé par le travail développé
+                actuellement dans libsndfile pour traiter les fichiers MPEG.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="metro2"><citetitle>metro2</citetitle></link> est
+                comme metro mais avec l'ajout d'un rubato contrôlable.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="ftexists"><citetitle>ftexists</citetitle></link>
+                reports whether a numbered ftable exists.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="schedulek"><citetitle>schedulek</citetitle></link>
+                est un opcode de taux-k identique à schedule.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Nouveaux opcodes de canaux basés sur des tableaux :
+                <link linkend="chnget">
+                <citetitle>chngeti, chngetk, chngeta, chngets</citetitle></link>,
+                <link linkend="chnset">
+                <citetitle>chnseti, chnsetk, chnseta, chnsets</citetitle></link>.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="lastcycle"><citetitle>lastcycle</citetitle></link>
+                identifie le dernier k-cycle d'une intance d'instrument.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="strstrip"><citetitle>strstrip</citetitle></link>
+                supprime les espaces aux deux extrémités d'une chaîne de
+                caractères.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Orchestre :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                L'expression conditionnelle a?b:c calculait toujours b et c
+                avant de choisir lequel retourner. Cela pouvait donner des
+                erreurs de division par 0 ou causer des évaluations multiples
+                d'opcodes inattendues. Elle implémente maintenant la
+                sémantique commune du langage C.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Les macros de l'orchestre sont maintenant persistantes, si bien
+                qu'elles s'appliquent à chaque compilation suivant leur définition
+                jusqu'à ce qu'elles soient explicitement indéfinies. Ce
+                changement a été effectué en particulier pour le codage en
+                direct. Les orchestres valides ne devraient pas être affectés.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Après une erreur de syntaxe, il y avait des cas où Csound
+                donnait une erreur de segmentation. C'est maintenant corrigé.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Options :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                New option simple-sorted-score creates file score.srt in a more
+                user-friendly format.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Revise treatment of CsOptions wrt double quotes and spaces which
+                need escaping.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Setting the 1024 bit in -m suppresses printing of messages about
+                using deprecated opcodes. This option is itself deprecated.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Modified Opcodes and Gens:
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                squinewave now handles optional a or k rate argument.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                pindex opcode handles string fields as well as numeric ones.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                sflooper reworked to avoid a crash and provide warnings.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>event_i and schedule can take fractional p1.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                in soundfont opcodes better checking. Also no longer will load
+                multiple copies of a soundfont, but reuses existing load.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                fluidControl has a new optional argument to control printing
+                messages.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>bpf has an audio version now.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>stsend/stecv can work with unmatched k-rates.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>pvstrace has new optional arguments.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>lpfreson checks number of poles.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                syncloop had a small typing error that caused crashes.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>bpfcs has new array versions.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                zacl can omit second argument, defaults to clearing only the
+                given channel.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                outvalue attempted to use a k-rate value which could be invalid
+                at the time. This is mainly a small performance problem, and
+                its now eliminated.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Channel names for chnget and chnset opcodes can now be updated
+                at k-rate so they can be called within a loop.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                copya2ftab now has an optional additional argument which is an
+                offset into the ftable for where to copy the array.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Utilities:
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                lpanal now checks that sufficient poles are requested.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>General Usage:
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                // comments at the start of a line now accepted in CsOptions
+                section of a csd file.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Bugs Fixed:
+          <itemizedlist>
+            <listitem>
+              <simpara>shiftin fixed.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>exitnow delivers the return code as documented.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                fixed bug in beosc, where gaussian noise generator was not being
+                initialised.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>OSCraw fixed.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                ftkloadk could select incorrect internal code causing a crash.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                GEN01 when used to read a single channel of a multi-channel
+                file got the length incorrect.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                ftgenonce had a fencepost problem so it could overwrite a table
+                in use.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                a race condition in Jacko opcodes improved (issue #1182).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                syncloop had a small typing error that caused crashes.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                lowresx was incomplete and did not work as intended; rewritten
+                (issue #1199)
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                if outch was incorrectly given an odd number parameters it
+                would give a segmentation error. This now gives an error message.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>System Changes:
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                New plugin class for opcodes with no outputs written.
+                perform time errors and init errors are also reported in the
+                return code of the command line system. The new API function
+                GetErrorCnt is available to do something similar in other
+                variants.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>API:
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Function GetErrorCnt gives the number of perf-time errors, and
+                adds in the init-time errors at the end of a rendering.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Function FTnp2Find no longer prints messages if the table is not
+                found, but just returns NULL. Previous behaviour is available as
+                FTnp2Finde.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>csoundGetInstrument() added.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Platform Specific:
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Windows: stsend reworked for winsock library.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+
   <bridgehead>Notes de parution de Csound 6.13 (juillet 2019)</bridgehead>
   <para>
     Peu de nouveaux opcodes, mais un nombre significatif d'opcodes ont été
