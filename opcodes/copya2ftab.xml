@@ -31,16 +31,20 @@ english cvs version=
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis><command>copya2ftab</command> kftbl, tab</synopsis>
+    <synopsis><command>copya2ftab</command> kArray[], ktab [, koffset]</synopsis>
+    <synopsis><command>copya2ftab</command> iArray[], itab [, ioffset]</synopsis>
   </refsect1>
  
   <refsect1>
     <title>Exécution</title>
     <para>
-      <emphasis>kftbl</emphasis> -- tableau unidimensionnel pour la source.
+      <emphasis>kArray[]</emphasis> -- tableau unidimensionnel pour la source.
     </para>
     <para>
-      <emphasis>tab</emphasis> -- ftable pour la destination.
+      <emphasis>ktab</emphasis> -- ftable pour la destination.
+    </para>
+    <para>
+      <emphasis>koffset</emphasis> -- décalage dans la ftable (0 par défaut).
     </para>
   </refsect1>
 
@@ -74,7 +78,8 @@ english cvs version=
         <member>Octobre 2011</member>
       </simplelist>
     </para>
-
     <para>Nouveau dans la version 5.15 de Csound.</para>
+    <para>Renommé dans la version 6.00 de Csound</para>
+    <para>Décalage ajouté dans la version 6.14</para>
   </refsect1>
 </refentry>
