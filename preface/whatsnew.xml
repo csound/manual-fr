@@ -324,12 +324,33 @@ english cvs version=
         </para>
       </listitem>
       <listitem>
+        <para>Frontaux :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                CsoundQt : à paraitre en même temps que Csound 6.14, il y a CsoundQt 0.9.7.
+                Voir les notes de parution
+                <ulink url="https://github.com/CsoundQt/CsoundQt/blob/master/release_notes/Release%20notes%200.9.7.md">
+                <citetitle>https://github.com/CsoundQt/CsoundQt/blob/master/release_notes/Release%20notes%200.9.7.md</citetitle></ulink>.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
         <para>Usage général :
           <itemizedlist>
             <listitem>
               <simpara>
                 Les commentaires // en début de ligne sont maintenant acceptés
                 dans la section CsOptions d'un fichier csd.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                L'option --orc a été corrigée pour fonctionner sans partition :
+                l'exécution dure indéfiniment jusqu'à ce que soit rencontrée
+                une condition de sortie.
               </simpara>
             </listitem>
           </itemizedlist>
@@ -441,13 +462,39 @@ english cvs version=
       </listitem>
       <listitem>
         <para>Changements sur les plates-formes :
-          <itemizedlist>
-            <listitem>
-              <simpara>
-                Windows : stsend retravaillé pour la bibliothèque winsock.
-              </simpara>
-            </listitem>
-          </itemizedlist>
+        <itemizedlist>
+          <listitem>
+            <para>WebAudio :
+            <itemizedlist>
+              <listitem>
+                <simpara>
+                  csoundCompile() a été ajoutée à CsoundObj, qui ajoute des args
+                  de ligne de commande ce qui permet de remplacer les valeurs
+                  de CsOptions dans les CSDs.
+                </simpara>
+              </listitem>
+              <listitem>
+                <simpara>
+                  getPlayState(), addPlayStateListener() et d'autres méthodes
+                  ont été ajoutées à CsoundObj pour demander et tracer les
+                  changements d'état de l'exécution.
+                </simpara>
+              </listitem>
+            </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>Windows :
+            <itemizedlist>
+              <listitem>
+                <simpara>
+                  stsend retravaillé pour la bibliothèque winsock.
+                </simpara>
+              </listitem>
+            </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
         </para>
       </listitem>
     </itemizedlist>
