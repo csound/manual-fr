@@ -1043,7 +1043,7 @@ csound5:output2             (reproduction droite)</screen>
     </varlistentry>
 
     <varlistentry id="FlagsCatMinusPort">
-      <term>--port=N<indexterm id="IndexCatMinusPprt"><primary>--port</primary></indexterm></term>
+      <term>--port=N<indexterm id="IndexCatMinusPort"><primary>--port</primary></indexterm></term>
       <listitem>
         <para>
           Détermine un port UDP pour recevoir des commandes et/ou du code
@@ -1263,6 +1263,16 @@ csound5:output2             (reproduction droite)</screen>
           ou <link linkend="CommandEnvironment"><citetitle>SSDIR</citetitle></link>).
           Si un fichier est trouvé dans plusieurs répertoires, c'est le
           dernier qui est utilisé.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="FlagsCatMinusMinusSinesize">
+      <term>--sinesize=integer<indexterm id="IndexCatMinusMinusSinesize"><primary>--sinesize</primary></indexterm></term>
+      <listitem>
+        <para>
+          Fixe la taille de la table de sinus interne (table -1). Doit être
+          une puissance de deux et vaut 16384 par défaut.
         </para>
       </listitem>
     </varlistentry>
