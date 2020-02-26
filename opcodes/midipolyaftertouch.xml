@@ -52,7 +52,7 @@ english cvs version=1.8
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis><command>midipolyaftertouch</command> xpolyaftertouch, xcontrollervalue [, ilow] [, ihigh]</synopsis>
+    <synopsis><command>midipolyaftertouch</command> xpolyaftertouch, xkey [, ilow] [, ihigh]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -72,21 +72,20 @@ english cvs version=1.8
     <title>Exécution</title>
     <para>
       <emphasis>xpolyaftertouch</emphasis> -- retourne l'aftertouch polyphonique
-      MIDI durant l'activation MIDI, et reste inchangé dans les autres cas.
+      MIDI de la note sélectionnée durant l'activation MIDI ; il reste inchangé
+      dans les autres cas.
     </para>
 
     <para>
-      <emphasis>xcontrollervalue</emphasis> -- retourne la valeur du contrôleur
-      MIDI durant l'activation MIDI, et reste inchangé dans les autres cas.
+      <emphasis>xkey</emphasis> -- spécifie la touche MIDI à lire. Doit normalement
+      être fixé au numéro de note que l'instance de l'instrument exécute.
     </para>
 
     <para>
-      Si l'instrument a été activé par une entrée MIDI, l'opcode remplace les
-      valeurs de <emphasis>xpolyaftertouch</emphasis> et de
-      <emphasis>xcontrollervalue</emphasis> par les valeurs correspondantes
-      venant de l'entrée MIDI. Si l'instrument n'a <emphasis>PAS</emphasis> été
-      activé par une entrée MIDI, les valeurs de <emphasis>xpolyaftertouch</emphasis>
-      et de <emphasis>xcontrollervalue</emphasis> restent inchangées.
+      Si l'instrument a été activé par une entrée MIDI, l'opcode remplace la
+      valeur de <emphasis>xpolyaftertouch</emphasis> par la valeur correspondante
+      de l'entrée MIDI. Si l'instrument n'a <emphasis>PAS</emphasis> été
+      activé par une entrée MIDI, la valeur reste inchangée.
     </para>
 
     <para>

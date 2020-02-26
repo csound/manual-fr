@@ -55,21 +55,19 @@ english cvs version=1.13
     </para>
 
     <para>
-      <emphasis>iatss</emphasis> -- facteur d'atténuation par lequel la dernière valeur de
-      l'attaque d'<emphasis>envlpxr</emphasis> évolue pendant le pseudo entretien de la
-      note. Un facteur supérieur à 1 provoque une montée exponentielle tandis qu'un facteur
+      <emphasis>iatss</emphasis> -- facteur d'atténuation déterminant le changement
+      exponentiel de la valeur durant la période de pseudo entretien entre la fin
+      de l'attaque et le début de la chute (au relachement de la note). Un facteur
+      supérieur à 1 provoque une montée exponentielle tandis qu'un facteur
       inférieur à 1 crée une descente exponentielle. Un facteur égal à 1 maintient un véritable
-      entretien de la note sur la dernière valeur de l'attaque. Il faut noter que cette
-      atténuation n'évolue pas à vitesse constante (comme dans le cas du piano), mais qu'elle
-      dépend de la durée de la note. Cependant, si <emphasis>iatss</emphasis> est négatif (ou
-      si l'entretien &lt; 4 périodes-k) une vitesse d'atténuation de
-      <emphasis>abs</emphasis>(<emphasis>iatss</emphasis>) par seconde sera utilisée. 0 est
-      interdit.
+      entretien de la note sur la dernière valeur de l'attaque. 0 est interdit.
+      La valeur changera de <emphasis>abs</emphasis>(<emphasis>iatss</emphasis>)
+      par seconde.
     </para>
 
     <para>
-      <emphasis>iatdec</emphasis> -- facteur d'atténuation par lequel la dernière valeur de
-      l'entretien diminue exponentiellement pendant la chute. Cette valeur doit être positive
+      <emphasis>iatdec</emphasis> -- le rapport entre la dernière valeur de la chute
+      et sa première valeur (au relachement de la note). Cette valeur doit être positive
       et elle est normalement de l'ordre de 0,01. Une valeur trop longue ou excessivement courte
       peut produire une coupure audible. Les valeurs nulles ou négatives sont interdites.
     </para>
@@ -116,13 +114,6 @@ english cvs version=1.13
       <link linkend="release"><citetitle>release</citetitle></link>. Noter qu'il n'est pas
       nécessaire d'utiliser <link linkend="xtratim"><citetitle>xtratim</citetitle></link> avec
       <emphasis>envlpxr</emphasis>, car la durée est allongée automatiquement.
-    </para>
-
-    <para>
-      Ces unités <quote>r</quote> peuvent être modifiées également par des évènements MIDI note-off
-      provoqués par une vélocité nulle. Si l'indicateur <emphasis>irind</emphasis> est positionné
-      (différent de zéro), la durée d'exécution totale n'est pas affectée par les données de note-off
-      ou de vélocité nulle.
     </para>
 
     <formalpara>

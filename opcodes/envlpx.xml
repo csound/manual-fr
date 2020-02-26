@@ -71,10 +71,11 @@ english cvs version=1.14
     </para>
 
     <para>
-      <emphasis>iatss</emphasis> -- facteur d'atténuation par lequel la dernière valeur de
-      l'attaque d'<emphasis>envlpx</emphasis> évolue pendant le pseudo entretien de la
-      note. Un facteur supérieur à 1 provoque une montée exponentielle tandis qu'un facteur
-      inférieur à 1 crée une descente exponentielle. Un facteur égal à 1 maintient un véritable
+      <emphasis>iatss</emphasis> -- le rapport entre la valeur finale de la période
+      de pseudo entretien et sa valeur initiale (c'est-à-dire l'atténuation entre
+      la dernière valeur de l'attaque et le début de la chute).
+      Un rapport supérieur à 1 provoque une montée exponentielle tandis qu'un rapport
+      inférieur à 1 crée une descente exponentielle. Un rapport égal à 1 maintient un véritable
       entretien de la note sur la dernière valeur de l'attaque. Il faut noter que cette
       atténuation n'évolue pas à vitesse constante (comme dans le cas du piano), mais qu'elle
       dépend de la durée de la note. Cependant, si <emphasis>iatss</emphasis> est négatif (ou
@@ -84,8 +85,8 @@ english cvs version=1.14
     </para>
 
     <para>
-      <emphasis>iatdec</emphasis> -- facteur d'atténuation par lequel la dernière valeur de
-      l'entretien diminue exponentiellement pendant la chute. Cette valeur doit être positive
+      <emphasis>iatdec</emphasis> -- le rapport entre la dernière valeur de la chute
+      et sa première valeur (la fin du segment d'entretien). Cette valeur doit être positive
       et elle est normalement de l'ordre de 0,01. Une valeur trop longue ou excessivement courte
       peut produire une coupure audible. Les valeurs nulles ou négatives sont interdites.
     </para>

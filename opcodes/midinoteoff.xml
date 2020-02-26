@@ -24,6 +24,14 @@ english cvs version=1.12
   <refsect1>
     <title>Description</title>
     <para>
+      Cet opcode est incorrect. Il est <emphasis>identique</emphasis> à
+      <emphasis>midinoteonkey</emphasis>. Il ne fait pas ce que l'on attendrait
+      de son nom, car il ne répond pas aux évènements noteoff, mais il est
+      activé par noteon. On peut utiliser l'opcode <emphasis>midiin</emphasis>
+      pour recevoir des évènements noteoff et leurs vélocités.
+     </para>
+
+    <para>
       <emphasis>midinoteoff</emphasis> est conçu pour simplifier
       l'écriture d'instruments que l'on peut utiliser de manière interchangeable
       avec une partition ou depuis l'entrée MIDI, et pour faciliter l'adaptation

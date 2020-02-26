@@ -71,8 +71,8 @@ english cvs version=1.8
   <refsect1>
     <title>Exécution</title>
     <para>
-      <emphasis>xcontroller</emphasis> -- spécifie un numéro de contrôleur MIDI
-      (0-127).
+      <emphasis>xcontroller</emphasis> -- spécifie le numéro du contrôleur MIDI
+      (0-127) à lire.
     </para>
 
     <para>
@@ -81,12 +81,12 @@ english cvs version=1.8
     </para>
 
     <para>
-      Si l'instrument a été activé par une entrée MIDI, l'opcode remplace les
-      valeurs de <emphasis>xcontroller</emphasis> et de <emphasis>xcontrollervalue</emphasis>
-      par les valeurs correspondantes venant de l'entrée MIDI. Si l'instrument
-      n'a <emphasis>PAS</emphasis> été activé par une entrée MIDI, les valeurs de
-      <emphasis>xcontroller</emphasis> et de <emphasis>xcontrollervalue</emphasis>
-      restent inchangées.
+      Si l'instrument a été activé par une entrée MIDI, l'opcode remplace la
+      valeur de <emphasis>xcontrollervalue</emphasis>
+      par la valeur correspondante venant des données MIDI du
+      <emphasis>xcontroller</emphasis> spécifié. Si l'instrument
+      n'a <emphasis>PAS</emphasis> été activé par une entrée MIDI, la valeur
+      reste inchangée.
     </para>
 
     <para>
