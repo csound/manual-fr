@@ -1539,7 +1539,7 @@
 <synopsis><link linkend="midinoteonoct">midinoteonoct</link> xoct, xvelocity</synopsis><para/>
 <synopsis><link linkend="midinoteonpch">midinoteonpch</link> xpch, xvelocity</synopsis><para/>
 <synopsis><link linkend="midipitchbend">midipitchbend</link> xpitchbend [, ilow] [, ihigh]</synopsis><para/>
-<synopsis><link linkend="midipolyaftertouch">midipolyaftertouch</link> xpolyaftertouch, xcontrollervalue [, ilow] [, ihigh]</synopsis><para/>
+<synopsis><link linkend="midipolyaftertouch">midipolyaftertouch</link> xpolyaftertouch, xkey [, ilow] [, ihigh]</synopsis><para/>
 <synopsis><link linkend="midiprogramchange">midiprogramchange</link> xprogram</synopsis><para/>
 </para></formalpara>
 <para></para><para></para><formalpara>
@@ -1948,7 +1948,7 @@
 <synopsis>ihandle <link linkend="OSCinit">OSCinit</link> iport</synopsis><para/>
 <synopsis>ihandle <link linkend="OSCinitM">OSCinitM</link> Sgroup, iport</synopsis><para/>
 <synopsis>kans <link linkend="OSClisten">OSClisten</link> ihandle, idest, itype [, xdata1, xdata2, ...]</synopsis><synopsis>kans, kdata[] <link linkend="OSClisten">OSClisten</link> ihandle, idest, itype</synopsis><para/>
-<synopsis>Smess[],klen <link linkend="OSCraw">OSCraw</link> iport</synopsis><para/>
+<synopsis>Smess[], klen <link linkend="OSCraw">OSCraw</link> iport</synopsis><para/>
 <synopsis><link linkend="OSCsend">OSCsend</link> kwhen, ihost, iport, idestination[, itype , xdata1, xdata2, ...]</synopsis><para/>
 </para></formalpara>
 <para></para><para></para><formalpara>

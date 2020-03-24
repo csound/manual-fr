@@ -18,14 +18,30 @@ english cvs version=1.3
       OSC.</para>
     </listitem>
     <listitem>
-      <para><link linkend="OSClisten"><citetitle>OSClisten</citetitle></link> - Réçoit les messages OSC.</para>
+      <para><link linkend="OSClisten"><citetitle>OSClisten</citetitle></link> - Reçoit les messages OSC.</para>
     </listitem>
     <listitem>
       <para><link linkend="OSCsend"><citetitle>OSCsend</citetitle></link> - Envoie un message OSC.</para>
+    </listitem>
+    <listitem>
+      <para><link linkend="OSCinitM"><citetitle>OSCinitM</citetitle></link> - Démarre l'écoute de messages OSC multidiffusés.
+      </para>
+    </listitem>
+    <listitem>
+      <para><link linkend="OSCraw"><citetitle>OSCraw</citetitle></link> - Ecoute tous les messages OSC.
+      </para>
+    </listitem>
+    <listitem>
+      <para><link linkend="OSCcount"><citetitle>OSCcount</citetitle></link> - Compte des messages OSC non lus actuellement.
+      </para>
+    </listitem>
+    <listitem>
+      <para><link linkend="OSCbundle"><citetitle>OSCbundle</citetitle></link> - Envoie des données en assemblant les messages dans un paquet.
+      </para>
     </listitem>
   </itemizedlist>
   
   <bridgehead>Crédits</bridgehead>
   <para>Par John ffitch avec le support et l'inspiration de la bibliothèque liblo.</para>
-
+  <para>Améliorations et extensions par Victor Lazzarini.</para>
 </section>

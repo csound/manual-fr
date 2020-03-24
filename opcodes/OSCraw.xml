@@ -22,13 +22,16 @@ authors=Francois Pinot
   <refsect1>
     <title>Description</title>
     <para>
-      A chaque cycle-k cherche si un message OSC a été reçu sur un port donné.
+      A chaque cycle-k cherche si un message OSC a été reçu sur un port donné
+      et copie son contenu dans un tableau de chaînes de caractères. Tous les
+      messages sont copiés. Si un paquet de messages est reçu, le tableau de
+      sortie contiendra tous les messages.
     </para>
   </refsect1>
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>Smess[],klen <command>OSCraw</command> iport</synopsis>
+    <synopsis>Smess[], klen <command>OSCraw</command> iport</synopsis>
   </refsect1>
 
   <refsect1>
@@ -42,13 +45,13 @@ authors=Francois Pinot
     <title>Exécution</title>
     <para>
       <emphasis>Smess[]</emphasis> -- un tableau de chaînes de caractères contenant
-      les composantes du messages : adresse, types et éléments de données. Si le tableau
-      n'existe pas (c'est-à-dire n'a pas été initialisé), il est créé avec 32
-      éléments. Les tableaux ne peuvent grossir avec la taille du message, si
-      bien que si un message de plus de 32 éléments (c'est-à-dire 30 éléments de
-      données séparés) est attendu, un tableau plus grand doit être initialisé
-      avant utilisation. Si un message a plus d'éléments que le tableau ne peut
-      en contenir, il est tronqué.
+      les composantes du messages : adresse, types et éléments de données. Si le
+      tableau n'existe pas (c'est-à-dire n'a pas été initialisé), il en est créé
+      un de taille 2. Les tableaux ne peuvent grossir avec la taille du message, si
+      bien que si un message de plus de 2 éléments (c'est-à-dire avec des
+      éléments de données) doit être entièrement copié en sortie, un tableau plus
+      grand doit être initialisé avant utilisation. Si un message a plus
+      d'éléments que le tableau ne peut en contenir, il est tronqué.
     </para>
     <para>
       <emphasis>klen</emphasis> -- nombre d'éléments placés dans le tableau de
@@ -69,7 +72,8 @@ authors=Francois Pinot
     <title>Voir aussi</title>
       <para>
         <link linkend="OSCsend"><citetitle>OSCsend</citetitle></link>,
-        <link linkend="OSCinit"><citetitle>OSCinit</citetitle></link>
+        <link linkend="OSCinit"><citetitle>OSCinit</citetitle></link>,
+        <link linkend="OSClisten"><citetitle>OSClisten</citetitle></link>.
       </para>
       <para>Plus d'information sur cet opcode: <ulink url="http://www.youtube.com/watch?v=JX1C3TqP_9Y"><citetitle>http://www.youtube.com/watch?v=JX1C3TqP_9Y</citetitle></ulink>, par Andrés Cabrera </para>
   </refsect1>
