@@ -51,8 +51,9 @@ authors=Francois Pinot
   <refsect1>
     <title>Syntaxe</title>
     <synopsis>aout <command>cmp</command> a1, S_operator, a2</synopsis>
-    <synopsis>aout <command>cmp</command> a1, S_operator, kx</synopsis>
-    <synopsis>kOut[] <command>cmp</command> kA, S_operator, kB</synopsis>
+    <synopsis>aout <command>cmp</command> a1, S_operator, kb</synopsis>
+    <synopsis>kOut[] <command>cmp</command> kA[], S_operator, kb</synopsis>
+    <synopsis>kOut[] <command>cmp</command> kA[], S_operator, kB[]</synopsis>
     <synopsis>kOut[] <command>cmp</command> k1, S_operator1, kIn[], S_operator2, k2</synopsis>
   </refsect1>
 
@@ -66,19 +67,18 @@ authors=Francois Pinot
   
   <refsect1>
     <title>Exécution</title>
+    <para><emphasis>a1 / a2</emphasis> -- Signaux en entrée.</para>
+    <para><emphasis>kb / ib</emphasis> -- Terme scalaire.</para>
+    <para><emphasis>kA[] / kB[]</emphasis> -- Tableaux en entrée.</para>
     <para>
-      <emphasis>a1</emphasis> -- Signal à gauche de l'opérateur.
-    </para>
-    <para>
-      <emphasis>a2</emphasis> -- Signal à droite de l'opérateur.
-    </para>
-    <para>
+      Quelques exemples d'utilisation : 
       <programlisting>
         aout cmp aL, ">", aR     ; aout = aL > aR pour chaque échantillon
         aout cmp aL, ">=", aR
         aout cmp aL, "`&lt;", aR
         aout cmp aL, "`&lt;=", aR
         aout cmp aL, "==", aR
+        kOut[] cmp kA, ">=", kb   ; kA est un tableau
       </programlisting>
     </para>
   </refsect1>
@@ -99,7 +99,7 @@ authors=Francois Pinot
     <title>Voir aussi</title>
     <para>
       <link linkend="max"><citetitle>max</citetitle></link>, 
-      <link linkend="min"><citetitle>min</citetitle></link>, 
+      <link linkend="min"><citetitle>min</citetitle></link>.
     </para>
   </refsect1>
 

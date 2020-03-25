@@ -11,12 +11,16 @@ english cvs version=1.5
   <title>Convertisseurs</title>
 
   <para>
-    Les opcodes suivants peuvent convertir de l'information MIDI provenant d'une instance d'un instrument
-    déclenché par le MIDI :
+    Les opcodes suivants peuvent convertir de l'information MIDI. Certains sont
+    conçus pour fonctionner avec une instance d'un instrument déclenchée par
+    MIDI. Tous les opcodes convertissant une note MIDI en fréquence (et l'inverse)
+    utilisent la variable globale <link linkend="A4"><citetitle>A4</citetitle></link>
+    pour fixer la fréquence de référence.
     <itemizedlist>
       <listitem>
         <para>
-          Convertisseurs de numéro de note MIDI en fréquence :
+          Convertisseurs de numéro de note MIDI en fréquence (évènements
+          déclenchés par MIDI) :
           <link linkend="cpsmidi"><citetitle>cpsmidi</citetitle></link>,
           <link linkend="cpsmidib"><citetitle>cpsmidib</citetitle></link>,
           <link linkend="cpstmid"><citetitle>cpstmid</citetitle></link>,
@@ -28,6 +32,13 @@ english cvs version=1.5
       </listitem>
       <listitem>
         <para>
+          Convertisseurs de numéro de note MIDI en fréquence (cas général) :
+          <link linkend="mtof"><citetitle>mtof</citetitle></link>,
+          <link linkend="cpsmidinn"><citetitle>cpsmidinn</citetitle></link>
+        </para>
+      </listitem>>
+      <listitem>
+        <para>
           Convertisseurs de hauteur/fréquence en numéro de note MIDI :
           <link linkend="ftom"><citetitle>ftom</citetitle></link>,
           <link linkend="pchtom"><citetitle>pchtome</citetitle></link>.
@@ -35,9 +46,17 @@ english cvs version=1.5
       </listitem>
       <listitem>
         <para>
-        Convertisseurs de vélocité MIDI en amplitude :
-        <link linkend="ampmidi"><citetitle>ampmidi</citetitle></link> et
-        <link linkend="ampmidid"><citetitle>ampmidid</citetitle></link>.
+          Convertisseurs de vélocité MIDI en amplitude :
+          <link linkend="ampmidi"><citetitle>ampmidi</citetitle></link> et
+          <link linkend="ampmidid"><citetitle>ampmidid</citetitle></link>.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Nom de note en MIDI/fréquence et vice-versa :
+          <link linkend="ntom"><citetitle>ntom</citetitle></link>,
+          <link linkend="mton"><citetitle>mton</citetitle></link>,
+          <link linkend="ntof"><citetitle>ntof</citetitle></link>.
         </para>
       </listitem>
     </itemizedlist>

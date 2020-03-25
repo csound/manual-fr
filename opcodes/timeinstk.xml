@@ -25,8 +25,8 @@ english cvs version=1.15
     <title>Description</title>
     <para>
       Lit le temps absolu en cycles de taux-k, depuis le démarrage d'une instance
-      d'un instrument. Appelé aussi bien lors de la phase d'initialisation que
-      pendant la phase d'exécution.
+      d'un instrument. Appelé aussi bien au temps-i qu'au temps-k. NB : la
+      valeur retournée au temps-k commence à 1.
     </para>
   </refsect1>
 
@@ -92,7 +92,8 @@ k1 = 8820.000000 samples</screen>
     <para>
       <link linkend="timeinsts"><citetitle>timeinsts</citetitle></link>,
       <link linkend="timek"><citetitle>timek</citetitle></link>,
-      <link linkend="times"><citetitle>times</citetitle></link>
+      <link linkend="times"><citetitle>times</citetitle></link>,
+      <link linkend="lastcycle"><citetitle>lastcycle</citetitle></link>.
     </para>
   </refsect1>
 

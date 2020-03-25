@@ -36,9 +36,11 @@ english cvs version=1.7
 
   <refsect1>
     <title>Syntaxe</title>
-      <synopsis> <command>chn_k</command> Sname, imode[, itype, idflt, imin, imax, ix, iy, iwidth, iheight, Sattributes]</synopsis>
+      <synopsis> <command>chn_k</command> Sname, imode[, itype, idflt, imin, imax, ix, iy, \
+        iwidth, iheight, Sattributes]</synopsis>
       <synopsis> <command>chn_a</command> Sname, imode</synopsis>
       <synopsis> <command>chn_S</command> Sname, imode</synopsis>
+      <synopsis> <command>chn_S</command> Sname, Smode</synopsis>
   </refsect1>
 
   <refsect1>
@@ -46,6 +48,10 @@ english cvs version=1.7
     <para>
       <emphasis>imode</emphasis> -- somme d'au moins un des nombres suivants : 1 pour
       entrée et 2 pour sortie.
+    </para>
+    <para>
+      <emphasis>Smode</emphasis> -- le mode peut aussi être fixé par une chaîne
+      de caractères : "r" pour entrée, "w" pour sortie ou "rw" pour entrée/sortie.
     </para>
     <para>
       <emphasis>itype</emphasis> (facultatif, 0 par défaut) -- sous-type du canal,
