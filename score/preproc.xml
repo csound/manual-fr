@@ -8,7 +8,7 @@ english cvs version=1.8
 -->
 
 <section id = "ScorePreproc">
-  <title>Prétraitement des partitions standard<  itle>
+  <title>Prétraitement des partitions standard</title>
 
   <para>
     Une <emphasis>Partition</emphasis> (un ensemble d'instructions de partition) se divise en sections
@@ -21,7 +21,7 @@ english cvs version=1.8
   </para>
 
   <section id="ScoreCarry">
-    <title>Carry<  itle>
+    <title>Carry</title>
     <para>Dans un groupe d'<link linkend="i"><citetitle>instructions i</citetitle></link> consécutives
       dont les nombres entiers p1 sont indentiques, tout p-champ non rempli prendra la même valeur que
       celle du p-champ correspondant dans l'instruction précédente. Un p-champ vide peut-être marqué
@@ -131,7 +131,7 @@ english cvs version=1.8
   </section>
 
   <section id="ScoreTempo">
-    <title>Tempo<  itle>
+    <title>Tempo</title>
     <para>
       Cette opération modifie l'information temporelle d'une section de partition selon les directives
       de l'<link linkend="t"><citetitle>instruction t</citetitle></link>. L'opération tempo convertit
@@ -144,7 +144,7 @@ english cvs version=1.8
   </section>
 
   <section id="ScoreSort">
-    <title>Sort<  itle>
+    <title>Sort</title>
     <para>
       Cette routine trie toutes les instructions d'action temporelle chronologiquement selon
       la valeur de p2. Elle place aussi les évènements simultanés par ordre de priorité. Chaque
