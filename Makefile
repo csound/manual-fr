@@ -699,7 +699,7 @@ $(XSL_HTML) $(XSL_HTMLHELP) $(XSL_PRINT) $(XSL_HTML_ONECHUNK): %: %.in
 
 examples-xml/stamp: examples $(wildcard examples/*)
 	mkdir -p examples-xml
-	python3 csd2docbook.py
+	python csd2docbook.py
 	touch examples-xml/stamp
 
 html: $(XSL_HTML) manual.xml $(SRCS) Makefile
@@ -718,7 +718,7 @@ html: $(XSL_HTML) manual.xml $(SRCS) Makefile
 	echo "Remember to use the html-dist target for distribution!"
 
 html-dist:
-	python3 quickref-fr.py
+	python quickref-fr.py
 	$(MAKE) html
 	#python makeframes-fr.py
 
