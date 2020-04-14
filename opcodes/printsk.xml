@@ -1,0 +1,106 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="printsk">
+  <indexterm id="IndexPrintsk"><primary>printsk</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Printing and Display</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>printsk</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>printks</refname>
+    <refpurpose>
+      Affiche au taux-k en utilisant une syntaxe à la printf().
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Affiche au taux-k en utilisant une syntaxe à la printf(). Cet opcode
+      affiche à chaque cycle, potentiellement plusieurs fois par cycle. Utilisé
+      à l'intérieur d'un bloc if, il peut se comporter comme <command>printf</command>,
+      <command>printks</command> (lorsqu'il est utilisé avec metro) ou
+      <command>printks2</command> (lorsqu'il est utilisé avec changements).
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>printsk</command> &quot;string&quot;, [, xval1] [, xval2] [...]</synopsis>
+  </refsect1>
+  
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>&quot;string&quot;</emphasis> -- la chaîne de caractères à
+      afficher. Peut aller jusqu'à 8192 caractères et doit être entre guillemets.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>xval1, xval2, ...</emphasis> (facultatif) -- Les valeurs de
+      taux-k à afficher. Celles-ci sont spécifiées dans
+      <emphasis><quote>string</quote></emphasis> avec les spécifications de
+      conversion (%f, %d, %s etc) du C standard dans l'ordre donné.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Formatage de l'impression</title>
+    <para>
+      Tous les caractères de contrôle du printf() du C standard peuvent être
+      utilisés. Par exemple, si <emphasis>kval1</emphasis> = 153.26789, certaines
+      options de formatage sont :
+
+      <orderedlist>
+        <listitem><para>%f affiche en pleine précision : 153.26789</para></listitem>
+        <listitem><para>%5.2f affiche : 153.26</para></listitem>
+        <listitem><para>%d n'affiche que des entiers : 153</para></listitem>
+        <listitem><para>%c traite <emphasis>kval1</emphasis> comme un code ascii
+        de caractère.
+        </para></listitem>
+      </orderedlist>
+    </para>
+
+    <para>
+      Pour plus d'information sur le formatage dans printf(), consulter la
+      documentation du langage C.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode printsk. Il utilise le fichier <ulink
+      url="examples/printsk.csd"><citetitle>printsk.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple de l'opcode printsk.</title>
+        <xi:include href="examples-xml/printsk.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="printks"><citetitle>printks</citetitle></link>,  
+      <link linkend="printf"><citetitle>printf</citetitle></link>,
+      <link linkend="println"><citetitle>println</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par : &nameeduardo; 2020</para>
+    <para>Nouveau greffon dans la version 6.15</para>
+  </refsect1>
+</refentry>
