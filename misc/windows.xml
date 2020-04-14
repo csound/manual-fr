@@ -15,9 +15,9 @@ english cvs version=1.3
     particulièrement dans la synthèse granulaire. Les fonctions fenêtre sont intégrées à certains
     opcodes, mais d'autres opcodes nécessitent une table de fonction pour générer la fenêtre.
     <link linkend="GEN20"><citetitle>GEN20</citetitle></link> est utilisé à cet effet. Le diagramme de
-    chaque fenêtre ci-dessous est accompagné de l'instruction f utilisée pour la générer.
+    chaque fenêtre ci-dessous est accompagné de l'instruction de partition f et de l'opcode
+    d'orchestre ftgen utilisés pour la générer.
   </para>
-
 
   <formalpara>
     <title>Hamming</title>
@@ -34,11 +34,11 @@ english cvs version=1.3
         </imageobject>
  
         <textobject>
-          <phrase>Fonction Fenêtre de Hamming.</phrase>
+          <phrase>Fonction fenêtre de Hamming.</phrase>
         </textobject>
  
         <caption>
-          <para>Fonction Fenêtre de Hamming.</para>
+          <para>Fonction fenêtre de Hamming.</para>
         </caption>
       </mediaobject>
     </para>
@@ -60,11 +60,11 @@ english cvs version=1.3
         </imageobject>
  
         <textobject>
-          <phrase>Fonction Fenêtre de Hanning</phrase>
+          <phrase>Fonction fenêtre de Hanning</phrase>
         </textobject>
  
         <caption>
-          <para>Fonction Fenêtre de Hanning</para>
+          <para>Fonction fenêtre de Hanning</para>
         </caption>
       </mediaobject>
     </para>
@@ -86,11 +86,11 @@ english cvs version=1.3
         </imageobject>
  
         <textobject>
-          <phrase>Fonction Fenêtre de Bartlett</phrase>
+          <phrase>Fonction fenêtre de Bartlett</phrase>
         </textobject>
  
         <caption>
-          <para>Fonction Fenêtre de Bartlett</para>
+          <para>Fonction fenêtre de Bartlett</para>
         </caption>
       </mediaobject>
     </para>
@@ -112,11 +112,11 @@ english cvs version=1.3
         </imageobject>
  
         <textobject>
-          <phrase>Fonction Fenêtre de Blackman</phrase>
+          <phrase>Fonction fenêtre de Blackman</phrase>
         </textobject>
  
         <caption>
-          <para>Fonction Fenêtre de Blackman</para>
+          <para>Fonction fenêtre de Blackman</para>
         </caption>
       </mediaobject>
     </para>
@@ -138,11 +138,11 @@ english cvs version=1.3
         </imageobject>
  
         <textobject>
-          <phrase>Fonction Fenêtre de Blackman-Harris</phrase>
+          <phrase>Fonction fenêtre de Blackman-Harris</phrase>
         </textobject>
  
         <caption>
-          <para>Fonction Fenêtre de Blackman-Harris</para>
+          <para>Fonction fenêtre de Blackman-Harris</para>
         </caption>
       </mediaobject>
     </para>
@@ -164,16 +164,17 @@ english cvs version=1.3
         </imageobject>
  
         <textobject>
-          <phrase>Fonction Fenêtre Gaussienne</phrase>
+          <phrase>Fonction fenêtre Gaussienne</phrase>
         </textobject>
  
         <caption>
-          <para>Fonction Fenêtre Gaussienne</para>
+          <para>Fonction fenêtre Gaussienne</para>
         </caption>
       </mediaobject>
 
       <example>
-        <programlisting><emphasis role="stamnt">f</emphasis>61 0 8192   20   6   1 2</programlisting>
+        <title>Instruction pour la fonction fenêtre Gaussienne avec paramètre supplémentaire</title>
+        <programlisting><emphasis role="stamnt">f</emphasis>61 0 8192   20   6  1  2</programlisting>
         <programlisting>i0 <emphasis role="nb">ftgen</emphasis> 61, 0, 8192, 20, 6, 1, 2</programlisting>
       </example>
  
@@ -183,11 +184,11 @@ english cvs version=1.3
         </imageobject>
  
         <textobject>
-          <phrase>Fonction Fenêtre Gaussienne</phrase>
+          <phrase>Fonction fenêtre Gaussienne</phrase>
         </textobject>
  
         <caption>
-          <para>Fonction Fenêtre Gaussienne</para>
+          <para>Fonction fenêtre Gaussienne</para>
         </caption>
       </mediaobject>
       </para>
@@ -197,8 +198,8 @@ english cvs version=1.3
     <title>Kaiser</title>
     <para>
       <example>
-        <title>Instruction pour la fonction fenêtre de Kaiser</title>
-        <programlisting><emphasis role="stamnt">f</emphasis>87  0   8192   -20   8   .3</programlisting>
+        <title>Instruction pour la fonction fenêtre de Kaiser en utilisation par défaut (alpha=0)</title>
+        <programlisting><emphasis role="stamnt">f</emphasis>87  0   8192   20   7   1</programlisting>
         <programlisting>i0 <emphasis role="nb">ftgen</emphasis> 87, 0, 8192, 20, 7, 1</programlisting>
       </example>
 
@@ -209,6 +210,7 @@ english cvs version=1.3
       </mediaobject>
 
       <example>
+        <title>Instruction pour la fonction fenêtre de Kaiser avec alpha=5</title>
         <programlisting><emphasis role="stamnt">f</emphasis>71  0   8192   20  7   1  5</programlisting>
         <programlisting>i0 <emphasis role="nb">ftgen</emphasis> 71, 0, 8192, 20, 7, 1, 5</programlisting>
       </example>
@@ -220,6 +222,7 @@ english cvs version=1.3
       </mediaobject>
 
       <example>
+        <title>Instruction pour la fonction fenêtre de Kaiser avec alpha=10</title>
         <programlisting><emphasis role="stamnt">f</emphasis>72  0   8192   20   7   1  10</programlisting>
         <programlisting>i0 <emphasis role="nb">ftgen</emphasis> 72, 0, 8192, 20, 7, 1, 10</programlisting>
       </example>
@@ -230,11 +233,11 @@ english cvs version=1.3
         </imageobject>
  
         <textobject>
-          <phrase>Fonction Fenêtre de Kaiser</phrase>
+          <phrase>Fonction fenêtre de Kaiser</phrase>
         </textobject>
  
         <caption>
-          <para>Fonction Fenêtre de Kaiser</para>
+          <para>Fonction fenêtre de Kaiser</para>
         </caption>
       </mediaobject>
     </para>
@@ -245,7 +248,7 @@ english cvs version=1.3
     <para>
       <example>
         <title>Instruction pour la fonction fenêtre Rectangle</title>
-        <programlisting><emphasis role="stamnt">f</emphasis>88   0   8192   -20   8   .1</programlisting>
+        <programlisting><emphasis role="stamnt">f</emphasis>88   0   8192   -20   8   .3</programlisting>
         <programlisting>i0 <emphasis role="nb">ftgen</emphasis> 88, 0, 8192, -20, 8, .3</programlisting>
       </example>
 
@@ -257,11 +260,11 @@ english cvs version=1.3
         </imageobject>
  
         <textobject>
-          <phrase>Fonction Fenêtre Rectangle</phrase>
+          <phrase>Fonction fenêtre Rectangle</phrase>
         </textobject>
  
         <caption>
-          <para>Fonction Fenêtre Rectangle</para>
+          <para>Fonction fenêtre Rectangle</para>
         </caption>
       </mediaobject>
     </para>
@@ -269,11 +272,11 @@ english cvs version=1.3
 
 
   <formalpara>
-    <title>Sync</title>
+    <title>Sinc</title>
     <para>
       <example>
-        <title>Instruction pour la fonction fenêtre Sync</title>
-        <programlisting><emphasis role="stamnt">f</emphasis>89   0   4096   -20   9   .75</programlisting>
+        <title>Instruction pour la fonction fenêtre sinc (défaut et max=0.8)</title>
+        <programlisting><emphasis role="stamnt">f</emphasis>89   0   8192   -20   9   .8</programlisting>
         <programlisting>i0 <emphasis role="nb">ftgen</emphasis> 89, 0, 8192, -20, 9, .8</programlisting>
       </example>
 
@@ -284,6 +287,7 @@ english cvs version=1.3
       </mediaobject>
 
       <example>
+        <title>Instruction pour la fonction fenêtre sinc (-3&pi; à +3&pi; et normalisée)</title>
         <programlisting><emphasis role="stamnt">f</emphasis>89  0   8192   20   9   1  .3</programlisting>
         <programlisting>i0 <emphasis role="nb">ftgen</emphasis> 89, 0, 8192, 20, 9, 1, 3</programlisting>
       </example>
@@ -293,11 +297,11 @@ english cvs version=1.3
           <imagedata fileref="images/image9a.png" format="PNG"/>
         </imageobject>
         <textobject>
-          <phrase>Fonction Fenêtre Sync</phrase>
+          <phrase>Fonction fenêtre sinc</phrase>
         </textobject>
  
         <caption>
-          <para>Fonction Fenêtre Sync</para>
+          <para>Fonction fenêtre sinc</para>
         </caption>
       </mediaobject>
     </para>
