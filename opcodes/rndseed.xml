@@ -1,0 +1,57 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="rndseed">
+<indexterm id="IndexRndseed"><primary>rndseed</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Random (Noise) Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>rndseed</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>rndseed</refname>
+    <refpurpose>
+      Fixe la valeur globale de la graine pour rnd.
+    </refpurpose> 
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Fixe la valeur globale de la graine pour <link
+      linkend="rnd"><citetitle>rnd</citetitle></link> et
+      <link linkend="birnd"><citetitle>birnd</citetitle></link>.
+    </para>
+    <synopsis><command>seed</command> ival</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      L'utilisation de <emphasis>rndseed</emphasis> induit des résultats
+      de rnd et de birnd différents de ceux générés avec la graine par
+      défaut qui vaut 0.5.
+    </para>
+
+    <para>
+      La valeur spécifiée pour la graine, <emphasis>ival</emphasis> doit être
+      comprise entre 0 et 1.
+    </para>
+  </refsect1>
+  
+   <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Avril 2020</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 6.15 de Csound.</para>
+  </refsect1>
+</refentry>
