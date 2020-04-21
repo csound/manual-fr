@@ -8,12 +8,6 @@ english cvs version=1.9
 -->
 
 <refentry id="tab">
-<indexterm id="IndexTabw_i"><primary>tabw_i</primary></indexterm>
-
-<indexterm id="IndexTabw"><primary>tabw</primary></indexterm>
-
-<indexterm id="IndexTab_i"><primary>tab_i</primary></indexterm>
-
 <indexterm id="IndexTab"><primary>tab</primary></indexterm>
   <refentryinfo><title>Signal Generators:Table Access</title></refentryinfo>
   <refmeta>
@@ -23,19 +17,18 @@ english cvs version=1.9
    <refnamediv>
     <refname>tab</refname>
     <refpurpose>
-      Opcodes de table rapides.
+      Opcode de table rapide.
     </refpurpose>
   </refnamediv>
  
   <refsect1>
     <title>Description</title>
     <para>
-      Opcodes de table rapides. Plus rapides que
-      <link linkend="table"><citetitle>table</citetitle></link> et que
-      <link linkend="tablew"><citetitle>tablew</citetitle></link> parce qu'ils
-      fonctionnent sans indexation cyclique et sans limite et qu'ils ne testent
-      pas la validité des index. Ils ont été implémentés pour fournir un accès
-      rapide aux tableaux. <!--Ils supportent les tables dont la longueur n'est pas
+      Opcode de table rapide. Plus rapide que
+      <link linkend="table"><citetitle>table</citetitle></link> parce qu'il
+      fonctionne sans indexation cyclique et sans limite. Ils a été implémenté
+      pour fournir un accès rapide aux tableaux.
+      <!--Ils supportent les tables dont la longueur n'est pas
       une puissance de deux (pouvant être générées par n'importe quelle
       fonction GEN en lui donnant une valeur de longueur négative).-->
     </para>
@@ -43,12 +36,8 @@ english cvs version=1.9
 
   <refsect1>
     <title>Syntaxe</title>
-      <synopsis>ir <command>tab_i</command> indx, ifn[, ixmode]</synopsis>
       <synopsis>kr <command>tab</command> kndx, ifn[, ixmode]</synopsis>
       <synopsis>ar <command>tab</command> xndx, ifn[, ixmode]</synopsis>
-      <synopsis><command>tabw_i</command> isig, indx, ifn [,ixmode]</synopsis>
-      <synopsis><command>tabw</command> ksig, kndx, ifn [,ixmode]</synopsis>
-      <synopsis><command>tabw</command> asig, andx, ifn [,ixmode]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -63,9 +52,6 @@ english cvs version=1.9
       varie entre 0 et 1. 
     </para>
     <para>
-      <emphasis>isig</emphasis> -- valeur d'entrée à écrire.
-    </para>
-    <para>
       <emphasis>indx</emphasis> -- index de la table.
     </para>
   </refsect1>
@@ -73,14 +59,11 @@ english cvs version=1.9
   <refsect1>
     <title>Exécution</title>
     <para>
-      <emphasis>asig, ksig</emphasis> -- signal d'entrée à écrire.
-    </para>
-    <para>
       <emphasis>andx, kndx</emphasis> -- index de la table.
     </para>
     <para>
       Les opcodes <emphasis>tab</emphasis> et <emphasis>tabw</emphasis> sont
-      semblables à <emphasis>table</emphasis> et à <emphasis>tablew</emphasis>,
+      semblables à <emphasis>table</emphasis>,
       mais ils sont plus rapides et ils utilisent une indexation avec arrondi.
     </para>
     <!--<para>
@@ -102,6 +85,15 @@ english cvs version=1.9
         d'information sur l'utilisation des options de la ligne de commande.</para>
           <xi:include href="examples-xml/tab.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="tab_i"><citetitle>tab_i</citetitle></link>,
+      <link linkend="tabw"><citetitle>tabw</citetitle></link>,
+      <link linkend="tabw_i"><citetitle>tabw_i</citetitle></link>
     </para>
   </refsect1>
 
