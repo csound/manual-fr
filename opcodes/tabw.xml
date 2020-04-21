@@ -1,0 +1,45 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="tabw">
+<indexterm id="IndexTabw"><primary>tabw</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Table Access</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tabw</refentrytitle>
+  </refmeta>
+
+   <refnamediv>
+    <refname>tabw</refname>
+    <refpurpose>
+      Opcode de table rapide.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Opcode de table rapide. Plus rapide que
+    <link linkend="tablew"><citetitle>tablew</citetitle></link> parce qu'il
+      fonctionne sans indexation cyclique et sans limite. Il a été implémenté
+      pour fournir un accès rapide aux tableaux.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="tab_i"><citetitle>tab_i</citetitle></link>,
+      <link linkend="tab"><citetitle>tab</citetitle></link>,
+      <link linkend="tabw_i"><citetitle>tabw_i</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par &namegabriel;.</para>
+  </refsect1>
+</refentry>

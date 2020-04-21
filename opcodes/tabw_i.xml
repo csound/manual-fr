@@ -1,0 +1,78 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="tabw_i">
+<indexterm id="IndexTabw_i"><primary>tabw_i</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Table Access</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>tabw_i</refentrytitle>
+  </refmeta>
+
+   <refnamediv>
+    <refname>tabw_i</refname>
+    <refpurpose>
+      Opcode de table rapide.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Opcode de table rapide. Plus rapide que
+      <link linkend="tablew"><citetitle>tablew</citetitle></link> parce qu'il
+      fonctionne sans indexation cyclique et sans limite. Il a été implémenté
+      pour fournir un accès rapide aux tableaux.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+      <synopsis><command>tabw_i</command> isig, indx, ifn [,ixmode]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifn</emphasis> -- numéro de la table.
+    </para>
+    <para>
+      <emphasis>ixmode</emphasis> -- zéro par défaut. S'il est nul, l'intervalle
+      de variation de <emphasis>indx</emphasis>
+      est la longueur de la table ; s'il est non nul, <emphasis>indx</emphasis>
+      varie entre 0 et 1.
+    </para>
+    <para>
+      <emphasis>isig</emphasis> -- valeur d'entrée à écrire.
+    </para>
+    <para>
+      <emphasis>indx</emphasis> -- index de la table.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      L'opcode <emphasis>tabw_i</emphasis> est semblable à
+      <emphasis>tablew</emphasis> mais il est plus rapide, et il utilise une
+      indexation avec arrondi. 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="tab_i"><citetitle>tab_i</citetitle></link>,
+      <link linkend="tabw"><citetitle>tabw</citetitle></link>,
+      <link linkend="tab"><citetitle>tab</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par &namegabriel;.</para>
+  </refsect1>
+</refentry>
