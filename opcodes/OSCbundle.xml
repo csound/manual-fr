@@ -78,12 +78,14 @@ authors=Francois Pinot
 
     <para>
       <emphasis>kArg[][]</emphasis> -- un tableau bidimensionnel contenant les
-      arguments pour chaque message. Sa dimension l (nombre de lignes) doit
-      correspondre à celles de Sdest[] et de Stype[]. Chaque ligne doit
-      contenir les arguments pour les types de chaque message. Si une ligne
-      contient moins d'arguments, les places des données restantes sont remplies
-      avec des zéros. Les arguments en sus de ceux que chaque chaîne de
-      caractères demande sont ignorés.
+      arguments pour chaque message. Sa dimension 1 (nombre de lignes) doit
+      correspondre à celles de Sdest[] et de Stype[]. sa dimension 2 (nombre de
+      colonnes) doit être suffisamment grande pour s'adapter au message avec le
+      plus grand nombre d'arguments. Chaque ligne doit contenir les arguments
+      pour les types de chaque message. Si une ligne contient moins d'arguments,
+      les places des données restantes sont remplies avec des zéros. Les
+      arguments en sus de ceux que chaque chaîne de caractères de type demande
+      sont ignorés.
     </para>
   </refsect1>
 
