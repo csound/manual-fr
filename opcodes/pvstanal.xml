@@ -94,7 +94,8 @@ english cvs version=
       différences de puissance entre les fenêtres d'analyse. S'il trouve plus
       que ce qui a été spécifié dans le paramètre <emphasis>dbthresh</emphasis>,
       une attaque est déclarée. La mise à l'échelle du temps est momentanément
-      suspendue afin que les attaques ne soient pas modifiées.
+      suspendue afin que les attaques ne soient pas modifiées. Vaut 1 par défaut,
+      ce qui active les détections/traitements d'attaque.
     </para>
     <para>
       <emphasis>ktab</emphasis> -- table de fonction du signal source. Les
