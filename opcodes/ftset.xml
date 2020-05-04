@@ -1,0 +1,88 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ftset">
+<indexterm id="Indexftset"><primary>ftset</primary></indexterm>
+  <refentryinfo><title>Table Control:Read/Write Operations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ftset</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>ftset</refname>
+    <refpurpose>
+      Fixe plusieurs éléments d'une table à une valeur donnée.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Fixe plusieurs éléments d'une table à une valeur donnée. Tous les éléments
+      de la table (début:fin:pas) peuvent être fixés en une fois. Si tous les
+      paramètres sont des variables de taux-i, il ne s'exécute que pendant
+      l'initialisation. Sinon <emphasis>ftset</emphasis> est exécuté à chaque
+      cycle.
+    </para>
+    <para>Opcode de greffon dans emugens.</para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>ftset</command> ktablenum, kvalue [, kstart=0, kend=0, kstep=1 ]</synopsis>
+    <synopsis><command>ftset</command> itablenum, ivalue [, istart=0, iend=0, istep=1 ]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+  </refsect1>
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ktablenum</emphasis> -- le numéro de la table à modifier
+    </para>
+    <para>
+      <emphasis>kvalue</emphasis> -- la valeur à écrire dans la table
+    </para>
+    <para>
+      <emphasis>kstart</emphasis> -- l'indice de la première position à modifier
+      (0 par défaut)
+    </para>
+    <para>
+      <emphasis>kend</emphasis> -- l'indice de la dernière position à modifier.
+      Vaut 0 par défaut, ce qui indique la fin de la table. On peut utiliser un
+      indice négatif pour compter à partir de la fin, ainsi, par exemple -1
+      modifiera la table sans changer le dernier élément.
+    </para>
+    <para>
+      <emphasis>kstep</emphasis> -- l'incrément à utiliser entre les indices
+      des positions à modifier. Vaut 1 par défaut, ce qui signifie la
+      modification de chaque élément entre <emphasis>start</emphasis> et
+      <emphasis>end</emphasis>
+    </para>    
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode ftset. Il utilise le fichier
+      <ulink url="examples/ftset.csd">
+      <citetitle>ftset.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode ftset.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/ftset.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par : &nameeduardo; 2020</para>
+  </refsect1>
+</refentry>
