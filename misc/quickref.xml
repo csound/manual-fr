@@ -447,6 +447,7 @@
 <synopsis>ares <link linkend="table">table</link> andx, ifn [, ixmode] [, ixoff] [, iwrap]</synopsis><synopsis>ires <link linkend="table">table</link> indx, ifn [, ixmode] [, ixoff] [, iwrap]</synopsis><synopsis>kres <link linkend="table">table</link> kndx, ifn [, ixmode] [, ixoff] [, iwrap]</synopsis><para/>
 <synopsis>ares <link linkend="table3">table3</link> andx, ifn [, ixmode] [, ixoff] [, iwrap]</synopsis><synopsis>ires <link linkend="table3">table3</link> indx, ifn [, ixmode] [, ixoff] [, iwrap]</synopsis><synopsis>kres <link linkend="table3">table3</link> kndx, ifn [, ixmode] [, ixoff] [, iwrap]</synopsis><para/>
 <synopsis>ares <link linkend="tablei">tablei</link> andx, ifn [, ixmode] [, ixoff] [, iwrap]</synopsis><synopsis>ires <link linkend="tablei">tablei</link> indx, ifn [, ixmode] [, ixoff] [, iwrap]</synopsis><synopsis>kres <link linkend="tablei">tablei</link> kndx, ifn [, ixmode] [, ixoff] [, iwrap]</synopsis><para/>
+<synopsis><link linkend="tabw_i">tabw_i</link> isig, indx, ifn [,ixmode]</synopsis><para/>
 </para></formalpara>
 <para></para><para></para><formalpara>
 <title>Générateurs de signal : synthèse par terrain d'ondes</title>
@@ -1191,6 +1192,7 @@
 <synopsis>iNumberOfFile <link linkend="ftsamplebank">ftsamplebank</link> SDirectory, iFirstTableNumber, iSkipTime, iFormat, iChannel,</synopsis><synopsis>kNumberOfFile <link linkend="ftsamplebank">ftsamplebank</link> SDirectory, kFirstTableNumber, kTrigger, kSkipTime, kFormat, kChannel,</synopsis><para/>
 <synopsis><link linkend="ftsave">ftsave</link> &quot;filename&quot;, iflag, ifn1 [, ifn2] [...]</synopsis><para/>
 <synopsis><link linkend="ftsavek">ftsavek</link> &quot;filename&quot;, ktrig, iflag, ifn1 [, ifn2] [...]</synopsis><para/>
+<synopsis><link linkend="ftset">ftset</link> ktablenum, kvalue [, kstart=0, kend=0, kstep=1 ]</synopsis><synopsis><link linkend="ftset">ftset</link> itablenum, ivalue [, istart=0, iend=0, istep=1 ]</synopsis><para/>
 <synopsis><link linkend="ptablew">ptablew</link> asig, andx, ifn [, ixmode] [, ixoff] [, iwgmode]</synopsis><synopsis><link linkend="ptablew">ptablew</link> isig, indx, ifn [, ixmode] [, ixoff] [, iwgmode]</synopsis><synopsis><link linkend="ptablew">ptablew</link> ksig, kndx, ifn [, ixmode] [, ixoff] [, iwgmode]</synopsis><para/>
 <synopsis><link linkend="tablecopy">tablecopy</link> kdft, ksft</synopsis><para/>
 <synopsis>knumpassed <link linkend="tablefilter">tablefilter</link> kouttable, kintatble, kmode, kparam</synopsis><para/>
