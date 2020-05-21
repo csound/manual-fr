@@ -1,0 +1,129 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvslpc">
+<indexterm id="IndexPvslpc"><primary>pvslpc</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:LPC</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvslpc</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvslpc</refname>
+    <refpurpose>
+      Analyse par prédiction linéaire sur un flux.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode réalise l'analyse par prédiction linéaire sur un flux à partir
+      d'un signal en entrée et produit un fsig qui peut être utilisé par
+      d'autres opcodes pvs.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>fsig <command>pvslpc</command> asrc, idftsiz, ihop, iord[,iwin] </synopsis>
+  </refsect1>
+  <refsect1>
+    
+    <title>Initialisation</title>
+    <para>
+      <emphasis>idftsiz</emphasis> -- taille d'une trame d'entrée lpc en
+      échantillons et d'une trame d'analyse fsig. Doit être une puissance de
+      deux.
+    </para>
+
+    <para>
+      <emphasis>iord</emphasis> -- ordre du prédicteur linéaire.
+    </para>
+
+    <para>
+      <emphasis>ihop</emphasis> -- taille du saut d'analyse.
+    </para>
+
+    <para>
+      <emphasis>iwin</emphasis> -- numéro d'une table de fonction de fenêtrage
+      (facultatif).
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>fsig</emphasis> -- fsig en sortie.
+    </para>
+
+    <para>
+      <emphasis>asrc</emphasis> -- signal source pour l'analyse lpc.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <para>
+      Cet opcode fait partie d'une suite d'opcodes de prédiction linéaire sur
+      un flux. Il analyse un signal d'entrée et produit un ensemble de
+      coefficients LPC pour un filtre tout-pôle qui modélise l'enveloppe
+      spectrale du signal. La fonction de transfert de ce filtre est ensuite
+      calculée et son spectre d'amplitudes est sorti sous la forme d'un flux
+      de vocodeur de phase.
+    </para>
+    
+    <para>
+      Les paramètres d'analyse fondamentaux sont la taille de trame en entrée
+      et l'ordre du filtre. Des trames d'entrée plus longues produiront un
+      résultat plus précis en termes de résolution en fréquence, mais induiront
+      aussi plus de calculs. Ceci est dû au calcul de la fontion
+      d'autocorrélation, qui est utilisée ensuite dans le calcul des
+      coefficients. Cette partie est plus efficace et dépend seulement de
+      l'ordre de la prédiction linéaire. qui est aussi le nombre de coefficients
+      calculés. Les ordres typiques de lp peuvent aller de 30 à 100
+      coefficients, mais on peut utiliser de plus grandes valeurs.
+    </para>
+    
+    <para>
+      Les analyses sont produites tous les <emphasis>ihop</emphasis>
+      échantillons. Une fois le signal extrait de l'entrée audio il peut être
+      facultativement fenêtré si une table de fonction est fournie. Bien que ce
+      soit facultatif, c'est une procédure recommandée (GEN20 peut fournir les
+      fenêtres les plus communes). Le signal est ensuite analysé et les
+      coefficients sont produits. Le fsig produit par cet opcode est donné dans
+      le format AMP-FREQ. Les amplitudes contiennent l'enveloppe spectrale du
+      signal d'entrée, et les fréquences sont dérivées de l'estimation d'une
+      fréquence fondamentale calculée à partir de la fonction d'autocorrélation.
+      Elles ne représent pas les fréquences dans le signal d'entrée à n'importe
+      quel degré de précision ; ce sont seulement des espaces réservés.   
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode pvslpc qui utilise un signal d'entrée audio
+      comme source lpc. Il utilise le fichier
+      <ulink url="examples/pvslpc.csd"><citetitle>pvslpc.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode pvslpc.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pvslpc.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="lpcfilter"><citetitle>lpcfilter</citetitle></link>,
+      <link linkend="allpole"><citetitle>allpole</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

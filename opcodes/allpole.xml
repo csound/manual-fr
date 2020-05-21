@@ -1,0 +1,108 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="lpcfilter">
+<indexterm id="IndexAllpole"><primary>allpole</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:LPC</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>allpole</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>allpole</refname>
+    <refpurpose>
+      Réalisation d'un filtre tout-pôle par convolution directe.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode réalise un filtre tout-pôle par convolution directe.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>allpole</command> asig, kCoef[]</synopsis>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kCoef[]</emphasis> -- coefficients du filtre tout-pôle
+      (tableau de taille iord)
+    </para>
+    <para>
+      <emphasis>asig</emphasis> -- entrée audio
+    </para>
+    <para>
+      <emphasis>ares</emphasis> -- sortie audio
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <para>
+      Cet opcode fait partie d'une suite d'opcodes de prédiction linéaire sur
+      un flux. Il réalise un filtre tout-pôle en utilisant des coefficients
+      qui lui sont passés via un tableau de taux-k. La longueur du filtre est
+      déterminée par la taille du tableau.
+    </para>
+    
+    <para>
+      The typical application is compute the coefficients via some
+      method and then pass these to the opcode. The set of
+      coefficients passed to allpole need to implement a stable
+      filter, since this is an IIR filter and stability is not
+      guaranteed by default.
+    </para>
+
+    <para>
+      La méthode la plus commune de dérivation des coefficients est l'analyse
+      par prédiction linéaire, produite par exemple par lpcanal. D'autres
+      méthodes peuvent être employées, y compris le calcul direct des
+      coefficients à partir d'une recette de filtre connu (par exemple
+      résonateurs, etc).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode allpole qui utilise un signal d'entrée audio
+      comme source lpc. Il utilise le fichier
+      <ulink url="examples/allpole.csd"><citetitle>allpole.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode allpole.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/allpole.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Voici un autre exemple de l'opcode allpole qui utilise une table de
+      fonction comme source lpc. Il utilise le fichier
+      <ulink url="examples/allpole-2.csd"><citetitle>allpole-2.csd</citetitle></ulink>.
+      <example>
+        <title>Un autre exemple de l'opcode allpole.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/allpole-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="lpcfilter"><citetitle>lpcfilter</citetitle></link>,
+      <link linkend="allpole"><citetitle>allpole</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,201 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="lpcanal">
+<indexterm id="IndexLpcanal"><primary>lpcanal</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:LPC</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lpcanal</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>lpcanal</refname>
+    <refpurpose>
+      Analyse par prédiction linéaire sur un flux.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode réalise l'analyse par prédiction linéaire sur un flux. Deux
+      versions existent, l'une prenant pour entrée un signal audio, et l'autre
+      prenant pour entrée une table de fonction.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kCoef[], krms, kerr, kcps <command>lpcanal</command> asrc, kflg,
+    kprd, isiz, iord[,iwin] </synopsis>
+    <synopsis>kCoef[], krms, kerr, kcps <command>lpcanal</command> koff, kflg,
+    ifn, isiz, iord[,iwin] </synopsis>
+    <synopsis>iCoef[], irms, ierr, icps <command>lpcanal</command> ioff, iflg,
+    ifn, isiz, iord[,iwin] </synopsis>
+    
+  </refsect1>
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>isiz</emphasis> -- taille d'une trame d'entrée lpc en
+      échantillons.
+    </para>
+
+    <para>
+      <emphasis>iord</emphasis> -- ordre du prédicteur linéaire.
+    </para>
+
+    <para>
+      <emphasis>ifn</emphasis> -- table de fonction de la source de l'analyse
+      LPC du flux.
+    </para>
+
+    <para>
+      <emphasis>iwin</emphasis> -- numéro d'une table de fonction de fenêtrage
+      (facultatif).
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kCoef[]</emphasis> -- coefficients du filtre tout-pôle
+      (tableau de taille iord).
+    </para>
+
+    <para>
+      <emphasis>krms</emphasis> - estimation de la valeur efficace du signal
+      source.
+    </para>
+
+    <para>
+      <emphasis>kerr</emphasis> - erreur de la prédiction linéaire (ou résidu).
+    </para>
+
+    <para>
+      <emphasis>kcps</emphasis> - estimation de la fréquence fondamentale, à
+      partir de la fonction d'autocorrélation.
+    </para>             
+
+    <para>
+      <emphasis>asrc</emphasis> -- signal source de l'analyse LPC sur flux.
+    </para>
+
+     <para>
+      <emphasis>kflg</emphasis> -- indicateur de calcul ; les valeurs non nulles
+      activent l'analyse par prédiction linéaire remplaçant les coefficients du
+      filtre, alors que zéro la désactive, gardant les coefficients courants du
+      filtre.
+    </para>
+
+    <para>
+      <emphasis>kprd</emphasis> -- période de l'analyse en échantillons,
+      déterminant la fréquence de renouvellement des coefficients.
+    </para>
+
+    <para>
+       <emphasis>koff</emphasis> -- décalage de la position dans la table de
+       fonction, déterminant la position du début de la trame d'analyse.
+    </para>       
+  </refsect1>
+
+  <refsect1>
+    <para>
+      Cet opcode fait partie d'une suite d'opcodes de prédiction linéaire sur
+      un flux. Il analyse un signal d'entrée, soit une entrée audio, ou stocké
+      dans une table de fonction, et produit un ensemble de coefficients pour
+      un filtre tout-pôle qui modélise l'enveloppe spectrale du signal. Ces
+      coefficients sont placés en sortie dans un tableau de taux-k, et sont
+      accompagnés d'autres mesures de l'analyse.
+    </para>
+    
+    <para>
+      Les paramètres d'analyse fondamentaux sont la taille de trame en entrée
+      et l'ordre du filtre. Des trames d'entrée plus longues produiront un
+      résultat plus précis en termes de résolution en fréquence, mais induiront
+      aussi plus de calculs. Ceci est dû au calcul de la fontion
+      d'autocorrélation, qui est utilisée ensuite dans le calcul des
+      coefficients. Cette partie est plus efficace et dépend seulement de
+      l'ordre de la prédiction linéaire. qui est aussi le nombre de coefficients
+      calculés. Les ordres typiques de lp peuvent aller de 30 à 100
+      coefficients, mais on peut utiliser de plus grandes valeurs.
+    </para>
+    
+    <para>
+      Si le signal source LPC est dérivé d'une entrée audio, alors le calcul
+      des coefficients dépend de deux paramètres, <emphasis>kflg</emphasis> et
+      <emphasis>kprd</emphasis>. Le premier est un bouton on/off qui détermine
+      si les coefficients sont remplacés par de nouveaux coefficients calculés
+      ou s'ils gardent leur dernière valeur. L'autre détermine la fréquence des
+      analyses, en fixant un intervalle temporel (en échantillons) entre les
+      calculs de nouveaux coefficients. Cela va de coefficients étant remplacés
+      à chaque échantillon, à jamais remplacés (si la période est plus grande
+      que la durée de synthèse). Des analyses se chevauchant se produiront si
+      la valeur de <emphasis>kprd</emphasis> est inférieure à la taille de
+      l'entrée. La diminution de l'espacement des analyses produira aussi une
+      augmentation des besoins de calcul.
+    </para>
+    
+    <para>
+      Si le signal source LPC est dérivé d'une table de fonction, alors
+      <emphasis>kflg</emphasis> détermine s'il faut effectuer une analyse ou
+      non (1 ou 0). La valeur de <emphasis>koff</emphasis> est ensuite utilisée
+      comme décalage (en échantillons) dans la table de fonction déterminant la
+      position de la trame d'analyse. Par exemple, si <emphasis>kflg</emphasis>
+      est fixé en permanence à 1 et <emphasis>koff</emphasis> est fixé à
+      <emphasis>ksmps</emphasis>, alors à chaque cycle-k une trame d'analyse
+      sera prise des positions successives dans la table de fonction. Le
+      changement de <emphasis>koff</emphasis> à moins d'échantillons produira
+      un résultat étiré dans le temps alors qu'en l'augmentant on compressera le
+      temps.
+    </para>
+    
+    <para>
+      Le signal une fois extrait, soit de l'entrée audio, soit d'une table de
+      fonction, il peut être facultativement fenêtré si une table de fonction
+      est fournie. Bien que ce soit facultatif, c'est une procédure recommandée
+      (GEN20 peut fournir les fenêtres les plus communes). Le signal est ensuite
+      analysé et les coefficients sont produits.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode lpcanal qui utilise un signal d'entrée audio
+      comme source lpc. Il utilise le fichier
+      <ulink url="examples/lpcanal.csd"><citetitle>lpcanal.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode lpcanal.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/lpcanal.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Voici un autre exemple de l'opcode lpcanal qui utilise une table de
+      fonction comme source lpc. Il utilise le fichier
+      <ulink url="examples/lpcanal-2.csd"><citetitle>lpcanal-2.csd</citetitle></ulink>.
+      <example>
+        <title>Un autre exemple de l'opcode lpcanal.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/lpcanal-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="lpcfilter"><citetitle>lpcfilter</citetitle></link>,
+      <link linkend="allpole"><citetitle>allpole</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>
