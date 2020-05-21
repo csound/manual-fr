@@ -788,6 +788,9 @@ authors=Francois Pinot
 <!ENTITY opcodeslpshold SYSTEM "opcodes/lpshold.xml">
 <!ENTITY opcodeslpsholdp SYSTEM "opcodes/lpsholdp.xml">
 <!ENTITY opcodeslpslot SYSTEM "opcodes/lpslot.xml">
+<!ENTITY opcodeslpcfilter SYSTEM "opcodes/lpcfilter.xml">
+<!ENTITY opcodeslpcanal SYSTEM "opcodes/lpcanal.xml">
+<!ENTITY opcodesallpole SYSTEM "opcodes/allpole.xml">
 
 <!--<!ENTITY opcodeslua_exec SYSTEM "opcodes/lua_exec.xml">
 <!ENTITY opcodeslua_opdef SYSTEM "opcodes/lua_opdef.xml">
@@ -1109,6 +1112,7 @@ authors=Francois Pinot
 <!ENTITY opcodespvsynth SYSTEM "opcodes/pvsynth.xml">
 <!ENTITY opcodespvswarp SYSTEM "opcodes/pvswarp.xml">
 
+<!ENTITY opcodespvslpc SYSTEM "opcodes/pvslpc.xml">
 <!ENTITY opcodespvsarp SYSTEM "opcodes/pvsarp.xml">
 <!ENTITY opcodespvsifd SYSTEM "opcodes/pvsifd.xml">
 <!ENTITY opcodespvsvoc SYSTEM "opcodes/pvsvoc.xml">

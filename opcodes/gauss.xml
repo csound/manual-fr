@@ -33,10 +33,11 @@ english cvs version=1.15
   <refsect1>
     <title>Syntaxe</title>
     <synopsis>ares <command>gauss</command> krange</synopsis>
-
-    <synopsis>ires <command>gauss</command> krange</synopsis>
-
+    <synopsis>ires <command>gauss</command> irange</synopsis>
     <synopsis>kres <command>gauss</command> krange</synopsis>
+    <synopsis>ares <command>gauss</command> kmean, ksdev</synopsis>
+    <synopsis>ires <command>gauss</command> imean, isdev</synopsis>
+    <synopsis>kres <command>gauss</command> kmean, ksdev</synopsis>
   </refsect1>
  
   <refsect1>
@@ -45,15 +46,26 @@ english cvs version=1.15
       <emphasis>krange</emphasis> -- l'intervalle des nombres aléatoires (-<emphasis>krange</emphasis> à
       +<emphasis>krange</emphasis>). Produit des nombres positifs et négatifs.
     </para>
-    
     <para>
-      <emphasis>gauss</emphasis>  retourne des nombres aléatoires suivant une
-      distribution normale centrée sur 0 (mu = 0.0) avec une variance (sigma) de
-      <emphasis>krange</emphasis> / 3.83. Ainsi plus de 99.99% des valeurs
-      aléatoires générées sont comprises entre -<emphasis>krange</emphasis> et
-      +<emphasis>krange</emphasis>. Si l'on veut une valeur moyenne différente
-      de 0.0, il faut ajouter cette valeur moyenne à chaque nombre généré (voir
-      l'exemple ci-dessous).
+      <emphasis>kmean</emphasis> -- moyenne de la distribution normale.
+    </para>
+    <para>
+      <emphasis>ksdev</emphasis> -- écart-type de la distribution normale.
+    </para>
+    <para>
+      La première version de <emphasis>gauss</emphasis> retourne des nombres
+      aléatoires suivant une distribution normale centrée sur 0 (mu = 0.0) avec
+      une variance (sigma) de <emphasis>krange</emphasis> / 3.83. Ainsi plus de
+      99.99% des valeurs aléatoires générées sont comprises entre
+      -<emphasis>krange</emphasis> et +<emphasis>krange</emphasis>. Si l'on
+      veut une valeur moyenne différente de 0.0, il faut ajouter cette valeur
+      moyenne à chaque nombre généré (voir l'exemple ci-dessous).
+    </para>
+
+    <para>
+      La seconde version prend la moyenne et l'écart-type en paramètres. Elle
+      utilise l'algorithme de Box-Muller, plus solide mathématiquement, pour
+      calculer la distribution normale.
     </para>
 
     <para>
@@ -113,9 +125,12 @@ mean = 2.700, std = 1.497, samples inside the given range: 100.000%</screen>
     <title>Crédits</title>
     <para>
       <simplelist>
-        <member>Auteur : &nameparis;</member>
+        <member>Auteur (première version) : &nameparis;</member>
         <member>MIT, Cambridge</member>
         <member>1995</member>
+        <member>Auteur (seconde version) : Victor Lazzarini</member>
+        <member>Université de Maynooth, Irelande</member>
+        <member>2020</member>
       </simplelist>
     </para>
     <para>Précisions sur mu et sigma ajoutées par &namepinot; après une discussion

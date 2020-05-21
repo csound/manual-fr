@@ -29,8 +29,8 @@ authors=Francois Pinot
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>Sname <command>nstrstr</command>insno</synopsis>
-    <synopsis>Sname <command>nstrstr</command>knsno</synopsis>
+    <synopsis>Sname <command>nstrstr</command> insno</synopsis>
+    <synopsis>Sname <command>nstrstr</command> knsno</synopsis>
   </refsect1>
 
   <refsect1>
@@ -53,6 +53,29 @@ authors=Francois Pinot
     <para>
       Si aucun instrument existant ne porte le nom spécifié, une chaîne de
       caractères vide est retournée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode nstrstr. Il utilise le fichier
+      <ulink url="examples/nstrnum_nstrstr.csd"><citetitle>nstrnum_nstrstr.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode nstrstr.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/nstrnum_nstrstr.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+    <para>
+      L'exemple produira la sortie suivante :
+      <screen>
+instrument name = john
+instrument number = 2
+      </screen>
     </para>
   </refsect1>
 

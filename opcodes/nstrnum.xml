@@ -53,6 +53,29 @@ english cvs version=1.8
   </refsect1>
 
   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode nstrnum. Il utilise le fichier
+      <ulink url="examples/nstrnum_nstrstr.csd"><citetitle>nstrnum_nstrstr.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode nstrnum.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/nstrnum_nstrstr.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+    <para>
+      L'exemple produira la sortie suivante :
+      <screen>
+instrument name = john
+instrument number = 2
+      </screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
     <title>Crédits</title>
     <para>
       <simplelist>
