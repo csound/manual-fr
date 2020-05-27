@@ -104,10 +104,6 @@ english cvs version=1.5
       oscillateurs. L'oscillateur 1 est modulé en fréquence par l'oscillateur 2
       tandis que l'oscillateur 2 est modulé en phase par l'oscillateur 1.
     </para>
-    <para>
-      On peut lire mon <ulink url="http://www.csoundjournal.com/issue12/crossfm.html"><citetitle>article</citetitle></ulink>
-      dans le Csound Journal pour plus d'information.
-    </para>
     <warning>
       <title>Avertissement</title>
       <para>
@@ -132,21 +128,13 @@ english cvs version=1.5
          <xi:include href="examples-xml/crossfm.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
     </para>
-    <para>
-      Dans cet exemple, on utilise une interface graphique FLTK pour contrôler
-      en temps réel la fréquence des oscillateurs au moyen de deux contrôles
-      <emphasis>Flcount</emphasis> et les indices de la modulation croisée avec
-      un contrôle <emphasis>FLjoy</emphasis>. Il utilise un taux d'échantillonnage
-      de 96000Hz.
-    </para>
   </refsect1>
 
   <refsect1>
     <title>Voir aussi</title>
     <para>
       Plus d'information sur ces opcodes :
-      <ulink url="http://www.csoundjournal.com/issue12/crossfm.html"><citetitle>http://www.csoundjournal.com/issue12/crossfm.html</citetitle></ulink>,
-      écrit par &namepinot;.
+      <ulink url="http://www.csoundjournal.com/issue12/crossfm.html"><citetitle>http://www.csoundjournal.com/issue12/crossfm.html</citetitle></ulink>.
     </para>
   </refsect1>
   
