@@ -16,7 +16,7 @@ authors=Francois Pinot
   <refnamediv>
     <refname>sc_lagud</refname>
     <refpurpose>
-      Lag exponentiel.
+      Lag exponentiel (obsolète).
     </refpurpose>
   </refnamediv>
   
@@ -24,22 +24,24 @@ authors=Francois Pinot
     <title>Description</title>
     <para>Opcode du greffon scugens.</para>
     <para>
-      Lag exponentiel avec différentes durées de lissage pour le signal montant
-      et atténué. Adapté du LagUD de Supercollider.
+      Lag exponentiel avec une durée de lissage pour des signaux
+      augmentants et s'atténuants. Obsolète (renommé en
+      <link linkend="lagud"><citetitle>lagud</citetitle></link>).
     </para>
   </refsect1>
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>aout <command>sc_lagud</command> ain, klagup, klagdown</synopsis>
-    <synopsis>kout <command>sc_lagud</command> kin, klagup, klagdown</synopsis>
+    <synopsis>aout <command>sc_lagud</command> ain, klagup, klagdown [, initialvalue]</synopsis>
+    <synopsis>kout <command>sc_lagud</command> kin, klagup, klagdown [, initialvalue]</synopsis>
+
   </refsect1>
 
   <refsect1>
     <title>Initialisation</title>
     <para>
-      <emphasis>initialvalue</emphasis>  -- Si elle est fournie, fixe l'état
-      interne. 0 par défaut.
+      <emphasis>initialvalue</emphasis> -- Si elle est fournie, fixe l'état
+      interne. Vaut par défaut la première valeur passée.
     </para>
   </refsect1>
   

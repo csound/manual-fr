@@ -15,7 +15,7 @@ authors=Francois Pinot
   <refnamediv>
     <refname>sc_lag</refname>
     <refpurpose>
-      Lag exponentiel.
+      Lag exponentiel (obsolète).
     </refpurpose>
   </refnamediv>
   
@@ -23,22 +23,22 @@ authors=Francois Pinot
     <title>Description</title>
     <para>Opcode du greffon scugens.</para>
     <para>
-      Lag exponentiel avec durée de latence à 60 dB. Adapté du Lag
-      de Supercollider.
+      Lag exponentiel avec durée de latence à 60 dB. Obsolète (renommé en
+      <link linkend="lag"><citetitle>lag</citetitle></link>).
     </para>
   </refsect1>
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>aout <command>sc_lag</command> ain, klagtime [, initialvalue=0]</synopsis>
-    <synopsis>kout <command>sc_lag</command> kin, klagtime [, initialvalue=0]</synopsis>
+    <synopsis>aout <command>sc_lag</command> ain, klagtime [, initialvalue]</synopsis>
+    <synopsis>kout <command>sc_lag</command> kin, klagtime [, initialvalue]</synopsis>
   </refsect1>
 
   <refsect1>
     <title>Initialisation</title>
     <para>
       <emphasis>initialvalue</emphasis> -- Si elle est fournie, fixe l'état
-      interne. 0 par défaut.
+      interne. Vaut par défaut la première valeur passée.
     </para>
   </refsect1>
   
@@ -81,6 +81,8 @@ authors=Francois Pinot
     <title>Voir aussi</title>
     <para>
       <link linkend="sc_lagud"><citetitle>sc_lagud</citetitle></link>, 
+      <link linkend="lag"><citetitle>lag</citetitle></link>, 
+      <link linkend="lagud"><citetitle>lagud</citetitle></link>, 
       <link linkend="port"><citetitle>port</citetitle></link>, 
       <link linkend="portk"><citetitle>portk</citetitle></link>
     </para>

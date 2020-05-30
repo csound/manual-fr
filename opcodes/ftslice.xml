@@ -15,7 +15,7 @@ authors=Francois Pinot
   <refnamediv>
     <refname>ftslice</refname>
     <refpurpose>
-      Copie un bout d'une ftable dans une autre.
+      Copie un bout d'une ftable dans une autre pendant l'exécution.
     </refpurpose>
   </refnamediv>
   
@@ -25,13 +25,17 @@ authors=Francois Pinot
     <para>
       L'opcode <emphasis>ftslice</emphasis> prend une ftable et en copie un
       bout dans une seconde ftable (comme <emphasis>tab2array</emphasis>,
-      mais entre tables de fonction).
+      mais entre tables de fonction). Cette action a lieu durant l'exécution
+      (à chaque cycle), afin qu'on puisse la placer dans une clause if /
+      boucle / etc, de taux-k. Pour une version uniquement au taux-i, voir
+      <link linkend="ftslicei"><citetitle>ftslicei</citetitle></link>
   </para>
   </refsect1>
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis><command>ftslice</command> ifnsource, ifndest [, kstart, kend, kstep ]</synopsis>  
+    <synopsis><command>ftslice</command> ifnsource, ifndest [, kstart, kend, kstep ]</synopsis>
+    <synopsis><command>ftslice</command> kfnsource, kfndest [, kstart, kend, kstep ]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -75,6 +79,8 @@ authors=Francois Pinot
   <refsect1>
     <title>Voir aussi</title>
     <para>
+      <link linkend="ftslicei"><citetitle>ftslicei</citetitle></link>,
+      <link linkend="ftset"><citetitle>ftset</citetitle></link>,
       <link linkend="slicearray"><citetitle>slicearray</citetitle></link>,
       <link linkend="copyf2array"><citetitle>copyf2array</citetitle></link>,
       <link linkend="tab2array"><citetitle>tab2array</citetitle></link>,

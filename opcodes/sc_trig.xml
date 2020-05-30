@@ -15,7 +15,7 @@ authors=Francois Pinot
   <refnamediv>
     <refname>sc_trig</refname>
     <refpurpose>
-      Déclencheur mesuré.
+      Déclencheur mesuré (remplacé par trighold).
     </refpurpose>
   </refnamediv>
   
@@ -23,7 +23,9 @@ authors=Francois Pinot
     <title>Description</title>
     <para>Opcode du greffon scugens.</para>
     <para>
-      Déclencheur mesuré. Adapté de Trig de Supercollider.
+      Déclencheur mesuré. Adapté de Trig de Supercollider. Cet opcode est
+      obsolète et remplacé par <link
+      linkend="trighold"><citetitle>trighold</citetitle></link>.
     </para>
   </refsect1>
 

@@ -15,7 +15,8 @@ authors=Francois Pinot
   <refnamediv>
     <refname>sc_phasor</refname>
     <refpurpose>
-      Une rampe linéaire réinitialisable entre deux niveaux.
+      Une rampe linéaire réinitialisable entre deux niveaux (renommé
+      <emphasis>trigphasor</emphasis>.
     </refpurpose>
   </refnamediv>
   
@@ -24,7 +25,8 @@ authors=Francois Pinot
     <para>Opcode du greffon scugens.</para>
     <para>
       Une rampe linéaire réinitialisable entre deux niveaux. Adapté du Phasor de
-      Supercollider.
+      Supercollider. Obsolète (renommé<link
+      linkend="trigphasor"><citetitle>trigphasor</citetitle></link>).
     </para>
   </refsect1>
   
@@ -37,7 +39,7 @@ authors=Francois Pinot
   <refsect1>
     <title>Exécution</title>
     <para>
-      sc_phasor produit une rampe linéaire entre les valeurs de
+      Le phaseur produit une rampe linéaire entre les valeurs de
       <emphasis>kstart</emphasis> et de <emphasis>kend</emphasis>. Quand son
       entrée de déclenchement passe de valeurs non positives à des valeurs
       positives, la sortie de sc_phasor saute à sa position de reset (ou à

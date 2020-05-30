@@ -23,10 +23,11 @@ This file is distributed under the GNU Free Documentation Licence--><opcodes>
 </opcode>
 <opcode><desc>Appelle une macro définie.</desc><synopsis><opcodename>$NAME</opcodename></synopsis>
 <para/></opcode>
-<opcode><desc>Lecture de code conditionnelle.</desc><synopsis><opcodename>#ifdef</opcodename> NAME</synopsis><synopsis>  ....</synopsis><synopsis><opcodename>#else</opcodename></synopsis><synopsis>  ....</synopsis><synopsis><opcodename>#end</opcodename></synopsis>
+<opcode><desc>Lecture de code conditionnelle.</desc><synopsis><opcodename>#ifdef</opcodename> NAME</synopsis><synopsis>  ....</synopsis>
+<synopsis><opcodename>#else</opcodename></synopsis><synopsis>  ....</synopsis>
+<synopsis><opcodename>#end</opcodename></synopsis>
 </opcode>
-<opcode><desc>Lecture de code conditionnelle.</desc><synopsis><opcodename>#ifndef</opcodename> NAME</synopsis><synopsis>  ....</synopsis><synopsis><opcodename>#else</opcodename></synopsis><synopsis>  ....</synopsis><synopsis><opcodename>#end</opcodename></synopsis>
-</opcode>
+<opcode><desc>Lecture de code conditionnelle.</desc><synopsis><opcodename>ifndef</opcodename> NOM</synopsis><synopsis>....</synopsis><synopsis><opcodename>else</opcodename> </synopsis><synopsis>....</synopsis><synopsis><opcodename>end</opcodename> </synopsis></opcode>
 <opcode><desc>Inclut un fichier externe pour traitement.</desc><synopsis><opcodename>#include</opcodename> &quot;filename&quot;</synopsis>
 </opcode>
 <opcode><desc>Annule la définition d'une macro.</desc><synopsis><opcodename>#undef</opcodename> NAME</synopsis>
@@ -278,6 +279,7 @@ This file is distributed under the GNU Free Documentation Licence--><opcodes>
 <opcode><desc>Une rampe linéaire réinitialisable entre deux niveaux.</desc><synopsis>aindex <opcodename>sc_phasor</opcodename> xtrig, xrate, kstart, kend [, kresetPos] </synopsis><synopsis>kindex <opcodename>sc_phasor</opcodename> xtrig, xrate, kstart, kend [, kresetPos] </synopsis></opcode>
 <opcode><desc>Produit une valeur de phase mobile normalisée avec entrée et sortie de
       synchronisation.</desc><synopsis>aphase, asyncout <opcodename>syncphasor</opcodename> xcps, asyncin, [, iphs]</synopsis></opcode>
+<opcode><desc>A resettable linear ramp between two levels</desc><synopsis>aindex <opcodename>trigphasor</opcodename> xtrig, xrate, kstart, kend [, kresetPos] </synopsis><synopsis>kindex <opcodename>trigphasor</opcodename> xtrig, xrate, kstart, kend [, kresetPos] </synopsis></opcode>
 </category>
 <category name="Signal Generators:Random (Noise) Generators">
 <opcode><desc>Générateur de nombres aléatoires de distribution beta (valeurs positives seulement).</desc><synopsis>ares <opcodename>betarand</opcodename> krange, kalpha, kbeta</synopsis><synopsis>ires <opcodename>betarand</opcodename> krange, kalpha, kbeta</synopsis><synopsis>kres <opcodename>betarand</opcodename> krange, kalpha, kbeta</synopsis></opcode>
@@ -294,7 +296,7 @@ This file is distributed under the GNU Free Documentation Licence--><opcodes>
 <opcode><desc>Générateur de nombres aléatoires de distribution exponentielle avec
       interpolation (valeurs positives seulement).</desc><synopsis>ares <opcodename>exprandi</opcodename> klambda, xamp, xcps</synopsis><synopsis>ires <opcodename>exprandi</opcodename> klambda, xamp, xcps</synopsis><synopsis>kres <opcodename>exprandi</opcodename> klambda, xamp, xcps</synopsis></opcode>
 <opcode><desc>Un générateur de bruit fractal.</desc><synopsis>ares <opcodename>fractalnoise</opcodename> kamp, kbeta</synopsis></opcode>
-<opcode><desc>Générateur de nombres aléatoires de distribution gaussienne.</desc><synopsis>ares <opcodename>gauss</opcodename> krange</synopsis><synopsis>ires <opcodename>gauss</opcodename> krange</synopsis><synopsis>kres <opcodename>gauss</opcodename> krange</synopsis></opcode>
+<opcode><desc>Générateur de nombres aléatoires de distribution gaussienne.</desc><synopsis>ares <opcodename>gauss</opcodename> krange</synopsis><synopsis>ires <opcodename>gauss</opcodename> irange</synopsis><synopsis>kres <opcodename>gauss</opcodename> krange</synopsis><synopsis>ares <opcodename>gauss</opcodename> kmean, ksdev</synopsis><synopsis>ires <opcodename>gauss</opcodename> imean, isdev</synopsis><synopsis>kres <opcodename>gauss</opcodename> kmean, ksdev</synopsis></opcode>
 <opcode><desc>Générateur de nombres aléatoires à distribution gaussienne avec
       interpolation.</desc><synopsis>ares <opcodename>gaussi</opcodename> krange, xamp, xcps</synopsis><synopsis>ires <opcodename>gaussi</opcodename> krange, xamp, xcps</synopsis><synopsis>kres <opcodename>gaussi</opcodename> krange, xamp, xcps</synopsis></opcode>
 <opcode><desc>Impulsions aléatoires autour d'une fréquence donnée.</desc><synopsis>ares <opcodename>gausstrig</opcodename> kamp, kcps, kdev [, imode] [, ifrst1]</synopsis><synopsis>kres <opcodename>gausstrig</opcodename> kamp, kcps, kdev [, imode] [, ifrst1]</synopsis></opcode>
@@ -891,6 +893,8 @@ This file is distributed under the GNU Free Documentation Licence--><opcodes>
 <opcode><desc>Un filtre réjecteur de bande réglable (notch filter) dont les fonctions de transfert sont les
       complémentaires de celles de l'opcode reson.</desc><synopsis>kres <opcodename>aresonk</opcodename> ksig, kcf, kbw [, iscl] [, iskip]</synopsis></opcode>
 <opcode><desc>Un filtre passe-haut dont les fonctions de transfert sont les complémentaires de celles de l'opcode</desc><synopsis>kres <opcodename>atonek</opcodename> ksig, khp [, iskip]</synopsis></opcode>
+<opcode><desc>Exponential Lag</desc><synopsis>aout <opcodename>lag</opcodename> ain, klagtime [, initialvalue]</synopsis><synopsis>kout <opcodename>lag</opcodename> kin, klagtime [, initialvalue]</synopsis></opcode>
+<opcode><desc>Exponential Lag</desc><synopsis>aout <opcodename>lagud</opcodename> ain, klagup, klagdown [, initialvalue]</synopsis><synopsis>kout <opcodename>lagud</opcodename> kin, klagup, klagdown [, initialvalue]</synopsis></opcode>
 <opcode><desc>Génère un glissando à partir d'un signal de contrôle.</desc><synopsis>kres <opcodename>lineto</opcodename> ksig, ktime</synopsis></opcode>
 <opcode><desc>Applique un portamento à un signal de contrôle en escalier.</desc><synopsis>kres <opcodename>port</opcodename> ksig, ihtim [, isig]</synopsis></opcode>
 <opcode><desc>Applique un portamento à un signal de contrôle en escalier.</desc><synopsis>kres <opcodename>portk</opcodename> ksig, khtim [, isig]</synopsis></opcode>
@@ -901,6 +905,7 @@ This file is distributed under the GNU Free Documentation Licence--><opcodes>
 <opcode><desc>Déclencheur mesuré.</desc><synopsis>aout <opcodename>sc_trig</opcodename> ain, kdur</synopsis><synopsis>kout <opcodename>sc_trig</opcodename> kin, kdur</synopsis></opcode>
 <opcode><desc>Génère des glissandi déclenchés par un signal de contrôle.</desc><synopsis>kres <opcodename>tlineto</opcodename> ksig, ktime, ktrig</synopsis></opcode>
 <opcode><desc>Un filtre passe-bas récursif du premier ordre avec une réponse en fréquence variable.</desc><synopsis>kres <opcodename>tonek</opcodename> ksig, khp [, iskip]</synopsis></opcode>
+<opcode><desc>Timed trigger, holds a value for a given time</desc><synopsis>aout <opcodename>trighold</opcodename> ain, kdur</synopsis><synopsis>kout <opcodename>trighold</opcodename> kin, kdur</synopsis></opcode>
 </category>
 <category name="Signal Modifiers:Specialized Filters">
 <opcode><desc>Un filtre bloqueur de composante continue.</desc><synopsis>ares <opcodename>dcblock</opcodename> ain [, igain]</synopsis></opcode>
@@ -1043,7 +1048,7 @@ This file is distributed under the GNU Free Documentation Licence--><opcodes>
 <opcode><desc>Met la valeur de l'expression de taux-i dans une variable de taux-k ou de
       taux-a, ou dans une variable-t.</desc><synopsis>ares <opcodename>init</opcodename> iarg</synopsis><synopsis>ires <opcodename>init</opcodename> iarg</synopsis><synopsis>kres <opcodename>init</opcodename> iarg</synopsis><synopsis>ares, ...  <opcodename>init</opcodename> iarg, ...</synopsis><synopsis>ires, ... <opcodename>init</opcodename> iarg, ...</synopsis><synopsis>kres, ... <opcodename>init</opcodename> iarg, ...</synopsis><synopsis>tab <opcodename>init</opcodename> isize[, ival]</synopsis></opcode>
 <opcode><desc>Retourne le numéro d'un instrument nommé.</desc><synopsis>insno <opcodename>nstrnum</opcodename> &quot;name&quot;</synopsis></opcode>
-<opcode><desc>Retourne le nom d'un instrument nommé à partie de son numéro.</desc><synopsis>Sname <opcodename>nstrstr</opcodename>insno</synopsis><synopsis>Sname <opcodename>nstrstr</opcodename>knsno</synopsis></opcode>
+<opcode><desc>Retourne le nom d'un instrument nommé à partie de son numéro.</desc><synopsis>Sname <opcodename>nstrstr</opcodename> insno</synopsis><synopsis>Sname <opcodename>nstrstr</opcodename> knsno</synopsis></opcode>
 <opcode><desc>Montre la valeur contenu dans un p-champ donné.</desc><synopsis><opcodename>p</opcodename>(x) </synopsis></opcode>
 <opcode><desc>Addition et affectation.</desc><synopsis>ares <opcodename>+=</opcodename> xarg</synopsis><synopsis>ires <opcodename>+=</opcodename> iarg</synopsis><synopsis>kres <opcodename>+=</opcodename> karg</synopsis><synopsis>table [ kval] <opcodename>+=</opcodename> karg</synopsis></opcode>
 <opcode><desc>Définit et initialise des tableaux numériques au chargement de l'orchestre.</desc><synopsis><opcodename>pset</opcodename> icon1 [, icon2] [...]</synopsis></opcode>
@@ -1141,6 +1146,10 @@ This file is distributed under the GNU Free Documentation Licence--><opcodes>
 <opcode><desc>Active ou désactive tous les ports de Jack.</desc><synopsis><opcodename>JackoOn </opcodename>[iactive] </synopsis></opcode>
 <opcode><desc>Contrôle le transport de Jack.</desc><synopsis><opcodename>JackoTransport </opcodename> kcommand, [kposition]</synopsis></opcode>
 </category>
+<category name="Lua Opcodes">
+</category>
+<category name="Serial I/O">
+</category>
 <category name="Table Control">
 <opcode><desc>Efface une table de fonction.</desc><synopsis><opcodename>ftfree</opcodename> ifno, iwhen</synopsis></opcode>
 <opcode><desc>Génère une table de fonction de partition depuis l'orchestre.</desc><synopsis>gir <opcodename>ftgen</opcodename> ifn, itime, isize, igen, iarga [, iargb ] [...]</synopsis><synopsis>gir <opcodename>ftgen</opcodename> ifn, itime, isize, igen, iarray</synopsis></opcode>
@@ -1185,6 +1194,7 @@ This file is distributed under the GNU Free Documentation Licence--><opcodes>
 <opcode><desc>Sauvegarde dans un fichier un ensemble de tables préalablement allouées.</desc><synopsis><opcodename>ftsave</opcodename> &quot;filename&quot;, iflag, ifn1 [, ifn2] [...]</synopsis></opcode>
 <opcode><desc>Sauvegarde dans un fichier un ensemble de tables préalablement allouées.</desc><synopsis><opcodename>ftsavek</opcodename> &quot;filename&quot;, ktrig, iflag, ifn1 [, ifn2] [...]</synopsis></opcode>
 <opcode><desc>Fixe plusieurs éléments d'une table à une valeur donnée.</desc><synopsis><opcodename>ftset</opcodename> ktablenum, kvalue [, kstart=0, kend=0, kstep=1 ]</synopsis><synopsis><opcodename>ftset</opcodename> itablenum, ivalue [, istart=0, iend=0, istep=1 ]</synopsis></opcode>
+<opcode><desc>Copy a slice from an f-table to another f-table at init</desc><synopsis><opcodename>ftslicei</opcodename> ifnsource, ifndest [, istart, iend, istep ]</synopsis></opcode>
 <opcode><desc>Change le contenu de tables de fonction existantes de n'importe quelle taille.</desc><synopsis><opcodename>ptablew</opcodename> asig, andx, ifn [, ixmode] [, ixoff] [, iwgmode]</synopsis><synopsis><opcodename>ptablew</opcodename> isig, indx, ifn [, ixmode] [, ixoff] [, iwgmode]</synopsis><synopsis><opcodename>ptablew</opcodename> ksig, kndx, ifn [, ixmode] [, ixoff] [, iwgmode]</synopsis></opcode>
 <opcode><desc>Opcode de copie de table simple et rapide.</desc><synopsis><opcodename>tablecopy</opcodename> kdft, ksft</synopsis></opcode>
 <opcode><desc>Filtre une table source et écrit le résultat dans une table de destination.</desc><synopsis>knumpassed <opcodename>tablefilter</opcodename> kouttable, kintatble, kmode, kparam</synopsis></opcode>
@@ -1324,8 +1334,9 @@ This file is distributed under the GNU Free Documentation Licence--><opcodes>
 </opcode>
 <opcode><desc>Opérateur d'élévation à une puissance.</desc><synopsis>a <opcodename>^</opcodename> b  (b not audio-rate)</synopsis>
 </opcode>
-<opcode><desc>Opérateur de soustraction.</desc><synopsis>a <opcodename>-</opcodename> b (no rate restriction)</synopsis>
-</opcode>
+<opcode><desc>Opérateur de soustraction.</desc><synopsis><command/>a  (pas de restriction de taux)</synopsis><synopsis>a <command/> b  (pas de restriction de taux)</synopsis></opcode>
+</category>
+<category name="Mathematical Operations:Arrays">
 </category>
 <category name="Mathematical Operations:Comparators and Accumulators">
 <opcode><desc>Met à zéro une liste de signaux audio.</desc><synopsis><opcodename>clear</opcodename> avar1 [, avar2] [, avar3] [...]</synopsis></opcode>
@@ -1383,6 +1394,8 @@ This file is distributed under the GNU Free Documentation Licence--><opcodes>
 <opcode><desc>Somme de n'importe quel nombre de signaux de taux-a ou des éléments
       d'un tableau.</desc><synopsis>ares <opcodename>sum</opcodename> asig1 [, asig2] [, asig3] [...]</synopsis><synopsis>kres <opcodename>sum</opcodename> karr</synopsis><synopsis>ires <opcodename>sum</opcodename> iarr</synopsis></opcode>
 <opcode><desc>Retourne une tangente inverse (arctangente).</desc><synopsis>ares <opcodename>taninv2</opcodename> ay, ax</synopsis><synopsis>ires <opcodename>taninv2</opcodename> iy, ix</synopsis><synopsis>kres <opcodename>taninv2</opcodename> ky, kx</synopsis></opcode>
+</category>
+<category name="Mathematical Operations:Vectors">
 </category>
 <category name="Pitch Converters:Functions">
 <opcode><desc>Calcule un facteur pour élever/abaisser une fréquence d'un certain nombre de cents.</desc><synopsis><opcodename>cent</opcodename>(x) </synopsis></opcode>
@@ -1605,6 +1618,14 @@ This file is distributed under the GNU Free Documentation Licence--><opcodes>
       basé sur la TFR et une enveloppe supplémentaire.</desc><synopsis>ares <opcodename>vpvoc</opcodename> ktimpnt, kfmod, ifile [, ispecwp] [, ifn]</synopsis></opcode>
 </category>
 <category name="Spectral Processing:LPC">
+<opcode><desc>Réalisation d'un filtre tout-pôle par convolution directe.</desc><synopsis>ares <opcodename>allpole</opcodename> asig, kCoef[]</synopsis></opcode>
+<opcode><desc>Analyse par prédiction linéaire sur un flux.</desc><synopsis>kCoef[], krms, kerr, kcps <opcodename>lpcanal</opcodename> asrc, kflg,
+    kprd, isiz, iord[,iwin] </synopsis><synopsis>kCoef[], krms, kerr, kcps <opcodename>lpcanal</opcodename> koff, kflg,
+    ifn, isiz, iord[,iwin] </synopsis><synopsis>iCoef[], irms, ierr, icps <opcodename>lpcanal</opcodename> ioff, iflg,
+    ifn, isiz, iord[,iwin] </synopsis></opcode>
+<opcode><desc>Filtre tout-pôle par prédiction linéaire sur un flux.</desc><synopsis>ares <opcodename>lpcfilter</opcodename> asig, asrc, kflg,
+    kprd, isiz, iord[,iwin] </synopsis><synopsis>ares <opcodename>lpcfilter</opcodename> asig, koff, kflg,
+    ifn, isiz, iord[,iwin] </synopsis></opcode>
 <opcode><desc>Resynthétise un signal à partir des données passées en interne par un
       lpread précédent, en appliquant un décalage de formant.</desc><synopsis>ares <opcodename>lpfreson</opcodename> asig, kfrqratio</synopsis></opcode>
 <opcode><desc>Calcule un nouvel ensemble de pôles à partir de l'interpolation entre
@@ -1613,6 +1634,7 @@ This file is distributed under the GNU Free Documentation Licence--><opcodes>
 <opcode><desc>Resynthétise un signal à partir des données passées en interne par un
       lpread précédent.</desc><synopsis>ares <opcodename>lpreson</opcodename> asig</synopsis></opcode>
 <opcode><desc>Sélectionne le slot à utiliser par des opcodes lp suivants.</desc><synopsis><opcodename>lpslot</opcodename> islot</synopsis></opcode>
+<opcode><desc>Analyse par prédiction linéaire sur un flux.</desc><synopsis>fsig <opcodename>pvslpc</opcodename> asrc, idftsiz, ihop, iord[,iwin] </synopsis></opcode>
 </category>
 <category name="Spectral Processing:Non-Standard">
 <opcode><desc>Exécute une somme pondérée de deux spectres.</desc><synopsis>wsig <opcodename>specaddm</opcodename> wsig1, wsig2 [, imul2]</synopsis></opcode>
@@ -1998,6 +2020,8 @@ This file is distributed under the GNU Free Documentation Licence--><opcodes>
 <opcode><desc>Fixe la valeur RVB d'un pixel dans une image précédemment ouverte ou créée.</desc><synopsis><opcodename>imagesetpixel</opcodename> iimagenum, ax, ay, ared, agreen, ablue</synopsis><synopsis><opcodename>imagesetpixel</opcodename> iimagenum, kx, ky, kred, kgreen, kblue</synopsis></opcode>
 <opcode><desc>Retourne la largeur et la hauteur d'une image précédemment ouverte ou créée.</desc><synopsis>iwidth, iheight <opcodename>imagesize</opcodename> iimagenum</synopsis></opcode>
 </category>
+<category name="Arrays: Cepstrum">
+</category>
 <category name="Array Opcodes">
 <opcode><desc>Copie les données d'un vecteur dans une ftable.</desc><synopsis><opcodename>copya2ftab</opcodename> kArray[], ktab [, koffset]</synopsis><synopsis><opcodename>copya2ftab</opcodename> iArray[], itab [, ioffset]</synopsis></opcode>
 <opcode><desc>Copie les données d'une ftable dans un vecteur.</desc><synopsis><opcodename>copyf2array</opcodename> tab, kftbl</synopsis></opcode>
@@ -2058,130 +2082,23 @@ This file is distributed under the GNU Free Documentation Licence--><opcodes>
 <opcode><desc>Obsolète.</desc><synopsis><opcodename>tableiw</opcodename> isig, indx, ifn [, ixmode] [, ixoff] [, iwgmode]</synopsis></opcode>
 </category>
 <category name="Miscellaneous">
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
 <opcode><desc>Lit un répertoire et restitue la liste des noms de fichiers dans un tableau.</desc><synopsis>SFiles[] <opcodename>directory</opcodename> SDirectory[, SExtention]</synopsis></opcode>
 <opcode><desc>retourne la longueur d'une suite de Farey.</desc><synopsis>kfl <opcodename>fareylen</opcodename> kfn</synopsis></opcode>
 <opcode><desc>retourne la longueur d'une suite de Farey.</desc><synopsis>ifl <opcodename>fareyleni</opcodename> ifn</synopsis></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
 <opcode><desc>Lit des signaux audio dans des tableaux unidimensionnels de taux-k et
        vice versa avec une taille de tampon donnée.</desc><synopsis>kout[] <opcodename>framebuffer</opcodename> ain, isize</synopsis><synopsis>aout <opcodename>framebuffer</opcodename> kin, isize</synopsis></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
 <opcode><desc>Opcode matrice de modulation avec optimisation pour les matrices creuses.</desc><synopsis><opcodename>modmatrix</opcodename> iresfn, isrcmodfn, isrcparmfn, imodscale, inum_mod, \\
 inum_parm, kupdate</synopsis></opcode>
 <opcode><desc>Retourne le nombre de canaux audio du matériel utilisé.</desc><synopsis>idacc, iadcc <opcodename>nchnls_hw</opcodename></synopsis></opcode>
 <opcode><desc>Additionne les trames audio tuilées dans des tableaux de taux-k et
       retourne un signal audio.</desc><synopsis>aout <opcodename>olabuffer</opcodename> kin, ioverlap</synopsis></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
 <opcode><desc>Demande au système d'exploitation le nom du répertoire courant.</desc><synopsis>Sres <opcodename>pwd</opcodename></synopsis></opcode>
 <opcode><desc>Choisit un échantillon sur la base de comparaisons au taux audio.</desc><synopsis>aout <opcodename>select</opcodename> a1, a2, aless, aequal, amore</synopsis></opcode>
-<opcode><desc></desc></opcode>
 <opcode><desc>Appelle un programme externe via le système.</desc><synopsis>ires <opcodename>system_i</opcodename> itrig, Scmd, [inowait]</synopsis><synopsis>kres <opcodename>system</opcodename> ktrig, Scmd, [knowait]</synopsis></opcode>
 <opcode><desc>mélange le contenu d'une table de fonction de façon à ce que chaque élément
       de la table source se trouve dans une position aléatoire différente.</desc><synopsis><opcodename>tableshuffle</opcodename> ktablenum</synopsis><synopsis><opcodename>tableshufflei</opcodename> itablenum</synopsis></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
-<opcode><desc></desc></opcode>
+</category>
+<category name="Testing">
 </category>
 <category name="Utilities">
 <opcode><desc>Effectue une analyse ATS sur un fichier son.</desc><synopsis><opcodename>csound -U atsa</opcodename> [options] nomfichier_entree nomfichier_sortie</synopsis></opcode>
