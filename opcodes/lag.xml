@@ -1,0 +1,90 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="lag">
+  <indexterm id="Indexlag"><primary>lag</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lag</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>lag</refname>
+    <refpurpose>
+      Lag exponentiel.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>Opcode du greffon scugens.</para>
+    <para>
+      Lag exponentiel avec durée de latence à 60 dB. Adapté du Lag de
+      Supercollider. C'est essentiellement un filtre à un pôle sauf qu'au lieu
+      d'être fourni directement, le coefficient est calculé à partir d'un temps
+      de latence à 60 dB. C'est la durée nécessaire à la convergence du filtre
+      à 0.01% de sa valeur. Utile pour lisser les signaux de contrôle.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aout <command>lag</command> ain, klagtime [, initialvalue]</synopsis>
+    <synopsis>kout <command>lag</command> kin, klagtime [, initialvalue]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>initialvalue</emphasis> Si elle est fournie, fixe l'état
+      interne. Vaut par défaut la première valeur passée.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ain</emphasis> -- Signal en entrée.
+    </para>
+    <para>
+      <emphasis>klagtime</emphasis> -- Durée de latence à 60 dB en secondes.
+    </para>
+    <para>
+      <emphasis>kladown</emphasis> -- Durée de latence à 60 dB en secondes pour
+      le signal atténué.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode lag. Il utilise le fichier
+      <ulink url="examples/lag.csd"><citetitle>lag.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode lag.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+         <xi:include href="examples-xml/lag.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="lagud"><citetitle>lagud</citetitle></link>, 
+      <link linkend="port"><citetitle>port</citetitle></link>, 
+      <link linkend="portk"><citetitle>portk</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par : &nameeduardo; 2017</para>
+  </refsect1>
+</refentry>

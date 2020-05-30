@@ -1,0 +1,98 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="trigphasor">
+  <indexterm id="Indextrigphasor"><primary>trigphasor</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Phasors</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>trigphasor</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>trigphasor</refname>
+    <refpurpose>
+      Une rampe linéaire réinitialisable entre deux niveaux.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>Opcode du greffon scugens..</para>
+    <para>
+      Une rampe linéaire réinitialisable entre deux niveaux. Adapté du Phasor de
+      Supercollider. <emphasis>trigphasor</emphasis> est une rampe linéaire entre
+      les valeurs <emphasis>kstart</emphasis> et <emphasis>kend</emphasis>.
+      Lorsque son entrée de seuil passe des valeurs négatives aux valeurs
+      positives, la sortie de <emphasis>trigphasor</emphasis> saute à sa valeur
+      de réinitialisation (ou à <emphasis>kstart</emphasis> si une valeur de
+      réinitialisation n'a pas été fournie). Lorsqu'il atteint la fin de sa rampe,
+      <emphasis>trigphasor</emphasis> recommence au début.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aindex <command>trigphasor</command> xtrig, xrate, kstart, kend [, kresetPos] </synopsis>
+    <synopsis>kindex <command>trigphasor</command> xtrig, xrate, kstart, kend [, kresetPos] </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>xtrig</emphasis> -- déclencheur, chaque fois qu'il passe des
+      valeurs négatives aux valeurs positives.
+    </para>
+    <para>
+      <emphasis>xrate</emphasis> -- valeur ajoutée à chaque évalutation. Au
+      taux-k, cette valeur est ajoutée à chaque cycle ; au taux-a, cette valeur
+      est ajoutée par échantillon (ksmps fois par cycle).
+    </para>
+    <para>
+      <emphasis>kstart, kend</emphasis> -- valeurs de début et de fin du phaseur.
+    </para>
+    <para>
+      <emphasis>kresetPos</emphasis> -- si elle est spécifiée, cette valeur est
+      utilisée pour sauter après un déclenchement. Sinon, un déclenchement
+      ramènera la position à <emphasis>kstart</emphasis>.
+    </para>
+    <para>
+      Pour générer un signal de phaseur de <emphasis>kstart</emphasis> à
+      <emphasis>kend</emphasis> avec une période donnée (durée de chaque cycle),
+      le calcul sera :
+      <literallayout>rate = (end - start) / (period * sr)</literallayout>
+      Si le phaseur est utilisé au taux-k, utiliser <emphasis>kr</emphasis>
+      au lieu de <emphasis>sr</emphasis> dans la formule ci-dessus.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      voici un exemple de l'opcode trigphasor. Il utilise le fichier
+      <ulink url="examples/trigphasor.csd"><citetitle>trigphasor.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode trigphasor.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/trigphasor.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="phasor"><citetitle>phasor</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par : &nameeduardo; 2017</para>
+  </refsect1>
+</refentry>

@@ -1,0 +1,92 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ftslicei">
+  <indexterm id="IndexFtslicei"><primary>ftslicei</primary></indexterm>
+  <refentryinfo><title>Table Control:Read/Write Operations</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ftslicei</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ftslicei</refname>
+    <refpurpose>
+      Copie un bout d'une ftable dans une autre pendant l'initialisation.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>Opcode du greffon emugens.</para>
+    <para>
+      L'opcode <emphasis>ftslicei</emphasis> prend une ftable et en copie un
+      bout dans une seconde ftable (comme <emphasis>tab2array</emphasis>,
+      mais entre tables de fonction). Cette action a lieu durant l'initialisation.
+      Pour une version au taux-k, voir
+      <link linkend="ftslice"><citetitle>ftslice</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxr</title>
+    <synopsis><command>ftslicei</command> ifnsource, ifndest [, istart, iend, istep ]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifnsource</emphasis> -- Le numéro de la table source.
+    </para>
+    <para>
+      <emphasis>ifndest</emphasis> -- Le numéro de la table destination.
+    </para>
+    <para>
+      <emphasis>istart</emphasis> -- La position à partir de laquelle copier.
+        0 par défaut.
+    </para>
+    <para>
+      <emphasis>iend</emphasis> -- La position à partir de laquelle la copie est
+      stoppée. Elle n'est PAS inclusive. 0 indique de copier jusqu'à la fin de la
+      table. Par défaut = la fin de la table.
+    </para>
+    <para>
+      <emphasis>istep</emphasis> -- Le nombre d'éléments à ignorer. 1 par défaut.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Pour un exemple, se référer à l'opcode ftslice:
+      <ulink url="examples/ftslice.csd"><citetitle>ftslice.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode ftslice.</title>
+        <xi:include href="examples-xml/ftslice.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ftslice"><citetitle>ftslice</citetitle></link>,
+      <link linkend="ftset"><citetitle>ftset</citetitle></link>,
+      <link linkend="slicearray"><citetitle>slicearray</citetitle></link>,
+      <link linkend="copyf2array"><citetitle>copyf2array</citetitle></link>,
+      <link linkend="tab2array"><citetitle>tab2array</citetitle></link>,
+      <link linkend="tablecopy"><citetitle>tablecopy</citetitle></link>,
+      <link linkend="tableicopy"><citetitle>tableicopy</citetitle></link>,
+      <link linkend="ftprint"><citetitle>ftprint</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par : &nameeduardo; 2018</para>
+    <para>Nouveau greffon dans la version 6.12</para>
+  </refsect1>
+</refentry>

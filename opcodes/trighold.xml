@@ -1,0 +1,84 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="trighold">
+  <indexterm id="Indextrighold"><primary>trighold</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>trighold</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>trighold</refname>
+    <refpurpose>
+      Déclencheur mesuré, maintient une valeur pour une durée donnée.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>Opcode du greffon scugens.</para>
+    <para>
+      Déclencheur mesuré. Adapté de Trig de Supercollider. 
+      Quand une transition d'une valeur non-positive à une valeur positive a
+      lieu en entrée, <emphasis>trighold</emphasis> restitue le niveau du signal
+      déclencheur pendant la durée spécifiée, sinon la sortie vaut zéro.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aout <command>trighold</command> ain, kdur</synopsis>
+    <synopsis>kout <command>trighold</command> kin, kdur</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ain</emphasis> -- Déclencheur, pouvant être n'importe quel
+      signal. Un déclenchement a lieu quand le signal passe d'une valeur
+      non-positive à une valeur positive. 
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kdur</emphasis> -- Durée du déclenchement en secondes.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode trighold. Il utilise le fichier
+      <ulink url="examples/trighold.csd"><citetitle>trighold.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode trighold.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/trighold.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="lag"><citetitle>lag</citetitle></link>, 
+      <link linkend="metro"><citetitle>metro</citetitle></link>, 
+      <link linkend="mpulse"><citetitle>mpulse</citetitle></link>
+      <link linkend="trigger"><citetitle>trigger</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par : &nameeduardo; 2017</para>
+  </refsect1>
+</refentry>

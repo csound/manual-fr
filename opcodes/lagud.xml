@@ -1,0 +1,95 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="lagud">
+  <indexterm id="Indexlagud"><primary>lagud</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lagud</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>lagud</refname>
+    <refpurpose>
+      Lag exponentiel.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>Opcode du greffon scugens.</para>
+    <para>
+      Lag exponentiel avec différentes durées de lissage pour des signaux
+      augmentants et s'atténuants. Adapté du LagUD de Supercollider.
+    </para>
+    <para>
+      C'est essentiellement le même opcode que <emphasis>lag</emphasis> sauf que
+      l'on peut donner des durées de latence à 60 dB différentes pour les signaux
+      montant et descendants. Utile pour lisser des signaux de contrôle pour
+      lesquels le fondu doit être différent de l'atténuation, ou pour modéliser
+      l'attaque/relâchement d'une porte, etc.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aout <command>lagud</command> ain, klagup, klagdown [, initialvalue]</synopsis>
+    <synopsis>kout <command>lagud</command> kin, klagup, klagdown [, initialvalue]</synopsis>   
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>initialvalue</emphasis> Si elle est fournie, fixe l'état
+      interne. Vaut par défaut la première valeur passée.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ain</emphasis> -- Signal en entrée.
+    </para>
+    <para>
+      <emphasis>klagup</emphasis> -- Durée de latence à 60 dB en secondes pour le
+      signal montant.
+    </para>
+    <para>
+      <emphasis>klagdown</emphasis> -- Durée de latence à 60 dB en secondes pour
+      le signal atténué.
+    </para>    
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode lagud. Il utilise le fichier
+      <ulink url="examples/lagud.csd"><citetitle>lagud.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode lagud.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/lagud.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="lag"><citetitle>lag</citetitle></link>, 
+      <link linkend="port"><citetitle>port</citetitle></link>, 
+      <link linkend="portk"><citetitle>portk</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par : &nameeduardo; 2017</para>
+  </refsect1>
+</refentry>
