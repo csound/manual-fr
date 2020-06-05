@@ -34,7 +34,6 @@ english cvs version=1.11
       indépendant, au <link linkend="ScoreMacros"><citetitle>système de macros du langage de
       partition</citetitle></link>.
     </para>
-
   </refsect1>
  
   <refsect1>
@@ -72,11 +71,24 @@ english cvs version=1.11
      out  <emphasis role="opc">a1</emphasis>
      <emphasis role="oblock">endin</emphasis></programlisting>
       </example>
-
     </para>
-
   </refsect1>
- 
+
+   <refsect1>
+    <para>
+      Voici un autre exemple de l'insertion conditionnelle &num;ifdef.
+      Il utilise le fichier
+      <ulink url="examples/ifdef.csd"><citetitle>ifdef.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple détaillé de la forme &num;ifdef.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/ifdef.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
   <refsect1>
     <title>Voir aussi</title>
     <para>
