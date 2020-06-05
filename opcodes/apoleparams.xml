@@ -1,0 +1,84 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="apoleparams">
+<indexterm id="IndexApoleparams"><primary>apoleparams</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:LPC</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>apoleparams</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>apoleparams</refname>
+    <refpurpose>
+      Extrait les paramètres d'un filtre tout pôle des coefficients.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode prend un tableau de coefficients d'un filtre tout pôle et
+      produit un tableau de paramètres de filtre tout pôle sous la forme de
+      paires de fréquence et de largeur de bande.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kPar[]<command>apoleparams</command> kCoef[] </synopsis>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kCoef[]</emphasis> -- coefficients du filtre tout pôle.
+      (tableau de la taille de l'ordre du filtre).
+    </para>
+    <para>
+      <emphasis>kPar[]</emphasis> -- paramètres du filtre sous forme de
+      paires de fréquence et de largeur de bande.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <para>
+      Cet opcode fait partie d'une suite d'opcodes de prédiction linéaire sur
+      un flux. Il prend un tableau de paramètres de filtre tout pôle, les
+      convertir en pôles du filtre, trie ceux-ci en ordre de fréquences
+      croissantes, et les restitue sous formes de paires de fréquence et de
+      largeur de bande. Les pôles à 0 Hz et à la fréquence de Nyquist sont
+      exclus, et chaque paire de pôles conjugués est représentée par une
+      simple paire de paramètres. Pour un filtre d'ordre M, M coefficients
+      sont transformés en M/2 paires de fréquence et de largeur de bande.
+    </para> 
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode apoleparams utilisant un signal audio en
+      entrée comme source lpc. Il utilise le fichier
+      <ulink url="examples/apoleparams.csd"><citetitle>apoleparams.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode apoleparams.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/apoleparams.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="lpcanal"><citetitle>lpcanal</citetitle></link>,
+      <link linkend="resonbnk"><citetitle>resonbnk</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>

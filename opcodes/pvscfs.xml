@@ -1,0 +1,101 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvscfs">
+<indexterm id="IndexPvscfs"><primary>pvscfs</primary></indexterm>
+  <refentryinfo><title>Spectral Processing: lpc</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvscfs</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvscfs</refname>
+    <refpurpose>
+      Coefficient tout pôle par analyse cepstrale.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+       Cet opcode prend un signal pvs au format AMP *, applique la transformée
+       de cepstre et calcule les coefficients d'un filtre tout pôle.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kCoef[],krms,kerr  <command>pvscfs</command> fsig, iord[,imod]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+	  <emphasis>iord</emphasis> -- ordre du filtre tout pôle.
+    </para>
+    <para>
+	  <emphasis>imod</emphasis> -- mode de stabilisation du filtre (0 = pas
+	  de stabilisation ; 1 = reflexion de pôle ; 2 = limitation de pôle ;
+	  vaut 1 par défaut).
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kCoef[]</emphasis> -- coefficients du filtre tout pôle.
+      (tableau de la taille de l'ordre du filtre).
+    </para>
+    <para>
+      <emphasis>krms</emphasis> -- valeur efficace estimée du signal source.
+    </para>
+    <para>
+      <emphasis>kerr</emphasis> -- erreur (ou résidu).
+    </para>
+    <para>
+      <emphasis>fsig</emphasis> -- signal d'entrée pvs signal au format PV_AMP_*.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <para>
+      Cet opcode fait partie d'une suite d'opcodes de prédiction linéaire sur
+      un flux. Il prend un fsig, applique une transformée de cepstre, retenant
+      <emphasis>iord</emphasis> coefficients, et calcule les coefficients pour
+      un filtre tout pôle. Contrairement au cas de la prédiction linéaire, le
+      filtre résultant peut être instable. Pour résoudre ce problème, deux
+      méthodes de stabilisation sont offertes : les pôles peuvent être
+      réfléchis à l'intérieur du cercle unité, ou limités à celui-ci. C'est
+      plutôt gourmand en calcul, si bien que l'on a aussi l'option de ne pas
+      l'utiliser (si le cas particulier le permet).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode pvscfs utilisant un signal audio en
+      entrée comme source lpc. Il utilise le fichier
+      <ulink url="examples/pvscfs.csd"><citetitle>pvscfs.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode pvscfs.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pvscfs.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="lpcfilter"><citetitle>lpcfilter</citetitle></link>,
+      <link linkend="allpole"><citetitle>allpole</citetitle></link>
+    </para>
+  </refsect1>
+</refentry>
