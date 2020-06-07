@@ -26,8 +26,10 @@ english cvs version=1.17
   <refsect1>
     <title>Description</title>
     <para>
-      Les macros sont des substitutions de texte qui sont faites dans l'orchestre lors de sa lecture. Le
-      système de macro de Csound est très simple, et il utilise les caractères &num; et &dollar; pour
+      Les macros sont des substitutions de texte qui sont faites dans
+      l'orchestre lors de sa lecture. Le <link
+      linkend="OrchMacros"><citetitle>système de macro de l'orchestre</citetitle></link>
+      de Csound est très simple, et il utilise les caractères &num; et &dollar; pour
       définir et appeler les macros. Il permet d'économiser de la frappe et peut
       conduire à une structure cohérente dans un style consistant. Il est similaire, tout en étant
       indépendant, au <link linkend="ScoreMacros"><citetitle>système de macros du langage de
@@ -212,6 +214,9 @@ Macro definition for OSCMACRO</screen>
     <title>Voir aussi</title>
     <para>
       <link linkend="dollar"><citetitle>&dollar;NOM</citetitle></link>,
+      <link linkend="ifdef"><citetitle>&num;ifdef</citetitle></link>,
+      <link linkend="ifndef"><citetitle>&num;ifndef</citetitle></link>,
+      <link linkend="include"><citetitle>&num;include</citetitle></link>,
       <link linkend="undef"><citetitle>&num;undef</citetitle></link>
     </para>
   </refsect1>
