@@ -1144,6 +1144,14 @@
 <synopsis><link linkend="JackoTransport">JackoTransport </link> kcommand, [kposition]</synopsis><para/>
 </para></formalpara>
 <para></para><para></para><formalpara>
+<title>E/S série</title>
+<para>
+<para/>
+<synopsis>kval <link linkend="arduinoRead">arduinoRead</link> iPort, iStream[, iSmooth]</synopsis><para/>
+<synopsis>iPort <link linkend="arduinoStart">arduinoStart</link> SPortName [, ibaudRate]</synopsis><para/>
+<synopsis> <link linkend="arduinoStop">arduinoStop</link> iPort</synopsis><para/>
+</para></formalpara>
+<para></para><para></para><formalpara>
 <title>Contrôle des tables de fonction</title>
 <para>
 <para/>

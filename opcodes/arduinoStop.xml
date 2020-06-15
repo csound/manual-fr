@@ -1,6 +1,13 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
 <refentry id="arduinoStop">
 <indexterm
-    id="IndexSerialEnd"><primary>arduinoStop</primary></indexterm>
+    id="IndexArduinoStop"><primary>arduinoStop</primary></indexterm>
 
   <refentryinfo><title>Serial I/O</title></refentryinfo>
   <refmeta>
@@ -10,33 +17,34 @@
    <refnamediv>
     <refname>arduinoStop</refname>
     <refpurpose>
-      Close a serial port usng Arduino protocol.
+      Ferme un port série utilisant le protocole Arduino.
     </refpurpose>
   </refnamediv>
 
   <refsect1>
     <title>Description</title>
-    <para>Plugin opcode in serial.</para>
+    <para>Opcode du greffon serial.</para>
     <para>
-      Close a serial port for arduino with Csound-Arduino protocol.
+      Ferme un port série pour arduino avec utilisation du protocole
+      Csound-Arduino.
     </para>
   </refsect1>
 
   <refsect1>
-    <title>Syntax</title>
+    <title>Syntaxe</title>
       <synopsis> <command>arduinoStop</command> iPort</synopsis>
   </refsect1>
 
   <refsect1>
-    <title>Initialization</title>
+    <title>Initialisation</title>
     <para>
-      <emphasis>iPort</emphasis> -- port number optained from a
-      <emphasis>arduinoStart</emphasis>opcode.
+      <emphasis>iPort</emphasis> -- Numéro de port obtenu d'un opcode
+      <emphasis>arduinoStart</emphasis>.
     </para>
- </refsect1>
+  </refsect1>
 
   <refsect1>
-    <title>See Also</title>
+    <title>Voir aussi</title>
     <para>
       <link linkend="arduinoStart"><citetitle></citetitle>arduinoStart</link>,
       <link linkend="arduinoRead"><citetitle></citetitle>arduinoRead</link>,
@@ -44,13 +52,13 @@
   </refsect1>
 
   <refsect1>
-    <title>Credits</title>
+    <title>Crédits</title>
     <para>
       <simplelist>
-        <member>Author: &namejohn;</member>
+        <member>Auteur : &namejohn;</member>
         <member>2020</member>
       </simplelist>
     </para>
-    <para>New in version 6.15</para>
+    <para>Nouveau dans la version 6.15</para>
   </refsect1>
 </refentry>
