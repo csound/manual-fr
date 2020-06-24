@@ -1,0 +1,86 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<!--Change refentry id and indexterm id-->
+<refentry id="count">
+<indexterm id="IndexNewopcode"><primary>counte</primary></indexterm>
+<!--Make sure the category below is a valid one! See categories.py-->
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>count</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>count</refname>
+    <refpurpose>
+      Retourne la valeur suivante d'un compteur.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>Opcode du greffon counter.</para>
+    <para>
+      Retourne la valeur suivante d'un compteur en ajoutant l'incrément et en
+      maintenant le compteur dans l'intervalle déclaré.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kval <command>count</command> icnt</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>icnt</emphasis> -- l'identifiant d'un objet compteur obtenu d'un
+      appel à <emphasis>cntCreate</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Calcule la valeur suivante de l'objet compteur et retourne cette valeur.
+    </para>
+    <para>
+        <emphasis>kval</emphasis> -- valeur retournée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode count. Il utilise le fichier
+      <ulink url="examples/counter.csd"><citetitle>counter.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode count.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/counter.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="cndCreate"><citetitle>cntCreate</citetitle></link>
+      <link linkend="count_i"><citetitle>count_i</citetitle></link>
+      <link linkend="cndCycles"><citetitle>deltap</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par : &namejohn; juin 2020</para>
+    <para>Nouveau dans la version 6.15</para>
+  </refsect1>
+</refentry>
+

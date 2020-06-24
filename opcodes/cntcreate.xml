@@ -1,0 +1,94 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<!--Change refentry id and indexterm id-->
+<refentry id="cntCreate">
+<indexterm id="IndexcntCreate"><primary>cntCreate</primary></indexterm>
+<!--Make sure the category below is a valid one! See categories.py-->
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>cntCreate</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>cntCreate</refname>
+    <refpurpose>
+      Crée un objet compteur.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>Opcode du greffon counter.</para>
+     <para>
+      Crée un objet compteur.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>icnt <command>cntCreate</command> [imax, imin, inc]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>imax</emphasis> -- valeur maximale facultative pour le compteur,
+      vaut 1 par défaut.
+    </para>
+    <para>
+      <emphasis>imin</emphasis> -- valeur minimale facultative pour le compteur,
+      vaut 0 par défaut.
+    </para>
+    <para>
+      <emphasis>inc</emphasis> -- incrément facultatif pour de compteur, vaut
+      1 par défaut.
+    </para>
+     <para>
+       <emphasis>icnt</emphasis> -- un identifiant pour le compteur.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Crée un objet compteur qui boucle entre <emphasis>imin</emphasis> et
+      <emphasis>imax</emphasis> par pas de <emphasis>inc</emphasis>. Lorsqu'il
+      est utilisé sans argument, les valeurs par défaut créent une bascule.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Voici un exemple de l'opcode cndCreate. Il utilise le fichier
+      <ulink url="examples/counter.csd"><citetitle>counter.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode cndCreate.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/counter.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+`  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="count"><citetitle>count</citetitle></link>
+      <link linkend="count_i"><citetitle>cout_i</citetitle></link>
+      <link linkend="cndCycles"><citetitle>deltap</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par : &namejohn; juin 2020</para>
+    <para>Nouveau dans la version 6.15</para>
+  </refsect1>
+</refentry>
