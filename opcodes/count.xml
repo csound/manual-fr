@@ -7,7 +7,7 @@ authors=Francois Pinot
 
 <!--Change refentry id and indexterm id-->
 <refentry id="count">
-<indexterm id="IndexNewopcode"><primary>counte</primary></indexterm>
+<indexterm id="IndexCount"><primary>count</primary></indexterm>
 <!--Make sure the category below is a valid one! See categories.py-->
   <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
   <refmeta>
@@ -71,9 +71,9 @@ authors=Francois Pinot
   <refsect1>
     <title>Voir aussi</title>
     <para>
-      <link linkend="cndCreate"><citetitle>cntCreate</citetitle></link>
+      <link linkend="cntCreate"><citetitle>cntCreate</citetitle></link>
       <link linkend="count_i"><citetitle>count_i</citetitle></link>
-      <link linkend="cndCycles"><citetitle>deltap</citetitle></link>
+      <link linkend="cntCycles"><citetitle>cntCycles</citetitle></link>
     </para>
   </refsect1>
 
@@ -83,4 +83,3 @@ authors=Francois Pinot
     <para>Nouveau dans la version 6.15</para>
   </refsect1>
 </refentry>
-
