@@ -454,6 +454,8 @@
 <title>Générateurs de signal : synthèse par terrain d'ondes</title>
 <para>
 <para/>
+<synopsis>aout <link linkend="sterrain">sterrain</link> kamp, kcps, kx, ky, krx, kry, krot, ktab0, ktab1, km1, km2, kn1, kn2, kn3, ka, kb, kperiod
+    </synopsis><para/>
 <synopsis>aout <link linkend="wterrain">wterrain</link> kamp, kpch, k_xcenter, k_ycenter, k_xradius, k_yradius, \
       itabx, itaby</synopsis><para/>
 </para></formalpara>
@@ -2284,6 +2286,5 @@ inum_parm, kupdate</synopsis><para/>
 <synopsis><link linkend="sdif2ad">sdif2ad</link> [options] fichier_entree fichier_sortie</synopsis><para/>
 <synopsis><link linkend="sndinfo">csound -U sndinfo</link> [options] fichierson ...</synopsis><synopsis><link linkend="sndinfo">sndinfo</link> [options] fichierson ...</synopsis><para/>
 <synopsis><link linkend="src_conv">src_conv</link> [options] fichier_entree</synopsis><para/>
-<synopsis><link linkend="srconv">srconv</link> [options] fichier_entree</synopsis><para/>
 </para></formalpara>
 <para></para></chapter></part>

@@ -54,7 +54,7 @@ authors=Francois Pinot
         <listitem><para>-<emphasis>J</emphasis> = crée un fichier son de sortie au format
           IRCAM</para></listitem>
         <listitem><para>-<emphasis>W</emphasis> = crée un fichier son de sortie au format
-          WAV</para></listitem>
+          WAV (par défaut à partir de la version 6.15 de Csound)</para></listitem>
         <listitem><para>-<emphasis>h</emphasis> = pas d'en-tête dans le fichier son de
           sortie</para></listitem>
         <listitem><para>-<emphasis>c</emphasis> = échantillons en caractères signés sur
@@ -108,13 +108,6 @@ authors=Francois Pinot
     </para>
   </refsect1>
  
-  <refsect1>
-    <title>Voir aussi</title>
-    <para>
-      <link linkend="srconv"><citetitle>srconv</citetitle></link>
-    </para>
-  </refsect1>
-
   <refsect1>
     <title>Crédits</title>
     <para>Auteur : &namejohn; basé sur du code d'Erik de Castro Lopo.</para>

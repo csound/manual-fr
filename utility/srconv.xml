@@ -16,109 +16,15 @@ english cvs version=1.7
   <refnamediv>
     <refname>srconv</refname>
     <refpurpose>
-      Convertit le taux d'échantillonnage d'un fichier audio.
-      <indexterm id="IndexSrconv"><primary>srconv</primary></indexterm>
+      Obsolète
     </refpurpose>
   </refnamediv>
  
   <refsect1>
     <title>Description</title>
     <para>
-      Convertit le taux d'échantillonnage d'un fichier audio de <emphasis>Rin</emphasis> à
-      <emphasis>Rout</emphasis>. Optionnellement le rapport (<emphasis>Rin</emphasis> /
-      <emphasis>Rout</emphasis> peut varier linéairement dans le temps selon un ensemble de paires
-      (temps, rapport) dans un fichier auxiliaire.
-      <note>Cet utilitaire n'est pas fiable. Il vaut mieux utiliser libsamplerate.
-      <emphasis>srconv</emphasis> sera supprimé et remplacé prochainement.</note>
+      Obsolète à partir de la version 6.15 de Csound. Utiliser l'utilitaire
+      <link linkend="src_conv"><citetitle>src_conv</citetitle></link> à la
+      place. 
     </para>
   </refsect1>
- 
-  <refsect1>
-    <title>Syntaxe</title>
-    <synopsis><command>srconv</command> [options] fichier_entree</synopsis>
-  </refsect1>
- 
-  <refsect1>
-    <title>Initialisation</title>
-    <para>
-      Options :
-      <itemizedlist>
-        <listitem><para>-<emphasis>P num</emphasis> = rapport de transposition en hauteur
-          (<emphasis>srate</emphasis> / <emphasis>r</emphasis>) [ne pas spécifier à la fois
-          <emphasis>P</emphasis> et <emphasis>r</emphasis>]</para></listitem>
-        <listitem><para>-<emphasis>Q num</emphasis> = facteur de qualité (1, 2, 3 ou 4 : par
-          défaut = 2)</para></listitem>
-        <listitem><para>-<emphasis>i nomfic</emphasis> = fichier auxiliaire de points charnière (pas de
-          point charnière par défaut, c'est-à-dire pas de changement de rapport)</para></listitem> 
-        <listitem><para>-<emphasis>r num</emphasis> = taux d'échantillonnage en sortie (doit être
-          spécifié)</para></listitem> 
-        <listitem><para>-<emphasis>o nomfic</emphasis> = nom du fichier son de sortie</para></listitem>
-        <listitem><para>-<emphasis>A</emphasis> = crée un fichier son de sortie au format
-          AIFF</para></listitem>
-        <listitem><para>-<emphasis>J</emphasis> = crée un fichier son de sortie au format
-          IRCAM</para></listitem>
-        <listitem><para>-<emphasis>W</emphasis> = crée un fichier son de sortie au format
-          WAV</para></listitem>
-        <listitem><para>-<emphasis>h</emphasis> = pas d'en-tête dans le fichier son de
-          sortie</para></listitem>
-        <listitem><para>-<emphasis>c</emphasis> = échantillons en caractères signés sur
-          8 bit</para></listitem>
-        <listitem><para>-<emphasis>a</emphasis> = échantillons alaw</para></listitem>
-        <listitem><para>-<emphasis>8</emphasis> = échantillons en caractères non-signés sur
-          8 bit</para></listitem> 
-        <listitem><para>-<emphasis>u</emphasis> = échantillons ulaw</para></listitem> 
-        <listitem><para>-<emphasis>s</emphasis> = échantillons en entiers courts</para></listitem>
-        <listitem><para>-<emphasis>l</emphasis> = échantillons en entiers longs</para></listitem>
-        <listitem><para>-<emphasis>f</emphasis> = échantillons en virgule flottante</para></listitem>
-        <listitem><para>-<emphasis>r N</emphasis> = remplace le <emphasis>srate</emphasis> de
-          l'orchestre</para></listitem>
-        <listitem><para>-<emphasis>K</emphasis> = ne génère pas de bloc de pics
-          d'amplitude</para></listitem>
-        <listitem><para>-<emphasis>R</emphasis> = réécrit continuellement l'en-tête pendant l'écriture
-          du fichier son (WAV/AIFF)</para></listitem> 
-        <listitem><para>-<emphasis>H#</emphasis> = imprime une pulsation dans le style 1, 2 ou 3
-          à chaque écriture dans le fichier son</para></listitem>
-        <listitem><para>-<emphasis>N</emphasis> = notification (cloche système) quand le traitement
-          est fini</para></listitem> 
-        <listitem><para>-<emphasis>- nomfic</emphasis> = compte-rendu dans un fichier</para></listitem> 
-      </itemizedlist>
-    </para>
-
-    <para>
-      Ce programme effectue une conversion arbitraire du taux d'échantillonnage en haute fidélité. La
-      méthode consiste à parcourir le fichier d'entrée avec un pas d'incrémentation conforme au taux
-      d'échantillonnage désiré, et de calculer les points de sortie comme moyennes convenablement
-      pondérées des points voisins. Il y a deux cas à considérer :
-
-      <orderedlist>
-        <listitem><para>les taux d'échantillonnage sont dans un petit rapport entier - les poids sont
-          obtenus de la table</para></listitem> 
-        <listitem><para>les taux d'échantillonnage sont dans un grand rapport entier - les poids sont
-          linéairement interpolés de la table.</para></listitem> 
-      </orderedlist>
-    </para>
-
-    <para>
-      Calcul de l'incrément : pour une décimation, la fenêtre est la réponse impulsionnelle d'un
-      filtre passe-bas avec une fréquence de coupure située à la moitié de la fréquence
-      d'échantillonnage en sortie ; pour une interpolation, la fenêtre est la réponse impulsionnelle
-      d'un filtre passe-bas avec une fréquence de coupure située à la moitié de la fréquence
-      d'échantillonnage de l'entrée.
-    </para>
-  </refsect1>
- 
-  <refsect1>
-    <title>Voir aussi</title>
-    <para>
-      <link linkend="src_conv"><citetitle>src_conv</citetitle></link>
-    </para>
-  </refsect1>
-
-  <refsect1>
-    <title>Crédits</title>
-    <para>Auteur : Mark Dolson</para>
-    <para>26 août 1989</para>
-    <para>Auteur : &namejohn;</para>
-    <para>30 décembre 2000</para>
-  </refsect1>
-</refentry>

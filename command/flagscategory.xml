@@ -1366,6 +1366,16 @@ csound5:output2             (reproduction droite)</screen>
       </listitem>
     </varlistentry>
 
+    <varlistentry id="FlagsCatMinusPrintVersion">
+      <term>--print_version<indexterm
+      id="IndexCatMinusPrintVesion"><primary>--print_version</primary></indexterm></term>
+      <listitem>
+        <para>
+          Affiche l'information de version à la fin du rendu.
+        </para>
+      </listitem>
+    </varlistentry>
+
     <varlistentry id="FlagsCatMinusMinusGetSR">
       <term>--get-system-sr<indexterm id="IndexCatMinusMinusGetSR"><primary>--get-system-sr</primary></indexterm></term>
       <listitem>
@@ -1513,12 +1523,18 @@ csound5:output2             (reproduction droite)</screen>
       </listitem>
     </varlistentry>
 
-    <varlistentry id="FlagsCatMinusLowerT0">
+    <varlistentry id="FlagsCatSimpleScore">
       <term>--simple-sorted-score<indexterm id="IndexCatMinusSimplesortedscore"><primary>--simple-sorted-score</primary></indexterm></term>
       <listitem>
         <para>
           Conserve le fichier de partition trié score.srt dans un format simple
           et lisible lors de la sortie. (Nouveau dans la version 6.14).
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Alternativement, on peut faire suivre immédiatement un signe = et un
+          nom de fichier pour choisir où écrire la partition.
         </para>
       </listitem>
     </varlistentry>

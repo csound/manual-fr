@@ -9,7 +9,7 @@ english cvs version=1.11
 
 <section id="UtilityConversion">
   <title>Conversion de fichier (<!--DNOISE-->, HET_EXPORT, HET_IMPORT, PVLOOK, PV_EXPORT, PV_IMPORT, SDIF2AD,
-    SRCONV)</title>
+    SRC_CONV)</title>
   <para>Les utilitaires suivants existent pour la conversion de fichier :
     <itemizedlist>
 <!--      <listitem>
@@ -62,12 +62,6 @@ english cvs version=1.11
       </listitem>
       <listitem>
         <para>
-          <link linkend="srconv"><citetitle>SRCONV</citetitle></link> : convertit le taux d'échantillonnage
-          d'un fichier audio.
-        </para>
-      </listitem>
-      <listitem>
-        <para>
           <link linkend="src_conv"><citetitle>SRC_CONV</citetitle></link> : convertit le taux d'échantillonnage
           d'un fichier audio.
         </para>
@@ -82,6 +76,5 @@ english cvs version=1.11
   &utilitypv_export;
   &utilitypv_import;
   &utilitysdif2ad;
-  &utilitysrconv;
   &utilitysrc_conv;
 </section>
