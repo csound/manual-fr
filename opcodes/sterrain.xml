@@ -1,0 +1,138 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="sterrain">
+<indexterm id="IndexSterrain"><primary>sterrain</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Wave Terrain Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>sterrain</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>sterrain</refname>
+    <refpurpose>
+      Un opcode de synthèse par terrain d'onde utilisant des courbes calculées
+      avec la superformule.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Un opcode de synthèse par terrain d'onde utilisant des courbes calculées
+      avec la superformule. (Voir <ulink
+      url="https://en.wikipedia.org/wiki/Superformula"><citetitle>Wikipedia</citetitle></ulink>
+      pour plus d'information).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aout <command>sterrain</command> kamp, kcps, kx, ky, krx, kry, krot, ktab0, ktab1, km1, km2, kn1, kn2, kn3, ka, kb, kperiod
+    </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ktabx, ktaby</emphasis> -- Les deux tables définissant le
+      terrain - elles peuvent changer au taux-k.
+    </para>
+    <para>
+      La sortie est le résultat du dessin de la courbe de la superformule avec
+      les paramètres <emphasis>km1, km2, kn1, kn2, kn3, ka, kb</emphasis>
+      (voir sur wikipedia), pondérée avec <emphasis>krx</emphasis> et
+      <emphasis>kry</emphasis> et centrée en
+      <emphasis>kx</emphasis>, <emphasis>ky</emphasis> sur le terrain,
+      pivotée autour du centre de <emphasis>krot</emphasis> radians, et le
+      traversant à la fréquence de <emphasis>kcps/kperiod</emphasis>.
+      <emphasis>km1, km2</emphasis> sont convertis en entiers.
+    </para>
+    <para>
+      Comme la vitesse du point peut changer considérablement pour certaines
+      classes de paramètres lors du dessin de la courbe sur le terrain,
+      plusieurs sons différents peuvent être produits comparés à
+      d'autres courbes standard, par exemple il peut y avoir des parties
+      comme des triangles dans l'onde de sortie.
+    </para>
+    <para>
+      Les intervalles suivant sont supportés et utiles :
+    </para>
+    <para>
+      <emphasis>kn1, ka, kb</emphasis> -- != 0 et continus.
+    </para>
+    <para>
+      <emphasis>kn2, kn3</emphasis> -- continus.
+    </para>
+    <para>
+      <emphasis>km1, km2</emphasis> -- entiers positifs : noter que les
+      courbes ne sont pas fermées pour toutes les combinaisons de km1, km2 et
+      ont des pôles (fermeture à l'infini) par exemple si kn1 > 0 et s'il
+      existe n, m dans Z avec 2*km1/km2 = 2m+1/n, c'est-à-dire des courbes
+      avec (3,2) (5,2) (7,2) etc et (5,4) (6,4) (7,4) (9,4) etc. ont un
+      pôle qui est notable à l'écoute. Si kn1 &lt; 0 alors la courbe est
+      inversée et les pôles vont vers zéro dans ce cas. Si km1 et km2 sont
+      nuls, du silence est produit (un cercle plein - même effet qu'avec le
+      tuple 2,2,2,2,2,1,1).
+    </para>
+    <para>
+      <emphasis>kperiod</emphasis> -- certains rapports de km1 et km2 peuvent
+      causer des décalages de hauteur. Ceci peut être corrigé avec le
+      paramètre kperiod. Si le rapport est 1 alor la valeur de kperiod doit
+      aussi être fixée à km1 pour avoir la hauteur d'entrée en sortie.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode sterrain qui montre l'impact de laisser
+      kn1 évoluer vers zéro. Il utilise le fichier
+      <ulink url="examples/sterrain.csd"><citetitle>sterrain.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode sterrain.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/sterrain.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Voici un autre exemple de l'opode sterrain montrant la construction
+      d'harmoniques. Il utilise le fichier
+      <ulink url="examples/sterrain2.csd"><citetitle>sterrain2.csd</citetitle></ulink>.
+      <example>
+        <title>Un autre exemple de l'opode sterrain montrant la construction
+        d'harmoniques.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/sterrain2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+      <para>
+        <link linkend="wterrain"><citetitle>wterrain</citetitle></link>,
+      </para>
+      <para>Plus d'information sur cet opcode :
+      <ulink url="https://youtu.be/E75xakCueA8"><citetitle>https://youtu.be/E75xakCueA8</citetitle></ulink>,
+      par Christian Bacher </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Christian Bacher</member>
+        <member>Nouveau dans la version 6.15</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>
