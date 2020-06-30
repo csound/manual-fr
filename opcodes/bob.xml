@@ -1,0 +1,128 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<!--Change refentry id and indexterm id-->
+<refentry id="bob">
+<indexterm id="IndexBob"><primary>bob</primary></indexterm>
+<!--Make sure the category below is a valid one! See categories.py-->
+  <refentryinfo><title>Signal Modifiers:Standard Filters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>bob</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>bob</refname>
+    <refpurpose>
+      Simulation numérique de Runge-Kutte du filtre analogique résonant de Moog.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+     <para>
+       bob est un portage de l'objet filtre bob~ de PD. Sa conception est basée
+       sur les articles de Tim Stilson, Timothy E. Stinchcombe et Antti Huovilainen.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+<!--    Please keep this below ~70 characters by using backslashes to avoid overflow in the pdf version-->
+    <synopsis>asig <command>bob</command> ain, xcf, xres, xsat [, iosamps, istor]</synopsis>
+  </refsect1>
+
+  <refsect1>
+<!--  If applicable list i-time arguments-->
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iosamps</emphasis> -- nombre de fois que le suréchantillonnage
+      est utilisé dans le processus de filtrage. Cela détermine la raideur
+      maximale de la résonance du filtre (Q). Plus de suréchantillonnage autorise
+      des Q plus importants, moins de suréchantillonnage limite la résonance.
+      La valeur par défaut est 3 fois (iosamps=0).
+    </para>
+    <para>
+      <emphasis>istor</emphasis> -- disposition initiale de l'espace interne des
+      données. Comme le filtrage comprend une boucle de rétroaction de la sortie,
+      l'état initial de l'espace de stockage est significatif. Une valeur nulle
+      efface le contenu de cet espace ; une valeur non nulle permet de garder
+      l'information précédente. La valeur par défaut est 0.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+<!--    First list all input and output performance parameters-->
+    <para>
+      <emphasis>asig</emphasis> -- signal d'entrée.
+    </para>
+    <para>
+      <emphasis>xcf</emphasis> -- fréquence de coupure du filtre.
+    </para>
+    <para>
+      <emphasis>xres</emphasis> -- résonance du filtre. Nominalement, une valeur
+      de 4 est la limite de stabilité -- au-delà, le filtre oscille.
+    </para>
+    <para>
+      <emphasis>xsat</emphasis> -- saturation. Ce paramètre détermine à quel
+      niveau du signal les "transistors" du modèle saturent. L'amplitude
+      maximale de sortie vaut environ 2/3 de cette valeur.
+    </para>
+    <para>
+      Par défaut bob~ effectue un pas de l'intégration de Runge-Kutte du 4ème
+      ordre par échantillon audio. Ceci fonctionne parfaitement pour des
+      fréquences de résonance/coupure jusqu'a environ 1/2 Nyquist. Pour
+      améliorer la précision et/ou augmenter l'étendue du filtre vers des
+      fréquences de coupure plus hautes on peut suréchantillonner par n'importe
+      quel facteur - mais il faut noter que le temps de calcul augmente en
+      conséquence. Aux fréquences de coupure/résonances élevées, l'approximation
+      RK peut devenir instable. On peut contrer cela en élevant le facteur
+      de suréchantillonnage. Le paramètre de saturation détermine à quel niveau
+      du signal les "transistors" du modèle saturent. L'amplitude maximale de
+      sortie vaut environ 2/3 de cette valeur.
+    </para>
+  </refsect1>
+
+  <refsect1>
+<!--To add examples, create the csd file in the examples directory, then run:-->
+<!--python csd2docbook.py -f newopcodename.csd-->
+<!--to generate the xml highlighted version used below-->
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode bob. Il utilise le fichier
+      <ulink url="examples/bob.csd"><citetitle>bob.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode bob.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/bob.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+<!--    it's always good to include a good See Also list  -->
+    <para>
+      <link linkend="moogladder"><citetitle>moogladder</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+<!--  And put your name and other relevant information here-->
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Autheur : Gleb Rogozinsky</member>
+        <member>Juin 2020</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 6.15 de Csound</para>
+  </refsect1>
+</refentry>
