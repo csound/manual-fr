@@ -48,7 +48,8 @@ authors=Francois Pinot
           point charnière par défaut, c'est-à-dire pas de changement de rapport)</para></listitem> 
         <listitem><para>-<emphasis>r num</emphasis> = taux d'échantillonnage en sortie (doit être
           spécifié si P est absent)</para></listitem> 
-        <listitem><para>-<emphasis>o nomfic</emphasis> = nom du fichier son de sortie</para></listitem>
+        <listitem><para>-<emphasis>o nomfic</emphasis> = nom du fichier son de sortie
+          (par défaut : test.wav)</para></listitem>
         <listitem><para>-<emphasis>A</emphasis> = crée un fichier son de sortie au format
           AIFF</para></listitem>
         <listitem><para>-<emphasis>J</emphasis> = crée un fichier son de sortie au format
@@ -63,7 +64,9 @@ authors=Francois Pinot
         <listitem><para>-<emphasis>8</emphasis> = échantillons en caractères non-signés sur
           8 bit</para></listitem> 
         <listitem><para>-<emphasis>u</emphasis> = échantillons ulaw</para></listitem> 
-        <listitem><para>-<emphasis>s</emphasis> = échantillons en entiers courts</para></listitem>
+        <listitem><para>-<emphasis>s</emphasis> = échantillons en entiers courts
+          (16 bit) (par défaut)</para></listitem>
+        <listitem><para>-<emphasis>3</emphasis> = échantillons sur 24 bit</para></listitem>
         <listitem><para>-<emphasis>l</emphasis> = échantillons en entiers longs</para></listitem>
         <listitem><para>-<emphasis>f</emphasis> = échantillons en virgule flottante</para></listitem>
         <listitem><para>-<emphasis>r N</emphasis> = remplace le <emphasis>srate</emphasis> de
