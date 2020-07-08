@@ -1,0 +1,72 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="B">
+      <indexterm id="IndexBStatement"><primary>B statement</primary></indexterm>
+  <refmeta>
+    <refentrytitle>B Statement</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>B Statement</refname>
+    <refpurpose>
+      Cette instruction ajuste l'horloge.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cette instruction ajuste l'horloge cumulativement.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>B</command> p1</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>p1</emphasis> -- Spécifie comment l'horloge doit être réglée.
+    </para>
+
+    <refsect2>
+      <title>Considérations spéciales</title>
+      <para>
+        p1 est le nombre de pulsations modifiant les valeurs p2 des
+        <emphasis>instructions i</emphasis> suivantes. 
+        Si p1 est positif, l'horloge est allongée, et les notes suivantes
+        apparaissent plus tard, le nombre de pulsations spécifié par p1 étant
+        ajouté au p2 des notes. Si p1 est négatif, l'horloge est raccourcie
+        et les notes suivantes apparaissent plus tôt, le nombre de pulsations
+        spécifié par p1 étant soustrait du p2 des notes. L'horloge est
+        incrémentée de p1 pour les notes suivantes.
+      </para>
+    </refsect2>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'instruction B. Il utilise le fichier
+      <ulink url="examples/B.csd"><citetitle>B.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'instruction B.</title>
+        <xi:include href="examples-xml/B.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      Nouveau dans Csound 6.15.
+    </para>
+  </refsect1>
+</refentry>

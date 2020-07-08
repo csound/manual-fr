@@ -1,0 +1,124 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<!--Change refentry id and indexterm id-->
+<refentry id="lufs">
+<indexterm id="IndexLufs"><primary>lufs</primary></indexterm>
+<!--Make sure the category below is a valid one! See categories.py-->
+  <refentryinfo><title>Utilities</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lufs</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>lufs</refname>
+    <refpurpose>
+      Indicateur d'intensité instantanée, intégrée et à court terme en LUFS.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+     <para>
+       L'opcode fait une analyse de l'entrée audio selon la recommandation
+       ITU-R BS.1770-4. Les sorties sont les intensités instantanée, intégrée
+       et à court-terme.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kmom, kint, kshort <command>lufs</command> ain1 [, ain2]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+<!--    First list all input and output performance parameters-->
+    <para>
+      <emphasis>ain1, ain2</emphasis> -- signal(-aux) en entrée. Seuls les
+      signaux mono et stéréo sont supporés (voir ci-dessous).
+    </para>
+    <para>
+      <emphasis>kmom</emphasis> -- intensité instantanée en LUFS
+    </para>
+    <para>
+      <emphasis>kint</emphasis> -- intensité intégrée en LUFS
+    </para>
+    <para>
+      <emphasis>kshort</emphasis> -- intensité à court-terme en LUFS
+    </para>
+
+    <para>
+      L'intensité instantanée est calculée sur une période de 400 ms et
+      l'intensité à court-terme sur une période de 3 s. L'intensité intégrée
+      est obtenue en moyennant tout le programme. L'algorithme de calcul est
+      basé sur les formules de
+      <ulink
+      url="https://www.mathworks.com/help/audio/ref/integratedloudness.html">
+      <citetitle>Matlab integratedLoudness code</citetitle></ulink>.
+      <ulink
+      url="https://www.itu.int/dms_pubrec/itu-r/rec/bs/R-REC-BS.1770-4-201510-I!!PDF-E.pdf">
+      <citetitle>ITU-R BS.1770-4</citetitle></ulink> donne les coefficients des
+      filtres de poids-K seulement pour 48000 Hz, si bien que les coefficients
+      des autres fréquences d'échantillonnage sont calculés selon
+      <ulink
+      url="https://github.com/BrechtDeMan/loudness.py/blob/master/loudness.py">
+      <citetitle>Brecht De Man code</citetitle></ulink>.
+      Seuls les formats mono et stéréo sont supportés car l'usage du format
+      5.1 est rare dans le domaine de la musique par ordinateur. ITU-R BS.1770-4
+      ne standardise que les canaux 1, 2 et 5.1.
+    </para>
+
+    <note>
+      <title>Avertissement !</title>
+      <para>
+        <emphasis>ksmps</emphasis> ne doit pas être fixé à des valeurs plus
+        grandes que <emphasis>sr</emphasis>/10, c'est-à_dire 4410 @ sr = 44100
+        et supérieur.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+<!--To add examples, create the csd file in the examples directory, then run:-->
+<!--python csd2docbook.py -f newopcodename.csd-->
+<!--to generate the xml highlighted version used below-->
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode lufs. Il utilise le fichier
+      <ulink url="examples/lufs.csd"><citetitle>lufs.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode lufse.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/lufs.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+<!--    it's always good to include a good See Also list  -->
+    <para>
+      <link linkend="rms"><citetitle>rms</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+<!--  And put your name and other relevant information here-->
+    <title>Crédits</title>
+    <para>par : Gleb Rogozinsky, Juillet 2020</para>
+    <para>Nouveau dans la version 6.15</para>
+  </refsect1>
+
+<!--Now remember to add a link from the appropriate category in the Opcode Overview.-->
+<!--Add the entity to manual.xml-->
+<!--Add the entity reference in the appropriate place in opcodes/top.xml-->
+<!--And you're set! Maybe delete the comments as well...-->
+
+</refentry>
