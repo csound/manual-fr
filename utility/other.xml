@@ -9,7 +9,7 @@ english cvs version=1.12
 
 <section id="UtilityOther">
   <title>Autres utilitaires de Csound (CS, CSB64ENC, ENVEXT, EXTRACTOR, MAKECSD,
-  MIXER, SCALE, MKDB)</title>
+  MIXER, SCALE)</title>
   <para>Les divers utilitaires suivants sont disponibles :
     <itemizedlist>
       <listitem>
@@ -55,12 +55,12 @@ english cvs version=1.12
           l'amplitude d'un fichier son.
         </para>
       </listitem>
-      <listitem>
+      <!-- <listitem>
         <para>
           <link linkend="mkdb"><citetitle>MKDB</citetitle></link>:
           crée un cataloque des opcodes greffons.
         </para>
-      </listitem>
+      </listitem> -->
     </itemizedlist>
   </para>
     &utilitycs;
@@ -70,5 +70,5 @@ english cvs version=1.12
     &utilitymakecsd;
     &utilitymixer;
     &utilityscale;
-    &utilitymkdb;
+    <!-- &utilitymkdb; -->
 </section>
