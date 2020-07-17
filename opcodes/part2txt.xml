@@ -1,0 +1,80 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="part2txt">
+<indexterm id="Indexpart2txt"><primary>part2txt</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>part2txt</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>part2txt</refname>
+    <refpurpose>
+      Ecrit un fichier texte contenant des données de pistes de partiels
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      L'opcode <emphasis>part2txt</emphasis> prend en entrée un fsig PVS_TRACKS
+      et écrit les données comme une suite de listes de suivi de partiels, une
+      pour chaque point temporel, dans un fichier texte organisé par lignes.
+      Chaque suivi de partiel est placé dans une ligne séparée contenant
+      l'amplitude, la fréquence, la phase et l'ID du suivi. Une ligne de
+      séparation contenant quatre valeurs -1.0 est utilisée pour définir la fin
+      de la liste de suivi pour un point temporel donné.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>part2txt</command> SFile, ftrks</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+      <para>
+      <emphasis>SFile</emphasis> -- nom du fichier de sortie.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+      <para>
+      <emphasis>ftrks</emphasis> -- flot pv en sortie au format TRACKS.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemple</title>
+    <para>
+      Voici un exemple de l'opcode part2txt. Il utilise le fichier
+      <ulink url="examples/part2txt.csd"><citetitle>part2txt.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode part2txt.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/part2txt.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para> 
+    <para>L'exemple ci-dessus montre la détection et le suivi de partiel d'un
+    signal analysé par ifd et sa resynthèse additive avec interpolation cubique
+    de phase et transposition de hauteur.</para>   
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Juin 2015 </member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>
