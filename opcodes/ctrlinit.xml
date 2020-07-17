@@ -13,8 +13,6 @@ english cvs version=1.8
   <refmeta>
     <refentrytitle>ctrlinit</refentrytitle>
   </refmeta>
-
-
  
   <refnamediv>
     <refname>ctrlinit</refname>
@@ -48,7 +46,9 @@ english cvs version=1.8
     </para>
 
     <para>
-      <emphasis>ival1</emphasis>, <emphasis>ival2</emphasis>, etc. -- valeur initiale pour le contrôleur MIDI de numéro correspondant
+      <emphasis>ival1</emphasis>, <emphasis>ival2</emphasis>, etc. -- valeur 
+      initiale pour le contrôleur MIDI de numéro correspondant dans l'intervalle
+      0 -127.
     </para>
   </refsect1>
 
@@ -66,6 +66,21 @@ english cvs version=1.8
     </para>
   </refsect1>
  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode ctrlinit. Il utilise le fichier
+      <ulink url="examples/ctrlinit.csd"><citetitle>ctrlinit.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode ctrlinit.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/ctrlinit.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
   <refsect1>  
     <title>Crédits</title>
     <para>
@@ -74,7 +89,6 @@ english cvs version=1.8
         <member>MIT, Cambridge, Mass.</member>
       </simplelist>
     </para>
-
     <para>Nouveau dans la version 3.47 de Csound</para>
     <para>Merci à &namerasmus; pour avoir indiqué les bons intervalles pour le canal MIDI et le numéro de contrôleur.</para>
   </refsect1>

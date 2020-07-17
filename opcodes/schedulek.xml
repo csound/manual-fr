@@ -30,6 +30,7 @@ authors=Francois Pinot
     <title>Syntaxe</title>
     <synopsis><command>schedulek</command> knsnum, kwhen, kdur [, kp4] [, kp5] [...]</synopsis>
     <synopsis><command>schedulek</command> &quot;insname&quot;, kwhen, kdur [, kp4] [, kp5] [...]</synopsis>
+    <synopsis><command>schedule</command> kPar[]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -57,6 +58,11 @@ authors=Francois Pinot
     <para>
       <emphasis>kdur</emphasis> -- durée de l'évènement. Equivalent à p3 dans une
       <link linkend="i"><citetitle>instruction i</citetitle></link> de partition.
+    </para>
+
+    <para>
+      <emphasis>iPar[]</emphasis> -- paramètres de l'évènement dans un tableau
+      de taux-k.
     </para>
 
     <para>

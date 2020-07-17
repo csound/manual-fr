@@ -30,7 +30,7 @@ authors=Francois Pinot
   <refsect1>
     <title>Syntaxe</title>
     <synopsis>fsig <command>pvstrace</command> fsigin, kn </synopsis>
-    <synopsis>fsig, kBins[] <command>pvstrace</command> fsigin, kn[, isort] </synopsis>
+    <synopsis>fsig, kBins[] <command>pvstrace</command> fsigin, kn[, isort, imin, imax] </synopsis>
   </refsect1>
 
   <refsect1>
@@ -38,6 +38,11 @@ authors=Francois Pinot
     <para>
       <emphasis>isort</emphasis> -- s'il est non nul, les bins reportés dans
       kBins sont triés par amplitude décroissante. Facultatif, vaut 0 par défaut.
+    </para>
+    <para>
+      <emphasis>imin, imax</emphasis> -- s'ils sont non nuls, la recherche se
+      fait entre une valeur min et une valeur max (0 par défaut, pas de min ni
+      de max).
     </para>
   </refsect1>
 

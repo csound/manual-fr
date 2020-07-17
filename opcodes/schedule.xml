@@ -32,6 +32,7 @@ english cvs version=1.12
     <title>Syntaxe</title>
     <synopsis><command>schedule</command> insnum, iwhen, idur [, ip4] [, ip5] [...]</synopsis>
     <synopsis><command>schedule</command> &quot;insname&quot;, iwhen, idur [, ip4] [, ip5] [...]</synopsis>
+    <synopsis><command>schedule</command> iPar[]</synopsis>
   </refsect1>
 
   <refsect1>
@@ -59,6 +60,11 @@ english cvs version=1.12
     <para>
       <emphasis>idur</emphasis> -- durée de l'évènement. Equivalent à p3 dans une
       <link linkend="i"><citetitle>instruction i</citetitle></link> de partition.
+    </para>
+
+    <para>
+      <emphasis>iPar[]</emphasis> -- paramètres de l'évènement dans un tableau
+      de taux-i.
     </para>
 
     <para>
