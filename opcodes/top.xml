@@ -166,6 +166,9 @@ authors=Francois Pinot
   &opcodescount;
   &opcodescount_i;
   &opcodescntcycles;
+  &opcodescntread;
+  &opcodescntreset;
+  &opcodescntstate;
   &opcodescntcreate;
   &opcodescps2pch;
   &opcodescpsmidi;
@@ -860,6 +863,7 @@ authors=Francois Pinot
   &opcodespvsarp;
   &opcodespvsbandp;
   &opcodespvsbandr;
+  &opcodespvsbandwidth;
   &opcodespvsbin;
   &opcodespvsblur;
   &opcodespvsbuffer;
@@ -1300,6 +1304,7 @@ authors=Francois Pinot
   &opcodesvpowi;
   &opcodesvpowv;
   &opcodesvpowv_i;
+  &opcodesvps;
   &opcodesvpvoc;
   &opcodesvrandh;
   &opcodesvrandi;

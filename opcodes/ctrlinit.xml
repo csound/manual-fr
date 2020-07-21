@@ -50,6 +50,8 @@ english cvs version=1.8
       initiale pour le contrôleur MIDI de numéro correspondant dans l'intervalle
       0 -127.
     </para>
+    <note><para>Si cet opcode doit être utilisé avec un opcode de mise à l'échelle
+    tel que ctrl7, les ival1... doivent valoir 127*(initial-min)/(max-min)</para></note>
   </refsect1>
 
   <refsect1>
