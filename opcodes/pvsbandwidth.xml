@@ -1,0 +1,80 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvsbandwidth">
+<indexterm id="IndexPvsbandwidth"><primary>pvsbandwidth</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvsbandwidth</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvsbandwidth</refname>
+    <refpurpose>
+      Calcule la largeur de bande spectrale d'un signal.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Calcule la largeur de bande spectrale d'un signal à partir de sa
+      transformée de Fourier discrète.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kbnd <command>pvsbandwidth</command> fsig</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kbnd</emphasis> -- la largeur de bande spectrale.
+    </para>
+    <para>
+      <emphasis>fsig</emphasis> -- un flot pv en entrée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'utilisation de l'opcode <emphasis>pvsbandwidth</emphasis>.
+      Il utilise le fichier
+      <ulink url="examples/pvsbandwidth.csd"><citetitle>pvsbandwidth.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode <emphasis>pvsbandwidth</emphasis>.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pvsbandwidth.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="pvsanal"><citetitle>pvsanal</citetitle></link>,
+      <link linkend="pvsynth"><citetitle>pvsynth</citetitle></link>,
+      <link linkend="pvsadsyn"><citetitle>pvsadsyn</citetitle></link>,
+      <link linkend="pvspitch"><citetitle>pvspitch</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Victor Lazzarini</member>
+        <member>Mars 2020</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

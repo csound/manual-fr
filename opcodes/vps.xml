@@ -1,0 +1,79 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vps">
+<indexterm id="IndexVps"><primary>vps</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers: Phase Shaping</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vps</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>vps</refname>
+    <refpurpose>
+      Met en forme un signal de phase selon un vecteur à deux dimensions.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+     La mise en forme de phase par vecteur modifie une entrée de phase dans
+     l'intervalle [0, 1) selon une fonction non linéaire constituée de deux
+     segements linéaires joints par un point d'inflexion. Celui-ci est défini
+     par le vecteur [kd, kv], où kd est dans l'intervalle [0, 1) et où kv
+     peut prendre n'importe quelle valeur.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>avp<command>vps</command> aph,kd,kv</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>avp</emphasis> -- phase en sortie.
+    </para>
+    <para>
+      <emphasis>aph</emphasis> -- phase en entrée (telle que produite par phasor).
+    </para>
+        <para>
+      <emphasis>kd</emphasis> -- composante horizontale du vecteur.
+        </para>
+            <para>
+      <emphasis>aph</emphasis> -- composante verticale du vecteur.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'utilisation de l'opcode <emphasis>vps</emphasis>.
+      Il utilise le fichier
+      <ulink url="examples/vps.csd"><citetitle>vps.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode <emphasis>vps</emphasis>.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/vps.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Victor Lazzarini</member>
+        <member>Juillet  2020</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>
