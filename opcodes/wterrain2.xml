@@ -1,0 +1,211 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="wterrain2">
+<indexterm id="IndexWterrain2"><primary>wterrain2</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Wave Terrain Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>wterrain2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>wterrain2</refname>
+    <refpurpose>
+      Un opcode de synthèse par terrain d'onde utilisant différentes courbes.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Un opcode de synthèse par terrain d'onde qui améliore l'opcode
+      <link linkend="wterrain"><citetitle>wterrain</citetitle></link> en
+      fournissant plus de courbes, des paramètres de table de taux-k et un
+      paramètre pour faire une rotation de la courbe.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aout <command>wterrain2</command> kamp, kcps, kx, ky, krx, kry, krot, \
+      ktab0, ktab1, kcurve, kcurveparam
+    </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ktabx, ktaby</emphasis> -- Les deux tables définissant le
+      terrain - on peut les changer au taux-k.
+    </para>
+    <para>
+      La sortie est le résultat de la traversée à la fréquence
+      <emphasis>kcps</emphasis> de la courbe <emphasis>kcurve</emphasis> avec le
+      paramètre <emphasis>kcurveparam</emphasis> (voir ci-dessous), pondérée
+      par <emphasis>krx</emphasis> et <emphasis>kry</emphasis> et centrée en
+      <emphasis>kx</emphasis>, <emphasis>ky</emphasis> sur le terrain et tournée
+      autour du centre de <emphasis>krot</emphasis> radians.
+    </para>
+    <para>
+      <emphasis>kcurve=0 : ellipse</emphasis> comme dans l'opcode wterrain mais
+      avec une extension spéciale. kcurveparam contrôle une variation de la
+      vitesse du point traversant. La formule est :
+      <literallayout>
+         fx(t) = kx + krx * sin( t + kcurveparam * sin(t) )
+         fy(t) = ky + kry * cos( t + kcurveparam * sin(t) )
+      </literallayout>
+    </para>
+    <para>
+      <emphasis>kcurve=1 : lemniscate</emphasis> - c'est un simple 8. Ici aussi
+      kcurveparam contrôle une variation de la vitesse du point traversant. La
+      formule est :
+      <literallayout>
+         fx(t) = kx + krx * cos( t + kcurveparam * sin(t) )
+         fy(t) = ky + kry * sin( t + kcurveparam * sin(t) )  * cos( t + kcurveparam * sin(t) )
+      </literallayout>
+     </para>
+    <para>
+      <emphasis>kcurve=2 : limaçon</emphasis>
+      <literallayout>
+        fx(t) = kx + krx * sin(t) * (cos(t) + kcurveparam);
+        fy(t) = ky + kry * cos(t) * (cos(t) + kcurveparam);
+      </literallayout>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/limacon.png" format="PNG"/>
+        </imageobject>
+        <textobject>
+          <phrase>limaçon avec différents paramètres</phrase>
+        </textobject>
+        <caption>limaçon avec différents paramètres</caption>
+     </mediaobject>
+    </para>
+    <para>
+      <emphasis>kcurve=3 : cornoïde</emphasis>
+      <literallayout>
+        fx(t) = kx + krx * sin(t) * (cos(t) + kcurveparam);
+        fy(t) = ky + kry * cos(t) * (cos(t) + kcurveparam);
+      </literallayout>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/cornoid.png" format="PNG"/>
+        </imageobject>
+        <textobject>
+          <phrase>cornoïde avec différents paramètres</phrase>
+        </textobject>
+        <caption>cornoïde avec différents paramètres</caption>
+     </mediaobject>
+    </para>
+      <emphasis>kcurve=4 : trisectrice (Ceva)</emphasis>
+      <literallayout>
+       fx(t) = kx + krx * cos(t) * (1+kcurveparam*sin(2*t));
+       fy(t) = ky + kry * sin(t) * (1+kcurveparam*sin(2*t));
+      </literallayout>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/trisextic.png" format="PNG"/>
+        </imageobject>
+        <textobject>
+          <phrase>trisectrice avec différents paramètres</phrase>
+        </textobject>
+        <caption>trisectrice avec différents paramètres</caption>
+     </mediaobject>
+     <para>
+    </para>
+    <para>
+      <emphasis>kcurve=5 : scarabée</emphasis>
+      <literallayout>
+       fx(t) = kx + krx * cos(t) * (1+kcurveparam*sin(2*t));
+       fy(t) = ky + kry * sin(t) * (1+kcurveparam*sin(2*t));
+      </literallayout>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/scarabeus.png" format="PNG"/>
+        </imageobject>
+        <textobject>
+          <phrase>scarabée avec différents paramètres</phrase>
+        </textobject>
+        <caption>scarabée avec différents paramètres</caption>
+     </mediaobject>
+     </para>
+    <para>
+      <emphasis>kcurve=6 : folium</emphasis>
+      <literallayout>
+        fx(t) = kx + krx * cos(t) * cos(t) * (sin(t)*sin(t) - kcurveparam);
+        fy(t) = ky + kry * sin(t) * cos(t) * (sin(t)*sin(t) - kcurveparam);
+      </literallayout>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/folium.png" format="PNG"/>
+        </imageobject>
+        <textobject>
+          <phrase>folium avec différents paramètres</phrase>
+        </textobject>
+        <caption>a folium avec différents paramètres</caption>
+     </mediaobject>
+      </para>
+    <para>
+      <emphasis>kcurve=7 : courbe de Talbot</emphasis>
+      <literallayout>
+        fx(t) = kx + krx * cos(t) * (1 + kcurveparam * sin(t)*sin(t));
+        fy(t) = ky + kry * sin(t) * (1 - kcurveparam - kcurveparam*cos(t)*cos(t)); 
+        
+      </literallayout>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/talbot.png" format="PNG"/>
+        </imageobject>
+        <textobject>
+          <phrase>courbe de Talbot avec différents paramètres</phrase>
+        </textobject>
+        <caption>courbe de Talbot avec différents paramètres</caption>
+     </mediaobject>
+      </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode wterrain2. Il utilise le fichier
+      <ulink url="examples/wterrain2_1.csd"><citetitle>wterrain2.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode wterrain2.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/wterrain2_1.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Voici un autre exemple de l'opcode wterrain2 - une fugue sonore.
+      Il utilise le fichier
+      <ulink url="examples/wterrain2_2.csd"><citetitle>wterrain2_2.csd</citetitle></ulink>.
+      <example>
+        <title>Un autre exemple de l'opcode wterrain2 - une fugue sonore.</title>
+          <xi:include href="examples-xml/wterrain2_2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+      <para>
+        <link linkend="wterrain"><citetitle>wterrain</citetitle></link>,
+        <link linkend="sterrain"><citetitle>sterrain</citetitle></link>
+      </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Author : Christian Bacher</member>
+        <member>Nouveau dans la version 6.15</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>
