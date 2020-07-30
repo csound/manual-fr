@@ -32,12 +32,16 @@ authors=Francois Pinot
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>kmom, kint, kshort <command>lufs</command> ain1 [, ain2]</synopsis>
+    <synopsis>kmom, kint, kshort <command>lufs</command> kreset, ain1 [, ain2]</synopsis>
   </refsect1>
 
   <refsect1>
     <title>Exécution</title>
 <!--    First list all input and output performance parameters-->
+    <para>
+      <emphasis>kreset</emphasis> -- réinitialise l'entrée. La valeur de
+      l'intensité intégrée est réinitialisée si kreset est différent de 0.
+    </para>
     <para>
       <emphasis>ain1, ain2</emphasis> -- signal(-aux) en entrée. Seuls les
       signaux mono et stéréo sont supporés (voir ci-dessous).
@@ -112,7 +116,7 @@ authors=Francois Pinot
   <refsect1>
 <!--  And put your name and other relevant information here-->
     <title>Crédits</title>
-    <para>par : Gleb Rogozinsky, Juillet 2020</para>
+    <para>par : Gleb Rogozinsky, été 2020</para>
     <para>Nouveau dans la version 6.15</para>
   </refsect1>
 
