@@ -92,6 +92,533 @@ english cvs version=
     </itemizedlist>
   </para>-->
 
+  <bridgehead>Notes de parution de Csound 6.15 (août 2020)</bridgehead>
+  <para>
+    Un certain nombre de nouveaux opcodes se trouvent dans cette version ainsi
+    que des extensions d'opcodes existants. En particulier il y a l'introduction
+    du codage par prédiction linéaire (LPC) sur un flux, qui était demandée
+    depuis lontemps.
+  </para>
+  <para>
+    Un autre aspect de cette version consiste en un grand nombre de corrections
+    internes concernant de mauvais accès aux données, ainsi que les habituels
+    ajustements et changements.
+  </para>
+  <para>
+    A partir de cette version, aucun frontal graphique tiers n'est fourni avec
+    les paquets d'installation pour MacOS et Windows. Les utilisateurs doivent
+    installer le frontal de leur choix séparément.
+  </para>
+  <para>
+    <itemizedlist>
+      <listitem>
+        <para>Nouveaux opcodes :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                <link linkend="ftset"><citetitle>ftset</citetitle></link> fixe
+                plusieurs éléments d'une table à une valeur donnée.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                L'opcode <link linkend="lufs"><citetitle>lufs</citetitle></link>
+                calcule un indicateur d'intensité instantanée, intégrée et à
+                court terme.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Le filtre <link linkend="bob"><citetitle>bob</citetitle></link>
+                est une simulation numérique du filtre analogique à résonance de
+                Moog.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="sterrain"><citetitle>sterrain</citetitle></link>
+                est une version améliorée de <emphasis>wterrain</emphasis> avec
+                plus d'orbites possibles.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="wterrain2"><citetitle>wterrain2</citetitle></link>
+                est une autre amélioration de <emphasis>wterrain</emphasis>
+                avec moins de variations que <emphasis>sterrain</emphasis>.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                count, count_i, cntCreate, cntRead, cntReset, cntCycles et
+                cntState implémentent ensemble un nouvel objet compteur qui
+                parcourt de manière cyclique un intervalle constant, comme
+                dans PD.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Nouveaux alias pour les opcodes sc_ : sc_lag -> lag,
+                sc_lagud -> lagud, sc_trig -> trigholf, sc_phasor -> phasortrigo.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="println"><citetitle>println</citetitle></link>
+                est semblable à <emphasis>printf</emphasis> mais sans le
+                déclencheur.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="rndseed"><citetitle>rndseed</citetitle></link>
+                fournit une graine pour les fonctions rnd et birnd.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                arduinoStart, arduinoRead et arduinoStop fournissent un
+                protocole pour transférer les données des capteurs
+                d'Arduino vers Csound.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                lpcfilter, lpcanal, allpole, pvslpc, pvscfs, apoleparams,
+                resonbnk : nouveaux opcodes de prédiction linéaire sur un flux.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="gauss"><citetitle>gauss</citetitle></link> -
+                nouvelle version acceptant en paramètres la moyenne et
+                l'écart-type, implémentant l'algorithme de Box-Muller.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="pvsbandwidth"><citetitle>pvsbandwidth</citetitle>
+                </link> - retourne une largeur de bande spectrale.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="vps"><citetitle>vps</citetitle></link> -
+                met en forme un signal de phase selon un vecteur à deux
+                dimensions.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Orchestre :
+          <itemizedlist>
+            <listitem>
+              <simpara>#include d'url refonctionne.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                La fin de fichier est mieux traitée dans le pre-lexer.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Corrections du numéro de ligne rapporté dans quelques cas
+                d'erreur.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Les expressions conditionnellles produisant des chaînes de
+                caractères sont corrigées, ainsi que d'autres cas.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                La séquence //* n'est plus interprétée à tort comme le début
+                d'un bloc de commentaires.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Lors de l'utilisation du mode sample-accurate un nouvel
+                évènement de partition qui était aligné sur le ksmps pouvait
+                stopper un cycle trop tôt. C'est corrigé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                La longueur de ligne maximale pour différentes entrées a été
+                augmentée à 8192.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Il est maintenant légal de fixer le nombre de canaux en entrée
+                à zéro.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Partition :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Nouvel opcode de partition B semblable à b mais avec
+                accumulation.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                La fin de fichier est mieux traitée dans le pre-lexer.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Options :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                keep-sorted-score et simple-sorted-score acceptent toutes les
+                deux après un signe = le nom d'un fichier dans lequel écrire la
+                partition.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                L'option print_version affiche la version de Csound utilisée à
+                la fin de la restitution.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                syntax-check-only retourne une erreur si la syntaxe a échoué.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                opcode-dir : charge tous les opcodes de greffon à partir d'un
+                répertoire donné (en plus des greffons chargés depuis le
+                chemin des opcodes de greffon).
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Opcodes et Gens modifiés :
+          <itemizedlist>
+            <listitem>
+              <simpara>cent, semitone, dB précision améliorée.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>taninv2 a maintenant une version tableau.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>ftslice a plus de variations.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Les opcodes ptable sont maintenant obsolète car ils sont
+                identiques aux opcodes table.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Le cas 9 de GEN20 (sinc function) a maintenant un paramètre
+                facultatif pour l'intervalle x.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                fprint(k)s a maintenant un spécificateur de format %s.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>lastcycle corrigé et clarifié.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                chn_k peut maintenant accepté le mode sous forme de chaîne de
+                caractères. r=1 (entrée), w=2 (sortie), rw=3 (entrée+sortie).
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>trim améliorée.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>Les opcodes HDF5 sont montés à la v1.12.0.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>GEN16 est plus prudent sur la longueur des données.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                scale a  des arguments facultatifs supplémentaires pour
+                spécifier l'intervalle en entrée.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                schedule/schedulek peuvent prendre leurs arguments depuis un
+                tableau.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                GEN11 amélioré en ce qui concerne les erreurs d'arrondi.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                partials a une méthode améliorée d'estimation de la phase.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                ctrlinit vérifie que les valeurs sonte dans l'intervalle 
+                [0,127].
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                fin a un argument de format changé, et il est maintenant
+                obsolète.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>fink a le même changement d'argument.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Utilités :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                lpanal contient maintenant un nouvel algorithme alternatif
+                basé sur la méthode de Durbin, en plus de la méthode originale
+                de Gauss.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Usage général :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Si l'on utilise FLTK, les widgets sont réinitialisés à la fin
+                d'une exécution, ce qui n'était pas toujours le cas auparavant.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Boques corrigés :
+          <itemizedlist>
+            <listitem>
+              <simpara>setcols était très abîmé; corrigé.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                cps2pch et cpsxpc corrigés dans le cas d'un table de fréquences.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Si le générateur de nombre pseudo aléatoires sur 31 bit était
+                initialisé à zéro il restait à zéro. C'est corrigé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>GEN20 était faux dans le cas 8.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                L'arrêt d'un instrument depuis un UDO fonctionne à présent.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                L'expension de macro à la fois dans l'orchestre et dans la
+                partition avait un bogue relatif aux variables non
+                initialisées.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Lorsqu'un UDO fixait une valeur différente pour ksmps toutes les
+                sorties vers un périphérique multicanaux était calculées
+                de manière erronée.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Le redimensionnement de tableau avait un certain nombre de
+                problèmes, tous sont réglés.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                ftprint avait des problèmes ne suivant le manuel en ce qui
+                concerne trig == -1 et pouvait montrer le mauvais indice.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                part2txt/partials émettait occasionnellement la même piste
+                (incluant le même ID de piste) plusieurs fois pour une date
+                donnée. Corrigé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                expsegr dépendait incorrectement de ksmps lorsque que
+                sample-accurate était forcé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Les opcodes de table avaient une erreur lorsqu'ils étaient
+                utilisés avec des longueurs non puissance de deux.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Une erreur de bornage a été corrigée dans OSCraw.</simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Changements système :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Un plantage lorsque csound.evalcode était appelé sans
+                csound.start a été corrigé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Plusieurs problèmes de mémoire corrigés, principalement lors
+                de reads/writes non valides.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>API :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Nouvelle fonction de l'API pour changer le répertoire par défaut
+                des greffons.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Nouvelle fonction de l'API pour charger des greffons.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Changements sur les plates-formes :
+        <itemizedlist>
+          <listitem>
+            <para>WebAudio :
+            <itemizedlist>
+              <listitem>
+                <simpara>Construit avec Emscripten 1.39.13 (LLVM backend).</simpara>
+              </listitem>
+              <listitem>
+                <simpara>
+                  Nouvelle version de CsoundObj.js dans un fichier unique avec
+                  toutes les classes et les fichiers webassembly combinés en
+                  utilisant npm et rollup.
+                </simpara>
+              </listitem>
+              <listitem>
+                <simpara>
+                  Breaking : CsoundObj.importScripts() a été supprimé et
+                  rempladé par CsoundObj.initialize().
+                </simpara>
+              </listitem>
+              <listitem>
+                <simpara>
+                  Les chemins pour charger d'autres fichiers ne sont plus
+                  pertinents avec le fichier unique.
+                </simpara>
+              </listitem>
+              <listitem>
+                <simpara>
+                  initialize prend un AudioContext facultatif, sinon CsoundObj
+                  en créera un pour son usage.
+                </simpara>
+              </listitem>
+              <listitem>
+                <simpara>
+                  Breaking : CSOUND\_AUDIO\_CONTEXT enlevé de l'espace de noms
+                  global ; à la place une référence à
+                  CsoundObj.CSOUND\_AUDIO\_CONTEXT.
+                </simpara>
+              </listitem>
+              <listitem>
+                <simpara>
+                  Options de compilation changées à -O3 et sans information de
+                  débogage, selon les recommandations de construction par
+                  Emscripten.
+                </simpara>
+              </listitem>
+              <listitem>
+                <simpara>
+                  Link-Time Optimization (LTO) activé pour une taille réduite.
+                </simpara>
+              </listitem>
+            </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>MacOS :
+            <itemizedlist>
+              <listitem>
+                <simpara>
+                  coreaudio teste maintenant le nombre de canaux et il échoue
+                  s'ils sont insuffisants.
+                </simpara>
+              </listitem>
+            </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>Bela :
+            <itemizedlist>
+              <listitem>
+                <simpara>Mise à jour de digiBelaOut et de digiIOBela.</simpara>
+              </listitem>
+              <listitem>
+                <simpara>Addition de l'opcode trill.</simpara>
+              </listitem>
+            </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+
   <bridgehead>Notes de parution de Csound 6.14 (janvier 2020)</bridgehead>
   <para>
     Un certain nombre de corrections de bogues et d'améliorations, mais aussi
