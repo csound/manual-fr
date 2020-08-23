@@ -1,0 +1,74 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<!--Change refentry id and indexterm id-->
+<refentry id="cntDelete_i">
+<indexterm id="IndexCntDelete_i"><primary>cntDelete_i</primary></indexterm>
+<!--Make sure the category below is a valid one! See categories.py-->
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>cntDelete_i</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>cntDelete_i</refname>
+    <refpurpose>
+      Efface un compteur.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>Opcode du greffon counter.</para>
+    <para>
+      Efface un compteur et libère la mémoire utilisée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ival <command>cntDelete_i</command> icnt</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>icnt</emphasis> -- un identifiant pour le compteur obtenu d'un
+      appel à <emphasis>cntCreate</emphasis>.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ival</emphasis> -- l'identifiant effacé ou un nombre négatif
+      si ce compteur n'existait pas.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="cntCreate"><citetitle>cntCreate</citetitle></link>,
+      <link linkend="cntDelete"><citetitle>cntDelete</citetitle></link>,
+      <link linkend="count"><citetitle>count</citetitle></link>,
+      <link linkend="count_i"><citetitle>count_i</citetitle></link>,
+      <link linkend="cntCycles"><citetitle>cntCycles</citetitle></link>,
+      <link linkend="cntRead"><citetitle>cntRead</citetitle></link>,
+      <link linkend="cntReset"><citetitle>cntReset</citetitle></link>,
+      <link linkend="cntState"><citetitle>cntState</citetitle></link>,
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par : &namejohn; août 2020</para>
+    <para>Nouveau dans la version 6.16</para>
+  </refsect1>
+
+</refentry>
+
