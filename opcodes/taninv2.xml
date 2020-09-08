@@ -36,6 +36,7 @@ english cvs version=1.13
     <synopsis>ires <command>taninv2</command> iy, ix</synopsis>
 
     <synopsis>kres <command>taninv2</command> ky, kx</synopsis>
+    <synopsis>...<command>taninv2</command>(ky, kx)... (pas de restriction de taux)</synopsis>
 
     <para>
       Retourne arctangente de <emphasis>iy/ix</emphasis>, <emphasis>ky/kx</emphasis>, ou
@@ -87,6 +88,20 @@ english cvs version=1.13
   </refsect1>
 
   <refsect1>
+    <para>
+      Voici un autre exemple de l'opcode taninv2. Il utilise le fichier
+      <ulink url="examples/taninv2-advanced.csd"><citetitle>taninv2-advanced.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple avancé de l'opcode taninv2.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/taninv2-advanced.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
     <title>Voir aussi</title>
     <para>
       <link linkend="taninv"><citetitle>taninv</citetitle></link>
@@ -107,5 +122,6 @@ english cvs version=1.13
 
     <para>Nouveau dans la version 3.48 de Csound</para>
     <para>Corrigé en mai 2002, grâce à &nameistvan;.</para>
+     <para>Disponible comme fonction dans la version 6.00</para>
   </refsect1>
 </refentry>

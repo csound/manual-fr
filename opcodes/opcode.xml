@@ -203,6 +203,13 @@ english cvs version=1.17
             </row>
 
             <row>
+              <entry>J</entry>
+              <entry>variable facultative de taux-k, valant -1 par défaut</entry>
+              <entry>taux-k et -i, constante</entry>
+              <entry>taux-k</entry>
+            </row>
+
+            <row>
               <entry>K</entry>
               <entry>taux-k avec initialisation</entry>
               <entry>taux-k et -i, constante</entry>
@@ -226,8 +233,8 @@ english cvs version=1.17
             <row>
               <entry>S</entry>
               <entry>variable chaîne de caractères</entry>
-              <entry>chaîne de caractères de taux-i</entry>
-              <entry>initialisation</entry>
+              <entry>chaîne de caractères de taux-k et -i, constante</entry>
+              <entry>taux-i et taux-k</entry>
             </row>
           </tbody>
         </tgroup>
@@ -283,6 +290,13 @@ english cvs version=1.17
               <entry>K</entry>
               <entry>taux-k avec initialisation</entry>
               <entry>taux-k</entry>
+              <entry>taux-i et taux-k</entry>
+            </row>
+
+            <row>
+              <entry>S</entry>
+              <entry>variable chaîne de caractères</entry>
+              <entry>chaîne de caractères de taux-k et -i, constante</entry>
               <entry>taux-i et taux-k</entry>
             </row>
           </tbody>

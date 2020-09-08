@@ -18,7 +18,8 @@ english cvs version=1.7
     <refname>round</refname>
     <refpurpose>
       Retourne la valeur entière la plus proche de <emphasis>x</emphasis> ; si la partie décimale de
-      <emphasis>x</emphasis> vaut exactement 0.5, la direction de l'arrondi est indéfinie.
+      <emphasis>x</emphasis> vaut exactement 0.5, la direction de l'arrondi est indéfinie et peut
+      dépendre du système d'exploitation hôte et de la version de Csound.
      </refpurpose>
   </refnamediv>
 
