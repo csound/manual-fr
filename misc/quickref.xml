@@ -303,6 +303,7 @@
 <synopsis>kout <link linkend="jitter">jitter</link> kamp, kcpsMin, kcpsMax</synopsis><para/>
 <synopsis>kout <link linkend="jitter2">jitter2</link> ktotamp, kamp1, kcps1, kamp2, kcps2, kamp3, kcps3[ ,iopt]</synopsis><para/>
 <synopsis>ares <link linkend="jspline">jspline</link> xamp, kcpsMin, kcpsMax</synopsis><synopsis>kres <link linkend="jspline">jspline</link> kamp, kcpsMin, kcpsMax</synopsis><para/>
+<synopsis>knum <link linkend="lfsr">lfsr</link> ilen, iprob [, iseed]</synopsis><para/>
 <synopsis>ares <link linkend="linrand">linrand</link> krange</synopsis><synopsis>ires <link linkend="linrand">linrand</link> krange</synopsis><synopsis>kres <link linkend="linrand">linrand</link> krange</synopsis><para/>
 <synopsis>ares <link linkend="noise">noise</link> xamp, kbeta</synopsis><para/>
 <synopsis>ares <link linkend="pcauchy">pcauchy</link> kalpha</synopsis><synopsis>ires <link linkend="pcauchy">pcauchy</link> kalpha</synopsis><synopsis>kres <link linkend="pcauchy">pcauchy</link> kalpha</synopsis><para/>
