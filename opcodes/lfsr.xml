@@ -1,0 +1,87 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="lfsr">
+<indexterm id="IndexLfsr"><primary>lfsr</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Random (Noise) Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>lfsr</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>lfsr</refname>
+    <refpurpose>
+      Registre à décalage avec rétroaction linéaire (LFSR).
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Produit une série de nombres entiers positifs pseudo-aléatoires. C'est la
+      technique utilisée dans les modules de synthèses dénommés "machines de
+      Turing" et elle sert habituellement à générer des suites mélodiques. Cette
+      implantation est adaptée du firmware du module Ornament &amp; Crime tel
+      qu'utilisé dans les applications Quantermain et Meta-Q.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>knum <command>lfsr</command> ilen, iprob [, iseed]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ilen</emphasis> -- longueur du registre à décalage, les valeurs
+      autorisées sont 1-31 (inclusivement). Plus le registre est grand et plus
+      grands sont les nombres entiers générés. On peut utiliser ce paramètre
+      pour restraindre la sortie à un intervalle désiré.
+    </para>
+    <para>
+      <emphasis>iprob</emphasis> -- probabilité, les valeurs autorisées sont
+      1-255 (inclusivement). Contrôle l'étalement de la sortie ; plus les
+      valeurs sont grandes et plus l'étalement des valeurs de sortie est grand.
+    </para>
+    <para>
+      <emphasis>iseed</emphasis> (facultatif, -1 par défaut) -- état initial du
+      registre à décalage, sous la forme d'un motif binaire. La valeur est traîtée
+      comme un entier non signé si bien que la valeur par défaut -1 correspond
+      effectivement à tous les bit positionnés (0b11111111...).
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>knum</emphasis> -- entier en sortie.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode lfsr. Il utilise le fichier
+      <ulink url="examples/lfsr.csd"><citetitle>lfsr.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode lfsr.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/lfsr.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Par : &namedave; 2020</para>
+    <para>Basé sur du code de Patrick Dowling dans le firmware Ornament &amp; Crime.</para>
+    <para>Nouveau dans la version 6.16</para>
+  </refsect1>
+</refentry>
