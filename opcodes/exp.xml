@@ -54,7 +54,27 @@ english cvs version=1.14
         d'information sur l'utilisation des options de la ligne de commande.</para>
           <xi:include href="examples-xml/exp.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
+new alloc for instr 1:
+instr 1:  i1 = 7.389
+B  0.000 ..  1.000 T  1.000 TT  1.000 M:  0.00000  0.00000
+  .........</screen>
+    </para>
+  </refsect1>
 
+  <refsect1>
+    <para>
+      Voici un autre exemple de l'opcode exp. Il utilise le fichier
+      <ulink url="examples/exp-musical.csd"><citetitle>exp-musical.csd</citetitle></ulink>.
+
+      <example>
+        <title>Exemple musical de l'opcode exp.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/exp.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
       Sa sortie contiendra des lignes comme celles-ci :
       <screen>
 Generated events per second: 1

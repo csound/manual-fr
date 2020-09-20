@@ -32,6 +32,7 @@
 </formalpara>
 <formalpara><title>Générateurs de signal : oscillateurs élémentaires</title><simpara />
 <para><ulink url="examples/lfo.csd"><citetitle>lfo.csd</citetitle></ulink></para><simpara />
+<para><ulink url="examples/lfo-advanced.csd"><citetitle>lfo-advanced.csd</citetitle></ulink></para><simpara />
 <para><ulink url="examples/oscbnk.csd"><citetitle>oscbnk.csd</citetitle></ulink></para><simpara />
 <para><ulink url="examples/oscil.csd"><citetitle>oscil.csd</citetitle></ulink></para><simpara />
 <para><ulink url="examples/oscil3.csd"><citetitle>oscil3.csd</citetitle></ulink></para><simpara />
@@ -128,6 +129,7 @@
 <para><ulink url="examples/transegb.csd"><citetitle>transegb.csd</citetitle></ulink></para><simpara />
 <para><ulink url="examples/transegr.csd"><citetitle>transegr.csd</citetitle></ulink></para><simpara />
 <para><ulink url="examples/xyscale.csd"><citetitle>xyscale.csd</citetitle></ulink></para><simpara />
+<para><ulink url="examples/xyscale-FLTK.csd"><citetitle>xyscale-FLTK.csd</citetitle></ulink></para><simpara />
 </formalpara>
 <formalpara><title>Générateurs de signal : générateurs d'enveloppe</title><simpara />
 <para><ulink url="examples/adsr.csd"><citetitle>adsr.csd</citetitle></ulink></para><simpara />
@@ -323,6 +325,7 @@
 <formalpara><title>Générateurs de signal : modèles physiques par guide d'onde</title><simpara />
 <para><ulink url="examples/pluck.csd"><citetitle>pluck.csd</citetitle></ulink></para><simpara />
 <para><ulink url="examples/repluck.csd"><citetitle>repluck.csd</citetitle></ulink></para><simpara />
+<para><ulink url="examples/repluck-advanced.csd"><citetitle>repluck-advanced.csd</citetitle></ulink></para><simpara />
 <para><ulink url="examples/streson.csd"><citetitle>streson.csd</citetitle></ulink></para><simpara />
 <para><ulink url="examples/wgbow.csd"><citetitle>wgbow.csd</citetitle></ulink></para><simpara />
 <para><ulink url="examples/wgbowedbar.csd"><citetitle>wgbowedbar.csd</citetitle></ulink></para><simpara />
@@ -624,6 +627,7 @@
 <para><ulink url="examples/fmanal.csd"><citetitle>fmanal.csd</citetitle></ulink></para><simpara />
 <para><ulink url="examples/fofilter.csd"><citetitle>fofilter.csd</citetitle></ulink></para><simpara />
 <para><ulink url="examples/gtf.csd"><citetitle>gtf.csd</citetitle></ulink></para><simpara />
+<para><ulink url="examples/gtf.csd"><citetitle>gtf.csd</citetitle></ulink></para><simpara />
 <para><ulink url="examples/hilbert.csd"><citetitle>hilbert.csd</citetitle></ulink></para><simpara />
 <para><ulink url="examples/hilbert_barberpole.csd"><citetitle>hilbert_barberpole.csd</citetitle></ulink></para><simpara />
 <para><ulink url="examples/hilbert2.csd"><citetitle>hilbert2.csd</citetitle></ulink></para><simpara />
@@ -768,6 +772,7 @@
 <para><ulink url="examples/readscratch.csd"><citetitle>readscratch.csd</citetitle></ulink></para><simpara />
 <para><ulink url="examples/rewindscore.csd"><citetitle>rewindscore.csd</citetitle></ulink></para><simpara />
 <para><ulink url="examples/rms.csd"><citetitle>rms.csd</citetitle></ulink></para><simpara />
+<para><ulink url="examples/rms-FLTK.csd"><citetitle>rms-FLTK.csd</citetitle></ulink></para><simpara />
 <para><ulink url="examples/sensekey.csd"><citetitle>sensekey.csd</citetitle></ulink></para><simpara />
 <para><ulink url="examples/FLpanel-sensekey.csd"><citetitle>FLpanel-sensekey.csd</citetitle></ulink></para><simpara />
 <para><ulink url="examples/FLpanel-sensekey2.csd"><citetitle>FLpanel-sensekey2.csd</citetitle></ulink></para><simpara />
@@ -794,6 +799,7 @@
 <formalpara><title>Contrôle d'instrument : contrôle de sous-instrument</title><simpara />
 <para><ulink url="examples/subinstr.csd"><citetitle>subinstr.csd</citetitle></ulink></para><simpara />
 <para><ulink url="examples/subinstr_named.csd"><citetitle>subinstr_named.csd</citetitle></ulink></para><simpara />
+<para><ulink url="examples/subinstrinit.csd"><citetitle>subinstrinit.csd</citetitle></ulink></para><simpara />
 </formalpara>
 <formalpara><title>Contrôle d'instrument : lecture du temps</title><simpara />
 <para><ulink url="examples/date.csd"><citetitle>date.csd</citetitle></ulink></para><simpara />
@@ -926,6 +932,7 @@
 <para><ulink url="examples/abs.csd"><citetitle>abs.csd</citetitle></ulink></para><simpara />
 <para><ulink url="examples/ceil.csd"><citetitle>ceil.csd</citetitle></ulink></para><simpara />
 <para><ulink url="examples/exp.csd"><citetitle>exp.csd</citetitle></ulink></para><simpara />
+<para><ulink url="examples/exp.csd"><citetitle>exp.csd</citetitle></ulink></para><simpara />
 <para><ulink url="examples/floor.csd"><citetitle>floor.csd</citetitle></ulink></para><simpara />
 <para><ulink url="examples/frac.csd"><citetitle>frac.csd</citetitle></ulink></para><simpara />
 <para><ulink url="examples/int.csd"><citetitle>int.csd</citetitle></ulink></para><simpara />
@@ -961,6 +968,7 @@
 <formalpara><title>Opérations mathématiques : fonctions aléatoires</title><simpara />
 <para><ulink url="examples/birnd.csd"><citetitle>birnd.csd</citetitle></ulink></para><simpara />
 <para><ulink url="examples/rnd.csd"><citetitle>rnd.csd</citetitle></ulink></para><simpara />
+<para><ulink url="examples/rnd-advanced.csd"><citetitle>rnd-advanced.csd</citetitle></ulink></para><simpara />
 </formalpara>
 <formalpara><title>Opérations mathématiques : opcodes équivalents à des fonctions</title><simpara />
 <para><ulink url="examples/divz.csd"><citetitle>divz.csd</citetitle></ulink></para><simpara />

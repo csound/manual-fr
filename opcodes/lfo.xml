@@ -94,7 +94,6 @@ english cvs version=1.12
 
       <example>
         <title>Exemple de l'opcode lfo.</title>
-
         <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
         et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
         plus d'information sur l'utilisation de la ligne de commande.</para>
@@ -103,6 +102,20 @@ english cvs version=1.12
     </para>
   </refsect1>
  
+  <refsect1>
+    <para>
+      Voici un autre exemple de l'opcode lfo. Il utilise le fichier
+      <ulink url="examples/lfo-advanced.csd"><citetitle>lfo-advanced.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple avancé de l'opcode lfo.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation de la ligne de commande.</para>
+          <xi:include href="examples-xml/lfo-advanced.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
   <refsect1>
     <title>Crédits</title>
     <para>

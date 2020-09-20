@@ -63,6 +63,30 @@ english cvs version=1.7
   </refsect1>
 
   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode subinstrinit. Il utilise le fichier
+      <ulink url="examples/subinstrinit.csd"><citetitle>subinstrinit.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode subinstrinit.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/subinstrinit.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Sa sortie contiendra des lignes comme celles-ci :
+      <screen>
+instr. 2 playing
+B  0.000 ..  2.000 T  2.000 TT  2.000 M:  0.00000  0.00000
+instr. 3 playing
+B  2.000 ..  4.000 T  4.000 TT  4.000 M:  0.00000  0.00000
+instr. 4 playing
+B  4.000 ..  6.000 T  6.000 TT  6.000 M:  0.00000  0.00000
+  .........</screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
     <title>Voir aussi</title>
     <para>
       <link linkend="event"><citetitle>event</citetitle></link>,
