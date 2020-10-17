@@ -27,6 +27,9 @@ english cvs version=
       Retourne le taux d'utilisation de l'unité centrale soit globalement soit par coeur, pour
       contrôler à quel point le traitement se rapproche des capacités maximales.
     </para>
+    <para>
+      A noter que cet opcode n'est actuellement disponible que sous GNU/Linux et MacOS.
+    </para>
   </refsect1>
 
   <refsect1>
