@@ -51,8 +51,8 @@ english cvs version=1.11
     <para>
       A l'initialisation, les nombres de zéros et de pôles du filtres sont spécifiés
       ainsi que leurs valeurs. Les coefficients doivent être obtenus par une
-      application externe de conception de filtre telle que Matlab et sont
-      spécifiés directement ou bien chargés dans une table via
+      application externe de conception de filtre telle que Matlab ou Octave (GPL)
+      et sont spécifiés directement ou bien chargés dans une table via
       <link linkend="GEN01"><citetitle>GEN01</citetitle></link>. Avec
       <emphasis>zfilter2</emphasis>, les racines du polynôme caractéristique sont
       calculées à l'initialisation pour une implémentation efficace des opérations
