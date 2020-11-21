@@ -1,0 +1,88 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="outall">
+<indexterm id="IndexOutall"><primary>outall</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Signal Output</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>outall</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>outall</refname>
+    <refpurpose>
+      Réplique un flux de données audio sur plusieur canaux.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ecrit une valeur audio unique sur tous les canaux audio disponibles.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>outall</command> asig</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Envoie les échantillons audio sur tous les tampons d'accumulation en
+      sortie (créés en début d'exécution) qui servent à récupérer la sortie
+      de tous les instruments actifs avant l'écriture du son sur disque. Il
+      peut y avoir n'importe quel nombre de canaux spécifiés par
+      <emphasis>nchnls</emphasis> qui reçoivent tous les mêmes données.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode outall. Il utilise le fichier
+      <ulink url="examples/outall.csd"><citetitle>outall.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode outall.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/outall.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="out"><citetitle>out</citetitle></link>,
+      <link linkend="outh"><citetitle>outh</citetitle></link>,
+      <link linkend="outo"><citetitle>outo</citetitle></link>,
+      <link linkend="outq"><citetitle>outq</citetitle></link>,
+      <link linkend="outq1"><citetitle>outq1</citetitle></link>,
+      <link linkend="outq2"><citetitle>outq2</citetitle></link>,
+      <link linkend="outq3"><citetitle>outq3</citetitle></link>,
+      <link linkend="outq4"><citetitle>outq4</citetitle></link>,
+      <link linkend="outs"><citetitle>outs</citetitle></link>,
+      <link linkend="outs1"><citetitle>outs1</citetitle></link>,
+      <link linkend="outs2"><citetitle>outs2</citetitle></link>,
+      <link linkend="soundout"><citetitle>soundout</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Novembre 2020</member>
+       </simplelist>
+    </para>
+    <para>Nouveau dans la version 6.16</para>
+  </refsect1>
+</refentry>
