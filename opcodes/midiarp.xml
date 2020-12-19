@@ -32,14 +32,14 @@ authors=Francois Pinot
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>kMidiNoteNum, kCounter <command>midiarp</command> kRate[, kMode]</synopsis>
+    <synopsis>kMidiNoteNum, kTrigger <command>midiarp</command> kRate[, kMode]</synopsis>
   </refsect1>
 
   <refsect1>
     <title>Initialisation</title>
     <para>
-      <emphasis>kRate</emphasis> -- fixe la vitesse à laquelle les nouvelles notes
-      sont générées et contrôle la fréquence du signal d'impulsions métronomiques.
+      <emphasis>kRate</emphasis> -- fixe le taux en cycles par seconde auquel
+      les nouvelles notes sont générées.
     </para>
     <para>
       <emphasis>kMode</emphasis> -- Facultatif. Fixe le type d'arpège. 0 pour
@@ -55,7 +55,7 @@ authors=Francois Pinot
       l'arpège.
     </para>
     <para>
-      <emphasis>kCounter</emphasis> -- une impulsion métronomique qui peut être
+      <emphasis>kTrigger</emphasis> -- une impulsion métronomique qui peut être
       utilisée pour déclencher l'exécution des notes de l'arpège. Ce signal 
       produit un 1 suivi de 0 à chaque cycle. La fréquence est fixée par le
       paramètre <emphasis>kRate</emphasis> en entrée.   
