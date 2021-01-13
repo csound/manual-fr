@@ -1,0 +1,110 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="scale2">
+<indexterm id="IndexScale2"><primary>scale2</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Linear and Exponential Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>scale2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>scale2</refname>
+    <refpurpose>
+      Signal de pondération arbitraire.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Met les valeurs entrantes à l'échelle d'un intervalle défini par l'utilisateur. Semblable
+      à l'objet de pondération que l'on trouve dans les languages de flux de données les plus
+      connus.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kscl <command>scale2</command> kinput, kmin, kmax[, kimin, kimax][ihtime]</synopsis>
+    </refsect1>
+
+    <refsect1>
+      <title>Initialisation</title>
+      <para><emphasis>ihtime</emphasis> -- Facultatif ; valeur de la moitié de
+      la durée du lissage par le filtre interne. Par défaut il n'y a pas
+      de lissage.
+      </para>
+    </refsect1>
+      
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kin</emphasis> -- Valeur d'entrée. Elle peut provenir de
+      n'importe quelle source au taux-k et doit être comprise entre
+      <emphasis>kimin</emphasis> et <emphasis>kimax</emphasis>. Si elle dépasse
+      <emphasis>kimax</emphasis> elle est traitée comme <emphasis>kimax</emphasis>,
+      et si elle est inférieure à <emphasis>kimin</emphasis> elle est traitée
+      comme <emphasis>kimin</emphasis>. 
+    </para>
+    <para>
+      <emphasis>kmin</emphasis> -- Valeur minimale de l'opération de pondération
+      résultante.
+    </para>
+    <para>
+      <emphasis>kmax</emphasis> -- Valeur maximale de l'opération de pondération
+      résultante.
+    </para>
+    <para>
+      <emphasis>kimin</emphasis> -- facultatif ; minimum de l'intervalle des
+      valeurs en entrée, vaut 0 par défaut.
+    </para>
+    <para>
+      <emphasis>kimax</emphasis> -- facultatif ; maximum de l'intervalle des
+      valeurs en entrée, vaut 1 par défaut.
+    </para>
+    <para><warning>L'ordre des arguments est minimum avant maximum, ce qui
+    diffère de <command>scale</command> mais reste consistant avec d'autres
+    opcodes utilisant un intervalle.</warning></para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode scale2. Il utilise le fichier
+      <ulink url="examples/scale2.csd"><citetitle>scale2.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode scale2.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/scale2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="gainslider"><citetitle>gainslider</citetitle></link>,
+      <link linkend="logcurve"><citetitle>logcurve</citetitle></link>,
+      <link linkend="expcurve"><citetitle>expcurve</citetitle></link>
+      <link linkend="scale"><citetitle>scale</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn; d'après David Akbari</member>
+        <member>Décembre</member>
+        <member>2020</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>

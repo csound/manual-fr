@@ -1,0 +1,94 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="arduinoReadF">
+<indexterm
+    id="IndexArduinoReadF"><primary>arduinoReadF</primary></indexterm>
+
+  <refentryinfo><title>Serial I/O</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>arduinoReadF</refentrytitle>
+  </refmeta>
+
+   <refnamediv>
+    <refname>arduinoReadF</refname>
+    <refpurpose>
+      Lit des données depuis un port arduino avec le protocole
+      Csound-Arduino.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>Opcode du greffon serial.</para>
+    <para>
+      Lit des données entières depuis un port arduino avec le protocole
+      Csound-Arduino.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+      <synopsis>kval <command>arduinoReadF</command> iPort, iStream1,
+      iStream2, iStream3</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>iPort</emphasis> -- Numéro de port obtenu d'un opcode
+      <emphasis>arduinoStart</emphasis>.
+    </para>
+    <para>
+      <emphasis>iStream1, iStream2, iStream3</emphasis> -- Numéros des trois
+      flots de données, compris entre 0 et 30. Chaque flot transporte 10 bit
+      du résultat en virgule flottante sur 30 bit. La division est créée dans
+      le dessin de l'Arduino inclus dans la fonction put_float.
+    </para>
+    <para>
+      <emphasis>kval</emphasis> -- valeur en virgule flottante lue.
+    </para>
+    <note>La valeur transmise a une mantisse plus courte de deux bit que celle
+    produite par l'Arduino ce qui introduit une petite erreur.</note>
+ </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode arduinoReadF. Il utilise le fichier
+      <ulink url="examples/arduinoReadF.csd"><citetitle>arduinoReadF.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode arduinoReadF.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/arduinoReadF.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="arduinoStart"><citetitle></citetitle>arduinoStart</link>,
+      <link linkend="arduinoStop"><citetitle></citetitle>arduinoStop</link>,
+      <link linkend="arduinoRead"><citetitle></citetitle>arduinoRead</link>,
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn;</member>
+        <member>Auteur : Richard Boulanger</member>
+        <member>2020</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 6.15</para>
+  </refsect1>
+</refentry>
