@@ -81,53 +81,6 @@ english cvs version=1.18
         d'information sur l'utilisation des options de la ligne de commande.</para>
           <xi:include href="examples-xml/sensekey.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
-
-      Voici à quoi devrait ressembler la sortie si la touche "q" est enfoncée...
-      <screen>
-q i1   113.00000</screen>
-    </para>
-    <para>
-      Voici un exemple de l'opcode sensekey en conjonction avec
-      <link linkend="FLpanel"><citetitle>FLpanel</citetitle></link>.
-      Il utilise le fichier
-      <ulink url="examples/FLpanel-sensekey.csd"><citetitle>FLpanel-sensekey.csd</citetitle></ulink>.
-      <example>
-        <title>Exemple de l'opcode sensekey utilisant la capture clavier depuis
-        un FLpanel.</title>
-          <xi:include href="examples-xml/FLpanel-sensekey.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-      </example>
-      Le bouton allumé dans la fenêtre <emphasis>FLpanel</emphasis> montre la
-      dernière touche enfoncée.
-    </para>
-    <para>
-      Voici une exemple plus complexe de l'opcode sensekey en conjonction avec
-      <link linkend="FLpanel"><citetitle>FLpanel</citetitle></link>.
-      Il utilise le fichier
-      <ulink url="examples/FLpanel-sensekey.csd"><citetitle>FLpanel-sensekey2.csd</citetitle></ulink>.
-      <example>
-        <title>Exemple de l'opcode sensekey utilisant la capture clavier depuis
-        un FLpanel.</title>
-          <xi:include href="examples-xml/FLpanel-sensekey2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-      </example>
-      La sortie console ressemblera à ceci :
-<literallayout>
-new alloc for instr 1:
-Key code = 65, state = 1
-Character = 'e'
-Key code = 65, state = 0
-Key code = 72, state = 1
-Character = 'r'
-Key code = 72, state = 0
-Key code = 61, state = 1
-Character = 'a'
-Key code = 61, state = 0</literallayout>
-    </para>
-  </refsect1>
-  <refsect1>
-    <title>Voir aussi</title>
-    <para>
-      <link linkend="FLpanel"><citetitle>FLpanel</citetitle></link>,
-      <link linkend="FLkeyIn"><citetitle>FLkeyIn</citetitle></link>
     </para>
   </refsect1>
 

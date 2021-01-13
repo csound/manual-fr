@@ -26,9 +26,10 @@ english cvs version=1.7
   <refsect1>
     <title>Description</title>
     <para>
-      Génère une courbe exponentielle dans l'intervalle de 0 à 1 avec une raideur de pente
-      arbitraire. Une raideur de pente inférieure ou égale à 1,0 lévera des erreurs NaN
-      (Not-a-Number) et provoquera un comportement instable.
+      Génère une courbe exponentielle dans l'intervalle de 0 à 1 avec une raideur
+      de pente arbitraire. Une raideur de pente inférieure à 1.0 levant des
+      erreurs NaN (Not-a-Number) et provoquant un comportement instable, elle
+      est traitée comme si elle valait 1.
     </para>
 
     <para>
@@ -91,6 +92,7 @@ english cvs version=1.7
         <member>Auteur : David Akbari</member>
         <member>Octobre</member>
         <member>2006</member>
+        <member>Test de l'intervalle introduit dans la 6.16 par &namejohn;</member>
       </simplelist>
     </para>
   </refsect1>

@@ -118,6 +118,26 @@ english cvs version=1.8
   </refsect1>
 
   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode foutk. Il utilise le fichier
+      <ulink url="examples/foutk.csd"><citetitle>foutk.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode foutk.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
+        <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/foutk.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Pour éviter le bruit de zip produit par des discontinuités dans la
+      poursuite d'enveloppe complexe, on peut utiliser un filtre passe-bas pour
+      lisser l'enveloppe estimée.
+    </para>
+  </refsect1>
+
+  <refsect1>
     <title>Voir aussi</title>
     <para>
       <link linkend="fiopen"><citetitle>fiopen</citetitle></link>,

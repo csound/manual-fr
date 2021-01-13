@@ -142,7 +142,6 @@ english cvs version=1.14
 
       <example>
         <title>Exemple de l'opcode fof.</title>
-
         <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link> et
         <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
         plus d'information sur l'utilisation des options de la ligne de commande.</para>
@@ -151,6 +150,12 @@ english cvs version=1.14
 
       Les valeurs de formant pour le "a" en voix d'alto proviennent de 
       l'<link linkend="MiscFormants"><citetitle>Appendice Valeurs de Formant</citetitle></link>.
+      Voici un exemple musical utilisant l'opcode fof. Il utilise le fichier
+      <ulink url="examples/fof-musical.csd"><citetitle>fof-musical.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple musical de l'opcode fof.</title>
+          <xi:include href="examples-xml/fof-musical.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
     </para>
   </refsect1>
 

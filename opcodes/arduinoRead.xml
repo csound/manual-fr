@@ -26,7 +26,7 @@ authors=Francois Pinot
     <title>Description</title>
     <para>Opcode du greffon serial.</para>
     <para>
-      Lit des données depuis un port arduino avec le protocole
+      Lit des données entières depuis un port arduino avec le protocole
       Csound-Arduino.
     </para>
   </refsect1>
@@ -43,7 +43,7 @@ authors=Francois Pinot
       <emphasis>arduinoStart</emphasis>.
     </para>
     <para>
-      <emphasis>iStream</emphasis> -- Numéro du flot de données dans compris
+      <emphasis>iStream</emphasis> -- Numéro du flot de données compris
       entre 0 et 30.
     </para>
     <para>

@@ -109,6 +109,17 @@ english cvs version=1.11
 a1 <emphasis role="opc">zfilter2</emphasis> asig, kdamp, kfreq, 1, 2, 1, ia1, ia2 <emphasis role="comment">;; filtre RII contrôlable de taux-a</emphasis></programlisting>
       </informalexample>
     </para>
+    <para>
+      Voici un exemple de l'opcode zfilter2. Il utilise le fichier
+      <ulink url="examples/zfilter2.csd"><citetitle>zfilter2.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode zfilter2.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/zfilter2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
   </refsect1>
 
   <refsect1>

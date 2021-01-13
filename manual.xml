@@ -192,6 +192,7 @@ authors=Francois Pinot
 <!ENTITY opcodesapoisson SYSTEM "opcodes/apoisson.xml">
 <!ENTITY opcodesapow SYSTEM "opcodes/apow.xml">
 <!ENTITY opcodesarduinoRead SYSTEM "opcodes/arduinoRead.xml">
+<!ENTITY opcodesarduinoReadF SYSTEM "opcodes/arduinoReadF.xml">
 <!ENTITY opcodesarduinoStart SYSTEM "opcodes/arduinoStart.xml">
 <!ENTITY opcodesarduinoStop SYSTEM "opcodes/arduinoStop.xml">
 <!ENTITY opcodesaresonk SYSTEM "opcodes/aresonk.xml">
@@ -1216,6 +1217,7 @@ authors=Francois Pinot
 <!ENTITY opcodessamphold SYSTEM "opcodes/samphold.xml">
 <!ENTITY opcodessandpaper SYSTEM "opcodes/sandpaper.xml">
 <!ENTITY opcodesscale SYSTEM "opcodes/scale.xml">
+<!ENTITY opcodesscale2 SYSTEM "opcodes/scale2.xml">
 <!ENTITY opcodesscalearray SYSTEM "opcodes/scalearray.xml">
 <!ENTITY opcodesscanhammer SYSTEM "opcodes/scanhammer.xml">
 <!ENTITY opcodesscans SYSTEM "opcodes/scans.xml">
@@ -1903,11 +1905,28 @@ authors=Francois Pinot
         <affiliation>
           <orgname>csound.com
           </orgname>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/csoundlogo.png" format="PNG"/>
+            </imageobject>
+          </mediaobject>
         </affiliation>
       </author>
     </authorgroup>
+    <para>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/csoundlogo.png" format="PNG"/>
+        </imageobject>
+      </mediaobject>
+    </para>
 
     <edition>&csoundversion;</edition>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/csoundlogo.png" format="PNG"/>
+        </imageobject>
+      </mediaobject>
   </bookinfo>
 
   &pface;
