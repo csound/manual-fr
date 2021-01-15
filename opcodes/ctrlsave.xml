@@ -1,0 +1,86 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ctrlsave">
+<indexterm id="IndexCtrlsave"><primary>ctrlsave</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Input</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ctrlsave</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ctrlsave</refname>
+    <refpurpose>
+      Retrouve la valeur courante de contrôleurs MIDI.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Retrouve la valeur courante de contrôleurs MIDI dans un k-tableau.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kconnt[] <command>ctrlsave</command> ichnl, ictlno1, [ictlno2] [, ictlno3] ...</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ichnl</emphasis> -- numéro de canal MIDI (1-16).
+    </para>
+
+    <para>
+      <emphasis>ictlno1</emphasis>, <emphasis>ictlno1</emphasis>, etc. -- numéros
+      de contrôleurs MIDI (0-127).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Remplit le tableau <emphasis>kcontrl</emphasis> avec les valeurs courantes
+      des contrôleurs MIDI indiqués.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode ctrlsave. Il utilise le fichier
+      <ulink url="examples/ctrls.csd"><citetitle>ctrlsave.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode ctrlsave.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/ctrls.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ctrlinit"><citetitle>ctrlinit</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>  
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn; &amp; et Richard Boulanger</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 6.16 de Csound.</para>
+  </refsect1>
+</refentry>
