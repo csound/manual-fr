@@ -15,8 +15,8 @@ authors=Francois Pinot
   <refnamediv>
     <refname>ceps</refname>
     <refpurpose>
-      Calcule le cepstre d'un tableau en entrée, avec coefficients de
-      liftrage facultatifs.
+      Calcule le cepstre d'un tableau en entrée, avec filtrage facultatif des
+      coefficients.
     </refpurpose>
   </refnamediv>
 
@@ -36,7 +36,7 @@ authors=Francois Pinot
     <title>Initialisation</title>
     <para>
       <emphasis>icoefs</emphasis> -- le nombre de coefficients retenus dans
-      le cepstre en sortie. Par défaut, aucun coefficient n'est liftré.
+      le cepstre en sortie. Par défaut, aucun coefficient n'est filtré.
     </para>
   </refsect1>
   
