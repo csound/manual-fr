@@ -1,0 +1,99 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ctrlreset">
+<indexterm id="IndexCtrlreset"><primary>ctrlreset</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Input</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ctrlreset</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ctrlreset</refname>
+    <refpurpose>
+      Definit un préréglage pour les contrôleurs MIDI.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Definit un préréglage comme ctrlinit pour les contrôleurs MIDI.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kpreset <command>ctrlreset</command> ktag, kchnl, kctlno1, [kctlno2] [, kctlno3] ...</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      A l'initialisation une structure de données interne est créée pour
+      sauvegarder les préréglages avec suffisamment de place.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kpreset</emphasis> -- l'étiquette numérique indiquant où les
+      préréglages seront stockés. Si ktag est différent de zéro kpreset aura
+      la même valeur que ktag.
+    </para>
+    <para>
+      <emphasis>ktag</emphasis> -- l'étiquette pour ces préréglages ; entier
+      strictement positif, ou nul si le système va alloué des préréglages non
+      utilisés.
+    </para>
+    <para>
+      <emphasis>kchanl</emphasis> -- le canal MIDI auquel se réfèrent les
+      préréglages.
+    </para>
+    <para>
+      <emphasis>kctlno1</emphasis>, <emphasis>kctlno1</emphasis>,
+      etc. -- numéros de contrôleur MIDI et les valeurs (0-127). Jusqu'à 16
+      valeurs d'initialisation sont autorisées.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exmples</title>
+    <para>
+      Voici un exemple de l'opcode ctrlreset. Il utilise le fichier
+      <ulink url="examples/ctrls.csd"><citetitle>ctrlreset.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode ctrlreset.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/ctrls.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ctrlinit"><citetitle>ctrlinit</citetitle></link>
+      <link linkend="ctrlsave"><citetitle>ctrlsave</citetitle></link>
+      <link linkend="ctrlprint"><citetitle>ctrlprint</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>  
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn; &amp; et Richard Boulanger</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 6.16 de Csound.</para>
+  </refsect1>
+</refentry>

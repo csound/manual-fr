@@ -1,0 +1,118 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="trigexpseg">
+<indexterm id="Indextrigexpseg"><primary>trigexpseg</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Linear and Exponential Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>trigexpseg</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>trigexpseg</refname>
+    <refpurpose>
+      Déclenche une suite de segments d'exponentielle entre des points
+      spécifiés.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Déclenche une suite de segments d'exponentielle entre des points
+      spécifiés.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>trigexpseg</command> kTrig, ia, idur1, ib [, idur2] [, ic] [...]</synopsis>
+
+    <synopsis>kres <command>trigexpseg</command> kTrig, ia, idur1, ib [, idur2] [, ic] [...]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ia</emphasis> -- valeur initiale. Zéro est interdit pour les
+      exponentielles.
+    </para>
+
+    <para>
+      <emphasis>ib, ic</emphasis>, etc. -- valeur après <emphasis>dur1</emphasis>
+      secondes, etc. Pour les exponentielles, doit être différente de zéro et
+      doit avoir le même signe que <emphasis>ia</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>idur1</emphasis> -- durée en secondes du premier segment.
+    </para>
+
+    <para>
+      <emphasis>idur2, idur3</emphasis>, etc. -- durée en secondes des segments
+      suivants.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kTrig</emphasis> -- valeur de déclenchement. L'exécution de
+      l'enveloppe est déclenchée lorsque kTrig vaut 1.
+    </para>
+
+    <para>
+      Cette unité génère des signaux de contrôle ou audio dont les valeurs
+      passent par deux ou plus de points spécifiés. La somme des valeurs
+      <emphasis>dur</emphasis> peut égaler ou non la durée d'exécution de
+      l'instrument : une exécution plus courte va tronquer l'enveloppe spécifiée.
+      Déclencher l'enveloppe alors qu'elle est déjà en train d'être exécutée
+      va provoquer un saut au début pour la recommencer. Cela peut provoquer
+      un pop ou un clic. Il est préférable d'attendre la fin de l'enveloppe
+      avant de la réenclencher.   
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode trigexpseg. Il utilise le fichier
+      <ulink url="examples/trigexpseg.csd"><citetitle>trigexpseg.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode trigexpseg.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/trigexpseg.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="expon"><citetitle>expon</citetitle></link>,
+      <link linkend="expsega"><citetitle>trigexpsega</citetitle></link>,
+      <link linkend="expsegr"><citetitle>trigexpsegr</citetitle></link>,
+      <link linkend="line"><citetitle>line</citetitle></link>,
+      <link linkend="linseg"><citetitle>linseg</citetitle></link>,
+      <link linkend="triglinseg"><citetitle>linseg</citetitle></link>,
+      <link linkend="linsegr"><citetitle>linsegr</citetitle></link>,
+      <link linkend="transeg"><citetitle>transeg</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+       <simplelist>
+        <member>Auteur : Rory Walsh</member>
+        <member>2021</member>
+       </simplelist>
+    </para>
+  </refsect1>
+</refentry>

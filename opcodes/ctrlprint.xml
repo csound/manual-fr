@@ -1,0 +1,84 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ctrlprint">
+<indexterm id="IndexCtrlprint"><primary>ctrlprint</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Input</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ctrlprint</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ctrlprint</refname>
+    <refpurpose>
+      Ecrit les valeurs enregistrées des contrôleurs MIDI.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ecrit les valeurs enregistrées des contrôleurs MIDI depuis un tableau
+      vers la console ou vers un fichier.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis> <command>ctrlprint</command> kcont[][, Sfile]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>Sfile</emphasis> -- Nom du fichier recevant les valeurs. S'il
+      est omis, l'écriture se fait sur la console.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kcont</emphasis> -- le tableau des contrôles enregistrés par
+      <emphasis>ctrlsave</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode ctrlprint. Il utilise le fichier
+      <ulink url="examples/ctrls.csd"><citetitle>ctrls.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode ctrlprint.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/ctrls.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ctrlinit"><citetitle>ctrlinit</citetitle></link>
+      <link linkend="ctrlsave"><citetitle>ctrlsave</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>  
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn; &amp; et Richard Boulanger</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 6.16 de Csound.</para>
+  </refsect1>
+</refentry>
