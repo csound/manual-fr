@@ -13,8 +13,6 @@ english cvs version=1.14
   <refmeta>
     <refentrytitle>fof</refentrytitle>
   </refmeta>
-
-
  
   <refnamediv>
     <refname>fof</refname>
@@ -38,7 +36,7 @@ english cvs version=1.14
     <title>Syntaxe</title>
     <synopsis>ares <command>fof</command> xamp, xfund, xform, koct, kband, kris, kdur, kdec, iolaps, \
       ifna, ifnb, itotdur [, iphs] [, ifmode] [, iskip]</synopsis>
- </refsect1>
+  </refsect1>
  
   <refsect1>
     <title>Initialisation</title>
@@ -150,12 +148,6 @@ english cvs version=1.14
 
       Les valeurs de formant pour le "a" en voix d'alto proviennent de 
       l'<link linkend="MiscFormants"><citetitle>Appendice Valeurs de Formant</citetitle></link>.
-      Voici un exemple musical utilisant l'opcode fof. Il utilise le fichier
-      <ulink url="examples/fof-musical.csd"><citetitle>fof-musical.csd</citetitle></ulink>.
-      <example>
-        <title>Exemple musical de l'opcode fof.</title>
-          <xi:include href="examples-xml/fof-musical.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-      </example>
     </para>
   </refsect1>
 

@@ -193,7 +193,9 @@ authors=Francois Pinot
   &opcodesctrlinit;
   &opcodesctrlpreset;
   &opcodesctrlprint;
+  &opcodesctrlprintpresets;
   &opcodesctrlsave;
+  &opcodesctrlselect;
   &opcodescuserrnd;
   &opcodesdam;
   &opcodesdate;
@@ -585,9 +587,9 @@ authors=Francois Pinot
   &opcodeslooptseg;
   &opcodesloopxseg;
   &opcodeslorenz;
-  &opcodeslorisread;
+  <!--&opcodeslorisread;
   &opcodeslorismorph;
-  &opcodeslorisplay;
+  &opcodeslorisplay;-->
   &opcodesloscil;
   &opcodesloscil3;
   &opcodesloscilx;
@@ -1226,6 +1228,7 @@ authors=Francois Pinot
   &opcodestrsplit;
   &opcodesturnoff;
   &opcodesturnoff2;
+  &opcodesturnoff3;
   &opcodesturnon;
   &opcodestvconv;
   &opcodesunirand;

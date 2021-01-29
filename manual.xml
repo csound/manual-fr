@@ -336,7 +336,9 @@ authors=Francois Pinot
 <!ENTITY opcodesctrlinit SYSTEM "opcodes/ctrlinit.xml">
 <!ENTITY opcodesctrlpreset SYSTEM "opcodes/ctrlpreset.xml">
 <!ENTITY opcodesctrlprint SYSTEM "opcodes/ctrlprint.xml">
+<!ENTITY opcodesctrlprintpresets SYSTEM "opcodes/ctrlprintpresets.xml">
 <!ENTITY opcodesctrlsave SYSTEM "opcodes/ctrlsave.xml">
+<!ENTITY opcodesctrlselect SYSTEM "opcodes/ctrlselect.xml">
 <!ENTITY opcodescuserrnd SYSTEM "opcodes/cuserrnd.xml">
 <!ENTITY opcodesdam SYSTEM "opcodes/dam.xml">
 <!ENTITY opcodesdate SYSTEM "opcodes/date.xml">
@@ -1485,6 +1487,7 @@ authors=Francois Pinot
 <!ENTITY opcodestrscale SYSTEM "opcodes/trscale.xml">
 <!ENTITY opcodesturnoff SYSTEM "opcodes/turnoff.xml">
 <!ENTITY opcodesturnoff2 SYSTEM "opcodes/turnoff2.xml">
+<!ENTITY opcodesturnoff3 SYSTEM "opcodes/turnoff3.xml">
 <!ENTITY opcodesturnon SYSTEM "opcodes/turnon.xml">
 <!ENTITY opcodestvconv SYSTEM "opcodes/tvconv.xml">
 <!ENTITY opcodesundef SYSTEM "opcodes/undef.xml">
@@ -1840,7 +1843,7 @@ authors=Francois Pinot
 <!ENTITY spectralnonstand SYSTEM "spectral/nonstand.xml">
 <!ENTITY spectralrealtime SYSTEM "spectral/realtime.xml">
 <!ENTITY spectralATS SYSTEM "spectral/ATS.xml">
-<!ENTITY spectralloris SYSTEM "spectral/loris.xml">
+<!ENTITY spectralloris SYSTEM "deprecated/loris.xml">
 <!ENTITY spectralarray SYSTEM "spectral/arrays.xml">
 
 <!ENTITY strings SYSTEM "strings/top.xml">
@@ -1919,7 +1922,7 @@ authors=Francois Pinot
     <para>
       <mediaobject>
         <imageobject>
-          <imagedata fileref="images/csoundlogo.png" format="PNG"/>
+          <imagedata fileref="images/csoundlogo.jpg" format="JPG"/>
         </imageobject>
       </mediaobject>
     </para>
@@ -1931,6 +1934,11 @@ authors=Francois Pinot
         </imageobject>
       </mediaobject>
   </bookinfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="images/csoundlogo.jpg" format="JPG"/>
+    </imageobject>
+  </mediaobject>
 
   &pface;
 

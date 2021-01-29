@@ -299,6 +299,16 @@ english cvs version=1.31
       </listitem>
     </varlistentry>
 
+    <varlistentry id="FlagsCatMinusLimiter">
+      <term><indexterm id="IndexCatLimiter"><primary>--limiter=num</primary></indexterm>, <primary>--limiter</primary></term>
+      <listitem>
+        <para>
+          Utilisation d'un limiteur à la sortie des échantillons audio. La
+          limite vaut 0.5 ou une valeur donnée dans l'intervalle [0,1].
+        </para>
+      </listitem>
+    </varlistentry>
+
   </variablelist>
 
   <variablelist>

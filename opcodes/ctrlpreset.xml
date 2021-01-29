@@ -5,15 +5,15 @@ authors=Francois Pinot
 // *** Please remember to keep this information up to date! ***
 -->
 
-<refentry id="ctrlreset">
-<indexterm id="IndexCtrlreset"><primary>ctrlreset</primary></indexterm>
+<refentry id="ctrlpreset">
+<indexterm id="IndexCtrlpreset"><primary>ctrlpreset</primary></indexterm>
   <refentryinfo><title>Real-time MIDI:Input</title></refentryinfo>
   <refmeta>
-    <refentrytitle>ctrlreset</refentrytitle>
+    <refentrytitle>ctrlpreset</refentrytitle>
   </refmeta>
 
   <refnamediv>
-    <refname>ctrlreset</refname>
+    <refname>ctrlpreset</refname>
     <refpurpose>
       Definit un préréglage pour les contrôleurs MIDI.
     </refpurpose>
@@ -28,7 +28,7 @@ authors=Francois Pinot
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>kpreset <command>ctrlreset</command> ktag, kchnl, kctlno1, [kctlno2] [, kctlno3] ...</synopsis>
+    <synopsis>kpreset <command>ctrlpreset</command> ktag, kchnl, kctlno1, [kctlno2] [, kctlno3] ...</synopsis>
   </refsect1>
  
   <refsect1>
@@ -65,10 +65,10 @@ authors=Francois Pinot
   <refsect1>
     <title>Exmples</title>
     <para>
-      Voici un exemple de l'opcode ctrlreset. Il utilise le fichier
+      Voici un exemple de l'opcode ctrlpreset. Il utilise le fichier
       <ulink url="examples/ctrls.csd"><citetitle>ctrlreset.csd</citetitle></ulink>.
       <example>
-        <title>Exemple de l'opcode ctrlreset.</title>
+        <title>Exemple de l'opcode ctrlpreset.</title>
         <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
         et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
         d'information sur l'utilisation des options de la ligne de commande.</para>
