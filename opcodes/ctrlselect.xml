@@ -1,0 +1,86 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ctrlselect">
+<indexterm id="IndexCtrlselect"><primary>ctrlselect</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Input</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ctrlselect</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ctrlselect</refname>
+    <refpurpose>
+      Charge un préréglage de valeurs pour les contrôleurs MIDI.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Charge un préréglage de valeurs pour les contrôleurs MIDI après un appel
+      à ctrlpreset.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis> <command>ctrlselect</command> kpre</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      A l'initialisation l'existence de la structure de données interne est
+      vérifiée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kpre</emphasis> -- L'étiquette numérique du préréglage telle
+      que retournée par ctrlpreset.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode ctrlselect. Il utilise le fichier
+      <ulink url="examples/ctrls.csd"><citetitle>ctrlreset.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode ctrlselect.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/ctrls.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ctrlinit"><citetitle>ctrlinit</citetitle></link>
+      <link linkend="ctrlsave"><citetitle>ctrlsave</citetitle></link>
+      <link linkend="ctrlprint"><citetitle>ctrlprint</citetitle></link>
+      <link linkend="ctrlpreset"><citetitle>ctrlpreset</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>  
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn; &amp; et Richard Boulanger</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 6.16 de Csound.</para>
+  </refsect1>
+</refentry>

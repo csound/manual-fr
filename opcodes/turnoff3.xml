@@ -1,0 +1,77 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="turnoff3">
+<indexterm id="IndexTurnoff3"><primary>turnoff3</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Duration Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>turnoff3</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>turnoff3</refname>
+    <refpurpose>
+      Arrête une ou des instances d'autres instruments pendant l'exécution dans
+      la file d'attente des évènements programmés.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Arrête une ou des instances d'autres instruments pendant l'exécution dans
+      la file d'attente des évènements programmés.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>turnoff3</command> kinsno
+    </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kinsno</emphasis> -- instrument à arrêter (peut-être fractionnaire).
+      S'il vaut zéro ou est négatif, aucun instrument n'est arrêté.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      L'exemple suivant utilise l'opcodes turnoff3, écrit par Lou Cohen.
+      <example>
+        <title>Exemple de l'opcode turnoff3.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/turnoff3.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="turnoff"><citetitle>turnoff</citetitle></link>
+      <link linkend="turnoff2"><citetitle>turnoff2</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : Istvan Varga</member>
+        <member>2005</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 5.00 de Csound.</para>
+  </refsect1>
+</refentry>

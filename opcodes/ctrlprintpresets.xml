@@ -1,0 +1,87 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ctrlprintpresets">
+<indexterm id="IndexCtrlprintpresets"><primary>ctrlprintpresets</primary></indexterm>
+  <refentryinfo><title>Real-time MIDI:Input</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ctrlprintpresets</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>ctrlprintpresets</refname>
+    <refpurpose>
+      Ecrit la collection courante des préréglages pour les contrôleurs MIDI.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Ecrit la collection courante des préréglages pour les contrôleurs MIDI
+      dans un format utilisable dans un orchestre, vers la console ou vers un
+      fichier.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis> <command>ctrlprintpresets</command> [Sfilenam]</synopsis>
+  </refsect1>
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      A l'initialisation l'existence de la structure de données interne est
+      vérifiée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>Sfilename</emphasis> -- (facultatif) Fichier dans lequel écrire.
+      S'il est omis, la sortie courante est utilisée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode ctrlprintpresets. Il utilise le fichier
+      <ulink url="examples/ctrls.csd"><citetitle>ctrlreset.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode ctrlprintpresets.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/ctrls.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ctrlinit"><citetitle>ctrlinit</citetitle></link>,
+      <link linkend="ctrlsave"><citetitle>ctrlsave</citetitle></link>,
+      <link linkend="ctrlselect"><citetitle>ctrlselect</citetitle></link>,
+      <link linkend="ctrlprint"><citetitle>ctrlprint</citetitle></link>,
+      <link linkend="ctrlpreset"><citetitle>ctrlpreset</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>  
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn; &amp; et Richard Boulanger</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la version 6.16 de Csound.</para>
+  </refsect1>
+</refentry>
