@@ -1,0 +1,110 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="svn">
+<indexterm id="IndexSvn"><primary>svn</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Resonant</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>svn</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>svn</refname>
+    <refpurpose>
+      Filtre non linéaire à variable d'état.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+  <title>Description</title>
+    <para>
+      Cet opcode implémente un filtre non linéaire à variable d'état avec
+      contrôle de la saturation et fonction de transfert non linéaire
+      facultative définie par l'utilisateur.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntax </title>
+    <synopsis>ahp, alp, abp, abr <command>svn</command> asig, xcf, xQ,
+    kdrive[, ifn, imx, istor]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+      <para>
+      <emphasis>ifn</emphasis> -- s'il est non nul, numéro d'une table de
+      fonction pour la non linéarité du filtre. Elle doit être centrée sur
+      son point médian et définie entre -imx et imx. S'il est nul, le filtre
+      emploie une fonction non linéaire interne basée sur une tangente
+      hyperbolique. 0 par défaut.  
+      </para>
+      <para>
+        <emphasis>imx</emphasis> -- le maximum absolu du domaine de la table
+        de fonction qui est définie entre -imx et imx. 1 par défaut.
+      </para>
+      <para>
+      <emphasis>istor</emphasis> -- disposition initiale de l'espace de données
+        interne. Comme ce filtre comprend une boucle de rétroaction de la sortie
+        antérieure, l'état initial de l'espace de stockage utilisé est pris en
+        compte. Une valeur nulle efface cet espace ; une valeur non nulle retient
+        l'information antérieure. 0 par défaut.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+      <para>
+      <emphasis>ahp, alp, abp, abr</emphasis> -- sorties passe-haut, passe-bas,
+      passe-bande et à réjection de bande.
+    </para>
+    <para>
+      <emphasis>asig</emphasis> -- entrée.
+    </para>
+    <para>
+      <emphasis>xcf</emphasis> -- fréquence de coupure du filtre (taux-a ou -k).
+    </para>
+    <para>
+      <emphasis>xQ</emphasis> -- Q du filtre Q (min 0.5) (taux-a ou -k)). 
+    </para>
+       <para>
+      <emphasis>kdrive</emphasis> -- facteur de saturation. Avec la fonction
+      interne non linéaire, les valeurs supérieures à 0.5 introduisent
+      progressivement plus de non linéarités dans le signal du filtre. Quand on
+      utilise une fonction de transfert définie par l'utilisateur, la quantité
+      de distortion introduite par ce paramètre dépend de la fonction employée.
+      Une valeur de 0 rend le filtre linéaire. L'importance de la saturation
+      dépend également du niveau du signal d'entrée. Si le signal est
+      significativement inférieur à 0dbfs, alors il faut proportionnellement
+      plus de saturation pour introduire des non linéarités dans le signal.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opode svn. Il utilise le fichier
+      <ulink url="examples/svn.csd"><citetitle>svn.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opode svn.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/svn.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Février 2021</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry> 

@@ -1,0 +1,97 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="spf">
+<indexterm id="IndexSpf"><primary>spf</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Resonant</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>spf</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>spf</refname>
+    <refpurpose>
+      Filtre de Steiner-Parker.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+  <title>Description</title>
+    <para>
+      Spf est une implémentation numérique d'un filtre analogique linéaire de
+      Steiner-Parker, qui est un filtre multimodal du second ordre avec trois
+      entrées séparées pour le passe-bas, le passe-haut et le passe-bande et
+      une sortie.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>asig <command>spf</command> alp, ahp, abp, xcf, xR[, istor]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+      <para>
+      <emphasis>istor</emphasis> -- disposition initiale de l'espace de données
+        interne. Comme ce filtre comprend une boucle de rétroaction de la sortie
+        antérieure, l'état initial de l'espace de stockage utilisé est pris en
+        compte. Une valeur nulle efface cet espace ; une valeur non nulle retient
+        l'information antérieure. 0 par défaut.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>alp, ahp, abp</emphasis> -- signaux passe-bas, passe-haut et
+      passe-bande en entrée. On peut utiliser différents signaux en entrée ;
+      si le même signal est placé sur les entrées passe-bas et passe-haut, le
+      résultat est une sortie à réjection de bande pour ce signal. Si le même
+      signal est utilisé sur toutes les entrées, cela produit un filtre
+      passe-tout.
+    </para>
+    <para>
+      <emphasis>xcf</emphasis> -- fréquence de coupure du filtre (taux-a ou -k).
+    </para>
+
+    <para>
+      <emphasis>xR</emphasis> -- facteur d'atténuation du filtre, qui contrôle
+      la crête (en passe-bande, R = 1/Q, où Q est le rapport entre la fréquence
+      centrale et la largeur de bande). Une valeur de racine de 2 
+      (approximativement 1.414) supprime la crête (réponse de Butterworth), et
+      des valeurs inférieures donnent un filtre à crête et résonnant. Une valeur
+      de 0 transforme le filtre en oscillateur sinusoïdal. Les valeurs admises
+      sont comprise entre 0 et 2. A 2, le filtre a des pôles réels et est ainsi
+      équivalent à deux filtres du premier ordre en série.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opode spf. Il utilise le fichier
+      <ulink url="examples/spf.csd"><citetitle>spf.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opode spf.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/spf.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Février 2021</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry> 

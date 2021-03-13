@@ -1,0 +1,92 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="skf">
+<indexterm id="IndexSkf"><primary>skf</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Resonant</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>skf</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>skf</refname>
+    <refpurpose>
+      Filtre de Sallen-Key.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+  <title>Description</title>
+    <para>
+      Skf est une implémentation numérique d'un filtre analogique linéaire de
+      Sallen-Key, qui est un filtre du second ordre avec une réponse soit
+      passe-bas soit passe-haut.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>asig <command>skf</command> asig, xcf, xK[, ihp, istor]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+      <para>
+        <emphasis>ihp</emphasis> -- s'il est différent de zéro, sélectionne la
+        réponse passe-haut. 0 par défaut (passe-bas).
+      </para>
+      <para>
+        <emphasis>istor</emphasis> -- disposition initiale de l'espace de données
+        interne. Comme ce filtre comprend une boucle de rétroaction de la sortie
+        antérieure, l'état initial de l'espace de stockage utilisé est pris en
+        compte. Une valeur nulle efface cet espace ; une valeur non nulle retient
+        l'information antérieure. 0 par défaut.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- entrée.
+    </para>
+    <para>
+      <emphasis>xcf</emphasis> -- fréquence de coupure du filtre (taux-a ou -k).
+    </para>
+
+    <para>
+      <emphasis>xK</emphasis> -- gain de l'ampli op de Sallen-Key, compris entre
+      1 et 3. A 3 le filtre entre en auto-oscillation. K=1.586 donne une réponse
+      de Butterworth, des valeurs supérieures étant équivalentes à des réponses
+      de Tchebychev (avec crête). A K=1 le filtre est atténué de manière critique
+      et les pôles ont des valeurs réelles.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opode skf. Il utilise le fichier
+      <ulink url="examples/skf.csd"><citetitle>skf.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opode skf.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/skf.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Février 2021</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry> 

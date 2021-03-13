@@ -1,0 +1,92 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="vclpf">
+<indexterm id="IndexVclpf"><primary>vclpf</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Resonant</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>vclpf</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>vclpf</refname>
+    <refpurpose>
+      Filtre linéaire passe-bas résonant à quatre pôles.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+<title>Description</title>
+    <para>
+      Vclpf est une implémentation numérique d'un filtre analogique linéaire
+      standard à quatre pôles, semblable aux filtres des Moog, Arp et
+      SSM2040/2044, consistant en quatre filtres à un pôle identiques avec
+      rétroaction (résonnance ou regénération). Au contraire de l'opcode
+      moogladder, ce filtre n'a pas de non linéarités, mais son implémentation
+      préserve la topologie du filtre analogique.
+      
+      Le code est basé sur le travail de Federico Fontana, décrit dans le papier
+      "PRESERVING THE STRUCTURE OF THE MOOG VCF IN THE DIGITAL DOMAIN"
+      (Proceedings of ICMC 2007). 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>asig <command>vclpf</command> ain, xcf, xres[, istor]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+      <para>
+      <emphasis>istor</emphasis> -- disposition initiale de l'espace de données
+        interne. Comme ce filtre comprend une boucle de rétroaction de la sortie
+        antérieure, l'état initial de l'espace de stockage utilisé est pris en
+        compte. Une valeur nulle efface cet espace ; une valeur non nulle retient
+        l'information antérieure. 0 par défaut.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>asig</emphasis> -- signal en entrée.
+    </para>
+    <para>
+      <emphasis>xcf</emphasis> -- fréquence de coupure du filtre (taux-a ou -k).
+    </para>
+
+    <para>
+      <emphasis>xres</emphasis> -- résonnance, entre 0 et 1. Les valeurs plus
+      importantes vont mettre le filtre en auto-oscillation (taux-a ou -k).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opode vclpf. Il utilise le fichier
+      <ulink url="examples/vclpf.csd"><citetitle>vclpf.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opode vclpf.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/vclpf.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Février 2021</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry> 
