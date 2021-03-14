@@ -30,14 +30,17 @@ english cvs version=1.4
       points de boucle fixés dans le fichier SF2 et les remplace par une boucle en
       fondu-enchainé définie par l'utilisateur. C'est un mélange de
       <link linkend="sfplay"><citetitle>sfplay</citetitle></link> et de
-      <link linkend="flooper2"><citetitle>flooper2</citetitle></link>.
+      <link linkend="flooper2"><citetitle>flooper2</citetitle></link>. Afin de
+      comprendre l'utilisation de ces opcodes, on doit connaître le format SF2,
+      dont une brève description peut être trouvée dans l'appendice du format
+      de fichier SoundFont2.
     </para>
   </refsect1>
 
   <refsect1>
     <title>Syntaxe</title>
     <synopsis>ar1, ar2 <command>sflooper</command> ivel, inotenum, kamp, kpitch, ipreindex, kloopstart, kloopend, kcrossfade \
-      [, istart, imode, ifenv, iskip] </synopsis>
+      [, istart, imode, ifenv, iskip, iflag] </synopsis>
   </refsect1>
  
   <refsect1>
@@ -72,17 +75,32 @@ english cvs version=1.4
       dans la boucle où la note précédente s'est terminée. Avec la valeur par
       défaut de 0, l'initialisation a lieu.
     </para>
-  
+    <para>
+      <emphasis>iflag</emphasis> -- indicateur en rapport avec le comportement
+      de <emphasis>kpitch</emphasis> et de <emphasis>inotenum</emphasis>.
+    </para>
   </refsect1>
  
   <refsect1>
     <title>Exécution</title>
-
-   <para>
+    <para>
       <emphasis>kamp</emphasis> -- contrôle de l'amplitude </para>
     <para>
-      <emphasis>kpitch</emphasis> -- contrôle de la hauteur (rapport de transposition) ;
-      les valeurs négatives sont interdites.
+      <emphasis>kpitch</emphasis> -- contrôle de la hauteur (rapport de
+      transposition, les valeurs négatives sont interdites.)
+      ou multiplicateur de fréquence, dépendant de iflag. Lorsque iflag = 0,
+      kpitch est un multiplicateur de la fréquence par défaut assignée par le
+      préréglage de SF2 à la valeur inotenum. Lorque iflag = 1, kpitch est la
+      fréquence absolue du son en sortie, en Hz. 0 par défaut.
+
+      Lorsque iflag = 0, inotenum fixe la fréquence de la sortie selon le numéro
+      de note MIDI utilisé, et kpitch est utilisé comme un multiplicateur. Lorsque
+      iflag = 1, la fréquence de la sortie est directement fixée par kpitch. Cela
+      permet l'utilisation de toutes sortes d'échelles basées sur les micro-tons.
+      Cependant cette méthode est conçue pour ne fonctionner correctement qu'avec
+      les préréglages fixés sur le tempérament égal. L'utilisation de cette
+      méthode avec un préréglage comportant déjà une échelle non standard ou
+      avec un préréglage basé sur un drum-kit peut donner des résultats imprévisibles.
     </para>
     <para>
       <emphasis>kloopstart</emphasis> -- début de la boucle (en secondes). Noter que
