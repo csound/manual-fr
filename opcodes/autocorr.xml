@@ -1,0 +1,80 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="autocorr">
+<indexterm id="IndexAutocorr"><primary>autocorr</primary></indexterm>
+
+  <refentryinfo><title>Array Operations: Autocorrelation</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>autocorr</refentrytitle>
+  </refmeta>
+
+   <refnamediv>
+    <refname>autocorr</refname>
+    <refpurpose>
+      Autocorrélation d'une suite.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode prend un tableau en entrée et calcule son autocorrélation.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+      <synopsis>kout[] <command>autocorr</command> kin[]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kout[]</emphasis> -- tableau en sortie contenant l'autocorrélation.
+      Est créé s'il n'existe pas.
+         </para>
+       <para>
+      <emphasis>kin[]</emphasis> -- tableau en entrée contenant la suite pour
+      l'autocorrélation.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode autocorr. Il utilise le fichier
+      <ulink url="examples/autocorr.csd"><citetitle>autocorr.csd</citetitle></ulink>.</para>
+      <example>
+        <title>Exemple de l'opcode autocorr.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/autocorr.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="vectorial"><citetitle></citetitle>Vectorial opcodes</link>,
+      <link linkend="arrayOpcodes"><citetitle></citetitle>array opcodes</link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>NUI Maynooth</member>
+        <member>2021</member>
+      </simplelist>
+    </para>
+    <para>Nouveau dans la version 6.16</para>
+  </refsect1>
+</refentry>
