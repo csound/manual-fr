@@ -33,7 +33,7 @@ english cvs version=1.7
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>aI3, aV2, aV1 <command>chuap</command> kL, kR0, kC1, kG, kGa, kGb, kE, kC2, iI3, iV2, iV1, ktime_step</synopsis>
+    <synopsis>aI3, aV2, aV1 <command>chuap</command> kL, kR0, kC2, kG, kGa, kGb, kE, kC1, iI3, iV2, iV1, ktime_step</synopsis>
   </refsect1>
 
   <refsect1>
@@ -52,29 +52,38 @@ english cvs version=1.7
   <refsect1>
     <title>Exécution</title>
     <para>
-      <emphasis>kL</emphasis> -- Inductance L
+      <emphasis>kL</emphasis> -- Inductance L (L1 dans le schéma)
     </para>
     <para>
-      <emphasis>kR0</emphasis> -- Résistance R0
+      <emphasis>kR0</emphasis> -- Résistance R0 (R0 dans le schéma)
     </para>
     <para>
       <emphasis>kC1</emphasis> -- Capacité C1
     </para>
     <para>
-      <emphasis>kG</emphasis> -- Résistance G
+      <emphasis>kC2</emphasis> -- Capacité C2
     </para>
     <para>
-      <emphasis>kGa</emphasis> -- Résistance V (terme non linéaire)
+      <emphasis>kG</emphasis> -- Résistance G (fait partie de la résistance
+      active, R1 dans le schéma). Le paramètre G est le pas temporel, qui est
+      nécessaire pour obtenir la même pente de la discontinuité par segment
+      de Ga et Gb pour tous les taux d'échantillonnage.
     </para>
     <para>
-      <emphasis>kGb</emphasis> -- Résistance V (terme non linéaire)
+      <emphasis>kGa</emphasis> -- Résistance V (terme non linéaire de la
+      résistance active, une des R2 dans le schéma)
     </para>
     <para>
-      <emphasis>kGb</emphasis> -- Résistance V (terme non linéaire)
+      <emphasis>kGb</emphasis> -- Résistance V (terme non linéaire de la
+      résistance active, une des R2 dans le schéma)
     </para>
     <para>
-      <emphasis>ktime_step</emphasis> -- Pas temporel de l'équation aux différences, permet de contrôler
-      plus ou moins la hauteur.
+      <emphasis>kE</emphasis> -- Taille de la discontinuité par segment simulant
+      la résistance active.
+    </para>
+    <para>
+      <emphasis>ktime_step</emphasis> -- Pas temporel de l'équation aux différences,
+      permet de contrôler plus ou moins la hauteur.
     </para>
     <para>
       <emphasis>L'oscillateur de Chua</emphasis> est un simple oscillateur RLC avec une résistance active.
@@ -84,7 +93,7 @@ english cvs version=1.7
     <mediaobject>
       <imageobject>
 <!--         This image is taken from Wikipedia and is in the public domain en.wikipedia.org/wiki/File:Chua's_circuit.svg-->
-        <imagedata fileref="images/600px-Chua's_circuit.svg.png" format="PNG"/>
+        <imagedata fileref="images/Chua_circuit.png" format="PNG"/>
       </imageobject>
       <caption>
         <para>Diagramme du Circuit de l'Oscillateur de Chua</para>

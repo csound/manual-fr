@@ -30,23 +30,28 @@ authors=Francois Pinot
   <refsect1>
     <title>Syntax </title>
     <synopsis>ahp, alp, abp, abr <command>svn</command> asig, xcf, xQ,
-    kdrive[, ifn, imx, istor]</synopsis>
+    kdrive[, ifn, inm, imx, istor]</synopsis>
   </refsect1>
 
   <refsect1>
     <title>Initialisation</title>
-      <para>
+    <para>
       <emphasis>ifn</emphasis> -- s'il est non nul, numéro d'une table de
-      fonction pour la non linéarité du filtre. Elle doit être centrée sur
-      son point médian et définie entre -imx et imx. S'il est nul, le filtre
-      emploie une fonction non linéaire interne basée sur une tangente
-      hyperbolique. 0 par défaut.  
-      </para>
-      <para>
-        <emphasis>imx</emphasis> -- le maximum absolu du domaine de la table
-        de fonction qui est définie entre -imx et imx. 1 par défaut.
-      </para>
-      <para>
+      fonction contenant la fontion de transfert pour la non-linéarité du
+      filtre. Elle doit être centrée sur son point médian et définie entre -imx
+      et imx. S'il est nul, le filtre emploie une fonction non linéaire interne
+      basée sur une tangente hyperbolique. 0 par défaut.  
+    </para>
+    <para>
+      <emphasis>inm</emphasis> -- s'il est non nul, numéro d'une table de
+      fonction contenant une fonction de transfert de normalisation générée
+      à partir de ifn (au moyen de GEN 4). Vaut 0 par défaut.    
+    </para>
+    <para>
+      <emphasis>imx</emphasis> -- le maximum absolu du domaine de la table
+      de fonction qui est définie entre -imx et imx. 1 par défaut.
+    </para>
+    <para>
       <emphasis>istor</emphasis> -- disposition initiale de l'espace de données
         interne. Comme ce filtre comprend une boucle de rétroaction de la sortie
         antérieure, l'état initial de l'espace de stockage utilisé est pris en
@@ -72,14 +77,17 @@ authors=Francois Pinot
     </para>
        <para>
       <emphasis>kdrive</emphasis> -- facteur de saturation. Avec la fonction
-      interne non linéaire, les valeurs supérieures à 0.5 introduisent
+      interne non linéaire, les valeurs supérieures à 0.125 introduisent
       progressivement plus de non linéarités dans le signal du filtre. Quand on
       utilise une fonction de transfert définie par l'utilisateur, la quantité
       de distortion introduite par ce paramètre dépend de la fonction employée.
-      Une valeur de 0 rend le filtre linéaire. L'importance de la saturation
-      dépend également du niveau du signal d'entrée. Si le signal est
+      Une valeur de 0 rend le filtre complétement linéaire. L'importance de la
+      saturation dépend également du niveau du signal d'entrée. Si ce signal est
       significativement inférieur à 0dbfs, alors il faut proportionnellement
-      plus de saturation pour introduire des non linéarités dans le signal.
+      plus de saturation pour introduire des non-linéarités dans le signal.
+      Avec une entrée à 0dBFS, on obtient une saturation à 100% avec kdrive=1.
+      Avec des niveaux d'entrée plus forts, kdrive peut servir à modérer la
+      distortion non linéaire du filtre.
     </para>
   </refsect1>
 
