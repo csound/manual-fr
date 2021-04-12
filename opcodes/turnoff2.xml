@@ -32,6 +32,45 @@ english cvs version=1.8
     <title>Syntaxe</title>
     <synopsis><command>turnoff2</command> kinsno, kmode, krelease
     </synopsis>
+    <synopsis><command>turnoff2_i</command> insno, imode, irelease
+    </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>insno</emphasis>  -- instrument à arrêter (peut-être fractionnaire).
+      S'il vaut zéro ou est négatif, aucun instrument n'est arrêté.
+    </para>
+
+    <para>
+      <emphasis>imode</emphasis> -- somme des valeurs suivantes :
+      <itemizedlist>
+        <listitem>
+          <para>
+            0, 1, ou 2 : arrête toutes les instances (0), seulement les plus
+            anciennes (1), ou seulement les plus récentes (2)
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            4 : n'arrête que les notes dont la partie fractionnaire du numéro
+            d'instrument correspond à <emphasis>insno</emphasis>, plutôt que
+            d'ignorer la partie fractionnaire.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            8 : n'arrête que les notes dont la durée est indéfinie (p3 &lt; 0 ou MIDI).
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+    <para>
+      <emphasis>irelease</emphasis> -- s'il est non nul, les instances arrêtées
+      peuvent avoir une période d'extinction (release), sinon elles sont désactivées
+      immédiatement (avec possible émission de clics).
+    </para>
   </refsect1>
 
   <refsect1>
@@ -45,13 +84,13 @@ english cvs version=1.8
       <emphasis>kmode</emphasis> -- somme des valeurs suivantes :
       <itemizedlist>
         <listitem>
-         	<para>
+           <para>
             0, 1, ou 2 : arrête toutes les instances (0), seulement les plus
             anciennes (1), ou seulement les plus récentes (2)
           </para>
         </listitem>
         <listitem>
-       	  <para>
+           <para>
             4 : n'arrête que les notes dont la partie fractionnaire du numéro
             d'instrument correspond à <emphasis>kinsno</emphasis>, plutôt que
             d'ignorer la partie fractionnaire.
