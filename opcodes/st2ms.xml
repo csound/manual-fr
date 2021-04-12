@@ -1,0 +1,74 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="st2ms">
+<indexterm id="IndexSt2ms"><primary>st2ms</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Panning and Spatialization </title></refentryinfo>
+  <refmeta>
+    <refentrytitle>st2ms</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>st2ms</refname>
+    <refpurpose>
+      Conversion stéréo mid-side.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+  <title>Description</title>
+    <para>
+      Cet opcode implémente une conversion stéréo vers mid-side (MS). C'est une
+      fonction pure sans effet de bord.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>am, as <command>st2ms</command> aleft, aright</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+      <para>
+      <emphasis>am</emphasis> -- signal mid en sortie.
+    </para>
+    <para>
+      <emphasis>as</emphasis> -- signal side en sortie.
+    </para>
+    <para>
+      <emphasis>aleft</emphasis> -- entrée du canal gauche.
+    </para>
+    <para>
+      <emphasis>aright</emphasis> -- entrée du canal droite.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode st2ms. Il utilise le fichier
+      <ulink url="examples/st2ms.csd"><citetitle>st2ms.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode st2ms.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/st2ms.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Avril 2021</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry> 

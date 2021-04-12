@@ -1,0 +1,79 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="ms2st">
+<indexterm id="IndexMs2st"><primary>ms2st</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Panning and Spatialization </title></refentryinfo>
+  <refmeta>
+    <refentrytitle>ms2st</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>ms2st</refname>
+    <refpurpose>
+      Conversion mid-side stéréo.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+  <title>Description</title>
+    <para>
+      Cet opcode implémente une conversion mid-side (MS) vers stéréo avec un
+      contrôle de largeur. C'est une fonction pure sans effet de bord.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aleft, aright <command>ms2st</command> as, am, kwidth</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>aleft</emphasis> -- sortie sur le canal gauche.
+    </para>
+    <para>
+      <emphasis>aright</emphasis> -- sortie sur le canal droite.
+    </para>
+      <para>
+      <emphasis>am</emphasis> -- signal mid en entrée.
+    </para>
+    <para>
+      <emphasis>as</emphasis> -- signal side en entrée.
+    </para>
+    <para>
+      <emphasis>kw</emphasis> -- largeur stéréo (de 0 à 1). A 0, il n'y a pas
+      de signal side en sortie, et à 1 le signal mid est absent. Une valeur de
+      0.5 restitue une conversion stéréo vers MS exacte (st2ms).
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode ms2st. Il utilise le fichier
+      <ulink url="examples/ms2st.csd"><citetitle>ms2st.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode ms2st.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/ms2st.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namevictor;</member>
+        <member>Avril 2021</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry> 
