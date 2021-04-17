@@ -46,7 +46,7 @@ authors=Francois Pinot
       <emphasis>as</emphasis> -- signal side en entrée.
     </para>
     <para>
-      <emphasis>kw</emphasis> -- largeur stéréo (de 0 à 1). A 0, il n'y a pas
+      <emphasis>kwidth</emphasis> -- largeur stéréo (de 0 à 1). A 0, il n'y a pas
       de signal side en sortie, et à 1 le signal mid est absent. Une valeur de
       0.5 restitue une conversion stéréo vers MS exacte (st2ms).
     </para>
@@ -55,8 +55,11 @@ authors=Francois Pinot
   <refsect1>
     <title>Exemples</title>
     <para>
-      Voici un exemple de l'opcode ms2st. Il utilise le fichier
-      <ulink url="examples/ms2st.csd"><citetitle>ms2st.csd</citetitle></ulink>.
+      Voici un exemple de l'opcode ms2st. Il utilise les fichiers
+      <ulink url="examples/ms2st.csd"><citetitle>ms2st.csd</citetitle></ulink>,
+      <ulink url="examples/MSjungle_interleaved.wav"><citetitle>MSjungle_interleaved.wav</citetitle></ulink>,
+      <ulink url="examples/MSjungleMid.wav"><citetitle>MSjungleMid.wav</citetitle></ulink>
+      et <ulink url="examples/MSjungleSide.wav"><citetitle>MSjungleSide.wav</citetitle></ulink>.
       <example>
         <title>Exemple de l'opcode ms2st.</title>
         <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
@@ -64,6 +67,45 @@ authors=Francois Pinot
         d'information sur l'utilisation des options de la ligne de commande.</para>
           <xi:include href="examples-xml/ms2st.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
+    </para>
+  </refsect1>
+
+   <mediaobject>
+	<imageobject>
+	  <imagedata fileref="images/MSjungle_interleaved.png" format="PNG"/>
+	</imageobject>
+
+	<textobject>
+	  <phrase>un fichier MS à encodage entrelacé : MSjungle_interleaved.wav
+	  utilisé dans instr 1</phrase>
+	</textobject>
+
+	<caption>
+	  <para>un fichier MS à encodage entrelacé : MSjungle_interleaved.wav
+	  utilisé dans instr 1</para>
+	</caption>
+  </mediaobject>
+
+	<mediaobject>
+	<imageobject>
+	  <imagedata fileref="images/MSjungle_separate.png" format="PNG"/>
+	</imageobject>
+
+	<textobject>
+	  <phrase>deux fichiers séparés MSjungleMid.wav et MSjungleSide.wav utiisés
+	  dans instr 2</phrase>
+	</textobject>
+
+	<caption>
+	  <para>deux fichiers séparés MSjungleMid.wav et MSjungleSide.wav utiisés
+	  dans instr 2</para>
+	</caption>
+  </mediaobject>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="st2ms"><citetitle>st2ms</citetitle></link>
     </para>
   </refsect1>
 

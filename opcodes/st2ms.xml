@@ -50,8 +50,9 @@ authors=Francois Pinot
   <refsect1>
     <title>Exemples</title>
     <para>
-      Voici un exemple de l'opcode st2ms. Il utilise le fichier
-      <ulink url="examples/st2ms.csd"><citetitle>st2ms.csd</citetitle></ulink>.
+      Voici un exemple de l'opcode st2ms. Il utilise les fichiers
+      <ulink url="examples/st2ms.csd"><citetitle>st2ms.csd</citetitle></ulink>
+      et <ulink url="examples/stereoJungle.wav"><citetitle>stereoJungle.wav</citetitle></ulink>.
       <example>
         <title>Exemple de l'opcode st2ms.</title>
         <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
@@ -59,6 +60,13 @@ authors=Francois Pinot
         d'information sur l'utilisation des options de la ligne de commande.</para>
           <xi:include href="examples-xml/st2ms.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ms2st"><citetitle>ms2st</citetitle></link>
     </para>
   </refsect1>
 
