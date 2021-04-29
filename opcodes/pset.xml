@@ -65,9 +65,11 @@ english cvs version=1.8
         d'information sur l'utilisation des options de la ligne de commande.</para>
           <xi:include href="examples-xml/pset.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
-      <para>Voici un autre exemple d'utilisation de l'opcode pset avec le midi.
-      Il utilise le fichier
-      <ulink url="examples/pset-midi.csd"><citetitle>pset-midi.csd</citetitle></ulink>
+      <para>
+        Voici un autre exemple de l'opcode pset, avec un fichier midi.
+        Il utilise les fichiers
+        <ulink url="examples/pset-midi.csd"><citetitle>pset-midi.csd</citetitle></ulink>
+        et <ulink url="examples/midiChords.mid"><citetitle>midiChords.mid</citetitle></ulink>.
       </para>
       <example>
         <title>Second exemple de l'opcode pset.</title>
