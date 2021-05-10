@@ -70,6 +70,8 @@ english cvs version=1.19
       <emphasis>ibeg1, iend1, ibeg2, iend2</emphasis> (facultatifs, dépendants de
       <emphasis>mod1, mod2</emphasis>) -- début et fin des boucles d'entretien et de
       relâchement. Ils sont mesurés en <emphasis>trames d'échantillon</emphasis>
+      (un groupe d'échantillons à la même date, un par canal. En mono, 1 trame =
+      1 échantillon. En stéréo, 1 trame = 2 échantillons, etc.)
       depuis le début du fichier, et auront ainsi la même valeur que le son soit
       mono ou stéréo. Si aucun point de boucle n'est spécifié et qu'un mode de
       boucle est donné (<emphasis>imod1</emphasis>, <emphasis>imod2</emphasis>, le

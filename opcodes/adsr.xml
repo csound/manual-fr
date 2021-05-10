@@ -105,13 +105,21 @@ english cvs version=1.16
     <para>
       Voici un exemple de l'opcode adsr. Il utilise le fichier
       <ulink url="examples/adsr.csd"><citetitle>adsr.csd</citetitle></ulink>.
-
       <example>
         <title>Exemple de l'opcode adsr.</title>
         <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
         et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
         d'information sur l'utilisation des options de la ligne de commande.</para>
           <xi:include href="examples-xml/adsr.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Voici un exemple pour le groupe adsd, comparant les différents opcodes
+      adsr. Il utilise le fichier
+      <ulink url="examples/adsr-group.csd"><citetitle>adsr-group.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple du groupe adsr.</title>
+          <xi:include href="examples-xml/adsr-group.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
     </para>
   </refsect1>
