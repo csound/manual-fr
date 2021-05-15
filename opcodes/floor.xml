@@ -67,6 +67,13 @@ instr 1:  inumber = 9.000  idiv = 7.000  ifl = 1.000
 instr 1:  inumber = 9.000  idiv = 8.000  ifl = 1.000
 instr 1:  inumber = 9.000  idiv = 9.000  ifl = 1.000
 instr 1:  inumber = 9.000  idiv = 10.000  ifl = 0.000</screen>
+      Voici un exemple de groupe d'arrondis, comparant les différents
+      opcodes d'arrondis. Il utilise le fichier
+      <ulink url="examples/rounding-group.csd"><citetitle>rounding-group.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de groupe d'arrondis.</title>
+          <xi:include href="examples-xml/rounding-group.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
     </para>
   </refsect1>
 
@@ -87,9 +94,9 @@ instr 1:  inumber = 9.000  idiv = 10.000  ifl = 0.000</screen>
     <title>Crédits</title>
     <para>
       <simplelist>
-      	<member>Auteur : Istvan Varga</member>
-      	<member>Nouveau dans Csound 5</member>
-      	<member>2005</member>
+        <member>Auteur : Istvan Varga</member>
+        <member>Nouveau dans Csound 5</member>
+        <member>2005</member>
       </simplelist>
     </para>
   </refsect1>

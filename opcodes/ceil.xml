@@ -25,7 +25,7 @@ english cvs version=1.7
   <refsect1>
     <title>Description</title>
     <para>
-	    Retourne le plus petit entier supérieur ou égal à <emphasis>x</emphasis>.
+      Retourne le plus petit entier supérieur ou égal à <emphasis>x</emphasis>.
     </para>
   </refsect1>
 
@@ -70,6 +70,13 @@ instr 1:  iceil = 0.000</screen>
         <title>Un second exemple de l'opcode ceil.</title>
           <xi:include href="examples-xml/ceil-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
+      Voici un exemple de groupe d'arrondis, comparant les différents opcodes
+      d'arrondi. Il utilise le fichier
+      <ulink url="examples/rounding-group.csd"><citetitle>rounding-group.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de groupe d'arrondis.</title>
+          <xi:include href="examples-xml/rounding-group.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
     </para>
   </refsect1>
 
@@ -90,9 +97,9 @@ instr 1:  iceil = 0.000</screen>
     <title>Crédits</title>
     <para>
       <simplelist>
-      	<member>Auteur : Istvan Varga</member>
-      	<member>Nouveau dans Csound 5</member>
-      	<member>2005</member>
+        <member>Auteur : Istvan Varga</member>
+        <member>Nouveau dans Csound 5</member>
+        <member>2005</member>
       </simplelist>
     </para>
   </refsect1>

@@ -36,7 +36,7 @@ authors=Francois Pinot
   </refsect1>
 
   <refsect1>
-    <title>Initialisation</title>
+    <title>Exécution</title>
     <para>
       <emphasis>kRate</emphasis> -- fixe le taux en cycles par seconde auquel
       les nouvelles notes sont générées.
@@ -46,10 +46,6 @@ authors=Francois Pinot
       ascendant et descendant, 1 pour ascendant, 2 pour descendant, 3 pour
       aléatoire. 0 est la valeur par défaut.
     </para>
-  </refsect1>
-  
-  <refsect1>
-    <title>Exécution</title>
     <para>
       <emphasis>kMideNoteNum</emphasis> -- le numéro de note MIDI courant dans
       l'arpège.
