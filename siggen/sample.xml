@@ -13,89 +13,128 @@ english cvs version=1.15
   <para>
     Les opcodes qui implémentent la reproduction de sons échantillonnés (samples) et les boucles sont :
     <itemizedlist>
-	    <listitem><para><link linkend="bbcutm"><citetitle>bbcutm</citetitle></link></para></listitem>
-	    <listitem><para><link linkend="bbcuts"><citetitle>bbcuts</citetitle></link></para></listitem>
-	    <listitem><para><link linkend="flooper"><citetitle>flooper</citetitle></link></para></listitem>
-	    <listitem><para><link linkend="flooper2"><citetitle>flooper2</citetitle></link></para></listitem>
-	    <listitem><para><link linkend="loscil"><citetitle>loscil</citetitle></link></para></listitem>
-            <listitem><para><link linkend="loscil3"><citetitle>loscil3</citetitle></link></para></listitem>
-	    <listitem><para><link linkend="loscilx"><citetitle>loscilx</citetitle></link></para></listitem>
-	    <listitem><para><link linkend="lphasor"><citetitle>lphasor</citetitle></link></para></listitem>
-	    <listitem><para><link linkend="lposcil"><citetitle>lposcil</citetitle></link></para></listitem>
-	    <listitem><para><link linkend="lposcil3"><citetitle>lposcil3</citetitle></link></para></listitem>
+      <listitem><para><link linkend="bbcutm"><citetitle>bbcutm</citetitle></link></para></listitem>
+      <listitem><para><link linkend="bbcuts"><citetitle>bbcuts</citetitle></link></para></listitem>
+      <listitem><para><link linkend="flooper"><citetitle>flooper</citetitle></link></para></listitem>
+      <listitem><para><link linkend="flooper2"><citetitle>flooper2</citetitle></link></para></listitem>
+      <listitem><para><link linkend="loscil"><citetitle>loscil</citetitle></link></para></listitem>
+      <listitem><para><link linkend="loscil3"><citetitle>loscil3</citetitle></link></para></listitem>
+      <listitem><para><link linkend="loscilx"><citetitle>loscilx</citetitle></link></para></listitem>
+      <listitem><para><link linkend="lphasor"><citetitle>lphasor</citetitle></link></para></listitem>
+      <listitem><para><link linkend="lposcil"><citetitle>lposcil</citetitle></link></para></listitem>
+      <listitem><para><link linkend="lposcil3"><citetitle>lposcil3</citetitle></link></para></listitem>
       <listitem><para><link linkend="lposcila"><citetitle>lposcila</citetitle></link></para></listitem>
       <listitem><para><link linkend="lposcilsa"><citetitle>lposcilsa</citetitle></link></para></listitem>
       <listitem><para><link linkend="lposcilsa2"><citetitle>lposcilsa2</citetitle></link></para></listitem>
-	    <listitem><para><link linkend="sndloop"><citetitle>sndloop</citetitle></link></para></listitem>
-	    <listitem><para><link linkend="waveset"><citetitle>waveset</citetitle></link></para></listitem>
+      <listitem><para><link linkend="sndloop"><citetitle>sndloop</citetitle></link></para></listitem>
+      <listitem><para><link linkend="waveset"><citetitle>waveset</citetitle></link></para></listitem>
     </itemizedlist>
     Voir aussi la section <link linkend="SigioInput"><citetitle>Entrée de Signal</citetitle></link> pour
     d'autres types d'entrées sonores.
   </para>
   <section id="SiggenSampleSF">
-	<title>Soundfonts</title>
+  <title>Soundfonts</title>
+  <para>
+    A partir de la version 4.07 de Csound,
+    <link linkend="sfload"><citetitle>Csound supporte le format de fichier
+    d'échantillons de SoundFont2</citetitle></link>. SoundFont2 (ou SF2) est
+    un standard très répandu qui permet l'encodage de banques de sons basés sur
+    des forme d'onde dans un fichier binaire. Afin de comprendre l'utilisation
+    de ces opcodes, l'utilisateur doit avoir une certaine connaissance du format
+    SF2, dont une brève description suit ci-dessous.
+  </para>
+  <para>
+    Le format SF2 comprend des objets générateurs et modulateurs. Tous les
+    opcodes actuels de Csound concernant SF2 ne supportent que la fonction
+    générateur.
+  </para>
+  <para>
+    Il y a plusieurs niveaux de générateurs ayant une structure hiérarchique.
+    Le type de générateur le plus basique est un échantillon. Les échantillons
+    peuvent être bouclés ou non, et sont associés avec un numéro de note MIDI,
+    appelé la touche de base. Lorsqu'un échantillon est associé avec un
+    intervalle de numéros de note MIDI, un intervalle de vélocités, une
+    transposition (accord grossier et fin), une échelle d'accord et un facteur
+    de pondération de niveau, l'échantillon et ses associations forment un
+    <quote>split</quote>. Un ensemble de splits, associé à un nom, font un
+    <quote>instrument</quote>. Lorsqu'un instrument est associé à un intervalle
+    de touches, un intervalle de vélocités, un facteur de pondération de niveau
+    et une transposition, l'instrument est ses associations forment un
+    <quote>layer</quote>. Un ensemble de layers, associé à un nom, font un
+    <quote>preset</quote>. Les presets sont normalement la structure finale de
+    génération de son prête à l'usage. Ils génèrent du son selon les réglages
+    de leurs composants des niveaux inférieurs.
+  </para>
+  <para>
+    Les données d'échantillon ainsi que les données de structure sont inclus
+    dans le même fichier binaire SF2. Un seul fichier SF2 peut contenir au
+    maximum 128 banques de 128 programmes de preset, soit un total de 16384
+    presets dans un fichier SF2. Le nombre maximum de layers, instruments,
+    splits et échantillons n'est pas défini et se trouve sans doute limité par
+    la mémoire de l'ordinateur.
+  </para>
 
   <simplesect>
   <title>Opcodes Fluid</title>
   <para>La famille des opcodes fluid encapsule le lecteur SoundFont 2 de Peter Hannape, FluidSynth :
-	  <link linkend="fluidEngine"><citetitle>fluidEngine</citetitle></link> pour instancier un moteur
-	  FluidSynth,
+    <link linkend="fluidEngine"><citetitle>fluidEngine</citetitle></link> pour instancier un moteur
+    FluidSynth,
     <link linkend="fluidSetInterpMethod"><citetitle>fluidSetInterpMethod</citetitle></link> pour fixer
     la méthode d'interpolation d'un canal dans un moteur FluidSynth,
-	  <link linkend="fluidLoad"><citetitle>fluidLoad</citetitle></link> pour charger des SoundFonts,
-	  <link linkend="fluidProgramSelect"><citetitle>fluidProgramSelect</citetitle></link> pour assigner des
+    <link linkend="fluidLoad"><citetitle>fluidLoad</citetitle></link> pour charger des SoundFonts,
+    <link linkend="fluidProgramSelect"><citetitle>fluidProgramSelect</citetitle></link> pour assigner des
     presets d'un SoundFont à un canal MIDI d'un moteur FluidSynth,
-	  <link linkend="fluidNote"><citetitle>fluidNote</citetitle></link> pour jouer une note sur un canal
+    <link linkend="fluidNote"><citetitle>fluidNote</citetitle></link> pour jouer une note sur un canal
     MIDI d'un moteur FluidSynth,
-	  <link linkend="fluidCCi"><citetitle>fluidCCi</citetitle></link> pour envoyer un message de contrôleur
+    <link linkend="fluidCCi"><citetitle>fluidCCi</citetitle></link> pour envoyer un message de contrôleur
     au temps-i sur un canal MIDI d'un moteur FluidSynth,
-	  <link linkend="fluidCCk"><citetitle>fluidCCk</citetitle></link> pour envoyer un message de contrôleur
+    <link linkend="fluidCCk"><citetitle>fluidCCk</citetitle></link> pour envoyer un message de contrôleur
     au taux k sur un canal MIDI d'un moteur FluidSynth. 
-	  <link linkend="fluidControl"><citetitle>fluidControl</citetitle></link> pour jouer et contrôler les
-	  Soundfonts chargés (en utilisant des messages MIDI 'bruts'),
-	  <link linkend="fluidOut"><citetitle>fluidOut</citetitle></link> pour recevoir de l'audio depuis un
+    <link linkend="fluidControl"><citetitle>fluidControl</citetitle></link> pour jouer et contrôler les
+    Soundfonts chargés (en utilisant des messages MIDI 'bruts'),
+    <link linkend="fluidOut"><citetitle>fluidOut</citetitle></link> pour recevoir de l'audio depuis un
     seul moteur FluidSynth, et
-	  <link linkend="fluidAllOut"><citetitle>fluidAllOut</citetitle></link> pour recevoir de l'audio depuis
+    <link linkend="fluidAllOut"><citetitle>fluidAllOut</citetitle></link> pour recevoir de l'audio depuis
     tous les moteurs FluidSynth.
   </para>
   <itemizedlist>
-	  <listitem><para><link linkend="fluidAllOut"><citetitle>fluidAllOut</citetitle></link></para></listitem>
-	  <listitem><para><link linkend="fluidCCi"><citetitle>fluidCCi</citetitle></link></para></listitem>
-	  <listitem><para><link linkend="fluidCCk"><citetitle>fluidCCk</citetitle></link></para></listitem>
-	  <listitem><para><link linkend="fluidControl"><citetitle>fluidControl</citetitle></link></para></listitem>
-	  <listitem><para><link linkend="fluidEngine"><citetitle>fluidEngine</citetitle></link></para></listitem>
-	  <listitem><para><link linkend="fluidLoad"><citetitle>fluidLoad</citetitle></link></para></listitem>
-	  <listitem><para><link linkend="fluidNote"><citetitle>fluidNote</citetitle></link></para></listitem>
-	  <listitem><para><link linkend="fluidOut"><citetitle>fluidOut</citetitle></link></para></listitem>
-	  <listitem><para><link linkend="fluidProgramSelect"><citetitle>fluidProgramSelect</citetitle></link></para></listitem>
+    <listitem><para><link linkend="fluidAllOut"><citetitle>fluidAllOut</citetitle></link></para></listitem>
+    <listitem><para><link linkend="fluidCCi"><citetitle>fluidCCi</citetitle></link></para></listitem>
+    <listitem><para><link linkend="fluidCCk"><citetitle>fluidCCk</citetitle></link></para></listitem>
+    <listitem><para><link linkend="fluidControl"><citetitle>fluidControl</citetitle></link></para></listitem>
+    <listitem><para><link linkend="fluidEngine"><citetitle>fluidEngine</citetitle></link></para></listitem>
+    <listitem><para><link linkend="fluidLoad"><citetitle>fluidLoad</citetitle></link></para></listitem>
+    <listitem><para><link linkend="fluidNote"><citetitle>fluidNote</citetitle></link></para></listitem>
+    <listitem><para><link linkend="fluidOut"><citetitle>fluidOut</citetitle></link></para></listitem>
+    <listitem><para><link linkend="fluidProgramSelect"><citetitle>fluidProgramSelect</citetitle></link></para></listitem>
     <listitem><para><link linkend="fluidSetInterpMethod"><citetitle>fluidSetInterpMethod</citetitle></link></para></listitem>
   </itemizedlist>
   </simplesect>
 
   <simplesect>
-	  <title>Opcodes Soundfont "originaux"</title>
-	  <para>Ces opcodes peuvent aussi employer des soundfonts pour générer du son.
-	    <emphasis>sfplay</emphasis>, etc. ont été créés dans un but -- utiliser les
-	    échantillons dans les SoundFonts. Les opcodes fluid ont été créés dans un autre
-	    but -- utiliser les SoundFonts plus ou moins comme ils ont été conçus, c'est-à-dire
-	    en utilisant des mappages de clavier, des couches, un traitement interne, etc.
-	  </para>
-	  <itemizedlist>
-		  <listitem><para><link linkend="sfilist"><citetitle>sfilist</citetitle></link></para></listitem>
-		  <listitem><para><link linkend="sfinstr"><citetitle>sfinstr</citetitle></link></para></listitem>
-		  <listitem><para><link linkend="sfinstr3"><citetitle>sfinstr3</citetitle></link></para></listitem>
-		  <listitem><para><link linkend="sfinstr3m"><citetitle>sfinstr3m</citetitle></link></para></listitem>
-		  <listitem><para><link linkend="sfinstrm"><citetitle>sfinstrm</citetitle></link></para></listitem>
-		  <listitem><para><link linkend="sfload"><citetitle>sfload</citetitle></link></para></listitem>
-		  <listitem><para><link linkend="sfpassign"><citetitle>sfpassign</citetitle></link></para></listitem>
-		  <listitem><para><link linkend="sfplay"><citetitle>sfplay</citetitle></link></para></listitem>
-		  <listitem><para><link linkend="sfplay3"><citetitle>sfplay3</citetitle></link></para></listitem>
-		  <listitem><para><link linkend="sfplay3m"><citetitle>sfplay3m</citetitle></link></para></listitem>
-		  <listitem><para><link linkend="sfplaym"><citetitle>sfplaym</citetitle></link></para></listitem>
+    <title>Opcodes Soundfont "originaux"</title>
+    <para>Ces opcodes peuvent aussi employer des soundfonts pour générer du son.
+      <emphasis>sfplay</emphasis>, etc. ont été créés dans un but -- utiliser les
+      échantillons dans les SoundFonts. Les opcodes fluid ont été créés dans un autre
+      but -- utiliser les SoundFonts plus ou moins comme ils ont été conçus, c'est-à-dire
+      en utilisant des mappages de clavier, des couches, un traitement interne, etc.
+    </para>
+    <itemizedlist>
+      <listitem><para><link linkend="sfilist"><citetitle>sfilist</citetitle></link></para></listitem>
+      <listitem><para><link linkend="sfinstr"><citetitle>sfinstr</citetitle></link></para></listitem>
+      <listitem><para><link linkend="sfinstr3"><citetitle>sfinstr3</citetitle></link></para></listitem>
+      <listitem><para><link linkend="sfinstr3m"><citetitle>sfinstr3m</citetitle></link></para></listitem>
+      <listitem><para><link linkend="sfinstrm"><citetitle>sfinstrm</citetitle></link></para></listitem>
+      <listitem><para><link linkend="sfload"><citetitle>sfload</citetitle></link></para></listitem>
+      <listitem><para><link linkend="sfpassign"><citetitle>sfpassign</citetitle></link></para></listitem>
+      <listitem><para><link linkend="sfplay"><citetitle>sfplay</citetitle></link></para></listitem>
+      <listitem><para><link linkend="sfplay3"><citetitle>sfplay3</citetitle></link></para></listitem>
+      <listitem><para><link linkend="sfplay3m"><citetitle>sfplay3m</citetitle></link></para></listitem>
+      <listitem><para><link linkend="sfplaym"><citetitle>sfplaym</citetitle></link></para></listitem>
       <listitem><para><link linkend="sflooper"><citetitle>sflooper</citetitle></link></para></listitem>
-		  <listitem><para><link linkend="sfplist"><citetitle>sfplist</citetitle></link></para></listitem>
-		  <listitem><para><link linkend="sfpreset"><citetitle>sfpreset</citetitle></link></para></listitem>
-	  </itemizedlist>
-	  </simplesect>
+      <listitem><para><link linkend="sfplist"><citetitle>sfplist</citetitle></link></para></listitem>
+      <listitem><para><link linkend="sfpreset"><citetitle>sfpreset</citetitle></link></para></listitem>
+    </itemizedlist>
+    </simplesect>
   </section>
 </section>
