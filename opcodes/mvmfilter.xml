@@ -1,0 +1,128 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="mvmfilter">
+<indexterm id="IndexMvmfilter"><primary>mvmfilter</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Specialized Filters</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>mvmfilter</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>mvmfilter</refname>
+    <refpurpose>
+      Un filtre avec une résonance prononcée et une durée de chute contrôlable.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Filtre le signal en entrée avec la fréquence de résonance et la durée de
+      chute spécifiées. Peut être utilisé pour ajouter une résonance spécifique
+      à un signal entrant ou pour modeler de courts éclats de sinusoïdes à la
+      fréquence désirée. Avec une durée de chute suffisamment longue on peut en
+      faire un oscillateur sinusoïdal.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aout <command>mvmfilter</command> ain, xfreq, xTau [, iskip]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iskip</emphasis> (facultatif, 0 par défaut) -- s'il est
+      différent de zéro l'initialisation du filtre est ignorée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>aout</emphasis> -- signal filtré
+    </para>
+
+    <para>
+      <emphasis>ain</emphasis> -- signal à filtrer
+    </para>
+
+    <para>
+      <emphasis>xfreq</emphasis> -- fréquence de résonance du filtre
+      <warning>
+        <title>Avertissement</title>
+        <para>
+          La sortie du filtre peut augmenter rapidement si le signal en entrée
+          est corrélé avec la sortie. Le pire cas se produit s'il augmente de
+          l'amplitude de l'entrée à chaque échantillon. Pour limiter la
+          croissance afin que le filtre n'explose pas il vaut mieux pondérer
+          toute entrée continue de manière significative.
+          L'échelle requise est relative à la valeur de la durée de chute tau si
+          bien que si l'on choisit une durée de chute maximale on peut calculer
+          le facteur de pondération requis :
+          1 / $M_E / (<emphasis>sr</emphasis>*tau)
+        </para>
+      </warning>
+    </para>
+
+    <para>
+      <emphasis>xTau</emphasis> -- Durée de chute du filtre en secondes
+    </para>
+    <para>
+      La durée de chute est le temps en seconde pour que l'atténuation du
+      filtre soit de 1/<emphasis>e</emphasis>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode mvmfilter. Il utilise le fichier
+      <ulink url="examples/mvmfilter.csd"><citetitle>mvmfilter.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode mvmfilter.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/mvmfilter.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Références</title>
+    <para>
+      Ce filtre est basé sur les travaux de Max Mathews et de Julius
+      O. Smith III. Ce filtre fut d'abord utilisé par Max Mathews dans une
+      application qui passait un son dans un banc de ces filtres avec
+      contrôle en temps réel des paramètres de durée de chute et de fréquence.
+      Cette installation était la base d'une performance collaborative en
+      temps réel et était référencée comme filtres phaseurs.
+    </para>
+
+    <para>
+      <orderedlist>
+        <listitem>
+          <para>
+      Max Mathews et Julius O. Smith III, 
+      <ulink url="https://ccrma.stanford.edu/~jos/smac03maxjos/smac03maxjos.pdf"><citetitle>"Very High Q Parametrically WellBehaved Two Pole Filters"</citetitle></ulink>
+          </para>
+        </listitem>
+      </orderedlist>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Conception originale par Max V. Mathews et Julius O. Smith III</para>
+    <para>Implémentation de l'opcode par Joel Ross</para>
+    <para>Nouveau dans la version 6.16</para>
+    <para>Mai 2021.</para>
+  </refsect1>
+</refentry>
