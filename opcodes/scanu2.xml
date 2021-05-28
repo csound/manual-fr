@@ -1,0 +1,174 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="scanu2">
+<indexterm id="IndexScanu2"><primary>scanu2</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Scanned Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>scanu2</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>scanu2</refname>
+    <refpurpose>
+      Calcule la forme d'onde et la table d'onde à utiliser dans la synthèse par
+      balayage.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>Opcode du greffon scansyn.</para>
+    <para>
+      Calcule la forme d'onde et la table d'onde à utiliser dans la synthèse par
+      balayage.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>scanu2</command> init, irate, ifnvel, ifnmass, ifnstif, ifncentr, ifndamp, kmass, \
+      kstif, kcentr, kdamp, ileft, iright, kpos, kstrngth, ain, idisp, id</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>init</emphasis> -- La position initiale des masses. Si c'est un
+      nombre négatif, alors la valeur absolue de <emphasis>init</emphasis>
+      indique la table à utiliser pour la forme du marteau. Si
+      <emphasis>init</emphasis> &gt; 0, sa longueur doit être la même que le
+      nombre de masses attendu, sinon il peut avoir n'importe quelle valeur. Si
+      <emphasis>init</emphasis> n'est pas un entier, l'état initial est du bruit
+      blanc, la partie fractionnaire étant une pondération...
+    </para>
+    <para>
+      <emphasis>irate</emphasis> -- L'intervalle de temps entre les mises à
+      jour successives de l'état des masses. Du même ordre de grandeur que la
+      période d'échantillonnage du système. Si ce nombre est grand, la chaîne
+      sera mise à jour lentement montrant une faible variation du timbre ;
+      sinon elle changera rapidement donnant un son plus dynamique.
+    </para>
+    <para>
+      <emphasis>ifnvel</emphasis> -- ftable contenant la vitesse initiale de
+      chaque masse. Sa taille est le nombre de masses attendu.
+    </para>
+
+    <para>
+      <emphasis>ifnmass</emphasis> -- ftable contenant la valeur de chaque masse.
+      Sa taille est le nombre de masses attendu.
+    </para>
+
+    <para>
+      <emphasis>ifnstif</emphasis> -- ftable contenant la raideur du ressort de
+      chaque connexion. Sa taille est le carré du nombre de masses attendu. Ses
+      données sont ordonnées selon la succession des lignes de la matrice de
+      connexion du système. 
+    </para>
+
+    <para>
+      <emphasis>ifncentr</emphasis> -- ftable contenant la force de centrage de
+      chaque masse. Sa taille est le nombre de masses attendu.
+    </para>
+
+    <para>
+      <emphasis>ifndamp</emphasis> -- ftable contenant le facteur
+      d'amortissement de chaque masse. Sa taille est le nombre de masses attendu.
+    </para>
+
+    <para>
+      <emphasis>ileft</emphasis> -- Si <emphasis>init</emphasis> &lt; 0, 
+      position du pincement positif entre 0 et 1.
+    </para>
+
+    <para>
+      <emphasis>iright</emphasis> -- Si <emphasis>init</emphasis> &lt; 0,
+      position du pincement négatif entre 0 et 1.
+    </para>
+    <para>Si <emphasis>ileft</emphasis> le même que <emphasis>iright</emphasis>
+      un seul pincement positif est utilisé comme état initial.
+    </para>
+
+    <para>
+      <emphasis>idisp</emphasis> -- S'il vaut 0, il n'y a pas d'affichage des
+      masses.
+    </para>
+
+    <para>
+      <emphasis>id</emphasis> -- S'il est positif, c'est l'ID de l'opcode. Il est
+      utilisé pour relier l'opcode de balayage au bon générateur de forme d'onde.
+      S'il est négatif, sa valeur absolue indique la table d'onde dans laquelle
+      sera écrite la forme d'onde. Cette forme d'onde peut être utilisée par la
+      suite par un autre opcode pour générer du son. Le contenu initial de cette
+      table sera écrasé.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kmass</emphasis> -- pondère les masses
+    </para>
+
+    <para>
+      <emphasis>kstif</emphasis> -- pondère la raideur des ressorts.
+      Noter que de grandes valeurs ralentissent l'évolution de la vibration,
+      à l'inverse du paramètre correspondant dans scanu.
+    </para>
+
+    <para>
+      <emphasis>kcentr</emphasis> -- pondère la force de centrage
+    </para>
+
+    <para>
+      <emphasis>kdamp</emphasis> -- pondère l'amortissement
+    </para>
+
+    <para>
+      <emphasis>kpos</emphasis> -- position d'un marteau actif le long de la
+      corde (<emphasis>kpos</emphasis> = 0 est complètement à gauche,
+      <emphasis>kpos</emphasis> = 1 est complètement à droite). La forme du
+      marteau est déterminée par <emphasis>init</emphasis> et sa puissance de
+      percussion est <emphasis>kstrngth</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>kstrngth</emphasis> -- puissance utilisée par le marteau actif
+    </para>
+
+    <para>
+      <emphasis>ain</emphasis> -- entrée audio qui s'ajoute à la vélocité des
+      masses. L'amplitude ne doit pas être trop grande.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode scanu2. Il utilise les fichiers
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="scanu"><citetitle>scanu</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Credits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &namejohn; d'après &nameparis;</member>
+        <member>Mai 2021</member>
+      </simplelist>
+    </para>
+
+    <para>Nouveau dans la 6.16 de Csound</para>
+  </refsect1>
+</refentry>
