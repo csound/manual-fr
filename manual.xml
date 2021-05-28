@@ -129,7 +129,7 @@ authors=Francois Pinot
 <!ENTITY miscpitch SYSTEM "misc/pitch.xml">
 <!ENTITY miscquickref SYSTEM "misc/quickref.xml">
 <!ENTITY miscexamples SYSTEM "misc/examples.xml">
-<!ENTITY miscsf2 SYSTEM "misc/sf2.xml">
+<!--<!ENTITY miscsf2 SYSTEM "misc/sf2.xml">-->
 <!ENTITY miscwindows SYSTEM "misc/windows.xml">
 <!ENTITY miscmodalfreq SYSTEM "misc/modalfreq.xml">
 
@@ -923,6 +923,7 @@ authors=Francois Pinot
 <!ENTITY opcodesmvclpf2 SYSTEM "opcodes/mvclpf2.xml">
 <!ENTITY opcodesmvclpf3 SYSTEM "opcodes/mvclpf3.xml">
 <!ENTITY opcodesmvclpf4 SYSTEM "opcodes/mvclpf4.xml">
+<!ENTITY opcodesmvmfilter SYSTEM "opcodes/mvmfilter.xml">
 <!ENTITY opcodesmxadsr SYSTEM "opcodes/mxadsr.xml">
 <!ENTITY opcodesnchnls SYSTEM "opcodes/nchnls.xml">
 <!ENTITY opcodesnchnls_hw SYSTEM "opcodes/nchnls_hw.xml">

@@ -908,6 +908,7 @@
 <synopsis>aout <link linkend="gtf">gtf</link> ain, kfreq, idecay[, iorder, iphase]</synopsis><para/>
 <synopsis>ar1, ar2 <link linkend="hilbert">hilbert</link> asig</synopsis><para/>
 <synopsis>ar1, ar2 <link linkend="hilbert2">hilbert2</link> asig, ifftsize, ihopsize</synopsis><para/>
+<synopsis>aout <link linkend="mvmfilter">mvmfilter</link> ain, xfreq, xTau [, iskip]</synopsis><para/>
 <synopsis>ares <link linkend="nlfilt">nlfilt</link> ain, ka, kb, kd, kC, kL</synopsis><para/>
 <synopsis>ares <link linkend="nlfilt2">nlfilt2</link> ain, ka, kb, kd, kC, kL</synopsis><para/>
 <synopsis>ares <link linkend="pareq">pareq</link> asig, kc, kv, kq [, imode] [, iskip]</synopsis><para/>
