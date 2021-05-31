@@ -111,6 +111,21 @@ authors=Francois Pinot
     </para>
   </refsect1>
  
+   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de src_conv. Il utilise le fichier
+      <ulink url="examples/src_conv.csd"><citetitle>src_conv.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de src_conv.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/src_conv.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
   <refsect1>
     <title>Crédits</title>
     <para>Auteur : &namejohn; basé sur du code d'Erik de Castro Lopo.</para>

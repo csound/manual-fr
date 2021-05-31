@@ -91,5 +91,16 @@ util  SNDINFO:
             couldn't find</programlisting>
 <!--       </informalexample> -->
     </para>
+   <para>
+      Voici un exemple de l'utilitaire sndinfo. Il utilise le fichier
+      <ulink url="examples/sndinfo.csd"><citetitle>sndinfo.csd</citetitle></ulink>. 
+      <example>
+        <title>Exemple de l'utilitaire sndinfo.</title> 
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/sndinfo.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
   </refsect1>
 </refentry>

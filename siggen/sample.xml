@@ -35,9 +35,8 @@ english cvs version=1.15
   <section id="SiggenSampleSF">
   <title>Soundfonts</title>
   <para>
-    A partir de la version 4.07 de Csound,
-    <link linkend="sfload"><citetitle>Csound supporte le format de fichier
-    d'échantillons de SoundFont2</citetitle></link>. SoundFont2 (ou SF2) est
+    A partir de la version 4.07, Csound supporte le format de fichier
+    d'échantillons de SoundFont2. SoundFont2 (ou SF2) est
     un standard très répandu qui permet l'encodage de banques de sons basés sur
     des forme d'onde dans un fichier binaire. Afin de comprendre l'utilisation
     de ces opcodes, l'utilisateur doit avoir une certaine connaissance du format
@@ -129,8 +128,8 @@ english cvs version=1.15
   <simplesect>
     <title>Opcodes Soundfont "originaux"</title>
     <para>Ces opcodes peuvent aussi employer des soundfonts pour générer du son.
-      <emphasis>sfplay</emphasis>, etc. ont été créés dans un but -- utiliser les
-      échantillons dans les SoundFonts. Les opcodes fluid ont été créés dans un autre
+      <emphasis>sfplay</emphasis>, etc. ont été créés dans un but -- accéder
+      aux instruments et aux échantillons dans les SoundFonts. Les opcodes fluid ont été créés dans un autre
       but -- utiliser les SoundFonts plus ou moins comme ils ont été conçus, c'est-à-dire
       en utilisant des mappages de clavier, des couches, un traitement interne, etc.
     </para>
