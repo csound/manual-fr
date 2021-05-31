@@ -1,6 +1,12 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
 
 <refentry id="GEN44">
-      <indexterm id="IndexGEN44"><primary>GEN44</primary></indexterm>
+  <indexterm id="IndexGEN44"><primary>GEN44</primary></indexterm>
   <refmeta>
     <refentrytitle>GEN44</refentrytitle>
   </refmeta>
@@ -8,42 +14,44 @@
   <refnamediv>
     <refname>GEN44</refname>
     <refpurpose>
-      Generates a stiifness (connection) mtrix for use in scanu/scanu2.
+      Génère une matrice de raideur (connexion) à utiliser dans scanu/scanu2.
     </refpurpose>
   </refnamediv>
 
   <refsect1>
     <title>Description</title>
     <para>
-      Generates a stiffness matrix from a text file of triples numbers.
+      Génère une matrice de raideur à partir d'un fichier texte de triplets de
+      nombres.
     </para>
   </refsect1>
 
   <refsect1>
-    <title>Syntax</title>
+    <title>Syntaxe</title>
     <synopsis><command>f</command> # time size -44  "filename"</synopsis>
     <synopsis><command>f</command> # time size -44  num</synopsis>
   </refsect1>
 
   <refsect1>
-    <title>Performance</title>
+    <title>Exécution</title>
     <para>
-The file named in version 1 or the file stiff.num in the second case
-    is read to create the matrix.</para>
+      Le fichier nommé dans la première version ou le fichier stiff.num dans le
+      second cas est lu pour créer la matrice.
+    </para>
     <para>
-      The first line of the file should be
+      La première ligne du fichier doit être
       <quote>
         &lt;MATRIX size=integer&gt;
       </quote>
-      and it creates a square matrix of the
-      indicated size.  This is followed by lines of two or three numbers,
-      the first two denoting a connection from the first to the second
-      and the third is a weight.  If the third is omitted it is taken as
-      value 1.  The list is terminated by a
+      ce qui crée une matrice carrée de la taille indiquée. Suivent ensuite des
+      lignes de deux ou trois nombres, les deux premiers indiquant une
+      connexion du premier au second et le troisième étant un poids. Si le
+      troisième nombre est omis, on lui affecte la valeur 1. La liste se termine
+      par une ligne
       <quote>
       &lt;/MATRIX&gt;
     </quote>
-    line or end of file.
+    ou par la fin du fichier.
     </para>
   </refsect1>
 
@@ -58,8 +66,8 @@ The file named in version 1 or the file stiff.num in the second case
 <!--       </example>      -->
 
   <refsect1>
-    <title>Credits</title>
-    <para>Author: &namejohn;</para>
-    <para>New in Version 6.16 June 2021</para>
+    <title>Crédits</title>
+    <para>Auteur : &namejohn;</para>
+    <para>Nouveau dans la version 6.16, juin 2021</para>
   </refsect1>
 </refentry>
