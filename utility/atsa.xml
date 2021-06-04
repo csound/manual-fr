@@ -8,7 +8,7 @@ english cvs version=1.10
 -->
 
 <refentry id="UtilityAtsa">
-  <refentryinfo><title>Utilities</title></refentryinfo>
+  <refentryinfo><title>Utilities<  itle></refentryinfo>
   <refmeta>
     <refentrytitle>atsa</refentrytitle>
   </refmeta>
@@ -22,7 +22,7 @@ english cvs version=1.10
   </refnamediv>
 
   <refsect1>
-    <title>Description</title>
+    <title>Description<  itle>
     <para>
       Analyse ATS à utiliser avec les opcodes de Csound de
 	    <link linkend="SpectralATS"><citetitle>Resynthèse ATS</citetitle></link>.
@@ -30,12 +30,12 @@ english cvs version=1.10
   </refsect1>
 
   <refsect1>
-    <title>Syntaxe</title>
+    <title>Syntaxe<  itle>
     <synopsis><command>csound -U atsa</command> [options] nomfichier_entree nomfichier_sortie</synopsis>
 
   </refsect1>
   <refsect1>
-    <title>Initialisation</title>
+    <title>Initialisation<  itle>
     <para>
       Les options suivantes peuvent être positionnées pour atsa. (Les valeurs par défaut sont mises entre
       parenthèses) :
@@ -63,9 +63,9 @@ english cvs version=1.10
   </refsect1>
 
   <refsect1>
-    <title>Paramètres</title>
+    <title>Paramètres<  itle>
     <para>L'analyse ATS a été conçue par Juan Pampin. Pour une information complète sur ATS visiter : <ulink
-      url="http://www-ccrma.stanford.edu/~juan/ATS.html">http://www-ccrma.stanford.edu/~juan/ATS.html</ulink>.
+      url="https://ccrma.stanford.edu/~juan/ATS_manual.html">https://ccrma.stanford.edu/~juan/ATS_manual.html</ulink>.
     </para>
     <para>Les paramètres d'analyse doivent être réglés soigneusement pour l'Algorithme d'Analyse (ATSA) afin
       de capturer la nature du signal à analyser. Comme ils sont nombreux, ATSH offre la possibilité de les
@@ -167,7 +167,7 @@ english cvs version=1.10
   </refsect1>
 
   <refsect1>
-    <title>Exemples</title>
+    <title>Exemples<  itle>
     <para>
       La commande suivante :
 <!--      <informalexample> -->

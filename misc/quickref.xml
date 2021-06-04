@@ -763,7 +763,6 @@
 <title>Modificateurs de signal : opérateurs du niveau échantillon</title>
 <para>
 <para/>
-<synopsis><link linkend="denorm">denorm</link> a1[, a2[, a3[, ... ]]]</synopsis><para/>
 <synopsis>ares <link linkend="diff">diff</link> asig [, iskip]</synopsis><synopsis>kres <link linkend="diff">diff</link> ksig [, iskip]</synopsis><para/>
 <synopsis>kres <link linkend="downsamp">downsamp</link> asig [, iwlen]</synopsis><para/>
 <synopsis>ares <link linkend="fold">fold</link> asig, kincr</synopsis><para/>
@@ -2295,7 +2294,6 @@ inum_parm, kupdate</synopsis><para/>
 <para>
 <para/>
 <synopsis>kmom, kint, kshort <link linkend="lufs">lufs</link> kreset, ain1 [, ain2]</synopsis><para/>
-<synopsis><link linkend="UtilityAtsa">csound -U atsa</link> [options] nomfichier_entree nomfichier_sortie</synopsis><para/>
 <synopsis><link linkend="cs">cs</link> [-OPTIONS] &lt;nom&gt; [OPTIONS DE CSOUND ... ]</synopsis><para/>
 <synopsis><link linkend="csb64enc">csb64enc</link> [OPTIONS ... ] fichier1 [ fichier2 [ ... ]]</synopsis><para/>
 <synopsis><link linkend="cvanal">csound -U cvanal</link> [options] nomfichier_entree nomfichier_sortie</synopsis><synopsis><link linkend="cvanal">cvanal</link> [options] nomfichier_entree nomfichier_sortie</synopsis><para/>

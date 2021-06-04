@@ -79,10 +79,10 @@ english cvs version=1.9
   ktime   <emphasis role="opc">line</emphasis>      2.5, p3, 0
   kenergy <emphasis role="opc">ATSreadnz</emphasis> ktime, "clarinet.ats", 5</programlisting>
     <para>
-      Ici nous extrayons la bande d'énergie 5 du bruit du fichier d'analyse ATS
-      'clarinet.ats' . Nous lisons à l'envers depuis 2.5 secondes vers le début
-      du fichier d'analyse. On peut l'utiliser pour synthétiser du bruit
-      comme cela :
+      Ici nous extrayons l'énergie du bruit de la bande 5 dans le fichier
+      d'analyse ATS 'clarinet.ats'. Nous lisons à l'envers depuis 2.5 secondes
+      vers le début du fichier d'analyse. On peut l'utiliser pour synthétiser
+      du bruit comme cela :
     </para>
     <programlisting>
   anoise  <emphasis role="opc">randi</emphasis>     <emphasis role="opc">sqrt</emphasis>(kenergy), 55
@@ -91,8 +91,8 @@ english cvs version=1.9
     <para>
       La table de fonction 2 utilisée dans l'oscillateur est une onde cosinus, qui est
       nécessaire pour déplacer le bruit à bande limitée au bon endroit dans le
-      spectre de fréquence. La fonction <emphasis>randi</emphasis> crée une bande de
-      fréquence centrée sur 0 Hz qui a une largeur de bande d'environ 110 Hz ; en la
+      spectre de fréquence. La fonction <emphasis>randi</emphasis> crée une bande
+      de bruit centrée sur 0 Hz qui a une largeur de bande d'environ 110 Hz ; en la
       multipliant par une onde cosinus on la déplace pour qu'elle soit centrée
       à 455 Hz, qui est la fréquence centrale de la 5ème bande critique de bruit.
       Ce n'est qu'un exemple pour synthétiser du bruit qui serait mieux réalisé

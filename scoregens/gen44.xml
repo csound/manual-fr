@@ -54,16 +54,21 @@ authors=Francois Pinot
     ou par la fin du fichier.
     </para>
   </refsect1>
-
-<!--     <refsect1> -->
-<!--     <title>Examples</title> -->
-<!--     <para> -->
-<!--       Here is an example of the GEN44 generator. It uses the file <ulink url="examples/gen44.csd"><citetitle>gen44.csd</citetitle></ulink>. -->
-<!--             <example> -->
-<!--         <title>Example of the GEN44 generator.</title> -->
-<!--         <para>See the sections <link linkend="UsingRealTime"><citetitle>Real-time Audio</citetitle></link> and <link linkend="CommandFlags"><citetitle>Command Line Flags</citetitle></link> for more information on using command line flags.</para> -->
-<!--           <xi:include href="examples-xml/gen44.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/> -->
-<!--       </example>      -->
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple du générateur GEN44. Il utilise le fichier
+      <ulink url="examples/gen44.csd"><citetitle>gen44.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple du générateur GEN44.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/gen44.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
 
   <refsect1>
     <title>Crédits</title>
