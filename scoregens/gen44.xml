@@ -53,6 +53,10 @@ authors=Francois Pinot
     </quote>
     ou par la fin du fichier.
     </para>
+    <para>can be given as zero in which case a size*size table is
+    created. If the size in the gen statememt is too small for the
+    matrix then space is re-allocated to the required size.
+    </para>
   </refsect1>
   
   <refsect1>
