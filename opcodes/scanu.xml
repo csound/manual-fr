@@ -33,8 +33,9 @@ english cvs version=1.8
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis><command>scanu</command> init, irate, ifnvel, ifnmass, ifnstif, ifncentr, ifndamp, kmass, \
-      kstif, kcentr, kdamp, ileft, iright, kpos, kstrngth, ain, idisp, id</synopsis>
+    <synopsis><command>scanu</command> init, irate, ifndisplace,
+    ifnmass, ifnmatrix, ifncentr, ifndamp, kmass, kmtrxstiff, kcentr,
+    kdamp, ileft, iright, kpos, kdisplace, ain, idisp, id</synopsis>
   </refsect1>
  
   <refsect1>
@@ -55,8 +56,8 @@ english cvs version=1.8
     </para>
 
     <para>
-      <emphasis>ifnvel</emphasis> -- ftable contenant la vitesse initiale de
-      chaque masse. Sa taille est le nombre de masses attendu.
+      <emphasis>ifndisplace</emphasis> -- ftable contenant la vitesse initiale
+      de chaque masse. Sa taille est le nombre de masses attendu.
     </para>
 
     <para>
@@ -65,10 +66,10 @@ english cvs version=1.8
     </para>
 
     <para>
-      <emphasis>ifnstif</emphasis> -- ftable contenant la raideur du ressort de
-      chaque connexion. Sa taille est le carré du nombre de masses attendu. Ses
-      données sont ordonnées selon la succession des lignes de la matrice de
-      connexion du système.
+      <emphasis>ifnmatrix</emphasis> -- ftable contenant la raideur du ressort
+      de chaque connexion. Sa taille est le carré du nombre de masses attendu.
+      Ses données sont ordonnées selon la succession des lignes de la matrice
+      de connexion du système.
     </para>
 
     <para>
@@ -110,19 +111,19 @@ english cvs version=1.8
   <refsect1>
     <title>Exécution</title>
     <para>
-      <emphasis>kmass</emphasis> -- pondère les masses
+      <emphasis>kmass</emphasis> -- pondère les masses.
     </para>
 
     <para>
-      <emphasis>kstif</emphasis> -- pondère la raideur des ressorts
+      <emphasis>kmtrxstiff</emphasis> -- pondère la raideur des ressorts.
     </para>
 
     <para>
-      <emphasis>kcentr</emphasis> -- pondère la force de centrage
+      <emphasis>kcentr</emphasis> -- pondère la force de centrage.
     </para>
 
     <para>
-      <emphasis>kdamp</emphasis> -- pondère l'amortissement
+      <emphasis>kdamp</emphasis> -- pondère l'amortissement.
     </para>
 
     <para>
@@ -134,7 +135,8 @@ english cvs version=1.8
     </para>
 
     <para>
-      <emphasis>kstrngth</emphasis> -- puissance utilisée par le marteau actif
+      <emphasis>kdisplace</emphasis> -- puissance utilisée par le marteau
+      actif.
     </para>
 
     <para>
