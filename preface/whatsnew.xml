@@ -92,6 +92,546 @@ english cvs version=
     </itemizedlist>
   </para>-->
 
+  <bridgehead>Notes de parution de Csound 6.16 (Juin 2021)</bridgehead>
+  <para>
+    Cette réalisation tardive devait consister principalement en corrections
+    de bogues, mais il y a de nouveaux opcodes significatifs, incluant le
+    support pour une utilisation plus simple de contrôles MIDI et un nouvel
+    opcode de connexion à Arduino. De plus, il y a un limiteur facultatif
+    dans la chaîne de sortie du son.
+  </para>
+  <para>
+    Il y a aussi plusieurs nouveaux filtres avec notamment l'opcode final écrit
+    par le "père de la musique par ordinateur" Max Mathews (avec Julius Smith) !
+    porté par Joel Ross.
+  </para>
+  <para>
+    <itemizedlist>
+      <listitem>
+        <para>Nouveaux opcodes :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                <link linkend="cntDelete"><citetitle>cntDelete</citetitle></link>
+                efface un objet compteur.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="lfsr"><citetitle>lfsr</citetitle></link>,
+                un opcode de registre à décalage avec rétroaction linéaire pour
+                la génération de nombres pseudo-aléatoires.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="ctrlsave"><citetitle>ctrlsave</citetitle></link>
+                stocke les valeurs courantes de contrôleurs MIDI dans un tableau.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="turnoff3"><citetitle>turnoff3</citetitle></link>
+                étend l'extinction pour supprimer des instances d'instrument qui
+                sont en file d'attente mais pas encore actifs.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="ctrlprint"><citetitle>ctrlprint</citetitle></link>
+                affiche le résultat d'un appel à ctrlsave sous une forme
+                utilisable dans un orchestre.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara><link
+                linkend="ctrlprintpresets"><citetitle>ctrlprintpresets</citetitle></link>
+                affiche un préréglage de contrôleur MIDI.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="ctrlselect"><citetitle>ctrlselect</citetitle></link>
+                sélectionne un préréglage pour les valeurs d'un contrôleur MIDI.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="ctrlpreset"><citetitle>ctrlpreset</citetitle></link>
+                defines a preset for MIDI controllers.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="outall"><citetitle>outall</citetitle></link>
+                écrit un signal sur tous les canaux de sortie.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="scale2"><citetitle>scale2</citetitle></link>
+                semblable à scale mais avec un ordre différent des arguments
+                un filtre de lissage facultatif.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="arduinoReadF"><citetitle>arduinoRead</citetitle></link>
+                étend la famille arduino au transfert de valeurs en virgule
+                flottante.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="triglinseg"><citetitle>triglinseg</citetitle></link>
+                et
+                <link linkend="trigexpseg"><citetitle>trigexpseg</citetitle></link>
+                sont des version déclanchables de linseg et expseg.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="vclpf"><citetitle>vclpf</citetitle></link>
+                est un filtre linéaire passe-bas résonant à 4 pôles basé sur
+                une configuration de filtre analogique typique.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="spf"><citetitle>spf</citetitle></link>
+                is a second-order multimode filter based on the Steiner-Parker
+                configuration with separate lowpass, highpass, and bandpass
+                inputs and a single output.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="skf"><citetitle>skf</citetitle></link> est un
+                filtre passe-bas ou passe-haut du second ordre basé sur un
+                modèle linéaire du filtre analogique de Sallen-Key.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="svn"><citetitle>svn</citetitle></link> un filtre
+                non-linéaire à variable d'état avec contrôle de la saturation et
+                fonction de transfert non linéaire facultative définie par
+                l'utilisateur.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="autocorr"><citetitle>autocorr</citetitle></link>
+                calcule l'autocorrélation d'une suite stockée dans un tableau.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="turnoff2"><citetitle>turnoff2_i</citetitle></link>
+                est une version s'exécutant à l'initialisation de turnoff2.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="scanu2"><citetitle>scanu2</citetitle></link> est
+                une révision de scanu pour le rendre plus proche du concept
+                original. Amortissement maintenant d'une valeur positive et
+                réécriture complète de la frappe d'initialisation, plus des
+                améliorations diverses du code.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="st2ms"><citetitle>st2ms</citetitle></link> et
+                <link linkend="ms2st"><citetitle>ms2st</citetitle></link> sont
+                des opcodes de conversion stéréo-MS et vice-versa avec contrôle
+                de la largeur stéréo.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="mvmfilter"><citetitle>mvmfilter</citetitle></link>
+                est un filtre avec une résonance prononcée et une durée de chute
+                contrôlable.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Nouveau gen :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                <link linkend="GEN44"><citetitle>gen44</citetitle></link>
+                permet d'écrire des matrices de raideur pour scanu/scanu2 dans
+                un format textuel.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Orchestre :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Les opérations += et -= fonctionnent maintenant avec les
+                tableaux i et ks.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Les opérateurs de tableaux de taux-k n'agissent maintenant
+                qu'au taux-k.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Partition :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Une instance d'un instrument nommé peut avoir une fraction
+                décimale ajoutée au nom pour permettre les notes liées et
+                d'autres facilités qui n'étaient disponibles que pour les
+                instruments numérotés.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Options :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                De nouvelles options --limiter et --limiter=num (où num est dans
+                l'intervalle [0,1]) insèrent un limiteur tanh (voir la version 2
+                de clip) à la fin de chaque k-cycle. On peut l'utiliser lors
+                d'expérimentations ou d'essais d'entrée spéciales pour protéger
+                nos oreilles ou les haut-parleurs. La valeur par défaut dans la
+                première forme est de 0.5.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Une erreur de frappe faisait que la balise &lt;CsShortLicense&gt;
+                n'était pas reconnue, bien que l'ortographe anglaise
+                (CsSortLicence) l'était. Corrigé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Nouvelle option --default-ksmps=num qui change la valeur par
+                défaut du nombre fixé en interne.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Nouvelle variable d'environnement `CS_USER_PLUGINDIR` ajoutée
+                pour indiquer le chemin d'un répertoire de greffons de
+                l'utilisateur (en plus du répertoire de greffons du système).
+                Ce chemin de recherche ajouté pointe par défaut vers des
+                endroits standard sur les différentes plateformes (documentés
+                dans le manuel).
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Opcodes et Gens modifiés :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                slicearray_i fonctionne maintenant avec les tableaux de
+                chaînes de caractères.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="OSCsend"><citetitle>OSCsend</citetitle></link>
+                s'exécute toujours au premier appel quelque soit la valeur de
+                kwhen.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="pvadd"><citetitle>pvadd</citetitle></link>
+                peut accéder à la ftable interne -1.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                L'efficacité de <link
+                linkend="pan2"><citetitle>pan2</citetitle></link> a été
+                améliorée dans de nombreux cas.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Nouvelle version de pow pour le cas kout[] = kx ^ ivalues[]
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                <link linkend="expcurve"><citetitle>expcurve</citetitle></link>
+                et
+                <link linkend="logcurve"><citetitle>logcurve</citetitle></link>
+                comprennent maintenant la vérification des intervalles et des
+                valeurs terminales correctes.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Les opcodes de flux LPC ont bénéficié d'une amélioration
+                majeure de leur exécution (accélération > 10x dans certains
+                cas), grâce à une nouvelle procédure d'autocorrélation.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Restriction sur la taille du nom de répertoire dans
+                ftsamplebank supprimée.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Si un argument qui n'est pas une chaîne de caractères est passé
+                à sprintf pour être formaté comme une %s, une erreur est
+                signalée.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                La famille des opcodes readk supporte maintenant les
+                commentaires dans l'entrée qui sont ignorés.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Paramètre iflag ajouté à sflooper.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Les opcodes beosc, beadsynt, tabrowl, et getrowlin ont été
+                supprimés.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Usage général :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Csound ne supporte plus les opcodes Python 2 suite à la fin de
+                vie de Python 2.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Bogues corrigés :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                L'opcode wterrain2 n'était pas correctement compilé sur
+                certaines plateformes.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                L'opcode fprintks plantait lorsque le format contenait un %s.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Il y avait un bogue dans rtjack lorsque le nombre de sorties
+                différait du nombre d'entrées.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                FLsetVal fonctionne maintenant correctement avec des FLsliders
+                à "valeurs inversées".
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Les expressions conditionnelles à sortie de taux-a fonctionnent
+                correctement maintenant.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Bogue corrigé dans l'option --opcode-dir.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                sfpassign échouait à se rappeler du nombre de préréglages
+                causant de la confusion. Ceci affectait aussi sfplay et
+                sfinstrplay.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Opcode midiarp corrigé (issue 1365).</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Un bogue dans moogladder où une valeur de 0dbfs affectait la
+                sortie est maintenant corrigé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Des bogues dans plusieurs filtres où istor valait 1 par défaut
+                au lieu de 0 comme décrit dans le manuel ont été corrigés.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Erreurs d'affectation de numéros aux instruments nommés
+                corrigées. Ceci touchait particulièrement la définition
+                dynamique des intruments.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                L'utilisation de %s dans le format de sprintf plantait si
+                l'élément correspondant n'était pas une chaîne de caractères.
+                Une erreur est maintenant levée.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Bogue corrigé dans ftprint où le déclancheur ne fonctionnait
+                pas comme prévu.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Utilisation asynchrone de diskin2 corrigée.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                pvs2tab ne plante plus dans le cas glissant mais donne une
+                erreur.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Dans certaines circonstances turnoff2 pouvait provoquer le
+                silence d'un autre instrument pendant un k-cycle. C'est corrigé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                timeinstk se comportait dans un UDO différemment que dans la
+                normale. C'est corrigé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                La méthode init de midiarp a été corrigée car elle causait un
+                problème avec un des modes arp.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                La pondération de l'attaque de xadsr a été corrigée.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Le comportement de printarray pour les tableaux de chaînes de
+                caractères a été corrigé (la normale est d'afficher à chaque
+                cycle) ; une variante sans déclenchement a été ajoutée.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Une erreur de fusion d'instruments nommés lors de nouvelles
+                compilations a été corrigée.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                L'opcode ATSA atsinnoi pouvait causer des problèmes de
+                mémoire. La version 6.16 est meilleure mais pas vérifiée.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Changements système :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Nouvelle procédure d'autocorrélation pouvant calculer dans les
+                domaines fréquentiels et temporels. Merci à Patrick Ropohl pour
+                avoir suggérer cette amélioration.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>Version minimale de cmake portée à 3.5.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Opcodes image supprimés. Ils sont maintenant dans
+                l'entrepôt des greffons.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Opcodes faust supprimés. Ils sont maintenant dans
+                l'entrepôt des greffons.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Les opcodes python sont maintenant dans l'entrepôt des greffons.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Les opcodes Ableton Link ont été déplacés dans l'entrepôt des
+                greffons.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Changements sur les plates-formes :
+        <itemizedlist>
+          <listitem>
+            <para>MacOS:
+            <itemizedlist>
+              <listitem>
+                <simpara>
+                  Certaines bibliothèques d'opcodes avec des dépendances ont
+                  été enlevées de la distribution. Les opcodes image, python,
+                  faust et les widgets FLTK ont été déplacés dans un entrepôt
+                  séparé et ne sont plus inclus.
+                </simpara>
+              </listitem>
+            </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+
   <bridgehead>Notes de parution de Csound 6.15 (août 2020)</bridgehead>
   <para>
     Un certain nombre de nouveaux opcodes se trouvent dans cette version ainsi

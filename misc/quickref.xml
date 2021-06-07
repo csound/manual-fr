@@ -394,8 +394,9 @@
 <synopsis><link linkend="scanhammer">scanhammer</link> isrc, idst, ipos, imult</synopsis><para/>
 <synopsis>ares <link linkend="scans">scans</link> kamp, kfreq, ifn, id [, iorder]</synopsis><para/>
 <synopsis>aout <link linkend="scantable">scantable</link> kamp, kpch, ipos, imass, istiff, idamp, ivel</synopsis><para/>
-<synopsis><link linkend="scanu">scanu</link> init, irate, ifnvel, ifnmass, ifnstif, ifncentr, ifndamp, kmass, \
-      kstif, kcentr, kdamp, ileft, iright, kpos, kstrngth, ain, idisp, id</synopsis><para/>
+<synopsis><link linkend="scanu">scanu</link> init, irate, ifndisplace,
+    ifnmass, ifnmatrix, ifncentr, ifndamp, kmass, kmtrxstiff, kcentr,
+    kdamp, ileft, iright, kpos, kdisplace, ain, idisp, id</synopsis><para/>
 <synopsis><link linkend="scanu2">scanu2</link> init, irate, ifnvel, ifnmass, ifnstif, ifncentr, ifndamp, kmass, \
       kstif, kcentr, kdamp, ileft, iright, kpos, kstrngth, ain, idisp, id</synopsis><para/>
 <synopsis>kpos, kvel <link linkend="xscanmap">xscanmap</link> iscan, kamp, kvamp [, iwhich]</synopsis><para/>
@@ -763,6 +764,7 @@
 <title>Modificateurs de signal : opérateurs du niveau échantillon</title>
 <para>
 <para/>
+<synopsis><link linkend="denorm">denorm</link> a1[, a2[, a3[, ... ]]]</synopsis><para/>
 <synopsis>ares <link linkend="diff">diff</link> asig [, iskip]</synopsis><synopsis>kres <link linkend="diff">diff</link> ksig [, iskip]</synopsis><para/>
 <synopsis>kres <link linkend="downsamp">downsamp</link> asig [, iwlen]</synopsis><para/>
 <synopsis>ares <link linkend="fold">fold</link> asig, kincr</synopsis><para/>
@@ -2294,6 +2296,7 @@ inum_parm, kupdate</synopsis><para/>
 <para>
 <para/>
 <synopsis>kmom, kint, kshort <link linkend="lufs">lufs</link> kreset, ain1 [, ain2]</synopsis><para/>
+<synopsis><link linkend="UtilityAtsa">csound -U atsa</link> [options] nomfichier_entree nomfichier_sortie</synopsis><para/>
 <synopsis><link linkend="cs">cs</link> [-OPTIONS] &lt;nom&gt; [OPTIONS DE CSOUND ... ]</synopsis><para/>
 <synopsis><link linkend="csb64enc">csb64enc</link> [OPTIONS ... ] fichier1 [ fichier2 [ ... ]]</synopsis><para/>
 <synopsis><link linkend="cvanal">csound -U cvanal</link> [options] nomfichier_entree nomfichier_sortie</synopsis><synopsis><link linkend="cvanal">cvanal</link> [options] nomfichier_entree nomfichier_sortie</synopsis><para/>
