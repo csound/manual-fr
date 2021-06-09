@@ -66,34 +66,30 @@ english cvs version=1.5
   </refsect1>
 
   <refsect1>
-    <title>Exemples</title>
-    <para>
-      <textobject>
-        <phrase>C'est une sélection de réverb et de bruit du fichier son. La
-        sélection a une durée de 0.8 secondes. Il faut cette durée pour que
-        pvanal analyse et crée le fichier pvocex.</phrase>
-      </textobject>
-    </para>
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="images/reverbnoise_selection.png" format="PNG"/>
-        </imageobject>
-      </mediaobject>
-
-    <para>
-	  Voici un exemple de l'opcode GEN43. Il utilise le fichier
-	  <ulink url="examples/gen43.csd"><citetitle>gen43.csd</citetitle></ulink>.
-      <example>
-        <title>Exemple de l'opcode GEN43.</title>
+    <title>Exemples</title>  
+   <para>
+     Voici un exemple de la routine GEN43. Il utilise le fichier
+	 <ulink url="examples/gen43.csd"><citetitle>gen43.csd</citetitle></ulink>.
+   </para>
+   <para>
+     Note: dans cet exemple, le .csd utilise l'opcode <emphasis>system_i</emphasis>
+     pour lancer et exécuter l'utilitaire <emphasis>pvanal</emphasis> et analyser
+     une section du fichier son, finneganswake1.flac, dans laquelle il y a un
+     peu de reverb et de bruit. La sélection 'reverbnoise' dure 0.8 seconde
+     (-d0.8) que l'on trouve après 1.04 seconde (-b1.04) dans la source et ainsi
+     <emphasis>pvanal</emphasis> crée le fichier pvocex que l'on utilise dans
+     l'instrument 3 pour supprimer de l'original ce bruit et cette reverb avec
+     l'opcode <emphasis>pvstencil</emphasis>.
+     <example>
+       <title>Exemple de la routine GEN43.</title>
         <xi:include href="examples-xml/gen43.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
-    </para>
-
+   </para>
+	      
     <para>
-      On peut utiliser cette table comme table de masquage pour
+      On peut utiliser ces tables comme tables de masquage pour
       <emphasis>pvstencil</emphasis> et <emphasis>pvsmaska</emphasis>.
-      <programlisting>
-<emphasis role="stamnt">f</emphasis>1 0   512  43 "viola.pvx" 1
+      <programlisting><emphasis role="stamnt">f</emphasis>1 0 512   43  "viola.pvx" 1
 <emphasis role="stamnt">f</emphasis>1 0 -1024 -43 "noiseprint.pvx" 0</programlisting>
     </para>
     <para>
@@ -101,7 +97,7 @@ english cvs version=1.5
       TFR à 1024 points duquel on utilise le premier canal. Le second utilise
       tous les canaux d'un fichier de 2048 points, sans post-normalisation.
       Pour les applications à la réduction de bruit avec
-      <emphasis>pvstencil</emphasis>, il est mieux de ne pas normaliser la
+      <emphasis>pvstencil</emphasis>, il est plus facile de ne pas normaliser la
       table (code GEN négatif).
     </para>
   </refsect1>
