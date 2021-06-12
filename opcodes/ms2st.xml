@@ -24,6 +24,13 @@ authors=Francois Pinot
       Cet opcode implémente une conversion mid-side (MS) vers stéréo avec un
       contrôle de largeur. C'est une fonction pure sans effet de bord.
     </para>
+    <para>
+      L'opcode ms2st décode le signal stéréo, mais il offre aussi la
+      possibilité d'ajuster la largeur stéréo de <emphasis>chaque</emphasis>
+      son stéréo. Un fichier stéréo peut être encodé par l'opcode st2ms puis
+      décodé avec ms2st. Il est ainsi possible d'ajuster la largeur du champ
+      stéréo. 
+    </para>
   </refsect1>
 
   <refsect1>
@@ -70,35 +77,26 @@ authors=Francois Pinot
     </para>
   </refsect1>
 
-   <mediaobject>
+  <para>
+     Dans l'instr 1 de l'example, le fichier stéréo encodé MS est entrelacé.
+     Le canal gauche du signal entrelacé sera décodé comme le signal M (=Mid).
+     Le canal droit sera décodé en gauche et droite. Dans l'instr 2 cependant,
+     deux canaux séparés sont utilisés. L'utilisateur décide lequel affecter
+     au signal médiant (M) et au signal latéral (S).
+  </para>
+  <mediaobject>
 	<imageobject>
-	  <imagedata fileref="images/MSjungle_interleaved.png" format="PNG"/>
+	  <imagedata fileref="images/MS.png" format="PNG"/>
 	</imageobject>
 
 	<textobject>
-	  <phrase>un fichier MS à encodage entrelacé : MSjungle_interleaved.wav
-	  utilisé dans instr 1</phrase>
+	  <phrase>En haut le fichier entrelacé encodé MS (instr 1), en bas les
+	  deux fichiers séparés (instr 2)</phrase>
 	</textobject>
 
 	<caption>
-	  <para>un fichier MS à encodage entrelacé : MSjungle_interleaved.wav
-	  utilisé dans instr 1</para>
-	</caption>
-  </mediaobject>
-
-	<mediaobject>
-	<imageobject>
-	  <imagedata fileref="images/MSjungle_separate.png" format="PNG"/>
-	</imageobject>
-
-	<textobject>
-	  <phrase>deux fichiers séparés MSjungleMid.wav et MSjungleSide.wav utiisés
-	  dans instr 2</phrase>
-	</textobject>
-
-	<caption>
-	  <para>deux fichiers séparés MSjungleMid.wav et MSjungleSide.wav utiisés
-	  dans instr 2</para>
+	  <para>En haut le fichier entrelacé encodé MS (instr 1), en bas les
+	  deux fichiers séparés (instr 2)</para>
 	</caption>
   </mediaobject>
 
