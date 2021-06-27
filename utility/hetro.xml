@@ -113,25 +113,6 @@ english cvs version=1.7
   </refsect1>
  
   <refsect1>
-    <title>Exemples</title>
-    <para>
-<!--       <informalexample> -->
-        <programlisting>
-<emphasis>hetro</emphasis> -s44100 -b.5 -d2.5 -h16 -M24000 fichieraudio.test adsynfile7</programlisting>
-<!--       </informalexample> -->
-
-      Ceci analyse 2,5 secondes du canal 1 du fichier &quot;fichieraudio.test&quot;, enregistré à
-      44,1 kHz, commençant 0,5 secondes après le début, et place le résultat dans le fichier
-      &quot;adsynfile7&quot;. Nous ne voulons que les 16 premiers harmoniques du son, avec 256 points
-      charnière par piste d'amplitude ou de fréquence, et un pic de la somme des amplitudes de 24000. Le
-      fondamental est estimé au commencement  à 100 Hz. Le seuil d'amplitude est de 54 dB en-dessous
-      de l'échelle complète.
-    </para>
-
-    <para>
-      Le filtre passe-bas de Butterworth n'est pas activé.
-    </para>
-
     <refsect2 id="HetroFileFormat">
       <title>Format de Fichier</title>
       <para>Le fichier de sortie contient des suites temporelles de valeurs d'amplitude et de fréquence
@@ -169,6 +150,38 @@ english cvs version=1.7
         </informalexample>
       </para>
     </refsect2>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+<!--       <informalexample> -->
+        <programlisting>
+<emphasis>hetro</emphasis> -s44100 -b.5 -d2.5 -h16 -M24000 fichieraudio.test adsynfile7</programlisting>
+<!--       </informalexample> -->
+
+      Ceci analyse 2,5 secondes du canal 1 du fichier &quot;fichieraudio.test&quot;, enregistré à
+      44,1 kHz, commençant 0,5 secondes après le début, et place le résultat dans le fichier
+      &quot;adsynfile7&quot;. Nous ne voulons que les 16 premiers harmoniques du son, avec 256 points
+      charnière par piste d'amplitude ou de fréquence, et un pic de la somme des amplitudes de 24000. Le
+      fondamental est estimé au commencement  à 100 Hz. Le seuil d'amplitude est de 54 dB en-dessous
+      de l'échelle complète.
+    </para>
+
+    <para>
+      Le filtre passe-bas de Butterworth n'est pas activé.
+    </para>
+    <para>
+      Voici un exemple de l'utilitaire hetro. Il utilise le fichier
+      <ulink url="examples/hetro.csd"><citetitle>hetro.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'utilitaire hetro.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/hetro.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
   </refsect1>
 
   <refsect1>

@@ -25,7 +25,7 @@ english cvs version=1.10
     <title>Description</title>
     <para>
       Analyse ATS à utiliser avec les opcodes de Csound de
-	    <link linkend="SpectralATS"><citetitle>Resynthèse ATS</citetitle></link>.
+      <link linkend="SpectralATS"><citetitle>Resynthèse ATS</citetitle></link>.
     </para>
   </refsect1>
 
@@ -163,7 +163,6 @@ english cvs version=1.10
         sinusoïdale.</para>
       </listitem>
     </orderedlist>
-
   </refsect1>
 
   <refsect1>
@@ -179,6 +178,16 @@ english cvs version=1.10
       fichier et elle est effectuée sur 1 seconde. La fréquence la plus basse est 100 Hz et la plus
       haute est 10 kHz. Une fenêtre de Hamming est utilisée pour chaque trame d'analyse.
     </para>
-
+    <para>
+      Voici un exemple de l'utilitaire atsa. Il utilise le fichier
+      <ulink url="examples/atsa.csd"><citetitle>atsa.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'utilitaire atsa.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/atsa.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
   </refsect1>
 </refentry>

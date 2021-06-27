@@ -17,7 +17,7 @@ english cvs version=1.7
   <refnamediv>
     <refname>sfilist</refname>
     <refpurpose>
-      Imprime une liste de tous les instruments d'un fichier SoundFont2 (SF2)
+      Affiche une liste de tous les instruments d'un fichier SoundFont2 (SF2)
       préalablement chargé.
     </refpurpose>
   </refnamediv>
@@ -25,7 +25,7 @@ english cvs version=1.7
   <refsect1>
     <title>Description</title>
     <para>
-      Imprime une liste de tous les instruments d'un fichier SoundFont2 (SF2) de sons
+      Affiche une liste de tous les instruments d'un fichier SoundFont2 (SF2) de sons
       échantillonnés préalablement chargé. Ces opcodes permettent la gestion de
       la structure d'échantillon des fichiers SF2. Afin de comprendre
       l'utilisation de ces opcodes, il faut connaître le format SF2 dont on peut
@@ -36,7 +36,7 @@ english cvs version=1.7
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis><command>sfilist</command> ifilhandle</synopsis>
+    <synopsis><command>sfilist</command> ifilhandle [, Sprintprefix] </synopsis>
   </refsect1>
  
   <refsect1>
@@ -47,12 +47,16 @@ english cvs version=1.7
       identificateur pour un fichier SF2. On peut charger et activer plusieurs
       fichiers SF2 en même temps.
     </para>
-  </refsect1>
+    <para>
+      <emphasis>Sprintprefix</emphasis> -- Une chaîne de caractères à ajouter
+      devant chaque ligne d'instrument affichée.
+    </para>
+ </refsect1>
  
   <refsect1>
     <title>Exécution</title>
     <para>
-      <emphasis>sfilist</emphasis> imprime sur la console une liste de tous les
+      <emphasis>sfilist</emphasis> Affiche sur la console une liste de tous les
       instruments d'un fichier SoundFont2 (SF2) préalablement chargé.
     </para>
 

@@ -141,17 +141,6 @@ english cvs version=1.8
   </refsect1>
  
   <refsect1>
-    <title>Exemples</title>
-    <para>
-<!--       <informalexample> -->
-        <programlisting><emphasis>pvanal</emphasis> unson fichierpv</programlisting>
-<!--       </informalexample> -->
-      analysera le fichier son &quot;unson&quot; en utilisant les valeurs par défaut de
-      <emphasis>tailletrame</emphasis> et de <emphasis>factfen</emphasis> pour produire
-      le fichier &quot;pvfile&quot; approprié pour une utilisation avec
-      <emphasis>pvoc</emphasis>.
-    </para>
-
     <refsect2>
       <title>Fichiers</title>
       <para>
@@ -174,6 +163,29 @@ english cvs version=1.8
     </refsect2>
   </refsect1>
  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+<!--       <informalexample> -->
+      <programlisting><emphasis>pvanal</emphasis> asound pvfile</programlisting>
+<!--       </informalexample> -->
+      analysera le fichier son &quot;asound&quot; en utilisant les valeurs par
+      défaut de tailletrame et de factfen pour produire le fichier
+      &quot;pvfile&quot; approprié pour une utilisation avec pvoc.
+    </para>
+    <para>
+      Voici un exemple de l'utilitaire pvanal. Il utilise le fichier
+      <ulink url="examples/pvanal.csd"><citetitle>pvanal.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'utilitaire pvanal.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pvanal.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
   <refsect1>
     <title>Crédits</title>
     <para>Auteur : Dan Ellis</para>
