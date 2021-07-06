@@ -83,30 +83,6 @@ english cvs version=1.4
         <title>Un exemple de la routine GEN17.</title>
         <xi:include href="examples-xml/gen17.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
-
-      <textobject>
-        <phrase>Voici le diagramme de la forme d'onde de la routine GEN17 utilisée
-        dans l'exemple :</phrase>
-      </textobject>
-
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="images/gen17.png" format="PNG"/>
-        </imageobject>
-
-        <textobject>
-          <phrase>f 2 0 128 -17 0 10 32 20 64 30 96 40 - une fonction en escalier
-          avec quatre niveaux égaux, chacun ayant une largeur de 32 positions,
-          sauf le dernier qui va jusqu'à la fin de la table</phrase>
-        </textobject>
-
-        <caption>
-          <para>f 2 0 128 -17 0 10 32 20 64 30 96 40 - une fonction en escalier
-          avec quatre niveaux égaux, chacun ayant une largeur de 32 positions,
-          sauf le dernier qui va jusqu'à la fin de la table</para>
-        </caption>
-      </mediaobject>
-
     </para>
   </refsect1>
 

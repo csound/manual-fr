@@ -69,6 +69,23 @@ english cvs version=1.8
       <emphasis>-X</emphasis> -- écrire le fichier d'analyse dans un format
       indépendant de la machine.
     </para>
+    <refsect2>
+      <title>Fichiers</title>
+      <para>
+        Le fichier de sortie a un en-tête spécial <emphasis>convolve</emphasis>, contenant les détails du
+        fichier source audio. Les données d'analyse sont stockées comme des nombres <quote>virgule flottante</quote>,
+        en forme rectangulaire (réel/imaginaire).
+      </para>
+
+      <note>
+        <title>Note</title>
+        <para>
+          Le fichier d'analyse n'est <emphasis>pas</emphasis> indépendant du système ! Assurez-vous que les
+          données originales de la réponse impulsionnelle sont conservées. Si nécessaire, le fichier
+          d'analyse pourra être recréé.
+        </para>
+      </note>
+    </refsect2>
   </refsect1>
  
   <refsect1>
@@ -88,24 +105,17 @@ english cvs version=1.8
       fichier son qui accepte des fichiers texte peut être utilisé pour créer un fichier audio standard,
       par exemple le format .DAT pour SOX. Ceci est utile pour implémenter des filtres RIF.
     </para>
-
-    <refsect2>
-      <title>Fichiers</title>
-      <para>
-        Le fichier de sortie a un en-tête spécial <emphasis>convolve</emphasis>, contenant les détails du
-        fichier source audio. Les données d'analyse sont stockées comme des nombres <quote>virgule flottante</quote>,
-        en forme rectangulaire (réel/imaginaire).
-      </para>
-
-      <note>
-        <title>Note</title>
-        <para>
-          Le fichier d'analyse n'est <emphasis>pas</emphasis> indépendant du système ! Assurez-vous que les
-          données originales de la réponse impulsionnelle sont conservées. Si nécessaire, le fichier
-          d'analyse pourra être recréé.
-        </para>
-      </note>
-    </refsect2>
+    <para>
+      Voici un exemple de l'utilitaire cvanal. Il utilise le fichier
+      <ulink url="examples/cvanal.csd"><citetitle>cvanal.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'utilitaire cvanal.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/cvanal.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
   </refsect1>
  
   <refsect1>

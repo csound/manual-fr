@@ -73,6 +73,22 @@ english cvs version=1.5
          <emphasis role="opc">if</emphasis> (kndx <emphasis role="op">&gt;</emphasis> kmin) <emphasis role="opc">kgoto</emphasis> label</programlisting>
     </para>
   </refsect1>
+  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      voici un exemple de l'opcode loop_gt. Il utilise le fichier
+      <ulink url="examples/loop_gt.csd"><citetitle>loop_gt.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode loop_gt.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/loop_gt.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
   <refsect1>
     <title>Voir aussi</title>
     <para>

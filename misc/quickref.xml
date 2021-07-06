@@ -313,6 +313,7 @@
 <synopsis>ares <link linkend="randh">randh</link> xamp, xcps [, iseed] [, isize] [, ioffset]</synopsis><synopsis>kres <link linkend="randh">randh</link> kamp, kcps [, iseed] [, isize] [, ioffset]</synopsis><para/>
 <synopsis>ares <link linkend="randi">randi</link> xamp, xcps [, iseed] [, isize] [, ioffset]</synopsis><synopsis>kres <link linkend="randi">randi</link> kamp, kcps [, iseed] [, isize] [, ioffset]</synopsis><para/>
 <synopsis>ares <link linkend="random">random</link> kmin, kmax</synopsis><synopsis>ires <link linkend="random">random</link> imin, imax</synopsis><synopsis>kres <link linkend="random">random</link> kmin, kmax</synopsis><para/>
+<synopsis>ares <link linkend="randomh">randomh</link> kmin, kmax, xcps [,imode] [,ifirstval]</synopsis><synopsis>kres <link linkend="randomh">randomh</link> kmin, kmax, kcps [,imode] [,ifirstval]</synopsis><para/>
 <synopsis>ares <link linkend="randomi">randomi</link> kmin, kmax, xcps [,imode] [,ifirstval]</synopsis><synopsis>kres <link linkend="randomi">randomi</link> kmin, kmax, kcps [,imode] [,ifirstval]</synopsis><para/>
 <synopsis>ax <link linkend="rnd31">rnd31</link> kscl, krpow [, iseed]</synopsis><synopsis>ix <link linkend="rnd31">rnd31</link> iscl, irpow [, iseed]</synopsis><synopsis>kx <link linkend="rnd31">rnd31</link> kscl, krpow [, iseed]</synopsis><para/>
 <synopsis><link linkend="rndseed">rndseed</link> ival</synopsis><para/>
@@ -364,7 +365,7 @@
 <synopsis>ar <link linkend="lposcila">lposcila</link> aamp, kfreqratio, kloop, kend, ift [,iphs] </synopsis><para/>
 <synopsis>ar1, ar2 <link linkend="lposcilsa">lposcilsa</link> aamp, kfreqratio, kloop, kend, ift [,iphs] </synopsis><para/>
 <synopsis>ar1, ar2 <link linkend="lposcilsa2">lposcilsa2</link> aamp, kfreqratio, kloop, kend, ift [,iphs] </synopsis><para/>
-<synopsis><link linkend="sfilist">sfilist</link> ifilhandle</synopsis><para/>
+<synopsis><link linkend="sfilist">sfilist</link> ifilhandle [, Sprintprefix] </synopsis><para/>
 <synopsis>ar1, ar2 <link linkend="sfinstr">sfinstr</link> ivel, inotenum, xamp, xfreq, instrnum, ifilhandle \
       [, iflag] [, ioffset]</synopsis><para/>
 <synopsis>ar1, ar2 <link linkend="sfinstr3">sfinstr3</link> ivel, inotenum, xamp, xfreq, instrnum, ifilhandle \
@@ -554,6 +555,7 @@
       asig27, asig28, asig29, asig30, asig31, asig32</synopsis><para/>
 <synopsis><link linkend="outall">outall</link> asig</synopsis><para/>
 <synopsis><link linkend="outc">outc</link> asig1 [, asig2] [...]</synopsis><para/>
+<synopsis><link linkend="outch">outch</link> kchan1, asig1 [, kchan2] [, asig2] [...]</synopsis><para/>
 <synopsis><link linkend="outh">outh</link> asig1, asig2, asig3, asig4, asig5, asig6</synopsis><para/>
 <synopsis><link linkend="outo">outo</link> asig1, asig2, asig3, asig4, asig5, asig6, asig7, asig8</synopsis><para/>
 <synopsis><link linkend="outq">outq</link> asig1, asig2, asig3, asig4</synopsis><para/>
@@ -605,6 +607,7 @@
 <synopsis><link linkend="printks2">printks2</link> &quot;string&quot;, kval</synopsis><para/>
 <synopsis><link linkend="println">println</link> &quot;string&quot;, [, xval1] [, xval2] [...]</synopsis><para/>
 <synopsis><link linkend="prints">prints</link> &quot;string&quot; [, xval1] [, xval2] [...]</synopsis><para/>
+<synopsis><link linkend="printsk">printsk</link> &quot;string&quot;, [, xval1] [, xval2] [...]</synopsis><para/>
 </para></formalpara>
 <para></para><para></para><formalpara>
 <title>E/S de signal : requêtes sur les fichiers sons</title>
@@ -1025,6 +1028,7 @@
 <synopsis><link linkend="loop_le">loop_le </link>  indx, incr, imax, label</synopsis><synopsis><link linkend="loop_le">loop_le </link>  kndx, kncr, kmax, label</synopsis><para/>
 <synopsis><link linkend="loop_lt">loop_lt </link>  indx, incr, imax, label</synopsis><synopsis><link linkend="loop_lt">loop_lt </link>  kndx, kncr, kmax, label</synopsis><para/>
 <synopsis><link linkend="tigoto">tigoto</link> label</synopsis><para/>
+<synopsis><link linkend="timout">timout</link> istrt, idur, label</synopsis><para/>
 <synopsis><link linkend="until">until</link>  condition <link linkend="until">do</link>
     ... <link linkend="until">od</link>&#160;</synopsis><para/>
 <synopsis><link linkend="while">while</link>  condition <link linkend="while">do</link>
@@ -1095,6 +1099,7 @@
       [, idowns] [, iexcps] [, irmsmedi]</synopsis><para/>
 <synopsis>acps, alock <link linkend="plltrack">plltrack</link>asig, kd [, kloopf, kloopq, klf, khf, kthresh]</synopsis><para/>
 <synopsis>kcps, kamp <link linkend="ptrack">ptrack</link> asig, ihopsize[,ipeaks]</synopsis><para/>
+<synopsis>ival <link linkend="readscratch">readscratch</link>[index]</synopsis><para/>
 <synopsis> <link linkend="rewindscore">rewindscore</link>&#160;</synopsis><para/>
 <synopsis>kres <link linkend="rms">rms</link> asig [, ihp] [, iskip]</synopsis><para/>
 <synopsis>kres[, kkeydown] <link linkend="sensekey">sensekey</link>&#160;</synopsis><para/>
@@ -1194,6 +1199,7 @@
 <synopsis>karray[] <link linkend="array">array</link> ival1, ival2, ..., ivaln</synopsis><para/>
 <synopsis>karray[] <link linkend="fillarray">fillarray</link> ival1, ival2,.....ivaln</synopsis><synopsis>karray <link linkend="fillarray">fillarray</link> ival1, ival2,.....ivaln</synopsis><synopsis>karray <link linkend="fillarray">fillarray</link> kval1, kval2,.....kvaln</synopsis><para/>
 <synopsis><link linkend="ftchnls">ftchnls</link>(x) (arg de taux-i seulement)</synopsis><para/>
+<synopsis><link linkend="ftcps">ftcps</link>(x) (args de taux-i seulement)</synopsis><para/>
 <synopsis>iexists <link linkend="ftexists">ftexists</link> ifn </synopsis><synopsis>kexists <link linkend="ftexists">ftexists</link> kfn / ifn</synopsis><para/>
 <synopsis><link linkend="ftlen">ftlen</link>(x) (arg de taux-i seulement)</synopsis><para/>
 <synopsis><link linkend="ftlptim">ftlptim</link>(x) (arg de taux-i seulement)</synopsis><para/>
@@ -1585,6 +1591,7 @@
 <synopsis><link linkend="midinoteoff">midinoteoff</link> xkey, xvelocity</synopsis><para/>
 <synopsis><link linkend="midinoteoncps">midinoteoncps</link> xcps, xvelocity</synopsis><para/>
 <synopsis><link linkend="midinoteonkey">midinoteonkey</link> xkey, xvelocity</synopsis><para/>
+<synopsis><link linkend="midinoteonoct">midinoteonoct</link> xoct, xvelocity</synopsis><para/>
 <synopsis><link linkend="midinoteonpch">midinoteonpch</link> xpch, xvelocity</synopsis><para/>
 <synopsis><link linkend="midipitchbend">midipitchbend</link> xpitchbend [, ilow] [, ihigh]</synopsis><para/>
 <synopsis><link linkend="midipolyaftertouch">midipolyaftertouch</link> xpolyaftertouch, xkey [, ilow] [, ihigh]</synopsis><para/>
@@ -1856,6 +1863,7 @@
 <synopsis>kpos <link linkend="strindexk">strindexk</link> S1, S2</synopsis><para/>
 <synopsis>ilen <link linkend="strlen">strlen</link> Sstr</synopsis><para/>
 <synopsis>klen <link linkend="strlenk">strlenk</link> Sstr</synopsis><para/>
+<synopsis>ipos <link linkend="strrindex">strrindex</link> S1, S2</synopsis><para/>
 <synopsis>kpos <link linkend="strrindexk">strrindexk</link> S1, S2</synopsis><para/>
 <synopsis>Sout <link linkend="strstrip">strstrip</link> Sin [, Smode]</synopsis><para/>
 <synopsis>Sdst <link linkend="strsub">strsub</link> Ssrc[, istart[, iend]]</synopsis><para/>
@@ -1884,6 +1892,7 @@
 <synopsis><link linkend="vtabi">vtabi</link>  indx, ifn, iout1 [, iout2, iout3, .... , ioutN ]</synopsis><para/>
 <synopsis><link linkend="vtabk">vtabk</link>  kndx, ifn, kout1 [, kout2, kout3, .... , koutN ]</synopsis><para/>
 <synopsis><link linkend="vtable1k">vtable1k</link>  kfn, kout1 [, kout2, kout3, .... , koutN ]</synopsis><para/>
+<synopsis><link linkend="vtablea">vtablea</link>  andx, kfn, kinterp, ixmode, aout1 [, aout2, aout3, .... , aoutN ]</synopsis><para/>
 <synopsis><link linkend="vtablei">vtablei</link>  indx, ifn, interp, ixmode, iout1 [, iout2, iout3, .... , ioutN ]</synopsis><para/>
 <synopsis><link linkend="vtablek">vtablek</link>  kndx, kfn, kinterp, ixmode, kout1 [, kout2, kout3, .... , koutN ]</synopsis><para/>
 <synopsis><link linkend="vtablewa">vtablewa</link>  andx, kfn, ixmode, ainarg1 [, ainarg2, ainarg3 , .... , ainargN ]</synopsis><para/>
@@ -1931,6 +1940,7 @@
 <para>
 <para/>
 <synopsis><link linkend="vexpseg">vexpseg</link>  ifnout, ielements, ifn1, idur1, ifn2 [, idur2, ifn3 [...]]</synopsis><para/>
+<synopsis><link linkend="vlinseg">vlinseg</link>  ifnout, ielements, ifn1, idur1, ifn2 [, idur2, ifn3 [...]]</synopsis><para/>
 </para></formalpara>
 <para></para><para></para><formalpara>
 <title>Vectoriel : limitation et enroulement</title>
@@ -2046,6 +2056,7 @@
 <synopsis>kgain <link linkend="MixerGetLevel">MixerGetLevel</link> isend, ibuss</synopsis><para/>
 <synopsis>asignal <link linkend="MixerReceive">MixerReceive</link> ibuss, ichannel</synopsis><para/>
 <synopsis><link linkend="MixerSend">MixerSend</link> asignal, isend, ibuss, ichannel</synopsis><para/>
+<synopsis><link linkend="MixerSetLevel">MixerSetLevel</link> isend, ibuss, kgain</synopsis><para/>
 <synopsis><link linkend="MixerSetLevel_i">MixerSetLevel_i</link> isend, ibuss, igain</synopsis><para/>
 </para></formalpara>
 <para></para><para></para><formalpara>
@@ -2127,6 +2138,7 @@
 <synopsis>kout[] <link linkend="cmplxprod">cmplxprod</link> kin1[], kin2[]</synopsis><para/>
 <synopsis>kout[] <link linkend="mags">mags</link> kin[]</synopsis><para/>
 <synopsis>kout[] <link linkend="phs">phs</link> kin[]</synopsis><para/>
+<synopsis>kout[] <link linkend="pol2rect">pol2rect</link> kin[]</synopsis><synopsis>kout[] <link linkend="pol2rect">pol2rect</link> kmags[], kphs[]</synopsis><para/>
 <synopsis>kout[] <link linkend="r2c">r2c</link> kin[]</synopsis><para/>
 <synopsis>kout[] <link linkend="rect2pol">rect2pol</link> kin[]</synopsis><para/>
 </para></formalpara>
@@ -2300,6 +2312,7 @@ inum_parm, kupdate</synopsis><para/>
 <synopsis><link linkend="pv_export">pv_export</link> fichier_pv fichier_texte_csv</synopsis><synopsis>csound -U <link linkend="pv_export">pv_export</link> fichier_pv fichier_texte_csv</synopsis><para/>
 <synopsis><link linkend="pv_import">pv_import</link> fichier_texte_csv fichier_pv</synopsis><synopsis>csound -U <link linkend="pv_import">pv_import</link> fichier_texte_csv fichier_pv</synopsis><para/>
 <synopsis><link linkend="pvanal">csound -U pvanal</link> [options] nomfic_entree nomfic_sortie</synopsis><synopsis><link linkend="pvanal">pvanal</link> [options] nomfic_entree nomfic_sortie</synopsis><para/>
+<synopsis><link linkend="pvlook">csound</link> -U <link linkend="pvlook">pvlook</link> [options] fichier_entree</synopsis><synopsis><link linkend="pvlook">pvlook</link> [options] fichier_entree</synopsis><para/>
 <synopsis><link linkend="scaleutility">scale</link> [OPTIONS ... ] fichier</synopsis><para/>
 <synopsis><link linkend="sdif2ad">sdif2ad</link> [options] fichier_entree fichier_sortie</synopsis><para/>
 <synopsis><link linkend="sndinfo">csound -U sndinfo</link> [options] fichierson ...</synopsis><synopsis><link linkend="sndinfo">sndinfo</link> [options] fichierson ...</synopsis><para/>
