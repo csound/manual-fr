@@ -73,15 +73,21 @@ english cvs version=1.15
     Windows de Microsoft, Mac OsX d'Apple et Linux. On peut le télécharger sur la
     <ulink url="http://winxound.codeplex.com/">page principale de WinXsound</ulink>.
   </para>
-  <bridgehead>Winsound</bridgehead>
+  <bridgehead>Visual Studio Code</bridgehead>
   <para>
-    Winsound appartenait à la branche principale de Csound. Il
-    n'est plus maintenant disponible que sous forme de code source. Winsound est
-    un portage multi plates-formes en FLTK d'un frontal antérieur pour Windows.
-    Certains utilisateurs mal-voyants ou aveugles ont rapporté que
-    Winsound fonctionne bien avec les logiciels de traduction texte-parole.
+    Visual Studio Code est un outil combinant la simplicité d'un éditeur de code
+    avec les besoins des développeurs pour le cycle fondamental
+    édition-construction-débogage. Page d'accueil :
+    <ulink
+    url="https://code.visualstudio.com/">https://code.visualstudio.com/</ulink>.
+    On peut trouver un greffon csound-vscode avec coloration syntaxique,
+    développé par Steven Yi (mainteneur), Forrest Cahoon et Stephen Kyne, à
+    <ulink
+    url="https://marketplace.visualstudio.com/items?itemName=kunstmusik.csound-vscode-plugin">VSCode Marketplace</ulink>. 
   </para>
+</chapter>
 
+  <!--
   <section id="CommandCsoundAC">
 
     <title>CsoundAC</title>
@@ -224,121 +230,4 @@ english cvs version=1.15
   -RWdfo ./koch.wav ./temp.orc ./temp.sco")
   csound.exportForPerformance()
   csound.perform()</programlisting>
-
-    </section>
-  <!--  <section id="CommandCsoundVST">
-
-      <title>CsoundVST</title>
-      <para>CsoundVST est un frontal multi-fonction pour Csound, basé sur l'API
-        de Csound. CsoundVST s'exécute comme une interface utilisateur
-        graphique autonome pour Csound, et il s'exécute aussi comme un instrument
-        VST ou un greffon d'effet dans des hôtes VST tels que Cubase avec la même
-        interface utilisateur. CsoundVST fait partie de l'arbre principal
-        des sources de Csound, mais il n'est pas inclus dans les distributions
-        standard à cause des limitations de la license du SDK VST de Steinberg.</para>
-
-      <bridgehead>Utilisation autonome</bridgehead>
-
-      <para>Pour lancer CsoundVST comme frontal autonome pour Csound, exécutez
-        <application>CsoundVST</application>. Au démarrage du programme, vous
-        verrez une interface graphique utilisateur avec une rangée de boutons
-        en haut. Cliquez sur le bouton <emphasis>Open...</emphasis> pour charger
-        un fichier <filename>.csd</filename>. Vous pouvez aussi cliquer sur le
-        bouton <emphasis>Open...</emphasis> et charger un fichier
-        <filename>.orc</filename>, cliquez ensuite sur le bouton
-        <emphasis>Import...</emphasis> pour ajouter un fichier
-        <filename>.sco</filename>. Vous pouvez éditer la commande de Csound, le
-        fichier orchestre, ou le fichier partition dans les onglets respectifs
-        de l'interface utilisateur. Quand tout est prêt, cliquez sur le bouton
-        <emphasis>Perform</emphasis> pour lancer Csound. Vous pouvez arrêter
-        une exécution à n'importe quel moment en cliquant sur le bouton
-        <emphasis>Stop</emphasis>.</para>
-
-    <bridgehead>Greffon VST</bridgehead>
-
-      <para>Les instructions suivantes sont pour Cubase 4.0. Des procédures à peu près
-        similaires seraient utilisées dans d'autres programmes hôtes.</para>
-
-      <para>Utilisez le menu <emphasis>Devices</emphasis>, la boîte de dialogue
-        <emphasis>Plug-In Information</emphasis>, l'onglet <emphasis>VST Plug-Ins</emphasis>,
-        la boîte de dialogue <emphasis>VST 2.x Plug-in Paths</emphasis>, le bouton
-        <emphasis>Add</emphasis> pour ajouter votre répertoire <filename>csound/bin</filename>
-        au chemin des greffons de Cubase. Vous pouvez avoir plusieurs répertoires séparés par
-        des points-virgules. Sélectionnez ensuite le chemin de CsoundVST et cliquez sur le
-        bouton <emphasis>Set as Shared Folder</emphasis></para>
-
-      <para>Quittez Cubase, et redémarrez-le.</para>
-
-      <para>Utilisez le menu <emphasis>File</emphasis>, la boîte de dialogue
-        <emphasis>New Project</emphasis> pour créer un nouveau morceau (song).</para>
-
-      <para>Utilisez le menu <emphasis>Project</emphasis>, le sous-menu
-        <emphasis>Add Track</emphasis>, pour ajouter une nouvelle piste MIDI.</para>
-
-      <para>Utilisez l'outil crayon pour dessiner un <emphasis>Part</emphasis> de
-        quelques mesures sur la piste. Ecrivez un peu de musique dans le
-        <emphasis>Part</emphasis> à l'aide de l'éditeur <emphasis>Event</emphasis>
-        ou de l'éditeur <emphasis>Score</emphasis>.</para>
-
-      <para>Utilisez le menu <emphasis>Devices</emphasis> (ou la touche F11) pour ouvrir
-        la boîte de dialogue <emphasis>VST Instruments</emphasis>.</para>
-        
-      <para>Cliquez sur une des étiquettes <emphasis>No VST Instrument</emphasis>, et
-        sélectionnez <emphasis>CsoundVST</emphasis> dans la liste qui apparaît.</para>
-        
-      <para>Cliquez sur le bouton <emphasis>e</emphasis> (pour edit) pour ouvrir la boîte
-        de dialogue de <emphasis>CsoundVST</emphasis>.</para>
-
-      <para>Sur la page des Réglages, cochez la case <emphasis>Instrument</emphasis>
-        dans le groupe VST Plugin, et la case <emphasis>Classic</emphasis> dans le
-        groupe <emphasis>Csound performance mode</emphasis>. Cliquez ensuite sur le bouton
-        <emphasis>Apply</emphasis>.</para>
-
-      <para>Cliquez sur le bouton <emphasis>Open</emphasis> pour faire apparaître
-        la boîte de dialogue de sélection de fichier. Naviguez vers un répertoire contenant
-        un fichier csd Csound adéquat pour une exécution MIDI, tel que
-        <filename>csound/examples/CsoundVST.csd</filename>. Cliquez sur le bouton OK
-        pour charger le fichier. Vous pouvez aussi ouvrir et importer des fichiers
-        <filename>.orc</filename> et <filename>.sco</filename> adéquats
-        comme décrit ci-dessus. </para>
-
-      <para>Dans tous les cas, la ligne de commande dans le champ texte
-        <emphasis>Classic Csound command line</emphasis> doit spécifier
-        <literal>-+rtmidi=null -M0</literal>, et devrait ressembler à ceci :</para>
-
-      <programlisting>
-        <command>csound</command> -f -h -+rtmidi=null -M0 -d -n -m7 &#45;&#45;midi-key-oct=4 &#45;&#45;midi-velocity=5 temp.orc temp.sco</programlisting>
-
-      <para>Cliquez sur le bouton on/off de la boîte de dialogue
-        <emphasis>VST Instruments</emphasis> pour l'allumer.
-        Ceci devrait compiler l'orchestre Csound.</para>
-
-      <para>Dans l'<emphasis>Inspecteur de Piste de Cubase</emphasis>, cliquez sur l'étiquette
-        <emphasis>out: Not Assigned</emphasis> et sélectionnez <emphasis>CsoundVST</emphasis>
-        dans la liste qui apparaît.</para>
-        
-      <para>Sur la règle en haut de la fenêtre <emphasis>Arrangement</emphasis>,
-        sélectionnez le point de fin de boucle et tirez-le jusqu'à la fin de votre part,
-        cliquez ensuite sur le bouton loop pour activer la mise en boucle. </para>
-
-      <para>Cliquez sur le bouton <emphasis>play</emphasis> de la barre de
-        <emphasis>Transport</emphasis>. Vous devriez entendre votre musique jouée
-        par CsoundVST. </para>
-
-      <para>Essayez d'assigner votre piste à différents canaux ; un instrument
-        Csound différent jouera chaque canal. </para>
-
-      <para>Quand vous sauvegardez votre song, votre orchestre Csound sera sauvegardé
-        comme une partie du song et rechargé quand vous rechargerez le song. </para>
-
-      <para>Vous pouvez cliquer sur l'onglet <emphasis>Orchestra</emphasis> et éditer
-        vos instruments Csound pendant que CsoundVST est en train de jouer. Pour
-        entendre vos changements, il suffit de cliquer sur le bouton CsoundVST
-        <emphasis>Perform</emphasis> pour recompiler l'orchestre. </para>
-
-      <para>Vous pouvez assigner jusqu'à 16 canaux à un seul greffon CsoundVST.</para>
-
-    </section>-->
-
-</chapter>
-
+-->
