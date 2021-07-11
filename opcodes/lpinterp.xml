@@ -63,24 +63,8 @@ english cvs version=
   <refsect1>
     <title>Exemples</title>
     <para>
-      Voici un orchestre typique utilisant les opcodes :
-      <informalexample>
-        <programlisting>
-ipower <emphasis role="opc">init</emphasis> 50000  <emphasis role="comment">; Define sound generator</emphasis>
-ifreq  <emphasis role="opc">init</emphasis> 440 
-asrc   <emphasis role="opc">buzz</emphasis> ipower, ifreq, 10, 1
-  
-ktime  <emphasis role="opc">line</emphasis> 0, p3, p3              <emphasis role="comment">; Define time lin</emphasis>
-       <emphasis role="opc">lpslot</emphasis> 0                    <emphasis role="comment">; Read square data poles</emphasis>
-krmsr, krmso, kerr, kcps <emphasis role="opc">lpread</emphasis> ktime,&quot;square.pol&quot;                     
-       <emphasis role="opc">lpslot</emphasis> 1                    <emphasis role="comment">; Read triangle data poles</emphasis>
-krmsr, krmso, kerr, kcps <emphasis role="opc">lpread</emphasis> ktime,&quot;triangle.pol&quot;
-kmix   <emphasis role="opc">line</emphasis> 0, p3, 1               <emphasis role="comment">; Compute result of mixing</emphasis>
-       <emphasis role="opc">lpinterp</emphasis> 0, 1, kmix         <emphasis role="comment">; and balance power</emphasis>
-ares   <emphasis role="opc">lpreson</emphasis> asrc
-aout   <emphasis role="opc">balance</emphasis> ares, asrc
-       <emphasis role="opc">out</emphasis> aout</programlisting>
-      </informalexample>
+      Voir l'exemple pour
+      <link linkend="lpslot"><citetitle>lpslot</citetitle></link>.
     </para>
   </refsect1>
 
