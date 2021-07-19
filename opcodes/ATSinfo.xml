@@ -75,24 +75,20 @@ english cvs version=1.9
       est une simple application de cela.
     </para>
   </refsect1>
+
   <refsect1>
     <title>Exemples</title>
     <para>
       voici un exemple de l'opcode ATSinfo. Il utilise le fichier
       <ulink url="examples/ATSinfo.csd"><citetitle>ATSinfo.csd</citetitle></ulink>.
-
       <example>
         <title>Exemple de l'opcode ATSinfo.</title>
           <xi:include href="examples-xml/ATSinfo.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
     </para>
-    <para>
-      Dans l'exemple ci-desssus nous utilisons <emphasis>ATSinfo</emphasis> pour
-      trouver le nombre de partiels dans le fichier ATS.
-    </para>
   </refsect1>
-    <refsect1>
-        <title>Autres exemples</title>
+  <refsect1>
+    <title>Autres exemples</title>
     <orderedlist>
       <listitem>
         <programlisting>
@@ -120,17 +116,8 @@ english cvs version=1.9
         </para>
       </listitem>
     </orderedlist>
-        
-    <para>
-      Voici un autre exemple de l'opcode ATSinfo. Il utilise le fichier
-      <ulink url="examples/ATSinfo-2.csd"><citetitle>ATSinfo-2.csd</citetitle></ulink>.
-      <example>
-        <title>Exemple 2 de l'opcode ATSinfo.</title>
-          <xi:include href="examples-xml/ATSinfo-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-      </example>
-    </para>
-
   </refsect1>
+
   <refsect1>
     <title>Voir aussi</title>
     <para>

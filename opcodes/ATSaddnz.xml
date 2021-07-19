@@ -90,24 +90,14 @@ english cvs version=1.13
       Dans l'exemple ci-dessus nous resynthétisons les 25 bandes de bruit depuis
       les données contenues dans le fichier d'analyse nommé "clarinet.ats".
     </para>
-  </refsect1>
-        
-  <refsect1>
-    <title>Exemples</title>
     <para>
       Voici un exemple complet de l'opcode ATSaddnz. Il utilise le fichier
       <ulink url="examples/ATSaddnz.csd"><citetitle>ATSaddnz.csd</citetitle></ulink>.
-
       <example>
         <title>Exemple de l'opcode ATSaddnz.</title>
           <xi:include href="examples-xml/ATSaddnz.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
     </para>
-    <para>
-      Ici nous ne resynthétisons que la 25ème bande de bruit (<emphasis>ibandoffset</emphasis>
-      à 24 et <emphasis>ibands</emphasis> à 1).
-    </para>
-        
     <para>
       Voici un autre exemple de l'opcode ATSaddnz. Il utilise le fichier
       <ulink url="examples/ATSaddnz-2.csd"><citetitle>ATSaddnz-2.csd</citetitle></ulink>.
@@ -116,7 +106,6 @@ english cvs version=1.13
           <xi:include href="examples-xml/ATSaddnz-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
     </para>
-        
   </refsect1>
   
   <refsect1>

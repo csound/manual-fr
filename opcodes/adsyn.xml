@@ -107,17 +107,10 @@ english cvs version=1.13
   <refsect1>
     <title>Exemples</title>
     <para>
-      Voici un exemple de l'opcode adsyn. Il utilise les fichiers
-      <ulink url="examples/adsyn.csd"><citetitle>adsyn.csd</citetitle></ulink> et
-      <ulink url="examples/kickroll.het"><citetitle>kickroll.het</citetitle></ulink>. Le fichier
-      <quote>kickroll.het</quote> a été créé en utilisant l'utilitaire
-      <link linkend="hetro"><citetitle>hetro</citetitle></link> avec le fichier audio
-      <ulink url="examples/kickroll.wav"><citetitle>kickroll.wav</citetitle></ulink>.
-
+      Voici un exemple de l'opcode adsyn. Il utilise le fichier
+      <ulink url="examples/adsyn.csd"><citetitle>adsyn.csd</citetitle></ulink>.
       <example>
         <title>Exemple de l'opcode adsyn.</title>
-        
-
         <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
         et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
         d'information sur l'utilisation des options de la ligne de commande.</para>
