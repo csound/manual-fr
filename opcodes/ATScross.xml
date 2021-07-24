@@ -126,30 +126,19 @@ english cvs version=1.10
       le même que celui de l'<emphasis>ATScross</emphasis>.
     </para>
   </refsect1>
+
   <refsect1>
     <title>Exemples</title>
     <para>
       Voici un exemple de l'opcode ATScross. Il utilise le fichier
       <ulink url="examples/ATScross.csd"><citetitle>ATScross.csd</citetitle></ulink>.
-
       <example>
         <title>Exemple de l'opcode ATScross.</title>
           <xi:include href="examples-xml/ATScross.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
     </para>
-    <para>
-      Cet exemple exécute une synthèse croisée à partir des deux fichiers ATS
-      "fox.ats" et "beats.ats". Le résultat sera un son qui débute avec le profil
-      (en fréquence) de fox.ats et se termine avec le profil de beats.ats. Toutes
-      les fréquences d'onde sinusoïdale viennent de beats.ats. La valeur de
-      <emphasis>kbuflev</emphasis> est pondérée parce que l'énergie produite en
-      appliquant le spectre de fréquence de fox.ats aux partiels de beats.ats est
-      très importante. Noter également que les pointeurs de temps
-      d'<emphasis>ATSbufread</emphasis> (fox.atds) et d'<emphasis>ATScross</emphasis> (beats.ats) n'ont
-      pas nécessairement la même valeur, ce qui permet de lire les deux fichiers ATS
-      à des vitesses différentes.
-    </para>
   </refsect1>
+
   <refsect1>
     <title>Voir aussi</title>
     <para>

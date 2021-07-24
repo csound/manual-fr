@@ -62,6 +62,7 @@ english cvs version=1.9
       <link linkend="ATSadd"><citetitle>ATSadd</citetitle></link>.
    </para>
   </refsect1>
+
   <refsect1>
     <title>Exemples</title>
     <para>
@@ -75,21 +76,20 @@ english cvs version=1.9
     </para>
     <para>
       Ici nous utilisons <emphasis>ATSread</emphasis> pour obtenir la fréquence
-      et l'amplitude du centième partiel du fichier d'analyse ATS 'beats.ats'.
+      et l'amplitude du dixième partiel du fichier d'analyse ATS 'beats.ats'.
       Nous utilisons ces données pour piloter un oscillateur, mais nous pourrions
       les utiliser pour toute autre opération qui accepte une entrée au taux-k,
       comme la largeur de bande et la résonnance d'un filtre, etc.
     </para>
 
     <para>
-      Voici un autre exemple de l'opcode ATSread. Il utilise le fichier
-      <ulink url="examples/ATSread-2.csd"><citetitle>ATSread-2.csd</citetitle></ulink>.
+      Voici un exemple musical de l'opcode ATSread. Il utilise le fichier
+      <ulink url="examples/ATSread-musical.csd"><citetitle>ATSread-musical.csd</citetitle></ulink>.
       <example>
         <title>Exemple 2 de l'opcode ATSread.</title>
-          <xi:include href="examples-xml/ATSread-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+          <xi:include href="examples-xml/ATSread-musical.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
     </para>
-
   </refsect1>
   
   <refsect1>

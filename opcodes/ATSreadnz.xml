@@ -35,7 +35,7 @@ english cvs version=1.9
     <para>
       <emphasis>iatsfile</emphasis> – le numéro ATS (n dans ats.n) ou le nom
       entre guillemets du fichier d'analyse créé avec
-      <ulink url="http://www-ccrma.stanford.edu/~juan/ATS.html"><citetitle>ATS</citetitle></ulink>.
+      <link linkend="UtilityAtsa"><citetitle>ATSA</citetitle></link>.
     </para>
     <para>
       <emphasis>iband</emphasis> – le numéro de la bande de bruit dont il faut
@@ -70,7 +70,7 @@ english cvs version=1.9
       Une analyse ATS diffère d'une analyse pvanal du fait qu'ATS trace les partiels
       et calcule l'énergie du bruit dans le son étant analysé. Pour plus d'information
       sur l'analyse ATS, lire la description de Juan Pampin sur la page web
-      <ulink url="http://www-ccrma.stanford.edu/~juan/ATS.html"><citetitle>ATS</citetitle></ulink>.
+      <ulink url="https://ccrma.stanford.edu/~juan/ATS_manual.html"><citetitle>ATS</citetitle></ulink>.
     </para>
   </refsect1>
   <refsect1>
@@ -103,7 +103,7 @@ english cvs version=1.9
       contrôler quelque chose sans aucun rapport avec le son source ?
     </para>
     <para>
-      Voici un autre exemple de l'opcode ATSreadnz. Il utilise le fichier
+      Voici un exemple complet de l'opcode ATSreadnz. Il utilise le fichier
       <ulink url="examples/ATSreadnz.csd"><citetitle>ATSreadnz.csd</citetitle></ulink>.
 
       <example>
@@ -112,6 +112,7 @@ english cvs version=1.9
       </example>
     </para>
   </refsect1>
+
   <refsect1>
     <title>Voir aussi</title>
     <para>

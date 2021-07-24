@@ -38,23 +38,24 @@ english cvs version=1.10
     <para>
       <emphasis>iatsfile</emphasis> – le numéro ATS (n dans ats.n) ou le nom
       entre guillemets du fichier d'analyse créé avec
-      <ulink url="http://www-ccrma.stanford.edu/~juan/ATS.html"><citetitle>ATS</citetitle></ulink>.
+      <link linkend="UtilityAtsa"><citetitle>ATSA</citetitle></link>.
     </para>
     <para>
       <emphasis>ipartials</emphasis> – nombre de partiels qui seront utilisés
       dans la resynthèse (le bruit a un maximum de 25 bandes).
     </para>
     <para>
-      <emphasis>ipartialoffset</emphasis> (optional) – (facultatif) – le premier
+      <emphasis>ipartialoffset</emphasis> (facultatif) – le premier
       partiel utilisé (0 par défaut).
     </para>
     <para>
-      <emphasis>ipartialincr</emphasis> (optional) – (facultatif) – fixe le pas
+      <emphasis>ipartialincr</emphasis> (facultatif) – fixe le pas
       d'incrémentation que ces opcodes de synthèse utilisent pour compter les
       composants bins à partir de <emphasis>ipartialoffset</emphasis> dans la
       resynthèse (1 par défaut).
     </para>
   </refsect1>
+
   <refsect1>
     <title>Exécution</title>
     <para>
@@ -87,15 +88,14 @@ english cvs version=1.10
       synthétisé, avec sa composante de bruit. Chaque composante de bruit est
       ensuite modulée par le partiel correspondant pour être placée au bon endroit
       dans le spectre de fréquence. Les niveaux du bruit et des partiels sont
-      contrôlables individuellement. Voir la page web
-      <ulink url="http://www-ccrma.stanford.edu/~juan/ATS.html"><citetitle>ATS</citetitle></ulink>
-      pour plus d'information sur la synthèse sinnoi. Une analyse ATS diffère
+      contrôlables individuellement. Une analyse ATS diffère
       d'une analyse pvanal du fait qu'ATS trace les partiels et calcule l'énergie
       du bruit dans le son étant analysé. Pour plus d'information sur l'analyse ATS,
       lire la description de Juan Pampin sur la page web
-      <ulink url="http://www-ccrma.stanford.edu/~juan/ATS.html"><citetitle>ATS</citetitle></ulink>.
+      <ulink url="https://ccrma.stanford.edu/~juan/ATS_manual.html"><citetitle>ATS</citetitle></ulink>.
     </para>
   </refsect1>
+
   <refsect1>
     <title>Exemples</title>
     <programlisting>
@@ -120,7 +120,16 @@ english cvs version=1.10
       le son de "beats.wav" dont la composante de bruit apparaît progressivement
       durant la durée de la note.
     </para>
+    <para>
+      Voici un autre exemple de l'opcode ATSsinnoi. Il utilise le fichier
+      <ulink url="examples/ATSsinnoi-2.csd"><citetitle>ATSsinnoi-2.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple 2 de l'opcode ATSsinnoi.</title>
+          <xi:include href="examples-xml/ATSsinnoi-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
   </refsect1>
+
   <refsect1>
     <title>Voir aussi</title>
     <para>

@@ -67,7 +67,7 @@ english cvs version=1.10
     </para>
     <para>
       Cet exemple montre comment utiliser <emphasis>ATSinterpread</emphasis>.
-      Ici une fréquence est fournie par la partition (p4) et cette fréquence est
+      Ici une fréquence est fournie par la partition (p5) et cette fréquence est
       passée à un <emphasis>ATSinterpread</emphasis> (avec un
       <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>)
       correspondant. L'<emphasis>ATSinterpread</emphasis> utilise cette
@@ -75,7 +75,7 @@ english cvs version=1.10
       ATS donné par le
       <link linkend="ATSbufread"><citetitle>ATSbufread</citetitle></link>
       (beats.ats dans ce cas). Nous utilisons ensuite cette amplitude pour
-      pondérer une onde sinus qui est synthétisée avec la même fréquence (p4).
+      pondérer une onde sinus qui est synthétisée avec la même fréquence (p5).
       On peut étendre ceci pour inclure plusieurs ondes sinus. De cette manière
       il est possible de synthétiser n'importe quelle fréquence raisonnable
       (comprise entre la fréquence basse et la fréquence haute du fichier ATS
