@@ -107,19 +107,13 @@ english cvs version=1.10
       partiels sont inchangés (chacun est fixé à 1).
     </para>
     <para>
-      Voici un autre exemple de l'opcode ATSsinnoi. Il utilise le fichier
+      Voici un exemple complet de l'opcode ATSsinnoi. Il utilise le fichier
       <ulink url="examples/ATSsinnoi.csd"><citetitle>ATSsinnoi.csd</citetitle></ulink>.
     </para>
     <example>
       <title>Exemple de l'opcode ATSsinnoi.</title>
           <xi:include href="examples-xml/ATSsinnoi.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
-    <para>
-      Cet exemple reprend le précédent mais en utilisant une enveloppe pour
-      contrôler <emphasis>knzlev</emphasis> (le niveau de bruit). Cela donne
-      le son de "beats.wav" dont la composante de bruit apparaît progressivement
-      durant la durée de la note.
-    </para>
     <para>
       Voici un autre exemple de l'opcode ATSsinnoi. Il utilise le fichier
       <ulink url="examples/ATSsinnoi-2.csd"><citetitle>ATSsinnoi-2.csd</citetitle></ulink>.
@@ -143,16 +137,6 @@ english cvs version=1.10
       <link linkend="ATSadd"><citetitle>ATSadd</citetitle></link>, 
       <link linkend="ATSaddnz"><citetitle>ATSaddnz</citetitle></link>
     </para>
-
-    <para>
-      Voici un autre exemple de l'opcode ATSsinnoi. Il utilise le fichier
-      <ulink url="examples/ATSsinnoi-2.csd"><citetitle>ATSsinnoi-2.csd</citetitle></ulink>.
-      <example>
-        <title>Exemple 2 de l'opcode ATSsinnoi.</title>
-          <xi:include href="examples-xml/ATSsinnoi-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-      </example>
-    </para>
-
   </refsect1>
   
   <refsect1>
