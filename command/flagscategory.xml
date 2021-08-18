@@ -756,8 +756,6 @@ csound5:output2             (reproduction droite)</screen>
     <varlistentry id="FlagsCatMinusLowerD">
       <term>-d<indexterm id="IndexCatMinusLowerD"><primary>-d</primary></indexterm>, --nodisplays<indexterm id="IndexCatMinusNodisplays"><primary>--nodisplays</primary></indexterm></term>
       <listitem>
-          Suppress all displays. See <link linkend="FlagsCatMinusUpperO"><citetitle>-O</citetitle></link>
-          if you want to save the log to a file. <note>This option disables all features depending on the opcodes "display" and "dispfft"</note><note>This option is ignored in .csound6rc.</note> 
         <para>
           Supprimer tous les affichages. Voir <link linkend="FlagsCatMinusUpperO"><citetitle>-O</citetitle></link>
           si vous souhaitez enregistrer le compte-rendu dans un fichier.
