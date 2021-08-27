@@ -14,11 +14,8 @@ english cvs version=1.8
     <refentrytitle>¬</refentrytitle>
   </refmeta>
 
-
- 
   <refnamediv>
     <refname>¬</refname>
-
     <refpurpose>
       Opérateur NON binaire.
     </refpurpose>
@@ -48,6 +45,19 @@ english cvs version=1.8
     <para>
       où l'argument <emphasis>a</emphasis> peut être une expression. Il est converti dans la valeur
       entière la plus proche selon la précision de la machine et l'opération est ensuite effectuée.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple pour le group bit à bit, qui compare les différents
+      opcodes bit à bit. Il utilise le fichier
+      <ulink url="examples/bitwise-group.csd"><citetitle>bitwise-group.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple du groupe bit à bit.</title>
+          <xi:include href="examples-xml/bitwise-group.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
     </para>
   </refsect1>
 

@@ -51,10 +51,29 @@ english cvs version=1.8
     <para>
       On peut utiliser des parenthèses pour forcer des groupements particuliers.
     </para>
+  </refsect1>
 
+  <refsect1>
+    <title>Exemples</title>
     <para>
-      Pour un exemple d'utilisation, voir l'entrée pour
-      <link linkend="opbitand"><citetitle>&amp;</citetitle></link>
+      Voici un exemple des opérateurs bit à bit ET et OU. Il utilise le fichier
+      <ulink url="examples/bitwise.csd"><citetitle>bitwise.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple des opérateurs bit à bit.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/bitwise.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Voici un exemple pour le group bit à bit, qui compare les différents
+      opcodes bit à bit. Il utilise le fichier
+      <ulink url="examples/bitwise-group.csd"><citetitle>bitwise-group.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple du groupe bit à bit.</title>
+          <xi:include href="examples-xml/bitwise-group.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
     </para>
   </refsect1>
 

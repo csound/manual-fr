@@ -54,16 +54,24 @@ english cvs version=1.8
 
   <refsect1>
     <title>Exemples</title>
-
     <para>
-      Voici un exemple des opérateurs binaires ET et OU. Il utilise le fichier
+      Voici un exemple des opérateurs bit à bit ET et OU. Il utilise le fichier
       <ulink url="examples/bitwise.csd"><citetitle>bitwise.csd</citetitle></ulink>.
       <example>
-        <title>Exemple des opérateurs binaires.</title>
+        <title>Exemple des opérateurs bit à bit.</title>
         <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
         et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
         d'information sur l'utilisation des options de la ligne de commande.</para>
           <xi:include href="examples-xml/bitwise.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Voici un exemple pour le group bit à bit, qui compare les différents
+      opcodes bit à bit. Il utilise le fichier
+      <ulink url="examples/bitwise-group.csd"><citetitle>bitwise-group.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple du groupe bit à bit.</title>
+          <xi:include href="examples-xml/bitwise-group.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
     </para>
   </refsect1>
