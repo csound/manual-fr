@@ -147,6 +147,41 @@ authors=Francois Pinot
   </refsect1>
  
   <refsect1>
+    <title>Format de la matrice</title>
+    <para>
+      Le format de la matrice de scanu est une liste binaire de connexions.
+      le poids du lien est supposé être unitaire.
+    </para>
+    <para>
+      Par exemple, une chaîne circulaire de quatre éléments serait codée de
+      cette manière :
+      <informalexample>
+        <programlisting>
+0
+1
+0
+0
+1
+0
+1
+0
+0
+1
+0
+1
+0
+0
+1
+0
+        </programlisting>
+      </informalexample>
+      Note : pour éviter la confusion avec d'autres formats de matrice, il
+      vaut mieux sauvegarder ce format de matrice avec l'extension de fichier
+      <citetitle>.matrxB</citetitle>.
+    </para>
+  </refsect1>
+
+  <refsect1>
     <title>Exemples</title>
     <para>
       Voici un exemple de l'opcode scanu2. Il utilise les fichiers

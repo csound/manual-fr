@@ -25,7 +25,8 @@ english cvs version=
   <refsect1>
     <title>Description</title>
     <para>
-      Cet opcode affiche un signal PVS fsig. Il utilise X11 ou une fenêtre FLTK
+      Cet opcode affiche un signal PVS fsig. Il affiche les trames à chaque
+      saut. Il utilise X11 ou une fenêtre FLTK
       si c'est possible, sinon (ou si l'option
       <link linkend="FlagsMinusLowerG"><citetitle>-g</citetitle></link> est
       positionnée) il affiche une approximation en caractères ASCII.
@@ -40,14 +41,9 @@ english cvs version=
   <refsect1>
     <title>Initialisation</title>
     <para>
-      <emphasis>iprd</emphasis> -- la période de <emphasis>pvsdisp</emphasis> en
-      secondes.
-    </para>
-
-    <para>
       <emphasis>ibins</emphasis> (facultatif, par défaut=tous les bins) -- affiche
       seulement <emphasis>ibins</emphasis> bins. 
-	  </para>
+    </para>
 
     <para>
       <emphasis>iwtflg</emphasis> (facultatif, par défaut=0) -- indicateur de
@@ -61,6 +57,11 @@ english cvs version=
     <title>Exécution</title>
     <para>
       <emphasis>pvsdisp</emphasis> -- affiche le signal PVS trame par trame. 
+    </para>
+    <para>
+      Note : lorsqu'il n'y a rien à afficher (silence), des messages comme
+      celui-ci accompagnent chaque affichage :
+        <screen>instr 1, pvs-signal fsig:	10 points, scalemax 0.000</screen>
 	</para>
   </refsect1>
 

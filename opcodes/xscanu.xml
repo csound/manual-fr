@@ -35,8 +35,8 @@ english cvs version=1.9
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis><command>xscanu</command> init, irate, ifnvel, ifnmass, ifnstif, ifncentr, ifndamp, kmass, \
-      kstif, kcentr, kdamp, ileft, iright, kpos, kstrngth, ain, idisp, id</synopsis>
+    <synopsis><command>xscanu</command> init, irate, ifndisplace, ifnmass, ifnmatrix, ifncentr, ifndamp, kmass, \
+      kmtrxstiff, kcentr, kdamp, ileft, iright, kpos, kdisplace, ain, idisp, id</synopsis>
   </refsect1>
 
   <refsect1>
@@ -54,7 +54,7 @@ english cvs version=1.9
     </para>
 
     <para>
-      <emphasis>ifnvel</emphasis> -- ftable contenant la vitesse initiale de
+      <emphasis>ifndisplace</emphasis> -- ftable contenant la vitesse initiale de
       chaque masse. Sa taille est le nombre de masses attendu.
     </para>
 
@@ -64,7 +64,7 @@ english cvs version=1.9
     </para>
 
     <para>
-      <emphasis>ifnstif</emphasis> --  
+      <emphasis>ifnmatrix</emphasis> --  
       <itemizedlist>
         <listitem><para><emphasis>soit</emphasis> une ftable contenant la raideur du
         ressort de chaque connexion. Sa taille est le carré du nombre de masses attendu. Ses
@@ -119,7 +119,7 @@ english cvs version=1.9
     </para>
 
     <para>
-      <emphasis>kstif</emphasis> -- pondère la raideur des ressorts
+      <emphasis>kmtrxstiff</emphasis> -- pondère la raideur des ressorts
     </para>
 
     <para>
@@ -139,7 +139,7 @@ english cvs version=1.9
     </para>
 
     <para>
-      <emphasis>kstrngth</emphasis> -- puissance utilisée par le marteau actif
+      <emphasis>kdisplace</emphasis> -- puissance utilisée par le marteau actif
     </para>
 
     <para>
@@ -152,7 +152,7 @@ english cvs version=1.9
     <title>Format de Matrice</title>
 
     <para>
-      Le nouveau format de matrice est une liste de connexions, une par ligne reliant
+      Le format de matrice de xscanu est une liste de connexions, une par ligne reliant
       le point x au point y. Aucun poids n'est affecté au lien ; il est supposé valoir
       l'unité. La liste est précédée par la ligne &lt;MATRIX&gt; et se termine par une
       ligne &lt;/MATRIX&gt;
@@ -182,6 +182,9 @@ english cvs version=1.9
 &lt;/MATRIX&gt;
         </programlisting>
       </informalexample>
+      Pour éviter la confusion avec d'autres formats de matrice, il
+      vaut mieux sauvegarder ce format de matrice avec l'extension de fichier
+      <citetitle>.XmatrxT</citetitle>.
     </para>
   </refsect1>
 

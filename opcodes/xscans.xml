@@ -81,43 +81,6 @@ english cvs version=1.10
   </refsect1>
 
   <refsect1>
-    <title>Format de Matrice</title>
-
-    <para>
-      Le nouveau format de matrice est une liste de connexions, une par ligne reliant
-      le point x au point y. Aucun poids n'est affecté au lien ; il est supposé valoir
-      l'unité. La liste est précédée par la ligne &lt;MATRIX&gt; et se termine par une
-      ligne &lt;/MATRIX&gt;
-    </para>
-
-    <para>
-      Par exemple, une corde circulaire de 8 sera codée par
-
-      <informalexample>
-        <programlisting>
-&lt;MATRIX&gt;
-0 1
-1 0
-1 2
-2 1
-2 3
-3 2
-3 4
-4 3
-4 5
-5 4
-5 6
-6 5
-6 7
-7 6
-0 7
-&lt;/MATRIX&gt;
-        </programlisting>
-      </informalexample>
-    </para>
-  </refsect1>
-
-  <refsect1>
     <title>Exemples</title>
     <para>
       Voici un exemple de l'opcode xscans. Il utilise le fichier

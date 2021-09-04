@@ -85,7 +85,21 @@ english cvs version=1.4
         <xi:include href="examples-xml/imageopcodesdemo2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
     </para>
+    <para>
+      Voici un exemple musical de l'opcode imagegetpixel. Il utilise les fichiers
+      <ulink url="examples/imagegetpixel-musical.csd"><citetitle>imagegetpixel-musical.csd</citetitle></ulink>
+      et <ulink url="images/imageOpcode001.png"><citetitle>imageOpcode001.png</citetitle></ulink>.
+      <example>
+        <title>Exemple musical de l'opcode imagegetpixel.</title>
+        <xi:include href="examples-xml/imagegetpixel-musical.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      <imageobject>
+        L'image utilisée :
+        <imagedata fileref="images/imageOpcode001.png" format="PNG"/>
+      </imageobject>
+    </para>
   </refsect1>
+
   <refsect1>
     <title>Voir aussi</title>
     <para>
