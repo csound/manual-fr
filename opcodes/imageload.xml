@@ -52,12 +52,17 @@ english cvs version=1.5
   <refsect1>
     <title>Exemples</title>
     <para>
-      Voici un exemple de l'opcode imageload. Il utilise le fichier
-	    <ulink url="examples/imageopcodes.csd"><citetitle>imageopcodes.csd</citetitle></ulink>.
+      Voici un exemple de l'opcode imageload. Il utilise les fichiers
+	    <ulink url="examples/imageopcodes.csd"><citetitle>imageopcodes.csd</citetitle></ulink> et
+	    <ulink url="examples/imageOpcode01.png"><citetitle>imageOpcode01.png</citetitle></ulink>.
       <example>
         <title>Exemple de l'opcode imageload.</title>
           <xi:include href="examples-xml/imageopcodes.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
+      <para>
+        Voici l'image <citetitle>imageOpcode03.png</citetitle> pour l'exemple
+        <citetitle>imagegetpixel-musical</citetitle> :
+      </para>
     </para>
   </refsect1>
 

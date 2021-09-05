@@ -57,14 +57,15 @@ english cvs version=1.4
   <refsect1>
     <title>Exemples</title>
     <para>
-      Voici un exemple de l'opcode imagesize. Il utilise le fichier
-      <ulink url="examples/imageopcodes.csd"><citetitle>imageopcodes.csd</citetitle></ulink>.
+      Voici un exemple de l'opcode imagesize. Il utilise les fichiers
+      <ulink url="examples/imageopcodes.csd"><citetitle>imageopcodes.csd</citetitle></ulink> et
+      <ulink url="examples/imageOpcode01.png"><citetitle>imageOpcode01.png</citetitle></ulink>.
       <example>
         <title>Exemple de l'opcode imagesize.</title>
         <xi:include href="examples-xml/imageopcodes.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
       Sa sortie contiendra une ligne comme celle-ci :
-      <screen>imagewidth = 180.000000 pixels, imageheigth = 135.000000 pixels</screen>
+      <screen>width = 512 pixels, heigth = 512 pixels</screen>
     </para>
   </refsect1>
 

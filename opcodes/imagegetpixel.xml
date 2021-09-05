@@ -77,25 +77,40 @@ english cvs version=1.4
     <title>Exemples</title>
     <para>
       Voici un exemple de l'opcode imagegetpixel. Il utilise les fichiers
-      <ulink url="examples/imageopcodesdemo2.csd"><citetitle>imageopcodesdemo2.csd</citetitle></ulink>,
-      <ulink url="examples/test1.png"><citetitle>test1.png</citetitle></ulink> et
-      <ulink url="examples/test2.png"><citetitle>test2.png</citetitle></ulink>.
+      <ulink url="examples/imagegetpixel.csd"><citetitle>imagegetpixel.csd</citetitle></ulink>,
+      <ulink url="examples/imageOpcode01.png"><citetitle>imageOpcode01.png</citetitle></ulink> et
+      <ulink url="examples/imageOpcode02.png"><citetitle>imageOpcode02.png</citetitle></ulink>.
       <example>
         <title>Exemple de l'opcode imagegetpixel.</title>
-        <xi:include href="examples-xml/imageopcodesdemo2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="examples-xml/imagegetpixel.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
     </para>
     <para>
+      Voici les images <citetitle>imageOpcode01.png</citetitle> et
+      <citetitle>imageOpcode02.png</citetitle> pour l'exemple
+      <citetitle>imagegetpixel</citetitle> :
+    </para>
+        <imageobject>
+          <imagedata fileref="images/imageOpcode01small.png" format="PNG"/>
+        </imageobject>
+        <imageobject>
+          <imagedata fileref="images/imageOpcode02small.png" format="PNG"/>
+        </imageobject>
+    <para>
       Voici un exemple musical de l'opcode imagegetpixel. Il utilise les fichiers
       <ulink url="examples/imagegetpixel-musical.csd"><citetitle>imagegetpixel-musical.csd</citetitle></ulink>
-      et <ulink url="images/imageOpcode001.png"><citetitle>imageOpcode001.png</citetitle></ulink>.
+      et <ulink url="images/imageOpcode03.png"><citetitle>imageOpcode03.png</citetitle></ulink>.
       <example>
         <title>Exemple musical de l'opcode imagegetpixel.</title>
         <xi:include href="examples-xml/imagegetpixel-musical.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
+      <para>
+        Voici l'image <citetitle>imageOpcode03.png</citetitle> pour l'exemple
+        <citetitle>imagegetpixel-musical</citetitle> :
+      </para>
       <imageobject>
         L'image utilisée :
-        <imagedata fileref="images/imageOpcode001.png" format="PNG"/>
+        <imagedata fileref="images/imageOpcode03.png" format="PNG"/>
       </imageobject>
     </para>
   </refsect1>
