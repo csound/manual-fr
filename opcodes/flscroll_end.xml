@@ -24,6 +24,13 @@ english cvs version=1.8
   <refsect1>
     <title>Description</title>
     <para>
+      Opcode du greffon widgets. Ce greffon se trouve dans le
+      répertoire des greffons et il doit être installé séparément. Les widgets
+      FLTK ne fonctionnent pas sur Mac. Le répertoire des greffons est ici :
+      <ulink url="https://github.com/csound/plugins">
+      <citetitle>https://github.com/csound/plugins</citetitle></ulink>
+    </para>
+    <para>
       Un opcode FLTK qui marque la fin d'une zone avec barres d'ascenseur.
       C'est un autre nom pour <command>FLscrollEnd</command> fourni pour des
       raisons de compatibilité. Voir
