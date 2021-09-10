@@ -23,11 +23,17 @@ english cvs version=1.2
 
   <refsect1>
     <title>Description</title>
-    <para>Opcode du greffon image.</para>
+    <para>
+      Opcode du greffon image. Ce greffon se trouve dans le
+      répertoire des greffons et il doit être installé séparément.
+      Le répertoire des greffons est ici :
+      <ulink url="https://github.com/csound/plugins">
+      <citetitle>https://github.com/csound/plugins</citetitle></ulink>
+    </para>
     <para>
       Crée une image vide de taille donnée. On peut ensuite fixer des points
       individuellement avec
-      <link linkend="imagesetpixel"><citetitle>imagegetpixel</citetitle></link>.
+      <link linkend="imagesetpixel"><citetitle>imagesetpixel</citetitle></link>.
     </para>
   </refsect1>
 

@@ -23,7 +23,13 @@ english cvs version=1.4
 
   <refsect1>
     <title>Description</title>
-    <para>Opcode du greffon image.</para>
+    <para>
+      Opcode du greffon image. Ce greffon se trouve dans le
+      répertoire des greffons et il doit être installé séparément.
+      Le répertoire des greffons est ici :
+      <ulink url="https://github.com/csound/plugins">
+      <citetitle>https://github.com/csound/plugins</citetitle></ulink>
+    </para>
     <para>
       Retourne les valeurs RVB d'un pixel d'une image précédemment ouverte ou créée.
       On peut charger une image avec

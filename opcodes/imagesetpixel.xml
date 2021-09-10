@@ -22,7 +22,13 @@ english cvs version=1.2
 
   <refsect1>
     <title>Description</title>
-    <para>Opcode du greffon image.</para>
+    <para>
+      Opcode du greffon image. Ce greffon se trouve dans le
+      répertoire des greffons et il doit être installé séparément.
+      Le répertoire des greffons est ici :
+      <ulink url="https://github.com/csound/plugins">
+      <citetitle>https://github.com/csound/plugins</citetitle></ulink>
+    </para>
     <para>
       Fixe la valeur RVB d'un pixel dans une image précédemment ouverte ou créée.
       On peut charger une image avec
@@ -76,12 +82,32 @@ english cvs version=1.2
     <title>Exemples</title>
     <para>
       Voici un exemple de l'opcode imagesetpixel. Il utilise les fichiers
-      <ulink url="examples/imageopcodes.csd"><citetitle>imageopcodes.csd</citetitle></ulink> et
-      <ulink url="examples/imageOpcode01.png"><citetitle>imageOpcode01.png</citetitle></ulink>.
+      <ulink url="examples/imagesetpixel.csd"><citetitle>imagesetpixel.csd</citetitle></ulink> et
+      <ulink url="examples/imageOpcode02.png"><citetitle>imageOpcode02.png</citetitle></ulink>.
       <example>
         <title>Exemple de l'opcode imagesetpixel.</title>
-        <xi:include href="examples-xml/imageopcodes.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="examples-xml/imagesetpixel.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
+      <para>
+        Voici l'image <citetitle>imageOpcode02.png</citetitle> :
+      </para>
+        <imageobject>
+          <imagedata fileref="images/imageOpcode02small.png" format="PNG"/>
+        </imageobject>
+      <para>
+        et voilà les nouvelles images <citetitle>imageNEW1.png</citetitle>,
+        <citetitle>imageNEW2.png</citetitle> et
+        <citetitle>imageNEW3.png</citetitle> :
+      </para>
+        <imageobject>
+          <imagedata fileref="images/imageNEW1small.png" format="PNG"/>
+        </imageobject>
+        <imageobject>
+          <imagedata fileref="images/imageNEW2small.png" format="PNG"/>
+        </imageobject>
+        <imageobject>
+          <imagedata fileref="images/imageNEW3small.png" format="PNG"/>
+        </imageobject>
     </para>
   </refsect1>
 
