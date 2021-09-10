@@ -24,7 +24,12 @@ english cvs version=1.7
 
   <refsect1>
     <title>Description</title>
-    <para>Opcode du greffon chua.</para>
+    <para>
+      Opcode du greffon chua. Ce greffon se trouve dans le
+      répertoire des greffons et il doit être installé séparément. Le répertoire
+      des greffons est ici : <ulink url="https://github.com/csound/plugins">
+      <citetitle>https://github.com/csound/plugins</citetitle></ulink>
+    </para>
     <para>
       Simule un oscillateur de Chua, un oscillateur RLC avec une résistance active, qui peut avoir
       bifurcation et attracteurs chaotiques, avec un contrôle de taux-k des éléments du circuit.

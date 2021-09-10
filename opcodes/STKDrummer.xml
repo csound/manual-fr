@@ -20,10 +20,15 @@ english cvs version=
       STKDrummer est un synthétiseur à échantillon de tambour.
     </refpurpose>
   </refnamediv>
- 
+
   <refsect1>
     <title>Description</title>
-    <para>Opcode du greffon stkopd.</para>
+    <para>
+      Opcode du greffon stkopd. Ce greffon se trouve dans le
+      répertoire des greffons et il doit être installé séparément. Le répertoire
+      des greffons est ici : <ulink url="https://github.com/csound/plugins">
+      <citetitle>https://github.com/csound/plugins</citetitle></ulink>
+    </para>
     <para>
       <emphasis>STKDrummer</emphasis> est un synthétiseur à échantillon de tambour
       qui utilise des formes d'onde brutes et des filtres à un pôle. Les fichiers

@@ -24,7 +24,12 @@ english cvs version=
  
   <refsect1>
     <title>Description</title>
-    <para>Opcode du greffon stkopd.</para>
+    <para>
+      Opcode du greffon stkopd. Ce greffon se trouve dans le
+      répertoire des greffons et il doit être installé séparément. Le répertoire
+      des greffons est ici : <ulink url="https://github.com/csound/plugins">
+      <citetitle>https://github.com/csound/plugins</citetitle></ulink>
+    </para>
     <para>
       Cet opcode est basé sur le modèle de la clarinette, avec en plus
       l'implémentation d'un trou de registre à deux ports et d'un trou
