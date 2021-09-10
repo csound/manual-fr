@@ -28,7 +28,13 @@ english cvs version=1.15
 
   <refsect1>
     <title>Description</title> 
-    <para>Opcode du greffon fluidOpcodes.</para>
+    <para>
+      Opcode du greffon fluidOpcodes. Ce greffon se trouve dans le
+      répertoire des greffons et il doit être installé séparément.
+      Le répertoire des greffons est ici :
+      <ulink url="https://github.com/csound/plugins">
+      <citetitle>https://github.com/csound/plugins</citetitle></ulink>
+    </para>
     <para>Envoie en sortie le son d'un fluidEngine donné.
     </para>
   </refsect1>
