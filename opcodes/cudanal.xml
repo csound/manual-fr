@@ -1,9 +1,7 @@
 <!--translated=yes
 authors=Francois Pinot
-english cvs version=
 // translated field can be yes, no or partially
 // Add your name to the existing list of authors
-// Add the version number of the file you are translating from the english version number on cvs
 // *** Please remember to keep this information up to date! ***
 -->
 
@@ -25,6 +23,12 @@ english cvs version=
   
   <refsect1>
     <title>Description</title>
+    <para>
+      Opcode du greffon cuda. Ce greffon se trouve dans le
+      répertoire des greffons et il doit être installé séparément. Le répertoire
+      des greffons est ici : <ulink url="https://github.com/csound/plugins">
+      <citetitle>https://github.com/csound/plugins</citetitle></ulink>
+    </para>
     <para>
        Génère un fsig à partir d'une source audio mono, en utilisant l'analyse
        par recouvrement-addition d'un vocodeur de phase et un GPU.

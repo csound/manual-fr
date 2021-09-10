@@ -18,12 +18,18 @@ english cvs version=
     <refname>cudasynth</refname>
     <refpurpose>
       Synthèse par synthèse additive et TFR inverse. Expérimental
-       et seulement disponible dans le code source pour le moment.
+      et seulement disponible dans le code source pour le moment.
     </refpurpose>
   </refnamediv>
-  
+
   <refsect1>
     <title>Description</title>
+    <para>
+      Opcode du greffon cuda. Ce greffon se trouve dans le
+      répertoire des greffons et il doit être installé séparément. Le répertoire
+      des greffons est ici : <ulink url="https://github.com/csound/plugins">
+      <citetitle>https://github.com/csound/plugins</citetitle></ulink>
+    </para>
     <para>
       Synthèse par synthèse additive et TFR inverse.
     </para>
