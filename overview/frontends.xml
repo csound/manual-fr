@@ -226,7 +226,7 @@ english cvs version=1.15
   fluid      "c:/projects/csound5/samples/VintageDreamsWaves-v2.sf2", \\
   iprogram, istatus, ichannel, ikey, ivelocity, 1
   outs       aleft, arightendin''')
-  csound.setCommand("csound --opcode-lib=c:/projects/csound5/fluid.dll \\
+  csound.setCommand("csound -&#45;opcode-lib=c:/projects/csound5/fluid.dll \\
   -RWdfo ./koch.wav ./temp.orc ./temp.sco")
   csound.exportForPerformance()
   csound.perform()</programlisting>
