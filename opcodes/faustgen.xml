@@ -23,7 +23,12 @@ english cvs version=
 
   <refsect1>
     <title>Description</title>
-    <para>Opcode du greffon faustcsound.</para>
+    <para>
+      Opcode du greffon faustcsound. Ce greffon se trouve dans le
+      répertoire des greffons et il doit être installé séparément. Le répertoire
+      des greffons est ici : <ulink url="https://github.com/csound/plugins">
+      <citetitle>https://github.com/csound/plugins</citetitle></ulink>
+    </para>
     <para>
       <emphasis>faustgen</emphasis> invoque le compilateur à la volée, instancie
       et exécute un programme Faust.
