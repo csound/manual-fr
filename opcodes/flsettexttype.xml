@@ -24,7 +24,14 @@ english cvs version=1.9
   
   <refsect1>
     <title>Description</title>
-    <para>
+     <para>
+      Opcode du greffon widgets. Ce greffon se trouve dans le
+      répertoire des greffons et il doit être installé séparément. Les widgets
+      FLTK ne fonctionnent pas sur Mac. Le répertoire des greffons est ici :
+      <ulink url="https://github.com/csound/plugins">
+      <citetitle>https://github.com/csound/plugins</citetitle></ulink>
+    </para>
+   <para>
       <emphasis>FLsetTextType</emphasis> fixe quelques attributs de la police
       du texte de l'étiquette du widget cible.
     </para>
