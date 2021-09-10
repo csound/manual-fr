@@ -18,10 +18,15 @@ authors=Francois Pinot
       Creates an audio connection from Csound to a Jack port.
      </refpurpose>
   </refnamediv>
-  <note>Greffon : nécessite le greffon <emphasis>jacko</emphasis></note>
 
   <refsect1>
     <title>Description</title>
+    <para>
+      Opcode du greffon jacko. Ce greffon se trouve dans le répertoire des
+      greffons et il doit être installé séparément. Le répertoire des greffons
+      est ici : <ulink url="https://github.com/csound/plugins">
+      <citetitle>https://github.com/csound/plugins</citetitle></ulink>
+    </para>
     <para>
       Danss l'en-tête de l'orchestre, crée une connexion audio depuis un port
       de sortie de Jack dans cette instance de Csound vers un port d'entrée audio

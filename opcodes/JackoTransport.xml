@@ -18,10 +18,15 @@ authors=Francois Pinot
       Contrôle le transport de Jack.
     </refpurpose>
   </refnamediv>  
-  <note>Greffon : nécessite le greffon <emphasis>jacko</emphasis></note>
 
   <refsect1>
     <title>Description</title>
+    <para>
+      Opcode du greffon jacko. Ce greffon se trouve dans le répertoire des
+      greffons et il doit être installé séparément. Le répertoire des greffons
+      est ici : <ulink url="https://github.com/csound/plugins">
+      <citetitle>https://github.com/csound/plugins</citetitle></ulink>
+    </para>
     <para>
       Démarre, stoppe ou repositionne le transport de Jack. C'est utile, par
       exemple, pour démarrer un séquenceur externe qui enverra des messages

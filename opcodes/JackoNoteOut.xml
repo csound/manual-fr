@@ -18,10 +18,15 @@ authors=Francois Pinot
       Envoie un message de canal MIDI vers un port de Jack.
     </refpurpose>
   </refnamediv>  
-  <note>Greffon : nécessite le greffon <emphasis>jacko</emphasis></note>
 
   <refsect1>
     <title>Description</title>
+    <para>
+      Opcode du greffon jacko. Ce greffon se trouve dans le répertoire des
+      greffons et il doit être installé séparément. Le répertoire des greffons
+      est ici : <ulink url="https://github.com/csound/plugins">
+      <citetitle>https://github.com/csound/plugins</citetitle></ulink>
+    </para>
     <para>
       Envoie un message de canal MIDI à un port de sortie MIDI de Jack dans
       cette instance de Csound qui l'envoie au port d'entrée MIDI externe de
