@@ -25,6 +25,13 @@ english cvs version=1.1
   <refsect1>
     <title>Description</title>
     <para>
+      Opcode du greffon widgets. Ce greffon se trouve dans le
+      répertoire des greffons et il doit être installé séparément. Les widgets
+      FLTK ne fonctionnent pas sur Mac. Le répertoire des greffons est ici :
+      <ulink url="https://github.com/csound/plugins">
+      <citetitle>https://github.com/csound/plugins</citetitle></ulink>
+    </para>
+    <para>
       <emphasis>FLhvsBox</emphasis> affiche une boîte avec une grille utile
       pour visualiser la Synthèse Hyper Vectorielle à deux dimensions.
     </para>
