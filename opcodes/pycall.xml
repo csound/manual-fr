@@ -95,6 +95,13 @@ english cvs version=1.9
   <refsect1>
     <title>Description</title>
     <para>
+      Opcode du greffon py. Ce greffon se trouve dans le
+      répertoire des greffons et il doit être installé séparément.
+      Le répertoire des greffons est ici :
+      <ulink url="https://github.com/csound/plugins">
+      <citetitle>https://github.com/csound/plugins</citetitle></ulink>
+    </para>
+    <para>
       Cette famille d'opcodes appelle l'objet Python appelable spécifié au
       taux-k ou au taux-i (suffixe i), en lui passant les arguments donnés.
       L'appel est exécuté dans l'environnement global et le résultat (la valeur

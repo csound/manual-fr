@@ -28,6 +28,13 @@ english cvs version=1.7
   <refsect1>
     <title>Description</title>
     <para>
+      Opcode du greffon py. Ce greffon se trouve dans le
+      répertoire des greffons et il doit être installé séparément.
+      Le répertoire des greffons est ici :
+      <ulink url="https://github.com/csound/plugins">
+      <citetitle>https://github.com/csound/plugins</citetitle></ulink>
+    </para>
+    <para>
       Dans Csound, il faut d'abord invoquer
       l'opcode <emphasis>pyinit</emphasis> dans l'en-tête de l'orchestre pour
       initialiser l'interpréteur Python, avant d'utiliser n'importe quel autre

@@ -35,6 +35,13 @@ english cvs version=1.7
   <refsect1>
     <title>Description</title>
     <para>
+      Opcode du greffon py. Ce greffon se trouve dans le
+      répertoire des greffons et il doit être installé séparément.
+      Le répertoire des greffons est ici :
+      <ulink url="https://github.com/csound/plugins">
+      <citetitle>https://github.com/csound/plugins</citetitle></ulink>
+    </para>
+    <para>
       Ces opcodes évaluent une expression Python générique et mettent le résultat
       dans une variable de Csound au taux-k ou au taux-i (suffixe i).
     </para>

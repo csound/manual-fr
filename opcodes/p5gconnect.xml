@@ -23,7 +23,13 @@ english cvs version=1.1
  
   <refsect1>
     <title>Description</title>
-    <para>Opcode du greffon p5g.</para>
+    <para>
+      Opcode du greffon p5g. Ce greffon se trouve dans le
+      répertoire des greffons et il doit être installé séparément.
+      Le répertoire des greffons est ici :
+      <ulink url="https://github.com/csound/plugins">
+      <citetitle>https://github.com/csound/plugins</citetitle></ulink>
+    </para>
     <para>
       Ouvre et interroge au taux-k un contrôleur P5 Glove (gant de réalité
       virtuelle).
