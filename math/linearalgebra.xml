@@ -27,7 +27,11 @@ english cvs version=1.5
 
   <refsect1>
     <title>Description</title>
-    <para>Opcodes du greffon linear_algebra.</para>
+    <para>Opcodes du greffon linear_algebra. Ces opcodes font partie de l'entrepôt
+      des greffons et doivent être installés séparément. L'entrepôt des greffons se
+      trouve ici : <ulink url="https://github.com/csound/plugins">
+      <citetitle>https://github.com/csound/plugins</citetitle></ulink>
+    </para>
     <para>Ces opcodes implémentent plusieurs opérations d'algèbre linéaire, depuis
       l'arithmétique scalaire, vectorielle et matricielle jusqu'aux décompositions
       en valeurs propres basées sur la décomposition QR. Les opcodes sont conçus
@@ -36,7 +40,7 @@ english cvs version=1.5
     </para>
 
     <para>L'implémentation numérique utilise la bibliothèque gmm++ de
-      <ulink url="http://home.gna.org/getfem/gmm_intro"><citetitle>home.gna.org/getfem/gmm_intro</citetitle></ulink>.</para>
+      <ulink url="https://getfem.org/gmm/index.html"><citetitle>getfem.org/gmm/index.html</citetitle></ulink>.</para>
 
     <warning>
       <para>

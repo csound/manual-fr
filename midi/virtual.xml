@@ -27,6 +27,14 @@ english cvs version=1.3
   </para>
 
   <para>
+    Le clavier virtuel est greffon dans les widgets. Ce code fait partie du
+    répertoire des greffons et doit être installé séparément. Ce widget FLTK ne
+    fonctionne pas sur Mac. Le répertoire des greffons se trouve ici :
+    <ulink url="https://github.com/csound/plugins">
+    <citetitle>https://github.com/csound/plugins</citetitle></ulink>
+  </para>
+
+  <para>
     Le module du clavier virtuel MIDI (activé par l'option -+rtmidi=virtual sur la ligne de commande)
     fournit un moyen d'envoyer des informations MIDI en temps réel à Csound sans avoir besoin d'un
     périphérique MIDI. Il peut envoyer des informations de note, des changements de contrôle, des
@@ -286,5 +294,4 @@ english cvs version=1.3
       <ulink url="examples/virtual.csd"><citetitle>virtual.csd</citetitle></ulink>.
  <xi:include href="examples-xml/virtual.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     </para>
-
 </section>
