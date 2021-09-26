@@ -17,7 +17,7 @@ english cvs version=1.4
   <refnamediv>
     <refname>filevalid</refname>
     <refpurpose>
-      Teste si un fichier peut être lu.
+      Teste si un fichier peut être lu à l'initialisation ou durant l'exécution.
     </refpurpose>
   </refnamediv>
  
@@ -31,6 +31,7 @@ english cvs version=1.4
   <refsect1>
     <title>Syntaxe</title>
     <synopsis>ir <command>filevalid</command> ifilcod</synopsis>
+    <synopsis>kr <command>filevalid</command> ifilcod</synopsis>
   </refsect1>
  
   <refsect1>
@@ -38,13 +39,17 @@ english cvs version=1.4
     <para>
       <emphasis>ifilcod</emphasis> -- fichier son à tester
     </para>
+    <para>
+      <emphasis>ir</emphasis> -- code de retour (1 si le fichier son
+      <emphasis>ifilcod</emphasis> peut être lu).
+    </para>
   </refsect1>
  
   <refsect1>
     <title>Exécution</title>
     <para>
-      <emphasis>filevalid</emphasis> retourne 1 si le fichier son
-      <emphasis>ifilcod</emphasis> peut être lu.
+      <emphasis>kr</emphasis> -- code de retour (1 si le fichier son
+      <emphasis>ifilcod</emphasis> peut être lu).
     </para>
   </refsect1>
 

@@ -13,9 +13,6 @@ english cvs version=1.17
   <refmeta>
     <refentrytitle>vco</refentrytitle>
   </refmeta>
-
-
- 
   <refnamediv>
     <refname>vco</refname>
     <refpurpose>
@@ -58,9 +55,9 @@ english cvs version=1.17
     </para>
 
     <para>
-      <emphasis>ifn</emphasis> (facultatif, par défaut 1) -- numéro de table d'une fonction sinus stockée.
-      Doit pointer sur une table valide qui contient une onde sinus. Csound rapportera une erreur si ce
-      paramètre n'est pas fixé et que la table n°1 n'existe pas.
+      <emphasis>ifn</emphasis> (facultatif, = 1par défaut) -- Doit pointer sur
+      une table valide qui contient une onde sinus. Csound rapportera une erreur
+      si ce paramètre n'est pas fixé et que la table 1 n'existe pas.
     </para>
 
     <para>
@@ -127,10 +124,8 @@ english cvs version=1.17
     <para>
       Voici un exemple de l'opcode vco. Il utilise le fichier
       <ulink url="examples/vco.csd"><citetitle>vco.csd</citetitle></ulink>.
-
       <example>
         <title>Exemple de l'opcode vco.</title>
-
         <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
         et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
         plus d'information sur l'utilisation des options de la ligne de commande.</para>
