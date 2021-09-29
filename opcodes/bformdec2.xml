@@ -1,0 +1,218 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="bformdec2">
+<indexterm id="IndexBformdec2"><primary>bformdec2</primary></indexterm>
+  <refentryinfo><title>Signal Modifiers:Panning and Spatialization</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>bformdec2</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>bformdec2</refname>
+    <refpurpose>
+      Décode un signal au format ambisonic B.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+     <para>
+      Décode un signal au format ambisonic B en signaux de haut-parleur
+      spécifiques, avec décodage en bandes dual et compensation de champ de
+      proximité. 
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>aout[] <command>bformdec2</command> isetup, abform[], [idecoder, idistance, ifreq, \
+    imix, ifilel, ifiler]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>isetup</emphasis> -- réglage de haut-parleur. Huit réglages sont
+      supportés, les cinq premiers étant compatibles avec
+      <link linkend="bformdec1"><citetitle>bformdec1</citetitle></link>:
+      <para>(A noter que les angles horizontaux sont mesurés dans le sens
+      inverse des aiguilles d'une montre dans cette description.)</para>
+  
+      <itemizedlist>
+        <listitem>
+          1. Stéréo -- L(90), R(-90); c'est un décodage stéréo dans le
+          style M+S.
+        </listitem>
+        <listitem>
+          2. Quad -- FL(45), BL(135), BR(-135), FR(-45). C'est un décodage du
+          premier ordre.
+        </listitem>
+        <listitem>
+          3. 5.0 -- L(30), R(-30), C(0), BL(110), BR(-110). Cest la configuration
+          suggérée par l'International Telecommunication Union pour l'écoute de
+          musique sur les systèmes surround 5.1. C'est un décodage du premier
+          ou du second ordre.
+        </listitem>
+        <listitem>
+          4. Octogone -- FFL(22.5), FLL(67.5), BLL(112.5), BBL(157.5),
+          BBR(-157.5), BRR(-112.5), FRR(-67.5), FFR(-22.5). C'est un décodage
+          du premier, du second ou du troisième ordre en fonction du nombre
+          de canaux en entrée.
+        </listitem>
+        <listitem>
+          5. Cube -- FLD(45,-35.26), FLU(45,35.26), BLD(135,-35.26),
+          BLU(135,35.26), BRD(-135,-35.26), BRU(-135,35.26), FRD(-45,-35.26),
+          FRU(-45,35.26). C'est un décodage du premier ordre.
+        </listitem>
+        <listitem>
+          6. Hexagone -- FL(30), L(90) BL(150), BR(-150), R(-90), FR(-30).
+          C'est un décodage du premier ou du second ordre.
+        </listitem>
+        <listitem>
+          21. Configuration 2D binaurale. Décodage dans une configuration
+          octogonale suivi d'une application de filtres HRTF.
+        </listitem>
+        <listitem>
+          31. Configuration 3D binaurale. Décodage dans une configuration de
+          dodécahèdre suivi d'une application de filtres HRTF.
+        </listitem>
+      </itemizedlist>
+    </para>
+    <para>
+      <emphasis>idecoder</emphasis> -- facultatif (0 par défaut), sélectionne
+      le type de décodeur :
+      <itemizedlist>
+        <listitem>
+          0. Décodeur dual (décodeurs de vélocité et d'énergie utilisant le
+          découpage en bandes dual).
+        </listitem>
+        <listitem>
+          1. Décodeur de vélocité.
+        </listitem>
+        <listitem>
+          2. Décodeur d'énergie.
+        </listitem>
+      </itemizedlist>
+    </para>
+    <para>
+      <emphasis>idistance</emphasis> -- facultatif (1 mètre par défaut),
+      sélectionne la distance (en mètres) aux haut-parleurs (rayon si
+      configuration régulière)
+    </para>
+    <para>
+      <emphasis>ifreq</emphasis> -- facultatif (400 Hz par défaut),
+      fréquence de coupure (Hz) du filtre de séparation en bandes (n'a d'effet
+      que si <emphasis>idecoder</emphasis>=0)
+    </para>
+    <para>
+      <emphasis>imix</emphasis> -- facultatif (0 par défaut), type de mélange
+      des sorties des décodeurs de vélocité et d'énergie :
+      <itemizedlist>
+        <listitem>
+          0. Energie
+        </listitem>
+        <listitem>
+          1. Valeur efficace
+        </listitem>
+        <listitem>
+          2. Amplitude
+        </listitem>
+      </itemizedlist>
+    </para>
+    <para>
+      <emphasis>ifilel</emphasis> -- fichier des données spectrales HRTF à gauche
+    </para>
+    <para>
+      <emphasis>ifiler</emphasis> -- fichier des données spectrales HRTF à droite
+    </para>
+    <note>
+      <!-- <title>Title of the note (optional)</title> -->
+      <para>
+        Les fichiers de données spectrales (tirées de la base de données HRTF
+        du MIT) doivent se trouver dans le répertoire courant ou dan SADIR
+        (voir la <link
+        linkend="hrtfstat"><citetitle>documentation hrtfstat</citetitle></link>). 
+      </para>
+    </note>
+    <!--
+    <para>
+      Note: Spectral datafiles (based on the MIT HRTF database) should
+      be in the current directory or the SADIR (see the <link
+      linkend="hrtfstat"><citetitle>hrtfstat
+      documentation</citetitle></link>. 
+    </para>
+    -->
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+<!--    First list all input and output performance parameters-->
+    <para>
+      <emphasis>abform</emphasis> -- tableau du signal d'entrée au format B
+    </para>
+    <para>
+      <emphasis>aout[]</emphasis> -- signaux de haut-parleur spécifiques en
+      sortie
+    </para>
+
+    <para>
+      L'opcode reçoit en entrée un tableau de type audio contenant un signal
+      Ambisonics et restitue un autre tableau contenant un signal audio
+      multi-canaux décodé en fonction des réglages choisis. 
+    </para>
+  </refsect1>
+
+ 
+<!--TODO-->
+<!--
+  <refsect1>
+    <title>Examples</title>
+    <para>
+      Here is an example of the bformdec2 opcode. It uses the file <ulink url="examples/bformdec2.csd"><citetitle>bformdec2.csd</citetitle></ulink>.
+      <example>
+        <title>Example of the bformdec2 opcode.</title>
+        <para>See the sections <link
+        linkend="UsingRealTime"><citetitle>Real-time
+        Audio</citetitle></link> and <link
+        linkend="CommandFlags"><citetitle>Command Line
+        Flags</citetitle></link> for more information on using command
+        line flags.</para> 
+        <xi:include href="examples-xml/bformenc1.csd.xml"
+        xmlns:xi="http://www.w3.org/2001/XInclude"/> 
+      </example>
+    </para>
+  </refsect1>
+-->
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="bformenc"><citetitle>bformenc</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+<!--  And put your name and other relevant information here-->
+    <title>Crédits</title>
+    <para>par : Pablo Zinemanas, Martín Rocamora et Luis Jure,
+    2019. Adapté par John ffitch</para> 
+    <para>Basé sur le code de <ulink
+    url="https://bitbucket.org/ambidecodertoolbox/adt/">
+    <citetitle>Ambisonics Decoder Toolbox</citetitle></ulink> par Aaron J. Heller.</para>
+    <para>Pour plus d'information sur cet opcode et ses détails techiniques
+    voir : Pablo Zinemanas, Martín Rocamora et Luis Jure. Improving
+    Csound's Ambisonics decoders. Fifth International Csound
+    Conference -- ICSC2019. Italy, 2019 -- <ulink
+    url="https://csound.com/icsc2019/proceedings/7.pdf"><citetitle>PDF</citetitle></ulink>.</para> 
+    <para>Nouveau dans la version 6.17</para>
+  </refsect1>
+
+<!--Now remember to add a link from the appropriate category in the Opcode Overview.-->
+<!--Add the entity to manual.xml-->
+<!--Add the entity reference in the appropriate place in opcodes/top.xml-->
+</refentry>
