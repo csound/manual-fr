@@ -85,10 +85,9 @@ english cvs version=1.14
   </refsect1>
  
   <refsect1>
-    <title>Exemples</title>
+    <title>Exemple</title>
     <para>
-      L'exemple suivant produit une note moyennement longue avec une décroissance
-      rapide des partiels supérieurs. Il utilise le fichier
+      Voici un exemple de l'opcode wgpluck. Il utilise le fichier
       <ulink url="examples/wgpluck.csd"><citetitle>wgpluck.csd</citetitle></ulink>. 
 
       <example>
@@ -98,16 +97,6 @@ english cvs version=1.14
         d'information sur l'utilisation des options de la ligne de commande.</para>
           <xi:include href="examples-xml/wgpluck.csd.xml"
           xmlns:xi="http://www.w3.org/2001/XInclude"/> 
-      </example>
-    </para>
-
-   <para>
-     L'exemple suivant produit une note plus courte et plus brillante. Il utilise le fichier
-     file <ulink url="examples/wgpluck_brighter.csd"><citetitle>wgpluck_brighter.csd</citetitle></ulink>. 
-
-      <example>
-        <title>Un exemple de l'opcode wgpluck avec une note plus courte et plus brillante.</title>
-          <xi:include href="examples-xml/wgpluck_brighter.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
     </para>
   </refsect1>
@@ -123,5 +112,4 @@ english cvs version=1.14
     </para>
     <para>Nouveau dans la Version 3.47</para>
   </refsect1>
-
 </refentry>
