@@ -96,6 +96,9 @@ english cvs version=
       +/- <emphasis>iwidth</emphasis> points. On peut contrôler ces paramètres
       en temps réel (par exemple en utilisant des widgets FLTK ou le MIDI) pour
       une recherche interactive de sources sonores.
+      <note>En ce qui concerne l'azimut <emphasis>kpos</emphasis>, il y a une
+      image isolée près  de l'azimut 0 qui, lorsque la source a une bonne
+      intensité, peut être masquée.</note>
       <example>
         <title>Exemples</title>
         <programlisting>
@@ -112,6 +115,14 @@ fdm    <emphasis role="opc">pvsdemix</emphasis>  flc, frc, kpos, kwidth, 100
 adm    <emphasis role="opc">pvsynth</emphasis>   fdm
    
        <emphasis role="opc">outs</emphasis>      adm, adm</programlisting>
+      </example>
+    </para>
+    <para>
+      Voici un exemple complet de l'opcode pvsdemix. Il utilise le fichier
+      <ulink url="examples/pvsdemix.csd"><citetitle>pvsdemix.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode pvsdemix.</title>
+          <xi:include href="examples-xml/pvsdemix.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
     </para>
   </refsect1>
