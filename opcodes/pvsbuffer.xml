@@ -75,8 +75,16 @@ english cvs version=
   <refsect1>
     <title>Exemples</title>
     <para>
-      Voir <link linkend="pvsbufread"><citetitle>pvsbufread</citetitle></link>
-      pour des exemples de l'opcode pvsbuffer.
+      Voici un exemple de l'utilisation de l'opcode pvsbuffer opcode.
+      Il utilise le fichier
+      <ulink url="examples/pvsbuffer.csd"><citetitle>pvsbufferr.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode pvsbuffer.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
+        plus d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/pvsbuffer.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
     </para>
   </refsect1>
 

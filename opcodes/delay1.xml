@@ -73,12 +73,14 @@ english cvs version=1.9
   </refsect1>
 
     <para>
-      Voici le résultat de l'exemple : son filtré sur le
-      canal gauche et blalayge original sur le canal droit.    
+      Voici le résultat de l'exemple : 5 fois les pulsations et le bruit.
+      1. Echantillons originaux, 2. passe-bas du premier ordre, 3. passe-haut
+      du premier ordre, 4. réjection du second ordre et 5. passe-bande du
+      second ordre.   
     </para>
         <mediaobject>
         <imageobject>
-          <imagedata fileref="images/sweep.png" format="PNG"/>
+          <imagedata fileref="images/delay1.png" format="PNG"/>
         </imageobject>
       </mediaobject>
 
