@@ -92,6 +92,216 @@ english cvs version=
     </itemizedlist>
   </para>-->
 
+<bridgehead>Notes de parution de Csound 6.17 (Octobre 2021)</bridgehead>
+  <para>
+    Principalement des corrections de bogues mais aussi une réorganisation
+    majeure des bibliothèques afin de déplacer tous les opcodes ayant des
+    dépendances externes dans un entrepôt de greffons séparé. La seule
+    exception étant les opcodes OSC (qui dépendent de liblo). C'est en partie
+    une préparation pour Csound7. C'est la dernière version utilisant le
+    parseur actuel (v.2).
+  </para>
+  <para>
+    <itemizedlist>
+      <listitem>
+        <para>Nouveaux opcodes :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                scanmap et scansmap sont comme les opcodes xscanmap/xscansmap
+                mais ils fonctionnent avec les opcodes scan principaux.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                trigexpseg, triglinseg sont des aliases pour trigExpseg,
+                trigLinseg.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Les opcodes xscan sont obsolètes car ils n'ajoutent rien aux
+                opcodes scan.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                bformdec2 propose plus de décodages ambisonic de bformat audio.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Orchestre :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                L'affichage des messages a été revu pour que -m0 supprime
+                (presque) tous les messages.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Le compte des canaux a été ajouté à list_audio_devices (appelé
+                lorsque l'option --devices est utilisée) afin qu'il puisse être
+                lu par les frontaux.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Opcodes et Gens modifiés :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                L'opcode event n'abandonne pas si l'instrument appelé n'existe
+                pas.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Un préfixe facultatif a été ajouté aux instruments soundfont
+                affichés via sfilist.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                lpslots a été retravaillé pour un meilleur contrôle.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Utilitaires :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                cvanal utilise maintenant la variable d'environnement SADIR
+                pour chercher des fichiers d'analyse.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Bogues corrigés :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                fareylen appelait une fonction qui n'existait pas causant un
+                plantage. Typo corrigée.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                turnoff pouvait causer des clics dans certains cas. Corrigé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>turnoff3 amélioré.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                cntReset corrigé ; il avait un code d'initialisation erroné.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>La recherche binaire dans bpf a été corrigée.</simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Le problème du comptage des trames dans pvscfs est corrigé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                --sample-accurate corrigé dans la forme de taux-a de tabsum.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Problème dans atssinnoi corrigé ; il lisait en dehors de la
+                mémoire allouée.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                hrtfmove corrigé ; il pouvait utiliser une mauvaise valeur 
+                de sr.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Les instruments nommés pouvaient utiliser une mauvaise
+                structure lors d'une redéfinition.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Corrections dans le backend de jack en relation avec
+                --get-system-sr.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Le mode de déformation de fréquence de pvcross a été corrigé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Le traitement dans lpcfilter/lpcanal ne pouvait pas repartir
+                après que le système se fige. Corrigé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Dans la collection d'opcodes emugens, une grande partie des
+                opérations de tableau n'était pas disponible à cause d'une
+                petite erreur d'édition.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Dans la version float (au contraire de double) de Csound l'accès
+                aux tableaux pouvait être erroné.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Changements système :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                winsound a été supprimé.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>API :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                CreateThread2 est une nouvelle fonction de l'API qui permet de
+                de donner aux threads une taille de pile définie par
+                l'utilisateur.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </para>
+
   <bridgehead>Notes de parution de Csound 6.16 (Juin 2021)</bridgehead>
   <para>
     Cette réalisation tardive devait consister principalement en corrections
