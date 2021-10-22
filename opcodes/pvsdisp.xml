@@ -61,8 +61,8 @@ english cvs version=
     <para>
       Note : lorsqu'il n'y a rien à afficher (silence), des messages comme
       celui-ci accompagnent chaque affichage :
-        <screen>instr 1, pvs-signal fsig:	10 points, scalemax 0.000</screen>
-	</para>
+        <screen>instr 1, pvs-signal fsig:  10 points, scalemax 0.000</screen>
+  </para>
   </refsect1>
 
   <refsect1>
@@ -70,8 +70,6 @@ english cvs version=
     <para>
       Voici un exemple de l'opcode pvsdisp. Il utilise le fichier
       <ulink url="examples/pvsdisp.csd"><citetitle>pvsdisp.csd</citetitle></ulink>.
-      Cet exemple utilise une entrée temps réel, mais on peut aussi utiliser
-      un fichier son en entrée.
       <example>
         <title>Exemple de l'opcode pvsdisp</title>
         <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
