@@ -1,0 +1,94 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="metrobpm">
+<indexterm id="IndexMetrobpm"><primary>metrobpm</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>metrobpm</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>metrobpm</refname>
+    <refpurpose>
+      Métronome déclencheur avec palier factultatif.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère un signal métronomique à utiliser dans toutes les circonstances pour
+      lesquelles un déclencheur isochrone est nécessaire.
+    </para>
+  </refsect1>
+  
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ktrig  <command>metrobpm</command>  kfreq [, initphase] [, kgate]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>initphase</emphasis> -- valeur de phase initiale (entre 0 et 1)
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>ktrig</emphasis> -- signal déclencheur en sortie
+    </para>
+    <para>
+      <emphasis>kfreq</emphasis> -- fréquence des impulsions de déclenchement en
+      pulsations par minute
+    </para>
+    <para>
+      <emphasis>kgate</emphasis> -- proportion du cycle durant laquelle le
+      déclencheur est maintenu à un
+      </para>
+     <para>
+       <emphasis>metrobpm</emphasis> est un opcode simple qui retourne une
+       séquence d'impulsions isochrones avec palier facultatif (valeurs 1)
+       chaque 60/kfreq secondes. 
+     </para>
+
+     <note>
+        <para>
+        <emphasis>metrobpm</emphasis> produit un signal déclencheur (égal à 1)
+        lorsque sa phase vaut exactement 0 ou 1. Si l'on veut ignorer le
+        déclencheur initial, il faut utiliser une très petite valeur de phase
+        initiale comme 0.00000001.
+     </para>
+     </note>
+  </refsect1>
+
+  <!-- <refsect1> -->
+  <!--   <title>Example</title> -->
+  <!--   <para> -->
+  <!--     Here is an example of the metrobpm opcode. It uses the file <ulink url="examples/metrobpm.csd"><citetitle>metrobpm.csd</citetitle></ulink> -->
+  <!--     <example> -->
+  <!--       <title>Example of the metrobpm opcode.</title> -->
+  <!--       <xi:include href="examples-xml/metrobpm.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/> -->
+  <!--     </example> -->
+  <!--   </para> -->
+  <!-- </refsect1> -->
+  
+   <refsect1>
+     <title>Voir aussi</title>
+     <para>
+      <link linkend="metro"><citetitle>metro</citetitle></link>,
+     </para>
+    </refsect1>
+    
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par &namejohn;</para>
+    <para>Nouveau dans Csound 6.17</para>
+  </refsect1>
+</refentry>
