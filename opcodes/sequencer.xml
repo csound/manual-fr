@@ -1,0 +1,153 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="sequ">
+<indexterm id="IndexSequ"><primary>sequ</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>sequ</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>sequ</refname>
+    <refpurpose>
+      Emulation d'un séquenceur.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Utilise une collection de tableaux pour générer une séquence d'évènements
+      avec tempo variable, qui peuvent être joués en succession droite,
+      rétrograde, avant et arrière, et aléatoire. La longueur maximale des
+      tableaux est 128, et elle peut être pondérée dynamiquement. Les modes
+      d'exécution par permutation permettent un traitement stochastique et
+      autres algorithmes.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kres  <command>sequ</command>  irhythm[], iinstr[], idata[], kbpm, klen [, kmode] [, kstep] [, kverbose]
+    </synopsis>
+    <synopsis>kres  <command>sequ</command>  irhythm[], iinstr[], idata[][], kbpm, klen [, kmode] [, kstep] [, kverbose]
+    </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initializstion</title>
+    <para>
+      <emphasis>irhythm</emphasis>  - tableau de durées en pulsations. La durée
+      effective est déterminée par la division de ces valeurs par le tempo.
+    </para>
+    <para>
+     <emphasis>iinstr</emphasis>  - tableau des numéros d'instrument activés
+     à chaque pas. Un numéro d'instrument nul ne fait rien. Il ignore les notes
+     associées à ce pas et produit un silence de la durée de cette note.
+    </para>
+    <para>
+      <emphasis>idata</emphasis>  -  soit un vecteur de valeurs p4 pour les pas
+      d'iinstr associés, soit un tableau à deux dimensions de valeurs p4, p5,
+      p6... Typiquement une information de hauteur en cps ou un numéro de
+      note MIDI ; mais cette liste arbitraire de valeurs p4 peut avoir une
+      autre signification dans l'iinstr appelé.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kbpm</emphasis> - vitesse de boucle en pulsations par minute.
+    </para>
+    <para>
+      <emphasis>klen</emphasis> - longueur de la partie active de la séquence
+      (en partant du pas 0).
+    </para>
+    <para>
+      <emphasis>kmode</emphasis> - contrôle l'exécution du séquenceur. Une
+      valeur nulle (par défaut) boucle la séquence en avant, appelant
+      l'instrument associé à chaque pas. D'autres modes sont supportés. (Voir
+      ci-dessous).
+    </para>
+    <para>
+      Les options d'exécution pour <emphasis>kmode</emphasis> sont :
+      <itemizedlist>
+        <listitem><para>0 - boucle en avant</para></listitem>
+        <listitem><para>n&gt;0 - boucle en avant avec une mutation tous les n
+          évènements</para></listitem>
+        <listitem><para>-1 - boucle rétrograde</para></listitem>
+        <listitem><para>-2 - en avant et en arrière</para></listitem>
+        <listitem><para>-3 - évènements alatoires</para></listitem>
+        <listitem><para>-4 - exécute la séquence entière une fois en avant puis
+          s'arrête</para></listitem>
+        <listitem><para>-5 - exécute la séquence entière une fois en arrière
+          puis s'arrête</para></listitem>
+        <listitem><para>-6 - mélange les évènements</para></listitem>
+        <listitem><para>-7 - revient à l'état initial</para></listitem>
+      </itemizedlist>
+    </para>
+    <para>
+      <emphasis>kstep</emphasis> - s'il est non nul, le tableau irhythm est
+      remplacé par des déclencheurs de taux-k. Ceux-ci peuvent provenir d'un
+      clavier MIDI ou d'un autre contrôleur de taux-k. Un évènement est
+      déclenché si cet argument est positif, sinon rien ne se passe s'il est
+      négatif. La valeur par défaut est zéro.
+    </para>
+    <para>
+      <emphasis>kverbose</emphasis> - s'il est non nul des messages sur les
+      changements d'état interne sont affichés. Zéro par défaut.
+    </para>
+    <para>
+      <emphasis>kres</emphasis> - donne l'index de l'évènement créé pour le
+      k-cycle courant, ou -1 s'il n'y a aucun évènement.
+    </para>
+
+    <note>
+      <para>
+        Alors que les tableaux irhythm, iinstr et idata sont de taux-i, les
+        valeurs des entrées sont lues au taux-k. Cela signifie qu'en utilisant
+        des tableaux globaux de vecteurs de taux-i, il est possible (en
+        faisant attention) de changer des valeurs spécifiques et d'autres
+        détails durant l'exécution.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode sequ. Il utilise le fichier
+      <ulink url="examples/sequ1.csd"><citetitle>sequ1.csd</citetitle></ulink>
+      <example>
+        <title>Exemple de l'opcode sequ.</title>
+        <xi:include href="examples-xml/sequ1.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      Voici un autre exemple de l'opcode sequ montrant les différents modes.
+      Il utilise le fichier <ulink
+      url="examples/sequ2.csd"><citetitle>sequ2.csd</citetitle></ulink>
+      <example>
+        <title>Exemple de l'opcode sequ.</title>
+        <xi:include href="examples-xml/sequ2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  
+   <!-- <refsect1> -->
+   <!--   <title>See Also</title> -->
+   <!--   <para> -->
+   <!--    <link linkend="foobar"><citetitle>foobarmetro</citetitle></link>, -->
+   <!--   </para> -->
+   <!--  </refsect1> -->
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Ecrit par &namejohn;</para>
+    <para>Nouveau dans Csound 6.17</para>
+  </refsect1>
+</refentry>
