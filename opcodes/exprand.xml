@@ -42,12 +42,12 @@ english cvs version=1.16
   <refsect1>
     <title>Exécution</title>
     <para>
-      <emphasis>klambda</emphasis> -- paramètre lambda pour la distribution exponentielle.
+      <emphasis>klambda</emphasis> -- inverse du paramètre lambda pour la distribution exponentielle.
     </para>
 
     <para>
       La fonction de densité de probabilité d'une distribution exponentielle est une
-      courbe exponentielle, dont la moyenne est 0,69515/lambda. Pour des explications
+      courbe exponentielle, dont la moyenne est log(2)/lambda. Pour des explications
       plus détaillées de ces distributions, consulter :
       <orderedlist>
         <listitem>
