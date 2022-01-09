@@ -1,0 +1,104 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="scanmap">
+<indexterm id="IndexScanmap"><primary>scanmap</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Scanned Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>scanmap</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>scanmap</refname>
+    <refpurpose>
+      Permet la lecture de la position et de la vélocité d'un noeud dans la
+      synthèse par balayage.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>Opcode du greffon scansyn.</para>
+    <para>
+      Permet la lecture de la position et de la vélocité d'un noeud dans la
+      synthèse par balayage.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kpos, kvel <command>scanmap</command> iscan, kamp, kvamp [, iwhich]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iscan</emphasis> -- le balayage à lire.
+    </para>
+
+    <para>
+      <emphasis>iwhich</emphasis> (facultatif) -- le noeud à tester. 0 par défaut.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamp</emphasis> -- de quelle vameur amplifier la valeur
+      <emphasis>kpos</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>kvamp</emphasis> -- de quelle vameur amplifier la valeur
+      <emphasis>kvel</emphasis>.
+    </para>
+
+    <para>
+      L'état interne d'un noeud est lu. Cela comprend sa position et sa
+      vélocité. Elles sont amplifiées par les valeurs <emphasis>kamp</emphasis> 
+      et <emphasis>kvamp</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode scanmap. Il utilise le fichier
+      <ulink url="examples/scanmap.csd"><citetitle>scanmap.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode scanmap.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/scanmap.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      On trouve plus d'information sur la synthèse par balayage (ainsi que
+      d'autres matrices) sur la <ulink url="http://www.csounds.com/scanned/">
+      <citetitle>page de la synthèse par balayage</citetitle></ulink> à
+      cSounds.com.
+    </para>
+    <para>
+      Egalement un article sur ces opcodes :
+      <ulink
+      url="http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html">
+      <citetitle>http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html</citetitle></ulink>,
+      écrit par Steven Yi.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : &namejohn;</para>
+    <para>Nouveau dans la version 4.20</para>
+  </refsect1>
+</refentry>

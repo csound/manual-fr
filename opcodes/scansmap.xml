@@ -1,0 +1,97 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="scansmap">
+<indexterm id="IndexScansmap"><primary>scansmap</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Scanned Synthesis</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>scansmap</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>scansmap</refname>
+    <refpurpose>
+      Permet la lecture de la position et de la vélocité d'un noeud dans la
+      synthèse par balayage.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>Opcode du greffon scansyn.</para>
+    <para>
+      Permet la lecture de la position et de la vélocité d'un noeud dans la
+      synthèse par balayage.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>scansmap</command> kpos, kvel, iscan, kamp, kvamp [, iwhich]</synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iscan</emphasis> -- le balayage à lire.
+    </para>
+
+    <para>
+      <emphasis>iwhich</emphasis> (facultatif) -- le noeud à tester. 0 par défaut.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kpos</emphasis> -- la position du noeud.
+    </para>
+
+    <para>
+      <emphasis>kvel</emphasis> -- la vélocité du noeud.
+    </para>
+
+    <para>
+      <emphasis>kamp</emphasis> -- de quelle vameur amplifier la valeur
+      <emphasis>kpos</emphasis>.
+    </para>
+
+    <para>
+      <emphasis>kvamp</emphasis> -- de quelle vameur amplifier la valeur
+      <emphasis>kvel</emphasis>.
+    </para>
+
+    <para>
+      L'état interne d'un noeud est lu. Cela comprend sa position et sa
+      vélocité. Elles sont amplifiées par les valeurs <emphasis>kamp</emphasis> 
+      et <emphasis>kvamp</emphasis>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      On trouve plus d'information sur la synthèse par balayage (ainsi que
+      d'autres matrices) sur la <ulink url="http://www.csounds.com/scanned/">
+      <citetitle>page de la synthèse par balayage</citetitle></ulink> à
+      cSounds.com.
+    </para>
+    <para>
+      Egalement un article sur ces opcodes :
+      <ulink
+      url="http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html">
+      <citetitle>http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html</citetitle></ulink>,
+      écrit par Steven Yi.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Nouveau dans la version 4.21</para>
+    <para>Novembre 2002. Merci à &namerasmus; pour signaler cet opcode.</para>
+  </refsect1>
+</refentry>
