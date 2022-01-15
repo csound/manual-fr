@@ -15,7 +15,7 @@ authors=Francois Pinot
   <refnamediv>
     <refname>scansmap</refname>
     <refpurpose>
-      Permet la lecture de la position et de la vélocité d'un noeud dans la
+      Permet la l'écriture de la position et de la vélocité d'un noeud dans la
       synthèse par balayage.
     </refpurpose>
   </refnamediv>
@@ -24,7 +24,7 @@ authors=Francois Pinot
     <title>Description</title>
     <para>Opcode du greffon scansyn.</para>
     <para>
-      Permet la lecture de la position et de la vélocité d'un noeud dans la
+      Permet la l'écriture de la position et de la vélocité d'un noeud dans la
       synthèse par balayage.
     </para>
   </refsect1>
@@ -56,12 +56,12 @@ authors=Francois Pinot
     </para>
 
     <para>
-      <emphasis>kamp</emphasis> -- de quelle vameur amplifier la valeur
+      <emphasis>kamp</emphasis> -- de quelle valeur amplifier la valeur
       <emphasis>kpos</emphasis>.
     </para>
 
     <para>
-      <emphasis>kvamp</emphasis> -- de quelle vameur amplifier la valeur
+      <emphasis>kvamp</emphasis> -- de quelle valeur amplifier la valeur
       <emphasis>kvel</emphasis>.
     </para>
 

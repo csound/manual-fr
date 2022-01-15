@@ -765,14 +765,16 @@ csound5:output2             (reproduction droite)</screen>
             <listitem><para>256 = brutes, hors intervalle colorées en rouge</para></listitem>
             <listitem><para>512 = brutes, toutes colorées</para></listitem>
           </itemizedlist>
-
+          Tous les messages peuvent être supprimés avec le niveau des messages
+          16;
+        </para>
+        <para>
           La valeur par défaut est 135 (128+4+2+1), ce qui signifie tous les messages, valeurs d'amplitude
           brutes, et impression du temps écoulé à la fin de l'exécution. La mise en couleur des amplitudes
           brutes fut introduite dans la version 5.04. La suppression des messages
-          d'obsolescence a été ajoutée dans la version 6.14.
-
+          d'obsolescence a été ajoutée dans la version 6.14. La suppression de
+          tous les messages est nouvelle dans la version 6.17.
         </para>
-
       </listitem>
     </varlistentry>
 
