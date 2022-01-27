@@ -79,7 +79,7 @@ authors=Francois Pinot
       <emphasis>kgate</emphasis> -- signal de seuil (0 = bas, > 0 haut).
     </para>
 
-    <para>
+<!--    <para>
       L'enveloppe peut être décrite comme :
       <mediaobject>
         <imageobject>
@@ -94,15 +94,12 @@ authors=Francois Pinot
           <para>Image d'une enveloppe GTADSR.</para>
         </caption>
       </mediaobject>
-    </para>
+    </para>-->
 
     <para>
       La longueur de l'entretien est calculée à partie de la longueur de la
       note. Cela signifie que <emphasis>gtadsr</emphasis> ne convient pas pour
-      des évènements MIDI. L'opcode <link
-      linkend="mgtadsr"><citetitle>mgtadsr</citetitle></link> utilise le
-      mécanisme de <link linkend="linsegr"><citetitle>linsegr</citetitle></link>
-      et peut ainsi être utilisé dans les applications MIDI.
+      des évènements MIDI.
     </para>
   </refsect1>
 
