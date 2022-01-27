@@ -129,6 +129,23 @@ english cvs version=
                 bformdec2 propose plus de décodages ambisonic de bformat audio.
               </simpara>
             </listitem>
+            <listitem>
+              <simpara>
+                metrobpm est comme metro mais le temps est en pulsations par
+                minute et le signal peut être décalé en proportion du cycle.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                sequ est l'émulation dans csound d'un séquenceur matériel. Il a
+                plusieurs modes et options.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                gtadsr implémente une enveloppe ADSR à seuil.
+              </simpara>
+            </listitem>
           </itemizedlist>
         </para>
       </listitem>
@@ -272,6 +289,22 @@ english cvs version=
                 aux tableaux pouvait être erroné.
               </simpara>
             </listitem>
+            <listitem>
+              <simpara>
+                Dans certains cas le code d'instr0 pouvait ignorer les boucles
+                après un avertissement incorrect. C'est corrigé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Bogues dans mp3len et semblables corrigés.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                Plantage dans syncgrain, issue #1773, corrigé.
+              </simpara>
+            </listitem>
           </itemizedlist>
         </para>
       </listitem>
@@ -294,6 +327,24 @@ english cvs version=
                 CreateThread2 est une nouvelle fonction de l'API qui permet de
                 de donner aux threads une taille de pile définie par
                 l'utilisateur.
+              </simpara>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>Code de greffon externe :
+          <itemizedlist>
+            <listitem>
+              <simpara>
+                Pour diverses raisons comprenant les licences, les opcodes
+                de greffon permettant à Csound d'embarquer des plugins VST
+                sont disponibles à
+                <ulink 
+                url="https://github.com/gogins/csound-vst3-opcodes.git">
+                <citetitle>https://github.com/gogins/csound-vst3-opcodes.git</citetitle></ulink>
+                où l'on peut trouver les instructions d'installation. Cela
+                fonctionne sous Linux, MacOS et Windows.
               </simpara>
             </listitem>
           </itemizedlist>
