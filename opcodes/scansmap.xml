@@ -37,7 +37,7 @@ authors=Francois Pinot
   <refsect1>
     <title>Initialisation</title>
     <para>
-      <emphasis>iscan</emphasis> -- le balayage à lire.
+      <emphasis>iscan</emphasis> -- le balayage à écrire.
     </para>
 
     <para>
@@ -66,7 +66,7 @@ authors=Francois Pinot
     </para>
 
     <para>
-      L'état interne d'un noeud est lu. Cela comprend sa position et sa
+      L'état interne d'un noeud est écrit. Cela comprend sa position et sa
       vélocité. Elles sont amplifiées par les valeurs <emphasis>kamp</emphasis> 
       et <emphasis>kvamp</emphasis>.
     </para>
@@ -91,7 +91,7 @@ authors=Francois Pinot
 
   <refsect1>
     <title>Crédits</title>
-    <para>Nouveau dans la version 4.21</para>
-    <para>Novembre 2002. Merci à &namerasmus; pour signaler cet opcode.</para>
+    <para>Auteur : &namejohn;</para>
+    <para>Nouveau dans la version 6.17</para>
   </refsect1>
 </refentry>
