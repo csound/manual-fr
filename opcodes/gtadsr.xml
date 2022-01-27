@@ -1,0 +1,138 @@
+﻿<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="gtadsr">
+<indexterm id="IndexGtadsr"><primary>gtadsr</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Envelope Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>gtadsr</refentrytitle>
+  </refmeta>
+ 
+  <refnamediv>
+    <refname>gtadsr</refname>
+    <refpurpose>
+      Attaque-chute-entretien linéaire à seuil avec un relachement exponentiel.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Cet opcode peut fonctionner comme générateur ou comme processeur
+      de signal. Il est contrôlé par un signal seuil de taux-k (0 ou > 0) qui
+      active ou arrête la phase attaque-chute-entretien. Avec un seuil > 0
+      (haut), l'enveloppe parcourt l'attaque et la chute et reste au niveau
+      d'entretien. Chaque fois que le seuil vaut 0 (bas), l'enveloppe entame sa
+      phase de relachement, diminuant de façon exponentielle jusqu'à 0. Les
+      durées d'attaque et de chute sont fixes tant que le seuil est > 0, mais
+      elles peuvent changer si le seuil vaut zéro.
+   </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>gtadsr</command> asig, katt, kdec, ksus,
+    krel, kgate</synopsis>
+
+    <synopsis>xres <command>gtadsr</command> kamp, katt, kdec, ksus,
+    krel, kgate</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>x/ares</emphasis> -- signal de sortie (taux-k ou a)
+    </para>
+
+    <para>
+      <emphasis>asig</emphasis> -- signal d'entrée (si l'enveloppe se comporte
+      comme un processeur d'amplitude)
+    </para>
+
+    <para>
+      <emphasis>kamp</emphasis> -- amplitude maximale (si l'enveloppe se
+      comporte comme un générateur de signal)
+    </para>
+    
+    <para>
+      <emphasis>katt</emphasis> -- durée de l'attaque
+    </para>
+
+    <para>
+      <emphasis>kdec</emphasis> -- durée de la chute
+    </para>
+
+    <para>
+      <emphasis>ksus</emphasis> -- niveau de la phase d'entretien (dans
+      l'intervalle 0 - 1)
+    </para>
+
+    <para>
+      <emphasis>krel</emphasis> -- durée de la phase de relachement
+    </para>
+
+    <para>
+      <emphasis>kgate</emphasis> -- signal de seuil (0 = bas, > 0 haut).
+    </para>
+
+    <para>
+      L'enveloppe peut être décrite comme :
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/gtadsr.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>Image d'une enveloppe GTADSR.</phrase>
+        </textobject>
+        
+        <caption>
+          <para>Image d'une enveloppe GTADSR.</para>
+        </caption>
+      </mediaobject>
+    </para>
+
+    <para>
+      La longueur de l'entretien est calculée à partie de la longueur de la
+      note. Cela signifie que <emphasis>gtadsr</emphasis> ne convient pas pour
+      des évènements MIDI. L'opcode <link
+      linkend="mgtadsr"><citetitle>mgtadsr</citetitle></link> utilise le
+      mécanisme de <link linkend="linsegr"><citetitle>linsegr</citetitle></link>
+      et peut ainsi être utilisé dans les applications MIDI.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode gtadsr. Il utilise le fichier
+      <ulink url="examples/gtadsr.csd"><citetitle>gtadsr.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode gtadsr.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/gtadsr.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="madsr"><citetitle>adsr</citetitle></link>,
+      <link linkend="mxadsr"><citetitle>madsr</citetitle></link>,
+      <link linkend="xadsr"><citetitle>xadsr</citetitle></link>
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : Victor Lazzarini;</para>
+    <para>Nouveau dans la version 6.17</para>  
+  </refsect1>
+</refentry>
