@@ -803,7 +803,7 @@ distall: all
 test-xml:
 	xmllint --valid --xinclude --dtdattr --noent manual.xml
 
-html-package: html-dist
+html-package: 
 	#tar -czf $(BASENAME)-html-$(VERSION).tar.gz csound-$(VERSION)/manual
 	zip -r /tmp/$(BASENAME)$(VERSION)_manual-fr_html.zip html
 	mv /tmp/$(BASENAME)$(VERSION)_manual-fr_html.zip ./
