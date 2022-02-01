@@ -1,0 +1,35 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="pvs2array">
+<indexterm id="IndexPvs2array"><primary>pvs2array</primary></indexterm>
+  <refentryinfo><title>Spectral Processing:Streaming</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>pvs2array</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>pvs2array</refname>
+    <refpurpose>
+      Identique à l'opcode pvs2tab.
+    </refpurpose>
+  </refnamediv>
+  
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Identique à l'opcode <link
+      linkend="pvs2tab"><citetitle>pvs2tab</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kframe <command>pvs2array</command> kvar[], fsig</synopsis>
+    <synopsis>kframe <command>pvs2array</command> kmags[], kfreqs[], fsig</synopsis>
+  </refsect1>
+</refentry>
