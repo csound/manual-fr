@@ -132,7 +132,7 @@ english cvs version=1.17
 
     <para>
       <emphasis>intypes</emphasis> -- liste des types en entrée, toute combinaison
-      des caractères a, k, O, P, V, K, i, o, p et j. Un caractère 0 unique peut
+      des caractères a, f, k, O, P, V, K, i, o, p et j. Un caractère 0 unique peut
       être utilisé s'il n'y a pas d'argument en entrée. Il n'y a
       <emphasis>pas</emphasis> besoin d'apostrophes doubles et de délimiteurs
       (comme la virgule).
@@ -158,6 +158,13 @@ english cvs version=1.17
               <entry>variable de taux-a</entry>
               <entry>taux-a</entry>
               <entry>taux-a</entry>
+            </row>
+
+            <row>
+              <entry>f</entry>
+              <entry>variable sig-f</entry>
+              <entry>sig-f</entry>
+              <entry>taux-k</entry>
             </row>
 
             <row>
@@ -270,6 +277,13 @@ english cvs version=1.17
               <entry>variable de taux-a</entry>
               <entry>taux-a</entry>
               <entry>taux-a</entry>
+            </row>
+
+            <row>
+              <entry>f</entry>
+              <entry>variable sig-f</entry>
+              <entry>sig-f</entry>
+              <entry>taux-k</entry>
             </row>
 
             <row>
