@@ -542,6 +542,8 @@ authors=Francois Pinot
   &opcodeskgoto;
   &opcodeskr;
   &opcodesksmps;
+  &opcodeslag;
+  &opcodeslagud;
   &opcodeslastcycle;
   &opcodeslenarray;
   &opcodeslfo;
@@ -1001,10 +1003,6 @@ authors=Francois Pinot
   &opcodesschedwhen;
   &opcodesscoreline;
   &opcodesscoreline_i;
-  &opcodeslag;
-  &opcodeslagud;
-  &opcodestrigphasor;
-  &opcodestrighold;
   &opcodesseed;
   &opcodessequencer;
   &opcodessekere;
@@ -1227,7 +1225,9 @@ authors=Francois Pinot
   &opcodestrhighest;
   &opcodestrigexpseg;
   &opcodestrigger;
+  &opcodestrighold;
   &opcodestriglinseg;
+  &opcodestrigphasor;
   &opcodestrigseq;
   &opcodestrim;
   &opcodestrirand;
