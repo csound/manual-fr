@@ -17,11 +17,4 @@ i 1 0 10 "A4"</programlisting>
     Cette chaîne de caractères peut être reçue par l'instrument et traitée par les
     <link linkend="StringsTop"><citetitle>opcodes de chaîne de caractères</citetitle></link>.
   </para>
-  <note>
-    <para>Actuellement un seul p-champ peut contenir une chaîne de caractères (c-à-d
-      qu'on n'autorise pas plus d'une chaîne de caractères par ligne). On peut contourner
-      ceci en utilisant
-      <link linkend="strset"><citetitle>strset</citetitle></link> et
-      <link linkend="strget"><citetitle>strget</citetitle></link>.</para>
-  </note>
 </section>
