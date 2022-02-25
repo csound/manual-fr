@@ -96,10 +96,16 @@ english cvs version=1.10
       <emphasis role="oblock">endin</emphasis></programlisting>
     </informalexample>
     <para>
-      Voir la notice d'<link linkend="OSClisten"><citetitle>OSClisten</citetitle></link>
-      pour un exemple d'envoi/réception en utilisant OSC.
+      Voici un exemple complet de l'opcode OSCsend. Il utilise le fichier
+      <ulink url="examples/OSCsend.csd"><citetitle>OSCsend.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode OSCsend.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/OSCsend.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
     </para>
-
   </refsect1>
 
   <refsect1>
