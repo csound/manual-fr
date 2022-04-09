@@ -10,7 +10,37 @@ Si vous rencontrez des problèmes ou si vous avez des suggestions, ouvrez
 [un fork de cet entrepôt et un pull request](https://guides.github.com/activities/forking/).
 
 
-## Outils nécessaires
+## Instructions spécifiques au manuel de Csound
+
+Les instructions des sections suivantes se rapportent à DocBook en général, pas au manual de
+Csound en particulier. Pour produire le manuel de Csound à partir des sources, il faut adapter
+ces instructions générales. Après s'être assuré que l'on a installé les outils et dépendances
+nécessaires (comme indiqué dans les sections suivantes), il faut obtenir les fichiers sources
+pour le manuel de Csound et lancer ensuite la commande `make` pour générer une version du
+manuel à partir de ces fichiers source. Les fichiers source comprennent un fichier `Makefile`
+qu'il faudra peut-être adapter à votre configuration.
+
+Si l'on a installé Csound dans `~/csound/csound` et que l'on veuille (1) installer les sources
+du manuel de Csound dans `~/csound/manual-fr` et (2) construire une version html dans
+`~/csound/manual/html`, il faut exécuter les commandes suivantes :
+
+```sh
+$ cd ~/csound
+$ git clone https://github.com/csound/manual-fr.git manual-fr
+$ cd manual-fr
+$ make html # En supposant que le Makefile fonctionne. Sinon, il faut l'éditer
+            # puis réexécuter cette ligne.
+```
+
+Note: sur Ubuntu, le Makefile peut ne pas fonctionner car il appelle Python avec la commande
+python au lieu de python3. Dans ce cas, il faut soit (1) mofidier le Makefile afin d'appeler
+python3 (le nom de l'exécutable pour Python dans Ubuntu) ou (2) installer python-is-python3,
+un paquet d'adaptation pour Debian et Ubuntu qui crée un lien symbolique de python à python3.
+
+Après avoir suivi les instructions ci-dessus, il sera possible d'ouvrir le manuel localement
+dans un navigateur avec un lien comme `file:///home/(username)/csound/manual-fr/html/index.html`. 
+
+## General Instructions for Docbook and Related Programs
 
 En plus d'autres outils spécifiques à ce qu'on construit, on a besoin de
 Docbook, [Python](https://www.python.org) avec [Pygments](http://pygments.org)
@@ -27,7 +57,7 @@ sudo apt-get install -y docbook docbook-xsl xsltproc
 ```
 
 Python est préinstallé sur la plupart des distributions Linux. Si
-l'on a pas Python, aller sur https://docs.python.org/2/using/unix.html pour
+l'on a pas Python, aller sur https://www.python.org/downloads/ pour
 apprendre comment installer Python ou le construire à partir des sources.
 
 Pour installer Pygments v2.3 ou ultérieure, exécuter
