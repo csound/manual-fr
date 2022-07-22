@@ -92,7 +92,7 @@ english cvs version=
     </itemizedlist>
   </para>-->
 
-<bridgehead>Notes de parution de Csound 6.17 (Octobre 2021)</bridgehead>
+<bridgehead>Notes de parution de Csound 6.17 (Février 2022)</bridgehead>
   <para>
     Principalement des corrections de bogues mais aussi une réorganisation
     majeure des bibliothèques afin de déplacer tous les opcodes ayant des
@@ -303,6 +303,11 @@ english cvs version=
             <listitem>
               <simpara>
                 Plantage dans syncgrain, issue #1773, corrigé.
+              </simpara>
+            </listitem>
+            <listitem>
+              <simpara>
+                La sortie de l'UDO Fsign est corrigée.
               </simpara>
             </listitem>
           </itemizedlist>
