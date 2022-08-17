@@ -60,10 +60,10 @@ english cvs version=1.13
   <refsect1>
     <title>Exemples</title>
     <para>
-      Voici un exemple de l'opcode nsamp. Il utilise les fichiers
-      <ulink url="examples/nsamp.csd"><citetitle>nsamp.csd</citetitle></ulink>
-      <ulink url="examples/kickroll.wav"><citetitle>kickroll.wav</citetitle></ulink>,
-      et <ulink url="examples/fox.wav"><citetitle>fox.wav</citetitle></ulink>.
+       Voici un exemple de l'opcode nsamp. Il utilise les fichiers
+       <ulink url="examples/nsamp.csd"><citetitle>nsamp.csd</citetitle></ulink>,
+       <ulink url="examples/drumsSlp.wav"><citetitle>drumsSlp.wav</citetitle></ulink>
+       et <ulink url="examples/fox.wav"><citetitle>fox.wav</citetitle></ulink>.
 
       <example>
         <title>Exemple de l'opcode nsamp.</title>
@@ -73,11 +73,11 @@ english cvs version=1.13
           <xi:include href="examples-xml/nsamp.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
 
-      Comme le fichier audio stéréo <quote>kickroll.wav</quote> a 37792 échantillons,
+      Comme le fichier audio stéréo <quote>drumsSlp.wav</quote> a 176400 échantillons,
       et que le fichier mono <quote>fox.wav</quote> a 121569 échantillons, sa
       sortie comprendra des lignes comme celles-ci :
       <screen>
-actual numbers of samples = 37792
+actual numbers of samples = 176400
 actual numbers of samples = 121569</screen>
     </para>
   </refsect1>

@@ -61,7 +61,7 @@ english cvs version=1.14
       Voici un exemple de l'opcode filelen. Il utilise les fichiers
       <ulink url="examples/filelen.csd"><citetitle>filelen.csd</citetitle></ulink>,
       <ulink url="examples/fox.wav"><citetitle>fox.wav</citetitle></ulink> et
-      <ulink url="examples/kickroll.wav"><citetitle>kickroll.wav</citetitle></ulink>.
+      <ulink url="examples/drumsSlp.wav"><citetitle>drumsSlp.wav</citetitle></ulink>.
 
       <example>
         <title>Exemple de l'opcode filelen.</title>
@@ -71,13 +71,13 @@ english cvs version=1.14
           <xi:include href="examples-xml/filelen.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
 
-      Le fichier audio mono <quote>fox.wav</quote> dure 2.8 secondes et le fichier
-      stéréo <quote>kickroll.wav</quote> dure 0.9 secondes. Ainsi la sortie
-      de <emphasis>filelen</emphasis> contiendra une ligne pour le fichier mono
-      et pour le fichier stéréo comme ceci :
+      Le fichier audio mono <quote>fox.wav</quote> dure environ 2.8 secondes et
+      le fichier stéréo <quote>drumsSlp.wav</quote> dure 4 secondes. Ainsi la
+      sortie de <emphasis>filelen</emphasis> contiendra une ligne pour le
+      fichier mono et pour le fichier stéréo comme ceci :
       <screen>
-instr 1:  ilen = 2.757
-instr 1:  ilen = 0.857</screen>
+lenght of sample = 2.757 seconds
+lenght of sample = 4.000 seconds</screen>
     </para>
   </refsect1>
 

@@ -61,7 +61,7 @@ english cvs version=1.15
       Voici un exemple de l'opcode filenchnls. Il utilise les fichiers
       <ulink url="examples/filenchnls.csd"><citetitle>filenchnls.csd</citetitle>,
       </ulink><ulink url="examples/fox.wav"><citetitle>fox.wav</citetitle></ulink>
-      et <ulink url="examples/kickroll.wav"><citetitle>kickroll.wav</citetitle></ulink>.
+      et <ulink url="examples/drumsSlp.wav"><citetitle>drumsSlp.wav</citetitle></ulink>.
 
       <example>
         <title>Exemple de l'opcode filenchnls.</title>
@@ -72,11 +72,12 @@ english cvs version=1.15
       </example>
 
       Le fichier audio <quote>fox.wav</quote> est monophonique (1 canal), tandis
-      que <quote>kickroll.wav</quote> est stéréophonique (2 canaux). Ainsi
+      que <quote>drumsSlp.wav</quote> est stéréophonique (2 canaux). Ainsi
       la sortie de <emphasis>filenchnls</emphasis> contiendra des lignes comme :
       <screen>
-instr 1:  ichn = 1.000
-instr 1:  ichn = 2.000</screen>
+number of channels = 1
+number of channels = 2
+</screen>
     </para>
   </refsect1>
 
