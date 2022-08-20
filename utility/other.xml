@@ -8,7 +8,7 @@ english cvs version=1.12
 -->
 
 <section id="UtilityOther">
-  <title>Autres utilitaires de Csound (CS, CSB64ENC, ENVEXT, EXTRACTOR, MAKECSD,
+  <title>Autres utilitaires de Csound (CS, CSB64ENC, DNOISE, ENVEXT, EXTRACTOR, MAKECSD,
   MIXER, SCALE)</title>
   <para>Les divers utilitaires suivants sont disponibles :
     <itemizedlist>
@@ -23,6 +23,11 @@ english cvs version=1.12
         <para>
           <link linkend="csb64enc"><citetitle>CSB64ENC</citetitle></link> : convertit un
           fichier binaire en un fichier texte encodé en Base64.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <link linkend="dnoise"><citetitle>DNOISE</citetitle></link> : Réduit le bruit dans un fichier.
         </para>
       </listitem>
       <listitem>
