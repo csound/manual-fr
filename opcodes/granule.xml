@@ -157,9 +157,13 @@ english cvs version=1.15
   <refsect1>
     <title>Exemples</title>
     <para>
+      <ulink url="examples/granule.csd"><citetitle>granule.csd</citetitle></ulink>,
+      <ulink url="examples/marimba.aif"><citetitle>marimba.aif</citetitle></ulink>
+      et <ulink url="examples/fox.wav"><citetitle>fox.wav</citetitle></ulink>
       Voici un exemple de l'opcode granule. Il utilise les fichiers
-      <ulink url="examples/granule.csd"><citetitle>granule.csd</citetitle></ulink>, et
-      <ulink url="examples/mary.wav"><citetitle>mary.wav</citetitle></ulink>.
+      <ulink url="examples/granule.csd"><citetitle>granule.csd</citetitle></ulink>,
+      <ulink url="examples/marimba.aif"><citetitle>marimba.aif</citetitle></ulink>
+      et <ulink url="examples/fox.wav"><citetitle>fox.wav</citetitle></ulink>.
 
       <example>
         <title>Exemple de l'opcode granule.</title>
@@ -171,19 +175,26 @@ english cvs version=1.15
    </para>
 
    <para>
-     L'exemple ci-dessus lit un fichier son nommé <emphasis>mary.wav</emphasis> dans la table de
-     fonction numéro 1 en gardant 262 144 échantillons. Il génère 10 secondes de sortie stéréo à
-     partir de la table de fonction. Dans le fichier orchestre, tous les paramètres nécessaires au
-     contrôle de la synthèse proviennent du fichier partition. Un générateur de fonction
+     L'exemple ci-dessus lit un fichier son nommé <emphasis>marimba.aif</emphasis> dans la table de
+     fonction numéro 1, et un second nommé <emphasis>fox.wav</emphasis> dans la table de fonction
+     numéro 2. La première note génère 10 secondes de sortie stéréo à
+     partir de la table de fonction. Dans le fichier de l'orchestre, tous les paramètres nécessaires au
+     contrôle de la synthèse proviennent du fichier de partition. Un générateur de fonction
      <emphasis>linseg</emphasis> est utilisé pour produire une enveloppe avec une attaque et une
      chute linéaires de 0,5 secondes. On obtient un effet stéréo par l'utilisation de différentes
      graines pour les deux appels de la fonction <emphasis>granule</emphasis>. Dans l'exemple, on
-     ajoute 0,17 à p20 avant de le passer au second appel de <emphasis>granule</emphasis> pour
+     ajoute 0,17 à p20 (= iseed) avant de le passer au second appel de <emphasis>granule</emphasis> pour
      s'assurer que toutes les fluctuations aléatoires seront différentes de celles du premier appel.
    </para>
 
    <para>
-     Voici la signification des paramètres dans le fichier partition :
+     La seconde note (table de fonction numéro 2) a des paramètres légèrement
+     différents.
+   </para>
+
+   <para>
+     Voici la signification des paramètres pour la première note dans le
+     fichier de partition :
 
      <informaltable frame="all">
        <tgroup cols="2" colsep="1" rowsep="1">
@@ -235,7 +246,7 @@ english cvs version=1.15
 
            <row>
              <entry>p13 (<emphasis>ilength</emphasis>)</entry>
-             <entry>fixé à 5, on n'utilise que 5 secondes de la table d'onde</entry>
+             <entry>fixé à 1, on n'utilise que 1 seconde de la table d'onde</entry>
            </row>
 
            <row>
@@ -252,7 +263,7 @@ english cvs version=1.15
 
            <row>
              <entry>p18 (<emphasis>iatt</emphasis>) et p19 (<emphasis>idec</emphasis>)</entry>
-             <entry>fixés à 30, on applique une attaque et une chute linéaires de 30% au grain</entry>
+             <entry>fixés à 25, on applique une attaque et une chute linéaires de 25% au grain</entry>
            </row>
 
            <row>

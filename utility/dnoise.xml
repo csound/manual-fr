@@ -30,7 +30,7 @@ english cvs version=1.4
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis><command>dnoise</command> [options] -i ficref_bruit -o ficson_sortie ficson_entree</synopsis>
+    <synopsis><command>dnoise</command> [options] -i fichier_ref_bruit -o fichier_son_sortie format_fichier_son fichier_son_entree</synopsis>
   </refsect1>
  
   <refsect1>
@@ -151,6 +151,23 @@ english cvs version=1.4
     </para>
   </refsect1>
  
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'utilitaire dnoise. Il utilise les fichiers
+      <ulink url="examples/dnoise.csd"><citetitle>dnoise.csd</citetitle></ulink>,
+      <ulink url="examples/MathewsNoise.wav"><citetitle>MathewsNoise.wav</citetitle></ulink>
+      et <ulink url="examples/MathewsN.wav"><citetitle>MathewsN.wav</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'utilitaire dnoise.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/dnoise.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
   <refsect1>
     <title>Crédits</title>
     <para>Auteur : Mark Dolson</para>
