@@ -42,13 +42,27 @@ english cvs version=1.11
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>ares <command>filter2</command> asig, iM, iN, ib0, ib1, ..., ibM, ia1, ia2, ..., iaN</synopsis>
+    <synopsis>ares <command>filter2</command> asig, ibcoefs, iacoefs, ib0, ib1, ..., ibM, ia1, ia2, ..., iaN</synopsis>
 
-    <synopsis>kres <command>filter2</command> ksig, iM, iN, ib0, ib1, ..., ibM, ia1, ia2, ..., iaN</synopsis>
+    <synopsis>kres <command>filter2</command> ksig, ibcoefs, iacoefs, ib0, ib1, ..., ibM, ia1, ia2, ..., iaN</synopsis>
   </refsect1>
  
   <refsect1>
     <title>Initialisation</title>
+    <para>
+      <emphasis>ibcoefs</emphasis> -- nombre des coefficients b<subscript>i</subscript>,
+      y compris b<subscript>0</subscript>.
+    </para>
+    <para>
+      <emphasis>iacoefs</emphasis> -- nombre des coefficients a<subscript>j</subscript>.
+   </para>
+   <para>
+      <emphasis>ib0, ... ibM</emphasis> -- coefficients b<subscript>i</subscript>,
+      y compris b<subscript>0</subscript>.
+    </para>
+    <para>
+      <emphasis>ia1, ... iaN</emphasis> -- coefficients a<subscript>j</subscript>.
+    </para>
     <para>
       A l'initialisation, les nombres de zéros et de pôles du filtres sont spécifiés
       ainsi que leurs valeurs. Les coefficients doivent être obtenus par une
