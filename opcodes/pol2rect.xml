@@ -42,12 +42,22 @@ authors=Francois Pinot
     </para>
     <para>
       <emphasis>kmags[]</emphasis> -- tableau contenant les valeurs réelles des
-      modules en entrée.
+      modules en entrée. Ne doit contenir que le spectre non-négatif (de 0 à
+      la fréquence de Nyquist comprise).
     </para>
     <para>
       <emphasis>kphs[]</emphasis> -- tableau contenant les valeurs réelles des
-      arguments en entrée.
+      phases en entrée. Ne doit contenir que le spectre non-négatif (de 0 à
+      la fréquence de Nyquist comprise).
     </para>
+    <para>
+      NB : la seconde version de l'opcode avec deux entrées est conçue pour
+      produire un spectre de TFR réelle "compact" dans lequel les deux premières
+      positions du tableau contiennent les parties réelles de zéro Hz et de
+      la fréquence de Nyquist. Ainsi la longueur du tableau de sortie sera
+      2*L - 2, où L est la longueur des tableaux en entrée (qui doivent avoir
+      la même longueur).
+    </para>  
   </refsect1>
 
   <refsect1>
