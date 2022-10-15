@@ -1,0 +1,81 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="eventtime">
+<indexterm id="IndexEventtime"><primary>eventtime</primary></indexterm>
+  <refentryinfo><title>Instrument Control:Time Reading</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>eventtime</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>eventtime</refname>
+    <refpurpose>
+      Lit le temps absolu en secondes.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Lit le temps absolu en secondes, depuis le démarrage d'une instance
+      d'un instrument.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>kres <command>eventtime</command></synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      Le temps en secondes est donné par <emphasis>eventtime</emphasis>. Il
+      retournera 0.5 après une demi-seconde.
+    </para>
+
+    <para>
+      <emphasis>eventtime</emphasis> produit une variable de taux-k en sortie.
+      Il n'y a pas de paramètres d'entrée.
+    </para>
+
+    <para>
+      <emphasis>eventtime</emphasis> est semblable à
+      <link linkend="elapsedtime"><citetitle>elapsedtime</citetitle></link>
+      sauf qu'il retourne le temps écoulé depuis le démarrage de cette instance
+      de l'instrument.
+    </para>
+    
+    <note>
+      <para>
+        <emphasis>eventtime</emphasis> agit comme
+        <link linkend="timeinsts"><citetitle>timeinsts</citetitle></link> mais
+        il retourne des valeurs correctes au lieu de retarder d'un cycle.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="eventcycles"><citetitle>timeinsts</citetitle></link>, 
+      <link linkend="elapsedcycles"><citetitle>elapsedcycles</citetitle></link>, 
+      <link linkend="elapsedtime"><citetitle>elapsedtime</citetitle></link>.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>
+      <simplelist>
+        <member>Auteur : &nameeduardo;</member>
+        <member>Août 2022</member>
+      </simplelist>
+    </para>
+  </refsect1>
+</refentry>
