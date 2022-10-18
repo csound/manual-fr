@@ -173,14 +173,15 @@ english cvs version=
             </listitem>
             <listitem>
               <simpara>
-                Protection contre les types non donnés comme chaînes de
-                caractères.
+                Un bogue a été corrigé, où la libération de instr 0 provoquait
+                des problèmes de mémoire lors des compilations suivantes.
+                instr 0 n'est plus libéré tant qu'il n'y a pas de reset.
               </simpara>
             </listitem>
             <listitem>
               <simpara>
-                OSClisten et OSCsend_lo ont été corrigés pour accepter des
-                messages sans données.
+                Un boque a été corrigé, où la recherche du répertoire d'opcodes
+                plantait Csound si la variable HOME n'était pas fixée.
               </simpara>
             </listitem>
             <listitem>
@@ -188,12 +189,16 @@ english cvs version=
             </listitem>
             <listitem>
               <simpara>
-                rifft provoquait une erreur de segmentation pour des tableaux
-                de taille différente de n^2+1. C'est corrigé.
+                La taille de tableau de pol2rect est maintenant correctement
+                fixée.
               </simpara>
             </listitem>
             <listitem>
-              <simpara>sum corrigé.</simpara>
+              <simpara>
+                OSCsend, OSCsend_lo et OSClisten peuvent maintenant travailler
+                avec des messages sans charge utile (comme indiqué dans la
+                spécification et dans le manuel).
+              </simpara>
             </listitem>
             <listitem>
               <simpara>
@@ -201,13 +206,12 @@ english cvs version=
               </simpara>
             </listitem>
             <listitem>
-              <simpara>
-                instr0 ne peut pas être libéré et cela ne changera pas dans
-                csound 6.*. Des commentaires ont été ajoutés à ce sujet.
-              </simpara>
+              <simpara>Un bogue dans sum a été corrigé.</simpara>
             </listitem>
             <listitem>
-              <simpara>Problème de canaux corrigé (#1631).
+              <simpara>
+                L'opcode 'pitchamd' provoquait une erreur de segmentation
+                (macOS) (#1599).
               </simpara>
             </listitem>
           </itemizedlist>
@@ -234,14 +238,43 @@ english cvs version=
       </listitem>
       <listitem>
         <para>Plate-forme :
-          <itemizedlist>
-            <listitem>
-              <simpara>
-                Beaucoup de changements dans Bela csound. Voir le site de bela
-                pour les détails.
-              </simpara>
-            </listitem>
-          </itemizedlist>
+        <itemizedlist>
+          <listitem>
+            <para>MacOS:
+              <itemizedlist>
+                <listitem>
+                  <simpara>
+                    Beaucoup de changements dans Bela csound. Voir le site de
+                    bela pour les détails.
+                  </simpara>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>WASM:
+              <itemizedlist>
+                <listitem>
+                  <simpara>
+                    Support des fichiers mp3.
+                  </simpara>
+                </listitem>
+                <listitem>
+                  <simpara>
+                    Rendu hors-ligne corrigé lors de l'utilisation du mode
+                    worker.
+                  </simpara>
+                </listitem>
+                <listitem>
+                  <simpara>
+                    Un bogue de fout provoquant une perte de données a été
+                    corrigé.
+                  </simpara>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
         </para>
       </listitem>
     </itemizedlist>
