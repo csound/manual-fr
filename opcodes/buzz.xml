@@ -102,15 +102,18 @@ english cvs version=1.15
     <para>
       Voici un exemple de l'opcode buzz. Il utilise le fichier
       <ulink url="examples/buzz.csd"><citetitle>buzz.csd</citetitle></ulink>.
-
       <example>
         <title>Exemple de l'opcode buzz.</title>
-
         <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
         et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour
         plus d'information sur l'utilisation des options de la ligne de commande.</para>
           <xi:include href="examples-xml/buzz.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
+      <para>
+        Un exemple musical avec l'opcode buzz :
+        <ulink url="examples/musical/BuzzFof_Cucchi.csd"><citetitle>BuzzFof_Cucchi.csd</citetitle></ulink>
+        par Stefano Cucchi.
+      </para>
     </para>
   </refsect1>
 
