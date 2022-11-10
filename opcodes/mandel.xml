@@ -52,19 +52,24 @@ english cvs version=1.7
       <emphasis>kmaxIter</emphasis> - nombre maximum d'itérations autorisé
     </para>
 
-     <para>
-     <emphasis>mandel</emphasis> est un opcode qui utilise les formules de l'ensemble de
-     Mandelbrot pour générer une sortie que l'on peut appliquer à n'importe quel paramètre
-     musical (ou non musical). Il comprend deux paramètres de sortie :
-     <emphasis>kiter</emphasis>, qui contient le nombre d'itérations d'un point donné, et
-     <emphasis>koutrig</emphasis>, qui génère un 'bang' de déclenchement chaque fois que
-     <emphasis>kiter</emphasis> change. L'évaluation d'un nouveau nombre d'itérations n'a
-     lieu que lorque <emphasis>ktrig</emphasis> prend une valeur non nulle. Les coordonnées
-     du plan complexe sont fixées dans <emphasis>kx</emphasis> et <emphasis>ky</emphasis>,
-     tandis que <emphasis>kmaxIter</emphasis> contient le nombre maximum d'itérations.
-     Les valeurs de sorties, qui sont des nombres entiers, peuvent être interprétées de
-     n'importe quelle manière par le compositeur.
-     </para>
+    <para>
+      <emphasis>mandel</emphasis> est un opcode qui utilise les formules de l'ensemble de
+      Mandelbrot pour générer une sortie que l'on peut appliquer à n'importe quel paramètre
+      musical (ou non musical). Il comprend deux paramètres de sortie :
+      <emphasis>kiter</emphasis>, qui contient le nombre d'itérations d'un point donné, et
+      <emphasis>koutrig</emphasis>, qui génère un 'bang' de déclenchement chaque fois que
+      <emphasis>kiter</emphasis> change. L'évaluation d'un nouveau nombre d'itérations n'a
+      lieu que lorque <emphasis>ktrig</emphasis> prend une valeur non nulle. Les coordonnées
+      du plan complexe sont fixées dans <emphasis>kx</emphasis> et <emphasis>ky</emphasis>,
+      tandis que <emphasis>kmaxIter</emphasis> contient le nombre maximum d'itérations.
+      Les valeurs de sorties, qui sont des nombres entiers, peuvent être interprétées de
+      n'importe quelle manière par le compositeur.
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/Mandelbrot.png" format="PNG"/>
+        </imageobject>
+      </mediaobject>
+    </para>
   </refsect1>
 
    <refsect1>
@@ -79,14 +84,13 @@ english cvs version=1.7
         d'information sur l'utilisation des options de la ligne de commande.</para>
           <xi:include href="examples-xml/mandel.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
-     </para>
-  </refsect1>
-
-  <refsect1>
-    <title>Voir aussi</title>
-    <para>
-      Pour plus d'information sur cet opcode :
-      <ulink url="http://mymbs.mbs.net/~pfisher/FOV2-0010016C/FOV2-0010016E/FOV2-001001A3/chapters/35evans/intro.html"><citetitle>Composing Fractal Music with Csound</citetitle></ulink>, par Brian Evans
+      <para>
+        Deux exemples musicaux avec l'opcode mandel :
+        <ulink url="examples/musical/Mandel_Daughtrey.csd"><citetitle>Mandel_Daughtrey.csd</citetitle></ulink>
+        par Scott Daughtrey et
+        <ulink url="examples/musical/Mandel_Gogins.csd"><citetitle>Mandel_Gogins.csd</citetitle></ulink>
+        par Michael Gogins.
+      </para>
     </para>
   </refsect1>
 
