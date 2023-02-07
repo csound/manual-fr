@@ -60,7 +60,7 @@ english cvs version=1.14
     <para>
       Voici un exemple de l'opcode filesr. Il utilise les fichiers
       <ulink url="examples/filesr.csd"><citetitle>filesr.csd</citetitle></ulink>
-      et <ulink url="examples/beats.wav"><citetitle>beats.wav</citetitle></ulink>.
+      et <ulink url="examples/drumsMlp.wav"><citetitle>drumsMlp.wav</citetitle></ulink>.
 
       <example>
         <title>Exemple de l'opcode filenchnls.</title>
@@ -70,7 +70,7 @@ english cvs version=1.14
           <xi:include href="examples-xml/filesr.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
 
-      Le fichier audio <quote>beats.wav</quote> a été échantillonné à 44.1 KHz. Ainsi
+      Le fichier audio <quote>drumsMlp.wav</quote> a été échantillonné à 44.1 KHz. Ainsi
       la sortie de <emphasis>filesr</emphasis> contiendra une ligne comme :
       <screen>
 sample rate = 44100.000000, size = 131072.000000</screen>

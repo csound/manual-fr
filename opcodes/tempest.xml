@@ -136,7 +136,7 @@ english cvs version=1.14
     <para>
       Voici un exemple de l'opcode tempest. Il utilise les fichiers
       <ulink url="examples/tempest.csd"><citetitle>tempest.csd</citetitle></ulink>
-      et <ulink url="examples/beats.wav"><citetitle>beats.wav</citetitle></ulink>.
+      et <ulink url="examples/drumsMlp.wav"><citetitle>drumsMlp.wav</citetitle></ulink>.
       <example>
         <title>Exemple de l'opcode tempest.</title>
         <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
@@ -145,7 +145,7 @@ english cvs version=1.14
           <xi:include href="examples-xml/tempest.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
 
-      Le tempo du fichier audio <quote>beats.wav</quote> est de 120 pulsations par
+      Le tempo du fichier audio <quote>drumsMlp.wav</quote> est de 120 pulsations par
       minute. Dans cet exemple, <emphasis>tempest</emphasis> imprimera sa
       meilleure estimation durant la lecture du fichier. Sa sortie contiendra
       des lignes comme celles-ci :

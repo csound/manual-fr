@@ -65,7 +65,7 @@ english cvs version=1.13
       Voici un exemple de l'opcode ftlen. Il utilise les fichiers
       <ulink url="examples/ftlen.csd"><citetitle>ftlen.csd</citetitle></ulink>,
       <ulink url="examples/fox.wav"><citetitle>fox.wav</citetitle></ulink> et
-      <ulink url="examples/beats.wav"><citetitle>beats.wav</citetitle></ulink>.
+      <ulink url="examples/drumsMlp.wav"><citetitle>drumsMlp.wav</citetitle></ulink>.
 
       <example>
         <title>Exemple de l'opcode ftlen.</title>
@@ -76,7 +76,7 @@ english cvs version=1.13
       </example>
 
       Le fichier audio <quote>fox.wav</quote> contient 121569 échantillons,
-      <quote>beats.wav</quote> contient 88200 échantillons.
+      <quote>drumsMlp.wav</quote> contient 88200 échantillons.
       L'opcode <emphasis>ftlen</emphasis> retourne des tailles de 121568 et 88199
       échantillons car il réserve un point pour le point de garde. Sa sortie
       comprendra des lignes comme celles-ci :

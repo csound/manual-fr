@@ -89,7 +89,7 @@ english cvs version=1.16
     <para>
       Voici un exemple de l'opcode dam. Il utilise les fichiers
       <ulink url="examples/dam.csd"><citetitle>dam.csd</citetitle></ulink>
-      et <ulink url="examples/beats.wav"><citetitle>beats.wav</citetitle></ulink>.
+      et <ulink url="examples/drumsMlp.wav"><citetitle>drumsMlp.wav</citetitle></ulink>.
       <example>
         <title>Un exemple de l'opcode dam compressant un signal audio.</title>
         <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
@@ -98,7 +98,7 @@ english cvs version=1.16
           <xi:include href="examples-xml/dam.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
 
-      Cet exemple compresse le fichier audio <quote>beats.wav</quote>. On y entend
+      Cet exemple compresse le fichier audio <quote>drumsMlp.wav</quote>. On y entend
       un schéma de batterie répété deux fois. La deuxième fois, le son est moins
       fort (compressé) que la première fois.
     </para>
@@ -106,14 +106,14 @@ english cvs version=1.16
     <para>
       Voici un autre exemple de l'opcode dam. Il utilise les fichiers
       <ulink url="examples/dam_expanded.csd"><citetitle>dam_expanded.csd</citetitle></ulink>
-      et <ulink url="examples/beats.wav"><citetitle>beats.wav</citetitle></ulink>.
+      et <ulink url="examples/drumsMlp.wav"><citetitle>drumsMlp.wav</citetitle></ulink>.
 
       <example>
         <title>Un exemple de l'opcode dam élargissant un signal audio.</title>
           <xi:include href="examples-xml/dam_expanded.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
 
-      Cet exemple élargit le fichier audio <quote>beats.wav</quote>. On y entend
+      Cet exemple élargit le fichier audio <quote>drumsMlp.wav</quote>. On y entend
       un motif de batterie répété deux fois. La deuxième fois, le son est plus fort
       (élargi) que la première fois. Pour éviter une distorsion le volume du signal
       a été diminué.

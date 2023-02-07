@@ -59,7 +59,7 @@ english cvs version=1.13
     <para>
       Voici un exemple de l'opcode peak. Il utilise les fichiers
       <ulink url="examples/peak.csd"><citetitle>peak.csd</citetitle></ulink>
-      et <ulink url="examples/beats.wav"><citetitle>beats.wav</citetitle></ulink>.
+      et <ulink url="examples/drumsMlp.wav"><citetitle>drumsMlp.wav</citetitle></ulink>.
       <example>
         <title>Exemple de l'opcode peak.</title>
         <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
@@ -70,9 +70,13 @@ english cvs version=1.13
 
       Sa sortie comprendra des lignes comme celles-ci :
       <screen>
- i   1 time     0.00002:  4835.00000
- i   1 time     1.00002: 29312.00000
- i   1 time     2.00002: 32767.00000</screen>
+ i   1 time     0.00000:     0.00118
+ i   1 time     0.50068:     0.71418
+ i   1 time     1.00136:     0.80155
+ i   1 time     1.50204:     0.89209
+ i   1 time     2.00272:     0.89209
+ i   1 time     2.50340:     0.89209
+      </screen>
     </para>
   </refsect1>
  

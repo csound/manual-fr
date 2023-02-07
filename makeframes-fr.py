@@ -3,10 +3,11 @@
 # This python script generates the extra files needed for the frames
 # version of the manual. It generates the files:
 # indexframes.html, contents.html and title.html
-# Based on html files created by Michael Rhoades
+# Output is based on html files created by Michael Rhoades
 # Script written by Andres Cabrera June 2006
 # Licensed under the GPL licence version 3 or later
 
+from __future__ import print_function
 import sys
 from xml.dom import minidom
 
@@ -31,9 +32,9 @@ s = '''<div>
             <h1 class="title"><a id="index"></a>Le Manuel de Référence Canonique de Csound</h1>'''
 titleEnd = index.find(s) + len(s) + 1
 if (index[titleEnd:titleEnd+len(frameLink)]==frameLink):
-    print '''**************************************
+    print('''**************************************
 Warning: index.html already processed!
-**************************************'''
+**************************************''')
 
 # indexframes.html -----------------------------------------
 indexframesFile.write('''<!-- généré par makeframes.py - NE PAS EDITER MANUELLEMENT-->\n<html>\n<head>
@@ -62,7 +63,6 @@ creditsFile.write('''<?xml version="1.0" encoding="UTF-8" standalone="no"?>\n<!-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <link rel="stylesheet" href="csound.css" type="text/css" />
   </head>
   <body>\n    ''')
@@ -73,7 +73,6 @@ creditsFile.close()
 # title.html -----------------------------------------
 
 titleFile.write('''<!-- généré par makeframes.py -->\n<html>\n<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <title>Le Manuel de Référence Canonique de Csound</title>\n
     <link rel="stylesheet" href="csound.css" type="text/css" />
     <base target="rbottom">
@@ -165,7 +164,7 @@ i = 0
 while (navheader[i]!=''):
     #print navheader[i].attributes.keys()
     if (len(navheader[i].attributes.keys())!=0):
-        if (navheader[i].attributes.keys()[0]=='class'):
+        if (list(navheader[i].attributes.keys())[0]=='class'):
             #print navheader[i].attributes['class'].value
             if(navheader[i].attributes['class'].value == 'toc'):
                 break
@@ -186,24 +185,23 @@ for j in range(len(a)):
 #print overview.toxml().encode('utf-8')
 
 # Routine to make titles bigger and black, except Appendices
-            
+
 for j in range(len(sections)):
     #print "---------\n", sections[j].toxml()
     #raw_input()
-    if ((sections[j].attributes['class'].value!='section') and
-        (sections[j].attributes['class'].value!='chapter') and
-        (sections[j].attributes['class'].value!='appendix') and
-        (sections[j].attributes['class'].value!='refentrytitle') and
-        (sections[j].attributes['class'].value!='refpurpose') and
-        (sections[j].attributes['class'].value!='quote') and
+    if ((sections[j].attributes['class'].value!='section')and
+        (sections[j].attributes['class'].value!='chapter')and
+        (sections[j].attributes['class'].value!='appendix')and
+        (sections[j].attributes['class'].value!='refentrytitle')and
+        (sections[j].attributes['class'].value!='refpurpose')and
+        (sections[j].attributes['class'].value!='quote')and
         (sections[j].attributes['class'].value!='emphasis')):
-        print "--------Title:", sections[j].childNodes[1].firstChild.toxml().encode('utf-8')
+        print("--------Title:", sections[j].childNodes[1].firstChild.toxml().encode('utf-8'))
         font = minidom.Element('font')
         font.setAttribute('size','4')
         font.setAttribute('color','Black')
         font.appendChild(minidom.Element('br'))
-        print str(j) + " ; " + sections[j].attributes['class'].value
-        if (sections[j].childNodes[1].childNodes[0].toxml().encode('utf8')=='Glossaire'):
+        if (sections[j].childNodes[1].childNodes[0].toxml().encode('utf-8')=='Glossary'):
             font.appendChild(sections[j].childNodes[1].cloneNode(True))
         else:
             font.appendChild(sections[j].childNodes[1].childNodes[0].cloneNode(True))
@@ -241,9 +239,9 @@ for j in range(len(sections)):
         #font.setAttribute('color','Black')
         #font.appendChild(minidom.Element('br'))
         #if (sections[j].attributes['class'].value!='refpurpose' and
-            #sections[j].attributes['class'].value!='refentrytitle' and
-            #sections[j].attributes['class'].value!='quote' and
-            #sections[j].attributes['class'].value!='emphasis'):
+          #sections[j].attributes['class'].value!='refentrytitle' and
+          #sections[j].attributes['class'].value!='quote' and
+          #sections[j].attributes['class'].value!='emphasis'):
         if newNode != []:
             #    font.appendChild(newNode[0].cloneNode(True))
             parent.appendChild(newNode[0].cloneNode(True))
@@ -281,7 +279,7 @@ for text in unwantedtext:
         letter = minidom.parseString(string)
         text.insertBefore(minidom.Element('br'), text.firstChild) 
         text.insertBefore(letter.firstChild, text.firstChild)
-        print "unwanted2: ", text.firstChild
+        print("unwanted2: ", text.firstChild)
     #print text.toxml().encode('latin-1')
 
 
@@ -341,5 +339,3 @@ if (index[titleEnd:titleEnd+len(frameLink)]!=frameLink):
     indexFile.seek(0)
     indexFile.write(newindex)
     indexFile.close()
-
-

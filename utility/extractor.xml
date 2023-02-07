@@ -127,7 +127,24 @@ english cvs version=1.4
 
       Cela crée un nouveau fichier son extrait à partie de l'échantillon 10234 et durant 2,13 secondes.
   	</para>
-
+    <para>
+      Voici un exemple complet de l'utilitaire extractor. Il utilise le fichier
+      <ulink url="examples/extractor.csd"><citetitle>extractor.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'utilitaire extractor.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/extractor.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <note>
+      <title>NOTE</title>
+      <para>
+        Cet utilitaire avait été ajouté avant l'apparition des éditeurs de son
+        et des DAWS.
+      </para>
+    </note>
   </refsect1>
 
   <refsect1>
