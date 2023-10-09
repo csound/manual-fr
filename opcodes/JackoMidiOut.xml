@@ -88,12 +88,22 @@ authors=Francois Pinot
     <title>Exemples</title>
     <para>
       Voici un exemple de l'opcode JackoMidiOut. Il utilise le fichier
-      <ulink url="examples/jacko.csd"><citetitle>jacko.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode JackoMidiOut.</title>
+      <ulink url="examples/JackoMidiOut.csd"><citetitle>JackoMidiOut.csd</citetitle></ulink>.
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/JackoMidiOut.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
     </para>
   </refsect1>
 
   <refsect1>
     <title>Voir aussi</title>
+    <para>Plus d'information sur les codes de status MIDI :
+    <ulink url="http://www.opensound.com/pguide/midi/midi5.html">
+    <citetitle>http://www.opensound.com/pguide/midi/midi5.html</citetitle></ulink></para>
     <para>
       <link linkend="JackoInit"><citetitle>JackoInfo</citetitle></link>, 
       <link linkend="JackoInfo"><citetitle>JackoInfo</citetitle></link>, 

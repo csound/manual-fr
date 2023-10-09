@@ -28,7 +28,7 @@ authors=Francois Pinot
       <citetitle>https://github.com/csound/plugins</citetitle></ulink>
     </para>
     <para>
-      Danss l'en-tête de l'orchestre, crée une connexion audio depuis un port
+      Dans l'en-tête de l'orchestre, crée une connexion audio depuis un port
       de sortie de Jack dans cette instance de Csound vers un port d'entrée audio
       externe de Jack.
     </para>
@@ -63,7 +63,14 @@ authors=Francois Pinot
     <title>Exemples</title>
     <para>
       Voici un exemple de l'opcode JackoAudioOutConnect. Il utilise le fichier
-      <ulink url="examples/jacko.csd"><citetitle>jacko.csd</citetitle></ulink>.
+      <ulink url="examples/JackoAudioOut.csd"><citetitle>JackoAudioOut.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode JackoAudioOutConnect.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/JackoAudioOut.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
     </para>
   </refsect1>
 

@@ -64,7 +64,14 @@ authors=Francois Pinot
     <title>Exemples</title>
     <para>
       Voici un exemple de l'opcode JackoMidiOutConnect. Il utilise le fichier
-      <ulink url="examples/jacko.csd"><citetitle>jacko.csd</citetitle></ulink>.
+      <ulink url="examples/JackoNoteOut.csd"><citetitle>JackoNoteOut.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode JackoMidiOutConnect.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/JackoNoteOut.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
     </para>
   </refsect1>
 
