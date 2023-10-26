@@ -21,7 +21,7 @@ english cvs version=1.7
     (Noter que pour Csound5 ces variables d'environnement étaient
     <literal>OPCODEDIR</literal> et <literal>OPCODEDIR64</literal>).
   </para>
-  <para>Les opérateurs Python nécessitent actuellement au moins Python 2.4 que l'on peut télécharger à
+  <para>Les opérateurs Python nécessitent actuellement Python 3.x que l'on peut télécharger à
     <ulink url="http://www.python.org">www.python.org</ulink> s'il n'est pas déjà installé sur votre
     système. On peut tester s'il est installé en tapant 'python' depuis une invite de commande
     ou une fenêtre DOS.
@@ -40,14 +40,6 @@ english cvs version=1.7
 set OPCODE6DIR64=C:\Program Files\Csound\greffons64
 set PATH=%PATH%;C:\Program Files\Csound\bin</screen>
 
-  <note>
-    <title>python24.dll ou python25.dll manquante</title>
-    <para>S'il apparaît une fenêtre pop-up au sujet de la bibliothèque Python manquante (python24.dll
-      ou python25.dll) et que vous n'avez pas besoin des opérateurs python, effacez simplement
-      <filename>C:\Program Files\Csound\greffons\py.dll</filename> et
-      <filename>C:\Program Files\Csound\greffons64\py.dll</filename>, et la fenêtre pop-up au
-      sujet de la bibliothèque Python manquante ne devrait plus réapparaitre</para>
-  </note>
   <bridgehead>Unix et Linux</bridgehead>
   <para>Sur Unix et Linux, installez le programme Csound dans l'un des répertoires <filename>bin</filename>
     du système, normalement <filename>/usr/local/bin</filename>, et les bibliothèques partagées de Csound
