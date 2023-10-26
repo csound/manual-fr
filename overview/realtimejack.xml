@@ -15,7 +15,7 @@ authors=Francois Pinot
   <para><ulink url="http://jackaudio.org/faq">http://jackaudio.org/faq</ulink>
   </para>
   
-  <bridgehead>Utilisation de JACK</bridgehead>
+  <bridgehead>JACK audio</bridgehead>
   <para>
     La manière la plus simple d'utiliser le greffon JACK pour l'entrée et la
     sortie est la suivante :
@@ -118,6 +118,7 @@ csound6:output2             (playback right)</screen>
     serveur JACK.
   </para>
 
+  <bridgehead>JACK MIDI</bridgehead>
   <para>
     On peut aussi utiliser JACK pour les entrées/sorties MIDI. Pour cela, on
     indique -+rtmidi=jack. On utilise pour l'entrée -M suivi du nom du port

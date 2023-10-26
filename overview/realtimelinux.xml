@@ -18,6 +18,18 @@ english cvs version=1.11
     une interface aux pilotes ALSA, tout comme le fait JACK, mais d'une
     manière fondamentalement différente.
   </para>
+    
+  <bridgehead>Temps-partagé</bridgehead>
+    <para>Si vous avez la possibilité d'exécuter Csound en tant qu'utilisateur root,
+      l'option "--sched" permet d'améliorer spectaculairement les performances en
+      temps réel
+      avec ALSA, cependant vous pouvez bloquer le système si vous faites
+      quelque chose de stupide. N'UTILISEZ PAS "--sched" si vous choisissez JACK
+      pour la sortie audio. JACK contrôle le temps-partagé pour les applications audio
+      qui l'utilisent, et il essaie également de fonctionner avec la priorité
+      maximale. Si l'option "--sched" est utilisée, Csound et JACK vont entrer
+      en compétition au lieu de coopérer, ce qui aura pour résultat de piètres
+      performances. </para>
   
   <bridgehead>Utilisation d'ALSA</bridgehead>
   <para>
@@ -175,6 +187,31 @@ pcm.!default {
     </para>
     <screen>
           -+rtaudio=alsa -i adc:hw:0,0 -o dac:hw:1,1</screen>
+
+    <bridgehead>Utilisation de pulseaudio</bridgehead>
+    <para>Le support de <ulink url="http://www.pulseaudio.org/">Pulseaudio</ulink> a été
+      ajouté dans Csound 5.09. Vous pouvez spécifier les réglages suivants :</para>
+    <orderedlist>
+      <listitem><simpara>Noms de sortie : il est possible d'utiliser un nombre à la place
+      du nom complet, ainsi -odac:1  sélectionne votre second périphérique (le compte
+      commence à 0).</simpara>
+      </listitem>
+      <listitem><simpara>Nom du serveur : il est possible de se connecter à un serveur
+      spécifique en utilisant -+server=&lt;server_string&gt; où server_string est le
+      nom d'un serveur ou une chaîne plus complexe de sélection de serveur (voir
+      <ulink url="http://www.pulseaudio.org/">pulseaudio.org</ulink> sur les chaînes de
+      serveur). Ceci est transparent sur un réseau et permet les connexions à des
+      machines distantes.</simpara>
+    </listitem>
+      <listitem><simpara>Noms de flot : il est possible d'étiqueter les flots générés par
+      csound, en utilisant
+          -+output_stream=&lt;stream-name&gt;
+            et
+          -+input_stream=&lt;stream-name&gt;</simpara>
+      </listitem>
+    </orderedlist>
+    <para>Voici un exemple de ligne de commande :</para>
+    <literallayout>csound -odac:1 examples/trapped.csd -+rtaudio=pulse -+server=unix:/tmp/pulse-victor/native -+output_stream=trapped</literallayout>
 
     <bridgehead>MIDI</bridgehead>
     <para>2 pilotes Midi sont disponibles :
@@ -344,42 +381,5 @@ ALSASEQ: created input port 'Csound' 130:0
 ALSASEQ: connected from 20:0
 .............. 
     </literallayout>
-    
-  <bridgehead>Temps-partagé</bridgehead>
-    <para>Si vous avez la possibilité d'exécuter Csound en tant qu'utilisateur root,
-      l'option "--sched" permet d'améliorer spectaculairement les performances en
-      temps réel
-       avec ALSA, cependant vous pouvez bloquer le système si vous faites
-      quelque chose de stupide. N'UTILISEZ PAS "--sched" si vous choisissez JACK
-      pour la sortie audio. JACK contrôle le temps-partagé pour les applications audio
-      qui l'utilisent, et il essaie également de fonctionner avec la priorité
-      maximale. Si l'option "--sched" est utilisée, Csound et JACK vont entrer
-      en compétition au lieu de coopérer, ce qui aura pour résultat de piètres
-      performances. </para>
-
-  <bridgehead>Utilisation de pulseaudio</bridgehead>
-  <para>Le support de <ulink url="http://www.pulseaudio.org/">Pulseaudio</ulink> a été
-    ajouté dans Csound 5.09. Vous pouvez spécifier les réglages suivants :</para>
-  <orderedlist>
-    <listitem><simpara>Noms de sortie : il est possible d'utiliser un nombre à la place
-    du nom complet, ainsi -odac:1  sélectionne votre second périphérique (le compte
-    commence à 0).</simpara>
-    </listitem>
-    <listitem><simpara>Nom du serveur : il est possible de se connecter à un serveur
-    spécifique en utilisant -+server=&lt;server_string&gt; où server_string est le
-    nom d'un serveur ou une chaîne plus complexe de sélection de serveur (voir
-    <ulink url="http://www.pulseaudio.org/">pulseaudio.org</ulink> sur les chaînes de
-    serveur). Ceci est transparent sur un réseau et permet les connexions à des
-    machines distantes.</simpara>
-  </listitem>
-    <listitem><simpara>Noms de flot : il est possible d'étiqueter les flots générés par
-    csound, en utilisant
-        -+output_stream=&lt;stream-name&gt;
-          et
-        -+input_stream=&lt;stream-name&gt;</simpara>
-    </listitem>
-  </orderedlist>
-  <para>Voici un exemple de ligne de commande :</para>
-  <literallayout>csound -odac:1 examples/trapped.csd -+rtaudio=pulse -+server=unix:/tmp/pulse-victor/native -+output_stream=trapped</literallayout>
 </section>
 

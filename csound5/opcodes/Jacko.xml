@@ -30,7 +30,10 @@ english cvs version=1.3
     Jack, comme Aeolus ou Pianoteq, pour restituer les pièces de Csound soit
     plus rapides, soit, ce qui est plus important, moins rapides que le temps réel.
     C'est très utile pour restituer des pièces complexes sans coupure au moyen
-    d'instruments comme Aeolus, qui peut n'être accessible qu'à travers Jack.
+    d'instruments comme Aeolus, qui peut n'être accessible qu'à travers Jack
+    (voir l'exemple ci-dessous).
+    Un second example montre des connexions MIDI vers des synthétiseurs externes
+    et une connexion MIDI depuis un clavier externe.
   </para>
 
   <para>
@@ -101,6 +104,14 @@ english cvs version=1.3
       <example>
         <title>Exemple des opcodes Jacko.</title>
         <xi:include href="examples-xml/jacko.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Voici un second exemple des opcodes Jacko. Il utilise le fichier
+      <ulink url="examples/jacko_extSynths.csd"><citetitle>jacko_extSynths.csd</citetitle></ulink>.
+      <example>
+        <title>Un autre exemple des opcodes Jacko.</title>
+        <xi:include href="examples-xml/jacko_extSynths.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
     </para>
   </refsect1>
