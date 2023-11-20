@@ -19,17 +19,15 @@ english cvs version=1.11
     manière fondamentalement différente.
   </para>
     
-  <bridgehead>Temps-partagé</bridgehead>
-    <para>Si vous avez la possibilité d'exécuter Csound en tant qu'utilisateur root,
-      l'option "--sched" permet d'améliorer spectaculairement les performances en
-      temps réel
+  <note>Si vous avez la possibilité d'exécuter Csound en tant qu'utilisateur root,
+      l'option "--sched" permet d'améliorer spectaculairement les performances en temps réel
       avec ALSA, cependant vous pouvez bloquer le système si vous faites
       quelque chose de stupide. N'UTILISEZ PAS "--sched" si vous choisissez JACK
       pour la sortie audio. JACK contrôle le temps-partagé pour les applications audio
       qui l'utilisent, et il essaie également de fonctionner avec la priorité
       maximale. Si l'option "--sched" est utilisée, Csound et JACK vont entrer
       en compétition au lieu de coopérer, ce qui aura pour résultat de piètres
-      performances. </para>
+      performances. </note>
   
   <bridgehead>Utilisation d'ALSA</bridgehead>
   <para>
@@ -214,18 +212,20 @@ pcm.!default {
     <literallayout>csound -odac:1 examples/trapped.csd -+rtaudio=pulse -+server=unix:/tmp/pulse-victor/native -+output_stream=trapped</literallayout>
 
     <bridgehead>MIDI</bridgehead>
-    <para>2 pilotes Midi sont disponibles :
-      <itemizedlist>
-        <listitem>
-          <simpara>Midi brut.</simpara>
-        </listitem>
-      </itemizedlist>
-      <itemizedlist>
-        <listitem>
-          <simpara>Séquenceur Alsa (depuis la version 5.18).</simpara>
-        </listitem>
-      </itemizedlist>
+    <para>3 pilotes Midi sont disponibles : PortMidi, Raw Midi et le séquenceur
+      Alsa (depuis la version 5.18).
     </para>
+    <para>
+      Csound utilise PortMidi comme module MIDI par défaut. Avec PortMIDI,
+      DEVICE est soit un nombre pour un port d'entrée unique, 'a' pour une
+      écoute sur tous les ports ou 'm' pour affecter les ports à des canaux
+      MIDI supérieurs à 16. Dans ce cas, device 0 utilise 1-16, device 1
+      utilise 17-32, ... device N utilise (N+1)*channel. Les options 'a' et 'm'
+      conviennent aussi lorsqu'il n'y a pas de modules car elles ne génèrent
+      pas d'erreur.
+    </para>
+    <screen>
+          -+rtmidi=PortMIDI -Ma -Q 1</screen>
     
     <bridgehead>Entrée MIDI Input (Pilote Midi brut)</bridgehead>
     <para>Afin de permettre à votre orchestre de recevoir une entrée MIDI vous

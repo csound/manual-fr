@@ -10,11 +10,22 @@ authors=Francois Pinot
 
   <para>
     On peut utiliser sur plusieurs systèmes le kit de connexion de JACK pour
-    les entrées/sorties audio ainsi que MIDI. Pour plus de détails, voir
+    les entrées/sorties audio ainsi que MIDI. JACK est disponible sous Linux,
+    Mac et Windows. Pour plus de détails, voir
   </para>
   <para><ulink url="http://jackaudio.org/faq">http://jackaudio.org/faq</ulink>
   </para>
   
+  <bridgehead>Temps-partagé</bridgehead>
+  <para>
+    NE PAS utiliser "--sched" si l'on utilise JACK pour les sorties audio.
+    JACK contrôle le temps-partagé pour les applications audio qui
+    lui sont connectées, et il essaie de s'exécuter avec la plus grande
+    priorité possible. Si le drapeau "--sched" est utilisé, Csound et JACK vont
+    entrer en compétition au lieu de coopérer, ce qui donnera des performances
+    extrêmement limitées.
+  </para>
+
   <bridgehead>JACK audio</bridgehead>
   <para>
     La manière la plus simple d'utiliser le greffon JACK pour l'entrée et la
@@ -123,9 +134,18 @@ csound6:output2             (playback right)</screen>
     On peut aussi utiliser JACK pour les entrées/sorties MIDI. Pour cela, on
     indique -+rtmidi=jack. On utilise pour l'entrée -M suivi du nom du port
     MIDI de JACK requis pour se connecter directement à un flot d'entrée. Pour
-    la sortie on utilise -Q suivi du nom du port JACK. Les options
+    la sortie on utilise -Q suivi du nom du port JACK.
+  </para>
+  <para>
+    Par exemple
+    <screen>         
+      -+rtmidi=jack -Q UM-3:midi/capture_2</screen>
+    établit une connexion dupuis le port MIDI de Csound vers le second port
+    MIDI d'une interface MIDI.
+  </para>
+  <para>
+    Les options
     -+jack_midi_inportname= et -+jack_midi_outportname= peuvent être utilisées
     pour renommer les ports d'E/S MIDI de Csound.
   </para>   
 </section>
-          

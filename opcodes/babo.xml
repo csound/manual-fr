@@ -36,11 +36,20 @@ english cvs version=1.12
       caractéristiques de la réponse, la position de l'auditeur dans le résonateur
       et la position de la source sonore.
     </para>
+
+    <para>
+      <emphasis>babo2</emphasis> a été ajouté pour régler le problème du
+      paramètre de son direct (voir les paramètres pour expert), qui n'est
+      pas opérationnel dans l'opcode original.
+    </para>
   </refsect1>
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>a1, a2 <command>babo</command> asig, ksrcx, ksrcy, ksrcz, irx, iry, irz [, idiff] [, ifno]</synopsis>
+    <synopsis>a1, a2 <command>babo</command> asig, ksrcx, ksrcy, ksrcz, \
+      irx, iry, irz [, idiff] [, ifno]</synopsis>
+    <synopsis>a1, a2 <command>babo2</command> asig, ksrcx, ksrcy, ksrcz, \
+      irx, iry, irz [, idiff] [, ifno]</synopsis>
   </refsect1>
  
   <refsect1>
@@ -66,7 +75,7 @@ english cvs version=1.12
         <listitem><para><emphasis>hydecay</emphasis> -- décroissance des hautes fréquences du résonateur (0.1 par défaut)</para></listitem>
         <listitem><para><emphasis>rcvx, rcvy, rcvz</emphasis> -- coordonnées de la position de l'auditeur (en mètres ;  0,0,0 est le centre du résonateur)</para></listitem>
         <listitem><para><emphasis>rdistance</emphasis> -- la distance en mètres entre deux récepteurs (vos oreilles, par exemple - 0.3 par défaut)</para></listitem>
-        <listitem><para><emphasis>direct</emphasis> -- l'atténuation du signal direct (0-1, 0.5 par défaut)</para></listitem>
+        <listitem><para><emphasis>direct</emphasis> -- l'atténuation du signal direct (0-1, 0.5 par défaut). N'est pas opérationnel dans babo, mais fonctionne dans babo2.</para></listitem>
         <listitem><para><emphasis>early_diff</emphasis> -- le coefficient d'atténuation des premières réflexions (0-1, 0.8 par défaut)</para></listitem>
       </itemizedlist>
     </para>

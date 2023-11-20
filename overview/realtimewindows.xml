@@ -65,9 +65,20 @@ english cvs version=1.4
     le drapeau (par exemple -M2), et aussi trouver les p&eacute;riph&eacute;riques
     disponibles en donnant un num&eacute;ro trop grand.
   </para>
+
   <para>
-    Csound utilise par d&eacute;faut le module MIDI PortMidi, mais il y a aussi
-    un module natif winmme, que l'on peut activer avec l'option :
+    Csound utilise par défaut le module PortMidi. Avec PortMIDI, DEVICE est soit
+    un nombre pour un port d'entrée unique, 'a' pour une écoute sur tous les
+    ports d'entrée ou 'm' pour affecter les ports à des canaux MIDI supérieurs
+    à 16. Dans ce cas, device 0 utilise 1-16, device 1 utilise 17-32,
+    ... device N utilise (N+1)*channel. Les options 'a' et 'm' conviennent
+    aussi lorsqu'il n'y a pas de modules car elles ne génèrent pas d'erreur.
+  </para>
+    <screen>
+          -+rtmidi=PortMIDI -Ma -Q 1</screen>
+    
+  <para>
+    Il y a aussi un module natif winmme, que l'on peut activer avec l'option :
   </para>
   <literallayout>
     -+rtmidi=winmme

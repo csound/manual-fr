@@ -23,6 +23,12 @@ english cvs version=1.3
     Jacko sont une facilité indépendante qui offre une plus grande flexibilité
     dans le routage du signal.
   </para>
+  
+  <para>
+    C'est Jack qui appelle csoundPerformKsmps. La vitesse du taux-k n'est pas
+    dictée par Csound mais par la configuration du démon Jack : --period.
+    Csound doit suivre cela.
+  </para>
 
   <para>
     De plus, les opcodes Jacko peuvent travailler avec le système Jack en mode

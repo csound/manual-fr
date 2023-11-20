@@ -77,7 +77,12 @@ authors=Francois Pinot
       La granulatité temporelle est celle de la période-k de Csound.
     </para>
   </refsect1>
-  
+
+  <note>
+    Fonctionne à partir d'un démon Jack déjà actif. Ne pas utiliser l'option
+    -+rtaudio=jack dans CsOptions.
+  </note>
+
   <refsect1>
     <title>Exemples</title>
     <para>

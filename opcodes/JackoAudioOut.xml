@@ -65,7 +65,12 @@ authors=Francois Pinot
       vers le même port de Jack sont additionnés avant l'envoi.
     </para>    
   </refsect1>
-  
+
+  <note>
+    Fonctionne à partir d'un démon Jack déjà actif. Ne pas utiliser l'option
+    -+rtaudio=jack dans CsOptions.
+  </note>
+
   <refsect1>
     <title>Exemples</title>
     <para>

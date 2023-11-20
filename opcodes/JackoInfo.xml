@@ -46,7 +46,12 @@ authors=Francois Pinot
       par exemple une fois avant et une fois après la création de ports de Jack.
     </para>    
   </refsect1>
-  
+
+  <note>
+    Fonctionne à partir d'un démon Jack déjà actif. Ne pas utiliser l'option
+    -+rtaudio=jack dans CsOptions.
+  </note>
+
   <refsect1>
     <title>Exemples</title>
     <para>

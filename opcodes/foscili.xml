@@ -30,14 +30,14 @@ english cvs version=1.15
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>ares <command>foscili</command> xamp, kcps, xcar, xmod, kndx, ifn [, iphs]</synopsis>
+    <synopsis>ares <command>foscili</command> xamp, kcps, xcar, xmod, kndx[, ifn, iphs]</synopsis>
   </refsect1>
  
   <refsect1>
     <title>Initialisation</title>
     <para>
-      <emphasis>ifn</emphasis> -- numéro de la table de fonction. Nécessite un point de garde de lecture
-      cyclique.
+      <emphasis>ifn</emphasis> (faculatif) -- numéro de la table de fonction.
+      Nécessite un point de garde de lecture cyclique. Onde sinus par défaut.
     </para>
 
     <para>
@@ -47,7 +47,7 @@ english cvs version=1.15
     </para>
   </refsect1>
  
-  <refsect1>
+  <refsect1>                                                      
     <title>Exécution</title>
     <para>
       <emphasis>xamp</emphasis> -- l'amplitude du signal de sortie.
