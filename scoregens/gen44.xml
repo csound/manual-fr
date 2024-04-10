@@ -49,9 +49,11 @@ authors=Francois Pinot
       </quote>
       ce qui crée une matrice carrée de la taille indiquée. Suivent ensuite des
       lignes de deux ou trois nombres, les deux premiers indiquant une
-      connexion du premier au second et le troisième étant un poids. Si le
+      connexion du premier au second. Le troisième nombre est un poids ; un poids
+      de 2 signifie que l'on a deux liens si bien que plus d'information est
+      distribuée, tandis qu'un poids nul signifie pas de lien. Si le
       troisième nombre est omis, on lui affecte la valeur 1. La liste se termine
-      par une ligne
+      par la ligne
       <quote>
       &lt;/MATRIX&gt;
     </quote>

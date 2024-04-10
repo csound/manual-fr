@@ -58,7 +58,8 @@ english cvs version=1.4
   </mediaobject>
   
   <para>
-    Tous les paramètres - masse, amortissement, attraction terrestre et tension
+    Tous les paramètres - masse (dans le dessin ci-dessus : M), amortissement (D),
+    attraction terrestre (C) et tension (T)
     du ressort peuvent varier le long de la "corde". Le modèle est manipulé en
     poussant et en tirant les différentes masses (les échantillons individuels
     dans une table d'onde très courte) et en manipulant les paramètres. Ce qui
@@ -77,7 +78,8 @@ english cvs version=1.4
     indépendamment de cela, on balaye la table d'onde à la fréquence de la
     hauteur. De plus, la table a sa propre dynamique, il n'y a pas de
     discontinuités car le modèle est implanté comme une chaîne circulaire, ce
-    qui donne un oscillateur bouclant sur 128 points avec une boucle évoluant
+    qui donne un oscillateur bouclant (par exemple sur 128 points) avec une
+    boucle évoluant
     constamment. C'est difficile à croire mais vrai, qu'il en résulte un
     échantillon court qui est animé et harmoniquement riche grâce à la nature
     interactive des éléments du système sous-jacent - la mécanique du modèle.
@@ -98,8 +100,9 @@ english cvs version=1.4
   </para>
   
   <para>
-    L'opcode <link linkend="scanu"><citetitle>scanu</citetitle></link> définit
-    le réseau de masses/ressorts et le met en mouvement. L'opcode
+    Les opcodes <link linkend="scanu"><citetitle>scanu</citetitle></link> /
+    <link linkend="scanu2"><citetitle>scanu2</citetitle></link> définissent
+    le réseau de masses/ressorts et le mettent en mouvement. L'opcode
     <link linkend="scans"><citetitle>scans</citetitle></link> suit un
     chemin prédéfini (une trajectoire) à travers le réseau et donne en sortie
     la forme d'onde détectée. Plusieurs instances de <emphasis>scans</emphasis>
@@ -252,10 +255,10 @@ english cvs version=1.4
   </para>
 
   <para>
-    Le supplément de ce manuel contient un tutoriel sur la synthèse par balayage.
-    Le tutoriel, des exemples, et d'autres informations sur la synthèse par
+    Un tutoriel, des exemples, et d'autres informations sur la synthèse par
     balayage sont disponibles sur la page Scanned Synthesis à
-    <ulink url="http://www.csounds.com/scanned/">csounds.com</ulink>.
+    <ulink url="http://www.csounds.com/scanned/toot/index.html">
+    <citetitle>cSounds.com</citetitle></ulink>.
   </para>
 
   <para>
