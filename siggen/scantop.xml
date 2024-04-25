@@ -124,9 +124,14 @@ english cvs version=1.4
   </para>
 
   <para>
-    Pour produire les matrices, le format du table est direct. Par exemple,
-    pour 4 masses nous avons la grille suivante qui décrit les connexions
-    possibles :
+    Deux formats différents de matrice sont disponibles : matrice binaire et
+    matrice texte. Il est recommandé d'ajouter au nom d'une matrice binaire
+    le suffixe .matrxB et au nom d'une matrice texte le suffixe .matrxT.
+    Pour produire les matrices, le format de la table est direct.
+  </para>
+  <para>
+    Par exemple, pour une matrice binaire à 4 masses nous avons la grille
+    suivante qui décrit les connexions possibles :
   </para>
 
   <informaltable frame="all" colsep="0">
