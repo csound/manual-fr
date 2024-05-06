@@ -16,6 +16,7 @@ english cvs version=1.8
       <listitem><para>Sortie synchrone :
         <link linkend="out"><citetitle>out</citetitle></link>,
         <link linkend="out32"><citetitle>out32</citetitle></link>,
+        <link linkend="outall"><citetitle>outall</citetitle></link>,
         <link linkend="outc"><citetitle>outc</citetitle></link>,
         <link linkend="outch"><citetitle>outch</citetitle></link>,
         <link linkend="outh"><citetitle>outh</citetitle></link>,
@@ -30,25 +31,30 @@ english cvs version=1.8
         <link linkend="outs1"><citetitle>outs1</citetitle></link>,
         <link linkend="outs2"><citetitle>outs2</citetitle></link>,
         <link linkend="outx"><citetitle>outx</citetitle></link> et
-        <link linkend="hdf5write"><citetitle>hdf5write</citetitle></link></para></listitem>
+        <link linkend="hdf5write"><citetitle>hdf5write</citetitle></link>
+      </para></listitem>
       <listitem><para>Flux de sortie :
         <link linkend="soundout"><citetitle>soundout</citetitle></link> et
-        <link linkend="soundouts"><citetitle>soundouts</citetitle></link></para></listitem>
+        <link linkend="soundouts"><citetitle>soundouts</citetitle></link>
+      </para></listitem>
       <listitem><para>Canal de sortie défini par l'utilisateur :
-        <link linkend="outvalue"><citetitle>outvalue</citetitle></link></para></listitem>
+        <link linkend="outvalue"><citetitle>outvalue</citetitle></link>
+      </para></listitem>
       <listitem><para>Sortie directe depuis zak :
-        <link linkend="outz"><citetitle>outz</citetitle></link></para></listitem>
-      <listitem><para>Sortie WebSocket :
-        <link linkend="websocket"><citetitle>websocket</citetitle></link></para></listitem>
+        <link linkend="outz"><citetitle>outz</citetitle></link>
+      </para></listitem>
+      <listitem><para>Sortie websocket :
+        <link linkend="websocket"><citetitle>websocket</citetitle></link>
+      </para></listitem>      
     </itemizedlist>
   </para>
   <para>
-    L'opcode  <link linkend="monitor"><citetitle>monitor</citetitle></link> peut être utilisé pour
-    surveiller la sortie complète de csound (trame de sortie spout).
+    L'opcode <link linkend="monitor"><citetitle>monitor</citetitle></link> peut
+    être utilisé pour surveiller la sortie complète de csound (trame de sortie
+    spout).
   </para>
   <para>
-    Voir la section <link linkend="SoftwareBus"><citetitle>Bus Logiciel</citetitle></link> pour les entrées
-    et les sorties au moyen de l'API.
+    Voir la section <link linkend="SoftwareBus"><citetitle>Bus Logiciel</citetitle></link>
+    pour les entrées et les sorties au moyen de l'API.
   </para>
-
 </section>
