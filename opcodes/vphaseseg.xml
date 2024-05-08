@@ -17,14 +17,14 @@ english cvs version=
   <refnamediv>
     <refname>vphaseseg</refname>
     <refpurpose>
-      SHV (Synthèse Hyper Vectorielle) à une dimension.
+      SHV (synthèse hyper vectorielle) à une dimension.
     </refpurpose>
   </refnamediv>
 
   <refsect1>
     <title>Description</title>
     <para>
-      <emphasis>vphaseseg</emphasis> permet une SHV (Synthèse Hyper Vectorielle)
+      <emphasis>vphaseseg</emphasis> permet une SHV (synthèse hyper vectorielle)
       à une dimension.
     </para>
   </refsect1>
@@ -72,7 +72,7 @@ english cvs version=
     </para>
 
     <para>
-      La Synthèse Hyper Vectorielle utilise deux sortes d'espaces. Le premier
+      La synthèse hyper vectorielle utilise deux sortes d'espaces. Le premier
       espace est l'espace à N dimensions dans lequel le chemin est défini, cet
       espace étant appelé l'espace des paramètres variants dans le temps (ou
       ESPACE A). Le chemin appartenant à cet espace est parcouru en déplaçant un
@@ -112,12 +112,11 @@ english cvs version=
       </example>
     </para>
   </refsect1>-->
+
   <refsect1>
     <title>Voir aussi</title>
     <para>
-      <link linkend="hvs1"><citetitle>hvs1</citetitle></link>,
-      <link linkend="hvs2"><citetitle>hvs2</citetitle></link>,
-      <link linkend="hvs3"><citetitle>hvs3</citetitle></link>
+      <link linkend="SiggenHvs"><citetitle>Synthèse hyper vectorielle</citetitle></link>
     </para>
   </refsect1>
 

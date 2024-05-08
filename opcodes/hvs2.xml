@@ -17,7 +17,7 @@ english cvs version=
   <refnamediv>
     <refname>hvs2</refname>
     <refpurpose>
-      Synthèse Hyper Vectorielle (SHV) à deux dimensions contrôlée par des variables
+      Synthèse hyper vectorielle (SHV) à deux dimensions contrôlée par des variables
       de taux-k mises à jour en externe.
     </refpurpose>
   </refnamediv>
@@ -25,7 +25,7 @@ english cvs version=
   <refsect1>
     <title>Description</title>
     <para>
-      <emphasis>hvs2</emphasis> permet la synthèse Hyper Vectorielle (SHV) à deux
+      <emphasis>hvs2</emphasis> permet la synthèse hyper vectorielle (SHV) à deux
       dimensions contrôlée par des variables de taux-k mises à jour en externe.
     </para>
   </refsect1>
@@ -93,7 +93,7 @@ english cvs version=
       entre 0 et 1.
     </para>
     <para>
-      La Synthèse Hyper Vectorielle est une technique qui permet de contrôler un
+      La synthèse hyper vectorielle est une technique qui permet de contrôler un
       ensemble immense de paramètres en utilisant une approche simple et globale.
       Les concepts clé de la SHV sont :
     </para>
@@ -274,12 +274,11 @@ english cvs version=
       </example>
     </para>
   </refsect1>
+
   <refsect1>
     <title>Voir aussi</title>
     <para>
-      <link linkend="hvs1"><citetitle>hvs1</citetitle></link>,
-      <link linkend="hvs3"><citetitle>hvs3</citetitle></link>,
-      <link linkend="vphaseseg"><citetitle>vphaseseg</citetitle></link>
+      <link linkend="SiggenHvs"><citetitle>Synthèse hyper vectorielle</citetitle></link>
     </para>
   </refsect1>
 
