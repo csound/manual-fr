@@ -191,8 +191,20 @@ authors=Francois Pinot
   <refsect1>
     <title>Voir aussi</title>
     <para>
-      <link linkend="scanu"><citetitle>scanu</citetitle></link>
+      <link linkend="SiggenScanTop"><citetitle>Synthèse par balayage</citetitle></link>
     </para>
+    <para>
+      Le fichier de la matrice <quote>string-128.matrix</quote>, ainsi que d'autres
+      matrices, sont aussi disponibles dans un
+      <ulink url="http://www.csounds.com/scanned/zip/scanmatrices.zip"><citetitle>fichier zippé</citetitle></ulink>
+      depuis la
+      <ulink url="http://www.csounds.com/scanned/"><citetitle>page Scanned Synthesis</citetitle></ulink>
+      à cSounds.com.
+    </para>
+    <para>Plus d'information sur cet opcode :
+    <ulink url="http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html">
+    <citetitle>http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html</citetitle>
+    </ulink>, écrit par Steven Yi.</para>
   </refsect1>
 
   <refsect1>
