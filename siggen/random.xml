@@ -88,7 +88,8 @@ english cvs version=1.6
     <link linkend="randi"><citetitle>randi</citetitle></link>,
     <link linkend="rnd"><citetitle>rnd(x)</citetitle></link> et
     <link linkend="birnd"><citetitle>birnd(x)</citetitle></link> ne sont pas affectés par
-    <emphasis>seed</emphasis>.
+    <emphasis>seed</emphasis>. Il faut utiliser
+    <link linkend="rndseed"><citetitle>rndseed</citetitle></link> pour ceux-là.	
   </para>
 
   <para>Voir aussi les fonctions qui génèrent des nombres aléatoires dans la section
