@@ -19,6 +19,8 @@ english cvs version=1.6
       </listitem>
       <listitem><para><link linkend="cauchy"><citetitle>cauchy</citetitle></link></para>
       </listitem>
+      <listitem><para><link linkend="cauchyi"><citetitle>cauchyi</citetitle></link></para>
+      </listitem>
       <listitem><para><link linkend="cuserrnd"><citetitle>cuserrnd</citetitle></link></para>
       </listitem>
       <listitem><para><link linkend="duserrnd"><citetitle>duserrnd</citetitle></link></para>
@@ -29,11 +31,19 @@ english cvs version=1.6
       </listitem>
       <listitem><para><link linkend="exprand"><citetitle>exprand</citetitle></link></para>
       </listitem>
+      <listitem><para><link linkend="exprandi"><citetitle>exprandi</citetitle></link></para>
+      </listitem>
       <listitem><para><link linkend="fractalnoise"><citetitle>fractalnoise</citetitle></link></para>
       </listitem>
       <listitem><para><link linkend="gauss"><citetitle>gauss</citetitle></link></para>
       </listitem>
       <listitem><para><link linkend="gausstrig"><citetitle>gausstrig</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="jitter"><citetitle>jitter</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="jitter2"><citetitle>jitter2</citetitle></link></para>
+      </listitem>
+      <listitem><para><link linkend="lfsr"><citetitle>lfsr</citetitle></link></para>
       </listitem>
       <listitem><para><link linkend="linrand"><citetitle>linrand</citetitle></link></para>
       </listitem>
@@ -61,21 +71,17 @@ english cvs version=1.6
       </listitem>
       <listitem><para><link linkend="randomi"><citetitle>randomi</citetitle></link></para>
       </listitem>
+      <listitem><para><link linkend="trandom"><citetitle>trandom</citetitle></link></para>
+      </listitem>
       <listitem><para><link linkend="trirand"><citetitle>trirand</citetitle></link></para>
       </listitem>
       <listitem><para><link linkend="unirand"><citetitle>unirand</citetitle></link></para>
       </listitem>
       <listitem><para><link linkend="urd"><citetitle>urd</citetitle></link></para>
       </listitem>
+      <listitem><para><link linkend="urandom"><citetitle>urandom</citetitle></link></para>
+      </listitem>
       <listitem><para><link linkend="weibull"><citetitle>weibull</citetitle></link></para>
-      </listitem>
-      <listitem><para><link linkend="jitter"><citetitle>jitter</citetitle></link></para>
-      </listitem>
-      <listitem><para><link linkend="jitter2"><citetitle>jitter2</citetitle></link></para>
-      </listitem>
-      <listitem><para><link linkend="trandom"><citetitle>trandom</citetitle></link></para>
-      </listitem>
-      <listitem><para><link linkend="lfsr"><citetitle>lfsr</citetitle></link></para>
       </listitem>
     </itemizedlist>
   </para>
@@ -83,6 +89,11 @@ english cvs version=1.6
 	  Voir <link linkend="seed"><citetitle>seed</citetitle></link> qui fixe la valeur de la racine globale
     pour tous les générateurs de bruit de classe x, ainsi que d'autres opcodes qui utilisent un appel
     de fonction aléatoire comme <link linkend="grain"><citetitle>grain</citetitle></link>.
+	Et <link linkend="getseed"><citetitle>getseed</citetitle></link> qui retourne
+	la valeur de la racine globale utilisée par tous les générateurs de bruit de
+	classe x.
+  </para>
+  <para>
     <link linkend="rand"><citetitle>rand</citetitle></link>,
     <link linkend="randh"><citetitle>randh</citetitle></link>,
     <link linkend="randi"><citetitle>randi</citetitle></link>,

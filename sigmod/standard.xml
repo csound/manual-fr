@@ -13,6 +13,7 @@ english cvs version=1.10
     <title>Filtres passe-bas à résonance</title>
     <itemizedlist>
       <listitem><para><link linkend="areson"><citetitle>areson</citetitle></link></para></listitem>
+      <listitem><para><link linkend="bob"><citetitle>bob</citetitle></link></para></listitem>
       <listitem><para><link linkend="bqrez"><citetitle>bqrez</citetitle></link></para></listitem>
       <listitem><para><link linkend="lowpass2"><citetitle>lowpass2</citetitle></link></para></listitem>
       <listitem><para><link linkend="lowres"><citetitle>lowres</citetitle></link></para></listitem>
@@ -72,6 +73,10 @@ english cvs version=1.10
       <listitem><para>Filtres généraux :
         <link linkend="clfilt"><citetitle>clfilt</citetitle></link>.
       </para></listitem>
+      <listitem><para>Filtres passe-bas RIF variants :
+        <link linkend="median"><citetitle>median</citetitle></link>,
+        <link linkend="mediank"><citetitle>mediank</citetitle></link>
+      </para></listitem>
     </itemizedlist>
   </simplesect>
   <simplesect>
@@ -92,13 +97,13 @@ english cvs version=1.10
     <itemizedlist>
       <listitem><para><link linkend="aresonk"><citetitle>aresonk</citetitle></link></para></listitem>
       <listitem><para><link linkend="atonek"><citetitle>atonek</citetitle></link></para></listitem>
+      <listitem><para><link linkend="lag"><citetitle>lag</citetitle></link></para></listitem>
+      <listitem><para><link linkend="lagud"><citetitle>lagud</citetitle></link></para></listitem>
       <listitem><para><link linkend="lineto"><citetitle>lineto</citetitle></link></para></listitem>
       <listitem><para><link linkend="port"><citetitle>port</citetitle></link></para></listitem>
       <listitem><para><link linkend="portk"><citetitle>portk</citetitle></link></para></listitem>
       <listitem><para><link linkend="resonk"><citetitle>resonk</citetitle></link></para></listitem>
       <listitem><para><link linkend="resonxk"><citetitle>resonxk</citetitle></link></para></listitem>
-      <listitem><para><link linkend="sc_lag"><citetitle>sc_lag</citetitle></link></para></listitem>
-      <listitem><para><link linkend="sc_lagud"><citetitle>sc_lagud</citetitle></link></para></listitem>
       <listitem><para><link linkend="tlineto"><citetitle>tlineto</citetitle></link></para></listitem>
       <listitem><para><link linkend="tonek"><citetitle>tonek</citetitle></link></para></listitem>
     </itemizedlist>

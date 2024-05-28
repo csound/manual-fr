@@ -23,4 +23,20 @@ english cvs version=1.2
   <para>On peut créer des fichiers d'analyse LPC au moyen de l'utilitaire
   <link linkend="lpanal"><citetitle>LPANAL</citetitle></link>.</para>
 
+  <simplesect>
+    <title>Codage par prédiction linéaire en flux (SLPC)</title>
+    <para>
+      Il y a un plusieurs opcodes pour générer et traiter des flux d'analyse et
+      de resynthèse par prédiction linéaire :  </para>
+    <itemizedlist>
+      <listitem><para><link linkend="allpole"><citetitle>allpole</citetitle></link></para></listitem>
+      <listitem><para><link linkend="apoleparams"><citetitle>apoleparams</citetitle></link></para></listitem>
+      <listitem><para><link linkend="lpcfilter"><citetitle>lpcfilter</citetitle></link></para></listitem>
+      <listitem><para><link linkend="lpcanal"><citetitle>lpcanal</citetitle></link></para></listitem>
+      <listitem><para><link linkend="pvscfs"><citetitle>pvscfs</citetitle></link></para></listitem>
+      <listitem><para><link linkend="pvslpc"><citetitle>pvslpc</citetitle></link></para></listitem>
+      <listitem><para><link linkend="resonbnk"><citetitle>resonbnk</citetitle></link></para></listitem>
+     </itemizedlist>   
+  </simplesect>
+
 </section>

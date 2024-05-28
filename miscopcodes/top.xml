@@ -11,6 +11,16 @@ english cvs version=1.2
   <title>Opcodes divers</title>
   <para>Voici une liste d'opcodes qui ne rentrent dans aucune catégorie :
     <itemizedlist>
+      <listitem><link linkend="directory"><citetitle>directory</citetitle></link> -
+      lit un répertoire et envoie la liste des noms de fichiers dans un 
+      tableau de chaînes de caactères.</listitem>
+      <listitem><link linkend="nchnls_hw"><citetitle>nchnls_hw</citetitle></link> -
+      retourne le nombre de canaux audio dans du système matériel.</listitem>
+      <listitem><link linkend="pwd"><citetitle>pwd</citetitle></link> -
+      demande au système d'exploitation le nom du répertoire courant sous la
+      forme d'une chaîne de caractères.</listitem>
+      <listitem><link linkend="select"><citetitle>select</citetitle></link> -
+      choisit un échantillon sur la base de comparaisons au taux audio.</listitem>
       <listitem><link linkend="system"><citetitle>system</citetitle></link> -
       appelle un programme externe via le mécanisme d'appel du système.</listitem>
       <listitem><link linkend="modmatrix"><citetitle>modmatrix</citetitle></link> -

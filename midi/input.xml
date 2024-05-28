@@ -8,7 +8,7 @@ english cvs version=1.4
 -->
 
 <section id="MidiInput">
-  <title>Entrée MIDI</title>
+  <title>Entrée MIDI et initialisation</title>
 
   <para>
     Les opcodes suivants peuvent recevoir des informations MIDI :
@@ -37,10 +37,15 @@ english cvs version=1.4
         <link linkend="midic21"><citetitle>midic21</citetitle></link>.</para>
       </listitem>
       <listitem><para>Valeur d'initialisation de contrôleur MIDI :
-      <link linkend="initc7"><citetitle>initc7</citetitle></link>,
-      <link linkend="initc14"><citetitle>initc14</citetitle></link>,
-      <link linkend="initc21"><citetitle>initc21</citetitle></link> et
-      <link linkend="ctrlinit"><citetitle>ctrlinit</citetitle></link>.</para>
+        <link linkend="initc7"><citetitle>initc7</citetitle></link>,
+        <link linkend="initc14"><citetitle>initc14</citetitle></link>,
+        <link linkend="initc21"><citetitle>initc21</citetitle></link>,
+        <link linkend="ctrlinit"><citetitle>ctrlinit</citetitle></link>,
+        <link linkend="ctrlpreset"><citetitle>ctrlpreset</citetitle></link>,
+        <link linkend="ctrlprint"><citetitle>ctrlprint</citetitle></link>,
+        <link linkend="ctrlprintpresets"><citetitle>ctrlprintpresets</citetitle></link>,
+        <link linkend="ctrlsave"><citetitle>ctrlsave</citetitle></link> et
+        <link linkend="ctrlselect"><citetitle>ctrlselect</citetitle></link></para>
       </listitem>
       <listitem><para>Entrée MIDI générique :
       <link linkend="midiin"><citetitle>midiin</citetitle></link>.</para>
