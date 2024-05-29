@@ -5,10 +5,8 @@ authors=Francois Pinot
 // *** Please remember to keep this information up to date! ***
 -->
 
-<!--Change refentry id and indexterm id-->
 <refentry id="link_beat_request">
 <indexterm id="IndexLinkBeatRequest"><primary>link_beat_get</primary></indexterm>
-<!--Make sure the category below is a valid one! See categories.py-->
   <refentryinfo><title>Ableton Link Opcodes</title></refentryinfo>
   <refmeta>
     <refentrytitle>link_beat_request</refentrytitle>
@@ -38,13 +36,10 @@ authors=Francois Pinot
 
 <refsect1>
     <title>Syntaxe</title>
-<!--    Please keep this below ~70 characters by using backslashes to avoid overflow in the pdf version
-        link_beat_request i_peer k_beat [, J_at_time_seconds = current time [, P_quantum = 1]] -->
     <synopsis><command>link_beat_request</command>  i_peer, k_beat [, k_at_time_seconds  [, k_quantum ]] </synopsis>
   </refsect1>
 
   <refsect1>
-<!--  If applicable list i-time arguments-->
     <title>Initialisation</title>
    <para>
       <emphasis>i_peer</emphasis> -- L'objet pair Ableton Link.
@@ -53,7 +48,6 @@ authors=Francois Pinot
  
   <refsect1>
     <title>Exécution</title>
-<!--    First list all input and output performance parameters-->
     <para>
       <emphasis>k_beat</emphasis> -- Le nombre requis pour la pulsation.
     </para>
@@ -69,20 +63,14 @@ authors=Francois Pinot
 
   <refsect1>
     <title>Voir aussi</title>
-<!--    it's always good to include a good See Also list  -->
     <para>
-      <link linkend="AbletonLink"><citetitle>Ableton Link Opcodes</citetitle></link>
+      <link linkend="AbletonLink"><citetitle>Opcodes Ableton Link</citetitle></link>
     </para>
   </refsect1>
 
   <refsect1>
-<!--  And put your name and other relevant information here-->
     <title>Crédits</title>
     <para>Par : &namemichael; 2017</para>
   </refsect1>
 
-<!--Now remember to add a link from the appropriate category in the Opcode Overview.-->
-<!--Add the entity to manual.xml-->
-<!--Add the entity reference in the appropriate place in opcodes/top.xml-->
-<!--And you're set! Maybe delete the comments as well...-->
 </refentry>
