@@ -5,11 +5,9 @@ authors=Francois Pinot
 // *** Please remember to keep this information up to date! ***
 -->
 
-<!--Change refentry id and indexterm id-->
 <refentry id="bob">
 <indexterm id="IndexBob"><primary>bob</primary></indexterm>
-<!--Make sure the category below is a valid one! See categories.py-->
-  <refentryinfo><title>Signal Modifiers:Standard Filters</title></refentryinfo>
+  <refentryinfo><title>Signal Modifiers:Standard Filters:Resonant</title></refentryinfo>
   <refmeta>
     <refentrytitle>bob</refentrytitle>
   </refmeta>
@@ -17,7 +15,7 @@ authors=Francois Pinot
   <refnamediv>
     <refname>bob</refname>
     <refpurpose>
-      Simulation numérique de Runge-Kutte du filtre analogique résonant de Moog.
+      Simulation numérique de Runge-Kutta du filtre analogique résonant de Moog.
     </refpurpose>
   </refnamediv>
 
@@ -32,12 +30,10 @@ authors=Francois Pinot
 
   <refsect1>
     <title>Syntaxe</title>
-<!--    Please keep this below ~70 characters by using backslashes to avoid overflow in the pdf version-->
     <synopsis>asig <command>bob</command> ain, xcf, xres, xsat [, iosamps, istor]</synopsis>
   </refsect1>
 
   <refsect1>
-<!--  If applicable list i-time arguments-->
     <title>Initialisation</title>
     <para>
       <emphasis>iosamps</emphasis> -- nombre de fois que le suréchantillonnage
@@ -57,7 +53,6 @@ authors=Francois Pinot
 
   <refsect1>
     <title>Exécution</title>
-<!--    First list all input and output performance parameters-->
     <para>
       <emphasis>asig</emphasis> -- signal d'entrée.
     </para>
@@ -75,7 +70,7 @@ authors=Francois Pinot
     </para>
     <para>
       Selon la page de manuel de bob~, "Par défaut bob~ effectue un pas de
-      l'intégration de Runge-Kutte du 4ème ordre par échantillon audio. Ceci
+      l'intégration de Runge-Kutta du 4ème ordre par échantillon audio. Ceci
       fonctionne parfaitement pour des fréquences de résonance/coupure jusqu'à
       environ 1/2 Nyquist. Pour améliorer la précision et/ou augmenter l'étendue
       du filtre vers des fréquences de coupure plus hautes on peut
@@ -90,9 +85,6 @@ authors=Francois Pinot
   </refsect1>
 
   <refsect1>
-<!--To add examples, create the csd file in the examples directory, then run:-->
-<!--python csd2docbook.py -f newopcodename.csd-->
-<!--to generate the xml highlighted version used below-->
     <title>Exemples</title>
     <para>
       Voici un exemple de l'opcode bob. Il utilise le fichier
@@ -109,14 +101,13 @@ authors=Francois Pinot
 
   <refsect1>
     <title>Voir aussi</title>
-<!--    it's always good to include a good See Also list  -->
     <para>
-      <link linkend="moogladder"><citetitle>moogladder</citetitle></link>
+      <link linkend="SigmodStandard">
+      <citetitle>Filtres standard : filtres passe-bas à résonance</citetitle></link>
     </para>
   </refsect1>
 
   <refsect1>
-<!--  And put your name and other relevant information here-->
     <title>Crédits</title>
     <para>Par : Gleb Rogozinsky 2020</para>
     <para>Nouveau dans la version 6.15</para>
