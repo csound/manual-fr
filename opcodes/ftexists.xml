@@ -5,10 +5,8 @@ authors=Francois Pinot
 // *** Please remember to keep this information up to date! ***
 -->
 
-<!--Change refentry id and indexterm id-->
 <refentry id="ftexists">
   <indexterm id="IndexFtexists"><primary>ftexists</primary></indexterm>
-  <!--Make sure the category below is a valid one! See categories.py-->
   <refentryinfo><title>Table Control:Table Queries</title></refentryinfo>
   <refmeta>
     <refentrytitle>ftexists</refentrytitle>
@@ -46,16 +44,12 @@ authors=Francois Pinot
   
   <refsect1>
     <title>Sortie</title>
-  <!--    First list all input and output performance parameters-->
     <para>
       <emphasis>iexists / kexists</emphasis> - 1 si la table existe, 0 sinon.
     </para>
   </refsect1>
   
   <refsect1>
-  <!--To add examples, create the csd file in the examples directory, then run:-->
-  <!--python csd2docbook.py -f newopcodename.csd-->
-  <!--to generate the xml highlighted version used below-->
     <title>Exemples</title>
     <para>
       Voici un exemple de l'opcode ftexists. Il utilise le fichier
@@ -69,24 +63,15 @@ authors=Francois Pinot
 
   <refsect1>
     <title>Voir aussi</title>
-  <!--    it's always good to include a good See Also list  -->
     <para>
-      <link linkend="ftlen"><citetitle>ftlen</citetitle></link>,
-      <link linkend="nsamp"><citetitle>nsamp</citetitle></link>,
-      <link linkend="ftsr"><citetitle>ftsr</citetitle></link>,
-      <link linkend="ftchnls"><citetitle>ftchnls</citetitle></link>,
+      <link linkend="TableQueries">
+      <citetitle>Contrôle des tables de fonction : requêtes sur une table</citetitle></link>
     </para>
   </refsect1>
 
   <refsect1>
-  <!--  And put your name and other relevant information here-->
     <title>Crédits</title>
     <para>Par : &nameeduardo; 2019</para>
     <para>Nouveau greffon dans la version 6.14</para>
   </refsect1>
-
-  <!--Now remember to add a link from the appropriate category in the Opcode Overview.-->
-  <!--Add the entity to manual.xml-->
-  <!--Add the entity reference in the appropriate place in opcodes/top.xml-->
-  <!--And you're set! Maybe delete the comments as well...-->
 </refentry>

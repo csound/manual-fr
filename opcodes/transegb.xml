@@ -104,15 +104,7 @@ ibeg + (ivalue - ibeg) * (1 - exp( i*itype/(n-1) )) / (1 - exp(itype))
   <refsect1>
     <title>Voir aussi</title>
     <para>
-      <link linkend="expseg"><citetitle>expseg</citetitle></link>,
-      <link linkend="expsega"><citetitle>expsega</citetitle></link>,
-      <link linkend="expsegb"><citetitle>expsega</citetitle></link>,
-      <link linkend="expsegr"><citetitle>expsegr</citetitle></link>,
-      <link linkend="linseg"><citetitle>linseg</citetitle></link>,
-      <link linkend="linsegb"><citetitle>linsegb</citetitle></link>,
-      <link linkend="linsegr"><citetitle>linsegr</citetitle></link>,
-      <link linkend="transeg"><citetitle>transeg</citetitle></link>
-      <link linkend="transegr"><citetitle>transegr</citetitle></link>
+      <link linkend="SiggenLineexp"><citetitle>Générateurs linéaires et exponentiels</citetitle></link>
     </para>
   </refsect1>
 
