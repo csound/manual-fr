@@ -16,16 +16,15 @@ english cvs version=1.7
 
   <refnamediv>
     <refname>mrtmsg</refname>
-
     <refpurpose>
-      Send system real-time messages to the MIDI OUT port.
+      Envoie des messages système MIDI sur le port MIDI OUT.
     </refpurpose>
   </refnamediv>
  
   <refsect1>
     <title>Description</title>
     <para>
-      Envoie des messages système MIDI  sur le port MIDI OUT.
+      Envoie des messages système MIDI sur le port MIDI OUT.
     </para>
   </refsect1>
  
@@ -60,7 +59,7 @@ english cvs version=1.7
   <refsect1>
     <title>Voir aussi</title>
     <para>
-      <link linkend="mclock"><citetitle>mclock</citetitle></link>
+      <link linkend="MidiRealtime"><citetitle>Messages système temps réel</citetitle></link>
     </para>
   </refsect1>
  
@@ -72,7 +71,6 @@ english cvs version=1.7
         <member>Italie</member>
       </simplelist>
     </para>
-
     <para>Nouveau dans la version 3.47 de Csound.</para>
   </refsect1>
 </refentry>

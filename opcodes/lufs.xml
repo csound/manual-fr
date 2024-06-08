@@ -5,10 +5,8 @@ authors=Francois Pinot
 // *** Please remember to keep this information up to date! ***
 -->
 
-<!--Change refentry id and indexterm id-->
 <refentry id="lufs">
 <indexterm id="IndexLufs"><primary>lufs</primary></indexterm>
-<!--Make sure the category below is a valid one! See categories.py-->
   <refentryinfo><title>Utilities</title></refentryinfo>
   <refmeta>
     <refentrytitle>lufs</refentrytitle>
@@ -37,7 +35,6 @@ authors=Francois Pinot
 
   <refsect1>
     <title>Exécution</title>
-<!--    First list all input and output performance parameters-->
     <para>
       <emphasis>kreset</emphasis> -- réinitialise l'entrée. La valeur de
       l'intensité intégrée est réinitialisée si kreset est différent de 0.
@@ -88,9 +85,6 @@ authors=Francois Pinot
   </refsect1>
 
   <refsect1>
-<!--To add examples, create the csd file in the examples directory, then run:-->
-<!--python csd2docbook.py -f newopcodename.csd-->
-<!--to generate the xml highlighted version used below-->
     <title>Exemples</title>
     <para>
       Voici un exemple de l'opcode lufs. Il utilise le fichier
@@ -107,22 +101,15 @@ authors=Francois Pinot
 
   <refsect1>
     <title>Voir aussi</title>
-<!--    it's always good to include a good See Also list  -->
     <para>
-      <link linkend="rms"><citetitle>rms</citetitle></link>
+      <link linkend="ControlSensing"><citetitle>Détection et contrôle : suiveurs d'enveloppe</citetitle></link>
     </para>
   </refsect1>
 
   <refsect1>
-<!--  And put your name and other relevant information here-->
     <title>Crédits</title>
     <para>par : Gleb Rogozinsky, été 2020</para>
     <para>Nouveau dans la version 6.15</para>
   </refsect1>
-
-<!--Now remember to add a link from the appropriate category in the Opcode Overview.-->
-<!--Add the entity to manual.xml-->
-<!--Add the entity reference in the appropriate place in opcodes/top.xml-->
-<!--And you're set! Maybe delete the comments as well...-->
 
 </refentry>
