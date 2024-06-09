@@ -22,14 +22,14 @@ english cvs version=1.8
   </refnamediv>
 
   <refsect1>
-    <title>Syntaxe</title>
-    <synopsis><command>MixerClear</command></synopsis>
-  </refsect1>
-
-  <refsect1>
     <title>Description</title> 
     <para>Réinitialise tous les canaux d'un bus à 0.</para>  
     </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>MixerClear</command></synopsis>
+  </refsect1>
 
   <refsect1>
     <title>Exécution</title>
@@ -87,6 +87,13 @@ english cvs version=1.8
     </example>
   </para>
 </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="MixerOpcodes"><citetitle>Opcodes mixer</citetitle></link>
+    </para>
+  </refsect1>
 
   <refsect1>
     <title>Crédits</title>

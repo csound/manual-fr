@@ -22,11 +22,6 @@ english cvs version=1.7
   </refnamediv>
 
   <refsect1>
-    <title>Syntaxe</title>
-    <synopsis><command>MixerSetLevel</command> isend, ibuss, kgain</synopsis>
-  </refsect1>
-
-  <refsect1>
     <title>Description</title> 
     <para>Opcode du greffon mixer.</para>
     <para>
@@ -35,6 +30,11 @@ english cvs version=1.7
       <link linkend="MixerSend"><citetitle>MixerSend</citetitle></link>. 
     </para>  
     </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>MixerSetLevel</command> isend, ibuss, kgain</synopsis>
+  </refsect1>
 
   <refsect1>
     <title>Initialisation</title>
@@ -111,6 +111,13 @@ english cvs version=1.7
         <title>Exemple complet de l'opcode MixerSetLevel.</title>
         <xi:include href="examples-xml/Mixer.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="MixerOpcodes"><citetitle>Opcodes mixer</citetitle></link>
     </para>
   </refsect1>
 
