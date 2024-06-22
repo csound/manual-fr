@@ -1,0 +1,111 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<section id="nonMIDIdevices">
+  <title>Dispositifs non MIDI</title>
+
+  <para>
+    Les opcodes suivants connectent et communiquent avec des dispositifs
+    matériels non MIDI.
+  </para>
+
+<simplesect>
+  <title>Arduino</title>
+
+  <para>Opcodes pour travailler avec un Arduino :</para>
+
+  <itemizedlist>
+    <listitem>
+      <para><link linkend="arduinoRead"><citetitle>arduinoRead</citetitle></link> -
+      Lit les données venant d'un arduino.</para>
+    </listitem>
+    <listitem>
+      <para><link linkend="arduinoReadF"><citetitle>arduinoReadF</citetitle></link> -
+      Lit les données venant d'un arduino.</para>
+    </listitem>
+    <listitem>
+      <para><link linkend="arduinoStart"><citetitle>arduinoStart</citetitle></link> -
+      Ouvre un port série à utiliser avec le protocole arduino.</para>
+    </listitem>
+    <listitem>
+      <para><link linkend="arduinoStop"><citetitle>arduinoStop</citetitle></link> -
+      Ferme un port série utilisant le protocole arduino.</para>
+    </listitem>
+    <listitem>
+      <para><link linkend="serialBegin"><citetitle>serialBegin</citetitle></link> -
+      Ouvre un port série pour arduino.</para>
+    </listitem>
+   <listitem>
+      <para><link linkend="serialEnd"><citetitle>serialEnd</citetitle></link> -
+      Ferme un port série pour arduino.</para>
+    </listitem>
+   <listitem>
+      <para><link linkend="serialFlush"><citetitle>serialFlush</citetitle></link> -
+      Vide les données d'un port série.</para>
+    </listitem>
+    <listitem>
+      <para><link linkend="serialPrint"><citetitle>serialPrint</citetitle></link> -
+      Affiche les données d'un port série.</para>
+    </listitem>
+    <listitem>
+      <para><link linkend="serialRead"><citetitle>serialRead</citetitle></link> -
+      Lit les données d'un port série.</para>
+    </listitem>
+    <listitem>
+      <para><link linkend="serialWrite_i"><citetitle>serialWrite_i</citetitle></link> -
+      Ecrit des données sur un port série.</para>
+    </listitem>
+    <listitem>
+      <para><link linkend="serialWrite"><citetitle>serialWrite</citetitle></link> -
+      Ecrit des données sur un port série.</para>
+    </listitem>
+  </itemizedlist>
+</simplesect>
+
+<simplesect>
+  <title>Gant P5</title>
+  <para>Opcodes pour travailler avec un contrôleur gant P5 :</para>
+
+  <itemizedlist>
+    <listitem>
+      <para><link linkend="p5gconnect"><citetitle>p5gconnect</citetitle></link> -
+      Lit les données provenant d'un contrôleur gant P5.</para>
+    </listitem>
+    <listitem>
+      <para><link linkend="p5gdata"><citetitle>p5gdata</citetitle></link> -
+      Lit des champs de données provenant d'un gant P5 externe.</para>
+    </listitem>
+  </itemizedlist>
+</simplesect>
+
+<simplesect>
+  <title>Wiimote Nintendo</title>
+  <para>Opcodes pour travailler avec des contrôleurs Wiimote Nintendo :</para>
+
+  <itemizedlist>
+    <listitem>
+      <para><link linkend="wiiconnect"><citetitle>wiiconnect</citetitle></link> -
+      Lit les données provenant d'un certain nombre de contrôleurs Wiimote
+      Nintendo externes.</para>
+    </listitem>
+    <listitem>
+      <para><link linkend="wiidata"><citetitle>wiidata</citetitle></link> -
+      Lit des champs de données provenant d'un certain nombre de contrôleurs
+      Wiimote Nintendo externes.</para>
+    </listitem>
+    <listitem>
+      <para><link linkend="wiirange"><citetitle>wiirange</citetitle></link> -
+      Fixe le facteur de pondération et les limites de l'intervalle pour
+      certains champs de Wiimote.</para>
+    </listitem>
+    <listitem>
+      <para><link linkend="wiisend"><citetitle>wiisend</citetitle></link> -
+      Envoie des données vers l'un des contrôleurs Wiimote Nintendo.</para>
+    </listitem>
+  </itemizedlist>
+</simplesect>
+</section>
