@@ -27,12 +27,12 @@ english cvs version=
       Multiplication d'un vecteur dans une table par une valeur scalaire.
     </para>
   </refsect1>
-  
+
   <refsect1>
     <title>Syntaxe</title>
     <synopsis><command>vmult_i</command>  ifn, ival, ielements [, idstoffset]</synopsis>
   </refsect1>
- 
+
   <refsect1>
     <title>Initialisation</title>
     <para>
@@ -50,7 +50,7 @@ english cvs version=
       destination.
     </para>
   </refsect1>
- 
+
   <refsect1>
     <title>Exécution</title>
     <para>
@@ -87,7 +87,7 @@ english cvs version=
       <link linkend="pvsftr"><citetitle>pvsftr</citetitle></link>.
     </para>
   </refsect1>
-  
+
   <refsect1>
     <title>Exemples</title>
     <para>
@@ -102,17 +102,11 @@ english cvs version=
       </example>
     </para>
   </refsect1>
-  
+
   <refsect1>
     <title>Voir aussi</title>
     <para>
-      <link linkend="vadd_i"><citetitle>vadd</citetitle></link>,
-      <link linkend="vadd"><citetitle>vadd</citetitle></link>,
-      <link linkend="vmult"><citetitle>vmult</citetitle></link>,
-      <link linkend="vpow_i"><citetitle>vpow_i</citetitle></link>,
-      <link linkend="vpow"><citetitle>vpow</citetitle></link>,
-      <link linkend="vexp_i"><citetitle>vexp_i</citetitle></link> et
-      <link linkend="vexp"><citetitle>vexp</citetitle></link>.
+      <link linkend="vectorialscalar"><citetitle>Opérations entre un signal vectoriel et un signal scalaire</citetitle></link>
     </para>
   </refsect1>
 
