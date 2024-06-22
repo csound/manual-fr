@@ -55,6 +55,7 @@ authors=Francois Pinot
 <!ENTITY Remote SYSTEM "oscnetwork/Remote.xml">
 
 <!ENTITY AbletonLink SYSTEM "oscnetwork/AbletonLink.xml">
+<!ENTITY nonMIDIdevices SYSTEM "oscnetwork/nonMIDIdevices.xml">
 
 <!ENTITY command SYSTEM "command/top.xml">
 <!ENTITY commanddesc SYSTEM "command/desc.xml">
@@ -83,6 +84,7 @@ authors=Francois Pinot
 <!ENTITY controlsubinstr SYSTEM "control/subinstr.xml">
 <!ENTITY controltimeread SYSTEM "control/timeread.xml">
 
+<!ENTITY Faustopcodes SYSTEM "Faustopcodes/top.xml">
 <!ENTITY imageopcodes SYSTEM "imageopcodes/top.xml">
 <!ENTITY stkopcodes SYSTEM "STKopcodes/top.xml">
 <!ENTITY miscopcodes SYSTEM "miscopcodes/top.xml">
@@ -1190,6 +1192,7 @@ authors=Francois Pinot
 <!ENTITY opcodeshrtfreverb SYSTEM "opcodes/hrtfreverb.xml">
 <!ENTITY opcodeshrtfstat SYSTEM "opcodes/hrtfstat.xml">
 <!ENTITY opcodesraises SYSTEM "opcodes/raises.xml">
+<!ENTITY opcodesrandc SYSTEM "opcodes/randc.xml">
 <!ENTITY opcodesrandh SYSTEM "opcodes/randh.xml">
 <!ENTITY opcodesrandi SYSTEM "opcodes/randi.xml">
 <!ENTITY opcodesrandomh SYSTEM "opcodes/randomh.xml">

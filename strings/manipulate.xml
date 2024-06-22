@@ -16,6 +16,14 @@ english cvs version=1.2
     <emphasis>strget</emphasis>) :</para>
   <itemizedlist>
     <listitem><para>
+        <link linkend="evalstr"><citetitle>evalstr</citetitle></link> -
+        Evalue une chaîne contenant du code Csound et retourne une valeur.</para>
+    </listitem>
+    <listitem><para>
+      <link linkend="return"><citetitle>return</citetitle></link> -
+      Retourne une valeur depuis un instrument.</para>
+    </listitem>
+    <listitem><para>
         <link linkend="strcpy"><citetitle>strcpy</citetitle></link> et
         <link linkend="strcpyk"><citetitle>strcpyk</citetitle></link> -
         Assignation à une variable chaîne.</para>
@@ -74,4 +82,9 @@ english cvs version=1.2
         Supprime les espaces d'une chaîne de caractères.</para>
     </listitem>
   </itemizedlist>
+  <para>
+    <link linkend="strfromurl"><citetitle>strfromurl</citetitle></link> fixe
+    une variable chaîne de caractères durant l'initialisation à une valeur lue
+    depuis une URL.
+  </para>
 </section>

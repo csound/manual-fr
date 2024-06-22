@@ -45,4 +45,18 @@ english cvs version=1.7
     <link linkend="ControlReinitn"><citetitle>Réinitialisation</citetitle></link>.</simpara>
   </warning>
 
+  <para>
+    Ces opcodes font partie d'un système de compteurs :
+  </para>
+  <itemizedlist>
+    <listitem><para><link linkend="count"><citetitle>count</citetitle></link></para></listitem>
+    <listitem><para><link linkend="count_i"><citetitle>count_i</citetitle></link></para></listitem>
+    <listitem><para><link linkend="cntCycles"><citetitle>cntCycles</citetitle></link></para></listitem>
+    <listitem><para><link linkend="cntRead"><citetitle>cntRead</citetitle></link></para></listitem>
+    <listitem><para><link linkend="cntReset"><citetitle>cntReset</citetitle></link></para></listitem>
+    <listitem><para><link linkend="cntState"><citetitle>cntState</citetitle></link></para></listitem>
+    <listitem><para><link linkend="cntCreate"><citetitle>cntCreate</citetitle></link></para></listitem>
+    <listitem><para><link linkend="cntDelete"><citetitle>cntDelete</citetitle></link></para></listitem>
+    <listitem><para><link linkend="cntDelete_i"><citetitle>cntDelete_i</citetitle></link></para></listitem>
+  </itemizedlist>
 </section>

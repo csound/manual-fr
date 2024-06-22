@@ -25,6 +25,10 @@ english cvs version=1.2
       appelle un programme externe via le mécanisme d'appel du système.</listitem>
       <listitem><link linkend="modmatrix"><citetitle>modmatrix</citetitle></link> -
       opcode matrice de modulation avec optimisation pour les matrices creuses.</listitem>
+      <listitem><link linkend="readscratch"><citetitle>readscratch</citetitle></link> -
+      Retourne une valeur stockée dans l'instance d'un instrument.</listitem>
+      <listitem><link linkend="writescratch"><citetitle>writescratch</citetitle></link> -
+      Ecrit une valeur dans le bloc-notes de l'instance d'un instrument.</listitem>
     </itemizedlist>
   </para>
 

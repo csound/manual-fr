@@ -26,6 +26,7 @@ english cvs version=1.8
       <listitem><para><link linkend="schedkwhennamed"><citetitle>schedkwhennamed</citetitle></link></para></listitem>
     </itemizedlist>
   </para>
+
   <para>
     L'opcode <link linkend="mute"><citetitle>mute</citetitle></link> peut être utilisé pour rendre
     silencieux/sonore un instrument pendant une exécution.
@@ -35,4 +36,12 @@ english cvs version=1.8
     <link linkend="remove"><citetitle>remove</citetitle></link>.
   </para>
 
+  <para>
+    Ces opcodes compilent un ou plusieurs instruments durant l'initialisation :
+    <itemizedlist>
+      <listitem><para><link linkend="compilecsd"><citetitle>compilecsd</citetitle></link></para></listitem>
+      <listitem><para><link linkend="compileorc"><citetitle>compileorc</citetitle></link></para></listitem>
+      <listitem><para><link linkend="compilestr"><citetitle>compilestr</citetitle></link></para></listitem>
+    </itemizedlist>
+  </para>
 </section>
