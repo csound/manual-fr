@@ -13,12 +13,9 @@ english cvs version=1.8
   <refmeta>
     <refentrytitle>initc21</refentrytitle>
   </refmeta>
-
-
  
   <refnamediv>
     <refname>initc21</refname>
-
     <refpurpose>
       Initialise les contrôleurs pour créer une valeur MIDI sur 21 bit.
     </refpurpose>
@@ -79,7 +76,7 @@ ivalue = (valeur_initiale - min) / (max - min)
   <refsect1>
     <title>Voir aussi</title>
     <para>
-      <link linkend="MidiInput"><citetitle>Entrée MIDI</citetitle></link>
+      <link linkend="MidiInput"><citetitle>Entrée MIDI et initialisation</citetitle></link>
     </para>
   </refsect1>
  

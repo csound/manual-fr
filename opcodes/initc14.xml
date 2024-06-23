@@ -13,12 +13,9 @@ english cvs version=1.7
   <refmeta>
     <refentrytitle>initc14</refentrytitle>
   </refmeta>
-
-
  
   <refnamediv>
     <refname>initc14</refname>
-
     <refpurpose>
       Initialise les contrôleurs pour créer une valeur MIDI sur 14 bit.
     </refpurpose>
@@ -75,7 +72,7 @@ ivalue = (valeur_initiale - min) / (max - min)
   <refsect1>
     <title>Voir aussi</title>
     <para>
-      <link linkend="MidiInput"><citetitle>Entrée MIDI</citetitle></link>
+      <link linkend="MidiInput"><citetitle>Entrée MIDI et initialisation</citetitle></link>
     </para>
   </refsect1>
  
