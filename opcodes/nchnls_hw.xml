@@ -38,8 +38,28 @@ authors=Francois Pinot
     <para>
       Lors de l'initialisation, <emphasis>idacc</emphasis> contiendra le
       nombre de canaux du périphérique de sortie et <emphasis>iadcc</emphasis>
-      le nombre de canaux d'entrée. Ca correspond aux périphériques matériels
+      le nombre de canaux d'entrée. Ça correspond aux périphériques matériels
       sélectionnés/utilisés.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode nchnls_hw. Il utilise le fichier
+      <ulink url="examples/nchnls_hw.csd"><citetitle>nchnls_hw.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode nchnls_hw.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/nchnls_hw.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      La sortie contiendra des lignes comme celles-ci :
+      <screen>
+on this machine:
+number of outputs = 32
+number of inputs = 32</screen>
     </para>
   </refsect1>
 

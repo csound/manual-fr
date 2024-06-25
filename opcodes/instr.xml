@@ -40,7 +40,7 @@ english cvs version=1.17
     </para>
 
     <para>
-      <emphasis>i, j</emphasis>, ... doivent être des nombres, pas des expressions. Tout entier positif
+      <emphasis>i, j</emphasis>, ... doivent être des nombres ou des noms, pas des expressions. Tout entier positif
       convient, dans n'importe quel ordre, mais on préfère éviter les nombres excessivement grands.
     </para>
 
@@ -51,13 +51,18 @@ english cvs version=1.17
       </para>
     </note>
 
-     <para>
+    <para>
        On peut définir les instruments dans n'importe quel ordre (mais ils seront toujours initialisés
        et exécutés par ordre de numéro d'instrument ascendant, à l'exception des notes provoquées par des
        évènements en temps réel, qui sont initialisées dans l'ordre où elles sont reçues mais toujours
        exécutées par ordre de numéro d'instrument ascendant). Les blocs d'instruments ne peuvent pas être
        imbriqués (un bloc ne peut pas en contenir un autre).
      </para>
+
+    <para>
+      Pour plus d'information sur les instruments nommés, voir
+     <link linkend="OrchNamedInstruments"><citetitle>Instruments nommés></citetitle></link>.
+    </para>
   </refsect1>
 
   <refsect1>

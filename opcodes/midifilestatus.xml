@@ -9,7 +9,7 @@ english cvs version=
 
 <refentry id="midifilestatus">
 <indexterm id="IndexMidifilestatus"><primary>midifilestatus</primary></indexterm>
-  <refentryinfo><title>Instrument Control:Sensing and Control</title></refentryinfo>
+  <refentryinfo><title>MIDI input and Initialization</title></refentryinfo>
   <refmeta>
     <refentrytitle>midifilestatus</refentrytitle>
   </refmeta>
@@ -34,6 +34,13 @@ english cvs version=
   <refsect1>
     <title>Syntaxe</title>
     <synopsis>ksig  <command>midifilestatus</command></synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+      <para>
+        <link linkend="MidiInput"><citetitle>Entrée MIDI et initialisation</citetitle></link>
+      </para>
   </refsect1>
 
   <refsect1>

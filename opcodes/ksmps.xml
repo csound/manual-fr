@@ -71,15 +71,15 @@ english cvs version=1.11
   <refsect1>
     <title>Exemples</title>
     <para>
-      <informalexample>
-        <programlisting>
-<emphasis role="ohdr">sr</emphasis> <emphasis role="op">=</emphasis> 10000
-<emphasis role="ohdr">kr</emphasis> <emphasis role="op">=</emphasis> 500
-<emphasis role="ohdr">ksmps</emphasis> <emphasis role="op">=</emphasis> 20
-gi1 <emphasis role="op">=</emphasis> <emphasis role="ohdr">sr</emphasis><emphasis role="op">/</emphasis>2.
-ga <emphasis role="opc">init</emphasis> 0
-itranspose <emphasis role="op">=</emphasis> <emphasis role="opc">octpch</emphasis>(.0l)</programlisting>
-      </informalexample>
+      Voici un exemple de l'opcode ksmps. Il utilise le fichier
+      <ulink url="examples/ksmps.csd"><citetitle>ksmps.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode ksmps.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/ksmps.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
     </para>
   </refsect1>
 

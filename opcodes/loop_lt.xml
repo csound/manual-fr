@@ -72,6 +72,13 @@ english cvs version=1.6
          kndx  <emphasis role="op">=</emphasis>  kndx <emphasis role="op">+</emphasis> kncr
          <emphasis role="opc">if</emphasis> (kndx <emphasis role="op">&lt;</emphasis> kmax) <emphasis role="opc">kgoto</emphasis> label</programlisting>
     </para>
+	<para>
+	  <note>
+	    Il est recommandé d'utiliser les opcodes &laquo;modernes&raquo;
+	    <emphasis>while</emphasis> ou <emphasis>until</emphasis> pour les
+	    constructions de boucle.
+	  </note>
+    </para>
   </refsect1>
   
   <refsect1>
