@@ -30,7 +30,7 @@ authors=Francois Pinot
 
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis><command>undersample</command> ifactor[, imode] </synopsis>
+    <synopsis><command>undersample</command> ifactor[, icvt_in, icvt_out] </synopsis>
   </refsect1>
 
   <refsect1>
@@ -43,14 +43,23 @@ authors=Francois Pinot
       localement. Le ksmps local est également modifié en conséquence.
     </para>
     <para>
-      <emphasis>imode</emphasis> -- mode de rééchantillonnage : si Secret
+      <emphasis>icvt_in</emphasis> -- convertisseur utilisé en entrée : si Secret
       Rabbit Code est utilisé, 0 - sync de meilleure qualité (par défaut) ;
       1 - sync de qualité moyenne ; 2 - sync rapide ; 3 - paliers d'ordre zéro ;
       4 - linéaire.
     </para>
+    <para>
+      <emphasis>icvt_out</emphasis> -- converter utilisé en sortie,
+      par défaut celui utilisé en entrée, mais il peut être différent.
+    </para>
 
     <note>
-      <title>Note</title>
+      <title>Notes</title>
+      <para>
+        Des convertisseurs de meilleure qualité ajoutent un petit temps de
+        latence au signal (pour 0, 1, 2, la latence augmente avec la qualité).
+        Les convertisseurs 3 et 4 n'induisent pas de latence.
+      </para> 
       <para>
         Il est interdit d'appeler cet opcode et <emphasis>setksmps</emphasis>
         dans le même UDO. Cet opcode n'est utilisable que dans les UDOs. Les
