@@ -245,15 +245,49 @@ english cvs version=1.4
   </para>
 
   <para>
-    Cet exemple de matrice est très simple et très petit. En pratique, la
-    plupart des instruments de synthèse par balayage utiliseront bien plus que
-    quatre masses, et donc leurs matrices seront bien plus grandes et plus
+    Comme example de matrice texte
+    (voir <link linkend="GEN44"><citetitle>GEN44</citetitle></link>), pour les
+    mêmes 4 masses nous avons la grille suivante décrivant les connexions :
+  </para>
+      <informalexample>
+        <programlisting>
+&lt;MATRIX size=4&gt;
+1   2   4 
+2   3   2 
+3   4   6 
+&lt;/MATRIX&gt;
+        </programlisting>
+      </informalexample>
+  <para>
+    Ici, les deux premières valeurs d'une ligne dénotent une connexion de la
+    première à la seconde. Le troisième nombre est un poids ; un poids de 2
+    est équivalent à deux liens si bien que plus d'information est distribuée,
+    tandis qu'un poids nul signifie aucune liaison. Si le troisième nombre
+    est omis il vaut 1 par défaut.
+  </para>
+
+  <para>
+    Ces deux exemples de matrice sont très simples et très petits. En pratique,
+    la plupart des instruments de synthèse par balayage utiliseront bien plus
+    que quatre masses, et donc leurs matrices seront bien plus grandes et plus
     complexes. Voir l'exemple dans la documentation de
     <link linkend="scans"><citetitle>scans</citetitle></link>.
   </para>
 
+  <refsect1>
+    <para>
+      Voici un exemple qui compare la matrice binaire et la matrice texte,
+      avec un résultat sonore similaire. Il utilise le fichier
+      <ulink url="examples/matrices_compare.csd"><citetitle>matrices_compare.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple comparant l'utilisation des matrices binaire et texte.</title>
+          <xi:include href="examples-xml/matrices_compare.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
   <para>
-    Prière de noter que les tables d'onde dynamiques générées sont très
+    Prière de noter que les tables d'onde dynamiques générées peuvent être très
     instables. Certaines valeurs de masses, de centrage, et d'amortissement
     peuvent provoquer une <quote>explosion</quote> du système et l'apparition de
     sons extrêmement intéressants sur vos haut-parleurs.
