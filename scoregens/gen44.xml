@@ -49,9 +49,11 @@ authors=Francois Pinot
       </quote>
       ce qui crée une matrice carrée de la taille indiquée. Suivent ensuite des
       lignes de deux ou trois nombres, les deux premiers indiquant une
-      connexion du premier au second et le troisième étant un poids. Si le
+      connexion du premier au second. Le troisième nombre est un poids ; un poids
+      de 2 signifie que l'on a deux liens si bien que plus d'information est
+      distribuée, tandis qu'un poids nul signifie pas de lien. Si le
       troisième nombre est omis, on lui affecte la valeur 1. La liste se termine
-      par une ligne
+      par la ligne
       <quote>
       &lt;/MATRIX&gt;
     </quote>
@@ -108,6 +110,21 @@ authors=Francois Pinot
         <xi:include href="examples-xml/gen44.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
     </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para><link linkend="SiggenScanTop"><citetitle>Scanned Synthesis</citetitle></link></para>
+    <para>
+      On trouve plus d'information sur la synthèse par balayage (ainsi que plusieurs
+      autres matrices) sur 
+      <ulink url="http://www.csounds.com/scanned/"><citetitle>la page Scanned Synthesis</citetitle></ulink>
+      du site cSounds.com.
+    </para>
+    <para>Il y a aussi un article sur ces opcodes :
+    <ulink url="http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html">
+    <citetitle>http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html</citetitle></ulink>,
+    écrit par Steven Yi.</para>
   </refsect1>
 
   <refsect1>

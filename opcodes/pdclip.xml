@@ -127,17 +127,6 @@ english cvs version=1.1
   </refsect1>
  
   <refsect1>
-    <title>Voir aussi</title>
-    <para>
-      <link linkend="pdhalf"><citetitle>pdhalf</citetitle></link>, 
-      <link linkend="pdhalfy"><citetitle>pdhalfy</citetitle></link>,
-      <link linkend="limit"><citetitle>limit</citetitle></link>,
-      <link linkend="clip"><citetitle>clip</citetitle></link>,
-      <link linkend="distort1"><citetitle>distort1</citetitle></link>
-    </para>
-  </refsect1>
-
-  <refsect1>
     <title>Exemples</title>
     <para>
       Voici un exemple de l'opcode pdclip. Il utilise le fichier
@@ -149,6 +138,13 @@ english cvs version=1.1
         d'information sur l'utilisation des options de la ligne de commande.</para>
           <xi:include href="examples-xml/pdclip.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="SigmodWavshape"><citetitle>Distorsion de phase</citetitle></link>
     </para>
   </refsect1>
 

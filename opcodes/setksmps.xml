@@ -93,13 +93,14 @@ english cvs version=1.9
 
     <para>
       On peut utiliser l'instruction <emphasis>setksmps</emphasis> pour fixer la
-      valeur locale de <link linkend="ksmps"><citetitle>ksmps</citetitle></link> 
-      dans un bloc d'opcode défini par l'utilisateur. Il a un paramètre de taux-i
-      définissant la nouvelle valeur de <emphasis>ksmps</emphasis> (qui reste
-      inchangée si l'on utilise zéro). <emphasis>setksmps</emphasis> doit être
+      valeur locale de <link linkend="ksmps"><citetitle>ksmps</citetitle></link>
+      de l'instrument ou
+      d'un bloc d'opcode défini par l'utilisateur. Il a un paramètre de taux-i
+      définissant la nouvelle valeur de <emphasis>ksmps</emphasis>.
+      <emphasis>setksmps</emphasis> doit être
       utilisé avant tout autre opcode (mais on peut le mettre après
-      <link linkend="xin"><citetitle>xin</citetitle></link>), sinon il y aura des
-      résultats imprévisibles.
+      <link linkend="xin"><citetitle>xin</citetitle></link> dans les UDOS),
+      sinon il y aura des résultats imprévisibles.
     </para>
   </refsect1>
 
@@ -122,7 +123,7 @@ xinarg1 [, xinarg2] [, xinarg3] ... [xinargN]  <emphasis role="opc">xin</emphasi
       On peut alors utiliser le nouvel opcode avec la syntaxe usuelle :
 
       <literallayout>
-[xinarg1] [, xinarg2] ... [xinargN]  name  [xoutarg1] [, xoutarg2] ... [xoutargN] [, iksmps]
+[xinarg1] [, xinarg2] ... [xinargN]  name  [xoutarg1] [, xoutarg2] ... [xoutargN]
       </literallayout>
     </para>
   </refsect1>
@@ -137,10 +138,7 @@ xinarg1 [, xinarg2] [, xinarg3] ... [xinargN]  <emphasis role="opc">xin</emphasi
   <refsect1>
     <title>Voir aussi</title>
     <para>
-      <link linkend="endop"><citetitle>endop</citetitle></link>, 
-      <link linkend="opcode"><citetitle>opcode</citetitle></link>, 
-      <link linkend="xin"><citetitle>xin</citetitle></link>, 
-      <link linkend="xout"><citetitle>xout</citetitle></link>
+      <link linkend="OrchUDO"><citetitle>Opcodes définis par l'utilisateur (UDO)</citetitle></link>
     </para>
   </refsect1>
 

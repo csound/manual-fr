@@ -64,7 +64,8 @@ english cvs version=1.12
       L'opérateur <emphasis>&percnt;</emphasis> retourne la valeur de la réduction de
       <emphasis>a</emphasis> par <emphasis>b</emphasis>, de telle façon que le résultat, en valeur
       absolue, est inférieur à la valeur absolue de <emphasis>b</emphasis>, par soustraction répétée.
-      C'est l'équivalent de la fonction modulo pour les entiers. Nouveau dans la version 3.50
+      Techniquement c'est un reste, comme pour l'opérateur &percnt; en C et dans
+      d'autres langages similaires, et non un modulo. Nouveau dans la version 3.50
       de Csound.
     </para>
   </refsect1>
@@ -108,13 +109,7 @@ english cvs version=1.12
   <refsect1>
     <title>Voir aussi</title>
     <para>
-      <link linkend="subtracts"><citetitle>-</citetitle></link>, 
-      <link linkend="adds"><citetitle>&plus;</citetitle></link>, 
-      <link linkend="opand"><citetitle>&amp;&amp;</citetitle></link>, 
-      <link linkend="opor"><citetitle>&verbar;&verbar;</citetitle></link>, 
-      <link linkend="multiplies"><citetitle>&ast;</citetitle></link>, 
-      <link linkend="divides"><citetitle>&sol;</citetitle></link>, 
-      <link linkend="raises"><citetitle>&circ;</citetitle></link>
+      <link linkend="MathArtLogic"><citetitle>Opérations arithmétiques et logiques</citetitle></link>
     </para>
   </refsect1>
 

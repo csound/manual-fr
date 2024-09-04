@@ -72,13 +72,35 @@ english cvs version=1.5
          kndx  <emphasis role="op">=</emphasis>  kndx <emphasis role="op">-</emphasis> kdecr
          <emphasis role="opc">if</emphasis> (kndx <emphasis role="op">&gt;=</emphasis> kmin) <emphasis role="opc">kgoto</emphasis> label</programlisting>
     </para>
+	<para>
+	  <note>
+	    Il est recommandé d'utiliser les opcodes &laquo;modernes&raquo;
+	    <emphasis>while</emphasis> ou <emphasis>until</emphasis> pour les
+	    constructions de boucle.
+	  </note>
+    </para>
   </refsect1>
+
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple groupé pour tous les opcodes loop_xx, comparant les
+      différents opcodes loop_. Il utilise le fichier
+      <ulink url="examples/loop_-group.csd"><citetitle>loop_-group.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple groupé des opcodes loop_xx.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/loop_-group.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
   <refsect1>
     <title>Voir aussi</title>
     <para>
-      <link linkend="loop_gt"><citetitle>loop_gt</citetitle></link>,
-      <link linkend="loop_le"><citetitle>loop_le</citetitle></link> et
-      <link linkend="loop_lt"><citetitle>loop_lt</citetitle></link>.
+      <link linkend="ControlPgmctl"><citetitle>Contrôle séquentiel d'un programme : structures de boucle</citetitle></link>
     </para>
     <para>Plus d'information sur cet opcode :
     <ulink url="http://www.csoundjournal.com/2006summer/controlFlow_part2.html"><citetitle>http://www.csoundjournal.com/2006summer/controlFlow_part2.html</citetitle></ulink>,

@@ -5,10 +5,8 @@ authors=Francois Pinot
 // *** Please remember to keep this information up to date! ***
 -->
 
-<!--Change refentry id and indexterm id-->
 <refentry id="select">
 <indexterm id="Indexselect"><primary>select</primary></indexterm>
-<!--Make sure the category below is a valid one! See categories.py-->
   <refentryinfo><title>Miscellaneous</title></refentryinfo>
   <refmeta>
     <refentrytitle>select</refentrytitle>
@@ -31,20 +29,11 @@ authors=Francois Pinot
 
   <refsect1>
     <title>Syntaxe</title>
-<!--    Please keep this below ~70 characters by using backslashes to avoid overflow in the pdf version-->
     <synopsis>aout <command>select</command> a1, a2, aless, aequal, amore</synopsis>
   </refsect1>
 
-  <!-- <refsect1> -->
-  <!--   <title>Initialization</title> -->
-  <!--   <para> -->
-  <!--     <emphasis>ivar</emphasis> -\- i-time variable -->
-  <!--   </para> -->
-  <!-- </refsect1> -->
-
   <refsect1>
     <title>Exécution</title>
-<!--    First list all input and output performance parameters-->
     <para>
       <emphasis>a1, a2</emphasis> -- signaux audio qui sont comparés.
     </para>
@@ -79,9 +68,8 @@ authors=Francois Pinot
 
   <refsect1>
     <title>Voir aussi</title>
-<!--    it's always good to include a good See Also list  -->
     <para>
-      <link linkend="deltap"><citetitle>deltap</citetitle></link>
+      <link linkend="MiscopcodesTop"><citetitle>Opcodes divers</citetitle></link>
     </para>
   </refsect1>
 

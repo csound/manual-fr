@@ -66,8 +66,22 @@ ival <emphasis role="op">evalstr</emphasis> "return 2 + 2"
         </para>
       </example>
     </para>
+
+    <para>
+      Voici un exemple complet de l'opcode evalstr. Il utilise le fichier
+      <ulink url="examples/evalstr.csd"><citetitle>evalstr.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode evalstr.</title>
+          <xi:include href="examples-xml/evalstr.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
   </refsect1>
   
+  <refsect1>
+    <title>Voir aussi</title>
+      <para><link linkend="stringmanipulate"><citetitle></citetitle>Opcodes de manipulation de chaîne</link></para>
+  </refsect1>
+
   <refsect1>
     <title>Crédits</title>
     <para>Auteur : &namevictor;, 2013 </para>

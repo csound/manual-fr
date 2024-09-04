@@ -14,11 +14,8 @@ english cvs version=1.12
     <refentrytitle>frac</refentrytitle>
   </refmeta>
 
-
-
   <refnamediv>
     <refname>frac</refname>
-
     <refpurpose>
       Retourne la partie fractionnaire d'un nombre décimal.
     </refpurpose>
@@ -60,18 +57,19 @@ english cvs version=1.12
       Sa sortie contiendra une ligne comme :
       <screen>instr 1:  i2 = 0.200</screen>
     </para>
+    <para>
+      Voici un autre exemple de l'opcode frac. Il utilise le fichier
+      <ulink url="examples/frac2.csd"><citetitle>frac2.csd</citetitle></ulink>.
+      <example>
+        <xi:include href="examples-xml/frac2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
   </refsect1>
 
   <refsect1>
     <title>Voir aussi</title>
     <para>
-      <link linkend="abs"><citetitle>abs</citetitle></link>,
-      <link linkend="exp"><citetitle>exp</citetitle></link>,
-      <link linkend="int"><citetitle>int</citetitle></link>,
-      <link linkend="log"><citetitle>log</citetitle></link>,
-      <link linkend="log10"><citetitle>log10</citetitle></link>,
-      <link linkend="opi"><citetitle>i</citetitle></link>,
-      <link linkend="sqrt"><citetitle>sqrt</citetitle></link>
+      <link linkend="MathMatfunc"><citetitle>Fonctions mathématiques</citetitle></link>
     </para>
   </refsect1>
 

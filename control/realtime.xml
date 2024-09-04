@@ -8,13 +8,15 @@ english cvs version=1.6
 -->
 
 <section id="ControlRealtime">
-  <title>Controle de l'exécution en temps réel</title>
+  <title>Contrôle de l'exécution en temps réel</title>
 
   <para>
     Les opcodes qui surveillent et contrôlent l'exécution en temps réel sont :
     <itemizedlist>
       <listitem><para><link linkend="active"><citetitle>active</citetitle></link></para></listitem>
       <listitem><para><link linkend="cpuprc"><citetitle>cpuprc</citetitle></link></para></listitem>
+      <listitem><para><link linkend="cpumeter"><citetitle>cpumeter</citetitle></link></para></listitem>
+      <listitem><para><link linkend="exitnow"><citetitle>exitnow</citetitle></link></para></listitem>
       <listitem><para><link linkend="maxalloc"><citetitle>maxalloc</citetitle></link></para></listitem>
       <listitem><para><link linkend="prealloc"><citetitle>prealloc</citetitle></link></para></listitem>
       <listitem><para><link linkend="jacktransport"><citetitle>jacktransport</citetitle></link></para></listitem>

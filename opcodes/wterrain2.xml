@@ -87,8 +87,8 @@ authors=Francois Pinot
     <para>
       <emphasis>kcurve=3 : cornoïde</emphasis>
       <literallayout>
-        fx(t) = kx + krx * sin(t) * (cos(t) + kcurveparam);
-        fy(t) = ky + kry * cos(t) * (cos(t) + kcurveparam);
+        fx(t) = kx + krx * cos(t) * cos(2*t)
+        fy(t) = ky + kry * sin(t) * (kcurveparam + cos(2*t))
       </literallayout>
       <mediaobject>
         <imageobject>
@@ -193,10 +193,9 @@ authors=Francois Pinot
 
   <refsect1>
     <title>Voir aussi</title>
-      <para>
-        <link linkend="wterrain"><citetitle>wterrain</citetitle></link>,
-        <link linkend="sterrain"><citetitle>sterrain</citetitle></link>
-      </para>
+    <para>
+      <link linkend="SiggenWaveterr"><citetitle>Synthèse par terrain d'ondes</citetitle></link>
+    </para>
   </refsect1>
 
   <refsect1>

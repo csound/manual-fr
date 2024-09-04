@@ -1,0 +1,134 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="randc">
+<indexterm id="IndexRandc"><primary>randc</primary></indexterm>
+  <refentryinfo><title>Signal Generators:Random (Noise) Generators</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>randc</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>randc</refname>
+    <refpurpose>
+      Génère une suite contrôlée de nombres aléatoires avec interpolation
+      cubique entre chaque nouveau nombre.
+    </refpurpose>
+  </refnamediv>
+ 
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Génère une suite contrôlée de nombres aléatoires avec interpolation
+      cubique entre chaque nouveau nombre.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis>ares <command>randc</command> xamp, xcps [, iseed] [, isize] [, ioffset]</synopsis>
+
+    <synopsis>kres <command>randc</command> kamp, kcps [, iseed] [, isize] [, ioffset]</synopsis>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>iseed</emphasis> (facultatif, par défaut=0,5) -- une graine pour
+      la formule du calcul récursif des nombres pseudo-aléatoires. Une valeur
+      comprise entre 0 et 1 produira une sortie initiale de
+      <emphasis>kamp</emphasis> * <emphasis>iseed</emphasis>. Avec une
+      valeur négative, la réinitialisation de la graine sera ignorée.
+      Avec une valeur supérieure à 1, la graine proviendra de l'horloge du
+      système, ce qui est la meilleure option pour générer une séquence
+      aléatoire différente à chaque exécution.
+    </para>
+
+    <para>
+      <emphasis>isize</emphasis> (facultatif, par défaut=0) -- s'il est nul, un
+      nombre sur 16 bit est généré. S'il est non nul, un nombre sur 31 bit est
+      généré. La valeur par défaut est 0.
+    </para>
+
+    <para>
+      <emphasis>ioffset</emphasis> (facultatif, par défaut=0) -- une valeur de
+      base ajoutée au résultat aléatoire. 
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exécution</title>
+    <para>
+      <emphasis>kamp, xamp</emphasis> -- intervalle sur lequel les nombres
+      aléatoires sont distribués.
+    </para>
+
+    <para>
+      <emphasis>kcps, xcps</emphasis> -- la fréquence à laquelle de nouveaux
+      nombres aléatoires sont générés.
+    </para>
+
+    <para>
+      La formule pseudo-aléatoire interne produit des valeurs uniformément
+      distribuées sur l'intervalle allant de -<emphasis>kamp</emphasis> à
+      +<emphasis>kamp</emphasis>. <emphasis>randc</emphasis> génère ainsi un
+      bruit blanc uniforme avec une valeur  moyenne quadratique (RMS) de
+      <emphasis>kamp / (racine de 2)</emphasis>.
+    </para>
+
+    <para>
+      Les unités restances produisent un bruit à bande limitée. Les paramètres
+      <emphasis>kcps</emphasis> et <emphasis>xcps</emphasis> permettent de
+      choisir que les nouveaux nombres aléatoires soient générés à un taux
+      inférieur au taux d'échantillonnage ou au taux de contrôle.
+      <emphasis>randi</emphasis> produira une interpolation linéaire entre
+      chaque nouveau nombre et le suivant.
+    </para>
+  </refsect1>
+ 
+  <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode randc. Il utilise le fichier
+      <ulink url="examples/randc.csd"><citetitle>randc.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode randc.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+          <xi:include href="examples-xml/randc.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+
+    <para>
+      L'exemple produit la sortie suivante :
+      <screen>
+ i   1 time     0.00000:    50.00305
+ i   1 time     0.50068:    68.16267
+ i   1 time     1.00136:   -94.61682
+ i   1 time     1.50204:   -74.38840
+....
+        
+WARNING: Seeding from current time 67726716
+
+ i   2 time     4.00036:    79.19006
+ i   2 time     4.50104:   -47.46559
+ i   2 time     5.00172:    74.73582
+ i   2 time     5.50240:    65.35726
+....
+      </screen>
+    </para>
+  </refsect1>
+
+      <refsect1>
+        <title>Voir aussi</title>
+        <para><link linkend="SiggenNoise"><citetitle>Random (Noise) Generators</citetitle></link>
+        <link linkend="randh"><citetitle>randh</citetitle></link>,
+        <link linkend="rand"><citetitle>rand</citetitle></link>
+        </para>
+    </refsect1>
+</refentry>

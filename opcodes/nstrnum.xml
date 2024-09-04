@@ -64,6 +64,11 @@ english cvs version=1.8
         d'information sur l'utilisation des options de la ligne de commande.</para>
           <xi:include href="examples-xml/nstrnum_nstrstr.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
+      <para>
+        Un exemple musical montrant l'opcode nstrnum :
+        <ulink url="examples/musical/TivalNstrnum_Yi.csd">
+        <citetitle>TivalNstrnum_Yi.csd</citetitle></ulink> par Steven Yi.
+      </para>
     </para>
 
     <para>
@@ -72,6 +77,13 @@ english cvs version=1.8
 instrument name = john
 instrument number = 2
       </screen>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="ControlReinitn"><citetitle>Initialisation et réinitialisation</citetitle></link>
     </para>
   </refsect1>
 

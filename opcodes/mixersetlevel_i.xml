@@ -22,11 +22,6 @@ english cvs version=1.2
   </refnamediv>
   
   <refsect1>
-    <title>Syntaxe</title>
-    <synopsis><command>MixerSetLevel_i</command> isend, ibuss, igain</synopsis>
-  </refsect1>
-  
-  <refsect1>
     <title>Description</title> 
     <para>Opcode du greffon mixer.</para>
     <para>
@@ -35,6 +30,11 @@ english cvs version=1.2
       dans l'en-tête de l'orchestre. L'envoi du signal vers le bus est effectué
       par l'opcode <link linkend="MixerSend"><citetitle>MixerSend</citetitle></link>. 
     </para>  
+  </refsect1>
+  
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>MixerSetLevel_i</command> isend, ibuss, igain</synopsis>
   </refsect1>
   
   <refsect1>
@@ -78,6 +78,14 @@ english cvs version=1.2
       <emphasis role="opc">MixerSetLevel_i</emphasis>		3, 4, 0.76</programlisting>
     
   </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="MixerOpcodes"><citetitle>Opcodes mixer</citetitle></link>
+    </para>
+  </refsect1>
+
   <refsect1>
     <title>Crédits</title>
     <para>Michael Gogins (gogins at pipeline dot com).</para>

@@ -46,6 +46,25 @@ english cvs version=
           <xi:include href="examples-xml/signum.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
     </para>
+    <para>
+      Voici un autre exemple de l'opcode signum. Il utilise le fichier
+      <ulink url="examples/signum2.csd"><citetitle>signum2.csd</citetitle></ulink>.
+      <example>
+          <xi:include href="examples-xml/signum2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+      <para>
+        Un exemple musical montrant l'opcode signum :
+        <ulink url="examples/musical/Signum_Welsh.csd">
+        <citetitle>Signum_Welsh.csd</citetitle></ulink> par Kevin Welsh.
+      </para>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="MathTrig"><citetitle>Fonctions trigonométriques</citetitle></link>
+    </para>
   </refsect1>
 
   <refsect1>

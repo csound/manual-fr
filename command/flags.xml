@@ -1277,7 +1277,9 @@ csound5:output2             (reproduction droite)</screen>
           Démarre et arrête les instances d'instruments à l'échantillon le plus
           proche de l'instant demandé. Ceci diffère du comportement traditionnel
           de Csound qui arrondi le temps au cycle-k le plus proche. Noter que
-          cela ne fonctionne pas avec les notes liées.
+          cela ne fonctionne pas avec les notes liées et que ça ne change pas
+          l'horloge MIDI (car celle-ci n'est affectée que par la taille
+          <emphasis>ksmps</emphasis> (taux de contrôle).
         </para>
       </listitem>
     </varlistentry>

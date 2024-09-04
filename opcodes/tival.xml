@@ -55,15 +55,18 @@ english cvs version=1.7
         d'information sur l'utilisation des options de la ligne de commande.</para>
           <xi:include href="examples-xml/tival.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
+      <para>
+        Un exemple musical montrant l'opcode tival :
+        <ulink url="examples/musical/TivalNstrnum_Yi.csd">
+        <citetitle>TivalNstrnum_Yi.csd</citetitle></ulink> par Steven Yi.
+      </para>
     </para>
   </refsect1>
 
   <refsect1>
     <title>Voir aussi</title>
     <para>
-      <link linkend="assign"><citetitle>=</citetitle></link>,
-      <link linkend="divz"><citetitle>divz</citetitle></link>,
-      <link linkend="init"><citetitle>init</citetitle></link>
+      <link linkend="ControlReinitn"><citetitle>Initialisation et réinitialisation</citetitle></link>
     </para>
     <para>Plus d'information sur cet opcode :
     <ulink url="http://www.csoundjournal.com/2005fall/tiedNotes.html">

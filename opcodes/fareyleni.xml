@@ -9,7 +9,7 @@ english cvs version=1.2
 
 <refentry id="fareyleni">
 <indexterm id="IndexFareyleni"><primary>fareyleni</primary></indexterm>
-  <refentryinfo><title>Miscellaneous</title></refentryinfo>
+  <refentryinfo><title>Signal Generators:Models and Emulations</title></refentryinfo>
   <refmeta>
     <refentrytitle>fareyleni</refentrytitle>
   </refmeta>
@@ -157,6 +157,13 @@ english cvs version=1.2
         d'information sur l'utilisation des options de la ligne de commande.</para>
           <xi:include href="examples-xml/fareyleni.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="SiggenModels"><citetitle>Modèles et émulations</citetitle></link>
     </para>
   </refsect1>
 

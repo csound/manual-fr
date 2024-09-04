@@ -29,22 +29,15 @@ english cvs version=1.7
     limites :
     <itemizedlist>
       <listitem><para><link linkend="tab"><citetitle>tab</citetitle></link></para></listitem>
-      <listitem><para><link linkend="tab"><citetitle>tab_i</citetitle></link></para></listitem>
-      <listitem><para><link linkend="tab"><citetitle>tabw</citetitle></link></para></listitem>
-      <listitem><para><link linkend="tab"><citetitle>tabw_i</citetitle></link></para></listitem>
+      <listitem><para><link linkend="tab_i"><citetitle>tab_i</citetitle></link></para></listitem>
+      <listitem><para><link linkend="tabw"><citetitle>tabw</citetitle></link></para></listitem>
+      <listitem><para><link linkend="tabw_i"><citetitle>tabw_i</citetitle></link></para></listitem>
     </itemizedlist>
   </para>
   <para>
     Voir les sections <link linkend="TableQueries"><citetitle>Requêtes de Table</citetitle></link>,
-    <link linkend="TableReadwrit"><citetitle>Opérations de Lecture/Ecriture de Table</citetitle></link> et
-    <link linkend="TableSelect"><citetitle>Lecture de Table avec Sélection Dynamique</citetitle></link> pour
+    <link linkend="TableReadwrit"><citetitle>Opérations de lecture/écriture de table</citetitle></link> et
+    <link linkend="TableSelect"><citetitle>Lecture de table avec sélection dynamique</citetitle></link> pour
     d'autres opérations de table.
   </para>
-  <note><para>
-    Bien que des tables avec une taille qui n'est pas une puissance de deux puissent être créées en
-    utilisant une taille négative (voir
-    <link linkend="f"><citetitle>instruction de partition f</citetitle></link>), certains opcodes ne les
-    accepteront pas.
-  </para></note>
-
 </section>

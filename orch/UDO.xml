@@ -50,9 +50,21 @@ afiltre Lowpass asource, kvaleur1, kvaleur2</programlisting>
   <para>voir l'entrée <link linkend="opcode"><citetitle>opcode</citetitle></link> pour des informations
     détaillées sur la définition d'UDO.
   </para>
+
+  <para>
+    D'autres opcodes à utiliser dans un UDO :
+    <itemizedlist>
+      <listitem><para><link linkend="oversample"><citetitle>oversample</citetitle></link></para>
+      </listitem>	 
+      <listitem><para><link linkend="undersample"><citetitle>undersample</citetitle></link></para>
+      </listitem>
+    </itemizedlist>
+  </para>
+
   <para>
     On peut trouver plusieurs UDO déjà rédigés (ou apporter sa propre contribution) à
-    <ulink url="https://www.csounds.com/community/user-defined-opcode-database/"><citetitle>User Defined Opcode Database</citetitle></ulink>
-    sur <ulink url="https://csound.com/"><citetitle>Csounds.com</citetitle></ulink>.
+    <ulink url="https://www.csounds.com/community/user-defined-opcode-database/">
+    <citetitle>User Defined Opcode Database</citetitle></ulink>
+    sur Csounds.com.
   </para>
 </section>

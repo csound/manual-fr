@@ -34,9 +34,7 @@ english cvs version=1.17
     <para>
       Un bloc d'opcode défini par l'utilisateur doit précéder l'instrument (ou l'opcode) depuis
       lequel on l'utilise. Mais un opcode peut aussi s'appeler lui-même. Cela permet une récursivité dont
-      la profondeur n'est limitée que par la mémoire disponible. De plus, on peut, à titre expérimental,
-      exécuter l'opcode défini à un taux de contrôle plus élevé que la valeur de
-      <link linkend="kr"><citetitle>kr</citetitle></link> spécifiée dans l'en-tête de l'orchestre.
+      la profondeur n'est limitée que par la mémoire disponible.
     </para>
 
     <para>
@@ -249,10 +247,6 @@ english cvs version=1.17
     </para>
 
     <para>
-      Le nombre maximum d'arguments en entrée autorisé est 256.
-    </para>
-
-    <para>
       <emphasis>outtypes</emphasis> -- liste des types en sortie. Le format est le même que celui utilisé
       pour <emphasis>intypes</emphasis>.
     </para>
@@ -323,68 +317,6 @@ english cvs version=1.17
     </para>
 
     <para>
-      <emphasis>iksmps</emphasis> (facultatif, 0 par défaut) -- fixe la valeur locale de
-      <emphasis>ksmps</emphasis>. Doit être un nombre entier positif, et le <emphasis>ksmps</emphasis> de
-      l'instrument appelant doit être un multiple entier de cette valeur. Par exemple, si
-      <emphasis>ksmps</emphasis> vaut 10 dans l'instrument depuis lequel l'opcode a été appelé, les
-      valeurs permises pour <emphasis>iksmps</emphasis> sont 1, 2, 5, et 10.
-    </para>
-
-    <para>
-      Si <emphasis>iksmps</emphasis> vaut zéro, le <emphasis>ksmps</emphasis> de l'instrument ou de
-      l'opcode appelant est utilisé (c'est le comportement par défaut).
-    </para>
-
-    <note>
-      <title>Note</title>
-      <para>
-        Le <emphasis>ksmps</emphasis> local est implémenté en divisant une période de contrôle en
-        sous-périodes-k plus petites et en modifiant temporairement les variables globales internes de
-        Csound. Ceci nécessite aussi la conversion du taux des arguments d'entrée et de sortie de
-        taux-k (les variables d'entrée reçoivent la même valeur dans tous les sous-périodes-k, tandis
-        que les valeurs de sortie ne sont écrites que pendant la dernière).
-      </para>
-    </note>
-
-    <warning>
-      <title>Avertissement au sujet du <emphasis>ksmps</emphasis> local</title>
-      <para>
-        Lorsque le <emphasis>ksmps</emphasis> local est différent du <emphasis>ksmps</emphasis> de
-        l'orchestre (celui spécifié dans l'en-tête de l'orchestre), il ne faut pas utiliser d'opération
-        globale de taux-a dans le bloc d'opcode défini par l'utilisateur.
-      </para>
-
-      <para>
-        Ceci comprend :
-
-        <itemizedlist>
-          <listitem><para>tous les accès aux variables <quote>ga</quote></para></listitem>
-          <listitem><para>les opcodes zak de taux-a (<link linkend="zar"><citetitle>zar</citetitle></link>,
-            <link linkend="zaw"><citetitle>zaw</citetitle></link>, etc.)</para></listitem>
-          <listitem><para><link linkend="tablera"><citetitle>tablera</citetitle></link> et
-            <link linkend="tablewa"><citetitle>tablewa</citetitle></link> (ces deux opcodes peuvent 
-            fonctionner en fait, mais il faut prendre des précautions)</para></listitem>
-          <listitem><para>La famille d'ocpode <emphasis>in</emphasis> et <emphasis>out</emphasis> (ils
-            lisent depuis et écrivent dans des tampons globaux de taux-a)</para></listitem>
-        </itemizedlist>
-      </para>
-
-      <para>
-        En général, il faut utiliser le <emphasis>ksmps</emphasis> local avec précaution car c'est une
-        fonctionnalité expérimentale, bien qu'elle fonctionne correctement dans la plupart des cas.
-      </para>
-    </warning>
-
-    <para>
-      L'instruction <link linkend="setksmps"><citetitle>setksmps</citetitle></link> peut être utilisée
-      pour fixer la valeur du <emphasis>ksmps</emphasis> local du bloc d'opcode défini par l'utilisateur.
-      Elle a un paramètre de taux-i spécifiant la nouvelle valeur de <emphasis>ksmps</emphasis> (qui reste
-      inchangée si l'on utilise zéro, voir aussi les notes au sujet de <emphasis>iksmps</emphasis> ci-dessus).
-      <emphasis>setksmps</emphasis> doit être utilisé avant tout autre opcode (mais il est autorisé après
-      <emphasis>xin</emphasis>), autrement des résultats imprévisibles peuvent se produire.
-    </para>
-
-    <para>
       On peut lire les paramètres d'entrée avec l'opcode <emphasis>xin</emphasis>, et la sortie est
       écrite par l'opcode <emphasis>xout</emphasis>. On ne doit utiliser qu'une seule instance de ces
       unités, car <emphasis>xout</emphasis> écrase la sortie sans accumuler les valeurs. Le nombre et le
@@ -392,13 +324,6 @@ english cvs version=1.17
       dans la déclaration du bloc d'opcode défini par l'utilisateur (voir les tableaux ci-dessus).
     </para>
 
-    <para>
-      Les arguments d'entrée et de sortie doivent se conformer à la définition à la fois en nombre (sauf
-      si des entrées de taux-i facultatives sont utilisées) et en genre. Un paramètre d'entrée facultatif
-      de taux-i (<emphasis>iksmps</emphasis>) est automatiquement ajouté à la liste des
-      <emphasis>intypes</emphasis> et (comme pour setksmps) fixe la valeur du <emphasis>ksmps</emphasis>
-      local.
-    </para>
   </refsect1>
 
   <refsect1>
@@ -419,7 +344,7 @@ xinarg1 [, xinarg2] [, xinarg3] ... [xinargN]  <emphasis role="opc">xin</emphasi
       Le nouvel opcode peut ensuite être utilisé avec la syntaxe usuelle :
 
       <programlisting>
-[xoutarg1] [, xoutarg2] ... [xoutargN] <command>nom</command>  [xinarg1] [, xinarg2] ... [xinargN] [, iksmps]</programlisting>
+[xoutarg1] [, xoutarg2] ... [xoutargN] <command>nom</command>  [xinarg1] [, xinarg2] ... [xinargN]</programlisting>
     </para>
 
     <note>
@@ -453,10 +378,7 @@ xinarg1 [, xinarg2] [, xinarg3] ... [xinargN]  <emphasis role="opc">xin</emphasi
   <refsect1>
     <title>Voir aussi</title>
     <para>
-      <link linkend="endop"><citetitle>endop</citetitle></link>,
-      <link linkend="setksmps"><citetitle>setksmps</citetitle></link>,
-      <link linkend="xin"><citetitle>xin</citetitle></link>,
-      <link linkend="xout"><citetitle>xout</citetitle></link>
+      <link linkend="OrchUDO"><citetitle>Opcodes définis par l'utilisateur (UDO)</citetitle></link>
     </para>
   </refsect1>
 

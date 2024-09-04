@@ -55,6 +55,7 @@ authors=Francois Pinot
 <!ENTITY Remote SYSTEM "oscnetwork/Remote.xml">
 
 <!ENTITY AbletonLink SYSTEM "oscnetwork/AbletonLink.xml">
+<!ENTITY nonMIDIdevices SYSTEM "oscnetwork/nonMIDIdevices.xml">
 
 <!ENTITY command SYSTEM "command/top.xml">
 <!ENTITY commanddesc SYSTEM "command/desc.xml">
@@ -83,6 +84,7 @@ authors=Francois Pinot
 <!ENTITY controlsubinstr SYSTEM "control/subinstr.xml">
 <!ENTITY controltimeread SYSTEM "control/timeread.xml">
 
+<!ENTITY Faustopcodes SYSTEM "Faustopcodes/top.xml">
 <!ENTITY imageopcodes SYSTEM "imageopcodes/top.xml">
 <!ENTITY stkopcodes SYSTEM "STKopcodes/top.xml">
 <!ENTITY miscopcodes SYSTEM "miscopcodes/top.xml">
@@ -1033,6 +1035,8 @@ authors=Francois Pinot
 <!ENTITY opcodesoutvalue SYSTEM "opcodes/outvalue.xml">
 <!ENTITY opcodesoutx SYSTEM "opcodes/outx.xml">
 <!ENTITY opcodesoutz SYSTEM "opcodes/outz.xml">
+<!ENTITY opcodesoversample SYSTEM "opcodes/oversample.xml">
+<!ENTITY opcodesundersample SYSTEM "opcodes/undersample.xml">
 <!ENTITY opcodesp5gconnect SYSTEM "opcodes/p5gconnect.xml">
 <!ENTITY opcodesp5gdata SYSTEM "opcodes/p5gdata.xml">
 <!ENTITY opcodespan SYSTEM "opcodes/pan.xml">
@@ -1188,6 +1192,7 @@ authors=Francois Pinot
 <!ENTITY opcodeshrtfreverb SYSTEM "opcodes/hrtfreverb.xml">
 <!ENTITY opcodeshrtfstat SYSTEM "opcodes/hrtfstat.xml">
 <!ENTITY opcodesraises SYSTEM "opcodes/raises.xml">
+<!ENTITY opcodesrandc SYSTEM "opcodes/randc.xml">
 <!ENTITY opcodesrandh SYSTEM "opcodes/randh.xml">
 <!ENTITY opcodesrandi SYSTEM "opcodes/randi.xml">
 <!ENTITY opcodesrandomh SYSTEM "opcodes/randomh.xml">
@@ -1823,7 +1828,7 @@ authors=Francois Pinot
 <!ENTITY siggendynamic SYSTEM "siggen/dynamic.xml">
 <!ENTITY siggenfmsynth SYSTEM "siggen/fmsynth.xml">
 <!ENTITY siggengranular SYSTEM "siggen/granular.xml">
-<!ENTITY siggenhvs SYSTEM "siggen/hvsXO.xml">
+<!ENTITY siggenhvs SYSTEM "siggen/hvs.xml">
 <!ENTITY siggenlineexp SYSTEM "siggen/lineexp.xml">
 <!ENTITY siggenenvelope SYSTEM "siggen/envelope.xml">
 <!ENTITY siggenmodels SYSTEM "siggen/models.xml">
@@ -1920,7 +1925,7 @@ authors=Francois Pinot
 <!ENTITY experimental SYSTEM "experimental/top.xml">
 <!ENTITY deprecated SYSTEM "deprecated/top.xml">
 
-<!ENTITY csoundversion "6.18.0">
+<!ENTITY csoundversion "7.0">
 ]>
 
 <book id="index" lang="fr">
@@ -2002,6 +2007,7 @@ authors=Francois Pinot
     &signalflowgraph;
     &jacko;
     &py;
+    &Faustopcodes;
     &imageopcodes;
     &stkopcodes;
     &miscopcodes;

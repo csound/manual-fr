@@ -22,14 +22,14 @@ english cvs version=1.7
   </refnamediv>
 
   <refsect1>
-    <title>Syntaxe</title>
-    <synopsis><command>MixerSend</command> asignal, isend, ibuss, ichannel</synopsis>
-  </refsect1>
-
-  <refsect1>
     <title>Description</title> 
     <para>Mélange un signal de taux-a dans un canal d'un bus.</para>  
     </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>MixerSend</command> asignal, isend, ibuss, ichannel</synopsis>
+  </refsect1>
 
   <refsect1>
     <title>Initialisation</title>
@@ -94,6 +94,13 @@ asig2       <emphasis role="op">=</emphasis>       aright <emphasis role="op">*<
         <title>Exemple complet de l'opcode MixerSend.</title>
         <xi:include href="examples-xml/Mixer.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="MixerOpcodes"><citetitle>Opcodes mixer</citetitle></link>
     </para>
   </refsect1>
 

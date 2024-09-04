@@ -1,0 +1,46 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<chapter id="FaustTop">
+  <title>Opcodes faust</title>
+
+  <para>
+    Les opcodes faust donnent accès au langage faust depuis Csound. Faust
+    (Functional Audio Stream) est un langage de programmation fonctionnel
+    pour la synthèse de son et le traitement audio :
+  <ulink url="https://faust.grame.fr/">https://faust.grame.fr/</ulink>.
+  </para>
+  <para>Les opcodes suivants sont disponibles :</para>
+
+  <itemizedlist>
+    <listitem>
+      <para><link linkend="faustaudio"><citetitle>faustaudio</citetitle></link> -
+      Instancie et exécute un programme faust compilé.</para>
+    </listitem>
+    <listitem>
+      <para><link linkend="faustcompile"><citetitle>faustcompile</citetitle></link> -
+      Produit un process DSP instancialble à partir d'un programme faust.</para>
+    </listitem>
+    <listitem>
+      <para><link linkend="faustdsp"><citetitle>faustdsp</citetitle></link> -
+      Instancie un programme faust.</para>
+    </listitem>
+    <listitem>
+      <para><link linkend="faustctl"><citetitle>faustctl</citetitle></link> -
+      Ajuste un contrôle donné dans une instance faust DSP.</para>
+    </listitem>
+    <listitem>
+      <para><link linkend="faustgen"><citetitle>faustgen</citetitle></link> -
+      Compile, instancie et exécute un programme faust.</para>
+    </listitem>
+   <listitem>
+      <para><link linkend="faustplay"><citetitle>faustplay</citetitle></link> -
+      Exécute un programme faust instancié.</para>
+    </listitem>
+  </itemizedlist>
+
+</chapter>

@@ -5,10 +5,8 @@ authors=Francois Pinot
 // *** Please remember to keep this information up to date! ***
 -->
 
-<!--Change refentry id and indexterm id-->
 <refentry id="link_peers">
 <indexterm id="IndexLinkPeers"><primary>link_peers</primary></indexterm>
-<!--Make sure the category below is a valid one! See categories.py-->
   <refentryinfo><title>Ableton Link Opcodes</title></refentryinfo>
   <refmeta>
     <refentrytitle>link_peers</refentrytitle>
@@ -36,13 +34,10 @@ authors=Francois Pinot
 
   <refsect1>
     <title>Syntaxe</title>
-<!--    Please keep this below ~70 characters by using backslashes to avoid overflow in the pdf version
-        k_count link_peers i_peer -->
     <synopsis>k_count <command>link_peers</command> i_peer</synopsis>
   </refsect1>
 
   <refsect1>
-<!--  If applicable list i-time arguments-->
     <title>Initialisation</title>
    <para>
       <emphasis>i_peer</emphasis> -- L'objet pair Ableton Link.
@@ -51,7 +46,6 @@ authors=Francois Pinot
  
   <refsect1>
     <title>Exécution</title>
-<!--    First list all input and output performance parameters-->
     <para>
       <emphasis>k_count</emphasis> -- Le nombre courant de pairs dans la
       session du réseau global Ableton Link.
@@ -59,9 +53,6 @@ authors=Francois Pinot
 </refsect1>
 
    <refsect1>
-<!--To add examples, create the csd file in the examples directory, then run:-->
-<!--python csd2docbook.py -f newopcodename.csd-->
-<!--to generate the xml highlighted version used below-->
     <title>Exemples</title>
     <para>
       Voici un exemple de l'opcode link_peers. Il utilise le fichier
@@ -75,20 +66,14 @@ authors=Francois Pinot
 
   <refsect1>
     <title>Voir aussi</title>
-<!--    it's always good to include a good See Also list  -->
-    <para>Voir la section <link linkend="AbletonLink"><citetitle>Ableton Link
-      Opcodes</citetitle></link> pour plus d'information.
+    <para>
+      <link linkend="AbletonLink"><citetitle>Opcodes Ableton Link</citetitle></link>
     </para>
   </refsect1>
 
   <refsect1>
-<!--  And put your name and other relevant information here-->
     <title>Crédits</title>
     <para>Par : &namemichael; 2017</para>
   </refsect1>
 
-<!--Now remember to add a link from the appropriate category in the Opcode Overview.-->
-<!--Add the entity to manual.xml-->
-<!--Add the entity reference in the appropriate place in opcodes/top.xml-->
-<!--And you're set! Maybe delete the comments as well...-->
 </refentry>

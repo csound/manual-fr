@@ -84,7 +84,10 @@ Y[i] = X[i] - X[i-1] + (igain * Y[i-1])</literallayout>
 
   <refsect1>
     <title>Voir aussi</title>
-    <para><link linkend="dcblock2"><citetitle>dcblock2</citetitle></link></para>
+    <para>
+      <link linkend="SigmodSpeciali">
+      <citetitle>Filtres spécialisés : filtres passe-haut</citetitle></link>
+    </para>
   </refsect1>
 
   <refsect1>

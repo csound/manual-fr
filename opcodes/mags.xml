@@ -1,5 +1,8 @@
 <!--translated=yes
 authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
 -->
 
 <refentry id="mags">
@@ -62,8 +65,13 @@ authors=Francois Pinot
   <refsect1>
     <title>Voir aussi</title>
     <para>
-      <link linkend="vectorial"><citetitle></citetitle>Opcodes vectoriels</link>,
-      <link linkend="arrayOpcodes"><citetitle></citetitle>Opcodes de tableaux</link>.
+      <link linkend="vectorial"><citetitle></citetitle>Opcodes vectoriels</link>
+    </para>
+    <para>
+      <link linkend="arrayOpcodes"><citetitle></citetitle>Opcodes de tableaux</link>
+    </para>
+    <para>
+      <link linkend="arraysfft"><citetitle></citetitle>Opcodes spectraux basés sur des tableaux</link>
     </para>
   </refsect1>
 

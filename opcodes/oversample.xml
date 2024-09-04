@@ -1,0 +1,85 @@
+<!--translated=yes
+authors=Francois Pinot
+// translated field can be yes, no or partially
+// Add your name to the existing list of authors
+// *** Please remember to keep this information up to date! ***
+-->
+
+<refentry id="oversample">
+<indexterm id="IndexOversample"><primary>oversample</primary></indexterm>
+  <refentryinfo><title>Signal I/O:Software Bus</title></refentryinfo>
+  <refmeta>
+    <refentrytitle>oversample</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>oversample</refname>
+    <refpurpose>
+      Fixe un taux d'échantillonnage local plus haut basé sur un facteur de
+      suréchantillonnage.
+    </refpurpose>
+  </refnamediv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      Fixe la valeur du taux d'échantillonnage local dans un bloc d'opcode
+      défini par l'utilisateur.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Syntaxe</title>
+    <synopsis><command>oversample</command> ifactor[, icvt_in, icvt_out] </synopsis>
+  </refsect1>
+
+  <refsect1>
+    <title>Initialisation</title>
+    <para>
+      <emphasis>ifactor</emphasis> -- fixe le facteur de suréchantillonnage.
+      Doit être un entier positif &gt; 1. Un facteur de 1 n'a aucun effet, les
+      facteurs négatifs ou nuls sont interdits. Le taux d'échantillonnage local
+      devient ifactor * sr. La valeur de la variable sr est alors changée
+      localement. Le kr local est également modifié en conséquence, alors que
+      le ksmps local reste inchangé.
+    </para>
+    <para>
+      <emphasis>icvt_in</emphasis> -- convertisseur utilisé en entrée : si Secret
+      Rabbit Code est utilisé, 0 - sync de meilleure qualité (par défaut) ;
+      1 - sync de qualité moyenne ; 2 - sync rapide ; 3 - paliers d'ordre zéro ;
+      4 - linéaire.
+    </para>
+    <para>
+      <emphasis>icvt_out</emphasis> -- converter utilisé en sortie,
+      par défaut celui utilisé en entrée, mais il peut être différent.
+    </para>
+
+    <note>
+      <title>Notes</title>
+      <para>
+        Des convertisseurs de meilleure qualité ajoutent un petit temps de
+        latence au signal (pour 0, 1, 2, la latence augmente avec la qualité).
+        Les convertisseurs 3 et 4 n'induisent pas de latence.
+      </para> 
+      <para>
+        Il est interdit d'appeler cet opcode et <emphasis>setksmps</emphasis>
+        dans le même UDO. Cet opcode n'est utilisable que dans les UDOs. Les
+        arguments tableaux au taux de contrôle ou audio sont interdits. Il ne
+        faut pas utiliser de variable globale ou de canaux de bus.
+      </para>
+    </note>
+  </refsect1>
+
+  <refsect1>
+    <title>Voir aussi</title>
+    <para>
+      <link linkend="OrchUDO"><citetitle>Opcodes définis par l'utilisateur (UDO)</citetitle></link>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Crédits</title>
+    <para>Auteur : Victor Lazzarini</para>
+    <para>Nouveau dans la version 7.0</para>
+  </refsect1>
+</refentry>
