@@ -1056,7 +1056,6 @@
 <synopsis>ktot[,kcpu1, kcpu2,...]<link linkend="cpumeter">cpumeter</link> ifreq</synopsis><para/>
 <synopsis><link linkend="cpuprc">cpuprc</link> insnum, ipercent</synopsis><synopsis><link linkend="cpuprc">cpuprc</link> Sinsname, ipercent</synopsis><para/>
 <synopsis><link linkend="exitnow">exitnow</link> [ivalue]</synopsis><para/>
-<synopsis><link linkend="jacktransport">jacktransport</link> icommand [, ilocation]</synopsis><para/>
 <synopsis><link linkend="maxalloc">maxalloc</link> insnum, icount</synopsis><synopsis><link linkend="maxalloc">maxalloc</link> Sinsname, icount</synopsis><para/>
 <synopsis><link linkend="prealloc">prealloc</link> insnum, icount</synopsis><synopsis><link linkend="prealloc">prealloc</link> &quot;insname&quot;, icount</synopsis><para/>
 </para></formalpara>
@@ -1174,23 +1173,6 @@
 <synopsis>kres <link linkend="timeinsts">timeinsts</link>&#160;</synopsis><para/>
 <synopsis>ires <link linkend="timek">timek</link>&#160;</synopsis><synopsis>kres <link linkend="timek">timek</link>&#160;</synopsis><para/>
 <synopsis>ires <link linkend="times">times</link>&#160;</synopsis><synopsis>kres <link linkend="times">times</link>&#160;</synopsis><para/>
-</para></formalpara>
-<para></para><para></para><formalpara>
-<title>Opcodes jacko</title>
-<para>
-<para/>
-<synopsis>asignal <link linkend="JackoAudioIn">JackoAudioIn </link>ScsoundPortName</synopsis><para/>
-<synopsis><link linkend="JackoAudioInConnect">JackoAudioInConnect </link>SexternalPortName, ScsoundPortName</synopsis><para/>
-<synopsis><link linkend="JackoAudioOut">JackoAudioOut </link> ScsoundPortName, asignal</synopsis><para/>
-<synopsis><link linkend="JackoAudioOutConnect">JackoAudioOutConnect </link>ScsoundPortName, SexternalPortName</synopsis><para/>
-<synopsis><link linkend="JackoFreewheel">JackoFreewheel </link>[ienabled]</synopsis><para/>
-<synopsis><link linkend="JackoInfo">JackoInfo </link>&#160;</synopsis><para/>
-<synopsis><link linkend="JackoInit">JackoInit </link>ServerName, SclientName</synopsis><para/>
-<synopsis><link linkend="JackoMidiInConnect">JackoMidiInConnect </link>SexternalPortName, ScsoundPortName</synopsis><para/>
-<synopsis><link linkend="JackoMidiOut">JackoMidiOut </link> ScsoundPortName, kstatus, kchannel, kdata1[, kdata2]</synopsis><para/>
-<synopsis><link linkend="JackoMidiOutConnect">JackoMidiOutConnect </link>ScsoundPortName, SexternalPortName</synopsis><para/>
-<synopsis><link linkend="JackoNoteOut">JackoNoteOut </link> ScsoundPortName, kstatus, kchannel, kdata1[, kdata2]</synopsis><para/>
-<synopsis><link linkend="JackoTransport">JackoTransport </link> kcommand, [kposition]</synopsis><para/>
 </para></formalpara>
 <para></para><para></para><formalpara>
 <title>E/S série</title>
@@ -2200,7 +2182,6 @@
 <title>Opérations de tableau : obsolète</title>
 <para>
 <para/>
-<synopsis><link linkend="JackoOn">JackoOn </link>[iactive] </synopsis><para/>
 <synopsis><link linkend="ktableseg">ktableseg</link> ifn1, idur1, ifn2 [, idur2] [, ifn3] [...]</synopsis><para/>
 <synopsis><link linkend="tableiw">tableiw</link> isig, indx, ifn [, ixmode] [, ixoff] [, iwgmode]</synopsis><para/>
 </para></formalpara>

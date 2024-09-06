@@ -8,12 +8,21 @@ english cvs version=1.1
 -->
 
 <chapter id="PluginTop">
-  <title>Accueil de greffon</title>
+  <title>Opcodes de greffon externe</title>
   <para>
-    Csound accueille actuellement des greffons externes au moyen de <emphasis>dssi4cs</emphasis> (pour les
-    greffons LADSPA) sur Linux.
+    Un certain nombre d'opcodes de greffon externe sont documentés dans ce
+    manuel, mais ils ne sont pas maintenus comme faisant partie du code
+    principal de Csound. Au contraire, ils sont disponibles dans un
+    entrepôt séparé.
   </para>
- 
-  &plugindssi4cs;
 
+  <para>Disponibles dans 6.x et 7.x :</para>
+    &py;
+
+  <para>Disponibles seulement dans 6.x :</para>
+    &Faustopcodes;
+    &imageopcodes;
+    &stkopcodes;
+    &controlfltkintro;
+    &AbletonLink;
 </chapter>
