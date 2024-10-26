@@ -86,12 +86,14 @@ english cvs version=1.8
       <emphasis>ileft</emphasis> -- si <emphasis>init</emphasis> &lt; 0, position
       du marteau de gauche (<emphasis>ileft</emphasis> = 0 frappe complètement
       à gauche, <emphasis>ileft</emphasis> = 1 frappe complètement à droite).
+      Ignoré lorsque <emphasis>init</emphasis> &gt; 0.
     </para>
 
     <para>
       <emphasis>iright</emphasis> -- si <emphasis>init</emphasis> &lt; 0, position
       du marteau de droite (<emphasis>iright</emphasis> = 0 frappe complètement à
       gauche, <emphasis>iright</emphasis> = 1 frappe complètement à droite).
+      Ignoré lorsque <emphasis>init</emphasis> &gt; 0.
     </para>
 
     <para>
@@ -131,7 +133,7 @@ english cvs version=1.8
       (<emphasis>kpos</emphasis> = 0 est complètement à gauche,
       <emphasis>kpos</emphasis> = 1 est complètement à droite). La forme du marteau
       est déterminée par <emphasis>init</emphasis> et sa puissance de percussion
-      est <emphasis>kstrngth</emphasis>.
+      est <emphasis>kdisplace</emphasis>.
     </para>
 
     <para>
@@ -156,16 +158,30 @@ english cvs version=1.8
   <refsect1>
     <title>Exemples</title>
     <para>
-      Voici un exemple de l'opcode scanu. Il utilise les fichiers
-      <ulink url="examples/scanu-musical.csd"><citetitle>scanu-musical.csd</citetitle></ulink>
-      et <ulink url="examples/MIDIpad.mid"><citetitle>MIDIpad.mid</citetitle></ulink>.
+      Voici un exemple de l'opcode scanu. Il utilise le fichier
+      <ulink url="examples/scanu.csd"><citetitle>scanu.csd</citetitle></ulink>.
       <example>
         <title>Exemple de l'opcode scanu.</title>
-        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
-        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
         d'information sur l'utilisation des options de la ligne de commande.</para>
-          <xi:include href="examples-xml/scanu-musical.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+          <xi:include href="examples-xml/scanu.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
+    </para>
+    <para>
+      Voici un autre exemple de l'opcode scanu. Il utilise le fichier
+      <ulink url="examples/scanu-2.csd"><citetitle>scanu-2.csd</citetitle></ulink>.
+      <example>
+        <title>Second exemple de l'opcode scanu.</title>
+	      <xi:include href="examples-xml/scanu-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Un exmple musical illustrant l'opcode scanu :
+      <ulink url="examples/musical/Scanu_Shengzheng_Zhang.csd">
+      <citetitle>Scanu_Shengzheng_Zhang.csd</citetitle></ulink>
+      par Shengzheng Zhang. Cet exemple musical utilise également
+      <ulink url="examples/MIDIpad.mid"><citetitle>MIDIpad.mid</citetitle></ulink>. 
     </para>
   </refsect1>
 

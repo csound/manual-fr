@@ -83,11 +83,13 @@ authors=Francois Pinot
     <para>
       <emphasis>ileft</emphasis> -- Si <emphasis>init</emphasis> &lt; 0, 
       position du pincement positif entre 0 et 1.
+      Ignoré lorsque <emphasis>init</emphasis> &gt; 0.
     </para>
 
     <para>
       <emphasis>iright</emphasis> -- Si <emphasis>init</emphasis> &lt; 0,
       position du pincement négatif entre 0 et 1.
+      Ignoré lorsque <emphasis>init</emphasis> &gt; 0.
     </para>
     <para>Si <emphasis>ileft</emphasis> le même que <emphasis>iright</emphasis>
       un seul pincement positif est utilisé comme état initial.
@@ -133,7 +135,7 @@ authors=Francois Pinot
       corde (<emphasis>kpos</emphasis> = 0 est complètement à gauche,
       <emphasis>kpos</emphasis> = 1 est complètement à droite). La forme du
       marteau est déterminée par <emphasis>init</emphasis> et sa puissance de
-      percussion est <emphasis>kstrngth</emphasis>.
+      percussion est <emphasis>kdisplace</emphasis>.
     </para>
 
     <para>
@@ -157,7 +159,32 @@ authors=Francois Pinot
   <refsect1>
     <title>Exemples</title>
     <para>
-      Voici un exemple de l'opcode scanu2. Il utilise les fichiers
+      Voici un exemple de l'opcode scanu2. Il utilise le fichier
+      <ulink url="examples/scanu2.csd"><citetitle>scanu2.csd</citetitle></ulink>.
+    </para>
+    <example>
+      <title>Exemple de l'opcode scanu2.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/scanu2.csd.xml"
+                  xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </example>
+    <para>
+      Voici un autre exemple de l'opcode scanu2. Il utilise le fichier
+      <ulink url="examples/scanu2-2.csd"><citetitle>scanu2-2.csd</citetitle></ulink>.
+      <example>
+        <title>Second exemple de l'opcode scanu2.</title>
+	      <xi:include href="examples-xml/scanu2-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Encore un autre exemple de l'opcode scanu2. Il utilise le fichier
+      <ulink url="examples/scanu2-3.csd"><citetitle>scanu2-3.csd</citetitle></ulink>.
+      <example>
+        <title>Troisième exemple de l'opcode scanu2.</title>
+	      <xi:include href="examples-xml/scanu2-3.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
     </para>
   </refsect1>
   

@@ -90,14 +90,27 @@ english cvs version=1.12
     </para>
 
     <para>
-      Voici un autre exemple de synthèse par balayage qui utilise des échantillons
-      comme signal d'excitation. Il utilise le fichier
+      Voici un autre exemple de synthèse par balayage. Il utilise le fichier
       <ulink url="examples/scans-2.csd"><citetitle>scans-2.csd</citetitle></ulink>.
       <example>
         <title>Second exemple de l'opcode scans.</title>
         <xi:include href="examples-xml/scans-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
      </para>
+     <para>
+       Un tracé de la table <citetitle>itraj1 ftgenonce 6, 0, 128, -7, 0, 128, 128</citetitle>
+       et <citetitle>itraj2  ftgenonce 66, 0, 128, -23, "/manual/examples/straightline_max128_128.traj"</citetitle>:
+     </para>
+       <imageobject>
+         <imagedata fileref="images/straightline_small.png" format="PNG"/>
+       </imageobject>
+     <para>
+       et voici à quoi ressemble la table
+       <citetitle>itraj3  ftgenonce 666, 0, 128, -23, "/manual/examples/128-spiral-8,16,128,2,1over2.traj"</citetitle> :
+     </para>
+       <imageobject>
+         <imagedata fileref="images/spiral_small.png" format="PNG"/>
+       </imageobject>
   </refsect1>
  
   <refsect1>

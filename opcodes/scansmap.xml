@@ -73,6 +73,21 @@ authors=Francois Pinot
   </refsect1>
 
   <refsect1>
+    <title>Exemples</title>
+    <para>
+      Voici un exemple de l'opcode scansmap. Il utilise le fichier
+      <ulink url="examples/scansmap.csd"><citetitle>scansmap.csd</citetitle></ulink>.
+      <example>
+        <title>Exemple de l'opcode scansmap.</title>
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
+        d'information sur l'utilisation des options de la ligne de commande.</para>
+        <xi:include href="examples-xml/scansmap.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+  </refsect1>
+
+  <refsect1>
     <title>Voir aussi</title>
     <para>
       <link linkend="SiggenScanTop"><citetitle>Synthèse par balayage</citetitle></link>
