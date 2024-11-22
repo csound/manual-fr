@@ -31,7 +31,7 @@ english cvs version=
  
   <refsect1>
     <title>Syntaxe</title>
-    <synopsis>kres <command>joystick</command> kdevice ktab</synopsis>
+    <synopsis>kres <command>joystick</command> kdevice, ktab</synopsis>
   </refsect1>
  
  <refsect1>
@@ -77,6 +77,9 @@ english cvs version=
     <title>Voir aussi</title>
       <para>
         <link linkend="ControlSensing"><citetitle>Détection et contrôle : détection clavier et souris</citetitle></link>
+      </para>
+      <para>
+        <link linkend="nonMIDIdevices"><citetitle>Périphériques non MIDI</citetitle></link>
       </para>
   </refsect1>
 

@@ -83,6 +83,18 @@ authors=Francois Pinot
 </simplesect>
 
 <simplesect>
+  <title>Joystick</title>
+  <para>Opcode conçu pour travailler avec un contrôleur joystick (seulement
+  sous Linux) :</para>
+  <itemizedlist>
+    <listitem>
+      <para><link linkend="joystick"><citetitle>joystick</citetitle></link> -
+      Lit les données fournies par un contrôleur joystick.</para>
+    </listitem>
+  </itemizedlist>
+</simplesect>
+
+<simplesect>
   <title>Wiimote Nintendo</title>
   <para>Opcodes pour travailler avec des contrôleurs Wiimote Nintendo :</para>
 
