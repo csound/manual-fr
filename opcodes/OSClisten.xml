@@ -17,13 +17,14 @@ english cvs version=1.10
   <refnamediv>
     <refname>OSClisten</refname>
     <refpurpose>
-      Ecoute les messages OSC sur un chemin particulier.
+      Ecoute les messages OSC sur un chemin particulier, soit depuis un
+      serveur OSC défini sur mesure, soit depuis le serveur UDP de Csound.
     </refpurpose>
   </refnamediv>
 
   <refsect1>
     <title>Description</title>
-    <para>Opcode du greffon osc.</para>
+    <para>Opcode du greffon osc ; opcode interne (pour le serveur UDP)</para>
     <para>
       Cherche à chaque cycle-k si un message OSC a été envoyé à un certain
       chemin d'un certain type.
@@ -34,15 +35,18 @@ english cvs version=1.10
     <title>Syntaxe</title>
     <synopsis>kans <command>OSClisten</command> ihandle, idest, itype [, xdata1, xdata2, ...]</synopsis>
     <synopsis>kans, kdata[] <command>OSClisten</command> ihandle, idest, itype</synopsis>
+    <synopsis>kans, ... <command>OSClisten</command> idest, itype</synopsis>
   </refsect1>
 
   <refsect1>
     <title>Initialisation</title>
     <para>
-      <emphasis>ihandle</emphasis> -- un identifiant retourné par un appel
-      antérieur à <link linkend="OSCinit"><citetitle>OSCinit</citetitle></link>,
-      pour associer <emphasis>OSClisten</emphasis> avec un numéro de port
-      particulier.
+      <emphasis>ihandle</emphasis> -- Dans les deux premières versions (surcharges)
+      de l'opcode, un identifiant retourné par un appel antérieur à OSCinit,
+      pour associer OSClisten avec un numéro de port particulier. La troisième
+      surcharge ne prend pas d'identifiant car elle sera à l'écoute de messages
+      envoyés au <link linkend="udpserver"><citetitle>serveur UDP</citetitle></link>
+      de Csound
     </para>
     <para>
       <emphasis>idest</emphasis> -- une chaîne de caractères représentant
@@ -93,6 +97,25 @@ english cvs version=1.10
       <emphasis>OSClisten</emphasis>.
     </para>
 
+    <para>
+      Alternativement, si le message à recevoir est une série de valeurs toutes
+      du même type numérique scalaire (par exemple un de "dfhi"), alors le
+      paramètre retourné <emphasis>kdata</emphasis> peut être utilisé à la place
+      de variables <emphasis>xdata</emphasis>. <emphasis>kdata</emphasis> doit
+      être un tableau qui doit être déclaré avec init avant l'appel à OSClisten,
+      ou être utilisé avec la syntaxe []. Il sera créé avec une taille
+      suffisante s'il diffère d'un tableau unidimensionel dont la taille est
+      supérieure ou égale à la longueur donnée par la chaîne de formatage. Si
+      un message est reçu, ce tableau sera rempli avec les valeurs entrantes.
+      Voir ci-dessous pour un exemple de cette utilisation.
+    </para>
+
+    <para>
+      La troisième surcharge utilise un nombre différent de sorties de
+      différents types (k ou S) pour les messages correspondant à l'adresse et
+      au type qui entrent dans le serveur UDP. Il n'accepte que des valeurs
+      scalaires ("dfhi") ou chaînes de caractères ("s").
+    </para>
   </refsect1>
 
   <refsect1>
@@ -153,6 +176,12 @@ ex:
           <xi:include href="examples-xml/OSCmidircv.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
     </para>
+    <para>
+      L'exemple suivent montre l'usage de la troisième surcharge de l'opcode
+      OSClisten. Il utilise le fichier
+      <ulink url="examples/OSClistenex2.csd"><citetitle>OSClistenex2.csd</citetitle></ulink>.
+    </para>
+    <xi:include href="examples-xml/OSClistenex2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
   </refsect1>
 
   <refsect1>
@@ -171,11 +200,19 @@ ex:
     <title>Crédits</title>
     <para>
       <simplelist>
-        <member>Auteur : &namejohn;</member>
-        <member>2005</member>
-        <member>Exemples par David Akbari, &nameandres; et Jonathan Murphy 2007</member>
+        <member>Auteur : &namejohn; Victor Lazzarini</member>
+        <member>2005, 2024</member>
+        <member>Exemples par David Akbari, &nameandres; et Jonathan Murphy 2007 ;
+        Victor Lazzarini 2024</member>
       </simplelist>
     </para>
-    <para>Les types aAG sont nouveaux dans in Csound 6.07</para>
+    <para>
+      <simplelist>
+        <member>Les types aAG sont nouveaux dans Csound 6.07</member>
+        <member>L'utilisation d'un tableau en sortie est nouvelle dans
+        Csound 6.12</member>
+        <member>Le support du serveur UDP est nouveau dans Csound 7.0</member>
+      </simplelist>
+    </para>
   </refsect1>
 </refentry>

@@ -73,6 +73,16 @@ english cvs version=1.4
     </imageobject>
   </mediaobject>
   
+  <note>
+    <title>Note</title>
+    <para>
+      Le terme 'marteau' est choisi pour nommer le modèle, mais 'marteau' n'est
+      sans doute pas la meilleure métaphore. Un marteau sous-entend une frappe
+      alors que l'on initialise une déformation de la surface et qu'on la
+      met ensuite en mouvement.
+    </para>
+  </note>
+
   <para>
     On manipule le modèle mécanique à des taux haptiques 0-10 Hz, et
     indépendamment de cela, on balaye la table d'onde à la fréquence de la
@@ -247,7 +257,7 @@ english cvs version=1.4
   <para>
     Comme example de matrice texte
     (voir <link linkend="GEN44"><citetitle>GEN44</citetitle></link>), pour les
-    mêmes 4 masses nous avons la grille suivante décrivant les connexions :
+    mêmes 4 masses nous avons la grille suivante décrivant ces connexions :
   </para>
       <informalexample>
         <programlisting>

@@ -17,7 +17,7 @@ english cvs version=1.17
   <refnamediv>
     <refname>oscil</refname>
     <refpurpose>
-      Un oscillateur simple.
+      Un oscillateur simple sans interpolation.
     </refpurpose>
   </refnamediv>
  
@@ -76,6 +76,17 @@ english cvs version=1.17
       Si vous désirez changer la table de l'oscillateur avec un signal de taux-k, vous
       pouvez utiliser <link linkend="oscilikt"><citetitle>oscilikt</citetitle></link>.
     </para>
+    <note>
+      <!-- <title>Title of the note (optional)</title> -->
+      <para>
+        Cet opcode ne réalise pas d'interpolation. Cela peut conduire à un
+        comportement inattendu ou à des signaux erronés, par exemple pour des
+        tables de petite taille et des fréquences basses. Il est recommandé
+        d'utiliser comme oscillateurs de base
+        <link linkend="oscili"><citetitle>oscili</citetitle></link>
+        ou <link linkend="poscil"><citetitle>poscil</citetitle></link>.
+      </para>
+    </note>
  </refsect1>
  
   <refsect1>

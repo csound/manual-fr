@@ -110,21 +110,27 @@ authors=Francois Pinot
         <xi:include href="examples-xml/gen44.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
     </para>
+    <para>
+      Voici un autre exemple de GEN44. Il utilise le fichier
+      <ulink url="examples/gen44-2.csd"><citetitle>gen44-2.csd</citetitle></ulink>.
+      la matrice a 1024 masses.
+      <example>
+        <title>Second exemple du générateur GEN44.</title>
+	      <xi:include href="examples-xml/gen44-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
   </refsect1>
 
   <refsect1>
     <title>Voir aussi</title>
     <para><link linkend="SiggenScanTop"><citetitle>Scanned Synthesis</citetitle></link></para>
     <para>
-      On trouve plus d'information sur la synthèse par balayage (ainsi que plusieurs
-      autres matrices) sur 
-      <ulink url="http://www.csounds.com/scanned/"><citetitle>la page Scanned Synthesis</citetitle></ulink>
-      du site cSounds.com.
+      Pour plus d'information sur les opcodes de synthèse par balayage :
+      <ulink url="http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html">
+      <citetitle>Working with Scanned Synthesis</citetitle></ulink>, écrit par
+      Steven Yi, et quelques <ulink url="http://www.csounds.com/scanned/">
+      <citetitle>tutoriaux</citetitle></ulink> par Richard Boulanger.
     </para>
-    <para>Il y a aussi un article sur ces opcodes :
-    <ulink url="http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html">
-    <citetitle>http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html</citetitle></ulink>,
-    écrit par Steven Yi.</para>
   </refsect1>
 
   <refsect1>

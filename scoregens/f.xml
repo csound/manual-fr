@@ -8,8 +8,8 @@ english cvs version=1.11
 -->
 
 <refentry id="f">
-      <indexterm id="IndexFStatement"><primary>f statement</primary></indexterm>
-      <indexterm id="IndexFunctionTableStatement"><primary>function table statement</primary></indexterm>
+  <indexterm id="IndexFStatement"><primary>f statement</primary></indexterm>
+  <indexterm id="IndexFunctionTableStatement"><primary>function table statement</primary></indexterm>
   <refmeta>
     <refentrytitle>Instruction f (ou instruction de table de fonction)</refentrytitle>
   </refmeta>
@@ -17,15 +17,16 @@ english cvs version=1.11
   <refnamediv>
     <refname>f</refname>
     <refpurpose>
-      Provoque l'écriture de valeurs dans une table de fonction en mémoire par une routine GEN.
+      Provoque l'écriture de valeurs dans une table de fonction en mémoire par
+      une routine GEN.
     </refpurpose>
   </refnamediv>
  
   <refsect1>
     <title>Description</title>
     <para>
-      Provoque l'écriture de valeurs dans une table de fonction en mémoire par une routine GEN
-      pour utilisation par des instruments.
+      Provoque l'écriture de valeurs dans une table de fonction en mémoire par
+      une routine GEN pour utilisation par des instruments.
     </para>
   </refsect1>
 
@@ -37,19 +38,25 @@ english cvs version=1.11
   <refsect1>
     <title>Exécution</title>
     <para>
-       <emphasis>p1</emphasis> -- Numéro de table sous lequel la fonction mémorisée sera connue. Un nombre
-       négatif signifie une demande de destruction de la table.
+       <emphasis>p1</emphasis> -- Numéro de table sous lequel la fonction
+       mémorisée sera connue. Un nombre négatif signifie une demande de
+       destruction de la table.
     </para>
 
     <para>
-       <emphasis>p2</emphasis> -- Date d'activation de la génération de la fonction (ou de sa destruction)
-       en pulsations. 
+       <emphasis>p2</emphasis> -- Date d'activation de la génération de la
+       fonction (ou de sa destruction) en pulsations. 
     </para>
 
     <para>
-       <emphasis>p3</emphasis> -- Taille de la table de la fonction (c'est-à-dire nombre de points). Doit
-       être une puissance de 2, ou une puissance de 2 plus 1 si ce nombre est positif. La taille de table maximale
-       est de 16777216 (2<superscript>24</superscript>) points.
+       <emphasis>p3</emphasis> -- Taille de la table de fonction (c'est-à-dire
+       nombre de points). Certaine routines GEN autorisent une taille de table
+       fixée dynamiquement en fonction des entrées de la routine (par exemple
+       taille de fichier), dans un procédé appelé allocation de taille différée.
+       Dans ce cas, on peut fixer la taille de la table à 0 pour bénéficier de
+       ce mécanisme. La taille de table fixe maximale est de 16777216
+       (2<superscript>24</superscript>) points, mais des tables plus grandes
+       peuvent être créées avec l'allocation de taille différée.
     </para>
 
     <para>
@@ -73,36 +80,48 @@ english cvs version=1.11
         Cette table utilise <link linkend="GEN10"><citetitle>GEN10</citetitle></link> pour son remplissage.
       </para>
       <para>
-        Historiquement, à cause des contraintes des anciennes plates-formes, Csound ne pouvait accepter
-        que des tables dont la taille était une puissance de deux. Cette limitation a été levée dans les
-        récentes versions, et l'on peut créer des tables de n'importe quelle taille. Cependant, pour
-        créer une table dont la taille n'est pas une puissance de deux (ou une puissance de deux plus
-        un), il faut spécifier la taille comme un nombre négatif.
+        Historiquement, à cause des contraintes des anciennes plates-formes,
+        Csound ne pouvait accepter que des tables dont la taille était une
+        puissance de deux. Cette limitation a été levée dans les récentes
+        versions, et l'on peut créer des tables de n'importe quelle taille.
       </para>
-      <note><para>Il y a des opcodes qui n'accepteront pas des tables dont la taille n'est pas une
-        puissance de deux, car ils comptent sur cela pour leur optimisation interne.</para>
+      <note><para>Tous les opcodes acceptent des tables dont la taille n'est pas
+        une puissance de deux ; cependant certains d'entre eux utiliseront un
+        code de mise à jour de la phase plus optimal si une taille puissande de
+        deux est utilisée. Il est ainsi recommandé d'utiliser des tailles
+        puissance de deux si possible.</para>
       </note>
-      <para>Pour les tableaux dont la longueur est une puissance de 2, l'allocation d'espace
-        mémoire est toujours prévue pour 2<superscript>n</superscript> points plus un
-        <emphasis>point de garde</emphasis>. La valeur du point de garde, utilisée pour la lecture avec
-        interpolation, peut être fixée automatiquement selon le but de la table : si la
-        <emphasis>taille</emphasis> est une puissance de 2 exacte, le point de garde sera une copie du
-        premier point ; cela convient pour la <emphasis>lecture cyclique avec interpolation</emphasis>
-        comme dans <emphasis>oscili</emphasis>, etc., et devrait même être utilisé pour la version sans
-        interpolation <emphasis>oscil</emphasis> pour rester consistant. Si la <emphasis>taille</emphasis>
-        est fixée à 2<superscript>n</superscript> + 1, le point de garde prolongera automatiquement le
-        contour des valeurs de la table ; cela convient pour les fonctions à lecture non-cyclique comme dans
-        <emphasis>envplx</emphasis>, <emphasis>oscil1</emphasis>, <emphasis>oscil1i</emphasis>, etc.
-      </para>
 
       <para>
-        La taille de la table est utilisée comme un code pour indiquer à Csound
-        comment remplir ce point de garde. Si la taille est exactement une
-        puissance de deux, alors le point de garde contient une copie du premier
-        point de la table. Si la taille est une puissance-de-deux plus un, Csound
-        étend le contour de la fonction stockée dans la table pour un point
-        supplémentaire.
+        L'espace alloué correspond toujours au nombre de points fixé plus un
+        <emphasis>point de garde</emphasis> additionnel, utilisé pour
+        l'interpolation linéaire. Par défaut, ce point contient une copie de la
+        première position de la table, ce qu'on attend d'une lecture cyclique (par
+        exemple un oscillateur lisant une table de fonction).
       </para>
+      <para>
+        Lorsque la lecture doit s'arrêter au dernier point de la table (par
+        exemple segments d'enveloppe), le rôle correct du point de garde est
+        d'allonger la table d'un point supplémentaire (en fonction du GEN
+        employé). On l'appelle alors un <emphasis>point de garde étendu</emphasis>.
+        Pour bénéficier de cela, des codes spéciaux sont utilisés :
+      </para>
+      <para>
+        - <emphasis>Tables de taille puissance de deux</emphasis> : les
+          utilisateurs doivent fixer le taille à la valeur requise + 1. Par
+          exemple, une table de taille 1024 doit être fixée à 1025. Pour
+          désactiver ce comportement et créer une table dont la taille n'est
+          pas une puissance de deux, il faut utiliser une taille négative :
+          -1205 produit une table de taille 1025 avec un point de garde par
+          défaut.
+      </para>
+      <para>
+        - <emphasis>Tables de tailles non puissance de deux</emphasis> : les
+          utilisateurs doivent fixer le taille à la valeur requise + 0.1 (ou
+          toute autre valeur fractionnaire entre 0 et 1). Par exemple, une
+          table de taille 1000 doit être fixée à 1000.1. 
+      </para>
+             
       <para>
         Les tables sont allouées dans la mémoire primaire, avec les données d'instrument. Le nombre
         maximum de tables était limité à 200. Ceci a changé et il n'est plus limité que par la quantité de
@@ -175,8 +194,7 @@ english cvs version=1.11
   <refsect1>
     <title>Crédits</title>
     <para>
-      Mise à jour en août 2002 grâce à une note de &namerasmus;. Il n'y a plus de limite codée en dur à 200 tables de
-      fonction.
+      Mise à jour en août 2024 pour Csound 7.0.
     </para>
   </refsect1>
 </refentry>

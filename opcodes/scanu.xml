@@ -86,12 +86,14 @@ english cvs version=1.8
       <emphasis>ileft</emphasis> -- si <emphasis>init</emphasis> &lt; 0, position
       du marteau de gauche (<emphasis>ileft</emphasis> = 0 frappe complètement
       à gauche, <emphasis>ileft</emphasis> = 1 frappe complètement à droite).
+      Ignoré lorsque <emphasis>init</emphasis> &gt; 0.
     </para>
 
     <para>
       <emphasis>iright</emphasis> -- si <emphasis>init</emphasis> &lt; 0, position
       du marteau de droite (<emphasis>iright</emphasis> = 0 frappe complètement à
       gauche, <emphasis>iright</emphasis> = 1 frappe complètement à droite).
+      Ignoré lorsque <emphasis>init</emphasis> &gt; 0.
     </para>
 
     <para>
@@ -131,7 +133,7 @@ english cvs version=1.8
       (<emphasis>kpos</emphasis> = 0 est complètement à gauche,
       <emphasis>kpos</emphasis> = 1 est complètement à droite). La forme du marteau
       est déterminée par <emphasis>init</emphasis> et sa puissance de percussion
-      est <emphasis>kstrngth</emphasis>.
+      est <emphasis>kdisplace</emphasis>.
     </para>
 
     <para>
@@ -143,56 +145,43 @@ english cvs version=1.8
       <emphasis>ain</emphasis> -- entrée audio qui s'ajoute à la vélocité des
       masses. L'amplitude ne doit pas être trop grande.
     </para>
+	<note>
+      <title>Note</title>
+      <para>
+        scanu et scanu2 sont tous deux capables de lire le format de matrice
+        binaire (.matrxB) et texte (.matrxT). Cependant, il est préférable
+        d'utiliser scanu2 pour sa précision et sa meilleure qualité sonore.
+      </para>
+    </note>
   </refsect1>
  
   <refsect1>
-    <title>Format de la matrice</title>
-    <para>
-      Le format de la matrice de scanu est une liste binaire de connexions.
-      le poids du lien est supposé être unitaire.
-    </para>
-    <para>
-      Par exemple, une chaîne circulaire de quatre éléments serait codée de
-      cette manière :
-      <informalexample>
-        <programlisting>
-0
-1
-0
-0
-1
-0
-1
-0
-0
-1
-0
-1
-0
-0
-1
-0
-        </programlisting>
-      </informalexample>
-      Note : pour éviter la confusion avec d'autres formats de matrice, il
-      vaut mieux sauvegarder ce format de matrice avec l'extension de fichier
-      <citetitle>.matrxB</citetitle>.
-    </para>
-  </refsect1>
-
-  <refsect1>
     <title>Exemples</title>
     <para>
-      Voici un exemple de l'opcode scanu. Il utilise les fichiers
-      <ulink url="examples/scanu-musical.csd"><citetitle>scanu-musical.csd</citetitle></ulink>
-      et <ulink url="examples/MIDIpad.mid"><citetitle>MIDIpad.mid</citetitle></ulink>.
+      Voici un exemple de l'opcode scanu. Il utilise le fichier
+      <ulink url="examples/scanu.csd"><citetitle>scanu.csd</citetitle></ulink>.
       <example>
         <title>Exemple de l'opcode scanu.</title>
-        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en temps réel</citetitle></link>
-        et <link linkend="CommandFlags"><citetitle>Options de la ligne de commande</citetitle></link> pour plus
+        <para>Voir les sections <link linkend="UsingRealTime"><citetitle>Audio en Temps Réel</citetitle></link>
+        et <link linkend="CommandFlags"><citetitle>Options de la Ligne de Commande</citetitle></link> pour plus
         d'information sur l'utilisation des options de la ligne de commande.</para>
-          <xi:include href="examples-xml/scanu-musical.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+          <xi:include href="examples-xml/scanu.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
       </example>
+    </para>
+    <para>
+      Voici un autre exemple de l'opcode scanu. Il utilise le fichier
+      <ulink url="examples/scanu-2.csd"><citetitle>scanu-2.csd</citetitle></ulink>.
+      <example>
+        <title>Second exemple de l'opcode scanu.</title>
+	      <xi:include href="examples-xml/scanu-2.csd.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      </example>
+    </para>
+    <para>
+      Un exmple musical illustrant l'opcode scanu :
+      <ulink url="examples/musical/Scanu_Shengzheng_Zhang.csd">
+      <citetitle>Scanu_Shengzheng_Zhang.csd</citetitle></ulink>
+      par Shengzheng Zhang. Cet exemple musical utilise également
+      <ulink url="examples/MIDIpad.mid"><citetitle>MIDIpad.mid</citetitle></ulink>. 
     </para>
   </refsect1>
 
@@ -202,17 +191,12 @@ english cvs version=1.8
       <link linkend="SiggenScanTop"><citetitle>Synthèse par balayage</citetitle></link>
     </para>
     <para>
-      Le fichier de la matrice <quote>string-128.matrix</quote>, ainsi que d'autres
-      matrices, sont aussi disponibles dans un
-      <ulink url="http://www.csounds.com/scanned/zip/scanmatrices.zip"><citetitle>fichier zippé</citetitle></ulink>
-      depuis la
-      <ulink url="http://www.csounds.com/scanned/"><citetitle>page Scanned Synthesis</citetitle></ulink>
-      à cSounds.com.
+      Pour plus d'information sur les opcodes de synthèse par balayage :
+      <ulink url="http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html">
+      <citetitle>Working with Scanned Synthesis</citetitle></ulink>, écrit par
+      Steven Yi, et quelques <ulink url="http://www.csounds.com/scanned/">
+      <citetitle>tutoriaux</citetitle></ulink> par Richard Boulanger.
     </para>
-    <para>Plus d'information sur cet opcode :
-    <ulink url="http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html">
-    <citetitle>http://www.csounds.com/stevenyi/scanned/yi_scannedSynthesis.html</citetitle>
-    </ulink>, écrit par Steven Yi.</para>
   </refsect1>
 
   <refsect1>

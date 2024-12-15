@@ -25,6 +25,12 @@ english cvs version=1.17
     <title>Description</title>
     <para>
       Oscillateur haute précision avec interpolation cubique.
+      <emphasis>poscil3</emphasis> (oscillateur de précision) est identique à
+      <link linkend="oscil3"><citetitle>oscil3</citetitle></link>, mais il
+      utilise toujours une indexation de la table en virgule flottante, au lieu
+      de l'arithmétique entière.
+      Il est à peine plus lent que <emphasis>oscil3</emphasis> lorsque ce
+      dernier lit des tables dont la taille est une puissance de deux.
     </para>
   </refsect1>
  
@@ -72,8 +78,6 @@ english cvs version=1.17
       <link linkend="poscil"><citetitle>poscil</citetitle></link>, mais il utilise
       l'interpolation cubique.
     </para>
-    <para>Noter que <emphasis>poscil3</emphasis> peut utiliser des tables de longueur
-      différée (non puissance de deux).</para>
   </refsect1>
 
   <refsect1>

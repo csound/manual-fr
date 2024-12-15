@@ -72,22 +72,17 @@ english cvs version=1.14
     </para>
     <para>
       <emphasis>poscil</emphasis> (oscillateur de précision) est identique à
-      <link linkend="oscili"><citetitle>oscili</citetitle></link>, mais il permet un contrôle de la
-      fréquence plus précis, en particulier lorsque l'on utilise de grandes tables avec de faibles valeurs
-      de fréquence. Il utilise une indexation de la table en virgule flottante, au lieu de l'arithmétique
-      entière utilisée par <emphasis>oscil</emphasis> et <emphasis>oscili</emphasis>. Il est à peine plus
-      lent que <emphasis>oscili</emphasis>.
-    </para>
-    <para>
-      Depuis Csound 4.22, <emphasis>poscil</emphasis> accepte aussi des valeurs de fréquence négatives et
-      il peut utiliser des valeurs de taux-a aussi bien pour l'amplitude que pour la fréquence. Ainsi, cet
-      opcode permet la modulation d'amplitude (MA) et la modulation de fréquence (MF).
+      <link linkend="oscili"><citetitle>oscili</citetitle></link>, mais il
+      utilise toujours une indexation de la table en virgule flottante, au lieu
+      de l'arithmétique entière utilisée par <emphasis>oscil</emphasis> et
+      <emphasis>oscili</emphasis> (qui peuvent utiliser l'une ou l'autre en
+      fonction de la taille de la table). Il est à peine plus lent que
+      <emphasis>oscili</emphasis> lorsque ce dernier lit des tables dont la
+      taille est une puissance de deux.
     </para>
     <para>
       L'opcode <link linkend="poscil3"><citetitle>poscil3</citetitle></link> est le même que 
       <emphasis>poscil</emphasis>, mais il utilise une interpolation cubique.</para>
-    <para>Noter que <emphasis>poscil</emphasis> peut utiliser des tables de longueur
-      différée (non puissance de deux).</para>
   </refsect1>
 
   <refsect1>

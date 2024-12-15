@@ -10,7 +10,12 @@ english cvs version=1.3
 <section id="OSC">
   <title>OSC</title>
   <para><emphasis>OSC</emphasis> permet l'interaction entre différents processus audio, et en particulier
-    entre Csound et d'autres moteurs de synthèse. Les opcodes suivants sont disponibles :</para>
+    entre Csound et d'autres moteurs de synthèse.
+  </para>
+  <para>Plusieurs serveurs OSC peuvent être mis en place séparément ou avec le
+  <link linkend="udpserver"><citetitle>serveur UDP</citetitle></link>) de Csound.
+  </para>
+  <para>Les opcodes suivants sont disponibles :</para>
   
   <itemizedlist>
     <listitem>
@@ -44,4 +49,5 @@ english cvs version=1.3
   <bridgehead>Crédits</bridgehead>
   <para>Par John ffitch avec le support et l'inspiration de la bibliothèque liblo.</para>
   <para>Améliorations et extensions par Victor Lazzarini.</para>
+  <para>Le support de serveur UDP a été ajouté dans Csound 7.0.</para>
 </section>
